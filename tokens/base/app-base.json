@@ -3548,11 +3548,11 @@
         },
         "large-padding-y": {
           "$type": "spacing",
-          "$value": "{space.base.2}"
+          "$value": "{space.base.4}"
         },
         "large-padding-x": {
           "$type": "spacing",
-          "$value": "{space.base.4}"
+          "$value": "{space.base.6}"
         },
         "large-gap": {
           "$type": "spacing",
@@ -3560,7 +3560,7 @@
         },
         "small-padding-y": {
           "$type": "spacing",
-          "$value": "{space.base.2}"
+          "$value": "{space.base.1}"
         },
         "small-padding-x": {
           "$type": "spacing",
@@ -4004,7 +4004,7 @@
         },
         "large": {
           "$type": "borderRadius",
-          "$value": "{borderRadius.context.round-28}"
+          "$value": "{borderRadius.context.round-32}"
         },
         "small": {
           "$type": "borderRadius",
