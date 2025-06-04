@@ -3180,7 +3180,7 @@
         },
         "large-main": {
           "$type": "sizing",
-          "$value": "{size.base.32}"
+          "$value": "{size.base.28}"
         },
         "large-icon": {
           "$type": "sizing",
@@ -3552,11 +3552,11 @@
         },
         "large-padding-x": {
           "$type": "spacing",
-          "$value": "{space.base.6}"
+          "$value": "{space.base.4}"
         },
         "large-gap": {
           "$type": "spacing",
-          "$value": "{space.base.4}"
+          "$value": "{space.base.6}"
         },
         "small-padding-y": {
           "$type": "spacing",
@@ -4004,7 +4004,7 @@
         },
         "large": {
           "$type": "borderRadius",
-          "$value": "{borderRadius.context.round-32}"
+          "$value": "{borderRadius.context.round-28}"
         },
         "small": {
           "$type": "borderRadius",
