@@ -3584,7 +3584,11 @@
           "$type": "spacing",
           "$value": "{space.base.8}"
         },
-        "medium-nudge": {
+        "medium-nudge-y": {
+          "$type": "spacing",
+          "$value": "{space.base.0}"
+        },
+        "medium-nudge-x": {
           "$type": "spacing",
           "$value": "{space.base.4}"
         },
@@ -3600,7 +3604,11 @@
           "$type": "spacing",
           "$value": "{space.base.12}"
         },
-        "large-nudge": {
+        "large-nudge-y": {
+          "$type": "spacing",
+          "$value": "{space.base.0}"
+        },
+        "large-nudge-x": {
           "$type": "spacing",
           "$value": "{space.base.4}"
         },
@@ -3616,7 +3624,11 @@
           "$type": "spacing",
           "$value": "{space.base.4}"
         },
-        "small-nudge": {
+        "small-nudge-y": {
+          "$type": "spacing",
+          "$value": "{space.base.0}"
+        },
+        "small-nudge-x": {
           "$type": "spacing",
           "$value": "{space.base.4}"
         }
@@ -3624,7 +3636,7 @@
       "chip": {
         "medium-padding-y": {
           "$type": "spacing",
-          "$value": "{space.base.2}"
+          "$value": "{space.base.4}"
         },
         "medium-padding-x": {
           "$type": "spacing",
@@ -3634,7 +3646,11 @@
           "$type": "spacing",
           "$value": "{space.base.8}"
         },
-        "medium-nudge": {
+        "medium-nudge-y": {
+          "$type": "spacing",
+          "$value": "{space.base.2}"
+        },
+        "medium-nudge-x": {
           "$type": "spacing",
           "$value": "{space.base.4}"
         },
@@ -3648,9 +3664,13 @@
         },
         "large-gap": {
           "$type": "spacing",
-          "$value": "{space.base.8}"
+          "$value": "{space.base.12}"
         },
-        "large-nudge": {
+        "large-nudge-y": {
+          "$type": "spacing",
+          "$value": "{space.base.4}"
+        },
+        "large-nudge-x": {
           "$type": "spacing",
           "$value": "{space.base.4}"
         },
@@ -3664,11 +3684,15 @@
         },
         "small-gap": {
           "$type": "spacing",
-          "$value": "{space.base.4}"
+          "$value": "{space.base.8}"
         },
-        "small-nudge": {
+        "small-nudge-y": {
           "$type": "spacing",
-          "$value": "{space.base.2}"
+          "$value": "{space.base.1}"
+        },
+        "small-nudge-x": {
+          "$type": "spacing",
+          "$value": "{space.base.4}"
         }
       },
       "form-input": {

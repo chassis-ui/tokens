@@ -2,7 +2,7 @@
 
 <!--
   Do not edit directly, this file was auto-generated.
-  Generated on Wed, 04 Jun 2025 07:22:02 GMT
+  Generated on Wed, 04 Jun 2025 13:56:43 GMT
   Chassis - Tokens v0.1.0
   Copyright 2025 Ozgur Gunes
   Licensed under MIT (https://github.com/ozgurgunes/chassis-tokens/blob/main/LICENSE)
@@ -235,34 +235,40 @@
   <dimen name="space_common_badge_medium_gap">4dp</dimen>
   <dimen name="space_common_badge_large_padding_y">2dp</dimen>
   <dimen name="space_common_badge_large_padding_x">4dp</dimen>
-  <dimen name="space_common_badge_large_gap">4dp</dimen>
-  <dimen name="space_common_badge_small_padding_y">2dp</dimen>
+  <dimen name="space_common_badge_large_gap">6dp</dimen>
+  <dimen name="space_common_badge_small_padding_y">1dp</dimen>
   <dimen name="space_common_badge_small_padding_x">4dp</dimen>
   <dimen name="space_common_badge_small_gap">4dp</dimen>
   <dimen name="space_common_button_medium_padding_y">8dp</dimen>
   <dimen name="space_common_button_medium_padding_x">12dp</dimen>
   <dimen name="space_common_button_medium_gap">8dp</dimen>
-  <dimen name="space_common_button_medium_nudge">4dp</dimen>
+  <dimen name="space_common_button_medium_nudge_y">0dp</dimen>
+  <dimen name="space_common_button_medium_nudge_x">4dp</dimen>
   <dimen name="space_common_button_large_padding_y">10dp</dimen>
   <dimen name="space_common_button_large_padding_x">16dp</dimen>
   <dimen name="space_common_button_large_gap">12dp</dimen>
-  <dimen name="space_common_button_large_nudge">4dp</dimen>
+  <dimen name="space_common_button_large_nudge_y">0dp</dimen>
+  <dimen name="space_common_button_large_nudge_x">4dp</dimen>
   <dimen name="space_common_button_small_padding_y">6dp</dimen>
   <dimen name="space_common_button_small_padding_x">8dp</dimen>
   <dimen name="space_common_button_small_gap">4dp</dimen>
-  <dimen name="space_common_button_small_nudge">4dp</dimen>
-  <dimen name="space_common_chip_medium_padding_y">2dp</dimen>
+  <dimen name="space_common_button_small_nudge_y">0dp</dimen>
+  <dimen name="space_common_button_small_nudge_x">4dp</dimen>
+  <dimen name="space_common_chip_medium_padding_y">4dp</dimen>
   <dimen name="space_common_chip_medium_padding_x">4dp</dimen>
   <dimen name="space_common_chip_medium_gap">8dp</dimen>
-  <dimen name="space_common_chip_medium_nudge">4dp</dimen>
+  <dimen name="space_common_chip_medium_nudge_y">2dp</dimen>
+  <dimen name="space_common_chip_medium_nudge_x">4dp</dimen>
   <dimen name="space_common_chip_large_padding_y">4dp</dimen>
   <dimen name="space_common_chip_large_padding_x">4dp</dimen>
-  <dimen name="space_common_chip_large_gap">8dp</dimen>
-  <dimen name="space_common_chip_large_nudge">4dp</dimen>
+  <dimen name="space_common_chip_large_gap">12dp</dimen>
+  <dimen name="space_common_chip_large_nudge_y">4dp</dimen>
+  <dimen name="space_common_chip_large_nudge_x">4dp</dimen>
   <dimen name="space_common_chip_small_padding_y">2dp</dimen>
   <dimen name="space_common_chip_small_padding_x">2dp</dimen>
-  <dimen name="space_common_chip_small_gap">4dp</dimen>
-  <dimen name="space_common_chip_small_nudge">2dp</dimen>
+  <dimen name="space_common_chip_small_gap">8dp</dimen>
+  <dimen name="space_common_chip_small_nudge_y">1dp</dimen>
+  <dimen name="space_common_chip_small_nudge_x">4dp</dimen>
   <dimen name="space_common_form_input_medium_padding_y">8dp</dimen>
   <dimen name="space_common_form_input_medium_padding_x">12dp</dimen>
   <dimen name="space_common_form_input_medium_gap">12dp</dimen>
