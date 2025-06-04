@@ -13,43 +13,43 @@
     "base": {
       "palette": {
         "neutral": {
-          "main": {
+          "base": {
             "$type": "color",
             "$value": "#757575"
           }
         },
         "danger": {
-          "main": {
+          "base": {
             "$type": "color",
             "$value": "#E02D12"
           }
         },
         "success": {
-          "main": {
+          "base": {
             "$type": "color",
             "$value": "#0B8A0B"
           }
         },
         "warning": {
-          "main": {
+          "base": {
             "$type": "color",
             "$value": "#996E09"
           }
         },
         "info": {
-          "main": {
+          "base": {
             "$type": "color",
             "$value": "#098294"
           }
         },
         "brand": {
-          "main": {
+          "base": {
             "$type": "color",
             "$value": "#1273E0"
           }
         },
         "accent": {
-          "main": {
+          "base": {
             "$type": "color",
             "$value": "#D115C5"
           }
@@ -154,10 +154,6 @@
         "$value": "{size.base.2}"
       },
       "3xlarge": {
-        "$type": "borderRadius",
-        "$value": "{size.base.2}"
-      },
-      "rare": {
         "$type": "borderRadius",
         "$value": "{size.base.2}"
       }

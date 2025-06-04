@@ -9,7 +9,7 @@
             "y": "{size.base.0}",
             "blur": "{size.base.0}",
             "spread": "{size.base.0}",
-            "color": "{color.base.palette.black.clear}",
+            "color": "{color.base.palette.black.transparent}",
             "type": "dropShadow"
           }
         ]
@@ -33,7 +33,7 @@
       "focus": {
         "$type": "boxShadow",
         "$value": {
-          "color": "{color.context.default.indicator-main}",
+          "color": "{color.context.default.cue-main}",
           "type": "dropShadow",
           "x": "{size.base.0}",
           "y": "{size.base.0}",
@@ -44,7 +44,7 @@
       "highlight": {
         "$type": "boxShadow",
         "$value": {
-          "color": "{color.context.default.indicator-main}",
+          "color": "{color.context.default.cue-main}",
           "type": "dropShadow",
           "x": "{size.base.0}",
           "y": "{size.base.0}",

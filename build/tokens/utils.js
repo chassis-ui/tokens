@@ -36,6 +36,7 @@ export const tokenTypes = {
     'paragraphSpacing',
   ],
   string : [
+    'asset',
     'content',
     'fontFamily',
     'fontStyle',
@@ -133,4 +134,22 @@ export function splitReference(value) {
   }
   console.warn('Not a reference:', value)
   return value
+}
+
+/**
+ * Removes unnecessary trailing zeros from a number.
+ *
+ * @param {number|string} value - The value to format.
+ * @returns {string} - Formatted number without trailing zeros.
+ */
+export function removeTrailingZeros(value) {
+  // Convert to string first if it's a number
+  const strValue = String(value);
+
+  // Only process if it contains a decimal point
+  if (strValue.includes('.')) {
+    return strValue.replace(/\.?0+$/, '');
+  }
+
+  return strValue;
 }

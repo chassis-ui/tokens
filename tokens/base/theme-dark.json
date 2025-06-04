@@ -20,6 +20,10 @@
           "$type": "color",
           "$value": "{color.base.dark.default.contrast-color}"
         },
+        "transparent-color": {
+          "$type": "color",
+          "$value": "{color.base.dark.default.transparent-color}"
+        },
         "fg-main": {
           "$type": "color",
           "$value": "{color.base.dark.default.fg-main}"
@@ -88,13 +92,13 @@
           "$type": "color",
           "$value": "{color.base.dark.default.icon-slight}"
         },
-        "indicator-main": {
+        "cue-main": {
           "$type": "color",
-          "$value": "{color.base.dark.default.indicator-main}"
+          "$value": "{color.base.dark.default.cue-main}"
         },
-        "indicator-slight": {
+        "cue-slight": {
           "$type": "color",
-          "$value": "{color.base.dark.default.indicator-slight}"
+          "$value": "{color.base.dark.default.cue-slight}"
         },
         "link-main": {
           "$type": "color",
@@ -112,21 +116,17 @@
           "$type": "color",
           "$value": "{color.base.dark.default.link-visited}"
         },
-        "scene-shade": {
+        "dim-main": {
           "$type": "color",
-          "$value": "{color.base.dark.default.scene-shade}"
+          "$value": "{color.base.dark.default.dim-main}"
         },
-        "scene-dim": {
+        "dim-subtle": {
           "$type": "color",
-          "$value": "{color.base.dark.default.scene-dim}"
+          "$value": "{color.base.dark.default.dim-subtle}"
         },
-        "scene-blur": {
+        "dim-slight": {
           "$type": "color",
-          "$value": "{color.base.dark.default.scene-blur}"
-        },
-        "scene-clear": {
-          "$type": "color",
-          "$value": "{color.base.dark.default.scene-clear}"
+          "$value": "{color.base.dark.default.dim-slight}"
         },
         "fg-button": {
           "$type": "color",
@@ -169,6 +169,10 @@
         "contrast-color": {
           "$type": "color",
           "$value": "{color.base.dark.alternate.contrast-color}"
+        },
+        "transparent-color": {
+          "$type": "color",
+          "$value": "{color.base.dark.alternate.transparent-color}"
         },
         "fg-main": {
           "$type": "color",
@@ -238,13 +242,13 @@
           "$type": "color",
           "$value": "{color.base.dark.alternate.icon-slight}"
         },
-        "indicator-main": {
+        "cue-main": {
           "$type": "color",
-          "$value": "{color.base.dark.alternate.indicator-main}"
+          "$value": "{color.base.dark.alternate.cue-main}"
         },
-        "indicator-slight": {
+        "cue-slight": {
           "$type": "color",
-          "$value": "{color.base.dark.alternate.indicator-slight}"
+          "$value": "{color.base.dark.alternate.cue-slight}"
         },
         "link-main": {
           "$type": "color",
@@ -262,21 +266,17 @@
           "$type": "color",
           "$value": "{color.base.dark.alternate.link-visited}"
         },
-        "scene-shade": {
+        "dim-main": {
           "$type": "color",
-          "$value": "{color.base.dark.alternate.scene-shade}"
+          "$value": "{color.base.dark.alternate.dim-main}"
         },
-        "scene-dim": {
+        "dim-subtle": {
           "$type": "color",
-          "$value": "{color.base.dark.alternate.scene-dim}"
+          "$value": "{color.base.dark.alternate.dim-subtle}"
         },
-        "scene-blur": {
+        "dim-slight": {
           "$type": "color",
-          "$value": "{color.base.dark.alternate.scene-blur}"
-        },
-        "scene-clear": {
-          "$type": "color",
-          "$value": "{color.base.dark.alternate.scene-clear}"
+          "$value": "{color.base.dark.alternate.dim-slight}"
         },
         "fg-button": {
           "$type": "color",
@@ -319,6 +319,10 @@
         "contrast-color": {
           "$type": "color",
           "$value": "{color.base.dark.primary.contrast-color}"
+        },
+        "transparent-color": {
+          "$type": "color",
+          "$value": "{color.base.dark.primary.transparent-color}"
         },
         "fg-main": {
           "$type": "color",
@@ -384,13 +388,13 @@
           "$type": "color",
           "$value": "{color.base.dark.primary.icon-slight}"
         },
-        "indicator-main": {
+        "cue-main": {
           "$type": "color",
-          "$value": "{color.base.dark.primary.indicator-main}"
+          "$value": "{color.base.dark.primary.cue-main}"
         },
-        "indicator-slight": {
+        "cue-slight": {
           "$type": "color",
-          "$value": "{color.base.dark.primary.indicator-slight}"
+          "$value": "{color.base.dark.primary.cue-slight}"
         },
         "link-main": {
           "$type": "color",
@@ -408,21 +412,17 @@
           "$type": "color",
           "$value": "{color.base.dark.primary.link-visited}"
         },
-        "scene-shade": {
+        "dim-main": {
           "$type": "color",
-          "$value": "{color.base.dark.primary.scene-shade}"
+          "$value": "{color.base.dark.primary.dim-main}"
         },
-        "scene-dim": {
+        "dim-subtle": {
           "$type": "color",
-          "$value": "{color.base.dark.primary.scene-dim}"
+          "$value": "{color.base.dark.primary.dim-subtle}"
         },
-        "scene-blur": {
+        "dim-slight": {
           "$type": "color",
-          "$value": "{color.base.dark.primary.scene-blur}"
-        },
-        "scene-clear": {
-          "$type": "color",
-          "$value": "{color.base.dark.primary.scene-clear}"
+          "$value": "{color.base.dark.primary.dim-slight}"
         },
         "fg-button": {
           "$type": "color",
@@ -465,6 +465,10 @@
         "contrast-color": {
           "$type": "color",
           "$value": "{color.base.dark.secondary.contrast-color}"
+        },
+        "transparent-color": {
+          "$type": "color",
+          "$value": "{color.base.dark.secondary.transparent-color}"
         },
         "fg-main": {
           "$type": "color",
@@ -534,13 +538,13 @@
           "$type": "color",
           "$value": "{color.base.dark.secondary.icon-slight}"
         },
-        "indicator-main": {
+        "cue-main": {
           "$type": "color",
-          "$value": "{color.base.dark.secondary.indicator-main}"
+          "$value": "{color.base.dark.secondary.cue-main}"
         },
-        "indicator-slight": {
+        "cue-slight": {
           "$type": "color",
-          "$value": "{color.base.dark.secondary.indicator-slight}"
+          "$value": "{color.base.dark.secondary.cue-slight}"
         },
         "link-main": {
           "$type": "color",
@@ -558,21 +562,17 @@
           "$type": "color",
           "$value": "{color.base.dark.secondary.link-visited}"
         },
-        "scene-shade": {
+        "dim-main": {
           "$type": "color",
-          "$value": "{color.base.dark.secondary.scene-shade}"
+          "$value": "{color.base.dark.secondary.dim-main}"
         },
-        "scene-dim": {
+        "dim-subtle": {
           "$type": "color",
-          "$value": "{color.base.dark.secondary.scene-dim}"
+          "$value": "{color.base.dark.secondary.dim-subtle}"
         },
-        "scene-blur": {
+        "dim-slight": {
           "$type": "color",
-          "$value": "{color.base.dark.secondary.scene-blur}"
-        },
-        "scene-clear": {
-          "$type": "color",
-          "$value": "{color.base.dark.secondary.scene-clear}"
+          "$value": "{color.base.dark.secondary.dim-slight}"
         },
         "fg-button": {
           "$type": "color",
@@ -615,6 +615,10 @@
         "contrast-color": {
           "$type": "color",
           "$value": "{color.base.dark.neutral.contrast-color}"
+        },
+        "transparent-color": {
+          "$type": "color",
+          "$value": "{color.base.dark.neutral.transparent-color}"
         },
         "fg-main": {
           "$type": "color",
@@ -684,13 +688,13 @@
           "$type": "color",
           "$value": "{color.base.dark.neutral.icon-slight}"
         },
-        "indicator-main": {
+        "cue-main": {
           "$type": "color",
-          "$value": "{color.base.dark.neutral.indicator-main}"
+          "$value": "{color.base.dark.neutral.cue-main}"
         },
-        "indicator-slight": {
+        "cue-slight": {
           "$type": "color",
-          "$value": "{color.base.dark.neutral.indicator-slight}"
+          "$value": "{color.base.dark.neutral.cue-slight}"
         },
         "link-main": {
           "$type": "color",
@@ -708,21 +712,17 @@
           "$type": "color",
           "$value": "{color.base.dark.neutral.link-visited}"
         },
-        "scene-shade": {
+        "dim-main": {
           "$type": "color",
-          "$value": "{color.base.dark.neutral.scene-shade}"
+          "$value": "{color.base.dark.neutral.dim-main}"
         },
-        "scene-dim": {
+        "dim-subtle": {
           "$type": "color",
-          "$value": "{color.base.dark.neutral.scene-dim}"
+          "$value": "{color.base.dark.neutral.dim-subtle}"
         },
-        "scene-blur": {
+        "dim-slight": {
           "$type": "color",
-          "$value": "{color.base.dark.neutral.scene-blur}"
-        },
-        "scene-clear": {
-          "$type": "color",
-          "$value": "{color.base.dark.neutral.scene-clear}"
+          "$value": "{color.base.dark.neutral.dim-slight}"
         },
         "fg-button": {
           "$type": "color",
@@ -765,6 +765,10 @@
         "contrast-color": {
           "$type": "color",
           "$value": "{color.base.dark.danger.contrast-color}"
+        },
+        "transparent-color": {
+          "$type": "color",
+          "$value": "{color.base.dark.danger.transparent-color}"
         },
         "fg-main": {
           "$type": "color",
@@ -834,13 +838,13 @@
           "$type": "color",
           "$value": "{color.base.dark.danger.icon-slight}"
         },
-        "indicator-main": {
+        "cue-main": {
           "$type": "color",
-          "$value": "{color.base.dark.danger.indicator-main}"
+          "$value": "{color.base.dark.danger.cue-main}"
         },
-        "indicator-slight": {
+        "cue-slight": {
           "$type": "color",
-          "$value": "{color.base.dark.danger.indicator-slight}"
+          "$value": "{color.base.dark.danger.cue-slight}"
         },
         "link-main": {
           "$type": "color",
@@ -858,21 +862,17 @@
           "$type": "color",
           "$value": "{color.base.dark.danger.link-visited}"
         },
-        "scene-shade": {
+        "dim-main": {
           "$type": "color",
-          "$value": "{color.base.dark.danger.scene-shade}"
+          "$value": "{color.base.dark.danger.dim-main}"
         },
-        "scene-dim": {
+        "dim-subtle": {
           "$type": "color",
-          "$value": "{color.base.dark.danger.scene-dim}"
+          "$value": "{color.base.dark.danger.dim-subtle}"
         },
-        "scene-blur": {
+        "dim-slight": {
           "$type": "color",
-          "$value": "{color.base.dark.danger.scene-blur}"
-        },
-        "scene-clear": {
-          "$type": "color",
-          "$value": "{color.base.dark.danger.scene-clear}"
+          "$value": "{color.base.dark.danger.dim-slight}"
         },
         "fg-button": {
           "$type": "color",
@@ -915,6 +915,10 @@
         "contrast-color": {
           "$type": "color",
           "$value": "{color.base.dark.success.contrast-color}"
+        },
+        "transparent-color": {
+          "$type": "color",
+          "$value": "{color.base.dark.success.transparent-color}"
         },
         "fg-main": {
           "$type": "color",
@@ -984,13 +988,13 @@
           "$type": "color",
           "$value": "{color.base.dark.success.icon-slight}"
         },
-        "indicator-main": {
+        "cue-main": {
           "$type": "color",
-          "$value": "{color.base.dark.success.indicator-main}"
+          "$value": "{color.base.dark.success.cue-main}"
         },
-        "indicator-slight": {
+        "cue-slight": {
           "$type": "color",
-          "$value": "{color.base.dark.success.indicator-slight}"
+          "$value": "{color.base.dark.success.cue-slight}"
         },
         "link-main": {
           "$type": "color",
@@ -1008,21 +1012,17 @@
           "$type": "color",
           "$value": "{color.base.dark.success.link-visited}"
         },
-        "scene-shade": {
+        "dim-main": {
           "$type": "color",
-          "$value": "{color.base.dark.success.scene-shade}"
+          "$value": "{color.base.dark.success.dim-main}"
         },
-        "scene-dim": {
+        "dim-subtle": {
           "$type": "color",
-          "$value": "{color.base.dark.success.scene-dim}"
+          "$value": "{color.base.dark.success.dim-subtle}"
         },
-        "scene-blur": {
+        "dim-slight": {
           "$type": "color",
-          "$value": "{color.base.dark.success.scene-blur}"
-        },
-        "scene-clear": {
-          "$type": "color",
-          "$value": "{color.base.dark.success.scene-clear}"
+          "$value": "{color.base.dark.success.dim-slight}"
         },
         "fg-button": {
           "$type": "color",
@@ -1065,6 +1065,10 @@
         "contrast-color": {
           "$type": "color",
           "$value": "{color.base.dark.warning.contrast-color}"
+        },
+        "transparent-color": {
+          "$type": "color",
+          "$value": "{color.base.dark.warning.transparent-color}"
         },
         "fg-main": {
           "$type": "color",
@@ -1134,13 +1138,13 @@
           "$type": "color",
           "$value": "{color.base.dark.warning.icon-slight}"
         },
-        "indicator-main": {
+        "cue-main": {
           "$type": "color",
-          "$value": "{color.base.dark.warning.indicator-main}"
+          "$value": "{color.base.dark.warning.cue-main}"
         },
-        "indicator-slight": {
+        "cue-slight": {
           "$type": "color",
-          "$value": "{color.base.dark.warning.indicator-slight}"
+          "$value": "{color.base.dark.warning.cue-slight}"
         },
         "link-main": {
           "$type": "color",
@@ -1158,21 +1162,17 @@
           "$type": "color",
           "$value": "{color.base.dark.warning.link-visited}"
         },
-        "scene-shade": {
+        "dim-main": {
           "$type": "color",
-          "$value": "{color.base.dark.warning.scene-shade}"
+          "$value": "{color.base.dark.warning.dim-main}"
         },
-        "scene-dim": {
+        "dim-subtle": {
           "$type": "color",
-          "$value": "{color.base.dark.warning.scene-dim}"
+          "$value": "{color.base.dark.warning.dim-subtle}"
         },
-        "scene-blur": {
+        "dim-slight": {
           "$type": "color",
-          "$value": "{color.base.dark.warning.scene-blur}"
-        },
-        "scene-clear": {
-          "$type": "color",
-          "$value": "{color.base.dark.warning.scene-clear}"
+          "$value": "{color.base.dark.warning.dim-slight}"
         },
         "fg-button": {
           "$type": "color",
@@ -1215,6 +1215,10 @@
         "contrast-color": {
           "$type": "color",
           "$value": "{color.base.dark.info.contrast-color}"
+        },
+        "transparent-color": {
+          "$type": "color",
+          "$value": "{color.base.dark.info.transparent-color}"
         },
         "fg-main": {
           "$type": "color",
@@ -1284,13 +1288,13 @@
           "$type": "color",
           "$value": "{color.base.dark.info.icon-slight}"
         },
-        "indicator-main": {
+        "cue-main": {
           "$type": "color",
-          "$value": "{color.base.dark.info.indicator-main}"
+          "$value": "{color.base.dark.info.cue-main}"
         },
-        "indicator-slight": {
+        "cue-slight": {
           "$type": "color",
-          "$value": "{color.base.dark.info.indicator-slight}"
+          "$value": "{color.base.dark.info.cue-slight}"
         },
         "link-main": {
           "$type": "color",
@@ -1308,21 +1312,17 @@
           "$type": "color",
           "$value": "{color.base.dark.info.link-visited}"
         },
-        "scene-shade": {
+        "dim-main": {
           "$type": "color",
-          "$value": "{color.base.dark.info.scene-shade}"
+          "$value": "{color.base.dark.info.dim-main}"
         },
-        "scene-dim": {
+        "dim-subtle": {
           "$type": "color",
-          "$value": "{color.base.dark.info.scene-dim}"
+          "$value": "{color.base.dark.info.dim-subtle}"
         },
-        "scene-blur": {
+        "dim-slight": {
           "$type": "color",
-          "$value": "{color.base.dark.info.scene-blur}"
-        },
-        "scene-clear": {
-          "$type": "color",
-          "$value": "{color.base.dark.info.scene-clear}"
+          "$value": "{color.base.dark.info.dim-slight}"
         },
         "fg-button": {
           "$type": "color",
@@ -1365,6 +1365,10 @@
         "contrast-color": {
           "$type": "color",
           "$value": "{color.base.dark.black.contrast-color}"
+        },
+        "transparent-color": {
+          "$type": "color",
+          "$value": "{color.base.dark.black.transparent-color}"
         },
         "fg-main": {
           "$type": "color",
@@ -1434,13 +1438,13 @@
           "$type": "color",
           "$value": "{color.base.dark.black.icon-slight}"
         },
-        "indicator-main": {
+        "cue-main": {
           "$type": "color",
-          "$value": "{color.base.dark.black.indicator-main}"
+          "$value": "{color.base.dark.black.cue-main}"
         },
-        "indicator-slight": {
+        "cue-slight": {
           "$type": "color",
-          "$value": "{color.base.dark.black.indicator-slight}"
+          "$value": "{color.base.dark.black.cue-slight}"
         },
         "link-main": {
           "$type": "color",
@@ -1458,21 +1462,17 @@
           "$type": "color",
           "$value": "{color.base.dark.black.link-visited}"
         },
-        "scene-shade": {
+        "dim-main": {
           "$type": "color",
-          "$value": "{color.base.dark.black.scene-shade}"
+          "$value": "{color.base.dark.black.dim-main}"
         },
-        "scene-dim": {
+        "dim-subtle": {
           "$type": "color",
-          "$value": "{color.base.dark.black.scene-dim}"
+          "$value": "{color.base.dark.black.dim-subtle}"
         },
-        "scene-blur": {
+        "dim-slight": {
           "$type": "color",
-          "$value": "{color.base.dark.black.scene-blur}"
-        },
-        "scene-clear": {
-          "$type": "color",
-          "$value": "{color.base.dark.black.scene-clear}"
+          "$value": "{color.base.dark.black.dim-slight}"
         },
         "fg-button": {
           "$type": "color",
@@ -1515,6 +1515,10 @@
         "contrast-color": {
           "$type": "color",
           "$value": "{color.base.dark.white.contrast-color}"
+        },
+        "transparent-color": {
+          "$type": "color",
+          "$value": "{color.base.dark.white.transparent-color}"
         },
         "fg-main": {
           "$type": "color",
@@ -1584,13 +1588,13 @@
           "$type": "color",
           "$value": "{color.base.dark.white.icon-slight}"
         },
-        "indicator-main": {
+        "cue-main": {
           "$type": "color",
-          "$value": "{color.base.dark.white.indicator-main}"
+          "$value": "{color.base.dark.white.cue-main}"
         },
-        "indicator-slight": {
+        "cue-slight": {
           "$type": "color",
-          "$value": "{color.base.dark.white.indicator-slight}"
+          "$value": "{color.base.dark.white.cue-slight}"
         },
         "link-main": {
           "$type": "color",
@@ -1608,21 +1612,17 @@
           "$type": "color",
           "$value": "{color.base.dark.white.link-visited}"
         },
-        "scene-shade": {
+        "dim-main": {
           "$type": "color",
-          "$value": "{color.base.dark.white.scene-shade}"
+          "$value": "{color.base.dark.white.dim-main}"
         },
-        "scene-dim": {
+        "dim-subtle": {
           "$type": "color",
-          "$value": "{color.base.dark.white.scene-dim}"
+          "$value": "{color.base.dark.white.dim-subtle}"
         },
-        "scene-blur": {
+        "dim-slight": {
           "$type": "color",
-          "$value": "{color.base.dark.white.scene-blur}"
-        },
-        "scene-clear": {
-          "$type": "color",
-          "$value": "{color.base.dark.white.scene-clear}"
+          "$value": "{color.base.dark.white.dim-slight}"
         },
         "fg-button": {
           "$type": "color",
@@ -1665,6 +1665,10 @@
         "contrast-color": {
           "$type": "color",
           "$value": "{color.base.dark.brand.contrast-color}"
+        },
+        "transparent-color": {
+          "$type": "color",
+          "$value": "{color.base.dark.brand.transparent-color}"
         },
         "fg-main": {
           "$type": "color",
@@ -1734,13 +1738,13 @@
           "$type": "color",
           "$value": "{color.base.dark.brand.icon-slight}"
         },
-        "indicator-main": {
+        "cue-main": {
           "$type": "color",
-          "$value": "{color.base.dark.brand.indicator-main}"
+          "$value": "{color.base.dark.brand.cue-main}"
         },
-        "indicator-slight": {
+        "cue-slight": {
           "$type": "color",
-          "$value": "{color.base.dark.brand.indicator-slight}"
+          "$value": "{color.base.dark.brand.cue-slight}"
         },
         "link-main": {
           "$type": "color",
@@ -1758,21 +1762,17 @@
           "$type": "color",
           "$value": "{color.base.dark.brand.link-visited}"
         },
-        "scene-shade": {
+        "dim-main": {
           "$type": "color",
-          "$value": "{color.base.dark.brand.scene-shade}"
+          "$value": "{color.base.dark.brand.dim-main}"
         },
-        "scene-dim": {
+        "dim-subtle": {
           "$type": "color",
-          "$value": "{color.base.dark.brand.scene-dim}"
+          "$value": "{color.base.dark.brand.dim-subtle}"
         },
-        "scene-blur": {
+        "dim-slight": {
           "$type": "color",
-          "$value": "{color.base.dark.brand.scene-blur}"
-        },
-        "scene-clear": {
-          "$type": "color",
-          "$value": "{color.base.dark.brand.scene-clear}"
+          "$value": "{color.base.dark.brand.dim-slight}"
         },
         "fg-button": {
           "$type": "color",
@@ -1815,6 +1815,10 @@
         "contrast-color": {
           "$type": "color",
           "$value": "{color.base.dark.accent.contrast-color}"
+        },
+        "transparent-color": {
+          "$type": "color",
+          "$value": "{color.base.dark.accent.transparent-color}"
         },
         "fg-main": {
           "$type": "color",
@@ -1884,13 +1888,13 @@
           "$type": "color",
           "$value": "{color.base.dark.accent.icon-slight}"
         },
-        "indicator-main": {
+        "cue-main": {
           "$type": "color",
-          "$value": "{color.base.dark.accent.indicator-main}"
+          "$value": "{color.base.dark.accent.cue-main}"
         },
-        "indicator-slight": {
+        "cue-slight": {
           "$type": "color",
-          "$value": "{color.base.dark.accent.indicator-slight}"
+          "$value": "{color.base.dark.accent.cue-slight}"
         },
         "link-main": {
           "$type": "color",
@@ -1908,21 +1912,17 @@
           "$type": "color",
           "$value": "{color.base.dark.accent.link-visited}"
         },
-        "scene-shade": {
+        "dim-main": {
           "$type": "color",
-          "$value": "{color.base.dark.accent.scene-shade}"
+          "$value": "{color.base.dark.accent.dim-main}"
         },
-        "scene-dim": {
+        "dim-subtle": {
           "$type": "color",
-          "$value": "{color.base.dark.accent.scene-dim}"
+          "$value": "{color.base.dark.accent.dim-subtle}"
         },
-        "scene-blur": {
+        "dim-slight": {
           "$type": "color",
-          "$value": "{color.base.dark.accent.scene-blur}"
-        },
-        "scene-clear": {
-          "$type": "color",
-          "$value": "{color.base.dark.accent.scene-clear}"
+          "$value": "{color.base.dark.accent.dim-slight}"
         },
         "fg-button": {
           "$type": "color",
@@ -1969,11 +1969,11 @@
       },
       "inverter-default": {
         "$type": "color",
-        "$value": "{color.context.black.scene-clear}"
+        "$value": "{color.context.black.transparent-color}"
       },
       "inverter-alternate": {
         "$type": "color",
-        "$value": "{color.base.palette.black.main}"
+        "$value": "{color.base.palette.black.base}"
       },
       "technical-default": {
         "$type": "color",

@@ -9,7 +9,7 @@
  */
 
 import { getReferences, resolveReferences } from 'style-dictionary/utils'
-import { isReference, splitReference } from '../utils.js'
+import { isReference, splitReference, removeTrailingZeros } from '../utils.js'
 
 const usesDtcg = true
 
@@ -107,21 +107,24 @@ function resolveContextTypographyValue(token, dictionary) {
     token.original.$value.fontSize,
     dictionary.tokens,
     { usesDtcg },
-  )[0]
+  )[0] || token.original.$value.fontSize
   const referenceLh = getReferences(
     token.original.$value.lineHeight,
     dictionary.tokens,
     { usesDtcg },
-  )[0]
+  )[0] || token.original.$value.lineHeight
 
   const fontSize =
-    referenceFs.$type === 'fontSize'
+    referenceFs && referenceFs.$type === 'fontSize'
       ? `var(--#{$prefix}font-size-${referenceFs.path[2]}-${referenceFs.path[3]})`
       : referenceFs.$value
+  // If the reference is a percentage, convert it to a decimal
   const lineHeight =
-    referenceFs.$type === 'fontSize'
+    referenceLh && referenceLh.$type === 'lineHeight'
       ? `var(--#{$prefix}line-height-${referenceLh.path[2]}-${referenceLh.path[3]})`
-      : referenceLh.$value
+      : referenceLh.$value ? referenceLh.$value
+      : referenceLh.endsWith("%") ? parseFloat(referenceLh) / 100
+      : referenceLh
 
   const originals = {
     fontStyle: token.original.$value.fontStyle,
@@ -224,9 +227,6 @@ function resolveComponentTypographyValue(token, dictionary) {
  * @returns {string} - The token's resolved value as a SCSS-compatible string.
  */
 function tokenToValue(token, dictionary, options) {
-  if (!options.outputReferences) {
-    return token.$value
-  }
   if (
     token.original &&
     isReference(token.original.$value) &&
@@ -252,6 +252,20 @@ function tokenToValue(token, dictionary, options) {
     typeof token.original.$value !== 'object'
   ) {
     return resolveComponentTypographyValue(token, dictionary)
+  } else if (
+    token.$type === 'lineHeight'
+  ) {
+    const fs = resolveReferences(
+      `{typography.fontSize.${token.path[2]}.${token.path[3]}}`,
+      dictionary.tokens,
+      { usesDtcg },
+    )
+    const lh = (parseFloat(token.$value) / parseFloat(fs))
+    return removeTrailingZeros(lh.toFixed(3))
+  } else if (
+    token.$type === 'asset'
+  ) {
+    return `"${token.$value}"`
   } else {
     return token.$value
   }

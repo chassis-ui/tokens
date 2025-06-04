@@ -7,8 +7,8 @@
 @font-face {
   font-display: block;
   font-family: "chassis-icons";
-  src: url("./chassis-icons.woff2?989c82fa1830a01e5fc0c0741a091b9d") format("woff2"),
-url("./chassis-icons.woff?989c82fa1830a01e5fc0c0741a091b9d") format("woff");
+  src: url("./chassis-icons.woff2?223524638bf7d595a7c02993c94ec179") format("woff2"),
+url("./chassis-icons.woff?223524638bf7d595a7c02993c94ec179") format("woff");
 }
 
 .icon::before,
@@ -480,3 +480,55 @@ url("./chassis-icons.woff?989c82fa1830a01e5fc0c0741a091b9d") format("woff");
 .icon-xmark-large-solid::before { content: "\f2c4"; }
 .icon-xmark-outline::before { content: "\f2c5"; }
 .icon-xmark-solid::before { content: "\f2c6"; }
+.icon-book-open-outline::before { content: "\f2c7"; }
+.icon-book-open-simple-outline::before { content: "\f2c8"; }
+.icon-book-open-simple-solid::before { content: "\f2c9"; }
+.icon-book-open-solid::before { content: "\f2ca"; }
+.icon-book-outline::before { content: "\f2cb"; }
+.icon-book-solid::before { content: "\f2cc"; }
+.icon-box-outline::before { content: "\f2cd"; }
+.icon-box-solid::before { content: "\f2ce"; }
+.icon-brackets-curly-outline::before { content: "\f2cf"; }
+.icon-brackets-curly-solid::before { content: "\f2d0"; }
+.icon-caret-sort-outline::before { content: "\f2d1"; }
+.icon-caret-sort-solid::before { content: "\f2d2"; }
+.icon-chassis-icon-outline::before { content: "\f2d3"; }
+.icon-chassis-icon-solid::before { content: "\f2d4"; }
+.icon-chevron-sort-outline::before { content: "\f2d5"; }
+.icon-chevron-sort-solid::before { content: "\f2d6"; }
+.icon-circle-half-outline::before { content: "\f2d7"; }
+.icon-circle-half-solid::before { content: "\f2d8"; }
+.icon-clipboard-outline::before { content: "\f2d9"; }
+.icon-clipboard-solid::before { content: "\f2da"; }
+.icon-code-outline::before { content: "\f2db"; }
+.icon-code-solid::before { content: "\f2dc"; }
+.icon-file-text-outline::before { content: "\f2dd"; }
+.icon-file-text-solid::before { content: "\f2de"; }
+.icon-film-outline::before { content: "\f2df"; }
+.icon-film-solid::before { content: "\f2e0"; }
+.icon-globe-outline::before { content: "\f2e1"; }
+.icon-globe-solid::before { content: "\f2e2"; }
+.icon-grid-outline::before { content: "\f2e3"; }
+.icon-grid-solid::before { content: "\f2e4"; }
+.icon-heart-half-outline::before { content: "\f2e5"; }
+.icon-heart-half-solid::before { content: "\f2e6"; }
+.icon-history-cards-outline::before { content: "\f2e7"; }
+.icon-history-cards-solid::before { content: "\f2e8"; }
+.icon-joystick-outline::before { content: "\f2e9"; }
+.icon-joystick-solid::before { content: "\f2ea"; }
+.icon-lightning-outline::before { content: "\f2eb"; }
+.icon-lightning-solid::before { content: "\f2ec"; }
+.icon-list-square-outline::before { content: "\f2ed"; }
+.icon-list-square-solid::before { content: "\f2ee"; }
+.icon-magic-outline::before { content: "\f2ef"; }
+.icon-magic-solid::before { content: "\f2f0"; }
+.icon-microchip-1::before { content: "\f2f1"; }
+.icon-microchip::before { content: "\f2f2"; }
+.icon-music-outline::before { content: "\f2f3"; }
+.icon-music-solid::before { content: "\f2f4"; }
+.icon-plug-outline::before { content: "\f2f5"; }
+.icon-plug-solid::before { content: "\f2f6"; }
+.icon-swatchbook-outline::before { content: "\f2f7"; }
+.icon-swatchbook-solid::before { content: "\f2f8"; }
+.icon-tools-outline::before { content: "\f2f9"; }
+.icon-tools-solid::before { content: "\f2fa"; }

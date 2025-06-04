@@ -62,11 +62,11 @@
         },
         "path-ride": {
           "$type": "color",
-          "$value": "{color.context.black.indicator-main}"
+          "$value": "{color.context.black.cue-main}"
         },
         "path-walk": {
           "$type": "color",
-          "$value": "{color.context.neutral.indicator-main}"
+          "$value": "{color.context.neutral.cue-main}"
         },
         "path-drive": {
           "$type": "color",
@@ -74,11 +74,11 @@
         },
         "path-active": {
           "$type": "color",
-          "$value": "{color.context.primary.indicator-main}"
+          "$value": "{color.context.primary.cue-main}"
         },
         "path-inactive": {
           "$type": "color",
-          "$value": "{color.context.primary.indicator-slight}"
+          "$value": "{color.context.primary.cue-slight}"
         },
         "path-inbound": {
           "$type": "color",
@@ -90,15 +90,15 @@
         },
         "point-active": {
           "$type": "color",
-          "$value": "{color.context.default.indicator-main}"
+          "$value": "{color.context.default.cue-main}"
         },
         "point-inactive": {
           "$type": "color",
-          "$value": "{color.context.neutral.indicator-slight}"
+          "$value": "{color.context.neutral.cue-slight}"
         },
         "point-home": {
           "$type": "color",
-          "$value": "{color.context.default.indicator-main}"
+          "$value": "{color.context.default.cue-main}"
         },
         "point-male": {
           "$type": "color",
@@ -110,7 +110,7 @@
         },
         "point-selected": {
           "$type": "color",
-          "$value": "{color.context.neutral.indicator-main}"
+          "$value": "{color.context.neutral.cue-main}"
         },
         "point-boarding": {
           "$type": "color",
@@ -145,7 +145,7 @@
             "$type": "color",
             "$value": "{color.palette.info.10}"
           },
-          "indicator-main": {
+          "cue-main": {
             "$type": "color",
             "$value": "{color.context.info.icon-main}"
           }
@@ -155,7 +155,7 @@
             "$type": "color",
             "$value": "{color.palette.info.90}"
           },
-          "indicator-main": {
+          "cue-main": {
             "$type": "color",
             "$value": "{color.context.info.icon-main}"
           }

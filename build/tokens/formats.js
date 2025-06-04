@@ -58,7 +58,7 @@ export default function (StyleDictionary) {
       const { formatting, commentStyle } = options
       const header = await fileHeader({ file, formatting, commentStyle })
       dictionary.allTokens = [...dictionary.allTokens]
-        .sort(sortByName)
+        // .sort(sortByName)
       return scssVariablesTemplate({ dictionary, options, file, header })
     },
   })
@@ -77,7 +77,7 @@ export default function (StyleDictionary) {
         platform.transformGroup,
       )
       dictionary.allTokens = [...dictionary.allTokens]
-        .sort(sortByName)
+        // .sort(sortByName)
       return iosSwiftClassTemplate({ dictionary, options, file, header })
     },
   })
@@ -91,7 +91,7 @@ export default function (StyleDictionary) {
       const { formatting, commentStyle } = options
       const header = await fileHeader({ file, formatting, commentStyle })
       dictionary.allTokens = [...dictionary.allTokens]
-        .sort(sortByName)
+        // .sort(sortByName)
       return androidResourcesTemplate({ dictionary, options, file, header })
     },
   })

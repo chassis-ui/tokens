@@ -59,7 +59,7 @@ function getPlatformSettings(brand, app, platform) {
       'cx/shadow/web',
     ],
     buildPath: `dist/tokens/web/${brand}-${app}/`,
-    options: { ...commonOptions, outputReferences: true },
+    options: { ...commonOptions },
   };
 
   const platformConfigs = {

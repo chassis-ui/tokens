@@ -567,23 +567,23 @@
         "$type": "opacity",
         "$value": "0.2"
       },
-      "indicator-slight": {
+      "cue-slight": {
         "$type": "opacity",
         "$value": "0.2"
       },
-      "scene-dim": {
+      "dim-main": {
         "$type": "opacity",
         "$value": "0.7"
       },
-      "scene-blur": {
+      "dim-subtle": {
         "$type": "opacity",
         "$value": "0.3"
       },
-      "scene-shade": {
+      "dim-slight": {
         "$type": "opacity",
         "$value": "0.05"
       },
-      "scene-clear": {
+      "transparent-color": {
         "$type": "opacity",
         "$value": "0"
       }

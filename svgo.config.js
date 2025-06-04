@@ -12,6 +12,7 @@ export default {
       name: 'preset-default',
       params: {
         overrides: {
+          convertPathData: false,
           removeUnknownsAndDefaults: {
             keepDataAttrs: false, // remove all `data` attributes
             keepRoleAttr: true // keep the `role` attribute
@@ -41,7 +42,7 @@ export default {
           xmlns: 'http://www.w3.org/2000/svg',
           width: '24',
           height: '24',
-          fill: 'currentColor',
+          fill: 'currentcolor',
           class: '', // We replace the class with the correct one based on filename later
           viewBox: '0 0 24 24'
         }
