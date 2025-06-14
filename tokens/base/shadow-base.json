@@ -53,35 +53,33 @@
         }
       }
     },
-    "common": {
-      "card": {
-        "$type": "boxShadow",
-        "$value": "{shadow.elevation.default.20}"
-      },
-      "form-input": {
-        "$type": "boxShadow",
-        "$value": "{shadow.context.none}"
-      },
-      "nav-top": {
-        "$type": "boxShadow",
-        "$value": "{shadow.elevation.default.40}"
-      },
-      "modal": {
-        "$type": "boxShadow",
-        "$value": "{shadow.elevation.default.40}"
-      },
-      "popover": {
-        "$type": "boxShadow",
-        "$value": "{shadow.elevation.default.40}"
-      },
-      "section": {
-        "$type": "boxShadow",
-        "$value": "{shadow.elevation.default.20}"
-      },
-      "nav-left": {
-        "$type": "boxShadow",
-        "$value": "{shadow.elevation.default.30}"
-      }
+    "card": {
+      "$type": "boxShadow",
+      "$value": "{shadow.elevation.default.20}"
+    },
+    "form-input": {
+      "$type": "boxShadow",
+      "$value": "{shadow.context.none}"
+    },
+    "nav-top": {
+      "$type": "boxShadow",
+      "$value": "{shadow.elevation.default.40}"
+    },
+    "modal": {
+      "$type": "boxShadow",
+      "$value": "{shadow.elevation.default.40}"
+    },
+    "popover": {
+      "$type": "boxShadow",
+      "$value": "{shadow.elevation.default.40}"
+    },
+    "section": {
+      "$type": "boxShadow",
+      "$value": "{shadow.elevation.default.20}"
+    },
+    "nav-left": {
+      "$type": "boxShadow",
+      "$value": "{shadow.elevation.default.30}"
     },
     "elevation": {
       "default": {
