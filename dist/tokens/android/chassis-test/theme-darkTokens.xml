@@ -2,7 +2,7 @@
 
 <!--
   Do not edit directly, this file was auto-generated.
-  Generated on Sat, 14 Jun 2025 08:55:24 GMT
+  Generated on Sat, 14 Jun 2025 10:47:52 GMT
   Chassis - Tokens v0.1.0
   Copyright 2025 Ozgur Gunes
   Licensed under MIT (https://github.com/ozgurgunes/chassis-tokens/blob/main/LICENSE)
@@ -38,10 +38,10 @@
   <color name="color_context_default_dim_main">#b3000000</color>
   <color name="color_context_default_dim_subtle">#4dffffff</color>
   <color name="color_context_default_dim_slight">#0dffffff</color>
-  <color name="color_context_default_fg_button">#ffffffff</color>
-  <color name="color_context_default_fg_hover">#e6ffffff</color>
-  <color name="color_context_default_fg_press">#e6ffffff</color>
-  <color name="color_context_default_fg_disabled">#40ffffff</color>
+  <color name="color_context_default_fg_button">#ffe9eced</color>
+  <color name="color_context_default_fg_hover">#e6e9eced</color>
+  <color name="color_context_default_fg_press">#e6e9eced</color>
+  <color name="color_context_default_fg_disabled">#40e9eced</color>
   <color name="color_context_default_bg_button">#ff1c2021</color>
   <color name="color_context_default_bg_hover">#ff111314</color>
   <color name="color_context_default_bg_press">#ff272d2f</color>
@@ -75,14 +75,14 @@
   <color name="color_context_alternate_dim_main">#b3ffffff</color>
   <color name="color_context_alternate_dim_subtle">#4d000000</color>
   <color name="color_context_alternate_dim_slight">#0d000000</color>
-  <color name="color_context_alternate_fg_button">#ff000000</color>
-  <color name="color_context_alternate_fg_hover">#e6000000</color>
-  <color name="color_context_alternate_fg_press">#e6000000</color>
-  <color name="color_context_alternate_fg_disabled">#40000000</color>
+  <color name="color_context_alternate_fg_button">#ffffffff</color>
+  <color name="color_context_alternate_fg_hover">#e6ffffff</color>
+  <color name="color_context_alternate_fg_press">#e6ffffff</color>
+  <color name="color_context_alternate_fg_disabled">#40ffffff</color>
   <color name="color_context_alternate_bg_button">#ff000000</color>
   <color name="color_context_alternate_bg_hover">#ff111314</color>
   <color name="color_context_alternate_bg_press">#ff1c2021</color>
-  <color name="color_context_alternate_bg_disabled">#ffd4d9da</color>
+  <color name="color_context_alternate_bg_disabled">#ff272d2f</color>
   <color name="color_context_primary_base_color">#ff00a4cc</color>
   <color name="color_context_primary_contrast_color">#ffffffff</color>
   <color name="color_context_primary_transparent_color">#0000a4cc</color>
@@ -752,10 +752,10 @@
   <color name="color_accordion_indicator_idle">#ffe9eced</color>
   <color name="color_accordion_indicator_active">#ff00a4cc</color>
   <color name="color_accordion_border_main">#26e9eced</color>
-  <color name="color_button_default_fg_idle">#ffffffff</color>
-  <color name="color_button_default_fg_disabled">#40ffffff</color>
-  <color name="color_button_default_fg_hover">#e6ffffff</color>
-  <color name="color_button_default_fg_press">#e6ffffff</color>
+  <color name="color_button_default_fg_idle">#ffe9eced</color>
+  <color name="color_button_default_fg_disabled">#40e9eced</color>
+  <color name="color_button_default_fg_hover">#e6e9eced</color>
+  <color name="color_button_default_fg_press">#e6e9eced</color>
   <color name="color_button_default_bg_idle">#ff1c2021</color>
   <color name="color_button_default_bg_disabled">#ff272d2f</color>
   <color name="color_button_default_bg_hover">#ff111314</color>
@@ -763,19 +763,19 @@
   <color name="color_button_default_border_idle">#ff4e5a5d</color>
   <color name="color_button_default_border_disabled">#00000000</color>
   <color name="color_button_default_border_hover">#ff4e5a5d</color>
-  <color name="color_button_default_border_press">#ffffffff</color>
-  <color name="color_button_alternate_fg_idle">#ff000000</color>
-  <color name="color_button_alternate_fg_disabled">#40000000</color>
-  <color name="color_button_alternate_fg_hover">#e6000000</color>
-  <color name="color_button_alternate_fg_press">#e6000000</color>
+  <color name="color_button_default_border_press">#ffe9eced</color>
+  <color name="color_button_alternate_fg_idle">#ffffffff</color>
+  <color name="color_button_alternate_fg_disabled">#40ffffff</color>
+  <color name="color_button_alternate_fg_hover">#e6ffffff</color>
+  <color name="color_button_alternate_fg_press">#e6ffffff</color>
   <color name="color_button_alternate_bg_idle">#ff000000</color>
-  <color name="color_button_alternate_bg_disabled">#ffd4d9da</color>
+  <color name="color_button_alternate_bg_disabled">#ff272d2f</color>
   <color name="color_button_alternate_bg_hover">#ff111314</color>
   <color name="color_button_alternate_bg_press">#ff1c2021</color>
   <color name="color_button_alternate_border_idle">#ff4e5a5d</color>
   <color name="color_button_alternate_border_disabled">#00000000</color>
   <color name="color_button_alternate_border_hover">#ff4e5a5d</color>
-  <color name="color_button_alternate_border_press">#ff000000</color>
+  <color name="color_button_alternate_border_press">#ffffffff</color>
   <color name="color_button_black_fg_idle">#ffffffff</color>
   <color name="color_button_black_fg_disabled">#40ffffff</color>
   <color name="color_button_black_fg_hover">#e6ffffff</color>
@@ -897,7 +897,7 @@
   <color name="color_date_picker_default_bg_active">#ff00a4cc</color>
   <color name="color_date_picker_default_fg_active">#ffffffff</color>
   <color name="color_date_picker_default_bg_range">#ff003947</color>
-  <color name="color_date_picker_default_fg_range">#ffffffff</color>
+  <color name="color_date_picker_default_fg_range">#ffe9eced</color>
   <color name="color_date_picker_alternate_bg_idle">#00000000</color>
   <color name="color_date_picker_alternate_fg_idle">#ffffffff</color>
   <color name="color_date_picker_alternate_bg_today">#00000000</color>
@@ -911,7 +911,7 @@
   <color name="color_date_picker_alternate_bg_active">#ff00a4cc</color>
   <color name="color_date_picker_alternate_fg_active">#ffffffff</color>
   <color name="color_date_picker_alternate_bg_range">#ff005266</color>
-  <color name="color_date_picker_alternate_fg_range">#ff000000</color>
+  <color name="color_date_picker_alternate_fg_range">#ffffffff</color>
   <color name="color_form_input_idle_bg_regular">#ff1c2021</color>
   <color name="color_form_input_idle_bg_floating">#ff111314</color>
   <color name="color_form_input_idle_border">#ff4e5a5d</color>

@@ -3854,19 +3854,19 @@
             },
             "fg-button": {
               "$type": "color",
-              "$value": "{color.base.palette.light.black.base}"
+              "$value": "{color.base.context.light.default.fg-main}"
             },
             "fg-hover": {
               "$type": "color",
-              "$value": "rgba({color.base.palette.light.black.base}, {opacity.base.90})"
+              "$value": "rgba({color.base.context.light.default.fg-main}, {opacity.base.90})"
             },
             "fg-press": {
               "$type": "color",
-              "$value": "rgba({color.base.palette.light.black.base}, {opacity.base.90})"
+              "$value": "rgba({color.base.context.light.default.fg-main}, {opacity.base.90})"
             },
             "fg-disabled": {
               "$type": "color",
-              "$value": "rgba({color.base.palette.light.black.base}, {opacity.context.fg-slight})"
+              "$value": "rgba({color.base.context.light.default.fg-main}, {opacity.context.fg-slight})"
             }
           },
           "alternate": {
@@ -3990,10 +3990,6 @@
               "$type": "color",
               "$value": "{color.base.context.light.alternate.bg-main}"
             },
-            "bg-disabled": {
-              "$type": "color",
-              "$value": "{color.base.palette.light.neutral.80}"
-            },
             "bg-hover": {
               "$type": "color",
               "$value": "{color.base.context.light.alternate.bg-even}"
@@ -4002,29 +3998,25 @@
               "$type": "color",
               "$value": "{color.base.context.light.alternate.bg-evident}"
             },
-            "bg-focus": {
+            "bg-disabled": {
               "$type": "color",
-              "$value": "{color.base.context.light.alternate.bg-main}"
+              "$value": "{color.base.palette.light.neutral.80}"
             },
             "fg-button": {
               "$type": "color",
-              "$value": "{color.base.palette.light.white.base}"
-            },
-            "fg-disabled": {
-              "$type": "color",
-              "$value": "rgba({color.base.palette.light.white.base}, {opacity.context.fg-slight})"
+              "$value": "{color.base.context.light.alternate.fg-main}"
             },
             "fg-hover": {
               "$type": "color",
-              "$value": "rgba({color.base.palette.light.white.base}, {opacity.base.90})"
+              "$value": "rgba({color.base.context.light.alternate.fg-main}, {opacity.base.90})"
             },
             "fg-press": {
               "$type": "color",
-              "$value": "rgba({color.base.palette.light.white.base}, {opacity.base.90})"
+              "$value": "rgba({color.base.context.light.alternate.fg-main}, {opacity.base.90})"
             },
-            "fg-focus": {
+            "fg-disabled": {
               "$type": "color",
-              "$value": "{color.base.palette.light.white.base}"
+              "$value": "rgba({color.base.context.light.alternate.fg-main}, {opacity.context.fg-slight})"
             }
           },
           "black": {
@@ -5814,19 +5806,19 @@
             },
             "fg-button": {
               "$type": "color",
-              "$value": "{color.base.palette.dark.white.base}"
+              "$value": "{color.base.context.dark.default.fg-main}"
             },
             "fg-hover": {
               "$type": "color",
-              "$value": "rgba({color.base.palette.dark.white.base}, {opacity.base.90})"
+              "$value": "rgba({color.base.context.dark.default.fg-main}, {opacity.base.90})"
             },
             "fg-press": {
               "$type": "color",
-              "$value": "rgba({color.base.palette.dark.white.base}, {opacity.base.90})"
+              "$value": "rgba({color.base.context.dark.default.fg-main}, {opacity.base.90})"
             },
             "fg-disabled": {
               "$type": "color",
-              "$value": "rgba({color.base.palette.dark.white.base}, {opacity.context.fg-slight})"
+              "$value": "rgba({color.base.context.dark.default.fg-main}, {opacity.context.fg-slight})"
             }
           },
           "alternate": {
@@ -5960,23 +5952,23 @@
             },
             "bg-disabled": {
               "$type": "color",
-              "$value": "{color.base.palette.dark.neutral.20}"
+              "$value": "{color.base.palette.dark.neutral.80}"
             },
             "fg-button": {
               "$type": "color",
-              "$value": "{color.base.palette.dark.black.base}"
+              "$value": "{color.base.context.dark.alternate.fg-main}"
             },
             "fg-hover": {
               "$type": "color",
-              "$value": "rgba({color.base.palette.dark.black.base}, {opacity.base.90})"
+              "$value": "rgba({color.base.context.dark.alternate.fg-main}, {opacity.base.90})"
             },
             "fg-press": {
               "$type": "color",
-              "$value": "rgba({color.base.palette.dark.black.base}, {opacity.base.90})"
+              "$value": "rgba({color.base.context.dark.alternate.fg-main}, {opacity.base.90})"
             },
             "fg-disabled": {
               "$type": "color",
-              "$value": "rgba({color.base.palette.dark.black.base}, {opacity.context.fg-slight})"
+              "$value": "rgba({color.base.context.dark.alternate.fg-main}, {opacity.context.fg-slight})"
             }
           },
           "black": {
