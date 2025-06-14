@@ -2,6 +2,10 @@
   "figma": {
     "switch": {
       "theme": {
+        "mode-1": {
+          "$type": "boolean",
+          "$value": "false"
+        },
         "mode-2": {
           "$type": "boolean",
           "$value": "true"
@@ -128,9 +132,9 @@
           "$type": "color",
           "$value": "{color.base.context.dark.default.dim-slight}"
         },
-        "fg-button": {
+        "fg-idle": {
           "$type": "color",
-          "$value": "{color.base.context.dark.default.fg-button}"
+          "$value": "{color.base.context.dark.default.fg-idle}"
         },
         "fg-hover": {
           "$type": "color",
@@ -144,9 +148,9 @@
           "$type": "color",
           "$value": "{color.base.context.dark.default.fg-disabled}"
         },
-        "bg-button": {
+        "bg-idle": {
           "$type": "color",
-          "$value": "{color.base.context.dark.default.bg-button}"
+          "$value": "{color.base.context.dark.default.bg-idle}"
         },
         "bg-hover": {
           "$type": "color",
@@ -278,9 +282,9 @@
           "$type": "color",
           "$value": "{color.base.context.dark.alternate.dim-slight}"
         },
-        "fg-button": {
+        "fg-idle": {
           "$type": "color",
-          "$value": "{color.base.context.dark.alternate.fg-button}"
+          "$value": "{color.base.context.dark.alternate.fg-idle}"
         },
         "fg-hover": {
           "$type": "color",
@@ -294,9 +298,9 @@
           "$type": "color",
           "$value": "{color.base.context.dark.alternate.fg-disabled}"
         },
-        "bg-button": {
+        "bg-idle": {
           "$type": "color",
-          "$value": "{color.base.context.dark.alternate.bg-button}"
+          "$value": "{color.base.context.dark.alternate.bg-idle}"
         },
         "bg-hover": {
           "$type": "color",
@@ -424,9 +428,9 @@
           "$type": "color",
           "$value": "{color.base.context.dark.primary.dim-slight}"
         },
-        "fg-button": {
+        "fg-idle": {
           "$type": "color",
-          "$value": "{color.base.context.dark.primary.fg-button}"
+          "$value": "{color.base.context.dark.primary.fg-idle}"
         },
         "fg-hover": {
           "$type": "color",
@@ -440,9 +444,9 @@
           "$type": "color",
           "$value": "{color.base.context.dark.primary.fg-disabled}"
         },
-        "bg-button": {
+        "bg-idle": {
           "$type": "color",
-          "$value": "{color.base.context.dark.primary.bg-button}"
+          "$value": "{color.base.context.dark.primary.bg-idle}"
         },
         "bg-hover": {
           "$type": "color",
@@ -574,9 +578,9 @@
           "$type": "color",
           "$value": "{color.base.context.dark.secondary.dim-slight}"
         },
-        "fg-button": {
+        "fg-idle": {
           "$type": "color",
-          "$value": "{color.base.context.dark.secondary.fg-button}"
+          "$value": "{color.base.context.dark.secondary.fg-idle}"
         },
         "fg-hover": {
           "$type": "color",
@@ -590,9 +594,9 @@
           "$type": "color",
           "$value": "{color.base.context.dark.secondary.fg-disabled}"
         },
-        "bg-button": {
+        "bg-idle": {
           "$type": "color",
-          "$value": "{color.base.context.dark.secondary.bg-button}"
+          "$value": "{color.base.context.dark.secondary.bg-idle}"
         },
         "bg-hover": {
           "$type": "color",
@@ -724,9 +728,9 @@
           "$type": "color",
           "$value": "{color.base.context.dark.neutral.dim-slight}"
         },
-        "fg-button": {
+        "fg-idle": {
           "$type": "color",
-          "$value": "{color.base.context.dark.neutral.fg-button}"
+          "$value": "{color.base.context.dark.neutral.fg-idle}"
         },
         "fg-hover": {
           "$type": "color",
@@ -740,9 +744,9 @@
           "$type": "color",
           "$value": "{color.base.context.dark.neutral.fg-disabled}"
         },
-        "bg-button": {
+        "bg-idle": {
           "$type": "color",
-          "$value": "{color.base.context.dark.neutral.bg-button}"
+          "$value": "{color.base.context.dark.neutral.bg-idle}"
         },
         "bg-hover": {
           "$type": "color",
@@ -874,9 +878,9 @@
           "$type": "color",
           "$value": "{color.base.context.dark.danger.dim-slight}"
         },
-        "fg-button": {
+        "fg-idle": {
           "$type": "color",
-          "$value": "{color.base.context.dark.danger.fg-button}"
+          "$value": "{color.base.context.dark.danger.fg-idle}"
         },
         "fg-hover": {
           "$type": "color",
@@ -890,9 +894,9 @@
           "$type": "color",
           "$value": "{color.base.context.dark.danger.fg-disabled}"
         },
-        "bg-button": {
+        "bg-idle": {
           "$type": "color",
-          "$value": "{color.base.context.dark.danger.bg-button}"
+          "$value": "{color.base.context.dark.danger.bg-idle}"
         },
         "bg-hover": {
           "$type": "color",
@@ -1024,9 +1028,9 @@
           "$type": "color",
           "$value": "{color.base.context.dark.success.dim-slight}"
         },
-        "fg-button": {
+        "fg-idle": {
           "$type": "color",
-          "$value": "{color.base.context.dark.success.fg-button}"
+          "$value": "{color.base.context.dark.success.fg-idle}"
         },
         "fg-hover": {
           "$type": "color",
@@ -1040,9 +1044,9 @@
           "$type": "color",
           "$value": "{color.base.context.dark.success.fg-disabled}"
         },
-        "bg-button": {
+        "bg-idle": {
           "$type": "color",
-          "$value": "{color.base.context.dark.success.bg-button}"
+          "$value": "{color.base.context.dark.success.bg-idle}"
         },
         "bg-hover": {
           "$type": "color",
@@ -1174,9 +1178,9 @@
           "$type": "color",
           "$value": "{color.base.context.dark.warning.dim-slight}"
         },
-        "fg-button": {
+        "fg-idle": {
           "$type": "color",
-          "$value": "{color.base.context.dark.warning.fg-button}"
+          "$value": "{color.base.context.dark.warning.fg-idle}"
         },
         "fg-hover": {
           "$type": "color",
@@ -1190,9 +1194,9 @@
           "$type": "color",
           "$value": "{color.base.context.dark.warning.fg-disabled}"
         },
-        "bg-button": {
+        "bg-idle": {
           "$type": "color",
-          "$value": "{color.base.context.dark.warning.bg-button}"
+          "$value": "{color.base.context.dark.warning.bg-idle}"
         },
         "bg-hover": {
           "$type": "color",
@@ -1324,9 +1328,9 @@
           "$type": "color",
           "$value": "{color.base.context.dark.info.dim-slight}"
         },
-        "fg-button": {
+        "fg-idle": {
           "$type": "color",
-          "$value": "{color.base.context.dark.info.fg-button}"
+          "$value": "{color.base.context.dark.info.fg-idle}"
         },
         "fg-hover": {
           "$type": "color",
@@ -1340,9 +1344,9 @@
           "$type": "color",
           "$value": "{color.base.context.dark.info.fg-disabled}"
         },
-        "bg-button": {
+        "bg-idle": {
           "$type": "color",
-          "$value": "{color.base.context.dark.info.bg-button}"
+          "$value": "{color.base.context.dark.info.bg-idle}"
         },
         "bg-hover": {
           "$type": "color",
@@ -1474,9 +1478,9 @@
           "$type": "color",
           "$value": "{color.base.context.dark.black.dim-slight}"
         },
-        "fg-button": {
+        "fg-idle": {
           "$type": "color",
-          "$value": "{color.base.context.dark.black.fg-button}"
+          "$value": "{color.base.context.dark.black.fg-idle}"
         },
         "fg-hover": {
           "$type": "color",
@@ -1490,9 +1494,9 @@
           "$type": "color",
           "$value": "{color.base.context.dark.black.fg-disabled}"
         },
-        "bg-button": {
+        "bg-idle": {
           "$type": "color",
-          "$value": "{color.base.context.dark.black.bg-button}"
+          "$value": "{color.base.context.dark.black.bg-idle}"
         },
         "bg-hover": {
           "$type": "color",
@@ -1624,9 +1628,9 @@
           "$type": "color",
           "$value": "{color.base.context.dark.white.dim-slight}"
         },
-        "fg-button": {
+        "fg-idle": {
           "$type": "color",
-          "$value": "{color.base.context.dark.white.fg-button}"
+          "$value": "{color.base.context.dark.white.fg-idle}"
         },
         "fg-hover": {
           "$type": "color",
@@ -1640,9 +1644,9 @@
           "$type": "color",
           "$value": "{color.base.context.dark.white.fg-disabled}"
         },
-        "bg-button": {
+        "bg-idle": {
           "$type": "color",
-          "$value": "{color.base.context.dark.white.bg-button}"
+          "$value": "{color.base.context.dark.white.bg-idle}"
         },
         "bg-hover": {
           "$type": "color",
@@ -1774,9 +1778,9 @@
           "$type": "color",
           "$value": "{color.base.context.dark.brand.dim-slight}"
         },
-        "fg-button": {
+        "fg-idle": {
           "$type": "color",
-          "$value": "{color.base.context.dark.brand.fg-button}"
+          "$value": "{color.base.context.dark.brand.fg-idle}"
         },
         "fg-hover": {
           "$type": "color",
@@ -1790,9 +1794,9 @@
           "$type": "color",
           "$value": "{color.base.context.dark.brand.fg-disabled}"
         },
-        "bg-button": {
+        "bg-idle": {
           "$type": "color",
-          "$value": "{color.base.context.dark.brand.bg-button}"
+          "$value": "{color.base.context.dark.brand.bg-idle}"
         },
         "bg-hover": {
           "$type": "color",
@@ -1924,9 +1928,9 @@
           "$type": "color",
           "$value": "{color.base.context.dark.accent.dim-slight}"
         },
-        "fg-button": {
+        "fg-idle": {
           "$type": "color",
-          "$value": "{color.base.context.dark.accent.fg-button}"
+          "$value": "{color.base.context.dark.accent.fg-idle}"
         },
         "fg-hover": {
           "$type": "color",
@@ -1940,9 +1944,9 @@
           "$type": "color",
           "$value": "{color.base.context.dark.accent.fg-disabled}"
         },
-        "bg-button": {
+        "bg-idle": {
           "$type": "color",
-          "$value": "{color.base.context.dark.accent.bg-button}"
+          "$value": "{color.base.context.dark.accent.bg-idle}"
         },
         "bg-hover": {
           "$type": "color",

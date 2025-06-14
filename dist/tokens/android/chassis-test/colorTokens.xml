@@ -2,7 +2,7 @@
 
 <!--
   Do not edit directly, this file was auto-generated.
-  Generated on Sat, 14 Jun 2025 10:47:51 GMT
+  Generated on Sat, 14 Jun 2025 11:07:16 GMT
   Chassis - Tokens v0.1.0
   Copyright 2025 Ozgur Gunes
   Licensed under MIT (https://github.com/ozgurgunes/chassis-tokens/blob/main/LICENSE)
@@ -38,11 +38,11 @@
   <color name="color_context_default_dim_main">#b3000000</color>
   <color name="color_context_default_dim_subtle">#4d000000</color>
   <color name="color_context_default_dim_slight">#0d000000</color>
-  <color name="color_context_default_fg_button">#ff1c2021</color>
+  <color name="color_context_default_fg_idle">#ff1c2021</color>
   <color name="color_context_default_fg_hover">#e61c2021</color>
   <color name="color_context_default_fg_press">#e61c2021</color>
   <color name="color_context_default_fg_disabled">#401c2021</color>
-  <color name="color_context_default_bg_button">#ffffffff</color>
+  <color name="color_context_default_bg_idle">#ffffffff</color>
   <color name="color_context_default_bg_hover">#fff5f6f6</color>
   <color name="color_context_default_bg_press">#ffe9eced</color>
   <color name="color_context_default_bg_disabled">#ffd4d9da</color>
@@ -75,11 +75,11 @@
   <color name="color_context_alternate_dim_main">#b3ffffff</color>
   <color name="color_context_alternate_dim_subtle">#4dffffff</color>
   <color name="color_context_alternate_dim_slight">#0dffffff</color>
-  <color name="color_context_alternate_fg_button">#ffe9eced</color>
+  <color name="color_context_alternate_fg_idle">#ffe9eced</color>
   <color name="color_context_alternate_fg_hover">#e6e9eced</color>
   <color name="color_context_alternate_fg_press">#e6e9eced</color>
   <color name="color_context_alternate_fg_disabled">#40e9eced</color>
-  <color name="color_context_alternate_bg_button">#ff272d2f</color>
+  <color name="color_context_alternate_bg_idle">#ff272d2f</color>
   <color name="color_context_alternate_bg_hover">#ff1c2021</color>
   <color name="color_context_alternate_bg_press">#ff111314</color>
   <color name="color_context_alternate_bg_disabled">#ff272d2f</color>
@@ -112,11 +112,11 @@
   <color name="color_context_primary_dim_main">#b300a4cc</color>
   <color name="color_context_primary_dim_subtle">#4d00a4cc</color>
   <color name="color_context_primary_dim_slight">#1a00a4cc</color>
-  <color name="color_context_primary_fg_button">#ffffffff</color>
+  <color name="color_context_primary_fg_idle">#ffffffff</color>
   <color name="color_context_primary_fg_hover">#e6ffffff</color>
   <color name="color_context_primary_fg_press">#e6ffffff</color>
   <color name="color_context_primary_fg_disabled">#40ffffff</color>
-  <color name="color_context_primary_bg_button">#ff00a4cc</color>
+  <color name="color_context_primary_bg_idle">#ff00a4cc</color>
   <color name="color_context_primary_bg_hover">#ff40bbd9</color>
   <color name="color_context_primary_bg_press">#ff00738f</color>
   <color name="color_context_primary_bg_disabled">#ffb3e4f0</color>
@@ -149,11 +149,11 @@
   <color name="color_context_secondary_dim_main">#b3f55200</color>
   <color name="color_context_secondary_dim_subtle">#4df55200</color>
   <color name="color_context_secondary_dim_slight">#1af55200</color>
-  <color name="color_context_secondary_fg_button">#ffffffff</color>
+  <color name="color_context_secondary_fg_idle">#ffffffff</color>
   <color name="color_context_secondary_fg_hover">#e6ffffff</color>
   <color name="color_context_secondary_fg_press">#e6ffffff</color>
   <color name="color_context_secondary_fg_disabled">#40ffffff</color>
-  <color name="color_context_secondary_bg_button">#fff55200</color>
+  <color name="color_context_secondary_bg_idle">#fff55200</color>
   <color name="color_context_secondary_bg_hover">#fff87d40</color>
   <color name="color_context_secondary_bg_press">#ffac3900</color>
   <color name="color_context_secondary_bg_disabled">#fffccbb3</color>
@@ -186,11 +186,11 @@
   <color name="color_context_neutral_dim_main">#b36f8085</color>
   <color name="color_context_neutral_dim_subtle">#4d6f8085</color>
   <color name="color_context_neutral_dim_slight">#1a6f8085</color>
-  <color name="color_context_neutral_fg_button">#ffffffff</color>
+  <color name="color_context_neutral_fg_idle">#ffffffff</color>
   <color name="color_context_neutral_fg_hover">#e6ffffff</color>
   <color name="color_context_neutral_fg_press">#e6ffffff</color>
   <color name="color_context_neutral_fg_disabled">#40ffffff</color>
-  <color name="color_context_neutral_bg_button">#ff6f8085</color>
+  <color name="color_context_neutral_bg_idle">#ff6f8085</color>
   <color name="color_context_neutral_bg_hover">#ff93a0a4</color>
   <color name="color_context_neutral_bg_press">#ff4e5a5d</color>
   <color name="color_context_neutral_bg_disabled">#ffd4d9da</color>
@@ -223,11 +223,11 @@
   <color name="color_context_danger_dim_main">#b3f52314</color>
   <color name="color_context_danger_dim_subtle">#4df52314</color>
   <color name="color_context_danger_dim_slight">#1af52314</color>
-  <color name="color_context_danger_fg_button">#ffffffff</color>
+  <color name="color_context_danger_fg_idle">#ffffffff</color>
   <color name="color_context_danger_fg_hover">#e6ffffff</color>
   <color name="color_context_danger_fg_press">#e6ffffff</color>
   <color name="color_context_danger_fg_disabled">#40ffffff</color>
-  <color name="color_context_danger_bg_button">#fff52314</color>
+  <color name="color_context_danger_bg_idle">#fff52314</color>
   <color name="color_context_danger_bg_hover">#fff85a4f</color>
   <color name="color_context_danger_bg_press">#ffac190e</color>
   <color name="color_context_danger_bg_disabled">#fffcbdb9</color>
@@ -260,11 +260,11 @@
   <color name="color_context_success_dim_main">#b310c263</color>
   <color name="color_context_success_dim_subtle">#4d10c263</color>
   <color name="color_context_success_dim_slight">#1a10c263</color>
-  <color name="color_context_success_fg_button">#ffffffff</color>
+  <color name="color_context_success_fg_idle">#ffffffff</color>
   <color name="color_context_success_fg_hover">#e6ffffff</color>
   <color name="color_context_success_fg_press">#e6ffffff</color>
   <color name="color_context_success_fg_disabled">#40ffffff</color>
-  <color name="color_context_success_bg_button">#ff10c263</color>
+  <color name="color_context_success_bg_idle">#ff10c263</color>
   <color name="color_context_success_bg_hover">#ff4cd18a</color>
   <color name="color_context_success_bg_press">#ff0b8845</color>
   <color name="color_context_success_bg_disabled">#ffb7edd0</color>
@@ -297,11 +297,11 @@
   <color name="color_context_warning_dim_main">#b3f5a300</color>
   <color name="color_context_warning_dim_subtle">#4df5a300</color>
   <color name="color_context_warning_dim_slight">#1af5a300</color>
-  <color name="color_context_warning_fg_button">#ff000000</color>
+  <color name="color_context_warning_fg_idle">#ff000000</color>
   <color name="color_context_warning_fg_hover">#e6000000</color>
   <color name="color_context_warning_fg_press">#e6000000</color>
   <color name="color_context_warning_fg_disabled">#40000000</color>
-  <color name="color_context_warning_bg_button">#fff5a300</color>
+  <color name="color_context_warning_bg_idle">#fff5a300</color>
   <color name="color_context_warning_bg_hover">#fff8ba40</color>
   <color name="color_context_warning_bg_press">#ffac7200</color>
   <color name="color_context_warning_bg_disabled">#fffce3b3</color>
@@ -334,11 +334,11 @@
   <color name="color_context_info_dim_main">#b31414f5</color>
   <color name="color_context_info_dim_subtle">#4d1414f5</color>
   <color name="color_context_info_dim_slight">#1a1414f5</color>
-  <color name="color_context_info_fg_button">#ffffffff</color>
+  <color name="color_context_info_fg_idle">#ffffffff</color>
   <color name="color_context_info_fg_hover">#e6ffffff</color>
   <color name="color_context_info_fg_press">#e6ffffff</color>
   <color name="color_context_info_fg_disabled">#40ffffff</color>
-  <color name="color_context_info_bg_button">#ff1414f5</color>
+  <color name="color_context_info_bg_idle">#ff1414f5</color>
   <color name="color_context_info_bg_hover">#ff4f4ff8</color>
   <color name="color_context_info_bg_press">#ff0e0eac</color>
   <color name="color_context_info_bg_disabled">#ffb9b9fc</color>
@@ -371,11 +371,11 @@
   <color name="color_context_black_dim_main">#b3000000</color>
   <color name="color_context_black_dim_subtle">#4d000000</color>
   <color name="color_context_black_dim_slight">#1a000000</color>
-  <color name="color_context_black_fg_button">#ffffffff</color>
+  <color name="color_context_black_fg_idle">#ffffffff</color>
   <color name="color_context_black_fg_hover">#e6ffffff</color>
   <color name="color_context_black_fg_press">#e6ffffff</color>
   <color name="color_context_black_fg_disabled">#40ffffff</color>
-  <color name="color_context_black_bg_button">#ff000000</color>
+  <color name="color_context_black_bg_idle">#ff000000</color>
   <color name="color_context_black_bg_hover">#e6000000</color>
   <color name="color_context_black_bg_press">#f2000000</color>
   <color name="color_context_black_bg_disabled">#33000000</color>
@@ -408,11 +408,11 @@
   <color name="color_context_white_dim_main">#b3ffffff</color>
   <color name="color_context_white_dim_subtle">#4dffffff</color>
   <color name="color_context_white_dim_slight">#1affffff</color>
-  <color name="color_context_white_fg_button">#ff000000</color>
+  <color name="color_context_white_fg_idle">#ff000000</color>
   <color name="color_context_white_fg_hover">#e6000000</color>
   <color name="color_context_white_fg_press">#e6000000</color>
   <color name="color_context_white_fg_disabled">#40000000</color>
-  <color name="color_context_white_bg_button">#ffffffff</color>
+  <color name="color_context_white_bg_idle">#ffffffff</color>
   <color name="color_context_white_bg_hover">#e6ffffff</color>
   <color name="color_context_white_bg_press">#f2ffffff</color>
   <color name="color_context_white_bg_disabled">#33ffffff</color>
@@ -445,11 +445,11 @@
   <color name="color_context_brand_dim_main">#b300a4cc</color>
   <color name="color_context_brand_dim_subtle">#4d00a4cc</color>
   <color name="color_context_brand_dim_slight">#1a00a4cc</color>
-  <color name="color_context_brand_fg_button">#ffffffff</color>
+  <color name="color_context_brand_fg_idle">#ffffffff</color>
   <color name="color_context_brand_fg_hover">#e6ffffff</color>
   <color name="color_context_brand_fg_press">#e6ffffff</color>
   <color name="color_context_brand_fg_disabled">#40ffffff</color>
-  <color name="color_context_brand_bg_button">#ff00a4cc</color>
+  <color name="color_context_brand_bg_idle">#ff00a4cc</color>
   <color name="color_context_brand_bg_hover">#ff40bbd9</color>
   <color name="color_context_brand_bg_press">#ff00738f</color>
   <color name="color_context_brand_bg_disabled">#ffb3e4f0</color>
@@ -482,11 +482,11 @@
   <color name="color_context_accent_dim_main">#b3f55200</color>
   <color name="color_context_accent_dim_subtle">#4df55200</color>
   <color name="color_context_accent_dim_slight">#1af55200</color>
-  <color name="color_context_accent_fg_button">#ffffffff</color>
+  <color name="color_context_accent_fg_idle">#ffffffff</color>
   <color name="color_context_accent_fg_hover">#e6ffffff</color>
   <color name="color_context_accent_fg_press">#e6ffffff</color>
   <color name="color_context_accent_fg_disabled">#40ffffff</color>
-  <color name="color_context_accent_bg_button">#fff55200</color>
+  <color name="color_context_accent_bg_idle">#fff55200</color>
   <color name="color_context_accent_bg_hover">#fff87d40</color>
   <color name="color_context_accent_bg_press">#ffac3900</color>
   <color name="color_context_accent_bg_disabled">#fffccbb3</color>

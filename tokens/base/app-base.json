@@ -4,7 +4,7 @@
       "app": {
         "mode-1": {
           "$type": "boolean",
-          "$value": "false"
+          "$value": "true"
         },
         "mode-2": {
           "$type": "boolean",
@@ -1994,7 +1994,7 @@
       "default": {
         "fg-idle": {
           "$type": "color",
-          "$value": "{color.context.default.fg-button}"
+          "$value": "{color.context.default.fg-idle}"
         },
         "fg-disabled": {
           "$type": "color",
@@ -2010,7 +2010,7 @@
         },
         "bg-idle": {
           "$type": "color",
-          "$value": "{color.context.default.bg-button}"
+          "$value": "{color.context.default.bg-idle}"
         },
         "bg-disabled": {
           "$type": "color",
@@ -2038,13 +2038,13 @@
         },
         "border-press": {
           "$type": "color",
-          "$value": "{color.context.default.fg-button}"
+          "$value": "{color.context.default.fg-idle}"
         }
       },
       "alternate": {
         "fg-idle": {
           "$type": "color",
-          "$value": "{color.context.alternate.fg-button}"
+          "$value": "{color.context.alternate.fg-idle}"
         },
         "fg-disabled": {
           "$type": "color",
@@ -2060,7 +2060,7 @@
         },
         "bg-idle": {
           "$type": "color",
-          "$value": "{color.context.alternate.bg-button}"
+          "$value": "{color.context.alternate.bg-idle}"
         },
         "bg-disabled": {
           "$type": "color",
@@ -2088,13 +2088,13 @@
         },
         "border-press": {
           "$type": "color",
-          "$value": "{color.context.alternate.fg-button}"
+          "$value": "{color.context.alternate.fg-idle}"
         }
       },
       "black": {
         "fg-idle": {
           "$type": "color",
-          "$value": "{color.context.black.fg-button}"
+          "$value": "{color.context.black.fg-idle}"
         },
         "fg-disabled": {
           "$type": "color",
@@ -2110,7 +2110,7 @@
         },
         "bg-idle": {
           "$type": "color",
-          "$value": "{color.context.black.bg-button}"
+          "$value": "{color.context.black.bg-idle}"
         },
         "bg-disabled": {
           "$type": "color",
@@ -2144,7 +2144,7 @@
       "white": {
         "fg-idle": {
           "$type": "color",
-          "$value": "{color.context.white.fg-button}"
+          "$value": "{color.context.white.fg-idle}"
         },
         "fg-disabled": {
           "$type": "color",
@@ -2160,7 +2160,7 @@
         },
         "bg-idle": {
           "$type": "color",
-          "$value": "{color.context.white.bg-button}"
+          "$value": "{color.context.white.bg-idle}"
         },
         "bg-disabled": {
           "$type": "color",
@@ -2194,7 +2194,7 @@
       "primary": {
         "fg-idle": {
           "$type": "color",
-          "$value": "{color.context.primary.fg-button}"
+          "$value": "{color.context.primary.fg-idle}"
         },
         "fg-disabled": {
           "$type": "color",
@@ -2210,7 +2210,7 @@
         },
         "bg-idle": {
           "$type": "color",
-          "$value": "{color.context.primary.bg-button}"
+          "$value": "{color.context.primary.bg-idle}"
         },
         "bg-disabled": {
           "$type": "color",
@@ -2244,7 +2244,7 @@
       "secondary": {
         "fg-idle": {
           "$type": "color",
-          "$value": "{color.context.secondary.fg-button}"
+          "$value": "{color.context.secondary.fg-idle}"
         },
         "fg-disabled": {
           "$type": "color",
@@ -2260,7 +2260,7 @@
         },
         "bg-idle": {
           "$type": "color",
-          "$value": "{color.context.secondary.bg-button}"
+          "$value": "{color.context.secondary.bg-idle}"
         },
         "bg-disabled": {
           "$type": "color",
@@ -2294,7 +2294,7 @@
       "neutral": {
         "fg-idle": {
           "$type": "color",
-          "$value": "{color.context.neutral.fg-button}"
+          "$value": "{color.context.neutral.fg-idle}"
         },
         "fg-disabled": {
           "$type": "color",
@@ -2310,7 +2310,7 @@
         },
         "bg-idle": {
           "$type": "color",
-          "$value": "{color.context.neutral.bg-button}"
+          "$value": "{color.context.neutral.bg-idle}"
         },
         "bg-disabled": {
           "$type": "color",
@@ -2344,7 +2344,7 @@
       "danger": {
         "fg-idle": {
           "$type": "color",
-          "$value": "{color.context.danger.fg-button}"
+          "$value": "{color.context.danger.fg-idle}"
         },
         "fg-disabled": {
           "$type": "color",
@@ -2360,7 +2360,7 @@
         },
         "bg-idle": {
           "$type": "color",
-          "$value": "{color.context.danger.bg-button}"
+          "$value": "{color.context.danger.bg-idle}"
         },
         "bg-disabled": {
           "$type": "color",
@@ -2394,7 +2394,7 @@
       "success": {
         "fg-idle": {
           "$type": "color",
-          "$value": "{color.context.success.fg-button}"
+          "$value": "{color.context.success.fg-idle}"
         },
         "fg-disabled": {
           "$type": "color",
@@ -2410,7 +2410,7 @@
         },
         "bg-idle": {
           "$type": "color",
-          "$value": "{color.context.success.bg-button}"
+          "$value": "{color.context.success.bg-idle}"
         },
         "bg-disabled": {
           "$type": "color",
@@ -2444,7 +2444,7 @@
       "warning": {
         "fg-idle": {
           "$type": "color",
-          "$value": "{color.context.warning.fg-button}"
+          "$value": "{color.context.warning.fg-idle}"
         },
         "fg-disabled": {
           "$type": "color",
@@ -2460,7 +2460,7 @@
         },
         "bg-idle": {
           "$type": "color",
-          "$value": "{color.context.warning.bg-button}"
+          "$value": "{color.context.warning.bg-idle}"
         },
         "bg-disabled": {
           "$type": "color",
@@ -2494,7 +2494,7 @@
       "info": {
         "fg-idle": {
           "$type": "color",
-          "$value": "{color.context.info.fg-button}"
+          "$value": "{color.context.info.fg-idle}"
         },
         "fg-disabled": {
           "$type": "color",
@@ -2510,7 +2510,7 @@
         },
         "bg-idle": {
           "$type": "color",
-          "$value": "{color.context.info.bg-button}"
+          "$value": "{color.context.info.bg-idle}"
         },
         "bg-disabled": {
           "$type": "color",
@@ -2598,7 +2598,7 @@
         },
         "fg-range": {
           "$type": "color",
-          "$value": "{color.context.default.fg-button}"
+          "$value": "{color.context.default.fg-idle}"
         }
       },
       "alternate": {
@@ -2656,7 +2656,7 @@
         },
         "fg-range": {
           "$type": "color",
-          "$value": "{color.context.alternate.fg-button}"
+          "$value": "{color.context.alternate.fg-idle}"
         }
       }
     },

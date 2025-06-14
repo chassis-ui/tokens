@@ -4,6 +4,10 @@
       "brand": {
         "mode-1": {
           "$type": "boolean",
+          "$value": "false"
+        },
+        "mode-2": {
+          "$type": "boolean",
           "$value": "true"
         }
       }

@@ -2,7 +2,11 @@
   "figma": {
     "switch": {
       "brand": {
-        "mode-2": {
+        "mode-1": {
+          "$type": "boolean",
+          "$value": "false"
+        },
+        "mode-3": {
           "$type": "boolean",
           "$value": "true"
         }
