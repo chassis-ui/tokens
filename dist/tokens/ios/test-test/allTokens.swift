@@ -4,7 +4,7 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Sat, 14 Jun 2025 08:15:01 GMT
+// Generated on Sat, 14 Jun 2025 08:55:25 GMT
 // Chassis - Tokens v0.1.0
 // Copyright 2025 Ozgur Gunes
 // Licensed under MIT (https://github.com/ozgurgunes/chassis-tokens/blob/main/LICENSE)
@@ -833,13 +833,6 @@ public class {
     @objc public static let ColorBasePaletteDarkAccentT5080 = UIColor(red: 0.820, green: 0.082, blue: 0.773, alpha: 0.8)
     @objc public static let ColorBasePaletteDarkAccentT5090 = UIColor(red: 0.820, green: 0.082, blue: 0.773, alpha: 0.9)
     @objc public static let ColorBasePaletteDarkAccentT5095 = UIColor(red: 0.820, green: 0.082, blue: 0.773, alpha: 0.95)
-    @objc public static let ColorBasePaletteNeutralBase = UIColor(red: 0.459, green: 0.459, blue: 0.459, alpha: 1)
-    @objc public static let ColorBasePaletteDangerBase = UIColor(red: 0.878, green: 0.176, blue: 0.071, alpha: 1)
-    @objc public static let ColorBasePaletteSuccessBase = UIColor(red: 0.043, green: 0.541, blue: 0.043, alpha: 1)
-    @objc public static let ColorBasePaletteWarningBase = UIColor(red: 0.600, green: 0.431, blue: 0.035, alpha: 1)
-    @objc public static let ColorBasePaletteInfoBase = UIColor(red: 0.035, green: 0.510, blue: 0.580, alpha: 1)
-    @objc public static let ColorBasePaletteBrandBase = UIColor(red: 0.071, green: 0.451, blue: 0.878, alpha: 1)
-    @objc public static let ColorBasePaletteAccentBase = UIColor(red: 0.820, green: 0.082, blue: 0.773, alpha: 1)
     @objc public static let ColorBaseContextLightDefaultBaseColor = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1)
     @objc public static let ColorBaseContextLightDefaultContrastColor = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1)
     @objc public static let ColorBaseContextLightDefaultTransparentColor = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0)
@@ -3490,15 +3483,15 @@ public class {
     @objc public static let FontBadgeSmallTextCase = "none"
     @objc public static let FontBadgeSmallTextDecoration = "none"
     @objc public static let FontBadgeSmallFontStyle = "normal"
-    @objc public static let FontBreadcrumbFontFamily = "Helvetica"
-    @objc public static let FontBreadcrumbFontWeight = "regular"
-    @objc public static let FontBreadcrumbLineHeight = CGFloat(24)
-    @objc public static let FontBreadcrumbFontSize = CGFloat(16)
-    @objc public static let FontBreadcrumbLetterSpacing = CGFloat(0)
-    @objc public static let FontBreadcrumbParagraphSpacing = CGFloat(0)
-    @objc public static let FontBreadcrumbTextCase = "none"
-    @objc public static let FontBreadcrumbTextDecoration = "none"
-    @objc public static let FontBreadcrumbFontStyle = "normal"
+    @objc public static let FontBreadcrumbPageFontFamily = "Helvetica"
+    @objc public static let FontBreadcrumbPageFontWeight = "regular"
+    @objc public static let FontBreadcrumbPageLineHeight = CGFloat(24)
+    @objc public static let FontBreadcrumbPageFontSize = CGFloat(16)
+    @objc public static let FontBreadcrumbPageLetterSpacing = CGFloat(0)
+    @objc public static let FontBreadcrumbPageParagraphSpacing = CGFloat(0)
+    @objc public static let FontBreadcrumbPageTextCase = "none"
+    @objc public static let FontBreadcrumbPageTextDecoration = "none"
+    @objc public static let FontBreadcrumbPageFontStyle = "normal"
     @objc public static let FontButtonMediumFontFamily = "Helvetica"
     @objc public static let FontButtonMediumFontWeight = "bold"
     @objc public static let FontButtonMediumLineHeight = CGFloat(24)

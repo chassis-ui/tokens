@@ -2,7 +2,7 @@
 
 <!--
   Do not edit directly, this file was auto-generated.
-  Generated on Sat, 14 Jun 2025 08:14:59 GMT
+  Generated on Sat, 14 Jun 2025 08:55:23 GMT
   Chassis - Tokens v0.1.0
   Copyright 2025 Ozgur Gunes
   Licensed under MIT (https://github.com/ozgurgunes/chassis-tokens/blob/main/LICENSE)
@@ -3479,15 +3479,15 @@
   <string name="font_badge_small_text_case">none</string>
   <string name="font_badge_small_text_decoration">none</string>
   <string name="font_badge_small_font_style">normal</string>
-  <string name="font_breadcrumb_font_family">Inter</string>
-  <string name="font_breadcrumb_font_weight">regular</string>
-  <dimen name="font_breadcrumb_line_height">24sp</dimen>
-  <dimen name="font_breadcrumb_font_size">16sp</dimen>
-  <integer name="font_breadcrumb_letter_spacing">0</integer>
-  <dimen name="font_breadcrumb_paragraph_spacing">0sp</dimen>
-  <string name="font_breadcrumb_text_case">none</string>
-  <string name="font_breadcrumb_text_decoration">none</string>
-  <string name="font_breadcrumb_font_style">normal</string>
+  <string name="font_breadcrumb_page_font_family">Inter</string>
+  <string name="font_breadcrumb_page_font_weight">regular</string>
+  <dimen name="font_breadcrumb_page_line_height">24sp</dimen>
+  <dimen name="font_breadcrumb_page_font_size">16sp</dimen>
+  <integer name="font_breadcrumb_page_letter_spacing">0</integer>
+  <dimen name="font_breadcrumb_page_paragraph_spacing">0sp</dimen>
+  <string name="font_breadcrumb_page_text_case">none</string>
+  <string name="font_breadcrumb_page_text_decoration">none</string>
+  <string name="font_breadcrumb_page_font_style">normal</string>
   <string name="font_button_medium_font_family">Inter</string>
   <string name="font_button_medium_font_weight">semi-bold</string>
   <dimen name="font_button_medium_line_height">24sp</dimen>

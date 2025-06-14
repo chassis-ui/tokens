@@ -4,7 +4,7 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Sat, 14 Jun 2025 08:14:57 GMT
+// Generated on Sat, 14 Jun 2025 08:55:22 GMT
 // Chassis - Tokens v0.1.0
 // Copyright 2025 Ozgur Gunes
 // Licensed under MIT (https://github.com/ozgurgunes/chassis-tokens/blob/main/LICENSE)
@@ -3483,15 +3483,15 @@ public class {
     @objc public static let FontBadgeSmallTextCase = "none"
     @objc public static let FontBadgeSmallTextDecoration = "none"
     @objc public static let FontBadgeSmallFontStyle = "normal"
-    @objc public static let FontBreadcrumbFontFamily = "Inter"
-    @objc public static let FontBreadcrumbFontWeight = "regular"
-    @objc public static let FontBreadcrumbLineHeight = CGFloat(24)
-    @objc public static let FontBreadcrumbFontSize = CGFloat(16)
-    @objc public static let FontBreadcrumbLetterSpacing = CGFloat(0)
-    @objc public static let FontBreadcrumbParagraphSpacing = CGFloat(0)
-    @objc public static let FontBreadcrumbTextCase = "none"
-    @objc public static let FontBreadcrumbTextDecoration = "none"
-    @objc public static let FontBreadcrumbFontStyle = "normal"
+    @objc public static let FontBreadcrumbPageFontFamily = "Inter"
+    @objc public static let FontBreadcrumbPageFontWeight = "regular"
+    @objc public static let FontBreadcrumbPageLineHeight = CGFloat(24)
+    @objc public static let FontBreadcrumbPageFontSize = CGFloat(16)
+    @objc public static let FontBreadcrumbPageLetterSpacing = CGFloat(0)
+    @objc public static let FontBreadcrumbPageParagraphSpacing = CGFloat(0)
+    @objc public static let FontBreadcrumbPageTextCase = "none"
+    @objc public static let FontBreadcrumbPageTextDecoration = "none"
+    @objc public static let FontBreadcrumbPageFontStyle = "normal"
     @objc public static let FontButtonMediumFontFamily = "Inter"
     @objc public static let FontButtonMediumFontWeight = "semi-bold"
     @objc public static let FontButtonMediumLineHeight = CGFloat(24)

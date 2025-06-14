@@ -2,7 +2,7 @@
 
 <!--
   Do not edit directly, this file was auto-generated.
-  Generated on Sat, 14 Jun 2025 08:15:02 GMT
+  Generated on Sat, 14 Jun 2025 08:55:26 GMT
   Chassis - Tokens v0.1.0
   Copyright 2025 Ozgur Gunes
   Licensed under MIT (https://github.com/ozgurgunes/chassis-tokens/blob/main/LICENSE)
@@ -829,13 +829,6 @@
   <color name="color_base_palette_dark_accent_t_5080">#ccd115c5</color>
   <color name="color_base_palette_dark_accent_t_5090">#e6d115c5</color>
   <color name="color_base_palette_dark_accent_t_5095">#f2d115c5</color>
-  <color name="color_base_palette_neutral_base">#ff757575</color>
-  <color name="color_base_palette_danger_base">#ffe02d12</color>
-  <color name="color_base_palette_success_base">#ff0b8a0b</color>
-  <color name="color_base_palette_warning_base">#ff996e09</color>
-  <color name="color_base_palette_info_base">#ff098294</color>
-  <color name="color_base_palette_brand_base">#ff1273e0</color>
-  <color name="color_base_palette_accent_base">#ffd115c5</color>
   <color name="color_base_context_light_default_base_color">#ff000000</color>
   <color name="color_base_context_light_default_contrast_color">#ffffffff</color>
   <color name="color_base_context_light_default_transparent_color">#00000000</color>
@@ -3486,15 +3479,15 @@
   <string name="font_badge_small_text_case">none</string>
   <string name="font_badge_small_text_decoration">none</string>
   <string name="font_badge_small_font_style">normal</string>
-  <string name="font_breadcrumb_font_family">Helvetica</string>
-  <string name="font_breadcrumb_font_weight">regular</string>
-  <dimen name="font_breadcrumb_line_height">24sp</dimen>
-  <dimen name="font_breadcrumb_font_size">16sp</dimen>
-  <integer name="font_breadcrumb_letter_spacing">0</integer>
-  <dimen name="font_breadcrumb_paragraph_spacing">0sp</dimen>
-  <string name="font_breadcrumb_text_case">none</string>
-  <string name="font_breadcrumb_text_decoration">none</string>
-  <string name="font_breadcrumb_font_style">normal</string>
+  <string name="font_breadcrumb_page_font_family">Helvetica</string>
+  <string name="font_breadcrumb_page_font_weight">regular</string>
+  <dimen name="font_breadcrumb_page_line_height">24sp</dimen>
+  <dimen name="font_breadcrumb_page_font_size">16sp</dimen>
+  <integer name="font_breadcrumb_page_letter_spacing">0</integer>
+  <dimen name="font_breadcrumb_page_paragraph_spacing">0sp</dimen>
+  <string name="font_breadcrumb_page_text_case">none</string>
+  <string name="font_breadcrumb_page_text_decoration">none</string>
+  <string name="font_breadcrumb_page_font_style">normal</string>
   <string name="font_button_medium_font_family">Helvetica</string>
   <string name="font_button_medium_font_weight">bold</string>
   <dimen name="font_button_medium_line_height">24sp</dimen>

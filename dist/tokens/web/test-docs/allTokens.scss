@@ -4,7 +4,7 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Sat, 14 Jun 2025 08:15:00 GMT
+// Generated on Sat, 14 Jun 2025 08:55:24 GMT
 // Chassis - Tokens v0.1.0
 // Copyright 2025 Ozgur Gunes
 // Licensed under MIT (https://github.com/ozgurgunes/chassis-tokens/blob/main/LICENSE)
@@ -831,13 +831,6 @@ $cx-color-base-palette-dark-accent-t-5070: rgba(209, 21, 197, 0.7) !default;
 $cx-color-base-palette-dark-accent-t-5080: rgba(209, 21, 197, 0.8) !default;
 $cx-color-base-palette-dark-accent-t-5090: rgba(209, 21, 197, 0.9) !default;
 $cx-color-base-palette-dark-accent-t-5095: rgba(209, 21, 197, 0.95) !default;
-$cx-color-base-palette-neutral-base: #757575 !default;
-$cx-color-base-palette-danger-base: #E02D12 !default;
-$cx-color-base-palette-success-base: #0B8A0B !default;
-$cx-color-base-palette-warning-base: #996E09 !default;
-$cx-color-base-palette-info-base: #098294 !default;
-$cx-color-base-palette-brand-base: #1273E0 !default;
-$cx-color-base-palette-accent-base: #D115C5 !default;
 $cx-color-base-context-light-default-base-color: #000000 !default;
 $cx-color-base-context-light-default-contrast-color: #ffffff !default;
 $cx-color-base-context-light-default-transparent-color: rgba(0, 0, 0, 0) !default;
@@ -2400,7 +2393,7 @@ $cx-font-assist-small: ("font-family": var(--#{$prefix}font-family-text), "font-
 $cx-font-badge-medium: ("font-family": var(--#{$prefix}font-family-text), "font-weight": var(--#{$prefix}font-weight-strong), "font-size": var(--#{$prefix}font-size-small), "line-height": var(--#{$prefix}line-height-small), "font-style": normal, "letter-spacing": 0, "margin-bottom": 0rem, "text-transform": none, "text-decoration": none) !default;
 $cx-font-badge-large: ("font-family": var(--#{$prefix}font-family-text), "font-weight": var(--#{$prefix}font-weight-strong), "font-size": var(--#{$prefix}font-size-medium), "line-height": var(--#{$prefix}line-height-medium), "font-style": normal, "letter-spacing": 0, "margin-bottom": 0rem, "text-transform": none, "text-decoration": none) !default;
 $cx-font-badge-small: ("font-family": var(--#{$prefix}font-family-text), "font-weight": var(--#{$prefix}font-weight-strong), "font-size": var(--#{$prefix}font-size-xsmall), "line-height": var(--#{$prefix}line-height-xsmall), "font-style": normal, "letter-spacing": 0, "margin-bottom": 0rem, "text-transform": none, "text-decoration": none) !default;
-$cx-font-breadcrumb: ("font-family": var(--#{$prefix}font-family-text), "font-weight": var(--#{$prefix}font-weight-normal), "font-size": var(--#{$prefix}font-size-medium), "line-height": var(--#{$prefix}line-height-medium), "font-style": normal, "letter-spacing": 0, "margin-bottom": 0rem, "text-transform": none, "text-decoration": none) !default;
+$cx-font-breadcrumb-page: ("font-family": var(--#{$prefix}font-family-text), "font-weight": var(--#{$prefix}font-weight-normal), "font-size": var(--#{$prefix}font-size-medium), "line-height": var(--#{$prefix}line-height-medium), "font-style": normal, "letter-spacing": 0, "margin-bottom": 0rem, "text-transform": none, "text-decoration": none) !default;
 $cx-font-button-medium: ("font-family": var(--#{$prefix}font-family-text), "font-weight": var(--#{$prefix}font-weight-strong), "font-size": var(--#{$prefix}font-size-medium), "line-height": var(--#{$prefix}line-height-medium), "font-style": normal, "letter-spacing": 0, "margin-bottom": 0rem, "text-transform": none, "text-decoration": none) !default;
 $cx-font-button-large: ("font-family": var(--#{$prefix}font-family-text), "font-weight": var(--#{$prefix}font-weight-strong), "font-size": var(--#{$prefix}font-size-large), "line-height": var(--#{$prefix}line-height-large), "font-style": normal, "letter-spacing": 0, "margin-bottom": 0rem, "text-transform": none, "text-decoration": none) !default;
 $cx-font-button-small: ("font-family": var(--#{$prefix}font-family-text), "font-weight": var(--#{$prefix}font-weight-strong), "font-size": var(--#{$prefix}font-size-small), "line-height": var(--#{$prefix}line-height-small), "font-style": normal, "letter-spacing": 0, "margin-bottom": 0rem, "text-transform": none, "text-decoration": none) !default;

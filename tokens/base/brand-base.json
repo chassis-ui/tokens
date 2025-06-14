@@ -1874,7 +1874,7 @@
           "black": {
             "base": {
               "$type": "color",
-              "$value": "#000000"
+              "$value": "{color.base.palette.light.black.base}"
             },
             "transparent": {
               "$type": "color",
@@ -1882,7 +1882,7 @@
             },
             "contrast": {
               "$type": "color",
-              "$value": "{color.base.palette.dark.white.base}"
+              "$value": "{color.base.palette.light.black.contrast}"
             },
             "t-05": {
               "$type": "color",
@@ -1932,7 +1932,7 @@
           "white": {
             "base": {
               "$type": "color",
-              "$value": "#ffffff"
+              "$value": "{color.base.palette.light.white.base}"
             },
             "transparent": {
               "$type": "color",
@@ -1940,7 +1940,7 @@
             },
             "contrast": {
               "$type": "color",
-              "$value": "{color.base.palette.dark.black.base}"
+              "$value": "{color.base.palette.light.white.contrast}"
             },
             "t-05": {
               "$type": "color",
@@ -2124,7 +2124,7 @@
             },
             "base": {
               "$type": "color",
-              "$value": "{color.base.palette.dark.brand.base}"
+              "$value": "{color.base.palette.light.primary.base}"
             },
             "transparent": {
               "$type": "color",
@@ -2132,7 +2132,7 @@
             },
             "contrast": {
               "$type": "color",
-              "$value": "{color.base.palette.dark.white.base}"
+              "$value": "{color.base.palette.light.primary.contrast}"
             },
             "t-5005": {
               "$type": "color",
@@ -2316,7 +2316,7 @@
             },
             "base": {
               "$type": "color",
-              "$value": "{color.base.palette.dark.accent.base}"
+              "$value": "{color.base.palette.light.secondary.base}"
             },
             "transparent": {
               "$type": "color",
@@ -2324,7 +2324,7 @@
             },
             "contrast": {
               "$type": "color",
-              "$value": "{color.base.palette.dark.white.base}"
+              "$value": "{color.base.palette.light.secondary.contrast}"
             },
             "t-5005": {
               "$type": "color",
@@ -2508,7 +2508,7 @@
             },
             "base": {
               "$type": "color",
-              "$value": "#757575"
+              "$value": "{color.base.palette.light.neutral.base}"
             },
             "transparent": {
               "$type": "color",
@@ -2516,7 +2516,7 @@
             },
             "contrast": {
               "$type": "color",
-              "$value": "{color.base.palette.dark.white.base}"
+              "$value": "{color.base.palette.light.neutral.contrast}"
             },
             "t-5005": {
               "$type": "color",
@@ -2700,7 +2700,7 @@
             },
             "base": {
               "$type": "color",
-              "$value": "#E02D12"
+              "$value": "{color.base.palette.light.danger.base}"
             },
             "transparent": {
               "$type": "color",
@@ -2708,7 +2708,7 @@
             },
             "contrast": {
               "$type": "color",
-              "$value": "{color.base.palette.dark.white.base}"
+              "$value": "{color.base.palette.light.danger.contrast}"
             },
             "t-5005": {
               "$type": "color",
@@ -2892,7 +2892,7 @@
             },
             "base": {
               "$type": "color",
-              "$value": "#0B8A0B"
+              "$value": "{color.base.palette.light.success.base}"
             },
             "transparent": {
               "$type": "color",
@@ -2900,7 +2900,7 @@
             },
             "contrast": {
               "$type": "color",
-              "$value": "{color.base.palette.dark.white.base}"
+              "$value": "{color.base.palette.light.success.contrast}"
             },
             "t-5005": {
               "$type": "color",
@@ -3084,7 +3084,7 @@
             },
             "base": {
               "$type": "color",
-              "$value": "#996E09"
+              "$value": "{color.base.palette.light.warning.base}"
             },
             "transparent": {
               "$type": "color",
@@ -3092,7 +3092,7 @@
             },
             "contrast": {
               "$type": "color",
-              "$value": "{color.base.palette.dark.white.base}"
+              "$value": "{color.base.palette.light.warning.contrast}"
             },
             "t-5005": {
               "$type": "color",
@@ -3276,7 +3276,7 @@
             },
             "base": {
               "$type": "color",
-              "$value": "#098294"
+              "$value": "{color.base.palette.light.info.base}"
             },
             "transparent": {
               "$type": "color",
@@ -3284,7 +3284,7 @@
             },
             "contrast": {
               "$type": "color",
-              "$value": "{color.base.palette.dark.white.base}"
+              "$value": "{color.base.palette.light.info.contrast}"
             },
             "t-5005": {
               "$type": "color",
@@ -3468,7 +3468,7 @@
             },
             "base": {
               "$type": "color",
-              "$value": "#1273E0"
+              "$value": "{color.base.palette.light.brand.base}"
             },
             "transparent": {
               "$type": "color",
@@ -3476,7 +3476,7 @@
             },
             "contrast": {
               "$type": "color",
-              "$value": "{color.base.palette.dark.white.base}"
+              "$value": "{color.base.palette.light.brand.contrast}"
             },
             "t-5005": {
               "$type": "color",
@@ -3660,7 +3660,7 @@
             },
             "base": {
               "$type": "color",
-              "$value": "#D115C5"
+              "$value": "{color.base.palette.light.accent.base}"
             },
             "transparent": {
               "$type": "color",
@@ -3668,7 +3668,7 @@
             },
             "contrast": {
               "$type": "color",
-              "$value": "{color.base.palette.dark.white.base}"
+              "$value": "{color.base.palette.light.accent.contrast}"
             },
             "t-5005": {
               "$type": "color",

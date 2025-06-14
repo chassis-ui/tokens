@@ -59,54 +59,6 @@
               "$value": "#F55200"
             }
           }
-        },
-        "dark": {
-          "neutral": {
-            "base": {
-              "$type": "color",
-              "$value": "#6F8085"
-            }
-          },
-          "danger": {
-            "base": {
-              "$type": "color",
-              "$value": "#F52314"
-            }
-          },
-          "success": {
-            "base": {
-              "$type": "color",
-              "$value": "#10C263"
-            }
-          },
-          "warning": {
-            "base": {
-              "$type": "color",
-              "$value": "#F5A300"
-            },
-            "contrast": {
-              "$type": "color",
-              "$value": "{color.base.palette.light.black.base}"
-            }
-          },
-          "info": {
-            "base": {
-              "$type": "color",
-              "$value": "#1414F5"
-            }
-          },
-          "brand": {
-            "base": {
-              "$type": "color",
-              "$value": "#00A4CC"
-            }
-          },
-          "accent": {
-            "base": {
-              "$type": "color",
-              "$value": "#F55200"
-            }
-          }
         }
       }
     }

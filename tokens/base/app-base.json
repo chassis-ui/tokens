@@ -1759,8 +1759,10 @@
       }
     },
     "breadcrumb": {
-      "$type": "typography",
-      "$value": "{font.text.medium.normal}"
+      "page": {
+        "$type": "typography",
+        "$value": "{font.text.medium.normal}"
+      }
     },
     "button": {
       "medium": {

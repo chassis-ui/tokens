@@ -4,7 +4,7 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Sat, 14 Jun 2025 08:15:01 GMT
+// Generated on Sat, 14 Jun 2025 08:55:25 GMT
 // Chassis - Tokens v0.1.0
 // Copyright 2025 Ozgur Gunes
 // Licensed under MIT (https://github.com/ozgurgunes/chassis-tokens/blob/main/LICENSE)
@@ -763,11 +763,11 @@ public class {
     @objc public static let FontBadgeSmallTextCase = "none"
     @objc public static let FontBadgeSmallTextDecoration = "none"
     @objc public static let FontBadgeSmallFontStyle = "normal"
-    @objc public static let FontBreadcrumbFontFamily = "Helvetica"
-    @objc public static let FontBreadcrumbFontWeight = "regular"
-    @objc public static let FontBreadcrumbTextCase = "none"
-    @objc public static let FontBreadcrumbTextDecoration = "none"
-    @objc public static let FontBreadcrumbFontStyle = "normal"
+    @objc public static let FontBreadcrumbPageFontFamily = "Helvetica"
+    @objc public static let FontBreadcrumbPageFontWeight = "regular"
+    @objc public static let FontBreadcrumbPageTextCase = "none"
+    @objc public static let FontBreadcrumbPageTextDecoration = "none"
+    @objc public static let FontBreadcrumbPageFontStyle = "normal"
     @objc public static let FontButtonMediumFontFamily = "Helvetica"
     @objc public static let FontButtonMediumFontWeight = "bold"
     @objc public static let FontButtonMediumTextCase = "none"

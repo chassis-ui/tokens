@@ -4,7 +4,7 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Sat, 14 Jun 2025 08:14:57 GMT
+// Generated on Sat, 14 Jun 2025 08:55:22 GMT
 // Chassis - Tokens v0.1.0
 // Copyright 2025 Ozgur Gunes
 // Licensed under MIT (https://github.com/ozgurgunes/chassis-tokens/blob/main/LICENSE)
@@ -1022,10 +1022,10 @@ public class {
     @objc public static let FontBadgeSmallFontSize = CGFloat(12)
     @objc public static let FontBadgeSmallLetterSpacing = CGFloat(0)
     @objc public static let FontBadgeSmallParagraphSpacing = CGFloat(0)
-    @objc public static let FontBreadcrumbLineHeight = CGFloat(24)
-    @objc public static let FontBreadcrumbFontSize = CGFloat(16)
-    @objc public static let FontBreadcrumbLetterSpacing = CGFloat(0)
-    @objc public static let FontBreadcrumbParagraphSpacing = CGFloat(0)
+    @objc public static let FontBreadcrumbPageLineHeight = CGFloat(24)
+    @objc public static let FontBreadcrumbPageFontSize = CGFloat(16)
+    @objc public static let FontBreadcrumbPageLetterSpacing = CGFloat(0)
+    @objc public static let FontBreadcrumbPageParagraphSpacing = CGFloat(0)
     @objc public static let FontButtonMediumLineHeight = CGFloat(24)
     @objc public static let FontButtonMediumFontSize = CGFloat(16)
     @objc public static let FontButtonMediumLetterSpacing = CGFloat(0)
