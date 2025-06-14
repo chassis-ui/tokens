@@ -22,7 +22,7 @@ export default function ({ brand, app, platform, theme, defaultTheme = true }) {
 
   return {
     preprocessors: ['cx/global'],
-    // log: { verbosity: 'default' }, // default, verbose, silent
+    // log: { verbosity: 'verbose' }, // default, verbose, silent
     platforms: {
       [platform]: {
         ...getPlatformSettings(brand, app, platform),
