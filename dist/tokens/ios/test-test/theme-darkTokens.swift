@@ -4,7 +4,7 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Sun, 15 Jun 2025 13:37:52 GMT
+// Generated on Mon, 16 Jun 2025 08:33:12 GMT
 // Chassis - Tokens v0.1.0
 // Copyright 2025 Ozgur Gunes
 // Licensed under MIT (https://github.com/ozgurgunes/chassis-tokens/blob/main/LICENSE)
@@ -1450,6 +1450,6 @@ public class {
     @objc public static let ShadowGlowSuccessColor = UIColor(red: 0.043, green: 0.541, blue: 0.043, alpha: 1)
     @objc public static let ShadowGlowWarningColor = UIColor(red: 0.600, green: 0.431, blue: 0.035, alpha: 1)
     @objc public static let ShadowGlowInfoColor = UIColor(red: 0.035, green: 0.510, blue: 0.580, alpha: 1)
-    @objc public static let ShadowBgBlurDefaultColor = UIColor(red: 0.729, green: 0.729, blue: 0.729, alpha: 0.5)
-    @objc public static let ShadowBgBlurAlternateColor = UIColor(red: 0.231, green: 0.231, blue: 0.231, alpha: 0.5)
+    @objc public static let BgBlurDefaultColor = UIColor(red: 0.729, green: 0.729, blue: 0.729, alpha: 0.5)
+    @objc public static let BgBlurAlternateColor = UIColor(red: 0.231, green: 0.231, blue: 0.231, alpha: 0.5)
 }

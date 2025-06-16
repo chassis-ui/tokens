@@ -4,7 +4,7 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Sun, 15 Jun 2025 13:37:48 GMT
+// Generated on Mon, 16 Jun 2025 08:33:08 GMT
 // Chassis - Tokens v0.1.0
 // Copyright 2025 Ozgur Gunes
 // Licensed under MIT (https://github.com/ozgurgunes/chassis-tokens/blob/main/LICENSE)
@@ -1356,6 +1356,6 @@ public class {
     @objc public static let ShadowGlowSuccessType = "dropShadow"
     @objc public static let ShadowGlowWarningType = "dropShadow"
     @objc public static let ShadowGlowInfoType = "dropShadow"
-    @objc public static let ShadowBgBlurDefaultType = "dropShadow"
-    @objc public static let ShadowBgBlurAlternateType = "dropShadow"
+    @objc public static let BgBlurDefaultType = "dropShadow"
+    @objc public static let BgBlurAlternateType = "dropShadow"
 }

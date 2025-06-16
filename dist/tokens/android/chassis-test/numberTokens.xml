@@ -2,13 +2,84 @@
 
 <!--
   Do not edit directly, this file was auto-generated.
-  Generated on Sun, 15 Jun 2025 13:37:49 GMT
+  Generated on Mon, 16 Jun 2025 08:33:09 GMT
   Chassis - Tokens v0.1.0
   Copyright 2025 Ozgur Gunes
   Licensed under MIT (https://github.com/ozgurgunes/chassis-tokens/blob/main/LICENSE)
 -->
 
 <resources>
+  <dimen name="dimension_base_0">0dp</dimen>
+  <dimen name="dimension_base_1">1dp</dimen>
+  <dimen name="dimension_base_2">2dp</dimen>
+  <dimen name="dimension_base_3">3dp</dimen>
+  <dimen name="dimension_base_4">4dp</dimen>
+  <dimen name="dimension_base_5">5dp</dimen>
+  <dimen name="dimension_base_6">6dp</dimen>
+  <dimen name="dimension_base_7">7dp</dimen>
+  <dimen name="dimension_base_8">8dp</dimen>
+  <dimen name="dimension_base_9">9dp</dimen>
+  <dimen name="dimension_base_10">10dp</dimen>
+  <dimen name="dimension_base_12">12dp</dimen>
+  <dimen name="dimension_base_14">14dp</dimen>
+  <dimen name="dimension_base_16">16dp</dimen>
+  <dimen name="dimension_base_18">18dp</dimen>
+  <dimen name="dimension_base_20">20dp</dimen>
+  <dimen name="dimension_base_22">22dp</dimen>
+  <dimen name="dimension_base_24">24dp</dimen>
+  <dimen name="dimension_base_26">26dp</dimen>
+  <dimen name="dimension_base_28">28dp</dimen>
+  <dimen name="dimension_base_30">30dp</dimen>
+  <dimen name="dimension_base_32">32dp</dimen>
+  <dimen name="dimension_base_36">36dp</dimen>
+  <dimen name="dimension_base_40">40dp</dimen>
+  <dimen name="dimension_base_44">44dp</dimen>
+  <dimen name="dimension_base_48">48dp</dimen>
+  <dimen name="dimension_base_52">52dp</dimen>
+  <dimen name="dimension_base_56">56dp</dimen>
+  <dimen name="dimension_base_60">60dp</dimen>
+  <dimen name="dimension_base_64">64dp</dimen>
+  <dimen name="dimension_base_68">68dp</dimen>
+  <dimen name="dimension_base_72">72dp</dimen>
+  <dimen name="dimension_base_76">76dp</dimen>
+  <dimen name="dimension_base_80">80dp</dimen>
+  <dimen name="dimension_base_88">88dp</dimen>
+  <dimen name="dimension_base_96">96dp</dimen>
+  <dimen name="dimension_base_104">104dp</dimen>
+  <dimen name="dimension_base_112">112dp</dimen>
+  <dimen name="dimension_base_120">120dp</dimen>
+  <dimen name="dimension_base_128">128dp</dimen>
+  <dimen name="dimension_base_136">136dp</dimen>
+  <dimen name="dimension_base_160">160dp</dimen>
+  <dimen name="dimension_base_192">192dp</dimen>
+  <dimen name="dimension_base_256">256dp</dimen>
+  <dimen name="dimension_base_320">320dp</dimen>
+  <dimen name="dimension_base_512">512dp</dimen>
+  <dimen name="dimension_base_1024">1024dp</dimen>
+  <dimen name="dimension_base_scale">1dp</dimen>
+  <dimen name="dimension_base_05">0.5dp</dimen>
+  <dimen name="dimension_base_d05">0.5dp</dimen>
+  <dimen name="dimension_base_d15">1.5dp</dimen>
+  <dimen name="dimension_base_d25">2.5dp</dimen>
+  <dimen name="dimension_base_n1">-1dp</dimen>
+  <dimen name="dimension_base_n2">-2dp</dimen>
+  <dimen name="dimension_base_n3">-3dp</dimen>
+  <dimen name="dimension_base_n4">-4dp</dimen>
+  <dimen name="dimension_base_n5">-5dp</dimen>
+  <dimen name="dimension_base_n6">-6dp</dimen>
+  <dimen name="dimension_base_n7">-7dp</dimen>
+  <dimen name="dimension_base_n8">-8dp</dimen>
+  <dimen name="dimension_base_n9">-9dp</dimen>
+  <dimen name="dimension_base_n10">-10dp</dimen>
+  <dimen name="dimension_base_n12">-12dp</dimen>
+  <dimen name="dimension_base_n14">-14dp</dimen>
+  <dimen name="dimension_base_n16">-16dp</dimen>
+  <dimen name="dimension_base_n18">-18dp</dimen>
+  <dimen name="dimension_base_n20">-20dp</dimen>
+  <dimen name="dimension_base_n24">-24dp</dimen>
+  <dimen name="dimension_base_nd05">-0.5dp</dimen>
+  <dimen name="dimension_base_nd15">-1.5dp</dimen>
+  <dimen name="dimension_base_nd25">-2.5dp</dimen>
   <dimen name="size_base_0">0dp</dimen>
   <dimen name="size_base_1">1dp</dimen>
   <dimen name="size_base_2">2dp</dimen>
@@ -2718,12 +2789,12 @@
   <dimen name="shadow_glow_info_spread">0dp</dimen>
   <dimen name="shadow_glow_info_offset_x">0dp</dimen>
   <dimen name="shadow_glow_info_offset_y">0dp</dimen>
-  <dimen name="shadow_bg_blur_default_blur">48dp</dimen>
-  <dimen name="shadow_bg_blur_default_spread">0dp</dimen>
-  <dimen name="shadow_bg_blur_default_offset_x">0dp</dimen>
-  <dimen name="shadow_bg_blur_default_offset_y">0dp</dimen>
-  <dimen name="shadow_bg_blur_alternate_blur">48dp</dimen>
-  <dimen name="shadow_bg_blur_alternate_spread">0dp</dimen>
-  <dimen name="shadow_bg_blur_alternate_offset_x">0dp</dimen>
-  <dimen name="shadow_bg_blur_alternate_offset_y">0dp</dimen>
+  <dimen name="bg_blur_default_blur">48dp</dimen>
+  <dimen name="bg_blur_default_spread">0dp</dimen>
+  <dimen name="bg_blur_default_offset_x">0dp</dimen>
+  <dimen name="bg_blur_default_offset_y">0dp</dimen>
+  <dimen name="bg_blur_alternate_blur">48dp</dimen>
+  <dimen name="bg_blur_alternate_spread">0dp</dimen>
+  <dimen name="bg_blur_alternate_offset_x">0dp</dimen>
+  <dimen name="bg_blur_alternate_offset_y">0dp</dimen>
 </resources>
