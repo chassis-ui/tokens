@@ -1,11 +1,12 @@
 [
   {
     "id": "95e65f2cc9a0c7a3b883f9b7db0b5deb8bd4271a",
-    "name": "default",
+    "name": "chassis",
     "selectedTokenSets": {
       "base/metric-px": "source",
       "base/metric-base": "source",
-      "base/brand-base": "enabled"
+      "base/brand-base": "enabled",
+      "brand-chassis/brand-base": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:302:172",
     "$figmaModeId": "302:0",
@@ -1408,12 +1409,12 @@
   },
   {
     "id": "eb50659f7aae0533f750bbb36334a0c1fecc93c3",
-    "name": "chassis",
+    "name": "test",
     "selectedTokenSets": {
       "base/metric-px": "source",
       "base/metric-base": "source",
       "base/brand-base": "enabled",
-      "brand-chassis/brand-base": "enabled"
+      "base/brand-test": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:302:172",
     "$figmaModeId": "302:1",
@@ -3987,14 +3988,15 @@
   },
   {
     "id": "7f6467f47d71c17ddf6d3e2eccead159671d9ac8",
-    "name": "default",
+    "name": "docs",
     "group": "app",
     "selectedTokenSets": {
       "base/metric-px": "enabled",
       "base/metric-base": "enabled",
       "base/brand-base": "source",
       "base/theme-base": "source",
-      "base/app-base": "enabled"
+      "base/app-base": "enabled",
+      "base/app-docs": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:302:173",
     "$figmaModeId": "302:2",
@@ -4952,7 +4954,7 @@
   },
   {
     "id": "43a15af07b39fa6b5be11ce8c41f769957f7f7f3",
-    "name": "docs",
+    "name": "test",
     "group": "app",
     "selectedTokenSets": {
       "base/metric-px": "enabled",
@@ -4960,7 +4962,7 @@
       "base/brand-base": "source",
       "base/theme-base": "source",
       "base/app-base": "enabled",
-      "base/app-docs": "enabled"
+      "base/app-test": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:302:173",
     "$figmaModeId": "302:3",
@@ -6211,7 +6213,7 @@
     "selectedTokenSets": {
       "base/metric-px": "source",
       "base/metric-base": "source",
-      "base/shadow-base": "enabled",
+      "base/effect-base": "enabled",
       "base/brand-base": "source",
       "base/theme-base": "enabled",
       "base/theme-light": "enabled"
@@ -7128,7 +7130,7 @@
     "selectedTokenSets": {
       "base/metric-px": "source",
       "base/metric-base": "source",
-      "base/shadow-base": "enabled",
+      "base/effect-base": "enabled",
       "base/brand-base": "source",
       "base/theme-base": "enabled",
       "base/theme-dark": "enabled"

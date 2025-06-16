@@ -53,33 +53,52 @@
         }
       }
     },
-    "card": {
-      "$type": "boxShadow",
-      "$value": "{shadow.elevation.default.20}"
-    },
-    "form-input": {
-      "$type": "boxShadow",
-      "$value": "{shadow.context.none}"
-    },
-    "nav-top": {
-      "$type": "boxShadow",
-      "$value": "{shadow.elevation.default.40}"
-    },
-    "modal": {
-      "$type": "boxShadow",
-      "$value": "{shadow.elevation.default.40}"
-    },
-    "popover": {
-      "$type": "boxShadow",
-      "$value": "{shadow.elevation.default.40}"
-    },
-    "section": {
-      "$type": "boxShadow",
-      "$value": "{shadow.elevation.default.20}"
-    },
-    "nav-left": {
-      "$type": "boxShadow",
-      "$value": "{shadow.elevation.default.30}"
+    "common": {
+      "card": {
+        "$type": "boxShadow",
+        "$value": "{shadow.elevation.default.20}"
+      },
+      "form-input": {
+        "$type": "boxShadow",
+        "$value": "{shadow.context.none}"
+      },
+      "nav-top": {
+        "$type": "boxShadow",
+        "$value": "{shadow.elevation.default.40}"
+      },
+      "modal": {
+        "$type": "boxShadow",
+        "$value": "{shadow.elevation.default.40}"
+      },
+      "popover": {
+        "$type": "boxShadow",
+        "$value": "{shadow.elevation.default.40}"
+      },
+      "section": {
+        "$type": "boxShadow",
+        "$value": "{shadow.elevation.default.20}"
+      },
+      "nav-left": {
+        "$type": "boxShadow",
+        "$value": [
+          {
+            "color": "{color.palette.black.t-20}",
+            "type": "dropShadow",
+            "x": "{size.base.5}",
+            "y": "{size.base.0}",
+            "blur": "{size.base.20}",
+            "spread": "{size.base.n5}"
+          },
+          {
+            "color": "{color.palette.black.t-10}",
+            "type": "dropShadow",
+            "x": "{size.base.d25}",
+            "y": "{size.base.0}",
+            "blur": "{size.base.10}",
+            "spread": "{size.base.nd25}"
+          }
+        ]
+      }
     },
     "elevation": {
       "default": {
@@ -3560,29 +3579,29 @@
           "spread": "{size.base.0}"
         }
       }
+    }
+  },
+  "bg-blur": {
+    "default": {
+      "$type": "boxShadow",
+      "$value": {
+        "color": "rgba({color.palette.neutral.30}, {opacity.context.fg-subtle})",
+        "type": "dropShadow",
+        "x": "{size.base.0}",
+        "y": "{size.base.0}",
+        "blur": "{size.base.48}",
+        "spread": "{size.base.0}"
+      }
     },
-    "bg-blur": {
-      "default": {
-        "$type": "boxShadow",
-        "$value": {
-          "color": "rgba({color.palette.neutral.30}, {opacity.context.fg-subtle})",
-          "type": "dropShadow",
-          "x": "{size.base.0}",
-          "y": "{size.base.0}",
-          "blur": "{size.base.48}",
-          "spread": "{size.base.0}"
-        }
-      },
-      "alternate": {
-        "$type": "boxShadow",
-        "$value": {
-          "color": "rgba({color.palette.neutral.70}, {opacity.context.fg-subtle})",
-          "type": "dropShadow",
-          "x": "{size.base.0}",
-          "y": "{size.base.0}",
-          "blur": "{size.base.48}",
-          "spread": "{size.base.0}"
-        }
+    "alternate": {
+      "$type": "boxShadow",
+      "$value": {
+        "color": "rgba({color.palette.neutral.70}, {opacity.context.fg-subtle})",
+        "type": "dropShadow",
+        "x": "{size.base.0}",
+        "y": "{size.base.0}",
+        "blur": "{size.base.48}",
+        "spread": "{size.base.0}"
       }
     }
   }
