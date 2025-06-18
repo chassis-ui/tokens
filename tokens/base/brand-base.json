@@ -8191,31 +8191,31 @@
     "base": {
       "xsmall": {
         "$type": "borderRadius",
-        "$value": "{size.base.2}"
+        "$value": "{dimension.base.2}"
       },
       "small": {
         "$type": "borderRadius",
-        "$value": "{size.base.4}"
+        "$value": "{dimension.base.4}"
       },
       "medium": {
         "$type": "borderRadius",
-        "$value": "{size.base.8}"
+        "$value": "{dimension.base.8}"
       },
       "large": {
         "$type": "borderRadius",
-        "$value": "{size.base.12}"
+        "$value": "{dimension.base.12}"
       },
       "xlarge": {
         "$type": "borderRadius",
-        "$value": "{size.base.16}"
+        "$value": "{dimension.base.16}"
       },
       "2xlarge": {
         "$type": "borderRadius",
-        "$value": "{size.base.20}"
+        "$value": "{dimension.base.20}"
       },
       "3xlarge": {
         "$type": "borderRadius",
-        "$value": "{size.base.24}"
+        "$value": "{dimension.base.24}"
       }
     }
   }
