@@ -2,7 +2,7 @@
 
 <!--
   Do not edit directly, this file was auto-generated.
-  Generated on Mon, 16 Jun 2025 08:33:09 GMT
+  Generated on Fri, 27 Jun 2025 07:12:15 GMT
   Chassis - Tokens v0.1.0
   Copyright 2025 Ozgur Gunes
   Licensed under MIT (https://github.com/ozgurgunes/chassis-tokens/blob/main/LICENSE)
@@ -167,6 +167,8 @@
   <dimen name="size_accordion_medium_indicator">24dp</dimen>
   <dimen name="size_accordion_large_indicator">28dp</dimen>
   <dimen name="size_accordion_small_indicator">20dp</dimen>
+  <dimen name="size_alert_large_icon">40dp</dimen>
+  <dimen name="size_alert_small_icon">40dp</dimen>
   <dimen name="size_badge_medium_main">24dp</dimen>
   <dimen name="size_badge_medium_icon">16dp</dimen>
   <dimen name="size_badge_large_main">28dp</dimen>
@@ -203,6 +205,7 @@
   <dimen name="size_modal_window_large_h">600dp</dimen>
   <dimen name="size_modal_window_medium_h">480dp</dimen>
   <dimen name="size_modal_window_small_h">640dp</dimen>
+  <dimen name="size_notification_icon">28dp</dimen>
   <dimen name="size_nav_left_width">256dp</dimen>
   <dimen name="size_nav_left_width_expanded">256dp</dimen>
   <dimen name="size_nav_left_wdith_collapsed">72dp</dimen>
@@ -294,6 +297,12 @@
   <dimen name="space_accordion_small_body_padding_s">44dp</dimen>
   <dimen name="space_accordion_small_body_padding_e">12dp</dimen>
   <dimen name="space_accordion_small_gap">12dp</dimen>
+  <dimen name="space_alert_large_padding_y">32dp</dimen>
+  <dimen name="space_alert_large_padding_x">32dp</dimen>
+  <dimen name="space_alert_large_gap">24dp</dimen>
+  <dimen name="space_alert_small_padding_y">16dp</dimen>
+  <dimen name="space_alert_small_padding_x">16dp</dimen>
+  <dimen name="space_alert_small_gap">16dp</dimen>
   <dimen name="space_badge_medium_padding_y">2dp</dimen>
   <dimen name="space_badge_medium_padding_x">4dp</dimen>
   <dimen name="space_badge_medium_gap">4dp</dimen>
@@ -2043,21 +2052,21 @@
   <color name="color_form_input_focus_border">#ff00a4cc</color>
   <color name="color_form_input_focus_fg_active">#ff1c2021</color>
   <color name="color_form_input_focus_fg_inactive">#801c2021</color>
-  <color name="color_form_input_focus_caret">#801c2021</color>
+  <color name="color_form_input_focus_caret">#ff1c2021</color>
   <color name="color_form_input_focus_help">#ff00a4cc</color>
   <color name="color_form_input_error_bg_regular">#ffffffff</color>
   <color name="color_form_input_error_bg_floating">#fff5f6f6</color>
   <color name="color_form_input_error_border">#fff52314</color>
   <color name="color_form_input_error_fg_active">#ff1c2021</color>
   <color name="color_form_input_error_fg_inactive">#801c2021</color>
-  <color name="color_form_input_error_caret">#801c2021</color>
+  <color name="color_form_input_error_caret">#ff1c2021</color>
   <color name="color_form_input_error_help">#ffac190e</color>
   <color name="color_form_input_success_bg_regular">#ffffffff</color>
   <color name="color_form_input_success_bg_floating">#fff5f6f6</color>
   <color name="color_form_input_success_border">#ff10c263</color>
   <color name="color_form_input_success_fg_active">#ff1c2021</color>
   <color name="color_form_input_success_fg_inactive">#801c2021</color>
-  <color name="color_form_input_success_caret">#801c2021</color>
+  <color name="color_form_input_success_caret">#ff1c2021</color>
   <color name="color_form_input_success_help">#ff0b8845</color>
   <color name="color_form_input_disabled_bg_regular">#ffd4d9da</color>
   <color name="color_form_input_disabled_bg_floating">#ffd4d9da</color>
@@ -3494,6 +3503,42 @@
   <string name="font_accordion_small_body_text_case">none</string>
   <string name="font_accordion_small_body_text_decoration">none</string>
   <string name="font_accordion_small_body_font_style">normal</string>
+  <string name="font_alert_large_title_font_family">Inter</string>
+  <string name="font_alert_large_title_font_weight">semi-bold</string>
+  <dimen name="font_alert_large_title_line_height">32sp</dimen>
+  <dimen name="font_alert_large_title_font_size">22sp</dimen>
+  <integer name="font_alert_large_title_letter_spacing">0</integer>
+  <dimen name="font_alert_large_title_paragraph_spacing">0sp</dimen>
+  <string name="font_alert_large_title_text_case">none</string>
+  <string name="font_alert_large_title_text_decoration">none</string>
+  <string name="font_alert_large_title_font_style">normal</string>
+  <string name="font_alert_large_body_font_family">Inter</string>
+  <string name="font_alert_large_body_font_weight">regular</string>
+  <dimen name="font_alert_large_body_line_height">28sp</dimen>
+  <dimen name="font_alert_large_body_font_size">19sp</dimen>
+  <integer name="font_alert_large_body_letter_spacing">0</integer>
+  <dimen name="font_alert_large_body_paragraph_spacing">0sp</dimen>
+  <string name="font_alert_large_body_text_case">none</string>
+  <string name="font_alert_large_body_text_decoration">none</string>
+  <string name="font_alert_large_body_font_style">normal</string>
+  <string name="font_alert_small_title_font_family">Inter</string>
+  <string name="font_alert_small_title_font_weight">semi-bold</string>
+  <dimen name="font_alert_small_title_line_height">28sp</dimen>
+  <dimen name="font_alert_small_title_font_size">19sp</dimen>
+  <integer name="font_alert_small_title_letter_spacing">0</integer>
+  <dimen name="font_alert_small_title_paragraph_spacing">0sp</dimen>
+  <string name="font_alert_small_title_text_case">none</string>
+  <string name="font_alert_small_title_text_decoration">none</string>
+  <string name="font_alert_small_title_font_style">normal</string>
+  <string name="font_alert_small_body_font_family">Inter</string>
+  <string name="font_alert_small_body_font_weight">regular</string>
+  <dimen name="font_alert_small_body_line_height">24sp</dimen>
+  <dimen name="font_alert_small_body_font_size">16sp</dimen>
+  <integer name="font_alert_small_body_letter_spacing">0</integer>
+  <dimen name="font_alert_small_body_paragraph_spacing">0sp</dimen>
+  <string name="font_alert_small_body_text_case">none</string>
+  <string name="font_alert_small_body_text_decoration">none</string>
+  <string name="font_alert_small_body_font_style">normal</string>
   <string name="font_assist_medium_font_family">Inter</string>
   <string name="font_assist_medium_font_weight">regular</string>
   <dimen name="font_assist_medium_line_height">24sp</dimen>

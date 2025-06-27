@@ -123,7 +123,7 @@ function resolveContextTypographyValue(token, dictionary) {
     referenceLh && referenceLh.$type === 'lineHeight'
       ? `var(--#{$prefix}line-height-${referenceLh.path[2]}-${referenceLh.path[3]})`
       : referenceLh.$value ? referenceLh.$value
-      : referenceLh.endsWith("%") ? parseFloat(referenceLh) / 100
+      : referenceLh.endsWith("%") ? parseFloat(referenceLh) / 100 + "em"
       : referenceLh
 
   const originals = {
@@ -261,7 +261,7 @@ function tokenToValue(token, dictionary, options) {
       { usesDtcg },
     )
     const lh = (parseFloat(token.$value) / parseFloat(fs))
-    return removeTrailingZeros(lh.toFixed(3))
+    return removeTrailingZeros(lh.toFixed(3)) + "em"
   } else if (
     token.$type === 'asset'
   ) {

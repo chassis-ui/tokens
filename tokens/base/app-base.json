@@ -1730,6 +1730,24 @@
         "$value": "{font.text.small.normal}"
       }
     },
+    "alert": {
+      "large-title": {
+        "$type": "typography",
+        "$value": "{font.text.xlarge.strong}"
+      },
+      "large-body": {
+        "$type": "typography",
+        "$value": "{font.text.large.normal}"
+      },
+      "small-title": {
+        "$type": "typography",
+        "$value": "{font.text.large.strong}"
+      },
+      "small-body": {
+        "$type": "typography",
+        "$value": "{font.text.medium.normal}"
+      }
+    },
     "assist": {
       "medium": {
         "$type": "typography",
@@ -2714,7 +2732,7 @@
         },
         "caret": {
           "$type": "color",
-          "$value": "{color.context.default.fg-subtle}"
+          "$value": "{color.context.default.fg-main}"
         },
         "help": {
           "$type": "color",
@@ -2744,7 +2762,7 @@
         },
         "caret": {
           "$type": "color",
-          "$value": "{color.context.default.fg-subtle}"
+          "$value": "{color.context.default.fg-main}"
         },
         "help": {
           "$type": "color",
@@ -2774,7 +2792,7 @@
         },
         "caret": {
           "$type": "color",
-          "$value": "{color.context.default.fg-subtle}"
+          "$value": "{color.context.default.fg-main}"
         },
         "help": {
           "$type": "color",
@@ -3052,6 +3070,16 @@
         "$value": "{size.base.20}"
       }
     },
+    "alert": {
+      "large-icon": {
+        "$type": "sizing",
+        "$value": "{size.base.40}"
+      },
+      "small-icon": {
+        "$type": "sizing",
+        "$value": "{size.base.40}"
+      }
+    },
     "badge": {
       "medium-main": {
         "$type": "sizing",
@@ -3206,6 +3234,12 @@
       "window-small-h": {
         "$type": "sizing",
         "$value": "640"
+      }
+    },
+    "notification": {
+      "icon": {
+        "$type": "sizing",
+        "$value": "{size.base.28}"
       }
     },
     "nav-left": {
@@ -3382,6 +3416,32 @@
       "small-gap": {
         "$type": "spacing",
         "$value": "{space.base.12}"
+      }
+    },
+    "alert": {
+      "large-padding-y": {
+        "$type": "spacing",
+        "$value": "{space.base.32}"
+      },
+      "large-padding-x": {
+        "$type": "spacing",
+        "$value": "{space.base.32}"
+      },
+      "large-gap": {
+        "$type": "spacing",
+        "$value": "{space.base.24}"
+      },
+      "small-padding-y": {
+        "$type": "spacing",
+        "$value": "{space.base.16}"
+      },
+      "small-padding-x": {
+        "$type": "spacing",
+        "$value": "{space.base.16}"
+      },
+      "small-gap": {
+        "$type": "spacing",
+        "$value": "{space.base.16}"
       }
     },
     "badge": {

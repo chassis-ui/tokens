@@ -4,7 +4,7 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Mon, 16 Jun 2025 08:33:09 GMT
+// Generated on Fri, 27 Jun 2025 07:12:14 GMT
 // Chassis - Tokens v0.1.0
 // Copyright 2025 Ozgur Gunes
 // Licensed under MIT (https://github.com/ozgurgunes/chassis-tokens/blob/main/LICENSE)
@@ -928,21 +928,21 @@ public class {
     @objc public static let ColorFormInputFocusBorder = UIColor(red: 0.000, green: 0.643, blue: 0.800, alpha: 1)
     @objc public static let ColorFormInputFocusFgActive = UIColor(red: 0.914, green: 0.925, blue: 0.929, alpha: 1)
     @objc public static let ColorFormInputFocusFgInactive = UIColor(red: 0.914, green: 0.925, blue: 0.929, alpha: 0.5)
-    @objc public static let ColorFormInputFocusCaret = UIColor(red: 0.914, green: 0.925, blue: 0.929, alpha: 0.5)
+    @objc public static let ColorFormInputFocusCaret = UIColor(red: 0.914, green: 0.925, blue: 0.929, alpha: 1)
     @objc public static let ColorFormInputFocusHelp = UIColor(red: 0.000, green: 0.643, blue: 0.800, alpha: 1)
     @objc public static let ColorFormInputErrorBgRegular = UIColor(red: 0.110, green: 0.125, blue: 0.129, alpha: 1)
     @objc public static let ColorFormInputErrorBgFloating = UIColor(red: 0.067, green: 0.075, blue: 0.078, alpha: 1)
     @objc public static let ColorFormInputErrorBorder = UIColor(red: 0.961, green: 0.137, blue: 0.078, alpha: 1)
     @objc public static let ColorFormInputErrorFgActive = UIColor(red: 0.914, green: 0.925, blue: 0.929, alpha: 1)
     @objc public static let ColorFormInputErrorFgInactive = UIColor(red: 0.914, green: 0.925, blue: 0.929, alpha: 0.5)
-    @objc public static let ColorFormInputErrorCaret = UIColor(red: 0.914, green: 0.925, blue: 0.929, alpha: 0.5)
+    @objc public static let ColorFormInputErrorCaret = UIColor(red: 0.914, green: 0.925, blue: 0.929, alpha: 1)
     @objc public static let ColorFormInputErrorHelp = UIColor(red: 0.973, green: 0.353, blue: 0.310, alpha: 1)
     @objc public static let ColorFormInputSuccessBgRegular = UIColor(red: 0.110, green: 0.125, blue: 0.129, alpha: 1)
     @objc public static let ColorFormInputSuccessBgFloating = UIColor(red: 0.067, green: 0.075, blue: 0.078, alpha: 1)
     @objc public static let ColorFormInputSuccessBorder = UIColor(red: 0.063, green: 0.761, blue: 0.388, alpha: 1)
     @objc public static let ColorFormInputSuccessFgActive = UIColor(red: 0.914, green: 0.925, blue: 0.929, alpha: 1)
     @objc public static let ColorFormInputSuccessFgInactive = UIColor(red: 0.914, green: 0.925, blue: 0.929, alpha: 0.5)
-    @objc public static let ColorFormInputSuccessCaret = UIColor(red: 0.914, green: 0.925, blue: 0.929, alpha: 0.5)
+    @objc public static let ColorFormInputSuccessCaret = UIColor(red: 0.914, green: 0.925, blue: 0.929, alpha: 1)
     @objc public static let ColorFormInputSuccessHelp = UIColor(red: 0.298, green: 0.820, blue: 0.541, alpha: 1)
     @objc public static let ColorFormInputDisabledBgRegular = UIColor(red: 0.153, green: 0.176, blue: 0.184, alpha: 1)
     @objc public static let ColorFormInputDisabledBgFloating = UIColor(red: 0.153, green: 0.176, blue: 0.184, alpha: 1)

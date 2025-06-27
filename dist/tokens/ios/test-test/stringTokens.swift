@@ -4,7 +4,7 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Mon, 16 Jun 2025 08:33:11 GMT
+// Generated on Fri, 27 Jun 2025 07:12:17 GMT
 // Chassis - Tokens v0.1.0
 // Copyright 2025 Ozgur Gunes
 // Licensed under MIT (https://github.com/ozgurgunes/chassis-tokens/blob/main/LICENSE)
@@ -733,6 +733,26 @@ public class {
     @objc public static let FontAccordionSmallBodyTextCase = "none"
     @objc public static let FontAccordionSmallBodyTextDecoration = "none"
     @objc public static let FontAccordionSmallBodyFontStyle = "normal"
+    @objc public static let FontAlertLargeTitleFontFamily = "Helvetica"
+    @objc public static let FontAlertLargeTitleFontWeight = "bold"
+    @objc public static let FontAlertLargeTitleTextCase = "none"
+    @objc public static let FontAlertLargeTitleTextDecoration = "none"
+    @objc public static let FontAlertLargeTitleFontStyle = "normal"
+    @objc public static let FontAlertLargeBodyFontFamily = "Helvetica"
+    @objc public static let FontAlertLargeBodyFontWeight = "regular"
+    @objc public static let FontAlertLargeBodyTextCase = "none"
+    @objc public static let FontAlertLargeBodyTextDecoration = "none"
+    @objc public static let FontAlertLargeBodyFontStyle = "normal"
+    @objc public static let FontAlertSmallTitleFontFamily = "Helvetica"
+    @objc public static let FontAlertSmallTitleFontWeight = "bold"
+    @objc public static let FontAlertSmallTitleTextCase = "none"
+    @objc public static let FontAlertSmallTitleTextDecoration = "none"
+    @objc public static let FontAlertSmallTitleFontStyle = "normal"
+    @objc public static let FontAlertSmallBodyFontFamily = "Helvetica"
+    @objc public static let FontAlertSmallBodyFontWeight = "regular"
+    @objc public static let FontAlertSmallBodyTextCase = "none"
+    @objc public static let FontAlertSmallBodyTextDecoration = "none"
+    @objc public static let FontAlertSmallBodyFontStyle = "normal"
     @objc public static let FontAssistMediumFontFamily = "Helvetica"
     @objc public static let FontAssistMediumFontWeight = "regular"
     @objc public static let FontAssistMediumTextCase = "none"

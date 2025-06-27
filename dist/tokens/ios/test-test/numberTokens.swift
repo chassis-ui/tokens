@@ -4,7 +4,7 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Mon, 16 Jun 2025 08:33:11 GMT
+// Generated on Fri, 27 Jun 2025 07:12:17 GMT
 // Chassis - Tokens v0.1.0
 // Copyright 2025 Ozgur Gunes
 // Licensed under MIT (https://github.com/ozgurgunes/chassis-tokens/blob/main/LICENSE)
@@ -171,6 +171,8 @@ public class {
     @objc public static let SizeAccordionMediumIndicator = CGFloat(24)
     @objc public static let SizeAccordionLargeIndicator = CGFloat(28)
     @objc public static let SizeAccordionSmallIndicator = CGFloat(20)
+    @objc public static let SizeAlertLargeIcon = CGFloat(40)
+    @objc public static let SizeAlertSmallIcon = CGFloat(40)
     @objc public static let SizeBadgeMediumMain = CGFloat(24)
     @objc public static let SizeBadgeMediumIcon = CGFloat(16)
     @objc public static let SizeBadgeLargeMain = CGFloat(28)
@@ -207,6 +209,7 @@ public class {
     @objc public static let SizeModalWindowLargeH = CGFloat(600)
     @objc public static let SizeModalWindowMediumH = CGFloat(480)
     @objc public static let SizeModalWindowSmallH = CGFloat(640)
+    @objc public static let SizeNotificationIcon = CGFloat(28)
     @objc public static let SizeNavLeftWidth = CGFloat(256)
     @objc public static let SizeNavLeftWidthExpanded = CGFloat(256)
     @objc public static let SizeNavLeftWdithCollapsed = CGFloat(72)
@@ -298,6 +301,12 @@ public class {
     @objc public static let SpaceAccordionSmallBodyPaddingS = CGFloat(44)
     @objc public static let SpaceAccordionSmallBodyPaddingE = CGFloat(12)
     @objc public static let SpaceAccordionSmallGap = CGFloat(12)
+    @objc public static let SpaceAlertLargePaddingY = CGFloat(32)
+    @objc public static let SpaceAlertLargePaddingX = CGFloat(32)
+    @objc public static let SpaceAlertLargeGap = CGFloat(24)
+    @objc public static let SpaceAlertSmallPaddingY = CGFloat(16)
+    @objc public static let SpaceAlertSmallPaddingX = CGFloat(16)
+    @objc public static let SpaceAlertSmallGap = CGFloat(16)
     @objc public static let SpaceBadgeMediumPaddingY = CGFloat(2)
     @objc public static let SpaceBadgeMediumPaddingX = CGFloat(4)
     @objc public static let SpaceBadgeMediumGap = CGFloat(4)
@@ -1069,6 +1078,22 @@ public class {
     @objc public static let FontAccordionSmallBodyFontSize = CGFloat(14)
     @objc public static let FontAccordionSmallBodyLetterSpacing = CGFloat(0)
     @objc public static let FontAccordionSmallBodyParagraphSpacing = CGFloat(0)
+    @objc public static let FontAlertLargeTitleLineHeight = CGFloat(32)
+    @objc public static let FontAlertLargeTitleFontSize = CGFloat(22)
+    @objc public static let FontAlertLargeTitleLetterSpacing = CGFloat(0)
+    @objc public static let FontAlertLargeTitleParagraphSpacing = CGFloat(0)
+    @objc public static let FontAlertLargeBodyLineHeight = CGFloat(28)
+    @objc public static let FontAlertLargeBodyFontSize = CGFloat(19)
+    @objc public static let FontAlertLargeBodyLetterSpacing = CGFloat(0)
+    @objc public static let FontAlertLargeBodyParagraphSpacing = CGFloat(0)
+    @objc public static let FontAlertSmallTitleLineHeight = CGFloat(28)
+    @objc public static let FontAlertSmallTitleFontSize = CGFloat(19)
+    @objc public static let FontAlertSmallTitleLetterSpacing = CGFloat(0)
+    @objc public static let FontAlertSmallTitleParagraphSpacing = CGFloat(0)
+    @objc public static let FontAlertSmallBodyLineHeight = CGFloat(24)
+    @objc public static let FontAlertSmallBodyFontSize = CGFloat(16)
+    @objc public static let FontAlertSmallBodyLetterSpacing = CGFloat(0)
+    @objc public static let FontAlertSmallBodyParagraphSpacing = CGFloat(0)
     @objc public static let FontAssistMediumLineHeight = CGFloat(24)
     @objc public static let FontAssistMediumFontSize = CGFloat(16)
     @objc public static let FontAssistMediumLetterSpacing = CGFloat(0)

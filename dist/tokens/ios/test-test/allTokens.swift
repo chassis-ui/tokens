@@ -4,7 +4,7 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Mon, 16 Jun 2025 08:33:11 GMT
+// Generated on Fri, 27 Jun 2025 07:12:17 GMT
 // Chassis - Tokens v0.1.0
 // Copyright 2025 Ozgur Gunes
 // Licensed under MIT (https://github.com/ozgurgunes/chassis-tokens/blob/main/LICENSE)
@@ -171,6 +171,8 @@ public class {
     @objc public static let SizeAccordionMediumIndicator = CGFloat(24)
     @objc public static let SizeAccordionLargeIndicator = CGFloat(28)
     @objc public static let SizeAccordionSmallIndicator = CGFloat(20)
+    @objc public static let SizeAlertLargeIcon = CGFloat(40)
+    @objc public static let SizeAlertSmallIcon = CGFloat(40)
     @objc public static let SizeBadgeMediumMain = CGFloat(24)
     @objc public static let SizeBadgeMediumIcon = CGFloat(16)
     @objc public static let SizeBadgeLargeMain = CGFloat(28)
@@ -207,6 +209,7 @@ public class {
     @objc public static let SizeModalWindowLargeH = CGFloat(600)
     @objc public static let SizeModalWindowMediumH = CGFloat(480)
     @objc public static let SizeModalWindowSmallH = CGFloat(640)
+    @objc public static let SizeNotificationIcon = CGFloat(28)
     @objc public static let SizeNavLeftWidth = CGFloat(256)
     @objc public static let SizeNavLeftWidthExpanded = CGFloat(256)
     @objc public static let SizeNavLeftWdithCollapsed = CGFloat(72)
@@ -298,6 +301,12 @@ public class {
     @objc public static let SpaceAccordionSmallBodyPaddingS = CGFloat(44)
     @objc public static let SpaceAccordionSmallBodyPaddingE = CGFloat(12)
     @objc public static let SpaceAccordionSmallGap = CGFloat(12)
+    @objc public static let SpaceAlertLargePaddingY = CGFloat(32)
+    @objc public static let SpaceAlertLargePaddingX = CGFloat(32)
+    @objc public static let SpaceAlertLargeGap = CGFloat(24)
+    @objc public static let SpaceAlertSmallPaddingY = CGFloat(16)
+    @objc public static let SpaceAlertSmallPaddingX = CGFloat(16)
+    @objc public static let SpaceAlertSmallGap = CGFloat(16)
     @objc public static let SpaceBadgeMediumPaddingY = CGFloat(2)
     @objc public static let SpaceBadgeMediumPaddingX = CGFloat(4)
     @objc public static let SpaceBadgeMediumGap = CGFloat(4)
@@ -2047,21 +2056,21 @@ public class {
     @objc public static let ColorFormInputFocusBorder = UIColor(red: 0.071, green: 0.451, blue: 0.878, alpha: 1)
     @objc public static let ColorFormInputFocusFgActive = UIColor(red: 0.114, green: 0.114, blue: 0.114, alpha: 1)
     @objc public static let ColorFormInputFocusFgInactive = UIColor(red: 0.114, green: 0.114, blue: 0.114, alpha: 0.5)
-    @objc public static let ColorFormInputFocusCaret = UIColor(red: 0.114, green: 0.114, blue: 0.114, alpha: 0.5)
+    @objc public static let ColorFormInputFocusCaret = UIColor(red: 0.114, green: 0.114, blue: 0.114, alpha: 1)
     @objc public static let ColorFormInputFocusHelp = UIColor(red: 0.071, green: 0.451, blue: 0.878, alpha: 1)
     @objc public static let ColorFormInputErrorBgRegular = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1)
     @objc public static let ColorFormInputErrorBgFloating = UIColor(red: 0.961, green: 0.961, blue: 0.961, alpha: 1)
     @objc public static let ColorFormInputErrorBorder = UIColor(red: 0.878, green: 0.176, blue: 0.071, alpha: 1)
     @objc public static let ColorFormInputErrorFgActive = UIColor(red: 0.114, green: 0.114, blue: 0.114, alpha: 1)
     @objc public static let ColorFormInputErrorFgInactive = UIColor(red: 0.114, green: 0.114, blue: 0.114, alpha: 0.5)
-    @objc public static let ColorFormInputErrorCaret = UIColor(red: 0.114, green: 0.114, blue: 0.114, alpha: 0.5)
+    @objc public static let ColorFormInputErrorCaret = UIColor(red: 0.114, green: 0.114, blue: 0.114, alpha: 1)
     @objc public static let ColorFormInputErrorHelp = UIColor(red: 0.616, green: 0.125, blue: 0.051, alpha: 1)
     @objc public static let ColorFormInputSuccessBgRegular = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1)
     @objc public static let ColorFormInputSuccessBgFloating = UIColor(red: 0.961, green: 0.961, blue: 0.961, alpha: 1)
     @objc public static let ColorFormInputSuccessBorder = UIColor(red: 0.043, green: 0.541, blue: 0.043, alpha: 1)
     @objc public static let ColorFormInputSuccessFgActive = UIColor(red: 0.114, green: 0.114, blue: 0.114, alpha: 1)
     @objc public static let ColorFormInputSuccessFgInactive = UIColor(red: 0.114, green: 0.114, blue: 0.114, alpha: 0.5)
-    @objc public static let ColorFormInputSuccessCaret = UIColor(red: 0.114, green: 0.114, blue: 0.114, alpha: 0.5)
+    @objc public static let ColorFormInputSuccessCaret = UIColor(red: 0.114, green: 0.114, blue: 0.114, alpha: 1)
     @objc public static let ColorFormInputSuccessHelp = UIColor(red: 0.031, green: 0.380, blue: 0.031, alpha: 1)
     @objc public static let ColorFormInputDisabledBgRegular = UIColor(red: 0.839, green: 0.839, blue: 0.839, alpha: 1)
     @objc public static let ColorFormInputDisabledBgFloating = UIColor(red: 0.839, green: 0.839, blue: 0.839, alpha: 1)
@@ -3498,6 +3507,42 @@ public class {
     @objc public static let FontAccordionSmallBodyTextCase = "none"
     @objc public static let FontAccordionSmallBodyTextDecoration = "none"
     @objc public static let FontAccordionSmallBodyFontStyle = "normal"
+    @objc public static let FontAlertLargeTitleFontFamily = "Helvetica"
+    @objc public static let FontAlertLargeTitleFontWeight = "bold"
+    @objc public static let FontAlertLargeTitleLineHeight = CGFloat(32)
+    @objc public static let FontAlertLargeTitleFontSize = CGFloat(22)
+    @objc public static let FontAlertLargeTitleLetterSpacing = CGFloat(0)
+    @objc public static let FontAlertLargeTitleParagraphSpacing = CGFloat(0)
+    @objc public static let FontAlertLargeTitleTextCase = "none"
+    @objc public static let FontAlertLargeTitleTextDecoration = "none"
+    @objc public static let FontAlertLargeTitleFontStyle = "normal"
+    @objc public static let FontAlertLargeBodyFontFamily = "Helvetica"
+    @objc public static let FontAlertLargeBodyFontWeight = "regular"
+    @objc public static let FontAlertLargeBodyLineHeight = CGFloat(28)
+    @objc public static let FontAlertLargeBodyFontSize = CGFloat(19)
+    @objc public static let FontAlertLargeBodyLetterSpacing = CGFloat(0)
+    @objc public static let FontAlertLargeBodyParagraphSpacing = CGFloat(0)
+    @objc public static let FontAlertLargeBodyTextCase = "none"
+    @objc public static let FontAlertLargeBodyTextDecoration = "none"
+    @objc public static let FontAlertLargeBodyFontStyle = "normal"
+    @objc public static let FontAlertSmallTitleFontFamily = "Helvetica"
+    @objc public static let FontAlertSmallTitleFontWeight = "bold"
+    @objc public static let FontAlertSmallTitleLineHeight = CGFloat(28)
+    @objc public static let FontAlertSmallTitleFontSize = CGFloat(19)
+    @objc public static let FontAlertSmallTitleLetterSpacing = CGFloat(0)
+    @objc public static let FontAlertSmallTitleParagraphSpacing = CGFloat(0)
+    @objc public static let FontAlertSmallTitleTextCase = "none"
+    @objc public static let FontAlertSmallTitleTextDecoration = "none"
+    @objc public static let FontAlertSmallTitleFontStyle = "normal"
+    @objc public static let FontAlertSmallBodyFontFamily = "Helvetica"
+    @objc public static let FontAlertSmallBodyFontWeight = "regular"
+    @objc public static let FontAlertSmallBodyLineHeight = CGFloat(24)
+    @objc public static let FontAlertSmallBodyFontSize = CGFloat(16)
+    @objc public static let FontAlertSmallBodyLetterSpacing = CGFloat(0)
+    @objc public static let FontAlertSmallBodyParagraphSpacing = CGFloat(0)
+    @objc public static let FontAlertSmallBodyTextCase = "none"
+    @objc public static let FontAlertSmallBodyTextDecoration = "none"
+    @objc public static let FontAlertSmallBodyFontStyle = "normal"
     @objc public static let FontAssistMediumFontFamily = "Helvetica"
     @objc public static let FontAssistMediumFontWeight = "regular"
     @objc public static let FontAssistMediumLineHeight = CGFloat(24)
