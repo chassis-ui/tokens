@@ -4,7 +4,7 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Fri, 27 Jun 2025 07:12:16 GMT
+// Generated on Sun, 29 Jun 2025 09:25:58 GMT
 // Chassis - Tokens v0.1.0
 // Copyright 2025 Ozgur Gunes
 // Licensed under MIT (https://github.com/ozgurgunes/chassis-tokens/blob/main/LICENSE)
@@ -177,16 +177,22 @@ $cx-size-badge-large-main: 1.75rem !default;
 $cx-size-badge-large-icon: 1.25rem !default;
 $cx-size-badge-small-main: 1.25rem !default;
 $cx-size-badge-small-icon: 0.75rem !default;
+$cx-size-button-medium-main: 2.5rem !default;
 $cx-size-button-medium-icon: 1.5rem !default;
 $cx-size-button-medium-caret: 1.25rem !default;
+$cx-size-button-large-main: 3rem !default;
 $cx-size-button-large-icon: 1.75rem !default;
 $cx-size-button-large-caret: 1.5rem !default;
+$cx-size-button-small-main: 2rem !default;
 $cx-size-button-small-icon: 1.25rem !default;
 $cx-size-button-small-caret: 1rem !default;
+$cx-size-chip-medium-main: 2rem !default;
 $cx-size-chip-medium-icon: 1.25rem !default;
 $cx-size-chip-medium-avatar: 1.5rem !default;
+$cx-size-chip-large-main: 2.5rem !default;
 $cx-size-chip-large-icon: 1.5rem !default;
 $cx-size-chip-large-avatar: 2rem !default;
+$cx-size-chip-small-main: 1.5rem !default;
 $cx-size-chip-small-icon: 1rem !default;
 $cx-size-chip-small-avatar: 1.25rem !default;
 $cx-size-date-picker-day-width: 2.5rem !default;
@@ -307,43 +313,40 @@ $cx-space-alert-small-padding-x: 1rem !default;
 $cx-space-alert-small-gap: 1rem !default;
 $cx-space-badge-medium-padding-y: 0.125rem !default;
 $cx-space-badge-medium-padding-x: 0.25rem !default;
-$cx-space-badge-medium-gap: 0.25rem !default;
+$cx-space-badge-medium-gap: 0rem !default;
+$cx-space-badge-medium-nudge: 0.25rem !default;
 $cx-space-badge-large-padding-y: 0.125rem !default;
 $cx-space-badge-large-padding-x: 0.25rem !default;
-$cx-space-badge-large-gap: 0.375rem !default;
+$cx-space-badge-large-gap: 0rem !default;
+$cx-space-badge-large-nudge: 0.375rem !default;
 $cx-space-badge-small-padding-y: 0.0625rem !default;
 $cx-space-badge-small-padding-x: 0.25rem !default;
-$cx-space-badge-small-gap: 0.25rem !default;
+$cx-space-badge-small-gap: 0rem !default;
+$cx-space-badge-small-nudge: 0.25rem !default;
 $cx-space-button-medium-padding-y: 0.5rem !default;
 $cx-space-button-medium-padding-x: 0.75rem !default;
 $cx-space-button-medium-gap: 0.5rem !default;
-$cx-space-button-medium-nudge-y: 0rem !default;
-$cx-space-button-medium-nudge-x: 0.25rem !default;
+$cx-space-button-medium-nudge: 0.25rem !default;
 $cx-space-button-large-padding-y: 0.625rem !default;
 $cx-space-button-large-padding-x: 1rem !default;
 $cx-space-button-large-gap: 0.75rem !default;
-$cx-space-button-large-nudge-y: 0rem !default;
-$cx-space-button-large-nudge-x: 0.25rem !default;
+$cx-space-button-large-nudge: 0.25rem !default;
 $cx-space-button-small-padding-y: 0.375rem !default;
 $cx-space-button-small-padding-x: 0.5rem !default;
 $cx-space-button-small-gap: 0.25rem !default;
-$cx-space-button-small-nudge-y: 0rem !default;
-$cx-space-button-small-nudge-x: 0.25rem !default;
+$cx-space-button-small-nudge: 0.25rem !default;
 $cx-space-chip-medium-padding-y: 0.25rem !default;
 $cx-space-chip-medium-padding-x: 0.25rem !default;
 $cx-space-chip-medium-gap: 0.5rem !default;
-$cx-space-chip-medium-nudge-y: 0.125rem !default;
-$cx-space-chip-medium-nudge-x: 0.25rem !default;
+$cx-space-chip-medium-nudge: 0.25rem !default;
 $cx-space-chip-large-padding-y: 0.25rem !default;
 $cx-space-chip-large-padding-x: 0.25rem !default;
 $cx-space-chip-large-gap: 0.75rem !default;
-$cx-space-chip-large-nudge-y: 0.25rem !default;
-$cx-space-chip-large-nudge-x: 0.25rem !default;
+$cx-space-chip-large-nudge: 0.25rem !default;
 $cx-space-chip-small-padding-y: 0.125rem !default;
 $cx-space-chip-small-padding-x: 0.125rem !default;
 $cx-space-chip-small-gap: 0.5rem !default;
-$cx-space-chip-small-nudge-y: 0.0625rem !default;
-$cx-space-chip-small-nudge-x: 0.25rem !default;
+$cx-space-chip-small-nudge: 0.25rem !default;
 $cx-space-form-input-medium-padding-y: 0.5rem !default;
 $cx-space-form-input-medium-padding-x: 0.75rem !default;
 $cx-space-form-input-medium-gap: 0.75rem !default;
@@ -2528,6 +2531,8 @@ $cx-border-width-context-xlarge: 0.125rem !default;
 $cx-border-width-context-2xlarge: 0.25rem !default;
 $cx-border-width-accordion: var(--#{$prefix}border-width-medium) !default;
 $cx-border-width-alert: var(--#{$prefix}border-width-medium) !default;
+$cx-border-width-asset-indicator: 0.25rem !default;
+$cx-border-width-asset-separator: 0.0625rem !default;
 $cx-border-width-badge: var(--#{$prefix}border-width-medium) !default;
 $cx-border-width-button: var(--#{$prefix}border-width-medium) !default;
 $cx-border-width-card: var(--#{$prefix}border-width-medium) !default;

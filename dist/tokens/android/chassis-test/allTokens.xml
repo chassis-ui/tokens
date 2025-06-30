@@ -2,7 +2,7 @@
 
 <!--
   Do not edit directly, this file was auto-generated.
-  Generated on Fri, 27 Jun 2025 07:12:15 GMT
+  Generated on Sun, 29 Jun 2025 09:25:57 GMT
   Chassis - Tokens v0.1.0
   Copyright 2025 Ozgur Gunes
   Licensed under MIT (https://github.com/ozgurgunes/chassis-tokens/blob/main/LICENSE)
@@ -175,16 +175,22 @@
   <dimen name="size_badge_large_icon">20dp</dimen>
   <dimen name="size_badge_small_main">20dp</dimen>
   <dimen name="size_badge_small_icon">12dp</dimen>
+  <dimen name="size_button_medium_main">40dp</dimen>
   <dimen name="size_button_medium_icon">24dp</dimen>
   <dimen name="size_button_medium_caret">20dp</dimen>
+  <dimen name="size_button_large_main">48dp</dimen>
   <dimen name="size_button_large_icon">28dp</dimen>
   <dimen name="size_button_large_caret">24dp</dimen>
+  <dimen name="size_button_small_main">32dp</dimen>
   <dimen name="size_button_small_icon">20dp</dimen>
   <dimen name="size_button_small_caret">16dp</dimen>
+  <dimen name="size_chip_medium_main">32dp</dimen>
   <dimen name="size_chip_medium_icon">20dp</dimen>
   <dimen name="size_chip_medium_avatar">24dp</dimen>
+  <dimen name="size_chip_large_main">40dp</dimen>
   <dimen name="size_chip_large_icon">24dp</dimen>
   <dimen name="size_chip_large_avatar">32dp</dimen>
+  <dimen name="size_chip_small_main">24dp</dimen>
   <dimen name="size_chip_small_icon">16dp</dimen>
   <dimen name="size_chip_small_avatar">20dp</dimen>
   <dimen name="size_date_picker_day_width">40dp</dimen>
@@ -305,43 +311,40 @@
   <dimen name="space_alert_small_gap">16dp</dimen>
   <dimen name="space_badge_medium_padding_y">2dp</dimen>
   <dimen name="space_badge_medium_padding_x">4dp</dimen>
-  <dimen name="space_badge_medium_gap">4dp</dimen>
+  <dimen name="space_badge_medium_gap">0dp</dimen>
+  <dimen name="space_badge_medium_nudge">4dp</dimen>
   <dimen name="space_badge_large_padding_y">2dp</dimen>
   <dimen name="space_badge_large_padding_x">4dp</dimen>
-  <dimen name="space_badge_large_gap">6dp</dimen>
+  <dimen name="space_badge_large_gap">0dp</dimen>
+  <dimen name="space_badge_large_nudge">6dp</dimen>
   <dimen name="space_badge_small_padding_y">1dp</dimen>
   <dimen name="space_badge_small_padding_x">4dp</dimen>
-  <dimen name="space_badge_small_gap">4dp</dimen>
+  <dimen name="space_badge_small_gap">0dp</dimen>
+  <dimen name="space_badge_small_nudge">4dp</dimen>
   <dimen name="space_button_medium_padding_y">8dp</dimen>
   <dimen name="space_button_medium_padding_x">12dp</dimen>
   <dimen name="space_button_medium_gap">8dp</dimen>
-  <dimen name="space_button_medium_nudge_y">0dp</dimen>
-  <dimen name="space_button_medium_nudge_x">4dp</dimen>
+  <dimen name="space_button_medium_nudge">4dp</dimen>
   <dimen name="space_button_large_padding_y">10dp</dimen>
   <dimen name="space_button_large_padding_x">16dp</dimen>
   <dimen name="space_button_large_gap">12dp</dimen>
-  <dimen name="space_button_large_nudge_y">0dp</dimen>
-  <dimen name="space_button_large_nudge_x">4dp</dimen>
+  <dimen name="space_button_large_nudge">4dp</dimen>
   <dimen name="space_button_small_padding_y">6dp</dimen>
   <dimen name="space_button_small_padding_x">8dp</dimen>
   <dimen name="space_button_small_gap">4dp</dimen>
-  <dimen name="space_button_small_nudge_y">0dp</dimen>
-  <dimen name="space_button_small_nudge_x">4dp</dimen>
+  <dimen name="space_button_small_nudge">4dp</dimen>
   <dimen name="space_chip_medium_padding_y">4dp</dimen>
   <dimen name="space_chip_medium_padding_x">4dp</dimen>
   <dimen name="space_chip_medium_gap">8dp</dimen>
-  <dimen name="space_chip_medium_nudge_y">2dp</dimen>
-  <dimen name="space_chip_medium_nudge_x">4dp</dimen>
+  <dimen name="space_chip_medium_nudge">4dp</dimen>
   <dimen name="space_chip_large_padding_y">4dp</dimen>
   <dimen name="space_chip_large_padding_x">4dp</dimen>
   <dimen name="space_chip_large_gap">12dp</dimen>
-  <dimen name="space_chip_large_nudge_y">4dp</dimen>
-  <dimen name="space_chip_large_nudge_x">4dp</dimen>
+  <dimen name="space_chip_large_nudge">4dp</dimen>
   <dimen name="space_chip_small_padding_y">2dp</dimen>
   <dimen name="space_chip_small_padding_x">2dp</dimen>
   <dimen name="space_chip_small_gap">8dp</dimen>
-  <dimen name="space_chip_small_nudge_y">1dp</dimen>
-  <dimen name="space_chip_small_nudge_x">4dp</dimen>
+  <dimen name="space_chip_small_nudge">4dp</dimen>
   <dimen name="space_form_input_medium_padding_y">8dp</dimen>
   <dimen name="space_form_input_medium_padding_x">12dp</dimen>
   <dimen name="space_form_input_medium_gap">12dp</dimen>
@@ -3982,6 +3985,8 @@
   <dimen name="border_width_context_2xlarge">4dp</dimen>
   <dimen name="border_width_accordion">1dp</dimen>
   <dimen name="border_width_alert">1dp</dimen>
+  <dimen name="border_width_asset_indicator">4dp</dimen>
+  <dimen name="border_width_asset_separator">1dp</dimen>
   <dimen name="border_width_badge">1dp</dimen>
   <dimen name="border_width_button">1dp</dimen>
   <dimen name="border_width_card">1dp</dimen>

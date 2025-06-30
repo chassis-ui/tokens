@@ -3107,6 +3107,10 @@
       }
     },
     "button": {
+      "medium-main": {
+        "$type": "sizing",
+        "$value": "{size.base.40}"
+      },
       "medium-icon": {
         "$type": "sizing",
         "$value": "{size.base.24}"
@@ -3115,6 +3119,10 @@
         "$type": "sizing",
         "$value": "{size.base.20}"
       },
+      "large-main": {
+        "$type": "sizing",
+        "$value": "{size.base.48}"
+      },
       "large-icon": {
         "$type": "sizing",
         "$value": "{size.base.28}"
@@ -3122,6 +3130,10 @@
       "large-caret": {
         "$type": "sizing",
         "$value": "{size.base.24}"
+      },
+      "small-main": {
+        "$type": "sizing",
+        "$value": "{size.base.32}"
       },
       "small-icon": {
         "$type": "sizing",
@@ -3133,6 +3145,10 @@
       }
     },
     "chip": {
+      "medium-main": {
+        "$type": "sizing",
+        "$value": "{size.base.32}"
+      },
       "medium-icon": {
         "$type": "sizing",
         "$value": "{size.base.20}"
@@ -3141,6 +3157,10 @@
         "$type": "sizing",
         "$value": "{size.base.24}"
       },
+      "large-main": {
+        "$type": "sizing",
+        "$value": "{size.base.40}"
+      },
       "large-icon": {
         "$type": "sizing",
         "$value": "{size.base.24}"
@@ -3148,6 +3168,10 @@
       "large-avatar": {
         "$type": "sizing",
         "$value": "{size.base.32}"
+      },
+      "small-main": {
+        "$type": "sizing",
+        "$value": "{size.base.24}"
       },
       "small-icon": {
         "$type": "sizing",
@@ -3455,6 +3479,10 @@
       },
       "medium-gap": {
         "$type": "spacing",
+        "$value": "{space.base.0}"
+      },
+      "medium-nudge": {
+        "$type": "spacing",
         "$value": "{space.base.4}"
       },
       "large-padding-y": {
@@ -3467,6 +3495,10 @@
       },
       "large-gap": {
         "$type": "spacing",
+        "$value": "{space.base.0}"
+      },
+      "large-nudge": {
+        "$type": "spacing",
         "$value": "{space.base.6}"
       },
       "small-padding-y": {
@@ -3478,6 +3510,10 @@
         "$value": "{space.base.4}"
       },
       "small-gap": {
+        "$type": "spacing",
+        "$value": "{space.base.0}"
+      },
+      "small-nudge": {
         "$type": "spacing",
         "$value": "{space.base.4}"
       }
@@ -3495,11 +3531,7 @@
         "$type": "spacing",
         "$value": "{space.base.8}"
       },
-      "medium-nudge-y": {
-        "$type": "spacing",
-        "$value": "{space.base.0}"
-      },
-      "medium-nudge-x": {
+      "medium-nudge": {
         "$type": "spacing",
         "$value": "{space.base.4}"
       },
@@ -3515,11 +3547,7 @@
         "$type": "spacing",
         "$value": "{space.base.12}"
       },
-      "large-nudge-y": {
-        "$type": "spacing",
-        "$value": "{space.base.0}"
-      },
-      "large-nudge-x": {
+      "large-nudge": {
         "$type": "spacing",
         "$value": "{space.base.4}"
       },
@@ -3535,11 +3563,7 @@
         "$type": "spacing",
         "$value": "{space.base.4}"
       },
-      "small-nudge-y": {
-        "$type": "spacing",
-        "$value": "{space.base.0}"
-      },
-      "small-nudge-x": {
+      "small-nudge": {
         "$type": "spacing",
         "$value": "{space.base.4}"
       }
@@ -3557,11 +3581,7 @@
         "$type": "spacing",
         "$value": "{space.base.8}"
       },
-      "medium-nudge-y": {
-        "$type": "spacing",
-        "$value": "{space.base.2}"
-      },
-      "medium-nudge-x": {
+      "medium-nudge": {
         "$type": "spacing",
         "$value": "{space.base.4}"
       },
@@ -3577,11 +3597,7 @@
         "$type": "spacing",
         "$value": "{space.base.12}"
       },
-      "large-nudge-y": {
-        "$type": "spacing",
-        "$value": "{space.base.4}"
-      },
-      "large-nudge-x": {
+      "large-nudge": {
         "$type": "spacing",
         "$value": "{space.base.4}"
       },
@@ -3597,11 +3613,7 @@
         "$type": "spacing",
         "$value": "{space.base.8}"
       },
-      "small-nudge-y": {
-        "$type": "spacing",
-        "$value": "{space.base.1}"
-      },
-      "small-nudge-x": {
+      "small-nudge": {
         "$type": "spacing",
         "$value": "{space.base.4}"
       }
@@ -4079,6 +4091,16 @@
     "alert": {
       "$type": "borderWidth",
       "$value": "{borderWidth.context.medium}"
+    },
+    "asset": {
+      "indicator": {
+        "$type": "borderWidth",
+        "$value": "{size.asset.indicator}"
+      },
+      "separator": {
+        "$type": "borderWidth",
+        "$value": "{size.asset.separator}"
+      }
     },
     "badge": {
       "$type": "borderWidth",
