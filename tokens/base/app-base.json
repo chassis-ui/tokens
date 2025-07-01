@@ -2830,6 +2830,16 @@
         }
       }
     },
+    "list": {
+      "icon": {
+        "$type": "color",
+        "$value": "{color.context.default.icon-main}"
+      },
+      "disclosure": {
+        "$type": "color",
+        "$value": "{color.context.default.fg-subtle}"
+      }
+    },
     "map": {
       "marker-bg": {
         "$type": "color",
@@ -3180,6 +3190,20 @@
       "small-avatar": {
         "$type": "sizing",
         "$value": "{size.base.20}"
+      }
+    },
+    "list": {
+      "icon": {
+        "$type": "sizing",
+        "$value": "{size.base.24}"
+      },
+      "image": {
+        "$type": "sizing",
+        "$value": "{size.base.40}"
+      },
+      "disclosure": {
+        "$type": "sizing",
+        "$value": "{size.base.8}"
       }
     },
     "date-picker": {
@@ -3657,17 +3681,21 @@
       }
     },
     "list": {
-      "list-padding-y": {
+      "padding-y": {
         "$type": "spacing",
         "$value": "{space.base.12}"
       },
-      "list-padding-x": {
+      "padding-x": {
         "$type": "spacing",
         "$value": "{space.base.16}"
       },
-      "list-gap": {
+      "gap": {
         "$type": "spacing",
         "$value": "{space.base.16}"
+      },
+      "nudge": {
+        "$type": "spacing",
+        "$value": "{space.base.8}"
       }
     },
     "notification": {
