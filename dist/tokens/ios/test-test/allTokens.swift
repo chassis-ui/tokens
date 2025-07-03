@@ -4,7 +4,7 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Sun, 29 Jun 2025 09:25:59 GMT
+// Generated on Thu, 03 Jul 2025 10:53:21 GMT
 // Chassis - Tokens v0.1.0
 // Copyright 2025 Ozgur Gunes
 // Licensed under MIT (https://github.com/ozgurgunes/chassis-tokens/blob/main/LICENSE)
@@ -197,6 +197,9 @@ public class {
     @objc public static let SizeChipSmallMain = CGFloat(24)
     @objc public static let SizeChipSmallIcon = CGFloat(16)
     @objc public static let SizeChipSmallAvatar = CGFloat(20)
+    @objc public static let SizeListIcon = CGFloat(24)
+    @objc public static let SizeListImage = CGFloat(40)
+    @objc public static let SizeListDisclosure = CGFloat(8)
     @objc public static let SizeDatePickerDayWidth = CGFloat(40)
     @objc public static let SizeDatePickerDayHeight = CGFloat(40)
     @objc public static let SizeDatePickerWeekWidth = CGFloat(280)
@@ -358,9 +361,10 @@ public class {
     @objc public static let SpaceFormInputSmallPaddingY = CGFloat(6)
     @objc public static let SpaceFormInputSmallPaddingX = CGFloat(8)
     @objc public static let SpaceFormInputSmallGap = CGFloat(8)
-    @objc public static let SpaceListListPaddingY = CGFloat(12)
-    @objc public static let SpaceListListPaddingX = CGFloat(16)
-    @objc public static let SpaceListListGap = CGFloat(16)
+    @objc public static let SpaceListPaddingY = CGFloat(12)
+    @objc public static let SpaceListPaddingX = CGFloat(16)
+    @objc public static let SpaceListGap = CGFloat(16)
+    @objc public static let SpaceListNudge = CGFloat(8)
     @objc public static let SpaceNotificationPaddingY = CGFloat(12)
     @objc public static let SpaceNotificationPaddingX = CGFloat(16)
     @objc public static let SpaceNotificationGap = CGFloat(16)
@@ -2082,6 +2086,8 @@ public class {
     @objc public static let ColorFormInputDisabledFgInactive = UIColor(red: 0.114, green: 0.114, blue: 0.114, alpha: 0.25)
     @objc public static let ColorFormInputDisabledCaret = UIColor(red: 0.114, green: 0.114, blue: 0.114, alpha: 0.25)
     @objc public static let ColorFormInputDisabledHelp = UIColor(red: 0.114, green: 0.114, blue: 0.114, alpha: 0.25)
+    @objc public static let ColorListIcon = UIColor(red: 0.071, green: 0.451, blue: 0.878, alpha: 1)
+    @objc public static let ColorListDisclosure = UIColor(red: 0.114, green: 0.114, blue: 0.114, alpha: 0.5)
     @objc public static let ColorMapMarkerBg = UIColor(red: 0.071, green: 0.451, blue: 0.878, alpha: 1)
     @objc public static let ColorMapMarkerFg = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1)
     @objc public static let ColorMapPathRide = UIColor(red: 0.071, green: 0.451, blue: 0.878, alpha: 1)
@@ -2114,11 +2120,11 @@ public class {
     @objc public static let ColorTableBgData = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1)
     @objc public static let ColorTableBgAlt = UIColor(red: 0.961, green: 0.961, blue: 0.961, alpha: 1)
     @objc public static let ColorTableBgHover = UIColor(red: 0.918, green: 0.918, blue: 0.918, alpha: 1)
-    @objc public static let ColorTableBgHighlight = UIColor(red: 0.859, green: 0.918, blue: 0.980, alpha: 1)
+    @objc public static let ColorTableBgActive = UIColor(red: 0.859, green: 0.918, blue: 0.980, alpha: 1)
     @objc public static let ColorTableBgEdit = UIColor(red: 0.941, green: 0.914, blue: 0.855, alpha: 1)
-    @objc public static let ColorTableCueMain = UIColor(red: 0.071, green: 0.451, blue: 0.878, alpha: 1)
+    @objc public static let ColorTableCueActive = UIColor(red: 0.071, green: 0.451, blue: 0.878, alpha: 1)
     @objc public static let ColorTableBorderMain = UIColor(red: 0.114, green: 0.114, blue: 0.114, alpha: 0.15)
-    @objc public static let ColorTableObjSort = UIColor(red: 0.114, green: 0.114, blue: 0.114, alpha: 0.5)
+    @objc public static let ColorTableIconSort = UIColor(red: 0.114, green: 0.114, blue: 0.114, alpha: 0.5)
     @objc public static let TypographyFontFamilyText = "Helvetica"
     @objc public static let TypographyFontFamilyDisplay = "Times New Roman"
     @objc public static let TypographyFontFamilyHtml = "Helvetica"

@@ -2981,7 +2981,7 @@
         "$type": "color",
         "$value": "{color.context.default.bg-evident}"
       },
-      "bg-highlight": {
+      "bg-active": {
         "$type": "color",
         "$value": "{color.context.default.bg-highlight}"
       },
@@ -2989,7 +2989,7 @@
         "$type": "color",
         "$value": "{color.palette.warning.10}"
       },
-      "cue-main": {
+      "cue-active": {
         "$type": "color",
         "$value": "{color.context.default.cue-main}"
       },
@@ -2997,7 +2997,7 @@
         "$type": "color",
         "$value": "{color.context.default.border-subtle}"
       },
-      "obj-sort": {
+      "icon-sort": {
         "$type": "color",
         "$value": "{color.context.default.fg-subtle}"
       }

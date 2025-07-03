@@ -2,7 +2,7 @@
 
 <!--
   Do not edit directly, this file was auto-generated.
-  Generated on Sun, 29 Jun 2025 09:26:01 GMT
+  Generated on Thu, 03 Jul 2025 10:53:23 GMT
   Chassis - Tokens v0.1.0
   Copyright 2025 Ozgur Gunes
   Licensed under MIT (https://github.com/ozgurgunes/chassis-tokens/blob/main/LICENSE)
@@ -947,6 +947,8 @@
   <color name="color_form_input_disabled_fg_inactive">#40eaeaea</color>
   <color name="color_form_input_disabled_caret">#40eaeaea</color>
   <color name="color_form_input_disabled_help">#40eaeaea</color>
+  <color name="color_list_icon">#ff1273e0</color>
+  <color name="color_list_disclosure">#80eaeaea</color>
   <color name="color_map_marker_bg">#ff1273e0</color>
   <color name="color_map_marker_fg">#ffffffff</color>
   <color name="color_map_path_ride">#ff1273e0</color>
@@ -979,11 +981,11 @@
   <color name="color_table_bg_data">#ff1d1d1d</color>
   <color name="color_table_bg_alt">#ff121212</color>
   <color name="color_table_bg_hover">#ff292929</color>
-  <color name="color_table_bg_highlight">#ff06284e</color>
+  <color name="color_table_bg_active">#ff06284e</color>
   <color name="color_table_bg_edit">#fff0e9da</color>
-  <color name="color_table_cue_main">#ff1273e0</color>
+  <color name="color_table_cue_active">#ff1273e0</color>
   <color name="color_table_border_main">#26eaeaea</color>
-  <color name="color_table_obj_sort">#80eaeaea</color>
+  <color name="color_table_icon_sort">#80eaeaea</color>
   <color name="gradient_palette_black_l_000">#00000000</color>
   <color name="gradient_palette_black_l_045">#00000000</color>
   <color name="gradient_palette_black_l_090">#00000000</color>

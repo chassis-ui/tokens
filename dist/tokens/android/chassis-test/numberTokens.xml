@@ -2,7 +2,7 @@
 
 <!--
   Do not edit directly, this file was auto-generated.
-  Generated on Sun, 29 Jun 2025 09:25:57 GMT
+  Generated on Thu, 03 Jul 2025 10:53:19 GMT
   Chassis - Tokens v0.1.0
   Copyright 2025 Ozgur Gunes
   Licensed under MIT (https://github.com/ozgurgunes/chassis-tokens/blob/main/LICENSE)
@@ -193,6 +193,9 @@
   <dimen name="size_chip_small_main">24dp</dimen>
   <dimen name="size_chip_small_icon">16dp</dimen>
   <dimen name="size_chip_small_avatar">20dp</dimen>
+  <dimen name="size_list_icon">24dp</dimen>
+  <dimen name="size_list_image">40dp</dimen>
+  <dimen name="size_list_disclosure">8dp</dimen>
   <dimen name="size_date_picker_day_width">40dp</dimen>
   <dimen name="size_date_picker_day_height">40dp</dimen>
   <dimen name="size_date_picker_week_width">280dp</dimen>
@@ -354,9 +357,10 @@
   <dimen name="space_form_input_small_padding_y">6dp</dimen>
   <dimen name="space_form_input_small_padding_x">8dp</dimen>
   <dimen name="space_form_input_small_gap">8dp</dimen>
-  <dimen name="space_list_list_padding_y">12dp</dimen>
-  <dimen name="space_list_list_padding_x">16dp</dimen>
-  <dimen name="space_list_list_gap">16dp</dimen>
+  <dimen name="space_list_padding_y">12dp</dimen>
+  <dimen name="space_list_padding_x">16dp</dimen>
+  <dimen name="space_list_gap">16dp</dimen>
+  <dimen name="space_list_nudge">8dp</dimen>
   <dimen name="space_notification_padding_y">12dp</dimen>
   <dimen name="space_notification_padding_x">16dp</dimen>
   <dimen name="space_notification_gap">16dp</dimen>

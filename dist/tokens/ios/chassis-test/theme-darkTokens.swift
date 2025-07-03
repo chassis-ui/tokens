@@ -4,7 +4,7 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Sun, 29 Jun 2025 09:25:56 GMT
+// Generated on Thu, 03 Jul 2025 10:53:19 GMT
 // Chassis - Tokens v0.1.0
 // Copyright 2025 Ozgur Gunes
 // Licensed under MIT (https://github.com/ozgurgunes/chassis-tokens/blob/main/LICENSE)
@@ -951,6 +951,8 @@ public class {
     @objc public static let ColorFormInputDisabledFgInactive = UIColor(red: 0.914, green: 0.925, blue: 0.929, alpha: 0.25)
     @objc public static let ColorFormInputDisabledCaret = UIColor(red: 0.914, green: 0.925, blue: 0.929, alpha: 0.25)
     @objc public static let ColorFormInputDisabledHelp = UIColor(red: 0.914, green: 0.925, blue: 0.929, alpha: 0.25)
+    @objc public static let ColorListIcon = UIColor(red: 0.000, green: 0.643, blue: 0.800, alpha: 1)
+    @objc public static let ColorListDisclosure = UIColor(red: 0.914, green: 0.925, blue: 0.929, alpha: 0.5)
     @objc public static let ColorMapMarkerBg = UIColor(red: 0.000, green: 0.643, blue: 0.800, alpha: 1)
     @objc public static let ColorMapMarkerFg = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1)
     @objc public static let ColorMapPathRide = UIColor(red: 0.000, green: 0.643, blue: 0.800, alpha: 1)
@@ -983,11 +985,11 @@ public class {
     @objc public static let ColorTableBgData = UIColor(red: 0.110, green: 0.125, blue: 0.129, alpha: 1)
     @objc public static let ColorTableBgAlt = UIColor(red: 0.067, green: 0.075, blue: 0.078, alpha: 1)
     @objc public static let ColorTableBgHover = UIColor(red: 0.153, green: 0.176, blue: 0.184, alpha: 1)
-    @objc public static let ColorTableBgHighlight = UIColor(red: 0.000, green: 0.224, blue: 0.278, alpha: 1)
+    @objc public static let ColorTableBgActive = UIColor(red: 0.000, green: 0.224, blue: 0.278, alpha: 1)
     @objc public static let ColorTableBgEdit = UIColor(red: 0.996, green: 0.945, blue: 0.851, alpha: 1)
-    @objc public static let ColorTableCueMain = UIColor(red: 0.000, green: 0.643, blue: 0.800, alpha: 1)
+    @objc public static let ColorTableCueActive = UIColor(red: 0.000, green: 0.643, blue: 0.800, alpha: 1)
     @objc public static let ColorTableBorderMain = UIColor(red: 0.914, green: 0.925, blue: 0.929, alpha: 0.15)
-    @objc public static let ColorTableObjSort = UIColor(red: 0.914, green: 0.925, blue: 0.929, alpha: 0.5)
+    @objc public static let ColorTableIconSort = UIColor(red: 0.914, green: 0.925, blue: 0.929, alpha: 0.5)
     @objc public static let GradientPaletteBlackL000 = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0)
     @objc public static let GradientPaletteBlackL045 = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0)
     @objc public static let GradientPaletteBlackL090 = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0)

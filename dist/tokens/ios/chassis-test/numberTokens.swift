@@ -4,7 +4,7 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Sun, 29 Jun 2025 09:25:55 GMT
+// Generated on Thu, 03 Jul 2025 10:53:18 GMT
 // Chassis - Tokens v0.1.0
 // Copyright 2025 Ozgur Gunes
 // Licensed under MIT (https://github.com/ozgurgunes/chassis-tokens/blob/main/LICENSE)
@@ -197,6 +197,9 @@ public class {
     @objc public static let SizeChipSmallMain = CGFloat(24)
     @objc public static let SizeChipSmallIcon = CGFloat(16)
     @objc public static let SizeChipSmallAvatar = CGFloat(20)
+    @objc public static let SizeListIcon = CGFloat(24)
+    @objc public static let SizeListImage = CGFloat(40)
+    @objc public static let SizeListDisclosure = CGFloat(8)
     @objc public static let SizeDatePickerDayWidth = CGFloat(40)
     @objc public static let SizeDatePickerDayHeight = CGFloat(40)
     @objc public static let SizeDatePickerWeekWidth = CGFloat(280)
@@ -358,9 +361,10 @@ public class {
     @objc public static let SpaceFormInputSmallPaddingY = CGFloat(6)
     @objc public static let SpaceFormInputSmallPaddingX = CGFloat(8)
     @objc public static let SpaceFormInputSmallGap = CGFloat(8)
-    @objc public static let SpaceListListPaddingY = CGFloat(12)
-    @objc public static let SpaceListListPaddingX = CGFloat(16)
-    @objc public static let SpaceListListGap = CGFloat(16)
+    @objc public static let SpaceListPaddingY = CGFloat(12)
+    @objc public static let SpaceListPaddingX = CGFloat(16)
+    @objc public static let SpaceListGap = CGFloat(16)
+    @objc public static let SpaceListNudge = CGFloat(8)
     @objc public static let SpaceNotificationPaddingY = CGFloat(12)
     @objc public static let SpaceNotificationPaddingX = CGFloat(16)
     @objc public static let SpaceNotificationGap = CGFloat(16)
