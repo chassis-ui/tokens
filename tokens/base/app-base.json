@@ -2903,57 +2903,29 @@
       }
     },
     "section": {
-      "default": {
-        "fg-large": {
-          "$type": "color",
-          "$value": "{color.context.default.fg-main}"
-        },
-        "fg-medium": {
-          "$type": "color",
-          "$value": "{color.context.default.fg-main}"
-        },
-        "fg-small": {
-          "$type": "color",
-          "$value": "{color.context.default.fg-main}"
-        },
-        "obj-large": {
-          "$type": "color",
-          "$value": "{color.context.default.icon-main}"
-        },
-        "obj-medium": {
-          "$type": "color",
-          "$value": "{color.context.default.icon-main}"
-        },
-        "obj-small": {
-          "$type": "color",
-          "$value": "{color.context.default.icon-main}"
-        }
+      "fg-large": {
+        "$type": "color",
+        "$value": "{color.context.default.fg-main}"
       },
-      "alternate": {
-        "fg-large": {
-          "$type": "color",
-          "$value": "{color.context.alternate.fg-main}"
-        },
-        "fg-medium": {
-          "$type": "color",
-          "$value": "{color.context.alternate.fg-main}"
-        },
-        "fg-small": {
-          "$type": "color",
-          "$value": "{color.context.alternate.fg-main}"
-        },
-        "obj-large": {
-          "$type": "color",
-          "$value": "{color.context.alternate.icon-main}"
-        },
-        "obj-medium": {
-          "$type": "color",
-          "$value": "{color.context.alternate.icon-main}"
-        },
-        "obj-small": {
-          "$type": "color",
-          "$value": "{color.context.alternate.icon-main}"
-        }
+      "fg-medium": {
+        "$type": "color",
+        "$value": "{color.context.default.fg-main}"
+      },
+      "fg-small": {
+        "$type": "color",
+        "$value": "{color.context.default.fg-main}"
+      },
+      "icon-large": {
+        "$type": "color",
+        "$value": "{color.context.default.icon-main}"
+      },
+      "icon-medium": {
+        "$type": "color",
+        "$value": "{color.context.default.icon-main}"
+      },
+      "icon-small": {
+        "$type": "color",
+        "$value": "{color.context.default.icon-main}"
       }
     },
     "table": {
@@ -3311,11 +3283,19 @@
       }
     },
     "pagination": {
-      "dot-idle": {
+      "dot-idle-h": {
         "$type": "sizing",
         "$value": "{size.base.8}"
       },
-      "dot-active": {
+      "dot-idle-w": {
+        "$type": "sizing",
+        "$value": "{size.base.8}"
+      },
+      "dot-active-h": {
+        "$type": "sizing",
+        "$value": "{size.base.8}"
+      },
+      "dot-active-w": {
         "$type": "sizing",
         "$value": "{size.base.8}"
       }
