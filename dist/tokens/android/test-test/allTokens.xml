@@ -2,7 +2,7 @@
 
 <!--
   Do not edit directly, this file was auto-generated.
-  Generated on Thu, 03 Jul 2025 10:53:23 GMT
+  Generated on Wed, 09 Jul 2025 08:51:01 GMT
   Chassis - Tokens v0.1.0
   Copyright 2025 Ozgur Gunes
   Licensed under MIT (https://github.com/ozgurgunes/chassis-tokens/blob/main/LICENSE)
@@ -219,8 +219,10 @@
   <dimen name="size_nav_left_width_expanded">256dp</dimen>
   <dimen name="size_nav_left_wdith_collapsed">72dp</dimen>
   <dimen name="size_nav_top_height">64dp</dimen>
-  <dimen name="size_pagination_dot_idle">8dp</dimen>
-  <dimen name="size_pagination_dot_active">8dp</dimen>
+  <dimen name="size_pagination_dot_idle_h">8dp</dimen>
+  <dimen name="size_pagination_dot_idle_w">8dp</dimen>
+  <dimen name="size_pagination_dot_active_h">8dp</dimen>
+  <dimen name="size_pagination_dot_active_w">8dp</dimen>
   <dimen name="space_base_0">0dp</dimen>
   <dimen name="space_base_1">1dp</dimen>
   <dimen name="space_base_2">2dp</dimen>
@@ -2019,34 +2021,34 @@
   <color name="color_button_info_border_disabled">#00098294</color>
   <color name="color_button_info_border_hover">#00098294</color>
   <color name="color_button_info_border_press">#00098294</color>
-  <color name="color_date_picker_default_bg_idle">#00000000</color>
-  <color name="color_date_picker_default_fg_idle">#ff1d1d1d</color>
-  <color name="color_date_picker_default_bg_today">#00000000</color>
-  <color name="color_date_picker_default_fg_today">#ff1273e0</color>
-  <color name="color_date_picker_default_bg_weekend">#00000000</color>
-  <color name="color_date_picker_default_fg_weekend">#801d1d1d</color>
-  <color name="color_date_picker_default_bg_excess">#00000000</color>
-  <color name="color_date_picker_default_fg_excess">#401d1d1d</color>
-  <color name="color_date_picker_default_bg_hover">#fff5f5f5</color>
-  <color name="color_date_picker_default_fg_hover">#ff1d1d1d</color>
-  <color name="color_date_picker_default_bg_active">#ff1273e0</color>
-  <color name="color_date_picker_default_fg_active">#ffffffff</color>
-  <color name="color_date_picker_default_bg_range">#ffdbeafa</color>
-  <color name="color_date_picker_default_fg_range">#ff1d1d1d</color>
-  <color name="color_date_picker_alternate_bg_idle">#00ffffff</color>
-  <color name="color_date_picker_alternate_fg_idle">#ffeaeaea</color>
-  <color name="color_date_picker_alternate_bg_today">#00ffffff</color>
-  <color name="color_date_picker_alternate_fg_today">#ff1273e0</color>
-  <color name="color_date_picker_alternate_bg_weekend">#00ffffff</color>
-  <color name="color_date_picker_alternate_fg_weekend">#80eaeaea</color>
-  <color name="color_date_picker_alternate_bg_excess">#00ffffff</color>
-  <color name="color_date_picker_alternate_fg_excess">#40eaeaea</color>
-  <color name="color_date_picker_alternate_bg_hover">#ff1d1d1d</color>
-  <color name="color_date_picker_alternate_fg_hover">#ffeaeaea</color>
-  <color name="color_date_picker_alternate_bg_active">#ff1273e0</color>
-  <color name="color_date_picker_alternate_fg_active">#ffffffff</color>
-  <color name="color_date_picker_alternate_bg_range">#ff06284e</color>
-  <color name="color_date_picker_alternate_fg_range">#ffeaeaea</color>
+  <color name="color_date_picker_bg_idle">#00000000</color>
+  <color name="color_date_picker_fg_idle">#ff1d1d1d</color>
+  <color name="color_date_picker_bg_today">#00000000</color>
+  <color name="color_date_picker_fg_today">#ff1273e0</color>
+  <color name="color_date_picker_bg_weekend">#00000000</color>
+  <color name="color_date_picker_fg_weekend">#801d1d1d</color>
+  <color name="color_date_picker_bg_excess">#00000000</color>
+  <color name="color_date_picker_fg_excess">#401d1d1d</color>
+  <color name="color_date_picker_bg_hover">#fff5f5f5</color>
+  <color name="color_date_picker_fg_hover">#ff1d1d1d</color>
+  <color name="color_date_picker_bg_active">#ff1273e0</color>
+  <color name="color_date_picker_fg_active">#ffffffff</color>
+  <color name="color_date_picker_bg_range">#ffdbeafa</color>
+  <color name="color_date_picker_fg_range">#ff1d1d1d</color>
+  <color name="color_date_picker_separator">#261d1d1d</color>
+  <color name="color_date_picker_bg_base">#ffffffff</color>
+  <color name="color_date_picker_border_base">#00000000</color>
+  <color name="color_dropdown_bg_idle">#00000000</color>
+  <color name="color_dropdown_fg_idle">#ff1d1d1d</color>
+  <color name="color_dropdown_bg_hover">#ffdbeafa</color>
+  <color name="color_dropdown_fg_hover">#ff0d519d</color>
+  <color name="color_dropdown_bg_active">#ff1273e0</color>
+  <color name="color_dropdown_fg_active">#ffffffff</color>
+  <color name="color_dropdown_bg_header">#00000000</color>
+  <color name="color_dropdown_fg_header">#801d1d1d</color>
+  <color name="color_dropdown_separator">#261d1d1d</color>
+  <color name="color_dropdown_bg_base">#ffffffff</color>
+  <color name="color_dropdown_border_base">#00000000</color>
   <color name="color_form_input_idle_bg_regular">#ffffffff</color>
   <color name="color_form_input_idle_bg_floating">#fff5f5f5</color>
   <color name="color_form_input_idle_border">#ff989898</color>
@@ -2094,22 +2096,12 @@
   <color name="color_map_trip_stop">#ffe02d12</color>
   <color name="color_page_bg_body">#ffffffff</color>
   <color name="color_page_bg_section">#ffffffff</color>
-  <color name="color_popover_default_bg">#fff5f5f5</color>
-  <color name="color_popover_default_border">#261d1d1d</color>
-  <color name="color_popover_alternate_bg">#ff1d1d1d</color>
-  <color name="color_popover_alternate_border">#26eaeaea</color>
-  <color name="color_section_default_fg_large">#ff1d1d1d</color>
-  <color name="color_section_default_fg_medium">#ff1d1d1d</color>
-  <color name="color_section_default_fg_small">#ff1d1d1d</color>
-  <color name="color_section_default_obj_large">#ff1273e0</color>
-  <color name="color_section_default_obj_medium">#ff1273e0</color>
-  <color name="color_section_default_obj_small">#ff1273e0</color>
-  <color name="color_section_alternate_fg_large">#ffeaeaea</color>
-  <color name="color_section_alternate_fg_medium">#ffeaeaea</color>
-  <color name="color_section_alternate_fg_small">#ffeaeaea</color>
-  <color name="color_section_alternate_obj_large">#ff1273e0</color>
-  <color name="color_section_alternate_obj_medium">#ff1273e0</color>
-  <color name="color_section_alternate_obj_small">#ff1273e0</color>
+  <color name="color_section_fg_large">#ff1d1d1d</color>
+  <color name="color_section_fg_medium">#ff1d1d1d</color>
+  <color name="color_section_fg_small">#ff1d1d1d</color>
+  <color name="color_section_icon_large">#ff1273e0</color>
+  <color name="color_section_icon_medium">#ff1273e0</color>
+  <color name="color_section_icon_small">#ff1273e0</color>
   <color name="color_table_fg_head">#ff1d1d1d</color>
   <color name="color_table_fg_data">#ff1d1d1d</color>
   <color name="color_table_bg_head">#ffeaeaea</color>
@@ -2327,6 +2319,8 @@
   <dimen name="border_radius_date_picker_base">2dp</dimen>
   <dimen name="border_radius_date_picker_day">2dp</dimen>
   <dimen name="border_radius_date_picker_menu">2dp</dimen>
+  <dimen name="border_radius_dropdown_base">2dp</dimen>
+  <dimen name="border_radius_dropdown_item">2dp</dimen>
   <dimen name="border_radius_form_input_medium">2dp</dimen>
   <dimen name="border_radius_form_input_large">2dp</dimen>
   <dimen name="border_radius_form_input_small">2dp</dimen>
@@ -3997,6 +3991,8 @@
   <dimen name="border_width_button">1dp</dimen>
   <dimen name="border_width_card">1dp</dimen>
   <dimen name="border_width_chip">1dp</dimen>
+  <dimen name="border_width_date_picker">1dp</dimen>
+  <dimen name="border_width_dropdown">1dp</dimen>
   <dimen name="border_width_table">1dp</dimen>
   <dimen name="border_width_form_input_regular">1dp</dimen>
   <dimen name="border_width_form_input_floating">2dp</dimen>

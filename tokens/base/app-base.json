@@ -2561,121 +2561,119 @@
       }
     },
     "date-picker": {
-      "default": {
-        "bg-idle": {
-          "$type": "color",
-          "$value": "{color.context.default.transparent-color}"
-        },
-        "fg-idle": {
-          "$type": "color",
-          "$value": "{color.context.default.fg-main}"
-        },
-        "bg-today": {
-          "$type": "color",
-          "$value": "{color.context.default.transparent-color}"
-        },
-        "fg-today": {
-          "$type": "color",
-          "$value": "{color.context.default.cue-main}"
-        },
-        "bg-weekend": {
-          "$type": "color",
-          "$value": "{color.context.default.transparent-color}"
-        },
-        "fg-weekend": {
-          "$type": "color",
-          "$value": "{color.context.default.fg-subtle}"
-        },
-        "bg-excess": {
-          "$type": "color",
-          "$value": "{color.context.default.transparent-color}"
-        },
-        "fg-excess": {
-          "$type": "color",
-          "$value": "{color.context.default.fg-slight}"
-        },
-        "bg-hover": {
-          "$type": "color",
-          "$value": "{color.context.default.bg-even}"
-        },
-        "fg-hover": {
-          "$type": "color",
-          "$value": "{color.context.default.fg-main}"
-        },
-        "bg-active": {
-          "$type": "color",
-          "$value": "{color.context.default.cue-main}"
-        },
-        "fg-active": {
-          "$type": "color",
-          "$value": "{color.context.white.base-color}"
-        },
-        "bg-range": {
-          "$type": "color",
-          "$value": "{color.context.default.bg-highlight}"
-        },
-        "fg-range": {
-          "$type": "color",
-          "$value": "{color.context.default.fg-idle}"
-        }
+      "bg-idle": {
+        "$type": "color",
+        "$value": "{color.context.default.transparent-color}"
       },
-      "alternate": {
-        "bg-idle": {
-          "$type": "color",
-          "$value": "{color.context.alternate.transparent-color}"
-        },
-        "fg-idle": {
-          "$type": "color",
-          "$value": "{color.context.alternate.fg-main}"
-        },
-        "bg-today": {
-          "$type": "color",
-          "$value": "{color.context.alternate.transparent-color}"
-        },
-        "fg-today": {
-          "$type": "color",
-          "$value": "{color.context.alternate.cue-main}"
-        },
-        "bg-weekend": {
-          "$type": "color",
-          "$value": "{color.context.alternate.transparent-color}"
-        },
-        "fg-weekend": {
-          "$type": "color",
-          "$value": "{color.context.alternate.fg-subtle}"
-        },
-        "bg-excess": {
-          "$type": "color",
-          "$value": "{color.context.alternate.transparent-color}"
-        },
-        "fg-excess": {
-          "$type": "color",
-          "$value": "{color.context.alternate.fg-slight}"
-        },
-        "bg-hover": {
-          "$type": "color",
-          "$value": "{color.context.alternate.bg-even}"
-        },
-        "fg-hover": {
-          "$type": "color",
-          "$value": "{color.context.alternate.fg-main}"
-        },
-        "bg-active": {
-          "$type": "color",
-          "$value": "{color.context.alternate.cue-main}"
-        },
-        "fg-active": {
-          "$type": "color",
-          "$value": "{color.context.white.base-color}"
-        },
-        "bg-range": {
-          "$type": "color",
-          "$value": "{color.context.alternate.bg-highlight}"
-        },
-        "fg-range": {
-          "$type": "color",
-          "$value": "{color.context.alternate.fg-idle}"
-        }
+      "fg-idle": {
+        "$type": "color",
+        "$value": "{color.context.default.fg-main}"
+      },
+      "bg-today": {
+        "$type": "color",
+        "$value": "{color.context.default.transparent-color}"
+      },
+      "fg-today": {
+        "$type": "color",
+        "$value": "{color.context.default.cue-main}"
+      },
+      "bg-weekend": {
+        "$type": "color",
+        "$value": "{color.context.default.transparent-color}"
+      },
+      "fg-weekend": {
+        "$type": "color",
+        "$value": "{color.context.default.fg-subtle}"
+      },
+      "bg-excess": {
+        "$type": "color",
+        "$value": "{color.context.default.transparent-color}"
+      },
+      "fg-excess": {
+        "$type": "color",
+        "$value": "{color.context.default.fg-slight}"
+      },
+      "bg-hover": {
+        "$type": "color",
+        "$value": "{color.context.default.bg-even}"
+      },
+      "fg-hover": {
+        "$type": "color",
+        "$value": "{color.context.default.fg-main}"
+      },
+      "bg-active": {
+        "$type": "color",
+        "$value": "{color.context.default.cue-main}"
+      },
+      "fg-active": {
+        "$type": "color",
+        "$value": "{color.context.white.base-color}"
+      },
+      "bg-range": {
+        "$type": "color",
+        "$value": "{color.context.default.bg-highlight}"
+      },
+      "fg-range": {
+        "$type": "color",
+        "$value": "{color.context.default.fg-idle}"
+      },
+      "separator": {
+        "$type": "color",
+        "$value": "{color.context.default.border-subtle}"
+      },
+      "bg-base": {
+        "$type": "color",
+        "$value": "{color.context.default.bg-main}"
+      },
+      "border-base": {
+        "$type": "color",
+        "$value": "{color.context.default.transparent-color}"
+      }
+    },
+    "dropdown": {
+      "bg-idle": {
+        "$type": "color",
+        "$value": "{color.context.default.transparent-color}"
+      },
+      "fg-idle": {
+        "$type": "color",
+        "$value": "{color.context.default.fg-main}"
+      },
+      "bg-hover": {
+        "$type": "color",
+        "$value": "{color.context.default.bg-highlight}"
+      },
+      "fg-hover": {
+        "$type": "color",
+        "$value": "{color.context.default.fg-highlight}"
+      },
+      "bg-active": {
+        "$type": "color",
+        "$value": "{color.context.primary.bg-solid}"
+      },
+      "fg-active": {
+        "$type": "color",
+        "$value": "{color.context.primary.fg-solid}"
+      },
+      "bg-header": {
+        "$type": "color",
+        "$value": "{color.context.default.transparent-color}"
+      },
+      "fg-header": {
+        "$type": "color",
+        "$value": "{color.context.default.fg-subtle}"
+      },
+      "separator": {
+        "$type": "color",
+        "$value": "{color.context.default.border-subtle}"
+      },
+      "bg-base": {
+        "$type": "color",
+        "$value": "{color.context.default.bg-main}"
+      },
+      "border-base": {
+        "$type": "color",
+        "$value": "{color.context.default.transparent-color}"
       }
     },
     "form-input": {
@@ -2882,24 +2880,6 @@
       "bg-section": {
         "$type": "color",
         "$value": "{color.context.default.bg-main}"
-      }
-    },
-    "popover": {
-      "default-bg": {
-        "$type": "color",
-        "$value": "{color.context.default.bg-even}"
-      },
-      "default-border": {
-        "$type": "color",
-        "$value": "{color.context.default.border-subtle}"
-      },
-      "alternate-bg": {
-        "$type": "color",
-        "$value": "{color.context.alternate.bg-even}"
-      },
-      "alternate-border": {
-        "$type": "color",
-        "$value": "{color.context.alternate.border-subtle}"
       }
     },
     "section": {
@@ -3986,6 +3966,16 @@
         "$value": "{borderRadius.context.small}"
       }
     },
+    "dropdown": {
+      "base": {
+        "$type": "borderRadius",
+        "$value": "{borderRadius.context.medium}"
+      },
+      "item": {
+        "$type": "borderRadius",
+        "$value": "{borderRadius.context.small}"
+      }
+    },
     "form-input": {
       "medium": {
         "$type": "borderRadius",
@@ -4123,6 +4113,14 @@
       "$value": "{borderWidth.context.medium}"
     },
     "chip": {
+      "$type": "borderWidth",
+      "$value": "{borderWidth.context.medium}"
+    },
+    "date-picker": {
+      "$type": "borderWidth",
+      "$value": "{borderWidth.context.medium}"
+    },
+    "dropdown": {
       "$type": "borderWidth",
       "$value": "{borderWidth.context.medium}"
     },

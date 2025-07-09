@@ -4,7 +4,7 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Thu, 03 Jul 2025 10:53:21 GMT
+// Generated on Wed, 09 Jul 2025 08:50:59 GMT
 // Chassis - Tokens v0.1.0
 // Copyright 2025 Ozgur Gunes
 // Licensed under MIT (https://github.com/ozgurgunes/chassis-tokens/blob/main/LICENSE)
@@ -223,8 +223,10 @@ public class {
     @objc public static let SizeNavLeftWidthExpanded = CGFloat(256)
     @objc public static let SizeNavLeftWdithCollapsed = CGFloat(72)
     @objc public static let SizeNavTopHeight = CGFloat(64)
-    @objc public static let SizePaginationDotIdle = CGFloat(8)
-    @objc public static let SizePaginationDotActive = CGFloat(8)
+    @objc public static let SizePaginationDotIdleH = CGFloat(8)
+    @objc public static let SizePaginationDotIdleW = CGFloat(8)
+    @objc public static let SizePaginationDotActiveH = CGFloat(8)
+    @objc public static let SizePaginationDotActiveW = CGFloat(8)
     @objc public static let SpaceBase0 = CGFloat(0)
     @objc public static let SpaceBase1 = CGFloat(1)
     @objc public static let SpaceBase2 = CGFloat(2)
@@ -550,6 +552,8 @@ public class {
     @objc public static let BorderRadiusDatePickerBase = CGFloat(2)
     @objc public static let BorderRadiusDatePickerDay = CGFloat(2)
     @objc public static let BorderRadiusDatePickerMenu = CGFloat(2)
+    @objc public static let BorderRadiusDropdownBase = CGFloat(2)
+    @objc public static let BorderRadiusDropdownItem = CGFloat(2)
     @objc public static let BorderRadiusFormInputMedium = CGFloat(2)
     @objc public static let BorderRadiusFormInputLarge = CGFloat(2)
     @objc public static let BorderRadiusFormInputSmall = CGFloat(2)
@@ -1310,6 +1314,8 @@ public class {
     @objc public static let BorderWidthButton = CGFloat(1)
     @objc public static let BorderWidthCard = CGFloat(1)
     @objc public static let BorderWidthChip = CGFloat(1)
+    @objc public static let BorderWidthDatePicker = CGFloat(1)
+    @objc public static let BorderWidthDropdown = CGFloat(1)
     @objc public static let BorderWidthTable = CGFloat(1)
     @objc public static let BorderWidthFormInputRegular = CGFloat(1)
     @objc public static let BorderWidthFormInputFloating = CGFloat(2)

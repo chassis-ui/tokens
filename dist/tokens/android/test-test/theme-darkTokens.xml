@@ -2,7 +2,7 @@
 
 <!--
   Do not edit directly, this file was auto-generated.
-  Generated on Thu, 03 Jul 2025 10:53:23 GMT
+  Generated on Wed, 09 Jul 2025 08:51:01 GMT
   Chassis - Tokens v0.1.0
   Copyright 2025 Ozgur Gunes
   Licensed under MIT (https://github.com/ozgurgunes/chassis-tokens/blob/main/LICENSE)
@@ -884,34 +884,34 @@
   <color name="color_button_info_border_disabled">#00098294</color>
   <color name="color_button_info_border_hover">#00098294</color>
   <color name="color_button_info_border_press">#00098294</color>
-  <color name="color_date_picker_default_bg_idle">#00000000</color>
-  <color name="color_date_picker_default_fg_idle">#ffeaeaea</color>
-  <color name="color_date_picker_default_bg_today">#00000000</color>
-  <color name="color_date_picker_default_fg_today">#ff1273e0</color>
-  <color name="color_date_picker_default_bg_weekend">#00000000</color>
-  <color name="color_date_picker_default_fg_weekend">#80eaeaea</color>
-  <color name="color_date_picker_default_bg_excess">#00000000</color>
-  <color name="color_date_picker_default_fg_excess">#40eaeaea</color>
-  <color name="color_date_picker_default_bg_hover">#ff121212</color>
-  <color name="color_date_picker_default_fg_hover">#ffeaeaea</color>
-  <color name="color_date_picker_default_bg_active">#ff1273e0</color>
-  <color name="color_date_picker_default_fg_active">#ffffffff</color>
-  <color name="color_date_picker_default_bg_range">#ff06284e</color>
-  <color name="color_date_picker_default_fg_range">#ffeaeaea</color>
-  <color name="color_date_picker_alternate_bg_idle">#00000000</color>
-  <color name="color_date_picker_alternate_fg_idle">#ffffffff</color>
-  <color name="color_date_picker_alternate_bg_today">#00000000</color>
-  <color name="color_date_picker_alternate_fg_today">#ff1273e0</color>
-  <color name="color_date_picker_alternate_bg_weekend">#00000000</color>
-  <color name="color_date_picker_alternate_fg_weekend">#80ffffff</color>
-  <color name="color_date_picker_alternate_bg_excess">#00000000</color>
-  <color name="color_date_picker_alternate_fg_excess">#40ffffff</color>
-  <color name="color_date_picker_alternate_bg_hover">#ff121212</color>
-  <color name="color_date_picker_alternate_fg_hover">#ffffffff</color>
-  <color name="color_date_picker_alternate_bg_active">#ff1273e0</color>
-  <color name="color_date_picker_alternate_fg_active">#ffffffff</color>
-  <color name="color_date_picker_alternate_bg_range">#ff093a70</color>
-  <color name="color_date_picker_alternate_fg_range">#ffffffff</color>
+  <color name="color_date_picker_bg_idle">#00000000</color>
+  <color name="color_date_picker_fg_idle">#ffeaeaea</color>
+  <color name="color_date_picker_bg_today">#00000000</color>
+  <color name="color_date_picker_fg_today">#ff1273e0</color>
+  <color name="color_date_picker_bg_weekend">#00000000</color>
+  <color name="color_date_picker_fg_weekend">#80eaeaea</color>
+  <color name="color_date_picker_bg_excess">#00000000</color>
+  <color name="color_date_picker_fg_excess">#40eaeaea</color>
+  <color name="color_date_picker_bg_hover">#ff121212</color>
+  <color name="color_date_picker_fg_hover">#ffeaeaea</color>
+  <color name="color_date_picker_bg_active">#ff1273e0</color>
+  <color name="color_date_picker_fg_active">#ffffffff</color>
+  <color name="color_date_picker_bg_range">#ff06284e</color>
+  <color name="color_date_picker_fg_range">#ffeaeaea</color>
+  <color name="color_date_picker_separator">#26eaeaea</color>
+  <color name="color_date_picker_bg_base">#ff1d1d1d</color>
+  <color name="color_date_picker_border_base">#00000000</color>
+  <color name="color_dropdown_bg_idle">#00000000</color>
+  <color name="color_dropdown_fg_idle">#ffeaeaea</color>
+  <color name="color_dropdown_bg_hover">#ff06284e</color>
+  <color name="color_dropdown_fg_hover">#ff89b9f0</color>
+  <color name="color_dropdown_bg_active">#ff1273e0</color>
+  <color name="color_dropdown_fg_active">#ffffffff</color>
+  <color name="color_dropdown_bg_header">#00000000</color>
+  <color name="color_dropdown_fg_header">#80eaeaea</color>
+  <color name="color_dropdown_separator">#26eaeaea</color>
+  <color name="color_dropdown_bg_base">#ff1d1d1d</color>
+  <color name="color_dropdown_border_base">#00000000</color>
   <color name="color_form_input_idle_bg_regular">#ff1d1d1d</color>
   <color name="color_form_input_idle_bg_floating">#ff121212</color>
   <color name="color_form_input_idle_border">#ff525252</color>
@@ -959,22 +959,12 @@
   <color name="color_map_trip_stop">#ffe02d12</color>
   <color name="color_page_bg_body">#ff1d1d1d</color>
   <color name="color_page_bg_section">#ff1d1d1d</color>
-  <color name="color_popover_default_bg">#ff121212</color>
-  <color name="color_popover_default_border">#26eaeaea</color>
-  <color name="color_popover_alternate_bg">#ff121212</color>
-  <color name="color_popover_alternate_border">#26ffffff</color>
-  <color name="color_section_default_fg_large">#ffeaeaea</color>
-  <color name="color_section_default_fg_medium">#ffeaeaea</color>
-  <color name="color_section_default_fg_small">#ffeaeaea</color>
-  <color name="color_section_default_obj_large">#ff1273e0</color>
-  <color name="color_section_default_obj_medium">#ff1273e0</color>
-  <color name="color_section_default_obj_small">#ff1273e0</color>
-  <color name="color_section_alternate_fg_large">#ffffffff</color>
-  <color name="color_section_alternate_fg_medium">#ffffffff</color>
-  <color name="color_section_alternate_fg_small">#ffffffff</color>
-  <color name="color_section_alternate_obj_large">#ff1273e0</color>
-  <color name="color_section_alternate_obj_medium">#ff1273e0</color>
-  <color name="color_section_alternate_obj_small">#ff1273e0</color>
+  <color name="color_section_fg_large">#ffeaeaea</color>
+  <color name="color_section_fg_medium">#ffeaeaea</color>
+  <color name="color_section_fg_small">#ffeaeaea</color>
+  <color name="color_section_icon_large">#ff1273e0</color>
+  <color name="color_section_icon_medium">#ff1273e0</color>
+  <color name="color_section_icon_small">#ff1273e0</color>
   <color name="color_table_fg_head">#ffeaeaea</color>
   <color name="color_table_fg_data">#ffeaeaea</color>
   <color name="color_table_bg_head">#ff292929</color>

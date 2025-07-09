@@ -2,7 +2,7 @@
 
 <!--
   Do not edit directly, this file was auto-generated.
-  Generated on Thu, 03 Jul 2025 10:53:23 GMT
+  Generated on Wed, 09 Jul 2025 08:51:01 GMT
   Chassis - Tokens v0.1.0
   Copyright 2025 Ozgur Gunes
   Licensed under MIT (https://github.com/ozgurgunes/chassis-tokens/blob/main/LICENSE)
@@ -219,8 +219,10 @@
   <dimen name="size_nav_left_width_expanded">256dp</dimen>
   <dimen name="size_nav_left_wdith_collapsed">72dp</dimen>
   <dimen name="size_nav_top_height">64dp</dimen>
-  <dimen name="size_pagination_dot_idle">8dp</dimen>
-  <dimen name="size_pagination_dot_active">8dp</dimen>
+  <dimen name="size_pagination_dot_idle_h">8dp</dimen>
+  <dimen name="size_pagination_dot_idle_w">8dp</dimen>
+  <dimen name="size_pagination_dot_active_h">8dp</dimen>
+  <dimen name="size_pagination_dot_active_w">8dp</dimen>
   <dimen name="space_base_0">0dp</dimen>
   <dimen name="space_base_1">1dp</dimen>
   <dimen name="space_base_2">2dp</dimen>
@@ -546,6 +548,8 @@
   <dimen name="border_radius_date_picker_base">2dp</dimen>
   <dimen name="border_radius_date_picker_day">2dp</dimen>
   <dimen name="border_radius_date_picker_menu">2dp</dimen>
+  <dimen name="border_radius_dropdown_base">2dp</dimen>
+  <dimen name="border_radius_dropdown_item">2dp</dimen>
   <dimen name="border_radius_form_input_medium">2dp</dimen>
   <dimen name="border_radius_form_input_large">2dp</dimen>
   <dimen name="border_radius_form_input_small">2dp</dimen>
@@ -1306,6 +1310,8 @@
   <dimen name="border_width_button">1dp</dimen>
   <dimen name="border_width_card">1dp</dimen>
   <dimen name="border_width_chip">1dp</dimen>
+  <dimen name="border_width_date_picker">1dp</dimen>
+  <dimen name="border_width_dropdown">1dp</dimen>
   <dimen name="border_width_table">1dp</dimen>
   <dimen name="border_width_form_input_regular">1dp</dimen>
   <dimen name="border_width_form_input_floating">2dp</dimen>
