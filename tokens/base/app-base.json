@@ -3919,12 +3919,16 @@
       }
     },
     "accordion": {
-      "$type": "borderRadius",
-      "$value": "{borderRadius.context.medium}"
+      "main": {
+        "$type": "borderRadius",
+        "$value": "{borderRadius.context.medium}"
+      }
     },
     "alert": {
-      "$type": "borderRadius",
-      "$value": "{borderRadius.context.medium}"
+      "main": {
+        "$type": "borderRadius",
+        "$value": "{borderRadius.context.medium}"
+      }
     },
     "badge": {
       "medium": {
@@ -3955,8 +3959,10 @@
       }
     },
     "card": {
-      "$type": "borderRadius",
-      "$value": "{borderRadius.context.medium}"
+      "main": {
+        "$type": "borderRadius",
+        "$value": "{borderRadius.context.medium}"
+      }
     },
     "chip": {
       "medium": {
@@ -3973,11 +3979,13 @@
       }
     },
     "table": {
-      "$type": "borderRadius",
-      "$value": "{borderRadius.context.medium}"
+      "main": {
+        "$type": "borderRadius",
+        "$value": "{borderRadius.context.medium}"
+      }
     },
     "date-picker": {
-      "base": {
+      "main": {
         "$type": "borderRadius",
         "$value": "{borderRadius.context.medium}"
       },
@@ -3991,7 +3999,7 @@
       }
     },
     "dropdown": {
-      "base": {
+      "main": {
         "$type": "borderRadius",
         "$value": "{borderRadius.context.medium}"
       },
@@ -4022,17 +4030,17 @@
         "$value": "{borderRadius.context.zero}"
       }
     },
-    "menu-item": {
-      "$type": "borderRadius",
-      "$value": "{borderRadius.context.xsmall}"
-    },
     "modal": {
-      "$type": "borderRadius",
-      "$value": "{borderRadius.context.medium}"
+      "main": {
+        "$type": "borderRadius",
+        "$value": "{borderRadius.context.medium}"
+      }
     },
     "notification": {
-      "$type": "borderRadius",
-      "$value": "{borderRadius.context.medium}"
+      "main": {
+        "$type": "borderRadius",
+        "$value": "{borderRadius.context.medium}"
+      }
     },
     "pagination": {
       "button": {
@@ -4044,13 +4052,11 @@
         "$value": "{borderRadius.context.round-8}"
       }
     },
-    "popover": {
-      "$type": "borderRadius",
-      "$value": "{borderRadius.context.medium}"
-    },
     "section": {
-      "$type": "borderRadius",
-      "$value": "{borderRadius.context.large}"
+      "main": {
+        "$type": "borderRadius",
+        "$value": "{borderRadius.context.large}"
+      }
     },
     "tab": {
       "medium": {
@@ -4107,12 +4113,16 @@
       }
     },
     "accordion": {
-      "$type": "borderWidth",
-      "$value": "{borderWidth.context.medium}"
+      "main": {
+        "$type": "borderWidth",
+        "$value": "{borderWidth.context.medium}"
+      }
     },
     "alert": {
-      "$type": "borderWidth",
-      "$value": "{borderWidth.context.medium}"
+      "main": {
+        "$type": "borderWidth",
+        "$value": "{borderWidth.context.medium}"
+      }
     },
     "asset": {
       "indicator": {
@@ -4125,32 +4135,46 @@
       }
     },
     "badge": {
-      "$type": "borderWidth",
-      "$value": "{borderWidth.context.medium}"
+      "main": {
+        "$type": "borderWidth",
+        "$value": "{borderWidth.context.medium}"
+      }
     },
     "button": {
-      "$type": "borderWidth",
-      "$value": "{borderWidth.context.medium}"
+      "main": {
+        "$type": "borderWidth",
+        "$value": "{borderWidth.context.medium}"
+      }
     },
     "card": {
-      "$type": "borderWidth",
-      "$value": "{borderWidth.context.medium}"
+      "main": {
+        "$type": "borderWidth",
+        "$value": "{borderWidth.context.medium}"
+      }
     },
     "chip": {
-      "$type": "borderWidth",
-      "$value": "{borderWidth.context.medium}"
+      "main": {
+        "$type": "borderWidth",
+        "$value": "{borderWidth.context.medium}"
+      }
     },
     "date-picker": {
-      "$type": "borderWidth",
-      "$value": "{borderWidth.context.medium}"
+      "main": {
+        "$type": "borderWidth",
+        "$value": "{borderWidth.context.medium}"
+      }
     },
     "dropdown": {
-      "$type": "borderWidth",
-      "$value": "{borderWidth.context.medium}"
+      "main": {
+        "$type": "borderWidth",
+        "$value": "{borderWidth.context.medium}"
+      }
     },
     "table": {
-      "$type": "borderWidth",
-      "$value": "{borderWidth.context.medium}"
+      "main": {
+        "$type": "borderWidth",
+        "$value": "{borderWidth.context.medium}"
+      }
     },
     "form-input": {
       "regular": {
@@ -4171,20 +4195,28 @@
       }
     },
     "notification": {
-      "$type": "borderWidth",
-      "$value": "{borderWidth.context.medium}"
+      "main": {
+        "$type": "borderWidth",
+        "$value": "{borderWidth.context.medium}"
+      }
     },
     "popover": {
-      "$type": "borderWidth",
-      "$value": "{borderWidth.context.medium}"
+      "main": {
+        "$type": "borderWidth",
+        "$value": "{borderWidth.context.medium}"
+      }
     },
     "section": {
-      "$type": "borderWidth",
-      "$value": "{borderWidth.context.zero}"
+      "main": {
+        "$type": "borderWidth",
+        "$value": "{borderWidth.context.zero}"
+      }
     },
     "tab": {
-      "$type": "borderWidth",
-      "$value": "{borderWidth.context.medium}"
+      "main": {
+        "$type": "borderWidth",
+        "$value": "{borderWidth.context.medium}"
+      }
     }
   },
   "icon": {
