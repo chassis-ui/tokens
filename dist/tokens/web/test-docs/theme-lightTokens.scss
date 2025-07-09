@@ -4,7 +4,7 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Wed, 09 Jul 2025 08:50:58 GMT
+// Generated on Wed, 09 Jul 2025 09:13:19 GMT
 // Chassis - Tokens v0.1.0
 // Copyright 2025 Ozgur Gunes
 // Licensed under MIT (https://github.com/ozgurgunes/chassis-tokens/blob/main/LICENSE)
@@ -905,10 +905,16 @@ $cx-color-date-picker-bg-base: var(--#{$prefix}default-bg-main) !default;
 $cx-color-date-picker-border-base: var(--#{$prefix}default-transparent-color) !default;
 $cx-color-dropdown-bg-idle: var(--#{$prefix}default-transparent-color) !default;
 $cx-color-dropdown-fg-idle: var(--#{$prefix}default-fg-main) !default;
+$cx-color-dropdown-icon-idle: var(--#{$prefix}default-icon-main) !default;
 $cx-color-dropdown-bg-hover: var(--#{$prefix}default-bg-highlight) !default;
 $cx-color-dropdown-fg-hover: var(--#{$prefix}default-fg-highlight) !default;
+$cx-color-dropdown-icon-hover: var(--#{$prefix}default-fg-highlight) !default;
 $cx-color-dropdown-bg-active: var(--#{$prefix}primary-bg-solid) !default;
 $cx-color-dropdown-fg-active: var(--#{$prefix}primary-fg-solid) !default;
+$cx-color-dropdown-icon-active: var(--#{$prefix}primary-fg-solid) !default;
+$cx-color-dropdown-bg-disabled: var(--#{$prefix}default-transparent-color) !default;
+$cx-color-dropdown-fg-disabled: var(--#{$prefix}default-fg-slight) !default;
+$cx-color-dropdown-icon-disabled: var(--#{$prefix}default-icon-slight) !default;
 $cx-color-dropdown-bg-header: var(--#{$prefix}default-transparent-color) !default;
 $cx-color-dropdown-fg-header: var(--#{$prefix}default-fg-subtle) !default;
 $cx-color-dropdown-separator: var(--#{$prefix}default-border-subtle) !default;

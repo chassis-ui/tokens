@@ -2,7 +2,7 @@
 
 <!--
   Do not edit directly, this file was auto-generated.
-  Generated on Wed, 09 Jul 2025 08:50:58 GMT
+  Generated on Wed, 09 Jul 2025 09:13:19 GMT
   Chassis - Tokens v0.1.0
   Copyright 2025 Ozgur Gunes
   Licensed under MIT (https://github.com/ozgurgunes/chassis-tokens/blob/main/LICENSE)
@@ -903,10 +903,16 @@
   <color name="color_date_picker_border_base">#00000000</color>
   <color name="color_dropdown_bg_idle">#00000000</color>
   <color name="color_dropdown_fg_idle">#ffe9eced</color>
+  <color name="color_dropdown_icon_idle">#ff00a4cc</color>
   <color name="color_dropdown_bg_hover">#ff003947</color>
   <color name="color_dropdown_fg_hover">#ff80d2e6</color>
+  <color name="color_dropdown_icon_hover">#ff80d2e6</color>
   <color name="color_dropdown_bg_active">#ff00a4cc</color>
   <color name="color_dropdown_fg_active">#ffffffff</color>
+  <color name="color_dropdown_icon_active">#ffffffff</color>
+  <color name="color_dropdown_bg_disabled">#00000000</color>
+  <color name="color_dropdown_fg_disabled">#40e9eced</color>
+  <color name="color_dropdown_icon_disabled">#3300a4cc</color>
   <color name="color_dropdown_bg_header">#00000000</color>
   <color name="color_dropdown_fg_header">#80e9eced</color>
   <color name="color_dropdown_separator">#26e9eced</color>

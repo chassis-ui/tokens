@@ -4,7 +4,7 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Wed, 09 Jul 2025 08:50:57 GMT
+// Generated on Wed, 09 Jul 2025 09:13:18 GMT
 // Chassis - Tokens v0.1.0
 // Copyright 2025 Ozgur Gunes
 // Licensed under MIT (https://github.com/ozgurgunes/chassis-tokens/blob/main/LICENSE)
@@ -907,10 +907,16 @@ public class {
     @objc public static let ColorDatePickerBorderBase = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0)
     @objc public static let ColorDropdownBgIdle = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0)
     @objc public static let ColorDropdownFgIdle = UIColor(red: 0.914, green: 0.925, blue: 0.929, alpha: 1)
+    @objc public static let ColorDropdownIconIdle = UIColor(red: 0.000, green: 0.643, blue: 0.800, alpha: 1)
     @objc public static let ColorDropdownBgHover = UIColor(red: 0.000, green: 0.224, blue: 0.278, alpha: 1)
     @objc public static let ColorDropdownFgHover = UIColor(red: 0.502, green: 0.824, blue: 0.902, alpha: 1)
+    @objc public static let ColorDropdownIconHover = UIColor(red: 0.502, green: 0.824, blue: 0.902, alpha: 1)
     @objc public static let ColorDropdownBgActive = UIColor(red: 0.000, green: 0.643, blue: 0.800, alpha: 1)
     @objc public static let ColorDropdownFgActive = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1)
+    @objc public static let ColorDropdownIconActive = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1)
+    @objc public static let ColorDropdownBgDisabled = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0)
+    @objc public static let ColorDropdownFgDisabled = UIColor(red: 0.914, green: 0.925, blue: 0.929, alpha: 0.25)
+    @objc public static let ColorDropdownIconDisabled = UIColor(red: 0.000, green: 0.643, blue: 0.800, alpha: 0.2)
     @objc public static let ColorDropdownBgHeader = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0)
     @objc public static let ColorDropdownFgHeader = UIColor(red: 0.914, green: 0.925, blue: 0.929, alpha: 0.5)
     @objc public static let ColorDropdownSeparator = UIColor(red: 0.914, green: 0.925, blue: 0.929, alpha: 0.15)

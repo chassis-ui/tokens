@@ -2639,11 +2639,19 @@
         "$type": "color",
         "$value": "{color.context.default.fg-main}"
       },
+      "icon-idle": {
+        "$type": "color",
+        "$value": "{color.context.default.icon-main}"
+      },
       "bg-hover": {
         "$type": "color",
         "$value": "{color.context.default.bg-highlight}"
       },
       "fg-hover": {
+        "$type": "color",
+        "$value": "{color.context.default.fg-highlight}"
+      },
+      "icon-hover": {
         "$type": "color",
         "$value": "{color.context.default.fg-highlight}"
       },
@@ -2654,6 +2662,22 @@
       "fg-active": {
         "$type": "color",
         "$value": "{color.context.primary.fg-solid}"
+      },
+      "icon-active": {
+        "$type": "color",
+        "$value": "{color.context.primary.fg-solid}"
+      },
+      "bg-disabled": {
+        "$type": "color",
+        "$value": "{color.context.default.transparent-color}"
+      },
+      "fg-disabled": {
+        "$type": "color",
+        "$value": "{color.context.default.fg-slight}"
+      },
+      "icon-disabled": {
+        "$type": "color",
+        "$value": "{color.context.default.icon-slight}"
       },
       "bg-header": {
         "$type": "color",
