@@ -4071,6 +4071,12 @@
         "$type": "borderRadius",
         "$value": "{borderRadius.context.medium}"
       }
+    },
+    "tooltip": {
+      "main": {
+        "$type": "borderRadius",
+        "$value": "{borderRadius.context.small}"
+      }
     }
   },
   "borderWidth": {
@@ -4194,13 +4200,19 @@
         "$value": "{borderWidth.context.medium}"
       }
     },
+    "modal": {
+      "main": {
+        "$type": "borderWidth",
+        "$value": "{borderWidth.context.medium}"
+      }
+    },
     "notification": {
       "main": {
         "$type": "borderWidth",
         "$value": "{borderWidth.context.medium}"
       }
     },
-    "popover": {
+    "tooltip": {
       "main": {
         "$type": "borderWidth",
         "$value": "{borderWidth.context.medium}"
