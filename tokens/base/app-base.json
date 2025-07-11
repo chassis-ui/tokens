@@ -1824,7 +1824,7 @@
         "$value": "{font.text.small.strong}"
       }
     },
-    "dropdown-menu": {
+    "dropdown": {
       "title": {
         "$type": "typography",
         "$value": "{font.text.small.strong}"
@@ -2561,23 +2561,51 @@
       }
     },
     "date-picker": {
-      "bg-idle": {
-        "$type": "color",
-        "$value": "{color.context.default.transparent-color}"
-      },
       "fg-idle": {
         "$type": "color",
         "$value": "{color.context.default.fg-main}"
       },
-      "bg-today": {
+      "bg-idle": {
         "$type": "color",
         "$value": "{color.context.default.transparent-color}"
+      },
+      "fg-hover": {
+        "$type": "color",
+        "$value": "{color.context.default.fg-main}"
+      },
+      "bg-hover": {
+        "$type": "color",
+        "$value": "{color.context.default.bg-even}"
+      },
+      "fg-press": {
+        "$type": "color",
+        "$value": "{color.context.default.fg-main}"
+      },
+      "bg-press": {
+        "$type": "color",
+        "$value": "{color.context.default.bg-evident}"
+      },
+      "fg-active": {
+        "$type": "color",
+        "$value": "{color.context.white.base-color}"
+      },
+      "bg-active": {
+        "$type": "color",
+        "$value": "{color.context.default.cue-main}"
+      },
+      "fg-range": {
+        "$type": "color",
+        "$value": "{color.context.default.fg-idle}"
+      },
+      "bg-range": {
+        "$type": "color",
+        "$value": "{color.context.default.bg-highlight}"
       },
       "fg-today": {
         "$type": "color",
         "$value": "{color.context.default.cue-main}"
       },
-      "bg-weekend": {
+      "bg-today": {
         "$type": "color",
         "$value": "{color.context.default.transparent-color}"
       },
@@ -2585,119 +2613,107 @@
         "$type": "color",
         "$value": "{color.context.default.fg-subtle}"
       },
-      "bg-excess": {
+      "bg-weekend": {
         "$type": "color",
         "$value": "{color.context.default.transparent-color}"
       },
-      "fg-excess": {
+      "fg-outside": {
         "$type": "color",
         "$value": "{color.context.default.fg-slight}"
       },
-      "bg-hover": {
+      "bg-outside": {
         "$type": "color",
-        "$value": "{color.context.default.bg-even}"
+        "$value": "{color.context.default.transparent-color}"
       },
-      "fg-hover": {
+      "fg-main": {
         "$type": "color",
         "$value": "{color.context.default.fg-main}"
       },
-      "bg-active": {
-        "$type": "color",
-        "$value": "{color.context.default.cue-main}"
-      },
-      "fg-active": {
-        "$type": "color",
-        "$value": "{color.context.white.base-color}"
-      },
-      "bg-range": {
-        "$type": "color",
-        "$value": "{color.context.default.bg-highlight}"
-      },
-      "fg-range": {
-        "$type": "color",
-        "$value": "{color.context.default.fg-idle}"
-      },
-      "separator": {
-        "$type": "color",
-        "$value": "{color.context.default.border-subtle}"
-      },
-      "bg-base": {
+      "bg-main": {
         "$type": "color",
         "$value": "{color.context.default.bg-main}"
       },
-      "border-base": {
-        "$type": "color",
-        "$value": "{color.context.default.transparent-color}"
-      }
-    },
-    "dropdown": {
-      "bg-idle": {
+      "border-main": {
         "$type": "color",
         "$value": "{color.context.default.transparent-color}"
       },
+      "border-subtle": {
+        "$type": "color",
+        "$value": "{color.context.default.border-subtle}"
+      }
+    },
+    "dropdown": {
       "fg-idle": {
         "$type": "color",
         "$value": "{color.context.default.fg-main}"
+      },
+      "bg-idle": {
+        "$type": "color",
+        "$value": "{color.context.default.transparent-color}"
       },
       "icon-idle": {
         "$type": "color",
         "$value": "{color.context.default.icon-main}"
       },
-      "bg-hover": {
-        "$type": "color",
-        "$value": "{color.context.default.bg-highlight}"
-      },
       "fg-hover": {
         "$type": "color",
         "$value": "{color.context.default.fg-highlight}"
+      },
+      "bg-hover": {
+        "$type": "color",
+        "$value": "{color.context.default.bg-highlight}"
       },
       "icon-hover": {
         "$type": "color",
         "$value": "{color.context.default.fg-highlight}"
       },
-      "bg-active": {
-        "$type": "color",
-        "$value": "{color.context.primary.bg-solid}"
-      },
       "fg-active": {
         "$type": "color",
         "$value": "{color.context.primary.fg-solid}"
+      },
+      "bg-active": {
+        "$type": "color",
+        "$value": "{color.context.primary.bg-solid}"
       },
       "icon-active": {
         "$type": "color",
         "$value": "{color.context.primary.fg-solid}"
       },
-      "bg-disabled": {
-        "$type": "color",
-        "$value": "{color.context.default.transparent-color}"
-      },
       "fg-disabled": {
         "$type": "color",
         "$value": "{color.context.default.fg-slight}"
+      },
+      "bg-disabled": {
+        "$type": "color",
+        "$value": "{color.context.default.transparent-color}"
       },
       "icon-disabled": {
         "$type": "color",
         "$value": "{color.context.default.icon-slight}"
       },
-      "bg-header": {
-        "$type": "color",
-        "$value": "{color.context.default.transparent-color}"
-      },
       "fg-header": {
         "$type": "color",
         "$value": "{color.context.default.fg-subtle}"
       },
-      "separator": {
+      "bg-header": {
         "$type": "color",
-        "$value": "{color.context.default.border-subtle}"
+        "$value": "{color.context.default.transparent-color}"
       },
-      "bg-base": {
+      "fg-main": {
+        "$type": "color",
+        "$value": "{color.context.default.fg-main}"
+      },
+      "bg-main": {
         "$type": "color",
         "$value": "{color.context.default.bg-main}"
       },
-      "border-base": {
+      "border-main": {
         "$type": "color",
         "$value": "{color.context.default.transparent-color}"
+      },
+      "border-subtle": {
+        "$type": "color",
+        "$value": "{color.context.default.border-subtle}"
       }
     },
     "form-input": {
@@ -3200,6 +3216,16 @@
         "$value": "{size.base.120}"
       }
     },
+    "dropdown": {
+      "icon": {
+        "$type": "sizing",
+        "$value": "{size.base.24}"
+      },
+      "disclosure": {
+        "$type": "sizing",
+        "$value": "{size.base.16}"
+      }
+    },
     "form-input": {
       "medium-icon": {
         "$type": "sizing",
@@ -3622,6 +3648,34 @@
         "$value": "{space.base.8}"
       },
       "small-nudge": {
+        "$type": "spacing",
+        "$value": "{space.base.4}"
+      }
+    },
+    "date-picker": {
+      "padding-y": {
+        "$type": "spacing",
+        "$value": "{space.base.8}"
+      },
+      "padding-x": {
+        "$type": "spacing",
+        "$value": "{space.base.8}"
+      },
+      "gap": {
+        "$type": "spacing",
+        "$value": "{space.base.4}"
+      }
+    },
+    "dropdown": {
+      "padding-y": {
+        "$type": "spacing",
+        "$value": "{space.base.8}"
+      },
+      "padding-x": {
+        "$type": "spacing",
+        "$value": "{space.base.8}"
+      },
+      "gap": {
         "$type": "spacing",
         "$value": "{space.base.4}"
       }

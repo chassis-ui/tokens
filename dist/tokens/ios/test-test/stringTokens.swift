@@ -4,7 +4,7 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Wed, 09 Jul 2025 14:33:36 GMT
+// Generated on Fri, 11 Jul 2025 11:36:15 GMT
 // Chassis - Tokens v0.1.0
 // Copyright 2025 Ozgur Gunes
 // Licensed under MIT (https://github.com/ozgurgunes/chassis-tokens/blob/main/LICENSE)
@@ -833,16 +833,16 @@ public class {
     @objc public static let FontDatePickerLabelTextCase = "none"
     @objc public static let FontDatePickerLabelTextDecoration = "none"
     @objc public static let FontDatePickerLabelFontStyle = "normal"
-    @objc public static let FontDropdownMenuTitleFontFamily = "Helvetica"
-    @objc public static let FontDropdownMenuTitleFontWeight = "bold"
-    @objc public static let FontDropdownMenuTitleTextCase = "none"
-    @objc public static let FontDropdownMenuTitleTextDecoration = "none"
-    @objc public static let FontDropdownMenuTitleFontStyle = "normal"
-    @objc public static let FontDropdownMenuItemFontFamily = "Helvetica"
-    @objc public static let FontDropdownMenuItemFontWeight = "regular"
-    @objc public static let FontDropdownMenuItemTextCase = "none"
-    @objc public static let FontDropdownMenuItemTextDecoration = "none"
-    @objc public static let FontDropdownMenuItemFontStyle = "normal"
+    @objc public static let FontDropdownTitleFontFamily = "Helvetica"
+    @objc public static let FontDropdownTitleFontWeight = "bold"
+    @objc public static let FontDropdownTitleTextCase = "none"
+    @objc public static let FontDropdownTitleTextDecoration = "none"
+    @objc public static let FontDropdownTitleFontStyle = "normal"
+    @objc public static let FontDropdownItemFontFamily = "Helvetica"
+    @objc public static let FontDropdownItemFontWeight = "regular"
+    @objc public static let FontDropdownItemTextCase = "none"
+    @objc public static let FontDropdownItemTextDecoration = "none"
+    @objc public static let FontDropdownItemFontStyle = "normal"
     @objc public static let FontFormInputMediumLabelFontFamily = "Helvetica"
     @objc public static let FontFormInputMediumLabelFontWeight = "bold"
     @objc public static let FontFormInputMediumLabelTextCase = "none"

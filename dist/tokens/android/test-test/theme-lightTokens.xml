@@ -2,7 +2,7 @@
 
 <!--
   Do not edit directly, this file was auto-generated.
-  Generated on Wed, 09 Jul 2025 14:33:38 GMT
+  Generated on Fri, 11 Jul 2025 11:36:17 GMT
   Chassis - Tokens v0.1.0
   Copyright 2025 Ozgur Gunes
   Licensed under MIT (https://github.com/ozgurgunes/chassis-tokens/blob/main/LICENSE)
@@ -884,40 +884,44 @@
   <color name="color_button_info_border_disabled">#00098294</color>
   <color name="color_button_info_border_hover">#00098294</color>
   <color name="color_button_info_border_press">#00098294</color>
-  <color name="color_date_picker_bg_idle">#00000000</color>
   <color name="color_date_picker_fg_idle">#ff1d1d1d</color>
-  <color name="color_date_picker_bg_today">#00000000</color>
-  <color name="color_date_picker_fg_today">#ff1273e0</color>
-  <color name="color_date_picker_bg_weekend">#00000000</color>
-  <color name="color_date_picker_fg_weekend">#801d1d1d</color>
-  <color name="color_date_picker_bg_excess">#00000000</color>
-  <color name="color_date_picker_fg_excess">#401d1d1d</color>
-  <color name="color_date_picker_bg_hover">#fff5f5f5</color>
+  <color name="color_date_picker_bg_idle">#00000000</color>
   <color name="color_date_picker_fg_hover">#ff1d1d1d</color>
-  <color name="color_date_picker_bg_active">#ff1273e0</color>
+  <color name="color_date_picker_bg_hover">#fff5f5f5</color>
+  <color name="color_date_picker_fg_press">#ff1d1d1d</color>
+  <color name="color_date_picker_bg_press">#ffeaeaea</color>
   <color name="color_date_picker_fg_active">#ffffffff</color>
-  <color name="color_date_picker_bg_range">#ffdbeafa</color>
+  <color name="color_date_picker_bg_active">#ff1273e0</color>
   <color name="color_date_picker_fg_range">#ff1d1d1d</color>
-  <color name="color_date_picker_separator">#261d1d1d</color>
-  <color name="color_date_picker_bg_base">#ffffffff</color>
-  <color name="color_date_picker_border_base">#00000000</color>
-  <color name="color_dropdown_bg_idle">#00000000</color>
+  <color name="color_date_picker_bg_range">#ffdbeafa</color>
+  <color name="color_date_picker_fg_today">#ff1273e0</color>
+  <color name="color_date_picker_bg_today">#00000000</color>
+  <color name="color_date_picker_fg_weekend">#801d1d1d</color>
+  <color name="color_date_picker_bg_weekend">#00000000</color>
+  <color name="color_date_picker_fg_outside">#401d1d1d</color>
+  <color name="color_date_picker_bg_outside">#00000000</color>
+  <color name="color_date_picker_fg_main">#ff1d1d1d</color>
+  <color name="color_date_picker_bg_main">#ffffffff</color>
+  <color name="color_date_picker_border_main">#00000000</color>
+  <color name="color_date_picker_border_subtle">#261d1d1d</color>
   <color name="color_dropdown_fg_idle">#ff1d1d1d</color>
+  <color name="color_dropdown_bg_idle">#00000000</color>
   <color name="color_dropdown_icon_idle">#ff1273e0</color>
-  <color name="color_dropdown_bg_hover">#ffdbeafa</color>
   <color name="color_dropdown_fg_hover">#ff0d519d</color>
+  <color name="color_dropdown_bg_hover">#ffdbeafa</color>
   <color name="color_dropdown_icon_hover">#ff0d519d</color>
-  <color name="color_dropdown_bg_active">#ff1273e0</color>
   <color name="color_dropdown_fg_active">#ffffffff</color>
+  <color name="color_dropdown_bg_active">#ff1273e0</color>
   <color name="color_dropdown_icon_active">#ffffffff</color>
-  <color name="color_dropdown_bg_disabled">#00000000</color>
   <color name="color_dropdown_fg_disabled">#401d1d1d</color>
+  <color name="color_dropdown_bg_disabled">#00000000</color>
   <color name="color_dropdown_icon_disabled">#331273e0</color>
-  <color name="color_dropdown_bg_header">#00000000</color>
   <color name="color_dropdown_fg_header">#801d1d1d</color>
-  <color name="color_dropdown_separator">#261d1d1d</color>
-  <color name="color_dropdown_bg_base">#ffffffff</color>
-  <color name="color_dropdown_border_base">#00000000</color>
+  <color name="color_dropdown_bg_header">#00000000</color>
+  <color name="color_dropdown_fg_main">#ff1d1d1d</color>
+  <color name="color_dropdown_bg_main">#ffffffff</color>
+  <color name="color_dropdown_border_main">#00000000</color>
+  <color name="color_dropdown_border_subtle">#261d1d1d</color>
   <color name="color_form_input_idle_bg_regular">#ffffffff</color>
   <color name="color_form_input_idle_bg_floating">#fff5f5f5</color>
   <color name="color_form_input_idle_border">#ff989898</color>

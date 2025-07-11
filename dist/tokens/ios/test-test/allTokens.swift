@@ -4,7 +4,7 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Wed, 09 Jul 2025 14:33:36 GMT
+// Generated on Fri, 11 Jul 2025 11:36:15 GMT
 // Chassis - Tokens v0.1.0
 // Copyright 2025 Ozgur Gunes
 // Licensed under MIT (https://github.com/ozgurgunes/chassis-tokens/blob/main/LICENSE)
@@ -204,6 +204,8 @@ public class {
     @objc public static let SizeDatePickerDayHeight = CGFloat(40)
     @objc public static let SizeDatePickerWeekWidth = CGFloat(280)
     @objc public static let SizeDatePickerMenuWidth = CGFloat(120)
+    @objc public static let SizeDropdownIcon = CGFloat(24)
+    @objc public static let SizeDropdownDisclosure = CGFloat(16)
     @objc public static let SizeFormInputMediumIcon = CGFloat(20)
     @objc public static let SizeFormInputMediumCaret = CGFloat(20)
     @objc public static let SizeFormInputLargeIcon = CGFloat(24)
@@ -354,6 +356,12 @@ public class {
     @objc public static let SpaceChipSmallPaddingX = CGFloat(2)
     @objc public static let SpaceChipSmallGap = CGFloat(8)
     @objc public static let SpaceChipSmallNudge = CGFloat(4)
+    @objc public static let SpaceDatePickerPaddingY = CGFloat(8)
+    @objc public static let SpaceDatePickerPaddingX = CGFloat(8)
+    @objc public static let SpaceDatePickerGap = CGFloat(4)
+    @objc public static let SpaceDropdownPaddingY = CGFloat(8)
+    @objc public static let SpaceDropdownPaddingX = CGFloat(8)
+    @objc public static let SpaceDropdownGap = CGFloat(4)
     @objc public static let SpaceFormInputMediumPaddingY = CGFloat(8)
     @objc public static let SpaceFormInputMediumPaddingX = CGFloat(12)
     @objc public static let SpaceFormInputMediumGap = CGFloat(12)
@@ -2025,40 +2033,44 @@ public class {
     @objc public static let ColorButtonInfoBorderDisabled = UIColor(red: 0.035, green: 0.510, blue: 0.580, alpha: 0)
     @objc public static let ColorButtonInfoBorderHover = UIColor(red: 0.035, green: 0.510, blue: 0.580, alpha: 0)
     @objc public static let ColorButtonInfoBorderPress = UIColor(red: 0.035, green: 0.510, blue: 0.580, alpha: 0)
-    @objc public static let ColorDatePickerBgIdle = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0)
     @objc public static let ColorDatePickerFgIdle = UIColor(red: 0.114, green: 0.114, blue: 0.114, alpha: 1)
-    @objc public static let ColorDatePickerBgToday = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0)
-    @objc public static let ColorDatePickerFgToday = UIColor(red: 0.071, green: 0.451, blue: 0.878, alpha: 1)
-    @objc public static let ColorDatePickerBgWeekend = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0)
-    @objc public static let ColorDatePickerFgWeekend = UIColor(red: 0.114, green: 0.114, blue: 0.114, alpha: 0.5)
-    @objc public static let ColorDatePickerBgExcess = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0)
-    @objc public static let ColorDatePickerFgExcess = UIColor(red: 0.114, green: 0.114, blue: 0.114, alpha: 0.25)
-    @objc public static let ColorDatePickerBgHover = UIColor(red: 0.961, green: 0.961, blue: 0.961, alpha: 1)
+    @objc public static let ColorDatePickerBgIdle = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0)
     @objc public static let ColorDatePickerFgHover = UIColor(red: 0.114, green: 0.114, blue: 0.114, alpha: 1)
-    @objc public static let ColorDatePickerBgActive = UIColor(red: 0.071, green: 0.451, blue: 0.878, alpha: 1)
+    @objc public static let ColorDatePickerBgHover = UIColor(red: 0.961, green: 0.961, blue: 0.961, alpha: 1)
+    @objc public static let ColorDatePickerFgPress = UIColor(red: 0.114, green: 0.114, blue: 0.114, alpha: 1)
+    @objc public static let ColorDatePickerBgPress = UIColor(red: 0.918, green: 0.918, blue: 0.918, alpha: 1)
     @objc public static let ColorDatePickerFgActive = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1)
-    @objc public static let ColorDatePickerBgRange = UIColor(red: 0.859, green: 0.918, blue: 0.980, alpha: 1)
+    @objc public static let ColorDatePickerBgActive = UIColor(red: 0.071, green: 0.451, blue: 0.878, alpha: 1)
     @objc public static let ColorDatePickerFgRange = UIColor(red: 0.114, green: 0.114, blue: 0.114, alpha: 1)
-    @objc public static let ColorDatePickerSeparator = UIColor(red: 0.114, green: 0.114, blue: 0.114, alpha: 0.15)
-    @objc public static let ColorDatePickerBgBase = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1)
-    @objc public static let ColorDatePickerBorderBase = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0)
-    @objc public static let ColorDropdownBgIdle = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0)
+    @objc public static let ColorDatePickerBgRange = UIColor(red: 0.859, green: 0.918, blue: 0.980, alpha: 1)
+    @objc public static let ColorDatePickerFgToday = UIColor(red: 0.071, green: 0.451, blue: 0.878, alpha: 1)
+    @objc public static let ColorDatePickerBgToday = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0)
+    @objc public static let ColorDatePickerFgWeekend = UIColor(red: 0.114, green: 0.114, blue: 0.114, alpha: 0.5)
+    @objc public static let ColorDatePickerBgWeekend = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0)
+    @objc public static let ColorDatePickerFgOutside = UIColor(red: 0.114, green: 0.114, blue: 0.114, alpha: 0.25)
+    @objc public static let ColorDatePickerBgOutside = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0)
+    @objc public static let ColorDatePickerFgMain = UIColor(red: 0.114, green: 0.114, blue: 0.114, alpha: 1)
+    @objc public static let ColorDatePickerBgMain = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1)
+    @objc public static let ColorDatePickerBorderMain = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0)
+    @objc public static let ColorDatePickerBorderSubtle = UIColor(red: 0.114, green: 0.114, blue: 0.114, alpha: 0.15)
     @objc public static let ColorDropdownFgIdle = UIColor(red: 0.114, green: 0.114, blue: 0.114, alpha: 1)
+    @objc public static let ColorDropdownBgIdle = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0)
     @objc public static let ColorDropdownIconIdle = UIColor(red: 0.071, green: 0.451, blue: 0.878, alpha: 1)
-    @objc public static let ColorDropdownBgHover = UIColor(red: 0.859, green: 0.918, blue: 0.980, alpha: 1)
     @objc public static let ColorDropdownFgHover = UIColor(red: 0.051, green: 0.318, blue: 0.616, alpha: 1)
+    @objc public static let ColorDropdownBgHover = UIColor(red: 0.859, green: 0.918, blue: 0.980, alpha: 1)
     @objc public static let ColorDropdownIconHover = UIColor(red: 0.051, green: 0.318, blue: 0.616, alpha: 1)
-    @objc public static let ColorDropdownBgActive = UIColor(red: 0.071, green: 0.451, blue: 0.878, alpha: 1)
     @objc public static let ColorDropdownFgActive = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1)
+    @objc public static let ColorDropdownBgActive = UIColor(red: 0.071, green: 0.451, blue: 0.878, alpha: 1)
     @objc public static let ColorDropdownIconActive = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1)
-    @objc public static let ColorDropdownBgDisabled = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0)
     @objc public static let ColorDropdownFgDisabled = UIColor(red: 0.114, green: 0.114, blue: 0.114, alpha: 0.25)
+    @objc public static let ColorDropdownBgDisabled = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0)
     @objc public static let ColorDropdownIconDisabled = UIColor(red: 0.071, green: 0.451, blue: 0.878, alpha: 0.2)
-    @objc public static let ColorDropdownBgHeader = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0)
     @objc public static let ColorDropdownFgHeader = UIColor(red: 0.114, green: 0.114, blue: 0.114, alpha: 0.5)
-    @objc public static let ColorDropdownSeparator = UIColor(red: 0.114, green: 0.114, blue: 0.114, alpha: 0.15)
-    @objc public static let ColorDropdownBgBase = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1)
-    @objc public static let ColorDropdownBorderBase = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0)
+    @objc public static let ColorDropdownBgHeader = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0)
+    @objc public static let ColorDropdownFgMain = UIColor(red: 0.114, green: 0.114, blue: 0.114, alpha: 1)
+    @objc public static let ColorDropdownBgMain = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1)
+    @objc public static let ColorDropdownBorderMain = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0)
+    @objc public static let ColorDropdownBorderSubtle = UIColor(red: 0.114, green: 0.114, blue: 0.114, alpha: 0.15)
     @objc public static let ColorFormInputIdleBgRegular = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1)
     @objc public static let ColorFormInputIdleBgFloating = UIColor(red: 0.961, green: 0.961, blue: 0.961, alpha: 1)
     @objc public static let ColorFormInputIdleBorder = UIColor(red: 0.596, green: 0.596, blue: 0.596, alpha: 1)
@@ -2344,6 +2356,7 @@ public class {
     @objc public static let BorderRadiusTabMedium = CGFloat(2)
     @objc public static let BorderRadiusTabLarge = CGFloat(2)
     @objc public static let BorderRadiusTabSmall = CGFloat(2)
+    @objc public static let BorderRadiusTooltipMain = CGFloat(2)
     @objc public static let FontContextJumboFontFamily = "Times New Roman"
     @objc public static let FontContextJumboFontWeight = "bold"
     @objc public static let FontContextJumboLineHeight = CGFloat(125)
@@ -3694,24 +3707,24 @@ public class {
     @objc public static let FontDatePickerLabelTextCase = "none"
     @objc public static let FontDatePickerLabelTextDecoration = "none"
     @objc public static let FontDatePickerLabelFontStyle = "normal"
-    @objc public static let FontDropdownMenuTitleFontFamily = "Helvetica"
-    @objc public static let FontDropdownMenuTitleFontWeight = "bold"
-    @objc public static let FontDropdownMenuTitleLineHeight = CGFloat(20)
-    @objc public static let FontDropdownMenuTitleFontSize = CGFloat(14)
-    @objc public static let FontDropdownMenuTitleLetterSpacing = CGFloat(0)
-    @objc public static let FontDropdownMenuTitleParagraphSpacing = CGFloat(0)
-    @objc public static let FontDropdownMenuTitleTextCase = "none"
-    @objc public static let FontDropdownMenuTitleTextDecoration = "none"
-    @objc public static let FontDropdownMenuTitleFontStyle = "normal"
-    @objc public static let FontDropdownMenuItemFontFamily = "Helvetica"
-    @objc public static let FontDropdownMenuItemFontWeight = "regular"
-    @objc public static let FontDropdownMenuItemLineHeight = CGFloat(24)
-    @objc public static let FontDropdownMenuItemFontSize = CGFloat(16)
-    @objc public static let FontDropdownMenuItemLetterSpacing = CGFloat(0)
-    @objc public static let FontDropdownMenuItemParagraphSpacing = CGFloat(0)
-    @objc public static let FontDropdownMenuItemTextCase = "none"
-    @objc public static let FontDropdownMenuItemTextDecoration = "none"
-    @objc public static let FontDropdownMenuItemFontStyle = "normal"
+    @objc public static let FontDropdownTitleFontFamily = "Helvetica"
+    @objc public static let FontDropdownTitleFontWeight = "bold"
+    @objc public static let FontDropdownTitleLineHeight = CGFloat(20)
+    @objc public static let FontDropdownTitleFontSize = CGFloat(14)
+    @objc public static let FontDropdownTitleLetterSpacing = CGFloat(0)
+    @objc public static let FontDropdownTitleParagraphSpacing = CGFloat(0)
+    @objc public static let FontDropdownTitleTextCase = "none"
+    @objc public static let FontDropdownTitleTextDecoration = "none"
+    @objc public static let FontDropdownTitleFontStyle = "normal"
+    @objc public static let FontDropdownItemFontFamily = "Helvetica"
+    @objc public static let FontDropdownItemFontWeight = "regular"
+    @objc public static let FontDropdownItemLineHeight = CGFloat(24)
+    @objc public static let FontDropdownItemFontSize = CGFloat(16)
+    @objc public static let FontDropdownItemLetterSpacing = CGFloat(0)
+    @objc public static let FontDropdownItemParagraphSpacing = CGFloat(0)
+    @objc public static let FontDropdownItemTextCase = "none"
+    @objc public static let FontDropdownItemTextDecoration = "none"
+    @objc public static let FontDropdownItemFontStyle = "normal"
     @objc public static let FontFormInputMediumLabelFontFamily = "Helvetica"
     @objc public static let FontFormInputMediumLabelFontWeight = "bold"
     @objc public static let FontFormInputMediumLabelLineHeight = CGFloat(24)
@@ -4006,8 +4019,9 @@ public class {
     @objc public static let BorderWidthFormInputFloating = CGFloat(2)
     @objc public static let BorderWidthFormInputActive = CGFloat(2)
     @objc public static let BorderWidthFormInputInactive = CGFloat(1)
+    @objc public static let BorderWidthModalMain = CGFloat(1)
     @objc public static let BorderWidthNotificationMain = CGFloat(1)
-    @objc public static let BorderWidthPopoverMain = CGFloat(1)
+    @objc public static let BorderWidthTooltipMain = CGFloat(1)
     @objc public static let BorderWidthSectionMain = CGFloat(0)
     @objc public static let BorderWidthTabMain = CGFloat(1)
     @objc public static let IconAccordionIndicator = "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='currentcolor' class='icon-chevron-down-solid' viewBox='0 0 24 24'><path d='M11.1016 17.8984L3.60156 10.3984C3.09375 9.92969 3.09375 9.10938 3.60156 8.64062C4.07031 8.13281 4.89062 8.13281 5.35938 8.64062L12 15.2422L18.6016 8.64062C19.0703 8.13281 19.8906 8.13281 20.3594 8.64062C20.8672 9.10938 20.8672 9.92969 20.3594 10.3984L12.8594 17.8984C12.3906 18.4062 11.5703 18.4062 11.1016 17.8984Z'/></svg>"

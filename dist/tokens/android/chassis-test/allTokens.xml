@@ -2,7 +2,7 @@
 
 <!--
   Do not edit directly, this file was auto-generated.
-  Generated on Wed, 09 Jul 2025 14:33:34 GMT
+  Generated on Fri, 11 Jul 2025 11:36:13 GMT
   Chassis - Tokens v0.1.0
   Copyright 2025 Ozgur Gunes
   Licensed under MIT (https://github.com/ozgurgunes/chassis-tokens/blob/main/LICENSE)
@@ -200,6 +200,8 @@
   <dimen name="size_date_picker_day_height">40dp</dimen>
   <dimen name="size_date_picker_week_width">280dp</dimen>
   <dimen name="size_date_picker_menu_width">120dp</dimen>
+  <dimen name="size_dropdown_icon">24dp</dimen>
+  <dimen name="size_dropdown_disclosure">16dp</dimen>
   <dimen name="size_form_input_medium_icon">20dp</dimen>
   <dimen name="size_form_input_medium_caret">20dp</dimen>
   <dimen name="size_form_input_large_icon">24dp</dimen>
@@ -350,6 +352,12 @@
   <dimen name="space_chip_small_padding_x">2dp</dimen>
   <dimen name="space_chip_small_gap">8dp</dimen>
   <dimen name="space_chip_small_nudge">4dp</dimen>
+  <dimen name="space_date_picker_padding_y">8dp</dimen>
+  <dimen name="space_date_picker_padding_x">8dp</dimen>
+  <dimen name="space_date_picker_gap">4dp</dimen>
+  <dimen name="space_dropdown_padding_y">8dp</dimen>
+  <dimen name="space_dropdown_padding_x">8dp</dimen>
+  <dimen name="space_dropdown_gap">4dp</dimen>
   <dimen name="space_form_input_medium_padding_y">8dp</dimen>
   <dimen name="space_form_input_medium_padding_x">12dp</dimen>
   <dimen name="space_form_input_medium_gap">12dp</dimen>
@@ -2021,40 +2029,44 @@
   <color name="color_button_info_border_disabled">#001414f5</color>
   <color name="color_button_info_border_hover">#001414f5</color>
   <color name="color_button_info_border_press">#001414f5</color>
-  <color name="color_date_picker_bg_idle">#00000000</color>
   <color name="color_date_picker_fg_idle">#ff1c2021</color>
-  <color name="color_date_picker_bg_today">#00000000</color>
-  <color name="color_date_picker_fg_today">#ff00a4cc</color>
-  <color name="color_date_picker_bg_weekend">#00000000</color>
-  <color name="color_date_picker_fg_weekend">#801c2021</color>
-  <color name="color_date_picker_bg_excess">#00000000</color>
-  <color name="color_date_picker_fg_excess">#401c2021</color>
-  <color name="color_date_picker_bg_hover">#fff5f6f6</color>
+  <color name="color_date_picker_bg_idle">#00000000</color>
   <color name="color_date_picker_fg_hover">#ff1c2021</color>
-  <color name="color_date_picker_bg_active">#ff00a4cc</color>
+  <color name="color_date_picker_bg_hover">#fff5f6f6</color>
+  <color name="color_date_picker_fg_press">#ff1c2021</color>
+  <color name="color_date_picker_bg_press">#ffe9eced</color>
   <color name="color_date_picker_fg_active">#ffffffff</color>
-  <color name="color_date_picker_bg_range">#ffd9f1f7</color>
+  <color name="color_date_picker_bg_active">#ff00a4cc</color>
   <color name="color_date_picker_fg_range">#ff1c2021</color>
-  <color name="color_date_picker_separator">#261c2021</color>
-  <color name="color_date_picker_bg_base">#ffffffff</color>
-  <color name="color_date_picker_border_base">#00000000</color>
-  <color name="color_dropdown_bg_idle">#00000000</color>
+  <color name="color_date_picker_bg_range">#ffd9f1f7</color>
+  <color name="color_date_picker_fg_today">#ff00a4cc</color>
+  <color name="color_date_picker_bg_today">#00000000</color>
+  <color name="color_date_picker_fg_weekend">#801c2021</color>
+  <color name="color_date_picker_bg_weekend">#00000000</color>
+  <color name="color_date_picker_fg_outside">#401c2021</color>
+  <color name="color_date_picker_bg_outside">#00000000</color>
+  <color name="color_date_picker_fg_main">#ff1c2021</color>
+  <color name="color_date_picker_bg_main">#ffffffff</color>
+  <color name="color_date_picker_border_main">#00000000</color>
+  <color name="color_date_picker_border_subtle">#261c2021</color>
   <color name="color_dropdown_fg_idle">#ff1c2021</color>
+  <color name="color_dropdown_bg_idle">#00000000</color>
   <color name="color_dropdown_icon_idle">#ff00a4cc</color>
-  <color name="color_dropdown_bg_hover">#ffd9f1f7</color>
   <color name="color_dropdown_fg_hover">#ff00738f</color>
+  <color name="color_dropdown_bg_hover">#ffd9f1f7</color>
   <color name="color_dropdown_icon_hover">#ff00738f</color>
-  <color name="color_dropdown_bg_active">#ff00a4cc</color>
   <color name="color_dropdown_fg_active">#ffffffff</color>
+  <color name="color_dropdown_bg_active">#ff00a4cc</color>
   <color name="color_dropdown_icon_active">#ffffffff</color>
-  <color name="color_dropdown_bg_disabled">#00000000</color>
   <color name="color_dropdown_fg_disabled">#401c2021</color>
+  <color name="color_dropdown_bg_disabled">#00000000</color>
   <color name="color_dropdown_icon_disabled">#3300a4cc</color>
-  <color name="color_dropdown_bg_header">#00000000</color>
   <color name="color_dropdown_fg_header">#801c2021</color>
-  <color name="color_dropdown_separator">#261c2021</color>
-  <color name="color_dropdown_bg_base">#ffffffff</color>
-  <color name="color_dropdown_border_base">#00000000</color>
+  <color name="color_dropdown_bg_header">#00000000</color>
+  <color name="color_dropdown_fg_main">#ff1c2021</color>
+  <color name="color_dropdown_bg_main">#ffffffff</color>
+  <color name="color_dropdown_border_main">#00000000</color>
+  <color name="color_dropdown_border_subtle">#261c2021</color>
   <color name="color_form_input_idle_bg_regular">#ffffffff</color>
   <color name="color_form_input_idle_bg_floating">#fff5f6f6</color>
   <color name="color_form_input_idle_border">#ff93a0a4</color>
@@ -2340,6 +2352,7 @@
   <dimen name="border_radius_tab_medium">6dp</dimen>
   <dimen name="border_radius_tab_large">10dp</dimen>
   <dimen name="border_radius_tab_small">6dp</dimen>
+  <dimen name="border_radius_tooltip_main">4dp</dimen>
   <string name="font_context_jumbo_font_family">Archivo Narrow</string>
   <string name="font_context_jumbo_font_weight">bold</string>
   <dimen name="font_context_jumbo_line_height">125sp</dimen>
@@ -3690,24 +3703,24 @@
   <string name="font_date_picker_label_text_case">none</string>
   <string name="font_date_picker_label_text_decoration">none</string>
   <string name="font_date_picker_label_font_style">normal</string>
-  <string name="font_dropdown_menu_title_font_family">Inter</string>
-  <string name="font_dropdown_menu_title_font_weight">semi-bold</string>
-  <dimen name="font_dropdown_menu_title_line_height">20sp</dimen>
-  <dimen name="font_dropdown_menu_title_font_size">14sp</dimen>
-  <integer name="font_dropdown_menu_title_letter_spacing">0</integer>
-  <dimen name="font_dropdown_menu_title_paragraph_spacing">0sp</dimen>
-  <string name="font_dropdown_menu_title_text_case">none</string>
-  <string name="font_dropdown_menu_title_text_decoration">none</string>
-  <string name="font_dropdown_menu_title_font_style">normal</string>
-  <string name="font_dropdown_menu_item_font_family">Inter</string>
-  <string name="font_dropdown_menu_item_font_weight">regular</string>
-  <dimen name="font_dropdown_menu_item_line_height">24sp</dimen>
-  <dimen name="font_dropdown_menu_item_font_size">16sp</dimen>
-  <integer name="font_dropdown_menu_item_letter_spacing">0</integer>
-  <dimen name="font_dropdown_menu_item_paragraph_spacing">0sp</dimen>
-  <string name="font_dropdown_menu_item_text_case">none</string>
-  <string name="font_dropdown_menu_item_text_decoration">none</string>
-  <string name="font_dropdown_menu_item_font_style">normal</string>
+  <string name="font_dropdown_title_font_family">Inter</string>
+  <string name="font_dropdown_title_font_weight">semi-bold</string>
+  <dimen name="font_dropdown_title_line_height">20sp</dimen>
+  <dimen name="font_dropdown_title_font_size">14sp</dimen>
+  <integer name="font_dropdown_title_letter_spacing">0</integer>
+  <dimen name="font_dropdown_title_paragraph_spacing">0sp</dimen>
+  <string name="font_dropdown_title_text_case">none</string>
+  <string name="font_dropdown_title_text_decoration">none</string>
+  <string name="font_dropdown_title_font_style">normal</string>
+  <string name="font_dropdown_item_font_family">Inter</string>
+  <string name="font_dropdown_item_font_weight">regular</string>
+  <dimen name="font_dropdown_item_line_height">24sp</dimen>
+  <dimen name="font_dropdown_item_font_size">16sp</dimen>
+  <integer name="font_dropdown_item_letter_spacing">0</integer>
+  <dimen name="font_dropdown_item_paragraph_spacing">0sp</dimen>
+  <string name="font_dropdown_item_text_case">none</string>
+  <string name="font_dropdown_item_text_decoration">none</string>
+  <string name="font_dropdown_item_font_style">normal</string>
   <string name="font_form_input_medium_label_font_family">Inter</string>
   <string name="font_form_input_medium_label_font_weight">semi-bold</string>
   <dimen name="font_form_input_medium_label_line_height">24sp</dimen>
@@ -4002,8 +4015,9 @@
   <dimen name="border_width_form_input_floating">2dp</dimen>
   <dimen name="border_width_form_input_active">2dp</dimen>
   <dimen name="border_width_form_input_inactive">1dp</dimen>
+  <dimen name="border_width_modal_main">1dp</dimen>
   <dimen name="border_width_notification_main">1dp</dimen>
-  <dimen name="border_width_popover_main">1dp</dimen>
+  <dimen name="border_width_tooltip_main">1dp</dimen>
   <dimen name="border_width_section_main">0dp</dimen>
   <dimen name="border_width_tab_main">1dp</dimen>
   <string name="icon_accordion_indicator"><svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='currentcolor' class='icon-chevron-down-solid' viewBox='0 0 24 24'><path d='M11.1016 17.8984L3.60156 10.3984C3.09375 9.92969 3.09375 9.10938 3.60156 8.64062C4.07031 8.13281 4.89062 8.13281 5.35938 8.64062L12 15.2422L18.6016 8.64062C19.0703 8.13281 19.8906 8.13281 20.3594 8.64062C20.8672 9.10938 20.8672 9.92969 20.3594 10.3984L12.8594 17.8984C12.3906 18.4062 11.5703 18.4062 11.1016 17.8984Z'/></svg></string>

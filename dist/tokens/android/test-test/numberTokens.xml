@@ -2,7 +2,7 @@
 
 <!--
   Do not edit directly, this file was auto-generated.
-  Generated on Wed, 09 Jul 2025 14:33:38 GMT
+  Generated on Fri, 11 Jul 2025 11:36:17 GMT
   Chassis - Tokens v0.1.0
   Copyright 2025 Ozgur Gunes
   Licensed under MIT (https://github.com/ozgurgunes/chassis-tokens/blob/main/LICENSE)
@@ -200,6 +200,8 @@
   <dimen name="size_date_picker_day_height">40dp</dimen>
   <dimen name="size_date_picker_week_width">280dp</dimen>
   <dimen name="size_date_picker_menu_width">120dp</dimen>
+  <dimen name="size_dropdown_icon">24dp</dimen>
+  <dimen name="size_dropdown_disclosure">16dp</dimen>
   <dimen name="size_form_input_medium_icon">20dp</dimen>
   <dimen name="size_form_input_medium_caret">20dp</dimen>
   <dimen name="size_form_input_large_icon">24dp</dimen>
@@ -350,6 +352,12 @@
   <dimen name="space_chip_small_padding_x">2dp</dimen>
   <dimen name="space_chip_small_gap">8dp</dimen>
   <dimen name="space_chip_small_nudge">4dp</dimen>
+  <dimen name="space_date_picker_padding_y">8dp</dimen>
+  <dimen name="space_date_picker_padding_x">8dp</dimen>
+  <dimen name="space_date_picker_gap">4dp</dimen>
+  <dimen name="space_dropdown_padding_y">8dp</dimen>
+  <dimen name="space_dropdown_padding_x">8dp</dimen>
+  <dimen name="space_dropdown_gap">4dp</dimen>
   <dimen name="space_form_input_medium_padding_y">8dp</dimen>
   <dimen name="space_form_input_medium_padding_x">12dp</dimen>
   <dimen name="space_form_input_medium_gap">12dp</dimen>
@@ -563,6 +571,7 @@
   <dimen name="border_radius_tab_medium">2dp</dimen>
   <dimen name="border_radius_tab_large">2dp</dimen>
   <dimen name="border_radius_tab_small">2dp</dimen>
+  <dimen name="border_radius_tooltip_main">2dp</dimen>
   <dimen name="font_context_jumbo_line_height">125sp</dimen>
   <dimen name="font_context_jumbo_font_size">96sp</dimen>
   <integer name="font_context_jumbo_letter_spacing">-1px</integer>
@@ -1163,14 +1172,14 @@
   <dimen name="font_date_picker_label_font_size">14sp</dimen>
   <integer name="font_date_picker_label_letter_spacing">0</integer>
   <dimen name="font_date_picker_label_paragraph_spacing">0sp</dimen>
-  <dimen name="font_dropdown_menu_title_line_height">20sp</dimen>
-  <dimen name="font_dropdown_menu_title_font_size">14sp</dimen>
-  <integer name="font_dropdown_menu_title_letter_spacing">0</integer>
-  <dimen name="font_dropdown_menu_title_paragraph_spacing">0sp</dimen>
-  <dimen name="font_dropdown_menu_item_line_height">24sp</dimen>
-  <dimen name="font_dropdown_menu_item_font_size">16sp</dimen>
-  <integer name="font_dropdown_menu_item_letter_spacing">0</integer>
-  <dimen name="font_dropdown_menu_item_paragraph_spacing">0sp</dimen>
+  <dimen name="font_dropdown_title_line_height">20sp</dimen>
+  <dimen name="font_dropdown_title_font_size">14sp</dimen>
+  <integer name="font_dropdown_title_letter_spacing">0</integer>
+  <dimen name="font_dropdown_title_paragraph_spacing">0sp</dimen>
+  <dimen name="font_dropdown_item_line_height">24sp</dimen>
+  <dimen name="font_dropdown_item_font_size">16sp</dimen>
+  <integer name="font_dropdown_item_letter_spacing">0</integer>
+  <dimen name="font_dropdown_item_paragraph_spacing">0sp</dimen>
   <dimen name="font_form_input_medium_label_line_height">24sp</dimen>
   <dimen name="font_form_input_medium_label_font_size">16sp</dimen>
   <integer name="font_form_input_medium_label_letter_spacing">0</integer>
@@ -1315,8 +1324,9 @@
   <dimen name="border_width_form_input_floating">2dp</dimen>
   <dimen name="border_width_form_input_active">2dp</dimen>
   <dimen name="border_width_form_input_inactive">1dp</dimen>
+  <dimen name="border_width_modal_main">1dp</dimen>
   <dimen name="border_width_notification_main">1dp</dimen>
-  <dimen name="border_width_popover_main">1dp</dimen>
+  <dimen name="border_width_tooltip_main">1dp</dimen>
   <dimen name="border_width_section_main">0dp</dimen>
   <dimen name="border_width_tab_main">1dp</dimen>
   <dimen name="grid_breakpoint_2xlarge">1400dp</dimen>
