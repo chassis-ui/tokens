@@ -3471,6 +3471,15 @@
       "color.form-input.disabled.help": "59e8fc4897b16e317f3b7ae44b458c3b6842932c",
       "color.list.icon": "82df7256ce1dd7de5615aa42c6010a9c2f76d6b0",
       "color.list.disclosure": "40843c5faa1a22297ac617584fe9001528c4ea53",
+      "color.progress.fg-past": "326c8b7edf41160157295c52bae69fc4a3980848",
+      "color.progress.bg-past": "f7b0c46975e23a86abacf8e3792797238ce5475c",
+      "color.progress.border-past": "1f9724942a54761f03df234493ad5b8859242b48",
+      "color.progress.fg-current": "86df1bd0baaa7469581b9f5cf9f295c971e485b1",
+      "color.progress.bg-current": "384d436f3179616deeb6068789a0b3598b52f396",
+      "color.progress.border-current": "8e1356ebe0c381b66438327fc9eaf3d111bb7d5b",
+      "color.progress.fg-next": "dd8b438bf03ed59f152f9604046a6aca03aad151",
+      "color.progress.bg-next": "5007e875036be311b97fbcf14065a8311678b1df",
+      "color.progress.border-next": "accfc35ebf6d59b561338ddba0f3bb169ef84528",
       "color.section.fg-large": "e22c04237b8d78df1d3bb3b8be14379a8ce1213d",
       "color.section.fg-medium": "4c4cde6a88d7483bcff7a8c11ed92e3d218efc9b",
       "color.section.fg-small": "fb267a5ece939821afaf0665f5112f75dc7a4768",
@@ -4125,7 +4134,8 @@
       "shadow.date-picker.main": "S:c283cf7b235e825fef33423f46503efedf2a8195,",
       "shadow.dropdown.main": "S:b72bc92e760cbfa06b9d059184c46e85505a569d,",
       "shadow.section.main": "S:b3d074f91b0323d86cdeb051dd61b4c1a0d81f0e,",
-      "shadow.nav-left.main": "S:a67f97fffb2090b4dd75b4edcfd139bfcd31917a,"
+      "shadow.nav-left.main": "S:a67f97fffb2090b4dd75b4edcfd139bfcd31917a,",
+      "shadow.table.main": "S:37ff21cdbbe70819b4cc2385bc92fe6cab74919d,"
     },
     "group": "app"
   },
@@ -4380,6 +4390,15 @@
       "color.form-input.disabled.help": "59e8fc4897b16e317f3b7ae44b458c3b6842932c",
       "color.list.icon": "82df7256ce1dd7de5615aa42c6010a9c2f76d6b0",
       "color.list.disclosure": "40843c5faa1a22297ac617584fe9001528c4ea53",
+      "color.progress.fg-past": "326c8b7edf41160157295c52bae69fc4a3980848",
+      "color.progress.bg-past": "f7b0c46975e23a86abacf8e3792797238ce5475c",
+      "color.progress.border-past": "1f9724942a54761f03df234493ad5b8859242b48",
+      "color.progress.fg-current": "86df1bd0baaa7469581b9f5cf9f295c971e485b1",
+      "color.progress.bg-current": "384d436f3179616deeb6068789a0b3598b52f396",
+      "color.progress.border-current": "8e1356ebe0c381b66438327fc9eaf3d111bb7d5b",
+      "color.progress.fg-next": "dd8b438bf03ed59f152f9604046a6aca03aad151",
+      "color.progress.bg-next": "5007e875036be311b97fbcf14065a8311678b1df",
+      "color.progress.border-next": "accfc35ebf6d59b561338ddba0f3bb169ef84528",
       "color.section.fg-large": "e22c04237b8d78df1d3bb3b8be14379a8ce1213d",
       "color.section.fg-medium": "4c4cde6a88d7483bcff7a8c11ed92e3d218efc9b",
       "color.section.fg-small": "fb267a5ece939821afaf0665f5112f75dc7a4768",
@@ -5034,7 +5053,8 @@
       "shadow.date-picker.main": "S:c283cf7b235e825fef33423f46503efedf2a8195,",
       "shadow.dropdown.main": "S:b72bc92e760cbfa06b9d059184c46e85505a569d,",
       "shadow.section.main": "S:b3d074f91b0323d86cdeb051dd61b4c1a0d81f0e,",
-      "shadow.nav-left.main": "S:a67f97fffb2090b4dd75b4edcfd139bfcd31917a,"
+      "shadow.nav-left.main": "S:a67f97fffb2090b4dd75b4edcfd139bfcd31917a,",
+      "shadow.table.main": "S:37ff21cdbbe70819b4cc2385bc92fe6cab74919d,"
     }
   },
   {
