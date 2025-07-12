@@ -4,7 +4,7 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Fri, 11 Jul 2025 11:36:12 GMT
+// Generated on Sat, 12 Jul 2025 07:34:49 GMT
 // Chassis - Tokens v0.1.0
 // Copyright 2025 Ozgur Gunes
 // Licensed under MIT (https://github.com/ozgurgunes/chassis-tokens/blob/main/LICENSE)
@@ -1087,19 +1087,21 @@ public class {
     @objc public static let ShadowContextPress2Color = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0.1)
     @objc public static let ShadowContextFocusColor = UIColor(red: 0.000, green: 0.643, blue: 0.800, alpha: 1)
     @objc public static let ShadowContextHighlightColor = UIColor(red: 0.000, green: 0.643, blue: 0.800, alpha: 1)
-    @objc public static let ShadowCommonCard1Color = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0.2)
-    @objc public static let ShadowCommonCard2Color = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0.1)
-    @objc public static let ShadowCommonFormInputColor = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0)
-    @objc public static let ShadowCommonNavTop1Color = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0.2)
-    @objc public static let ShadowCommonNavTop2Color = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0.1)
-    @objc public static let ShadowCommonModal1Color = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0.2)
-    @objc public static let ShadowCommonModal2Color = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0.1)
-    @objc public static let ShadowCommonPopover1Color = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0.2)
-    @objc public static let ShadowCommonPopover2Color = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0.1)
-    @objc public static let ShadowCommonSection1Color = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0.2)
-    @objc public static let ShadowCommonSection2Color = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0.1)
-    @objc public static let ShadowCommonNavLeft1Color = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0.2)
-    @objc public static let ShadowCommonNavLeft2Color = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0.1)
+    @objc public static let ShadowCardMain1Color = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0.2)
+    @objc public static let ShadowCardMain2Color = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0.1)
+    @objc public static let ShadowFormInputMainColor = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0)
+    @objc public static let ShadowNavTopMain1Color = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0.2)
+    @objc public static let ShadowNavTopMain2Color = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0.1)
+    @objc public static let ShadowModalMain1Color = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0.2)
+    @objc public static let ShadowModalMain2Color = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0.1)
+    @objc public static let ShadowDatePickerMain1Color = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0.2)
+    @objc public static let ShadowDatePickerMain2Color = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0.1)
+    @objc public static let ShadowDropdownMain1Color = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0.2)
+    @objc public static let ShadowDropdownMain2Color = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0.1)
+    @objc public static let ShadowSectionMain1Color = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0.2)
+    @objc public static let ShadowSectionMain2Color = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0.1)
+    @objc public static let ShadowNavLeftMain1Color = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0.2)
+    @objc public static let ShadowNavLeftMain2Color = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0.1)
     @objc public static let ShadowElevationDefault101Color = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0.2)
     @objc public static let ShadowElevationDefault102Color = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0.1)
     @objc public static let ShadowElevationDefault201Color = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0.2)

@@ -4,7 +4,7 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Fri, 11 Jul 2025 11:36:15 GMT
+// Generated on Sat, 12 Jul 2025 07:34:52 GMT
 // Chassis - Tokens v0.1.0
 // Copyright 2025 Ozgur Gunes
 // Licensed under MIT (https://github.com/ozgurgunes/chassis-tokens/blob/main/LICENSE)
@@ -1011,19 +1011,21 @@ public class {
     @objc public static let ShadowContextPress2Type = "dropShadow"
     @objc public static let ShadowContextFocusType = "dropShadow"
     @objc public static let ShadowContextHighlightType = "dropShadow"
-    @objc public static let ShadowCommonCard1Type = "dropShadow"
-    @objc public static let ShadowCommonCard2Type = "dropShadow"
-    @objc public static let ShadowCommonFormInputType = "dropShadow"
-    @objc public static let ShadowCommonNavTop1Type = "dropShadow"
-    @objc public static let ShadowCommonNavTop2Type = "dropShadow"
-    @objc public static let ShadowCommonModal1Type = "dropShadow"
-    @objc public static let ShadowCommonModal2Type = "dropShadow"
-    @objc public static let ShadowCommonPopover1Type = "dropShadow"
-    @objc public static let ShadowCommonPopover2Type = "dropShadow"
-    @objc public static let ShadowCommonSection1Type = "dropShadow"
-    @objc public static let ShadowCommonSection2Type = "dropShadow"
-    @objc public static let ShadowCommonNavLeft1Type = "dropShadow"
-    @objc public static let ShadowCommonNavLeft2Type = "dropShadow"
+    @objc public static let ShadowCardMain1Type = "dropShadow"
+    @objc public static let ShadowCardMain2Type = "dropShadow"
+    @objc public static let ShadowFormInputMainType = "dropShadow"
+    @objc public static let ShadowNavTopMain1Type = "dropShadow"
+    @objc public static let ShadowNavTopMain2Type = "dropShadow"
+    @objc public static let ShadowModalMain1Type = "dropShadow"
+    @objc public static let ShadowModalMain2Type = "dropShadow"
+    @objc public static let ShadowDatePickerMain1Type = "dropShadow"
+    @objc public static let ShadowDatePickerMain2Type = "dropShadow"
+    @objc public static let ShadowDropdownMain1Type = "dropShadow"
+    @objc public static let ShadowDropdownMain2Type = "dropShadow"
+    @objc public static let ShadowSectionMain1Type = "dropShadow"
+    @objc public static let ShadowSectionMain2Type = "dropShadow"
+    @objc public static let ShadowNavLeftMain1Type = "dropShadow"
+    @objc public static let ShadowNavLeftMain2Type = "dropShadow"
     @objc public static let ShadowElevationDefault101Type = "dropShadow"
     @objc public static let ShadowElevationDefault102Type = "dropShadow"
     @objc public static let ShadowElevationDefault201Type = "dropShadow"
