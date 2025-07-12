@@ -2922,6 +2922,44 @@
         "$value": "{color.context.default.bg-main}"
       }
     },
+    "progress": {
+      "fg-past": {
+        "$type": "color",
+        "$value": "{color.context.neutral.contrast-color}"
+      },
+      "bg-past": {
+        "$type": "color",
+        "$value": "{color.context.neutral.base-color}"
+      },
+      "border-past": {
+        "$type": "color",
+        "$value": "{color.context.neutral.base-color}"
+      },
+      "fg-current": {
+        "$type": "color",
+        "$value": "{color.context.primary.contrast-color}"
+      },
+      "bg-current": {
+        "$type": "color",
+        "$value": "{color.context.primary.base-color}"
+      },
+      "border-current": {
+        "$type": "color",
+        "$value": "{color.context.primary.base-color}"
+      },
+      "fg-next": {
+        "$type": "color",
+        "$value": "{color.context.default.contrast-color}"
+      },
+      "bg-next": {
+        "$type": "color",
+        "$value": "{color.context.default.base-color}"
+      },
+      "border-next": {
+        "$type": "color",
+        "$value": "{color.context.default.base-color}"
+      }
+    },
     "section": {
       "fg-large": {
         "$type": "color",
@@ -4502,6 +4540,12 @@
             "spread": "{dimension.base.nd25}"
           }
         ]
+      }
+    },
+    "table": {
+      "main": {
+        "$type": "boxShadow",
+        "$value": "{shadow.context.none}"
       }
     }
   }
