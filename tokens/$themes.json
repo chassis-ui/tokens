@@ -3234,7 +3234,6 @@
     },
     "$figmaCollectionId": "VariableCollectionId:302:173",
     "$figmaModeId": "302:2",
-    "group": "app",
     "$figmaVariableReferences": {
       "color.map.marker-bg": "1fa2324df0622e02472b104fb01cb66a8751a9b1",
       "color.map.marker-fg": "5343c562ded166fdf2895ebb162b3d94b69cd433",
@@ -4105,8 +4104,15 @@
       "font.tab.large": "S:2f4024932af95466c4054c2f77daa73fe709922b,",
       "font.tab.small": "S:03e3f135c689aef3f80027f0a43dcf76d9de5fc1,",
       "font.table.data-text": "S:bf00d0bc35ce198f5585bb5b2c9dcd53775cb26b,",
-      "font.table.head-text": "S:53b2e3a131bda22d2d6da81b1779b171cd18d2a6,"
-    }
+      "font.table.head-text": "S:53b2e3a131bda22d2d6da81b1779b171cd18d2a6,",
+      "font.alert.large-title": "S:f8410b11f79d61f6cfa93650fe11fab23535da4a,",
+      "font.alert.large-body": "S:1a11453d34f555393e3150843b70809bf84ae799,",
+      "font.alert.small-title": "S:797705c087283a3157e08487579c6561dccbbe4e,",
+      "font.alert.small-body": "S:d548527fa521348d71897abcf3210f7a4899ead9,",
+      "font.dropdown.title": "S:0d550fc4bb6826fc4c23dda152f78a6577670258,",
+      "font.dropdown.item": "S:265bf598bc7df2fcf049383cf46467a553877706,"
+    },
+    "group": "app"
   },
   {
     "id": "43a15af07b39fa6b5be11ce8c41f769957f7f7f3",
