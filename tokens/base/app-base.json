@@ -2956,26 +2956,6 @@
       "bg-status": {
         "$type": "color",
         "$value": "{color.context.default.dim-slight}"
-      },
-      "path-walk": {
-        "$type": "color",
-        "$value": "{color.context.neutral.base-color}"
-      },
-      "point-active": {
-        "$type": "color",
-        "$value": "{color.context.default.cue-main}"
-      },
-      "point-inactive": {
-        "$type": "color",
-        "$value": "{color.context.neutral.cue-slight}"
-      },
-      "trip-start": {
-        "$type": "color",
-        "$value": "{color.context.success.base-color}"
-      },
-      "trip-stop": {
-        "$type": "color",
-        "$value": "{color.context.danger.base-color}"
       }
     },
     "page": {
