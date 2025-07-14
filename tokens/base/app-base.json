@@ -2912,6 +2912,72 @@
         "$value": "{color.context.danger.base-color}"
       }
     },
+    "message": {
+      "bg-chat": {
+        "$type": "color",
+        "$value": "{color.context.default.bg-evident}"
+      },
+      "fg-form": {
+        "$type": "color",
+        "$value": "{color.context.primary.base-color}"
+      },
+      "bg-form": {
+        "$type": "color",
+        "$value": "{color.context.default.bg-even}"
+      },
+      "fg-received": {
+        "$type": "color",
+        "$value": "{color.context.default.fg-main}"
+      },
+      "bg-received": {
+        "$type": "color",
+        "$value": "{color.context.default.bg-main}"
+      },
+      "fg-sent": {
+        "$type": "color",
+        "$value": "{color.context.default.fg-main}"
+      },
+      "bg-sent": {
+        "$type": "color",
+        "$value": "{color.context.primary.bg-even}"
+      },
+      "fg-embed": {
+        "$type": "color",
+        "$value": "{color.context.default.fg-main}"
+      },
+      "bg-embed": {
+        "$type": "color",
+        "$value": "{color.context.default.dim-slight}"
+      },
+      "fg-status": {
+        "$type": "color",
+        "$value": "{color.context.default.fg-main}"
+      },
+      "bg-status": {
+        "$type": "color",
+        "$value": "{color.context.default.dim-slight}"
+      },
+      "path-walk": {
+        "$type": "color",
+        "$value": "{color.context.neutral.base-color}"
+      },
+      "point-active": {
+        "$type": "color",
+        "$value": "{color.context.default.cue-main}"
+      },
+      "point-inactive": {
+        "$type": "color",
+        "$value": "{color.context.neutral.cue-slight}"
+      },
+      "trip-start": {
+        "$type": "color",
+        "$value": "{color.context.success.base-color}"
+      },
+      "trip-stop": {
+        "$type": "color",
+        "$value": "{color.context.danger.base-color}"
+      }
+    },
     "page": {
       "bg-body": {
         "$type": "color",
@@ -3042,6 +3108,36 @@
       "separator": {
         "$type": "sizing",
         "$value": "{size.base.1}"
+      }
+    },
+    "context": {
+      "2xlarge": {
+        "$type": "sizing",
+        "$value": "{size.base.64}"
+      },
+      "xlarge": {
+        "$type": "sizing",
+        "$value": "{size.base.56}"
+      },
+      "large": {
+        "$type": "sizing",
+        "$value": "{size.base.48}"
+      },
+      "medium": {
+        "$type": "sizing",
+        "$value": "{size.base.40}"
+      },
+      "small": {
+        "$type": "sizing",
+        "$value": "{size.base.32}"
+      },
+      "xsmall": {
+        "$type": "sizing",
+        "$value": "{size.base.24}"
+      },
+      "2xsmall": {
+        "$type": "sizing",
+        "$value": "{size.base.16}"
       }
     },
     "icon": {
@@ -4483,6 +4579,18 @@
         "$value": "{shadow.elevation.default.20}"
       }
     },
+    "date-picker": {
+      "main": {
+        "$type": "boxShadow",
+        "$value": "{shadow.elevation.default.40}"
+      }
+    },
+    "dropdown": {
+      "main": {
+        "$type": "boxShadow",
+        "$value": "{shadow.elevation.default.40}"
+      }
+    },
     "form-input": {
       "main": {
         "$type": "boxShadow",
@@ -4495,19 +4603,13 @@
         "$value": "{shadow.elevation.default.40}"
       }
     },
+    "message": {
+      "main": {
+        "$type": "boxShadow",
+        "$value": "{shadow.elevation.default.10}"
+      }
+    },
     "modal": {
-      "main": {
-        "$type": "boxShadow",
-        "$value": "{shadow.elevation.default.40}"
-      }
-    },
-    "date-picker": {
-      "main": {
-        "$type": "boxShadow",
-        "$value": "{shadow.elevation.default.40}"
-      }
-    },
-    "dropdown": {
       "main": {
         "$type": "boxShadow",
         "$value": "{shadow.elevation.default.40}"

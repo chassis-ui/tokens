@@ -4,7 +4,7 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Sat, 12 Jul 2025 07:34:48 GMT
+// Generated on Mon, 14 Jul 2025 06:41:26 GMT
 // Chassis - Tokens v0.1.0
 // Copyright 2025 Ozgur Gunes
 // Licensed under MIT (https://github.com/ozgurgunes/chassis-tokens/blob/main/LICENSE)
@@ -1013,19 +1013,22 @@ public class {
     @objc public static let ShadowContextHighlightType = "dropShadow"
     @objc public static let ShadowCardMain1Type = "dropShadow"
     @objc public static let ShadowCardMain2Type = "dropShadow"
-    @objc public static let ShadowFormInputMainType = "dropShadow"
-    @objc public static let ShadowNavTopMain1Type = "dropShadow"
-    @objc public static let ShadowNavTopMain2Type = "dropShadow"
-    @objc public static let ShadowModalMain1Type = "dropShadow"
-    @objc public static let ShadowModalMain2Type = "dropShadow"
     @objc public static let ShadowDatePickerMain1Type = "dropShadow"
     @objc public static let ShadowDatePickerMain2Type = "dropShadow"
     @objc public static let ShadowDropdownMain1Type = "dropShadow"
     @objc public static let ShadowDropdownMain2Type = "dropShadow"
+    @objc public static let ShadowFormInputMainType = "dropShadow"
+    @objc public static let ShadowNavTopMain1Type = "dropShadow"
+    @objc public static let ShadowNavTopMain2Type = "dropShadow"
+    @objc public static let ShadowMessageMain1Type = "dropShadow"
+    @objc public static let ShadowMessageMain2Type = "dropShadow"
+    @objc public static let ShadowModalMain1Type = "dropShadow"
+    @objc public static let ShadowModalMain2Type = "dropShadow"
     @objc public static let ShadowSectionMain1Type = "dropShadow"
     @objc public static let ShadowSectionMain2Type = "dropShadow"
     @objc public static let ShadowNavLeftMain1Type = "dropShadow"
     @objc public static let ShadowNavLeftMain2Type = "dropShadow"
+    @objc public static let ShadowTableMainType = "dropShadow"
     @objc public static let ShadowElevationDefault101Type = "dropShadow"
     @objc public static let ShadowElevationDefault102Type = "dropShadow"
     @objc public static let ShadowElevationDefault201Type = "dropShadow"

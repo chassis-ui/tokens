@@ -2,7 +2,7 @@
 
 <!--
   Do not edit directly, this file was auto-generated.
-  Generated on Sat, 12 Jul 2025 07:34:54 GMT
+  Generated on Mon, 14 Jul 2025 06:41:31 GMT
   Chassis - Tokens v0.1.0
   Copyright 2025 Ozgur Gunes
   Licensed under MIT (https://github.com/ozgurgunes/chassis-tokens/blob/main/LICENSE)
@@ -152,6 +152,13 @@
   <dimen name="size_base_nd25">-2.5dp</dimen>
   <dimen name="size_asset_indicator">4dp</dimen>
   <dimen name="size_asset_separator">1dp</dimen>
+  <dimen name="size_context_2xlarge">64dp</dimen>
+  <dimen name="size_context_xlarge">56dp</dimen>
+  <dimen name="size_context_large">48dp</dimen>
+  <dimen name="size_context_medium">40dp</dimen>
+  <dimen name="size_context_small">32dp</dimen>
+  <dimen name="size_context_xsmall">24dp</dimen>
+  <dimen name="size_context_2xsmall">16dp</dimen>
   <dimen name="size_icon_glyph_6xlarge">64dp</dimen>
   <dimen name="size_icon_glyph_5xlarge">56dp</dimen>
   <dimen name="size_icon_glyph_4xlarge">48dp</dimen>
@@ -1385,26 +1392,6 @@
   <dimen name="shadow_card_main_2_spread">-2dp</dimen>
   <dimen name="shadow_card_main_2_offset_x">0dp</dimen>
   <dimen name="shadow_card_main_2_offset_y">2dp</dimen>
-  <dimen name="shadow_form_input_main_blur">0dp</dimen>
-  <dimen name="shadow_form_input_main_spread">0dp</dimen>
-  <dimen name="shadow_form_input_main_offset_x">0dp</dimen>
-  <dimen name="shadow_form_input_main_offset_y">0dp</dimen>
-  <dimen name="shadow_nav_top_main_1_blur">24dp</dimen>
-  <dimen name="shadow_nav_top_main_1_spread">-6dp</dimen>
-  <dimen name="shadow_nav_top_main_1_offset_x">0dp</dimen>
-  <dimen name="shadow_nav_top_main_1_offset_y">6dp</dimen>
-  <dimen name="shadow_nav_top_main_2_blur">12dp</dimen>
-  <dimen name="shadow_nav_top_main_2_spread">-3dp</dimen>
-  <dimen name="shadow_nav_top_main_2_offset_x">0dp</dimen>
-  <dimen name="shadow_nav_top_main_2_offset_y">3dp</dimen>
-  <dimen name="shadow_modal_main_1_blur">24dp</dimen>
-  <dimen name="shadow_modal_main_1_spread">-6dp</dimen>
-  <dimen name="shadow_modal_main_1_offset_x">0dp</dimen>
-  <dimen name="shadow_modal_main_1_offset_y">6dp</dimen>
-  <dimen name="shadow_modal_main_2_blur">12dp</dimen>
-  <dimen name="shadow_modal_main_2_spread">-3dp</dimen>
-  <dimen name="shadow_modal_main_2_offset_x">0dp</dimen>
-  <dimen name="shadow_modal_main_2_offset_y">3dp</dimen>
   <dimen name="shadow_date_picker_main_1_blur">24dp</dimen>
   <dimen name="shadow_date_picker_main_1_spread">-6dp</dimen>
   <dimen name="shadow_date_picker_main_1_offset_x">0dp</dimen>
@@ -1421,6 +1408,34 @@
   <dimen name="shadow_dropdown_main_2_spread">-3dp</dimen>
   <dimen name="shadow_dropdown_main_2_offset_x">0dp</dimen>
   <dimen name="shadow_dropdown_main_2_offset_y">3dp</dimen>
+  <dimen name="shadow_form_input_main_blur">0dp</dimen>
+  <dimen name="shadow_form_input_main_spread">0dp</dimen>
+  <dimen name="shadow_form_input_main_offset_x">0dp</dimen>
+  <dimen name="shadow_form_input_main_offset_y">0dp</dimen>
+  <dimen name="shadow_nav_top_main_1_blur">24dp</dimen>
+  <dimen name="shadow_nav_top_main_1_spread">-6dp</dimen>
+  <dimen name="shadow_nav_top_main_1_offset_x">0dp</dimen>
+  <dimen name="shadow_nav_top_main_1_offset_y">6dp</dimen>
+  <dimen name="shadow_nav_top_main_2_blur">12dp</dimen>
+  <dimen name="shadow_nav_top_main_2_spread">-3dp</dimen>
+  <dimen name="shadow_nav_top_main_2_offset_x">0dp</dimen>
+  <dimen name="shadow_nav_top_main_2_offset_y">3dp</dimen>
+  <dimen name="shadow_message_main_1_blur">8dp</dimen>
+  <dimen name="shadow_message_main_1_spread">-2dp</dimen>
+  <dimen name="shadow_message_main_1_offset_x">0dp</dimen>
+  <dimen name="shadow_message_main_1_offset_y">2dp</dimen>
+  <dimen name="shadow_message_main_2_blur">4dp</dimen>
+  <dimen name="shadow_message_main_2_spread">-1dp</dimen>
+  <dimen name="shadow_message_main_2_offset_x">0dp</dimen>
+  <dimen name="shadow_message_main_2_offset_y">1dp</dimen>
+  <dimen name="shadow_modal_main_1_blur">24dp</dimen>
+  <dimen name="shadow_modal_main_1_spread">-6dp</dimen>
+  <dimen name="shadow_modal_main_1_offset_x">0dp</dimen>
+  <dimen name="shadow_modal_main_1_offset_y">6dp</dimen>
+  <dimen name="shadow_modal_main_2_blur">12dp</dimen>
+  <dimen name="shadow_modal_main_2_spread">-3dp</dimen>
+  <dimen name="shadow_modal_main_2_offset_x">0dp</dimen>
+  <dimen name="shadow_modal_main_2_offset_y">3dp</dimen>
   <dimen name="shadow_section_main_1_blur">16dp</dimen>
   <dimen name="shadow_section_main_1_spread">-4dp</dimen>
   <dimen name="shadow_section_main_1_offset_x">0dp</dimen>
@@ -1437,6 +1452,10 @@
   <dimen name="shadow_nav_left_main_2_spread">-2.5dp</dimen>
   <dimen name="shadow_nav_left_main_2_offset_x">2.5dp</dimen>
   <dimen name="shadow_nav_left_main_2_offset_y">0dp</dimen>
+  <dimen name="shadow_table_main_blur">0dp</dimen>
+  <dimen name="shadow_table_main_spread">0dp</dimen>
+  <dimen name="shadow_table_main_offset_x">0dp</dimen>
+  <dimen name="shadow_table_main_offset_y">0dp</dimen>
   <dimen name="shadow_elevation_default_10_1_blur">8dp</dimen>
   <dimen name="shadow_elevation_default_10_1_spread">-2dp</dimen>
   <dimen name="shadow_elevation_default_10_1_offset_x">0dp</dimen>

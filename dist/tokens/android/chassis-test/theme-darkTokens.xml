@@ -2,7 +2,7 @@
 
 <!--
   Do not edit directly, this file was auto-generated.
-  Generated on Sat, 12 Jul 2025 07:34:51 GMT
+  Generated on Mon, 14 Jul 2025 06:41:28 GMT
   Chassis - Tokens v0.1.0
   Copyright 2025 Ozgur Gunes
   Licensed under MIT (https://github.com/ozgurgunes/chassis-tokens/blob/main/LICENSE)
@@ -967,8 +967,33 @@
   <color name="color_map_point_inactive">#336f8085</color>
   <color name="color_map_trip_start">#ff10c263</color>
   <color name="color_map_trip_stop">#fff52314</color>
+  <color name="color_message_bg_chat">#ff272d2f</color>
+  <color name="color_message_fg_form">#ff00a4cc</color>
+  <color name="color_message_bg_form">#ff111314</color>
+  <color name="color_message_fg_received">#ffe9eced</color>
+  <color name="color_message_bg_received">#ff1c2021</color>
+  <color name="color_message_fg_sent">#ffe9eced</color>
+  <color name="color_message_bg_sent">#ff002933</color>
+  <color name="color_message_fg_embed">#ffe9eced</color>
+  <color name="color_message_bg_embed">#0dffffff</color>
+  <color name="color_message_fg_status">#ffe9eced</color>
+  <color name="color_message_bg_status">#0dffffff</color>
+  <color name="color_message_path_walk">#ff6f8085</color>
+  <color name="color_message_point_active">#ff00a4cc</color>
+  <color name="color_message_point_inactive">#336f8085</color>
+  <color name="color_message_trip_start">#ff10c263</color>
+  <color name="color_message_trip_stop">#fff52314</color>
   <color name="color_page_bg_body">#ff1c2021</color>
   <color name="color_page_bg_section">#ff1c2021</color>
+  <color name="color_progress_fg_past">#ffffffff</color>
+  <color name="color_progress_bg_past">#ff6f8085</color>
+  <color name="color_progress_border_past">#ff6f8085</color>
+  <color name="color_progress_fg_current">#ffffffff</color>
+  <color name="color_progress_bg_current">#ff00a4cc</color>
+  <color name="color_progress_border_current">#ff00a4cc</color>
+  <color name="color_progress_fg_next">#ff000000</color>
+  <color name="color_progress_bg_next">#ffffffff</color>
+  <color name="color_progress_border_next">#ffffffff</color>
   <color name="color_section_fg_large">#ffe9eced</color>
   <color name="color_section_fg_medium">#ffe9eced</color>
   <color name="color_section_fg_small">#ffe9eced</color>
@@ -1085,19 +1110,22 @@
   <color name="shadow_context_highlight_color">#ff00a4cc</color>
   <color name="shadow_card_main_1_color">#33000000</color>
   <color name="shadow_card_main_2_color">#1a000000</color>
-  <color name="shadow_form_input_main_color">#00000000</color>
-  <color name="shadow_nav_top_main_1_color">#33000000</color>
-  <color name="shadow_nav_top_main_2_color">#1a000000</color>
-  <color name="shadow_modal_main_1_color">#33000000</color>
-  <color name="shadow_modal_main_2_color">#1a000000</color>
   <color name="shadow_date_picker_main_1_color">#33000000</color>
   <color name="shadow_date_picker_main_2_color">#1a000000</color>
   <color name="shadow_dropdown_main_1_color">#33000000</color>
   <color name="shadow_dropdown_main_2_color">#1a000000</color>
+  <color name="shadow_form_input_main_color">#00000000</color>
+  <color name="shadow_nav_top_main_1_color">#33000000</color>
+  <color name="shadow_nav_top_main_2_color">#1a000000</color>
+  <color name="shadow_message_main_1_color">#33000000</color>
+  <color name="shadow_message_main_2_color">#1a000000</color>
+  <color name="shadow_modal_main_1_color">#33000000</color>
+  <color name="shadow_modal_main_2_color">#1a000000</color>
   <color name="shadow_section_main_1_color">#33000000</color>
   <color name="shadow_section_main_2_color">#1a000000</color>
   <color name="shadow_nav_left_main_1_color">#33000000</color>
   <color name="shadow_nav_left_main_2_color">#1a000000</color>
+  <color name="shadow_table_main_color">#00000000</color>
   <color name="shadow_elevation_default_10_1_color">#33000000</color>
   <color name="shadow_elevation_default_10_2_color">#1a000000</color>
   <color name="shadow_elevation_default_20_1_color">#33000000</color>
