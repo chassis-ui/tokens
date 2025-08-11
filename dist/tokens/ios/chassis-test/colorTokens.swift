@@ -4,7 +4,7 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Mon, 14 Jul 2025 06:41:26 GMT
+// Generated on Mon, 11 Aug 2025 12:20:29 GMT
 // Chassis - Tokens v0.1.0
 // Copyright 2025 Ozgur Gunes
 // Licensed under MIT (https://github.com/ozgurgunes/chassis-tokens/blob/main/LICENSE)
@@ -982,11 +982,6 @@ public class {
     @objc public static let ColorMessageBgEmbed = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1)
     @objc public static let ColorMessageFgStatus = UIColor(red: 0.110, green: 0.125, blue: 0.129, alpha: 1)
     @objc public static let ColorMessageBgStatus = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1)
-    @objc public static let ColorMessagePathWalk = UIColor(red: 0.435, green: 0.502, blue: 0.522, alpha: 1)
-    @objc public static let ColorMessagePointActive = UIColor(red: 0.000, green: 0.643, blue: 0.800, alpha: 1)
-    @objc public static let ColorMessagePointInactive = UIColor(red: 0.435, green: 0.502, blue: 0.522, alpha: 1)
-    @objc public static let ColorMessageTripStart = UIColor(red: 0.063, green: 0.761, blue: 0.388, alpha: 1)
-    @objc public static let ColorMessageTripStop = UIColor(red: 0.961, green: 0.137, blue: 0.078, alpha: 1)
     @objc public static let ColorPageBgBody = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1)
     @objc public static let ColorPageBgSection = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1)
     @objc public static let ColorProgressFgPast = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1)
