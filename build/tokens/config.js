@@ -15,18 +15,19 @@
  * @param {string} params.app - The application name.
  * @param {string} params.platform - The target platform (e.g., 'web', 'ios', 'android').
  * @param {string} params.theme - The theme name.
+ * @param {string} params.template - The template/screen size.
  * @param {boolean} [params.defaultTheme=true] - Whether to include default theme tokens.
  * @returns {Object} - The Style Dictionary configuration object.
  */
-export default function ({ brand, app, platform, theme, defaultTheme = true }) {
+export default function ({ brand, app, platform, theme, template, defaultTheme = true }) {
 
   return {
     preprocessors: ['cx/global'],
-    // log: { verbosity: 'verbose' }, // default, verbose, silent
+    log: { verbosity: 'verbose' }, // default, verbose, silent
     platforms: {
       [platform]: {
         ...getPlatformSettings(brand, app, platform),
-        files: generateFiles(platform, theme, defaultTheme),
+        files: generateFiles(platform, theme, template, defaultTheme),
       },
     },
   };
@@ -121,14 +122,15 @@ function getPlatformSettings(brand, app, platform) {
 }
 
 /**
- * Generates the list of files to be created for a given platform and theme.
+ * Generates the list of files to be created for a given platform, theme, and template.
  *
  * @param {string} platform - The target platform (e.g., 'web', 'ios', 'android').
  * @param {string} theme - The theme name.
+ * @param {string} template - The template/screen size.
  * @param {boolean} defaultTheme - Whether to include default theme tokens.
  * @returns {Array<Object>} - An array of file configuration objects.
  */
-function generateFiles(platform, theme, defaultTheme) {
+function generateFiles(platform, theme, template, defaultTheme) {
   const fileExtensionMap = {
     'web': 'scss',
     'web-px': 'scss',
@@ -149,10 +151,12 @@ function generateFiles(platform, theme, defaultTheme) {
   const baseFiles = [
     { destination: `allTokens.${fileExtension}`, filter: 'cx/allTokens', format },
     { destination: `colorTokens.${fileExtension}`, filter: 'cx/themeTokens', format },
-    { destination: `theme-${theme}Tokens.${fileExtension}`, filter: 'cx/themeTokens', format },
-    { destination: `numberTokens.${fileExtension}`, filter: 'cx/numberTokens', format },
-    { destination: `stringTokens.${fileExtension}`, filter: 'cx/stringTokens', format },
+    { destination: `template-${template}.${fileExtension}`, filter: 'cx/allTokens', format },
+    { destination: `template-${template}-colors.${fileExtension}`, filter: 'cx/themeTokens', format },
+    { destination: `template-${template}-theme-${theme}.${fileExtension}`, filter: 'cx/themeTokens', format },
+    { destination: `template-${template}-numbers.${fileExtension}`, filter: 'cx/numberTokens', format },
+    { destination: `template-${template}-strings.${fileExtension}`, filter: 'cx/stringTokens', format },
   ];
 
-  return defaultTheme ? baseFiles : baseFiles.filter(file => file.destination.includes(`theme-${theme}Tokens`));
+  return defaultTheme ? baseFiles : baseFiles.filter(file => file.destination.includes(`theme-${theme}`));
 }

@@ -13,36 +13,36 @@
     "template": {
       "separator": {
         "$type": "boolean",
-        "$value": "{figma.switch.breakpoint.mode-1}"
+        "$value": "{figma.switch.template.mode-1}"
       }
     }
   },
   "typography": {
-    "font-size": {
+    "fontSize": {
       "template": {
         "hero-title": {
-          "$type": "typography",
-          "$value": "{size.base.64}"
+          "$type": "fontSize",
+          "$value": "64"
         },
         "hero-body": {
-          "$type": "typography",
-          "$value": "{size.base.32}"
+          "$type": "fontSize",
+          "$value": "32"
         },
         "section-title": {
-          "$type": "typography",
-          "$value": "{size.base.38}"
+          "$type": "fontSize",
+          "$value": "38"
         },
         "section-body": {
-          "$type": "typography",
-          "$value": "{size.base.16}"
+          "$type": "fontSize",
+          "$value": "16"
         },
         "feature-title": {
-          "$type": "typography",
-          "$value": "{size.base.24}"
+          "$type": "fontSize",
+          "$value": "24"
         },
         "feature-body": {
-          "$type": "typography",
-          "$value": "{size.base.16}"
+          "$type": "fontSize",
+          "$value": "16"
         }
       }
     }

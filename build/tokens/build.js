@@ -56,7 +56,7 @@ function registerDictionary() {
 }
 
 /**
- * Generates tasks for all brand, app, platform, and theme combinations.
+ * Generates tasks for all brand, app, platform, theme, and template combinations.
  *
  * @param {Object} tokens - The tokens object containing theme permutations.
  * @returns {Array<Object>} - An array of task configurations.
@@ -65,19 +65,22 @@ function generateTasks(tokens) {
   return buildOptions.brands.flatMap(brand =>
     Object.entries(buildOptions.apps).flatMap(([app, platforms]) =>
       platforms.flatMap(platform =>
-        buildOptions.themes.map(theme => {
-          const cfg = config({
-            brand,
-            app,
-            platform,
-            theme,
-            defaultTheme: theme === DEFAULT_TOKENS_THEME
+        buildOptions.themes.flatMap(theme =>
+          buildOptions.templates.map(template => {
+            const cfg = config({
+              brand,
+              app,
+              platform,
+              theme,
+              template,
+              defaultTheme: theme === DEFAULT_TOKENS_THEME
+            })
+            cfg.source = tokens[`${brand}_${app}_${theme}_${template}`].map(
+              tokenset => `tokens/${tokenset}.json`
+            )
+            return { brand, app, platform, theme, template, cfg }
           })
-          cfg.source = tokens[`${brand}_${app}_${theme}`].map(
-            tokenset => `tokens/${tokenset}.json`
-          )
-          return { brand, app, platform, theme, cfg }
-        })
+        )
       )
     )
   )
@@ -91,18 +94,19 @@ function generateTasks(tokens) {
  * @param {string} task.app - The application name.
  * @param {string} task.platform - The target platform (e.g., 'web', 'ios', 'android').
  * @param {string} task.theme - The theme name.
+ * @param {string} task.template - The template/screen size.
  * @param {Object} task.cfg - The Style Dictionary configuration object.
  */
-async function processTask({ brand, app, platform, theme, cfg }) {
+async function processTask({ brand, app, platform, theme, template, cfg }) {
   if (theme === DEFAULT_TOKENS_THEME) {
-    console.log(`\nStarting: ${brand}/${app}-${platform}`)
+    console.log(`\nStarting: ${brand}/${app}-${platform}-${template}`)
     console.log('==============================================')
   }
   const sd = new StyleDictionary(cfg)
   await sd.cleanPlatform(platform)
   await sd.buildPlatform(platform)
   if (theme !== DEFAULT_TOKENS_THEME) {
-    console.log(`\nCompleted: ${brand}/${app}-${platform}\n`)
+    console.log(`\nCompleted: ${brand}/${app}-${platform}-${template}\n`)
   }
 }
 
