@@ -2,7 +2,7 @@
 
 <!--
   Do not edit directly, this file was auto-generated.
-  Generated on Mon, 11 Aug 2025 12:20:31 GMT
+  Generated on Tue, 02 Sep 2025 12:25:40 GMT
   Chassis - Tokens v0.1.0
   Copyright 2025 Ozgur Gunes
   Licensed under MIT (https://github.com/ozgurgunes/chassis-tokens/blob/main/LICENSE)
@@ -232,6 +232,9 @@
   <dimen name="size_pagination_dot_idle_w">8dp</dimen>
   <dimen name="size_pagination_dot_active_h">8dp</dimen>
   <dimen name="size_pagination_dot_active_w">8dp</dimen>
+  <dimen name="size_template_icon_frame">56dp</dimen>
+  <dimen name="size_template_icon_glyph">48dp</dimen>
+  <dimen name="size_template_section_w">1200dp</dimen>
   <dimen name="space_base_0">0dp</dimen>
   <dimen name="space_base_1">1dp</dimen>
   <dimen name="space_base_2">2dp</dimen>
@@ -403,6 +406,14 @@
   <dimen name="space_table_cell_padding_y">8dp</dimen>
   <dimen name="space_table_cell_padding_x">8dp</dimen>
   <dimen name="space_table_cell_gap">8dp</dimen>
+  <dimen name="space_template_section_padding_y">96dp</dimen>
+  <dimen name="space_template_section_padding_x">32dp</dimen>
+  <dimen name="space_template_section_gap_y">96dp</dimen>
+  <dimen name="space_template_section_gap_x">64dp</dimen>
+  <dimen name="space_template_feature_padding_y">32dp</dimen>
+  <dimen name="space_template_feature_padding_x">0dp</dimen>
+  <dimen name="space_template_feature_gap_y">32dp</dimen>
+  <dimen name="space_template_feature_gap_x">32dp</dimen>
   <integer name="opacity_base_10">0.1</integer>
   <integer name="opacity_base_20">0.2</integer>
   <integer name="opacity_base_30">0.3</integer>

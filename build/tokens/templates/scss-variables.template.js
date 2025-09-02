@@ -297,6 +297,7 @@ export default opts => {
 // ${file.destination}
 //
 ${header}
+$prefix: cx- !default;
 // scss-docs-start design-tokens
 ${dictionary.allTokens.map(token => tokenToLine(token, dictionary, options)).join(`\n`)}
 // scss-docs-end design-tokens
