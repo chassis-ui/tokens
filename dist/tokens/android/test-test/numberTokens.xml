@@ -2,7 +2,7 @@
 
 <!--
   Do not edit directly, this file was auto-generated.
-  Generated on Mon, 11 Aug 2025 12:20:35 GMT
+  Generated on Sat, 06 Sep 2025 22:58:15 GMT
   Chassis - Tokens v0.1.0
   Copyright 2025 Ozgur Gunes
   Licensed under MIT (https://github.com/ozgurgunes/chassis-tokens/blob/main/LICENSE)
@@ -232,6 +232,9 @@
   <dimen name="size_pagination_dot_idle_w">8dp</dimen>
   <dimen name="size_pagination_dot_active_h">8dp</dimen>
   <dimen name="size_pagination_dot_active_w">8dp</dimen>
+  <dimen name="size_template_icon_frame">56dp</dimen>
+  <dimen name="size_template_icon_glyph">48dp</dimen>
+  <dimen name="size_template_section_w">1200dp</dimen>
   <dimen name="space_base_0">0dp</dimen>
   <dimen name="space_base_1">1dp</dimen>
   <dimen name="space_base_2">2dp</dimen>
@@ -403,6 +406,14 @@
   <dimen name="space_table_cell_padding_y">8dp</dimen>
   <dimen name="space_table_cell_padding_x">8dp</dimen>
   <dimen name="space_table_cell_gap">8dp</dimen>
+  <dimen name="space_template_section_padding_y">96dp</dimen>
+  <dimen name="space_template_section_padding_x">32dp</dimen>
+  <dimen name="space_template_section_gap_y">96dp</dimen>
+  <dimen name="space_template_section_gap_x">64dp</dimen>
+  <dimen name="space_template_feature_padding_y">32dp</dimen>
+  <dimen name="space_template_feature_padding_x">0dp</dimen>
+  <dimen name="space_template_feature_gap_y">32dp</dimen>
+  <dimen name="space_template_feature_gap_x">32dp</dimen>
   <integer name="opacity_base_10">0.1</integer>
   <integer name="opacity_base_20">0.2</integer>
   <integer name="opacity_base_30">0.3</integer>
@@ -511,20 +522,20 @@
   <dimen name="typography_paragraph_spacing_code_base">0sp</dimen>
   <dimen name="typography_paragraph_spacing_code_paragraph">16sp</dimen>
   <dimen name="border_radius_base_xsmall">2dp</dimen>
-  <dimen name="border_radius_base_small">2dp</dimen>
-  <dimen name="border_radius_base_medium">2dp</dimen>
-  <dimen name="border_radius_base_large">2dp</dimen>
-  <dimen name="border_radius_base_xlarge">2dp</dimen>
-  <dimen name="border_radius_base_2xlarge">2dp</dimen>
-  <dimen name="border_radius_base_3xlarge">2dp</dimen>
+  <dimen name="border_radius_base_small">4dp</dimen>
+  <dimen name="border_radius_base_medium">6dp</dimen>
+  <dimen name="border_radius_base_large">10dp</dimen>
+  <dimen name="border_radius_base_xlarge">12dp</dimen>
+  <dimen name="border_radius_base_2xlarge">16dp</dimen>
+  <dimen name="border_radius_base_3xlarge">20dp</dimen>
   <dimen name="border_radius_context_zero">0dp</dimen>
   <dimen name="border_radius_context_xsmall">2dp</dimen>
-  <dimen name="border_radius_context_small">2dp</dimen>
-  <dimen name="border_radius_context_medium">2dp</dimen>
-  <dimen name="border_radius_context_large">2dp</dimen>
-  <dimen name="border_radius_context_xlarge">2dp</dimen>
-  <dimen name="border_radius_context_2xlarge">2dp</dimen>
-  <dimen name="border_radius_context_3xlarge">2dp</dimen>
+  <dimen name="border_radius_context_small">4dp</dimen>
+  <dimen name="border_radius_context_medium">6dp</dimen>
+  <dimen name="border_radius_context_large">10dp</dimen>
+  <dimen name="border_radius_context_xlarge">12dp</dimen>
+  <dimen name="border_radius_context_2xlarge">16dp</dimen>
+  <dimen name="border_radius_context_3xlarge">20dp</dimen>
   <dimen name="border_radius_context_circle">96dp</dimen>
   <dimen name="border_radius_context_round_8">4dp</dimen>
   <dimen name="border_radius_context_round_12">6dp</dimen>
@@ -547,38 +558,38 @@
   <dimen name="border_radius_context_round_96">56dp</dimen>
   <dimen name="border_radius_asset_indicator">0dp</dimen>
   <dimen name="border_radius_asset_indicator_alt">0dp</dimen>
-  <dimen name="border_radius_accordion_main">2dp</dimen>
-  <dimen name="border_radius_alert_main">2dp</dimen>
+  <dimen name="border_radius_accordion_main">6dp</dimen>
+  <dimen name="border_radius_alert_main">6dp</dimen>
   <dimen name="border_radius_badge_medium">12dp</dimen>
   <dimen name="border_radius_badge_large">14dp</dimen>
   <dimen name="border_radius_badge_small">10dp</dimen>
-  <dimen name="border_radius_button_medium">2dp</dimen>
-  <dimen name="border_radius_button_large">2dp</dimen>
-  <dimen name="border_radius_button_small">2dp</dimen>
-  <dimen name="border_radius_card_main">2dp</dimen>
+  <dimen name="border_radius_button_medium">6dp</dimen>
+  <dimen name="border_radius_button_large">6dp</dimen>
+  <dimen name="border_radius_button_small">6dp</dimen>
+  <dimen name="border_radius_card_main">6dp</dimen>
   <dimen name="border_radius_chip_medium">16dp</dimen>
   <dimen name="border_radius_chip_large">20dp</dimen>
   <dimen name="border_radius_chip_small">12dp</dimen>
-  <dimen name="border_radius_table_main">2dp</dimen>
-  <dimen name="border_radius_date_picker_main">2dp</dimen>
-  <dimen name="border_radius_date_picker_day">2dp</dimen>
-  <dimen name="border_radius_date_picker_menu">2dp</dimen>
-  <dimen name="border_radius_dropdown_main">2dp</dimen>
-  <dimen name="border_radius_dropdown_item">2dp</dimen>
-  <dimen name="border_radius_form_input_medium">2dp</dimen>
-  <dimen name="border_radius_form_input_large">2dp</dimen>
-  <dimen name="border_radius_form_input_small">2dp</dimen>
-  <dimen name="border_radius_form_input_floating_blunt">2dp</dimen>
+  <dimen name="border_radius_table_main">6dp</dimen>
+  <dimen name="border_radius_date_picker_main">6dp</dimen>
+  <dimen name="border_radius_date_picker_day">4dp</dimen>
+  <dimen name="border_radius_date_picker_menu">4dp</dimen>
+  <dimen name="border_radius_dropdown_main">6dp</dimen>
+  <dimen name="border_radius_dropdown_item">4dp</dimen>
+  <dimen name="border_radius_form_input_medium">6dp</dimen>
+  <dimen name="border_radius_form_input_large">6dp</dimen>
+  <dimen name="border_radius_form_input_small">6dp</dimen>
+  <dimen name="border_radius_form_input_floating_blunt">6dp</dimen>
   <dimen name="border_radius_form_input_floating_sharp">0dp</dimen>
-  <dimen name="border_radius_modal_main">2dp</dimen>
-  <dimen name="border_radius_notification_main">2dp</dimen>
-  <dimen name="border_radius_pagination_button">2dp</dimen>
+  <dimen name="border_radius_modal_main">6dp</dimen>
+  <dimen name="border_radius_notification_main">6dp</dimen>
+  <dimen name="border_radius_pagination_button">6dp</dimen>
   <dimen name="border_radius_pagination_dot">4dp</dimen>
-  <dimen name="border_radius_section_main">2dp</dimen>
-  <dimen name="border_radius_tab_medium">2dp</dimen>
-  <dimen name="border_radius_tab_large">2dp</dimen>
-  <dimen name="border_radius_tab_small">2dp</dimen>
-  <dimen name="border_radius_tooltip_main">2dp</dimen>
+  <dimen name="border_radius_section_main">10dp</dimen>
+  <dimen name="border_radius_tab_medium">6dp</dimen>
+  <dimen name="border_radius_tab_large">10dp</dimen>
+  <dimen name="border_radius_tab_small">6dp</dimen>
+  <dimen name="border_radius_tooltip_main">4dp</dimen>
   <dimen name="font_context_jumbo_line_height">125sp</dimen>
   <dimen name="font_context_jumbo_font_size">96sp</dimen>
   <integer name="font_context_jumbo_letter_spacing">-1px</integer>

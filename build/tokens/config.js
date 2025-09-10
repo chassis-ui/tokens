@@ -151,11 +151,11 @@ function generateFiles(platform, theme, template, defaultTheme) {
   const baseFiles = [
     { destination: `allTokens.${fileExtension}`, filter: 'cx/allTokens', format },
     { destination: `colorTokens.${fileExtension}`, filter: 'cx/themeTokens', format },
-    { destination: `template-${template}.${fileExtension}`, filter: 'cx/allTokens', format },
-    { destination: `template-${template}-colors.${fileExtension}`, filter: 'cx/themeTokens', format },
-    { destination: `template-${template}-theme-${theme}.${fileExtension}`, filter: 'cx/themeTokens', format },
+    { destination: `theme-${theme}Tokens.${fileExtension}`, filter: 'cx/themeTokens', format },
+    { destination: `numberTokens.${fileExtension}`, filter: 'cx/numberTokens', format },
+    { destination: `stringTokens.${fileExtension}`, filter: 'cx/stringTokens', format },
+
     { destination: `template-${template}-numbers.${fileExtension}`, filter: 'cx/numberTokens', format },
-    { destination: `template-${template}-strings.${fileExtension}`, filter: 'cx/stringTokens', format },
   ];
 
   return defaultTheme ? baseFiles : baseFiles.filter(file => file.destination.includes(`theme-${theme}`));

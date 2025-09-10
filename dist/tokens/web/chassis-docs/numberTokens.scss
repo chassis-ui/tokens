@@ -4,12 +4,13 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Mon, 11 Aug 2025 12:20:28 GMT
+// Generated on Sat, 06 Sep 2025 22:57:55 GMT
 // Chassis - Tokens v0.1.0
 // Copyright 2025 Ozgur Gunes
 // Licensed under MIT (https://github.com/ozgurgunes/chassis-tokens/blob/main/LICENSE)
 
 
+$prefix: cx- !default;
 // scss-docs-start design-tokens
 $cx-dimension-base-0: 0rem !default;
 $cx-dimension-base-1: 0.0625rem !default;
@@ -234,6 +235,9 @@ $cx-size-pagination-dot-idle-h: 0.5rem !default;
 $cx-size-pagination-dot-idle-w: 0.5rem !default;
 $cx-size-pagination-dot-active-h: 0.5rem !default;
 $cx-size-pagination-dot-active-w: 0.5rem !default;
+$cx-size-template-icon-frame: 3.5rem !default;
+$cx-size-template-icon-glyph: 3rem !default;
+$cx-size-template-section-w: 75rem !default;
 $cx-space-base-0: 0rem !default;
 $cx-space-base-1: 0.0625rem !default;
 $cx-space-base-2: 0.125rem !default;
@@ -405,6 +409,14 @@ $cx-space-pagination-dot-gap: 0.5rem !default;
 $cx-space-table-cell-padding-y: 0.5rem !default;
 $cx-space-table-cell-padding-x: 0.5rem !default;
 $cx-space-table-cell-gap: 0.5rem !default;
+$cx-space-template-section-padding-y: 6rem !default;
+$cx-space-template-section-padding-x: 2rem !default;
+$cx-space-template-section-gap-y: 6rem !default;
+$cx-space-template-section-gap-x: 4rem !default;
+$cx-space-template-feature-padding-y: 2rem !default;
+$cx-space-template-feature-padding-x: 0rem !default;
+$cx-space-template-feature-gap-y: 2rem !default;
+$cx-space-template-feature-gap-x: 2rem !default;
 $cx-opacity-base-10: 0.1 !default;
 $cx-opacity-base-20: 0.2 !default;
 $cx-opacity-base-30: 0.3 !default;

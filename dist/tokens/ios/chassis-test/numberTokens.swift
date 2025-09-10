@@ -4,7 +4,7 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Mon, 11 Aug 2025 12:20:29 GMT
+// Generated on Sat, 06 Sep 2025 22:57:58 GMT
 // Chassis - Tokens v0.1.0
 // Copyright 2025 Ozgur Gunes
 // Licensed under MIT (https://github.com/ozgurgunes/chassis-tokens/blob/main/LICENSE)
@@ -236,6 +236,9 @@ public class {
     @objc public static let SizePaginationDotIdleW = CGFloat(8)
     @objc public static let SizePaginationDotActiveH = CGFloat(8)
     @objc public static let SizePaginationDotActiveW = CGFloat(8)
+    @objc public static let SizeTemplateIconFrame = CGFloat(56)
+    @objc public static let SizeTemplateIconGlyph = CGFloat(48)
+    @objc public static let SizeTemplateSectionW = CGFloat(1200)
     @objc public static let SpaceBase0 = CGFloat(0)
     @objc public static let SpaceBase1 = CGFloat(1)
     @objc public static let SpaceBase2 = CGFloat(2)
@@ -407,6 +410,14 @@ public class {
     @objc public static let SpaceTableCellPaddingY = CGFloat(8)
     @objc public static let SpaceTableCellPaddingX = CGFloat(8)
     @objc public static let SpaceTableCellGap = CGFloat(8)
+    @objc public static let SpaceTemplateSectionPaddingY = CGFloat(96)
+    @objc public static let SpaceTemplateSectionPaddingX = CGFloat(32)
+    @objc public static let SpaceTemplateSectionGapY = CGFloat(96)
+    @objc public static let SpaceTemplateSectionGapX = CGFloat(64)
+    @objc public static let SpaceTemplateFeaturePaddingY = CGFloat(32)
+    @objc public static let SpaceTemplateFeaturePaddingX = CGFloat(0)
+    @objc public static let SpaceTemplateFeatureGapY = CGFloat(32)
+    @objc public static let SpaceTemplateFeatureGapX = CGFloat(32)
     @objc public static let OpacityBase10 = CGFloat(0.1)
     @objc public static let OpacityBase20 = CGFloat(0.2)
     @objc public static let OpacityBase30 = CGFloat(0.3)
