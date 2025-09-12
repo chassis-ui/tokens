@@ -7,8 +7,10 @@
  * @license MIT
  */
 
+
 import { promises, readFileSync } from 'fs'
 import { join } from 'path'
+import minimist from 'minimist'
 import StyleDictionary from 'style-dictionary'
 import {
   permutateThemes,
@@ -56,17 +58,33 @@ function registerDictionary() {
 }
 
 /**
- * Generates tasks for all brand, app, platform, theme, and template combinations.
+ * Generates tasks for all brand, app, platform, theme, and template combinations,
+ * filtered by optional CLI parameters.
  *
  * @param {Object} tokens - The tokens object containing theme permutations.
- * @returns {Array<Object>} - An array of task configurations.
+ * @param {Object} filters - Filter object with optional arrays: brands, themes, apps, templates.
+ * @returns {Array<Object>} - An array of task configurations matching the filters.
+ *
+ * Example filter usage:
+ *   { brands: ['chassis','test'], themes: ['light'], apps: ['docs'], templates: ['large','small'] }
  */
-function generateTasks(tokens) {
-  return buildOptions.brands.flatMap(brand =>
-    Object.entries(buildOptions.apps).flatMap(([app, platforms]) =>
+function generateTasks(tokens, filters) {
+  const { brands, themes, apps, templates } = buildOptions
+  const filterList = (all, param) =>
+    param && param.length > 0 ? all.filter(x => param.includes(x)) : all
+
+  const brandsFiltered = filterList(brands, filters.brands)
+  const themesFiltered = filterList(themes, filters.themes)
+  const templatesFiltered = filterList(templates, filters.templates)
+  const appsFiltered = Object.entries(apps).filter(([app]) =>
+    !filters.apps || filters.apps.length === 0 || filters.apps.includes(app)
+  )
+
+  return brandsFiltered.flatMap(brand =>
+    appsFiltered.flatMap(([app, platforms]) =>
       platforms.flatMap(platform =>
-        buildOptions.themes.flatMap(theme =>
-          buildOptions.templates.map(template => {
+        themesFiltered.flatMap(theme =>
+          templatesFiltered.map(template => {
             const cfg = config({
               brand,
               app,
@@ -111,17 +129,34 @@ async function processTask({ brand, app, platform, theme, template, cfg }) {
 }
 
 /**
- * Main execution function that registers extensions, generates tasks,
- * and processes each task sequentially.
+ * Main execution function that registers extensions, parses CLI arguments for filtering,
+ * generates tasks, and processes each task sequentially.
+ *
+ * CLI usage:
+ *   node build/tokens/build.js --brand=chassis,test --theme=light,dark --app=docs --template=large,small
+ *
+ * All parameters are optional and can be comma-separated for multiple values.
  */
 async function run() {
+  // Parse CLI args
+  const argv = minimist(process.argv.slice(2))
+  // Accept comma-separated values for each param
+  const parseArg = key =>
+    argv[key] ? String(argv[key]).split(',').map(s => s.trim()) : undefined
+  const filters = {
+    brands: parseArg('brand'),
+    themes: parseArg('theme'),
+    apps: parseArg('app'),
+    templates: parseArg('template')
+  }
+
   registerDictionary()
 
   const $themes = JSON.parse(
     await promises.readFile('tokens/$themes.json', 'utf-8')
   )
   const tokens = permutateThemes($themes, { separator: '_' })
-  const tasks = generateTasks(tokens)
+  const tasks = generateTasks(tokens, filters)
 
   for (const task of tasks) {
     await processTask(task)
