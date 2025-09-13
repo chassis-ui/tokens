@@ -81,47 +81,54 @@ function generateTasks(tokens, filters) {
     !filters.apps || filters.apps.length === 0 || filters.apps.includes(app)
   )
 
-  return brandsFiltered.flatMap(brand =>
+  // Always generate a single base task (for base.scss and string.scss)
+  const baseTasks = brandsFiltered.flatMap(brand =>
+    appsFiltered.flatMap(([app, platforms]) =>
+      platforms.map(platform => {
+        const cfg = config({ brand, app, platform });
+        // Use the first available tokens set for base
+        const key = Object.keys(tokens).find(k => k.startsWith(`${brand}_${app}`));
+        cfg.source = key ? tokens[key].map(tokenset => `tokens/${tokenset}.json`) : [];
+        return { brand, app, platform, theme: undefined, screen: undefined, cfg };
+      })
+    )
+  );
+
+  // Generate color-<theme>.scss for all themes
+  const colorTasks = brandsFiltered.flatMap(brand =>
     appsFiltered.flatMap(([app, platforms]) =>
       platforms.flatMap(platform =>
-        themesFiltered.flatMap(theme => {
-          if (theme === DEFAULT_THEME) {
-            // For default theme, create a task for each screen
-            return screensFiltered.map(screen => {
-              const cfg = config({
-                brand,
-                app,
-                platform,
-                theme,
-                screen
-              })
-              cfg.source = tokens[`${brand}_${app}_${theme}_${screen}`]?.map(
-                tokenset => `tokens/${tokenset}.json`
-              ) || []
-              return { brand, app, platform, theme, screen, cfg }
-            })
-          } else {
-            // For non-default themes, create a single task per theme (no screen)
-            const cfg = config({
-              brand,
-              app,
-              platform,
-              theme,
-              screen: undefined
-            })
-            // Fallback to default screen if direct theme key does not exist
-            const key = tokens[`${brand}_${app}_${theme}`]
-              ? `${brand}_${app}_${theme}`
-              : `${brand}_${app}_${theme}_${DEFAULT_SCREEN}`;
-            cfg.source = tokens[key]?.map(
-              tokenset => `tokens/${tokenset}.json`
-            ) || [];
-            return [{ brand, app, platform, theme, screen: undefined, cfg }];
-          }
+        themesFiltered.map(theme => {
+          const cfg = config({ brand, app, platform, theme });
+          const key = tokens[`${brand}_${app}_${theme}`]
+            ? `${brand}_${app}_${theme}`
+            : `${brand}_${app}_${theme}_${DEFAULT_SCREEN}`;
+          cfg.source = tokens[key]?.map(tokenset => `tokens/${tokenset}.json`) || [];
+          return { brand, app, platform, theme, screen: undefined, cfg };
         })
       )
     )
-  )
+  );
+
+  // Generate number-<screen>.scss for all screens
+  const numberTasks = brandsFiltered.flatMap(brand =>
+    appsFiltered.flatMap(([app, platforms]) =>
+      platforms.flatMap(platform =>
+        screensFiltered.map(screen => {
+          // Use the default theme for number files, or the first theme if not set
+          const theme = themesFiltered[0] || DEFAULT_THEME;
+          const cfg = config({ brand, app, platform, screen });
+          const key = tokens[`${brand}_${app}_${theme}_${screen}`]
+            ? `${brand}_${app}_${theme}_${screen}`
+            : null;
+          cfg.source = key ? tokens[key].map(tokenset => `tokens/${tokenset}.json`) : [];
+          return { brand, app, platform, theme, screen, cfg };
+        })
+      )
+    )
+  );
+
+  return [...baseTasks, ...colorTasks, ...numberTasks];
 }
 
 /**
@@ -136,12 +143,16 @@ function generateTasks(tokens, filters) {
  * @param {Object} task.cfg - The Style Dictionary configuration object.
  */
 async function processTask({ brand, app, platform, theme, screen, cfg }) {
-  console.log(`\nStarting: ${platform}/${brand}-${app}/${theme}-${screen}`)
-  console.log('==============================================')
+  // Build the identifier string
+  let id = `${platform}/${brand}-${app}`
+  if (theme) id += `-${theme}`
+  if (screen) id += `-${screen}`
+  console.log(`\n⚙️ Starting: ${id}`)
+  console.log('-'.repeat(40))
   const sd = new StyleDictionary(cfg)
   await sd.cleanPlatform(platform)
   await sd.buildPlatform(platform)
-  console.log(`\nCompleted: ${platform}/${brand}-${app}/${theme}-${screen}\n`)
+  console.log(`\n✅ Completed: ${id}\n`)
 }
 
 /**
@@ -178,8 +189,14 @@ async function run() {
     await processTask(task)
   }
 
-  console.log('==============================================')
+  console.log('='.repeat(40))
   console.log('\nAll configurations processed successfully.\n')
 }
 
-run()
+// Export for testing
+export { generateTasks, processTask }
+
+// Only run if this is the main module (not imported)
+if (import.meta.url === `file://${process.argv[1]}`) {
+  run()
+}

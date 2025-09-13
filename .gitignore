@@ -7,6 +7,9 @@ node_modules
 # VisualStudioCode
 .vscode
 
+# Test coverage
+coverage/
+
 # Release zip files
 dist/assets
 chassis-*.zip

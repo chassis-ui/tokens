@@ -32,7 +32,7 @@ export default function ({ brand, app, platform, theme, screen }) {
 
   return {
     preprocessors: ['cx/global'],
-    log: { verbosity: 'verbose' }, // default, verbose, silent
+    // log: { verbosity: 'verbose' }, // default, verbose, silent
     platforms: {
       [platform]: {
         ...getPlatformSettings(brand, app, platform),
@@ -156,22 +156,28 @@ function generateFiles(platform, theme, screen) {
   const fileExtension = fileExtensionMap[platform];
   const format = formatMap[fileExtension];
 
-  const baseFiles = [
-    { destination: `base.${fileExtension}`, filter: 'cx/allTokens', format },
-    // { destination: `color.${fileExtension}`, filter: 'cx/themeTokens', format },
-    // { destination: `number.${fileExtension}`, filter: 'cx/numberTokens', format },
-    { destination: `string.${fileExtension}`, filter: 'cx/stringTokens', format },
-    { destination: `color-${theme}.${fileExtension}`, filter: 'cx/themeTokens', format },
-    { destination: `number-${screen}.${fileExtension}`, filter: 'cx/numberTokens', format },
-  ];
-
-  if (theme !== DEFAULT_THEME) {
-    return baseFiles.filter(file => file.destination.includes(`color-${theme}`));
+  // If neither theme nor screen is set, return base and string files
+  if (!theme && !screen) {
+    return [
+      { destination: `base.${fileExtension}`, filter: 'cx/allTokens', format },
+      { destination: `string.${fileExtension}`, filter: 'cx/stringTokens', format },
+    ];
   }
 
-  if (screen !== DEFAULT_SCREEN) {
-    return baseFiles.filter(file => file.destination.includes(`number-${screen}`));
+  // If only theme is set, return color-<theme> file
+  if (theme && !screen) {
+    return [
+      { destination: `color-${theme}.${fileExtension}`, filter: 'cx/themeTokens', format },
+    ];
   }
 
-  return baseFiles
+  // If only screen is set, return number-<screen> file
+  if (screen) {
+    return [
+      { destination: `number-${screen}.${fileExtension}`, filter: 'cx/numberTokens', format },
+    ];
+  }
+
+  // Fallback: return nothing
+  return [];
 }
