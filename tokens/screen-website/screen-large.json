@@ -4,15 +4,7 @@
       "screen": {
         "mode-1": {
           "$type": "boolean",
-          "$value": "false"
-        },
-        "mode-2": {
-          "$type": "boolean",
-          "$value": "false"
-        },
-        "mode-3": {
-          "$type": "boolean",
-          "$value": "false"
+          "$value": "true"
         }
       }
     }
@@ -22,6 +14,36 @@
       "separator": {
         "$type": "boolean",
         "$value": "{figma.switch.screen.mode-1}"
+      }
+    }
+  },
+  "typography": {
+    "fontSize": {
+      "screen": {
+        "hero-title": {
+          "$type": "fontSize",
+          "$value": "64"
+        },
+        "hero-body": {
+          "$type": "fontSize",
+          "$value": "32"
+        },
+        "section-title": {
+          "$type": "fontSize",
+          "$value": "38"
+        },
+        "section-body": {
+          "$type": "fontSize",
+          "$value": "16"
+        },
+        "feature-title": {
+          "$type": "fontSize",
+          "$value": "24"
+        },
+        "feature-body": {
+          "$type": "fontSize",
+          "$value": "16"
+        }
       }
     }
   },

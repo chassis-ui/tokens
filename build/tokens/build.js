@@ -26,7 +26,8 @@ const packageJson = JSON.parse(
   readFileSync(join(process.cwd(), 'package.json'), 'utf-8')
 )
 const buildOptions = packageJson.chassis.build
-const DEFAULT_TOKENS_THEME = packageJson.chassis.defaults.tokensTheme
+const DEFAULT_THEME = packageJson.chassis.defaults.theme
+const DEFAULT_SCREEN = packageJson.chassis.defaults.screen
 
 /**
  * Registers all necessary extensions for Style Dictionary, including
@@ -58,24 +59,24 @@ function registerDictionary() {
 }
 
 /**
- * Generates tasks for all brand, app, platform, theme, and template combinations,
+ * Generates tasks for all brand, app, platform, theme, and screen combinations,
  * filtered by optional CLI parameters.
  *
  * @param {Object} tokens - The tokens object containing theme permutations.
- * @param {Object} filters - Filter object with optional arrays: brands, themes, apps, templates.
+ * @param {Object} filters - Filter object with optional arrays: brands, themes, apps, screens.
  * @returns {Array<Object>} - An array of task configurations matching the filters.
  *
  * Example filter usage:
- *   { brands: ['chassis','test'], themes: ['light'], apps: ['docs'], templates: ['large','small'] }
+ *   { brands: ['chassis','test'], themes: ['light'], apps: ['docs'], screens: ['large','small'] }
  */
 function generateTasks(tokens, filters) {
-  const { brands, themes, apps, templates } = buildOptions
+  const { brands, themes, apps, screens } = buildOptions
   const filterList = (all, param) =>
     param && param.length > 0 ? all.filter(x => param.includes(x)) : all
 
   const brandsFiltered = filterList(brands, filters.brands)
   const themesFiltered = filterList(themes, filters.themes)
-  const templatesFiltered = filterList(templates, filters.templates)
+  const screensFiltered = filterList(screens, filters.screens)
   const appsFiltered = Object.entries(apps).filter(([app]) =>
     !filters.apps || filters.apps.length === 0 || filters.apps.includes(app)
   )
@@ -83,22 +84,41 @@ function generateTasks(tokens, filters) {
   return brandsFiltered.flatMap(brand =>
     appsFiltered.flatMap(([app, platforms]) =>
       platforms.flatMap(platform =>
-        themesFiltered.flatMap(theme =>
-          templatesFiltered.map(template => {
+        themesFiltered.flatMap(theme => {
+          if (theme === DEFAULT_THEME) {
+            // For default theme, create a task for each screen
+            return screensFiltered.map(screen => {
+              const cfg = config({
+                brand,
+                app,
+                platform,
+                theme,
+                screen
+              })
+              cfg.source = tokens[`${brand}_${app}_${theme}_${screen}`]?.map(
+                tokenset => `tokens/${tokenset}.json`
+              ) || []
+              return { brand, app, platform, theme, screen, cfg }
+            })
+          } else {
+            // For non-default themes, create a single task per theme (no screen)
             const cfg = config({
               brand,
               app,
               platform,
               theme,
-              template,
-              defaultTheme: theme === DEFAULT_TOKENS_THEME
+              screen: undefined
             })
-            cfg.source = tokens[`${brand}_${app}_${theme}_${template}`].map(
+            // Fallback to default screen if direct theme key does not exist
+            const key = tokens[`${brand}_${app}_${theme}`]
+              ? `${brand}_${app}_${theme}`
+              : `${brand}_${app}_${theme}_${DEFAULT_SCREEN}`;
+            cfg.source = tokens[key]?.map(
               tokenset => `tokens/${tokenset}.json`
-            )
-            return { brand, app, platform, theme, template, cfg }
-          })
-        )
+            ) || [];
+            return [{ brand, app, platform, theme, screen: undefined, cfg }];
+          }
+        })
       )
     )
   )
@@ -112,20 +132,16 @@ function generateTasks(tokens, filters) {
  * @param {string} task.app - The application name.
  * @param {string} task.platform - The target platform (e.g., 'web', 'ios', 'android').
  * @param {string} task.theme - The theme name.
- * @param {string} task.template - The template/screen size.
+ * @param {string} task.screen - The screen size.
  * @param {Object} task.cfg - The Style Dictionary configuration object.
  */
-async function processTask({ brand, app, platform, theme, template, cfg }) {
-  if (theme === DEFAULT_TOKENS_THEME) {
-    console.log(`\nStarting: ${brand}/${app}-${platform}-${template}`)
-    console.log('==============================================')
-  }
+async function processTask({ brand, app, platform, theme, screen, cfg }) {
+  console.log(`\nStarting: ${platform}/${brand}-${app}/${theme}-${screen}`)
+  console.log('==============================================')
   const sd = new StyleDictionary(cfg)
   await sd.cleanPlatform(platform)
   await sd.buildPlatform(platform)
-  if (theme !== DEFAULT_TOKENS_THEME) {
-    console.log(`\nCompleted: ${brand}/${app}-${platform}-${template}\n`)
-  }
+  console.log(`\nCompleted: ${platform}/${brand}-${app}/${theme}-${screen}\n`)
 }
 
 /**
@@ -133,7 +149,7 @@ async function processTask({ brand, app, platform, theme, template, cfg }) {
  * generates tasks, and processes each task sequentially.
  *
  * CLI usage:
- *   node build/tokens/build.js --brand=chassis,test --theme=light,dark --app=docs --template=large,small
+ *   node build/tokens/build.js --brand=chassis,test --theme=light,dark --app=docs --screen=large,small
  *
  * All parameters are optional and can be comma-separated for multiple values.
  */
@@ -147,7 +163,7 @@ async function run() {
     brands: parseArg('brand'),
     themes: parseArg('theme'),
     apps: parseArg('app'),
-    templates: parseArg('template')
+    screens: parseArg('screen')
   }
 
   registerDictionary()

@@ -7,6 +7,16 @@
  * @license MIT
  */
 
+import { readFileSync } from 'fs'
+import { join } from 'path'
+
+const packageJson = JSON.parse(
+  readFileSync(join(process.cwd(), 'package.json'), 'utf-8')
+)
+const buildOptions = packageJson.chassis.build
+const DEFAULT_THEME = packageJson.chassis.defaults.theme
+const DEFAULT_SCREEN = packageJson.chassis.defaults.screen
+
 /**
  * Main configuration function for Style Dictionary.
  *
@@ -15,11 +25,10 @@
  * @param {string} params.app - The application name.
  * @param {string} params.platform - The target platform (e.g., 'web', 'ios', 'android').
  * @param {string} params.theme - The theme name.
- * @param {string} params.template - The template/screen size.
- * @param {boolean} [params.defaultTheme=true] - Whether to include default theme tokens.
+ * @param {string} params.screen - The screen size.
  * @returns {Object} - The Style Dictionary configuration object.
  */
-export default function ({ brand, app, platform, theme, template, defaultTheme = true }) {
+export default function ({ brand, app, platform, theme, screen }) {
 
   return {
     preprocessors: ['cx/global'],
@@ -27,7 +36,7 @@ export default function ({ brand, app, platform, theme, template, defaultTheme =
     platforms: {
       [platform]: {
         ...getPlatformSettings(brand, app, platform),
-        files: generateFiles(platform, theme, template, defaultTheme),
+        files: generateFiles(platform, theme, screen),
       },
     },
   };
@@ -59,7 +68,7 @@ function getPlatformSettings(brand, app, platform) {
       'cx/typography/web',
       'cx/shadow/web',
     ],
-    buildPath: `dist/tokens/web/${brand}-${app}/`,
+    buildPath: `dist/web/${brand}-${app}/`,
     options: { ...commonOptions },
   };
 
@@ -94,7 +103,7 @@ function getPlatformSettings(brand, app, platform) {
           },
         },
       },
-      buildPath: `dist/tokens/ios/${brand}-${app}/`,
+      buildPath: `dist/ios/${brand}-${app}/`,
       options: { ...commonOptions, import: ['UIKit'] },
     },
     android: {
@@ -113,7 +122,7 @@ function getPlatformSettings(brand, app, platform) {
           },
         },
       },
-      buildPath: `dist/tokens/android/${brand}-${app}/`,
+      buildPath: `dist/android/${brand}-${app}/`,
       options: commonOptions,
     },
   };
@@ -122,15 +131,14 @@ function getPlatformSettings(brand, app, platform) {
 }
 
 /**
- * Generates the list of files to be created for a given platform, theme, and template.
+ * Generates the list of files to be created for a given platform, theme, and screen.
  *
  * @param {string} platform - The target platform (e.g., 'web', 'ios', 'android').
  * @param {string} theme - The theme name.
- * @param {string} template - The template/screen size.
- * @param {boolean} defaultTheme - Whether to include default theme tokens.
+ * @param {string} screen - The screen size.
  * @returns {Array<Object>} - An array of file configuration objects.
  */
-function generateFiles(platform, theme, template, defaultTheme) {
+function generateFiles(platform, theme, screen) {
   const fileExtensionMap = {
     'web': 'scss',
     'web-px': 'scss',
@@ -149,14 +157,21 @@ function generateFiles(platform, theme, template, defaultTheme) {
   const format = formatMap[fileExtension];
 
   const baseFiles = [
-    { destination: `allTokens.${fileExtension}`, filter: 'cx/allTokens', format },
-    { destination: `colorTokens.${fileExtension}`, filter: 'cx/themeTokens', format },
-    { destination: `theme-${theme}Tokens.${fileExtension}`, filter: 'cx/themeTokens', format },
-    { destination: `numberTokens.${fileExtension}`, filter: 'cx/numberTokens', format },
-    { destination: `stringTokens.${fileExtension}`, filter: 'cx/stringTokens', format },
-
-    { destination: `template-${template}-numbers.${fileExtension}`, filter: 'cx/numberTokens', format },
+    { destination: `base.${fileExtension}`, filter: 'cx/allTokens', format },
+    // { destination: `color.${fileExtension}`, filter: 'cx/themeTokens', format },
+    // { destination: `number.${fileExtension}`, filter: 'cx/numberTokens', format },
+    { destination: `string.${fileExtension}`, filter: 'cx/stringTokens', format },
+    { destination: `color-${theme}.${fileExtension}`, filter: 'cx/themeTokens', format },
+    { destination: `number-${screen}.${fileExtension}`, filter: 'cx/numberTokens', format },
   ];
 
-  return defaultTheme ? baseFiles : baseFiles.filter(file => file.destination.includes(`theme-${theme}`));
+  if (theme !== DEFAULT_THEME) {
+    return baseFiles.filter(file => file.destination.includes(`color-${theme}`));
+  }
+
+  if (screen !== DEFAULT_SCREEN) {
+    return baseFiles.filter(file => file.destination.includes(`number-${screen}`));
+  }
+
+  return baseFiles
 }
