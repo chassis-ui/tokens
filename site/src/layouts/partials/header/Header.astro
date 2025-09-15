@@ -1,0 +1,17 @@
+---
+import type { CollectionEntry } from 'astro:content'
+import type { Layout } from '@libs/layout'
+import Skippy from '@layouts/partials/header/Skippy.astro'
+import Navigation from '@layouts/partials/header/Navigation.astro'
+
+interface Props {
+  layout: Layout
+  title: string
+}
+
+const { layout, title } = Astro.props
+---
+
+<Skippy layout={layout} />
+
+<Navigation layout={layout} title={title} />

@@ -11,7 +11,7 @@
 import {
   fileHeader,
   sortByName,
-  setSwiftFileProperties,
+  setSwiftFileProperties
 } from 'style-dictionary/utils'
 import androidResourcesTemplate from './templates/android-resources.template.js'
 import iosSwiftClassTemplate from './templates/ios-swift-class.template.js'
@@ -46,7 +46,7 @@ export default function (StyleDictionary) {
           // .map(token => `  ${token.name}: ${token.$value}`)
           .join('\n')
       )
-    },
+    }
   })
 
   /**
@@ -58,9 +58,9 @@ export default function (StyleDictionary) {
       const { formatting, commentStyle } = options
       const header = await fileHeader({ file, formatting, commentStyle })
       dictionary.allTokens = [...dictionary.allTokens]
-        // .sort(sortByName)
+      // .sort(sortByName)
       return scssVariablesTemplate({ dictionary, options, file, header })
-    },
+    }
   })
 
   /**
@@ -74,12 +74,12 @@ export default function (StyleDictionary) {
       options = setSwiftFileProperties(
         options,
         'class',
-        platform.transformGroup,
+        platform.transformGroup
       )
       dictionary.allTokens = [...dictionary.allTokens]
-        // .sort(sortByName)
+      // .sort(sortByName)
       return iosSwiftClassTemplate({ dictionary, options, file, header })
-    },
+    }
   })
 
   /**
@@ -91,8 +91,8 @@ export default function (StyleDictionary) {
       const { formatting, commentStyle } = options
       const header = await fileHeader({ file, formatting, commentStyle })
       dictionary.allTokens = [...dictionary.allTokens]
-        // .sort(sortByName)
+      // .sort(sortByName)
       return androidResourcesTemplate({ dictionary, options, file, header })
-    },
+    }
   })
 }

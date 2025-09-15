@@ -1,9 +1,10 @@
+// eslint-disable-next-line import/no-unresolved
 import { defineConfig } from 'vitest/config'
 
 export default defineConfig({
   test: {
     // Test files location
-    include: ['tests/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts}'],
+    include: ['test/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts}'],
 
     // Test environment
     environment: 'node',
@@ -13,11 +14,9 @@ export default defineConfig({
 
     // Coverage settings
     coverage: {
-      reporter: ['text', 'html'],
-      include: ['build/**/*.js'],
+      reporter: ['text'],
+      include: ['build/tokens/**/*.js'],
       exclude: [
-        'build/**/*.test.js',
-        'build/**/*.spec.js',
         'node_modules/**',
         'dist/**'
       ]

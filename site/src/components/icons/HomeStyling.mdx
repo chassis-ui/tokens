@@ -1,0 +1,123 @@
+---
+---
+import { getConfig } from '@libs/config'
+
+<section id="styling-section" class="row my-large">
+
+## Styling
+
+Icons use `--cx-icon-size` and `--cx-icon-color` for their size and color. You can change those values in different ways.
+
+<div class="row my-large">
+  <div class="col-medium-4">
+
+### Utilities
+
+You can use `icon-*` classes to change both their size and colors. Put any _context color_ or _icon size_ after.
+
+  </div>
+  <div class="col-medium-8">
+
+<Example
+  code={`<svg class="icon">
+    <use xlink:href="#info-circle-solid"/>
+  </svg>
+  <svg class="icon icon-info icon-xlarge">
+    <use xlink:href="#info-circle-solid"/>
+  </svg>`}
+/>
+
+  </div>
+</div>
+
+<div class="row my-large">
+  <div class="col-medium-4">
+
+### Adaptive
+
+Put `.icon-adaptive` to change their values to `--cx-font-size` and `--cx-fg-color`.
+
+  </div>
+  <div class="col-medium-8">
+
+<Example
+  code={`<h2 class="fg-subtle">
+    <svg class="icon icon-adaptive"><use xlink:href="#info-circle-solid"/></svg>
+    Heading
+  </h2>`}
+/>
+
+  </div>
+</div>
+
+<div class="row my-large">
+  <div class="col-medium-4">
+
+### Context Colors
+
+Icons color and sizes fit to context and components automatically. Context object color utilities are also available. Put `.*-icon-main` or `.*-icon-subtle` classes to change their `color` ad `fill-color` properties directly with an `!important` flag.
+
+Note that, `.icon-primary` and `.primary-icon-main` are different colors. While `.primary-icon-main` using `--cx-primary-icon-main` color, `.icon-primary` uses `--cx-primary-base-color` for its property.
+
+  </div>
+  <div class="col-medium-8">
+
+<Example code={`<div class="context secondary p-medium">
+    <svg class="icon"><use xlink:href="#info-circle-solid"/></svg>
+    <svg class="icon icon-subtle icon-medium"><use xlink:href="#info-circle-solid"/></svg>
+
+    <span class="icon fg-subtle icon-2xlarge icon-info-circle-solid"></span>
+    <span class="icon primary-icon-main icon-info-circle-solid "></span>
+    <span class="icon primary-fg-main icon-xsmall icon-info-circle-solid "></span>
+
+  </div>`} />
+
+  </div>
+</div>
+
+<div class="row my-large">
+  <div class="col-medium-4">
+
+### CSS
+
+You can also use the SVG within your CSS (**be sure to escape any characters**, such as `#` to `%23` when specifying hex color values). When no dimensions are specified via `width` and `height` on the `<svg>`, the icon will fill the available space.
+
+The `viewBox` attribute is required if you wish to resize icons with `background-size`. Note that the `xmlns` attribute is required.
+
+Note that, it is not possible to change color if SVG used as `background-image`. Because of this, we prefer to use `mask-image` if any CSS usage needed.
+
+  </div>
+  <div class="col-medium-8">
+
+<Code
+  lang="css"
+  code={`.icon-bg::before {
+    display: inline-block;
+    content: "";
+    vertical-align: -.125em;
+    background-image: url("data:image/svg+xml,<svg viewBox='0 0 24 24' fill='%23ff5b14' xmlns='http://www.w3.org/2000/svg'><path fill-rule='evenodd' d='M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z' clip-rule='evenodd'/></svg>");
+    background-repeat: no-repeat;
+    background-size: 1rem 1rem;
+  }
+  `}
+/>
+
+<Code
+  lang="css"
+  code={`.icon-mask::before {
+    position: absolute;
+    width: 1rem
+    height: 1rem
+    margin-top: 0;
+    margin-left: .5rem;
+    content: "";
+    background-color: #ff5b14;
+    mask-image: url("data:image/svg+xml,<svg viewBox='0 0 24 24' fill='currentColor' xmlns='http://www.w3.org/2000/svg'><path fill-rule='evenodd' d='M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z' clip-rule='evenodd'/></svg>");
+    mask-position: center;
+    mask-size: 1rem 1rem;
+}`}
+/>
+
+  </div>
+</div>
+</section>

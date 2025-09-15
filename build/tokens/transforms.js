@@ -25,9 +25,9 @@ export default function (StyleDictionary) {
     transform: token => {
       if (token.path[0] === 'font' && token.original.$extensions) {
         console.log(
-          token.name +
-            ': ' +
-            token.original.$extensions['chassis'].originalFontWeight
+          `${token.name 
+          }: ${ 
+            token.original.$extensions['chassis'].originalFontWeight}`
         )
       }
       return token.$value
@@ -53,7 +53,7 @@ export default function (StyleDictionary) {
               `Invalid Number: '${token.name}: ${token.$value}' is not a valid number, cannot transform to 'px'.`
             )
           }
-          return parsed + 'px'
+          return `${parsed  }px`
         })
         .join(' ')
     }
@@ -78,7 +78,7 @@ export default function (StyleDictionary) {
               `Invalid Number: '${token.name}: ${token.$value}' is not a valid number, cannot transform to 'rem'.`
             )
           }
-          return parsed / config.basePxFontSize + 'rem'
+          return `${parsed / config.basePxFontSize  }rem`
         })
         .join(' ')
     }
@@ -103,7 +103,7 @@ export default function (StyleDictionary) {
               `Invalid Number: '${token.name}: ${token.$value}' is not a valid number, cannot transform to 'vw'.`
             )
           }
-          return parsed / config.basePxFontSize + 'vw'
+          return `${parsed / config.basePxFontSize  }vw`
         })
         .join(' ')
     }
@@ -143,19 +143,19 @@ export default function (StyleDictionary) {
     transform: function (token) {
       if (token.$type === 'typography' && typeof token.$value === 'object') {
         return (
-          '(' +
-          [
-            `"font-family": ${token.$value.fontFamily}`,
-            `"font-weight": ${token.$value.fontWeight}`,
-            `"font-size": ${token.$value.fontSize}`,
-            `"font-style": ${token.$value.fontWeight}`,
-            `"letter-spacing": ${token.$value.letterSpacing}`,
-            `"line-height": ${token.$value.lineHeight}`,
-            `"paragraph-spacing": ${token.$value.paragraphSpacing}`,
-            `"text-transform": ${token.$value.textCase}`,
-            `"text-decoration": ${token.$value.textDecoration}`
-          ].join(', ') +
-          ')'
+          `(${ 
+            [
+              `"font-family": ${token.$value.fontFamily}`,
+              `"font-weight": ${token.$value.fontWeight}`,
+              `"font-size": ${token.$value.fontSize}`,
+              `"font-style": ${token.$value.fontWeight}`,
+              `"letter-spacing": ${token.$value.letterSpacing}`,
+              `"line-height": ${token.$value.lineHeight}`,
+              `"paragraph-spacing": ${token.$value.paragraphSpacing}`,
+              `"text-transform": ${token.$value.textCase}`,
+              `"text-decoration": ${token.$value.textDecoration}`
+            ].join(', ') 
+          })`
         )
       }
       return token.$value

@@ -11,7 +11,7 @@
 import {
   typeDtcgDelegate,
   usesReferences,
-  resolveReferences,
+  resolveReferences
 } from 'style-dictionary/utils'
 
 /**
@@ -35,7 +35,7 @@ function alignTypes(slice) {
     letterSpacing: 'number',
     paragraphSpacing: 'dimension',
     paragraphIndent: 'dimension',
-    text: 'content',
+    text: 'content'
   }
 
   /**
@@ -44,8 +44,8 @@ function alignTypes(slice) {
   const propsMap = {
     shadow: {
       x: 'offsetX',
-      y: 'offsetY',
-    },
+      y: 'offsetY'
+    }
   }
 
   const isToken =
@@ -63,8 +63,8 @@ function alignTypes(slice) {
         ...slice.$extensions,
         ['chassis']: {
           ...(slice.$extensions?.['chassis'] ?? {}),
-          originalType: t,
-        },
+          originalType: t
+        }
       }
     }
 
@@ -108,16 +108,16 @@ function addFontWeightExtension(slice) {
     slice.$type === 'typography' &&
     typeof slice.$value === 'object'
   if (isTypographyObj) {
-    const fontWeight = slice.original?.$value.fontWeight
-      ? slice.original.$value.fontWeight
-      : slice.$value.fontWeight
+    const fontWeight = slice.original?.$value.fontWeight ?
+      slice.original.$value.fontWeight :
+      slice.$value.fontWeight
     if (fontWeight) {
       slice.$extensions = {
         ...slice.$extensions,
         ['chassis']: {
           ...(slice.$extensions?.['chassis'] ?? {}),
-          originalFontWeight: (' ' + fontWeight).slice(1),
-        },
+          originalFontWeight: (` ${  fontWeight}`).slice(1)
+        }
       }
     }
   } else {
@@ -141,7 +141,7 @@ function addFontStyles(slice, refCopy) {
   const fontStyles = ['italic', 'oblique', 'normal']
   const fontWeightReg = new RegExp(
     `(?<weight>.+?)\\s?(?<style>${fontStyles.join('|')})?$`,
-    'i',
+    'i'
   )
 
   /**
@@ -203,7 +203,7 @@ function addFontStyles(slice, refCopy) {
 
         const fontWeight = resolveFontWeight(
           `${tokenValue.fontWeight}`,
-          refCopy,
+          refCopy
         )
         const { weight, style } = splitWeightStyle(
           fontWeight
@@ -223,13 +223,13 @@ function addFontStyles(slice, refCopy) {
             weight: {
               ...token,
               [`$type`]: 'fontWeight',
-              [`$value`]: weight,
+              [`$value`]: weight
             },
             style: {
               ...token,
               [`$type`]: 'fontStyle',
-              [`$value`]: style,
-            },
+              [`$value`]: style
+            }
           }
         }
       }

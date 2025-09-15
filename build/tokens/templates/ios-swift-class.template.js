@@ -47,7 +47,7 @@ export default opts => {
         return `UIColor(red: ${rFixed}, green: ${gFixed}, blue: ${bFixed}, alpha: ${a})`
       } else {
         console.warn(
-          `Invalid color token: ${token.path.join('.')} (${token.$value})`,
+          `Invalid color token: ${token.path.join('.')} (${token.$value})`
         )
         return token.$value
       }
@@ -84,8 +84,8 @@ ${header}
 ${options.import.map(item => `import ${item}`).join('\n')}
 
 ${options.accessControl ? `${options.accessControl} ` : ''}${
-    options.objectType ? `${options.objectType} ` : ''
-  }${file.className ? `${file.className} ` : ''}{
+  options.objectType ? `${options.objectType} ` : ''
+}${file.className ? `${file.className} ` : ''}{
     ${dictionary.allTokens.map(token => tokenToLine(token)).join('\n    ')}
 }
 `

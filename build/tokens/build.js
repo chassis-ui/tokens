@@ -85,30 +85,30 @@ function generateTasks(tokens, filters) {
   const baseTasks = brandsFiltered.flatMap(brand =>
     appsFiltered.flatMap(([app, platforms]) =>
       platforms.map(platform => {
-        const cfg = config({ brand, app, platform });
+        const cfg = config({ brand, app, platform })
         // Use the first available tokens set for base
-        const key = Object.keys(tokens).find(k => k.startsWith(`${brand}_${app}`));
-        cfg.source = key ? tokens[key].map(tokenset => `tokens/${tokenset}.json`) : [];
-        return { brand, app, platform, theme: undefined, screen: undefined, cfg };
+        const key = Object.keys(tokens).find(k => k.startsWith(`${brand}_${app}`))
+        cfg.source = key ? tokens[key].map(tokenset => `tokens/${tokenset}.json`) : []
+        return { brand, app, platform, theme: undefined, screen: undefined, cfg }
       })
     )
-  );
+  )
 
   // Generate color-<theme>.scss for all themes
   const colorTasks = brandsFiltered.flatMap(brand =>
     appsFiltered.flatMap(([app, platforms]) =>
       platforms.flatMap(platform =>
         themesFiltered.map(theme => {
-          const cfg = config({ brand, app, platform, theme });
-          const key = tokens[`${brand}_${app}_${theme}`]
-            ? `${brand}_${app}_${theme}`
-            : `${brand}_${app}_${theme}_${DEFAULT_SCREEN}`;
-          cfg.source = tokens[key]?.map(tokenset => `tokens/${tokenset}.json`) || [];
-          return { brand, app, platform, theme, screen: undefined, cfg };
+          const cfg = config({ brand, app, platform, theme })
+          const key = tokens[`${brand}_${app}_${theme}`] ?
+            `${brand}_${app}_${theme}` :
+            `${brand}_${app}_${theme}_${DEFAULT_SCREEN}`
+          cfg.source = tokens[key]?.map(tokenset => `tokens/${tokenset}.json`) || []
+          return { brand, app, platform, theme, screen: undefined, cfg }
         })
       )
     )
-  );
+  )
 
   // Generate number-<screen>.scss for all screens
   const numberTasks = brandsFiltered.flatMap(brand =>
@@ -116,19 +116,19 @@ function generateTasks(tokens, filters) {
       platforms.flatMap(platform =>
         screensFiltered.map(screen => {
           // Use the default theme for number files, or the first theme if not set
-          const theme = themesFiltered[0] || DEFAULT_THEME;
-          const cfg = config({ brand, app, platform, screen });
-          const key = tokens[`${brand}_${app}_${theme}_${screen}`]
-            ? `${brand}_${app}_${theme}_${screen}`
-            : null;
-          cfg.source = key ? tokens[key].map(tokenset => `tokens/${tokenset}.json`) : [];
-          return { brand, app, platform, theme, screen, cfg };
+          const theme = themesFiltered[0] || DEFAULT_THEME
+          const cfg = config({ brand, app, platform, screen })
+          const key = tokens[`${brand}_${app}_${theme}_${screen}`] ?
+            `${brand}_${app}_${theme}_${screen}` :
+            null
+          cfg.source = key ? tokens[key].map(tokenset => `tokens/${tokenset}.json`) : []
+          return { brand, app, platform, theme, screen, cfg }
         })
       )
     )
-  );
+  )
 
-  return [...baseTasks, ...colorTasks, ...numberTasks];
+  return [...baseTasks, ...colorTasks, ...numberTasks]
 }
 
 /**

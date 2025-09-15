@@ -1,8 +1,9 @@
 {
-  "arrowParens": "avoid",
+  "arrowParens": "always",
   "semi": false,
   "singleQuote": true,
   "tabWidth": 2,
   "useTabs": false,
-  "trailingComma": "none"
+  "trailingComma": "none",
+  "plugins": ["prettier-plugin-astro"]
 }

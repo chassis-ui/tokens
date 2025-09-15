@@ -12,7 +12,7 @@
  */
 export const tokenTypes = {
   color: [
-    'color',
+    'color'
   ],
   font: [
     'fontFamily',
@@ -24,7 +24,7 @@ export const tokenTypes = {
     'paragraphSpacing',
     'textCase',
     'textDecoration',
-    'typography',
+    'typography'
   ],
   gradient: ['gradient'],
   number: ['duration', 'letterSpacing', 'number', 'opacity'],
@@ -33,7 +33,7 @@ export const tokenTypes = {
     'dimension',
     'fontSize',
     'lineHeight',
-    'paragraphSpacing',
+    'paragraphSpacing'
   ],
   string : [
     'asset',
@@ -45,8 +45,8 @@ export const tokenTypes = {
     'text',
     'textCase',
     'textDecoration',
-    'type',
-  ],
+    'type'
+  ]
 }
 
 /**
@@ -81,7 +81,7 @@ export const fontWeightMap = {
   extrafett: 900,
   ultra: 950,
   ultrablack: 950,
-  extrablack: 950,
+  extrablack: 950
 }
 
 /**
@@ -92,10 +92,10 @@ export const fontWeightMap = {
  */
 export function getFontWeight(value) {
   if (typeof value === 'string') {
-    const cleanedValue = value.toLowerCase().replace(/normal|italic|oblique|\s/g, '');
-    return fontWeightMap[cleanedValue] || 400;
+    const cleanedValue = value.toLowerCase().replace(/normal|italic|oblique|\s/g, '')
+    return fontWeightMap[cleanedValue] || 400
   }
-  return value;
+  return value
 }
 
 /**
@@ -106,10 +106,10 @@ export function getFontWeight(value) {
  */
 export function getFontStyle(value) {
   if (typeof value === 'string') {
-    if (/italic/i.test(value)) return 'italic';
-    if (/oblique/i.test(value)) return 'oblique';
+    if (/italic/i.test(value)) return 'italic'
+    if (/oblique/i.test(value)) return 'oblique'
   }
-  return 'normal';
+  return 'normal'
 }
 
 /**
@@ -144,12 +144,12 @@ export function splitReference(value) {
  */
 export function removeTrailingZeros(value) {
   // Convert to string first if it's a number
-  const strValue = String(value);
+  const strValue = String(value)
 
   // Only process if it contains a decimal point
   if (strValue.includes('.')) {
-    return strValue.replace(/\.?0+$/, '');
+    return strValue.replace(/\.?0+$/, '')
   }
 
-  return strValue;
+  return strValue
 }

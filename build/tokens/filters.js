@@ -32,7 +32,7 @@ export default function (StyleDictionary) {
           token.path[1] !== 'dimension') ||
         tokenTypes.string.includes(token.$type)
       )
-    },
+    }
   })
 
   /**
@@ -45,7 +45,7 @@ export default function (StyleDictionary) {
         tokenTypes.color.includes(token.$type) &&
         !['palette', 'context', 'utility'].includes(token.path[1])
       )
-    },
+    }
   })
 
   /**
@@ -58,7 +58,7 @@ export default function (StyleDictionary) {
         tokenTypes.color.includes(token.$type) &&
         !['base', 'utility'].includes(token.path[1])
       )
-    },
+    }
   })
 
   /**
@@ -71,7 +71,7 @@ export default function (StyleDictionary) {
         tokenTypes.number.includes(token.$type) ||
         (tokenTypes.size.includes(token.$type) && token.path[1] !== 'dimension')
       )
-    },
+    }
   })
 
   /**
@@ -81,6 +81,6 @@ export default function (StyleDictionary) {
     name: 'cx/stringTokens',
     filter: token => {
       return tokenTypes.string.includes(token.$type)
-    },
+    }
   })
 }

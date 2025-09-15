@@ -33,7 +33,7 @@ export default opts => {
     string: 'string',
     content: 'string',
     time: 'integer',
-    number: 'integer',
+    number: 'integer'
   }
 
   /**
@@ -82,7 +82,7 @@ export default opts => {
       if (usesReferences(originalValue)) {
         const ref = getReferences(originalValue, dictionary.tokens, {
           usesDtcg: true,
-          warnImmediately: false,
+          warnImmediately: false
         })[0]
         if (ref) return `@${tokenToType(token, options)}/${ref.name}`
       }
@@ -97,10 +97,10 @@ export default opts => {
       const color = Color(token.$value)
       if (color.isValid()) {
         const str = color.toHex8()
-        return '#' + str.slice(6) + str.slice(0, 6)
+        return `#${  str.slice(6)  }${str.slice(0, 6)}`
       } else {
         console.warn(
-          `Invalid color token: ${token.path.join('.')} (${token.$value})`,
+          `Invalid color token: ${token.path.join('.')} (${token.$value})`
         )
         return token.$value
       }
@@ -110,7 +110,7 @@ export default opts => {
       return `${token.$value.replace(' ', '-').toLowerCase()}` // Only take the first font family
     } else if (
       ['fontSize', 'lineHeight', 'paragraphSpacing'].includes(
-        token.path[token.path.length - 1],
+        token.path[token.path.length - 1]
       ) ||
       ['fontSize', 'lineHeight'].includes(token.$type) ||
       token.path[1] === 'paragraphSpacing'
@@ -136,8 +136,8 @@ export default opts => {
       dictionary, options
     )}</${tokenToType(
       token,
-      options,
-    )}>${token.comment ? ' <!-- ' + token.comment + ' -->' : ''}`
+      options
+    )}>${token.comment ? ` <!-- ${  token.comment  } -->` : ''}`
   }
 
   return `<?xml version="1.0" encoding="UTF-8"?>
