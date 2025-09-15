@@ -6,7 +6,6 @@ export const docsDirectory = getConfig().docsDir
 export const docsRoot = getConfig().docsRoot
 
 export function getChassisDocsRoot(docsPath: string): string {
-
   const sanitizedDocsPath = docsPath.replace(/^\//, '')
 
   return `${docsRoot}/${sanitizedDocsPath}`

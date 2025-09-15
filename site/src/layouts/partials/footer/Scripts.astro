@@ -1,12 +1,6 @@
 ---
 import { getChassisJsProps } from '@libs/chassis'
-import type { Layout } from '@libs/layout'
 
-interface Props {
-  layout: Layout
-}
-
-const { layout } = Astro.props
 ---
 
 <script is:inline {...getChassisJsProps()}></script>

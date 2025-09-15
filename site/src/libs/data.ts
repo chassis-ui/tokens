@@ -124,7 +124,7 @@ const dataDefinitions = {
     .array()
 } satisfies Record<string, DataSchema>
 
-let data = new Map<DataType, z.infer<DataSchema>>()
+const data = new Map<DataType, z.infer<DataSchema>>()
 
 // A helper to get data loaded fom a yml file in the `./site/data/` directory. If the data does not match its associated
 // schema from `dataDefinitions`, an error is thrown to indicate that the data file is invalid and some action is

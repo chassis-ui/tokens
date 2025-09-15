@@ -7,15 +7,6 @@
  * @license MIT
  */
 
-import { readFileSync } from 'fs'
-import { join } from 'path'
-
-const packageJson = JSON.parse(
-  readFileSync(join(process.cwd(), 'package.json'), 'utf-8')
-)
-const buildOptions = packageJson.chassis.build
-const DEFAULT_THEME = packageJson.chassis.defaults.theme
-const DEFAULT_SCREEN = packageJson.chassis.defaults.screen
 
 /**
  * Main configuration function for Style Dictionary.

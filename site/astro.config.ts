@@ -28,6 +28,14 @@ export default defineConfig({
   },
   site,
   vite: {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          quietDeps: true,
+          silenceDeprecations: ['import', 'global-builtin', 'color-functions']
+        }
+      }
+    },
     plugins: [algoliaPlugin(), stackblitzPlugin()],
     ssr: {
       noExternal: ['@astrojs/prism']

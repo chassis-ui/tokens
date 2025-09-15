@@ -244,7 +244,6 @@ describe('Design Tokens Build System', () => {
 
   describe('Configuration Integration', () => {
     test('should call config function with correct parameters', () => {
-      const configMock = vi.mocked((buildModule.config || (() => {})))
       const filters = {}
       buildModule.generateTasks(mockTokens, filters)
 

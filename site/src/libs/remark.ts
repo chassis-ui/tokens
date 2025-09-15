@@ -6,10 +6,7 @@ import { getConfig } from './config'
 
 // [[config:foo]]
 // [[config:foo.bar]]
-const configRegExp = /\[\[config:(?<name>[\w\.]+)]]/g
-// [[docsref:/foo]]
-// [[docsref:/foo/bar#baz]]
-const docsrefRegExp = /\[\[docsref:(?<path>[\w\.\/#-]+)]]/g
+const configRegExp = /\[\[config:(?<name>[\w.]+)]]/g
 
 // A remark plugin to replace config values embedded in markdown (or MDX) files.
 // For example, [[config:foo]] will be replaced with the value of the `foo` key in the `config.yml` file.

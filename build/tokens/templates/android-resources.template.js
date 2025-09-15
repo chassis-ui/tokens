@@ -76,7 +76,7 @@ export default opts => {
     // Base colors should not be referenced
     const color_condition = !(token.$type === 'color' && token.path[1] === 'base')
     // Math operations should not be referenced
-    const math_condition = !(tokenTypes.size.includes(token.$type) && !/^[+\-*/]?[^\+\*/]*$/.test(token.original.$value))
+    const math_condition = !(tokenTypes.size.includes(token.$type) && !/^[+\-*/]?[^+*/]*$/.test(token.original.$value))
     if (options.outputReferences && color_condition && math_condition) {
       const originalValue = token.original.$value
       if (usesReferences(originalValue)) {

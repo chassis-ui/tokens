@@ -1,7 +1,7 @@
 import path from 'node:path'
 import { promises as fs } from 'node:fs'
 import sizeOf from 'image-size'
-import { getDocsStaticFsPath, getDocsPublicFsPath } from './path'
+import { getDocsPublicFsPath } from './path'
 
 export async function getStaticImageSize(imagePath: string) {
   const fullPath = path.join(getDocsPublicFsPath(), 'assets', imagePath)

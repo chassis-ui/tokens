@@ -3,7 +3,7 @@ const { Token } = Prism
 
 // Use a global variable to persist the state across server reloads
 declare global {
-  var isPrismConfigured: boolean | undefined
+  var isPrismConfigured: boolean | undefined // eslint-disable-line no-var
 }
 
 globalThis.isPrismConfigured = globalThis.isPrismConfigured || false

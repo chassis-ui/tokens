@@ -47,7 +47,7 @@ export function chassis(): AstroIntegration[] {
     {
       name: 'chassis-integration',
       hooks: {
-        'astro:config:setup': ({ command, addWatchFile, updateConfig }) => {
+        'astro:config:setup': ({ addWatchFile, updateConfig }) => {
           // Reload the config when the integration is modified.
           addWatchFile(path.join(getDocsFsPath(), 'src/libs/astro.ts'))
 
@@ -169,7 +169,6 @@ function copyChassisIcons() {
   fs.cpSync(font_source, destination, { recursive: true })
   fs.cpSync(svgs_source, destination, { recursive: true })
 }
-
 
 // Copy the content as-is of the `static` folder to make it available from the `/` URL.
 // A folder named `[version]` will automatically be renamed to the current version of the docs extracted from the

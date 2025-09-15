@@ -12,24 +12,17 @@
 import { execSync } from 'node:child_process'
 import path from 'node:path'
 import fs from 'node:fs'
-import { fileURLToPath } from 'node:url'
 import picocolors from 'picocolors'
-
-const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 const submodules = [{ name: 'chassis-assets', path: 'vendor/assets' }]
 
 function runCommand(command, cwd = process.cwd(), silent = false) {
-  try {
-    const result = execSync(command, {
-      cwd,
-      encoding: 'utf8',
-      stdio: silent ? 'pipe' : 'inherit'
-    })
-    return result
-  } catch (error) {
-    throw error
-  }
+  const result = execSync(command, {
+    cwd,
+    encoding: 'utf8',
+    stdio: silent ? 'pipe' : 'inherit'
+  })
+  return result
 }
 
 function syncSubmodule(submodule) {

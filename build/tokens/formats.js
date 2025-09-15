@@ -27,18 +27,9 @@ export default function (StyleDictionary) {
    */
   StyleDictionary.registerFormat({
     name: 'cx/test',
-    format: ({ dictionary, file, options, platform }) => {
-      let type = ''
+    format: ({ dictionary }) => {
       const allTokens = dictionary.allTokens
         .sort(sortByName)
-        .map(function (token) {
-          // console.log(token)
-          // if (token.$type !== type) {
-          //   console.log(token.name + ": " + token.$type)
-          //   type = token.$type
-          // }
-          return token
-        })
       return (
         allTokens
           // .map(token => `${JSON.stringify(token, null, 2)}`)

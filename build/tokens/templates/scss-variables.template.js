@@ -75,7 +75,7 @@ function resolveBasicTypographyValue(token, dictionary) {
   }
 
   return (
-    `(${ 
+    `(${
       [
         `"font-family": var(--#{$prefix}font-family-${fontFamily})`,
         `"font-weight": var(--#{$prefix}font-weight-${fontFamily}-${fontWeight})`,
@@ -86,7 +86,7 @@ function resolveBasicTypographyValue(token, dictionary) {
         `"margin-bottom": ${originals.paragraphSpacing}`,
         `"text-transform": ${originals.textCase}`,
         `"text-decoration": ${originals.textDecoration}`
-      ].join(', ') 
+      ].join(', ')
     })`
   )
 }
@@ -153,7 +153,7 @@ function resolveContextTypographyValue(token, dictionary) {
   }
 
   return (
-    `(${ 
+    `(${
       [
         `"font-family": var(--#{$prefix}font-family-${fontFamily})`,
         `"font-weight": var(--#{$prefix}font-weight-${fontWeight[2]}-${fontWeight[3]})`,
@@ -164,7 +164,7 @@ function resolveContextTypographyValue(token, dictionary) {
         `"margin-bottom": ${originals.paragraphSpacing}`,
         `"text-transform": ${originals.textCase}`,
         `"text-decoration": ${originals.textDecoration}`
-      ].join(', ') 
+      ].join(', ')
     })`
   )
 }
@@ -204,7 +204,7 @@ function resolveComponentTypographyValue(token, dictionary) {
   }
 
   return (
-    `(${ 
+    `(${
       [
         `"font-family": var(--#{$prefix}font-family-${ref[1]})`,
         `"font-weight": var(--#{$prefix}font-weight-${ref[3]})`,
@@ -215,7 +215,7 @@ function resolveComponentTypographyValue(token, dictionary) {
         `"margin-bottom": ${originals.paragraphSpacing}`,
         `"text-transform": ${originals.textCase}`,
         `"text-decoration": ${originals.textDecoration}`
-      ].join(', ') 
+      ].join(', ')
     })`
   )
 }
@@ -228,7 +228,7 @@ function resolveComponentTypographyValue(token, dictionary) {
  * @param {Object} options - Options for resolving references and formatting.
  * @returns {string} - The token's resolved value as a SCSS-compatible string.
  */
-function tokenToValue(token, dictionary, options) {
+function tokenToValue(token, dictionary) {
   if (
     token.original &&
     isReference(token.original.$value) &&

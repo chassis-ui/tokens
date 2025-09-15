@@ -26,7 +26,6 @@ const {
   breakpointMedium,
   breakpointSmall,
   breakpointXsmall,
-  rootFontSize,
   baseFontSize
 } = variables
 

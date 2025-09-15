@@ -29,7 +29,7 @@ export default opts => {
    * @param {Object} dictionary - Token dictionary for reference.
    * @returns {string} - Swift representation of the token value.
    */
-  function tokenToValue(token, dictionary) {
+  function tokenToValue(token) {
     if (token.path[0] === 'gradient') {
       // TODO: Implement gradient support
       // console.warn(
