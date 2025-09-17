@@ -1,13 +1,8 @@
-# Prettier is only used for the website
-
-site/.astro
+*.scss
+*.css
 site/config.yml
-site/content
+site/.astro
 site/dist
 site/public
-site/src/assets
-site/src/scss
-site/src/pages/**/*.md
-site/src/pages/**/*.mdx
-site/src/layouts/RedirectLayout.astro
-site/static
+vendor/
+tokens/

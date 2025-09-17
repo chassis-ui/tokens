@@ -2,7 +2,7 @@ import eslint from '@eslint/js'
 import eslintPluginAstro from 'eslint-plugin-astro'
 import globals from 'globals'
 import tseslint from 'typescript-eslint'
-import prettierConfig from 'eslint-config-prettier';
+import prettierPlugin from 'eslint-plugin-prettier/recommended'
 
 export default [
   // Global ignores
@@ -13,7 +13,6 @@ export default [
       '**/vendor/',
       '_site/',
       'site/public/',
-      'site/assets/',
       'site/.astro/',
       'node_modules/',
       '.cache/',
@@ -23,10 +22,14 @@ export default [
   eslint.configs.recommended,
   ...tseslint.configs.recommended,
   ...eslintPluginAstro.configs.recommended,
+  prettierPlugin,
   {
     rules: {
+      // 'max-len': ["warn", { "code": 120 }],
+      'prettier/prettier': 'warn',
       '@typescript-eslint/no-explicit-any': 'off',
-      '@typescript-eslint/triple-slash-reference': 'off',
+      '@typescript-eslint/no-unused-vars': 'off',
+      '@typescript-eslint/triple-slash-reference': 'off'
     }
   },
   {
@@ -47,7 +50,7 @@ export default [
     files: ['site/**/*.astro'],
     languageOptions: {
       parser: eslintPluginAstro.parser,
-      parserOptions: { project: './site/tsconfig.json' },
+      parserOptions: { project: './site/tsconfig.json' }
     }
   },
   {

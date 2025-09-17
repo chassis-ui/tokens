@@ -1,13 +1,14 @@
 ---
 import DocsLayout from '@layouts/DocsLayout.astro'
 import { docsPages } from '@libs/content'
+import { getConfig } from '@libs/config'
 import Code from '@shortcodes/Code.astro'
 import { render } from 'astro:content'
 
 export async function getStaticPaths() {
   return docsPages.map((docsPage) => {
     return {
-      params: { slug: docsPage.id },
+      params: { slug: docsPage.id, version: getConfig().docs_version },
       props: docsPage
     }
   })

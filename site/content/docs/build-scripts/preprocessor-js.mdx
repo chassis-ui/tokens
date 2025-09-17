@@ -21,7 +21,7 @@ This script defines a custom preprocessor for Style Dictionary. The preprocessor
 import cxPrep from './preprocessor.js'
 StyleDictionary.registerPreprocessor({
   name: 'cx/global',
-  preprocessor: dictionary => cxPrep(dictionary)
+  preprocessor: (dictionary) => cxPrep(dictionary)
 })
 ```
 

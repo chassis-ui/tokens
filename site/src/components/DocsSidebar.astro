@@ -2,7 +2,7 @@
 import { getData } from '@libs/data'
 import { docsPages } from '@libs/content'
 import { getSlug } from '@libs/utils'
-import { getChassisDocsRoot } from '@libs/path'
+import { getChassisDocsPath } from '@libs/path'
 
 const sidebar = getData('sidebar')
 ---
@@ -15,7 +15,12 @@ const sidebar = getData('sidebar')
 
         if (group.pages) {
           return (
-            <li class:list={['cxd-links-group py-xsmall', groupSlug === Astro.params.slug?.split('/')[0] ? 'active' : undefined]}>
+            <li
+              class:list={[
+                'cxd-links-group py-xsmall',
+                groupSlug === Astro.params.slug?.split('/')[0] ? 'active' : undefined
+              ]}
+            >
               <strong class="cxd-links-heading d-flex w-100 align-items-center fw-semibold">
                 {group.icon && (
                   <svg
@@ -33,14 +38,16 @@ const sidebar = getData('sidebar')
                   const docSlug = getSlug(page.title)
                   const unversionedPageSlug = `${groupSlug}/${docSlug}`
 
-                  const url = getChassisDocsRoot(unversionedPageSlug)
+                  const url = getChassisDocsPath(unversionedPageSlug)
                   const active = Astro.params.slug === unversionedPageSlug
 
                   const generatedPage = docsPages.find((page) => page.id === unversionedPageSlug)
 
                   // Only show error for missing pages if they're not found
                   if (!generatedPage) {
-                    console.warn(`Page '${page.title}' (${unversionedPageSlug}) not found in docs collection`)
+                    console.warn(
+                      `Page '${page.title}' (${unversionedPageSlug}) not found in docs collection`
+                    )
                     return null
                   }
 

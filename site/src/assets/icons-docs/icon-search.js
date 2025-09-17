@@ -1,7 +1,6 @@
 // import Fuse from 'fuse.js'
 import Fuse from 'https://cdn.jsdelivr.net/npm/fuse.js@7.1.0/dist/fuse.mjs'
-
-(function () {
+;(function () {
   // 'use strict'
   const iconsBody = document.querySelector('#icons-body')
   if (!iconsBody) {
@@ -12,7 +11,7 @@ import Fuse from 'https://cdn.jsdelivr.net/npm/fuse.js@7.1.0/dist/fuse.mjs'
   const iconListContainer = iconsBody.querySelector('#icons-list')
   const iconElementList = Array.from(iconListContainer.children)
 
-  const iconDataList = iconElementList.map(element => ({
+  const iconDataList = iconElementList.map((element) => ({
     name: element.dataset.name
     // categories: element.dataset.categories.split(' '),
     // tags: element.dataset.tags.split(' ')
@@ -32,7 +31,7 @@ import Fuse from 'https://cdn.jsdelivr.net/npm/fuse.js@7.1.0/dist/fuse.mjs'
     iconListContainer.innerHTML = ''
     if (trimmedSearchTerm.length > 0) {
       const searchResult = fuse.search(trimmedSearchTerm)
-      const resultElements = searchResult.map(result => iconElementList[result.refIndex])
+      const resultElements = searchResult.map((result) => iconElementList[result.refIndex])
       iconListContainer.append(...resultElements)
     } else {
       iconListContainer.append(...iconElementList)

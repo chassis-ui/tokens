@@ -37,7 +37,6 @@ const configSchema = z.object({
   description: z.string(),
   docs_version: zVersionMajorMinor,
   docsDir: z.string(),
-  docsRoot: z.string(),
   download: z.object({
     dist: z.string().url(),
     dist_examples: z.string().url(),
@@ -77,7 +76,9 @@ export function getConfig(): Config {
       console.error('The `config.yml` file content is invalid:', error.issues)
     }
 
-    throw new Error('Failed to load configuration from `config.yml`', { cause: error })
+    throw new Error('Failed to load configuration from `config.yml`', {
+      cause: error
+    })
   }
 }
 

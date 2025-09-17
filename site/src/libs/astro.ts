@@ -94,9 +94,12 @@ function chassis_auto_import() {
   const autoImportedComponentDefinitions: string[] = []
 
   for (const autoImportedComponentDirectory of autoImportedComponentDirectories) {
-    const components = fs.readdirSync(path.join(getDocsFsPath(), 'src/components', autoImportedComponentDirectory), {
-      withFileTypes: true
-    })
+    const components = fs.readdirSync(
+      path.join(getDocsFsPath(), 'src/components', autoImportedComponentDirectory),
+      {
+        withFileTypes: true
+      }
+    )
 
     for (const component of components) {
       if (component.isFile()) {
@@ -127,7 +130,10 @@ export declare global {
 }
 `
 
-  fs.writeFileSync(path.join(getDocsFsPath(), 'src/types/auto-import.d.ts'), autoImportedComponentDefinition)
+  fs.writeFileSync(
+    path.join(getDocsFsPath(), 'src/types/auto-import.d.ts'),
+    autoImportedComponentDefinition
+  )
 
   return autoImport({
     imports: autoImportedComponents

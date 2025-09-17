@@ -26,8 +26,7 @@ const FILES = ['build/tokens/build.js', 'site/config.yml']
 
 const execFileAsync = promisify(execFile)
 
-const DRY_RUN =
-  process.argv.includes('--dry') || process.argv.includes('--dry-run')
+const DRY_RUN = process.argv.includes('--dry') || process.argv.includes('--dry-run')
 
 // RegExp utilities for safe string replacement
 // TC39 proposal for RegExp.escape is still pending: https://github.com/benjamingr/RegExp.escape/issues/37
@@ -117,7 +116,7 @@ async function main(args) {
 
   // Normalize version arguments by removing any leading 'v' prefix
   // This prevents issues with duplicate 'v' characters in version strings
-  ;[oldVersion, newVersion] = [oldVersion, newVersion].map(arg => {
+  ;[oldVersion, newVersion] = [oldVersion, newVersion].map((arg) => {
     return arg.startsWith('v') ? arg.slice(1) : arg
   })
 
@@ -125,16 +124,14 @@ async function main(args) {
     showUsage(args)
   }
 
-  console.log(
-    `🚀 Bumping version ${oldVersion} → ${newVersion}${DRY_RUN ? ' (DRY RUN)' : ''}`
-  )
+  console.log(`🚀 Bumping version ${oldVersion} → ${newVersion}${DRY_RUN ? ' (DRY RUN)' : ''}`)
   console.log('')
 
   await bumpNpmVersion(newVersion)
 
   try {
     const results = await Promise.all(
-      FILES.map(file => replaceRecursively(file, oldVersion, newVersion))
+      FILES.map((file) => replaceRecursively(file, oldVersion, newVersion))
     )
 
     const updatedCount = results.filter(Boolean).length
@@ -142,9 +139,7 @@ async function main(args) {
     console.log('')
 
     if (DRY_RUN) {
-      console.log(
-        `ℹ️ Summary: Would update ${updatedCount} file${updatedCount === 1 ? '' : 's'}`
-      )
+      console.log(`ℹ️ Summary: Would update ${updatedCount} file${updatedCount === 1 ? '' : 's'}`)
     } else {
       console.log(
         `✅ Complete: Updated ${updatedCount} file${updatedCount === 1 ? '' : 's'} successfully`

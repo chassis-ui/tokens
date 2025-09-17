@@ -22,7 +22,7 @@ import { tokenTypes } from '../utils.js'
  *   @param {Object} opts.options - Additional options for processing tokens.
  * @returns {string} - A string representing the Android resources XML file.
  */
-export default opts => {
+export default (opts) => {
   const { dictionary, file, header, options } = opts
 
   const resourceType = file.resourceType || null
@@ -76,7 +76,9 @@ export default opts => {
     // Base colors should not be referenced
     const color_condition = !(token.$type === 'color' && token.path[1] === 'base')
     // Math operations should not be referenced
-    const math_condition = !(tokenTypes.size.includes(token.$type) && !/^[+\-*/]?[^+*/]*$/.test(token.original.$value))
+    const math_condition = !(
+      tokenTypes.size.includes(token.$type) && !/^[+\-*/]?[^+*/]*$/.test(token.original.$value)
+    )
     if (options.outputReferences && color_condition && math_condition) {
       const originalValue = token.original.$value
       if (usesReferences(originalValue)) {
@@ -97,11 +99,9 @@ export default opts => {
       const color = Color(token.$value)
       if (color.isValid()) {
         const str = color.toHex8()
-        return `#${  str.slice(6)  }${str.slice(0, 6)}`
+        return `#${str.slice(6)}${str.slice(0, 6)}`
       } else {
-        console.warn(
-          `Invalid color token: ${token.path.join('.')} (${token.$value})`
-        )
+        console.warn(`Invalid color token: ${token.path.join('.')} (${token.$value})`)
         return token.$value
       }
     } else if (token.$type === 'fontFamily') {
@@ -109,9 +109,7 @@ export default opts => {
     } else if (token.$type === 'fontWeight') {
       return `${token.$value.replace(' ', '-').toLowerCase()}` // Only take the first font family
     } else if (
-      ['fontSize', 'lineHeight', 'paragraphSpacing'].includes(
-        token.path[token.path.length - 1]
-      ) ||
+      ['fontSize', 'lineHeight', 'paragraphSpacing'].includes(token.path[token.path.length - 1]) ||
       ['fontSize', 'lineHeight'].includes(token.$type) ||
       token.path[1] === 'paragraphSpacing'
     ) {
@@ -133,11 +131,9 @@ export default opts => {
   function tokenToLine(token) {
     return `<${tokenToType(token, options)} name="${token.name}">${tokenToValue(
       token,
-      dictionary, options
-    )}</${tokenToType(
-      token,
+      dictionary,
       options
-    )}>${token.comment ? ` <!-- ${  token.comment  } -->` : ''}`
+    )}</${tokenToType(token, options)}>${token.comment ? ` <!-- ${token.comment} -->` : ''}`
   }
 
   return `<?xml version="1.0" encoding="UTF-8"?>
@@ -145,7 +141,7 @@ export default opts => {
 ${header}
 
 <resources>
-  ${dictionary.allTokens.map(token => tokenToLine(token)).join(`\n  `)}
+  ${dictionary.allTokens.map((token) => tokenToLine(token)).join(`\n  `)}
 </resources>
 `
 }

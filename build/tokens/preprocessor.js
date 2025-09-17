@@ -8,11 +8,7 @@
  * @license MIT
  */
 
-import {
-  typeDtcgDelegate,
-  usesReferences,
-  resolveReferences
-} from 'style-dictionary/utils'
+import { typeDtcgDelegate, usesReferences, resolveReferences } from 'style-dictionary/utils'
 
 /**
  * Aligns token types and updates metadata.
@@ -48,8 +44,7 @@ function alignTypes(slice) {
     }
   }
 
-  const isToken =
-    Object.hasOwn(slice, '$type') && Object.hasOwn(slice, '$value')
+  const isToken = Object.hasOwn(slice, '$type') && Object.hasOwn(slice, '$value')
   if (isToken) {
     const t = slice.$type
     const v = slice.$value
@@ -72,7 +67,7 @@ function alignTypes(slice) {
     if (typeof v === 'object') {
       const pMap = propsMap[newT]
       if (pMap) {
-        const convertProps = obj => {
+        const convertProps = (obj) => {
           Object.entries(pMap).forEach(([key, propValue]) => {
             if (obj[key] !== undefined) {
               obj[propValue] = obj[key]
@@ -90,7 +85,7 @@ function alignTypes(slice) {
       }
     }
   } else {
-    Object.values(slice).forEach(val => {
+    Object.values(slice).forEach((val) => {
       if (typeof val === 'object') {
         alignTypes(val)
       }
@@ -108,20 +103,20 @@ function addFontWeightExtension(slice) {
     slice.$type === 'typography' &&
     typeof slice.$value === 'object'
   if (isTypographyObj) {
-    const fontWeight = slice.original?.$value.fontWeight ?
-      slice.original.$value.fontWeight :
-      slice.$value.fontWeight
+    const fontWeight = slice.original?.$value.fontWeight
+      ? slice.original.$value.fontWeight
+      : slice.$value.fontWeight
     if (fontWeight) {
       slice.$extensions = {
         ...slice.$extensions,
         ['chassis']: {
           ...(slice.$extensions?.['chassis'] ?? {}),
-          originalFontWeight: (` ${  fontWeight}`).slice(1)
+          originalFontWeight: ` ${fontWeight}`.slice(1)
         }
       }
     }
   } else {
-    Object.values(slice).forEach(val => {
+    Object.values(slice).forEach((val) => {
       if (typeof val === 'object') {
         addFontWeightExtension(val)
       }
@@ -139,10 +134,7 @@ function addFontStyles(slice, refCopy) {
    * Regular expression to extract font weight and style.
    */
   const fontStyles = ['italic', 'oblique', 'normal']
-  const fontWeightReg = new RegExp(
-    `(?<weight>.+?)\\s?(?<style>${fontStyles.join('|')})?$`,
-    'i'
-  )
+  const fontWeightReg = new RegExp(`(?<weight>.+?)\\s?(?<style>${fontStyles.join('|')})?$`, 'i')
 
   /**
    * Resolves font weight references.
@@ -185,12 +177,10 @@ function addFontStyles(slice, refCopy) {
     return { weight, style }
   }
 
-  Object.keys(slice).forEach(key => {
+  Object.keys(slice).forEach((key) => {
     const potentiallyToken = slice[key]
     const isToken =
-      typeof potentiallyToken === 'object' &&
-      potentiallyToken.$type &&
-      potentiallyToken.$value
+      typeof potentiallyToken === 'object' && potentiallyToken.$type && potentiallyToken.$value
 
     if (isToken) {
       const token = potentiallyToken
@@ -201,22 +191,15 @@ function addFontStyles(slice, refCopy) {
       if (tokenType === 'typography') {
         if (tokenValue.fontWeight === undefined) return
 
-        const fontWeight = resolveFontWeight(
-          `${tokenValue.fontWeight}`,
-          refCopy
-        )
-        const { weight, style } = splitWeightStyle(
-          fontWeight
-        )
+        const fontWeight = resolveFontWeight(`${tokenValue.fontWeight}`, refCopy)
+        const { weight, style } = splitWeightStyle(fontWeight)
         if (style) {
           tokenValue.fontWeight = weight
           tokenValue.fontStyle = style
         }
       } else if (tokenType === 'fontWeight') {
         const fontWeight = resolveFontWeight(`${tokenValue}`, refCopy)
-        const { weight, style } = splitWeightStyle(
-          fontWeight
-        )
+        const { weight, style } = splitWeightStyle(fontWeight)
 
         if (style) {
           slice[key] = {

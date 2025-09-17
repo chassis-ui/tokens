@@ -40,14 +40,16 @@ const { class: className, code, containerClass, fileMatch, filePath, lang } = As
 let codeToDisplay = filePath
   ? fs.readFileSync(path.join(process.cwd(), filePath), 'utf8')
   : Array.isArray(code)
-  ? code.join('\n')
-  : code
+    ? code.join('\n')
+    : code
 
 if (filePath && fileMatch && codeToDisplay) {
   const match = codeToDisplay.match(new RegExp(fileMatch))
 
   if (!match || !match[0]) {
-    throw new Error(`The file at ${filePath} does not contains a match for the regex '${fileMatch}'.`)
+    throw new Error(
+      `The file at ${filePath} does not contains a match for the regex '${fileMatch}'.`
+    )
   }
 
   codeToDisplay = match[0]
@@ -103,7 +105,11 @@ if (filePath && fileMatch && codeToDisplay) {
     event.clearSelection()
 
     if (originalXhref) {
-      iconFirstChild?.setAttributeNS(namespace, 'href', originalXhref.replace('clipboard-outline', 'check-solid'))
+      iconFirstChild?.setAttributeNS(
+        namespace,
+        'href',
+        originalXhref.replace('clipboard-outline', 'check-solid')
+      )
     }
 
     setTimeout(() => {

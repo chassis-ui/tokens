@@ -8,16 +8,16 @@
 import { describe, test, expect, beforeEach, vi } from 'vitest'
 
 // Mock all external dependencies
-vi.mock('../build/tokens/filters.js', () => ({ default: vi.fn() }))
-vi.mock('../build/tokens/transforms.js', () => ({ default: vi.fn() }))
-vi.mock('../build/tokens/formats.js', () => ({ default: vi.fn() }))
+vi.mock('../filters.js', () => ({ default: vi.fn() }))
+vi.mock('../transforms.js', () => ({ default: vi.fn() }))
+vi.mock('../formats.js', () => ({ default: vi.fn() }))
 
 describe('Style Dictionary Configuration Generator', () => {
   let configModule
 
   beforeEach(async () => {
     vi.clearAllMocks()
-    configModule = await import('../build/tokens/config.js')
+    configModule = await import('../config.js')
   })
 
   describe('File Generation Logic', () => {
@@ -32,12 +32,12 @@ describe('Style Dictionary Configuration Generator', () => {
       const files = config.platforms.web.files
 
       // Should include base.scss and string.scss
-      expect(files.some(f => f.destination.includes('base.scss'))).toBe(true)
-      expect(files.some(f => f.destination.includes('string.scss'))).toBe(true)
+      expect(files.some((f) => f.destination.includes('base.scss'))).toBe(true)
+      expect(files.some((f) => f.destination.includes('string.scss'))).toBe(true)
 
       // Should not include theme or screen specific files
-      expect(files.some(f => f.destination.includes('color-'))).toBe(false)
-      expect(files.some(f => f.destination.includes('number-'))).toBe(false)
+      expect(files.some((f) => f.destination.includes('color-'))).toBe(false)
+      expect(files.some((f) => f.destination.includes('number-'))).toBe(false)
     })
 
     test('should generate color-theme.scss for theme configurations', () => {
@@ -52,12 +52,12 @@ describe('Style Dictionary Configuration Generator', () => {
       const files = config.platforms.web.files
 
       // Should include color-dark.scss
-      expect(files.some(f => f.destination.includes('color-dark.scss'))).toBe(true)
+      expect(files.some((f) => f.destination.includes('color-dark.scss'))).toBe(true)
 
       // Should not include base files or number files
-      expect(files.some(f => f.destination.includes('base.scss'))).toBe(false)
-      expect(files.some(f => f.destination.includes('string.scss'))).toBe(false)
-      expect(files.some(f => f.destination.includes('number-'))).toBe(false)
+      expect(files.some((f) => f.destination.includes('base.scss'))).toBe(false)
+      expect(files.some((f) => f.destination.includes('string.scss'))).toBe(false)
+      expect(files.some((f) => f.destination.includes('number-'))).toBe(false)
     })
 
     test('should generate number-screen.scss for screen configurations', () => {
@@ -72,12 +72,12 @@ describe('Style Dictionary Configuration Generator', () => {
       const files = config.platforms.web.files
 
       // Should include number-large.scss
-      expect(files.some(f => f.destination.includes('number-large.scss'))).toBe(true)
+      expect(files.some((f) => f.destination.includes('number-large.scss'))).toBe(true)
 
       // Should not include base files or color files
-      expect(files.some(f => f.destination.includes('base.scss'))).toBe(false)
-      expect(files.some(f => f.destination.includes('string.scss'))).toBe(false)
-      expect(files.some(f => f.destination.includes('color-'))).toBe(false)
+      expect(files.some((f) => f.destination.includes('base.scss'))).toBe(false)
+      expect(files.some((f) => f.destination.includes('string.scss'))).toBe(false)
+      expect(files.some((f) => f.destination.includes('color-'))).toBe(false)
     })
   })
 
@@ -128,9 +128,24 @@ describe('Style Dictionary Configuration Generator', () => {
   describe('Build Path Generation', () => {
     test('should create correct build path for different brand/app combinations', () => {
       const testCases = [
-        { brand: 'chassis', app: 'docs', platform: 'web', expected: 'dist/web/chassis-docs/' },
-        { brand: 'test', app: 'mobile', platform: 'ios', expected: 'dist/ios/test-mobile/' },
-        { brand: 'custom', app: 'admin', platform: 'android', expected: 'dist/android/custom-admin/' }
+        {
+          brand: 'chassis',
+          app: 'docs',
+          platform: 'web',
+          expected: 'dist/web/chassis-docs/'
+        },
+        {
+          brand: 'test',
+          app: 'mobile',
+          platform: 'ios',
+          expected: 'dist/ios/test-mobile/'
+        },
+        {
+          brand: 'custom',
+          app: 'admin',
+          platform: 'android',
+          expected: 'dist/android/custom-admin/'
+        }
       ]
 
       testCases.forEach(({ brand, app, platform, expected }) => {
@@ -152,7 +167,7 @@ describe('Style Dictionary Configuration Generator', () => {
       const files = config.platforms.web.files
 
       // Each file should have a filter property
-      files.forEach(file => {
+      files.forEach((file) => {
         expect(file.filter).toBeDefined()
       })
     })
@@ -180,15 +195,15 @@ describe('Style Dictionary Configuration Generator', () => {
 
       // Web should have scss format
       const webFiles = webConfig.platforms.web.files
-      expect(webFiles.some(f => f.format === 'cx/scss-variables')).toBe(true)
+      expect(webFiles.some((f) => f.format === 'cx/scss-variables')).toBe(true)
 
       // iOS should have swift format
       const iosFiles = iosConfig.platforms.ios.files
-      expect(iosFiles.some(f => f.format === 'cx/ios-swift-class')).toBe(true)
+      expect(iosFiles.some((f) => f.format === 'cx/ios-swift-class')).toBe(true)
 
       // Android should have xml format
       const androidFiles = androidConfig.platforms.android.files
-      expect(androidFiles.some(f => f.format === 'cx/android-resources')).toBe(true)
+      expect(androidFiles.some((f) => f.format === 'cx/android-resources')).toBe(true)
     })
   })
 
@@ -224,8 +239,8 @@ describe('Style Dictionary Configuration Generator', () => {
       const files1 = config1.platforms.web.files
       const files2 = config2.platforms.web.files
 
-      const destinations1 = files1.map(f => f.destination)
-      const destinations2 = files2.map(f => f.destination)
+      const destinations1 = files1.map((f) => f.destination)
+      const destinations2 = files2.map((f) => f.destination)
 
       expect(destinations1).not.toEqual(destinations2)
     })

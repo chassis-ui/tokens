@@ -22,8 +22,8 @@ const CONFIG = {
 }
 
 // Open in StackBlitz logic
-document.querySelectorAll('.button-edit').forEach(button => {
-  button.addEventListener('click', event => {
+document.querySelectorAll('.button-edit').forEach((button) => {
+  button.addEventListener('click', (event) => {
     const codeSnippet = event.target.closest('.cxd-code-snippet')
     const exampleEl = codeSnippet.querySelector('.cxd-example')
 
@@ -49,7 +49,11 @@ const openChassisSnippet = (htmlSnippet, jsSnippet, classes) => {
   </head>
   <body class="p-medium m-0 border-0 ${classes}">
     <!-- Example Code Start-->
-${htmlSnippet.trimStart().replace(/^/gm, '    ').replace(/^ {4}$/gm, '').trimEnd()}
+${htmlSnippet
+  .trimStart()
+  .replace(/^/gm, '    ')
+  .replace(/^ {4}$/gm, '')
+  .trimEnd()}
     <!-- Example Code End -->
   </body>
 </html>`

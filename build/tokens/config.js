@@ -7,7 +7,6 @@
  * @license MIT
  */
 
-
 /**
  * Main configuration function for Style Dictionary.
  *
@@ -20,7 +19,6 @@
  * @returns {Object} - The Style Dictionary configuration object.
  */
 export default function ({ brand, app, platform, theme, screen }) {
-
   return {
     preprocessors: ['cx/global'],
     // log: { verbosity: 'verbose' }, // default, verbose, silent
@@ -64,7 +62,7 @@ function getPlatformSettings(brand, app, platform) {
   }
 
   const platformConfigs = {
-    'web': {
+    web: {
       ...webBaseConfig,
       basePxFontSize: 16,
       transforms: [...webBaseConfig.transforms, 'cx/size/rem']
@@ -79,12 +77,7 @@ function getPlatformSettings(brand, app, platform) {
       transforms: [...webBaseConfig.transforms, 'cx/size/vw']
     },
     ios: {
-      transforms: [
-        'name/pascal',
-        'ts/resolveMath',
-        'ts/color/modifiers',
-        'ts/color/css/hexrgba'
-      ],
+      transforms: ['name/pascal', 'ts/resolveMath', 'ts/color/modifiers', 'ts/color/css/hexrgba'],
       expand: {
         typesMap: {
           typography: {
@@ -98,12 +91,7 @@ function getPlatformSettings(brand, app, platform) {
       options: { ...commonOptions, import: ['UIKit'] }
     },
     android: {
-      transforms: [
-        'name/snake',
-        'ts/resolveMath',
-        'ts/color/modifiers',
-        'ts/color/css/hexrgba'
-      ],
+      transforms: ['name/snake', 'ts/resolveMath', 'ts/color/modifiers', 'ts/color/css/hexrgba'],
       expand: {
         typesMap: {
           typography: {
@@ -131,7 +119,7 @@ function getPlatformSettings(brand, app, platform) {
  */
 function generateFiles(platform, theme, screen) {
   const fileExtensionMap = {
-    'web': 'scss',
+    web: 'scss',
     'web-px': 'scss',
     'web-vw': 'scss',
     ios: 'swift',
@@ -151,21 +139,33 @@ function generateFiles(platform, theme, screen) {
   if (!theme && !screen) {
     return [
       { destination: `base.${fileExtension}`, filter: 'cx/allTokens', format },
-      { destination: `string.${fileExtension}`, filter: 'cx/stringTokens', format }
+      {
+        destination: `string.${fileExtension}`,
+        filter: 'cx/stringTokens',
+        format
+      }
     ]
   }
 
   // If only theme is set, return color-<theme> file
   if (theme && !screen) {
     return [
-      { destination: `color-${theme}.${fileExtension}`, filter: 'cx/themeTokens', format }
+      {
+        destination: `color-${theme}.${fileExtension}`,
+        filter: 'cx/themeTokens',
+        format
+      }
     ]
   }
 
   // If only screen is set, return number-<screen> file
   if (screen) {
     return [
-      { destination: `number-${screen}.${fileExtension}`, filter: 'cx/numberTokens', format }
+      {
+        destination: `number-${screen}.${fileExtension}`,
+        filter: 'cx/numberTokens',
+        format
+      }
     ]
   }
 

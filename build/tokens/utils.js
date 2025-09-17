@@ -11,9 +11,7 @@
  * A mapping of token types to their respective categories.
  */
 export const tokenTypes = {
-  color: [
-    'color'
-  ],
+  color: ['color'],
   font: [
     'fontFamily',
     'fontSize',
@@ -29,13 +27,8 @@ export const tokenTypes = {
   gradient: ['gradient'],
   number: ['duration', 'letterSpacing', 'number', 'opacity'],
   shadow: ['shadow'],
-  size: [
-    'dimension',
-    'fontSize',
-    'lineHeight',
-    'paragraphSpacing'
-  ],
-  string : [
+  size: ['dimension', 'fontSize', 'lineHeight', 'paragraphSpacing'],
+  string: [
     'asset',
     'content',
     'fontFamily',
@@ -119,7 +112,7 @@ export function getFontStyle(value) {
  * @returns {boolean} - True if the token is referencing another token, false otherwise.
  */
 export function isReference(value) {
-  return (typeof value === 'string' && /^\{[^{}]+\}$/.test(value))
+  return typeof value === 'string' && /^\{[^{}]+\}$/.test(value)
 }
 
 /**

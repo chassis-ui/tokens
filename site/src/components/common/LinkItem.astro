@@ -8,8 +8,7 @@ interface Props {
   track?: boolean
 }
 
-const { active, class: className, ...props } = Astro.props
-
+const { active, class: className, track, ...props } = Astro.props
 ---
 
 <li class="nav-item col-6 col-large-auto">

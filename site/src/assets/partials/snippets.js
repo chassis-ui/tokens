@@ -18,19 +18,17 @@ export default () => {
   // Tooltips
   // --------
   // Instantiate all tooltips in a docs or StackBlitz
-  document.querySelectorAll('[data-cx-toggle="tooltip"]')
-    .forEach(tooltip => {
-      new chassis.Tooltip(tooltip)
-    })
+  document.querySelectorAll('[data-cx-toggle="tooltip"]').forEach((tooltip) => {
+    new chassis.Tooltip(tooltip)
+  })
 
   // --------
   // Popovers
   // --------
   // Instantiate all popovers in docs or StackBlitz
-  document.querySelectorAll('[data-cx-toggle="popover"]')
-    .forEach(popover => {
-      new chassis.Popover(popover)
-    })
+  document.querySelectorAll('[data-cx-toggle="popover"]').forEach((popover) => {
+    new chassis.Popover(popover)
+  })
 
   // -------------------------------
   // Toasts
@@ -48,14 +46,13 @@ export default () => {
   }
 
   // Instantiate all toasts in docs pages only
-  document.querySelectorAll('.cxd-example .toast')
-    .forEach(toastNode => {
-      const toast = new chassis.Toast(toastNode, {
-        autohide: false
-      })
-
-      toast.show()
+  document.querySelectorAll('.cxd-example .toast').forEach((toastNode) => {
+    const toast = new chassis.Toast(toastNode, {
+      autohide: false
     })
+
+    toast.show()
+  })
 
   // Instantiate all toasts in docs pages only
   // js-docs-start live-toast
@@ -101,32 +98,29 @@ export default () => {
   // Carousels
   // --------
   // Instantiate all non-autoplaying carousels in docs or StackBlitz
-  document.querySelectorAll('.carousel:not([data-cx-ride="carousel"])')
-    .forEach(carousel => {
-      chassis.Carousel.getOrCreateInstance(carousel)
-    })
+  document.querySelectorAll('.carousel:not([data-cx-ride="carousel"])').forEach((carousel) => {
+    chassis.Carousel.getOrCreateInstance(carousel)
+  })
 
   // -------------------------------
   // Checks & Radios
   // -------------------------------
   // Indeterminate checkbox example in docs and StackBlitz
-  document.querySelectorAll('.cxd-example-indeterminate [type="checkbox"]')
-    .forEach(checkbox => {
-      if (checkbox.id.includes('Indeterminate')) {
-        checkbox.indeterminate = true
-      }
-    })
+  document.querySelectorAll('.cxd-example-indeterminate [type="checkbox"]').forEach((checkbox) => {
+    if (checkbox.id.includes('Indeterminate')) {
+      checkbox.indeterminate = true
+    }
+  })
 
   // -------------------------------
   // Links
   // -------------------------------
   // Disable empty links in docs examples only
-  document.querySelectorAll('.cxd-content [href="#"]')
-    .forEach(link => {
-      link.addEventListener('click', event => {
-        event.preventDefault()
-      })
+  document.querySelectorAll('.cxd-content [href="#"]').forEach((link) => {
+    link.addEventListener('click', (event) => {
+      event.preventDefault()
     })
+  })
 
   // -------------------------------
   // Modal
@@ -136,7 +130,7 @@ export default () => {
   // JavaScript to handle dynamic content in the modal
   const dynamicModal = document.getElementById('dynamicModal')
   if (dynamicModal) {
-    dynamicModal.addEventListener('show.cx.modal', event => {
+    dynamicModal.addEventListener('show.cx.modal', (event) => {
       // Button that triggered the modal
       const button = event.relatedTarget
 
@@ -159,10 +153,14 @@ export default () => {
   // 'Offcanvas components' example in docs only
   const myOffcanvas = document.querySelectorAll('.cxd-example-offcanvas .offcanvas')
   if (myOffcanvas) {
-    myOffcanvas.forEach(offcanvas => {
-      offcanvas.addEventListener('show.cx.offcanvas', event => {
-        event.preventDefault()
-      }, false)
+    myOffcanvas.forEach((offcanvas) => {
+      offcanvas.addEventListener(
+        'show.cx.offcanvas',
+        (event) => {
+          event.preventDefault()
+        },
+        false
+      )
     })
   }
 }
