@@ -33,9 +33,14 @@ interface Props {
    * This takes precedence over the `code` prop.
    */
   filePath?: string
+  /**
+   * Defines if the `<Code>` component is nested inside an `<Example>` component or not.
+   * @default false
+   */
+  nestedInExample?: boolean
 }
 
-const { class: className, code, containerClass, fileMatch, filePath, lang } = Astro.props
+const { class: className, code, containerClass, fileMatch, filePath, lang, nestedInExample } = Astro.props
 
 let codeToDisplay = filePath
   ? fs.readFileSync(path.join(process.cwd(), filePath), 'utf8')
@@ -57,6 +62,8 @@ if (filePath && fileMatch && codeToDisplay) {
 ---
 
 <script>
+  // eslint-disable-next-line prettier/prettier
+  /* global chassis */
   import ClipboardJS from 'clipboard'
 
   const buttonTitle = 'Copy to clipboard'
@@ -72,12 +79,17 @@ if (filePath && fileMatch && codeToDisplay) {
   snippetButtonTooltip('.button-edit', buttonEdit)
 
   const clipboard = new ClipboardJS('.button-clipboard', {
-    target: (trigger) => trigger.closest('.cxd-code-snippet')?.querySelector('.highlight')!,
+    target: (trigger) => {
+      const snippet = trigger.closest('.cxd-code-snippet')
+      const highlight = snippet ? snippet.querySelector('.highlight') : null
+      return highlight ?? trigger
+    },
     text: (trigger) => {
       // Trim text to workaround a Firefox issue where the structure of the DOM (uncontrolled) is relevant for the
       // copied text.
       // https://github.com/zenorocha/clipboard.js/issues/439#issuecomment-312344621
-      return trigger.closest('.cxd-code-snippet')?.querySelector('.highlight')!.textContent?.trim()!
+      const highlight = trigger.closest('.cxd-code-snippet')?.querySelector('.highlight')
+      return highlight?.textContent?.trim() ?? ''
     }
   })
 
@@ -136,11 +148,15 @@ if (filePath && fileMatch && codeToDisplay) {
   })
 </script>
 
-<div class:list={['cxd-code-snippet', containerClass]}>
+<div class:list={[{ 'cxd-code-snippet': !nestedInExample }, containerClass]}>
   {
-    Astro.slots.has('pre') ? (
-      <slot name="pre" />
-    ) : (
+    nestedInExample
+      ? (<></>)
+      : Astro.slots.has('pre')
+        ? (
+          <slot name="pre" />
+        )
+        : (
       <div class="cxd-clipboard">
         <button type="button" class="button-clipboard">
           <svg class="icon" role="img" aria-label="Copy">
@@ -148,7 +164,7 @@ if (filePath && fileMatch && codeToDisplay) {
           </svg>
         </button>
       </div>
-    )
+        )
   }
   <div class="highlight">
     {

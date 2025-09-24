@@ -61,7 +61,7 @@
       margin-top: .65rem;
       content: " ";
       background-color: var(--cx-secondary-30);
-      border-radius: 50%;
+      @include border-radius(50%);
     }
   }
 }
@@ -81,7 +81,7 @@
 
 .cxd-links-nav {
   @include media-breakpoint-down(large) {
-    font-size: .875rem;
+    @include font-size(.875rem);
   }
 
   @include media-breakpoint-between(xsmall, large) {

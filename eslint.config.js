@@ -1,10 +1,13 @@
+import { defineConfig } from 'eslint/config'
 import eslint from '@eslint/js'
-import eslintPluginAstro from 'eslint-plugin-astro'
 import globals from 'globals'
 import tseslint from 'typescript-eslint'
+import importPlugin from 'eslint-plugin-import'
+import unicornPlugin from 'eslint-plugin-unicorn'
 import prettierPlugin from 'eslint-plugin-prettier/recommended'
+import astroPlugin from 'eslint-plugin-astro'
 
-export default [
+export default defineConfig([
   // Global ignores
   {
     ignores: [
@@ -20,43 +23,46 @@ export default [
     ]
   },
   eslint.configs.recommended,
-  ...tseslint.configs.recommended,
-  ...eslintPluginAstro.configs.recommended,
+  tseslint.configs.eslintRecommended,
+  astroPlugin.configs.recommended,
+  astroPlugin.configs['jsx-a11y-recommended'],
   prettierPlugin,
   {
+    plugins: { import: importPlugin, unicorn: unicornPlugin },
     rules: {
-      // 'max-len': ["warn", { "code": 120 }],
-      'prettier/prettier': 'warn',
-      '@typescript-eslint/no-explicit-any': 'off',
-      '@typescript-eslint/no-unused-vars': 'off',
-      '@typescript-eslint/triple-slash-reference': 'off'
+      'no-unused-vars': 'warn',
+      'no-useless-escape': 'warn',
+      'prettier/prettier': 'warn'
     }
   },
   {
-    files: ['**/*.js', '**/*.mjs'],
+    files: ['**/*.js', '**/*.cjs'],
     languageOptions: {
       globals: globals.node
     }
   },
   {
-    files: ['site/**/*.ts', 'site/**/*.tsx'],
+    files: ['**/*.ts', '**/*.astro/*.js'],
     languageOptions: {
-      parser: tseslint.parser,
-      parserOptions: { project: './site/tsconfig.json' },
-      globals: globals.node
+      globals: { ...globals.node, ...globals.browser },
+      parser: tseslint.parser
     }
   },
   {
-    files: ['site/**/*.astro'],
+    files: ['**/*.astro'],
     languageOptions: {
-      parser: eslintPluginAstro.parser,
-      parserOptions: { project: './site/tsconfig.json' }
+      globals: { ...globals.node, ...globals.browser },
+      parser: astroPlugin.parser,
+      parserOptions: {
+        parser: tseslint.parser,
+        extraFileExtensions: ['.astro']
+      }
     }
   },
   {
     files: ['site/**/*.js', 'site/**/*.mjs'],
     languageOptions: {
-      globals: globals.browser
+      globals: { ...globals.browser }
     }
   }
-]
+])

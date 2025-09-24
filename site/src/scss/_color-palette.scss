@@ -1,7 +1,7 @@
 .context-palette-grid,
 .body-colors-grid {
   gap: 0;
-  font-size: var(--cx-font-size-small);
+  @include font-size(var(--cx-font-size-small));
   line-height: var(--cx-line-height-small);
 
   .grid-col {
