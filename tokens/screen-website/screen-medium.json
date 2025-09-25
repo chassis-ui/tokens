@@ -21,6 +21,36 @@
       }
     }
   },
+  "typography": {
+    "fontSize": {
+      "screen": {
+        "hero-title": {
+          "$type": "fontSize",
+          "$value": "48"
+        },
+        "hero-body": {
+          "$type": "fontSize",
+          "$value": "19"
+        },
+        "section-title": {
+          "$type": "fontSize",
+          "$value": "36"
+        },
+        "section-body": {
+          "$type": "fontSize",
+          "$value": "19"
+        },
+        "feature-title": {
+          "$type": "fontSize",
+          "$value": "20"
+        },
+        "feature-body": {
+          "$type": "fontSize",
+          "$value": "16"
+        }
+      }
+    }
+  },
   "space": {
     "screen": {
       "section-padding-y": {
