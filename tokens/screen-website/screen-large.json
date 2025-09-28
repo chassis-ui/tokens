@@ -34,7 +34,7 @@
         },
         "section-body": {
           "$type": "fontSize",
-          "$value": "16"
+          "$value": "18"
         },
         "feature-title": {
           "$type": "fontSize",
@@ -43,6 +43,10 @@
         "feature-body": {
           "$type": "fontSize",
           "$value": "16"
+        },
+        "button-label": {
+          "$type": "fontSize",
+          "$value": "22"
         }
       }
     }
@@ -55,7 +59,7 @@
       },
       "section-padding-x": {
         "$type": "spacing",
-        "$value": "{space.base.32}"
+        "$value": "{space.base.64}"
       },
       "section-gap-y": {
         "$type": "spacing",
@@ -65,21 +69,53 @@
         "$type": "spacing",
         "$value": "{space.base.64}"
       },
-      "feature-padding-y": {
+      "content-padding-y": {
         "$type": "spacing",
         "$value": "{space.base.32}"
       },
-      "feature-padding-x": {
+      "content-padding-x": {
         "$type": "spacing",
         "$value": "{space.base.0}"
       },
-      "feature-gap-y": {
+      "content-gap-y": {
         "$type": "spacing",
         "$value": "{space.base.32}"
       },
-      "feature-gap-x": {
+      "content-gap-x": {
         "$type": "spacing",
         "$value": "{space.base.32}"
+      },
+      "card-padding-y": {
+        "$type": "spacing",
+        "$value": "{space.base.32}"
+      },
+      "card-padding-x": {
+        "$type": "spacing",
+        "$value": "{space.base.0}"
+      },
+      "card-gap-y": {
+        "$type": "spacing",
+        "$value": "{space.base.32}"
+      },
+      "card-gap-x": {
+        "$type": "spacing",
+        "$value": "{space.base.32}"
+      },
+      "button-padding-y": {
+        "$type": "spacing",
+        "$value": "{space.base.24}"
+      },
+      "button-padding-x": {
+        "$type": "spacing",
+        "$value": "{space.base.24}"
+      },
+      "button-gap-y": {
+        "$type": "spacing",
+        "$value": "{space.base.24}"
+      },
+      "button-gap-x": {
+        "$type": "spacing",
+        "$value": "{space.base.24}"
       }
     }
   },
@@ -96,6 +132,10 @@
       "section-w": {
         "$type": "sizing",
         "$value": "{grid.breakpoint.xlarge}"
+      },
+      "section-h": {
+        "$type": "sizing",
+        "$value": "960"
       }
     }
   }

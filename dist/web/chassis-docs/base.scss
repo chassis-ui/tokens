@@ -4,7 +4,7 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Thu, 25 Sep 2025 07:18:34 GMT
+// Generated on Sun, 28 Sep 2025 08:22:05 GMT
 // Chassis - Tokens v0.1.0
 // Copyright 2025 Ozgur Gunes
 // Licensed under MIT (https://github.com/ozgurgunes/chassis-tokens/blob/main/LICENSE)
@@ -238,6 +238,7 @@ $cx-size-pagination-dot-active-w: 0.5rem !default;
 $cx-size-screen-icon-frame: 3.5rem !default;
 $cx-size-screen-icon-glyph: 3rem !default;
 $cx-size-screen-section-w: 75rem !default;
+$cx-size-screen-section-h: 60rem !default;
 $cx-space-base-0: 0rem !default;
 $cx-space-base-1: 0.0625rem !default;
 $cx-space-base-2: 0.125rem !default;
@@ -410,13 +411,21 @@ $cx-space-table-cell-padding-y: 0.5rem !default;
 $cx-space-table-cell-padding-x: 0.5rem !default;
 $cx-space-table-cell-gap: 0.5rem !default;
 $cx-space-screen-section-padding-y: 6rem !default;
-$cx-space-screen-section-padding-x: 2rem !default;
+$cx-space-screen-section-padding-x: 4rem !default;
 $cx-space-screen-section-gap-y: 6rem !default;
 $cx-space-screen-section-gap-x: 4rem !default;
-$cx-space-screen-feature-padding-y: 2rem !default;
-$cx-space-screen-feature-padding-x: 0rem !default;
-$cx-space-screen-feature-gap-y: 2rem !default;
-$cx-space-screen-feature-gap-x: 2rem !default;
+$cx-space-screen-content-padding-y: 2rem !default;
+$cx-space-screen-content-padding-x: 0rem !default;
+$cx-space-screen-content-gap-y: 2rem !default;
+$cx-space-screen-content-gap-x: 2rem !default;
+$cx-space-screen-card-padding-y: 2rem !default;
+$cx-space-screen-card-padding-x: 0rem !default;
+$cx-space-screen-card-gap-y: 2rem !default;
+$cx-space-screen-card-gap-x: 2rem !default;
+$cx-space-screen-button-padding-y: 1.5rem !default;
+$cx-space-screen-button-padding-x: 1.5rem !default;
+$cx-space-screen-button-gap-y: 1.5rem !default;
+$cx-space-screen-button-gap-x: 1.5rem !default;
 $cx-opacity-base-10: 0.1 !default;
 $cx-opacity-base-20: 0.2 !default;
 $cx-opacity-base-30: 0.3 !default;
@@ -2215,9 +2224,10 @@ $cx-typography-font-size-code-small: 0.875rem !default;
 $cx-typography-font-size-screen-hero-title: 4rem !default;
 $cx-typography-font-size-screen-hero-body: 1.375rem !default;
 $cx-typography-font-size-screen-section-title: 2.375rem !default;
-$cx-typography-font-size-screen-section-body: 1rem !default;
+$cx-typography-font-size-screen-section-body: 1.125rem !default;
 $cx-typography-font-size-screen-feature-title: 1.5rem !default;
 $cx-typography-font-size-screen-feature-body: 1rem !default;
+$cx-typography-font-size-screen-button-label: 1.375rem !default;
 $cx-typography-line-height-text-5xlarge: 1.455em !default;
 $cx-typography-line-height-text-4xlarge: 1.474em !default;
 $cx-typography-line-height-text-3xlarge: 1.5em !default;
