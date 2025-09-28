@@ -25,31 +25,31 @@
     "fontSize": {
       "screen": {
         "hero-title": {
-          "$type": "fontSize",
+          "$type": "fontSizes",
           "$value": "32"
         },
         "hero-body": {
-          "$type": "fontSize",
+          "$type": "fontSizes",
           "$value": "16"
         },
         "section-title": {
-          "$type": "fontSize",
+          "$type": "fontSizes",
           "$value": "26"
         },
         "section-body": {
-          "$type": "fontSize",
+          "$type": "fontSizes",
           "$value": "16"
         },
         "feature-title": {
-          "$type": "fontSize",
+          "$type": "fontSizes",
           "$value": "20"
         },
         "feature-body": {
-          "$type": "fontSize",
+          "$type": "fontSizes",
           "$value": "16"
         },
-        "button-label": {
-          "$type": "fontSize",
+        "module-title": {
+          "$type": "fontSizes",
           "$value": "18"
         }
       }
@@ -89,35 +89,35 @@
         "$type": "spacing",
         "$value": "{space.base.16}"
       },
-      "card-padding-y": {
+      "feature-padding-y": {
         "$type": "spacing",
         "$value": "{space.base.24}"
       },
-      "card-padding-x": {
+      "feature-padding-x": {
         "$type": "spacing",
         "$value": "{space.base.0}"
       },
-      "card-gap-y": {
+      "feature-gap-y": {
         "$type": "spacing",
         "$value": "{space.base.24}"
       },
-      "card-gap-x": {
+      "feature-gap-x": {
         "$type": "spacing",
         "$value": "{space.base.16}"
       },
-      "button-padding-y": {
+      "module-padding-y": {
         "$type": "spacing",
         "$value": "{space.base.16}"
       },
-      "button-padding-x": {
+      "module-padding-x": {
         "$type": "spacing",
         "$value": "{space.base.16}"
       },
-      "button-gap-y": {
+      "module-gap-y": {
         "$type": "spacing",
         "$value": "{space.base.16}"
       },
-      "button-gap-x": {
+      "module-gap-x": {
         "$type": "spacing",
         "$value": "{space.base.16}"
       }
@@ -125,11 +125,19 @@
   },
   "size": {
     "screen": {
-      "icon-frame": {
+      "section-thumb": {
+        "$type": "sizing",
+        "$value": "{size.base.64}"
+      },
+      "section-icon": {
+        "$type": "sizing",
+        "$value": "{size.base.48}"
+      },
+      "feature-thumb": {
         "$type": "sizing",
         "$value": "{size.base.40}"
       },
-      "icon-glyph": {
+      "feature-icon": {
         "$type": "sizing",
         "$value": "{size.base.32}"
       },

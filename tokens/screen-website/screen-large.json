@@ -21,31 +21,31 @@
     "fontSize": {
       "screen": {
         "hero-title": {
-          "$type": "fontSize",
+          "$type": "fontSizes",
           "$value": "64"
         },
         "hero-body": {
-          "$type": "fontSize",
+          "$type": "fontSizes",
           "$value": "22"
         },
         "section-title": {
-          "$type": "fontSize",
+          "$type": "fontSizes",
           "$value": "38"
         },
         "section-body": {
-          "$type": "fontSize",
+          "$type": "fontSizes",
           "$value": "18"
         },
         "feature-title": {
-          "$type": "fontSize",
+          "$type": "fontSizes",
           "$value": "24"
         },
         "feature-body": {
-          "$type": "fontSize",
-          "$value": "16"
+          "$type": "fontSizes",
+          "$value": "18"
         },
-        "button-label": {
-          "$type": "fontSize",
+        "module-title": {
+          "$type": "fontSizes",
           "$value": "22"
         }
       }
@@ -85,35 +85,35 @@
         "$type": "spacing",
         "$value": "{space.base.32}"
       },
-      "card-padding-y": {
+      "feature-padding-y": {
         "$type": "spacing",
         "$value": "{space.base.32}"
       },
-      "card-padding-x": {
+      "feature-padding-x": {
         "$type": "spacing",
         "$value": "{space.base.0}"
       },
-      "card-gap-y": {
+      "feature-gap-y": {
         "$type": "spacing",
         "$value": "{space.base.32}"
       },
-      "card-gap-x": {
+      "feature-gap-x": {
         "$type": "spacing",
         "$value": "{space.base.32}"
       },
-      "button-padding-y": {
+      "module-padding-y": {
         "$type": "spacing",
         "$value": "{space.base.24}"
       },
-      "button-padding-x": {
+      "module-padding-x": {
         "$type": "spacing",
         "$value": "{space.base.24}"
       },
-      "button-gap-y": {
+      "module-gap-y": {
         "$type": "spacing",
         "$value": "{space.base.24}"
       },
-      "button-gap-x": {
+      "module-gap-x": {
         "$type": "spacing",
         "$value": "{space.base.24}"
       }
@@ -121,11 +121,19 @@
   },
   "size": {
     "screen": {
-      "icon-frame": {
+      "section-thumb": {
+        "$type": "sizing",
+        "$value": "{size.base.96}"
+      },
+      "section-icon": {
+        "$type": "sizing",
+        "$value": "{size.base.80}"
+      },
+      "feature-thumb": {
         "$type": "sizing",
         "$value": "{size.base.56}"
       },
-      "icon-glyph": {
+      "feature-icon": {
         "$type": "sizing",
         "$value": "{size.base.48}"
       },
