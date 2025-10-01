@@ -1,0 +1,226 @@
+{
+  "figma": {
+    "switch": {
+      "brand": {
+        "mode-1": {
+          "$type": "boolean",
+          "$value": "true"
+        }
+      }
+    }
+  },
+  "color": {
+    "base": {
+      "palette": {
+        "light": {
+          "neutral": {
+            "base": {
+              "$type": "color",
+              "$value": "#86898B"
+            }
+          },
+          "danger": {
+            "base": {
+              "$type": "color",
+              "$value": "#F52314"
+            }
+          },
+          "success": {
+            "base": {
+              "$type": "color",
+              "$value": "#23C16B"
+            }
+          },
+          "warning": {
+            "base": {
+              "$type": "color",
+              "$value": "#FFB323"
+            },
+            "contrast": {
+              "$type": "color",
+              "$value": "{color.base.palette.light.black.base}"
+            }
+          },
+          "info": {
+            "base": {
+              "$type": "color",
+              "$value": "#48A7F8"
+            }
+          },
+          "brand": {
+            "base": {
+              "$type": "color",
+              "$value": "#3527DD"
+            }
+          },
+          "accent": {
+            "base": {
+              "$type": "color",
+              "$value": "#3527DD"
+            }
+          }
+        }
+      }
+    }
+  },
+  "typography": {
+    "fontFamily": {
+      "text": {
+        "$type": "fontFamilies",
+        "$value": "Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif"
+      },
+      "display": {
+        "$type": "fontFamilies",
+        "$value": "'Archivo Narrow', Georgia, 'Times New Roman', Times, serif"
+      },
+      "code": {
+        "$type": "fontFamilies",
+        "$value": "Fira Code, Menlo, Monaco, Consolas, 'Courier New', monospace"
+      },
+      "icon": {
+        "$type": "fontFamilies",
+        "$value": "Chassis-Icons"
+      }
+    },
+    "fontSize": {
+      "text": {
+        "5xlarge": {
+          "$type": "fontSizes",
+          "$value": "44"
+        },
+        "4xlarge": {
+          "$type": "fontSizes",
+          "$value": "38"
+        },
+        "3xlarge": {
+          "$type": "fontSizes",
+          "$value": "32"
+        },
+        "2xlarge": {
+          "$type": "fontSizes",
+          "$value": "26"
+        },
+        "xlarge": {
+          "$type": "fontSizes",
+          "$value": "22"
+        },
+        "large": {
+          "$type": "fontSizes",
+          "$value": "19"
+        },
+        "medium": {
+          "$type": "fontSizes",
+          "$value": "16"
+        },
+        "small": {
+          "$type": "fontSizes",
+          "$value": "14"
+        },
+        "xsmall": {
+          "$type": "fontSizes",
+          "$value": "12"
+        },
+        "2xsmall": {
+          "$type": "fontSizes",
+          "$value": "10"
+        }
+      }
+    },
+    "lineHeight": {
+      "text": {
+        "5xlarge": {
+          "$type": "lineHeights",
+          "$value": "64"
+        },
+        "4xlarge": {
+          "$type": "lineHeights",
+          "$value": "56"
+        },
+        "3xlarge": {
+          "$type": "lineHeights",
+          "$value": "48"
+        },
+        "2xlarge": {
+          "$type": "lineHeights",
+          "$value": "38"
+        },
+        "xlarge": {
+          "$type": "lineHeights",
+          "$value": "32"
+        },
+        "large": {
+          "$type": "lineHeights",
+          "$value": "28"
+        },
+        "medium": {
+          "$type": "lineHeights",
+          "$value": "24"
+        },
+        "small": {
+          "$type": "lineHeights",
+          "$value": "20"
+        },
+        "xsmall": {
+          "$type": "lineHeights",
+          "$value": "18"
+        },
+        "2xsmall": {
+          "$type": "lineHeights",
+          "$value": "14"
+        }
+      }
+    },
+    "fontWeight": {
+      "text": {
+        "normal": {
+          "$type": "fontWeights",
+          "$value": "Regular"
+        },
+        "strong": {
+          "$type": "fontWeights",
+          "$value": "Medium"
+        },
+        "mass": {
+          "$type": "fontWeights",
+          "$value": "Bold"
+        },
+        "elegant": {
+          "$type": "fontWeights",
+          "$value": "Light"
+        }
+      }
+    }
+  },
+  "borderRadius": {
+    "base": {
+      "xsmall": {
+        "$type": "borderRadius",
+        "$value": "{dimension.base.2}"
+      },
+      "small": {
+        "$type": "borderRadius",
+        "$value": "{dimension.base.4}"
+      },
+      "medium": {
+        "$type": "borderRadius",
+        "$value": "{dimension.base.8}"
+      },
+      "large": {
+        "$type": "borderRadius",
+        "$value": "{dimension.base.10}"
+      },
+      "xlarge": {
+        "$type": "borderRadius",
+        "$value": "{dimension.base.12}"
+      },
+      "2xlarge": {
+        "$type": "borderRadius",
+        "$value": "{dimension.base.16}"
+      },
+      "3xlarge": {
+        "$type": "borderRadius",
+        "$value": "{dimension.base.20}"
+      }
+    }
+  }
+}
