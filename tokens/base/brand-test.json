@@ -12,46 +12,48 @@
   "color": {
     "base": {
       "palette": {
-        "neutral": {
-          "base": {
-            "$type": "color",
-            "$value": "#757575"
-          }
-        },
-        "danger": {
-          "base": {
-            "$type": "color",
-            "$value": "#E02D12"
-          }
-        },
-        "success": {
-          "base": {
-            "$type": "color",
-            "$value": "#0B8A0B"
-          }
-        },
-        "warning": {
-          "base": {
-            "$type": "color",
-            "$value": "#996E09"
-          }
-        },
-        "info": {
-          "base": {
-            "$type": "color",
-            "$value": "#098294"
-          }
-        },
-        "brand": {
-          "base": {
-            "$type": "color",
-            "$value": "#1273E0"
-          }
-        },
-        "accent": {
-          "base": {
-            "$type": "color",
-            "$value": "#D115C5"
+        "light": {
+          "neutral": {
+            "base": {
+              "$type": "color",
+              "$value": "#757575"
+            }
+          },
+          "danger": {
+            "base": {
+              "$type": "color",
+              "$value": "#E02D12"
+            }
+          },
+          "success": {
+            "base": {
+              "$type": "color",
+              "$value": "#0B8A0B"
+            }
+          },
+          "warning": {
+            "base": {
+              "$type": "color",
+              "$value": "#996E09"
+            }
+          },
+          "info": {
+            "base": {
+              "$type": "color",
+              "$value": "#098294"
+            }
+          },
+          "brand": {
+            "base": {
+              "$type": "color",
+              "$value": "#1273E0"
+            }
+          },
+          "accent": {
+            "base": {
+              "$type": "color",
+              "$value": "#D115C5"
+            }
           }
         }
       }
@@ -131,31 +133,31 @@
     "base": {
       "xsmall": {
         "$type": "borderRadius",
-        "$value": "{size.base.2}"
+        "$value": "{dimension.base.2}"
       },
       "small": {
         "$type": "borderRadius",
-        "$value": "{size.base.2}"
+        "$value": "{dimension.base.2}"
       },
       "medium": {
         "$type": "borderRadius",
-        "$value": "{size.base.2}"
+        "$value": "{dimension.base.2}"
       },
       "large": {
         "$type": "borderRadius",
-        "$value": "{size.base.2}"
+        "$value": "{dimension.base.2}"
       },
       "xlarge": {
         "$type": "borderRadius",
-        "$value": "{size.base.2}"
+        "$value": "{dimension.base.2}"
       },
       "2xlarge": {
         "$type": "borderRadius",
-        "$value": "{size.base.2}"
+        "$value": "{dimension.base.2}"
       },
       "3xlarge": {
         "$type": "borderRadius",
-        "$value": "{size.base.2}"
+        "$value": "{dimension.base.2}"
       }
     }
   }

@@ -4,25 +4,25 @@
   "description": "Design tokens for Chassis Design System. Includes token transformers, asset manager and icon generator",
   "license": "MIT",
   "homepage": "https://github.com/ozgurgunes/chassis-tokens",
+  "type": "module",
   "keywords": [
     "chassis",
     "design system",
     "design tokens",
     "design assets",
-    "icons",
-    "icon font"
+    "figma variables",
+    "style dictionary",
+    "tokens studio",
+    "token transform"
   ],
-  "style": "dist/icons/chassis-icons.css",
-  "sass": "dist/icons/chassis-icons.scss",
   "files": [
-    "dist/icons/*.{woff,woff2,css,json,css,scss,svg}",
-    "dist/tokens/**/*.{css,scss,json,js,ts}",
+    "dist/**/*.{css,scss,json,js,ts}",
     "!.DS_Store"
   ],
   "chassis": {
     "defaults": {
-      "brandFolder": "default",
-      "tokensTheme": "light"
+      "theme": "light",
+      "screen": "large"
     },
     "build": {
       "brands": [
@@ -32,6 +32,11 @@
       "themes": [
         "light",
         "dark"
+      ],
+      "screens": [
+        "large",
+        "medium",
+        "small"
       ],
       "apps": {
         "docs": [
@@ -49,37 +54,32 @@
     "access": "public"
   },
   "scripts": {
-    "dist": "run-p tokens assets icons",
+    "dist": "pnpm tokens",
+    "clean": "rm -rf dist",
     "tokens": "node build/tokens/build.js",
-    "assets": "node build/copy-assets.js",
-    "icons": "pnpm icons-main --aggregate-output --parallel && pnpm icons-sprite && pnpm icons-font && pnpm icons-dist",
-    "icons-main": "node build/build-svgs.js",
-    "icons-sprite": "svg-sprite --config svg-sprite.json --log=info \"icons/svgs/*.svg\"",
-    "icons-font": "pnpm icons-font-main && pnpm icons-font-min",
-    "icons-font-main": "node build/build-icons.js",
-    "icons-font-min": "cleancss -O1 --format breakWith=lf --with-rebase --output icons/package/chassis-icons.min.css icons/package/chassis-icons.css",
-    "icons-dist": "node build/copy-icons.js",
-    "icons-zip": "node build/zip-icons.js",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
     "release-version": "node build/bump-version.js",
     "release": "pnpm tokens && pnpm icons"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.28.3",
     "@tokens-studio/sd-transforms": "^1.2.12",
-    "@twbs/fantasticon": "^3.0.0",
     "clean-css-cli": "^5.6.3",
     "eslint": "^9.3.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.1.3",
+    "jest": "^30.1.3",
+    "minimist": "^1.2.8",
     "npm-run-all2": "^7.0.2",
     "picocolors": "^1.0.0",
     "prettier": "^3.2.5",
     "standard": "^17.1.0",
     "style-dictionary": "^4.3.3",
-    "svg-sprite": "^3.0.0-rc2",
-    "svgo": "^3.2.0",
     "tinycolor2": "^1.6.0",
+    "vitest": "^3.2.4",
     "vnu-jar": "23.4.11"
   },
-  "packageManager": "pnpm@9.15.5+sha512.845196026aab1cc3f098a0474b64dfbab2afe7a1b4e91dd86895d8e4aa32a7a6d03049e2d0ad770bbe4de023a7122fb68c1a1d6e0d033c7076085f9d5d4800d4",
-  "type": "module"
+  "packageManager": "pnpm@9.15.5+sha512.845196026aab1cc3f098a0474b64dfbab2afe7a1b4e91dd86895d8e4aa32a7a6d03049e2d0ad770bbe4de023a7122fb68c1a1d6e0d033c7076085f9d5d4800d4"
 }
