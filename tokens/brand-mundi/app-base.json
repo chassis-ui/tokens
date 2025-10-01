@@ -4492,6 +4492,82 @@
           }
         ]
       },
+      "small": {
+        "$type": "boxShadow",
+        "$value": [
+          {
+            "color": "{color.palette.black.t-05}",
+            "type": "dropShadow",
+            "x": "{dimension.base.0}",
+            "y": "{dimension.base.0}",
+            "blur": "{dimension.base.1}",
+            "spread": "{dimension.base.0}"
+          },
+          {
+            "color": "{color.palette.black.t-10}",
+            "type": "dropShadow",
+            "x": "{dimension.base.0}",
+            "y": "{dimension.base.0}",
+            "blur": "{dimension.base.8}",
+            "spread": "{dimension.base.0}"
+          }
+        ]
+      },
+      "medium": {
+        "$type": "boxShadow",
+        "$value": [
+          {
+            "color": "{color.palette.black.t-10}",
+            "type": "dropShadow",
+            "x": "{dimension.base.0}",
+            "y": "{dimension.base.0}",
+            "blur": "{dimension.base.1}",
+            "spread": "{dimension.base.0}"
+          },
+          {
+            "color": "{color.palette.black.t-10}",
+            "type": "dropShadow",
+            "x": "{dimension.base.0}",
+            "y": "{dimension.base.1}",
+            "blur": "{dimension.base.8}",
+            "spread": "{dimension.base.2}"
+          }
+        ]
+      },
+      "large": {
+        "$type": "boxShadow",
+        "$value": [
+          {
+            "color": "{color.palette.black.t-10}",
+            "type": "dropShadow",
+            "x": "{dimension.base.0}",
+            "y": "{dimension.base.0}",
+            "blur": "{dimension.base.1}",
+            "spread": "{dimension.base.0}"
+          },
+          {
+            "color": "{color.palette.black.t-10}",
+            "type": "dropShadow",
+            "x": "{dimension.base.0}",
+            "y": "{dimension.base.1}",
+            "blur": "{dimension.base.24}",
+            "spread": "{dimension.base.8}"
+          }
+        ]
+      },
+      "inset": {
+        "$type": "boxShadow",
+        "$value": [
+          {
+            "color": "{color.palette.black.t-10}",
+            "type": "innerShadow",
+            "x": "{dimension.base.0}",
+            "y": "{dimension.base.2}",
+            "blur": "{dimension.base.4}",
+            "spread": "{dimension.base.0}"
+          }
+        ]
+      },
       "idle": {
         "$type": "boxShadow",
         "$value": "{shadow.context.none}"
