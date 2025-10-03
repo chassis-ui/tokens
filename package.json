@@ -26,7 +26,7 @@
     },
     "build": {
       "brands": [
-        "chassis",
+        "mundi",
         "test"
       ],
       "themes": [
@@ -39,10 +39,13 @@
         "small"
       ],
       "apps": {
-        "docs": [
-          "web"
+        "default": [
+          "web",
+          "ios",
+          "android"
         ],
         "test": [
+          "web",
           "ios",
           "android"
         ]
