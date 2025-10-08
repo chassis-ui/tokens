@@ -4,9 +4,20 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+overrides:
+  chassis-docs: link:../../../.local/share/pnpm/5/node_modules/@ozgurgunes/chassis-docs
+  '@ozgurgunes/chassis-docs': link:../chassis-docs/packages/docs
+
 importers:
 
   .:
+    dependencies:
+      '@ozgurgunes/chassis-docs':
+        specifier: link:../chassis-docs/packages/docs
+        version: link:../chassis-docs/packages/docs
+      chassis-docs:
+        specifier: link:../../../.local/share/pnpm/5/node_modules/@ozgurgunes/chassis-docs
+        version: link:../../../.local/share/pnpm/5/node_modules/@ozgurgunes/chassis-docs
     devDependencies:
       '@astrojs/check':
         specifier: ^0.9.4
@@ -9269,7 +9280,7 @@ snapshots:
       eslint: 8.57.1
       eslint-plugin-react: 7.37.5(eslint@8.57.1)
 
-  eslint-config-standard@17.1.0(eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.44.0(eslint@9.36.0)(typescript@5.9.2))(eslint@9.36.0))(eslint-plugin-n@15.7.0(eslint@9.36.0))(eslint-plugin-promise@6.6.0(eslint@9.36.0))(eslint@8.57.1):
+  eslint-config-standard@17.1.0(eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.44.0(eslint@9.36.0)(typescript@5.9.2))(eslint@9.36.0))(eslint-plugin-n@15.7.0(eslint@8.57.1))(eslint-plugin-promise@6.6.0(eslint@8.57.1))(eslint@8.57.1):
     dependencies:
       eslint: 8.57.1
       eslint-plugin-import: 2.32.0(@typescript-eslint/parser@8.44.0(eslint@9.36.0)(typescript@5.9.2))(eslint@9.36.0)
@@ -12285,7 +12296,7 @@ snapshots:
   standard@17.1.2(@typescript-eslint/parser@8.44.0(eslint@9.36.0)(typescript@5.9.2)):
     dependencies:
       eslint: 8.57.1
-      eslint-config-standard: 17.1.0(eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.44.0(eslint@9.36.0)(typescript@5.9.2))(eslint@9.36.0))(eslint-plugin-n@15.7.0(eslint@9.36.0))(eslint-plugin-promise@6.6.0(eslint@9.36.0))(eslint@8.57.1)
+      eslint-config-standard: 17.1.0(eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.44.0(eslint@9.36.0)(typescript@5.9.2))(eslint@9.36.0))(eslint-plugin-n@15.7.0(eslint@8.57.1))(eslint-plugin-promise@6.6.0(eslint@8.57.1))(eslint@8.57.1)
       eslint-config-standard-jsx: 11.0.0(eslint-plugin-react@7.37.5(eslint@8.57.1))(eslint@8.57.1)
       eslint-plugin-import: 2.32.0(@typescript-eslint/parser@8.44.0(eslint@9.36.0)(typescript@5.9.2))(eslint@8.57.1)
       eslint-plugin-n: 15.7.0(eslint@8.57.1)

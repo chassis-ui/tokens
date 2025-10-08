@@ -58,16 +58,13 @@
     "clean": "node build/build-site.js clean",
     "dev": "pnpm astro:dev",
     "postinstall": "pnpm sync:submodules",
-
     "preview": "pnpm astro:preview",
     "test": "pnpm tokens:test",
     "validate": "node build/build.js validate",
-
     "tokens": "pnpm build:tokens",
     "tokens:build": "node build/tokens/build.js",
     "tokens:lint": "eslint --cache --cache-location .cache/.eslintcache build/tokens",
     "tokens:test": "vitest run --dir build/tokens/test",
-
     "site": "pnpm site:build && pnpm site:lint",
     "site:build": "node build/build-site.js",
     "site:format": "prettier --write --cache site",
@@ -76,19 +73,15 @@
     "site:lint:eslint": "prettier -c --cache site",
     "site:lint:stylelint": "stylelint site/src/scss/ --cache --cache-location .cache/.stylelintcache",
     "site:lint:vnu": "node build/vnu-jar.js",
-
     "astro:dev": "astro dev --root site --port 4321",
     "astro:build": "astro build --root site",
     "astro:preview": "astro preview --root site",
-
     "check": "pnpm check:code & pnpm check:lockfile & pnpm check:pnpm & wait",
     "check:code": "pnpm site:lint",
     "check:lockfile": "lockfile-lint --allowed-hosts npm --allowed-schemes https: --empty-hostname false --type npm --path package-lock.json",
     "check:pnpm": "pnpm audit --audit-level moderate",
-
     "release:version": "node build/change-version.js",
     "sync:submodules": "node build/sync-submodules.js"
-
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.4",
@@ -159,5 +152,15 @@
     "vnu-jar": "23.4.11",
     "zod": "^3.25.76"
   },
-  "packageManager": "pnpm@10.7.0+sha512.6b865ad4b62a1d9842b61d674a393903b871d9244954f652b8842c2b553c72176b278f64c463e52d40fff8aba385c235c8c9ecf5cc7de4fd78b8bb6d49633ab6"
+  "packageManager": "pnpm@10.7.0+sha512.6b865ad4b62a1d9842b61d674a393903b871d9244954f652b8842c2b553c72176b278f64c463e52d40fff8aba385c235c8c9ecf5cc7de4fd78b8bb6d49633ab6",
+  "pnpm": {
+    "overrides": {
+      "chassis-docs": "link:../../../.local/share/pnpm/5/node_modules/@ozgurgunes/chassis-docs",
+      "@ozgurgunes/chassis-docs": "link:../chassis-docs/packages/docs"
+    }
+  },
+  "dependencies": {
+    "@ozgurgunes/chassis-docs": "link:../chassis-docs/packages/docs",
+    "chassis-docs": "link:../../../.local/share/pnpm/5/node_modules/@ozgurgunes/chassis-docs"
+  }
 }
