@@ -4,7 +4,7 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Wed, 08 Oct 2025 07:44:29 GMT
+// Generated on Wed, 08 Oct 2025 07:51:04 GMT
 // Chassis - Tokens v0.1.0
 // Copyright 2025 Ozgur Gunes
 // Licensed under MIT (https://github.com/ozgurgunes/chassis-tokens/blob/main/LICENSE)
@@ -582,9 +582,9 @@ public class {
     @objc public static let BorderRadiusAssetIndicatorAlt = CGFloat(0)
     @objc public static let BorderRadiusAccordionMain = CGFloat(8)
     @objc public static let BorderRadiusAlertMain = CGFloat(8)
-    @objc public static let BorderRadiusBadgeMedium = CGFloat(12)
+    @objc public static let BorderRadiusBadgeMedium = CGFloat(14)
     @objc public static let BorderRadiusBadgeLarge = CGFloat(16)
-    @objc public static let BorderRadiusBadgeSmall = CGFloat(10)
+    @objc public static let BorderRadiusBadgeSmall = CGFloat(12)
     @objc public static let BorderRadiusButtonMedium = CGFloat(20)
     @objc public static let BorderRadiusButtonLarge = CGFloat(24)
     @objc public static let BorderRadiusButtonSmall = CGFloat(16)

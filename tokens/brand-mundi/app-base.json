@@ -4089,7 +4089,7 @@
     "badge": {
       "medium": {
         "$type": "borderRadius",
-        "$value": "{borderRadius.context.round-24}"
+        "$value": "{borderRadius.context.round-28}"
       },
       "large": {
         "$type": "borderRadius",
@@ -4097,7 +4097,7 @@
       },
       "small": {
         "$type": "borderRadius",
-        "$value": "{borderRadius.context.round-20}"
+        "$value": "{borderRadius.context.round-24}"
       }
     },
     "button": {
