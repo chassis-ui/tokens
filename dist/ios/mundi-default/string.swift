@@ -4,7 +4,7 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Fri, 03 Oct 2025 10:47:25 GMT
+// Generated on Wed, 08 Oct 2025 07:44:21 GMT
 // Chassis - Tokens v0.1.0
 // Copyright 2025 Ozgur Gunes
 // Licensed under MIT (https://github.com/ozgurgunes/chassis-tokens/blob/main/LICENSE)
@@ -769,17 +769,17 @@ public class {
     @objc public static let FontAssistSmallTextDecoration = "none"
     @objc public static let FontAssistSmallFontStyle = "normal"
     @objc public static let FontBadgeMediumFontFamily = "Inter"
-    @objc public static let FontBadgeMediumFontWeight = "medium"
+    @objc public static let FontBadgeMediumFontWeight = "regular"
     @objc public static let FontBadgeMediumTextCase = "none"
     @objc public static let FontBadgeMediumTextDecoration = "none"
     @objc public static let FontBadgeMediumFontStyle = "normal"
     @objc public static let FontBadgeLargeFontFamily = "Inter"
-    @objc public static let FontBadgeLargeFontWeight = "medium"
+    @objc public static let FontBadgeLargeFontWeight = "regular"
     @objc public static let FontBadgeLargeTextCase = "none"
     @objc public static let FontBadgeLargeTextDecoration = "none"
     @objc public static let FontBadgeLargeFontStyle = "normal"
     @objc public static let FontBadgeSmallFontFamily = "Inter"
-    @objc public static let FontBadgeSmallFontWeight = "medium"
+    @objc public static let FontBadgeSmallFontWeight = "regular"
     @objc public static let FontBadgeSmallTextCase = "none"
     @objc public static let FontBadgeSmallTextDecoration = "none"
     @objc public static let FontBadgeSmallFontStyle = "normal"

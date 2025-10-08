@@ -1753,15 +1753,15 @@
     "badge": {
       "medium": {
         "$type": "typography",
-        "$value": "{font.text.small.strong}"
+        "$value": "{font.text.small.normal}"
       },
       "large": {
         "$type": "typography",
-        "$value": "{font.text.medium.strong}"
+        "$value": "{font.text.medium.normal}"
       },
       "small": {
         "$type": "typography",
-        "$value": "{font.text.xsmall.strong}"
+        "$value": "{font.text.xsmall.normal}"
       }
     },
     "breadcrumb": {
@@ -3187,7 +3187,7 @@
     "badge": {
       "medium-main": {
         "$type": "sizing",
-        "$value": "{size.base.24}"
+        "$value": "{size.base.28}"
       },
       "medium-icon": {
         "$type": "sizing",
@@ -3195,7 +3195,7 @@
       },
       "large-main": {
         "$type": "sizing",
-        "$value": "{size.base.28}"
+        "$value": "{size.base.32}"
       },
       "large-icon": {
         "$type": "sizing",
@@ -3203,11 +3203,11 @@
       },
       "small-main": {
         "$type": "sizing",
-        "$value": "{size.base.20}"
+        "$value": "{size.base.24}"
       },
       "small-icon": {
         "$type": "sizing",
-        "$value": "{size.base.12}"
+        "$value": "{size.base.16}"
       }
     },
     "button": {
@@ -3607,11 +3607,11 @@
     "badge": {
       "medium-padding-y": {
         "$type": "spacing",
-        "$value": "{space.base.2}"
+        "$value": "{space.base.4}"
       },
       "medium-padding-x": {
         "$type": "spacing",
-        "$value": "{space.base.4}"
+        "$value": "{space.base.6}"
       },
       "medium-gap": {
         "$type": "spacing",
@@ -3619,15 +3619,15 @@
       },
       "medium-nudge": {
         "$type": "spacing",
-        "$value": "{space.base.4}"
+        "$value": "{space.base.6}"
       },
       "large-padding-y": {
         "$type": "spacing",
-        "$value": "{space.base.2}"
+        "$value": "{space.base.4}"
       },
       "large-padding-x": {
         "$type": "spacing",
-        "$value": "{space.base.4}"
+        "$value": "{space.base.6}"
       },
       "large-gap": {
         "$type": "spacing",
@@ -3635,23 +3635,23 @@
       },
       "large-nudge": {
         "$type": "spacing",
-        "$value": "{space.base.6}"
+        "$value": "{space.base.10}"
       },
       "small-padding-y": {
         "$type": "spacing",
-        "$value": "{space.base.1}"
+        "$value": "{space.base.2}"
       },
       "small-padding-x": {
         "$type": "spacing",
-        "$value": "{space.base.4}"
+        "$value": "{space.base.6}"
       },
       "small-gap": {
         "$type": "spacing",
-        "$value": "{space.base.0}"
+        "$value": "{space.base.4}"
       },
       "small-nudge": {
         "$type": "spacing",
-        "$value": "{space.base.4}"
+        "$value": "{space.base.2}"
       }
     },
     "button": {
@@ -4093,7 +4093,7 @@
       },
       "large": {
         "$type": "borderRadius",
-        "$value": "{borderRadius.context.round-28}"
+        "$value": "{borderRadius.context.round-32}"
       },
       "small": {
         "$type": "borderRadius",
@@ -4103,11 +4103,11 @@
     "button": {
       "medium": {
         "$type": "borderRadius",
-        "$value": "{borderRadius.context.round-48}"
+        "$value": "{borderRadius.context.round-40}"
       },
       "large": {
         "$type": "borderRadius",
-        "$value": "{borderRadius.context.round-40}"
+        "$value": "{borderRadius.context.round-48}"
       },
       "small": {
         "$type": "borderRadius",
