@@ -7622,6 +7622,84 @@
             }
           }
         }
+      },
+      "shadow": {
+        "light": {
+          "default": {
+            "$type": "color",
+            "$value": "{color.base.palette.light.black.t-10}"
+          },
+          "alternate": {
+            "$type": "color",
+            "$value": "{color.base.palette.light.black.t-20}"
+          },
+          "primary": {
+            "$type": "color",
+            "$value": "{color.base.palette.light.primary.t-5040}"
+          },
+          "secondary": {
+            "$type": "color",
+            "$value": "{color.base.palette.light.secondary.t-5040}"
+          },
+          "neutral": {
+            "$type": "color",
+            "$value": "{color.base.palette.light.neutral.t-5040}"
+          },
+          "danger": {
+            "$type": "color",
+            "$value": "{color.base.palette.light.danger.t-5040}"
+          },
+          "success": {
+            "$type": "color",
+            "$value": "{color.base.palette.light.success.t-5040}"
+          },
+          "warning": {
+            "$type": "color",
+            "$value": "{color.base.palette.light.warning.t-5040}"
+          },
+          "info": {
+            "$type": "color",
+            "$value": "{color.base.palette.light.info.t-5040}"
+          }
+        },
+        "dark": {
+          "default": {
+            "$type": "color",
+            "$value": "{color.base.palette.dark.black.t-40}"
+          },
+          "alternate": {
+            "$type": "color",
+            "$value": "{color.base.palette.dark.black.t-60}"
+          },
+          "primary": {
+            "$type": "color",
+            "$value": "{color.base.palette.dark.primary.t-5040}"
+          },
+          "secondary": {
+            "$type": "color",
+            "$value": "{color.base.palette.dark.secondary.t-5040}"
+          },
+          "neutral": {
+            "$type": "color",
+            "$value": "{color.base.palette.dark.neutral.t-5040}"
+          },
+          "danger": {
+            "$type": "color",
+            "$value": "{color.base.palette.dark.danger.t-5040}"
+          },
+          "success": {
+            "$type": "color",
+            "$value": "{color.base.palette.dark.success.t-5040}"
+          },
+          "warning": {
+            "$type": "color",
+            "$value": "{color.base.palette.dark.warning.t-5040}"
+          },
+          "info": {
+            "$type": "color",
+            "$value": "{color.base.palette.dark.info.t-5040}"
+          }
+        }
       }
     }
   },

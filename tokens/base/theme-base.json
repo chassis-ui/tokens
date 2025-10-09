@@ -3010,6 +3010,44 @@
         }
       }
     },
+    "shadow": {
+      "default": {
+        "$type": "color",
+        "$value": "{color.base.shadow.light.default}"
+      },
+      "alternate": {
+        "$type": "color",
+        "$value": "{color.base.shadow.light.alternate}"
+      },
+      "primary": {
+        "$type": "color",
+        "$value": "{color.base.shadow.light.primary}"
+      },
+      "secondary": {
+        "$type": "color",
+        "$value": "{color.base.shadow.light.secondary}"
+      },
+      "neutral": {
+        "$type": "color",
+        "$value": "{color.base.shadow.light.neutral}"
+      },
+      "danger": {
+        "$type": "color",
+        "$value": "{color.base.shadow.light.danger}"
+      },
+      "success": {
+        "$type": "color",
+        "$value": "{color.base.shadow.light.success}"
+      },
+      "warning": {
+        "$type": "color",
+        "$value": "{color.base.shadow.light.warning}"
+      },
+      "info": {
+        "$type": "color",
+        "$value": "{color.base.shadow.light.info}"
+      }
+    },
     "utility": {
       "container-default": {
         "$type": "color",

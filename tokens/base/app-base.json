@@ -4530,7 +4530,7 @@
         "$type": "boxShadow",
         "$value": [
           {
-            "color": "{color.palette.black.t-05}",
+            "color": "{color.shadow.default}",
             "type": "dropShadow",
             "x": "{dimension.base.0}",
             "y": "{dimension.base.0}",
@@ -4538,7 +4538,7 @@
             "spread": "{dimension.base.0}"
           },
           {
-            "color": "{color.palette.black.t-10}",
+            "color": "{color.shadow.default}",
             "type": "dropShadow",
             "x": "{dimension.base.0}",
             "y": "{dimension.base.0}",
@@ -4551,7 +4551,7 @@
         "$type": "boxShadow",
         "$value": [
           {
-            "color": "{color.palette.black.t-10}",
+            "color": "{color.shadow.default}",
             "type": "dropShadow",
             "x": "{dimension.base.0}",
             "y": "{dimension.base.0}",
@@ -4559,7 +4559,7 @@
             "spread": "{dimension.base.0}"
           },
           {
-            "color": "{color.palette.black.t-10}",
+            "color": "{color.shadow.default}",
             "type": "dropShadow",
             "x": "{dimension.base.0}",
             "y": "{dimension.base.1}",
@@ -4572,7 +4572,7 @@
         "$type": "boxShadow",
         "$value": [
           {
-            "color": "{color.palette.black.t-10}",
+            "color": "{color.shadow.default}",
             "type": "dropShadow",
             "x": "{dimension.base.0}",
             "y": "{dimension.base.0}",
@@ -4580,7 +4580,7 @@
             "spread": "{dimension.base.0}"
           },
           {
-            "color": "{color.palette.black.t-10}",
+            "color": "{color.shadow.default}",
             "type": "dropShadow",
             "x": "{dimension.base.0}",
             "y": "{dimension.base.1}",
@@ -4593,7 +4593,7 @@
         "$type": "boxShadow",
         "$value": [
           {
-            "color": "{color.palette.black.t-10}",
+            "color": "{color.shadow.default}",
             "type": "innerShadow",
             "x": "{dimension.base.0}",
             "y": "{dimension.base.2}",
