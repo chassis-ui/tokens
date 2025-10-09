@@ -3830,6 +3830,18 @@
       "small-gap": {
         "$type": "spacing",
         "$value": "{space.base.8}"
+      },
+      "floating-padding-y": {
+        "$type": "spacing",
+        "$value": "{space.base.8}"
+      },
+      "floating-padding-x": {
+        "$type": "spacing",
+        "$value": "{space.base.12}"
+      },
+      "floating-gap": {
+        "$type": "spacing",
+        "$value": "{space.base.12}"
       }
     },
     "list": {

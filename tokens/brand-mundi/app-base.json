@@ -2712,7 +2712,7 @@
         },
         "bg-floating": {
           "$type": "color",
-          "$value": "{color.context.default.bg-even}"
+          "$value": "{color.context.default.bg-main}"
         },
         "border": {
           "$type": "color",
@@ -2742,7 +2742,7 @@
         },
         "bg-floating": {
           "$type": "color",
-          "$value": "{color.context.default.bg-even}"
+          "$value": "{color.context.default.bg-main}"
         },
         "border": {
           "$type": "color",
@@ -2772,7 +2772,7 @@
         },
         "bg-floating": {
           "$type": "color",
-          "$value": "{color.context.default.bg-even}"
+          "$value": "{color.context.default.bg-main}"
         },
         "border": {
           "$type": "color",
@@ -2802,7 +2802,7 @@
         },
         "bg-floating": {
           "$type": "color",
-          "$value": "{color.context.default.bg-even}"
+          "$value": "{color.context.default.bg-main}"
         },
         "border": {
           "$type": "color",
@@ -2836,7 +2836,7 @@
         },
         "border": {
           "$type": "color",
-          "$value": "{color.context.default.fg-slight}"
+          "$value": "{color.context.default.transparent-color}"
         },
         "fg-active": {
           "$type": "color",
@@ -3331,27 +3331,27 @@
     "form-input": {
       "medium-icon": {
         "$type": "sizing",
-        "$value": "{size.base.20}"
+        "$value": "{size.base.24}"
       },
       "medium-caret": {
         "$type": "sizing",
-        "$value": "{size.base.20}"
+        "$value": "{size.base.24}"
       },
       "large-icon": {
         "$type": "sizing",
-        "$value": "{size.base.24}"
+        "$value": "{size.base.28}"
       },
       "large-caret": {
         "$type": "sizing",
-        "$value": "{size.base.24}"
+        "$value": "{size.base.28}"
       },
       "small-icon": {
         "$type": "sizing",
-        "$value": "{size.base.16}"
+        "$value": "{size.base.20}"
       },
       "small-caret": {
         "$type": "sizing",
-        "$value": "{size.base.16}"
+        "$value": "{size.base.20}"
       }
     },
     "modal": {
@@ -3785,19 +3785,19 @@
     "form-input": {
       "medium-padding-y": {
         "$type": "spacing",
-        "$value": "{space.base.8}"
+        "$value": "{space.base.12}"
       },
       "medium-padding-x": {
         "$type": "spacing",
-        "$value": "{space.base.12}"
+        "$value": "{space.base.16}"
       },
       "medium-gap": {
         "$type": "spacing",
-        "$value": "{space.base.12}"
+        "$value": "{space.base.16}"
       },
       "large-padding-y": {
         "$type": "spacing",
-        "$value": "{space.base.10}"
+        "$value": "{space.base.12}"
       },
       "large-padding-x": {
         "$type": "spacing",
@@ -3818,6 +3818,18 @@
       "small-gap": {
         "$type": "spacing",
         "$value": "{space.base.8}"
+      },
+      "floating-padding-y": {
+        "$type": "spacing",
+        "$value": "{space.base.4}"
+      },
+      "floating-padding-x": {
+        "$type": "spacing",
+        "$value": "{space.base.16}"
+      },
+      "floating": {
+        "$type": "spacing",
+        "$value": "{space.base.16}"
       }
     },
     "list": {
