@@ -1,0 +1,15 @@
+---
+import RedirectLayout from '@layouts/RedirectLayout.astro'
+import { getChassisDocsPath } from '@libs/path'
+import { getConfig } from '@libs/config'
+
+export function getStaticPaths() {
+  return [
+    {
+      params: { version: getConfig().docs_version }
+    }
+  ]
+}
+---
+
+<RedirectLayout path={getChassisDocsPath('/getting-started/introduction/')} />

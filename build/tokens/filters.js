@@ -20,7 +20,7 @@ export default function (StyleDictionary) {
    */
   StyleDictionary.registerFilter({
     name: 'cx/allTokens',
-    filter: token => {
+    filter: (token) => {
       return (
         (tokenTypes.color.includes(token.$type) &&
           !['palette', 'context', 'utility'].includes(token.path[1])) ||
@@ -28,11 +28,10 @@ export default function (StyleDictionary) {
         tokenTypes.gradient.includes(token.$type) ||
         tokenTypes.number.includes(token.$type) ||
         tokenTypes.shadow.includes(token.$type) ||
-        (tokenTypes.size.includes(token.$type) &&
-          token.path[1] !== 'dimension') ||
+        (tokenTypes.size.includes(token.$type) && token.path[1] !== 'dimension') ||
         tokenTypes.string.includes(token.$type)
       )
-    },
+    }
   })
 
   /**
@@ -40,12 +39,12 @@ export default function (StyleDictionary) {
    */
   StyleDictionary.registerFilter({
     name: 'cx/colorTokens',
-    filter: token => {
+    filter: (token) => {
       return (
         tokenTypes.color.includes(token.$type) &&
         !['palette', 'context', 'utility'].includes(token.path[1])
       )
-    },
+    }
   })
 
   /**
@@ -53,12 +52,9 @@ export default function (StyleDictionary) {
    */
   StyleDictionary.registerFilter({
     name: 'cx/themeTokens',
-    filter: token => {
-      return (
-        tokenTypes.color.includes(token.$type) &&
-        !['base', 'utility'].includes(token.path[1])
-      )
-    },
+    filter: (token) => {
+      return tokenTypes.color.includes(token.$type) && !['base', 'utility'].includes(token.path[1])
+    }
   })
 
   /**
@@ -66,12 +62,12 @@ export default function (StyleDictionary) {
    */
   StyleDictionary.registerFilter({
     name: 'cx/numberTokens',
-    filter: token => {
+    filter: (token) => {
       return (
         tokenTypes.number.includes(token.$type) ||
         (tokenTypes.size.includes(token.$type) && token.path[1] !== 'dimension')
       )
-    },
+    }
   })
 
   /**
@@ -79,8 +75,8 @@ export default function (StyleDictionary) {
    */
   StyleDictionary.registerFilter({
     name: 'cx/stringTokens',
-    filter: token => {
+    filter: (token) => {
       return tokenTypes.string.includes(token.$type)
-    },
+    }
   })
 }

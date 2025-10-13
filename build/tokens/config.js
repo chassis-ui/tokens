@@ -7,16 +7,6 @@
  * @license MIT
  */
 
-import { readFileSync } from 'fs'
-import { join } from 'path'
-
-const packageJson = JSON.parse(
-  readFileSync(join(process.cwd(), 'package.json'), 'utf-8')
-)
-const buildOptions = packageJson.chassis.build
-const DEFAULT_THEME = packageJson.chassis.defaults.theme
-const DEFAULT_SCREEN = packageJson.chassis.defaults.screen
-
 /**
  * Main configuration function for Style Dictionary.
  *
@@ -29,17 +19,16 @@ const DEFAULT_SCREEN = packageJson.chassis.defaults.screen
  * @returns {Object} - The Style Dictionary configuration object.
  */
 export default function ({ brand, app, platform, theme, screen }) {
-
   return {
     preprocessors: ['cx/global'],
     // log: { verbosity: 'verbose' }, // default, verbose, silent
     platforms: {
       [platform]: {
         ...getPlatformSettings(brand, app, platform),
-        files: generateFiles(platform, theme, screen),
-      },
-    },
-  };
+        files: generateFiles(platform, theme, screen)
+      }
+    }
+  }
 }
 
 /**
@@ -54,8 +43,8 @@ function getPlatformSettings(brand, app, platform) {
   const commonOptions = {
     fileHeader: 'cxFileHeader',
     commentStyle: platform === 'android' ? 'xml' : 'short',
-    formatting: { fileHeaderTimestamp: true },
-  };
+    formatting: { fileHeaderTimestamp: true }
+  }
 
   const webBaseConfig = {
     prefix: 'cx',
@@ -66,68 +55,58 @@ function getPlatformSettings(brand, app, platform) {
       'ts/color/css/hexrgba',
       'ts/typography/fontWeight',
       'cx/typography/web',
-      'cx/shadow/web',
+      'cx/shadow/web'
     ],
     buildPath: `dist/web/${brand}-${app}/`,
-    options: { ...commonOptions },
-  };
+    options: { ...commonOptions }
+  }
 
   const platformConfigs = {
-    'web': {
+    web: {
       ...webBaseConfig,
       basePxFontSize: 16,
-      transforms: [...webBaseConfig.transforms, 'cx/size/rem'],
+      transforms: [...webBaseConfig.transforms, 'cx/size/rem']
     },
     'web-px': {
       ...webBaseConfig,
-      transforms: [...webBaseConfig.transforms, 'cx/size/px'],
+      transforms: [...webBaseConfig.transforms, 'cx/size/px']
     },
     'web-vw': {
       ...webBaseConfig,
       basePxFontSize: 16,
-      transforms: [...webBaseConfig.transforms, 'cx/size/vw'],
+      transforms: [...webBaseConfig.transforms, 'cx/size/vw']
     },
     ios: {
-      transforms: [
-        'name/pascal',
-        'ts/resolveMath',
-        'ts/color/modifiers',
-        'ts/color/css/hexrgba',
-      ],
+      transforms: ['name/pascal', 'ts/resolveMath', 'ts/color/modifiers', 'ts/color/css/hexrgba'],
       expand: {
         typesMap: {
           typography: {
             lineHeight: 'dimension',
             paragraphSpacing: 'dimension',
-            letterSpacing: 'number',
-          },
-        },
+            letterSpacing: 'number'
+          }
+        }
       },
       buildPath: `dist/ios/${brand}-${app}/`,
-      options: { ...commonOptions, import: ['UIKit'] },
+      options: { ...commonOptions, import: ['UIKit'] }
     },
     android: {
-      transforms: [
-        'name/snake',
-        'ts/resolveMath',
-        'ts/color/modifiers',
-        'ts/color/css/hexrgba',
-      ],
+      transforms: ['name/snake', 'ts/resolveMath', 'ts/color/modifiers', 'ts/color/css/hexrgba'],
       expand: {
         typesMap: {
           typography: {
             lineHeight: 'dimension',
             paragraphSpacing: 'dimension',
-            letterSpacing: 'number',
-          },
-        },
+            letterSpacing: 'number'
+          }
+        }
       },
       buildPath: `dist/android/${brand}-${app}/`,
-      options: commonOptions,
-    },
-  };
+      options: commonOptions
+    }
+  }
 
-  return platformConfigs[platform];
+  return platformConfigs[platform]
 }
 
 /**
@@ -140,44 +119,56 @@ function getPlatformSettings(brand, app, platform) {
  */
 function generateFiles(platform, theme, screen) {
   const fileExtensionMap = {
-    'web': 'scss',
+    web: 'scss',
     'web-px': 'scss',
     'web-vw': 'scss',
     ios: 'swift',
-    android: 'xml',
-  };
+    android: 'xml'
+  }
 
   const formatMap = {
     scss: 'cx/scss-variables',
     swift: 'cx/ios-swift-class',
-    xml: 'cx/android-resources',
-  };
+    xml: 'cx/android-resources'
+  }
 
-  const fileExtension = fileExtensionMap[platform];
-  const format = formatMap[fileExtension];
+  const fileExtension = fileExtensionMap[platform]
+  const format = formatMap[fileExtension]
 
   // If neither theme nor screen is set, return base and string files
   if (!theme && !screen) {
     return [
       { destination: `base.${fileExtension}`, filter: 'cx/allTokens', format },
-      { destination: `string.${fileExtension}`, filter: 'cx/stringTokens', format },
-    ];
+      {
+        destination: `string.${fileExtension}`,
+        filter: 'cx/stringTokens',
+        format
+      }
+    ]
   }
 
   // If only theme is set, return color-<theme> file
   if (theme && !screen) {
     return [
-      { destination: `color-${theme}.${fileExtension}`, filter: 'cx/themeTokens', format },
-    ];
+      {
+        destination: `color-${theme}.${fileExtension}`,
+        filter: 'cx/themeTokens',
+        format
+      }
+    ]
   }
 
   // If only screen is set, return number-<screen> file
   if (screen) {
     return [
-      { destination: `number-${screen}.${fileExtension}`, filter: 'cx/numberTokens', format },
-    ];
+      {
+        destination: `number-${screen}.${fileExtension}`,
+        filter: 'cx/numberTokens',
+        format
+      }
+    ]
   }
 
   // Fallback: return nothing
-  return [];
+  return []
 }

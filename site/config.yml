@@ -1,0 +1,51 @@
+title:                  "Chassis - Icons"
+baseURL:                "https://chassis-ui.com/docs"
+
+docsDir:                "site"
+docsPath:                "/tokens/docs"
+
+subtitle:               "A comprehensive SVG icon library with 478+ optimized icons for web and mobile applications."
+description:            "Chassis Icons provides a complete set of SVG icons with font generation, sprite optimization, and distribution packages for multiple platforms."
+authors:                "Ozgur Gunes"
+
+current_version:        "0.1.0"
+docs_version:           "0.1"
+github_org:             "https://github.com/ozgurgunes"
+repo:                   "https://github.com/chassis-ui/css"
+blog:                   "https://chassis-ui.com/blog/"
+x:                      "chassis_ui"
+
+analytics:
+  google_id:            "G-QGR8C28VYN"
+  fathom_site:          "ITUSEYJG"
+
+algolia:
+  app_id:               "TMI5N9J6TZ"
+  api_key:              "e318e0636b0a951e4f82c8283345df13"
+  index_name:           "chassis-docs"
+
+download:
+  source:               "https://github.com/chassis-ui/tokens/archive/v0.1.0.zip"
+  dist:                 "https://github.com/chassis-ui/tokens/releases/download/v0.1.0/chassis-tokens-0.1.0-dist.zip"
+  dist_examples:        "https://github.com/chassis-ui/tokens/releases/download/v0.1.0/chassis-tokens-0.1.0-examples.zip"
+
+cdn:
+  css:                  "https://cdn.jsdelivr.net/npm/@chassis-ui/tokens@0.1.0/dist/css/chassis-icons.min.css"
+  css_hash:             "sha384-placeholder"
+  css_rtl:              "https://cdn.jsdelivr.net/npm/@chassis-ui/tokens@0.1.0/dist/css/chassis-icons.rtl.min.css"
+  css_rtl_hash:         "sha384-placeholder"
+  js:                   "https://cdn.jsdelivr.net/npm/@chassis-ui/tokens@0.1.0/dist/js/chassis-icons.min.js"
+  js_hash:              "sha384-placeholder"
+  js_bundle:            "https://cdn.jsdelivr.net/npm/@chassis-ui/tokens@0.1.0/dist/js/chassis-icons.bundle.min.js"
+  js_bundle_hash:       "sha384-placeholder"
+  popper:               "https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+  popper_hash:          "sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+  popper_esm:           "https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/esm/popper.min.js"
+
+anchors:
+  min:                  2
+  max:                  5
+
+toc:
+  min:                  2
+  max:                  6
