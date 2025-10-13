@@ -24,8 +24,7 @@
     "token transform"
   ],
   "files": [
-    "dist/**/*.{css,scss,json,js,ts}",
-    "!.DS_Store"
+    "dist/**/*.{css,scss,json,js,ts}"
   ],
   "chassis": {
     "defaults": {
@@ -65,12 +64,12 @@
     "build": "pnpm tokens:build && pnpm site:build",
     "clean": "node build/build-site.js clean",
     "dev": "pnpm astro:dev",
-    "postinstall": "pnpm sync:submodules",
     "preview": "pnpm astro:preview",
     "test": "pnpm tokens:test",
     "validate": "node build/build.js validate",
     "tokens": "pnpm tokens:build",
-    "tokens:build": "node build/tokens/build.js",
+    "tokens:build": "node build/tokens/build.js --brand chassis --app docs",
+    "tokens:build:all": "node build/tokens/build.js",
     "tokens:lint": "eslint --cache --cache-location .cache/.eslintcache build/tokens",
     "tokens:test": "vitest run --dir build/tokens/test",
     "site": "pnpm site:build && pnpm site:lint",

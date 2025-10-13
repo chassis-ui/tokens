@@ -2994,6 +2994,44 @@
         }
       }
     },
+    "shadow": {
+      "default": {
+        "$type": "color",
+        "$value": "{color.base.shadow.dark.default}"
+      },
+      "alternate": {
+        "$type": "color",
+        "$value": "{color.base.shadow.dark.alternate}"
+      },
+      "primary": {
+        "$type": "color",
+        "$value": "{color.base.shadow.dark.primary}"
+      },
+      "secondary": {
+        "$type": "color",
+        "$value": "{color.base.shadow.dark.secondary}"
+      },
+      "neutral": {
+        "$type": "color",
+        "$value": "{color.base.shadow.dark.neutral}"
+      },
+      "danger": {
+        "$type": "color",
+        "$value": "{color.base.shadow.dark.danger}"
+      },
+      "success": {
+        "$type": "color",
+        "$value": "{color.base.shadow.dark.success}"
+      },
+      "warning": {
+        "$type": "color",
+        "$value": "{color.base.shadow.dark.warning}"
+      },
+      "info": {
+        "$type": "color",
+        "$value": "{color.base.shadow.dark.info}"
+      }
+    },
     "utility": {
       "container-default": {
         "$type": "color",

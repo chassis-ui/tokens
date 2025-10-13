@@ -138,7 +138,7 @@ function generateFiles(platform, theme, screen) {
   // If neither theme nor screen is set, return base and string files
   if (!theme && !screen) {
     return [
-      { destination: `base.${fileExtension}`, filter: 'cx/allTokens', format },
+      { destination: `main.${fileExtension}`, filter: 'cx/allTokens', format },
       {
         destination: `string.${fileExtension}`,
         filter: 'cx/stringTokens',
