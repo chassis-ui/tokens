@@ -69,7 +69,7 @@
     "preview": "pnpm astro:preview",
     "test": "pnpm tokens:test",
     "validate": "node build/build.js validate",
-    "tokens": "pnpm build:tokens",
+    "tokens": "pnpm tokens:build",
     "tokens:build": "node build/tokens/build.js",
     "tokens:lint": "eslint --cache --cache-location .cache/.eslintcache build/tokens",
     "tokens:test": "vitest run --dir build/tokens/test",
