@@ -33,12 +33,12 @@ $enable-cssgrid: true;
 // @import "../../../chassis-tokens/dist/tokens/web/chassis_docs_light";
 
 @import "settings";
-@import "../../../node_modules/@ozgurgunes/chassis-css/scss/functions";
-@import "../../../node_modules/@ozgurgunes/chassis-css/scss/tokens";
-@import "../../../node_modules/@ozgurgunes/chassis-css/scss/variables";
-@import "../../../node_modules/@ozgurgunes/chassis-css/scss/rfs";
-@import "../../../node_modules/@ozgurgunes/chassis-css/scss/maps";
-@import "../../../node_modules/@ozgurgunes/chassis-css/scss/mixins";
+@import "../../../node_modules/@chassis-ui/css/scss/functions";
+@import "../../../node_modules/@chassis-ui/css/scss/tokens";
+@import "../../../node_modules/@chassis-ui/css/scss/variables";
+@import "../../../node_modules/@chassis-ui/css/scss/rfs";
+@import "../../../node_modules/@chassis-ui/css/scss/maps";
+@import "../../../node_modules/@chassis-ui/css/scss/mixins";
 // fusv-enable
 
 
@@ -46,7 +46,7 @@ $enable-cssgrid: true;
 @import "variables";
 @import "fonts";
 
-@import "../../../node_modules/@ozgurgunes/chassis-css/scss/grid";
+@import "../../../node_modules/@chassis-ui/css/scss/grid";
 
 // Load docs components
 //@import "colors";

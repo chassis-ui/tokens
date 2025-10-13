@@ -5,19 +5,19 @@ settings:
   excludeLinksFromLockfile: false
 
 overrides:
-  chassis-docs: link:../../../.local/share/pnpm/5/node_modules/@ozgurgunes/chassis-docs
-  '@ozgurgunes/chassis-docs': link:../chassis-docs/packages/docs
+  chassis-docs: link:../../../.local/share/pnpm/5/node_modules/@chassis-ui/docs
+  '@chassis-ui/docs': link:../chassis-docs/packages/docs
 
 importers:
 
   .:
     dependencies:
-      '@ozgurgunes/chassis-docs':
+      '@chassis-ui/docs':
         specifier: link:../chassis-docs/packages/docs
         version: link:../chassis-docs/packages/docs
       chassis-docs:
-        specifier: link:../../../.local/share/pnpm/5/node_modules/@ozgurgunes/chassis-docs
-        version: link:../../../.local/share/pnpm/5/node_modules/@ozgurgunes/chassis-docs
+        specifier: link:../../../.local/share/pnpm/5/node_modules/@chassis-ui/docs
+        version: link:../../../.local/share/pnpm/5/node_modules/@chassis-ui/docs
     devDependencies:
       '@astrojs/check':
         specifier: ^0.9.4
@@ -46,12 +46,12 @@ importers:
       '@eslint/js':
         specifier: ^9.36.0
         version: 9.36.0
-      '@ozgurgunes/chassis-css':
-        specifier: github:ozgurgunes/chassis-css#app/docs
-        version: https://codeload.github.com/ozgurgunes/chassis-css/tar.gz/32bad5c7dd6693f1e1ce19d27d86ac4c62d25476(@popperjs/core@2.11.8)
-      '@ozgurgunes/chassis-icons':
-        specifier: github:ozgurgunes/chassis-icons#staging
-        version: https://codeload.github.com/ozgurgunes/chassis-icons/tar.gz/5f7475ed6d9387bcd079f1e2a6e1c6e0fa5deb0d
+      '@chassis-ui/css':
+        specifier: github:chassis-ui/css#app/docs
+        version: https://codeload.github.com/chassis-ui/css/tar.gz/32bad5c7dd6693f1e1ce19d27d86ac4c62d25476(@popperjs/core@2.11.8)
+      '@chassis-ui/icons':
+        specifier: github:chassis-ui/icons#staging
+        version: https://codeload.github.com/chassis-ui/icons/tar.gz/5f7475ed6d9387bcd079f1e2a6e1c6e0fa5deb0d
       '@stackblitz/sdk':
         specifier: ^1.11.0
         version: 1.11.0
@@ -1570,14 +1570,14 @@ packages:
   '@oslojs/encoding@1.1.0':
     resolution: {integrity: sha512-70wQhgYmndg4GCPxPPxPGevRKqTIJ2Nh4OkiMWmDAVYsTQ+Ta7Sq+rPevXyXGdzr30/qZBnyOalCszoMxlyldQ==}
 
-  '@ozgurgunes/chassis-css@https://codeload.github.com/ozgurgunes/chassis-css/tar.gz/32bad5c7dd6693f1e1ce19d27d86ac4c62d25476':
-    resolution: {tarball: https://codeload.github.com/ozgurgunes/chassis-css/tar.gz/32bad5c7dd6693f1e1ce19d27d86ac4c62d25476}
+  '@chassis-ui/css@https://codeload.github.com/chassis-ui/css/tar.gz/32bad5c7dd6693f1e1ce19d27d86ac4c62d25476':
+    resolution: {tarball: https://codeload.github.com/chassis-ui/css/tar.gz/32bad5c7dd6693f1e1ce19d27d86ac4c62d25476}
     version: 0.1.0
     peerDependencies:
       '@popperjs/core': ^2.11.8
 
-  '@ozgurgunes/chassis-icons@https://codeload.github.com/ozgurgunes/chassis-icons/tar.gz/5f7475ed6d9387bcd079f1e2a6e1c6e0fa5deb0d':
-    resolution: {tarball: https://codeload.github.com/ozgurgunes/chassis-icons/tar.gz/5f7475ed6d9387bcd079f1e2a6e1c6e0fa5deb0d}
+  '@chassis-ui/icons@https://codeload.github.com/chassis-ui/icons/tar.gz/5f7475ed6d9387bcd079f1e2a6e1c6e0fa5deb0d':
+    resolution: {tarball: https://codeload.github.com/chassis-ui/icons/tar.gz/5f7475ed6d9387bcd079f1e2a6e1c6e0fa5deb0d}
     version: 0.1.0
     engines: {node: '>=18.0.0', pnpm: '>=9.0.0'}
 
@@ -7689,11 +7689,11 @@ snapshots:
 
   '@oslojs/encoding@1.1.0': {}
 
-  '@ozgurgunes/chassis-css@https://codeload.github.com/ozgurgunes/chassis-css/tar.gz/32bad5c7dd6693f1e1ce19d27d86ac4c62d25476(@popperjs/core@2.11.8)':
+  '@chassis-ui/css@https://codeload.github.com/chassis-ui/css/tar.gz/32bad5c7dd6693f1e1ce19d27d86ac4c62d25476(@popperjs/core@2.11.8)':
     dependencies:
       '@popperjs/core': 2.11.8
 
-  '@ozgurgunes/chassis-icons@https://codeload.github.com/ozgurgunes/chassis-icons/tar.gz/5f7475ed6d9387bcd079f1e2a6e1c6e0fa5deb0d': {}
+  '@chassis-ui/icons@https://codeload.github.com/chassis-ui/icons/tar.gz/5f7475ed6d9387bcd079f1e2a6e1c6e0fa5deb0d': {}
 
   '@parcel/watcher-android-arm64@2.5.1':
     optional: true

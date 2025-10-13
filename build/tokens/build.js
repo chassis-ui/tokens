@@ -47,7 +47,7 @@ function registerDictionary() {
       ...defaultMessages,
       `Chassis - Tokens v0.1.0`,
       `Copyright 2025 Ozgur Gunes`,
-      `Licensed under MIT (https://github.com/ozgurgunes/chassis-tokens/blob/main/LICENSE)`
+      `Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)`
     ]
   })
 }

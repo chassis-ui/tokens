@@ -23,11 +23,11 @@ export function getChassisTokensFsPath() {
 }
 
 export function getChassisCSSFsPath() {
-  return path.join(process.cwd(), 'node_modules/@ozgurgunes/chassis-css/dist')
+  return path.join(process.cwd(), 'node_modules/@chassis-ui/css/dist')
 }
 
 export function getChassisIconsFsPath() {
-  return path.join(process.cwd(), 'node_modules/@ozgurgunes/chassis-icons')
+  return path.join(process.cwd(), 'node_modules/@chassis-ui/icons')
 }
 
 export function getDocsStaticFsPath() {

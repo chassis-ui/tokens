@@ -21,7 +21,7 @@ Design tokens for the Chassis Design System, supporting multi-brand, multi-theme
 Clone the repository and install dependencies:
 
 ```sh
-git clone https://github.com/ozgurgunes/chassis-tokens.git
+git clone https://github.com/chassis-ui/tokens.git
 pnpm install
 ```
 

@@ -4,8 +4,8 @@
     "baseUrl": ".",
     "lib": ["ES2022", "DOM", "DOM.Iterable"],
     "paths": {
-      "@css/*": ["../node_modules/@ozgurgunes/chassis-css/dist/*"],
-      "@icons/*": ["../node_modules/@ozgurgunes/chassis-icons/*"],
+      "@css/*": ["../node_modules/@chassis-ui/css/dist/*"],
+      "@icons/*": ["../node_modules/@chassis-ui/icons/*"],
       "@assets/*": ["src/assets/*"],
       "@components/*": ["src/components/*"],
       "@layouts/*": ["src/layouts/*"],
