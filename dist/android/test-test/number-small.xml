@@ -2,7 +2,7 @@
 
 <!--
   Do not edit directly, this file was auto-generated.
-  Generated on Wed, 24 Sep 2025 15:22:50 GMT
+  Generated on Mon, 13 Oct 2025 08:40:18 GMT
   Chassis - Tokens v0.1.0
   Copyright 2025 Ozgur Gunes
   Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
@@ -232,9 +232,12 @@
   <dimen name="size_pagination_dot_idle_w">8dp</dimen>
   <dimen name="size_pagination_dot_active_h">8dp</dimen>
   <dimen name="size_pagination_dot_active_w">8dp</dimen>
-  <dimen name="size_screen_icon_frame">56dp</dimen>
-  <dimen name="size_screen_icon_glyph">48dp</dimen>
-  <dimen name="size_screen_section_w">1200dp</dimen>
+  <dimen name="size_screen_section_thumb">64dp</dimen>
+  <dimen name="size_screen_section_icon">48dp</dimen>
+  <dimen name="size_screen_feature_thumb">40dp</dimen>
+  <dimen name="size_screen_feature_icon">32dp</dimen>
+  <dimen name="size_screen_section_w">360dp</dimen>
+  <dimen name="size_screen_section_h">640dp</dimen>
   <dimen name="space_base_0">0dp</dimen>
   <dimen name="space_base_1">1dp</dimen>
   <dimen name="space_base_2">2dp</dimen>
@@ -406,14 +409,22 @@
   <dimen name="space_table_cell_padding_y">8dp</dimen>
   <dimen name="space_table_cell_padding_x">8dp</dimen>
   <dimen name="space_table_cell_gap">8dp</dimen>
-  <dimen name="space_screen_section_padding_y">96dp</dimen>
-  <dimen name="space_screen_section_padding_x">32dp</dimen>
-  <dimen name="space_screen_section_gap_y">96dp</dimen>
-  <dimen name="space_screen_section_gap_x">64dp</dimen>
-  <dimen name="space_screen_feature_padding_y">32dp</dimen>
+  <dimen name="space_screen_section_padding_y">48dp</dimen>
+  <dimen name="space_screen_section_padding_x">16dp</dimen>
+  <dimen name="space_screen_section_gap_y">32dp</dimen>
+  <dimen name="space_screen_section_gap_x">16dp</dimen>
+  <dimen name="space_screen_content_padding_y">24dp</dimen>
+  <dimen name="space_screen_content_padding_x">0dp</dimen>
+  <dimen name="space_screen_content_gap_y">24dp</dimen>
+  <dimen name="space_screen_content_gap_x">16dp</dimen>
+  <dimen name="space_screen_feature_padding_y">24dp</dimen>
   <dimen name="space_screen_feature_padding_x">0dp</dimen>
-  <dimen name="space_screen_feature_gap_y">32dp</dimen>
-  <dimen name="space_screen_feature_gap_x">32dp</dimen>
+  <dimen name="space_screen_feature_gap_y">24dp</dimen>
+  <dimen name="space_screen_feature_gap_x">16dp</dimen>
+  <dimen name="space_screen_module_padding_y">16dp</dimen>
+  <dimen name="space_screen_module_padding_x">16dp</dimen>
+  <dimen name="space_screen_module_gap_y">16dp</dimen>
+  <dimen name="space_screen_module_gap_x">16dp</dimen>
   <integer name="opacity_base_10">0.1</integer>
   <integer name="opacity_base_20">0.2</integer>
   <integer name="opacity_base_30">0.3</integer>
@@ -473,6 +484,13 @@
   <dimen name="typography_font_size_code_large">19sp</dimen>
   <dimen name="typography_font_size_code_medium">16sp</dimen>
   <dimen name="typography_font_size_code_small">14sp</dimen>
+  <dimen name="typography_font_size_screen_hero_title">32sp</dimen>
+  <dimen name="typography_font_size_screen_hero_body">16sp</dimen>
+  <dimen name="typography_font_size_screen_section_title">26sp</dimen>
+  <dimen name="typography_font_size_screen_section_body">16sp</dimen>
+  <dimen name="typography_font_size_screen_feature_title">20sp</dimen>
+  <dimen name="typography_font_size_screen_feature_body">16sp</dimen>
+  <dimen name="typography_font_size_screen_module_title">18sp</dimen>
   <dimen name="typography_line_height_text_5xlarge">64sp</dimen>
   <dimen name="typography_line_height_text_4xlarge">56sp</dimen>
   <dimen name="typography_line_height_text_3xlarge">48sp</dimen>
