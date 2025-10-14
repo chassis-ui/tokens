@@ -1,8 +1,8 @@
 ---
 import type { InferGetStaticPropsType } from 'astro'
-import RedirectLayout from '@layouts/RedirectLayout.astro'
+import { RedirectLayout } from '@chassis-ui/docs/layouts'
 import { getChassisDocsPath } from '@libs/path'
-import { trimLeadingAndTrailingSlashes } from '@libs/utils'
+import { trimLeadingAndTrailingSlashes } from '@chassis-ui/docs'
 import { replaceConfigInText } from '@libs/remark'
 import { aliasedDocsPages } from '@libs/content'
 

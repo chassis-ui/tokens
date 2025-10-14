@@ -8,11 +8,16 @@ import autoImport from 'astro-auto-import'
 import type { Element } from 'hast'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import { getConfig } from './config'
-import { rehypeCxTable } from './rehype'
-import { remarkCxConfig } from './remark'
-import { configurePrism } from './prism'
+import {
+  configurePrism,
+  rehypeCxTable,
+  registerRemarkFunctions,
+  remarkCxConfig,
+  remarkCxDocsref
+} from '@chassis-ui/docs'
 import {
   docsDirectory,
+  getChassisDocsPath,
   getChassisAssetsFsPath,
   getChassisCSSFsPath,
   getChassisIconsFsPath,
@@ -39,7 +44,7 @@ const headingsRangeRegex = new RegExp(`^h[${getConfig().anchors.min}-${getConfig
 
 export function chassis(): AstroIntegration[] {
   const sitemapExcludedUrls = sitemapExcludes.map((url) => `${getConfig().baseURL}${url}/`)
-
+  registerRemarkFunctions(getConfig, getChassisDocsPath)
   configurePrism()
 
   return [
@@ -148,7 +153,7 @@ function cleanPublicDirectory() {
 // the `/docs/${docs_version}/dist` URL.
 function copyChassisAssets() {
   const source = getChassisAssetsFsPath()
-  const destination = path.join(getDocsPublicFsPath(), 'assets')
+  const destination = path.join(getDocsPublicFsPath(), 'static')
 
   // fs.mkdirSync(destination, { recursive: true })
   // copyStaticRecursively(source, destination)
@@ -159,7 +164,7 @@ function copyChassisAssets() {
 // Copy the `icons` folder from the current project to make it available from the `/icons` URL.
 function copyChassisCSS() {
   const source = getChassisCSSFsPath()
-  const destination = path.join(getDocsPublicFsPath(), 'assets')
+  const destination = path.join(getDocsPublicFsPath(), 'static')
 
   fs.mkdirSync(destination, { recursive: true })
   fs.cpSync(source, destination, { recursive: true })
@@ -169,7 +174,7 @@ function copyChassisCSS() {
 function copyChassisIcons() {
   const svgs_source = path.join(getChassisIconsFsPath(), 'svgs')
   const font_source = path.join(getChassisIconsFsPath(), 'font')
-  const destination = path.join(getDocsPublicFsPath(), 'assets', 'icons')
+  const destination = path.join(getDocsPublicFsPath(), 'static', 'icons')
 
   fs.mkdirSync(destination, { recursive: true })
   fs.cpSync(font_source, destination, { recursive: true })
@@ -181,7 +186,7 @@ function copyChassisIcons() {
 // `config.yml` file.
 function copyStatic() {
   const source = getDocsStaticFsPath()
-  const destination = path.join(getDocsPublicFsPath(), 'assets')
+  const destination = path.join(getDocsPublicFsPath(), 'static')
 
   copyStaticRecursively(source, destination)
 }
