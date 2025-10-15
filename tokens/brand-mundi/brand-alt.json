@@ -114,6 +114,172 @@
             }
           }
         }
+      },
+      "context": {
+        "light": {
+          "default": {
+            "bg-disabled": {
+              "$type": "color",
+              "$value": "{color.base.palette.light.neutral.10}"
+            },
+            "fg-disabled": {
+              "$type": "color",
+              "$value": "rgba({color.base.context.light.default.fg-main}, {opacity.context.fg-slight})"
+            }
+          },
+          "primary": {
+            "bg-disabled": {
+              "$type": "color",
+              "$value": "{color.base.palette.light.neutral.10}"
+            },
+            "fg-disabled": {
+              "$type": "color",
+              "$value": "rgba({color.base.context.light.default.fg-main}, {opacity.context.fg-slight})"
+            }
+          },
+          "secondary": {
+            "bg-disabled": {
+              "$type": "color",
+              "$value": "{color.base.palette.light.neutral.10}"
+            },
+            "fg-disabled": {
+              "$type": "color",
+              "$value": "rgba({color.base.context.light.default.fg-main}, {opacity.context.fg-slight})"
+            }
+          },
+          "neutral": {
+            "bg-disabled": {
+              "$type": "color",
+              "$value": "{color.base.palette.light.neutral.10}"
+            },
+            "fg-disabled": {
+              "$type": "color",
+              "$value": "rgba({color.base.context.light.default.fg-main}, {opacity.context.fg-slight})"
+            }
+          },
+          "danger": {
+            "bg-disabled": {
+              "$type": "color",
+              "$value": "{color.base.palette.light.neutral.10}"
+            },
+            "fg-disabled": {
+              "$type": "color",
+              "$value": "rgba({color.base.context.light.default.fg-main}, {opacity.context.fg-slight})"
+            }
+          },
+          "success": {
+            "bg-disabled": {
+              "$type": "color",
+              "$value": "{color.base.palette.light.neutral.10}"
+            },
+            "fg-disabled": {
+              "$type": "color",
+              "$value": "rgba({color.base.context.light.default.fg-main}, {opacity.context.fg-slight})"
+            }
+          },
+          "warning": {
+            "bg-disabled": {
+              "$type": "color",
+              "$value": "{color.base.palette.light.neutral.10}"
+            },
+            "fg-disabled": {
+              "$type": "color",
+              "$value": "rgba({color.base.context.light.default.fg-main}, {opacity.context.fg-slight})"
+            }
+          },
+          "info": {
+            "bg-disabled": {
+              "$type": "color",
+              "$value": "{color.base.palette.light.neutral.10}"
+            },
+            "fg-disabled": {
+              "$type": "color",
+              "$value": "rgba({color.base.context.light.default.fg-main}, {opacity.context.fg-slight})"
+            }
+          }
+        },
+        "dark": {
+          "default": {
+            "bg-disabled": {
+              "$type": "color",
+              "$value": "{color.base.palette.dark.neutral.80}"
+            },
+            "fg-disabled": {
+              "$type": "color",
+              "$value": "rgba({color.base.context.dark.default.fg-main}, {opacity.context.fg-slight})"
+            }
+          },
+          "primary": {
+            "bg-disabled": {
+              "$type": "color",
+              "$value": "{color.base.palette.dark.neutral.80}"
+            },
+            "fg-disabled": {
+              "$type": "color",
+              "$value": "rgba({color.base.context.dark.default.fg-main}, {opacity.context.fg-slight})"
+            }
+          },
+          "secondary": {
+            "bg-disabled": {
+              "$type": "color",
+              "$value": "{color.base.palette.dark.neutral.80}"
+            },
+            "fg-disabled": {
+              "$type": "color",
+              "$value": "rgba({color.base.context.dark.default.fg-main}, {opacity.context.fg-slight})"
+            }
+          },
+          "neutral": {
+            "bg-disabled": {
+              "$type": "color",
+              "$value": "{color.base.palette.dark.neutral.80}"
+            },
+            "fg-disabled": {
+              "$type": "color",
+              "$value": "rgba({color.base.context.dark.default.fg-main}, {opacity.context.fg-slight})"
+            }
+          },
+          "danger": {
+            "bg-disabled": {
+              "$type": "color",
+              "$value": "{color.base.palette.dark.neutral.80}"
+            },
+            "fg-disabled": {
+              "$type": "color",
+              "$value": "rgba({color.base.context.dark.default.fg-main}, {opacity.context.fg-slight})"
+            }
+          },
+          "success": {
+            "bg-disabled": {
+              "$type": "color",
+              "$value": "{color.base.palette.dark.neutral.80}"
+            },
+            "fg-disabled": {
+              "$type": "color",
+              "$value": "rgba({color.base.context.dark.default.fg-main}, {opacity.context.fg-slight})"
+            }
+          },
+          "warning": {
+            "bg-disabled": {
+              "$type": "color",
+              "$value": "{color.base.palette.dark.neutral.80}"
+            },
+            "fg-disabled": {
+              "$type": "color",
+              "$value": "rgba({color.base.context.dark.default.fg-main}, {opacity.context.fg-slight})"
+            }
+          },
+          "info": {
+            "bg-disabled": {
+              "$type": "color",
+              "$value": "{color.base.palette.dark.neutral.80}"
+            },
+            "fg-disabled": {
+              "$type": "color",
+              "$value": "rgba({color.base.context.dark.default.fg-main}, {opacity.context.fg-slight})"
+            }
+          }
+        }
       }
     }
   },
