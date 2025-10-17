@@ -1325,6 +1325,20 @@
         "$type": "sizing",
         "$value": "{size.base.20}"
       }
+    },
+    "list": {
+      "icon": {
+        "$type": "sizing",
+        "$value": "{size.base.32}"
+      },
+      "image": {
+        "$type": "sizing",
+        "$value": "{size.base.40}"
+      },
+      "disclosure": {
+        "$type": "sizing",
+        "$value": "{size.base.8}"
+      }
     }
   },
   "space": {
@@ -1526,6 +1540,24 @@
       "floating": {
         "$type": "spacing",
         "$value": "{space.base.16}"
+      }
+    },
+    "list": {
+      "padding-y": {
+        "$type": "spacing",
+        "$value": "{space.base.16}"
+      },
+      "padding-x": {
+        "$type": "spacing",
+        "$value": "{space.base.16}"
+      },
+      "gap": {
+        "$type": "spacing",
+        "$value": "{space.base.16}"
+      },
+      "nudge": {
+        "$type": "spacing",
+        "$value": "{space.base.8}"
       }
     },
     "notification": {
