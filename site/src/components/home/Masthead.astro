@@ -1,12 +1,13 @@
 ---
 import { getConfig } from '@libs/config'
-import {ResponsiveImage, Code} from '@chassis-ui/docs/components'
+import ResponsiveImage from '../shortcodes/ResponsiveImage.astro'
+import Code from '@shortcodes/Code.astro'
 import { getChassisDocsPath } from '@libs/path'
 ---
 
 <div class="col-8 offset-2 text-center mx-auto">
   <ResponsiveImage
-    imgPath="/assets/logo/chassis-logo-brand.png"
+    imgPath="/static/logo/chassis-logo-brand.png"
     alt="Chassis UI"
     width={200}
     classes="d-none d-sm-block mx-auto mb-3"

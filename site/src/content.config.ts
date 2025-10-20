@@ -31,8 +31,8 @@ const docsSchema = z.object({
 })
 
 const docsCollection = defineCollection({
-  loader: glob({ pattern: '**/*.mdx', base: './content/docs' }),
-  schema: docsSchema
+  loader: glob({ pattern: '**/*.{md,mdx}', base: './content/docs' }),
+  schema: docsSchema.partial()
 })
 
 const calloutsSchema = z.object({})

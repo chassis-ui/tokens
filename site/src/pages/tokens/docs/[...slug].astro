@@ -2,7 +2,8 @@
 import { DocsLayout } from '@chassis-ui/docs/layouts'
 import { docsPages } from '@libs/content'
 import { getConfig } from '@libs/config'
-import { Code } from '@chassis-ui/docs/components'
+// import { Code } from '@chassis-ui/docs/components'
+import Code from '@shortcodes/Code.astro'
 import { render } from 'astro:content'
 import type { CollectionEntry } from 'astro:content'
 
@@ -24,3 +25,5 @@ const { Content, headings } = await render(docsPage)
 <DocsLayout frontmatter={frontmatter} headings={headings} id={id}>
   <Content components={{ pre: Code }} />
 </DocsLayout>
+
+

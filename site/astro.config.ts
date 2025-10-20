@@ -1,3 +1,4 @@
+// import 'prismjs/components/prism-bash'
 import { defineConfig } from 'astro/config'
 import { chassis } from './src/libs/astro'
 import { getConfig } from './src/libs/config'
@@ -29,18 +30,15 @@ export default defineConfig({
       }
     },
     plugins: [algoliaPlugin(), stackblitzPlugin()],
-    ssr: {
-      noExternal: ['@astrojs/prism']
-    },
     build: {
       rollupOptions: {
         output: {
           // chunkFileNames: 'assets/js/[name].[hash].js',
           assetFileNames: (assetInfo) => {
             if (assetInfo.name?.endsWith('.css')) {
-              return 'assets/icons-docs/docs.[hash].css'
+              return 'static/icons-docs/docs.[hash].css'
             }
-            return 'assets/icons-docs/[name].[hash][extname]'
+            return 'static/icons-docs/[name].[hash][extname]'
           }
         }
       }
