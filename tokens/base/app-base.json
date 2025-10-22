@@ -4237,7 +4237,11 @@
         "$type": "borderRadius",
         "$value": "{borderRadius.context.medium}"
       },
-      "dot": {
+      "dot-idle": {
+        "$type": "borderRadius",
+        "$value": "{borderRadius.context.round-8}"
+      },
+      "dot-active": {
         "$type": "borderRadius",
         "$value": "{borderRadius.context.round-8}"
       }

@@ -1667,6 +1667,20 @@
         "$type": "borderRadius",
         "$value": "{borderRadius.context.zero}"
       }
+    },
+    "pagination": {
+      "button": {
+        "$type": "borderRadius",
+        "$value": "{borderRadius.context.medium}"
+      },
+      "dot-idle": {
+        "$type": "borderRadius",
+        "$value": "{borderRadius.context.round-8}"
+      },
+      "dot-active": {
+        "$type": "borderRadius",
+        "$value": "{borderRadius.context.round-12}"
+      }
     }
   },
   "borderWidth": {
