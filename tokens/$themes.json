@@ -5,6 +5,7 @@
     "selectedTokenSets": {
       "base/metric-px": "source",
       "base/metric-base": "source",
+      "brand-mundi/metric-base": "source",
       "base/brand-base": "enabled",
       "brand-mundi/brand-base": "enabled"
     },
@@ -3266,6 +3267,7 @@
       "base/brand-base": "source",
       "base/theme-base": "source",
       "base/app-base": "enabled",
+      "brand-mundi/metric-base": "enabled",
       "brand-mundi/app-base": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:302:173",

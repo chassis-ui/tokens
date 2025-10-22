@@ -13,60 +13,6 @@
     "base": {
       "palette": {
         "light": {
-          "primary": {
-            "10": {
-              "$type": "color",
-              "$value": "#DCDEFA"
-            },
-            "20": {
-              "$type": "color",
-              "$value": "#BABEF5"
-            },
-            "30": {
-              "$type": "color",
-              "$value": "#8990F5"
-            },
-            "40": {
-              "$type": "color",
-              "$value": "#545EEB"
-            },
-            "50": {
-              "$type": "color",
-              "$value": "{color.base.palette.light.primary.base}"
-            },
-            "60": {
-              "$type": "color",
-              "$value": "#261AAD"
-            },
-            "70": {
-              "$type": "color",
-              "$value": "#1D1485"
-            },
-            "80": {
-              "$type": "color",
-              "$value": "#120C52"
-            },
-            "90": {
-              "$type": "color",
-              "$value": "#0D093D"
-            },
-            "95": {
-              "$type": "color",
-              "$value": "#07051F"
-            },
-            "05": {
-              "$type": "color",
-              "$value": "#F0F1FF"
-            },
-            "base": {
-              "$type": "color",
-              "$value": "{color.base.palette.light.brand.base}"
-            },
-            "contrast": {
-              "$type": "color",
-              "$value": "{color.base.palette.light.white.base}"
-            }
-          },
           "neutral": {
             "base": {
               "$type": "color",

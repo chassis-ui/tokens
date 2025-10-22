@@ -1086,6 +1086,16 @@
         "$value": "{color.context.default.bg-main}"
       }
     },
+    "pagination": {
+      "dot-idle": {
+        "$type": "color",
+        "$value": "{color.context.default.fg-slight}"
+      },
+      "dot-active": {
+        "$type": "color",
+        "$value": "{color.context.primary.base-color}"
+      }
+    },
     "progress": {
       "fg-past": {
         "$type": "color",
@@ -1338,6 +1348,24 @@
       "disclosure": {
         "$type": "sizing",
         "$value": "{size.base.8}"
+      }
+    },
+    "pagination": {
+      "dot-idle-h": {
+        "$type": "sizing",
+        "$value": "{size.base.8}"
+      },
+      "dot-idle-w": {
+        "$type": "sizing",
+        "$value": "{size.base.8}"
+      },
+      "dot-active-h": {
+        "$type": "sizing",
+        "$value": "{size.base.10}"
+      },
+      "dot-active-w": {
+        "$type": "sizing",
+        "$value": "{size.base.10}"
       }
     }
   },

@@ -2968,6 +2968,16 @@
         "$value": "{color.context.default.bg-main}"
       }
     },
+    "pagination": {
+      "dot-idle": {
+        "$type": "color",
+        "$value": "{color.context.default.fg-slight}"
+      },
+      "dot-active": {
+        "$type": "color",
+        "$value": "{color.context.default.fg-main}"
+      }
+    },
     "progress": {
       "fg-past": {
         "$type": "color",
