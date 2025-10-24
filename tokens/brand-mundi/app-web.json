@@ -1,0 +1,144 @@
+{
+  "figma": {
+    "switch": {
+      "app": {
+        "mode-1": {
+          "$type": "boolean",
+          "$value": "false"
+        },
+        "mode-3": {
+          "$type": "boolean",
+          "$value": "true"
+        }
+      }
+    }
+  },
+  "font": {
+    "button": {
+      "medium": {
+        "$type": "typography",
+        "$value": "{font.text.medium.strong}"
+      },
+      "large": {
+        "$type": "typography",
+        "$value": "{font.text.small.strong}"
+      },
+      "small": {
+        "$type": "typography",
+        "$value": "{font.text.xsmall.strong}"
+      }
+    }
+  },
+  "size": {
+    "button": {
+      "medium-main": {
+        "$type": "sizing",
+        "$value": "{size.base.40}"
+      },
+      "medium-icon": {
+        "$type": "sizing",
+        "$value": "{size.base.20}"
+      },
+      "medium-caret": {
+        "$type": "sizing",
+        "$value": "{size.base.16}"
+      },
+      "large-main": {
+        "$type": "sizing",
+        "$value": "{size.base.48}"
+      },
+      "large-icon": {
+        "$type": "sizing",
+        "$value": "{size.base.24}"
+      },
+      "large-caret": {
+        "$type": "sizing",
+        "$value": "{size.base.20}"
+      },
+      "small-main": {
+        "$type": "sizing",
+        "$value": "{size.base.32}"
+      },
+      "small-icon": {
+        "$type": "sizing",
+        "$value": "{size.base.16}"
+      },
+      "small-caret": {
+        "$type": "sizing",
+        "$value": "{size.base.12}"
+      }
+    }
+  },
+  "space": {
+    "button": {
+      "medium-padding-y": {
+        "$type": "spacing",
+        "$value": "{space.base.10}"
+      },
+      "medium-padding-x": {
+        "$type": "spacing",
+        "$value": "{space.base.16}"
+      },
+      "medium-gap": {
+        "$type": "spacing",
+        "$value": "{space.base.8}"
+      },
+      "medium-nudge": {
+        "$type": "spacing",
+        "$value": "{space.base.0}"
+      },
+      "large-padding-y": {
+        "$type": "spacing",
+        "$value": "{space.base.12}"
+      },
+      "large-padding-x": {
+        "$type": "spacing",
+        "$value": "{space.base.20}"
+      },
+      "large-gap": {
+        "$type": "spacing",
+        "$value": "{space.base.8}"
+      },
+      "large-nudge": {
+        "$type": "spacing",
+        "$value": "{space.base.0}"
+      },
+      "small-padding-y": {
+        "$type": "spacing",
+        "$value": "{space.base.8}"
+      },
+      "small-padding-x": {
+        "$type": "spacing",
+        "$value": "{space.base.12}"
+      },
+      "small-gap": {
+        "$type": "spacing",
+        "$value": "{space.base.8}"
+      },
+      "small-nudge": {
+        "$type": "spacing",
+        "$value": "{space.base.0}"
+      }
+    }
+  },
+  "shadow": {
+    "button": {
+      "idle": {
+        "$type": "boxShadow",
+        "$value": "{shadow.context.small}"
+      },
+      "hover": {
+        "$type": "boxShadow",
+        "$value": "{shadow.context.small}"
+      },
+      "press": {
+        "$type": "boxShadow",
+        "$value": "{shadow.context.small}"
+      },
+      "disabled": {
+        "$type": "boxShadow",
+        "$value": "{shadow.context.small}"
+      }
+    }
+  }
+}

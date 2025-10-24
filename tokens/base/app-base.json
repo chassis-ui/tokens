@@ -4017,9 +4017,9 @@
         "$type": "borderRadius",
         "$value": "{borderRadius.base.3xlarge}"
       },
-      "circle": {
+      "round": {
         "$type": "borderRadius",
-        "$value": "{size.base.96}"
+        "$value": "{borderRadius.base.round}"
       },
       "round-8": {
         "$type": "borderRadius",
@@ -4653,6 +4653,24 @@
           "blur": "{dimension.base.4}",
           "spread": "{dimension.base.0}"
         }
+      }
+    },
+    "button": {
+      "idle": {
+        "$type": "boxShadow",
+        "$value": "{shadow.context.none}"
+      },
+      "hover": {
+        "$type": "boxShadow",
+        "$value": "{shadow.context.none}"
+      },
+      "press": {
+        "$type": "boxShadow",
+        "$value": "{shadow.context.none}"
+      },
+      "disabled": {
+        "$type": "boxShadow",
+        "$value": "{shadow.context.none}"
       }
     },
     "card": {

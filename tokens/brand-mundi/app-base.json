@@ -24,20 +24,6 @@
         "$value": "{font.text.xsmall.normal}"
       }
     },
-    "button": {
-      "medium": {
-        "$type": "typography",
-        "$value": "{font.text.medium.strong}"
-      },
-      "large": {
-        "$type": "typography",
-        "$value": "{font.text.large.strong}"
-      },
-      "small": {
-        "$type": "typography",
-        "$value": "{font.text.small.strong}"
-      }
-    },
     "chip": {
       "medium": {
         "$type": "typography",
@@ -1234,44 +1220,6 @@
         "$value": "{size.base.16}"
       }
     },
-    "button": {
-      "medium-main": {
-        "$type": "sizing",
-        "$value": "{size.base.40}"
-      },
-      "medium-icon": {
-        "$type": "sizing",
-        "$value": "{size.base.24}"
-      },
-      "medium-caret": {
-        "$type": "sizing",
-        "$value": "{size.base.20}"
-      },
-      "large-main": {
-        "$type": "sizing",
-        "$value": "{size.base.48}"
-      },
-      "large-icon": {
-        "$type": "sizing",
-        "$value": "{size.base.28}"
-      },
-      "large-caret": {
-        "$type": "sizing",
-        "$value": "{size.base.24}"
-      },
-      "small-main": {
-        "$type": "sizing",
-        "$value": "{size.base.32}"
-      },
-      "small-icon": {
-        "$type": "sizing",
-        "$value": "{size.base.20}"
-      },
-      "small-caret": {
-        "$type": "sizing",
-        "$value": "{size.base.16}"
-      }
-    },
     "chip": {
       "medium-main": {
         "$type": "sizing",
@@ -1420,56 +1368,6 @@
         "$value": "{space.base.4}"
       }
     },
-    "button": {
-      "medium-padding-y": {
-        "$type": "spacing",
-        "$value": "{space.base.8}"
-      },
-      "medium-padding-x": {
-        "$type": "spacing",
-        "$value": "{space.base.16}"
-      },
-      "medium-gap": {
-        "$type": "spacing",
-        "$value": "{space.base.8}"
-      },
-      "medium-nudge": {
-        "$type": "spacing",
-        "$value": "{space.base.0}"
-      },
-      "large-padding-y": {
-        "$type": "spacing",
-        "$value": "{space.base.10}"
-      },
-      "large-padding-x": {
-        "$type": "spacing",
-        "$value": "{space.base.20}"
-      },
-      "large-gap": {
-        "$type": "spacing",
-        "$value": "{space.base.12}"
-      },
-      "large-nudge": {
-        "$type": "spacing",
-        "$value": "{space.base.0}"
-      },
-      "small-padding-y": {
-        "$type": "spacing",
-        "$value": "{space.base.6}"
-      },
-      "small-padding-x": {
-        "$type": "spacing",
-        "$value": "{space.base.12}"
-      },
-      "small-gap": {
-        "$type": "spacing",
-        "$value": "{space.base.4}"
-      },
-      "small-nudge": {
-        "$type": "spacing",
-        "$value": "{space.base.0}"
-      }
-    },
     "chip": {
       "medium-padding-y": {
         "$type": "spacing",
@@ -1607,43 +1505,43 @@
     "badge": {
       "medium": {
         "$type": "borderRadius",
-        "$value": "{borderRadius.context.round-28}"
+        "$value": "{borderRadius.context.round}"
       },
       "large": {
         "$type": "borderRadius",
-        "$value": "{borderRadius.context.round-32}"
+        "$value": "{borderRadius.context.round}"
       },
       "small": {
         "$type": "borderRadius",
-        "$value": "{borderRadius.context.round-24}"
+        "$value": "{borderRadius.context.round}"
       }
     },
     "button": {
       "medium": {
         "$type": "borderRadius",
-        "$value": "{borderRadius.context.round-40}"
+        "$value": "{borderRadius.context.round}"
       },
       "large": {
         "$type": "borderRadius",
-        "$value": "{borderRadius.context.round-48}"
+        "$value": "{borderRadius.context.round}"
       },
       "small": {
         "$type": "borderRadius",
-        "$value": "{borderRadius.context.round-32}"
+        "$value": "{borderRadius.context.round}"
       }
     },
     "chip": {
       "medium": {
         "$type": "borderRadius",
-        "$value": "{borderRadius.context.round-32}"
+        "$value": "{borderRadius.context.round}"
       },
       "large": {
         "$type": "borderRadius",
-        "$value": "{borderRadius.context.round-40}"
+        "$value": "{borderRadius.context.round}"
       },
       "small": {
         "$type": "borderRadius",
-        "$value": "{borderRadius.context.round-24}"
+        "$value": "{borderRadius.context.round}"
       }
     },
     "form-input": {
@@ -1671,15 +1569,15 @@
     "pagination": {
       "button": {
         "$type": "borderRadius",
-        "$value": "{borderRadius.context.medium}"
+        "$value": "{borderRadius.context.round}"
       },
       "dot-idle": {
         "$type": "borderRadius",
-        "$value": "{borderRadius.context.round-8}"
+        "$value": "{borderRadius.context.round}"
       },
       "dot-active": {
         "$type": "borderRadius",
-        "$value": "{borderRadius.context.round-12}"
+        "$value": "{borderRadius.context.round}"
       }
     }
   },
