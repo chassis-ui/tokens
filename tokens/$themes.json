@@ -8770,5 +8770,21 @@
       "figma.switch.screen.mode-3": "c4b689e13cf05ebf2adcd07c3bc17110dbb5e9a8"
     },
     "group": "screen"
+  },
+  {
+    "id": "56c27e0d7dba4cfb0ba8bb52ab29a26a76c1198a",
+    "name": "web",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "base/app-base": "enabled",
+      "base/brand-base": "source",
+      "base/metric-base": "enabled",
+      "base/metric-px": "source",
+      "base/theme-base": "source",
+      "brand-mundi/app-base": "enabled",
+      "brand-mundi/app-web": "enabled",
+      "brand-mundi/metric-base": "enabled"
+    },
+    "group": "app"
   }
 ]
