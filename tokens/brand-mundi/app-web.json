@@ -17,11 +17,11 @@
     "button": {
       "medium": {
         "$type": "typography",
-        "$value": "{font.text.medium.strong}"
+        "$value": "{font.text.small.strong}"
       },
       "large": {
         "$type": "typography",
-        "$value": "{font.text.small.strong}"
+        "$value": "{font.text.medium.strong}"
       },
       "small": {
         "$type": "typography",
