@@ -24,6 +24,47 @@
         "$value": "{font.text.xsmall.normal}"
       }
     },
+    "button": {
+      "medium": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "{typography.fontFamily.text}",
+          "fontWeight": "{typography.fontWeight.text.strong}",
+          "lineHeight": "{typography.lineHeight.button.medium}",
+          "fontSize": "{typography.fontSize.button.medium}",
+          "letterSpacing": "{typography.letterSpacing.base.zero}",
+          "paragraphSpacing": "{typography.paragraphSpacing.base.zero}",
+          "textCase": "{typography.textCase.base.none}",
+          "textDecoration": "{typography.textDecoration.base.none}"
+        }
+      },
+      "large": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "{typography.fontFamily.text}",
+          "fontWeight": "{typography.fontWeight.text.strong}",
+          "lineHeight": "{typography.lineHeight.button.large}",
+          "fontSize": "{typography.fontSize.button.large}",
+          "letterSpacing": "{typography.letterSpacing.base.zero}",
+          "paragraphSpacing": "{typography.paragraphSpacing.base.zero}",
+          "textCase": "{typography.textCase.base.none}",
+          "textDecoration": "{typography.textDecoration.base.none}"
+        }
+      },
+      "small": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "{typography.fontFamily.text}",
+          "fontWeight": "{typography.fontWeight.text.strong}",
+          "lineHeight": "{typography.lineHeight.button.medium}",
+          "fontSize": "{typography.fontSize.button.medium}",
+          "letterSpacing": "{typography.letterSpacing.base.zero}",
+          "paragraphSpacing": "{typography.paragraphSpacing.base.zero}",
+          "textCase": "{typography.textCase.base.none}",
+          "textDecoration": "{typography.textDecoration.base.none}"
+        }
+      }
+    },
     "chip": {
       "medium": {
         "$type": "typography",
@@ -1668,6 +1709,124 @@
       "check-radio": {
         "$type": "asset",
         "$value": "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='currentcolor' class='icon-circle-small-solid' viewBox='0 0 24 24'><path d='M5.75 11.9805C5.75 9.75391 6.92188 7.72266 8.875 6.58984C10.7891 5.45703 13.1719 5.45703 15.125 6.58984C17.0391 7.72266 18.25 9.75391 18.25 11.9805C18.25 14.2461 17.0391 16.2773 15.125 17.4102C13.1719 18.543 10.7891 18.543 8.875 17.4102C6.92188 16.2773 5.75 14.2461 5.75 11.9805Z'/></svg>"
+      }
+    }
+  },
+  "typography": {
+    "fontSize": {
+      "text": {
+        "5xlarge": {
+          "$type": "fontSizes",
+          "$value": "44"
+        },
+        "4xlarge": {
+          "$type": "fontSizes",
+          "$value": "38"
+        },
+        "3xlarge": {
+          "$type": "fontSizes",
+          "$value": "32"
+        },
+        "2xlarge": {
+          "$type": "fontSizes",
+          "$value": "26"
+        },
+        "xlarge": {
+          "$type": "fontSizes",
+          "$value": "22"
+        },
+        "large": {
+          "$type": "fontSizes",
+          "$value": "18"
+        },
+        "medium": {
+          "$type": "fontSizes",
+          "$value": "16"
+        },
+        "small": {
+          "$type": "fontSizes",
+          "$value": "14"
+        },
+        "xsmall": {
+          "$type": "fontSizes",
+          "$value": "12"
+        },
+        "2xsmall": {
+          "$type": "fontSizes",
+          "$value": "10"
+        }
+      },
+      "button": {
+        "large": {
+          "$type": "fontSizes",
+          "$value": "16"
+        },
+        "medium": {
+          "$type": "fontSizes",
+          "$value": "16"
+        },
+        "small": {
+          "$type": "fontSizes",
+          "$value": "16"
+        }
+      }
+    },
+    "lineHeight": {
+      "text": {
+        "5xlarge": {
+          "$type": "lineHeights",
+          "$value": "56"
+        },
+        "4xlarge": {
+          "$type": "lineHeights",
+          "$value": "48"
+        },
+        "3xlarge": {
+          "$type": "lineHeights",
+          "$value": "40"
+        },
+        "2xlarge": {
+          "$type": "lineHeights",
+          "$value": "36"
+        },
+        "xlarge": {
+          "$type": "lineHeights",
+          "$value": "32"
+        },
+        "large": {
+          "$type": "lineHeights",
+          "$value": "28"
+        },
+        "medium": {
+          "$type": "lineHeights",
+          "$value": "24"
+        },
+        "small": {
+          "$type": "lineHeights",
+          "$value": "20"
+        },
+        "xsmall": {
+          "$type": "lineHeights",
+          "$value": "18"
+        },
+        "2xsmall": {
+          "$type": "lineHeights",
+          "$value": "14"
+        }
+      },
+      "button": {
+        "large": {
+          "$type": "lineHeights",
+          "$value": "28"
+        },
+        "medium": {
+          "$type": "lineHeights",
+          "$value": "24"
+        },
+        "small": {
+          "$type": "lineHeights",
+          "$value": "20"
+        }
       }
     }
   }

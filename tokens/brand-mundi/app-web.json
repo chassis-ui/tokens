@@ -13,22 +13,6 @@
       }
     }
   },
-  "font": {
-    "button": {
-      "medium": {
-        "$type": "typography",
-        "$value": "{font.text.small.strong}"
-      },
-      "large": {
-        "$type": "typography",
-        "$value": "{font.text.medium.strong}"
-      },
-      "small": {
-        "$type": "typography",
-        "$value": "{font.text.xsmall.strong}"
-      }
-    }
-  },
   "size": {
     "button": {
       "medium-main": {
@@ -138,6 +122,40 @@
       "disabled": {
         "$type": "boxShadow",
         "$value": "{shadow.context.small}"
+      }
+    }
+  },
+  "typography": {
+    "fontSize": {
+      "button": {
+        "large": {
+          "$type": "fontSizes",
+          "$value": "16"
+        },
+        "medium": {
+          "$type": "fontSizes",
+          "$value": "14"
+        },
+        "small": {
+          "$type": "fontSizes",
+          "$value": "12"
+        }
+      }
+    },
+    "lineHeight": {
+      "button": {
+        "large": {
+          "$type": "lineHeights",
+          "$value": "28"
+        },
+        "medium": {
+          "$type": "lineHeights",
+          "$value": "24"
+        },
+        "small": {
+          "$type": "lineHeights",
+          "$value": "20"
+        }
       }
     }
   }

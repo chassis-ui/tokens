@@ -14,20 +14,6 @@
     }
   },
   "font": {
-    "button": {
-      "medium": {
-        "$type": "typography",
-        "$value": "{font.text.medium.strong}"
-      },
-      "large": {
-        "$type": "typography",
-        "$value": "{font.text.large.strong}"
-      },
-      "small": {
-        "$type": "typography",
-        "$value": "{font.text.medium.strong}"
-      }
-    },
     "notification": {
       "title": {
         "$type": "typography",
@@ -148,6 +134,40 @@
       "gap": {
         "$type": "spacing",
         "$value": "{space.base.12}"
+      }
+    }
+  },
+  "typography": {
+    "fontSize": {
+      "button": {
+        "large": {
+          "$type": "fontSizes",
+          "$value": "16"
+        },
+        "medium": {
+          "$type": "fontSizes",
+          "$value": "16"
+        },
+        "small": {
+          "$type": "fontSizes",
+          "$value": "16"
+        }
+      }
+    },
+    "lineHeight": {
+      "button": {
+        "large": {
+          "$type": "lineHeights",
+          "$value": "24"
+        },
+        "medium": {
+          "$type": "lineHeights",
+          "$value": "24"
+        },
+        "small": {
+          "$type": "lineHeights",
+          "$value": "24"
+        }
       }
     }
   }
