@@ -91,7 +91,7 @@
       },
       "large-padding-y": {
         "$type": "spacing",
-        "$value": "{space.base.10}"
+        "$value": "{space.base.8}"
       },
       "large-padding-x": {
         "$type": "spacing",
@@ -142,7 +142,7 @@
       "button": {
         "large": {
           "$type": "fontSizes",
-          "$value": "16"
+          "$value": "18"
         },
         "medium": {
           "$type": "fontSizes",
@@ -158,7 +158,7 @@
       "button": {
         "large": {
           "$type": "lineHeights",
-          "$value": "24"
+          "$value": "28"
         },
         "medium": {
           "$type": "lineHeights",
