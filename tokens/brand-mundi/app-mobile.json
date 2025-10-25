@@ -142,15 +142,25 @@
       "button": {
         "large": {
           "$type": "fontSizes",
-          "$value": "18"
+          "$value": "{typography.fontSize.text.large}"
         },
         "medium": {
           "$type": "fontSizes",
-          "$value": "16"
+          "$value": "{typography.fontSize.text.medium}"
         },
         "small": {
           "$type": "fontSizes",
-          "$value": "16"
+          "$value": "{typography.fontSize.text.medium}"
+        }
+      },
+      "notification": {
+        "title": {
+          "$type": "fontSizes",
+          "$value": "{typography.fontSize.text.medium}"
+        },
+        "message": {
+          "$type": "fontSizes",
+          "$value": "{typography.fontSize.text.small}"
         }
       }
     },
@@ -158,15 +168,25 @@
       "button": {
         "large": {
           "$type": "lineHeights",
-          "$value": "28"
+          "$value": "{typography.lineHeight.text.large}"
         },
         "medium": {
           "$type": "lineHeights",
-          "$value": "24"
+          "$value": "{typography.lineHeight.text.medium}"
         },
         "small": {
           "$type": "lineHeights",
-          "$value": "24"
+          "$value": "{typography.lineHeight.text.medium}"
+        }
+      },
+      "notification": {
+        "title": {
+          "$type": "lineHeights",
+          "$value": "{typography.lineHeight.text.medium}"
+        },
+        "message": {
+          "$type": "lineHeights",
+          "$value": "{typography.lineHeight.text.small}"
         }
       }
     }

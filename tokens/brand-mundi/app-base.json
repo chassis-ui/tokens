@@ -112,6 +112,34 @@
         "$type": "typography",
         "$value": "{font.text.xsmall.normal}"
       }
+    },
+    "notification": {
+      "title": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "{typography.fontFamily.text}",
+          "fontWeight": "{typography.fontWeight.text.strong}",
+          "lineHeight": "{typography.lineHeight.notification.title}",
+          "fontSize": "{typography.fontSize.notification.title}",
+          "letterSpacing": "{typography.letterSpacing.base.zero}",
+          "paragraphSpacing": "{typography.paragraphSpacing.base.zero}",
+          "textCase": "{typography.textCase.base.none}",
+          "textDecoration": "{typography.textDecoration.base.none}"
+        }
+      },
+      "message": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "{typography.fontFamily.text}",
+          "fontWeight": "{typography.fontWeight.text.normal}",
+          "lineHeight": "{typography.lineHeight.notification.message}",
+          "fontSize": "{typography.fontSize.notification.message}",
+          "letterSpacing": "{typography.letterSpacing.base.zero}",
+          "paragraphSpacing": "{typography.paragraphSpacing.base.zero}",
+          "textCase": "{typography.textCase.base.none}",
+          "textDecoration": "{typography.textDecoration.base.none}"
+        }
+      }
     }
   },
   "color": {
@@ -1759,15 +1787,25 @@
       "button": {
         "large": {
           "$type": "fontSizes",
-          "$value": "16"
+          "$value": "{typography.fontSize.text.large}"
         },
         "medium": {
           "$type": "fontSizes",
-          "$value": "16"
+          "$value": "{typography.fontSize.text.medium}"
         },
         "small": {
           "$type": "fontSizes",
-          "$value": "16"
+          "$value": "{typography.fontSize.text.small}"
+        }
+      },
+      "notification": {
+        "title": {
+          "$type": "fontSizes",
+          "$value": "{typography.fontSize.text.large}"
+        },
+        "message": {
+          "$type": "fontSizes",
+          "$value": "{typography.fontSize.text.medium}"
         }
       }
     },
@@ -1817,15 +1855,25 @@
       "button": {
         "large": {
           "$type": "lineHeights",
-          "$value": "28"
+          "$value": "{typography.lineHeight.text.large}"
         },
         "medium": {
           "$type": "lineHeights",
-          "$value": "24"
+          "$value": "{typography.lineHeight.text.medium}"
         },
         "small": {
           "$type": "lineHeights",
-          "$value": "20"
+          "$value": "{typography.lineHeight.text.small}"
+        }
+      },
+      "notification": {
+        "title": {
+          "$type": "lineHeights",
+          "$value": "{typography.lineHeight.text.large}"
+        },
+        "message": {
+          "$type": "lineHeights",
+          "$value": "{typography.lineHeight.text.medium}"
         }
       }
     }

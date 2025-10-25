@@ -57,7 +57,7 @@
     "button": {
       "medium-padding-y": {
         "$type": "spacing",
-        "$value": "{space.base.8}"
+        "$value": "{space.base.10}"
       },
       "medium-padding-x": {
         "$type": "spacing",
@@ -73,7 +73,7 @@
       },
       "large-padding-y": {
         "$type": "spacing",
-        "$value": "{space.base.10}"
+        "$value": "{space.base.12}"
       },
       "large-padding-x": {
         "$type": "spacing",
@@ -89,7 +89,7 @@
       },
       "small-padding-y": {
         "$type": "spacing",
-        "$value": "{space.base.4}"
+        "$value": "{space.base.5}"
       },
       "small-padding-x": {
         "$type": "spacing",
@@ -130,15 +130,25 @@
       "button": {
         "large": {
           "$type": "fontSizes",
-          "$value": "16"
+          "$value": "{typography.fontSize.text.medium}"
         },
         "medium": {
           "$type": "fontSizes",
-          "$value": "14"
+          "$value": "{typography.fontSize.text.small}"
         },
         "small": {
           "$type": "fontSizes",
-          "$value": "12"
+          "$value": "{typography.fontSize.text.xsmall}"
+        }
+      },
+      "notification": {
+        "title": {
+          "$type": "fontSizes",
+          "$value": "{typography.fontSize.text.large}"
+        },
+        "message": {
+          "$type": "fontSizes",
+          "$value": "{typography.fontSize.text.medium}"
         }
       }
     },
@@ -146,15 +156,25 @@
       "button": {
         "large": {
           "$type": "lineHeights",
-          "$value": "28"
+          "$value": "{typography.lineHeight.text.medium}"
         },
         "medium": {
           "$type": "lineHeights",
-          "$value": "24"
+          "$value": "{typography.lineHeight.text.small}"
         },
         "small": {
           "$type": "lineHeights",
-          "$value": "20"
+          "$value": "{typography.lineHeight.text.xsmall}"
+        }
+      },
+      "notification": {
+        "title": {
+          "$type": "lineHeights",
+          "$value": "{typography.lineHeight.text.large}"
+        },
+        "message": {
+          "$type": "lineHeights",
+          "$value": "{typography.lineHeight.text.medium}"
         }
       }
     }
