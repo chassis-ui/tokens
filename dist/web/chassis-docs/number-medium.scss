@@ -4,7 +4,7 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Sat, 18 Oct 2025 08:48:48 GMT
+// Generated on Sun, 26 Oct 2025 08:40:38 GMT
 // Chassis - Tokens v0.1.0
 // Copyright 2025 Ozgur Gunes
 // Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
@@ -497,20 +497,20 @@ $cx-typography-font-size-screen-section-body: 1.125rem !default;
 $cx-typography-font-size-screen-feature-title: 1.25rem !default;
 $cx-typography-font-size-screen-feature-body: 1rem !default;
 $cx-typography-font-size-screen-module-title: 1.125rem !default;
-$cx-typography-line-height-text-5xlarge: 1.455em !default;
-$cx-typography-line-height-text-4xlarge: 1.474em !default;
-$cx-typography-line-height-text-3xlarge: 1.5em !default;
-$cx-typography-line-height-text-2xlarge: 1.462em !default;
+$cx-typography-line-height-text-5xlarge: 1.273em !default;
+$cx-typography-line-height-text-4xlarge: 1.263em !default;
+$cx-typography-line-height-text-3xlarge: 1.25em !default;
+$cx-typography-line-height-text-2xlarge: 1.385em !default;
 $cx-typography-line-height-text-xlarge: 1.455em !default;
 $cx-typography-line-height-text-large: 1.474em !default;
 $cx-typography-line-height-text-medium: 1.5em !default;
 $cx-typography-line-height-text-small: 1.429em !default;
 $cx-typography-line-height-text-xsmall: 1.5em !default;
 $cx-typography-line-height-text-2xsmall: 1.4em !default;
-$cx-typography-line-height-display-5xlarge: 1.455em !default;
-$cx-typography-line-height-display-4xlarge: 1.474em !default;
-$cx-typography-line-height-display-3xlarge: 1.5em !default;
-$cx-typography-line-height-display-2xlarge: 1.462em !default;
+$cx-typography-line-height-display-5xlarge: 1.273em !default;
+$cx-typography-line-height-display-4xlarge: 1.263em !default;
+$cx-typography-line-height-display-3xlarge: 1.25em !default;
+$cx-typography-line-height-display-2xlarge: 1.385em !default;
 $cx-typography-line-height-display-xlarge: 1.455em !default;
 $cx-typography-line-height-display-large: 1.474em !default;
 $cx-typography-line-height-display-medium: 1.5em !default;
@@ -533,18 +533,10 @@ $cx-typography-line-height-code-large: 1.474em !default;
 $cx-typography-line-height-code-medium: 1.5em !default;
 $cx-typography-line-height-code-small: 1.429em !default;
 $cx-typography-letter-spacing-base-zero: 0 !default;
-$cx-typography-letter-spacing-text-base: 0 !default;
-$cx-typography-letter-spacing-display-base: 0 !default;
-$cx-typography-letter-spacing-html-base: 0 !default;
-$cx-typography-letter-spacing-code-base: 0 !default;
-$cx-typography-paragraph-spacing-text-base: 0rem !default;
-$cx-typography-paragraph-spacing-text-paragraph: 1rem !default;
-$cx-typography-paragraph-spacing-display-base: 0rem !default;
-$cx-typography-paragraph-spacing-display-paragraph: 1rem !default;
-$cx-typography-paragraph-spacing-html-base: 0rem !default;
-$cx-typography-paragraph-spacing-html-paragraph: 1rem !default;
-$cx-typography-paragraph-spacing-code-base: 0rem !default;
-$cx-typography-paragraph-spacing-code-paragraph: 1rem !default;
+$cx-typography-paragraph-spacing-base-zero: 0rem !default;
+$cx-typography-paragraph-spacing-base-small: 0.5rem !default;
+$cx-typography-paragraph-spacing-base-medium: 1rem !default;
+$cx-typography-paragraph-spacing-base-large: 1.5rem !default;
 $cx-border-radius-base-xsmall: 0.125rem !default;
 $cx-border-radius-base-small: 0.25rem !default;
 $cx-border-radius-base-medium: 0.375rem !default;
@@ -552,6 +544,7 @@ $cx-border-radius-base-large: 0.625rem !default;
 $cx-border-radius-base-xlarge: 0.75rem !default;
 $cx-border-radius-base-2xlarge: 1rem !default;
 $cx-border-radius-base-3xlarge: 1.25rem !default;
+$cx-border-radius-base-round: 16rem !default;
 $cx-border-radius-context-zero: 0rem !default;
 $cx-border-radius-context-xsmall: 0.125rem !default;
 $cx-border-radius-context-small: 0.25rem !default;
@@ -560,7 +553,7 @@ $cx-border-radius-context-large: 0.625rem !default;
 $cx-border-radius-context-xlarge: 0.75rem !default;
 $cx-border-radius-context-2xlarge: 1rem !default;
 $cx-border-radius-context-3xlarge: 1.25rem !default;
-$cx-border-radius-context-circle: 6rem !default;
+$cx-border-radius-context-round: 16rem !default;
 $cx-border-radius-context-round-8: 0.25rem !default;
 $cx-border-radius-context-round-12: 0.375rem !default;
 $cx-border-radius-context-round-16: 0.5rem !default;
@@ -608,7 +601,8 @@ $cx-border-radius-form-input-floating-sharp: var(--#{$prefix}border-radius-zero)
 $cx-border-radius-modal-main: var(--#{$prefix}border-radius-medium) !default;
 $cx-border-radius-notification-main: var(--#{$prefix}border-radius-medium) !default;
 $cx-border-radius-pagination-button: var(--#{$prefix}border-radius-medium) !default;
-$cx-border-radius-pagination-dot: var(--#{$prefix}border-radius-circle) !default;
+$cx-border-radius-pagination-dot-idle: var(--#{$prefix}border-radius-circle) !default;
+$cx-border-radius-pagination-dot-active: var(--#{$prefix}border-radius-circle) !default;
 $cx-border-radius-section-main: var(--#{$prefix}border-radius-large) !default;
 $cx-border-radius-tab-medium: var(--#{$prefix}border-radius-medium) !default;
 $cx-border-radius-tab-large: var(--#{$prefix}border-radius-large) !default;
