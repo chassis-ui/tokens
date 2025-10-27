@@ -11,9 +11,7 @@ import { getConfig } from './config'
 // import { rehypeCxTable } from './rehype'
 import { remarkCxConfig, remarkCxDocsref } from './remark'
 import { configurePrism } from './prism'
-import {
-  rehypeCxTable
-} from '@chassis-ui/docs'
+import { rehypeCxTable } from '@chassis-ui/docs'
 import {
   docsDirectory,
   getChassisDocsPath,

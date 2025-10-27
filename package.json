@@ -75,7 +75,7 @@
     "site": "pnpm site:build && pnpm site:lint",
     "site:build": "node build/build-site.js",
     "site:format": "prettier --write --cache site",
-    "site:lint": "pnpm site:lint:*",
+    "site:lint": "pnpm site:lint:eslint && pnpm site:lint:fusv && pnpm site:lint:stylelint && pnpm site:lint:prettier && pnpm site:lint:vnu",
     "site:lint:fusv": "find-unused-sass-variables site/src/scss/",
     "site:lint:eslint": "prettier -c --cache site",
     "site:lint:stylelint": "stylelint site/src/scss/ --cache --cache-location .cache/.stylelintcache",
@@ -97,7 +97,7 @@
     "@astrojs/prism": "^3.3.0",
     "@astrojs/sitemap": "^3.6.0",
     "@chassis-ui/css": "github:chassis-ui/css#app/docs",
-    "@chassis-ui/docs": "link:../chassis-docs/packages/docs",
+    "@chassis-ui/docs": "^0.1.1",
     "@chassis-ui/icons": "github:chassis-ui/icons#app/docs",
     "@docsearch/css": "^3.9.0",
     "@docsearch/js": "^3.9.0",
@@ -140,6 +140,8 @@
     "prettier-plugin-astro": "^0.14.1",
     "prismjs": "^1.30.0",
     "rehype-autolink-headings": "^7.1.0",
+    "remark": "^15.0.1",
+    "remark-html": "^16.0.1",
     "sass": "^1.93.0",
     "standard": "^17.1.2",
     "style-dictionary": "^4.4.0",
@@ -154,10 +156,5 @@
     "vnu-jar": "23.4.11",
     "zod": "^3.25.76"
   },
-  "packageManager": "pnpm@10.7.0+sha512.6b865ad4b62a1d9842b61d674a393903b871d9244954f652b8842c2b553c72176b278f64c463e52d40fff8aba385c235c8c9ecf5cc7de4fd78b8bb6d49633ab6",
-  "pnpm": {
-    "overrides": {
-      "@chassis-ui/docs": "link:../chassis-docs/packages/docs"
-    }
-  }
+  "packageManager": "pnpm@10.7.0+sha512.6b865ad4b62a1d9842b61d674a393903b871d9244954f652b8842c2b553c72176b278f64c463e52d40fff8aba385c235c8c9ecf5cc7de4fd78b8bb6d49633ab6"
 }

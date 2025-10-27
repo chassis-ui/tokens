@@ -7,8 +7,6 @@ const semverRegex =
 export const zVersionMajorMinor = z.string().regex(/^\d+\.\d+$/)
 
 export const zVersionSemver = z.string().regex(new RegExp(`^${semverRegex.source}$`))
-export const zPrefixedVersionSemver = z
-  .string()
-  .regex(new RegExp(`^v${semverRegex.source}$`))
+export const zPrefixedVersionSemver = z.string().regex(new RegExp(`^v${semverRegex.source}$`))
 
 export const zLanguageCode = z.string().regex(/^[a-z]{2}(?:-[a-zA-Z]{2})?$/)

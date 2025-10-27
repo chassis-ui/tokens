@@ -10,6 +10,7 @@
       "@components/*": ["src/components/*"],
       "@layouts/*": ["src/layouts/*"],
       "@libs/*": ["src/libs/*"],
+      "@scss/*": ["src/scss/*"],
       "@shortcodes/*": ["src/components/shortcodes/*"]
     }
   }
