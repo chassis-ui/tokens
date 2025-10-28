@@ -10,17 +10,7 @@ import astroPlugin from 'eslint-plugin-astro'
 export default defineConfig([
   // Global ignores
   {
-    ignores: [
-      '**/*.min.js',
-      '**/dist/',
-      '**/vendor/',
-      '_site/',
-      'site/public/',
-      'site/.astro/',
-      'node_modules/',
-      '.cache/',
-      'reference/**/*.md'
-    ]
+    ignores: ['**/*.min.js', '**/dist/', '_site/', 'site/.astro/', 'site/public/', 'vendor/']
   },
   eslint.configs.recommended,
   tseslint.configs.eslintRecommended,

@@ -20,13 +20,6 @@ const dataDefinitions = {
       versions: z.union([zVersionSemver, zVersionMajorMinor]).array()
     })
     .array(),
-  plugins: z
-    .object({
-      description: z.string(),
-      link: z.string().startsWith('components/'),
-      name: z.string()
-    })
-    .array(),
   sidebar: z
     .object({
       title: z.string(),
@@ -38,14 +31,6 @@ const dataDefinitions = {
         })
         .array()
         .optional()
-    })
-    .array(),
-  translations: z
-    .object({
-      name: z.string(),
-      code: zLanguageCode,
-      description: z.string(),
-      url: z.string().url()
     })
     .array()
 } satisfies Record<string, DataSchema>

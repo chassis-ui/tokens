@@ -36,9 +36,9 @@ export default defineConfig({
           // chunkFileNames: 'assets/js/[name].[hash].js',
           assetFileNames: (assetInfo) => {
             if (assetInfo.name?.endsWith('.css')) {
-              return 'static/icons-docs/docs.[hash].css'
+              return 'static/tokens-docs/docs.[hash].css'
             }
-            return 'static/icons-docs/[name].[hash][extname]'
+            return 'static/tokens-docs/[name].[hash][extname]'
           }
         }
       }

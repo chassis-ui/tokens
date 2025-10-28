@@ -1,8 +1,5 @@
-*.scss
 *.css
+*.scss
 site/config.yml
-site/.astro
-site/dist
-site/public
 vendor/
-tokens/
+/tokens/
