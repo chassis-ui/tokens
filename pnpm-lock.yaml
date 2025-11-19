@@ -27,8 +27,8 @@ importers:
         specifier: github:chassis-ui/css#app/docs
         version: https://codeload.github.com/chassis-ui/css/tar.gz/3f90d1d43743a12c29637df43678044ab7c97168(@popperjs/core@2.11.8)
       '@chassis-ui/docs':
-        specifier: ^0.1.1
-        version: 0.1.1(@chassis-ui/css@https://codeload.github.com/chassis-ui/css/tar.gz/3f90d1d43743a12c29637df43678044ab7c97168(@popperjs/core@2.11.8))(@chassis-ui/icons@https://codeload.github.com/chassis-ui/icons/tar.gz/6b051e49e7102d3badf330e47b5de52e053e5039)(astro@5.15.1(@types/node@22.18.12)(rollup@4.52.5)(sass@1.93.2)(typescript@5.9.3)(yaml@2.8.1))
+        specifier: ^0.1.2
+        version: 0.1.2(astro@5.15.1(@types/node@22.18.12)(rollup@4.52.5)(sass@1.93.2)(typescript@5.9.3)(yaml@2.8.1))
       '@chassis-ui/icons':
         specifier: github:chassis-ui/icons#app/docs
         version: https://codeload.github.com/chassis-ui/icons/tar.gz/6b051e49e7102d3badf330e47b5de52e053e5039
@@ -533,14 +533,10 @@ packages:
     peerDependencies:
       '@popperjs/core': ^2.11.8
 
-  '@chassis-ui/docs@0.1.1':
-    resolution: {integrity: sha512-SXHLfAI6dmWwkQ2kz5794S9bXd1qks+g7umNCPSpzl3eABej+4TvQP59SavMZcMnewzc3gqlE6ph0rnHtzyM0Q==}
-    version: 0.1.1
+  '@chassis-ui/docs@0.1.2':
+    resolution: {integrity: sha512-7gyC5+KA+ZeguRI+3XK7gTFGyT9nnGJekP7PpXWLOCVB/N5ctxa4MT8QhF+VAa+foXUg6M8yIbSvdnASbrBIww==}
     peerDependencies:
-      '@chassis-ui/css': github:chassis-ui/css#app/docs
-      '@chassis-ui/icons': github:chassis-ui/icons#app/docs
-      '@chassis-ui/tokens': github:chassis-ui/tokens#app/docs
-      astro: ^4.0.0 || ^5.0.0
+      astro: ^5.0.0
 
   '@chassis-ui/icons@https://codeload.github.com/chassis-ui/icons/tar.gz/6b051e49e7102d3badf330e47b5de52e053e5039':
     resolution: {tarball: https://codeload.github.com/chassis-ui/icons/tar.gz/6b051e49e7102d3badf330e47b5de52e053e5039}
@@ -5967,10 +5963,8 @@ snapshots:
     dependencies:
       '@popperjs/core': 2.11.8
 
-  '@chassis-ui/docs@0.1.1(@chassis-ui/css@https://codeload.github.com/chassis-ui/css/tar.gz/3f90d1d43743a12c29637df43678044ab7c97168(@popperjs/core@2.11.8))(@chassis-ui/icons@https://codeload.github.com/chassis-ui/icons/tar.gz/6b051e49e7102d3badf330e47b5de52e053e5039)(astro@5.15.1(@types/node@22.18.12)(rollup@4.52.5)(sass@1.93.2)(typescript@5.9.3)(yaml@2.8.1))':
+  '@chassis-ui/docs@0.1.2(astro@5.15.1(@types/node@22.18.12)(rollup@4.52.5)(sass@1.93.2)(typescript@5.9.3)(yaml@2.8.1))':
     dependencies:
-      '@chassis-ui/css': https://codeload.github.com/chassis-ui/css/tar.gz/3f90d1d43743a12c29637df43678044ab7c97168(@popperjs/core@2.11.8)
-      '@chassis-ui/icons': https://codeload.github.com/chassis-ui/icons/tar.gz/6b051e49e7102d3badf330e47b5de52e053e5039
       astro: 5.15.1(@types/node@22.18.12)(rollup@4.52.5)(sass@1.93.2)(typescript@5.9.3)(yaml@2.8.1)
 
   '@chassis-ui/icons@https://codeload.github.com/chassis-ui/icons/tar.gz/6b051e49e7102d3badf330e47b5de52e053e5039': {}
@@ -8177,7 +8171,7 @@ snapshots:
     dependencies:
       eslint: 9.38.0
 
-  eslint-config-standard-jsx@11.0.0(eslint-plugin-react@7.37.5(eslint@8.57.1))(eslint@8.57.1):
+  eslint-config-standard-jsx@11.0.0(eslint-plugin-react@7.37.5(eslint@9.38.0))(eslint@8.57.1):
     dependencies:
       eslint: 8.57.1
       eslint-plugin-react: 7.37.5(eslint@8.57.1)
@@ -11144,7 +11138,7 @@ snapshots:
     dependencies:
       eslint: 8.57.1
       eslint-config-standard: 17.1.0(eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.46.2(eslint@9.38.0)(typescript@5.9.3))(eslint@9.38.0))(eslint-plugin-n@15.7.0(eslint@9.38.0))(eslint-plugin-promise@6.6.0(eslint@9.38.0))(eslint@8.57.1)
-      eslint-config-standard-jsx: 11.0.0(eslint-plugin-react@7.37.5(eslint@8.57.1))(eslint@8.57.1)
+      eslint-config-standard-jsx: 11.0.0(eslint-plugin-react@7.37.5(eslint@9.38.0))(eslint@8.57.1)
       eslint-plugin-import: 2.32.0(@typescript-eslint/parser@8.46.2(eslint@9.38.0)(typescript@5.9.3))(eslint@8.57.1)
       eslint-plugin-n: 15.7.0(eslint@8.57.1)
       eslint-plugin-promise: 6.6.0(eslint@8.57.1)
