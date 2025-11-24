@@ -1392,7 +1392,7 @@
       },
       "collapsed-w": {
         "$type": "sizing",
-        "$value": "{size.base.72}"
+        "$value": "{size.base.64}"
       }
     }
   },
@@ -1615,14 +1615,6 @@
       "small-gap": {
         "$type": "spacing",
         "$value": "{space.base.16}"
-      },
-      "sidebar-expanded": {
-        "$type": "spacing",
-        "$value": "{size.sidebar.expanded-w}"
-      },
-      "sidebar-collapsed": {
-        "$type": "spacing",
-        "$value": "{size.sidebar.collapsed-w}"
       }
     }
   },
