@@ -33,8 +33,8 @@
     },
     "build": {
       "brands": [
-        "chassis",
-        "test"
+        "default",
+        "mundi"
       ],
       "themes": [
         "light",
@@ -46,10 +46,18 @@
         "small"
       ],
       "apps": {
-        "docs": [
-          "web"
+        "default": [
+          "web",
+          "ios",
+          "android"
         ],
-        "test": [
+        "mobile": [
+          "web",
+          "ios",
+          "android"
+        ],
+        "web": [
+          "web",
           "ios",
           "android"
         ]
@@ -68,7 +76,7 @@
     "test": "pnpm tokens:test",
     "validate": "node build/build.js validate",
     "tokens": "pnpm tokens:build",
-    "tokens:build": "node build/tokens/build.js --brand chassis --app docs",
+    "tokens:build": "node build/tokens/build.js --brand mundi",
     "tokens:build:all": "node build/tokens/build.js",
     "tokens:lint": "eslint --cache --cache-location .cache/.eslintcache build/tokens",
     "tokens:test": "vitest run --dir build/tokens/test",

@@ -1,0 +1,194 @@
+{
+  "figma": {
+    "switch": {
+      "app": {
+        "mode-1": {
+          "$type": "boolean",
+          "$value": "false"
+        },
+        "mode-2": {
+          "$type": "boolean",
+          "$value": "true"
+        }
+      }
+    }
+  },
+  "font": {
+    "notification": {
+      "title": {
+        "$type": "typography",
+        "$value": "{font.text.medium.strong}"
+      },
+      "message": {
+        "$type": "typography",
+        "$value": "{font.text.small.normal}"
+      }
+    }
+  },
+  "size": {
+    "button": {
+      "medium-main": {
+        "$type": "sizing",
+        "$value": "{size.base.48}"
+      },
+      "medium-icon": {
+        "$type": "sizing",
+        "$value": "{size.base.24}"
+      },
+      "medium-caret": {
+        "$type": "sizing",
+        "$value": "{size.base.20}"
+      },
+      "large-main": {
+        "$type": "sizing",
+        "$value": "{size.base.48}"
+      },
+      "large-icon": {
+        "$type": "sizing",
+        "$value": "{size.base.28}"
+      },
+      "large-caret": {
+        "$type": "sizing",
+        "$value": "{size.base.24}"
+      },
+      "small-main": {
+        "$type": "sizing",
+        "$value": "{size.base.32}"
+      },
+      "small-icon": {
+        "$type": "sizing",
+        "$value": "{size.base.16}"
+      },
+      "small-caret": {
+        "$type": "sizing",
+        "$value": "{size.base.12}"
+      }
+    },
+    "notification": {
+      "icon": {
+        "$type": "sizing",
+        "$value": "{size.base.20}"
+      }
+    }
+  },
+  "space": {
+    "button": {
+      "medium-padding-y": {
+        "$type": "spacing",
+        "$value": "{space.base.12}"
+      },
+      "medium-padding-x": {
+        "$type": "spacing",
+        "$value": "{space.base.16}"
+      },
+      "medium-gap": {
+        "$type": "spacing",
+        "$value": "{space.base.0}"
+      },
+      "medium-nudge": {
+        "$type": "spacing",
+        "$value": "{space.base.8}"
+      },
+      "large-padding-y": {
+        "$type": "spacing",
+        "$value": "{space.base.10}"
+      },
+      "large-padding-x": {
+        "$type": "spacing",
+        "$value": "{space.base.20}"
+      },
+      "large-gap": {
+        "$type": "spacing",
+        "$value": "{space.base.0}"
+      },
+      "large-nudge": {
+        "$type": "spacing",
+        "$value": "{space.base.12}"
+      },
+      "small-padding-y": {
+        "$type": "spacing",
+        "$value": "{space.base.4}"
+      },
+      "small-padding-x": {
+        "$type": "spacing",
+        "$value": "{space.base.8}"
+      },
+      "small-gap": {
+        "$type": "spacing",
+        "$value": "{space.base.0}"
+      },
+      "small-nudge": {
+        "$type": "spacing",
+        "$value": "{space.base.8}"
+      }
+    },
+    "notification": {
+      "padding-y": {
+        "$type": "spacing",
+        "$value": "{space.base.8}"
+      },
+      "padding-x": {
+        "$type": "spacing",
+        "$value": "{space.base.12}"
+      },
+      "gap": {
+        "$type": "spacing",
+        "$value": "{space.base.12}"
+      }
+    }
+  },
+  "typography": {
+    "fontSize": {
+      "button": {
+        "large": {
+          "$type": "fontSizes",
+          "$value": "{typography.fontSize.text.large}"
+        },
+        "medium": {
+          "$type": "fontSizes",
+          "$value": "{typography.fontSize.text.medium}"
+        },
+        "small": {
+          "$type": "fontSizes",
+          "$value": "{typography.fontSize.text.medium}"
+        }
+      },
+      "notification": {
+        "title": {
+          "$type": "fontSizes",
+          "$value": "{typography.fontSize.text.medium}"
+        },
+        "message": {
+          "$type": "fontSizes",
+          "$value": "{typography.fontSize.text.small}"
+        }
+      }
+    },
+    "lineHeight": {
+      "button": {
+        "large": {
+          "$type": "lineHeights",
+          "$value": "{typography.lineHeight.text.large}"
+        },
+        "medium": {
+          "$type": "lineHeights",
+          "$value": "{typography.lineHeight.text.medium}"
+        },
+        "small": {
+          "$type": "lineHeights",
+          "$value": "{typography.lineHeight.text.medium}"
+        }
+      },
+      "notification": {
+        "title": {
+          "$type": "lineHeights",
+          "$value": "{typography.lineHeight.text.medium}"
+        },
+        "message": {
+          "$type": "lineHeights",
+          "$value": "{typography.lineHeight.text.small}"
+        }
+      }
+    }
+  }
+}
