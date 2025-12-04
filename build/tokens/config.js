@@ -127,7 +127,7 @@ function generateFiles(platform, theme, screen) {
   }
 
   const formatMap = {
-    scss: 'cx/scss-variables',
+    scss: 'cx/scss-references',
     swift: 'cx/ios-swift-class',
     xml: 'cx/android-resources'
   }

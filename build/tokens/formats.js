@@ -12,6 +12,7 @@ import { fileHeader, sortByName, setSwiftFileProperties } from 'style-dictionary
 import androidResourcesTemplate from './templates/android-resources.template.js'
 import iosSwiftClassTemplate from './templates/ios-swift-class.template.js'
 import scssVariablesTemplate from './templates/scss-variables.template.js'
+import scssReferencesTemplate from './templates/scss-references.template.js'
 
 /**
  * Registers custom formats with Style Dictionary.
@@ -46,6 +47,20 @@ export default function (StyleDictionary) {
       dictionary.allTokens = [...dictionary.allTokens]
       // .sort(sortByName)
       return scssVariablesTemplate({ dictionary, options, file, header })
+    }
+  })
+
+  /**
+   * A format to generate SCSS variables using references.
+   */
+  StyleDictionary.registerFormat({
+    name: 'cx/scss-references',
+    format: async function ({ dictionary, options, file }) {
+      const { formatting, commentStyle } = options
+      const header = await fileHeader({ file, formatting, commentStyle })
+      dictionary.allTokens = [...dictionary.allTokens]
+      // .sort(sortByName)
+      return scssReferencesTemplate({ dictionary, options, file, header })
     }
   })
 
