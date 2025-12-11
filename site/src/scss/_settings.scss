@@ -30,4 +30,5 @@ $enable-visited-links:          false !default;
 // fusv-enable
 
 // Import tokens from the Chassis Tokens package
-@import "../../../dist/web/chassis-docs/main";
+@import "../../../dist/web/mundi-web/color-light";
+@import "../../../dist/web/mundi-web/main";

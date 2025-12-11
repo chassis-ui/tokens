@@ -51,7 +51,14 @@ function resolveBasicTypographyValue(token, dictionary) {
   const fontSize = splitReference(token.original.$value.fontSize)[3]
 
   const originals = {
+    fontWeight: token.original.$value.fontWeight,
     fontStyle: token.original.$value.fontStyle,
+    fontSize: resolveReferences(token.original.$value.fontSize, dictionary.tokens, {
+      usesDtcg
+    }),
+    lineHeight: resolveReferences(token.original.$value.lineHeight, dictionary.tokens, {
+      usesDtcg
+    }),
     letterSpacing: resolveReferences(token.original.$value.letterSpacing, dictionary.tokens, {
       usesDtcg
     }),
@@ -66,10 +73,10 @@ function resolveBasicTypographyValue(token, dictionary) {
 
   return `(${[
     `"font-family": ${prefix}-typography-font-family-${fontFamily}`,
-    `"font-weight": ${prefix}-typography-font-weight-${fontFamily}-${fontWeight}-weight`,
-    `"font-size": ${prefix}-typography-font-size-${fontFamily}-${fontSize}`,
-    `"line-height": ${prefix}-typography-line-height-${fontFamily}-${lineHeight}`,
-    `"font-style": ${prefix}-typography-font-weight-${fontFamily}-${fontWeight}-style`,
+    `"font-weight": ${originals.fontWeight}`,
+    `"font-size": ${originals.fontSize}`,
+    `"line-height": ${originals.lineHeight}`,
+    `"font-style": ${originals.fontStyle}`,
     `"letter-spacing": ${parseFloat(originals.letterSpacing)}`,
     `"margin-bottom": ${originals.paragraphSpacing}`,
     `"text-transform": ${originals.textCase}`,
@@ -98,12 +105,12 @@ function resolveContextTypographyValue(token, dictionary) {
 
   const fontSize =
     referenceFs && referenceFs.$type === 'fontSize'
-      ? `${prefix}-typography-font-size-${referenceFs.path[2]}-${referenceFs.path[3]})`
+      ? `${prefix}-typography-font-size-${referenceFs.path[2]}-${referenceFs.path[3]}`
       : referenceFs.$value
   // If the reference is a percentage, convert it to a decimal
   const lineHeight =
     referenceLh && referenceLh.$type === 'lineHeight'
-      ? `${prefix}-line-height-${referenceLh.path[2]}-${referenceLh.path[3]})`
+      ? `${prefix}-typography-line-height-${referenceLh.path[2]}-${referenceLh.path[3]}`
       : referenceLh.$value
         ? referenceLh.$value
         : referenceLh.endsWith('%')
