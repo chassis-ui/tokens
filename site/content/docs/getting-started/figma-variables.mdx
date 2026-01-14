@@ -1,0 +1,193 @@
+---
+title: Figma Variables 
+description: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+toc: true
+---
+
+# Overview
+
+Figma Variables are a feature within Figma that allows designers to create and manage design tokens directly in their design files. They enable the use of consistent styles such as colors, typography, and spacing across different components and designs. By utilizing Figma Variables, teams can ensure design consistency and streamline the handoff process to developers.
+
+## Theming System
+
+Token Studio's theming system lets you create and manage multiple design variations using Theme Groups and Theme Options. 
+
+**Theme Groups** are collections of theme options that share a common set of tokens but can have different values for specific tokens. Theme groups are synced to Figma as Variable Collections.
+
+**Theme Options** are individual themes within a Theme Group that enable or disable specific token sets. These are synced to Figma as Variable Modes.
+
+```
+Brand (Theme Group)
+  ├── Brand A
+  │     ├── Enables: brand-base.json
+  │     └── Enables: brand-a.json
+  └── Brand B
+        ├── Enables: brand-base.json
+        └── Enables: brand-b.json
+Theme (Theme Group)
+  ├── Light
+  │     ├── Enables: theme-base.json
+  │     └── Enables: theme-light.json
+  └── Dark
+        ├── Enables: theme-base.json
+        └── Enables: theme-dark.json
+App (Theme Group)
+  ├── Web
+  │     ├── Enables: app-base.json
+  │     └── Enables: app-web.json
+  └── Mobile
+        ├── Enables: app-base.json
+        └── Enables: app-mobile.json
+```
+
+See the Tokens Studio [documentation](https://documentation.tokens.studio/platform/themes/theme-groups-and-theme-options) for more details on how to set up and use themes.
+
+Chassis Tokens use 3 main theme groups for its core functionality: Brand, Theme, and App.
+
+### Brand Group
+
+The Brand group contains the foundational tokens that define your brand's visual identity including colors, typography, and border radius. These are the base values that inform all other tokens in the system.
+
+<Callout type="warning">
+Tokens in brand group are typically *not used directly* in the UI. Instead, they serve as the source values referenced by tokens in other theme groups. This separation ensures you can change your color, typography, and border styling based on brand in one place, and all dependent tokens in other groups automatically update.
+</Callout>
+
+#### Color Tokens
+
+Each brand set represents different brand identities (Brand A, Brand B, Brand C, etc.) and contains the complete color palette for that brand across all color mode variations.
+
+- `color.base.palette.light.primary.base` - Primary color for light theme
+- `color.base.palette.dark.primary.base` - Primary color for dark theme
+- `color.base.palette.light.neutral.50` - Gray-50 for light theme
+- `color.base.palette.dark.neutral.50` - Gray-50 for dark theme
+
+These tokens are then referenced by actual color tokens in the Theme group to create context-specific colors (foreground, background, border, etc.) for each theme mode.
+
+This structure allows you to **switch brands independently** from theme selection. You can view Brand A in light mode, then switch to Brand B while staying in light mode—all without changing the theme mode itself.
+
+See the [Design Tokens]([[docsref:/design-tokens/color-tokens]]) page for more details on how color system works.
+
+#### Typography Tokens
+
+Each brand set also defines font-family and font-weight tokens that represent the typography styles for that brand.
+
+- `typography.fontFamily.text` - Text font for the brand theme
+- `typography.fontFamily.display` - Display font for the brand theme
+- `typography.fontWeight.text.normal` - Default font weight for text font of the brand theme
+- `typography.fontWeight.display.elegant` - light font weight for display font of the brand theme
+
+These tokens will be referenced by composite font tokens in the App group to create composite typography styles used in components.
+
+#### Border Tokens
+
+Each brand set defines border radius tokens that represent the corner rounding styles for that brand.
+
+- `borderRadius.base.small` - Small border radius for the brand theme
+- `borderRadius.base.medium` - Medium border radius for the brand theme
+- `borderRadius.base.large` - Large border radius for the brand theme
+
+These tokens will be referenced by actual border tokens in the App group to ensure consistent corner rounding depending on brand identity across all UI elements.
+
+Chassis assumes all applications will use the same border radius values for a brand. If you want to customize border radius per application, you can create additional border radius tokens with different name patterns and update the references in App group.
+
+### Theme Group
+
+The **Theme Group** contains color tokens organized by theme mode (light, dark, high contrast, etc.). These are the color tokens **we use** while designing our UI and building the components. 
+
+Each color token in the Theme Group directly references corresponding color tokens from the Brand Group without any processing or transparency modifications.
+
+<Callout type="info" title="Why separate Brand and Theme groups?">
+Since Figma does not allow to applying transparency to color variable aliases, Chassis Tokens defines all color tokens in the Brand Group and directly references them in the Theme Group.
+</Callout>
+
+When we switch brand modes in Figma, the Theme Group tokens automatically update to reference the appropriate brand colors for that mode, ensuring our designs maintain proper color and transparency across all theme variations.
+
+#### Example Chain
+
+For solid colors:
+
+```
+color.context.primary.fg-main - (Theme)
+↓
+color.base.context.light.primary.fg-main - (Brand)
+↓
+color.base.context.light.primary.60 - (Brand)
+```
+
+For transparency colors:
+
+```
+color.context.primary.fg-subtle - (Theme)
+↓
+color.base.context.light.primary.fg-subtle - (Brand)
+↓
+rgba({color.base.context.light.primary.fg-main}, {opacity.context.fg-subtle}) - (Brand)
+```
+This architecture allows us to switch both brand and color modes **independently**. Changing from Brand A to Brand B keeps the same light/dark theme, and switching from light to dark mode keeps the same brand.
+
+
+### App Group
+
+The **App Group** contains tokens specifically designed for use in components and application interfaces. These are the tokens you'll reference when building UI components and layouts.
+
+- Each color token in the App Group typically references corresponding tokens from the Theme Group to ensure consistency across different themes and brands.
+- Composite typography tokens in the App Group reference typography tokens from the Brand Group to create complete text styles used in components.
+- Border radius tokens in the App Group reference border radius tokens from the Brand Group to ensure consistent corner rounding across all UI elements.
+
+#### Example Chain
+
+Tokens in the App Group reference tokens in the Theme Group, which in turn reference tokens in the Brand Group. This creates a clear chain of dependencies that allows for maximum flexibility and adaptability.
+
+Color chain for a button state:
+
+```
+color.button.primary.bg-hover - (App)
+↓
+color.palette.primary.60 - (Theme)
+↓
+color.base.palette.light.primary.60 - (Brand)
+↓
+#0066FF
+```
+
+Typography chain for a button label:
+
+```
+font.button.medium (App Group)
+↓
+font.text.medium.strong (App Group)
+↓
+Composite:
+- fontFamily: {typography.fontFamily.text} - (Brand)
+- fontWeight: {typography.fontWeight.text.strong} - (Brand)
+- lineHeight: {typography.lineHeight.text.medium} - (App)
+- fontSize: {typography.fontSize.text.medium} - (App)
+- letterSpacing: {typography.letterSpacing.base.zero} - (App)
+- paragraphSpacing: {typography.paragraphSpacing.base.zero} - (App)
+- textCase: {typography.textCase.base.none} - (App)
+- textDecoration: {typography.textDecoration.base.none} - (App)
+
+```
+
+When we switch color or brand modes in Figma, the entire chain updates automatically, and all components reflect the new colors and typography.
+
+## Sync to Figma
+
+Tokens Studio's Figma plugin allows you to sync your token sets and themes directly into Figma as Variables. 
+
+When syncing, each Theme Group becomes a Variable Collection in Figma, and each Theme Option within that group becomes a Variable Mode. This structure allows designers to easily switch between different themes and brands directly within Figma, ensuring that designs always use the correct tokens.
+
+### Tokens to Variables
+
+When syncing tokens to Figma, Tokens Studio maps most of the design tokens to Figma Variables based on their type and usage.
+
+- Color tokens are synced as Color Variables.
+- Sizing & Spacing tokens are synced as Number Variables with pixel units.
+- Typography tokens (font sizes, line heights, etc.) are synced as Number Variables with pixel units.
+
+### Tokens to styles
+
+Tokens Studio can also sync certain design tokens as Figma Styles, such as text styles and effect styles. This allows designers to apply consistent styles across their designs using the defined design tokens.
+
+- Composite typography tokens starting with `font` are synced as Text Styles.
+- Shadow tokens starting with `effect` are synced as Effect Styles.

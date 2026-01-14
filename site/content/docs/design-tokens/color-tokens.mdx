@@ -1,0 +1,47 @@
+---
+title: Color Tokens
+description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+toc: true
+---
+
+## Overview
+
+Color tokens are predefined color values used throughout the design system to ensure consistency and accessibility. They represent various colors for backgrounds, text, borders, and other UI elements.
+
+## Palette colors
+
+Seven colors are defined by default based on brand identity and UI context, with primitive color palettes created for each.
+
+- primary
+- secondary
+- neutral
+- danger
+- success
+- warning
+- info
+
+### Key colors
+
+Each color has a key value that represents its base shade (usually 50), contrast color and transparency.
+
+`color.palette.[color-name].base` is used for generating other shades of the color using Token Studio extensions.
+
+`color.palette.[color-name].contrast` is used for text or elements that are placed on top of the base color to ensure readability and accessibility.
+
+`color.palette.[color-name].transparent` is used for creating gradient effects or overlays with varying levels of opacity.
+
+### Solid colors
+
+Each color have 11 shades ranging from 10 to 90 in addition of 05 (lightest) and 95 (darkest). These shades are automatically created by the color processor extension of Token Studio by default. Each can be overridden manually if needed.
+
+`color.palette.[color-name].50` is directly referencing the base color.
+
+### Transparency colors
+
+Each color also have 11 transparency of its solid 50 value ranging from 10 to 90 in addition of 05 (highest) and 95 (lowest). These transparency values are created by applying [opacity tokens]([[docsref:/design-tokens/opacity-tokens]]) to the base color. They are useful for creating overlays, highlights, and other visual effects.
+
+Since they are named with their solid value like `color.palette.[color-name].t5050`, it is possible to create custom transparency values by applying different opacity tokens to other solid shades if needed. 
+
+Eg. `color.palette.[color-name].t9550` may be created by applying `opacity.base.50` to `color.palette.[color-name].95`.
+
+## Context colors
