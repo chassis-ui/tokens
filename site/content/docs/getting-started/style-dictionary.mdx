@@ -1,101 +1,748 @@
 ---
 title: Style Dictionary
-description: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+description: Transform design tokens into platform-specific formats with Style Dictionary
 toc: true
 ---
 
-# Overview
+## Overview
 
-Style Dictionary is a build system that allows you to define styles once and use them across multiple platforms. It helps in maintaining consistency in design by transforming design tokens into platform-specific formats such as CSS, JSON, XML, and more. This ensures that your design tokens are easily accessible and usable in different development environments.
+Style Dictionary is a build system that transforms design tokens into platform-specific formats for use in code. It takes the design tokens defined in Tokens Studio and generates CSS, SCSS, JavaScript, Swift, Android XML, and other formats tailored for different platforms and environments.
 
-## 1. Source of Truth
+Chassis Tokens uses Style Dictionary to transform tokens into production-ready code that developers can use across web, iOS, and Android applications.
 
-- **Tokens are defined in JSON files** under the `tokens/` directory.
-- Each token set can represent a brand, theme, app, or screen size.
-- `$themes.json` describes all available theme permutations.
+<Callout type="info" title="Note">
+Style Dictionary works hand-in-hand with Tokens Studio. While Tokens Studio manages token definitions and syncs to Figma, Style Dictionary transforms these tokens into code that developers can use in their applications.
+</Callout>
 
-## 2. Build Orchestration
+## Prerequisites
 
-- The main build script is `build/tokens/build.js`.
-- It uses [Style Dictionary](https://amzn.github.io/style-dictionary/) and [@tokens-studio/sd-transforms](https://github.com/tokens-studio/sd-transforms) for transformation logic.
-- The build can be filtered by CLI parameters:
-  ```sh
-  pnpm tokens --brand=chassis --theme=light --app=docs --screen=large
-  ```
+Before working with Style Dictionary in Chassis Tokens, ensure we have the following:
 
-## 3. Task Generation
+- **Node.js**: Version 18 or higher required for running the build scripts.
+- **pnpm**: Package manager used by Chassis Tokens. Install with `npm install -g pnpm`.
+- **Git Repository Access**: Clone or fork the Chassis Tokens repository to access the build configuration.
+- **Token Files**: Design tokens must be present in the `tokens/` directory (managed by Tokens Studio).
 
-- The build script generates a list of transformation tasks for all combinations of:
-  - **Brand** (e.g., `chassis`)
-  - **Theme** (e.g., `light`, `dark`)
-  - **App** (e.g., `docs`)
-  - **Screen** (e.g., `small`, `large`)
-- Each task defines:
-  - The source token files
-  - The output platform (web, iOS, Android, etc.)
-  - The output file(s) and format(s)
+### Installation
 
-## 4. Transformation Steps
+After cloning the repository, install dependencies:
 
-1. **Preprocessing**
-   Custom preprocessors (e.g., `cx/global`) can modify tokens before transformation.
-2. **Filtering**
-   Only relevant tokens for the current brand/theme/app/screen are included.
-3. **Transforms**
-   Custom and standard transforms (e.g., color conversion, size scaling) are applied.
-4. **Formatting**
-   Output files are generated in the required format (SCSS variables, CSS custom properties, Swift, XML, etc.).
-5. **File Headers**
-   Each output file includes a standard header with version and license info.
-
-## 5. Output
-
-- **Web:** SCSS/CSS files in `icons/package/` and `build/`
-- **iOS:** Swift files
-- **Android:** XML files
-- **Other platforms** as configured
-
-## 6. Customization
-
-- **Add new brands/themes/apps/screens** by editing `package.json` and `tokens/$themes.json`.
-- **Add new transforms/filters/formats** in `build/tokens/transforms.js`, `filters.js`, and `formats.js`.
-- **Configure output** in `build/tokens/config.js`.
-
-## 7. Example: Adding a New Theme
-
-1. Add the theme to `package.json` under `chassis.build.themes`.
-2. Add the theme permutation to `tokens/$themes.json`.
-3. Add or update token files in `tokens/`.
-4. Run the build:
-   ```sh
-   pnpm tokens --theme=newtheme
-   ```
-
-## 8. CLI Usage
-
-- **Build all tokens:**
-  `pnpm tokens`
-- **Build for a specific brand/theme/app/screen:**
-  `pnpm tokens --brand=chassis --theme=dark --app=docs --screen=large`
-
-## 9. Extending the System
-
-- **Add new output platforms** by updating `config.js` and providing new formatters.
-- **Integrate with Figma/Token Studio** by updating token import scripts.
-
-## 10. Troubleshooting
-
-- **Deprecation warnings:** See the build output and update your tokens or config as needed.
-- **Custom transforms/filters:** Ensure they are registered in the build script.
-
-## References
-
-- [Style Dictionary Documentation](https://amzn.github.io/style-dictionary/)
-- [Tokens Studio SD Transforms](https://github.com/tokens-studio/sd-transforms)
-- [Chassis Tokens GitHub](https://github.com/chassis-ui/tokens)
-
-**For more details, see the source code in `build/tokens/` and the README in the project root.**
-
+```bash
+pnpm install
 ```
 
+This installs Style Dictionary along with custom transforms and the Tokens Studio SD Transforms plugin.
+
+## Build System
+
+The Style Dictionary build system in Chassis Tokens is configured to handle multi-brand, multi-theme, and multi-platform token generation. The build process transforms tokens based on brand, application, platform, theme, and screen size variations.
+
+### Build Configuration
+
+The build system is defined in `build/tokens/` directory with the following structure:
+
+- **build.js**: Main build orchestrator that registers extensions and processes configurations
+- **config.js**: Platform-specific settings and file generation logic
+- **transforms.js**: Custom value transformations (px, rem, vw, etc.)
+- **filters.js**: Token filtering logic for selective output
+- **formats.js**: Output format templates (SCSS, Swift, Android XML)
+- **preprocessor.js**: Token preprocessing before transformation
+- **templates/**: Custom format templates for each platform
+
+### Build Options
+
+Build options are defined in `package.json` under the `chassis` key:
+
+```json
+{
+  "chassis": {
+    "defaults": {
+      "theme": "light",
+      "screen": "large"
+    },
+    "build": {
+      "brands": ["chassis", "test"],
+      "themes": ["light", "dark"],
+      "screens": ["large", "medium", "small"],
+      "apps": {
+        "docs": ["web"],
+        "test": ["ios", "android"]
+      }
+    }
+  }
+}
 ```
+
+This configuration defines:
+- **Default theme and screen**: Used when specific values aren't provided
+- **Brands**: Available brand identities to build
+- **Themes**: Color mode variations to generate
+- **Screens**: Responsive breakpoint sizes
+- **Apps**: Applications and their target platforms
+
+## Running the Build
+
+The build system provides several npm scripts for different use cases.
+
+### Build Specific Brand and App
+
+Build tokens for a specific brand and application:
+
+```bash
+pnpm tokens:build
+```
+
+This runs the default build command defined in `package.json`:
+
+```bash
+node build/tokens/build.js --brand chassis --app docs
+```
+
+### Build All Combinations
+
+Build tokens for all brand, theme, app, and screen combinations:
+
+```bash
+pnpm tokens:build:all
+```
+
+This generates tokens for every possible combination defined in the build options.
+
+### Filtered Builds
+
+Use CLI arguments to build specific combinations:
+
+```bash
+# Build specific brand
+node build/tokens/build.js --brand chassis
+
+# Build specific themes
+node build/tokens/build.js --theme light,dark
+
+# Build specific application
+node build/tokens/build.js --app docs
+
+# Build specific screens
+node build/tokens/build.js --screen large,medium
+
+# Combine multiple filters
+node build/tokens/build.js --brand chassis --theme light --app docs
+```
+
+### Build Output
+
+Generated files are placed in the `dist/` directory organized by platform:
+
+```
+dist/
+├── web/
+│   └── chassis-docs/
+│       ├── main.scss              (base tokens)
+│       ├── string.scss            (string tokens)
+│       ├── color-light.scss       (light theme colors)
+│       ├── color-dark.scss        (dark theme colors)
+│       ├── number-large.scss      (large screen sizes)
+│       ├── number-medium.scss     (medium screen sizes)
+│       └── number-small.scss      (small screen sizes)
+├── ios/
+│   └── chassis-test/
+│       ├── main.swift
+│       ├── string.swift
+│       └── ...
+└── android/
+    └── chassis-test/
+        ├── main.xml
+        ├── string.xml
+        └── ...
+```
+
+## Platform Support
+
+Chassis Tokens supports multiple platforms with tailored transformations for each.
+
+### Web Platform
+
+The web platform generates SCSS variable files with three size unit variations:
+
+#### Standard Web (REM units)
+
+Default web output with rem units for responsive sizing:
+
+```scss
+$cx-size-button-medium-height: 2.5rem;
+$cx-space-component-padding-x: 1rem;
+$cx-color-button-primary-bg-default: #0066ff;
+```
+
+**Configuration:**
+- Transform group: `web`
+- Base font size: 16px
+- Size transform: `cx/size/rem`
+
+#### Web with Pixels
+
+Alternative output with pixel units:
+
+```scss
+$cx-size-button-medium-height: 40px;
+$cx-space-component-padding-x: 16px;
+```
+
+**Configuration:**
+- Transform group: `web-px`
+- Size transform: `cx/size/px`
+
+#### Web with Viewport Width
+
+Output with vw units for fluid scaling:
+
+```scss
+$cx-size-button-medium-height: 2.083vw;
+$cx-space-component-padding-x: 0.833vw;
+```
+
+**Configuration:**
+- Transform group: `web-vw`
+- Base font size: 16px
+- Size transform: `cx/size/vw`
+
+<Callout type="info">
+Choose the unit system that matches your project's scaling strategy. REM units are recommended for most web projects as they respect user font size preferences.
+</Callout>
+
+### iOS Platform
+
+Generates Swift class files with native iOS types:
+
+```swift
+import UIKit
+
+public class Tokens {
+    public static let sizeButtonMediumHeight: CGFloat = 40
+    public static let spaceComponentPaddingX: CGFloat = 16
+    public static let colorButtonPrimaryBgDefault: UIColor = UIColor(red: 0.00, green: 0.40, blue: 1.00, alpha: 1.0)
+}
+```
+
+**Configuration:**
+- Naming convention: PascalCase
+- Color output: UIColor with RGBA
+- Imports: UIKit
+
+### Android Platform
+
+Generates Android XML resource files:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+  <dimen name="size_button_medium_height">40dp</dimen>
+  <dimen name="space_component_padding_x">16dp</dimen>
+  <color name="color_button_primary_bg_default">#0066FF</color>
+</resources>
+```
+
+**Configuration:**
+- Naming convention: snake_case
+- Size units: dp (density-independent pixels)
+- Color format: Hex
+
+## File Organization
+
+Style Dictionary generates different file types based on token categories to optimize loading and usage.
+
+### Base Files
+
+Contains all tokens except color and number tokens:
+
+```scss
+// main.scss
+$cx-font-button-medium: 'Inter', system-ui, sans-serif;
+$cx-shadow-button-focus: 0 0 0 4px rgba(0, 102, 255, 0.2);
+```
+
+**Includes:**
+- Typography tokens
+- Shadow tokens
+- Gradient tokens
+- Other non-color, non-number tokens
+
+### String Files
+
+Contains only string-type tokens:
+
+```scss
+// string.scss
+$cx-typography-font-family-text: 'Inter';
+$cx-typography-font-family-display: 'Playfair Display';
+```
+
+### Theme Color Files
+
+Separate files for each color theme to enable efficient theme switching:
+
+```scss
+// color-light.scss
+$cx-color-button-primary-bg-default: #0066ff;
+$cx-color-button-primary-fg-default: #ffffff;
+
+// color-dark.scss
+$cx-color-button-primary-bg-default: #3399ff;
+$cx-color-button-primary-fg-default: #000000;
+```
+
+<Callout type="tip" title="Performance Tip">
+Loading theme-specific color files separately allows dynamic theme switching without loading all color variations upfront.
+</Callout>
+
+### Screen Size Files
+
+Separate files for each screen size breakpoint:
+
+```scss
+// number-large.scss
+$cx-space-screen-margin-x: 4rem;
+$cx-size-container-max-width: 80rem;
+
+// number-medium.scss
+$cx-space-screen-margin-x: 2rem;
+$cx-size-container-max-width: 60rem;
+
+// number-small.scss
+$cx-space-screen-margin-x: 1rem;
+$cx-size-container-max-width: 100%;
+```
+
+## Transforms
+
+Transforms modify token values during the build process. Chassis Tokens includes both built-in and custom transforms.
+
+### Built-in Transforms
+
+From Style Dictionary and Tokens Studio SD Transforms:
+
+- **name/kebab**: Converts token names to kebab-case (`size-button-medium`)
+- **name/pascal**: Converts token names to PascalCase (`SizeButtonMedium`)
+- **name/snake**: Converts token names to snake_case (`size_button_medium`)
+- **ts/resolveMath**: Resolves mathematical expressions in token values
+- **ts/color/modifiers**: Applies color modification extensions from Tokens Studio
+- **ts/color/css/hexrgba**: Converts colors to CSS hex or rgba format
+- **ts/typography/fontWeight**: Maps font weight names to numeric values
+
+### Custom Transforms
+
+Chassis-specific transforms defined in `transforms.js`:
+
+#### Size Transforms
+
+**cx/size/px** - Converts size values to pixels:
+
+```javascript
+// Input:  24
+// Output: 24px
+```
+
+**cx/size/rem** - Converts size values to rem units:
+
+```javascript
+// Input:  24 (with basePxFontSize: 16)
+// Output: 1.5rem
+```
+
+**cx/size/vw** - Converts size values to viewport width units:
+
+```javascript
+// Input:  24 (with basePxFontSize: 16)
+// Output: 1.25vw
+```
+
+#### Typography Transforms
+
+**cx/typography/web** - Formats typography tokens for web:
+
+```javascript
+// Handles font family, size, weight, line height, letter spacing, etc.
+```
+
+#### Shadow Transforms
+
+**cx/shadow/web** - Formats box shadow tokens for CSS:
+
+```javascript
+// Input:  { offsetX: 0, offsetY: 4, blur: 8, spread: 0, color: '#000000' }
+// Output: '0 4px 8px 0 #000000'
+```
+
+<Callout type="info">
+All custom transforms are applied conditionally based on token type and platform configuration to ensure correct output.
+</Callout>
+
+## Filters
+
+Filters determine which tokens are included in output files. Chassis Tokens uses custom filters to organize tokens by category.
+
+### Available Filters
+
+**cx/allTokens** - Includes all tokens except specific categories:
+
+```javascript
+// Excludes: palette, context, utility colors
+// Includes: Component colors, fonts, gradients, numbers, shadows, sizes, strings
+```
+
+**cx/colorTokens** - Only color tokens (excludes palette, context, utility):
+
+```javascript
+// Includes: color.button.*, color.input.*, etc.
+// Excludes: color.palette.*, color.context.*, color.utility.*
+```
+
+**cx/themeTokens** - Theme-specific color tokens:
+
+```javascript
+// Includes: color.palette.*, color.context.*
+// Excludes: color.base.*, color.utility.*
+```
+
+**cx/numberTokens** - Number and size tokens:
+
+```javascript
+// Includes: size.*, space.*, dimension.*, opacity.*
+```
+
+**cx/stringTokens** - Only string-type tokens:
+
+```javascript
+// Includes: fontFamily, fontWeight names, etc.
+```
+
+## Formats
+
+Formats define the output structure for each platform. Chassis Tokens provides custom format templates.
+
+### SCSS Variables Format
+
+**Format name:** `cx/scss-variables`
+
+Generates SCSS variable files with proper formatting:
+
+```scss
+/**
+ * Chassis - Tokens v0.1.0
+ * Copyright 2025 Ozgur Gunes
+ * Licensed under MIT
+ */
+
+$cx-color-button-primary-bg-default: #0066ff;
+$cx-size-button-medium-height: 2.5rem;
+```
+
+**Features:**
+- File header with copyright and license
+- Organized token groups
+- Proper SCSS syntax
+- Configurable prefix (`cx` by default)
+
+<Callout type="info">
+The SCSS format intelligently resolves and transforms pre-defined token values to CSS variables where appropriate. This creates a more dynamic and consistent CSS framework by enabling runtime theme switching and value inheritance without requiring recompilation of stylesheets.
+</Callout>
+
+<Callout type="info">
+Composite font tokens (starting with `font.*`) are transformed into Sass maps, making it easier to access and apply typography styles as a complete set rather than individual properties. This enables more maintainable and reusable typography mixins.
+</Callout>
+
+### iOS Swift Class Format
+
+**Format name:** `cx/ios-swift-class`
+
+Generates Swift class with static properties:
+
+```swift
+import UIKit
+
+public class Tokens {
+    public static let colorButtonPrimaryBgDefault: UIColor = UIColor(red: 0.00, green: 0.40, blue: 1.00, alpha: 1.0)
+    public static let sizeButtonMediumHeight: CGFloat = 40
+}
+```
+
+**Features:**
+- PascalCase property names
+- Native iOS types (UIColor, CGFloat)
+- Proper import statements
+- Public accessibility
+
+### Android Resources Format
+
+**Format name:** `cx/android-resources`
+
+Generates Android XML resource files:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+  <color name="color_button_primary_bg_default">#0066FF</color>
+  <dimen name="size_button_medium_height">40dp</dimen>
+</resources>
+```
+
+**Features:**
+- snake_case resource names
+- Proper XML structure
+- Type-specific resource tags
+- Android units (dp, sp)
+
+## Preprocessor
+
+The preprocessor runs before transforms and filters, allowing global modifications to the token dictionary.
+
+**Preprocessor name:** `cx/global`
+
+Located in `preprocessor.js`, this custom preprocessor:
+
+- Normalizes token structure
+- Adds metadata to tokens
+- Resolves complex token references
+- Prepares tokens for platform-specific processing
+
+```javascript
+StyleDictionary.registerPreprocessor({
+  name: 'cx/global',
+  preprocessor: (dictionary) => cxPrep(dictionary)
+})
+```
+
+## Advanced Configuration
+
+### Custom Token Types
+
+Define how Style Dictionary handles custom token types:
+
+```javascript
+expand: {
+  typesMap: {
+    typography: {
+      lineHeight: 'dimension',
+      paragraphSpacing: 'dimension',
+      letterSpacing: 'number'
+    }
+  }
+}
+```
+
+This ensures composite typography tokens are properly expanded and transformed.
+
+### Transform Groups
+
+Organize related transforms together:
+
+```javascript
+transformGroup: 'web' // Uses web-specific transforms
+```
+
+Transform groups automatically apply the correct transforms for each platform.
+
+### File Headers
+
+Custom file headers add copyright and license information:
+
+```javascript
+StyleDictionary.registerFileHeader({
+  name: 'cxFileHeader',
+  fileHeader: async () => [
+    'Chassis - Tokens v0.1.0',
+    'Copyright 2025 Ozgur Gunes',
+    'Licensed under MIT'
+  ]
+})
+```
+
+## Theme Permutations
+
+Style Dictionary processes theme combinations using the Tokens Studio SD Transforms `permutateThemes` function:
+
+```javascript
+const $themes = JSON.parse(await readFile('tokens/$themes.json'))
+const tokens = permutateThemes($themes, { separator: '_' })
+```
+
+This creates permutations like:
+- `chassis_docs_light`
+- `chassis_docs_dark`
+- `chassis_test_light_large`
+- `chassis_test_dark_medium`
+
+Each permutation generates a separate Style Dictionary configuration with the appropriate source files.
+
+## Troubleshooting
+
+Common issues and solutions when working with Style Dictionary.
+
+### Build Errors
+
+**Problem**: "Token not found" or "Cannot resolve reference"
+
+**Solutions:**
+- Verify token files exist in `tokens/` directory
+- Check `$themes.json` configuration for correct token set references
+- Ensure theme option has correct token sets enabled
+- Validate JSON syntax in token files
+
+**Problem**: Build completes but files are empty
+
+**Solutions:**
+- Check filter configuration - tokens may be filtered out
+- Verify token types match filter criteria
+- Review preprocessor logic for token modifications
+
+### Transform Issues
+
+**Problem**: Size values not converting to correct units
+
+**Solutions:**
+- Check platform configuration specifies correct transforms
+- Verify `basePxFontSize` is set for rem/vw transforms
+- Ensure token type matches transform filter
+
+**Problem**: Colors not formatted correctly
+
+**Solutions:**
+- Verify `ts/color/modifiers` transform is registered
+- Check color tokens have valid hex or rgba values
+- Review platform-specific color format requirements
+
+### Output Issues
+
+**Problem**: Generated files in wrong directory
+
+**Solutions:**
+- Check `buildPath` in platform configuration
+- Verify brand and app names match directory structure
+- Review `config.js` file path generation logic
+
+**Problem**: Missing tokens in output
+
+**Solutions:**
+- Verify tokens pass the filter for that file
+- Check token set is enabled in theme configuration
+- Review file generation logic in `config.js`
+
+### Platform-Specific Issues
+
+**iOS:**
+- Ensure UIKit import is included
+- Verify PascalCase naming convention
+- Check CGFloat types for numeric values
+
+**Android:**
+- Validate XML structure
+- Ensure snake_case naming
+- Check dp/sp units for dimensions
+
+## Best Practices
+
+Guidelines for working effectively with Style Dictionary in Chassis Tokens.
+
+### Token Organization
+
+**Separate concerns:**
+- Keep base tokens platform-agnostic
+- Use platform-specific transforms for output
+- Organize tokens by component or feature
+
+**Use semantic naming:**
+```scss
+// ✅ Good - semantic meaning
+$cx-color-button-primary-bg-default
+
+// ❌ Bad - implementation detail
+$cx-blue-500
+```
+
+### Build Optimization
+
+**Build only what's needed:**
+
+```bash
+# Instead of building all combinations
+pnpm tokens:build:all
+
+# Build specific combinations
+node build/tokens/build.js --brand chassis --theme light
+```
+
+**Cache build artifacts:**
+- Style Dictionary caches results when possible
+- Only rebuild when token files change
+- Use CI/CD to build on commits
+
+### Version Control
+
+**Commit built files strategically:**
+
+Option 1: Commit dist files for direct consumption
+- Pros: Consumers don't need to build
+- Cons: Larger repository size
+
+Option 2: Build during publish/deploy
+- Pros: Smaller repository
+- Cons: Requires build step in CI/CD
+
+**Document build requirements:**
+- Specify Node.js version
+- Document npm scripts
+- Include build instructions in README
+
+### Testing
+
+**Validate output:**
+
+```bash
+# Run tests
+pnpm tokens:test
+
+# Lint token configuration
+pnpm tokens:lint
+
+# Validate JSON syntax
+pnpm validate
+```
+
+**Test platform output:**
+- Import generated files in target projects
+- Verify values match design specifications
+- Test theme switching functionality
+
+### Custom Extensions
+
+**When to create custom transforms:**
+- Platform requires specific format
+- Need specialized value conversion
+- Implementing design system conventions
+
+**When to create custom filters:**
+- Grouping tokens by feature
+- Platform-specific token subsets
+- Performance optimization
+
+**When to create custom formats:**
+- New platform not supported by default
+- Specific file structure required
+- Integration with existing systems
+
+## Related Topics
+
+**Design Token Fundamentals:**
+- [Tokens Studio]([[docsref:/getting-started/tokens-studio]]) - Token creation and management
+- [Color Tokens]([[docsref:/design-tokens/color-tokens]]) - Color system architecture
+- [Typography Tokens]([[docsref:/design-tokens/typography-tokens]]) - Typography system
+
+**Implementation Guides:**
+- [Using Tokens in Code]([[docsref:/guides/using-tokens-code]]) - Importing generated tokens
+- [Theme Switching]([[docsref:/guides/theme-switching]]) - Runtime theme management
+- [Responsive Tokens]([[docsref:/guides/responsive-tokens]]) - Breakpoint-based tokens
+
+**Advanced Topics:**
+- [Custom Transforms]([[docsref:/advanced/custom-transforms]]) - Creating transforms
+- [Custom Formats]([[docsref:/advanced/custom-formats]]) - Building format templates
+- [Build Automation]([[docsref:/advanced/build-automation]]) - CI/CD integration
