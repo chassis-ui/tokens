@@ -1,15 +1,15 @@
 ---
 title: Welcome to Chassis Tokens
-description: Get started with Chassis Tokens, a powerful design token transformation system.
+description: A comprehensive multi-brand design token system bridging design and development. Create tokens in Figma, manage with Tokens Studio, and transform to platform-specific code with Style Dictionary.
 toc: true
 added:
   show_badge: true
   version: 1.0.0
 sections:
   - title: Tokens Studio
-    description: Powerful design token architecture and management using Tokens Studio.
-  - title: Style Dictionary
-    description: Automated token transformation and build system using Style Dictionary.
+    description: Create, manage, and sync design tokens using Tokens Studio's multi-file architecture and theming system.
+  - title: Code Style Dictionary
+    description: Transform tokens into platform-specific formats for web (SCSS/CSS), iOS (Swift), and Android (XML).
 aliases:
  - "/getting-started"
  - "[[docsref:/getting-started]]"
@@ -17,19 +17,13 @@ aliases:
 ---
 import { getConfig } from '@libs/config'
 
-<Callout type="warning">
-This documentation is being actively developed. While the core concepts are stable, specific details may be incomplete or change.
-</Callout>
+<Callout type="warning" name="work-in-progress" />
 
 ## What is Chassis Tokens?
 
 Chassis Tokens is a comprehensive design token system that bridges design and development workflows. It provides a scalable, multi-brand, and multi-platform approach to managing design tokens from creation in Figma to implementation in production code.
 
 Built on industry-leading tools like Tokens Studio and Style Dictionary, Chassis Tokens enables design systems to maintain consistency across multiple brands, themes, applications, and platforms while keeping token management simple and efficient.
-
-## Key Features
-
-Chassis Tokens offers several key features that make it a powerful solution for design token management:
 
 ### Multi-Brand Support
 
@@ -67,7 +61,7 @@ The three-layer architecture (Brand, Theme, App) provides maximum flexibility wi
 
 Chassis Tokens follows a two-stage workflow that separates design token management from code generation:
 
-### Stage 1: Token Management with Tokens Studio
+### Token Management
 
 [Tokens Studio]([[docsref:/getting-started/tokens-studio]]) serves as the design token creation and management layer:
 
@@ -78,7 +72,7 @@ Chassis Tokens follows a two-stage workflow that separates design token manageme
 
 Tokens Studio enables designers to work with tokens directly in Figma while maintaining a Git-based source of truth for collaboration and version control.
 
-### Stage 2: Code Generation with Style Dictionary
+### Code Generation
 
 [Style Dictionary]([[docsref:/getting-started/style-dictionary]]) transforms design tokens into platform-specific code:
 
@@ -89,9 +83,9 @@ Tokens Studio enables designers to work with tokens directly in Figma while main
 
 Style Dictionary runs as a build step, generating production-ready token files that developers can import directly into their applications.
 
-## Three-Layer Architecture
+## Theming Architecture
 
-Chassis Tokens uses a three-layer architecture that provides independent control over brand identity, color themes, and platform-specific tokens:
+Chassis Tokens uses a three-layer architecture that provides independent control over brand identity, color modes, and platform-specific tokens:
 
 ### Brand Layer
 
@@ -134,6 +128,8 @@ This separation allows any combination of brand, theme, and platform to work tog
 
 ## Who Uses Chassis Tokens?
 
+Chassis Tokens is designed to streamline collaboration between designers, developers, and design system maintainers. Each role benefits from specific features: 
+
 ### Designers
 
 - Create and manage design tokens in Tokens Studio
@@ -175,6 +171,8 @@ Before getting started with Chassis Tokens, ensure you have:
 
 ## Getting Started
 
+Follow the appropriate guide based on your role:
+
 ### For Designers
 
 Start with the [Tokens Studio]([[docsref:/getting-started/tokens-studio]]) guide to:
@@ -196,6 +194,8 @@ Start with the [Style Dictionary]([[docsref:/getting-started/style-dictionary]])
 5. Implement theme switching
 
 ## What's Next?
+
+Explore these key areas to deepen your understanding of Chassis Tokens:
 
 <div class="row">
   <div class="col-6 mb-medium">
