@@ -8,14 +8,11 @@
  * @license MIT
  */
 
-import {
-  fileHeader,
-  sortByName,
-  setSwiftFileProperties,
-} from 'style-dictionary/utils'
+import { fileHeader, sortByName, setSwiftFileProperties } from 'style-dictionary/utils'
 import androidResourcesTemplate from './templates/android-resources.template.js'
 import iosSwiftClassTemplate from './templates/ios-swift-class.template.js'
 import scssVariablesTemplate from './templates/scss-variables.template.js'
+import scssReferencesTemplate from './templates/scss-references.template.js'
 
 /**
  * Registers custom formats with Style Dictionary.
@@ -27,26 +24,16 @@ export default function (StyleDictionary) {
    */
   StyleDictionary.registerFormat({
     name: 'cx/test',
-    format: ({ dictionary, file, options, platform }) => {
-      let type = ''
-      const allTokens = dictionary.allTokens
-        .sort(sortByName)
-        .map(function (token) {
-          // console.log(token)
-          // if (token.$type !== type) {
-          //   console.log(token.name + ": " + token.$type)
-          //   type = token.$type
-          // }
-          return token
-        })
+    format: ({ dictionary }) => {
+      const allTokens = dictionary.allTokens.sort(sortByName)
       return (
         allTokens
           // .map(token => `${JSON.stringify(token, null, 2)}`)
-          .map(token => `  ${token.name}: ${token.$type}`)
+          .map((token) => `  ${token.name}: ${token.$type}`)
           // .map(token => `  ${token.name}: ${token.$value}`)
           .join('\n')
       )
-    },
+    }
   })
 
   /**
@@ -58,9 +45,23 @@ export default function (StyleDictionary) {
       const { formatting, commentStyle } = options
       const header = await fileHeader({ file, formatting, commentStyle })
       dictionary.allTokens = [...dictionary.allTokens]
-        // .sort(sortByName)
+      // .sort(sortByName)
       return scssVariablesTemplate({ dictionary, options, file, header })
-    },
+    }
+  })
+
+  /**
+   * A format to generate SCSS variables using references.
+   */
+  StyleDictionary.registerFormat({
+    name: 'cx/scss-references',
+    format: async function ({ dictionary, options, file }) {
+      const { formatting, commentStyle } = options
+      const header = await fileHeader({ file, formatting, commentStyle })
+      dictionary.allTokens = [...dictionary.allTokens]
+      // .sort(sortByName)
+      return scssReferencesTemplate({ dictionary, options, file, header })
+    }
   })
 
   /**
@@ -71,15 +72,11 @@ export default function (StyleDictionary) {
     format: async function ({ dictionary, options, file, platform }) {
       const { formatting, commentStyle } = options
       const header = await fileHeader({ file, formatting, commentStyle })
-      options = setSwiftFileProperties(
-        options,
-        'class',
-        platform.transformGroup,
-      )
+      options = setSwiftFileProperties(options, 'class', platform.transformGroup)
       dictionary.allTokens = [...dictionary.allTokens]
-        // .sort(sortByName)
+      // .sort(sortByName)
       return iosSwiftClassTemplate({ dictionary, options, file, header })
-    },
+    }
   })
 
   /**
@@ -91,8 +88,8 @@ export default function (StyleDictionary) {
       const { formatting, commentStyle } = options
       const header = await fileHeader({ file, formatting, commentStyle })
       dictionary.allTokens = [...dictionary.allTokens]
-        // .sort(sortByName)
+      // .sort(sortByName)
       return androidResourcesTemplate({ dictionary, options, file, header })
-    },
+    }
   })
 }

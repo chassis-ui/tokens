@@ -4,10 +4,10 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Wed, 22 Oct 2025 09:13:23 GMT
+// Generated on Thu, 04 Dec 2025 06:34:10 GMT
 // Chassis - Tokens v0.1.0
 // Copyright 2025 Ozgur Gunes
-// Licensed under MIT (https://github.com/ozgurgunes/chassis-tokens/blob/main/LICENSE)
+// Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
 
 
 import UIKit
@@ -18,28 +18,6 @@ public class {
     @objc public static let TypographyFontFamilyHtml = "Inter"
     @objc public static let TypographyFontFamilyCode = "Fira Code"
     @objc public static let TypographyFontFamilyIcon = "Chassis-Icons"
-    @objc public static let TypographyFontWeightBaseJumboWeight = "bold"
-    @objc public static let TypographyFontWeightBaseJumboStyle = "normal"
-    @objc public static let TypographyFontWeightBaseHeroWeight = "bold"
-    @objc public static let TypographyFontWeightBaseHeroStyle = "normal"
-    @objc public static let TypographyFontWeightBaseLeadWeight = "regular"
-    @objc public static let TypographyFontWeightBaseLeadStyle = "normal"
-    @objc public static let TypographyFontWeightBaseHeadingWeight = "bold"
-    @objc public static let TypographyFontWeightBaseHeadingStyle = "normal"
-    @objc public static let TypographyFontWeightBaseTitleWeight = "bold"
-    @objc public static let TypographyFontWeightBaseTitleStyle = "normal"
-    @objc public static let TypographyFontWeightBaseBodyWeight = "regular"
-    @objc public static let TypographyFontWeightBaseBodyStyle = "normal"
-    @objc public static let TypographyFontWeightBaseLinkWeight = "medium"
-    @objc public static let TypographyFontWeightBaseLinkStyle = "normal"
-    @objc public static let TypographyFontWeightBaseHighlightWeight = "medium"
-    @objc public static let TypographyFontWeightBaseHighlightStyle = "normal"
-    @objc public static let TypographyFontWeightBaseLabelWeight = "medium"
-    @objc public static let TypographyFontWeightBaseLabelStyle = "normal"
-    @objc public static let TypographyFontWeightBaseNumberWeight = "regular"
-    @objc public static let TypographyFontWeightBaseNumberStyle = "normal"
-    @objc public static let TypographyFontWeightBasePriceWeight = "regular"
-    @objc public static let TypographyFontWeightBasePriceStyle = "normal"
     @objc public static let TypographyFontWeightTextNormalWeight = "regular"
     @objc public static let TypographyFontWeightTextNormalStyle = "normal"
     @objc public static let TypographyFontWeightTextStrongWeight = "medium"
@@ -1018,6 +996,10 @@ public class {
     @objc public static let ShadowContextPress2Type = "dropShadow"
     @objc public static let ShadowContextFocusType = "dropShadow"
     @objc public static let ShadowContextHighlightType = "dropShadow"
+    @objc public static let ShadowButtonIdleType = "dropShadow"
+    @objc public static let ShadowButtonHoverType = "dropShadow"
+    @objc public static let ShadowButtonPressType = "dropShadow"
+    @objc public static let ShadowButtonDisabledType = "dropShadow"
     @objc public static let ShadowCardMain1Type = "dropShadow"
     @objc public static let ShadowCardMain2Type = "dropShadow"
     @objc public static let ShadowDatePickerMain1Type = "dropShadow"

@@ -4,10 +4,10 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Wed, 22 Oct 2025 09:13:25 GMT
+// Generated on Thu, 04 Dec 2025 06:34:16 GMT
 // Chassis - Tokens v0.1.0
 // Copyright 2025 Ozgur Gunes
-// Licensed under MIT (https://github.com/ozgurgunes/chassis-tokens/blob/main/LICENSE)
+// Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
 
 
 import UIKit
@@ -1125,6 +1125,10 @@ public class {
     @objc public static let ShadowContextPress2Color = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0.1)
     @objc public static let ShadowContextFocusColor = UIColor(red: 0.208, green: 0.153, blue: 0.867, alpha: 1)
     @objc public static let ShadowContextHighlightColor = UIColor(red: 0.208, green: 0.153, blue: 0.867, alpha: 1)
+    @objc public static let ShadowButtonIdleColor = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0)
+    @objc public static let ShadowButtonHoverColor = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0)
+    @objc public static let ShadowButtonPressColor = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0)
+    @objc public static let ShadowButtonDisabledColor = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0)
     @objc public static let ShadowCardMain1Color = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0.1)
     @objc public static let ShadowCardMain2Color = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0.1)
     @objc public static let ShadowDatePickerMain1Color = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0.1)

@@ -1,0 +1,32 @@
+title:                  "Chassis - Tokens"
+baseURL:                "https://chassis-ui.com/tokens"
+
+docsDir:                "site"
+docsPath:                "/tokens/docs"
+
+subtitle:               "Design Tokens for Chassis UI"
+description:            "Documentation for Chassis UI Design Tokens."
+authors:                "Ozgur Gunes"
+
+current_version:        "0.1.0"
+docs_version:           "0.1"
+github_org:             "https://github.com/chassis-ui"
+repo:                   "https://github.com/chassis-ui/tokens"
+blog:                   "https://chassis-ui.com/blog/"
+x:                      "chassis_ui"
+
+analytics:
+  google_id:            "G-QGR8C28VYN"
+
+algolia:
+  app_id:               "MEJ97SH293"
+  api_key:              "df6a517a37c3973122cfc40042055f9c"
+  index_name:           "chassis-docs"
+
+anchors:
+  min:                  2
+  max:                  5
+
+toc:
+  min:                  2
+  max:                  6

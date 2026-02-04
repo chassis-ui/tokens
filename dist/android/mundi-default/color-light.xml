@@ -2,10 +2,10 @@
 
 <!--
   Do not edit directly, this file was auto-generated.
-  Generated on Wed, 22 Oct 2025 09:13:27 GMT
+  Generated on Thu, 04 Dec 2025 06:34:17 GMT
   Chassis - Tokens v0.1.0
   Copyright 2025 Ozgur Gunes
-  Licensed under MIT (https://github.com/ozgurgunes/chassis-tokens/blob/main/LICENSE)
+  Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
 -->
 
 <resources>
@@ -1121,6 +1121,10 @@
   <color name="shadow_context_press_2_color">#1a000000</color>
   <color name="shadow_context_focus_color">#ff3527dd</color>
   <color name="shadow_context_highlight_color">#ff3527dd</color>
+  <color name="shadow_button_idle_color">#00000000</color>
+  <color name="shadow_button_hover_color">#00000000</color>
+  <color name="shadow_button_press_color">#00000000</color>
+  <color name="shadow_button_disabled_color">#00000000</color>
   <color name="shadow_card_main_1_color">#1a000000</color>
   <color name="shadow_card_main_2_color">#1a000000</color>
   <color name="shadow_date_picker_main_1_color">#1a000000</color>

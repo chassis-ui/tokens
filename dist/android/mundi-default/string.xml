@@ -2,10 +2,10 @@
 
 <!--
   Do not edit directly, this file was auto-generated.
-  Generated on Wed, 22 Oct 2025 09:13:24 GMT
+  Generated on Thu, 04 Dec 2025 06:34:11 GMT
   Chassis - Tokens v0.1.0
   Copyright 2025 Ozgur Gunes
-  Licensed under MIT (https://github.com/ozgurgunes/chassis-tokens/blob/main/LICENSE)
+  Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
 -->
 
 <resources>
@@ -14,28 +14,6 @@
   <string name="typography_font_family_html">Inter</string>
   <string name="typography_font_family_code">Fira Code</string>
   <string name="typography_font_family_icon">Chassis-Icons</string>
-  <string name="typography_font_weight_base_jumbo_weight">bold</string>
-  <string name="typography_font_weight_base_jumbo_style">normal</string>
-  <string name="typography_font_weight_base_hero_weight">bold</string>
-  <string name="typography_font_weight_base_hero_style">normal</string>
-  <string name="typography_font_weight_base_lead_weight">regular</string>
-  <string name="typography_font_weight_base_lead_style">normal</string>
-  <string name="typography_font_weight_base_heading_weight">bold</string>
-  <string name="typography_font_weight_base_heading_style">normal</string>
-  <string name="typography_font_weight_base_title_weight">bold</string>
-  <string name="typography_font_weight_base_title_style">normal</string>
-  <string name="typography_font_weight_base_body_weight">regular</string>
-  <string name="typography_font_weight_base_body_style">normal</string>
-  <string name="typography_font_weight_base_link_weight">medium</string>
-  <string name="typography_font_weight_base_link_style">normal</string>
-  <string name="typography_font_weight_base_highlight_weight">medium</string>
-  <string name="typography_font_weight_base_highlight_style">normal</string>
-  <string name="typography_font_weight_base_label_weight">medium</string>
-  <string name="typography_font_weight_base_label_style">normal</string>
-  <string name="typography_font_weight_base_number_weight">regular</string>
-  <string name="typography_font_weight_base_number_style">normal</string>
-  <string name="typography_font_weight_base_price_weight">regular</string>
-  <string name="typography_font_weight_base_price_style">normal</string>
   <string name="typography_font_weight_text_normal_weight">regular</string>
   <string name="typography_font_weight_text_normal_style">normal</string>
   <string name="typography_font_weight_text_strong_weight">medium</string>
@@ -1014,6 +992,10 @@
   <string name="shadow_context_press_2_type">dropShadow</string>
   <string name="shadow_context_focus_type">dropShadow</string>
   <string name="shadow_context_highlight_type">dropShadow</string>
+  <string name="shadow_button_idle_type">dropShadow</string>
+  <string name="shadow_button_hover_type">dropShadow</string>
+  <string name="shadow_button_press_type">dropShadow</string>
+  <string name="shadow_button_disabled_type">dropShadow</string>
   <string name="shadow_card_main_1_type">dropShadow</string>
   <string name="shadow_card_main_2_type">dropShadow</string>
   <string name="shadow_date_picker_main_1_type">dropShadow</string>
