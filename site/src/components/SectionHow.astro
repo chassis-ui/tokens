@@ -1,0 +1,65 @@
+---
+import { getConfig } from '@libs/config'
+import ResponsiveImage from '@shortcodes/ResponsiveImage.astro'
+import Code from '@shortcodes/Code.astro'
+import { getChassisDocsPath } from '@libs/path'
+import Card from '@components/Card.astro'
+---
+
+<section class="bg-even py-6xlarge">
+  <div class="container py-6xlarge">
+    <div class="row justify-content-center mb-5xlarge">
+      <div class="col-large-8 text-center">
+        <h2 class="font-hero mb-medium">How It Works</h2>
+        <p class="font-lead">From design to production in three simple steps</p>
+      </div>
+    </div>
+
+    <div class="row g-3xlarge">
+      <div class="col-large-4">
+        <div class="card rounded-xlarge">
+          <div class="card-content">
+            <div class="text-center mb-small">
+              <span class="font-3xlarge font-strong fg-primary">1</span>
+            </div>
+            <h3 class="h4 mb-medium text-center">Define Tokens in Figma</h3>
+            <p class="text-center text-context-default-fg-subtle">
+              Create and manage design tokens directly in Figma using Variables. Sync changes
+              automatically with your codebase.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-large-4">
+        <div class="card rounded-xlarge">
+          <div class="card-content">
+            <div class="text-center mb-small">
+              <span class="font-3xlarge font-strong fg-primary">2</span>
+            </div>
+            <h3 class="h4 mb-medium text-center">Automate Token Generation</h3>
+            <p class="text-center text-context-default-fg-subtle">
+              Style Dictionary transforms your tokens into platform-ready formats with a single
+              command. SCSS, Swift, XML, and more.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-large-4">
+        <div class="card rounded-xlarge">
+          <div class="card-content">
+            <div class="text-center mb-large">
+              <span class="font-3xlarge font-strong fg-primary">3</span>
+            </div>
+            <h3 class="h4 mb-medium text-center">Integrate with Your Codebase</h3>
+            <p class="text-center text-context-default-fg-subtle">
+              Import generated tokens into your web, iOS, or Android projects. Type-safe and ready
+              for production.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

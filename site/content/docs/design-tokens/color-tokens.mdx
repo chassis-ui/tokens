@@ -10,22 +10,39 @@ toc: true
 
 Color tokens are predefined color values used throughout the design system to ensure consistency and accessibility. They represent colors for backgrounds, text, borders, icons, and other UI elements.
 
-The color system is organized into two primary layers:
+### Architecture
 
-- **Palette Colors**: Foundation-level color definitions with shades and transparency variations
-- **Context Colors**: Semantic colors assigned to specific UI purposes and states
+Chassis Tokens uses a multi-layer token architecture where colors are defined in the **Brand group** and referenced by tokens in the **Theme group**. This separation allows independent switching between brands and color modes while maintaining consistency.
 
-### Base Tokens
+**How it works:**
 
-Base color tokens are defined in the brand theme group of Tokens Studio and are not used directly in the design system. They serve as the raw color values from which palette colors are derived. 
+Each color token in the Theme group references a corresponding base token in the Brand group. The specific base token referenced automatically changes based on the active theme mode:
+
+- In **light mode**: `color.context.default.fg-subtle` → `color.base.context.light.fg-subtle`
+- In **dark mode**: `color.context.default.fg-subtle` → `color.base.context.dark.fg-subtle`
+
+This means designers and developers work exclusively with Theme group tokens (like `color.context.default.fg-subtle`), and the system automatically resolves the appropriate values based on the selected brand and color mode.
+
+**Benefits:**
+
+- Switch brands without changing color mode preferences
+- Switch color modes without affecting brand identity
+- Single source of truth for each color across all variations
+- Automatic updates when brand or theme values change
 
 <Callout type="info">
-Since this documentation focuses on colors used in UI, base color tokens are not covered here. See the [Tokens Studio]([[docsref:/getting-started/tokens-studio#color-tokens]]) page for details on defining base colors.
+This documentation focuses on Theme group tokens—the colors actually used in UI design and development. For details on how Brand group tokens are structured and defined, see the [Tokens Studio]([[docsref:/getting-started/tokens-studio#color-tokens]]) page.
 </Callout>
 
-### Theme Tokens
+### Organization
 
-Colors listed in this document exist within the theme layer of Chassis Tokens. They are designed to adapt to different color modes (light, dark, high contrast) while maintaining brand consistency.
+Color tokens in the Theme group are organized into two primary categories:
+
+**Palette Colors**: Foundation-level color definitions including nine predefined colors (primary, secondary, neutral, danger, success, warning, info, black, white). Each palette color includes a complete set of shades, transparency variations, and contrast colors.
+
+**Context Colors**: Semantic colors assigned to specific UI purposes and component states. These reference palette colors and provide meaningful names for backgrounds, foregrounds, borders, and other visual properties.
+
+This two-tier organization ensures both flexibility (through palette colors) and clarity (through context colors) when applying colors to UI elements.
 
 ## Palette Colors
 
@@ -276,9 +293,378 @@ Interaction colors define the appearance of interactive components (buttons, inp
 | `color.context.[color-name].fg-disabled` | Foreground for disabled state. Reduced contrast and prominence to communicate unavailability. |
 </CxTable>
 
+## Shadow Colors
+
+Shadow colors define the color used in shadow effects for each context. Each context has a single shadow color token that adapts automatically between light and dark modes.
+
+<CxTable>
+| Token Name | Usage & Purpose |
+|------------|-------------------|
+| `color.shadow.default` | Default shadow color for standard elevation effects. Used in `shadow.elevation.default.*` tokens. |
+| `color.shadow.alternate` | Alternative shadow color for emphasized surfaces. Used in `shadow.elevation.alternate.*` tokens. |
+| `color.shadow.primary` | Brand-colored shadow for primary elements. Used in `shadow.elevation.primary.*` tokens. |
+| `color.shadow.secondary` | Secondary brand shadow. Used in `shadow.elevation.secondary.*` tokens. |
+| `color.shadow.neutral` | Neutral shadow color. Used in `shadow.elevation.neutral.*` tokens. |
+| `color.shadow.danger` | Error/danger shadow. Used in `shadow.elevation.danger.*` tokens. |
+| `color.shadow.success` | Success/positive shadow. Used in `shadow.elevation.success.*` tokens. |
+| `color.shadow.warning` | Warning/caution shadow. Used in `shadow.elevation.warning.*` tokens. |
+| `color.shadow.info` | Informational shadow. Used in `shadow.elevation.info.*` tokens. |
+</CxTable>
+
+<Callout type="info">
+Shadow colors automatically reference different values in light vs dark modes (e.g., `color.base.shadow.light.default` in light mode, `color.base.shadow.dark.default` in dark mode). This ensures shadows have appropriate opacity and tone for proper contrast—typically lighter with lower opacity in light mode, and darker or more saturated in dark mode to maintain perceived depth.
+</Callout>
+
+For more information on how shadow colors are used in elevation tokens, see [Shadow Tokens]([[docsref:/design-tokens/shadow-tokens]]).
 
 ## Component Colors
 
-Component colors are specialized color tokens tailored for specific UI components. These tokens build upon the context colors to provide consistent styling for common interface elements.
+Component colors are specialized color tokens tailored for specific UI components. These tokens reference context colors and provide dedicated color assignments for buttons, form inputs, badges, and other interactive elements.
 
-Since there are many components with unique color needs, component color tokens are not listed in this document. They follow the naming conventions documented in the [Tokens Studio]([[docsref:/getting-started/tokens-studio#nested-structure]]) section.
+### Button Colors
+
+Button components have granular color tokens for each variant and interaction state.
+
+<CxTable>
+| Token Name | References | Applied To |
+|------------|-----------|------------|
+| `color.button.default.fg-idle` | `color.context.default.fg-idle` | Default button text (idle) |
+| `color.button.default.bg-idle` | `color.context.default.bg-idle` | Default button background (idle) |
+| `color.button.default.border-idle` | `color.context.default.border-main` | Default button border (idle) |
+| `color.button.default.fg-hover` | `color.context.default.fg-hover` | Default button text (hover) |
+| `color.button.default.bg-hover` | `color.context.default.bg-hover` | Default button background (hover) |
+| `color.button.default.fg-press` | `color.context.default.fg-press` | Default button text (pressed) |
+| `color.button.default.bg-press` | `color.context.default.bg-press` | Default button background (pressed) |
+| `color.button.default.fg-disabled` | `color.context.default.fg-disabled` | Default button text (disabled) |
+| `color.button.default.bg-disabled` | `color.context.default.bg-disabled` | Default button background (disabled) |
+</CxTable>
+
+**Available button variants**: `default`, `primary`, `secondary`, `neutral`, `danger`, `success`, `warning`, `info`
+
+Each variant follows the same pattern with fg/bg/border colors for idle/hover/press/disabled states.
+
+### Form Input Colors
+
+Form input components have color tokens for different validation states and interaction modes.
+
+<CxTable>
+| Token Name | References | Applied To |
+|------------|-----------|------------|
+| `color.form-input.idle.bg-regular` | `color.context.default.bg-main` | Input background (idle, regular style) |
+| `color.form-input.idle.bg-floating` | `color.context.default.bg-even` | Input background (idle, floating label) |
+| `color.form-input.idle.border` | `color.context.default.border-main` | Input border (idle) |
+| `color.form-input.idle.fg-active` | `color.context.default.fg-main` | Input text (when typing) |
+| `color.form-input.idle.fg-inactive` | `color.context.default.fg-subtle` | Input text (empty/placeholder) |
+| `color.form-input.idle.caret` | `color.context.default.fg-main` | Input cursor color |
+| `color.form-input.idle.help` | `color.context.default.fg-main` | Helper text |
+| `color.form-input.focus.border` | `color.context.primary.icon-main` | Input border (focused) |
+| `color.form-input.focus.help` | `color.context.primary.icon-main` | Helper text (focused) |
+| `color.form-input.error.border` | `color.context.danger.base-color` | Input border (validation error) |
+| `color.form-input.error.help` | `color.context.danger.fg-main` | Error message text |
+| `color.form-input.success.border` | `color.context.success.base-color` | Input border (validation success) |
+| `color.form-input.success.help` | `color.context.success.fg-main` | Success message text |
+| `color.form-input.disabled.bg-regular` | `color.context.default.bg-disabled` | Input background (disabled) |
+| `color.form-input.disabled.border` | `color.context.default.fg-slight` | Input border (disabled) |
+</CxTable>
+
+### Badge Colors
+
+Badge tokens reference context solid backgrounds for prominent display.
+
+<CxTable>
+| Token Name | References | Applied To |
+|------------|-----------|------------|
+| `color.badge.default.fg-main` | `color.context.default.fg-solid` | Default badge text |
+| `color.badge.default.bg-main` | `color.context.default.bg-solid` | Default badge background |
+| `color.badge.primary.fg-main` | `color.context.primary.fg-solid` | Primary badge text |
+| `color.badge.primary.bg-main` | `color.context.primary.bg-solid` | Primary badge background |
+| `color.badge.danger.fg-main` | `color.context.danger.fg-solid` | Danger badge text |
+| `color.badge.danger.bg-main` | `color.context.danger.bg-solid` | Danger badge background |
+</CxTable>
+
+**Available badge variants**: `default`, `primary`, `secondary`, `neutral`, `danger`, `success`, `warning`, `info`
+
+### Alert & Notification Colors
+
+Alert components have color tokens for title, body, icon, and border.
+
+<CxTable>
+| Token Name | References | Applied To |
+|------------|-----------|------------|
+| `color.alert.default.fg-title` | `color.context.default.fg-main` | Alert title text |
+| `color.alert.default.fg-body` | `color.context.default.fg-main` | Alert body text |
+| `color.alert.default.icon` | `color.context.default.icon-main` | Alert icon |
+| `color.alert.default.bg-main` | `color.context.default.bg-evident` | Alert background |
+| `color.alert.default.border-main` | `color.context.default.border-main` | Alert border |
+| `color.alert.danger.fg-title` | `color.context.danger.fg-main` | Danger alert title |
+| `color.alert.danger.icon` | `color.context.danger.icon-main` | Danger alert icon |
+| `color.alert.danger.bg-main` | `color.context.danger.bg-evident` | Danger alert background |
+</CxTable>
+
+**Available alert variants**: `default`, `primary`, `secondary`, `neutral`, `danger`, `success`, `warning`, `info`
+
+### Dropdown & Date Picker Colors
+
+Dropdown menu items have colors for idle, hover, active, and disabled states.
+
+<CxTable>
+| Token Name | References | Applied To |
+|------------|-----------|------------|
+| `color.dropdown.fg-idle` | `color.context.default.fg-main` | Dropdown item text (idle) |
+| `color.dropdown.bg-idle` | `color.context.default.transparent-color` | Dropdown item background (idle) |
+| `color.dropdown.icon-idle` | `color.context.default.icon-main` | Dropdown item icon (idle) |
+| `color.dropdown.fg-hover` | `color.context.default.fg-highlight` | Dropdown item text (hover) |
+| `color.dropdown.bg-hover` | `color.context.default.bg-highlight` | Dropdown item background (hover) |
+| `color.dropdown.fg-active` | `color.context.primary.fg-solid` | Dropdown item text (selected) |
+| `color.dropdown.bg-active` | `color.context.primary.bg-solid` | Dropdown item background (selected) |
+| `color.dropdown.fg-header` | `color.context.default.fg-subtle` | Dropdown header text |
+| `color.dropdown.fg-disabled` | `color.context.default.fg-slight` | Dropdown item text (disabled) |
+</CxTable>
+
+### Date Picker Colors
+
+<CxTable>
+| Token Name | References | Applied To |
+|------------|-----------|------------|
+| `color.date-picker.fg-idle` | `color.context.default.fg-main` | Calendar date (default) |
+| `color.date-picker.bg-idle` | `color.context.default.transparent-color` | Calendar date background (default) |
+| `color.date-picker.fg-hover` | `color.context.default.fg-main` | Calendar date (hover) |
+| `color.date-picker.bg-hover` | `color.context.default.bg-even` | Calendar date background (hover) |
+| `color.date-picker.fg-active` | `color.context.white.base-color` | Selected date text |
+| `color.date-picker.bg-active` | `color.context.default.cue-main` | Selected date background |
+| `color.date-picker.fg-range` | `color.context.default.fg-idle` | Date in range text |
+| `color.date-picker.bg-range` | `color.context.default.bg-highlight` | Date in range background |
+| `color.date-picker.fg-today` | `color.context.default.cue-main` | Today's date text |
+| `color.date-picker.fg-weekend` | `color.context.default.fg-subtle` | Weekend date text |
+| `color.date-picker.fg-outside` | `color.context.default.fg-slight` | Outside month date text |
+</CxTable>
+
+### Table Colors
+
+Table components have color tokens for headers, rows, and interactive states.
+
+<CxTable>
+| Token Name | References | Applied To |
+|------------|-----------|------------|
+| `color.table.fg-head` | `color.context.default.fg-main` | Table header text |
+| `color.table.bg-head` | `color.context.default.bg-evident` | Table header background |
+| `color.table.fg-data` | `color.context.default.fg-main` | Table cell text |
+| `color.table.bg-data` | `color.context.default.bg-main` | Table cell background |
+| `color.table.bg-alt` | `color.context.default.bg-even` | Alternating row background |
+| `color.table.bg-hover` | `color.context.default.bg-evident` | Row background (hover) |
+| `color.table.bg-active` | `color.context.default.bg-highlight` | Row background (selected) |
+| `color.table.bg-edit` | `color.palette.warning.10` | Row background (edit mode) |
+| `color.table.cue-active` | `color.context.default.cue-main` | Active row indicator |
+| `color.table.border-main` | `color.context.default.border-subtle` | Table borders |
+| `color.table.icon-sort` | `color.context.default.fg-subtle` | Sort indicator icon |
+</CxTable>
+
+### Pagination Colors
+
+Pagination components have color tokens for page numbers and navigation.
+
+<CxTable>
+| Token Name | References | Applied To |
+|------------|-----------|------------|
+| `color.pagination.fg-idle` | `color.context.default.fg-main` | Page number text (idle) |
+| `color.pagination.bg-idle` | `color.context.default.transparent-color` | Page number background (idle) |
+| `color.pagination.border-idle` | `color.context.default.border-main` | Page number border (idle) |
+| `color.pagination.fg-hover` | `color.context.default.fg-highlight` | Page number text (hover) |
+| `color.pagination.bg-hover` | `color.context.default.bg-highlight` | Page number background (hover) |
+| `color.pagination.fg-current` | `color.context.primary.fg-solid` | Current page text |
+| `color.pagination.bg-current` | `color.context.primary.bg-solid` | Current page background |
+| `color.pagination.border-current` | `color.context.primary.base-color` | Current page border |
+| `color.pagination.fg-disabled` | `color.context.default.fg-slight` | Disabled page text |
+</CxTable>
+
+### Accordion Colors
+
+Accordion components have color tokens for title, body, and interaction states.
+
+<CxTable>
+| Token Name | References | Applied To |
+|------------|-----------|------------|
+| `color.accordion.item-fg-color` | `color.context.default.fg-main` | Accordion item text |
+| `color.accordion.item-bg-color` | `color.context.default.bg-main` | Accordion item background |
+| `color.accordion.title-fg-idle` | `color.context.default.fg-main` | Accordion title text (collapsed) |
+| `color.accordion.title-bg-idle` | `color.context.default.bg-main` | Accordion title background (collapsed) |
+| `color.accordion.title-fg-active` | `color.context.default.fg-main` | Accordion title text (expanded) |
+| `color.accordion.title-bg-active` | `color.context.default.bg-main` | Accordion title background (expanded) |
+| `color.accordion.indicator-idle` | `color.context.default.fg-main` | Expansion indicator (collapsed) |
+| `color.accordion.indicator-active` | `color.context.default.icon-main` | Expansion indicator (expanded) |
+| `color.accordion.border-main` | `color.context.default.border-subtle` | Accordion borders |
+</CxTable>
+
+### Chip Colors
+
+Chip/tag components follow the same variant system as badges.
+
+<CxTable>
+| Token Name | References | Applied To |
+|------------|-----------|------------|
+| `color.chip.default.fg-main` | `color.context.default.fg-solid` | Default chip text |
+| `color.chip.default.bg-main` | `color.context.default.bg-solid` | Default chip background |
+| `color.chip.primary.fg-main` | `color.context.primary.fg-solid` | Primary chip text |
+| `color.chip.primary.bg-main` | `color.context.primary.bg-solid` | Primary chip background |
+| `color.chip.danger.fg-main` | `color.context.danger.fg-solid` | Danger chip text |
+| `color.chip.danger.bg-main` | `color.context.danger.bg-solid` | Danger chip background |
+</CxTable>
+
+**Available chip variants**: `default`, `primary`, `secondary`, `neutral`, `danger`, `success`, `warning`, `info`
+
+### Card Colors
+
+Card components have color tokens for background, content, and borders.
+
+<CxTable>
+| Token Name | References | Applied To |
+|------------|-----------|------------|
+| `color.card.fg-main` | `color.context.default.fg-main` | Card content text |
+| `color.card.bg-main` | `color.context.default.bg-main` | Card background |
+| `color.card.border-main` | `color.context.default.border-main` | Card border |
+| `color.card.bg-header` | `color.context.default.bg-even` | Card header background |
+| `color.card.bg-footer` | `color.context.default.bg-even` | Card footer background |
+</CxTable>
+
+### Modal & Notification Colors
+
+Modal dialogs and notification toasts have dedicated color tokens.
+
+<CxTable>
+| Token Name | References | Applied To |
+|------------|-----------|------------|
+| `color.modal.fg-main` | `color.context.default.fg-main` | Modal content text |
+| `color.modal.bg-main` | `color.context.default.bg-main` | Modal background |
+| `color.modal.bg-overlay` | `color.context.default.dim-evident` | Modal backdrop overlay |
+| `color.modal.border-main` | `color.context.default.border-main` | Modal border |
+| `color.notification.fg-main` | `color.context.default.fg-main` | Notification text |
+| `color.notification.bg-main` | `color.context.default.bg-evident` | Notification background |
+| `color.notification.icon` | `color.context.default.icon-main` | Notification icon |
+| `color.notification.border-main` | `color.context.default.border-main` | Notification border |
+</CxTable>
+
+### List Colors
+
+List components have color tokens for items and disclosure indicators.
+
+<CxTable>
+| Token Name | References | Applied To |
+|------------|-----------|------------|
+| `color.list.icon` | `color.context.default.icon-main` | List item icon |
+| `color.list.disclosure` | `color.context.default.fg-subtle` | Disclosure indicator (chevron) |
+</CxTable>
+
+### Navigation Colors
+
+Navigation components including tabs, breadcrumbs, and sidebars.
+
+<CxTable>
+| Token Name | References | Applied To |
+|------------|-----------|------------|
+| `color.nav-top.bg-main` | `color.context.default.bg-evident` | Top navigation background |
+| `color.nav-top.fg-main` | `color.context.default.fg-main` | Top navigation text |
+| `color.nav-left.bg-main` | `color.context.default.bg-even` | Side navigation background |
+| `color.nav-left.fg-main` | `color.context.default.fg-main` | Side navigation text |
+| `color.tab.fg-idle` | `color.context.default.fg-subtle` | Tab text (inactive) |
+| `color.tab.fg-active` | `color.context.default.fg-main` | Tab text (active) |
+| `color.tab.border-active` | `color.context.default.cue-main` | Active tab indicator |
+| `color.breadcrumb.fg-main` | `color.context.default.fg-subtle` | Breadcrumb link text |
+| `color.breadcrumb.fg-current` | `color.context.default.fg-main` | Current page in breadcrumb |
+</CxTable>
+
+### Progress & Section Colors
+
+Progress indicators and content sections.
+
+<CxTable>
+| Token Name | References | Applied To |
+|------------|-----------|------------|
+| `color.progress.fg-past` | `color.context.neutral.contrast-color` | Completed step text |
+| `color.progress.bg-past` | `color.context.neutral.base-color` | Completed step background |
+| `color.progress.border-past` | `color.context.neutral.base-color` | Completed step border |
+| `color.progress.fg-current` | `color.context.primary.contrast-color` | Current step text |
+| `color.progress.bg-current` | `color.context.primary.base-color` | Current step background |
+| `color.progress.border-current` | `color.context.primary.base-color` | Current step border |
+| `color.progress.fg-next` | `color.context.default.contrast-color` | Future step text |
+| `color.progress.bg-next` | `color.context.default.base-color` | Future step background |
+| `color.progress.border-next` | `color.context.default.base-color` | Future step border |
+| `color.section.fg-large` | `color.context.default.fg-main` | Large section content |
+| `color.section.fg-medium` | `color.context.default.fg-main` | Medium section content |
+| `color.section.fg-small` | `color.context.default.fg-main` | Small section content |
+| `color.section.icon-large` | `color.context.default.icon-main` | Large section icons |
+| `color.section.icon-medium` | `color.context.default.icon-main` | Medium section icons |
+| `color.section.icon-small` | `color.context.default.icon-main` | Small section icons |
+</CxTable>
+
+### Message & Map Colors
+
+Messaging interfaces and map components.
+
+<CxTable>
+| Token Name | References | Applied To |
+|------------|-----------|------------|
+| `color.message.bg-chat` | `color.context.default.bg-evident` | Chat interface background |
+| `color.message.fg-form` | `color.context.primary.base-color` | Message input text |
+| `color.message.bg-form` | `color.context.default.bg-even` | Message input background |
+| `color.message.fg-received` | `color.context.default.fg-main` | Received message text |
+| `color.message.bg-received` | `color.context.default.bg-main` | Received message bubble |
+| `color.message.fg-sent` | `color.context.default.fg-main` | Sent message text |
+| `color.message.bg-sent` | `color.context.primary.bg-even` | Sent message bubble |
+| `color.map.marker-bg` | `color.context.primary.base-color` | Map marker background |
+| `color.map.marker-fg` | `color.context.primary.contrast-color` | Map marker icon |
+| `color.map.path-ride` | `color.context.default.cue-main` | Route path (primary) |
+| `color.map.path-walk` | `color.context.neutral.base-color` | Route path (walking) |
+| `color.map.trip-start` | `color.context.success.base-color` | Start point marker |
+| `color.map.trip-stop` | `color.context.danger.base-color` | End point marker |
+</CxTable>
+
+### Page Colors
+
+Page-level background colors for body and content sections.
+
+<CxTable>
+| Token Name | References | Applied To |
+|------------|-----------|------------|
+| `color.page.bg-body` | `color.context.default.bg-main` | Page body background |
+| `color.page.bg-section` | `color.context.default.bg-main` | Page section background |
+</CxTable>
+
+<Callout type="info">
+Component color tokens follow consistent naming patterns: `color.[component].[variant].[property]-[state]`. They always reference context or palette colors, never hard-coded values, ensuring theme compatibility across light and dark modes.
+</Callout>
+
+## Usage Guidelines
+
+### Choosing Between Token Levels
+
+**Use Palette Colors**: Only when defining new context or component tokens in the Brand group
+
+**Use Context Colors**: For most UI design work—backgrounds, text, borders, icons
+
+**Use Component Colors**: When building or styling specific components for consistent application
+
+### Accessibility
+
+**Contrast Ratios**: All token combinations maintain WCAG AA contrast requirements (4.5:1 for text, 3:1 for UI elements)
+
+**Color Blindness**: Context colors are designed to be distinguishable beyond color alone (using patterns, icons, text)
+
+**Focus Indicators**: Always use dedicated focus/cue colors for keyboard navigation
+
+**Dark Mode**: Test all color combinations in both light and dark modes
+
+### Best Practices
+
+**Do:**
+- Use semantic context colors (`color.context.primary.*`) over base palette colors
+- Reference component tokens when building UI components
+- Test color combinations in both light and dark themes
+- Use opacity tokens to create color variations consistently
+- Pair colors that reference each other (e.g., `fg-main` with `bg-main`)
+
+**Don't:**
+- Use palette colors directly in components (use context colors)
+- Mix light and dark theme colors
+- Override token values with hard-coded colors
+- Ignore contrast requirements
+- Use color as the only means of conveying information

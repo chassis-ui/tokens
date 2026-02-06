@@ -1,9 +1,242 @@
 ---
 title: Border Width Tokens
-description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+description: Comprehensive guide to border width tokens defining consistent border thickness for UI elements throughout the design system.
 toc: true
 ---
 
-# Overview
+<Callout type="warning" name="work-in-progress" />
 
-Border width tokens are used to define consistent border width styles throughout the design system. They help maintain visual consistency and ensure that elements have uniform border thickness across the user interface.
+## Overview
+
+Border width tokens define consistent border thickness values for UI elements throughout the design system. They establish visual weight, create boundaries, and emphasize interactive states while maintaining harmony across all components.
+
+### Architecture
+
+Border width tokens are organized into a two-layer system where contextual width values are defined in the **App group** and then applied to specific components.
+
+**How it works:**
+
+The system provides semantic width scales:
+1. **Contextual border widths** (`borderWidth.context.*`) define semantic thickness values
+2. **Component border widths** (`borderWidth.[component].*`) assign specific widths to UI elements
+
+**Benefits:**
+
+- Consistent border weight across components
+- Semantic naming clarifies thickness intent
+- Easy to adjust border emphasis globally
+- Clear visual hierarchy through standardized widths
+
+<Callout type="info">
+Border width is closely related to visual weight. Thicker borders create more emphasis but can overwhelm small elements. The default medium width (1px) provides sufficient definition for most use cases.
+</Callout>
+
+### Organization
+
+Border width tokens are organized into two categories:
+
+**Contextual Border Width**: Semantic width scales from none through 2xlarge.
+
+**Component Border Width**: Specific border thickness for individual UI components.
+
+This organization ensures both flexibility and consistency.
+
+## Contextual Border Width
+
+Contextual border width tokens provide semantic thickness values for flexible application.
+
+<CxTable>
+| Token Name | Value | Visual Weight | Purpose |
+|------------|-------|--------------|--------|
+| `borderWidth.context.none` | 0 | None | No border |
+| `borderWidth.context.zero` | 0 | None | No border (alias) |
+| `borderWidth.context.thin` | 0.5px | Very subtle | Delicate borders, subtle divisions |
+| `borderWidth.context.small` | 0.5px | Subtle | Light borders |
+| `borderWidth.context.medium` | 1px | Standard | Default border weight |
+| `borderWidth.context.large` | 1.5px | Emphasized | Prominent borders |
+| `borderWidth.context.xlarge` | 2px | Strong | Strong emphasis, focus states |
+| `borderWidth.context.2xlarge` | 4px | Maximum | Maximum emphasis, indicators |
+</CxTable>
+
+### Usage by Context
+
+**Decorative borders**: Use `thin` or `small` (0.5px) for subtle visual separation
+
+**Standard borders**: Use `medium` (1px) for default component borders
+
+**Interactive states**: Use `large` or `xlarge` (1.5-2px) for focus and active states
+
+**Indicators**: Use `2xlarge` (4px) for strong visual indicators
+
+## Component Border Width
+
+Component-specific border width tokens assign thickness to individual UI elements.
+
+### Buttons & Interactive Elements
+
+<CxTable>
+| Token Name | References | Applied To |
+|------------|-----------|------------|
+| `borderWidth.button.main` | `borderWidth.context.medium` | Button borders |
+| `borderWidth.chip.main` | `borderWidth.context.medium` | Chip borders |
+| `borderWidth.badge.main` | `borderWidth.context.medium` | Badge borders |
+</CxTable>
+
+### Form Inputs
+
+<CxTable>
+| Token Name | References | Applied To |
+|------------|-----------|------------|
+| `borderWidth.form-input.regular` | `borderWidth.context.medium` | Default input borders |
+| `borderWidth.form-input.inactive` | `borderWidth.context.medium` | Inactive input state |
+| `borderWidth.form-input.active` | `borderWidth.context.xlarge` | Active/focus input state |
+| `borderWidth.form-input.floating` | `borderWidth.context.xlarge` | Floating label inputs |
+</CxTable>
+
+### Cards & Containers
+
+<CxTable>
+| Token Name | References | Applied To |
+|------------|-----------|------------|
+| `borderWidth.card.main` | `borderWidth.context.medium` | Card containers |
+| `borderWidth.modal.main` | `borderWidth.context.medium` | Modal dialogs |
+| `borderWidth.section.main` | `borderWidth.context.zero` | Section containers (typically no border) |
+| `borderWidth.alert.main` | `borderWidth.context.medium` | Alert banners |
+| `borderWidth.notification.main` | `borderWidth.context.medium` | Notifications |
+</CxTable>
+
+### Dropdown & Menus
+
+<CxTable>
+| Token Name | References | Applied To |
+|------------|-----------|------------|
+| `borderWidth.dropdown.main` | `borderWidth.context.medium` | Dropdown containers |
+| `borderWidth.date-picker.main` | `borderWidth.context.medium` | Date picker container |
+</CxTable>
+
+### Tables & Lists
+
+<CxTable>
+| Token Name | References | Applied To |
+|------------|-----------|------------|
+| `borderWidth.table.main` | `borderWidth.context.medium` | Table borders |
+| `borderWidth.accordion.main` | `borderWidth.context.medium` | Accordion borders |
+</CxTable>
+
+### Tabs & Navigation
+
+<CxTable>
+| Token Name | References | Applied To |
+|------------|-----------|------------|
+| `borderWidth.tab.main` | `borderWidth.context.medium` | Tab borders |
+| `borderWidth.tooltip.main` | `borderWidth.context.medium` | Tooltip borders |
+</CxTable>
+
+### Indicators & Assets
+
+<CxTable>
+| Token Name | References | Applied To |
+|------------|-----------|------------|
+| `borderWidth.asset.indicator` | 4px | Status indicators (strong) |
+| `borderWidth.asset.separator` | 1px | Separator lines |
+</CxTable>
+
+## Interactive State Patterns
+
+Border width often changes based on interaction state to provide visual feedback.
+
+### Standard State Pattern
+
+<CxTable>
+| State | Border Width | Purpose |
+|-------|-------------|--------|
+| Idle | `medium` (1px) | Default appearance |
+| Hover | `medium` (1px) | No change for most components |
+| Focus | `xlarge` (2px) | Clear focus indicator |
+| Active | `xlarge` (2px) | Pressed/active state |
+| Disabled | `medium` (1px) or `none` | Reduced visual weight |
+| Error | `medium` (1px) or `xlarge` (2px) | Error indication |
+</CxTable>
+
+### Form Input Pattern
+
+Inputs typically increase border width on focus:
+
+```json
+{
+  "borderWidth.form-input.inactive": "1px",  // Idle state
+  "borderWidth.form-input.active": "2px"     // Focus state
+}
+```
+
+This creates clear visual feedback without relying solely on color.
+
+## Usage Guidelines
+
+### Choosing the Right Token
+
+**For components**: Use component-specific tokens (`borderWidth.button.*`, `borderWidth.form-input.*`)
+
+**For custom elements**: Use contextual tokens (`borderWidth.context.medium`)
+
+**For no border**: Use `borderWidth.context.none` or `borderWidth.context.zero`
+
+**For emphasis**: Use `borderWidth.context.xlarge` or `borderWidth.context.2xlarge`
+
+### Design Principles
+
+**Consistency**: Use the same border width for similar component types
+
+**Visual Weight**: Thicker borders create more visual emphasis
+
+**State Indication**: Increase border width for focus/active states
+
+**Proportion**: Ensure border width is proportional to element size
+
+### Accessibility
+
+**Focus Indicators**: Use minimum 2px border width for focus states to meet WCAG requirements
+
+**Contrast**: Ensure borders have sufficient contrast against backgrounds
+
+**State Communication**: Don't rely solely on border width to convey state—combine with color changes
+
+**Touch Targets**: Ensure borders don't reduce effective touch target size
+
+### Best Practices
+
+**Do:**
+- Use component tokens for specific UI elements
+- Increase border width for focus/active states
+- Use `medium` (1px) as the default for most borders
+- Test border rendering on different screen densities
+- Combine border width with color for state indication
+
+**Don't:**
+- Use arbitrary border widths—always reference tokens
+- Use borders thicker than 4px except for special indicators
+- Rely only on border width for critical state communication
+- Forget that thick borders add to element dimensions
+- Use sub-pixel borders (< 0.5px) which may not render consistently
+
+### Rendering Considerations
+
+**Sub-pixel rendering**: 0.5px borders may render differently across browsers and devices
+
+**High-DPI displays**: 1px borders appear thinner on retina screens
+
+**Border box sizing**: Remember borders add to element dimensions unless using border-box
+
+**Mobile devices**: Test border rendering on actual devices, not just emulators
+
+### Common Patterns
+
+**Standard borders**: Use `borderWidth.context.medium` (1px)
+
+**Focus rings**: Use `borderWidth.context.xlarge` (2px) for accessibility
+
+**Decorative divisions**: Use `borderWidth.context.thin` (0.5px)
+
+**Status indicators**: Use `borderWidth.context.2xlarge` (4px) for strong signals
+
+**No border**: Use `borderWidth.context.none` explicitly rather than omitting border

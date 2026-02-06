@@ -1,0 +1,63 @@
+---
+import { getConfig } from '@libs/config'
+import ResponsiveImage from '@shortcodes/ResponsiveImage.astro'
+import Code from '@shortcodes/Code.astro'
+import { getChassisDocsPath } from '@libs/path'
+import Card from '@components/Card.astro'
+---
+
+<section class="py-6xlarge">
+  <div class="container">
+    <div class="row justify-content-center mb-5xlarge">
+      <div class="col-lg-8 text-center">
+        <h2 class="font-hero mb-medium">Enterprise-Grade Features</h2>
+        <p class="font-lead">Everything you need to build and scale a world-class design system</p>
+      </div>
+    </div>
+
+    <div class="row row-cols-1 row-cols-medium-2 g-xlarge">
+      <div class="col">
+        <Card
+          title="Multi-Brand Architecture"
+          body="Manage multiple brand identities from a single repository. Switch brands instantly in design and code while maintaining consistent token structure."
+          icon="swatchbook-outline"
+        />
+      </div>
+      <div class="col">
+        <Card
+          title="Theme Variations"
+          body="Light mode, dark mode, high contrast—all working seamlessly. Independent theme switching that works across every brand and platform."
+          icon="circle-half-outline"
+        />
+      </div>
+      <div class="col">
+        <Card
+          title="Cross-Platform Generation"
+          body="One source of truth generates optimized tokens for web (SCSS/CSS), iOS (Swift), and Android (XML) with platform-native conventions."
+          icon="phone-outline"
+        />
+      </div>
+      <div class="col">
+        <Card
+          title="Figma Integration"
+          body="Design with tokens directly in Figma using Variables. Changes sync automatically between design files and code repositories."
+          icon="figma-outline"
+        />
+      </div>
+      <div class="col">
+        <Card
+          title="Automated Workflows"
+          body="Style Dictionary transforms tokens automatically. Version control with Git. CI/CD ready. Zero manual token management."
+          icon="refresh-outline"
+        />
+      </div>
+      <div class="col">
+        <Card
+          title="Developer-Friendly"
+          body="Import as SCSS variables, CSS custom properties, or JavaScript objects. TypeScript definitions included. Works with any bundler."
+          icon="code-outline"
+        />
+      </div>
+    </div>
+  </div>
+</section>
