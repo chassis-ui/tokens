@@ -1,193 +1,923 @@
 ---
-title: Figma Variables 
-description: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+title: Figma Variables
+description: Learn how to sync design tokens to Figma Variables, manage Variable Collections and Modes, configure publish settings and scopes, and use variables in your designs.
 toc: true
 ---
 
-# Overview
+<Callout type="warning" name="work-in-progress" />
 
-Figma Variables are a feature within Figma that allows designers to create and manage design tokens directly in their design files. They enable the use of consistent styles such as colors, typography, and spacing across different components and designs. By utilizing Figma Variables, teams can ensure design consistency and streamline the handoff process to developers.
+## Overview
 
-## Theming System
+Figma Variables are Figma's native system for managing and applying reusable design values across your designs. When combined with Chassis Tokens, Variables become the bridge between design tokens in code and values in Figma.
 
-Token Studio's theming system lets you create and manage multiple design variations using Theme Groups and Theme Options. 
+Tokens Studio syncs design tokens from your Git repository directly into Figma as Variables, creating a single source of truth that stays consistent between design and development.
 
-**Theme Groups** are collections of theme options that share a common set of tokens but can have different values for specific tokens. Theme groups are synced to Figma as Variable Collections.
+This integration ensures that when designers use Variables in Figma, they're working with the exact same values that developers use in production code—eliminating translation errors and manual synchronization.
 
-**Theme Options** are individual themes within a Theme Group that enable or disable specific token sets. These are synced to Figma as Variable Modes.
-
-```
-Brand (Theme Group)
-  ├── Brand A
-  │     ├── Enables: brand-base.json
-  │     └── Enables: brand-a.json
-  └── Brand B
-        ├── Enables: brand-base.json
-        └── Enables: brand-b.json
-Theme (Theme Group)
-  ├── Light
-  │     ├── Enables: theme-base.json
-  │     └── Enables: theme-light.json
-  └── Dark
-        ├── Enables: theme-base.json
-        └── Enables: theme-dark.json
-App (Theme Group)
-  ├── Web
-  │     ├── Enables: app-base.json
-  │     └── Enables: app-web.json
-  └── Mobile
-        ├── Enables: app-base.json
-        └── Enables: app-mobile.json
-```
-
-See the Tokens Studio [documentation](https://documentation.tokens.studio/platform/themes/theme-groups-and-theme-options) for more details on how to set up and use themes.
-
-Chassis Tokens use 3 main theme groups for its core functionality: Brand, Theme, and App.
-
-### Brand Group
-
-The Brand group contains the foundational tokens that define your brand's visual identity including colors, typography, and border radius. These are the base values that inform all other tokens in the system.
-
-<Callout type="warning">
-Tokens in brand group are typically *not used directly* in the UI. Instead, they serve as the source values referenced by tokens in other theme groups. This separation ensures you can change your color, typography, and border styling based on brand in one place, and all dependent tokens in other groups automatically update.
+<Callout type="info" title="Key Concept">
+In Chassis Tokens, **Theme Groups** become **Variable Collections** in Figma, and **Theme Options** become **Variable Modes** within those collections. This mapping allows you to switch between brands, color themes, and platform variations directly in Figma.
 </Callout>
 
-#### Color Tokens
+### Prerequisites
 
-Each brand set represents different brand identities (Brand A, Brand B, Brand C, etc.) and contains the complete color palette for that brand across all color mode variations.
+Before syncing tokens to Figma Variables, ensure you have:
 
-- `color.base.palette.light.primary.base` - Primary color for light theme
-- `color.base.palette.dark.primary.base` - Primary color for dark theme
-- `color.base.palette.light.neutral.50` - Gray-50 for light theme
-- `color.base.palette.dark.neutral.50` - Gray-50 for dark theme
+- **Tokens Studio Configured**: Remote storage connected to Chassis Tokens repository. See [Tokens Studio]([[docsref:/getting-started/tokens-studio]]) documentation.
+- **Figma Editor Access**: Edit permissions on the Figma file where variables will be synced.
+- **Valid Token Structure**: Token files must follow valid JSON syntax with proper DTCG format.
 
-These tokens are then referenced by actual color tokens in the Theme group to create context-specific colors (foreground, background, border, etc.) for each theme mode.
+## Syncing Process
 
-This structure allows you to **switch brands independently** from theme selection. You can view Brand A in light mode, then switch to Brand B while staying in light mode—all without changing the theme mode itself.
+Syncing tokens to Figma Variables is a straightforward process that transforms your JSON token definitions into native Figma Variables that can be applied to any design element.
 
-See the [Design Tokens]([[docsref:/design-tokens/color-tokens]]) page for more details on how color system works.
+1. **Open Tokens Studio Plugin**: Launch the plugin in your Figma file (Plugins → Tokens Studio)
+2. **Verify Connection**: Ensure your Git repository connection is active (green status indicator)
+3. **Pull Latest Tokens**: Click "Pull from [Storage]" button at the bottom of the plugin to fetch the latest tokens
+4. **Open Styles & Variables Menu**: Click "Styles & Variables" dropdown at the bottom of the plugin
+5. **Export Styles & Variables To Figma**: Click "Export Styles & Variables To Figma" in the dropdown
+6. **Select Export to Figma Options**: Choose the appropriate options for exporting styles and variables to Figma then click "Confirm"
+7. **Select Theme Options**: Choose which themes should be created or updated. This determines which token values are synced for each Variable Mode:
+   - **Brand**: Select your brand identity (e.g., Brand A, Brand B)
+   - **Theme**: Select color mode (e.g., Light, Dark)
+   - **App**: Select platform context (e.g., Web, Mobile)
+8. **Export to Figma**: Click the "Export to Figma" button to sync tokens as Variables
+9. **Wait for Completion**: The plugin will show progress as it creates Variable Collections and Modes
+10. **Verify in Variables Panel**: Open Figma's Variables panel (⌥⌘K or Alt+Ctrl+K) to see your synced variables
 
-#### Typography Tokens
-
-Each brand set also defines font-family and font-weight tokens that represent the typography styles for that brand.
-
-- `typography.fontFamily.text` - Text font for the brand theme
-- `typography.fontFamily.display` - Display font for the brand theme
-- `typography.fontWeight.text.normal` - Default font weight for text font of the brand theme
-- `typography.fontWeight.display.elegant` - light font weight for display font of the brand theme
-
-These tokens will be referenced by composite font tokens in the App group to create composite typography styles used in components.
-
-#### Border Tokens
-
-Each brand set defines border radius tokens that represent the corner rounding styles for that brand.
-
-- `borderRadius.base.small` - Small border radius for the brand theme
-- `borderRadius.base.medium` - Medium border radius for the brand theme
-- `borderRadius.base.large` - Large border radius for the brand theme
-
-These tokens will be referenced by actual border tokens in the App group to ensure consistent corner rounding depending on brand identity across all UI elements.
-
-Chassis assumes all applications will use the same border radius values for a brand. If you want to customize border radius per application, you can create additional border radius tokens with different name patterns and update the references in App group.
-
-### Theme Group
-
-The **Theme Group** contains color tokens organized by theme mode (light, dark, high contrast, etc.). These are the color tokens **we use** while designing our UI and building the components. 
-
-Each color token in the Theme Group directly references corresponding color tokens from the Brand Group without any processing or transparency modifications.
-
-<Callout type="info" title="Why separate Brand and Theme groups?">
-Since Figma does not allow to applying transparency to color variable aliases, Chassis Tokens defines all color tokens in the Brand Group and directly references them in the Theme Group.
+<Callout type="info" title="First Sync Duration">
+The initial sync may take 1-3 minutes depending on the number of tokens and your connection speed. Subsequent syncs are faster as Tokens Studio only updates changed values.
 </Callout>
 
-When we switch brand modes in Figma, the Theme Group tokens automatically update to reference the appropriate brand colors for that mode, ensuring our designs maintain proper color and transparency across all theme variations.
+### Sync Behavior
 
-#### Example Chain
+Understanding how Tokens Studio handles the sync process:
 
-For solid colors:
+**What gets synced:**
+- ✅ All tokens from enabled token sets in the selected theme options
+- ✅ Token references and aliases are resolved to their final values
+- ✅ Color modifications (lighten, darken, alpha) are applied
+- ✅ Composite tokens (font, shadow, etc.) are synced as styles with variable properties
+- ✅ Token metadata and descriptions (if configured)
 
-```
-color.context.primary.fg-main - (Theme)
-↓
-color.base.context.light.primary.fg-main - (Brand)
-↓
-color.base.context.light.primary.60 - (Brand)
-```
+**What doesn't sync:**
+- ❌ Tokens in disabled token sets
+- ❌ Tokens marked as "Source" only (available for reference but not exported)
+- ❌ Comments in JSON files
+- ❌ Custom `$extensions` properties (except Tokens Studio specific ones)
 
-For transparency colors:
+**Sync conflicts:**
+- If a Variable already exists with the same name, Tokens Studio updates its value
+- If a Collection exists with the same name, Tokens Studio adds or updates Modes within it
+- Manual Variables created outside Tokens Studio are preserved unless they conflict
 
-```
-color.context.primary.fg-subtle - (Theme)
-↓
-color.base.context.light.primary.fg-subtle - (Brand)
-↓
-rgba({color.base.context.light.primary.fg-main}, {opacity.context.fg-subtle}) - (Brand)
-```
-This architecture allows us to switch both brand and color modes **independently**. Changing from Brand A to Brand B keeps the same light/dark theme, and switching from light to dark mode keeps the same brand.
+## Collections and Modes
 
+Figma Variables are organized into Collections, and each Collection can have multiple Modes. This structure maps perfectly to Chassis Tokens' Theme Group and Theme Option architecture.
 
-### App Group
+### Understanding the Mapping
 
-The **App Group** contains tokens specifically designed for use in components and application interfaces. These are the tokens you'll reference when building UI components and layouts.
-
-- Each color token in the App Group typically references corresponding tokens from the Theme Group to ensure consistency across different themes and brands.
-- Composite typography tokens in the App Group reference typography tokens from the Brand Group to create complete text styles used in components.
-- Border radius tokens in the App Group reference border radius tokens from the Brand Group to ensure consistent corner rounding across all UI elements.
-
-#### Example Chain
-
-Tokens in the App Group reference tokens in the Theme Group, which in turn reference tokens in the Brand Group. This creates a clear chain of dependencies that allows for maximum flexibility and adaptability.
-
-Color chain for a button state:
+The sync process creates this structure in Figma:
 
 ```
-color.button.primary.bg-hover - (App)
-↓
-color.palette.primary.60 - (Theme)
-↓
-color.base.palette.light.primary.60 - (Brand)
-↓
-#0066FF
+Theme Groups → Variable Collections
+Theme Options → Variable Modes
+
+Brand (Theme Group)          → Brand (Variable Collection)
+ ├─ Brand A (Theme Option)   → Brand A (Variable Mode)
+ ├─ Brand B (Theme Option)   → Brand B (Variable Mode)
+ └─ Brand C (Theme Option)   → Brand C (Variable Mode)
+
+Theme (Theme Group)          → Theme (Variable Collection)
+ ├─ Light (Theme Option)     → Light (Variable Mode)
+ ├─ Dark (Theme Option)      → Dark (Variable Mode)
+ └─ High Contrast (Theme Option) → High Contrast (Variable Mode)
+
+App (Theme Group)            → App (Variable Collection)
+ ├─ Web (Theme Option)       → Web (Variable Mode)
+ ├─ Mobile (Theme Option)    → Mobile (Variable Mode)
+ └─ Tablet (Theme Option)    → Tablet (Variable Mode)
 ```
 
-Typography chain for a button label:
+This structure enables designers to:
+- Switch brands by changing the Brand collection's mode
+- Toggle between light/dark themes by changing the Theme collection's mode
+- Preview platform-specific sizing by changing the App collection's mode
+- Combine any brand + theme + app independently
+
+### Variable Collections
+
+Each Variable Collection in Figma corresponds to one Theme Group in Chassis Tokens:
+
+**Brand Collection:**
+- Contains color palette, typography, and border radius tokens
+- Modes represent different brand identities
+- Typically includes 1500+ variables depending on token system complexity
+- Not directly used in design but serves as the foundational source for Theme and App collection variables
+
+**Theme Collection:**
+- Contains palette, context and shadow colors to use in designs.
+- Modes represent color mode variations (light, dark, high contrast)
+- Variables alias the Brand collection colors, adapting them for each mode
+
+**App Collection:**
+- Contains component specific variables in addition to general sizing, spacing, borders, etc...
+- Modes represent platform or context variations
+- Variables may alias Theme or Brand collections depending on the token type
+
+<Callout type="info" title="Collection Organization">
+Variable Collections appear in Figma's Variables panel in the order they're synced. Chassis Tokens typically syncs in order: Brand → Theme → App, which creates a logical hierarchy in the Variables panel.
+</Callout>
+
+### Variable Modes
+
+Modes within a Collection represent different variations of the same set of variables:
+
+**Mode Behavior:**
+- Each Mode provides different values for the same variable names
+- Only one Mode per Collection can be active at a time
+- Switching Modes updates all instances using variables from that Collection
+- Modes can be set independently for each Collection
+
+**Example**: A button component using variables from all three collections:
 
 ```
-font.button.medium (App Group)
-↓
-font.text.medium.strong (App Group)
-↓
-Composite:
-- fontFamily: {typography.fontFamily.text} - (Brand)
-- fontWeight: {typography.fontWeight.text.strong} - (Brand)
-- lineHeight: {typography.lineHeight.text.medium} - (App)
-- fontSize: {typography.fontSize.text.medium} - (App)
-- letterSpacing: {typography.letterSpacing.base.zero} - (App)
-- paragraphSpacing: {typography.paragraphSpacing.base.zero} - (App)
-- textCase: {typography.textCase.base.none} - (App)
-- textDecoration: {typography.textDecoration.base.none} - (App)
+Button Properties:
+- Background Color: 
+  color/button/primary/bg-idle (from App Collection)
+  ↓ aliases to
+  color/context/primary/bg-idle (from Theme Collection)
+  ↓ aliases to
+  color/base/context/[theme-mode]/primary/bg-idle (from Brand Collection)
 
+Active Modes:
+- Brand Collection: Brand A Mode
+- Theme Collection: Dark Mode
+- App Collection: Mobile Mode
+
+Result: 
+Button shows Brand A's primary color in its dark mode variant with mobile-optimized spacing
 ```
 
-When we switch color or brand modes in Figma, the entire chain updates automatically, and all components reflect the new colors and typography.
+When you switch from "Brand A" mode to "Brand B" mode in the Brand Collection, the button automatically updates to Brand B's primary color while keeping the same dark theme and mobile platform settings.
 
-## Sync to Figma
+### Mode Switching in Designs
 
-Tokens Studio's Figma plugin allows you to sync your token sets and themes directly into Figma as Variables. 
+Designers can switch Variable Modes at different scopes:
 
-When syncing, each Theme Group becomes a Variable Collection in Figma, and each Theme Option within that group becomes a Variable Mode. This structure allows designers to easily switch between different themes and brands directly within Figma, ensuring that designs always use the correct tokens.
+**Frame-level Mode:**
+- Apply to a specific frame or component
+- Useful for showing multiple theme variations side by side
+- Right-click frame → Apply variable mode
 
-### Tokens to Variables
+**Page-level Mode:**
+- Default mode for all frames on a page
+- Set in Variables panel → Collection settings
+- Affects all frames unless overridden at frame level
 
-When syncing tokens to Figma, Tokens Studio maps most of the design tokens to Figma Variables based on their type and usage.
+**Section-level Mode:**
+- Default mode for all pages or frames in a section
+- Set in Variables panel → Collection settings
+- Affects all pages and frames unless overridden at that level
 
-- Color tokens are synced as Color Variables.
-- Sizing & Spacing tokens are synced as Number Variables with pixel units.
-- Typography tokens (font sizes, line heights, etc.) are synced as Number Variables with pixel units.
+**Document-level Default:**
+- Fallback mode when no frame, page, or section mode is set
+- Set in Variables panel as the default for each Collection
 
-### Tokens to styles
+## Publish Settings
 
-Tokens Studio can also sync certain design tokens as Figma Styles, such as text styles and effect styles. This allows designers to apply consistent styles across their designs using the defined design tokens.
+Figma's Variable publish settings control how Variables are shared across your design system and which variables are accessible to library consumers.
 
-- Composite typography tokens starting with `font` are synced as Text Styles.
-- Shadow tokens starting with `effect` are synced as Effect Styles.
+### Publishing Variables
+
+To make Variables available to other Figma files:
+
+1. **Enable Team Library**: Your Figma file must be published as a Team Library
+2. **Open Variables Panel**: Click View -> Panels -> Variables menu
+3. **Select Collection**: Click on the Collection you want to configure
+4. **Click Publish Icon**: Located in the top-right of the Variables panel
+5. **Review Changes**: Figma shows which variables are new, updated, or removed
+6. **Write Release Notes**: Describe what changed in this publish (optional but recommended)
+7. **Publish**: Click "Publish" to make variables available to library consumers
+
+<Callout type="info" title="Sync Before Publish">
+Always sync your latest tokens from Tokens Studio *before* publishing Variables to ensure your team library has the most up-to-date values.
+</Callout>
+
+### Publish Strategy
+
+Consider your team's workflow when deciding what and when to publish:
+
+**Publish All Collections:**
+- ✅ Simplest approach for most teams
+- ✅ Ensures designers have access to complete token system
+- ✅ All brands, themes, and platform tokens available
+- ❌ Can be overwhelming for consumers who only need subset
+
+**Publish Selectively:**
+- ✅ Only expose collections relevant to specific products
+- ✅ Reduces visual clutter in consumers' Variables panels
+- ✅ Can create focused libraries per brand or platform
+- ❌ Requires maintaining multiple library files
+
+**Recommended Approach for Chassis Tokens:**
+
+Create separate library files for different audiences:
+- **Core Design System** (All teams): Theme + App collections only
+- **Brand-Specific Libraries**: Brand A + Theme + App with Brand A mode as default
+- **Platform-Specific Libraries**: Theme + App with platform mode locked
+
+This gives teams exactly what they need without requiring them to manage irrelevant mode combinations.
+
+### Version Control
+
+Track your Variable publishes to maintain a clear history:
+
+**Publish Cadence:**
+- **After token updates**: Publish immediately after syncing significant token changes
+- **Regular schedule**: Weekly or bi-weekly publishes for routine updates
+- **Breaking changes**: Clearly communicate when variable names or structures change
+
+**Version Naming:**
+- Use semantic versioning in publish notes: `v2.1.0 - Add dark mode support`
+- Document breaking changes clearly: `v3.0.0 - BREAKING: Renamed color tokens`
+- Link to changelog or release notes when available
+
+**Communication:**
+- Notify design team when critical updates are published
+- Provide migration guides for breaking changes
+- Maintain a shared document listing available variables and their purposes
+
+## Variable Scopes
+
+Figma Variable Scopes control which properties a variable can be applied to. Setting appropriate scopes improves the designer experience by showing only relevant variables in property menus.
+
+### Understanding Scopes
+
+Each Variable in Figma can be scoped to one or more property types:
+
+**Color Variables:**
+- Fill
+- Stroke
+- Text (text color)
+- Effect (shadow colors)
+
+**Number Variables:**
+- Width & Height
+- Gap (in auto layout)
+- Padding (in auto layout)
+- Corner radius
+- Effect (shadow blur, spread, offset)
+- Text size
+- Line height
+- Letter spacing
+- Paragraph spacing
+
+**String Variables:**
+- Text content
+
+**Boolean Variables:**
+- Visibility (layer visibility)
+
+<Callout type="info" title="Scope Purpose">
+Scopes don't prevent applying a variable to a property—they just control whether the variable appears in the property dropdown menu. This helps designers find the right variable faster.
+</Callout>
+
+### Setting Scopes
+
+Tokens Studio automatically assigns scopes based on token type when syncing:
+
+**Automatic Scope Assignment:**
+
+```
+Token Type                    → Variable Scope
+────────────────────────────────────────────────
+color.*                       → Fill, Stroke, Text, Effect
+size.* / width.* / height.*   → Width & Height
+space.* / gap.*               → Gap, Padding
+borderRadius.*                → Corner radius
+borderWidth.*                 → Stroke
+typography.fontSize.*         → Text size
+typography.lineHeight.*       → Line height
+typography.letterSpacing.*    → Letter spacing
+effect.shadow.*               → Effect (blur, spread, x, y)
+opacity.*                     → All scopes (as percentage)
+```
+
+**Manual Scope Adjustment:**
+
+If Tokens Studio assigns incorrect scopes:
+
+1. Open Variables panel in Figma
+2. Select the variable you want to modify
+3. Click "Edit variable" (pencil icon)
+4. Check/uncheck scope options in the right panel
+5. Click "Save" to apply changes
+
+<Callout type="warning" title="Scope Persistence">
+Manually adjusted scopes will be overwritten if you re-sync from Tokens Studio. To make permanent scope changes, adjust token structure or use token `$extensions` metadata if supported.
+</Callout>
+
+### Scope Best Practices
+
+**Color Token Scopes:**
+
+```
+Semantic color tokens should have focused scopes:
+
+color.button.*.bg-*           → Fill only
+color.button.*.fg-*           → Text only
+color.button.*.border-*       → Stroke only
+color.shadow.*                → Effect only
+
+This prevents applying background colors to text or border colors to fills.
+```
+
+**Dimension Token Scopes:**
+
+```
+Size tokens should target specific properties:
+
+size.button.*.height          → Height only
+space.button.*.gap            → Gap only
+space.button.*.padding-x      → Padding (horizontal)
+space.button.*.padding-y      → Padding (vertical)
+borderRadius.button.*         → Corner radius only
+
+This ensures designers pick the right token for the right property.
+```
+
+**Multi-Scope Tokens:**
+
+```
+Some tokens legitimately apply to multiple scopes:
+
+space.* (general spacing)     → Gap, Padding, Width, Height
+opacity.* (transparency)      → All scopes with opacity
+effect.shadow.* (shadow blur) → Effect only
+```
+
+### Scopes in Component Libraries
+
+When publishing variables in component libraries, well-defined scopes improve the consumer experience:
+
+**Component Author (You):**
+- Apply variables with appropriate scopes to component properties
+- Document which variables should be used for specific properties
+- Use clear naming that indicates the intended scope (`.bg-*`, `.fg-*`, `.border-*`)
+
+**Component Consumer (Library Users):**
+- Only see relevant variables when adjusting component properties
+- Less likely to apply wrong tokens (e.g., background color to text)
+- Faster token discovery since dropdowns show fewer, more relevant options
+
+**Example - Button Component:**
+
+```
+Background Fill Property:
+✅ Shows: color.button.primary.bg-idle, color.button.primary.bg-hover
+❌ Hides: color.button.primary.fg-idle (text scope only)
+
+Text Content Color:
+✅ Shows: color.button.primary.fg-idle, color.button.primary.fg-hover
+❌ Hides: color.button.primary.bg-idle (fill scope only)
+
+Border Stroke Property:
+✅ Shows: color.button.primary.border-idle
+❌ Hides: All bg-* and fg-* tokens
+```
+
+## Practical Workflow
+
+Now that you understand how syncing, collections, modes, publishing, and scopes work, let's walk through common design workflows using Chassis Tokens variables.
+
+### Starting a New Design
+
+When beginning a new design using Chassis Tokens:
+
+1. **Create New File or Frame**: Start your Figma design file or create a frame for your design
+2. **Enable Library**: Go to Assets panel → Enable Chassis Tokens library (if using published library)
+3. **Set Default Modes**: In Variables panel, set the default mode for each collection:
+   - Brand: Your target brand
+   - Theme: Your primary color mode (usually Light)
+   - App: Your target platform (Web, Mobile, etc.)
+4. **Use Variables**: When styling elements, use variables from the autocomplete dropdown
+5. **Test Mode Switching**: Periodically test your design in different modes to ensure it adapts correctly
+
+<Callout type="tip" title="Start with Constraints">
+Apply variables to your design as early as possible. It's easier to design with variables from the start than to retrofit them later.
+</Callout>
+
+### Switching Themes
+
+To preview how your design looks in different themes:
+
+**Quick Method (Local File):**
+1. Select frame containing your design
+2. Right-click → Apply variable mode → Theme → Dark (or other mode)
+3. Frame updates instantly to show dark theme colors
+
+**Page Method (Organization):**
+1. Duplicate your page
+2. Rename to "Dark Theme"
+3. In Variables panel, change Theme collection default mode to "Dark"
+4. All frames on this page now show dark theme by default
+
+**Component Testing:**
+1. Create separate instances of your component on the same page
+2. Apply different modes to each instance's frame
+3. Compare side-by-side how component adapts to different themes
+
+### Working with Multiple Brands
+
+When designing for multiple brands in one file:
+
+**Frame-Based Approach:**
+1. Create frames for each brand variant side by side
+2. Apply brand mode to each frame individually
+3. Use the same components—variables handle color differences
+
+**Component Variant Approach:**
+1. Create component with variables applied
+2. Create multiple instances
+3. Apply different Brand modes to each instance's frame
+4. All instances use same component structure, different brand colors
+
+**Example Structure:**
+```
+Page: "Homepage Designs"
+├─ Frame: "Brand A Homepage" (Brand A mode applied)
+├─ Frame: "Brand B Homepage" (Brand B mode applied)
+└─ Frame: "Brand C Homepage" (Brand C mode applied)
+
+All three frames reference the same component library.
+Variables automatically adapt to the frame's active Brand mode.
+```
+
+### Updating Token Values
+
+When token values change in the repository:
+
+1. **Pull Changes**: In Tokens Studio plugin, click "Pull from [Storage]"
+2. **Review Diff**: Plugin shows which tokens changed and their new values
+3. **Sync to Figma**: Click "Push to Figma" to update Variable values
+4. **Automatic Update**: All designs using those variables update instantly
+5. **Review Designs**: Check key frames to ensure updates look correct
+6. **Publish Library**: If this is a shared library, publish the updated variables
+
+<Callout type="success" title="Zero Manual Work">
+Once designs use variables, updating token values requires zero manual design changes. Pull → Push → Publish. All connected designs update automatically.
+</Callout>
+
+### Creating Mode-Specific Overrides
+
+Sometimes a design element needs different styling in a specific mode:
+
+**Use Case**: A logo that needs different colors in dark mode
+
+**Approach**:
+1. Create the element with variable applied: `color/brand/logo-primary`
+2. This variable has different values in Light vs Dark modes
+3. The logo automatically adapts when mode switches
+
+**Use Case**: Button sizing that differs between Web and Mobile
+
+**Approach**:
+1. Button uses variable: `size/button/medium-height`
+2. This variable resolves to 40px in Web mode, 44px in Mobile mode (from App collection)
+3. Button automatically resizes when switching App mode
+
+**Use Case**: Component property that should stay constant regardless of mode
+
+**Approach**:
+1. Use a variable from a Collection that isn't changing
+2. Or use a fixed value if truly mode-independent
+3. Example: Icon size might be fixed at 24px for all modes
+
+## Token Types as Variables
+
+Different token types sync to Figma Variables with specific behaviors and limitations. Understanding these helps you apply variables correctly in your designs.
+
+### Color Tokens
+
+Color tokens become color variables with RGBA values:
+
+**Synced Structure:**
+- Solid colors: Direct hex or RGB value
+- Colors with opacity: Separate color + opacity number variables
+- Aliases: Variable points to another color variable (visible in Variables panel)
+
+**In Figma:**
+```
+Variable: color/button/primary/bg-idle
+Type: Color
+Mode "Light": #0066FF (Brand A primary-60)
+Mode "Dark": #3D8BFF (Brand A primary-40)
+Scopes: Fill
+```
+
+**Usage:**
+- Apply to Fill properties for backgrounds
+- Apply to Stroke properties for borders
+- Apply to Text properties for text color
+- Apply to Effect properties for shadow colors
+
+**Transparency Handling:**
+
+Since Figma doesn't support alpha values in color variable aliases, Chassis Tokens handles transparency tokens differently:
+
+```json
+// In tokens:
+"color.button.primary.bg-hover": {
+  "$type": "color",
+  "$value": "rgba({color.palette.primary.60}, {opacity.context.hover})"
+}
+
+// Syncs as:
+Variable: color/button/primary/bg-hover
+Type: Color (with opacity baked in)
+Value: rgba(0, 102, 255, 0.9)
+```
+
+### Dimension Tokens
+
+Sizing, spacing, border, and measurement tokens sync as number variables:
+
+**Synced Structure:**
+- Numeric value without unit (Figma assumes pixels)
+- Can reference other number variables
+- Can be used in calculations within Figma
+
+**In Figma:**
+```
+Variable: size/button/medium-height
+Type: Number
+Mode "Web": 40
+Mode "Mobile": 44
+Scopes: Height
+```
+
+**Usage:**
+- Width and Height properties
+- Gap in auto layout
+- Padding in auto layout
+- Corner radius
+- Border width (Stroke weight)
+
+**Unit Considerations:**
+
+Tokens Studio removes units when syncing to Figma:
+- `16px` → `16` (Figma interprets as pixels)
+- `1rem` → `16` (if rem = 16px; converted during sync)
+- `100%` → Cannot be represented as Figma number variable
+
+### Typography Tokens
+
+Typography tokens sync in two ways depending on their structure:
+
+**Simple Typography Variables:**
+
+Single property tokens become number or string variables:
+
+```
+typography.fontSize.text.medium → Number variable: 16 (Text size scope)
+typography.lineHeight.text.medium → Number variable: 24 (Line height scope)
+typography.fontWeight.text.strong → String variable: "600" (or number 600)
+typography.fontFamily.text → String variable: "Inter"
+```
+
+**Composite Typography Tokens:**
+
+Composite tokens (starting with `font.*`) sync as Figma **Text Styles** that use variables:
+
+```json
+// Token:
+"font.button.medium": {
+  "$type": "typography",
+  "$value": {
+    "fontFamily": "{typography.fontFamily.text}",
+    "fontWeight": "{typography.fontWeight.text.strong}",
+    "fontSize": "{typography.fontSize.text.medium}",
+    "lineHeight": "{typography.lineHeight.text.medium}"
+  }
+}
+
+// Syncs as:
+Text Style: "font/button/medium"
+- Font family: typography/fontFamily/text (variable)
+- Font weight: typography/fontWeight/text/strong (variable)
+- Font size: typography/fontSize/text/medium (variable)
+- Line height: typography/lineHeight/text/medium (variable)
+```
+
+**Advantages:**
+- Text styles apply multiple properties at once
+- Individual properties remain variable-driven
+- Mode switching updates all typography properties
+- Easier for designers to apply consistent text styling
+
+See [Typography Tokens]([[docsref:/design-tokens/typography-tokens]]) for detailed information on typography system architecture.
+
+### Shadow Tokens
+
+Shadow tokens (effects) sync as Figma **Effect Styles** using color and number variables:
+
+```json
+// Token:
+"effect.shadow.elevation.20": {
+  "$type": "shadow",
+  "$value": {
+    "offsetX": "0",
+    "offsetY": "2",
+    "blur": "8",
+    "spread": "0",
+    "color": "{color.context.shadow.medium}"
+  }
+}
+
+// Syncs as:
+Effect Style: "effect/shadow/elevation/20"
+- X offset: 0 (number)
+- Y offset: 2 (number)
+- Blur: 8 (variable: effect/shadow/blur/medium)
+- Spread: 0 (number)
+- Color: color/context/shadow/medium (variable)
+```
+
+**Advantages:**
+- Effect styles apply complete shadow definitions
+- Shadow color adapts to theme mode automatically
+- Easy to apply consistent elevation across designs
+
+**Layered Shadows:**
+
+Tokens with multiple shadow layers sync as effect styles with multiple effects:
+
+```json
+"effect.shadow.elevation.40": {
+  "$type": "shadow",
+  "$value": [
+    { "offsetY": "2", "blur": "4", "color": "{color.shadow.small}" },
+    { "offsetY": "8", "blur": "16", "color": "{color.shadow.large}" }
+  ]
+}
+```
+
+Figma Effect Style will have both shadow layers, each with its own variable-driven color.
+
+See [Shadow Tokens]([[docsref:/design-tokens/shadow-tokens]]) for detailed shadow system architecture.
+
+## Common Patterns
+
+Learn effective patterns for using Chassis Tokens variables in real design scenarios.
+
+### Building a Button Component
+
+Using variables to create a flexible, theme-aware button:
+
+**Component Structure:**
+```
+Button Component
+├─ Background (Rectangle)
+│   └─ Fill: color/button/primary/bg-idle
+├─ Label (Text)
+│   ├─ Fill: color/button/primary/fg-idle
+│   └─ Text Style: font/button/medium
+├─ Border (Frame)
+│   ├─ Border Color: color/button/primary/border-idle
+│   ├─ Border Width: borderWidth/button/main
+│   └─ Border Radius: borderRadius/button/medium
+└─ Auto Layout
+    ├─ Padding: space/button/medium-padding-y (vertical)
+    ├─ Padding: space/button/medium-padding-x (horizontal)
+    ├─ Gap: space/button/medium-gap
+    └─ Min Height: size/button/medium-main (hug)
+```
+
+**Interactive States (Variants):**
+
+Create component variants for different states, each using different variable values:
+
+- Default variant: `color/button/primary/bg-idle`
+- Hover variant: `color/button/primary/bg-hover`
+- Pressed variant: `color/button/primary/bg-pressed`
+- Disabled variant: `color/button/primary/bg-disabled`
+
+**Result:**
+- Button automatically adapts to active Brand mode
+- Switches colors for Light/Dark theme modes
+- Adjusts sizing for Web/Mobile app modes
+- All without creating brand or theme-specific variants
+
+### Responsive Spacing
+
+Using App collection modes to create responsive layouts:
+
+**Token Setup:**
+```json
+// app-base.json (Web mode)
+"space.section.padding-x": {
+  "$value": "64"
+}
+
+// app-mobile.json (Mobile mode) 
+"space.section.padding-x": {
+  "$value": "16"
+}
+```
+
+**In Figma:**
+
+Apply `space/section/padding-x` to section frame padding:
+- Web mode: 64px horizontal padding
+- Mobile mode: 16px horizontal padding
+
+Switch App mode to preview responsive behavior without duplicating frames.
+
+### Color Mode Testing
+
+Setting up side-by-side theme comparison:
+
+1. Create main frame with your design using variables
+2. Duplicate frame twice
+3. Rename frames: "Light Theme", "Dark Theme", "High Contrast"
+4. Apply corresponding Theme mode to each frame
+5. All three frames show the same design in different color modes
+
+**Tip**: Group these frames and present them together in design reviews to show theme coverage.
+
+### Multi-Brand Presentation
+
+Presenting design across multiple brands:
+
+**Option 1 - Separate Pages:**
+```
+Page: "Brand A Designs" (Brand A mode as page default)
+Page: "Brand B Designs" (Brand B mode as page default)
+Page: "Brand C Designs" (Brand C mode as page default)
+```
+
+**Option 2 - Component Grid:**
+```
+Frame: "Brand Comparison"
+├─ Frame: Brand A (mode applied)
+│   └─ Button Instance
+├─ Frame: Brand B (mode applied)
+│   └─ Button Instance
+└─ Frame: Brand C (mode applied)
+    └─ Button Instance
+```
+
+Same component, different frame modes, instant brand variations.
+
+### Component with Mode Overrides
+
+Creating components that adapt to their container's mode:
+
+**Set Up:**
+1. Create component using variables from all three collections
+2. Instance the component in different frames
+3. Apply different modes to each frame
+4. Component instances automatically adapt
+
+**Example - Card Component:**
+
+Card uses:
+- `color/card/bg-main` (Theme collection) - adapts to light/dark
+- `borderRadius/card/default` (Brand collection) - adapts to brand style
+- `space/card/padding` (App collection) - adapts to platform
+
+Place card instances in different frames with different modes—each instance looks correct for that context without creating separate component variants.
+
+## Troubleshooting
+
+Common issues when working with Figma Variables and how to resolve them.
+
+### Sync Issues
+
+**Problem**: Variables not appearing in Figma after sync
+
+**Solutions:**
+- Verify you clicked "Push to Figma" (not just "Pull from [Storage]")
+- Check that token sets are marked as "Enable" not just "Source"
+- Ensure you have edit permissions on the Figma file
+- Try refreshing the Figma Variables panel (close and reopen)
+- Check browser console for sync errors (Figma → Help → Troubleshooting → Open Console)
+
+**Problem**: Some variables synced but others missing
+
+**Solutions:**
+- Verify token files have valid JSON syntax (no trailing commas, missing brackets)
+- Check that missing tokens are in enabled token sets for selected theme options
+- Look for token reference errors (referencing non-existent tokens)
+- Review token naming—special characters may cause sync failures
+- Check Tokens Studio console logs for specific error messages
+
+### Variable Values
+
+**Problem**: Variable shows wrong value
+
+**Solutions:**
+- Verify correct theme options are selected in Tokens Studio
+- Check token set order—later sets override earlier ones
+- Inspect token in Tokens Studio to see resolved value chain
+- Ensure color modifications (alpha, lighten, darken) are processing correctly
+- Pull latest tokens from repository (local changes may override)
+
+**Problem**: Variable doesn't update when switching modes
+
+**Solutions:**
+- Ensure the variable belongs to the Collection whose mode you're switching
+- Check if variable is mode-independent (same value in all modes)
+- Verify token set for that mode is enabled in theme configuration
+- Try re-syncing from Tokens Studio (may fix stale values)
+
+### Mode Switching
+
+**Problem**: Changing Brand mode doesn't update Theme colors
+
+**Solutions:**
+- Verify Theme tokens reference Brand tokens (not hard-coded values)
+- Check that Brand collection has all necessary modes synced
+- Ensure Frame has the correct Brand mode applied
+- Try setting mode at frame level, not page level, for testing
+
+**Problem**: Some elements update with mode change, others don't
+
+**Solutions:**
+- Check if non-updating elements use variables or fixed values
+- Verify non-updating elements reference variables from the correct Collection
+- Ensure all parent frames have appropriate modes set
+- Elements using Figma styles need the styles to reference variables
+
+### Scope Issues
+
+**Problem**: Variable doesn't appear in property dropdown
+
+**Solutions:**
+- Check variable scopes—may not include the property you're trying to apply to
+- Use search in variable dropdown instead of scrolling
+- Manually edit variable scopes in Figma Variables panel
+- Re-sync from Tokens Studio if scopes were changed manually
+
+**Problem**: Wrong variables appear in property dropdown
+
+**Solutions:**
+- Variable scopes may be too broad (e.g., color token scoped to all properties)
+- Adjust scopes manually in Variables panel
+- Use clear naming convention that indicates intended use (`.bg-*`, `.fg-*`)
+
+### Publishing
+
+**Problem**: Updated variables not appearing in consuming files
+
+**Solutions:**
+- Verify you published the library after syncing tokens
+- Check that consuming files have updates available (Libraries panel shows notification)
+- Click "Review update" and accept changes in consuming files
+- Ensure consuming files are using the correct library
+- Try unlinking and relinking library if updates don't appear
+
+**Problem**: Breaking changes after publish
+
+**Solutions:**
+- If variable names changed, consuming files lose variable connections
+- Communicate variable name changes before publishing
+- Keep old variables as deprecated for 1-2 versions if possible
+- Provide migration guide showing old → new variable mappings
+
+### Performance
+
+**Problem**: Figma file slow after syncing many variables
+
+**Solutions:**
+- Large variable sets (>1000 variables) can slow Figma performance
+- Consider splitting into multiple library files by category
+- Publish only necessary Collections for specific use cases
+- Reduce number of modes if not all are needed
+- Optimize token structure to reduce total variable count
+
+**Problem**: Sync taking very long
+
+**Solutions:**
+- First sync always takes longest (creating everything fresh)
+- Subsequent syncs should be faster—if not, check for issues
+- Verify stable internet connection (tokens pulled from Git)
+- Try clearing Tokens Studio cache and syncing again
+- Large color palettes with many modifications slow sync—optimize where possible
+
+## Related Topics
+
+**Getting Started:**
+- [Tokens Studio]([[docsref:/getting-started/tokens-studio]]) - Set up and configure Tokens Studio plugin
+- [Style Dictionary]([[docsref:/getting-started/style-dictionary]]) - Generate code outputs from tokens
+
+**Design Token Architecture:**
+- [Color Tokens]([[docsref:/design-tokens/color-tokens]]) - Color system and palette structure
+- [Typography Tokens]([[docsref:/design-tokens/typography-tokens]]) - Font and text styling
+- [Shadow Tokens]([[docsref:/design-tokens/shadow-tokens]]) - Elevation and shadow system
+
+**Workflow Guides:**
+- [Using Tokens in Designs]([[docsref:/guides/using-tokens]]) - Best practices for applying variables
+- [Component Patterns]([[docsref:/guides/components]]) - Building components with variables
+- [Theme Switching]([[docsref:/guides/themes]]) - Managing light/dark and brand modes
+
