@@ -1944,6 +1944,20 @@
         "$value": "{font.text.small.strong}"
       }
     },
+    "segment": {
+      "medium": {
+        "$type": "typography",
+        "$value": "{font.text.small.strong}"
+      },
+      "large": {
+        "$type": "typography",
+        "$value": "{font.text.medium.strong}"
+      },
+      "small": {
+        "$type": "typography",
+        "$value": "{font.text.xsmall.strong}"
+      }
+    },
     "tab": {
       "medium": {
         "$type": "typography",
@@ -3453,6 +3467,32 @@
         "$type": "sizing",
         "$value": "{size.base.8}"
       }
+    },
+    "segment": {
+      "medium-main": {
+        "$type": "sizing",
+        "$value": "{size.base.28}"
+      },
+      "medium-icon": {
+        "$type": "sizing",
+        "$value": "{size.base.20}"
+      },
+      "large-main": {
+        "$type": "sizing",
+        "$value": "{size.base.36}"
+      },
+      "large-icon": {
+        "$type": "sizing",
+        "$value": "{size.base.24}"
+      },
+      "small-main": {
+        "$type": "sizing",
+        "$value": "{size.base.20}"
+      },
+      "small-icon": {
+        "$type": "sizing",
+        "$value": "{size.base.16}"
+      }
     }
   },
   "space": {
@@ -3968,6 +4008,56 @@
         "$value": "{space.base.8}"
       }
     },
+    "segment": {
+      "medium-bar-padding": {
+        "$type": "spacing",
+        "$value": "{space.base.4}"
+      },
+      "medium-padding-y": {
+        "$type": "spacing",
+        "$value": "{space.base.4}"
+      },
+      "medium-padding-x": {
+        "$type": "spacing",
+        "$value": "{space.base.12}"
+      },
+      "medium-gap": {
+        "$type": "spacing",
+        "$value": "{space.base.4}"
+      },
+      "large-bar-padding": {
+        "$type": "spacing",
+        "$value": "{space.base.4}"
+      },
+      "large-padding-y": {
+        "$type": "spacing",
+        "$value": "{space.base.6}"
+      },
+      "large-padding-x": {
+        "$type": "spacing",
+        "$value": "{space.base.16}"
+      },
+      "large-gap": {
+        "$type": "spacing",
+        "$value": "{space.base.8}"
+      },
+      "small-bar-padding": {
+        "$type": "spacing",
+        "$value": "{space.base.4}"
+      },
+      "small-padding-y": {
+        "$type": "spacing",
+        "$value": "{space.base.1}"
+      },
+      "small-padding-x": {
+        "$type": "spacing",
+        "$value": "{space.base.8}"
+      },
+      "small-gap": {
+        "$type": "spacing",
+        "$value": "{space.base.2}"
+      }
+    },
     "table": {
       "cell-padding-y": {
         "$type": "spacing",
@@ -4250,6 +4340,32 @@
       "main": {
         "$type": "borderRadius",
         "$value": "{borderRadius.context.large}"
+      }
+    },
+    "segment": {
+      "medium-bar": {
+        "$type": "borderRadius",
+        "$value": "{borderRadius.context.medium}"
+      },
+      "medium-item": {
+        "$type": "borderRadius",
+        "$value": "{borderRadius.segment.medium-bar} - {space.segment.medium-bar-padding}"
+      },
+      "large-bar": {
+        "$type": "borderRadius",
+        "$value": "{borderRadius.context.medium}"
+      },
+      "large-item": {
+        "$type": "borderRadius",
+        "$value": "{borderRadius.segment.large-bar} - {space.segment.large-bar-padding}"
+      },
+      "small-bar": {
+        "$type": "borderRadius",
+        "$value": "{borderRadius.context.medium}"
+      },
+      "small-item": {
+        "$type": "borderRadius",
+        "$value": "{borderRadius.segment.small-bar} - {space.segment.small-bar-padding}"
       }
     },
     "tab": {

@@ -1353,20 +1353,6 @@
         "$value": "{size.base.20}"
       }
     },
-    "list": {
-      "icon": {
-        "$type": "sizing",
-        "$value": "{size.base.32}"
-      },
-      "image": {
-        "$type": "sizing",
-        "$value": "{size.base.40}"
-      },
-      "disclosure": {
-        "$type": "sizing",
-        "$value": "{size.base.8}"
-      }
-    },
     "pagination": {
       "dot-idle-h": {
         "$type": "sizing",
@@ -1693,6 +1679,32 @@
         "$value": "{borderRadius.context.round}"
       },
       "dot-active": {
+        "$type": "borderRadius",
+        "$value": "{borderRadius.context.round}"
+      }
+    },
+    "segment": {
+      "medium-bar": {
+        "$type": "borderRadius",
+        "$value": "{borderRadius.context.round}"
+      },
+      "medium-item": {
+        "$type": "borderRadius",
+        "$value": "{borderRadius.context.round}"
+      },
+      "large-bar": {
+        "$type": "borderRadius",
+        "$value": "{borderRadius.context.round}"
+      },
+      "large-item": {
+        "$type": "borderRadius",
+        "$value": "{borderRadius.context.round}"
+      },
+      "small-bar": {
+        "$type": "borderRadius",
+        "$value": "{borderRadius.context.round}"
+      },
+      "small-item": {
         "$type": "borderRadius",
         "$value": "{borderRadius.context.round}"
       }
