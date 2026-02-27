@@ -1,10 +1,10 @@
 
 //
-// number-large.scss
+// number-medium.scss
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Sun, 01 Mar 2026 08:53:21 GMT
+// Generated on Sun, 01 Mar 2026 08:53:26 GMT
 // Chassis - Tokens v0.1.0
 // Copyright 2025 Ozgur Gunes
 // Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
@@ -235,12 +235,12 @@ $cx-size-pagination-dot-idle-h: 0.5rem !default;
 $cx-size-pagination-dot-idle-w: 0.5rem !default;
 $cx-size-pagination-dot-active-h: 0.5rem !default;
 $cx-size-pagination-dot-active-w: 0.5rem !default;
-$cx-size-screen-section-thumb: 6rem !default;
-$cx-size-screen-section-icon: 5rem !default;
-$cx-size-screen-feature-thumb: 3.5rem !default;
-$cx-size-screen-feature-icon: 3rem !default;
+$cx-size-screen-section-thumb: 5rem !default;
+$cx-size-screen-section-icon: 4rem !default;
+$cx-size-screen-feature-thumb: 3rem !default;
+$cx-size-screen-feature-icon: 2.5rem !default;
 $cx-size-screen-section-w: 75rem !default;
-$cx-size-screen-section-h: 60rem !default;
+$cx-size-screen-section-h: 64rem !default;
 $cx-space-base-0: 0rem !default;
 $cx-space-base-1: 0.0625rem !default;
 $cx-space-base-2: 0.125rem !default;
@@ -415,18 +415,18 @@ $cx-space-pagination-dot-gap: 0.5rem !default;
 $cx-space-table-cell-padding-y: 0.5rem !default;
 $cx-space-table-cell-padding-x: 0.5rem !default;
 $cx-space-table-cell-gap: 0.5rem !default;
-$cx-space-screen-section-padding-y: 6rem !default;
-$cx-space-screen-section-padding-x: 4rem !default;
-$cx-space-screen-section-gap-y: 6rem !default;
-$cx-space-screen-section-gap-x: 4rem !default;
+$cx-space-screen-section-padding-y: 4rem !default;
+$cx-space-screen-section-padding-x: 2rem !default;
+$cx-space-screen-section-gap-y: 4rem !default;
+$cx-space-screen-section-gap-x: 3rem !default;
 $cx-space-screen-content-padding-y: 2rem !default;
 $cx-space-screen-content-padding-x: 0rem !default;
-$cx-space-screen-content-gap-y: 2rem !default;
-$cx-space-screen-content-gap-x: 2rem !default;
+$cx-space-screen-content-gap-y: 1.5rem !default;
+$cx-space-screen-content-gap-x: 1.5rem !default;
 $cx-space-screen-feature-padding-y: 2rem !default;
 $cx-space-screen-feature-padding-x: 0rem !default;
-$cx-space-screen-feature-gap-y: 2rem !default;
-$cx-space-screen-feature-gap-x: 2rem !default;
+$cx-space-screen-feature-gap-y: 1.5rem !default;
+$cx-space-screen-feature-gap-x: 1.5rem !default;
 $cx-space-screen-module-padding-y: 1.5rem !default;
 $cx-space-screen-module-padding-x: 1.5rem !default;
 $cx-space-screen-module-gap-y: 1.5rem !default;
@@ -490,13 +490,13 @@ $cx-typography-font-size-html-cite: 0.875rem !default;
 $cx-typography-font-size-code-large: 1.1875rem !default;
 $cx-typography-font-size-code-medium: 1rem !default;
 $cx-typography-font-size-code-small: 0.875rem !default;
-$cx-typography-font-size-screen-hero-title: 4rem !default;
-$cx-typography-font-size-screen-hero-body: 1.375rem !default;
-$cx-typography-font-size-screen-section-title: 2.375rem !default;
+$cx-typography-font-size-screen-hero-title: 3rem !default;
+$cx-typography-font-size-screen-hero-body: 1.125rem !default;
+$cx-typography-font-size-screen-section-title: 2rem !default;
 $cx-typography-font-size-screen-section-body: 1.125rem !default;
-$cx-typography-font-size-screen-feature-title: 1.5rem !default;
-$cx-typography-font-size-screen-feature-body: 1.125rem !default;
-$cx-typography-font-size-screen-module-title: 1.375rem !default;
+$cx-typography-font-size-screen-feature-title: 1.25rem !default;
+$cx-typography-font-size-screen-feature-body: 1rem !default;
+$cx-typography-font-size-screen-module-title: 1.125rem !default;
 $cx-typography-line-height-text-5xlarge: 1.273em !default;
 $cx-typography-line-height-text-4xlarge: 1.263em !default;
 $cx-typography-line-height-text-3xlarge: 1.25em !default;
@@ -538,21 +538,21 @@ $cx-typography-paragraph-spacing-base-small: 0.5rem !default;
 $cx-typography-paragraph-spacing-base-medium: 1rem !default;
 $cx-typography-paragraph-spacing-base-large: 1.5rem !default;
 $cx-border-radius-base-xsmall: 0.125rem !default;
-$cx-border-radius-base-small: 0.25rem !default;
-$cx-border-radius-base-medium: 0.375rem !default;
-$cx-border-radius-base-large: 0.625rem !default;
-$cx-border-radius-base-xlarge: 0.75rem !default;
-$cx-border-radius-base-2xlarge: 1rem !default;
-$cx-border-radius-base-3xlarge: 1.25rem !default;
+$cx-border-radius-base-small: 0.125rem !default;
+$cx-border-radius-base-medium: 0.125rem !default;
+$cx-border-radius-base-large: 0.125rem !default;
+$cx-border-radius-base-xlarge: 0.125rem !default;
+$cx-border-radius-base-2xlarge: 0.125rem !default;
+$cx-border-radius-base-3xlarge: 0.125rem !default;
 $cx-border-radius-base-round: 16rem !default;
 $cx-border-radius-context-zero: 0rem !default;
 $cx-border-radius-context-xsmall: 0.125rem !default;
-$cx-border-radius-context-small: 0.25rem !default;
-$cx-border-radius-context-medium: 0.375rem !default;
-$cx-border-radius-context-large: 0.625rem !default;
-$cx-border-radius-context-xlarge: 0.75rem !default;
-$cx-border-radius-context-2xlarge: 1rem !default;
-$cx-border-radius-context-3xlarge: 1.25rem !default;
+$cx-border-radius-context-small: 0.125rem !default;
+$cx-border-radius-context-medium: 0.125rem !default;
+$cx-border-radius-context-large: 0.125rem !default;
+$cx-border-radius-context-xlarge: 0.125rem !default;
+$cx-border-radius-context-2xlarge: 0.125rem !default;
+$cx-border-radius-context-3xlarge: 0.125rem !default;
 $cx-border-radius-context-round: 16rem !default;
 $cx-border-radius-context-round-8: 0.25rem !default;
 $cx-border-radius-context-round-12: 0.375rem !default;

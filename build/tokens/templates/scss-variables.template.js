@@ -68,7 +68,7 @@ function resolveBasicTypographyValue(token, dictionary) {
     `"font-size": var(--#{$prefix}font-size-${fontFamily}-${fontSize})`,
     `"line-height": var(--#{$prefix}line-height-${fontFamily}-${lineHeight})`,
     `"font-style": ${originals.fontStyle}`,
-    `"letter-spacing": ${parseFloat(originals.letterSpacing)}`,
+    `"letter-spacing": ${originals.letterSpacing}`,
     `"margin-bottom": ${originals.paragraphSpacing}`,
     `"text-transform": ${originals.textCase}`,
     `"text-decoration": ${originals.textDecoration}`
@@ -128,7 +128,7 @@ function resolveContextTypographyValue(token, dictionary) {
     `"font-size": ${fontSize}`,
     `"line-height": ${lineHeight}`,
     `"font-style": ${originals.fontStyle}`,
-    `"letter-spacing": ${parseFloat(originals.letterSpacing)}`,
+    `"letter-spacing": ${originals.letterSpacing}`,
     `"margin-bottom": ${originals.paragraphSpacing}`,
     `"text-transform": ${originals.textCase}`,
     `"text-decoration": ${originals.textDecoration}`

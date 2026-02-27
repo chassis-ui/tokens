@@ -1,0 +1,276 @@
+---
+title: Welcome to Chassis Tokens
+description: A comprehensive multi-brand design token system bridging design and development. Create tokens in Figma, manage with Tokens Studio, and transform to platform-specific code with Style Dictionary.
+toc: true
+---
+import { getConfig } from '@libs/config'
+
+<Callout type="warning" name="work-in-progress" />
+
+
+## Overview
+
+Chassis Tokens is a comprehensive multi-brand design token system that bridges design and development. Create and manage tokens with Tokens Studio, sync to Figma as variables, and transform them into platform-specific code with Style Dictionary. 
+
+This guide walks you through setting up the repository, managing tokens, building platform-specific distributions, and integrating them into your applications.
+
+### Prerequisites
+
+Before working with Chassis Tokens, ensure you have the following installed and configured:
+
+- **Node.js**: Version 18 or higher required for running the build scripts
+- **pnpm**: Package manager used by Chassis Tokens (install with `npm install -g pnpm`)
+- **Git**: For cloning the repository and version control
+- **Repository Access**: Appropriate permissions to clone or fork the Chassis Tokens repository
+- **Figma & Tokens Studio**: (Optional) For creating and managing design tokens
+
+## Installation
+
+To get started with Chassis Tokens, you can either clone the repository directly or add it as a Git submodule to your existing project. Choose the approach that best fits your workflow and project structure.
+
+### Clone the Repository
+
+Cloning the repository creates a standalone copy that you can use to manage and distribute tokens:
+
+```bash
+# Clone the repository
+git clone https://github.com/chassis-ui/tokens.git chassis-tokens
+cd chassis-tokens
+```
+
+Alternatively, for existing projects, you can add it as a Git submodule to keep it synchronized with your main project:
+
+```bash
+# Add as Git submodule to your project
+git submodule add https://github.com/chassis-ui/tokens.git tokens
+cd tokens
+```
+
+### Install Dependencies
+
+Once the repository is cloned, install the required dependencies for building and distributing tokens:
+
+```bash
+# Install using pnpm
+pnpm install
+```
+
+This installs the Style Dictionary and Tokens Studio SD Transforms plugin along with the necessary packages for the documentation website.
+
+## Package Customization
+
+When adopting Chassis Tokens for your organization, customize the package metadata and configuration to match your project structure and requirements.
+
+### Change Metadata
+
+Modify the package metadata in `package.json` to reflect your organization's details:
+
+```json
+{
+  "name": "@your-org/chassis-tokens",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-org/chassis-tokens.git"
+  },
+  ...
+}
+```
+
+### Update Git Remote URL
+
+If you've moved the repository to a different organization or renamed it, update the Git remote URL:
+
+```bash
+git remote set-url origin https://github.com/your-org/chassis-tokens.git
+```
+
+### Configure Build Options
+
+Define your specific brands, themes, and applications in the `chassis` configuration object within `package.json`. This determines which outputs the build system generates:
+
+```json
+{
+  "chassis": {
+    "defaults": {
+      "theme": "light",
+      "screen": "large"
+    },
+    "build": {
+      "brands": ["chassis", "example"],
+      "themes": ["light", "dark"],
+      "screens": ["large", "medium", "small"],
+      "apps": {
+        "docs": ["web"],
+        "demo": ["ios", "android"]
+      }
+    }
+  }
+}
+```
+
+See the [Configuration]([[docsref:/getting-started/build-system#configuration]]) documentation for detailed information on configuring brands, apps, and build options.
+
+## Token Management
+
+Customize and manage your design tokens to fit your brand and project needs. Chassis Tokens supports a hierarchical structure for token definitions, allowing you to create base tokens and override them for specific brands, themes, or screens.
+
+### Token Definitions
+
+Tokens are defined in JSON files within the `tokens/` directory. You can edit these files directly or use the Tokens Studio plugin in Figma to manage them visually. See [Tokens Studio]([[docsref:/getting-started/tokens-studio]]) documentation for instructions on how to create and manage tokens.
+
+### Sync with Figma
+
+If you're using Figma and Tokens Studio, you can sync your tokens between Figma and the repository. This allows designers to manage tokens visually while developers maintain the source of truth in code. Refer to the [Figma Variables]([[docsref:/getting-started/figma-variables]]) documentation for detailed instructions on setting up and using the sync feature.
+
+## Build System
+
+Once your tokens are defined, use the build system to generate platform-specific distributions. The build process uses Style Dictionary to transform tokens into CSS, SCSS, JavaScript, JSON, and platform-specific formats for iOS and Android.
+
+```bash
+# Generate tokens for every possible brand, theme, app, 
+# and platform combination defined in the build options.
+pnpm tokens
+
+# Build for a specific brand
+pnpm tokens --brand chassis
+
+# Build for a specific application
+pnpm tokens --app docs
+```
+
+### Selective Builds
+
+Use command-line filters to build specific combinations. Filters can be combined for precise control.
+
+```bash
+# Build specific brand
+pnpm tokens --brand chassis
+
+# Build specific theme
+pnpm tokens --theme light
+
+# Build specific application
+pnpm tokens --app docs
+
+# Build specific platform
+pnpm tokens --platform web
+
+# Combine multiple filters
+pnpm tokens --brand chassis,example --theme light --app docs
+```
+
+### Build Output
+
+The build system generates organized output directories for each platform with appropriate formats and naming conventions:
+
+```
+dist/[platform]/[app]/[brand]/
+├── main.[ext]            -> Complete tokens with base colors.
+├── color-light.[ext]     -> Light theme colors
+├── color-dark.[ext]      -> Dark theme colors
+├── number.[ext]          -> Number tokens
+└── string.[ext]          -> String tokens
+```
+
+The build system uses Style Dictionary with custom transforms and formatters. See the [Build System]([[docsref:/getting-started/build-system]]) documentation for details on how the build system works and how to customize it.
+
+## Use Tokens in Your Project
+
+After building tokens, you can integrate them into your applications. Tokens can be imported as CSS, SCSS variables, JavaScript modules, or platform-specific formats.
+
+### Import Built Tokens
+
+Import tokens directly into your project, or install the package from npm:
+
+```bash
+# Install from npm
+npm install @chassis-ui/tokens
+
+# Or copy built tokens to your project
+cp -r dist/css/* /path/to/project/src/styles/
+
+# Create a sync script in your project's package.json
+{
+  "scripts": {
+    "sync-tokens": "cp -r node_modules/@chassis-ui/tokens/dist/css/* src/styles/tokens/"
+  }
+}
+```
+
+### Platform Integrations
+
+Each platform has specific requirements for consuming tokens. Refer to the platform-specific integration guides for detailed instructions, code examples, and best practices:
+
+- **[Web Applications]([[docsref:/use-in-project/web-applications]])** - Using tokens in web projects (React, Vue, Next.js, etc.)
+- **[iOS Applications]([[docsref:/use-in-project/ios-applications]])** - Using Swift constants in iOS
+- **[Android Applications]([[docsref:/use-in-project/android-applications]])** - Using resource XML in Android
+
+## Quick Reference
+
+Use this reference for quick access to common information about Chassis Tokens structure and commands.
+
+### Directory Structure
+
+Key directories in the Chassis Tokens repository:
+
+<CxTable>
+| Directory | Purpose |
+|-----------|---------|
+| `tokens/` | Source token JSON files managed by Tokens Studio |
+| `build/tokens/` | Build scripts, transforms, and formatters for Style Dictionary |
+| `dist/` | Built tokens for each platform (CSS, SCSS, JS, iOS, Android) |
+| `site/` | Documentation website |
+</CxTable>
+
+### Common Commands
+
+Frequently used commands for managing and building tokens:
+
+```bash
+pnpm install                        # Install dependencies
+pnpm tokens                         # Build all tokens
+pnpm tokens:build --brand chassis   # Build specific brand
+pnpm tokens:site                    # Build tokens for docs site
+pnpm tokens:test                    # Run token build tests
+pnpm dev                            # Start documentation site
+```
+
+### Key Concepts
+
+Fundamental concepts that drive the Chassis Tokens architecture:
+
+- **Multi-brand structure**: Shared base tokens with brand-specific overrides
+- **Theme system**: Light/dark mode and custom theme support
+- **Platform-specific builds**: Automatic transformation for Web, iOS, Android
+- **Style Dictionary**: Token transformation engine with custom transforms
+- **Override hierarchy**: Brand > Theme > Screen > Base
+
+## Next Steps
+
+Continue your journey with Chassis Tokens by exploring these related topics.
+
+### Learn the System
+
+Deepen your understanding of Chassis Tokens architecture and principles:
+
+- **[Introduction]([[docsref:/getting-started/introduction]])** - Understand Chassis Tokens architecture
+- **[Design Guidelines]([[docsref:/getting-started/design-guidelines]])** - Core principles and best practices
+- **[Build System]([[docsref:/getting-started/build-system]])** - Learn about Style Dictionary and custom transforms
+
+### Manage Tokens
+
+Learn how to work with specific token types:
+
+- **[Colors]([[docsref:/token-types/colors]])** - Define and manage color tokens
+- **[Typography]([[docsref:/token-types/typography]])** - Define and manage typography tokens
+- **[Spacing]([[docsref:/token-types/spacing]])** - Define and manage spacing tokens
+- **[Effects]([[docsref:/token-types/effects]])** - Define and manage effect tokens
+- **[Motion]([[docsref:/token-types/motion]])** - Define and manage motion tokens
+
+### Use in Projects
+
+Integrate built tokens into your platform-specific applications:
+
+- **[Web Applications]([[docsref:/use-in-project/web-applications]])** - Integrate into web projects
+- **[iOS Applications]([[docsref:/use-in-project/ios-applications]])** - Integrate into iOS projects
+- **[Android Applications]([[docsref:/use-in-project/android-applications]])** - Integrate into Android projects

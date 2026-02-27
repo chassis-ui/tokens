@@ -137,10 +137,10 @@ export default function (StyleDictionary) {
     transform: function (token) {
       if (token.$type === 'typography' && typeof token.$value === 'object') {
         return `(${[
-          `"font-family": ${token.$value.fontFamily}`,
+          `"font-family": "${token.$value.fontFamily}"`,
           `"font-weight": ${token.$value.fontWeight}`,
           `"font-size": ${token.$value.fontSize}`,
-          `"font-style": ${token.$value.fontWeight}`,
+          `"font-style": ${token.$value.fontStyle}`,
           `"letter-spacing": ${token.$value.letterSpacing}`,
           `"line-height": ${token.$value.lineHeight}`,
           `"paragraph-spacing": ${token.$value.paragraphSpacing}`,
