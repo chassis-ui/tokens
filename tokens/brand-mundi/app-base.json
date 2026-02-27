@@ -150,7 +150,7 @@
       },
       "item-bg-color": {
         "$type": "color",
-        "$value": "{color.context.default.bg-even}"
+        "$value": "{color.context.default.bg-main}"
       },
       "title-fg-idle": {
         "$type": "color",
@@ -158,7 +158,7 @@
       },
       "title-bg-idle": {
         "$type": "color",
-        "$value": "{color.context.default.bg-even}"
+        "$value": "{color.context.default.bg-main}"
       },
       "title-fg-active": {
         "$type": "color",
@@ -166,7 +166,7 @@
       },
       "title-bg-active": {
         "$type": "color",
-        "$value": "{color.context.default.bg-even}"
+        "$value": "{color.context.default.bg-main}"
       },
       "indicator-idle": {
         "$type": "color",

@@ -13,6 +13,18 @@
       }
     }
   },
+  "color": {
+    "page": {
+      "bg-body": {
+        "$type": "color",
+        "$value": "{color.context.default.bg-even}"
+      },
+      "bg-section": {
+        "$type": "color",
+        "$value": "{color.context.default.bg-main}"
+      }
+    }
+  },
   "size": {
     "button": {
       "medium-main": {
