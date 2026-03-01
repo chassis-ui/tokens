@@ -30,7 +30,7 @@ const expand = {
  */
 function generateFiles(theme, screen) {
   // Base files (no theme, no screen)
-  if (!theme && !screen) {
+  if (!theme && screen === undefined) {
     return [
       { destination: 'main.xml', filter: 'cx/allTokens', format },
       { destination: 'string.xml', filter: 'cx/stringTokens', format }
@@ -42,9 +42,14 @@ function generateFiles(theme, screen) {
     return [{ destination: `color_${theme}.xml`, filter: 'cx/themeTokens', format }]
   }
 
-  // Number files (screen only)
+  // Number files (with screen suffix)
   if (screen) {
     return [{ destination: `number_${screen}.xml`, filter: 'cx/numberTokens', format }]
+  }
+
+  // Number files (without screen suffix when screens are optional)
+  if (screen === null) {
+    return [{ destination: 'number.xml', filter: 'cx/numberTokens', format }]
   }
 
   return []

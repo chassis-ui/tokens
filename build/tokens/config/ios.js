@@ -41,7 +41,7 @@ function toPascalCase(name) {
  */
 function generateFiles(theme, screen) {
   // Base files (no theme, no screen)
-  if (!theme && !screen) {
+  if (!theme && screen === undefined) {
     return [
       { destination: 'Main.swift', filter: 'cx/allTokens', format },
       { destination: 'String.swift', filter: 'cx/stringTokens', format }
@@ -53,11 +53,16 @@ function generateFiles(theme, screen) {
     return [{ destination: `Color${toPascalCase(theme)}.swift`, filter: 'cx/themeTokens', format }]
   }
 
-  // Number files (screen only)
+  // Number files (with screen suffix)
   if (screen) {
     return [
       { destination: `Number${toPascalCase(screen)}.swift`, filter: 'cx/numberTokens', format }
     ]
+  }
+
+  // Number files (without screen suffix when screens are optional)
+  if (screen === null) {
+    return [{ destination: 'Number.swift', filter: 'cx/numberTokens', format }]
   }
 
   return []

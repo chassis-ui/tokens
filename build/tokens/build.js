@@ -19,8 +19,6 @@ import cxPrep from './preprocessor.js'
 
 const packageJson = JSON.parse(readFileSync(join(process.cwd(), 'package.json'), 'utf-8'))
 const buildOptions = packageJson.chassis.build
-const DEFAULT_THEME = packageJson.chassis.defaults.theme
-const DEFAULT_SCREEN = packageJson.chassis.defaults.screen
 
 /**
  * Registers all necessary extensions for Style Dictionary, including
@@ -111,7 +109,7 @@ function generateTasks(tokens, filters) {
 
   const brandsFiltered = filterList(brands, filters.brands)
   const themesFiltered = filterList(themes, filters.themes)
-  const screensFiltered = filterList(screens, filters.screens)
+  const screensFiltered = screens ? filterList(screens, filters.screens) : []
   const appsFiltered = Object.entries(apps).filter(
     ([app]) => !filters.apps || filters.apps.length === 0 || filters.apps.includes(app)
   )
@@ -148,23 +146,38 @@ function generateTasks(tokens, filters) {
       platformsFiltered(platforms).flatMap((platform) =>
         themesFiltered.map((theme) => {
           const cfg = config({ brand, app, platform, theme })
+          // Try exact match first, then find first match with any screen suffix
           const key = tokens[`${brand}_${app}_${theme}`]
             ? `${brand}_${app}_${theme}`
-            : `${brand}_${app}_${theme}_${DEFAULT_SCREEN}`
-          cfg.source = tokens[key]?.map((tokenset) => `tokens/${tokenset}.json`) || []
+            : Object.keys(tokens).find((k) => k.startsWith(`${brand}_${app}_${theme}`))
+          cfg.source = key ? tokens[key].map((tokenset) => `tokens/${tokenset}.json`) : []
           return { brand, app, platform, theme, screen: undefined, cfg }
         })
       )
     )
   )
 
-  // Generate number-<screen>.scss for all screens
+  // Generate number files
+  // If screens is not defined or empty, generate a single number file without screen suffix
+  // Otherwise generate number-<screen>.scss for each screen
   const numberTasks = brandsFiltered.flatMap((brand) =>
     appsFiltered.flatMap(([app, platforms]) =>
-      platformsFiltered(platforms).flatMap((platform) =>
-        screensFiltered.map((screen) => {
-          // Use the default theme for number files, or the first theme if not set
-          const theme = themesFiltered[0] || DEFAULT_THEME
+      platformsFiltered(platforms).flatMap((platform) => {
+        const theme = themesFiltered[0]
+
+        // If no screens configured, generate single number file (pass null to indicate no screen suffix)
+        if (!screens || screens.length === 0 || screensFiltered.length === 0) {
+          const cfg = config({ brand, app, platform, screen: null })
+          // Try to find tokens without screen suffix
+          const key = tokens[`${brand}_${app}_${theme}`]
+            ? `${brand}_${app}_${theme}`
+            : Object.keys(tokens).find((k) => k.startsWith(`${brand}_${app}_${theme}`))
+          cfg.source = key ? tokens[key].map((tokenset) => `tokens/${tokenset}.json`) : []
+          return [{ brand, app, platform, theme, screen: null, cfg }]
+        }
+
+        // Generate number file for each screen
+        return screensFiltered.map((screen) => {
           const cfg = config({ brand, app, platform, screen })
           const key = tokens[`${brand}_${app}_${theme}_${screen}`]
             ? `${brand}_${app}_${theme}_${screen}`
@@ -172,7 +185,7 @@ function generateTasks(tokens, filters) {
           cfg.source = key ? tokens[key].map((tokenset) => `tokens/${tokenset}.json`) : []
           return { brand, app, platform, theme, screen, cfg }
         })
-      )
+      })
     )
   )
 

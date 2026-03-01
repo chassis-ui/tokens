@@ -29,7 +29,7 @@ const transforms = [
  */
 function generateFiles(theme, screen) {
   // Base files (no theme, no screen)
-  if (!theme && !screen) {
+  if (!theme && screen === undefined) {
     return [
       { destination: 'main.scss', filter: 'cx/allTokens', format },
       { destination: 'string.scss', filter: 'cx/stringTokens', format }
@@ -41,9 +41,14 @@ function generateFiles(theme, screen) {
     return [{ destination: `color-${theme}.scss`, filter: 'cx/themeTokens', format }]
   }
 
-  // Number files (screen only)
+  // Number files (with screen suffix)
   if (screen) {
     return [{ destination: `number-${screen}.scss`, filter: 'cx/numberTokens', format }]
+  }
+
+  // Number files (without screen suffix when screens are optional)
+  if (screen === null) {
+    return [{ destination: 'number.scss', filter: 'cx/numberTokens', format }]
   }
 
   return []

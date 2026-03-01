@@ -27,10 +27,6 @@
     "dist/**/*.{css,scss,json,js,ts}"
   ],
   "chassis": {
-    "defaults": {
-      "theme": "light",
-      "screen": "large"
-    },
     "build": {
       "brands": [
         "chassis",
