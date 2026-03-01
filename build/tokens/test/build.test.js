@@ -13,7 +13,7 @@ vi.mock('path')
 vi.mock('minimist')
 vi.mock('style-dictionary')
 vi.mock('@tokens-studio/sd-transforms')
-vi.mock('../config.js')
+vi.mock('../config/index.js')
 vi.mock('../filters.js')
 vi.mock('../transforms.js')
 vi.mock('../formats.js')
@@ -66,7 +66,7 @@ describe('Design Tokens Build System', () => {
     vi.mocked(readFileSync).mockReturnValue(JSON.stringify(mockPackageJson))
 
     // Mock config function
-    const configMock = await import('../config.js')
+    const configMock = await import('../config/index.js')
     vi.mocked(configMock.default).mockReturnValue({
       preprocessors: ['cx/global'],
       platforms: {

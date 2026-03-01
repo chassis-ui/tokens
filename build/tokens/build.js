@@ -12,7 +12,7 @@ import { join } from 'path'
 import minimist from 'minimist'
 import StyleDictionary from 'style-dictionary'
 import { permutateThemes, register as registerStudio } from '@tokens-studio/sd-transforms'
-import config from './config.js'
+import config from './config/index.js'
 import registerFilters from './filters.js'
 import registerTransforms from './transforms.js'
 import registerFormats from './formats.js'
@@ -46,7 +46,7 @@ function registerDictionary() {
     fileHeader: async (defaultMessages = []) => [
       ...defaultMessages,
       `Chassis - Tokens v0.1.0`,
-      `Copyright 2025 Ozgur Gunes`,
+      `Copyright 2026 Ozgur Gunes`,
       `Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)`
     ]
   })
@@ -75,7 +75,7 @@ function generateTasks(tokens, filters) {
     ([app]) => !filters.apps || filters.apps.length === 0 || filters.apps.includes(app)
   )
 
-  // Always generate a single base task (for base.scss and string.scss)
+  // Always generate a single base task (for main.scss and string.scss)
   const baseTasks = brandsFiltered.flatMap((brand) =>
     appsFiltered.flatMap(([app, platforms]) =>
       platforms.map((platform) => {

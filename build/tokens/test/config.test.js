@@ -17,11 +17,11 @@ describe('Style Dictionary Configuration Generator', () => {
 
   beforeEach(async () => {
     vi.clearAllMocks()
-    configModule = await import('../config.js')
+    configModule = await import('../config/index.js')
   })
 
   describe('File Generation Logic', () => {
-    test('should generate base.scss and string.scss for base configurations', () => {
+    test('should generate main.scss and string.scss for base configurations', () => {
       const params = {
         brand: 'chassis',
         app: 'docs',
@@ -31,8 +31,8 @@ describe('Style Dictionary Configuration Generator', () => {
       const config = configModule.default(params)
       const files = config.platforms.web.files
 
-      // Should include base.scss and string.scss
-      expect(files.some((f) => f.destination.includes('base.scss'))).toBe(true)
+      // Should include main.scss and string.scss
+      expect(files.some((f) => f.destination.includes('main.scss'))).toBe(true)
       expect(files.some((f) => f.destination.includes('string.scss'))).toBe(true)
 
       // Should not include theme or screen specific files
@@ -54,8 +54,8 @@ describe('Style Dictionary Configuration Generator', () => {
       // Should include color-dark.scss
       expect(files.some((f) => f.destination.includes('color-dark.scss'))).toBe(true)
 
-      // Should not include base files or number files
-      expect(files.some((f) => f.destination.includes('base.scss'))).toBe(false)
+      // Should not include main files or number files
+      expect(files.some((f) => f.destination.includes('main.scss'))).toBe(false)
       expect(files.some((f) => f.destination.includes('string.scss'))).toBe(false)
       expect(files.some((f) => f.destination.includes('number-'))).toBe(false)
     })
@@ -74,8 +74,8 @@ describe('Style Dictionary Configuration Generator', () => {
       // Should include number-large.scss
       expect(files.some((f) => f.destination.includes('number-large.scss'))).toBe(true)
 
-      // Should not include base files or color files
-      expect(files.some((f) => f.destination.includes('base.scss'))).toBe(false)
+      // Should not include main files or color files
+      expect(files.some((f) => f.destination.includes('main.scss'))).toBe(false)
       expect(files.some((f) => f.destination.includes('string.scss'))).toBe(false)
       expect(files.some((f) => f.destination.includes('color-'))).toBe(false)
     })
