@@ -52,13 +52,14 @@ node_modules/@chassis-ui/tokens/
 └── dist/
     └── web/
         └── [brand]-[app]/
-            ├── main.scss          # All non-theme, non-screen tokens
-            ├── string.scss        # String tokens only (icons, assets)
+            ├── main.scss          # All non-theme, non-number tokens
+            ├── string.scss        # String tokens only
             ├── color-light.scss   # Light mode color tokens
             ├── color-dark.scss    # Dark mode color tokens
-            ├── number-large.scss  # Large screen size tokens
-            ├── number-medium.scss # Medium screen size tokens
-            └── number-small.scss  # Small screen size tokens
+            ├── number-large.scss  # Large screen tokens (if screens configured)
+            ├── number-medium.scss # Medium screen tokens (if screens configured)
+            ├── number-small.scss  # Small screen tokens (if screens configured)
+            └── number.scss        # All number tokens (if screens omitted)
 ```
 
 **File Types:**
@@ -66,7 +67,8 @@ node_modules/@chassis-ui/tokens/
 - **main.scss**: Base tokens (dimensions, typography, borders, shadows, etc.)
 - **string.scss**: String tokens (SVG icons, asset URLs)
 - **color-[theme].scss**: Theme-specific color tokens
-- **number-[screen].scss**: Screen-size-specific numeric tokens
+- **number-[screen].scss**: Screen-size-specific numeric tokens (when screens are configured)
+- **number.scss**: All numeric tokens in one file (when screens are not configured)
 
 <Callout type="info">
 By default, the package includes `chassis-docs` tokens. You can build custom combinations using the [token build process]([[docsref:/getting-started/build-tokens]]) if you're working with the repository directly.

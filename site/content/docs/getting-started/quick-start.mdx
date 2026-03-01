@@ -1,6 +1,6 @@
 ---
-title: Welcome to Chassis Tokens
-description: A comprehensive multi-brand design token system bridging design and development. Create tokens in Figma, manage with Tokens Studio, and transform to platform-specific code with Style Dictionary.
+title: Quick Start Guide
+description: Get up and running quickly with Chassis Tokens using the step-by-step quick start guide for designers and developers.
 toc: true
 ---
 import { getConfig } from '@libs/config'
@@ -91,10 +91,6 @@ Define your specific brands, themes, and applications in the `chassis` configura
 ```json
 {
   "chassis": {
-    "defaults": {
-      "theme": "light",
-      "screen": "large"
-    },
     "build": {
       "brands": ["chassis", "example"],
       "themes": ["light", "dark"],
@@ -127,49 +123,68 @@ If you're using Figma and Tokens Studio, you can sync your tokens between Figma 
 Once your tokens are defined, use the build system to generate platform-specific distributions. The build process uses Style Dictionary to transform tokens into CSS, SCSS, JavaScript, JSON, and platform-specific formats for iOS and Android.
 
 ```bash
-# Generate tokens for every possible brand, theme, app, 
-# and platform combination defined in the build options.
+# Generate all tokens
 pnpm tokens
 
-# Build for a specific brand
+# Build for specific brand
 pnpm tokens --brand chassis
 
-# Build for a specific application
+# Build for specific application
 pnpm tokens --app docs
+
+# Build for specific platform
+pnpm tokens --platform web
 ```
 
 ### Selective Builds
 
-Use command-line filters to build specific combinations. Filters can be combined for precise control.
+Use command-line filters to build specific combinations. All filter options accept space-separated values:
 
 ```bash
-# Build specific brand
-pnpm tokens --brand chassis
+# Filter by brand
+pnpm tokens --brand chassis example
 
-# Build specific theme
-pnpm tokens --theme light
+# Filter by theme
+pnpm tokens --theme light dark
 
-# Build specific application
-pnpm tokens --app docs
+# Filter by application
+pnpm tokens --app docs demo
 
-# Build specific platform
-pnpm tokens --platform web
+# Filter by platform
+pnpm tokens --platform web ios android
 
 # Combine multiple filters
-pnpm tokens --brand chassis,example --theme light --app docs
+pnpm tokens --brand chassis --theme light dark --app docs
 ```
+
+### CLI Reference
+
+Available command-line options:
+
+- `--brand <brands...>` — Filter by brand (e.g., `chassis example`)
+- `--theme <themes...>` — Filter by theme (e.g., `light dark`)
+- `--app <apps...>` — Filter by app (e.g., `docs demo`)
+- `--platform <platforms...>` — Filter by platform (e.g., `web ios android`)
+- `--dry-run` — Preview tasks without executing builds
+- `--help, -h` — Show help message
+- `--version, -v` — Show version number
+
+**Build Features:**
+- Progress indicators show build status (`[1/5]`, `[2/5]`, etc.)
+- Build summary displays success/failure count and duration
+- Set `DEBUG=1` for verbose output with stack traces
 
 ### Build Output
 
 The build system generates organized output directories for each platform with appropriate formats and naming conventions:
 
 ```
-dist/[platform]/[app]/[brand]/
-├── main.[ext]            -> Complete tokens with base colors.
+dist/[platform]/[brand]-[app]/
+├── main.[ext]            -> Base tokens
+├── string.[ext]          -> String tokens
 ├── color-light.[ext]     -> Light theme colors
 ├── color-dark.[ext]      -> Dark theme colors
-├── number.[ext]          -> Number tokens
-└── string.[ext]          -> String tokens
+└── number.[ext]          -> Number tokens
 ```
 
 The build system uses Style Dictionary with custom transforms and formatters. See the [Build System]([[docsref:/getting-started/build-system]]) documentation for details on how the build system works and how to customize it.
@@ -227,12 +242,12 @@ Key directories in the Chassis Tokens repository:
 Frequently used commands for managing and building tokens:
 
 ```bash
-pnpm install                        # Install dependencies
-pnpm tokens                         # Build all tokens
-pnpm tokens:build --brand chassis   # Build specific brand
-pnpm tokens:site                    # Build tokens for docs site
-pnpm tokens:test                    # Run token build tests
-pnpm dev                            # Start documentation site
+pnpm install                    # Install dependencies
+pnpm tokens                     # Build all tokens
+pnpm tokens --brand chassis     # Build specific brand
+pnpm tokens --dry-run           # Preview without building
+pnpm tokens:test                # Run build tests
+pnpm dev                        # Start documentation site
 ```
 
 ### Key Concepts
@@ -243,7 +258,7 @@ Fundamental concepts that drive the Chassis Tokens architecture:
 - **Theme system**: Light/dark mode and custom theme support
 - **Platform-specific builds**: Automatic transformation for Web, iOS, Android
 - **Style Dictionary**: Token transformation engine with custom transforms
-- **Override hierarchy**: Brand > Theme > Screen > Base
+- **Screen tokens**: Responsive breakpoint sizes for number tokens (optional)
 
 ## Next Steps
 

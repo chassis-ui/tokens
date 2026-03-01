@@ -61,10 +61,6 @@ Build options are defined in `package.json` under the `chassis` key:
 ```json
 {
   "chassis": {
-    "defaults": {
-      "theme": "light",
-      "screen": "large"
-    },
     "build": {
       "brands": ["chassis", "test"],
       "themes": ["light", "dark"],
@@ -79,10 +75,9 @@ Build options are defined in `package.json` under the `chassis` key:
 ```
 
 This configuration defines:
-- **Default theme and screen**: Used when specific values aren't provided
 - **Brands**: Available brand identities to build
 - **Themes**: Color mode variations to generate
-- **Screens**: Responsive breakpoint sizes
+- **Screens**: (Optional) Responsive breakpoint sizes. When configured, generates separate number files per screen (e.g., `number-large.scss`). When omitted or empty, generates a single `number.scss` file
 - **Apps**: Applications and their target platforms
 
 ### Build Command
@@ -99,21 +94,33 @@ Building all combinations can take significant time and generate many files. For
 
 ### Selective Builds
 
-Use CLI arguments to build specific combinations:
+Use CLI arguments to build specific combinations. All filter options accept space-separated values:
 
 ```bash
 # Build specific brand
 pnpm tokens --brand chassis
 
 # Build specific themes
-pnpm tokens --theme light,dark
+pnpm tokens --theme light dark
 
 # Build specific application
 pnpm tokens --app docs
 
+# Build specific platform
+pnpm tokens --platform web ios
+
 # Combine multiple filters
-pnpm tokens --brand chassis --theme light --app docs
+pnpm tokens --brand chassis --theme light dark --app docs
 ```
+
+**Available options:**
+- `--brand <brands...>` — Filter by brand
+- `--theme <themes...>` — Filter by theme
+- `--app <apps...>` — Filter by app
+- `--platform <platforms...>` — Filter by platform
+- `--dry-run` — Preview tasks without building
+- `--help, -h` — Show help
+- `--version, -v` — Show version
 
 ## Platform Support
 
@@ -196,13 +203,14 @@ dist/
 │       ├── string.scss            (string tokens)
 │       ├── color-light.scss       (light theme colors)
 │       ├── color-dark.scss        (dark theme colors)
-│       ├── number-large.scss      (large screen sizes)
-│       ├── number-medium.scss     (medium screen sizes)
-│       └── number-small.scss      (small screen sizes)
+│       ├── number-large.scss      (when screens configured)
+│       ├── number-medium.scss     (when screens configured)
+│       ├── number-small.scss      (when screens configured)
+│       └── number.scss            (when screens omitted/empty)
 ├── ios/
 │   └── chassis-test/
-│       ├── main.swift
-│       ├── string.swift
+│       ├── Main.swift
+│       ├── String.swift
 │       └── ...
 └── android/
     └── chassis-test/
@@ -211,9 +219,15 @@ dist/
         └── ...
 ```
 
+<Callout type="info">
+Number token files are generated based on the `screens` configuration:
+- **With screens**: Separate files per breakpoint (`number-large.scss`, `number-medium.scss`, etc.)
+- **Without screens**: Single file for all number tokens (`number.scss`)
+</Callout>
+
 ### Main File
 
-Contains all tokens (except theme level color tokens) except theme level color tokens:
+Contains all tokens except theme-level color tokens:
 
 ```scss
 // main.scss

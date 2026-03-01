@@ -3,7 +3,7 @@
  * @description This file handles the build process for Style Dictionary, including
  *              registering extensions, generating tasks, and processing configurations.
  *
- * @copyright Copyright (c) 2025 Ozgur Gunes
+ * @copyright Copyright (c) 2026 Ozgur Gunes
  * @license MIT
  */
 
@@ -16,9 +16,25 @@ import registerFilters from './filters.js'
 import registerTransforms from './transforms.js'
 import registerFormats from './formats.js'
 import cxPrep from './preprocessor.js'
+import logger from './logger.js'
 
-const packageJson = JSON.parse(readFileSync(join(process.cwd(), 'package.json'), 'utf-8'))
-const buildOptions = packageJson.chassis.build
+let packageJson
+let buildOptions
+
+/**
+ * Load configuration from package.json
+ */
+async function loadConfig() {
+  if (!packageJson) {
+    packageJson = JSON.parse(await promises.readFile('package.json', 'utf-8'))
+    buildOptions = packageJson.chassis?.build
+
+    if (!buildOptions?.brands || !buildOptions?.themes || !buildOptions?.apps) {
+      throw new Error('Invalid package.json: missing required chassis.build configuration')
+    }
+  }
+  return buildOptions
+}
 
 /**
  * Registers all necessary extensions for Style Dictionary, including
@@ -50,40 +66,83 @@ function registerDictionary() {
 }
 
 /**
+ * Find token key by brand, app, theme, and screen
+ * @param {Object} tokens - The tokens object
+ * @param {string} brand - Brand name
+ * @param {string} app - App name
+ * @param {string} [theme] - Theme name
+ * @param {string} [screen] - Screen name
+ * @returns {string|null} - The matching token key or null
+ */
+function findTokenKey(tokens, brand, app, theme, screen) {
+  if (screen) {
+    const key = `${brand}_${app}_${theme}_${screen}`
+    return tokens[key] ? key : null
+  }
+  if (theme) {
+    const exactKey = `${brand}_${app}_${theme}`
+    return tokens[exactKey]
+      ? exactKey
+      : Object.keys(tokens).find((k) => k.startsWith(`${brand}_${app}_${theme}`))
+  }
+  return Object.keys(tokens).find((k) => k.startsWith(`${brand}_${app}`))
+}
+
+/**
  * Parse command line arguments for selective builds
  * @returns {Object} Parsed options with brands, apps, platforms, themes, screens arrays
  */
 function parseArgs() {
   const args = process.argv.slice(2)
+
+  // Handle help
+  if (args.includes('--help') || args.includes('-h')) {
+    logger.info(`
+Chassie Tokens Build System
+
+Usage: node build/tokens/build.js [options]
+
+Options:
+  --brand <brands...>       Filter by brand(s)
+  --app <apps...>           Filter by app(s)
+  --platform <platforms...> Filter by platform(s)
+  --theme <themes...>       Filter by theme(s)
+  --screen <screens...>     Filter by screen(s)
+  --dry-run                 Show tasks without executing
+  --help, -h                Show this help
+  --version, -v             Show version
+
+Examples:
+  node build/tokens/build.js --brand chassis --platform web
+  node build/tokens/build.js --theme light dark --dry-run
+    `)
+    process.exit(0)
+  }
+
+  // Handle version
+  if (args.includes('--version') || args.includes('-v')) {
+    const pkg = JSON.parse(readFileSync('package.json', 'utf-8'))
+    logger.info(`v${pkg.version}`)
+    process.exit(0)
+  }
+
   const options = {
     brands: [],
     apps: [],
     platforms: [],
     themes: [],
-    screens: []
+    screens: [],
+    dryRun: args.includes('--dry-run')
   }
 
+  const flags = ['--brand', '--app', '--platform', '--theme', '--screen']
+  const keys = ['brands', 'apps', 'platforms', 'themes', 'screens']
+
   for (let i = 0; i < args.length; i++) {
-    const arg = args[i]
-    if (arg === '--brand') {
+    const flagIndex = flags.indexOf(args[i])
+    if (flagIndex !== -1) {
       while (i + 1 < args.length && !args[i + 1].startsWith('--')) {
-        options.brands.push(args[++i])
-      }
-    } else if (arg === '--app') {
-      while (i + 1 < args.length && !args[i + 1].startsWith('--')) {
-        options.apps.push(args[++i])
-      }
-    } else if (arg === '--platform') {
-      while (i + 1 < args.length && !args[i + 1].startsWith('--')) {
-        options.platforms.push(args[++i])
-      }
-    } else if (arg === '--theme') {
-      while (i + 1 < args.length && !args[i + 1].startsWith('--')) {
-        options.themes.push(args[++i])
-      }
-    } else if (arg === '--screen') {
-      while (i + 1 < args.length && !args[i + 1].startsWith('--')) {
-        options.screens.push(args[++i])
+        options[keys[flagIndex]].push(args[++i])
       }
     }
   }
@@ -97,13 +156,14 @@ function parseArgs() {
  *
  * @param {Object} tokens - The tokens object containing theme permutations.
  * @param {Object} filters - Filter object with optional arrays: brands, themes, apps, screens, platforms.
+ * @param {Object} options - Build options from package.json (chassis.build)
  * @returns {Array<Object>} - An array of task configurations matching the filters.
  *
  * Example filter usage:
  *   { brands: ['chassis','test'], themes: ['light'], apps: ['docs'], screens: ['large','small'], platforms: ['web'] }
  */
-function generateTasks(tokens, filters) {
-  const { brands, themes, apps, screens } = buildOptions
+function generateTasks(tokens, filters, options = buildOptions) {
+  const { brands, themes, apps, screens } = options
   const filterList = (all, param) =>
     param && param.length > 0 ? all.filter((x) => param.includes(x)) : all
 
@@ -125,8 +185,7 @@ function generateTasks(tokens, filters) {
     appsFiltered.flatMap(([app, platforms]) =>
       platformsFiltered(platforms).map((platform) => {
         const cfg = config({ brand, app, platform })
-        // Use the first available tokens set for base
-        const key = Object.keys(tokens).find((k) => k.startsWith(`${brand}_${app}`))
+        const key = findTokenKey(tokens, brand, app)
         cfg.source = key ? tokens[key].map((tokenset) => `tokens/${tokenset}.json`) : []
         return {
           brand,
@@ -146,10 +205,7 @@ function generateTasks(tokens, filters) {
       platformsFiltered(platforms).flatMap((platform) =>
         themesFiltered.map((theme) => {
           const cfg = config({ brand, app, platform, theme })
-          // Try exact match first, then find first match with any screen suffix
-          const key = tokens[`${brand}_${app}_${theme}`]
-            ? `${brand}_${app}_${theme}`
-            : Object.keys(tokens).find((k) => k.startsWith(`${brand}_${app}_${theme}`))
+          const key = findTokenKey(tokens, brand, app, theme)
           cfg.source = key ? tokens[key].map((tokenset) => `tokens/${tokenset}.json`) : []
           return { brand, app, platform, theme, screen: undefined, cfg }
         })
@@ -168,10 +224,7 @@ function generateTasks(tokens, filters) {
         // If no screens configured, generate single number file (pass null to indicate no screen suffix)
         if (!screens || screens.length === 0 || screensFiltered.length === 0) {
           const cfg = config({ brand, app, platform, screen: null })
-          // Try to find tokens without screen suffix
-          const key = tokens[`${brand}_${app}_${theme}`]
-            ? `${brand}_${app}_${theme}`
-            : Object.keys(tokens).find((k) => k.startsWith(`${brand}_${app}_${theme}`))
+          const key = findTokenKey(tokens, brand, app, theme)
           cfg.source = key ? tokens[key].map((tokenset) => `tokens/${tokenset}.json`) : []
           return [{ brand, app, platform, theme, screen: null, cfg }]
         }
@@ -179,9 +232,7 @@ function generateTasks(tokens, filters) {
         // Generate number file for each screen
         return screensFiltered.map((screen) => {
           const cfg = config({ brand, app, platform, screen })
-          const key = tokens[`${brand}_${app}_${theme}_${screen}`]
-            ? `${brand}_${app}_${theme}_${screen}`
-            : null
+          const key = findTokenKey(tokens, brand, app, theme, screen)
           cfg.source = key ? tokens[key].map((tokenset) => `tokens/${tokenset}.json`) : []
           return { brand, app, platform, theme, screen, cfg }
         })
@@ -208,12 +259,12 @@ async function processTask({ brand, app, platform, theme, screen, cfg }) {
   let id = `${platform}/${brand}-${app}`
   if (theme) id += `-${theme}`
   if (screen) id += `-${screen}`
-  console.log(`\n⚙️ Starting: ${id}`)
-  console.log('-'.repeat(40))
+  logger.info(`\n⚙️ Starting: ${id}`)
+  logger.info('-'.repeat(40))
   const sd = new StyleDictionary(cfg)
   await sd.cleanPlatform(platform)
   await sd.buildPlatform(platform)
-  console.log(`\n✅ Completed: ${id}\n`)
+  logger.info(`\n✅ Completed: ${id}\n`)
 }
 
 /**
@@ -226,24 +277,52 @@ async function processTask({ brand, app, platform, theme, screen, cfg }) {
  * All parameters are optional and accept multiple space-separated values.
  */
 async function run() {
-  const filters = parseArgs()
+  try {
+    const filters = parseArgs()
+    const startTime = Date.now()
+    let successCount = 0
+    let errorCount = 0
 
-  registerDictionary()
+    await loadConfig()
+    registerDictionary()
 
-  const $themes = JSON.parse(await promises.readFile('tokens/$themes.json', 'utf-8'))
-  const tokens = permutateThemes($themes, { separator: '_' })
-  const tasks = generateTasks(tokens, filters)
+    const $themes = JSON.parse(await promises.readFile('tokens/$themes.json', 'utf-8'))
+    const tokens = permutateThemes($themes, { separator: '_' })
+    const tasks = generateTasks(tokens, filters, buildOptions)
 
-  for (const task of tasks) {
-    await processTask(task)
+    // Dry run mode
+    if (filters.dryRun) {
+      logger.dryRun(tasks)
+      return
+    }
+
+    logger.header(`📦 Processing ${tasks.length} task(s)...`)
+
+    for (let i = 0; i < tasks.length; i++) {
+      try {
+        logger.progress(i + 1, tasks.length)
+        await processTask(tasks[i])
+        successCount++
+      } catch (error) {
+        errorCount++
+        const task = tasks[i]
+        logger.error(`Failed: ${task.platform}/${task.brand}-${task.app}`, error)
+      }
+    }
+
+    logger.summary(successCount, errorCount, startTime)
+
+    if (errorCount > 0) {
+      process.exit(1)
+    }
+  } catch (error) {
+    logger.error('Build failed', error)
+    process.exit(1)
   }
-
-  console.log('='.repeat(40))
-  console.log('\nAll configurations processed successfully.\n')
 }
 
 // Export for testing
-export { generateTasks, processTask }
+export { generateTasks, processTask, parseArgs, findTokenKey }
 
 // Only run if this is the main module (not imported)
 if (import.meta.url === `file://${process.argv[1]}`) {

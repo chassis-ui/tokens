@@ -72,7 +72,7 @@ git submodule update --init --recursive
 ```bash
 cd Submodules/ChassisTokens
 pnpm install
-pnpm tokens --brand=chassis --app=yourapp --platform=ios
+pnpm tokens --brand chassis --app yourapp --platform ios
 ```
 
 Generated token files will be in `Submodules/ChassisTokens/dist/ios/chassis-yourapp/`.
@@ -91,7 +91,7 @@ Generated token files will be in `Submodules/ChassisTokens/dist/ios/chassis-your
 ```bash
 cd Submodules/ChassisTokens
 git pull origin main
-pnpm tokens --brand=chassis --app=yourapp --platform=ios
+pnpm tokens --brand chassis --app yourapp --platform ios
 ```
 
 ### Method 2: Swift Package Manager
@@ -182,7 +182,7 @@ pod install
 
 For simple projects, manually copy the Swift files:
 
-1. Build tokens: `pnpm tokens --platform=ios`
+1. Build tokens: `pnpm tokens --platform ios`
 2. Copy all `.swift` files from `dist/ios/chassis-yourapp/` to your Xcode project
 3. Add them to your target
 4. Rebuild when tokens change
@@ -586,7 +586,7 @@ jobs:
         run: |
           cd Submodules/ChassisTokens
           pnpm install
-          pnpm tokens --platform=ios --brand=chassis --app=yourapp
+          pnpm tokens --platform ios --brand chassis --app yourapp
       
       - name: Build iOS App
         run: xcodebuild -project YourApp.xcodeproj -scheme YourApp

@@ -83,7 +83,7 @@ git submodule update --init --recursive
 cd submodules/chassis-tokens
 npm install -g pnpm
 pnpm install
-pnpm tokens --brand=chassis --app=yourapp --platform=android
+pnpm tokens --brand chassis --app yourapp --platform android
 ```
 
 Generated files will be in `submodules/chassis-tokens/dist/android/chassis-yourapp/`.
@@ -108,7 +108,7 @@ android {
 ```bash
 cd submodules/chassis-tokens
 git pull origin main
-pnpm tokens --brand=chassis --app=yourapp --platform=android
+pnpm tokens --brand chassis --app yourapp --platform android
 ```
 
 ### Method 2: Gradle Dependency (AAR)
@@ -207,7 +207,7 @@ dependencies {
 
 For simple projects, copy XML files directly:
 
-1. Build tokens: `pnpm tokens --platform=android`
+1. Build tokens: `pnpm tokens --platform android`
 2. Copy all `.xml` files from `dist/android/chassis-yourapp/` to `app/src/main/res/values/`
 3. Sync Gradle
 4. Rebuild when tokens change
@@ -721,7 +721,7 @@ jobs:
         run: |
           cd submodules/chassis-tokens
           pnpm install
-          pnpm tokens --platform=android --brand=chassis --app=yourapp
+          pnpm tokens --platform android --brand chassis --app yourapp
       
       - name: Setup JDK
         uses: actions/setup-java@v3
