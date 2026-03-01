@@ -9,7 +9,6 @@
 
 import { promises, readFileSync } from 'fs'
 import { join } from 'path'
-import minimist from 'minimist'
 import StyleDictionary from 'style-dictionary'
 import { permutateThemes, register as registerStudio } from '@tokens-studio/sd-transforms'
 import config from './config/index.js'
@@ -53,15 +52,57 @@ function registerDictionary() {
 }
 
 /**
+ * Parse command line arguments for selective builds
+ * @returns {Object} Parsed options with brands, apps, platforms, themes, screens arrays
+ */
+function parseArgs() {
+  const args = process.argv.slice(2)
+  const options = {
+    brands: [],
+    apps: [],
+    platforms: [],
+    themes: [],
+    screens: []
+  }
+
+  for (let i = 0; i < args.length; i++) {
+    const arg = args[i]
+    if (arg === '--brand') {
+      while (i + 1 < args.length && !args[i + 1].startsWith('--')) {
+        options.brands.push(args[++i])
+      }
+    } else if (arg === '--app') {
+      while (i + 1 < args.length && !args[i + 1].startsWith('--')) {
+        options.apps.push(args[++i])
+      }
+    } else if (arg === '--platform') {
+      while (i + 1 < args.length && !args[i + 1].startsWith('--')) {
+        options.platforms.push(args[++i])
+      }
+    } else if (arg === '--theme') {
+      while (i + 1 < args.length && !args[i + 1].startsWith('--')) {
+        options.themes.push(args[++i])
+      }
+    } else if (arg === '--screen') {
+      while (i + 1 < args.length && !args[i + 1].startsWith('--')) {
+        options.screens.push(args[++i])
+      }
+    }
+  }
+
+  return options
+}
+
+/**
  * Generates tasks for all brand, app, platform, theme, and screen combinations,
  * filtered by optional CLI parameters.
  *
  * @param {Object} tokens - The tokens object containing theme permutations.
- * @param {Object} filters - Filter object with optional arrays: brands, themes, apps, screens.
+ * @param {Object} filters - Filter object with optional arrays: brands, themes, apps, screens, platforms.
  * @returns {Array<Object>} - An array of task configurations matching the filters.
  *
  * Example filter usage:
- *   { brands: ['chassis','test'], themes: ['light'], apps: ['docs'], screens: ['large','small'] }
+ *   { brands: ['chassis','test'], themes: ['light'], apps: ['docs'], screens: ['large','small'], platforms: ['web'] }
  */
 function generateTasks(tokens, filters) {
   const { brands, themes, apps, screens } = buildOptions
@@ -75,10 +116,16 @@ function generateTasks(tokens, filters) {
     ([app]) => !filters.apps || filters.apps.length === 0 || filters.apps.includes(app)
   )
 
+  // Filter platforms if specified
+  const platformsFiltered = (platforms) =>
+    filters.platforms && filters.platforms.length > 0
+      ? platforms.filter((p) => filters.platforms.includes(p))
+      : platforms
+
   // Always generate a single base task (for main.scss and string.scss)
   const baseTasks = brandsFiltered.flatMap((brand) =>
     appsFiltered.flatMap(([app, platforms]) =>
-      platforms.map((platform) => {
+      platformsFiltered(platforms).map((platform) => {
         const cfg = config({ brand, app, platform })
         // Use the first available tokens set for base
         const key = Object.keys(tokens).find((k) => k.startsWith(`${brand}_${app}`))
@@ -98,7 +145,7 @@ function generateTasks(tokens, filters) {
   // Generate color-<theme>.scss for all themes
   const colorTasks = brandsFiltered.flatMap((brand) =>
     appsFiltered.flatMap(([app, platforms]) =>
-      platforms.flatMap((platform) =>
+      platformsFiltered(platforms).flatMap((platform) =>
         themesFiltered.map((theme) => {
           const cfg = config({ brand, app, platform, theme })
           const key = tokens[`${brand}_${app}_${theme}`]
@@ -114,7 +161,7 @@ function generateTasks(tokens, filters) {
   // Generate number-<screen>.scss for all screens
   const numberTasks = brandsFiltered.flatMap((brand) =>
     appsFiltered.flatMap(([app, platforms]) =>
-      platforms.flatMap((platform) =>
+      platformsFiltered(platforms).flatMap((platform) =>
         screensFiltered.map((screen) => {
           // Use the default theme for number files, or the first theme if not set
           const theme = themesFiltered[0] || DEFAULT_THEME
@@ -161,26 +208,12 @@ async function processTask({ brand, app, platform, theme, screen, cfg }) {
  * generates tasks, and processes each task sequentially.
  *
  * CLI usage:
- *   node build/tokens/build.js --brand=chassis,test --theme=light,dark --app=docs --screen=large,small
+ *   node build/tokens/build.js --brand chassis test --theme light dark --app docs --platform web --screen large small
  *
- * All parameters are optional and can be comma-separated for multiple values.
+ * All parameters are optional and accept multiple space-separated values.
  */
 async function run() {
-  // Parse CLI args
-  const argv = minimist(process.argv.slice(2))
-  // Accept comma-separated values for each param
-  const parseArg = (key) =>
-    argv[key]
-      ? String(argv[key])
-          .split(',')
-          .map((s) => s.trim())
-      : undefined
-  const filters = {
-    brands: parseArg('brand'),
-    themes: parseArg('theme'),
-    apps: parseArg('app'),
-    screens: parseArg('screen')
-  }
+  const filters = parseArgs()
 
   registerDictionary()
 
