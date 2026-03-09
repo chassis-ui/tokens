@@ -2,7 +2,7 @@
 
 <!--
   Do not edit directly, this file was auto-generated.
-  Generated on Thu, 04 Dec 2025 06:34:29 GMT
+  Generated on Mon, 09 Mar 2026 09:53:58 GMT
   Chassis - Tokens v0.1.0
   Copyright 2025 Ozgur Gunes
   Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
@@ -200,7 +200,7 @@
   <dimen name="size_chip_small_main">24dp</dimen>
   <dimen name="size_chip_small_icon">16dp</dimen>
   <dimen name="size_chip_small_avatar">20dp</dimen>
-  <dimen name="size_list_icon">32dp</dimen>
+  <dimen name="size_list_icon">24dp</dimen>
   <dimen name="size_list_image">40dp</dimen>
   <dimen name="size_list_disclosure">8dp</dimen>
   <dimen name="size_date_picker_day_width">40dp</dimen>
@@ -232,6 +232,12 @@
   <dimen name="size_pagination_dot_idle_w">8dp</dimen>
   <dimen name="size_pagination_dot_active_h">10dp</dimen>
   <dimen name="size_pagination_dot_active_w">10dp</dimen>
+  <dimen name="size_segment_medium_main">28dp</dimen>
+  <dimen name="size_segment_medium_icon">20dp</dimen>
+  <dimen name="size_segment_large_main">36dp</dimen>
+  <dimen name="size_segment_large_icon">24dp</dimen>
+  <dimen name="size_segment_small_main">20dp</dimen>
+  <dimen name="size_segment_small_icon">16dp</dimen>
   <dimen name="size_sidebar_expanded_w">256dp</dimen>
   <dimen name="size_sidebar_collapsed_w">64dp</dimen>
   <dimen name="size_screen_section_thumb">96dp</dimen>
@@ -412,6 +418,18 @@
   <dimen name="space_page_small_padding_x">16dp</dimen>
   <dimen name="space_page_small_gap">16dp</dimen>
   <dimen name="space_pagination_dot_gap">8dp</dimen>
+  <dimen name="space_segment_medium_bar_padding">4dp</dimen>
+  <dimen name="space_segment_medium_padding_y">4dp</dimen>
+  <dimen name="space_segment_medium_padding_x">12dp</dimen>
+  <dimen name="space_segment_medium_gap">4dp</dimen>
+  <dimen name="space_segment_large_bar_padding">4dp</dimen>
+  <dimen name="space_segment_large_padding_y">6dp</dimen>
+  <dimen name="space_segment_large_padding_x">16dp</dimen>
+  <dimen name="space_segment_large_gap">8dp</dimen>
+  <dimen name="space_segment_small_bar_padding">4dp</dimen>
+  <dimen name="space_segment_small_padding_y">1dp</dimen>
+  <dimen name="space_segment_small_padding_x">8dp</dimen>
+  <dimen name="space_segment_small_gap">2dp</dimen>
   <dimen name="space_table_cell_padding_y">8dp</dimen>
   <dimen name="space_table_cell_padding_x">8dp</dimen>
   <dimen name="space_table_cell_gap">8dp</dimen>
@@ -614,6 +632,12 @@
   <dimen name="border_radius_pagination_dot_idle">256dp</dimen>
   <dimen name="border_radius_pagination_dot_active">256dp</dimen>
   <dimen name="border_radius_section_main">12dp</dimen>
+  <dimen name="border_radius_segment_medium_bar">256dp</dimen>
+  <dimen name="border_radius_segment_medium_item">256dp</dimen>
+  <dimen name="border_radius_segment_large_bar">256dp</dimen>
+  <dimen name="border_radius_segment_large_item">256dp</dimen>
+  <dimen name="border_radius_segment_small_bar">256dp</dimen>
+  <dimen name="border_radius_segment_small_item">256dp</dimen>
   <dimen name="border_radius_tab_medium">8dp</dimen>
   <dimen name="border_radius_tab_large">12dp</dimen>
   <dimen name="border_radius_tab_small">8dp</dimen>
@@ -1326,6 +1350,18 @@
   <dimen name="font_section_header_small_font_size">14sp</dimen>
   <integer name="font_section_header_small_letter_spacing">0</integer>
   <dimen name="font_section_header_small_paragraph_spacing">0sp</dimen>
+  <dimen name="font_segment_medium_line_height">20sp</dimen>
+  <dimen name="font_segment_medium_font_size">14sp</dimen>
+  <integer name="font_segment_medium_letter_spacing">0</integer>
+  <dimen name="font_segment_medium_paragraph_spacing">0sp</dimen>
+  <dimen name="font_segment_large_line_height">24sp</dimen>
+  <dimen name="font_segment_large_font_size">16sp</dimen>
+  <integer name="font_segment_large_letter_spacing">0</integer>
+  <dimen name="font_segment_large_paragraph_spacing">0sp</dimen>
+  <dimen name="font_segment_small_line_height">18sp</dimen>
+  <dimen name="font_segment_small_font_size">12sp</dimen>
+  <integer name="font_segment_small_letter_spacing">0</integer>
+  <dimen name="font_segment_small_paragraph_spacing">0sp</dimen>
   <dimen name="font_tab_medium_line_height">24sp</dimen>
   <dimen name="font_tab_medium_font_size">16sp</dimen>
   <integer name="font_tab_medium_letter_spacing">0</integer>

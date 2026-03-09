@@ -4,7 +4,7 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Thu, 04 Dec 2025 06:34:12 GMT
+// Generated on Mon, 09 Mar 2026 09:53:40 GMT
 // Chassis - Tokens v0.1.0
 // Copyright 2025 Ozgur Gunes
 // Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
@@ -946,6 +946,21 @@ public class {
     @objc public static let FontSectionHeaderSmallTextCase = "none"
     @objc public static let FontSectionHeaderSmallTextDecoration = "none"
     @objc public static let FontSectionHeaderSmallFontStyle = "normal"
+    @objc public static let FontSegmentMediumFontFamily = "Inter"
+    @objc public static let FontSegmentMediumFontWeight = "medium"
+    @objc public static let FontSegmentMediumTextCase = "none"
+    @objc public static let FontSegmentMediumTextDecoration = "none"
+    @objc public static let FontSegmentMediumFontStyle = "normal"
+    @objc public static let FontSegmentLargeFontFamily = "Inter"
+    @objc public static let FontSegmentLargeFontWeight = "medium"
+    @objc public static let FontSegmentLargeTextCase = "none"
+    @objc public static let FontSegmentLargeTextDecoration = "none"
+    @objc public static let FontSegmentLargeFontStyle = "normal"
+    @objc public static let FontSegmentSmallFontFamily = "Inter"
+    @objc public static let FontSegmentSmallFontWeight = "medium"
+    @objc public static let FontSegmentSmallTextCase = "none"
+    @objc public static let FontSegmentSmallTextDecoration = "none"
+    @objc public static let FontSegmentSmallFontStyle = "normal"
     @objc public static let FontTabMediumFontFamily = "Inter"
     @objc public static let FontTabMediumFontWeight = "medium"
     @objc public static let FontTabMediumTextCase = "none"
