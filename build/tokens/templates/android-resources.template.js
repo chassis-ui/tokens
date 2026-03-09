@@ -33,7 +33,8 @@ export default (opts) => {
     string: 'string',
     content: 'string',
     time: 'integer',
-    number: 'integer'
+    number: 'integer',
+    letterSpacing: 'integer'
   }
 
   /**
@@ -114,6 +115,8 @@ export default (opts) => {
       token.path[1] === 'paragraphSpacing'
     ) {
       return `${parseFloat(token.$value)}sp` // Only take the first font family
+    } else if (token.path[1] === 'letterSpacing' || token.$type === 'letterSpacing') {
+      return `${parseFloat(token.$value)}`
     } else if (tokenTypes.size.includes(token.$type)) {
       return `${parseFloat(token.$value)}dp`
     }

@@ -1,5 +1,5 @@
 /**
- * @file scss-references.template.js
+ * @file scss-variables.template.js
  * @description Template for generating SCSS variables from design tokens. It processes tokens
  *              to create SCSS variable declarations, resolving references and formatting values
  *              for use in SCSS files.
@@ -12,7 +12,6 @@ import { getReferences, resolveReferences } from 'style-dictionary/utils'
 import { isReference, splitReference, removeTrailingZeros } from '../utils.js'
 
 const usesDtcg = true
-const prefix = '$cx'
 
 /**
  * Resolves the value of a reference token.
@@ -23,18 +22,17 @@ const prefix = '$cx'
 function resolveReferenceValue(token) {
   const ref = splitReference(token.original.$value)
   const refMapping = {
-    'color|context': (ref) => `${prefix}-color-context-${ref[2]}-${ref[3]}`,
-    'color|palette': (ref) => `${prefix}-color-palette-${ref[2]}-${ref[3]}`,
-    'space|context': (ref) => `${prefix}-space-context-${ref[2]}`,
-    opacity: (ref) => `${prefix}-opacity-${ref[2]}`,
+    'color|context': (ref) => `var(--#{$prefix}${ref[2]}-${ref[3]})`,
+    'color|palette': (ref) => `var(--#{$prefix}${ref[2]}-${ref[3]})`,
+    'space|context': (ref) => `var(--#{$prefix}space-${ref[2]})`,
+    opacity: (ref) => `var(--#{$prefix}opacity-${ref[2]})`,
     'borderRadius|context': (ref) =>
-      `${prefix}-border-radius-context-${ref[2].includes('round') ? 'round' : ref[2]}`,
-    'borderWidth|context': (ref) => `${prefix}-border-width-context-${ref[2]}`
+      `var(--#{$prefix}border-radius-${ref[2].includes('round') ? 'circle' : ref[2]})`,
+    'borderWidth|context': (ref) => `var(--#{$prefix}border-width-${ref[2]})`
   }
 
   const key = `${ref[0]}|${ref[1] || ''}`.trim()
   return refMapping[key] ? refMapping[key](ref) : token.$value
-  // return token.$value
 }
 
 /**
@@ -46,41 +44,34 @@ function resolveReferenceValue(token) {
  */
 function resolveBasicTypographyValue(token, dictionary) {
   const fontFamily = splitReference(token.original.$value.fontFamily)[2]
-  const fontSize = splitReference(token.original.$value.fontSize)[3]
-  const lineHeight = splitReference(token.original.$value.lineHeight)[3]
   const fontWeight = splitReference(token.original.$extensions['chassis'].originalFontWeight)[3]
+  const lineHeight = splitReference(token.original.$value.lineHeight)[3]
+  const fontSize = splitReference(token.original.$value.fontSize)[3]
 
-  const letterSpacing = resolveReferences(token.original.$value.letterSpacing, dictionary.tokens, {
-    usesDtcg
-  })
-  const paragraphSpacing = resolveReferences(
-    token.original.$value.paragraphSpacing,
-    dictionary.tokens,
-    {
+  const originals = {
+    fontStyle: token.original.$value.fontStyle,
+    letterSpacing: resolveReferences(token.original.$value.letterSpacing, dictionary.tokens, {
       usesDtcg
-    }
-  )
-  const textCase = resolveReferences(token.original.$value.textCase, dictionary.tokens, {
-    usesDtcg
-  })
-  const textDecoration = resolveReferences(
-    token.original.$value.textDecoration,
-    dictionary.tokens,
-    {
+    }),
+    paragraphSpacing: resolveReferences(token.original.$value.paragraphSpacing, dictionary.tokens, {
       usesDtcg
-    }
-  )
+    }),
+    textCase: resolveReferences(token.original.$value.textCase, dictionary.tokens, { usesDtcg }),
+    textDecoration: resolveReferences(token.original.$value.textDecoration, dictionary.tokens, {
+      usesDtcg
+    })
+  }
 
   return `(${[
-    `"font-family": ${prefix}-typography-font-family-${fontFamily}`,
-    `"font-weight": ${prefix}-typography-font-weight-${fontFamily}-${fontWeight}-weight`,
-    `"font-size": ${prefix}-typography-font-size-${fontFamily}-${fontSize}`,
-    `"line-height": ${prefix}-typography-line-height-${fontFamily}-${lineHeight}`,
-    `"font-style": ${prefix}-typography-font-style-${fontFamily}-${fontWeight}-style`,
-    `"letter-spacing": ${parseFloat(letterSpacing)}em`,
-    `"margin-bottom": ${paragraphSpacing}`,
-    `"text-transform": ${textCase}`,
-    `"text-decoration": ${textDecoration}`
+    `"font-family": var(--#{$prefix}font-family-${fontFamily})`,
+    `"font-weight": var(--#{$prefix}font-weight-${fontFamily}-${fontWeight})`,
+    `"font-size": var(--#{$prefix}font-size-${fontFamily}-${fontSize})`,
+    `"line-height": var(--#{$prefix}line-height-${fontFamily}-${lineHeight})`,
+    `"font-style": ${originals.fontStyle}`,
+    `"letter-spacing": ${parseFloat(originals.letterSpacing)}em`,
+    `"margin-bottom": ${originals.paragraphSpacing}`,
+    `"text-transform": ${originals.textCase}`,
+    `"text-decoration": ${originals.textDecoration}`
   ].join(', ')})`
 }
 
@@ -105,50 +96,42 @@ function resolveContextTypographyValue(token, dictionary) {
 
   const fontSize =
     referenceFs && referenceFs.$type === 'fontSize'
-      ? `${prefix}-typography-font-size-${referenceFs.path[2]}-${referenceFs.path[3]}`
+      ? `var(--#{$prefix}font-size-${referenceFs.path[2]}-${referenceFs.path[3]})`
       : referenceFs.$value
   // If the reference is a percentage, convert it to a decimal
   const lineHeight =
     referenceLh && referenceLh.$type === 'lineHeight'
-      ? `${prefix}-typography-line-height-${referenceLh.path[2]}-${referenceLh.path[3]}`
+      ? `var(--#{$prefix}line-height-${referenceLh.path[2]}-${referenceLh.path[3]})`
       : referenceLh.$value
         ? referenceLh.$value
         : referenceLh.endsWith('%')
           ? `${parseFloat(referenceLh) / 100}em`
           : referenceLh
 
-  const fontStyle = token.original.$value.fontStyle
-  const letterSpacing = resolveReferences(token.original.$value.letterSpacing, dictionary.tokens, {
-    usesDtcg
-  })
-  const paragraphSpacing = resolveReferences(
-    token.original.$value.paragraphSpacing,
-    dictionary.tokens,
-    {
+  const originals = {
+    fontStyle: token.original.$value.fontStyle,
+    letterSpacing: resolveReferences(token.original.$value.letterSpacing, dictionary.tokens, {
       usesDtcg
-    }
-  )
-  const textCase = resolveReferences(token.original.$value.textCase, dictionary.tokens, {
-    usesDtcg
-  })
-  const textDecoration = resolveReferences(
-    token.original.$value.textDecoration,
-    dictionary.tokens,
-    {
+    }),
+    paragraphSpacing: resolveReferences(token.original.$value.paragraphSpacing, dictionary.tokens, {
       usesDtcg
-    }
-  )
+    }),
+    textCase: resolveReferences(token.original.$value.textCase, dictionary.tokens, { usesDtcg }),
+    textDecoration: resolveReferences(token.original.$value.textDecoration, dictionary.tokens, {
+      usesDtcg
+    })
+  }
 
   return `(${[
-    `"font-family": ${prefix}-typography-font-family-${fontFamily}`,
-    `"font-weight": ${prefix}-typography-font-weight-${fontWeight[2]}-${fontWeight[3]}-weight`,
+    `"font-family": var(--#{$prefix}font-family-${fontFamily})`,
+    `"font-weight": var(--#{$prefix}font-weight-${fontWeight[2]}-${fontWeight[3]})`,
     `"font-size": ${fontSize}`,
     `"line-height": ${lineHeight}`,
-    `"font-style": ${prefix}-typography-font-weight-${fontWeight[2]}-${fontWeight[3]}-style`,
-    `"letter-spacing": ${parseFloat(letterSpacing)}em`,
-    `"margin-bottom": ${paragraphSpacing}`,
-    `"text-transform": ${textCase}`,
-    `"text-decoration": ${textDecoration}`
+    `"font-style": ${originals.fontStyle}`,
+    `"letter-spacing": ${parseFloat(originals.letterSpacing)}em`,
+    `"margin-bottom": ${originals.paragraphSpacing}`,
+    `"text-transform": ${originals.textCase}`,
+    `"text-decoration": ${originals.textDecoration}`
   ].join(', ')})`
 }
 
@@ -179,11 +162,11 @@ function resolveComponentTypographyValue(token, dictionary) {
   }
 
   return `(${[
-    `"font-family": ${prefix}-typography-font-family-${ref[1]}`,
-    `"font-weight": ${prefix}-typography-font-weight-${ref[1]}-${ref[3]}-weight`,
-    `"font-size": ${prefix}-typography-font-size-${ref[1]}-${ref[2]}`,
-    `"line-height": ${prefix}-typography-line-height-${ref[1]}-${ref[2]}`,
-    `"font-style": ${prefix}-typography-font-weight-${ref[1]}-${ref[3]}-style`,
+    `"font-family": var(--#{$prefix}font-family-${ref[1]})`,
+    `"font-weight": var(--#{$prefix}font-weight-${ref[3]})`,
+    `"font-size": var(--#{$prefix}font-size-${ref[2]})`,
+    `"line-height": var(--#{$prefix}line-height-${ref[2]})`,
+    `"font-style": ${originals.fontStyle}`,
     `"letter-spacing": ${parseFloat(originals.letterSpacing)}em`,
     `"margin-bottom": ${originals.paragraphSpacing}`,
     `"text-transform": ${originals.textCase}`,

@@ -1,12 +1,12 @@
 
 //
-// color-dark.swift
+// ColorDark.swift
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Sun, 01 Mar 2026 08:53:16 GMT
+// Generated on Tue, 10 Mar 2026 07:27:11 GMT
 // Chassis - Tokens v0.1.0
-// Copyright 2025 Ozgur Gunes
+// Copyright 2026 Ozgur Gunes
 // Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
 
 
