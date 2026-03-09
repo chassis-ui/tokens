@@ -29,33 +29,19 @@
   "chassis": {
     "build": {
       "brands": [
-        "default",
         "mundi"
       ],
       "themes": [
         "light",
         "dark"
       ],
-      "screens": [
-        "large",
-        "medium",
-        "small"
-      ],
       "apps": {
-        "default": [
-          "web",
-          "ios",
-          "android"
-        ],
         "mobile": [
-          "web",
           "ios",
           "android"
         ],
         "web": [
-          "web",
-          "ios",
-          "android"
+          "web"
         ]
       }
     }

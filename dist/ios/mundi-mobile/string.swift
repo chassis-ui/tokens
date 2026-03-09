@@ -1,10 +1,10 @@
 
 //
-// string.swift
+// String.swift
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Mon, 09 Mar 2026 15:16:25 GMT
+// Generated on Mon, 09 Mar 2026 15:39:34 GMT
 // Chassis - Tokens v0.1.0
 // Copyright 2026 Ozgur Gunes
 // Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)

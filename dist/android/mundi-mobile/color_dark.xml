@@ -2,7 +2,7 @@
 
 <!--
   Do not edit directly, this file was auto-generated.
-  Generated on Mon, 09 Mar 2026 15:16:38 GMT
+  Generated on Mon, 09 Mar 2026 15:39:38 GMT
   Chassis - Tokens v0.1.0
   Copyright 2026 Ozgur Gunes
   Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
@@ -987,7 +987,7 @@
   <color name="color_message_bg_embed">#0dffffff</color>
   <color name="color_message_fg_status">#ffededee</color>
   <color name="color_message_bg_status">#0dffffff</color>
-  <color name="color_page_bg_body">#ff212223</color>
+  <color name="color_page_bg_body">#ff141515</color>
   <color name="color_page_bg_section">#ff141515</color>
   <color name="color_pagination_dot_idle">#40ededee</color>
   <color name="color_pagination_dot_active">#ff3527dd</color>
@@ -1121,14 +1121,10 @@
   <color name="shadow_context_press_2_color">#66000000</color>
   <color name="shadow_context_focus_color">#ff685de6</color>
   <color name="shadow_context_highlight_color">#ff685de6</color>
-  <color name="shadow_button_idle_1_color">#66000000</color>
-  <color name="shadow_button_idle_2_color">#66000000</color>
-  <color name="shadow_button_hover_1_color">#66000000</color>
-  <color name="shadow_button_hover_2_color">#66000000</color>
-  <color name="shadow_button_press_1_color">#66000000</color>
-  <color name="shadow_button_press_2_color">#66000000</color>
-  <color name="shadow_button_disabled_1_color">#66000000</color>
-  <color name="shadow_button_disabled_2_color">#66000000</color>
+  <color name="shadow_button_idle_color">#00000000</color>
+  <color name="shadow_button_hover_color">#00000000</color>
+  <color name="shadow_button_press_color">#00000000</color>
+  <color name="shadow_button_disabled_color">#00000000</color>
   <color name="shadow_card_main_1_color">#66000000</color>
   <color name="shadow_card_main_2_color">#66000000</color>
   <color name="shadow_date_picker_main_1_color">#66000000</color>
