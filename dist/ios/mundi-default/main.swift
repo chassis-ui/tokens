@@ -4,15 +4,15 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Mon, 09 Mar 2026 09:53:39 GMT
+// Generated on Mon, 09 Mar 2026 15:16:23 GMT
 // Chassis - Tokens v0.1.0
-// Copyright 2025 Ozgur Gunes
+// Copyright 2026 Ozgur Gunes
 // Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
 
 
 import UIKit
 
-public class {
+public class ChassisTokens {
     @objc public static let DimensionBase0 = CGFloat(0)
     @objc public static let DimensionBase1 = CGFloat(1)
     @objc public static let DimensionBase2 = CGFloat(2)

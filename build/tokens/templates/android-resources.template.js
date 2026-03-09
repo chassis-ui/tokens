@@ -47,6 +47,9 @@ export default (opts) => {
     if (resourceType) {
       return resourceType
     }
+    if (token.$type === 'letterSpacing' || token.path[1] === 'letterSpacing') {
+      return 'integer'
+    }
     for (const tokenType of Object.keys(tokenTypes)) {
       if (tokenTypes[tokenType].includes(token.$type)) {
         if (resourceMap[tokenType]) {
@@ -114,7 +117,11 @@ export default (opts) => {
       token.path[1] === 'paragraphSpacing'
     ) {
       return `${parseFloat(token.$value)}sp` // Only take the first font family
-    } else if (tokenTypes.size.includes(token.$type)) {
+    } else if (
+      tokenTypes.size.includes(token.$type) &&
+      token.$type !== 'letterSpacing' &&
+      token.path[1] !== 'letterSpacing'
+    ) {
       return `${parseFloat(token.$value)}dp`
     }
 

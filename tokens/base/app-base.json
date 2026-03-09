@@ -30,7 +30,7 @@
           "fontWeight": "{typography.fontWeight.display.mass}",
           "lineHeight": "125%",
           "fontSize": "{size.base.96}",
-          "letterSpacing": "{size.base.n1}",
+          "letterSpacing": "-1",
           "paragraphSpacing": "{typography.paragraphSpacing.base.zero}",
           "textCase": "{typography.textCase.base.none}",
           "textDecoration": "{typography.textDecoration.base.none}"
@@ -43,7 +43,7 @@
           "fontWeight": "{typography.fontWeight.display.mass}",
           "lineHeight": "125%",
           "fontSize": "{size.base.64}",
-          "letterSpacing": "{size.base.n1}",
+          "letterSpacing": "-1",
           "paragraphSpacing": "{typography.paragraphSpacing.base.zero}",
           "textCase": "{typography.textCase.base.none}",
           "textDecoration": "{typography.textDecoration.base.none}"

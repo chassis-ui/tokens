@@ -4,15 +4,15 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Mon, 09 Mar 2026 09:53:44 GMT
+// Generated on Mon, 09 Mar 2026 15:16:28 GMT
 // Chassis - Tokens v0.1.0
-// Copyright 2025 Ozgur Gunes
+// Copyright 2026 Ozgur Gunes
 // Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
 
 
 import UIKit
 
-public class {
+public class ChassisTokens {
     @objc public static let ColorContextDefaultBaseColor = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1)
     @objc public static let ColorContextDefaultContrastColor = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1)
     @objc public static let ColorContextDefaultTransparentColor = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0)

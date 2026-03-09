@@ -74,7 +74,7 @@
     "tokens": "pnpm tokens:build",
     "tokens:build": "node build/tokens/build.js",
     "tokens:lint": "eslint --cache --cache-location .cache/.eslintcache build/tokens",
-    "tokens:site": "pnpm tokens:build --brand chassis --app docs",
+    "tokens:mundi": "pnpm tokens:build --brand mundi",
     "tokens:test": "vitest run --dir build/tokens/test",
 
     "site": "pnpm site:build && pnpm site:lint",
