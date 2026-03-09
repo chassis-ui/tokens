@@ -21,7 +21,8 @@ const docsSchema = z.object({
   sections: z
     .object({
       description: z.string(),
-      title: z.string()
+      title: z.string(),
+      slug: z.string().optional()
     })
     .array()
     .optional(),

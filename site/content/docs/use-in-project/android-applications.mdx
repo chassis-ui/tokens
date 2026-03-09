@@ -1,0 +1,741 @@
+---
+title: Android Applications
+description: Complete guide to integrating Chassis design tokens into Android applications using XML resources, Gradle, Maven, and platform-specific best practices.
+toc: true
+---
+
+<Callout type="warning" name="created-by-ai" />
+
+## Overview
+
+Chassis design tokens for Android are generated as XML resource files that integrate seamlessly with the Android resource system. Tokens are automatically converted to appropriate Android resource types (color, dimen, string, integer) and support theme overlays for light/dark modes.
+
+**Key Benefits:**
+
+- **Native Resources**: Standard Android XML resources (colors.xml, dimens.xml)
+- **Resource References**: Automatic `@color`, `@dimen` references
+- **Theme Support**: Built-in light/dark mode with theme overlays
+- **Type Safe**: Compile-time resource validation
+- **IDE Support**: Android Studio autocomplete and preview
+- **Gradle Integration**: Easy dependency management
+- **Material Design**: Compatible with Material Design Components
+
+This guide covers integration using Git submodules, Gradle dependencies, Maven, and manual resource inclusion.
+
+## Token Output Format
+
+Tokens are generated as Android XML resource files:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- main.xml -->
+<resources>
+  <dimen name="cx_space_base_8">8dp</dimen>
+  <dimen name="cx_space_base_16">16dp</dimen>
+  <dimen name="cx_border_radius_base_8">8dp</dimen>
+  <dimen name="cx_size_button_medium_height">44dp</dimen>
+  <string name="cx_typography_font_family_text">Inter</string>
+  <string name="cx_typography_font_weight_text_normal">regular</string>
+</resources>
+```
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- color-light.xml -->
+<resources>
+  <color name="cx_color_context_default_bg_main">#FFFFFFFF</color>
+  <color name="cx_color_context_default_fg_main">#FF1C2021</color>
+  <color name="cx_color_context_primary_bg_solid">#FF00A4CC</color>
+  <color name="cx_color_context_primary_fg_solid">#FFFFFFFF</color>
+</resources>
+```
+
+**Generated Files:**
+
+- `main.xml` - Base tokens (dimensions, strings)
+- `string.xml` - String-only tokens (fonts, assets)
+- `color-light.xml` - Light theme colors
+- `color-dark.xml` - Dark theme colors
+- `number-large.xml` - Large screen dimensions
+- `number-medium.xml` - Medium screen dimensions
+- `number-small.xml` - Small screen dimensions
+
+## Installation Methods
+
+### Method 1: Git Submodule (Recommended)
+
+Add the tokens repository as a Git submodule:
+
+```bash
+# Navigate to your Android project directory
+cd YourApp
+
+# Add tokens as submodule
+git submodule add https://github.com/chassis-ui/tokens.git submodules/chassis-tokens
+
+# Initialize and update
+git submodule update --init --recursive
+```
+
+**Build tokens for Android:**
+
+```bash
+cd submodules/chassis-tokens
+npm install -g pnpm
+pnpm install
+pnpm tokens --brand chassis --app yourapp --platform android
+```
+
+Generated files will be in `submodules/chassis-tokens/dist/android/chassis-yourapp/`.
+
+**Configure Gradle to use tokens:**
+
+```gradle
+// app/build.gradle
+android {
+    sourceSets {
+        main {
+            res.srcDirs += [
+                '../submodules/chassis-tokens/dist/android/chassis-yourapp'
+            ]
+        }
+    }
+}
+```
+
+**Update submodule:**
+
+```bash
+cd submodules/chassis-tokens
+git pull origin main
+pnpm tokens --brand chassis --app yourapp --platform android
+```
+
+### Method 2: Gradle Dependency (AAR)
+
+Publish tokens as an Android Library (AAR):
+
+**1. Create library module:**
+
+```bash
+# In your tokens repository
+mkdir -p android-library/tokens/src/main/res/values
+cp dist/android/chassis-yourapp/*.xml android-library/tokens/src/main/res/values/
+```
+
+**2. Create build.gradle:**
+
+```gradle
+// android-library/tokens/build.gradle
+plugins {
+    id 'com.android.library'
+}
+
+android {
+    namespace 'com.chassis.tokens'
+    compileSdk 34
+    
+    defaultConfig {
+        minSdk 21
+        targetSdk 34
+    }
+    
+    buildTypes {
+        release {
+            minifyEnabled false
+        }
+    }
+}
+```
+
+**3. Add to your app:**
+
+```gradle
+// settings.gradle
+include ':tokens'
+project(':tokens').projectDir = new File('../chassis-tokens/android-library/tokens')
+
+// app/build.gradle
+dependencies {
+    implementation project(':tokens')
+}
+```
+
+### Method 3: Maven Local
+
+Publish tokens to local Maven repository:
+
+```gradle
+// tokens/build.gradle
+apply plugin: 'maven-publish'
+
+publishing {
+    publications {
+        release(MavenPublication) {
+            from components.release
+            groupId = 'com.chassis'
+            artifactId = 'tokens'
+            version = '0.1.0'
+        }
+    }
+    repositories {
+        mavenLocal()
+    }
+}
+```
+
+**Publish:**
+
+```bash
+./gradlew publishToMavenLocal
+```
+
+**Use in your app:**
+
+```gradle
+// app/build.gradle
+repositories {
+    mavenLocal()
+}
+
+dependencies {
+    implementation 'com.chassis:tokens:0.1.0'
+}
+```
+
+### Method 4: Manual Resource Copy
+
+For simple projects, copy XML files directly:
+
+1. Build tokens: `pnpm tokens --platform android`
+2. Copy all `.xml` files from `dist/android/chassis-yourapp/` to `app/src/main/res/values/`
+3. Sync Gradle
+4. Rebuild when tokens change
+
+<Callout type="warning">
+Manual copying requires rebuilding when tokens change. Use submodules or Gradle dependencies for better workflow.
+</Callout>
+
+## Using Tokens in XML Layouts
+
+### Colors
+
+```xml
+<!-- activity_main.xml -->
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/cx_color_context_default_bg_main">
+    
+    <TextView
+        android:id="@+id/titleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello World"
+        android:textColor="@color/cx_color_context_default_fg_main"
+        android:textSize="@dimen/cx_typography_font_size_text_3xlarge"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_margin="@dimen/cx_space_base_16" />
+    
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/cx_color_context_default_bg_evident"
+        app:cardCornerRadius="@dimen/cx_border_radius_base_8"
+        app:cardElevation="@dimen/cx_space_base_4"
+        android:layout_margin="@dimen/cx_space_base_16"
+        app:layout_constraintTop_toBottomOf="@id/titleText">
+        
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Card content"
+            android:padding="@dimen/cx_space_base_16"
+            android:textColor="@color/cx_color_context_default_fg_main" />
+    </com.google.android.material.card.MaterialCardView>
+    
+</androidx.constraintlayout.widget.ConstraintLayout>
+```
+
+### Buttons
+
+```xml
+<!-- Custom button style -->
+<com.google.android.material.button.MaterialButton
+    android:id="@+id/primaryButton"
+    android:layout_width="wrap_content"
+    android:layout_height="@dimen/cx_size_button_medium_height"
+    android:text="Click Me"
+    android:textColor="@color/cx_color_context_primary_fg_solid"
+    app:backgroundTint="@color/cx_color_context_primary_bg_solid"
+    app:cornerRadius="@dimen/cx_border_radius_button_main"
+    android:paddingStart="@dimen/cx_space_button_padding_inline"
+    android:paddingEnd="@dimen/cx_space_button_padding_inline"
+    app:strokeWidth="@dimen/cx_border_width_button_main"
+    app:strokeColor="@color/cx_color_context_primary_border_main" />
+```
+
+## Using Tokens in Kotlin/Java
+
+### Accessing Resources in Kotlin
+
+```kotlin
+import android.os.Bundle
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+
+class MainActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+        
+        // Access colors
+        val bgColor = ContextCompat.getColor(this, R.color.cx_color_context_default_bg_main)
+        val fgColor = ContextCompat.getColor(this, R.color.cx_color_context_default_fg_main)
+        
+        // Access dimensions
+        val spacing = resources.getDimension(R.dimen.cx_space_base_16)
+        val radius = resources.getDimension(R.dimen.cx_border_radius_base_8)
+        
+        // Access strings
+        val fontFamily = resources.getString(R.string.cx_typography_font_family_text)
+        
+        // Apply to views
+        findViewById<TextView>(R.id.titleText).apply {
+            setTextColor(fgColor)
+            textSize = resources.getDimension(R.dimen.cx_typography_font_size_text_xlarge)
+            setPadding(
+                spacing.toInt(),
+                spacing.toInt(),
+                spacing.toInt(),
+                spacing.toInt()
+            )
+        }
+    }
+}
+```
+
+### Custom View with Tokens
+
+```kotlin
+import android.content.Context
+import android.graphics.Canvas
+import android.graphics.Paint
+import android.util.AttributeSet
+import android.view.View
+import androidx.core.content.ContextCompat
+
+class CustomCardView @JvmOverloads constructor(
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyleAttr: Int = 0
+) : View(context, attrs, defStyleAttr) {
+    
+    private val paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
+        color = ContextCompat.getColor(context, R.color.cx_color_context_default_bg_evident)
+        style = Paint.Style.FILL
+    }
+    
+    private val cornerRadius = resources.getDimension(R.dimen.cx_border_radius_base_8)
+    private val padding = resources.getDimension(R.dimen.cx_space_base_16)
+    
+    override fun onDraw(canvas: Canvas) {
+        super.onDraw(canvas)
+        canvas.drawRoundRect(
+            padding, padding,
+            width - padding, height - padding,
+            cornerRadius, cornerRadius,
+            paint
+        )
+    }
+}
+```
+
+### Java Example
+
+```java
+import android.os.Bundle;
+import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+
+public class MainActivity extends AppCompatActivity {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        
+        // Access resources
+        int bgColor = ContextCompat.getColor(this, R.color.cx_color_context_default_bg_main);
+        float spacing = getResources().getDimension(R.dimen.cx_space_base_16);
+        
+        // Apply to view
+        TextView titleText = findViewById(R.id.titleText);
+        titleText.setTextColor(ContextCompat.getColor(this, R.color.cx_color_context_default_fg_main));
+        titleText.setPadding(
+            (int) spacing,
+            (int) spacing,
+            (int) spacing,
+            (int) spacing
+        );
+    }
+}
+```
+
+## Using Tokens in Jetpack Compose
+
+### Create Theme Extension
+
+```kotlin
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.sp
+
+object ChassisTokens {
+    // Colors
+    val ColorBgMain @Composable get() = colorResource(R.color.cx_color_context_default_bg_main)
+    val ColorFgMain @Composable get() = colorResource(R.color.cx_color_context_default_fg_main)
+    val ColorPrimaryBg @Composable get() = colorResource(R.color.cx_color_context_primary_bg_solid)
+    val ColorPrimaryFg @Composable get() = colorResource(R.color.cx_color_context_primary_fg_solid)
+    
+    // Spacing
+    val Spacing8 @Composable get() = dimensionResource(R.dimen.cx_space_base_8)
+    val Spacing16 @Composable get() = dimensionResource(R.dimen.cx_space_base_16)
+    val Spacing24 @Composable get() = dimensionResource(R.dimen.cx_space_base_24)
+    
+    // Border Radius
+    val Radius8 @Composable get() = dimensionResource(R.dimen.cx_border_radius_base_8)
+    
+    // Typography
+    val FontSizeMedium @Composable get() = dimensionResource(R.dimen.cx_typography_font_size_text_medium).value.sp
+    val FontSizeLarge @Composable get() = dimensionResource(R.dimen.cx_typography_font_size_text_large).value.sp
+}
+```
+
+### Using in Composables
+
+```kotlin
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.*
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+
+@Composable
+fun CardExample() {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(ChassisTokens.Spacing16)
+            .clip(RoundedCornerShape(ChassisTokens.Radius8))
+            .background(ChassisTokens.ColorBgMain)
+    ) {
+        Text(
+            text = "Card Title",
+            color = ChassisTokens.ColorFgMain,
+            fontSize = ChassisTokens.FontSizeLarge,
+            modifier = Modifier.padding(ChassisTokens.Spacing16)
+        )
+        
+        Button(
+            onClick = { /* Handle click */ },
+            colors = ButtonDefaults.buttonColors(
+                containerColor = ChassisTokens.ColorPrimaryBg,
+                contentColor = ChassisTokens.ColorPrimaryFg
+            ),
+            modifier = Modifier
+                .padding(ChassisTokens.Spacing16)
+                .height(dimensionResource(R.dimen.cx_size_button_medium_height))
+        ) {
+            Text("Click Me")
+        }
+    }
+}
+```
+
+## Theme Support (Light/Dark Mode)
+
+### Using Resource Qualifiers
+
+Android automatically handles theme switching using resource qualifiers:
+
+```
+res/
+├── values/
+│   ├── main.xml              # Base tokens
+│   └── colors.xml            # Light mode colors (rename color-light.xml)
+└── values-night/
+    └── colors.xml            # Dark mode colors (rename color-dark.xml)
+```
+
+**Setup:**
+
+1. Copy `color-light.xml` to `res/values/colors.xml`
+2. Copy `color-dark.xml` to `res/values-night/colors.xml`
+3. Android will automatically use the appropriate file based on system theme
+
+### Material Theme Integration
+
+```kotlin
+import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.darkColorScheme
+import androidx.compose.material3.lightColorScheme
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.res.colorResource
+
+@Composable
+fun ChassisTheme(
+    darkTheme: Boolean = isSystemInDarkTheme(),
+    content: @Composable () -> Unit
+) {
+    val colorScheme = if (darkTheme) {
+        darkColorScheme(
+            primary = colorResource(R.color.cx_color_context_primary_bg_solid),
+            onPrimary = colorResource(R.color.cx_color_context_primary_fg_solid),
+            background = colorResource(R.color.cx_color_context_default_bg_main),
+            onBackground = colorResource(R.color.cx_color_context_default_fg_main)
+        )
+    } else {
+        lightColorScheme(
+            primary = colorResource(R.color.cx_color_context_primary_bg_solid),
+            onPrimary = colorResource(R.color.cx_color_context_primary_fg_solid),
+            background = colorResource(R.color.cx_color_context_default_bg_main),
+            onBackground = colorResource(R.color.cx_color_context_default_fg_main)
+        )
+    }
+    
+    MaterialTheme(
+        colorScheme = colorScheme,
+        content = content
+    )
+}
+```
+
+### Force Theme Mode
+
+```kotlin
+import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
+
+class MainActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        
+        // Force light mode
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        
+        // Force dark mode
+        // AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        
+        // Follow system
+        // AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
+        
+        setContentView(R.layout.activity_main)
+    }
+}
+```
+
+## Responsive Design
+
+### Screen Size Qualifiers
+
+Organize tokens by screen size:
+
+```
+res/
+├── values/              # Default (small screens)
+│   └── dimens.xml       # number-small.xml
+├── values-sw600dp/      # Tablets (7")
+│   └── dimens.xml       # number-medium.xml
+└── values-sw720dp/      # Large tablets (10")
+    └── dimens.xml       # number-large.xml
+```
+
+### Dimension Resources
+
+```xml
+<!-- res/values/dimens.xml (small screens) -->
+<resources>
+    <dimen name="cx_space_container_padding">12dp</dimen>
+    <dimen name="cx_typography_font_size_heading">24sp</dimen>
+</resources>
+
+<!-- res/values-sw600dp/dimens.xml (tablets) -->
+<resources>
+    <dimen name="cx_space_container_padding">16dp</dimen>
+    <dimen name="cx_typography_font_size_heading">28sp</dimen>
+</resources>
+
+<!-- res/values-sw720dp/dimens.xml (large tablets) -->
+<resources>
+    <dimen name="cx_space_container_padding">24dp</dimen>
+    <dimen name="cx_typography_font_size_heading">32sp</dimen>
+</resources>
+```
+
+## Best Practices
+
+### Do's
+
+✅ **Use resource references**: Always use `@color`, `@dimen` references
+
+✅ **Follow naming conventions**: Maintain consistent `cx_` prefix
+
+✅ **Support dark mode**: Use `values-night` for dark theme
+
+✅ **Organize by screen size**: Use qualifier directories for responsive design
+
+✅ **Version control tokens**: Use Git submodules or Maven versioning
+
+✅ **Automate builds**: Set up CI/CD for token generation
+
+### Don'ts
+
+❌ **Don't hardcode values**: Always use tokens, never magic numbers
+
+❌ **Don't modify generated files**: Changes will be overwritten
+
+❌ **Don't mix token versions**: Keep tokens synchronized
+
+❌ **Don't skip resource qualifiers**: Implement proper theme and size variants
+
+❌ **Don't ignore accessibility**: Use tokens with proper contrast
+
+## Troubleshooting
+
+### Resource Not Found
+
+**Problem**: `Resources$NotFoundException`
+
+**Solution**: Ensure tokens are properly included in build:
+```gradle
+android {
+    sourceSets {
+        main.res.srcDirs += 'path/to/tokens'
+    }
+}
+```
+Run: `./gradlew clean build`
+
+### Color Format Issues
+
+**Problem**: Colors appear incorrect
+
+**Solution**: Verify ARGB format in XML:
+```xml
+<!-- Correct format: #AARRGGBB -->
+<color name="cx_color_primary">#FF00A4CC</color>
+```
+
+### Dimension Conversion
+
+**Problem**: dp/sp values don't scale properly
+
+**Solution**: Use proper units:
+- `dp` for dimensions, margins, padding
+- `sp` for text sizes
+- `px` only when needed (rare)
+
+### Build Performance
+
+**Problem**: Slow builds with many token files
+
+**Solution**: Split tokens and use only needed resources:
+```gradle
+android {
+    defaultConfig {
+        resConfigs "en", "xxhdpi"
+    }
+}
+```
+
+## Example Project Structure
+
+```
+YourApp/
+├── app/
+│   ├── build.gradle
+│   └── src/
+│       └── main/
+│           ├── java/
+│           ├── res/
+│           │   ├── layout/
+│           │   ├── values/
+│           │   │   └── colors.xml (from color-light.xml)
+│           │   └── values-night/
+│           │       └── colors.xml (from color-dark.xml)
+│           └── AndroidManifest.xml
+├── submodules/
+│   └── chassis-tokens/
+│       └── dist/
+│           └── android/
+│               └── chassis-yourapp/
+│                   ├── main.xml
+│                   ├── string.xml
+│                   ├── color-light.xml
+│                   ├── color-dark.xml
+│                   └── number-large.xml
+├── build.gradle
+└── settings.gradle
+```
+
+## CI/CD Integration
+
+Automate token generation in your CI pipeline:
+
+```yaml
+# .github/workflows/android-build.yml
+name: Android CI
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: recursive
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      
+      - name: Install pnpm
+        run: npm install -g pnpm
+      
+      - name: Generate Tokens
+        run: |
+          cd submodules/chassis-tokens
+          pnpm install
+          pnpm tokens --platform android --brand chassis --app yourapp
+      
+      - name: Setup JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'zulu'
+          java-version: '17'
+      
+      - name: Build Android App
+        run: ./gradlew assembleDebug
+```
+
+## Next Steps
+
+- Learn about [token structure and naming]([[docsref:/getting-started/tokens-studio]])
+- Explore [design token categories]([[docsref:/design-tokens/color-tokens]])
+- Understand [theme customization]([[docsref:/getting-started/build-tokens]])
+- See [cross-platform consistency]([[docsref:/use-in-project/web-applications]])

@@ -1,0 +1,248 @@
+---
+title: Size Tokens
+description: Comprehensive guide to size tokens defining consistent dimensions for component sizing, icon sizes, and layout measurements.
+toc: true
+---
+
+<Callout type="warning" name="work-in-progress" />
+
+## Overview
+
+Size tokens define consistent dimensional values used for component sizing, icon dimensions, and layout measurements throughout the design system. They ensure visual harmony and predictable scaling across all interface elements.
+
+### Architecture
+
+Size tokens are organized into a two-layer system where base sizing values are defined in the **metric-base** token set and then referenced by contextual and component-specific size tokens in the **App group**.
+
+**How it works:**
+
+The system progresses from foundational to applied:
+1. **Base sizes** (`size.base.*`) provide raw dimensional values (0-1024px)
+2. **Contextual sizes** (`size.context.*`) assign semantic meaning (xsmall, small, medium, large, etc.)
+3. **Component sizes** (`size.[component].*`) define specific dimensions for UI components
+
+**Benefits:**
+
+- Consistent sizing scale across all components
+- Predictable visual rhythm through systematic increments
+- Easy to adjust component sizes globally
+- Semantic naming clarifies sizing intent
+
+<Callout type="info">
+Size tokens use an 8-point grid system (8, 16, 24, 32, 40, 48...) as the foundation, with additional values for fine-tuning. This system ensures visual consistency and makes it easier to align elements.
+</Callout>
+
+### Organization
+
+Size tokens are organized into three categories:
+
+**Base Sizes**: Raw dimensional values in pixels, primarily using an 8-point grid system with additional increments.
+
+**Contextual Sizes**: Semantic size scales (2xsmall through 2xlarge) for general use.
+
+**Component Sizes**: Specific dimensional values for individual UI components (buttons, badges, icons, etc.).
+
+This organization provides flexibility while maintaining consistency.
+
+## Base Sizes
+
+Base size tokens provide foundational dimensional values. These reference the underlying `dimension.base.*` tokens defined in metric-base.json.
+
+### Standard Scale
+
+The primary sizing scale follows an 8-point grid with additional values:
+
+<CxTable>
+| Token Name | Value (px) | Use Cases |
+|------------|-----------|----------|
+| `size.base.0` | 0 | Zero size, no dimension |
+| `size.base.1` | 1 | Minimal size, separator lines |
+| `size.base.2` | 2 | Very small elements, fine borders |
+| `size.base.4` | 4 | Small indicators, compact elements |
+| `size.base.8` | 8 | Base grid unit, small icons |
+| `size.base.12` | 12 | Small component dimensions |
+| `size.base.16` | 16 | Small-medium elements |
+| `size.base.20` | 20 | Small icons and badges |
+| `size.base.24` | 24 | Medium icons, compact buttons |
+| `size.base.28` | 28 | Medium-large icons |
+| `size.base.32` | 32 | Standard button height |
+| `size.base.36` | 36 | Medium-large elements |
+| `size.base.40` | 40 | Standard component height |
+| `size.base.48` | 48 | Large buttons and inputs |
+| `size.base.56` | 56 | Extra large components |
+| `size.base.64` | 64 | Hero elements, large avatars |
+</CxTable>
+
+### Extended Scale
+
+For larger dimensions:
+
+<CxTable>
+| Token Name | Value (px) | Use Cases |
+|------------|-----------|----------|
+| `size.base.72` | 72 | Collapsed navigation |
+| `size.base.96` | 96 | Large spacing, section heights |
+| `size.base.120` | 120 | Menu widths, medium containers |
+| `size.base.128` | 128 | Medium-large containers |
+| `size.base.160` | 160 | Large containers |
+| `size.base.192` | 192 | Extra large containers |
+| `size.base.256` | 256 | Expanded navigation, sidebars |
+| `size.base.320` | 320 | Modal widths, content areas |
+| `size.base.512` | 512 | Large content areas |
+| `size.base.1024` | 1024 | Maximum content widths |
+</CxTable>
+
+### Fractional and Negative Sizes
+
+For fine-tuning and special cases:
+
+<CxTable>
+| Token Name | Value | Purpose |
+|------------|-------|--------|
+| `size.base.05` | 0.5px | Half-pixel adjustments |
+| `size.base.d05` | 0.05em | Relative fractional size |
+| `size.base.d15` | 1.5px | 1.5-pixel increments |
+| `size.base.d25` | 2.5px | 2.5-pixel increments |
+| `size.base.n1` through `size.base.n24` | Negative values | Negative margins, adjustments |
+</CxTable>
+
+## Contextual Sizes
+
+Contextual size tokens provide semantic sizing scales for general application.
+
+<CxTable>
+| Token Name | Value | Purpose |
+|------------|-------|--------|
+| `size.context.2xsmall` | 16px | Extra small elements |
+| `size.context.xsmall` | 24px | Very small elements |
+| `size.context.small` | 32px | Small components |
+| `size.context.medium` | 40px | Standard component size |
+| `size.context.large` | 48px | Large components |
+| `size.context.xlarge` | 56px | Extra large elements |
+| `size.context.2xlarge` | 64px | Maximum size elements |
+</CxTable>
+
+## Icon Sizes
+
+Icon size tokens ensure consistent icon dimensions throughout the system.
+
+<CxTable>
+| Token Name | Value | Use Cases |
+|------------|-------|----------|
+| `size.icon.glyph.3xsmall` | 8px | Tiny indicators |
+| `size.icon.glyph.2xsmall` | 12px | Small inline icons |
+| `size.icon.glyph.xsmall` | 16px | Compact UI icons |
+| `size.icon.glyph.small` | 20px | Standard small icons |
+| `size.icon.glyph.medium` | 24px | Default icon size |
+| `size.icon.glyph.large` | 28px | Large UI icons |
+| `size.icon.glyph.xlarge` | 32px | Extra large icons |
+| `size.icon.glyph.2xlarge` | 36px | Hero icons |
+| `size.icon.glyph.3xlarge` | 40px | Feature icons |
+| `size.icon.glyph.4xlarge` | 48px | Large feature icons |
+| `size.icon.glyph.5xlarge` | 56px | Extra large features |
+| `size.icon.glyph.6xlarge` | 64px | Maximum icon size |
+</CxTable>
+
+## Component Sizes
+
+Component-specific size tokens define exact dimensions for UI elements.
+
+### Button Sizes
+
+<CxTable>
+| Token Name | Value | Applied To |
+|------------|-------|------------|
+| `size.button.small-main` | 32px | Small button height |
+| `size.button.small-icon` | 20px | Icon in small button |
+| `size.button.medium-main` | 40px | Standard button height |
+| `size.button.medium-icon` | 24px | Icon in medium button |
+| `size.button.large-main` | 48px | Large button height |
+| `size.button.large-icon` | 28px | Icon in large button |
+</CxTable>
+
+### Badge Sizes
+
+<CxTable>
+| Token Name | Value | Applied To |
+|------------|-------|------------|
+| `size.badge.small-main` | 20px | Small badge height |
+| `size.badge.small-icon` | 12px | Icon in small badge |
+| `size.badge.medium-main` | 24px | Standard badge height |
+| `size.badge.medium-icon` | 16px | Icon in medium badge |
+| `size.badge.large-main` | 28px | Large badge height |
+| `size.badge.large-icon` | 20px | Icon in large badge |
+</CxTable>
+
+### Form Input Sizes
+
+<CxTable>
+| Token Name | Value | Applied To |
+|------------|-------|------------|
+| `size.form-input.small-icon` | 16px | Icon in small input |
+| `size.form-input.medium-icon` | 20px | Icon in medium input |
+| `size.form-input.large-icon` | 24px | Icon in large input |
+</CxTable>
+
+### Modal Sizes
+
+<CxTable>
+| Token Name | Value | Applied To |
+|------------|-------|------------|
+| `size.modal.window-small-w` | 360px | Small modal width |
+| `size.modal.window-medium-w` | 560px | Medium modal width |
+| `size.modal.window-large-w` | 800px | Large modal width |
+| `size.modal.window-xlarge-w` | 1140px | Extra large modal width |
+</CxTable>
+
+### Navigation Sizes
+
+<CxTable>
+| Token Name | Value | Applied To |
+|------------|-------|------------|
+| `size.nav-left.wdith-collapsed` | 72px | Collapsed sidebar width |
+| `size.nav-left.width-expanded` | 256px | Expanded sidebar width |
+| `size.nav-top.height` | 64px | Top navigation height |
+</CxTable>
+
+## Usage Guidelines
+
+### Choosing the Right Token
+
+**For components**: Use component-specific tokens (`size.button.*`, `size.badge.*`, etc.)
+
+**For icons**: Use icon size tokens (`size.icon.glyph.*`)
+
+**For semantic sizes**: Use contextual tokens (`size.context.*`)
+
+**For custom dimensions**: Use base size tokens (`size.base.*`)
+
+### Design Principles
+
+**Touch Targets**: Minimum 32px (size.base.32) for interactive elements on touch devices
+
+**Icon Sizing**: Keep icon sizes at 24px (size.icon.glyph.medium) or larger for clarity
+
+**Visual Rhythm**: Stick to 8-point grid increments for harmonious layouts
+
+**Consistency**: Use the same size token for similar elements across components
+
+### Accessibility
+
+- Interactive elements should be at least 32×32px for touch accessibility
+- Icons conveying important information should be at least 24×24px
+- Ensure sufficient size for users with motor impairments
+- Test touch targets on actual devices, not just in design tools
+
+### Best Practices
+
+**Do:**
+- Use contextual size tokens for flexible, semantic sizing
+- Reference component size tokens for specific UI elements
+- Stick to the 8-point grid when possible
+- Document the purpose when using non-standard sizes
+
+**Don't:**
+- Create arbitrary size values—always use tokens
+- Use sizes smaller than 32px for primary interactive elements
+- Mix sizing systems inconsistently
+- Use pixel values directly in component styles

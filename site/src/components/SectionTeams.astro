@@ -1,0 +1,48 @@
+---
+import { getConfig } from '@libs/config'
+import ResponsiveImage from '@shortcodes/ResponsiveImage.astro'
+import Code from '@shortcodes/Code.astro'
+import { getChassisDocsPath } from '@libs/path'
+import Card from '@components/Card.astro'
+---
+
+<section class="py-6xlarge">
+  <div class="container">
+    <div class="row justify-content-center mb-5xlarge">
+      <div class="col-large-8 text-center">
+        <h2 class="font-hero mb-medium lh-small">
+          <span class="font-normal">Why Leading Teams Choose</span>
+          <span class="text-nowrap">Chassis Tokens</span>
+        </h2>
+        <p class="font-lead">
+          Chassis Tokens gives your team a repeatable way to ship consistent interfaces across
+          brands, products, and platforms, reducing coordination overhead.
+        </p>
+      </div>
+    </div>
+
+    <div class="row row-cols-1 row-cols-medium-3">
+      <div class="col">
+        <Card
+          title="Faster Time-to-Market"
+          body="Reduce design-to-development cycle by automating token generation and maintaining single source of truth across all platforms."
+          icon="clock-outline"
+        />
+      </div>
+      <div class="col">
+        <Card
+          title="Fewer Inconsistencies"
+          body="Ensure perfect design implementation with automated token sync between Figma and production code."
+          icon="check-circle-outline"
+        />
+      </div>
+      <div class="col">
+        <Card
+          title="Less Maintenance"
+          body="Token-driven architecture eliminates manual CSS updates and reduces technical debt across codebases."
+          icon="code-outline"
+        />
+      </div>
+    </div>
+  </div>
+</section>

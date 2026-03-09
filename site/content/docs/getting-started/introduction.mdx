@@ -1,23 +1,20 @@
 ---
 title: Welcome to Chassis Tokens
-description: Introduction to migrating design tokens to Chassis
+description: A comprehensive multi-brand design token system bridging design and development. Create tokens with Tokens Studio, sync to Figma as variables, and transform to platform-specific code with Style Dictionary.
 toc: true
-added:
-  show_badge: true
-  version: 1.0.0
 sections:
-  - title: Design Tokens
-    description: Centralized design tokens for consistent theming across platforms.
-  - title: CSS Framework
-    description: Token-powered CSS utilities and components for UI development in sync with Figma.
-  - title: Asset Distribution
-    description: Automated delivery of icons and images optimized for web and mobile platforms.
-  - title: Figma Components
-    description: Ready-to-use Figma components linked to design tokens for seamless design handoff.
-  - title: Icon Generator
-    description: Customizable icon generation tools for consistent branding across platforms.
-  - title: AI Integration
-    description: AI-assisted design in Figma using Chassis Components.
+  - title: Start using Chassis Tokens
+    description: Get up and running quickly with our step-by-step guides for designers and developers.
+    slug: quick-start
+  - title: Design with Figma Variables
+    description: Apply design tokens directly in Figma using Variables for seamless design consistency.
+    slug: figma-variables
+  - title: Manage with Tokens Studio
+    description: Create, manage, and sync design tokens using Tokens Studio's multi-file architecture and theming system.
+    slug: tokens-studio
+  - title: Transform with Style Dictionary
+    description: Transform design tokens into platform-specific formats for web (SCSS/CSS), iOS (Swift), and Android (XML).
+    slug: style-dictionary
 aliases:
  - "/getting-started"
  - "[[docsref:/getting-started]]"
@@ -25,181 +22,183 @@ aliases:
 ---
 import { getConfig } from '@libs/config'
 
-## Tests
-
-```html
-<p>Hello, world!</p>
-```
-```css
-p {
-  color: red;
-}
-```
-```sh
-pnpm tokens --brand=chassis --theme=light --app=docs --screen=large
-```
+<Callout type="warning" name="work-in-progress" />
 
 ## Overview
 
-Chassis Tokens provides a comprehensive system for transforming design tokens into platform-ready assets. This introduction covers the core concepts and the token transformation process.
+Chassis Tokens is a comprehensive design token system that bridges design and development workflows. It provides a scalable, multi-brand, and multi-platform approach to managing design tokens from creation in Figma to implementation in production code.
 
-## Token Transformation Process
+Built on industry-leading tools like Tokens Studio and Style Dictionary, Chassis Tokens enables design systems to maintain consistency across multiple brands, themes, applications, and platforms while keeping token management simple and efficient.
 
-Chassis Tokens uses a robust build system to transform design tokens (from JSON or Figma variables) into platform-ready assets (SCSS, CSS, iOS, Android, etc.). The process is highly configurable, supporting multiple brands, themes, apps, and screens.
+<Callout type="info">
+Ready to get started? Check out the [Quick Start]([[docsref:/getting-started/quick-start]]) guide for step-by-step setup instructions.
+</Callout>
 
-### Source of Truth
+### Multi-Brand Support
 
-- **Tokens are defined in JSON files** under the `tokens/` directory.
-- Each token set can represent a brand, theme, app, or screen size.
-- `$themes.json` describes all available theme permutations.
+Create and manage multiple brand identities from a single token source. Each brand can have its own color palettes, typography, and styling while sharing common token architecture.
 
-### Build Orchestration
+- Independent brand definitions
+- Automatic propagation of brand changes
+- Easy brand switching in both design and code
 
-- The main build script is `build/tokens/build.js`.
-- It uses [Style Dictionary](https://amzn.github.io/style-dictionary/) and [@tokens-studio/sd-transforms](https://github.com/tokens-studio/sd-transforms) for transformation logic.
-- The build can be filtered by CLI parameters:
+### Theme Variations
 
-```sh
-pnpm tokens --brand=chassis --theme=light --app=docs --screen=large
-```
+Support multiple color modes (light, dark, high contrast) that work independently from brand selection. Theme switching is seamless in both Figma and production applications.
 
-<Code lang="sh" code={`pnpm tokens --brand=chassis --theme=light --app=docs --screen=large`} />
+- Light and dark mode support
+- Custom theme variations (e.g., seasonal, promotional)
+- Runtime theme switching capability
 
-### Task Generation
+### Scalable Architecture
 
-- The build script generates a list of transformation tasks for all combinations of:
-  - **Brand** (e.g., `chassis`)
-  - **Theme** (e.g., `light`, `dark`)
-  - **App** (e.g., `docs`)
-  - **Screen** (e.g., `small`, `large`)
-- Each task defines:
-  - The source token files
-  - The output platform (web, iOS, Android, etc.)
-  - The output file(s) and format(s)
+The three-layer architecture (Brand, Theme, App) provides maximum flexibility with minimal duplication. Add new brands, themes, or applications without exponential file growth.
 
-### Transformation Steps
+- Separation of concerns
+- Clear token hierarchy
+- Reference-based token system
 
-1. **Preprocessing**
-   Custom preprocessors (e.g., `cx/global`) can modify tokens before transformation.
-2. **Filtering**
-   Only relevant tokens for the current brand/theme/app/screen are included.
-3. **Transforms**
-   Custom and standard transforms (e.g., color conversion, size scaling) are applied.
-4. **Formatting**
-   Output files are generated in the required format (SCSS variables, CSS custom properties, Swift, XML, etc.).
-5. **File Headers**
-   Each output file includes a standard header with version and license info.
+### Platform Flexibility
 
-### Output
+Generate platform-specific token outputs for web, iOS, and Android from a single source of truth. Each platform gets optimized token formats that follow native conventions.
 
-- **Web:** SCSS/CSS files in `icons/package/` and `build/`
-- **iOS:** Swift files
-- **Android:** XML files
-- **Other platforms** as configured
+- **Web**: SCSS variables, CSS custom properties, JavaScript objects
+- **iOS**: Swift classes with native UIKit types
+- **Android**: XML resource files with proper units
 
-#### Test title
+## How It Works
 
-as dkf;alsdf asldfasdf asdf as
+Chassis Tokens follows a two-stage workflow that separates design token management from code generation:
 
-##### Test 2 title
+### Token Management
 
-sdjf alskjdfhl askjdflas
+[Tokens Studio]([[docsref:/getting-started/tokens-studio]]) serves as the design token creation and management layer:
 
-###### Test 3 title
+1. **Define Tokens**: Create token files organized by category (brand, theme, app)
+2. **Store in Git**: Version control tokens in a Git repository
+3. **Sync to Figma**: Apply tokens directly in Figma as Variables
+4. **Manage Themes**: Configure theme groups and options for different variations
 
-sdjf alskjdfhl askjdflas
+Tokens Studio enables designers to work with tokens directly in Figma while maintaining a Git-based source of truth for collaboration and version control.
 
-### Customization
+### Code Generation
 
-- **Add new brands/themes/apps/screens** by editing `package.json` and `tokens/$themes.json`.
-- **Add new transforms/filters/formats** in `build/tokens/transforms.js`, `filters.js`, and `formats.js`.
-- **Configure output** in `build/tokens/config.js`.
+[Style Dictionary]([[docsref:/getting-started/style-dictionary]]) transforms design tokens into platform-specific code:
 
-### Example: Adding a New Theme
+1. **Read Tokens**: Load token definitions from JSON files
+2. **Apply Transforms**: Convert values to platform-specific formats (px, rem, dp, etc.)
+3. **Filter Output**: Generate separate files for colors, sizes, and other token types
+4. **Generate Code**: Create SCSS, Swift, XML, and other platform files
 
-1. Add the theme to `package.json` under `chassis.build.themes`.
-2. Add the theme permutation to `tokens/$themes.json`.
-3. Add or update token files in `tokens/`.
-4. Run the build:
-    ```sh
-    pnpm tokens --theme=newtheme
-    ```
+Style Dictionary runs as a build step, generating production-ready token files that developers can import directly into their applications.
 
-### CLI Usage
+<Callout type="info">
+Ready to try it yourself? Follow the [Quick Start]([[docsref:/getting-started/quick-start]]) guide to set up Chassis Tokens in your project.
+</Callout>
 
-- **Build all tokens:**
-  `pnpm tokens`
-- **Build for a specific brand/theme/app/screen:**
-  `pnpm tokens --brand=chassis --theme=dark --app=docs --screen=large`
+## Theming Architecture
 
-### Extending the System
+Chassis Tokens uses a three-layer architecture that provides independent control over brand identity, color modes, and platform-specific tokens:
 
-- **Add new output platforms** by updating `config.js` and providing new formatters.
-- **Integrate with Figma/Token Studio** by updating token import scripts.
+### Brand Identity Layer
 
-### Troubleshooting
+Contains foundational tokens that define brand visual identity:
 
-- **Deprecation warnings:** See the build output and update your tokens or config as needed.
-- **Custom transforms/filters:** Ensure they are registered in the build script.
+- Color palettes for all theme modes
+- Typography families and weights
+- Border radius styles
+- Brand-specific styling decisions
 
-### References
+**Changes when**: Switching between different brands or sub-brands  
+**Independent from**: Color mode (light/dark) and platform (web/mobile)
 
-- [Style Dictionary Documentation](https://amzn.github.io/style-dictionary/)
-- [Tokens Studio SD Transforms](https://github.com/tokens-studio/sd-transforms)
-- [Chassis Tokens GitHub](https://github.com/chassis-ui/tokens)
+### Color Theme Layer
 
-**For more details, see the source code in `build/tokens/` and the README in the project root.**
+Contains color mode variations that work across all brands:
 
-<Example code={`<p>Hello, world!</p>`} />
+- Light mode colors
+- Dark mode colors
+- High contrast modes
+- Seasonal or promotional themes
 
-Test: [overview]([[docsref:build-scripts/overview]])
+**Changes when**: User switches color preference or accessibility mode  
+**Independent from**: Brand identity and platform
 
-<Callout name="css-docs" />
+### Application Style Layer
 
-<Blockquote>Lorem</Blockquote>
+Contains platform and component-specific tokens:
 
-ge.json` under `chassis.build.themes`.
-2. Add the theme permutation to `tokens/$themes.json`.
-3. Add or update token files in `tokens/`.
-4. Run the build:
+- Component color assignments
+- Sizing and spacing
+- Typography applications
+- Shadow and effect styles
+- Platform-specific variations
 
-```sh
-pnpm tokens --theme=newtheme
-```
+**Changes when**: Building for different platforms, contexts or personas (e.g., web vs mobile or rider vs driver)  
+**Independent from**: Brand and color mode selections
 
-### CLI Usage
+This separation allows any combination of brand, theme, and platform to work together seamlessly. For example, "Brand A" in "Dark Mode" on "iOS" requires no special configuration—the tokens automatically combine correctly.
 
-- **Build all tokens:**
-  `pnpm tokens`
-- **Build for a specific brand/theme/app/screen:**
-  `pnpm tokens --brand=chassis --theme=dark --app=docs --screen=large`
+## Built for Your Team
 
-### Extending the System
+Chassis Tokens is designed to streamline collaboration between designers, developers, and design system maintainers. Each role benefits from specific features: 
 
-- **Add new output platforms** by updating `config.js` and providing new formatters.
-- **Integrate with Figma/Token Studio** by updating token import scripts.
+### Designers
 
-### Troubleshooting
+Designers can create and manage tokens directly in Figma using Tokens Studio plugin. The multi-file architecture allows for clear organization of tokens by brand, theme, and application.
 
-- **Deprecation warnings:** See the build output and update your tokens or config as needed.
-- **Custom transforms/filters:** Ensure they are registered in the build script.
+- Create and manage design tokens in Tokens Studio
+- Apply tokens in Figma using Variables
+- Switch between brands and themes directly in Figma
+- Maintain consistency across design files
 
-### References
+Start with the [Tokens Studio]([[docsref:/getting-started/tokens-studio]]) guide to learn how to set up your token management workflow.
 
-- [Style Dictionary Documentation](https://amzn.github.io/style-dictionary/)
-- [Tokens Studio SD Transforms](https://github.com/tokens-studio/sd-transforms)
-- [Chassis Tokens GitHub](https://github.com/chassis-ui/tokens)
+### Developers
 
-**For more details, see the source code in `build/tokens/` and the README in the project root.**
+Developers can run the build process to generate platform-specific token files that can be imported directly into applications. The generated code follows native conventions for each platform.
 
-<Example code={`<p>Hello, world!</p>`} />
-```html
-<p>Hello, world!</p>
-<p>Hello, world!</p>
-<p>Hello, world!</p>
-```sh
+- Import generated token files into applications
+- Use platform-native formats (SCSS, Swift, XML)
+- Implement theme switching at runtime
+- Build components with token-based styling
 
-Test: [overview]([[docsref:build-scripts/overview]])
+Start with the [Style Dictionary]([[docsref:/getting-started/style-dictionary]]) guide to learn how to set up your build process and integrate tokens into your projects.
 
-<Callout name="css-docs" />
-<Blockquote>Lorem</Blockquote>
+### Maintainers
+
+Design system maintainers can manage the overall token architecture, review changes, and ensure consistency across brands and themes. The Git-based workflow allows for version control and collaboration.
+
+- Manage token definitions in Git
+- Review and approve token changes via pull requests
+- Run builds to generate platform-specific outputs
+- Document token usage and conventions
+
+## Support and Resources
+
+Find help, learn from documentation, and connect with the community to get the most out of Chassis Tokens.
+
+### Documentation
+
+Explore comprehensive guides and references to help you work with Chassis Tokens:
+
+- **[Quick Start]([[docsref:/getting-started/quick-start]])**: Step-by-step setup instructions for designers and developers
+- **[Token Management]([[docsref:/getting-started/tokens-studio]])**: How to create and manage tokens with Tokens Studio
+- **[Code Generation]([[docsref:/getting-started/style-dictionary]])**: How to build platform-specific token files with Style Dictionary
+- **[Figma Variables]([[docsref:/getting-started/figma-variables]])**: How to sync tokens to Figma and apply them as Variables
+
+### External Resources
+
+Learn from the official documentation of the tools that power Chassis Tokens:
+
+- [Tokens Studio Documentation](https://docs.tokens.studio/)
+- [Style Dictionary Documentation](https://styledictionary.com/)
+- [Figma Variables Guide](https://help.figma.com/hc/en-us/articles/15339657135383-Guide-to-variables-in-Figma)
+
+### Community
+
+Connect with other users and contribute to the project:
+
+- **GitHub Issues**: Report bugs or request features
+- **Discussions**: Ask questions and share knowledge
+- **Contributing**: Help improve Chassis Tokens

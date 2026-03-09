@@ -5,26 +5,29 @@
   icon_color: yellow
   pages:
     - title: Introduction
-    - title: Test
+    - title: Quick Start
+    - title: Tokens Studio
+    - title: Style Dictionary
+    - title: Figma Variables
 
-- title: Tokens Studio
-  icon: swatchbook-solid
+- title: Use in Project
+  icon: code-solid
   icon_color: yellow
   pages:
-    - title: Figma Tokens
+    - title: Web Applications
+    - title: iOS Applications
+    - title: Android Applications
 
-- title: Style Dictionary
-  icon: gear-solid
-  icon_color: indigo
+- title: Design Tokens
+  icon: swatchbook-solid
+  icon_color: red
   pages:
-    - title: Token Transforms
-
-- title: Build Scripts
-  icon: file-solid
-  icon_color: indigo
-  pages:
-    - title: overview
-    - title: build js
-    - title: config js
-    - title: filters js
-    - title: formats js
+    - title: Color Tokens
+    - title: Typography Tokens
+    - title: Font Tokens
+    - title: Size Tokens
+    - title: Space Tokens
+    - title: Shadow Tokens
+    - title: Border Radius Tokens
+    - title: Border Width Tokens
+    - title: Opacity Tokens
