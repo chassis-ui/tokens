@@ -175,27 +175,112 @@ function resolveComponentTypographyValue(token, dictionary) {
 }
 
 /**
+ * Resolves a typography token to its direct computed values (no SCSS variable references).
+ *
+ * @param {Object} token - The typography token object.
+ * @param {Object} dictionary - The token dictionary for resolving references.
+ * @returns {string} - The resolved typography value as a SCSS-compatible map string.
+ */
+function resolveDirectTypographyValue(token, dictionary) {
+  let originalValue
+  let chassisExt
+
+  if (typeof token.original.$value !== 'object') {
+    // Component typography - resolve reference to get target token
+    const refs = getReferences(token.original.$value, dictionary.tokens, {
+      usesDtcg,
+      warnImmediately: false
+    })
+    const refToken = refs[0]
+    originalValue = refToken.original.$value
+    chassisExt = refToken.original.$extensions?.['chassis']
+  } else {
+    originalValue = token.original.$value
+    chassisExt = token.original.$extensions?.['chassis']
+  }
+
+  // Resolve font family
+  const fontFamily = resolveReferences(originalValue.fontFamily, dictionary.tokens, { usesDtcg })
+
+  // Resolve font weight and style from chassis extension
+  const fwPath = splitReference(chassisExt.originalFontWeight)
+  const fontWeight = resolveReferences(`{${fwPath.join('.')}.weight}`, dictionary.tokens, {
+    usesDtcg
+  })
+  const fontStyle = resolveReferences(`{${fwPath.join('.')}.style}`, dictionary.tokens, {
+    usesDtcg
+  })
+
+  // Resolve font size
+  const fsRefs = getReferences(originalValue.fontSize, dictionary.tokens, {
+    usesDtcg,
+    warnImmediately: false
+  })
+  const fontSize = fsRefs[0]
+    ? fsRefs[0].$value
+    : resolveReferences(originalValue.fontSize, dictionary.tokens, { usesDtcg })
+
+  // Resolve line height and convert to em
+  const lhRefs = getReferences(originalValue.lineHeight, dictionary.tokens, {
+    usesDtcg,
+    warnImmediately: false
+  })
+  let lineHeight
+  if (lhRefs[0]) {
+    const lh = parseFloat(lhRefs[0].$value) / parseFloat(fontSize)
+    lineHeight = `${removeTrailingZeros(lh.toFixed(3))}em`
+  } else if (
+    typeof originalValue.lineHeight === 'string' &&
+    originalValue.lineHeight.endsWith('%')
+  ) {
+    lineHeight = `${parseFloat(originalValue.lineHeight) / 100}em`
+  } else {
+    lineHeight = originalValue.lineHeight
+  }
+
+  // Resolve text properties
+  const resolvedValues = resolveOriginals(originalValue, dictionary)
+
+  return buildTypographyMap({
+    fontFamily: `"${fontFamily}"`,
+    fontWeight,
+    fontSize,
+    lineHeight,
+    fontStyle,
+    resolvedValues
+  })
+}
+
+/**
  * Converts a token to its corresponding value.
  *
  * @param {Object} token - The token object to convert.
  * @param {Object} dictionary - The token dictionary for resolving references.
+ * @param {Object} options - Options including outputReferences flag.
  * @returns {string} - The token's resolved value as a SCSS-compatible string.
  */
-function tokenToValue(token, dictionary) {
-  if (
-    token.original &&
-    isReference(token.original.$value) &&
-    ['color', 'space', 'opacity', 'borderRadius', 'borderWidth'].includes(token.path[0])
-  ) {
-    return resolveReferenceValue(token)
-  } else if (token.$type === 'typography') {
-    if (typeof token.original.$value !== 'object') {
-      return resolveComponentTypographyValue(token, dictionary)
+function tokenToValue(token, dictionary, options) {
+  if (options.outputReferences) {
+    if (
+      token.original &&
+      isReference(token.original.$value) &&
+      ['color', 'space', 'opacity', 'borderRadius', 'borderWidth'].includes(token.path[0])
+    ) {
+      return resolveReferenceValue(token)
     }
-    return token.path[1] === 'context'
-      ? resolveContextTypographyValue(token, dictionary)
-      : resolveBasicTypographyValue(token, dictionary)
-  } else if (token.$type === 'lineHeight') {
+    if (token.$type === 'typography') {
+      if (typeof token.original.$value !== 'object') {
+        return resolveComponentTypographyValue(token, dictionary)
+      }
+      return token.path[1] === 'context'
+        ? resolveContextTypographyValue(token, dictionary)
+        : resolveBasicTypographyValue(token, dictionary)
+    }
+  } else if (token.$type === 'typography') {
+    return resolveDirectTypographyValue(token, dictionary)
+  }
+
+  if (token.$type === 'lineHeight') {
     const fs = resolveReferences(
       `{typography.fontSize.${token.path[2]}.${token.path[3]}}`,
       dictionary.tokens,
