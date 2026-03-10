@@ -28,7 +28,7 @@ function alignTypes(slice) {
     sizing: 'dimension',
     borderRadius: 'dimension',
     borderWidth: 'dimension',
-    letterSpacing: 'dimension',
+    letterSpacing: 'number',
     paragraphSpacing: 'dimension',
     paragraphIndent: 'dimension',
     text: 'content'

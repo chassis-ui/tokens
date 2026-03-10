@@ -47,10 +47,10 @@ Refer to the [Getting Started]([[docsref:/getting-started/quick-start]]) guide f
 The build system is defined in `build/tokens/` directory with the following structure:
 
 - **build.js**: Main build orchestrator that registers extensions and processes configurations
-- **config.js**: Platform-specific settings and file generation logic
+- **config/**: Platform-specific settings and file generation logic
 - **transforms.js**: Custom value transformations (px, rem, vw, etc.)
 - **filters.js**: Token filtering logic for selective output
-- **formats.js**: Output format templates (SCSS, Swift, Android XML)
+- **formats.js**: Output format definitions (SCSS, Swift, Android XML)
 - **preprocessor.js**: Token preprocessing before transformation
 - **templates/**: Custom format templates for each platform
 
@@ -138,17 +138,29 @@ Chassis Tokens supports multiple platforms with tailored transformations for eac
 
 ### Web Platform
 
-The web platform generates SCSS variable files with rem unit as default. However, alternative transforms are available for pixel and viewport width units.
+The web platform generates SCSS variable files with rem units as default. The default format (`cx/scss-chassis-css`) outputs CSS custom property references for theme-aware values. An alternative format (`cx/scss-variables`) outputs SCSS variable references or fully resolved values.
 
 ```scss
-$cx-size-button-medium-height: 2.5rem;
-$cx-space-component-padding-x: 1rem;
-$cx-color-button-primary-bg-default: #0066ff;
+// cx/scss-chassis-css (default)
+$cx-color-context-default-fg-main: #1c2021 !default;
+$cx-border-radius-context-medium: 0.375rem !default;
+$cx-color-accordion-item-fg-color: var(--#{$prefix}default-fg-main) !default;
+$cx-border-radius-accordion-main: var(--#{$prefix}border-radius-medium) !default;
+
+// cx/scss-variables (references)
+$cx-color-accordion-item-fg-color: $cx-color-context-default-fg-main !default;
+$cx-border-radius-accordion-main: $cx-border-radius-context-medium !default;
+
+// cx/scss-variables (resolved)
+$cx-color-accordion-item-fg-color: #1c2021 !default;
+$cx-border-radius-accordion-main: 0.375rem !default;
 ```
 
 **Configuration:**
 - Base font size: `16px`
 - Size transform: `cx/size/rem`
+- Prefix: configurable (default: `cx`)
+- Format: `cx/scss-chassis-css` (default) or `cx/scss-variables`
 
 <Callout type="info">
 Choose the unit system that matches your project's scaling strategy. REM units are recommended for most web projects as they respect user font size preferences.
@@ -231,15 +243,23 @@ Contains all tokens except theme-level color tokens:
 
 ```scss
 // main.scss
-$cx-font-button-medium: 'Inter', system-ui, sans-serif;
-$cx-shadow-button-focus: 0 0 0 4px rgba(0, 102, 255, 0.2);
+$cx-color-base-context-light-default-fg-main: #1c2021 !default;
+$cx-color-base-context-dark-default-fg-main: #e9eced !default;
+$cx-color-accordion-item-fg-color: var(--#{$prefix}default-fg-main) !default;
+$cx-space-context-medium: 1rem !default;
+$cx-typography-font-family-text: Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif !default;
+$cx-font-context-lead: ("font-family": var(--#{$prefix}font-family-text), "font-weight": var(--#{$prefix}font-weight-text-normal), ...) !default;
+$cx-shadow-context-small: 0rem 0rem 0.0625rem 0rem rgba(0, 0, 0, 0.1), 0rem 0rem 0.5rem 0rem rgba(0, 0, 0, 0.1) !default;
 ```
 
 **Includes:**
-- Typography tokens
+- Brand group color tokens
+- App group color tokens
+- All dimension or number tokens (size, space, opacity, etc.)
+- Base typography tokens
+- Composite typography tokens (font.*) as Sass maps
 - Shadow tokens
 - Gradient tokens
-- Other non-color, non-number tokens
 
 ### String Files
 
@@ -247,8 +267,8 @@ Contains only string-type tokens:
 
 ```scss
 // string.scss
-$cx-typography-font-family-text: 'Inter';
-$cx-typography-font-family-display: 'Playfair Display';
+$cx-typography-font-family-text: Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif !default;
+$cx-typography-font-family-display: 'Archivo Narrow', Georgia, 'Times New Roman', Times, serif !default;
 ```
 
 ### Color Files
@@ -256,13 +276,13 @@ $cx-typography-font-family-display: 'Playfair Display';
 Separate files for each color theme to enable efficient theme switching:
 
 ```scss
-// color-light.scss
-$cx-color-button-primary-bg-default: #0066ff;
-$cx-color-button-primary-fg-default: #ffffff;
+// color-light.scss (cx/scss-chassis-css format)
+$cx-color-context-default-fg-main: #1c2021 !default;
+$cx-color-accordion-item-fg-color: var(--#{$prefix}default-fg-main) !default;
 
-// color-dark.scss
-$cx-color-button-primary-bg-default: #3399ff;
-$cx-color-button-primary-fg-default: #000000;
+// color-light.scss (cx/scss-variables format, resolved)
+$cx-color-button-primary-fg-idle: #ffffff !default;
+$cx-color-context-default-fg-main: #1c2021 !default;
 ```
 
 <Callout type="info">
@@ -394,23 +414,51 @@ Only string-type tokens:
 
 Formats define the output structure for each platform. Chassis Tokens provides custom format templates.
 
-### cx/scss-variables
+### cx/scss-chassis-css
 
-Generates SCSS variable files with proper formatting:
+Generates SCSS variable files that use CSS custom property references (`var(--#{$prefix}...)`) for theme-aware values specific to **Chassis CSS**. This is the default web format.
 
 ```scss
-$cx-color-button-primary-bg-default: #0066ff;
-$cx-size-button-medium-height: 2.5rem;
+$cx-color-accordion-item-fg-color: var(--#{$prefix}default-fg-main);
+$cx-font-context-lead: ("font-family": var(--#{$prefix}font-family-text), "font-weight": var(--#{$prefix}font-weight-text-normal), "font-size": var(--#{$prefix}font-size-text-xlarge), "line-height": var(--#{$prefix}line-height-text-xlarge), ...);
 ```
 
 **Features:**
 - File header with copyright and license
-- Organized token groups
-- Proper SCSS syntax
-- Configurable prefix (`cx` by default)
+- CSS custom property references for colors, spacing, and typography
+- Enables runtime theme switching without recompilation
+- Composite typography tokens output as Sass maps with `var()` references
 
 <Callout type="info">
-The SCSS format intelligently resolves and transforms pre-defined token values to CSS variables where appropriate. This creates a more dynamic and consistent CSS framework by enabling runtime theme switching and value inheritance without requiring recompilation of stylesheets.
+CSS custom property references enable runtime theme switching and value inheritance without requiring recompilation of stylesheets.
+</Callout>
+
+### cx/scss-variables
+
+Generates SCSS variable files with two output modes controlled by the `outputReferences` option:
+
+With `outputReferences: false` (default) — all values are fully resolved:
+
+```scss
+$cx-color-accordion-item-fg-color: #1c2021;
+$cx-font-context-lead: ("font-family": "Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif", "font-weight": 400, "font-size": 1.375rem, "line-height": 1.5em, ...);
+```
+
+With `outputReferences: true` — values reference other SCSS variables:
+
+```scss
+$cx-color-accordion-item-fg-color: $cx-color-context-default-fg-main;
+$cx-font-context-lead: ("font-family": $cx-typography-font-family-text, "font-weight": $cx-typography-font-weight-text-normal-weight, "font-size": $cx-typography-font-size-text-xlarge, "line-height": $cx-typography-line-height-text-xlarge, ...);
+```
+
+**Features:**
+- File header with copyright and license
+- Dynamic prefix from platform config (e.g., `cx`, `mnd`, or none)
+- Proper lineHeight conversion to `em` units and letterSpacing to `em`
+- Composite typography tokens output as Sass maps
+
+<Callout type="info">
+The `outputReferences` option is set in the platform configuration's `options` object. When enabled, the output creates a dependency chain between SCSS variables, useful for building component libraries that allow value overrides.
 </Callout>
 
 <Callout type="info">
@@ -513,7 +561,7 @@ StyleDictionary.registerFileHeader({
   name: 'cxFileHeader',
   fileHeader: async () => [
     'Chassis - Tokens v0.1.0',
-    'Copyright 2025 Ozgur Gunes',
+    'Copyright 2026 Ozgur Gunes',
     'Licensed under MIT'
   ]
 })
@@ -580,14 +628,14 @@ Common issues and solutions when working with Style Dictionary.
 **Solutions:**
 - Check `buildPath` in platform configuration
 - Verify brand and app names match directory structure
-- Review `config.js` file path generation logic
+- Review `config/` file path generation logic
 
 **Problem**: Missing tokens in output
 
 **Solutions:**
 - Verify tokens pass the filter for that file
 - Check token set is enabled in theme configuration
-- Review file generation logic in `config.js`
+- Review file generation logic in `config/`
 
 ### Platform-Specific Issues
 
@@ -627,10 +675,10 @@ $cx-blue-500
 
 ```bash
 # Instead of building all combinations
-pnpm tokens:build:all
+pnpm tokens
 
 # Build specific combinations
-node build/tokens/build.js --brand chassis --theme light
+pnpm tokens --brand chassis --theme light
 ```
 
 **Cache build artifacts:**

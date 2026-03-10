@@ -33,7 +33,8 @@ export default (opts) => {
     string: 'string',
     content: 'string',
     time: 'integer',
-    number: 'integer'
+    number: 'integer',
+    letterSpacing: 'integer'
   }
 
   /**
@@ -46,9 +47,6 @@ export default (opts) => {
   function tokenToType(token) {
     if (resourceType) {
       return resourceType
-    }
-    if (token.$type === 'letterSpacing' || token.path[1] === 'letterSpacing') {
-      return 'integer'
     }
     for (const tokenType of Object.keys(tokenTypes)) {
       if (tokenTypes[tokenType].includes(token.$type)) {
@@ -117,11 +115,9 @@ export default (opts) => {
       token.path[1] === 'paragraphSpacing'
     ) {
       return `${parseFloat(token.$value)}sp` // Only take the first font family
-    } else if (
-      tokenTypes.size.includes(token.$type) &&
-      token.$type !== 'letterSpacing' &&
-      token.path[1] !== 'letterSpacing'
-    ) {
+    } else if (token.path[1] === 'letterSpacing' || token.$type === 'letterSpacing') {
+      return `${parseFloat(token.$value)}`
+    } else if (tokenTypes.size.includes(token.$type)) {
       return `${parseFloat(token.$value)}dp`
     }
 

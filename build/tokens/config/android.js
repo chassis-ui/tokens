@@ -20,7 +20,7 @@ const expand = {
     typography: {
       lineHeight: 'dimension',
       paragraphSpacing: 'dimension',
-      letterSpacing: 'number'
+      letterSpacing: 'letterSpacing'
     }
   }
 }
