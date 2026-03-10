@@ -51,9 +51,9 @@
     "access": "public"
   },
   "scripts": {
-    "build": "pnpm tokens:build && pnpm site:build",
+    "build": "pnpm tokens:mundi && pnpm site:build",
     "clean": "pnpm site:clean && rm -rf dist",
-    "dev": "pnpm sync-assets && pnpm tokens:site && pnpm astro:dev",
+    "dev": "pnpm sync-assets && pnpm tokens:mundi && pnpm astro:dev",
     "preview": "pnpm astro:preview",
     "test": "pnpm tokens:test",
 

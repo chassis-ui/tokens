@@ -19,7 +19,7 @@ export function getChassisAssetsFsPath() {
 }
 
 export function getChassisTokensFsPath() {
-  return path.join(process.cwd(), 'dist/tokens/web/chassis-docs')
+  return path.join(process.cwd(), 'dist/tokens/web/mundi-web')
 }
 
 export function getChassisCSSFsPath() {

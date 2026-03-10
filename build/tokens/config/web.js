@@ -10,8 +10,8 @@ const format = 'cx/scss-variables'
 const options = {
   fileHeader: 'cxFileHeader',
   commentStyle: 'short',
-  formatting: { fileHeaderTimestamp: true },
-  outputReferences: true
+  outputReferences: true,
+  formatting: { fileHeaderTimestamp: true }
 }
 
 const transforms = [
