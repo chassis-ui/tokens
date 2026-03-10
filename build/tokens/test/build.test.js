@@ -13,7 +13,7 @@ vi.mock('path')
 vi.mock('minimist')
 vi.mock('style-dictionary')
 vi.mock('@tokens-studio/sd-transforms')
-vi.mock('../config.js')
+vi.mock('../config/index.js')
 vi.mock('../filters.js')
 vi.mock('../transforms.js')
 vi.mock('../formats.js')
@@ -66,7 +66,7 @@ describe('Design Tokens Build System', () => {
     vi.mocked(readFileSync).mockReturnValue(JSON.stringify(mockPackageJson))
 
     // Mock config function
-    const configMock = await import('../config.js')
+    const configMock = await import('../config/index.js')
     vi.mocked(configMock.default).mockReturnValue({
       preprocessors: ['cx/global'],
       platforms: {
@@ -95,7 +95,7 @@ describe('Design Tokens Build System', () => {
   describe('Task Generation', () => {
     test('should generate base task for all brand/app/platform combinations', () => {
       const filters = {}
-      const tasks = buildModule.generateTasks(mockTokens, filters)
+      const tasks = buildModule.generateTasks(mockTokens, filters, mockBuildOptions)
 
       const baseTasks = tasks.filter((t) => !t.theme && !t.screen)
       expect(baseTasks.length).toBeGreaterThan(0)
@@ -109,7 +109,7 @@ describe('Design Tokens Build System', () => {
 
     test('should generate color tasks for all themes', () => {
       const filters = {}
-      const tasks = buildModule.generateTasks(mockTokens, filters)
+      const tasks = buildModule.generateTasks(mockTokens, filters, mockBuildOptions)
 
       const colorTasks = tasks.filter((t) => t.theme && !t.screen)
       const uniqueThemes = new Set(colorTasks.map((t) => t.theme))
@@ -120,7 +120,7 @@ describe('Design Tokens Build System', () => {
 
     test('should generate number tasks for all screens', () => {
       const filters = {}
-      const tasks = buildModule.generateTasks(mockTokens, filters)
+      const tasks = buildModule.generateTasks(mockTokens, filters, mockBuildOptions)
 
       const numberTasks = tasks.filter((t) => t.screen)
       const uniqueScreens = new Set(numberTasks.map((t) => t.screen))
@@ -131,7 +131,7 @@ describe('Design Tokens Build System', () => {
 
     test('should not create duplicate tasks', () => {
       const filters = {}
-      const tasks = buildModule.generateTasks(mockTokens, filters)
+      const tasks = buildModule.generateTasks(mockTokens, filters, mockBuildOptions)
 
       // Check for unique task combinations
       const taskKeys = tasks.map(
@@ -146,7 +146,7 @@ describe('Design Tokens Build System', () => {
   describe('CLI Filtering', () => {
     test('should filter by brand', () => {
       const filters = { brands: ['chassis'] }
-      const tasks = buildModule.generateTasks(mockTokens, filters)
+      const tasks = buildModule.generateTasks(mockTokens, filters, mockBuildOptions)
 
       const brands = new Set(tasks.map((t) => t.brand))
       expect(brands.size).toBe(1)
@@ -156,7 +156,7 @@ describe('Design Tokens Build System', () => {
 
     test('should filter by theme', () => {
       const filters = { themes: ['dark'] }
-      const tasks = buildModule.generateTasks(mockTokens, filters)
+      const tasks = buildModule.generateTasks(mockTokens, filters, mockBuildOptions)
 
       const colorTasks = tasks.filter((t) => t.theme)
       const themes = new Set(colorTasks.map((t) => t.theme))
@@ -168,7 +168,7 @@ describe('Design Tokens Build System', () => {
 
     test('should filter by screen', () => {
       const filters = { screens: ['small', 'large'] }
-      const tasks = buildModule.generateTasks(mockTokens, filters)
+      const tasks = buildModule.generateTasks(mockTokens, filters, mockBuildOptions)
 
       const numberTasks = tasks.filter((t) => t.screen)
       const screens = new Set(numberTasks.map((t) => t.screen))
@@ -181,7 +181,7 @@ describe('Design Tokens Build System', () => {
 
     test('should filter by app', () => {
       const filters = { apps: ['docs'] }
-      const tasks = buildModule.generateTasks(mockTokens, filters)
+      const tasks = buildModule.generateTasks(mockTokens, filters, mockBuildOptions)
 
       const apps = new Set(tasks.map((t) => t.app))
       expect(apps.size).toBe(1)
@@ -195,7 +195,7 @@ describe('Design Tokens Build System', () => {
         themes: ['light', 'dark'],
         screens: ['small']
       }
-      const tasks = buildModule.generateTasks(mockTokens, filters)
+      const tasks = buildModule.generateTasks(mockTokens, filters, mockBuildOptions)
 
       const brands = new Set(tasks.map((t) => t.brand))
       const colorTasks = tasks.filter((t) => t.theme)
@@ -212,7 +212,7 @@ describe('Design Tokens Build System', () => {
   describe('Token Source Resolution', () => {
     test('should assign correct source tokens to tasks', () => {
       const filters = {}
-      const tasks = buildModule.generateTasks(mockTokens, filters)
+      const tasks = buildModule.generateTasks(mockTokens, filters, mockBuildOptions)
 
       // Check that tasks have cfg.source arrays
       const tasksWithSources = tasks.filter((t) => t.cfg && t.cfg.source)
@@ -233,7 +233,7 @@ describe('Design Tokens Build System', () => {
         chassis_docs_light: ['base/colors']
       }
       const filters = {}
-      const tasks = buildModule.generateTasks(incompleteTokens, filters)
+      const tasks = buildModule.generateTasks(incompleteTokens, filters, mockBuildOptions)
 
       // Should still generate tasks even with missing tokens
       expect(tasks.length).toBeGreaterThan(0)
@@ -249,11 +249,11 @@ describe('Design Tokens Build System', () => {
   describe('Configuration Integration', () => {
     test('should call config function with correct parameters', () => {
       const filters = {}
-      buildModule.generateTasks(mockTokens, filters)
+      buildModule.generateTasks(mockTokens, filters, mockBuildOptions)
 
       // We can't easily test the config calls since it's imported internally
       // But we can verify that tasks have cfg objects
-      const tasks = buildModule.generateTasks(mockTokens, filters)
+      const tasks = buildModule.generateTasks(mockTokens, filters, mockBuildOptions)
       tasks.forEach((task) => {
         expect(task.cfg).toBeDefined()
       })
@@ -263,15 +263,17 @@ describe('Design Tokens Build System', () => {
   describe('Edge Cases', () => {
     test('should handle empty buildOptions gracefully', async () => {
       // Mock empty buildOptions
+      const emptyBuildOptions = {
+        brands: [],
+        themes: [],
+        screens: [],
+        apps: {}
+      }
+
       const emptyPackageJson = {
         chassis: {
           defaults: { theme: 'light', screen: 'medium' },
-          build: {
-            brands: [],
-            themes: [],
-            screens: [],
-            apps: {}
-          }
+          build: emptyBuildOptions
         }
       }
 
@@ -283,7 +285,7 @@ describe('Design Tokens Build System', () => {
       const freshBuildModule = await import('../build.js')
 
       const filters = {}
-      const tasks = freshBuildModule.generateTasks({}, filters)
+      const tasks = freshBuildModule.generateTasks({}, filters, emptyBuildOptions)
 
       expect(tasks).toEqual([])
     })

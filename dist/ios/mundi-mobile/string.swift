@@ -1,18 +1,18 @@
 
 //
-// string.swift
+// String.swift
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Mon, 09 Mar 2026 09:53:40 GMT
+// Generated on Tue, 10 Mar 2026 12:37:11 GMT
 // Chassis - Tokens v0.1.0
-// Copyright 2025 Ozgur Gunes
+// Copyright 2026 Ozgur Gunes
 // Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
 
 
 import UIKit
 
-public class {
+public class ChassisTokens {
     @objc public static let TypographyFontFamilyText = "Inter"
     @objc public static let TypographyFontFamilyDisplay = "Archivo Narrow"
     @objc public static let TypographyFontFamilyHtml = "Inter"

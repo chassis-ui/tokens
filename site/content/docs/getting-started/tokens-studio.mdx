@@ -1,0 +1,1046 @@
+---
+title: Tokens Studio
+description: Learn how to create, manage, and sync design tokens using Tokens Studio Pro. Covers multi-file architecture, theming system, token organization, and Figma Variables integration.
+toc: true
+---
+
+<Callout type="warning" name="work-in-progress" />
+
+## Overview
+
+Tokens Studio is a powerful tool to create, manage, and sync design tokens. It provides a central source of truth for design tokens that can be used across design and development workflows.
+
+Its Figma plugin allows integrating design tokens directly into Figma files as Figma Variables, ensuring consistency between design and code.
+
+Chassis Tokens leverages an advanced setup of Tokens Studio to create a scalable multi-brand and multi-product design token system.
+
+<Callout type="warning" title="Note">
+Chassis Tokens is built on Tokens Studio Pro features such as Multi-File Sync and Theming System. A Pro license is required to use these features.
+</Callout>
+
+### Prerequisites
+
+Before working with Chassis Tokens and Tokens Studio, ensure we have the following:
+
+- **Tokens Studio Pro License**: Required for Multi-File Sync and Theming System features. Visit [Tokens Studio Pricing](https://tokens.studio/pricing) for license options.
+- **Figma Account**: A Figma account with edit access to the design files where tokens will be applied.
+- **Git Repository Access**: Read access to the Chassis Tokens repository, or write access if contributing token changes.
+- **Tokens Studio Plugin**: Install the Tokens Studio plugin from the [Figma Community](https://www.figma.com/community/plugin/843461159747178978/Tokens-Studio-for-Figma).
+- **Basic Git Knowledge**: Understanding of branches, commits, and pull requests for token version control.
+
+### Remote Storage 
+
+Chassis Tokens uses Tokens Studio's remote storage feature to host design tokens in a Git repository. This allows for version control, collaboration, and easy access to the latest token definitions.
+
+After cloning or forking the Chassis Tokens repository, follow these steps to connect Tokens Studio to the Git repository:
+
+1. **Open Tokens Studio in Figma**: Launch the plugin from any Figma file.
+2. **Navigate to Settings**: Click the settings tab in the plugin interface.
+3. **Add Sync Provider**: Click the "Add new sync provider" under sync providers section.
+4. **Choose GitHub**: Select GitHub as the storage provider (or your Git hosting service).
+5. **Authenticate**: Add your Github personal access token with appropriate scopes (repo access).
+6. **Configure Repository**:
+   - Name: Give a name to this sync configuration (e.g., "Chassis Tokens")
+   - Repository: `[organization]/[repository-name]` (e.g., `chassis-ui/tokens`)
+   - Branch: `main` (or your designated branch)
+   - File Path: `tokens/`
+7. **Pull Tokens**: Return to Tokens tab and click the "Pull from Github" button at the bottom of the plugin.
+8. **Apply Theme**: Select the appropriate theme options from each theme group (Brand, Theme, App).
+
+Once configured, the plugin will automatically sync token changes from the repository.
+
+Read more about [Remote Storage](https://docs.tokens.studio/token-storage/remote) feature of Tokens Studio for setup and usage.
+
+## Token Sets
+
+A token set is basically a JSON file that contains design tokens. Chassis Tokens uses multiple token sets to organize tokens by type and purpose.
+
+Each token set can be enabled or disabled individually and overrides the values of other token sets based on the order they are listed.
+
+This allows for a flexible and modular approach to managing design tokens, making it easy to customize and extend the design system as needed.
+
+The multi-file approach provides several key benefits:
+
+- **Separation of Concerns**: Base tokens define the core design language, while modding sets provide variations without duplicating the entire token structure.
+- **Easier Maintenance**: Changes to base tokens automatically propagate to all variations that reference them.
+- **Scalability**: Adding a new brand or theme only requires creating a small modding set with overrides, not a complete token set.
+- **Version Control**: Smaller, focused files make Git diffs clearer and reduce merge conflicts.
+- **Selective Loading**: We can enable only the token sets needed for specific use cases, improving performance.
+
+This architecture supports both horizontal scaling (multiple brands) and vertical scaling (multiple products/applications) without exponential file growth.
+
+### Base Sets
+
+Base sets are the foundational token sets that define all the design tokens used in the design system. 
+
+The example below demonstrates the definition of color tokens in a base set along with the usage of token references and extensions for modifying the base color value.
+
+```json
+// brand-base.json
+{
+"color": {
+  "primary": {
+    "base": {
+      "$type": "color",
+      "$value": "#0000FF"
+    },
+    "10": {
+      "$type": "color",
+      "$value": "{color.primary.base}",
+      "$extensions": {
+        "studio.tokens": {
+          "modify": {
+            "type": "lighten",
+            "value": "0.85",
+            "space": "srgb"
+          }
+        }
+      }
+    },
+    // More tints & shades...
+  },
+  // More colors...
+}
+```
+<Callout type="info">
+The `$extensions` property allows us to transform token values dynamically by using  Tokens Studio's color modifiers. This is particularly powerful for creating color scales from a single base color. Extensions are processed during sync to Figma and when generating output via Style Dictionary, ensuring consistent color transformations across all platforms.
+
+Read more about [Color Modifiers](https://docs.tokens.studio/manage-tokens/token-types/color/modified) in Tokens Studio documentation.
+</Callout>
+
+### Modding Sets
+
+Modding sets are token sets that modify or extend the base sets. They can override specific token values or add new tokens to the design system.
+
+```json
+// brand-example.json
+{
+"color": {
+  "primary": {
+    "base": {
+      "$type": "color",
+      "$value": "#0000CC"
+    }
+  }
+}
+```
+
+This mod overrides the `color.primary.base` token defined in the base set, changing its value from `#0000FF` to `#0000CC`. All other tints and shades that reference this base token will automatically reflect this change without any additional modifications.
+
+It is also possible to override the tints and shades individually if needed.
+
+<Callout type="warning" title="Note">
+File and token names are simplified in these examples for clarity. In practice, Chassis Tokens uses more descriptive names and a well-defined structure to ensure scalability and maintainability.
+</Callout>
+
+### Set Status
+
+When configuring token sets in Tokens Studio, each set can have one of the following statuses:
+- **Source**: Tokens in this set are available for referencing by other sets but are not directly enabled for use in Figma or Style Dictionary.
+- **Enable**: Tokens in this set are enabled for use in Figma and Style Dictionary. They will be synced to Figma as Variables and included in the generated Style Dictionary output.
+- **Disable**: Tokens in this set are neither available for referencing nor enabled for use. They are effectively ignored.
+
+See the Tokens Studio [documentation](https://docs.tokens.studio/manage-tokens/token-sets#id-2.-status) for more details on token set statuses.
+
+## Theming System
+
+Tokens Studio's theming system lets us create and manage multiple design variations using Theme Groups and Theme Options. 
+
+- **Theme Groups** are collections of theme options that share a common set of tokens but can have different values for specific tokens. Theme groups are synced to Figma as Variable Collections.
+- **Theme Options** are individual themes within a Theme Group that enable or disable specific token sets. These are synced to Figma as Variable Modes.
+
+Chassis uses 3 theme groups for its core functionality: Brand, Theme, and App.
+
+```
+Brand                               -> Theme group
+ ├─ Brand A                         -> Theme option
+ │   ├─ Source: metric-base.json    -> Makes dimension and opacity tokens available for referencing
+ │   ├─ Enable: brand-base.json     -> Enables brand tokens for Figma and Style Dictionary
+ │   └─ Enable: brand-a.json        -> Overrides brand group tokens
+ ├─ Brand B                         -> Same as Brand A, except uses brand-b.json to override
+ └─ ...                             -> Additional brands
+
+Theme                               -> Theme group
+ ├─ Light                           -> Theme option
+ │   ├─ Source: metric-base.json    -> Makes dimension and opacity tokens available for referencing
+ │   ├─ Source: brand-base.json     -> Makes brand tokens available for referencing
+ │   ├─ Enable: theme-base.json     -> Enables theme tokens for Figma and Style Dictionary
+ │   └─ Enable: theme-light.json    -> Overrides theme group tokens
+ ├─ Dark                            -> Same as Light, except uses theme-dark.json to override
+ └─ ...                             -> Additional themes
+
+App                                 -> Theme group
+ ├─ Web                             -> Theme option
+ │   ├─ Enable: metric-base.json    -> Enables dimension and opacity tokens for Figma and Style Dictionary
+ │   ├─ Source: brand-base.json     -> Makes brand tokens available for referencing
+ │   ├─ Source: theme-base.json     -> Makes theme tokens available for referencing
+ │   ├─ Enable: app-base.json       -> Enables app tokens for Figma and Style Dictionary
+ │   └─ Enable: app-web.json        -> Overrides app group tokens
+ ├─ Mobile                          -> Same as Web, except uses app-mobile.json to override
+ └─ ...                             -> Additional applications
+```
+
+This three-layer architecture is a deliberate design decision that provides specific benefits:
+
+- Three groups cover the primary axes of variation in most design systems
+- Maximum flexibility, minimal duplication, clear separation of concerns 
+- Easy to add new brands, themes, or apps independently
+- Additional groups add complexity without proportional benefit
+- We can extend within existing groups (e.g., multiple app options) rather than adding new groups
+
+See the Tokens Studio [documentation](https://documentation.tokens.studio/platform/themes/theme-groups-and-theme-options) for more details on how to set up and use themes.
+
+### Brand Group
+
+The Brand group contains the foundational tokens that define the brand's visual identity including colors, typography, and border radius. These are the base values that inform all other tokens in the system.
+
+- **Purpose**: Define brand-specific visual identity (colors, typography, borders)
+- **Changes when**: Switching between different brands or sub-brands
+- **Independent from**: Color mode (light/dark) and platform (web/mobile)
+
+<Callout type="warning">
+Tokens in the brand group are typically *not used directly* in the UI. Instead, they serve as the source values referenced by tokens in other theme groups. This separation ensures we can change our color, typography, and border styling based on the brand in one place, and all dependent tokens in other groups automatically update.
+</Callout>
+
+#### Color Tokens
+
+Each brand set represents different brand identities (Brand A, Brand B, Brand C, etc.) and contains the complete color palette for that brand across all color mode variations.
+
+- `color.base.palette.light.primary.base` - Primary color for light theme
+- `color.base.palette.dark.primary.base` - Primary color for dark theme
+- `color.base.palette.light.neutral.50` - Gray-50 for light theme
+- `color.base.palette.dark.neutral.50` - Gray-50 for dark theme
+
+These tokens are then referenced by actual color tokens in the Theme group to create context-specific colors (foreground, background, border, etc.) for each theme mode.
+
+This structure allows switching brands independently from theme selection. We can view Brand A in light mode, then switch to Brand B while staying in light mode—all without changing the theme mode itself.
+
+See the [Color Tokens]([[docsref:/design-tokens/color-tokens]]) page for more details on how color system works.
+
+#### Typography Tokens
+
+Each brand set also defines font-family and font-weight tokens that represent the typography styles for that brand.
+
+- `typography.fontFamily.text` - Text font for the brand theme
+- `typography.fontFamily.display` - Display font for the brand theme
+- `typography.fontWeight.text.normal` - Default font weight for the text font of the brand theme
+- `typography.fontWeight.display.elegant` - Light font weight for the display font of the brand theme
+
+These tokens will be referenced by composite font tokens in the App group to create composite typography styles used in components.
+
+See the [Typography Tokens]([[docsref:/design-tokens/typography-tokens]]) page for more details on how typography system works.
+
+#### Border Tokens
+
+Each brand set defines border radius tokens that represent the corner rounding styles for that brand.
+
+- `borderRadius.base.small` - Small border radius for the brand theme
+- `borderRadius.base.medium` - Medium border radius for the brand theme
+- `borderRadius.base.large` - Large border radius for the brand theme
+
+These tokens will be referenced by actual border tokens in the App group to ensure consistent corner rounding depending on the brand identity across all UI elements.
+
+Chassis assumes that all applications will use the same border radius values for a brand. If we want to customize border radius per application, we can create additional border radius tokens with different name patterns and update the references in the App group.
+
+### Theme Group
+
+The **Theme Group** contains color tokens organized by theme mode (light, dark, high contrast, etc.). These are the color tokens **we use** while designing our UI and building the components. 
+
+- **Purpose**: Define color mode variations (light, dark, high contrast)
+- **Changes when**: User switches color preference or accessibility mode
+- **Independent from**: Brand identity and platform
+
+Each color token in the Theme Group directly references corresponding color tokens from the Brand Group without any processing or transparency modifications.
+
+<Callout type="info" title="Why separate Brand and Theme groups?">
+Since Figma does not allow applying transparency to color variable aliases, Chassis Tokens defines all color tokens in the Brand Group and directly references them in the Theme Group.
+</Callout>
+
+When we switch brand modes in Figma, the Theme Group tokens automatically update to reference the appropriate brand colors for that mode, ensuring our designs maintain proper color and transparency across all theme variations.
+
+#### Example Chain
+
+For solid colors:
+
+```
+color.context.primary.fg-main - (Theme)
+↓
+color.base.context.light.primary.fg-main - (Brand)
+↓
+color.base.palette.light.primary.60 - (Brand)
+```
+
+For transparency colors:
+
+```
+color.context.primary.fg-subtle - (Theme)
+↓
+color.base.context.light.primary.fg-subtle - (Brand)
+↓
+rgba({color.base.palette.light.primary.60}, {opacity.context.fg-subtle}) - (Brand)
+```
+This architecture allows us to switch both brand and color modes **independently**. Changing from Brand A to Brand B keeps the same light/dark theme, and switching from light to dark mode keeps the same brand.
+
+
+### App Group
+
+The **App Group** contains tokens specifically designed for use in components and application interfaces. These are the tokens we'll reference when building UI components and layouts.
+
+- **Purpose**: Define platform and component-specific tokens
+- **Changes when**: Building for different platforms or contexts
+- **Independent from**: Brand and color mode selections
+
+Tokens in the app group reference tokens from both the Brand and Theme groups to create a complete set of design tokens tailored for application use.
+
+- Color tokens in the App Group typically references corresponding tokens from the Theme Group to ensure consistency across different themes and brands.
+- Composite typography tokens in the App Group reference typography tokens from the Brand Group to create complete text styles used in components.
+- Border radius tokens in the App Group reference border radius tokens from the Brand Group to ensure consistent corner rounding across all UI elements.
+
+Sizing, spacing, and other utility tokens are also defined in the App Group for use in layouts and components.
+
+#### Example Chain
+
+Tokens in the App Group reference tokens in the Theme Group, which in turn reference tokens in the Brand Group. This creates a clear chain of dependencies that allows for maximum flexibility and adaptability.
+
+Color chain for a button state:
+
+```
+color.button.primary.bg-hover - (App)
+↓
+color.context.primary.bg-hover - (Theme)
+↓
+color.palette.primary.40 - (Theme)
+↓
+color.base.palette.light.primary.40 - (Brand)
+```
+
+Typography chain for a button label:
+
+```
+font.button.medium - (App)
+↓
+font.text.medium.strong - (App)
+↓
+Composite:
+- fontFamily: {typography.fontFamily.text} - (Brand)
+- fontWeight: {typography.fontWeight.text.strong} - (Brand)
+- lineHeight: {typography.lineHeight.text.medium} - (App)
+- fontSize: {typography.fontSize.text.medium} - (App)
+- letterSpacing: {typography.letterSpacing.base.zero} - (App)
+- paragraphSpacing: {typography.paragraphSpacing.base.zero} - (App)
+- textCase: {typography.textCase.base.none} - (App)
+- textDecoration: {typography.textDecoration.base.none} - (App)
+```
+
+When we switch color or brand modes in Figma, the entire chain updates automatically, and all components reflect the new colors and typography.
+
+## Practical Examples
+
+Now that we understand how the Brand, Theme, and App groups work together, let's walk through common scenarios to see how to apply these concepts in practice.
+
+<Callout type="info">
+Remember, these examples are simplified for clarity. In a real-world scenario, token names and structures may be more complex to accommodate a full design system.
+</Callout>
+
+<Callout type="warning">
+While these examples demonstrate editing JSON files directly, we highly recommend adding new theme groups and options via the Tokens Studio plugin interface for a more streamlined workflow.
+</Callout>
+
+### Adding a New Brand
+
+Suppose we're adding "Brand C" to our design system.
+
+**Step 1**: Create a new token set file `tokens/brand-c.json`:
+
+```json
+{
+  "color": {
+    "primary": {
+      "base": {
+        "$type": "color",
+        "$value": "#FF6B35"
+      }
+    },
+    "secondary": {
+      "base": {
+        "$type": "color",
+        "$value": "#004E89"
+      }
+    }
+  },
+  "typography": {
+    "fontFamily": {
+      "text": {
+        "$type": "fontFamily",
+        "$value": "Roboto"
+      },
+      "display": {
+        "$type": "fontFamily",
+        "$value": "Playfair Display"
+      }
+    },
+    "fontWeight": {
+      "text": {
+        "normal": {
+          "$type": "fontWeight",
+          "$value": "light"
+        },
+        "strong": {
+          "$type": "fontWeight",
+          "$value": "medium"
+        }
+      },
+    }
+  },
+  "borderRadius": {
+    "base": {
+      "small": {
+        "$type": "borderRadius",
+        "$value": "4"
+      },
+      "medium": {
+        "$type": "borderRadius",
+        "$value": "4"
+      },
+      "large": {
+        "$type": "borderRadius",
+        "$value": "4"
+      }
+    }
+  }
+}
+```
+
+**Step 2**: Update `tokens/$metadata.json` to register the new token set:
+
+```json
+{
+  "tokenSetOrder": [
+    // Previous sets...
+    "brand-c",
+    // Following sets...
+  ]
+}
+``` 
+
+
+
+**Step 3**: Update `tokens/$themes.json` to add Brand C as a new theme option in the Brand group:
+
+```json
+[
+  // Previous theme options...
+  {
+    "id": "brand-c",
+    "name": "Brand C",
+    "selectedTokenSets": {
+      "metric-base": "source",
+      "brand-base": "enabled",
+      "brand-c": "enabled"
+    },
+    "group": "brand"
+  },
+  // Following theme options...
+]
+```
+
+**Result**: Brand C is now available as a selectable option in the Brand theme group. When selected:
+- All color tokens in Theme group automatically reference Brand C's color palette
+- Typography tokens use Brand C's font families
+- Border radius follows Brand C's style
+- All components automatically use Brand C's visual identity
+- Brand C works with any Theme (light/dark) and any App (web/mobile)
+
+### Creating a Seasonal Theme
+
+Let's create a "Holiday" theme variation that adds festive colors for primary buttons and solid surfaces.
+
+**Step 1**: Create `tokens/theme-holiday.json`:
+
+```json
+{
+  "color": {
+    "context": {
+      "primary": {
+        "base-color": {
+          "$type": "color",
+          "$value": "#DD0000"
+        },
+        "contrast-color": {
+          "$type": "color",
+          "$value": "#FFFFFF"
+        },
+        "transparent-color": {
+          "$type": "color",
+          "$value": "rgba({color.context.primary.base-color}, {opacity.base.zero})"
+        },
+        "bg-solid": {
+          "$type": "color",
+          "$value": "{color.context.primary.base-color}"
+        },
+        "fg-solid": {
+          "$type": "color",
+          "$value": "{color.context.primary.contrast-color}"
+        },
+        "bg-idle": {
+          "$type": "color",
+          "$value": "{color.context.primary.base-color}"
+        },
+        "fg-idle": {
+          "$type": "color",
+          "$value": "{color.context.primary.contrast-color}"
+        }
+      }
+    }
+  }
+}
+```
+
+**Step 2**: Add to `$themes.json` under the Theme group:
+
+```json
+{
+  "id": "holiday",
+  "name": "Holiday",
+  "selectedTokenSets": {
+    "metric-base": "source",
+    "brand-base": "source",
+    "theme-base": "enabled",
+    "theme-light": "enabled",
+    "theme-holiday": "enabled"
+  },
+  "group": "theme"
+}
+```
+
+**Result**: The holiday theme overrides specific primary colors while:
+- Keeping all other theme tokens from theme-light intact
+- Still referencing the active Brand's color palette for all other primary context colors
+- Maintaining all component tokens from App group referencing the updated Theme tokens
+- Allowing easy switching back to standard light theme after promotion ends
+
+<Callout type="info">
+This example demonstrates the simplest approach to adding a new theme. In production, we would typically define a complete color palette in `brand-base.json` and reference in `theme-holiday.json` to ensure consistency across all color variations. See the [Color Tokens]([[docsref:/design-tokens/color-tokens]]) page for more details on how color system works.
+</Callout>
+
+### Adding a New Component
+
+We need to add tokens for a new "Toast" component that should work across all brands and themes.
+
+**Step 1**: Add component-specific tokens to `tokens/app-base.json`:
+
+```json
+{
+  "color": {
+    "toast": {
+      "info": {
+        "bg-main": {
+          "$type": "color",
+          "$value": "{color.context.info.bg-main}"
+        },
+        "fg-main": {
+          "$type": "color",
+          "$value": "{color.context.info.fg-main}"
+        }
+      },
+      "success": {
+        "bg-main": {
+          "$type": "color",
+          "$value": "{color.context.success.bg-main}"
+        },
+        "fg-main": {
+          "$type": "color",
+          "$value": "{color.context.success.fg-main}"
+        }
+      },
+      "warning": {
+        "bg-main": {
+          "$type": "color",
+          "$value": "{color.context.warning.bg-main}"
+        },
+        "fg-main": {
+          "$type": "color",
+          "$value": "{color.context.warning.fg-main}"
+        }
+      }
+    }
+  },
+  "space": {
+    "toast": {
+      "padding-y": {
+        "$type": "spacing",
+        "$value": "{space.context.small}"
+      },
+      "padding-x": {
+        "$type": "spacing",
+        "$value": "{space.context.medium}"
+      },
+      "gap": {
+        "$type": "spacing",
+        "$value": "{space.context.x-small}"
+      }
+    }
+  },
+  "font": {
+    "toast": {
+      "title": {
+        "$type": "typography",
+        "$value": "{font.text.medium.strong}"
+      },
+      "body": {
+        "$type": "typography",
+        "$value": "{font.text.medium.normal}"
+      }
+    }
+  },
+  "borderRadius": {
+    "toast": {
+      "default": {
+        "$type": "borderRadius",
+        "$value": "{borderRadius.context.medium}"
+      }
+    }
+  }
+}
+```
+
+**Result**: Toast component tokens are now available and:
+- Reference existing Theme group colors (which adapt to brand and color mode)
+- Use spacing and sizing tokens from App group for consistency
+- Typography references ensure toasts match the overall text hierarchy
+- Border radius connects to brand identity through references
+- Automatically work in all combinations of Brand, Theme, and App variations
+
+### Creating an App Platform
+
+Suppose our tablet app needs slightly different spacing and font size than the mobile application for toast component.
+
+**Step 1**: Create `tokens/base/app-tablet.json`:
+
+```json
+{
+  "space": {
+    "toast": {
+      "padding-y": {
+        "$type": "spacing",
+        "$value": "{space.context.medium}"
+      },
+      "padding-x": {
+        "$type": "spacing",
+        "$value": "{space.context.large}"
+      },
+      "gap": {
+        "$type": "spacing",
+        "$value": "{space.context.small}"
+      }
+    }
+  },
+  "font": {
+    "toast": {
+      "title": {
+        "$type": "typography",
+        "$value": "{font.text.large.strong}"
+      },
+      "body": {
+        "$type": "typography",
+        "$value": "{font.text.large.normal}"
+      }
+    }
+  }
+}
+```
+
+**Step 2**: Add to `$themes.json` under the App group:
+
+```json
+{
+  "id": "tablet",
+  "name": "Tablet",
+  "selectedTokenSets": {
+    "metric-base": "enabled",
+    "brand-base": "source",
+    "theme-base": "source",
+    "app-base": "enabled",
+    "app-mobile": "enabled",
+    "app-tablet": "enabled"
+  },
+  "group": "app"
+}
+```
+
+**Result**: The tablet app variation:
+- Overrides spacing and font values for toast component.
+- Keeps all color and border radius tokens as in mobile app (or base).
+- Can be combined with any Brand and Theme options independently
+
+## Syncing to Figma
+
+Once we have our tokens organized and configured, we need to sync them to Figma to make them available for design work.
+
+Tokens Studio's Figma plugin allows syncing token sets and themes directly into Figma as Variables. When syncing, each Theme Group becomes a Variable Collection in Figma, and each Theme Option within that group becomes a Variable Mode. This structure allows designers to easily switch between different themes and brands directly within Figma, ensuring that designs always use the correct tokens.
+
+### Sync Process
+
+To sync tokens to Figma:
+
+1. **Open Tokens Studio**: Launch the plugin in our Figma file
+2. **Verify Theme Selection**: Ensure we have the correct theme options selected from each group
+3. **Click "Push to Figma"**: This initiates the sync process
+4. **Check Variables Panel**: Open Figma's Variables panel to verify the sync was successful
+5. **Review Variable Collections**: We should see collections for Brand, Theme, and App groups
+6. **Test Mode Switching**: Try switching between different modes to verify behavior
+
+<Callout type="info" title="Sync Tip">
+The first sync may take some time depending on the number of tokens. Subsequent syncs are typically faster as only changes are processed.
+</Callout>
+
+### Tokens to Variables
+
+When syncing tokens to Figma, Tokens Studio maps most of the design tokens to Figma Variables based on their type and usage.
+
+- Color tokens are synced as **color variables**.
+- Dimensional tokens (sizing, spacing, border, etc.) are synced as **number variables**.
+- Opacity tokens are synced as **number variables**.
+- Typography tokens (font names, weights, sizes, etc.) are synced as **text or number variables** depending on the property.
+
+### Tokens to Styles
+
+Tokens Studio can also sync certain design tokens as Figma Styles, such as text styles and effect styles. This allows designers to apply consistent styles across their designs using the defined design tokens.
+
+- Composite typography tokens (starting with `font.*`) are synced as text styles **using text and number variables** for their properties.
+- Shadow tokens (starting with `effect.*`) are synced as Effect Styles **using color and number variables** for their properties.
+
+Since Figma styles use variables for their properties, any updates or mode changes to the underlying tokens will automatically propagate to all styles that reference them.
+
+## Technical Details
+
+Understanding the underlying mechanics of how tokens are named, resolved, and organized is essential for maintaining a scalable and conflict-free token system. This section explores the technical aspects of working with Chassis Tokens.
+
+### Design Token Naming
+
+Chassis Tokens follows a consistent naming convention to ensure clarity and avoid conflicts. The naming convention is hierarchical and descriptive, reflecting the token's purpose and context.
+
+Each token starts with a `category` (e.g., color, size, space, typography), followed by the `context` or `component` it applies to, and finally the specific property or state.
+
+#### Nested Structure
+
+Token names are structured as a dot-separated path if they have multiple variants, properties and states.
+
+```
+{category}.{component}.{variant}.{property}-{state}
+or 
+{category}.{component}.{state}.{property}-{variant}
+```
+
+**Examples:**
+
+- `color.button.primary.bg-hover` - Background color for primary button on hover
+- `color.form-input.disabled.fg-inactive` - Placeholder color for disabled input
+
+This makes it easy to understand the token's purpose and add or remove variants as needed.
+
+#### Flat Structure
+
+For simpler tokens with less variants or states, a flat structure is used:
+
+```
+{category}.{component}.{variant}-{property}
+```
+
+**Examples:**
+
+- `size.button.medium-icon`
+- `space.form-input.medium-padding-x`
+
+This makes it easy to navigate in token sets.
+
+<Callout type="info">
+When tokens transformed with Style Dictionary, nested and flat structures are treated the same and converted to kebab-case or PascalCase depending on the platform. For example, `color.button.primary.bg-hover` becomes `color-button-primary-bg-hover` for CSS and Android, or `ColorButtonPrimaryBgHover` for iOS.
+</Callout>
+
+### Token Set Naming
+
+Chassis Tokens follows `{category}-{variation}.json` naming pattern for token set files:
+
+**Categories:**
+- `metric-*`: Dimension, opacity, and measurement tokens
+- `brand-*`: Brand identity tokens (colors, typography, borders)
+- `theme-*`: Color mode variations
+- `app-*`: Application and component tokens
+- `effect-*`: Shadow and effect tokens
+- `motion-*`: Animation and transition tokens
+- `screen-*`: Breakpoint and responsive tokens
+
+**Variations:**
+- `base`: Foundation tokens used across all variations
+- `{mode}`: Overrides for specific theme option.
+
+**Examples:**
+- `brand-base.json` - Base brand tokens
+- `brand-acme.json` - Acme brand overrides
+- `theme-dark.json` - Dark mode overrides
+- `app-web.json` - Web platform tokens
+
+This naming convention makes it immediately clear:
+- What type of tokens are in the file
+- When the file should be used
+- How the file relates to others in the system
+
+#### Advanced Naming
+
+For more complex scenarios, token sets can be grouped in folders by category or purpose:
+
+**Examples:**
+- `brand-a/brand-base.json` - Default identity for Brand A
+- `brand-a/brand-alt.json` - Alternative theme for Brand A
+- `brand-a/app-base.json` - Application tokens for Brand A
+- `brand-a/app-mobile.json` - Mobile-specific tokens for Brand A
+
+### Token Set Resolution
+
+Understanding how Tokens Studio resolves token values is crucial for avoiding conflicts and unexpected behavior.
+
+**Resolution Process:**
+
+1. **Load token sets**: All token sets marked as "Source" or "Enable" are loaded in the order defined in the theme configuration.
+2. **Apply overrides**: Later token sets override earlier ones when they define the same token path.
+3. **Resolve references**: Token references (e.g., `{color.primary.base}`) are resolved after all sets are loaded.
+4. **Process extensions**: Color modifications and other extensions are applied during resolution.
+5. **Generate output**: Final token values are synced to Figma Variables or Style Dictionary.
+
+**Example Resolution:**
+
+Given this theme configuration:
+```
+1. brand-base.json (enabled) - defines color.primary.base = "#0000FF"
+2. brand-a.json (enabled) - overrides color.primary.base = "#FF0000"
+3. theme-base.json (enabled) - references color.primary.main = "{color.primary.base}"
+```
+
+**Final result**: `color.primary.main` resolves to `#FF0000` (from brand-a.json override).
+
+**Common Pitfalls:**
+
+- ❌ Circular references: Token A references Token B, which references Token A
+- ❌ Missing references: Referencing a token that doesn't exist in any enabled set
+- ❌ Wrong set order: Important overrides loaded before base values
+- ❌ Source vs Enable confusion: Referencing tokens from a "Disable" set
+
+
+### When to Create New Token Sets
+
+**Create a new set when:**
+
+✅ Adding a complete brand identity  
+✅ Adding a new color mode (e.g., high contrast)  
+✅ Adding platform-specific variations  
+✅ Creating a temporary experimental theme  
+
+**Modify existing sets when:**
+
+✅ Adjusting values within current brand  
+✅ Adding new component tokens to existing platform  
+✅ Fixing bugs or inconsistencies  
+✅ Refining existing color scales  
+
+**Avoid creating sets for:**
+
+❌ One-off component variations (use component props instead)  
+❌ Page-specific overrides (use local Figma variables)  
+❌ Temporary design explorations (use branches instead)  
+
+### Token Documentation
+
+**Document complex tokens:**
+
+Use `$description` field for tokens that need explanation:
+
+```json
+{
+  "color.surface.overlay": {
+    "$type": "color",
+    "$value": "rgba(0, 0, 0, 0.6)",
+    "$description": "Semi-transparent overlay for modals and dialogs. Provides backdrop for focus without completely blocking underlying content."
+  }
+}
+```
+
+**Maintain a token changelog:**
+
+Document significant token changes in commit messages:
+- What tokens changed
+- Why they changed
+- Impact on existing designs
+- Migration steps if needed
+
+**Create token inventory documentation:**
+
+Maintain a separate document listing:
+- All available token categories
+- Naming conventions for each category
+- When to use each token type
+- Examples of correct usage
+
+### Version Control Strategies
+
+**Branch strategy:**
+
+- `main` - Production tokens synced to live products
+- `develop` - Integration branch for token development
+- `feature/*` - Individual token changes or experiments
+- `brand/*` - New brand identity development
+
+**Commit practices:**
+
+```bash
+# ✅ Good - clear, specific commit
+git commit -m "Add dark mode tokens for navigation component"
+
+# ✅ Good - explains the why
+git commit -m "Update primary color contrast ratio to meet WCAG AA"
+
+# ❌ Bad - vague
+git commit -m "Update tokens"
+```
+
+**Review process:**
+
+1. Create feature branch for token changes
+2. Test tokens in Figma with actual components
+3. Submit pull request with screenshots/examples
+4. Have design and engineering review
+5. Merge to develop, then to main after verification
+
+### Maintenance Workflow
+
+**Regular audits:**
+
+- Quarterly review of all tokens for unused entries
+- Check for tokens that could be consolidated
+- Verify all tokens have proper references
+- Ensure naming conventions are followed
+
+**Deprecation process:**
+
+When removing tokens:
+
+1. Mark token as deprecated with `$description`
+2. Provide replacement token recommendation
+3. Keep deprecated token for 2-3 release cycles
+4. Monitor usage before final removal
+5. Document breaking change in release notes
+
+**Testing checklist:**
+
+Before pushing token changes:
+
+- ✓ All theme combinations tested in Figma
+- ✓ No broken token references
+- ✓ JSON syntax validated
+- ✓ Color contrast meets accessibility standards
+- ✓ Typography scales work at all breakpoints
+- ✓ Documentation updated if needed
+
+## Related Topics
+
+**Design Token Fundamentals:**
+- [Color Tokens]([[docsref:/design-tokens/color-tokens]]) - Deep dive into color system architecture
+- [Typography Tokens]([[docsref:/design-tokens/typography-tokens]]) - Font and text styling tokens
+- [Spacing Tokens]([[docsref:/design-tokens/spacing-tokens]]) - Layout and spacing system
+
+**Implementation Guides:**
+- [Using Tokens in Figma]([[docsref:/guides/using-tokens-figma]]) - Applying tokens to designs
+- [Style Dictionary Setup]([[docsref:/guides/style-dictionary]]) - Generating code from tokens
+- [Component Integration]([[docsref:/guides/component-integration]]) - Using tokens in components
+
+**Workflow Documentation:**
+- [Contributing Tokens]([[docsref:/contributing/tokens]]) - How to propose token changes
+- [Token Governance]([[docsref:/governance/tokens]]) - Decision-making process
+- [Release Process]([[docsref:/processes/releases]]) - How token updates are published
+
+## Troubleshooting
+
+Common issues and their solutions when working with Chassis Tokens and Tokens Studio.
+
+### Sync Issues
+
+**Problem**: Tokens not syncing from Git repository
+
+**Solutions:**
+- Verify Git credentials are still valid (re-authenticate if needed)
+- Check repository and branch names are correct
+- Ensure file path points to `tokens/` directory
+- Look for JSON syntax errors in token files (missing commas, brackets)
+- Try "Force Sync" option in Tokens Studio settings
+
+**Problem**: Changes not appearing in Figma Variables
+
+**Solutions:**
+- Click "Push to Figma" button in Tokens Studio after syncing
+- Refresh the Figma Variables panel
+- Check if the correct theme options are selected
+- Verify token sets are marked as "Enable" not just "Source"
+
+### Token Reference Errors
+
+**Problem**: Token shows error "Cannot resolve reference"
+
+**Solutions:**
+- Verify the referenced token exists in an enabled token set
+- Check token path spelling and case sensitivity
+- Ensure referenced token set is loaded before the referencing set
+- Confirm the referenced token is marked as "Source" or "Enable"
+
+**Problem**: Circular reference detected
+
+**Solutions:**
+- Review token reference chain to find the loop
+- Break the circle by using a direct value at one point
+- Restructure tokens to have a clear hierarchy (base → derivative)
+
+### Variable Not Updating
+
+**Problem**: Changing theme doesn't update variable values
+
+**Solutions:**
+- Check if we've switched the correct theme group (Brand vs Theme vs App)
+- Some variables may be scoped to specific modes
+- Try detaching and reapplying variables to design elements
+- Push to Figma again to refresh variable definitions
+
+**Problem**: Variables show old values after token update
+
+**Solutions:**
+- Clear Tokens Studio cache (Settings → Advanced → Clear Cache)
+- Force sync from Git repository
+- Close and reopen Figma file
+- Check if local changes are overriding repository values
+
+### Conflicting Token Values
+
+**Problem**: Token has unexpected value
+
+**Solutions:**
+- Check the token set order in theme configuration
+- Later sets override earlier ones - verify override precedence
+- Use Tokens Studio's "Inspect" feature to see token resolution
+- Review all enabled sets for conflicting definitions
+
+**Problem**: Color looks different in Figma vs code
+
+**Solutions:**
+- Verify color space settings (sRGB vs P3)
+- Check if color modifications are applied correctly
+- Ensure Style Dictionary config matches Figma transform
+- Review opacity/alpha channel handling
+
+### Git Workflow Issues
+
+**Problem**: Merge conflicts in token files
+
+**Solutions:**
+- Pull latest changes before making token edits
+- Coordinate with team on which token sets to edit
+- Use smaller, focused token sets to reduce conflict surface area
+- When conflicts occur, carefully merge JSON maintaining valid syntax
+

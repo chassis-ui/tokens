@@ -1,0 +1,355 @@
+---
+title: Shadow Tokens
+description: Comprehensive guide to shadow tokens defining consistent depth, elevation, and visual hierarchy through drop shadows and effects.
+toc: true
+---
+
+<Callout type="warning" name="work-in-progress" />
+
+## Overview
+
+Shadow tokens define consistent shadow effects used throughout the design system to create depth, establish visual hierarchy, and indicate elevation. They simulate light and shadow to make interfaces feel more tactile and three-dimensional.
+
+### Architecture
+
+Shadow tokens are defined in the **App group** and use an elevation-based system where different shadow intensities indicate varying levels of depth.
+
+**How it works:**
+
+The system provides progressive elevation:
+1. **Contextual shadows** (`shadow.context.*`) define semantic shadow styles (none, small, medium, large, inset)
+2. **Elevation shadows** (`shadow.elevation.*`) create a systematic depth scale
+3. **Component shadows** (`shadow.[component].*`) assign specific shadows to UI elements
+4. **State shadows** indicate interactivity through shadow changes
+
+**Benefits:**
+
+- Consistent depth perception across all components
+- Clear visual hierarchy through systematic elevation
+- Semantic naming clarifies shadow intent
+- Easy to adjust shadow intensity globally
+
+<Callout type="info">
+Shadows use color tokens with transparency (`color.shadow.default`) as their shadow color, allowing shadows to adapt automatically when switching between light and dark themes.
+</Callout>
+
+### Organization
+
+Shadow tokens are organized into three categories:
+
+**Contextual Shadows**: Semantic shadow styles (none, small, medium, large, inset, state-based).
+
+**Elevation Shadows**: Systematic depth scale from 10 (minimal) to 40 (maximum).
+
+**Component Shadows**: Specific shadow effects for individual UI components.
+
+This organization provides both systematic depth and component-specific application.
+
+## Contextual Shadows
+
+Contextual shadow tokens provide semantic shadow effects for flexible application.
+
+### Basic Shadows
+
+<CxTable>
+| Token Name | Shadow Layers | Use Cases |
+|------------|--------------|----------|
+| `shadow.context.none` | No shadow | Flat elements, embedded components |
+| `shadow.context.small` | 2 layers (1px + 8px blur) | Subtle elevation, hovering cards |
+| `shadow.context.medium` | 2 layers (1px + 8px blur + 2px spread) | Standard elevation, dropdowns |
+| `shadow.context.large` | 2 layers (1px + 24px blur + 8px spread) | High elevation, modals, popovers |
+| `shadow.context.inset` | Inner shadow (2px) | Pressed states, recessed areas |
+</CxTable>
+
+### State Shadows
+
+Shadow effects for interactive states:
+
+<CxTable>
+| Token Name | References | Purpose |
+|------------|-----------|--------|
+| `shadow.context.idle` | `shadow.context.none` | Default state, no elevation |
+| `shadow.context.disabled` | `shadow.context.none` | Disabled state, flat appearance |
+| `shadow.context.hover` | `shadow.elevation.default.20` | Hover state, subtle lift |
+| `shadow.context.press` | `shadow.elevation.default.10` | Pressed state, reduced depth |
+| `shadow.context.focus` | Custom (4px blur, cue-main color) | Focus state, accessibility |
+| `shadow.context.highlight` | Custom (4px blur, cue-main color) | Highlighted state |
+</CxTable>
+
+### Shadow Composition
+
+Most shadows use multiple layers to create realistic depth:
+
+```json
+{
+  "shadow.context.medium": [
+    {
+      "x": "0",
+      "y": "0",
+      "blur": "1px",
+      "spread": "0",
+      "color": "{color.shadow.default}"
+    },
+    {
+      "x": "0",
+      "y": "1px",
+      "blur": "8px",
+      "spread": "2px",
+      "color": "{color.shadow.default}"
+    }
+  ]
+}
+```
+
+Layered shadows create more natural, realistic depth than single shadows.
+
+## Elevation System
+
+The elevation system provides a systematic depth scale with numbered levels (05-95) across multiple context colors.
+
+### Default Context Elevations
+
+<CxTable>
+| Token Name | Level | Typical Use |
+|------------|-------|-------------|
+| `shadow.elevation.default.05` | Minimal | Extremely subtle depth |
+| `shadow.elevation.default.10` | Very Low | Subtle lift, pressed states |
+| `shadow.elevation.default.20` | Low | Hover states, raised cards |
+| `shadow.elevation.default.30` | Medium-Low | Active states |
+| `shadow.elevation.default.40` | Medium | Modals, dropdowns, popovers |
+| `shadow.elevation.default.50` | Medium-High | Prominent floating elements |
+| `shadow.elevation.default.60` | High | Important overlays |
+| `shadow.elevation.default.70` | Very High | Critical notifications |
+| `shadow.elevation.default.80` | Extra High | Top-level overlays |
+| `shadow.elevation.default.90` | Maximum | Highest priority content |
+| `shadow.elevation.default.95` | Maximum+ | Exceptional elevation |
+</CxTable>
+
+### Context Color Elevations
+
+Elevation shadows are also available for each context color, following the same level structure:
+
+<CxTable>
+| Context | Token Pattern | Use Cases |
+|---------|--------------|-----------|
+| Default | `shadow.elevation.default.[level]` | Standard neutral shadows |
+| Alternate | `shadow.elevation.alternate.[level]` | Alternative neutral shadows |
+| Primary | `shadow.elevation.primary.[level]` | Branded shadows |
+| Secondary | `shadow.elevation.secondary.[level]` | Secondary branded shadows |
+| Neutral | `shadow.elevation.neutral.[level]` | Neutral context shadows |
+| Info | `shadow.elevation.info.[level]` | Informational shadows |
+| Success | `shadow.elevation.success.[level]` | Success/positive shadows |
+| Warning | `shadow.elevation.warning.[level]` | Warning/caution shadows |
+| Danger | `shadow.elevation.danger.[level]` | Error/danger shadows |
+</CxTable>
+
+Where `[level]` can be: `05`, `10`, `20`, `30`, `40`, `50`, `60`, `70`, `80`, `90`, or `95`
+
+<Callout type="info">
+Context color elevation shadows maintain the same geometric properties (x, y, blur, spread) as their default counterparts but use theme-specific colors from the **Theme group**. For example, `shadow.elevation.primary.10` uses the same shadow dimensions as `shadow.elevation.default.10` but references primary colors from theme color tokens. This is essential because light and dark modes typically require different opacity levels or shades for shadows to achieve proper contrast and visibility—shadows that work well in light mode often need adjustment in dark mode to maintain the same perceived depth.
+</Callout>
+
+### Elevation Hierarchy
+
+**Levels 05-10** (Minimal elevation):
+- Extremely subtle depth
+- Pressed button states
+- Slightly raised cards
+- Minimal visual separation
+
+**Levels 20-30** (Light elevation):
+- Hover states for interactive elements
+- Standard cards and panels
+- Dropdown triggers on hover
+- Active/selected states
+
+**Levels 40-50** (Medium elevation):
+- Modal dialogs
+- Dropdown menus and popovers
+- Floating action buttons
+- Prominent cards
+
+**Levels 60-70** (High elevation):
+- Important overlays
+- Critical notifications
+- Toast notifications
+- Top navigation bars
+
+**Levels 80-95** (Maximum elevation):
+- Highest priority content
+- Context menus
+- Tooltips over modals
+- Exceptional cases requiring maximum depth
+
+## Component Shadows
+
+Component-specific shadow tokens assign depth to individual UI elements.
+
+### Buttons
+
+<CxTable>
+| Token Name | References | Applied To |
+|------------|-----------|------------|
+| `shadow.button.idle` | `shadow.context.none` | Button default state |
+| `shadow.button.hover` | `shadow.context.none` | Button hover state |
+| `shadow.button.press` | `shadow.context.none` | Button pressed state |
+| `shadow.button.disabled` | `shadow.context.none` | Button disabled state |
+</CxTable>
+
+<Callout type="info">
+By default, buttons use no shadow, relying on color and border for visual definition. This can be overridden for floating action buttons or raised button styles.
+</Callout>
+
+### Cards & Containers
+
+<CxTable>
+| Token Name | References | Applied To |
+|------------|-----------|------------|
+| `shadow.card.main` | `shadow.elevation.default.20` | Card containers |
+| `shadow.section.main` | `shadow.elevation.default.20` | Section containers |
+| `shadow.modal.main` | `shadow.elevation.default.40` | Modal dialogs |
+| `shadow.message.main` | `shadow.elevation.default.10` | Message containers |
+</CxTable>
+
+### Dropdowns & Popovers
+
+<CxTable>
+| Token Name | References | Applied To |
+|------------|-----------|------------|
+| `shadow.dropdown.main` | `shadow.elevation.default.40` | Dropdown menus |
+| `shadow.date-picker.main` | `shadow.elevation.default.40` | Date picker overlays |
+</CxTable>
+
+### Navigation
+
+<CxTable>
+| Token Name | References | Applied To |
+|------------|-----------|------------|
+| `shadow.nav-top.main` | `shadow.elevation.default.40` | Top navigation bar |
+| `shadow.nav-left.main` | Custom (layered shadow) | Left sidebar navigation |
+</CxTable>
+
+### Form Inputs
+
+<CxTable>
+| Token Name | References | Applied To |
+|------------|-----------|------------|
+| `shadow.form-input.main` | `shadow.context.none` | Input fields (typically no shadow) |
+</CxTable>
+
+### Tables
+
+<CxTable>
+| Token Name | References | Applied To |
+|------------|-----------|------------|
+| `shadow.table.main` | `shadow.context.none` | Table containers |
+</CxTable>
+
+## Interactive Shadow Patterns
+
+Shadows often change based on interaction state to provide depth feedback.
+
+### Standard Elevation Pattern
+
+<CxTable>
+| State | Shadow | Visual Effect |
+|-------|--------|---------------|
+| Idle | None or minimal | Flat or subtle depth |
+| Hover | Level 20 | Subtle lift, indicates interactivity |
+| Press | Level 10 | Reduced depth, pressed down |
+| Focus | Colored shadow | Accessibility indication |
+</CxTable>
+
+### Floating Element Pattern
+
+Elements that appear above the page:
+
+<CxTable>
+| Element Type | Shadow Level | Rationale |
+|--------------|-------------|----------|
+| Dropdown | Level 40 | Clearly above page content |
+| Modal | Level 40 | Highest priority content |
+| Tooltip | Level 40 | Must be clearly visible |
+| Popover | Level 40 | Temporary overlay |
+</CxTable>
+
+## Usage Guidelines
+
+### Choosing the Right Shadow
+
+**For flat elements**: Use `shadow.context.none`
+
+**For subtle depth**: Use `shadow.context.small` or `shadow.elevation.default.10`
+
+**For standard elevation**: Use `shadow.elevation.default.20` or `shadow.context.medium`
+
+**For floating elements**: Use `shadow.elevation.default.40` or `shadow.context.large`
+
+**For pressed states**: Use `shadow.context.inset` or `shadow.elevation.default.10`
+
+### Design Principles
+
+**Hierarchy**: Higher elevation = more important or interactive
+
+**Consistency**: Use the same elevation for similar component types
+
+**Restraint**: Avoid excessive shadows that create visual noise
+
+**Direction**: Shadows typically cast downward (positive Y offset)
+
+### Accessibility
+
+**Don't rely on shadows alone**: Combine shadows with color, border, or other visual cues
+
+**Focus indicators**: Use colored shadows for keyboard focus states
+
+**Contrast**: Ensure shadow colors have sufficient contrast in both light and dark modes
+
+**Motion sensitivity**: Avoid animating shadows for users with motion sensitivity
+
+### Performance
+
+**Shadow complexity**: Multiple shadow layers can impact rendering performance
+
+**Blur radius**: Large blur radii are more computationally expensive
+
+**Animation**: Animating shadows can cause repaints—use transform instead when possible
+
+**Mobile devices**: Test shadow performance on lower-end devices
+
+### Best Practices
+
+**Do:**
+- Use component tokens for specific UI elements
+- Use elevation system for systematic depth
+- Test shadows in both light and dark modes
+- Combine shadows with other visual cues
+- Keep blur radius reasonable (< 24px for most cases)
+
+**Don't:**
+- Use arbitrary shadow values—always reference tokens
+- Create "floating" interfaces with too many elevated elements
+- Use shadows on every element—reserve for emphasis
+- Animate shadows when transform would work better
+- Forget that shadows affect visual weight
+
+### Dark Mode Considerations
+
+Shadows work differently in dark mode:
+
+- Shadow colors should be darker and may need different opacity
+- Elevation is less pronounced in dark interfaces
+- Consider using borders in addition to shadows in dark mode
+- Test shadow visibility against dark backgrounds
+
+### Common Patterns
+
+**Cards**: Use `shadow.elevation.default.20` for subtle lift
+
+**Dropdowns**: Use `shadow.elevation.default.40` for clear separation
+
+**Hover effects**: Transition from no shadow to `shadow.elevation.default.20`
+
+**Pressed buttons**: Transition to `shadow.elevation.default.10` or `shadow.context.inset`
+
+**Focus indicators**: Use colored `shadow.context.focus` for accessibility

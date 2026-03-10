@@ -27,39 +27,21 @@
     "dist/**/*.{css,scss,json,js,ts}"
   ],
   "chassis": {
-    "defaults": {
-      "theme": "light",
-      "screen": "large"
-    },
     "build": {
       "brands": [
-        "default",
         "mundi"
       ],
       "themes": [
         "light",
         "dark"
       ],
-      "screens": [
-        "large",
-        "medium",
-        "small"
-      ],
       "apps": {
-        "default": [
-          "web",
-          "ios",
-          "android"
-        ],
         "mobile": [
-          "web",
           "ios",
           "android"
         ],
         "web": [
-          "web",
-          "ios",
-          "android"
+          "web"
         ]
       }
     }
@@ -69,34 +51,40 @@
     "access": "public"
   },
   "scripts": {
-    "build": "pnpm tokens:build && pnpm site:build",
-    "clean": "node build/build-site.js clean && rm -rf dist",
-    "dev": "pnpm astro:dev",
+    "build": "pnpm tokens:mundi && pnpm site:build",
+    "clean": "pnpm site:clean && rm -rf dist",
+    "dev": "pnpm sync-assets && pnpm tokens:mundi && pnpm astro:dev",
     "preview": "pnpm astro:preview",
     "test": "pnpm tokens:test",
-    "validate": "node build/build.js validate",
+
     "tokens": "pnpm tokens:build",
-    "tokens:build": "node build/tokens/build.js --brand mundi",
-    "tokens:build:all": "node build/tokens/build.js",
+    "tokens:build": "node build/tokens/build.js",
     "tokens:lint": "eslint --cache --cache-location .cache/.eslintcache build/tokens",
+    "tokens:mundi": "pnpm tokens:build --brand mundi",
     "tokens:test": "vitest run --dir build/tokens/test",
+
     "site": "pnpm site:build && pnpm site:lint",
     "site:build": "node build/build-site.js",
+    "site:clean": "node build/build-site.js clean",
     "site:format": "prettier --write --cache site",
     "site:lint": "pnpm site:lint:eslint && pnpm site:lint:fusv && pnpm site:lint:stylelint && pnpm site:lint:prettier && pnpm site:lint:vnu",
     "site:lint:fusv": "find-unused-sass-variables site/src/scss/",
     "site:lint:eslint": "prettier -c --cache site",
     "site:lint:stylelint": "stylelint site/src/scss/ --cache --cache-location .cache/.stylelintcache",
     "site:lint:vnu": "node build/vnu-jar.js",
+    "site:validate": "node build/build.js validate",
+
     "astro:dev": "astro dev --root site --port 4322",
     "astro:build": "astro build --root site",
     "astro:preview": "astro preview --root site",
+
     "check": "pnpm check:code & pnpm check:lockfile & pnpm check:pnpm & wait",
     "check:code": "pnpm site:lint",
     "check:lockfile": "lockfile-lint --allowed-hosts npm --allowed-schemes https: --empty-hostname false --type npm --path package-lock.json",
     "check:pnpm": "pnpm audit --audit-level moderate",
-    "release:version": "node build/change-version.js",
-    "sync:submodules": "node build/sync-submodules.js"
+
+    "change-version": "node build/change-version.js",
+    "sync-assets": "node build/sync-submodules.js"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.4",
@@ -105,7 +93,7 @@
     "@astrojs/prism": "^3.3.0",
     "@astrojs/sitemap": "^3.6.0",
     "@chassis-ui/css": "github:chassis-ui/css#app/docs",
-    "@chassis-ui/docs": "^0.1.2",
+    "@chassis-ui/docs": "^0.1.3",
     "@chassis-ui/icons": "github:chassis-ui/icons#app/docs",
     "@docsearch/css": "^3.9.0",
     "@docsearch/js": "^3.9.0",
@@ -143,7 +131,6 @@
     "mdast-util-from-markdown": "^2.0.2",
     "mdast-util-mdx-jsx": "^3.2.0",
     "mdast-util-to-string": "^4.0.0",
-    "minimist": "^1.2.8",
     "picocolors": "^1.1.1",
     "prettier": "^3.6.2",
     "prettier-plugin-astro": "^0.14.1",

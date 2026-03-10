@@ -83,7 +83,7 @@ ${options.import.map((item) => `import ${item}`).join('\n')}
 
 ${options.accessControl ? `${options.accessControl} ` : ''}${
     options.objectType ? `${options.objectType} ` : ''
-  }${file.className ? `${file.className} ` : ''}{
+  }${options.className ? `${options.className} ` : 'ChassisTokens'} {
     ${dictionary.allTokens.map((token) => tokenToLine(token)).join('\n    ')}
 }
 `

@@ -1,0 +1,101 @@
+---
+import { getConfig } from '@libs/config'
+import ResponsiveImage from '@shortcodes/ResponsiveImage.astro'
+import Code from '@shortcodes/Code.astro'
+import { getChassisDocsPath } from '@libs/path'
+import Card from '@components/Card.astro'
+---
+
+<section class="bg-even py-6xlarge">
+  <div class="container py-6xlarge">
+    <div class="row justify-content-center mb-5xlarge">
+      <div class="col-large-8 text-center my-4xlarge">
+        <h2 class="font-hero mb-medium">Built for Your Role</h2>
+        <p class="font-lead">
+          Whatever your role is, Chassis Tokens reduces coordination overhead so product, design,
+          and engineering can move in lockstep.
+        </p>
+      </div>
+    </div>
+
+    <div class="row pb-6xlarge">
+      <!-- Product Managers -->
+      <div class="col-large-4">
+        <div class="feature-thumb">
+          <svg class="icon feature-icon"><use href="#briefcase-outline"></use></svg>
+        </div>
+        <h3 class="h4 mb-medium">Product Managers</h3>
+        <ul class="list-group list-unstyled">
+          <li class="d-flex gap-small">
+            <span class="icon icon-check-circle-outline success-icon-main"></span>
+            <span>Launch new brands in weeks, not months</span>
+          </li>
+          <li class="d-flex gap-small">
+            <span class="icon icon-check-circle-outline success-icon-main"></span>
+            <span>Maintain consistency across product portfolio</span>
+          </li>
+          <li class="d-flex gap-small">
+            <span class="icon icon-check-circle-outline success-icon-main"></span>
+            <span>Scale operations without scaling headcount</span>
+          </li>
+          <li class="d-flex gap-small">
+            <span class="icon icon-check-circle-outline success-icon-main"></span>
+            <span>Accelerate feature delivery with reusable tokens</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Design Leads -->
+      <div class="col-large-4">
+        <div class="feature-thumb">
+          <svg class="icon feature-icon"><use href="#palette-outline"></use></svg>
+        </div>
+        <h3 class="h4 mb-medium">Design Leads</h3>
+        <ul class="list-group list-unstyled">
+          <li class="d-flex gap-small">
+            <span class="icon icon-check-circle-outline success-icon-main"></span>
+            <span>Perfect design-developer handoff every time</span>
+          </li>
+          <li class="d-flex gap-small">
+            <span class="icon icon-check-circle-outline success-icon-main"></span>
+            <span>Manage tokens directly in Figma with Variables</span>
+          </li>
+          <li class="d-flex gap-small">
+            <span class="icon icon-check-circle-outline success-icon-main"></span>
+            <span>Version control for design decisions</span>
+          </li>
+          <li class="d-flex gap-small">
+            <span class="icon icon-check-circle-outline success-icon-main"></span>
+            <span>Centralized design system documentation</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- CTOs -->
+      <div class="col-large-4">
+        <div class="feature-thumb">
+          <svg class="icon feature-icon"><use href="#code-outline"></use></svg>
+        </div>
+        <h3 class="h4 mb-medium">CTOs & Tech Leads</h3>
+        <ul class="list-group list-unstyled">
+          <li class="d-flex gap-small">
+            <span class="icon icon-check-circle-outline success-icon-main"></span>
+            <span>Type-safe tokens with automated generation</span>
+          </li>
+          <li class="d-flex gap-small">
+            <span class="icon icon-check-circle-outline success-icon-main"></span>
+            <span>Framework-agnostic, works with any tech stack</span>
+          </li>
+          <li class="d-flex gap-small">
+            <span class="icon icon-check-circle-outline success-icon-main"></span>
+            <span>Dramatically reduce CSS complexity</span>
+          </li>
+          <li class="d-flex gap-small">
+            <span class="icon icon-check-circle-outline success-icon-main"></span>
+            <span>Built-in accessibility compliance</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

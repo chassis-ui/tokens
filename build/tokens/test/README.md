@@ -48,7 +48,7 @@ Tests the main build orchestration logic including:
 Tests the Style Dictionary configuration generator including:
 
 #### File Generation Logic
-- ✅ **Base Files**: Verifies generation of `base.scss` and `string.scss` for base configurations
+- ✅ **Base Files**: Verifies generation of `main.scss` and `string.scss` for base configurations
 - ✅ **Theme Files**: Tests generation of `color-{theme}.scss` for theme configurations
 - ✅ **Screen Files**: Tests generation of `number-{screen}.scss` for screen configurations
 

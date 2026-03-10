@@ -1,0 +1,228 @@
+---
+title: Font Tokens
+description: Comprehensive guide to font tokens and their relationship to the complete typography system in Chassis Tokens.
+toc: true
+---
+
+<Callout type="warning" name="work-in-progress" />
+
+## Overview
+
+Font tokens in Chassis refer to composite typography tokens that combine multiple typographic properties (font family, weight, size, line height, spacing, etc.) into complete, ready-to-use text styles. These tokens are defined in the **App group** and are the primary typography tokens used when designing interfaces.
+
+<Callout type="info" title="Important">
+Font tokens are actually **composite typography tokens** documented comprehensively in the [Typography Tokens]([[docsref:/design-tokens/typography-tokens]]) page. This page provides a brief overview and directs you to the complete documentation.
+</Callout>
+
+## Relationship to Typography System
+
+Chassis Tokens uses a comprehensive typography system with multiple layers:
+
+### Foundational Layer (Brand Group)
+
+**Font Families**: Brand-specific typeface definitions
+- `typography.fontFamily.text` - Body text font
+- `typography.fontFamily.display` - Heading font
+- `typography.fontFamily.code` - Monospace font
+
+**Font Weights**: Semantic weight definitions
+- `typography.fontWeight.[family].normal` - Default weight
+- `typography.fontWeight.[family].strong` - Bold weight
+- `typography.fontWeight.[family].mass` - Extra bold weight
+- `typography.fontWeight.[family].elegant` - Light weight
+
+### Modular Layer (App Group)
+
+**Individual Properties**:
+- `typography.fontSize.*` - Size scales
+- `typography.lineHeight.*` - Line height scales
+- `typography.letterSpacing.*` - Letter spacing values
+- `typography.paragraphSpacing.*` - Paragraph spacing values
+- `typography.textCase.*` - Text transformation
+- `typography.textDecoration.*` - Text decoration styles
+
+### Composite Layer (App Group)
+
+**Complete Text Styles** (`font.*`):
+
+These are the "font tokens" that combine all properties:
+
+```json
+{
+  "font.text.medium.normal": {
+    "$type": "typography",
+    "$value": {
+      "fontFamily": "{typography.fontFamily.text}",
+      "fontWeight": "{typography.fontWeight.text.normal}",
+      "fontSize": "{typography.fontSize.text.medium}",
+      "lineHeight": "{typography.lineHeight.text.medium}",
+      "letterSpacing": "{typography.letterSpacing.base.zero}",
+      "paragraphSpacing": "{typography.paragraphSpacing.base.zero}",
+      "textCase": "{typography.textCase.base.none}",
+      "textDecoration": "{typography.textDecoration.base.none}"
+    }
+  }
+}
+```
+
+## Font Token Categories
+
+### Text Family Styles
+
+Composite typography tokens using the text font family:
+- `font.text.[size].normal` - Regular weight text
+- `font.text.[size].strong` - Bold text
+- `font.text.[size].mass` - Extra bold text
+- `font.text.[size].elegant` - Light weight text
+
+Where `[size]` can be: 2xsmall, xsmall, small, medium, large, xlarge, 2xlarge, 3xlarge, 4xlarge, 5xlarge
+
+### Display Family Styles
+
+Composite typography tokens using the display font family:
+- `font.display.[size].normal` - Display headings
+- `font.display.[size].strong` - Bold display text
+- `font.display.[size].mass` - Extra bold display text
+- `font.display.[size].elegant` - Refined display text
+
+### Code Family Styles
+
+Composite typography tokens using the code font family:
+- `font.code.small.normal` - Small code text
+- `font.code.medium.normal` - Medium code text
+- `font.code.large.normal` - Large code text
+- `font.code.[size].strong` - Bold code text
+
+### Contextual Font Styles
+
+Semantic typography tokens for specific content types:
+- `font.context.jumbo` - Largest heading (96px)
+- `font.context.hero` - Hero heading (64px)
+- `font.context.lead` - Lead paragraph
+- `font.context.heading` - Main page heading
+- `font.context.title.[size]` - Section titles
+- `font.context.body.[size]` - Body text
+- `font.context.highlight.[size]` - Highlighted content
+
+### Component Font Styles
+
+Component-specific typography tokens:
+- `font.button.[size]` - Button labels
+- `font.form-input.*` - Input field text
+- `font.badge.[size]` - Badge text
+- `font.alert.*` - Alert text
+- `font.list.*` - List text
+- And many more...
+
+## When to Use Font Tokens
+
+### Use Font Tokens When:
+
+✅ Designing UI components and layouts
+
+✅ You need a complete, ready-to-use text style
+
+✅ Working with component-specific text (buttons, inputs, badges)
+
+✅ Applying semantic text styles (headings, body, titles)
+
+✅ You want consistent typography with minimal configuration
+
+### Use Individual Typography Tokens When:
+
+❌ You need to override a single property (e.g., just font size)
+
+❌ Creating custom text styles not covered by font tokens
+
+❌ Building new component typography tokens
+
+❌ Working with brand-level font definitions
+
+## Complete Documentation
+
+For comprehensive information about the typography system including:
+
+- Complete font token listings
+- Typography architecture and token layers
+- Font family and weight definitions
+- Modular typography properties
+- Contextual and component typography
+- HTML element typography
+- Usage guidelines and best practices
+- Accessibility considerations
+- Brand customization examples
+
+**Please refer to**: [Typography Tokens]([[docsref:/design-tokens/typography-tokens]])
+
+## Quick Reference
+
+### Most Common Font Tokens
+
+<CxTable>
+| Token Name | Use Case |
+|------------|--------|
+| `font.text.medium.normal` | Standard body text (16px) |
+| `font.text.small.normal` | Small body text (14px) |
+| `font.text.large.normal` | Large body text (19px) |
+| `font.text.medium.strong` | Bold labels, emphasized text |
+| `font.context.heading` | Main page headings |
+| `font.context.title.large` | Section titles |
+| `font.context.body.medium` | Standard paragraph text |
+| `font.button.medium` | Button labels |
+| `font.form-input.medium-value` | Input field values |
+</CxTable>
+
+### Font Token Naming Pattern
+
+**Composite tokens**: `font.[family].[size].[weight]`
+- Example: `font.text.medium.strong`
+
+**Contextual tokens**: `font.context.[semantic-name]`
+- Example: `font.context.heading`
+
+**Component tokens**: `font.[component].[variant]`
+- Example: `font.button.large`
+
+## Architecture Diagram
+
+```
+Brand Group (Foundational)
+├─ typography.fontFamily.text
+├─ typography.fontFamily.display
+└─ typography.fontWeight.*
+    ↓ referenced by
+App Group (Modular)
+├─ typography.fontSize.*
+├─ typography.lineHeight.*
+├─ typography.letterSpacing.*
+└─ typography.paragraphSpacing.*
+    ↓ combined into
+App Group (Composite)
+├─ font.text.[size].[weight]     ← "Font Tokens"
+├─ font.display.[size].[weight]
+├─ font.code.[size].[weight]
+└─ font.context.*
+    ↓ referenced by
+App Group (Component)
+└─ font.[component].*
+```
+
+## Migration from Other Systems
+
+If you're migrating from systems that separate "font tokens" from "typography tokens":
+
+**In Chassis Tokens**:
+- What you might call "font tokens" = typography primitive tokens (fontFamily, fontWeight)
+- What you might call "text style tokens" = font tokens (composite typography)
+
+**Practical mapping**:
+- Old: Apply font family + font size + line height separately
+- New: Use single `font.text.medium.normal` token
+
+This consolidation reduces complexity and ensures all typographic properties are applied consistently.
+
+## See Also
+
+- [Typography Tokens]([[docsref:/design-tokens/typography-tokens]]) - Complete typography system documentation
+- [Color Tokens]([[docsref:/design-tokens/color-tokens]]) - Color system for text colors
+- [Tokens Studio]([[docsref:/getting-started/tokens-studio#typography-tokens]]) - How typography tokens are defined and organized
