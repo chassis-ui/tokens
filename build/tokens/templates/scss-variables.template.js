@@ -96,16 +96,16 @@ function resolveReferenceValue(token) {
  */
 function resolveBasicTypographyValue(token, dictionary) {
   const fontFamily = splitReference(token.original.$value.fontFamily)[2]
-  const fontSize = splitReference(token.original.$value.fontSize)[3]
-  const lineHeight = splitReference(token.original.$value.lineHeight)[3]
-  const fontWeight = splitReference(token.original.$extensions['chassis'].originalFontWeight)[3]
+  const fontSize = splitReference(token.original.$value.fontSize)
+  const lineHeight = splitReference(token.original.$value.lineHeight)
+  const fontWeight = splitReference(token.original.$extensions['chassis'].originalFontWeight)
 
   return buildTypographyMap({
     fontFamily: `$${prefix}typography-font-family-${fontFamily}`,
-    fontWeight: `$${prefix}typography-font-weight-${fontFamily}-${fontWeight}-weight`,
-    fontSize: `$${prefix}typography-font-size-${fontFamily}-${fontSize}`,
-    lineHeight: `$${prefix}typography-line-height-${fontFamily}-${lineHeight}`,
-    fontStyle: `$${prefix}typography-font-style-${fontFamily}-${fontWeight}-style`,
+    fontWeight: `$${prefix}typography-font-weight-${fontWeight[2]}-${fontWeight[3]}-weight`,
+    fontSize: `$${prefix}typography-font-size-${fontSize[2]}-${fontSize[3]}`,
+    lineHeight: `$${prefix}typography-line-height-${lineHeight[2]}-${lineHeight[3]}`,
+    fontStyle: `$${prefix}typography-font-weight-${fontWeight[2]}-${fontWeight[3]}-style`,
     resolvedValues: resolveOriginals(token.original.$value, dictionary)
   })
 }
