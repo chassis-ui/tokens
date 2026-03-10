@@ -1,5 +1,5 @@
 /**
- * @file scss-references.template.js
+ * @file scss-variables.template.js
  * @description Template for generating SCSS variables from design tokens. It processes tokens
  *              to create SCSS variable declarations, resolving references and formatting values
  *              for use in SCSS files.
@@ -13,6 +13,57 @@ import { isReference, splitReference, removeTrailingZeros } from '../utils.js'
 
 const usesDtcg = true
 const prefix = '$cx'
+
+/**
+ * Resolves token references for typography text properties.
+ *
+ * @param {Object} originalValue - The original.$value object of the token.
+ * @param {Object} dictionary - The token dictionary for resolving references.
+ * @returns {Object} - The resolved typography text properties.
+ */
+function resolveOriginals(originalValue, dictionary) {
+  return {
+    letterSpacing: resolveReferences(originalValue.letterSpacing, dictionary.tokens, { usesDtcg }),
+    paragraphSpacing: resolveReferences(originalValue.paragraphSpacing, dictionary.tokens, {
+      usesDtcg
+    }),
+    textCase: resolveReferences(originalValue.textCase, dictionary.tokens, { usesDtcg }),
+    textDecoration: resolveReferences(originalValue.textDecoration, dictionary.tokens, { usesDtcg })
+  }
+}
+
+/**
+ * Builds a SCSS-compatible typography map string from resolved values.
+ *
+ * @param {Object} params - The typography values.
+ * @param {string} params.fontFamily - The font-family value.
+ * @param {string} params.fontWeight - The font-weight value.
+ * @param {string} params.fontSize - The font-size value.
+ * @param {string} params.lineHeight - The line-height value.
+ * @param {string} params.fontStyle - The font-style value.
+ * @param {Object} params.resolvedValues - The resolved text properties.
+ * @returns {string} - The SCSS typography map string.
+ */
+function buildTypographyMap({
+  fontFamily,
+  fontWeight,
+  fontSize,
+  lineHeight,
+  fontStyle,
+  resolvedValues
+}) {
+  return `(${[
+    `"font-family": ${fontFamily}`,
+    `"font-weight": ${fontWeight}`,
+    `"font-size": ${fontSize}`,
+    `"line-height": ${lineHeight}`,
+    `"font-style": ${fontStyle}`,
+    `"letter-spacing": ${parseFloat(resolvedValues.letterSpacing)}em`,
+    `"margin-bottom": ${resolvedValues.paragraphSpacing}`,
+    `"text-transform": ${resolvedValues.textCase}`,
+    `"text-decoration": ${resolvedValues.textDecoration}`
+  ].join(', ')})`
+}
 
 /**
  * Resolves the value of a reference token.
@@ -34,7 +85,6 @@ function resolveReferenceValue(token) {
 
   const key = `${ref[0]}|${ref[1] || ''}`.trim()
   return refMapping[key] ? refMapping[key](ref) : token.$value
-  // return token.$value
 }
 
 /**
@@ -50,38 +100,14 @@ function resolveBasicTypographyValue(token, dictionary) {
   const lineHeight = splitReference(token.original.$value.lineHeight)[3]
   const fontWeight = splitReference(token.original.$extensions['chassis'].originalFontWeight)[3]
 
-  const letterSpacing = resolveReferences(token.original.$value.letterSpacing, dictionary.tokens, {
-    usesDtcg
+  return buildTypographyMap({
+    fontFamily: `${prefix}-typography-font-family-${fontFamily}`,
+    fontWeight: `${prefix}-typography-font-weight-${fontFamily}-${fontWeight}-weight`,
+    fontSize: `${prefix}-typography-font-size-${fontFamily}-${fontSize}`,
+    lineHeight: `${prefix}-typography-line-height-${fontFamily}-${lineHeight}`,
+    fontStyle: `${prefix}-typography-font-style-${fontFamily}-${fontWeight}-style`,
+    resolvedValues: resolveOriginals(token.original.$value, dictionary)
   })
-  const paragraphSpacing = resolveReferences(
-    token.original.$value.paragraphSpacing,
-    dictionary.tokens,
-    {
-      usesDtcg
-    }
-  )
-  const textCase = resolveReferences(token.original.$value.textCase, dictionary.tokens, {
-    usesDtcg
-  })
-  const textDecoration = resolveReferences(
-    token.original.$value.textDecoration,
-    dictionary.tokens,
-    {
-      usesDtcg
-    }
-  )
-
-  return `(${[
-    `"font-family": ${prefix}-typography-font-family-${fontFamily}`,
-    `"font-weight": ${prefix}-typography-font-weight-${fontFamily}-${fontWeight}-weight`,
-    `"font-size": ${prefix}-typography-font-size-${fontFamily}-${fontSize}`,
-    `"line-height": ${prefix}-typography-line-height-${fontFamily}-${lineHeight}`,
-    `"font-style": ${prefix}-typography-font-style-${fontFamily}-${fontWeight}-style`,
-    `"letter-spacing": ${parseFloat(letterSpacing)}em`,
-    `"margin-bottom": ${paragraphSpacing}`,
-    `"text-transform": ${textCase}`,
-    `"text-decoration": ${textDecoration}`
-  ].join(', ')})`
 }
 
 /**
@@ -117,39 +143,14 @@ function resolveContextTypographyValue(token, dictionary) {
           ? `${parseFloat(referenceLh) / 100}em`
           : referenceLh
 
-  const fontStyle = token.original.$value.fontStyle
-  const letterSpacing = resolveReferences(token.original.$value.letterSpacing, dictionary.tokens, {
-    usesDtcg
+  return buildTypographyMap({
+    fontFamily: `${prefix}-typography-font-family-${fontFamily}`,
+    fontWeight: `${prefix}-typography-font-weight-${fontWeight[2]}-${fontWeight[3]}-weight`,
+    fontSize,
+    lineHeight,
+    fontStyle: `${prefix}-typography-font-weight-${fontWeight[2]}-${fontWeight[3]}-style`,
+    resolvedValues: resolveOriginals(token.original.$value, dictionary)
   })
-  const paragraphSpacing = resolveReferences(
-    token.original.$value.paragraphSpacing,
-    dictionary.tokens,
-    {
-      usesDtcg
-    }
-  )
-  const textCase = resolveReferences(token.original.$value.textCase, dictionary.tokens, {
-    usesDtcg
-  })
-  const textDecoration = resolveReferences(
-    token.original.$value.textDecoration,
-    dictionary.tokens,
-    {
-      usesDtcg
-    }
-  )
-
-  return `(${[
-    `"font-family": ${prefix}-typography-font-family-${fontFamily}`,
-    `"font-weight": ${prefix}-typography-font-weight-${fontWeight[2]}-${fontWeight[3]}-weight`,
-    `"font-size": ${fontSize}`,
-    `"line-height": ${lineHeight}`,
-    `"font-style": ${prefix}-typography-font-weight-${fontWeight[2]}-${fontWeight[3]}-style`,
-    `"letter-spacing": ${parseFloat(letterSpacing)}em`,
-    `"margin-bottom": ${paragraphSpacing}`,
-    `"text-transform": ${textCase}`,
-    `"text-decoration": ${textDecoration}`
-  ].join(', ')})`
 }
 
 /**
@@ -162,33 +163,15 @@ function resolveContextTypographyValue(token, dictionary) {
 function resolveComponentTypographyValue(token, dictionary) {
   const ref = splitReference(token.original.$value)
   const original = resolveReferences(token.original.$value, dictionary.tokens)
-  const originals = {
-    fontStyle: original.original.$value.fontStyle,
-    letterSpacing: resolveReferences(original.original.$value.letterSpacing, dictionary.tokens, {
-      usesDtcg
-    }),
-    paragraphSpacing: resolveReferences(
-      original.original.$value.paragraphSpacing,
-      dictionary.tokens,
-      { usesDtcg }
-    ),
-    textCase: resolveReferences(original.original.$value.textCase, dictionary.tokens, { usesDtcg }),
-    textDecoration: resolveReferences(original.original.$value.textDecoration, dictionary.tokens, {
-      usesDtcg
-    })
-  }
 
-  return `(${[
-    `"font-family": ${prefix}-typography-font-family-${ref[1]}`,
-    `"font-weight": ${prefix}-typography-font-weight-${ref[1]}-${ref[3]}-weight`,
-    `"font-size": ${prefix}-typography-font-size-${ref[1]}-${ref[2]}`,
-    `"line-height": ${prefix}-typography-line-height-${ref[1]}-${ref[2]}`,
-    `"font-style": ${prefix}-typography-font-weight-${ref[1]}-${ref[3]}-style`,
-    `"letter-spacing": ${parseFloat(originals.letterSpacing)}em`,
-    `"margin-bottom": ${originals.paragraphSpacing}`,
-    `"text-transform": ${originals.textCase}`,
-    `"text-decoration": ${originals.textDecoration}`
-  ].join(', ')})`
+  return buildTypographyMap({
+    fontFamily: `${prefix}-typography-font-family-${ref[1]}`,
+    fontWeight: `${prefix}-typography-font-weight-${ref[1]}-${ref[3]}-weight`,
+    fontSize: `${prefix}-typography-font-size-${ref[1]}-${ref[2]}`,
+    lineHeight: `${prefix}-typography-line-height-${ref[1]}-${ref[2]}`,
+    fontStyle: `${prefix}-typography-font-weight-${ref[1]}-${ref[3]}-style`,
+    resolvedValues: resolveOriginals(original.original.$value, dictionary)
+  })
 }
 
 /**
@@ -196,7 +179,6 @@ function resolveComponentTypographyValue(token, dictionary) {
  *
  * @param {Object} token - The token object to convert.
  * @param {Object} dictionary - The token dictionary for resolving references.
- * @param {Object} options - Options for resolving references and formatting.
  * @returns {string} - The token's resolved value as a SCSS-compatible string.
  */
 function tokenToValue(token, dictionary) {
@@ -206,20 +188,13 @@ function tokenToValue(token, dictionary) {
     ['color', 'space', 'opacity', 'borderRadius', 'borderWidth'].includes(token.path[0])
   ) {
     return resolveReferenceValue(token)
-  } else if (
-    token.$type === 'typography' &&
-    typeof token.original.$value === 'object' &&
-    token.path[1] !== 'context'
-  ) {
-    return resolveBasicTypographyValue(token, dictionary)
-  } else if (
-    token.$type === 'typography' &&
-    typeof token.original.$value === 'object' &&
-    token.path[1] === 'context'
-  ) {
-    return resolveContextTypographyValue(token, dictionary)
-  } else if (token.$type === 'typography' && typeof token.original.$value !== 'object') {
-    return resolveComponentTypographyValue(token, dictionary)
+  } else if (token.$type === 'typography') {
+    if (typeof token.original.$value !== 'object') {
+      return resolveComponentTypographyValue(token, dictionary)
+    }
+    return token.path[1] === 'context'
+      ? resolveContextTypographyValue(token, dictionary)
+      : resolveBasicTypographyValue(token, dictionary)
   } else if (token.$type === 'lineHeight') {
     const fs = resolveReferences(
       `{typography.fontSize.${token.path[2]}.${token.path[3]}}`,

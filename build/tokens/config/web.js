@@ -5,7 +5,7 @@
  * @license MIT
  */
 
-const format = 'cx/scss-chassis-css'
+const format = 'cx/scss-variables'
 
 const options = {
   fileHeader: 'cxFileHeader',
