@@ -222,14 +222,14 @@ function tokenToLine(token, dictionary, options) {
  * @returns {string} - The generated SCSS variables template as a string.
  */
 export default (opts) => {
-  const { dictionary, options, file, header } = opts
+  const { dictionary, options, file, header, platform } = opts
 
   return `
 //
 // ${file.destination}
 //
 ${header}
-$prefix: cx- !default;
+${platform?.prefix ? `$prefix: ${platform.prefix}- !default;` : `$prefix: null !default;`}
 // scss-docs-start design-tokens
 ${dictionary.allTokens.map((token) => tokenToLine(token, dictionary, options)).join(`\n`)}
 // scss-docs-end design-tokens

@@ -41,12 +41,12 @@ export default function (StyleDictionary) {
    */
   StyleDictionary.registerFormat({
     name: 'cx/scss-chassis-css',
-    format: async function ({ dictionary, options, file }) {
+    format: async function ({ dictionary, options, file, platform }) {
       const { formatting, commentStyle } = options
       const header = await fileHeader({ file, formatting, commentStyle })
       dictionary.allTokens = [...dictionary.allTokens]
       // .sort(sortByName)
-      return scssChassisCSSTemplate({ dictionary, options, file, header })
+      return scssChassisCSSTemplate({ dictionary, options, file, header, platform })
     }
   })
 
@@ -55,12 +55,12 @@ export default function (StyleDictionary) {
    */
   StyleDictionary.registerFormat({
     name: 'cx/scss-variables',
-    format: async function ({ dictionary, options, file }) {
+    format: async function ({ dictionary, options, file, platform }) {
       const { formatting, commentStyle } = options
       const header = await fileHeader({ file, formatting, commentStyle })
       dictionary.allTokens = [...dictionary.allTokens]
       // .sort(sortByName)
-      return scssVariablesTemplate({ dictionary, options, file, header })
+      return scssVariablesTemplate({ dictionary, options, file, header, platform })
     }
   })
 
@@ -75,7 +75,7 @@ export default function (StyleDictionary) {
       options = setSwiftFileProperties(options, 'class', platform.transformGroup)
       dictionary.allTokens = [...dictionary.allTokens]
       // .sort(sortByName)
-      return iosSwiftClassTemplate({ dictionary, options, file, header })
+      return iosSwiftClassTemplate({ dictionary, options, file, header, platform })
     }
   })
 
@@ -84,12 +84,12 @@ export default function (StyleDictionary) {
    */
   StyleDictionary.registerFormat({
     name: 'cx/android-resources',
-    format: async function ({ dictionary, options, file }) {
+    format: async function ({ dictionary, options, file, platform }) {
       const { formatting, commentStyle } = options
       const header = await fileHeader({ file, formatting, commentStyle })
       dictionary.allTokens = [...dictionary.allTokens]
       // .sort(sortByName)
-      return androidResourcesTemplate({ dictionary, options, file, header })
+      return androidResourcesTemplate({ dictionary, options, file, header, platform })
     }
   })
 }

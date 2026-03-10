@@ -12,7 +12,7 @@ import { getReferences, resolveReferences } from 'style-dictionary/utils'
 import { isReference, splitReference, removeTrailingZeros } from '../utils.js'
 
 const usesDtcg = true
-const prefix = '$cx'
+let prefix
 
 /**
  * Resolves token references for typography text properties.
@@ -74,13 +74,13 @@ function buildTypographyMap({
 function resolveReferenceValue(token) {
   const ref = splitReference(token.original.$value)
   const refMapping = {
-    'color|context': (ref) => `${prefix}-color-context-${ref[2]}-${ref[3]}`,
-    'color|palette': (ref) => `${prefix}-color-palette-${ref[2]}-${ref[3]}`,
-    'space|context': (ref) => `${prefix}-space-context-${ref[2]}`,
-    opacity: (ref) => `${prefix}-opacity-${ref[2]}`,
+    'color|context': (ref) => `$${prefix}color-context-${ref[2]}-${ref[3]}`,
+    'color|palette': (ref) => `$${prefix}color-palette-${ref[2]}-${ref[3]}`,
+    'space|context': (ref) => `$${prefix}space-context-${ref[2]}`,
+    opacity: (ref) => `$${prefix}opacity-${ref[2]}`,
     'borderRadius|context': (ref) =>
-      `${prefix}-border-radius-context-${ref[2].includes('round') ? 'round' : ref[2]}`,
-    'borderWidth|context': (ref) => `${prefix}-border-width-context-${ref[2]}`
+      `$${prefix}border-radius-context-${ref[2].includes('round') ? 'round' : ref[2]}`,
+    'borderWidth|context': (ref) => `$${prefix}border-width-context-${ref[2]}`
   }
 
   const key = `${ref[0]}|${ref[1] || ''}`.trim()
@@ -101,11 +101,11 @@ function resolveBasicTypographyValue(token, dictionary) {
   const fontWeight = splitReference(token.original.$extensions['chassis'].originalFontWeight)[3]
 
   return buildTypographyMap({
-    fontFamily: `${prefix}-typography-font-family-${fontFamily}`,
-    fontWeight: `${prefix}-typography-font-weight-${fontFamily}-${fontWeight}-weight`,
-    fontSize: `${prefix}-typography-font-size-${fontFamily}-${fontSize}`,
-    lineHeight: `${prefix}-typography-line-height-${fontFamily}-${lineHeight}`,
-    fontStyle: `${prefix}-typography-font-style-${fontFamily}-${fontWeight}-style`,
+    fontFamily: `$${prefix}typography-font-family-${fontFamily}`,
+    fontWeight: `$${prefix}typography-font-weight-${fontFamily}-${fontWeight}-weight`,
+    fontSize: `$${prefix}typography-font-size-${fontFamily}-${fontSize}`,
+    lineHeight: `$${prefix}typography-line-height-${fontFamily}-${lineHeight}`,
+    fontStyle: `$${prefix}typography-font-style-${fontFamily}-${fontWeight}-style`,
     resolvedValues: resolveOriginals(token.original.$value, dictionary)
   })
 }
@@ -131,12 +131,12 @@ function resolveContextTypographyValue(token, dictionary) {
 
   const fontSize =
     referenceFs && referenceFs.$type === 'fontSize'
-      ? `${prefix}-typography-font-size-${referenceFs.path[2]}-${referenceFs.path[3]}`
+      ? `$${prefix}typography-font-size-${referenceFs.path[2]}-${referenceFs.path[3]}`
       : referenceFs.$value
   // If the reference is a percentage, convert it to a decimal
   const lineHeight =
     referenceLh && referenceLh.$type === 'lineHeight'
-      ? `${prefix}-typography-line-height-${referenceLh.path[2]}-${referenceLh.path[3]}`
+      ? `$${prefix}typography-line-height-${referenceLh.path[2]}-${referenceLh.path[3]}`
       : referenceLh.$value
         ? referenceLh.$value
         : referenceLh.endsWith('%')
@@ -144,11 +144,11 @@ function resolveContextTypographyValue(token, dictionary) {
           : referenceLh
 
   return buildTypographyMap({
-    fontFamily: `${prefix}-typography-font-family-${fontFamily}`,
-    fontWeight: `${prefix}-typography-font-weight-${fontWeight[2]}-${fontWeight[3]}-weight`,
+    fontFamily: `$${prefix}typography-font-family-${fontFamily}`,
+    fontWeight: `$${prefix}typography-font-weight-${fontWeight[2]}-${fontWeight[3]}-weight`,
     fontSize,
     lineHeight,
-    fontStyle: `${prefix}-typography-font-weight-${fontWeight[2]}-${fontWeight[3]}-style`,
+    fontStyle: `$${prefix}typography-font-weight-${fontWeight[2]}-${fontWeight[3]}-style`,
     resolvedValues: resolveOriginals(token.original.$value, dictionary)
   })
 }
@@ -165,11 +165,11 @@ function resolveComponentTypographyValue(token, dictionary) {
   const original = resolveReferences(token.original.$value, dictionary.tokens)
 
   return buildTypographyMap({
-    fontFamily: `${prefix}-typography-font-family-${ref[1]}`,
-    fontWeight: `${prefix}-typography-font-weight-${ref[1]}-${ref[3]}-weight`,
-    fontSize: `${prefix}-typography-font-size-${ref[1]}-${ref[2]}`,
-    lineHeight: `${prefix}-typography-line-height-${ref[1]}-${ref[2]}`,
-    fontStyle: `${prefix}-typography-font-weight-${ref[1]}-${ref[3]}-style`,
+    fontFamily: `$${prefix}typography-font-family-${ref[1]}`,
+    fontWeight: `$${prefix}typography-font-weight-${ref[1]}-${ref[3]}-weight`,
+    fontSize: `$${prefix}typography-font-size-${ref[1]}-${ref[2]}`,
+    lineHeight: `$${prefix}typography-line-height-${ref[1]}-${ref[2]}`,
+    fontStyle: `$${prefix}typography-font-weight-${ref[1]}-${ref[3]}-style`,
     resolvedValues: resolveOriginals(original.original.$value, dictionary)
   })
 }
@@ -318,14 +318,15 @@ function tokenToLine(token, dictionary, options) {
  * @returns {string} - The generated SCSS variables template as a string.
  */
 export default (opts) => {
-  const { dictionary, options, file, header } = opts
+  const { dictionary, options, file, header, platform } = opts
+  prefix = platform?.prefix ? `${platform.prefix}-` : ''
 
   return `
 //
 // ${file.destination}
 //
 ${header}
-$prefix: cx- !default;
+${platform?.prefix ? `$prefix: ${platform.prefix}- !default;` : `$prefix: null !default;`}
 // scss-docs-start design-tokens
 ${dictionary.allTokens.map((token) => tokenToLine(token, dictionary, options)).join(`\n`)}
 // scss-docs-end design-tokens
