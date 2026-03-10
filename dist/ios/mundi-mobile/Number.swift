@@ -1,18 +1,10 @@
 
 //
-<<<<<<<< HEAD:dist/ios/mundi-mobile/Number.swift
 // Number.swift
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Mon, 09 Mar 2026 15:39:40 GMT
-========
-// NumberLarge.swift
-//
-
-// Do not edit directly, this file was auto-generated.
-// Generated on Tue, 10 Mar 2026 10:48:58 GMT
->>>>>>>> dev/main:dist/ios/mundi-mobile/NumberLarge.swift
+// Generated on Tue, 10 Mar 2026 12:10:32 GMT
 // Chassis - Tokens v0.1.0
 // Copyright 2026 Ozgur Gunes
 // Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
