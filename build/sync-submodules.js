@@ -108,12 +108,10 @@ class SubmoduleSync {
 
     const submodulePath = path.join(this.rootDir, submodule.path)
 
-    if (!fs.existsSync(submodulePath)) {
-      this.log(`${submodule.name} not found at ${submodule.path}`, 'warning')
-      return
-    }
-
     try {
+      // Initialize and fetch latest from remote (like updateVendorAssets)
+      this.runCommand(`git submodule update --init --remote ${submodule.path}`, this.rootDir, true)
+
       // Ensure we're on the correct branch if specified
       if (submodule.expectedBranch) {
         const currentBranch = this.runCommand(
@@ -134,18 +132,8 @@ class SubmoduleSync {
           this.runCommand(`git checkout ${submodule.expectedBranch}`, submodulePath, true)
           this.runCommand(`git pull origin ${submodule.expectedBranch}`, submodulePath, true)
         } else {
-          this.runCommand(
-            `git submodule update --remote --merge ${submodule.path}`,
-            this.rootDir,
-            true
-          )
+          this.runCommand(`git pull origin ${submodule.expectedBranch}`, submodulePath, true)
         }
-      } else {
-        this.runCommand(
-          `git submodule update --remote --merge ${submodule.path}`,
-          this.rootDir,
-          true
-        )
       }
 
       this.log(`${submodule.name} synced successfully`, 'success')
@@ -204,19 +192,15 @@ class SubmoduleSync {
   }
 
   /**
-   * Initialize submodules if they don't exist
+   * Initialize and update submodules
    */
   initializeSubmodules() {
+    this.log('Initializing and updating submodules...', 'info')
     try {
-      this.runCommand('git submodule status', this.rootDir, true)
+      this.runCommand('git submodule update --init --recursive')
     } catch {
-      this.log('Initializing submodules...', 'info')
-      try {
-        this.runCommand('git submodule update --init --recursive')
-      } catch {
-        this.log('Some submodules may not be available or have uncommitted changes', 'warning')
-        this.log('Continuing with existing submodules...', 'warning')
-      }
+      this.log('Some submodules may not be available or have uncommitted changes', 'warning')
+      this.log('Continuing with existing submodules...', 'warning')
     }
   }
 
