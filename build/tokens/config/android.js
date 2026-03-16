@@ -62,7 +62,7 @@ export default function (brand, app, theme, screen) {
   return {
     transforms,
     expand,
-    buildPath: `dist/android/${brand}-${app}/`,
+    buildPath: `dist/android/${app}/${brand}/`,
     options,
     files: generateFiles(theme, screen)
   }

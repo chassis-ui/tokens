@@ -75,7 +75,7 @@ export default function (brand, app, theme, screen) {
   return {
     transforms,
     expand,
-    buildPath: `dist/ios/${brand}-${app}/`,
+    buildPath: `dist/ios/${app}/${brand}/`,
     options,
     files: generateFiles(theme, screen)
   }

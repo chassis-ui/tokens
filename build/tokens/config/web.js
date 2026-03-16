@@ -62,7 +62,7 @@ export default function (brand, app, theme, screen) {
     prefix: 'cx',
     basePxFontSize: 16,
     transforms,
-    buildPath: `dist/web/${brand}-${app}/`,
+    buildPath: `dist/web/${app}/${brand}/`,
     options,
     files: generateFiles(theme, screen)
   }
