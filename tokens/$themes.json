@@ -1,5 +1,16 @@
 [
   {
+    "id": "8a40860ffe6b1a02797599b544f005ac4451e6c9",
+    "name": "default",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "base/brand-base": "enabled",
+      "base/metric-base": "source",
+      "base/metric-px": "source"
+    },
+    "group": "brand"
+  },
+  {
     "id": "95e65f2cc9a0c7a3b883f9b7db0b5deb8bd4271a",
     "name": "chassis",
     "selectedTokenSets": {
@@ -10,7 +21,6 @@
     },
     "$figmaCollectionId": "VariableCollectionId:302:172",
     "$figmaModeId": "302:0",
-    "group": "brand",
     "$figmaVariableReferences": {
       "figma.switch.brand.mode-2": "90349a1aa1d2dda1bc6b3a9c3749fff30f199e92",
       "color.base.palette.light.neutral.base": "b2cbb6d75dbd24d04f634ff8045351aa18f5ed0e",
@@ -1603,11 +1613,12 @@
       "typography.lineHeight.code.medium": "ffd7cf51bdb49daaa3e2721ee44aa5c92198d756",
       "typography.lineHeight.code.small": "21a56210d1035d345a3c3c4e14e9b878c1bcb019",
       "borderRadius.base.round": "440748aeb5ee9d68cc0bd6cfb3eef1728ca2c337"
-    }
+    },
+    "group": "brand"
   },
   {
     "id": "eb50659f7aae0533f750bbb36334a0c1fecc93c3",
-    "name": "test",
+    "name": "example",
     "selectedTokenSets": {
       "base/metric-px": "source",
       "base/metric-base": "source",
@@ -1616,7 +1627,6 @@
     },
     "$figmaCollectionId": "VariableCollectionId:302:172",
     "$figmaModeId": "302:1",
-    "group": "brand",
     "$figmaVariableReferences": {
       "figma.switch.brand.mode-1": "bc8c1a5dfccf2eda849650c890e987a54d9d777d",
       "color.base.palette.light.neutral.base": "b2cbb6d75dbd24d04f634ff8045351aa18f5ed0e",
@@ -3209,7 +3219,9 @@
       "typography.lineHeight.code.medium": "ffd7cf51bdb49daaa3e2721ee44aa5c92198d756",
       "typography.lineHeight.code.small": "21a56210d1035d345a3c3c4e14e9b878c1bcb019",
       "borderRadius.base.round": "440748aeb5ee9d68cc0bd6cfb3eef1728ca2c337"
-    }
+    },
+    "$figmaStyleReferences": {},
+    "group": "brand"
   },
   {
     "id": "7f6467f47d71c17ddf6d3e2eccead159671d9ac8",
@@ -4161,7 +4173,7 @@
   },
   {
     "id": "43a15af07b39fa6b5be11ce8c41f769957f7f7f3",
-    "name": "test",
+    "name": "demo",
     "selectedTokenSets": {
       "base/metric-px": "source",
       "base/metric-base": "enabled",
@@ -4172,7 +4184,6 @@
     },
     "$figmaCollectionId": "VariableCollectionId:302:173",
     "$figmaModeId": "302:3",
-    "group": "app",
     "$figmaVariableReferences": {
       "color.map.marker-bg": "1fa2324df0622e02472b104fb01cb66a8751a9b1",
       "color.map.marker-fg": "5343c562ded166fdf2895ebb162b3d94b69cd433",
@@ -5113,7 +5124,8 @@
       "shadow.button.hover": "S:e40f6813f9eec493704ea443cd3e472bcf817a66,",
       "shadow.button.press": "S:658d14990306cc1de0e3713ba88cce152a6fa2ae,",
       "shadow.button.disabled": "S:07a841e25f178e3eb1d7b4de7f1415ab1419f714,"
-    }
+    },
+    "group": "app"
   },
   {
     "id": "be120f763d44f432102213ddb3bb2abedc925b81",
@@ -5128,7 +5140,6 @@
     },
     "$figmaCollectionId": "VariableCollectionId:302:174",
     "$figmaModeId": "302:4",
-    "group": "theme",
     "$figmaVariableReferences": {
       "figma.switch.theme.mode-2": "c73e8aae31780c4973e936de114cb0397ed0efa0",
       "color.context.default.base-color": "0fc7f22edf3afdc78d7757b559b4c60dd6bbe8d9",
@@ -6025,7 +6036,8 @@
       "shadow.glow.info": "S:009b4168a81c6a9df8a4d2d8e2111c86f1b28543,",
       "bg-blur.default": "S:f123f658845df35bf374a5aa7c69b076a58875a1,",
       "bg-blur.alternate": "S:205dfad41a6f32cdb1143287aadb8797db46b5da,"
-    }
+    },
+    "group": "theme"
   },
   {
     "id": "6219ffaec815a0b8a4662208157bef8b2afca437",
@@ -6040,7 +6052,6 @@
     },
     "$figmaCollectionId": "VariableCollectionId:302:174",
     "$figmaModeId": "302:5",
-    "group": "theme",
     "$figmaVariableReferences": {
       "figma.switch.theme.mode-1": "d112cadb1f98704d8f7c197148b67faa13a996df",
       "figma.switch.theme.mode-2": "c73e8aae31780c4973e936de114cb0397ed0efa0",
@@ -7025,7 +7036,8 @@
       "gradient.palette.accent.l-50-225": "S:b5cbcf37a90253ac171b0ed1f26e61b1d85c4750,",
       "gradient.palette.accent.l-50-270": "S:552857f8c5cb58eabd7a2c887b030bef498c2ce3,",
       "gradient.palette.accent.l-50-315": "S:69372fa57dd19368a8356bf699a93b4f1e9b341c,"
-    }
+    },
+    "group": "theme"
   },
   {
     "id": "2694097e54873ec93ae7689d98ef62497f11db27",
