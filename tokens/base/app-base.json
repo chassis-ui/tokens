@@ -3991,35 +3991,35 @@
       },
       "xsmall": {
         "$type": "borderRadius",
-        "$value": "{borderRadius.base.xsmall}"
+        "$value": "{borderRadius.base.context.xsmall}"
       },
       "small": {
         "$type": "borderRadius",
-        "$value": "{borderRadius.base.small}"
+        "$value": "{borderRadius.base.context.small}"
       },
       "medium": {
         "$type": "borderRadius",
-        "$value": "{borderRadius.base.medium}"
+        "$value": "{borderRadius.base.context.medium}"
       },
       "large": {
         "$type": "borderRadius",
-        "$value": "{borderRadius.base.large}"
+        "$value": "{borderRadius.base.context.large}"
       },
       "xlarge": {
         "$type": "borderRadius",
-        "$value": "{borderRadius.base.xlarge}"
+        "$value": "{borderRadius.base.context.xlarge}"
       },
       "2xlarge": {
         "$type": "borderRadius",
-        "$value": "{borderRadius.base.2xlarge}"
+        "$value": "{borderRadius.base.context.2xlarge}"
       },
       "3xlarge": {
         "$type": "borderRadius",
-        "$value": "{borderRadius.base.3xlarge}"
+        "$value": "{borderRadius.base.context.3xlarge}"
       },
       "round": {
         "$type": "borderRadius",
-        "$value": "{borderRadius.base.round}"
+        "$value": "{borderRadius.base.context.round}"
       },
       "round-8": {
         "$type": "borderRadius",
