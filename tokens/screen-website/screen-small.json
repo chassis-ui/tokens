@@ -59,67 +59,67 @@
     "screen": {
       "section-padding-y": {
         "$type": "spacing",
-        "$value": "{space.base.48}"
+        "$value": "{space.unit.48}"
       },
       "section-padding-x": {
         "$type": "spacing",
-        "$value": "{space.base.16}"
+        "$value": "{space.unit.16}"
       },
       "section-gap-y": {
         "$type": "spacing",
-        "$value": "{space.base.32}"
+        "$value": "{space.unit.32}"
       },
       "section-gap-x": {
         "$type": "spacing",
-        "$value": "{space.base.16}"
+        "$value": "{space.unit.16}"
       },
       "content-padding-y": {
         "$type": "spacing",
-        "$value": "{space.base.24}"
+        "$value": "{space.unit.24}"
       },
       "content-padding-x": {
         "$type": "spacing",
-        "$value": "{space.base.0}"
+        "$value": "{space.unit.0}"
       },
       "content-gap-y": {
         "$type": "spacing",
-        "$value": "{space.base.24}"
+        "$value": "{space.unit.24}"
       },
       "content-gap-x": {
         "$type": "spacing",
-        "$value": "{space.base.16}"
+        "$value": "{space.unit.16}"
       },
       "feature-padding-y": {
         "$type": "spacing",
-        "$value": "{space.base.24}"
+        "$value": "{space.unit.24}"
       },
       "feature-padding-x": {
         "$type": "spacing",
-        "$value": "{space.base.0}"
+        "$value": "{space.unit.0}"
       },
       "feature-gap-y": {
         "$type": "spacing",
-        "$value": "{space.base.24}"
+        "$value": "{space.unit.24}"
       },
       "feature-gap-x": {
         "$type": "spacing",
-        "$value": "{space.base.16}"
+        "$value": "{space.unit.16}"
       },
       "module-padding-y": {
         "$type": "spacing",
-        "$value": "{space.base.16}"
+        "$value": "{space.unit.16}"
       },
       "module-padding-x": {
         "$type": "spacing",
-        "$value": "{space.base.16}"
+        "$value": "{space.unit.16}"
       },
       "module-gap-y": {
         "$type": "spacing",
-        "$value": "{space.base.16}"
+        "$value": "{space.unit.16}"
       },
       "module-gap-x": {
         "$type": "spacing",
-        "$value": "{space.base.16}"
+        "$value": "{space.unit.16}"
       }
     }
   },
@@ -127,19 +127,19 @@
     "screen": {
       "section-thumb": {
         "$type": "sizing",
-        "$value": "{size.base.64}"
+        "$value": "{size.unit.64}"
       },
       "section-icon": {
         "$type": "sizing",
-        "$value": "{size.base.48}"
+        "$value": "{size.unit.48}"
       },
       "feature-thumb": {
         "$type": "sizing",
-        "$value": "{size.base.40}"
+        "$value": "{size.unit.40}"
       },
       "feature-icon": {
         "$type": "sizing",
-        "$value": "{size.base.32}"
+        "$value": "{size.unit.32}"
       },
       "section-w": {
         "$type": "sizing",

@@ -1,6 +1,6 @@
 {
   "size": {
-    "base": {
+    "unit": {
       "0": {
         "$type": "sizing",
         "$value": "{dimension.base.0}"
@@ -284,7 +284,7 @@
     }
   },
   "space": {
-    "base": {
+    "unit": {
       "0": {
         "$type": "spacing",
         "$value": "{dimension.base.0}"
@@ -488,7 +488,7 @@
     }
   },
   "opacity": {
-    "base": {
+    "level": {
       "10": {
         "$type": "opacity",
         "$value": "0.1"

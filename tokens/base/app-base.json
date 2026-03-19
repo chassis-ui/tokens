@@ -29,8 +29,8 @@
           "fontFamily": "{typography.fontFamily.display}",
           "fontWeight": "{typography.fontWeight.display.mass}",
           "lineHeight": "125%",
-          "fontSize": "{size.base.96}",
-          "letterSpacing": "{size.base.n1}",
+          "fontSize": "{size.unit.96}",
+          "letterSpacing": "{size.unit.n1}",
           "paragraphSpacing": "{typography.paragraphSpacing.base.zero}",
           "textCase": "{typography.textCase.base.none}",
           "textDecoration": "{typography.textDecoration.base.none}"
@@ -42,8 +42,8 @@
           "fontFamily": "{typography.fontFamily.display}",
           "fontWeight": "{typography.fontWeight.display.mass}",
           "lineHeight": "125%",
-          "fontSize": "{size.base.64}",
-          "letterSpacing": "{size.base.n1}",
+          "fontSize": "{size.unit.64}",
+          "letterSpacing": "{size.unit.n1}",
           "paragraphSpacing": "{typography.paragraphSpacing.base.zero}",
           "textCase": "{typography.textCase.base.none}",
           "textDecoration": "{typography.textDecoration.base.none}"
@@ -3093,243 +3093,243 @@
     "asset": {
       "indicator": {
         "$type": "sizing",
-        "$value": "{size.base.4}"
+        "$value": "{size.unit.4}"
       },
       "separator": {
         "$type": "sizing",
-        "$value": "{size.base.1}"
+        "$value": "{size.unit.1}"
       }
     },
     "context": {
       "2xlarge": {
         "$type": "sizing",
-        "$value": "{size.base.64}"
+        "$value": "{size.unit.64}"
       },
       "xlarge": {
         "$type": "sizing",
-        "$value": "{size.base.56}"
+        "$value": "{size.unit.56}"
       },
       "large": {
         "$type": "sizing",
-        "$value": "{size.base.48}"
+        "$value": "{size.unit.48}"
       },
       "medium": {
         "$type": "sizing",
-        "$value": "{size.base.40}"
+        "$value": "{size.unit.40}"
       },
       "small": {
         "$type": "sizing",
-        "$value": "{size.base.32}"
+        "$value": "{size.unit.32}"
       },
       "xsmall": {
         "$type": "sizing",
-        "$value": "{size.base.24}"
+        "$value": "{size.unit.24}"
       },
       "2xsmall": {
         "$type": "sizing",
-        "$value": "{size.base.16}"
+        "$value": "{size.unit.16}"
       }
     },
     "icon": {
       "glyph": {
         "6xlarge": {
           "$type": "sizing",
-          "$value": "{size.base.64}"
+          "$value": "{size.unit.64}"
         },
         "5xlarge": {
           "$type": "sizing",
-          "$value": "{size.base.56}"
+          "$value": "{size.unit.56}"
         },
         "4xlarge": {
           "$type": "sizing",
-          "$value": "{size.base.48}"
+          "$value": "{size.unit.48}"
         },
         "3xlarge": {
           "$type": "sizing",
-          "$value": "{size.base.40}"
+          "$value": "{size.unit.40}"
         },
         "2xlarge": {
           "$type": "sizing",
-          "$value": "{size.base.36}"
+          "$value": "{size.unit.36}"
         },
         "xlarge": {
           "$type": "sizing",
-          "$value": "{size.base.32}"
+          "$value": "{size.unit.32}"
         },
         "large": {
           "$type": "sizing",
-          "$value": "{size.base.28}"
+          "$value": "{size.unit.28}"
         },
         "medium": {
           "$type": "sizing",
-          "$value": "{size.base.24}"
+          "$value": "{size.unit.24}"
         },
         "small": {
           "$type": "sizing",
-          "$value": "{size.base.20}"
+          "$value": "{size.unit.20}"
         },
         "xsmall": {
           "$type": "sizing",
-          "$value": "{size.base.16}"
+          "$value": "{size.unit.16}"
         },
         "2xsmall": {
           "$type": "sizing",
-          "$value": "{size.base.12}"
+          "$value": "{size.unit.12}"
         },
         "3xsmall": {
           "$type": "sizing",
-          "$value": "{size.base.8}"
+          "$value": "{size.unit.8}"
         }
       }
     },
     "accordion": {
       "medium-indicator": {
         "$type": "sizing",
-        "$value": "{size.base.24}"
+        "$value": "{size.unit.24}"
       },
       "large-indicator": {
         "$type": "sizing",
-        "$value": "{size.base.28}"
+        "$value": "{size.unit.28}"
       },
       "small-indicator": {
         "$type": "sizing",
-        "$value": "{size.base.20}"
+        "$value": "{size.unit.20}"
       }
     },
     "alert": {
       "large-icon": {
         "$type": "sizing",
-        "$value": "{size.base.40}"
+        "$value": "{size.unit.40}"
       },
       "small-icon": {
         "$type": "sizing",
-        "$value": "{size.base.40}"
+        "$value": "{size.unit.40}"
       }
     },
     "badge": {
       "medium-main": {
         "$type": "sizing",
-        "$value": "{size.base.24}"
+        "$value": "{size.unit.24}"
       },
       "medium-icon": {
         "$type": "sizing",
-        "$value": "{size.base.16}"
+        "$value": "{size.unit.16}"
       },
       "large-main": {
         "$type": "sizing",
-        "$value": "{size.base.28}"
+        "$value": "{size.unit.28}"
       },
       "large-icon": {
         "$type": "sizing",
-        "$value": "{size.base.20}"
+        "$value": "{size.unit.20}"
       },
       "small-main": {
         "$type": "sizing",
-        "$value": "{size.base.20}"
+        "$value": "{size.unit.20}"
       },
       "small-icon": {
         "$type": "sizing",
-        "$value": "{size.base.12}"
+        "$value": "{size.unit.12}"
       }
     },
     "button": {
       "medium-main": {
         "$type": "sizing",
-        "$value": "{size.base.40}"
+        "$value": "{size.unit.40}"
       },
       "medium-icon": {
         "$type": "sizing",
-        "$value": "{size.base.24}"
+        "$value": "{size.unit.24}"
       },
       "medium-caret": {
         "$type": "sizing",
-        "$value": "{size.base.20}"
+        "$value": "{size.unit.20}"
       },
       "large-main": {
         "$type": "sizing",
-        "$value": "{size.base.48}"
+        "$value": "{size.unit.48}"
       },
       "large-icon": {
         "$type": "sizing",
-        "$value": "{size.base.28}"
+        "$value": "{size.unit.28}"
       },
       "large-caret": {
         "$type": "sizing",
-        "$value": "{size.base.24}"
+        "$value": "{size.unit.24}"
       },
       "small-main": {
         "$type": "sizing",
-        "$value": "{size.base.32}"
+        "$value": "{size.unit.32}"
       },
       "small-icon": {
         "$type": "sizing",
-        "$value": "{size.base.20}"
+        "$value": "{size.unit.20}"
       },
       "small-caret": {
         "$type": "sizing",
-        "$value": "{size.base.16}"
+        "$value": "{size.unit.16}"
       }
     },
     "chip": {
       "medium-main": {
         "$type": "sizing",
-        "$value": "{size.base.32}"
+        "$value": "{size.unit.32}"
       },
       "medium-icon": {
         "$type": "sizing",
-        "$value": "{size.base.20}"
+        "$value": "{size.unit.20}"
       },
       "medium-avatar": {
         "$type": "sizing",
-        "$value": "{size.base.24}"
+        "$value": "{size.unit.24}"
       },
       "large-main": {
         "$type": "sizing",
-        "$value": "{size.base.40}"
+        "$value": "{size.unit.40}"
       },
       "large-icon": {
         "$type": "sizing",
-        "$value": "{size.base.24}"
+        "$value": "{size.unit.24}"
       },
       "large-avatar": {
         "$type": "sizing",
-        "$value": "{size.base.32}"
+        "$value": "{size.unit.32}"
       },
       "small-main": {
         "$type": "sizing",
-        "$value": "{size.base.24}"
+        "$value": "{size.unit.24}"
       },
       "small-icon": {
         "$type": "sizing",
-        "$value": "{size.base.16}"
+        "$value": "{size.unit.16}"
       },
       "small-avatar": {
         "$type": "sizing",
-        "$value": "{size.base.20}"
+        "$value": "{size.unit.20}"
       }
     },
     "list": {
       "icon": {
         "$type": "sizing",
-        "$value": "{size.base.24}"
+        "$value": "{size.unit.24}"
       },
       "image": {
         "$type": "sizing",
-        "$value": "{size.base.40}"
+        "$value": "{size.unit.40}"
       },
       "disclosure": {
         "$type": "sizing",
-        "$value": "{size.base.8}"
+        "$value": "{size.unit.8}"
       }
     },
     "date-picker": {
       "day-width": {
         "$type": "sizing",
-        "$value": "{size.base.40}"
+        "$value": "{size.unit.40}"
       },
       "day-height": {
         "$type": "sizing",
-        "$value": "{size.base.40}"
+        "$value": "{size.unit.40}"
       },
       "week-width": {
         "$type": "sizing",
@@ -3337,43 +3337,43 @@
       },
       "menu-width": {
         "$type": "sizing",
-        "$value": "{size.base.120}"
+        "$value": "{size.unit.120}"
       }
     },
     "dropdown": {
       "icon": {
         "$type": "sizing",
-        "$value": "{size.base.24}"
+        "$value": "{size.unit.24}"
       },
       "disclosure": {
         "$type": "sizing",
-        "$value": "{size.base.16}"
+        "$value": "{size.unit.16}"
       }
     },
     "form-input": {
       "medium-icon": {
         "$type": "sizing",
-        "$value": "{size.base.20}"
+        "$value": "{size.unit.20}"
       },
       "medium-caret": {
         "$type": "sizing",
-        "$value": "{size.base.20}"
+        "$value": "{size.unit.20}"
       },
       "large-icon": {
         "$type": "sizing",
-        "$value": "{size.base.24}"
+        "$value": "{size.unit.24}"
       },
       "large-caret": {
         "$type": "sizing",
-        "$value": "{size.base.24}"
+        "$value": "{size.unit.24}"
       },
       "small-icon": {
         "$type": "sizing",
-        "$value": "{size.base.16}"
+        "$value": "{size.unit.16}"
       },
       "small-caret": {
         "$type": "sizing",
-        "$value": "{size.base.16}"
+        "$value": "{size.unit.16}"
       }
     },
     "modal": {
@@ -3413,7 +3413,7 @@
     "notification": {
       "icon": {
         "$type": "sizing",
-        "$value": "{size.base.28}"
+        "$value": "{size.unit.28}"
       }
     },
     "nav-left": {
@@ -3423,35 +3423,35 @@
       },
       "width-expanded": {
         "$type": "sizing",
-        "$value": "{size.base.256}"
+        "$value": "{size.unit.256}"
       },
       "wdith-collapsed": {
         "$type": "sizing",
-        "$value": "{size.base.72}"
+        "$value": "{size.unit.72}"
       }
     },
     "nav-top": {
       "height": {
         "$type": "sizing",
-        "$value": "{size.base.64}"
+        "$value": "{size.unit.64}"
       }
     },
     "pagination": {
       "dot-idle-h": {
         "$type": "sizing",
-        "$value": "{size.base.8}"
+        "$value": "{size.unit.8}"
       },
       "dot-idle-w": {
         "$type": "sizing",
-        "$value": "{size.base.8}"
+        "$value": "{size.unit.8}"
       },
       "dot-active-h": {
         "$type": "sizing",
-        "$value": "{size.base.8}"
+        "$value": "{size.unit.8}"
       },
       "dot-active-w": {
         "$type": "sizing",
-        "$value": "{size.base.8}"
+        "$value": "{size.unit.8}"
       }
     }
   },
@@ -3459,527 +3459,527 @@
     "context": {
       "zero": {
         "$type": "spacing",
-        "$value": "{size.base.0}"
+        "$value": "{size.unit.0}"
       },
       "4xsmall": {
         "$type": "spacing",
-        "$value": "{size.base.1}"
+        "$value": "{size.unit.1}"
       },
       "3xsmall": {
         "$type": "spacing",
-        "$value": "{size.base.2}"
+        "$value": "{size.unit.2}"
       },
       "2xsmall": {
         "$type": "spacing",
-        "$value": "{size.base.4}"
+        "$value": "{size.unit.4}"
       },
       "xsmall": {
         "$type": "spacing",
-        "$value": "{size.base.8}"
+        "$value": "{size.unit.8}"
       },
       "small": {
         "$type": "spacing",
-        "$value": "{size.base.12}"
+        "$value": "{size.unit.12}"
       },
       "medium": {
         "$type": "spacing",
-        "$value": "{size.base.16}"
+        "$value": "{size.unit.16}"
       },
       "large": {
         "$type": "spacing",
-        "$value": "{size.base.20}"
+        "$value": "{size.unit.20}"
       },
       "xlarge": {
         "$type": "spacing",
-        "$value": "{size.base.24}"
+        "$value": "{size.unit.24}"
       },
       "2xlarge": {
         "$type": "spacing",
-        "$value": "{size.base.28}"
+        "$value": "{size.unit.28}"
       },
       "3xlarge": {
         "$type": "spacing",
-        "$value": "{size.base.32}"
+        "$value": "{size.unit.32}"
       },
       "4xlarge": {
         "$type": "spacing",
-        "$value": "{size.base.36}"
+        "$value": "{size.unit.36}"
       },
       "5xlarge": {
         "$type": "spacing",
-        "$value": "{size.base.40}"
+        "$value": "{size.unit.40}"
       },
       "6xlarge": {
         "$type": "spacing",
-        "$value": "{size.base.48}"
+        "$value": "{size.unit.48}"
       }
     },
     "accordion": {
       "medium-title-padding-y": {
         "$type": "spacing",
-        "$value": "{space.base.12}"
+        "$value": "{space.unit.12}"
       },
       "medium-title-padding-x": {
         "$type": "spacing",
-        "$value": "{space.base.16}"
+        "$value": "{space.unit.16}"
       },
       "medium-body-padding-t": {
         "$type": "spacing",
-        "$value": "{space.base.4}"
+        "$value": "{space.unit.4}"
       },
       "medium-body-padding-b": {
         "$type": "spacing",
-        "$value": "{space.base.28}"
+        "$value": "{space.unit.28}"
       },
       "medium-body-padding-s": {
         "$type": "spacing",
-        "$value": "{space.base.56}"
+        "$value": "{space.unit.56}"
       },
       "medium-body-padding-e": {
         "$type": "spacing",
-        "$value": "{space.base.16}"
+        "$value": "{space.unit.16}"
       },
       "medium-gap": {
         "$type": "spacing",
-        "$value": "{space.base.16}"
+        "$value": "{space.unit.16}"
       },
       "large-title-padding-y": {
         "$type": "spacing",
-        "$value": "{space.base.16}"
+        "$value": "{space.unit.16}"
       },
       "large-title-padding-x": {
         "$type": "spacing",
-        "$value": "{space.base.20}"
+        "$value": "{space.unit.20}"
       },
       "large-body-padding-t": {
         "$type": "spacing",
-        "$value": "{space.base.12}"
+        "$value": "{space.unit.12}"
       },
       "large-body-padding-b": {
         "$type": "spacing",
-        "$value": "{space.base.32}"
+        "$value": "{space.unit.32}"
       },
       "large-body-padding-s": {
         "$type": "spacing",
-        "$value": "{space.base.68}"
+        "$value": "{space.unit.68}"
       },
       "large-body-padding-e": {
         "$type": "spacing",
-        "$value": "{space.base.20}"
+        "$value": "{space.unit.20}"
       },
       "large-gap": {
         "$type": "spacing",
-        "$value": "{space.base.20}"
+        "$value": "{space.unit.20}"
       },
       "small-title-padding-y": {
         "$type": "spacing",
-        "$value": "{space.base.12}"
+        "$value": "{space.unit.12}"
       },
       "small-title-padding-x": {
         "$type": "spacing",
-        "$value": "{space.base.12}"
+        "$value": "{space.unit.12}"
       },
       "small-body-padding-t": {
         "$type": "spacing",
-        "$value": "{space.base.2}"
+        "$value": "{space.unit.2}"
       },
       "small-body-padding-b": {
         "$type": "spacing",
-        "$value": "{space.base.16}"
+        "$value": "{space.unit.16}"
       },
       "small-body-padding-s": {
         "$type": "spacing",
-        "$value": "{space.base.44}"
+        "$value": "{space.unit.44}"
       },
       "small-body-padding-e": {
         "$type": "spacing",
-        "$value": "{space.base.12}"
+        "$value": "{space.unit.12}"
       },
       "small-gap": {
         "$type": "spacing",
-        "$value": "{space.base.12}"
+        "$value": "{space.unit.12}"
       }
     },
     "alert": {
       "large-padding-y": {
         "$type": "spacing",
-        "$value": "{space.base.32}"
+        "$value": "{space.unit.32}"
       },
       "large-padding-x": {
         "$type": "spacing",
-        "$value": "{space.base.32}"
+        "$value": "{space.unit.32}"
       },
       "large-gap": {
         "$type": "spacing",
-        "$value": "{space.base.24}"
+        "$value": "{space.unit.24}"
       },
       "small-padding-y": {
         "$type": "spacing",
-        "$value": "{space.base.16}"
+        "$value": "{space.unit.16}"
       },
       "small-padding-x": {
         "$type": "spacing",
-        "$value": "{space.base.16}"
+        "$value": "{space.unit.16}"
       },
       "small-gap": {
         "$type": "spacing",
-        "$value": "{space.base.16}"
+        "$value": "{space.unit.16}"
       }
     },
     "badge": {
       "medium-padding-y": {
         "$type": "spacing",
-        "$value": "{space.base.2}"
+        "$value": "{space.unit.2}"
       },
       "medium-padding-x": {
         "$type": "spacing",
-        "$value": "{space.base.4}"
+        "$value": "{space.unit.4}"
       },
       "medium-gap": {
         "$type": "spacing",
-        "$value": "{space.base.0}"
+        "$value": "{space.unit.0}"
       },
       "medium-nudge": {
         "$type": "spacing",
-        "$value": "{space.base.4}"
+        "$value": "{space.unit.4}"
       },
       "large-padding-y": {
         "$type": "spacing",
-        "$value": "{space.base.2}"
+        "$value": "{space.unit.2}"
       },
       "large-padding-x": {
         "$type": "spacing",
-        "$value": "{space.base.4}"
+        "$value": "{space.unit.4}"
       },
       "large-gap": {
         "$type": "spacing",
-        "$value": "{space.base.0}"
+        "$value": "{space.unit.0}"
       },
       "large-nudge": {
         "$type": "spacing",
-        "$value": "{space.base.6}"
+        "$value": "{space.unit.6}"
       },
       "small-padding-y": {
         "$type": "spacing",
-        "$value": "{space.base.1}"
+        "$value": "{space.unit.1}"
       },
       "small-padding-x": {
         "$type": "spacing",
-        "$value": "{space.base.4}"
+        "$value": "{space.unit.4}"
       },
       "small-gap": {
         "$type": "spacing",
-        "$value": "{space.base.0}"
+        "$value": "{space.unit.0}"
       },
       "small-nudge": {
         "$type": "spacing",
-        "$value": "{space.base.4}"
+        "$value": "{space.unit.4}"
       }
     },
     "button": {
       "medium-padding-y": {
         "$type": "spacing",
-        "$value": "{space.base.8}"
+        "$value": "{space.unit.8}"
       },
       "medium-padding-x": {
         "$type": "spacing",
-        "$value": "{space.base.12}"
+        "$value": "{space.unit.12}"
       },
       "medium-gap": {
         "$type": "spacing",
-        "$value": "{space.base.8}"
+        "$value": "{space.unit.8}"
       },
       "medium-nudge": {
         "$type": "spacing",
-        "$value": "{space.base.4}"
+        "$value": "{space.unit.4}"
       },
       "large-padding-y": {
         "$type": "spacing",
-        "$value": "{space.base.10}"
+        "$value": "{space.unit.10}"
       },
       "large-padding-x": {
         "$type": "spacing",
-        "$value": "{space.base.16}"
+        "$value": "{space.unit.16}"
       },
       "large-gap": {
         "$type": "spacing",
-        "$value": "{space.base.12}"
+        "$value": "{space.unit.12}"
       },
       "large-nudge": {
         "$type": "spacing",
-        "$value": "{space.base.4}"
+        "$value": "{space.unit.4}"
       },
       "small-padding-y": {
         "$type": "spacing",
-        "$value": "{space.base.6}"
+        "$value": "{space.unit.6}"
       },
       "small-padding-x": {
         "$type": "spacing",
-        "$value": "{space.base.8}"
+        "$value": "{space.unit.8}"
       },
       "small-gap": {
         "$type": "spacing",
-        "$value": "{space.base.4}"
+        "$value": "{space.unit.4}"
       },
       "small-nudge": {
         "$type": "spacing",
-        "$value": "{space.base.4}"
+        "$value": "{space.unit.4}"
       }
     },
     "chip": {
       "medium-padding-y": {
         "$type": "spacing",
-        "$value": "{space.base.4}"
+        "$value": "{space.unit.4}"
       },
       "medium-padding-x": {
         "$type": "spacing",
-        "$value": "{space.base.4}"
+        "$value": "{space.unit.4}"
       },
       "medium-gap": {
         "$type": "spacing",
-        "$value": "{space.base.8}"
+        "$value": "{space.unit.8}"
       },
       "medium-nudge": {
         "$type": "spacing",
-        "$value": "{space.base.4}"
+        "$value": "{space.unit.4}"
       },
       "large-padding-y": {
         "$type": "spacing",
-        "$value": "{space.base.4}"
+        "$value": "{space.unit.4}"
       },
       "large-padding-x": {
         "$type": "spacing",
-        "$value": "{space.base.4}"
+        "$value": "{space.unit.4}"
       },
       "large-gap": {
         "$type": "spacing",
-        "$value": "{space.base.12}"
+        "$value": "{space.unit.12}"
       },
       "large-nudge": {
         "$type": "spacing",
-        "$value": "{space.base.4}"
+        "$value": "{space.unit.4}"
       },
       "small-padding-y": {
         "$type": "spacing",
-        "$value": "{space.base.2}"
+        "$value": "{space.unit.2}"
       },
       "small-padding-x": {
         "$type": "spacing",
-        "$value": "{space.base.2}"
+        "$value": "{space.unit.2}"
       },
       "small-gap": {
         "$type": "spacing",
-        "$value": "{space.base.8}"
+        "$value": "{space.unit.8}"
       },
       "small-nudge": {
         "$type": "spacing",
-        "$value": "{space.base.4}"
+        "$value": "{space.unit.4}"
       }
     },
     "date-picker": {
       "padding-y": {
         "$type": "spacing",
-        "$value": "{space.base.8}"
+        "$value": "{space.unit.8}"
       },
       "padding-x": {
         "$type": "spacing",
-        "$value": "{space.base.8}"
+        "$value": "{space.unit.8}"
       },
       "gap": {
         "$type": "spacing",
-        "$value": "{space.base.4}"
+        "$value": "{space.unit.4}"
       }
     },
     "dropdown": {
       "padding-y": {
         "$type": "spacing",
-        "$value": "{space.base.8}"
+        "$value": "{space.unit.8}"
       },
       "padding-x": {
         "$type": "spacing",
-        "$value": "{space.base.8}"
+        "$value": "{space.unit.8}"
       },
       "gap": {
         "$type": "spacing",
-        "$value": "{space.base.4}"
+        "$value": "{space.unit.4}"
       }
     },
     "form-input": {
       "medium-padding-y": {
         "$type": "spacing",
-        "$value": "{space.base.8}"
+        "$value": "{space.unit.8}"
       },
       "medium-padding-x": {
         "$type": "spacing",
-        "$value": "{space.base.12}"
+        "$value": "{space.unit.12}"
       },
       "medium-gap": {
         "$type": "spacing",
-        "$value": "{space.base.12}"
+        "$value": "{space.unit.12}"
       },
       "large-padding-y": {
         "$type": "spacing",
-        "$value": "{space.base.10}"
+        "$value": "{space.unit.10}"
       },
       "large-padding-x": {
         "$type": "spacing",
-        "$value": "{space.base.16}"
+        "$value": "{space.unit.16}"
       },
       "large-gap": {
         "$type": "spacing",
-        "$value": "{space.base.16}"
+        "$value": "{space.unit.16}"
       },
       "small-padding-y": {
         "$type": "spacing",
-        "$value": "{space.base.6}"
+        "$value": "{space.unit.6}"
       },
       "small-padding-x": {
         "$type": "spacing",
-        "$value": "{space.base.8}"
+        "$value": "{space.unit.8}"
       },
       "small-gap": {
         "$type": "spacing",
-        "$value": "{space.base.8}"
+        "$value": "{space.unit.8}"
       },
       "floating-padding-y": {
         "$type": "spacing",
-        "$value": "{space.base.8}"
+        "$value": "{space.unit.8}"
       },
       "floating-padding-x": {
         "$type": "spacing",
-        "$value": "{space.base.12}"
+        "$value": "{space.unit.12}"
       },
       "floating-gap": {
         "$type": "spacing",
-        "$value": "{space.base.12}"
+        "$value": "{space.unit.12}"
       }
     },
     "list": {
       "padding-y": {
         "$type": "spacing",
-        "$value": "{space.base.12}"
+        "$value": "{space.unit.12}"
       },
       "padding-x": {
         "$type": "spacing",
-        "$value": "{space.base.16}"
+        "$value": "{space.unit.16}"
       },
       "gap": {
         "$type": "spacing",
-        "$value": "{space.base.16}"
+        "$value": "{space.unit.16}"
       },
       "nudge": {
         "$type": "spacing",
-        "$value": "{space.base.8}"
+        "$value": "{space.unit.8}"
       }
     },
     "notification": {
       "padding-y": {
         "$type": "spacing",
-        "$value": "{space.base.12}"
+        "$value": "{space.unit.12}"
       },
       "padding-x": {
         "$type": "spacing",
-        "$value": "{space.base.16}"
+        "$value": "{space.unit.16}"
       },
       "gap": {
         "$type": "spacing",
-        "$value": "{space.base.16}"
+        "$value": "{space.unit.16}"
       }
     },
     "modal": {
       "large-padding-y": {
         "$type": "spacing",
-        "$value": "{space.base.32}"
+        "$value": "{space.unit.32}"
       },
       "large-padding-x": {
         "$type": "spacing",
-        "$value": "{space.base.32}"
+        "$value": "{space.unit.32}"
       },
       "large-gap": {
         "$type": "spacing",
-        "$value": "{space.base.32}"
+        "$value": "{space.unit.32}"
       },
       "medium-padding-y": {
         "$type": "spacing",
-        "$value": "{space.base.24}"
+        "$value": "{space.unit.24}"
       },
       "medium-padding-x": {
         "$type": "spacing",
-        "$value": "{space.base.24}"
+        "$value": "{space.unit.24}"
       },
       "medium-gap": {
         "$type": "spacing",
-        "$value": "{space.base.24}"
+        "$value": "{space.unit.24}"
       },
       "small-padding-y": {
         "$type": "spacing",
-        "$value": "{space.base.16}"
+        "$value": "{space.unit.16}"
       },
       "small-padding-x": {
         "$type": "spacing",
-        "$value": "{space.base.16}"
+        "$value": "{space.unit.16}"
       },
       "small-gap": {
         "$type": "spacing",
-        "$value": "{space.base.16}"
+        "$value": "{space.unit.16}"
       }
     },
     "page": {
       "large-padding-y": {
         "$type": "spacing",
-        "$value": "{space.base.32}"
+        "$value": "{space.unit.32}"
       },
       "large-padding-x": {
         "$type": "spacing",
-        "$value": "{space.base.32}"
+        "$value": "{space.unit.32}"
       },
       "large-gap": {
         "$type": "spacing",
-        "$value": "{space.base.32}"
+        "$value": "{space.unit.32}"
       },
       "medium-padding-y": {
         "$type": "spacing",
-        "$value": "{space.base.24}"
+        "$value": "{space.unit.24}"
       },
       "medium-padding-x": {
         "$type": "spacing",
-        "$value": "{space.base.24}"
+        "$value": "{space.unit.24}"
       },
       "medium-gap": {
         "$type": "spacing",
-        "$value": "{space.base.24}"
+        "$value": "{space.unit.24}"
       },
       "small-padding-y": {
         "$type": "spacing",
-        "$value": "{space.base.16}"
+        "$value": "{space.unit.16}"
       },
       "small-padding-x": {
         "$type": "spacing",
-        "$value": "{space.base.16}"
+        "$value": "{space.unit.16}"
       },
       "small-gap": {
         "$type": "spacing",
-        "$value": "{space.base.16}"
+        "$value": "{space.unit.16}"
       }
     },
     "pagination": {
       "dot-gap": {
         "$type": "spacing",
-        "$value": "{space.base.8}"
+        "$value": "{space.unit.8}"
       }
     },
     "table": {
       "cell-padding-y": {
         "$type": "spacing",
-        "$value": "{space.base.8}"
+        "$value": "{space.unit.8}"
       },
       "cell-padding-x": {
         "$type": "spacing",
-        "$value": "{space.base.8}"
+        "$value": "{space.unit.8}"
       },
       "cell-gap": {
         "$type": "spacing",
-        "$value": "{space.base.8}"
+        "$value": "{space.unit.8}"
       }
     }
   },
@@ -3987,7 +3987,7 @@
     "context": {
       "zero": {
         "$type": "borderRadius",
-        "$value": "{size.base.0}"
+        "$value": "{size.unit.0}"
       },
       "xsmall": {
         "$type": "borderRadius",
@@ -4023,79 +4023,79 @@
       },
       "round-8": {
         "$type": "borderRadius",
-        "$value": "{size.base.4}"
+        "$value": "{size.unit.4}"
       },
       "round-12": {
         "$type": "borderRadius",
-        "$value": "{size.base.6}"
+        "$value": "{size.unit.6}"
       },
       "round-16": {
         "$type": "borderRadius",
-        "$value": "{size.base.8}"
+        "$value": "{size.unit.8}"
       },
       "round-20": {
         "$type": "borderRadius",
-        "$value": "{size.base.10}"
+        "$value": "{size.unit.10}"
       },
       "round-24": {
         "$type": "borderRadius",
-        "$value": "{size.base.12}"
+        "$value": "{size.unit.12}"
       },
       "round-28": {
         "$type": "borderRadius",
-        "$value": "{size.base.14}"
+        "$value": "{size.unit.14}"
       },
       "round-32": {
         "$type": "borderRadius",
-        "$value": "{size.base.16}"
+        "$value": "{size.unit.16}"
       },
       "round-36": {
         "$type": "borderRadius",
-        "$value": "{size.base.18}"
+        "$value": "{size.unit.18}"
       },
       "round-40": {
         "$type": "borderRadius",
-        "$value": "{size.base.20}"
+        "$value": "{size.unit.20}"
       },
       "round-44": {
         "$type": "borderRadius",
-        "$value": "{size.base.22}"
+        "$value": "{size.unit.22}"
       },
       "round-48": {
         "$type": "borderRadius",
-        "$value": "{size.base.24}"
+        "$value": "{size.unit.24}"
       },
       "round-52": {
         "$type": "borderRadius",
-        "$value": "{size.base.26}"
+        "$value": "{size.unit.26}"
       },
       "round-56": {
         "$type": "borderRadius",
-        "$value": "{size.base.28}"
+        "$value": "{size.unit.28}"
       },
       "round-60": {
         "$type": "borderRadius",
-        "$value": "{size.base.30}"
+        "$value": "{size.unit.30}"
       },
       "round-64": {
         "$type": "borderRadius",
-        "$value": "{size.base.32}"
+        "$value": "{size.unit.32}"
       },
       "round-72": {
         "$type": "borderRadius",
-        "$value": "{size.base.36}"
+        "$value": "{size.unit.36}"
       },
       "round-80": {
         "$type": "borderRadius",
-        "$value": "{size.base.40}"
+        "$value": "{size.unit.40}"
       },
       "round-88": {
         "$type": "borderRadius",
-        "$value": "{size.base.44}"
+        "$value": "{size.unit.44}"
       },
       "round-96": {
         "$type": "borderRadius",
-        "$value": "{size.base.56}"
+        "$value": "{size.unit.56}"
       }
     },
     "asset": {
@@ -4277,39 +4277,39 @@
     "context": {
       "none": {
         "$type": "borderWidth",
-        "$value": "{size.base.0}"
+        "$value": "{size.unit.0}"
       },
       "thin": {
         "$type": "borderWidth",
-        "$value": "{size.base.05}"
+        "$value": "{size.unit.05}"
       },
       "thick": {
         "$type": "borderWidth",
-        "$value": "{size.base.2}"
+        "$value": "{size.unit.2}"
       },
       "zero": {
         "$type": "borderWidth",
-        "$value": "{size.base.0}"
+        "$value": "{size.unit.0}"
       },
       "small": {
         "$type": "borderWidth",
-        "$value": "{size.base.05}"
+        "$value": "{size.unit.05}"
       },
       "medium": {
         "$type": "borderWidth",
-        "$value": "{size.base.1}"
+        "$value": "{size.unit.1}"
       },
       "large": {
         "$type": "borderWidth",
-        "$value": "{size.base.d15}"
+        "$value": "{size.unit.d15}"
       },
       "xlarge": {
         "$type": "borderWidth",
-        "$value": "{size.base.2}"
+        "$value": "{size.unit.2}"
       },
       "2xlarge": {
         "$type": "borderWidth",
-        "$value": "{size.base.4}"
+        "$value": "{size.unit.4}"
       }
     },
     "accordion": {
@@ -4756,7 +4756,7 @@
       "base": {
         "zero": {
           "$type": "letterSpacing",
-          "$value": "{size.base.0}"
+          "$value": "{size.unit.0}"
         }
       }
     },
