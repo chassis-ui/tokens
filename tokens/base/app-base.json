@@ -4235,15 +4235,15 @@
     "pagination": {
       "button": {
         "$type": "borderRadius",
-        "$value": "{borderRadius.button.medium}"
+        "$value": "{borderRadius.base.button.medium}"
       },
       "dot-idle": {
         "$type": "borderRadius",
-        "$value": "{borderRadius.context.round-8}"
+        "$value": "{borderRadius.context.round}"
       },
       "dot-active": {
         "$type": "borderRadius",
-        "$value": "{borderRadius.context.round-8}"
+        "$value": "{borderRadius.context.round}"
       }
     },
     "section": {

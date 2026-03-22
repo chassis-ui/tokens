@@ -64,9 +64,7 @@ function buildTypographyMap({ fontFamily, fontWeight, fontSize, lineHeight, orig
  * @param {Object} dictionary - The token dictionary for resolving references.
  * @returns {string} - The resolved SCSS variable reference value.
  */
-function resolveReferenceValue(token, dictionary, depth = 0) {
-  if (depth > 10) return token.$value
-
+function resolveReferenceValue(token, dictionary) {
   const ref = splitReference(token.original.$value)
   const refMapping = {
     'color|context': (ref) => `var(--#{$prefix}${ref[2]}-${ref[3]})`,
@@ -83,18 +81,26 @@ function resolveReferenceValue(token, dictionary, depth = 0) {
     return refMapping[key](ref)
   }
 
-  // Follow reference chain for tokens that reference intermediate tokens (e.g. borderRadius, borderWidth)
-  if (['borderRadius', 'borderWidth'].includes(ref[0])) {
-    const referencedToken = getReferences(token.original.$value, dictionary.tokens, { usesDtcg })[0]
-    if (referencedToken) {
-      if (referencedToken.path.includes('context')) {
-        const name = referencedToken.path[referencedToken.path.length - 1]
-        const prefix = ref[0] === 'borderRadius' ? 'border-radius' : 'border-width'
-        return `var(--#{$prefix}${prefix}-${name})`
+  // For borderRadius/borderWidth tokens referencing base tokens,
+  // check if the reference ultimately points to a context token.
+  if (['borderRadius', 'borderWidth'].includes(ref[0]) && ref[1] === 'base') {
+    const cssProperty = ref[0] === 'borderRadius' ? 'border-radius' : 'border-width'
+    // Direct base.context reference
+    if (ref[2] === 'context') {
+      return `var(--#{$prefix}${cssProperty}-${ref[3]})`
+    }
+    // Follow chain: base.<component>.<size> → base.context.<size>
+    try {
+      const refToken = getReferences(token.original.$value, dictionary.tokens, { usesDtcg })[0]
+      if (refToken && isReference(refToken.original.$value)) {
+        const innerRef = splitReference(refToken.original.$value)
+        if (innerRef[0] === ref[0] && innerRef.includes('context')) {
+          const name = innerRef[innerRef.length - 1]
+          return `var(--#{$prefix}${cssProperty}-${name})`
+        }
       }
-      if (isReference(referencedToken.original.$value)) {
-        return resolveReferenceValue(referencedToken, dictionary, depth + 1)
-      }
+    } catch {
+      /* base token not in this build config */
     }
   }
 
@@ -197,7 +203,8 @@ function tokenToValue(token, dictionary) {
     token.original &&
     isReference(token.original.$value) &&
     ['color', 'space', 'opacity', 'borderRadius', 'borderWidth'].includes(token.path[0]) &&
-    !(['borderRadius', 'borderWidth'].includes(token.path[0]) && token.path[1] === 'context')
+    !(['borderRadius', 'borderWidth'].includes(token.path[0]) && token.path[1] === 'context') &&
+    !(['borderRadius', 'borderWidth'].includes(token.path[0]) && token.path[1] === 'base')
   ) {
     return resolveReferenceValue(token, dictionary)
   } else if (token.$type === 'typography') {
