@@ -3935,7 +3935,7 @@
       },
       "large-gap": {
         "$type": "spacing",
-        "$value": "{space.unit.32}"
+        "$value": "{grid.gutter.medium}"
       },
       "medium-padding-y": {
         "$type": "spacing",
@@ -3947,7 +3947,7 @@
       },
       "medium-gap": {
         "$type": "spacing",
-        "$value": "{space.unit.24}"
+        "$value": "{grid.gutter.medium}"
       },
       "small-padding-y": {
         "$type": "spacing",
@@ -3959,7 +3959,7 @@
       },
       "small-gap": {
         "$type": "spacing",
-        "$value": "{space.unit.16}"
+        "$value": "{grid.gutter.medium}"
       }
     },
     "pagination": {
@@ -3987,7 +3987,7 @@
     "context": {
       "zero": {
         "$type": "borderRadius",
-        "$value": "{size.unit.0}"
+        "$value": "{borderRadius.base.context.zero}"
       },
       "xsmall": {
         "$type": "borderRadius",
@@ -4123,29 +4123,29 @@
     "badge": {
       "medium": {
         "$type": "borderRadius",
-        "$value": "{borderRadius.context.round-24}"
+        "$value": "{borderRadius.base.badge.medium}"
       },
       "large": {
         "$type": "borderRadius",
-        "$value": "{borderRadius.context.round-28}"
+        "$value": "{borderRadius.base.badge.large}"
       },
       "small": {
         "$type": "borderRadius",
-        "$value": "{borderRadius.context.round-20}"
+        "$value": "{borderRadius.base.badge.small}"
       }
     },
     "button": {
       "medium": {
         "$type": "borderRadius",
-        "$value": "{borderRadius.context.medium}"
+        "$value": "{borderRadius.base.button.medium}"
       },
       "large": {
         "$type": "borderRadius",
-        "$value": "{borderRadius.context.medium}"
+        "$value": "{borderRadius.base.button.large}"
       },
       "small": {
         "$type": "borderRadius",
-        "$value": "{borderRadius.context.medium}"
+        "$value": "{borderRadius.base.button.small}"
       }
     },
     "card": {
@@ -4157,15 +4157,15 @@
     "chip": {
       "medium": {
         "$type": "borderRadius",
-        "$value": "{borderRadius.context.round-32}"
+        "$value": "{borderRadius.base.chip.medium}"
       },
       "large": {
         "$type": "borderRadius",
-        "$value": "{borderRadius.context.round-40}"
+        "$value": "{borderRadius.base.chip.large}"
       },
       "small": {
         "$type": "borderRadius",
-        "$value": "{borderRadius.context.round-24}"
+        "$value": "{borderRadius.base.chip.small}"
       }
     },
     "table": {
@@ -4201,23 +4201,23 @@
     "form-input": {
       "medium": {
         "$type": "borderRadius",
-        "$value": "{borderRadius.context.medium}"
+        "$value": "{borderRadius.base.form-input.medium}"
       },
       "large": {
         "$type": "borderRadius",
-        "$value": "{borderRadius.context.medium}"
+        "$value": "{borderRadius.base.form-input.large}"
       },
       "small": {
         "$type": "borderRadius",
-        "$value": "{borderRadius.context.medium}"
+        "$value": "{borderRadius.base.form-input.small}"
       },
       "floating-blunt": {
         "$type": "borderRadius",
-        "$value": "{borderRadius.context.medium}"
+        "$value": "{borderRadius.base.form-input.floating-blunt}"
       },
       "floating-sharp": {
         "$type": "borderRadius",
-        "$value": "{borderRadius.context.zero}"
+        "$value": "{borderRadius.base.form-input.floating-sharp}"
       }
     },
     "modal": {
@@ -4235,7 +4235,7 @@
     "pagination": {
       "button": {
         "$type": "borderRadius",
-        "$value": "{borderRadius.context.medium}"
+        "$value": "{borderRadius.button.medium}"
       },
       "dot-idle": {
         "$type": "borderRadius",
@@ -4492,6 +4492,32 @@
       "small": {
         "$type": "sizing",
         "$value": "576"
+      },
+      "xsmall": {
+        "$type": "sizing",
+        "$value": "400"
+      }
+    },
+    "container": {
+      "2xlarge": {
+        "$type": "sizing",
+        "$value": "1320"
+      },
+      "xlarge": {
+        "$type": "sizing",
+        "$value": "1140"
+      },
+      "large": {
+        "$type": "sizing",
+        "$value": "960"
+      },
+      "medium": {
+        "$type": "sizing",
+        "$value": "720"
+      },
+      "small": {
+        "$type": "sizing",
+        "$value": "540"
       },
       "xsmall": {
         "$type": "sizing",

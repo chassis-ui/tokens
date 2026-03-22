@@ -33,6 +33,7 @@ export default function ({ brand, app, platform, theme, screen }) {
 
   return {
     preprocessors: ['cx/global'],
+    // log: { verbosity: 'verbose' }, // default, verbose, silent
     platforms: {
       [platform]: config
     }

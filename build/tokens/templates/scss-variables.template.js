@@ -162,7 +162,7 @@ function resolveContextTypographyValue(token, dictionary) {
  */
 function resolveComponentTypographyValue(token, dictionary) {
   const ref = splitReference(token.original.$value)
-  const original = resolveReferences(token.original.$value, dictionary.tokens)
+  const original = getReferences(token.original.$value, dictionary.tokens, { usesDtcg })[0]
 
   return buildTypographyMap({
     fontFamily: `$${prefix}typography-font-family-${ref[1]}`,
