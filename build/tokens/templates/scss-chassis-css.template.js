@@ -61,22 +61,50 @@ function buildTypographyMap({ fontFamily, fontWeight, fontSize, lineHeight, orig
  * Resolves the value of a reference token.
  *
  * @param {Object} token - The token object containing the reference.
+ * @param {Object} dictionary - The token dictionary for resolving references.
  * @returns {string} - The resolved SCSS variable reference value.
  */
-function resolveReferenceValue(token) {
+function resolveReferenceValue(token, dictionary) {
   const ref = splitReference(token.original.$value)
   const refMapping = {
     'color|context': (ref) => `var(--#{$prefix}${ref[2]}-${ref[3]})`,
     'color|palette': (ref) => `var(--#{$prefix}${ref[2]}-${ref[3]})`,
     'space|context': (ref) => `var(--#{$prefix}space-${ref[2]})`,
-    opacity: (ref) => `var(--#{$prefix}opacity-${ref[2]})`,
-    'borderRadius|context': (ref) =>
-      `var(--#{$prefix}border-radius-${ref[2].includes('round') ? 'circle' : ref[2]})`,
+    'opacity|context': (ref) => `var(--#{$prefix}opacity-${ref[2]})`,
+    'opacity|level': (ref) => `var(--#{$prefix}opacity-${ref[2]})`,
+    'borderRadius|context': (ref) => `var(--#{$prefix}border-radius-${ref[2]})`,
     'borderWidth|context': (ref) => `var(--#{$prefix}border-width-${ref[2]})`
   }
 
   const key = `${ref[0]}|${ref[1] || ''}`.trim()
-  return refMapping[key] ? refMapping[key](ref) : token.$value
+  if (refMapping[key]) {
+    return refMapping[key](ref)
+  }
+
+  // For borderRadius/borderWidth tokens referencing base tokens,
+  // check if the reference ultimately points to a context token.
+  if (['borderRadius', 'borderWidth'].includes(ref[0]) && ref[1] === 'base') {
+    const cssProperty = ref[0] === 'borderRadius' ? 'border-radius' : 'border-width'
+    // Direct base.context reference
+    if (ref[2] === 'context') {
+      return `var(--#{$prefix}${cssProperty}-${ref[3]})`
+    }
+    // Follow chain: base.<component>.<size> → base.context.<size>
+    try {
+      const refToken = getReferences(token.original.$value, dictionary.tokens, { usesDtcg })[0]
+      if (refToken && isReference(refToken.original.$value)) {
+        const innerRef = splitReference(refToken.original.$value)
+        if (innerRef[0] === ref[0] && innerRef.includes('context')) {
+          const name = innerRef[innerRef.length - 1]
+          return `var(--#{$prefix}${cssProperty}-${name})`
+        }
+      }
+    } catch {
+      /* base token not in this build config */
+    }
+  }
+
+  return token.$value
 }
 
 /**
@@ -152,7 +180,7 @@ function resolveContextTypographyValue(token, dictionary) {
  */
 function resolveComponentTypographyValue(token, dictionary) {
   const ref = splitReference(token.original.$value)
-  const res = resolveReferences(token.original.$value, dictionary.tokens)
+  const res = getReferences(token.original.$value, dictionary.tokens, { usesDtcg })[0]
 
   return buildTypographyMap({
     fontFamily: `var(--#{$prefix}font-family-${ref[1]})`,
@@ -174,9 +202,11 @@ function tokenToValue(token, dictionary) {
   if (
     token.original &&
     isReference(token.original.$value) &&
-    ['color', 'space', 'opacity', 'borderRadius', 'borderWidth'].includes(token.path[0])
+    ['color', 'space', 'opacity', 'borderRadius', 'borderWidth'].includes(token.path[0]) &&
+    !(['borderRadius', 'borderWidth'].includes(token.path[0]) && token.path[1] === 'context') &&
+    !(['borderRadius', 'borderWidth'].includes(token.path[0]) && token.path[1] === 'base')
   ) {
-    return resolveReferenceValue(token)
+    return resolveReferenceValue(token, dictionary)
   } else if (token.$type === 'typography') {
     if (typeof token.original.$value !== 'object') {
       return resolveComponentTypographyValue(token, dictionary)

@@ -131,33 +131,35 @@
   },
   "borderRadius": {
     "base": {
-      "xsmall": {
-        "$type": "borderRadius",
-        "$value": "{dimension.base.2}"
-      },
-      "small": {
-        "$type": "borderRadius",
-        "$value": "{dimension.base.2}"
-      },
-      "medium": {
-        "$type": "borderRadius",
-        "$value": "{dimension.base.2}"
-      },
-      "large": {
-        "$type": "borderRadius",
-        "$value": "{dimension.base.2}"
-      },
-      "xlarge": {
-        "$type": "borderRadius",
-        "$value": "{dimension.base.2}"
-      },
-      "2xlarge": {
-        "$type": "borderRadius",
-        "$value": "{dimension.base.2}"
-      },
-      "3xlarge": {
-        "$type": "borderRadius",
-        "$value": "{dimension.base.2}"
+      "context": {
+        "xsmall": {
+          "$type": "borderRadius",
+          "$value": "{dimension.base.2}"
+        },
+        "small": {
+          "$type": "borderRadius",
+          "$value": "{dimension.base.2}"
+        },
+        "medium": {
+          "$type": "borderRadius",
+          "$value": "{dimension.base.2}"
+        },
+        "large": {
+          "$type": "borderRadius",
+          "$value": "{dimension.base.2}"
+        },
+        "xlarge": {
+          "$type": "borderRadius",
+          "$value": "{dimension.base.2}"
+        },
+        "2xlarge": {
+          "$type": "borderRadius",
+          "$value": "{dimension.base.2}"
+        },
+        "3xlarge": {
+          "$type": "borderRadius",
+          "$value": "{dimension.base.2}"
+        }
       }
     }
   }
