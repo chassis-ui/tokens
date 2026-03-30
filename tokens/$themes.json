@@ -4,9 +4,10 @@
     "name": "default",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "base/brand-base": "enabled",
+      "base/metric-px": "source",
       "base/metric-base": "source",
-      "base/metric-px": "source"
+      "base/brand-base": "enabled",
+      "base/brand-default": "enabled"
     },
     "group": "brand",
     "$figmaCollectionId": "VariableCollectionId:302:172",
