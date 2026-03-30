@@ -108,7 +108,6 @@ class SubmoduleSync {
   needsInit(submodule) {
     const submodulePath = path.join(this.rootDir, submodule.path)
 
-    // Check if the submodule directory exists and has content (a .git file/dir)
     if (!fs.existsSync(submodulePath) || !fs.existsSync(path.join(submodulePath, '.git'))) {
       return true
     }
@@ -166,6 +165,12 @@ class SubmoduleSync {
         }
 
         this.runCommand(`git pull origin ${submodule.expectedBranch}`, submodulePath, true)
+      } else {
+        this.runCommand(
+          `git submodule update --remote --merge ${submodule.path}`,
+          this.rootDir,
+          true
+        )
       }
 
       this.log(`${submodule.name} synced successfully`, 'success')
@@ -201,7 +206,13 @@ class SubmoduleSync {
     this.log(`Building ${submodule.name}...`, 'build')
 
     for (const command of submodule.buildCommands) {
-      this.runCommand(command, submodulePath, false)
+      try {
+        this.runCommand(command, submodulePath, false)
+      } catch (buildError) {
+        this.log(`Build command failed: ${command}`, 'error')
+        this.log(`Error: ${buildError.message}`, 'error')
+        throw buildError
+      }
     }
 
     // Verify build output if specified
@@ -225,7 +236,6 @@ class SubmoduleSync {
 
   /**
    * Check for submodule changes and provide commit guidance
-   * Lines prefixed with '+' indicate the submodule commit has changed
    */
   checkSubmoduleChanges() {
     try {
