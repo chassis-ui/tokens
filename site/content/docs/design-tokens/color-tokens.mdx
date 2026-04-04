@@ -107,22 +107,22 @@ Each color has 11 transparency variations based on its 50 shade, ranging from 05
 <CxTable>
 | Token Name | Composition | Resulting Opacity |
 |------------|-------------|-------------------|
-| `color.palette.[color-name].t-5005` | Base color (50) with `opacity.base.05` | ~5% visible (very transparent) |
-| `color.palette.[color-name].t-5010` | Base color (50) with `opacity.base.10` | ~10% visible |
-| `color.palette.[color-name].t-5020` | Base color (50) with `opacity.base.20` | ~20% visible |
-| `color.palette.[color-name].t-5030` | Base color (50) with `opacity.base.30` | ~30% visible |
-| `color.palette.[color-name].t-5040` | Base color (50) with `opacity.base.40` | ~40% visible |
-| `color.palette.[color-name].t-5050` | Base color (50) with `opacity.base.50` | 50% visible (half transparent) |
-| `color.palette.[color-name].t-5060` | Base color (50) with `opacity.base.60` | ~60% visible |
-| `color.palette.[color-name].t-5070` | Base color (50) with `opacity.base.70` | ~70% visible |
-| `color.palette.[color-name].t-5080` | Base color (50) with `opacity.base.80` | ~80% visible |
-| `color.palette.[color-name].t-5090` | Base color (50) with `opacity.base.90` | ~90% visible |
-| `color.palette.[color-name].t-5095` | Base color (50) with `opacity.base.95` | ~95% visible (nearly opaque) |
+| `color.palette.[color-name].t-5005` | Base color (50) with `opacity.level.05` | ~5% visible (very transparent) |
+| `color.palette.[color-name].t-5010` | Base color (50) with `opacity.level.10` | ~10% visible |
+| `color.palette.[color-name].t-5020` | Base color (50) with `opacity.level.20` | ~20% visible |
+| `color.palette.[color-name].t-5030` | Base color (50) with `opacity.level.30` | ~30% visible |
+| `color.palette.[color-name].t-5040` | Base color (50) with `opacity.level.40` | ~40% visible |
+| `color.palette.[color-name].t-5050` | Base color (50) with `opacity.level.50` | 50% visible (half transparent) |
+| `color.palette.[color-name].t-5060` | Base color (50) with `opacity.level.60` | ~60% visible |
+| `color.palette.[color-name].t-5070` | Base color (50) with `opacity.level.70` | ~70% visible |
+| `color.palette.[color-name].t-5080` | Base color (50) with `opacity.level.80` | ~80% visible |
+| `color.palette.[color-name].t-5090` | Base color (50) with `opacity.level.90` | ~90% visible |
+| `color.palette.[color-name].t-5095` | Base color (50) with `opacity.level.95` | ~95% visible (nearly opaque) |
 </CxTable>
 
 Transparency colors are named with their solid shade value. For example, `color.palette.[color-name].t-5050` indicates 50% opacity applied to the 50 shade. Custom transparency values can be created by applying different opacity tokens to other solid shades.
 
-For example, `color.palette.[color-name].t-9550` would be created by applying `opacity.base.50` to `color.palette.[color-name].95`.
+For example, `color.palette.[color-name].t-9550` would be created by applying `opacity.level.50` to `color.palette.[color-name].95`.
 
 <Callout type="info">
 Since black and white colors do not have shades, their transparency tokens are created by applying opacity tokens to their base color solid and named only with the transparency value like `color.palette.black.t-50` or `color.palette.white.t-50`.

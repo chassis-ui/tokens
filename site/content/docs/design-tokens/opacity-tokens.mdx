@@ -49,19 +49,19 @@ Base opacity tokens provide standard transparency values in consistent increment
 <CxTable>
 | Token Name | Value | Visibility | Primary Use |
 |------------|-------|------------|-------------|
-| `opacity.base.zero` | 0 | 0% visible (fully transparent) | Invisible elements, transparent colors |
-| `opacity.base.05` | 0.05 | 5% visible | Very subtle tints |
-| `opacity.base.10` | 0.1 | 10% visible | Subtle color overlays |
-| `opacity.base.20` | 0.2 | 20% visible | Light transparency effects |
-| `opacity.base.30` | 0.3 | 30% visible | Subtle elements |
-| `opacity.base.40` | 0.4 | 40% visible | Medium-light transparency |
-| `opacity.base.50` | 0.5 | 50% visible | Half transparent |
-| `opacity.base.60` | 0.6 | 60% visible | Medium-strong visibility |
-| `opacity.base.70` | 0.7 | 70% visible | Strong visibility |
-| `opacity.base.80` | 0.8 | 80% visible | Mostly opaque |
-| `opacity.base.90` | 0.9 | 90% visible | Nearly solid |
-| `opacity.base.95` | 0.95 | 95% visible | Almost fully opaque |
-| `opacity.base.solid` | 1 | 100% visible (fully opaque) | Solid colors, no transparency |
+| `opacity.level.zero` | 0 | 0% visible (fully transparent) | Invisible elements, transparent colors |
+| `opacity.level.05` | 0.05 | 5% visible | Very subtle tints |
+| `opacity.level.10` | 0.1 | 10% visible | Subtle color overlays |
+| `opacity.level.20` | 0.2 | 20% visible | Light transparency effects |
+| `opacity.level.30` | 0.3 | 30% visible | Subtle elements |
+| `opacity.level.40` | 0.4 | 40% visible | Medium-light transparency |
+| `opacity.level.50` | 0.5 | 50% visible | Half transparent |
+| `opacity.level.60` | 0.6 | 60% visible | Medium-strong visibility |
+| `opacity.level.70` | 0.7 | 70% visible | Strong visibility |
+| `opacity.level.80` | 0.8 | 80% visible | Mostly opaque |
+| `opacity.level.90` | 0.9 | 90% visible | Nearly solid |
+| `opacity.level.95` | 0.95 | 95% visible | Almost fully opaque |
+| `opacity.level.solid` | 1 | 100% visible (fully opaque) | Solid colors, no transparency |
 </CxTable>
 
 ### Standard Increments
@@ -143,11 +143,11 @@ Opacity tokens are most commonly used in color token definitions to create trans
 {
   "color.palette.primary.t-5050": {
     "$type": "color",
-    "$value": "rgba({color.palette.primary.50}, {opacity.base.50})"
+    "$value": "rgba({color.palette.primary.50}, {opacity.level.50})"
   },
   "color.palette.black.t-30": {
     "$type": "color",
-    "$value": "rgba({color.palette.black.base}, {opacity.base.30})"
+    "$value": "rgba({color.palette.black.base}, {opacity.level.30})"
   }
 }
 ```
@@ -185,12 +185,12 @@ This pattern allows changing transparency levels globally by adjusting opacity t
 
 ### Common Patterns
 
-**Disabled States**: Use `opacity.context.fg-slight` (0.25) or `opacity.base.40` (0.4)
+**Disabled States**: Use `opacity.context.fg-slight` (0.25) or `opacity.level.40` (0.4)
 
 **Subtle Text**: Use `opacity.context.fg-subtle` (0.5)
 
 **Modal Overlays**: Use `opacity.context.dim-main` (0.7) for dark overlays
 
-**Hover Effects**: Use `opacity.base.90` or `opacity.base.80` for slightly faded hover states
+**Hover Effects**: Use `opacity.level.90` or `opacity.level.80` for slightly faded hover states
 
 **Dividers**: Use `opacity.context.border-subtle` (0.15) for subtle divisions

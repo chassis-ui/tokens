@@ -75,13 +75,13 @@ pnpm install
 pnpm tokens --brand chassis --app yourapp --platform ios
 ```
 
-Generated token files will be in `Submodules/ChassisTokens/dist/ios/chassis-yourapp/`.
+Generated token files will be in `Submodules/ChassisTokens/dist/ios/yourapp/chassis/`.
 
 **Add to Xcode:**
 
 1. Open your Xcode project
 2. Right-click your project in the navigator → Add Files to "YourApp"
-3. Navigate to `Submodules/ChassisTokens/dist/ios/chassis-yourapp/`
+3. Navigate to `Submodules/ChassisTokens/dist/ios/yourapp/chassis/`
 4. Select all `.swift` files
 5. Choose "Create folder references" (not "Create groups")
 6. Ensure files are added to your app target
@@ -100,7 +100,7 @@ pnpm tokens --brand chassis --app yourapp --platform ios
 
 ```bash
 # In your tokens repository
-cd dist/ios/chassis-yourapp
+cd dist/ios/yourapp/chassis
 swift package init --type library --name ChassisTokens
 ```
 
@@ -183,7 +183,7 @@ pod install
 For simple projects, manually copy the Swift files:
 
 1. Build tokens: `pnpm tokens --platform ios`
-2. Copy all `.swift` files from `dist/ios/chassis-yourapp/` to your Xcode project
+2. Copy all `.swift` files from `dist/ios/yourapp/chassis/` to your Xcode project
 3. Add them to your target
 4. Rebuild when tokens change
 
@@ -547,8 +547,9 @@ YourApp/
 │   └── ChassisTokens/
 │       └── dist/
 │           └── ios/
-│               └── chassis-yourapp/
-│                   ├── main.swift
+│               └── yourapp/
+│                   └── chassis/
+│                       ├── main.swift
 │                   ├── string.swift
 │                   ├── color-light.swift
 │                   ├── color-dark.swift

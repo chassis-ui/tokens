@@ -51,7 +51,8 @@ After installation, the tokens package contains the following structure:
 node_modules/@chassis-ui/tokens/
 └── dist/
     └── web/
-        └── [brand]-[app]/
+        └── [app]/
+            └── [brand]/
             ├── main.scss          # All non-theme, non-number tokens
             ├── string.scss        # String tokens only
             ├── color-light.scss   # Light mode color tokens
@@ -82,13 +83,13 @@ The simplest approach is to import all tokens into your SCSS:
 
 ```scss
 // Import base tokens
-@import "@chassis-ui/tokens/dist/web/chassis-docs/main";
+@import "@chassis-ui/tokens/dist/web/docs/chassis/main";
 
 // Import theme tokens
-@import "@chassis-ui/tokens/dist/web/chassis-docs/color-light";
+@import "@chassis-ui/tokens/dist/web/docs/chassis/color-light";
 
 // Import screen tokens  
-@import "@chassis-ui/tokens/dist/web/chassis-docs/number-large";
+@import "@chassis-ui/tokens/dist/web/docs/chassis/number-large";
 
 // Now use tokens in your styles
 .button {
@@ -106,8 +107,8 @@ Import only what you need for smaller bundle sizes:
 
 ```scss
 // settings.scss
-@import "@chassis-ui/tokens/dist/web/chassis-docs/main";
-@import "@chassis-ui/tokens/dist/web/chassis-docs/color-light";
+@import "@chassis-ui/tokens/dist/web/docs/chassis/main";
+@import "@chassis-ui/tokens/dist/web/docs/chassis/color-light";
 
 // component.scss  
 .card {
@@ -125,7 +126,7 @@ Change the token prefix by overriding the `$prefix` variable:
 // Override default prefix before import
 $prefix: my- !default;
 
-@import "@chassis-ui/tokens/dist/web/chassis-docs/main";
+@import "@chassis-ui/tokens/dist/web/docs/chassis/main";
 
 // Now tokens use your prefix
 .element {
@@ -143,10 +144,10 @@ Use data attributes to switch themes (recommended):
 
 ```scss
 // Import both themes
-@import "@chassis-ui/tokens/dist/web/chassis-docs/main";
+@import "@chassis-ui/tokens/dist/web/docs/chassis/main";
 
 // Default to light mode
-@import "@chassis-ui/tokens/dist/web/chassis-docs/color-light";
+@import "@chassis-ui/tokens/dist/web/docs/chassis/color-light";
 
 .component {
   background: $cx-color-context-default-bg-main;
@@ -155,7 +156,7 @@ Use data attributes to switch themes (recommended):
 
 // Override for dark mode
 [data-cx-theme="dark"] {
-  @import "@chassis-ui/tokens/dist/web/chassis-docs/color-dark";
+  @import "@chassis-ui/tokens/dist/web/docs/chassis/color-dark";
   
   .component {
     background: $cx-color-context-default-bg-main;
@@ -170,8 +171,8 @@ Convert SCSS variables to CSS custom properties for runtime theme switching:
 
 ```scss
 // theme.scss
-@import "@chassis-ui/tokens/dist/web/chassis-docs/main";
-@import "@chassis-ui/tokens/dist/web/chassis-docs/color-light";
+@import "@chassis-ui/tokens/dist/web/docs/chassis/main";
+@import "@chassis-ui/tokens/dist/web/docs/chassis/color-light";
 
 :root {
   --bg-main: #{$cx-color-context-default-bg-main};
@@ -181,7 +182,7 @@ Convert SCSS variables to CSS custom properties for runtime theme switching:
 }
 
 [data-cx-theme="dark"] {
-  @import "@chassis-ui/tokens/dist/web/chassis-docs/color-dark";
+  @import "@chassis-ui/tokens/dist/web/docs/chassis/color-dark";
   
   --bg-main: #{$cx-color-context-default-bg-main};
   --fg-main: #{$cx-color-context-default-fg-main};
@@ -227,12 +228,12 @@ Import different screen sizes based on your responsive strategy:
 
 ```scss
 // Base and large screen (desktop-first)
-@import "@chassis-ui/tokens/dist/web/chassis-docs/main";
-@import "@chassis-ui/tokens/dist/web/chassis-docs/number-large";
+@import "@chassis-ui/tokens/dist/web/docs/chassis/main";
+@import "@chassis-ui/tokens/dist/web/docs/chassis/number-large";
 
 // Medium screens (tablets)
 @media (max-width: 992px) {
-  @import "@chassis-ui/tokens/dist/web/chassis-docs/number-medium";
+  @import "@chassis-ui/tokens/dist/web/docs/chassis/number-medium";
   
   .container {
     padding: $cx-space-container-padding-block $cx-space-container-padding-inline;
@@ -241,7 +242,7 @@ Import different screen sizes based on your responsive strategy:
 
 // Small screens (mobile)
 @media (max-width: 768px) {
-  @import "@chassis-ui/tokens/dist/web/chassis-docs/number-small";
+  @import "@chassis-ui/tokens/dist/web/docs/chassis/number-small";
   
   .container {
     padding: $cx-space-container-padding-block $cx-space-container-padding-inline;
@@ -253,8 +254,8 @@ Import different screen sizes based on your responsive strategy:
 
 ```scss
 // Base and small screen (mobile-first)
-@import "@chassis-ui/tokens/dist/web/chassis-docs/main";
-@import "@chassis-ui/tokens/dist/web/chassis-docs/number-small";
+@import "@chassis-ui/tokens/dist/web/docs/chassis/main";
+@import "@chassis-ui/tokens/dist/web/docs/chassis/number-small";
 
 .heading {
   font-size: $cx-typography-fontSize-text-xlarge;
@@ -262,7 +263,7 @@ Import different screen sizes based on your responsive strategy:
 
 // Medium screens and up
 @media (min-width: 768px) {
-  @import "@chassis-ui/tokens/dist/web/chassis-docs/number-medium";
+  @import "@chassis-ui/tokens/dist/web/docs/chassis/number-medium";
   
   .heading {
     font-size: $cx-typography-fontSize-text-2xlarge;
@@ -271,7 +272,7 @@ Import different screen sizes based on your responsive strategy:
 
 // Large screens and up
 @media (min-width: 992px) {
-  @import "@chassis-ui/tokens/dist/web/chassis-docs/number-large";
+  @import "@chassis-ui/tokens/dist/web/docs/chassis/number-large";
   
   .heading {
     font-size: $cx-typography-fontSize-text-3xlarge;
@@ -306,8 +307,8 @@ Import tokens in your components:
 ```jsx
 <!-- Vue SFC -->
 <style lang="scss">
-@import "@chassis-ui/tokens/dist/web/chassis-docs/main";
-@import "@chassis-ui/tokens/dist/web/chassis-docs/color-light";
+@import "@chassis-ui/tokens/dist/web/docs/chassis/main";
+@import "@chassis-ui/tokens/dist/web/docs/chassis/color-light";
 
 .button {
   background: $cx-color-context-primary-bg-solid;
@@ -354,8 +355,8 @@ import './styles/main.scss';
 
 ```scss
 // styles/main.scss
-@import "@chassis-ui/tokens/dist/web/chassis-docs/main";
-@import "@chassis-ui/tokens/dist/web/chassis-docs/color-light";
+@import "@chassis-ui/tokens/dist/web/docs/chassis/main";
+@import "@chassis-ui/tokens/dist/web/docs/chassis/color-light";
 ```
 
 ### Next.js
@@ -380,16 +381,16 @@ export default function App({ Component, pageProps }) {
 
 ```scss
 // styles/tokens.scss
-@import "@chassis-ui/tokens/dist/web/chassis-docs/main";
-@import "@chassis-ui/tokens/dist/web/chassis-docs/color-light";
-@import "@chassis-ui/tokens/dist/web/chassis-docs/number-large";
+@import "@chassis-ui/tokens/dist/web/docs/chassis/main";
+@import "@chassis-ui/tokens/dist/web/docs/chassis/color-light";
+@import "@chassis-ui/tokens/dist/web/docs/chassis/number-large";
 ```
 
 Use in CSS Modules:
 
 ```scss
 // components/Button.module.scss
-@import "@chassis-ui/tokens/dist/web/chassis-docs/main";
+@import "@chassis-ui/tokens/dist/web/docs/chassis/main";
 
 .button {
   padding: $cx-space-button-padding-block $cx-space-button-padding-inline;
@@ -411,8 +412,8 @@ Astro has built-in SCSS support:
 </div>
 
 <style lang="scss">
-  @import "@chassis-ui/tokens/dist/web/chassis-docs/main";
-  @import "@chassis-ui/tokens/dist/web/chassis-docs/color-light";
+  @import "@chassis-ui/tokens/dist/web/docs/chassis/main";
+  @import "@chassis-ui/tokens/dist/web/docs/chassis/color-light";
   
   .card {
     background: $cx-color-context-default-bg-main;
@@ -432,8 +433,8 @@ export default {
       preprocessorOptions: {
         scss: {
           additionalData: `
-            @import "@chassis-ui/tokens/dist/web/chassis-docs/main";
-            @import "@chassis-ui/tokens/dist/web/chassis-docs/color-light";
+            @import "@chassis-ui/tokens/dist/web/docs/chassis/main";
+            @import "@chassis-ui/tokens/dist/web/docs/chassis/color-light";
           `
         }
       }
@@ -448,8 +449,8 @@ Parcel automatically handles SCSS:
 
 ```scss
 // src/styles/main.scss
-@import "@chassis-ui/tokens/dist/web/chassis-docs/main";
-@import "@chassis-ui/tokens/dist/web/chassis-docs/color-light";
+@import "@chassis-ui/tokens/dist/web/docs/chassis/main";
+@import "@chassis-ui/tokens/dist/web/docs/chassis/color-light";
 
 body {
   background: $cx-color-context-default-bg-main;
@@ -492,9 +493,9 @@ Create an abstraction layer for easier token management:
 
 ```scss
 // _tokens.scss
-@import "@chassis-ui/tokens/dist/web/chassis-docs/main";
-@import "@chassis-ui/tokens/dist/web/chassis-docs/color-light";
-@import "@chassis-ui/tokens/dist/web/chassis-docs/number-large";
+@import "@chassis-ui/tokens/dist/web/docs/chassis/main";
+@import "@chassis-ui/tokens/dist/web/docs/chassis/color-light";
+@import "@chassis-ui/tokens/dist/web/docs/chassis/number-large";
 
 // Create semantic aliases
 $color-background: $cx-color-context-default-bg-main;
@@ -523,7 +524,7 @@ Convert tokens to JavaScript objects for CSS-in-JS libraries:
 
 ```javascript
 // tokens.js
-import tokens from '@chassis-ui/tokens/dist/web/chassis-docs/main.scss';
+import tokens from '@chassis-ui/tokens/dist/web/docs/chassis/main.scss';
 
 export const theme = {
   colors: {
@@ -607,10 +608,10 @@ Import only needed tokens to reduce bundle size:
 
 ```scss
 // Instead of importing entire files
-// @import "@chassis-ui/tokens/dist/web/chassis-docs/main";
+// @import "@chassis-ui/tokens/dist/web/docs/chassis/main";
 
 // Import specific token categories
-@use "@chassis-ui/tokens/dist/web/chassis-docs/main" with (
+@use "@chassis-ui/tokens/dist/web/docs/chassis/main" with (
   $cx-color-context-default-bg-main: true,
   $cx-space-base-16: true
 );
@@ -706,9 +707,9 @@ export default {
 
 ```scss
 // Correct order
-@import "@chassis-ui/tokens/dist/web/chassis-docs/main";
-@import "@chassis-ui/tokens/dist/web/chassis-docs/color-light";
-@import "@chassis-ui/tokens/dist/web/chassis-docs/number-large";
+@import "@chassis-ui/tokens/dist/web/docs/chassis/main";
+@import "@chassis-ui/tokens/dist/web/docs/chassis/color-light";
+@import "@chassis-ui/tokens/dist/web/docs/chassis/number-large";
 ```
 
 ### Theme Not Switching
@@ -735,8 +736,8 @@ export default {
 
 ```scss
 // styles/main.scss
-@import "@chassis-ui/tokens/dist/web/chassis-docs/main";
-@import "@chassis-ui/tokens/dist/web/chassis-docs/color-light";
+@import "@chassis-ui/tokens/dist/web/docs/chassis/main";
+@import "@chassis-ui/tokens/dist/web/docs/chassis/color-light";
 
 body {
   font-family: $cx-typography-fontFamily-text;
@@ -764,8 +765,8 @@ body {
 
 ```scss
 // src/styles/tokens.scss
-@import "@chassis-ui/tokens/dist/web/chassis-docs/main";
-@import "@chassis-ui/tokens/dist/web/chassis-docs/color-light";
+@import "@chassis-ui/tokens/dist/web/docs/chassis/main";
+@import "@chassis-ui/tokens/dist/web/docs/chassis/color-light";
 
 :root {
   --bg: #{$cx-color-context-default-bg-main};
@@ -775,7 +776,7 @@ body {
 }
 
 [data-cx-theme="dark"] {
-  @import "@chassis-ui/tokens/dist/web/chassis-docs/color-dark";
+  @import "@chassis-ui/tokens/dist/web/docs/chassis/color-dark";
   --bg: #{$cx-color-context-default-bg-main};
   --fg: #{$cx-color-context-default-fg-main};
   --primary: #{$cx-color-context-primary-bg-solid};
@@ -828,8 +829,8 @@ const toggleTheme = () => {
 </script>
 
 <style lang="scss">
-@import "@chassis-ui/tokens/dist/web/chassis-docs/main";
-@import "@chassis-ui/tokens/dist/web/chassis-docs/color-light";
+@import "@chassis-ui/tokens/dist/web/docs/chassis/main";
+@import "@chassis-ui/tokens/dist/web/docs/chassis/color-light";
 
 :root {
   background: $cx-color-context-default-bg-main;
@@ -837,7 +838,7 @@ const toggleTheme = () => {
 }
 
 [data-cx-theme="dark"] {
-  @import "@chassis-ui/tokens/dist/web/chassis-docs/color-dark";
+  @import "@chassis-ui/tokens/dist/web/docs/chassis/color-dark";
   background: $cx-color-context-default-bg-main;
   color: $cx-color-context-default-fg-main;
 }

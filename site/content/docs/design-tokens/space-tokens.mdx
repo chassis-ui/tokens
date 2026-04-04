@@ -17,7 +17,7 @@ Space tokens follow a two-layer architecture where foundational spacing values a
 **How it works:**
 
 The system provides progressive specificity:
-1. **Base spacing** (`space.base.*`) defines raw spacing values using an 8-point grid
+1. **Base spacing** (`space.unit.*`) defines raw spacing values using an 8-point grid
 2. **Contextual spacing** (`space.context.*`) provides semantic spacing scales (xsmall, small, medium, large)
 3. **Component spacing** (`space.[component].*`) assigns specific spacing to component parts (padding-x, padding-y, gap)
 
@@ -53,26 +53,26 @@ Base spacing tokens provide foundational whitespace values following an 8-point 
 <CxTable>
 | Token Name | Value (px) | Visual Scale | Use Cases |
 |------------|-----------|--------------|----------|
-| `space.base.0` | 0 | None | No spacing, zero margin |
-| `space.base.1` | 1 | Minimal | Separator lines |
-| `space.base.2` | 2 | Tiny | Very tight spacing |
-| `space.base.4` | 4 | Extra small | Compact layouts |
-| `space.base.8` | 8 | Small | Base grid unit |
-| `space.base.12` | 12 | Small-medium | Tight padding |
-| `space.base.16` | 16 | Medium | Standard spacing |
-| `space.base.20` | 20 | Medium-large | Comfortable spacing |
-| `space.base.24` | 24 | Large | Generous padding |
-| `space.base.28` | 28 | Large+ | Extra padding |
-| `space.base.32` | 32 | Extra large | Section spacing |
-| `space.base.36` | 36 | Extra large+ | Large gaps |
-| `space.base.40` | 40 | 2x large | Generous sections |
-| `space.base.48` | 48 | 3x large | Major spacing |
-| `space.base.56` | 56 | 4x large | Large sections |
-| `space.base.64` | 64 | 5x large | Hero spacing |
-| `space.base.72` | 72 | 6x large | Extra large sections |
-| `space.base.80` | 80 | 7x large | Maximum spacing |
-| `space.base.96` | 96 | 8x large | Extreme spacing |
-| `space.base.120` | 120 | 10x large | Page-level spacing |
+| `space.unit.0` | 0 | None | No spacing, zero margin |
+| `space.unit.1` | 1 | Minimal | Separator lines |
+| `space.unit.2` | 2 | Tiny | Very tight spacing |
+| `space.unit.4` | 4 | Extra small | Compact layouts |
+| `space.unit.8` | 8 | Small | Base grid unit |
+| `space.unit.12` | 12 | Small-medium | Tight padding |
+| `space.unit.16` | 16 | Medium | Standard spacing |
+| `space.unit.20` | 20 | Medium-large | Comfortable spacing |
+| `space.unit.24` | 24 | Large | Generous padding |
+| `space.unit.28` | 28 | Large+ | Extra padding |
+| `space.unit.32` | 32 | Extra large | Section spacing |
+| `space.unit.36` | 36 | Extra large+ | Large gaps |
+| `space.unit.40` | 40 | 2x large | Generous sections |
+| `space.unit.48` | 48 | 3x large | Major spacing |
+| `space.unit.56` | 56 | 4x large | Large sections |
+| `space.unit.64` | 64 | 5x large | Hero spacing |
+| `space.unit.72` | 72 | 6x large | Extra large sections |
+| `space.unit.80` | 80 | 7x large | Maximum spacing |
+| `space.unit.96` | 96 | 8x large | Extreme spacing |
+| `space.unit.120` | 120 | 10x large | Page-level spacing |
 </CxTable>
 
 ### Special Spacing Values
@@ -80,11 +80,11 @@ Base spacing tokens provide foundational whitespace values following an 8-point 
 <CxTable>
 | Token Name | Value | Purpose |
 |------------|-------|--------|
-| `space.base.05` | 0.5px | Half-pixel adjustments |
-| `space.base.d05` | 0.05em | Relative fractional spacing |
-| `space.base.d15` | 1.5px | 1.5-pixel spacing |
-| `space.base.d25` | 2.5px | 2.5-pixel spacing |
-| `space.base.n1` through `space.base.n8` | Negative values | Negative margins, overlaps |
+| `space.unit.05` | 0.5px | Half-pixel adjustments |
+| `space.unit.d05` | 0.05em | Relative fractional spacing |
+| `space.unit.d15` | 1.5px | 1.5-pixel spacing |
+| `space.unit.d25` | 2.5px | 2.5-pixel spacing |
+| `space.unit.n1` through `space.unit.n8` | Negative values | Negative margins, overlaps |
 </CxTable>
 
 ## Contextual Spacing
@@ -219,7 +219,7 @@ Component-specific spacing tokens define padding, gaps, and margins for individu
 
 **For flexible spacing**: Use contextual tokens (`space.context.*`)
 
-**For custom spacing**: Use base tokens (`space.base.*`)
+**For custom spacing**: Use base tokens (`space.unit.*`)
 
 ### Design Principles
 

@@ -17,7 +17,7 @@ Size tokens are organized into a two-layer system where base sizing values are d
 **How it works:**
 
 The system progresses from foundational to applied:
-1. **Base sizes** (`size.base.*`) provide raw dimensional values (0-1024px)
+1. **Base sizes** (`size.unit.*`) provide raw dimensional values (0-1024px)
 2. **Contextual sizes** (`size.context.*`) assign semantic meaning (xsmall, small, medium, large, etc.)
 3. **Component sizes** (`size.[component].*`) define specific dimensions for UI components
 
@@ -55,22 +55,22 @@ The primary sizing scale follows an 8-point grid with additional values:
 <CxTable>
 | Token Name | Value (px) | Use Cases |
 |------------|-----------|----------|
-| `size.base.0` | 0 | Zero size, no dimension |
-| `size.base.1` | 1 | Minimal size, separator lines |
-| `size.base.2` | 2 | Very small elements, fine borders |
-| `size.base.4` | 4 | Small indicators, compact elements |
-| `size.base.8` | 8 | Base grid unit, small icons |
-| `size.base.12` | 12 | Small component dimensions |
-| `size.base.16` | 16 | Small-medium elements |
-| `size.base.20` | 20 | Small icons and badges |
-| `size.base.24` | 24 | Medium icons, compact buttons |
-| `size.base.28` | 28 | Medium-large icons |
-| `size.base.32` | 32 | Standard button height |
-| `size.base.36` | 36 | Medium-large elements |
-| `size.base.40` | 40 | Standard component height |
-| `size.base.48` | 48 | Large buttons and inputs |
-| `size.base.56` | 56 | Extra large components |
-| `size.base.64` | 64 | Hero elements, large avatars |
+| `size.unit.0` | 0 | Zero size, no dimension |
+| `size.unit.1` | 1 | Minimal size, separator lines |
+| `size.unit.2` | 2 | Very small elements, fine borders |
+| `size.unit.4` | 4 | Small indicators, compact elements |
+| `size.unit.8` | 8 | Base grid unit, small icons |
+| `size.unit.12` | 12 | Small component dimensions |
+| `size.unit.16` | 16 | Small-medium elements |
+| `size.unit.20` | 20 | Small icons and badges |
+| `size.unit.24` | 24 | Medium icons, compact buttons |
+| `size.unit.28` | 28 | Medium-large icons |
+| `size.unit.32` | 32 | Standard button height |
+| `size.unit.36` | 36 | Medium-large elements |
+| `size.unit.40` | 40 | Standard component height |
+| `size.unit.48` | 48 | Large buttons and inputs |
+| `size.unit.56` | 56 | Extra large components |
+| `size.unit.64` | 64 | Hero elements, large avatars |
 </CxTable>
 
 ### Extended Scale
@@ -80,16 +80,16 @@ For larger dimensions:
 <CxTable>
 | Token Name | Value (px) | Use Cases |
 |------------|-----------|----------|
-| `size.base.72` | 72 | Collapsed navigation |
-| `size.base.96` | 96 | Large spacing, section heights |
-| `size.base.120` | 120 | Menu widths, medium containers |
-| `size.base.128` | 128 | Medium-large containers |
-| `size.base.160` | 160 | Large containers |
-| `size.base.192` | 192 | Extra large containers |
-| `size.base.256` | 256 | Expanded navigation, sidebars |
-| `size.base.320` | 320 | Modal widths, content areas |
-| `size.base.512` | 512 | Large content areas |
-| `size.base.1024` | 1024 | Maximum content widths |
+| `size.unit.72` | 72 | Collapsed navigation |
+| `size.unit.96` | 96 | Large spacing, section heights |
+| `size.unit.120` | 120 | Menu widths, medium containers |
+| `size.unit.128` | 128 | Medium-large containers |
+| `size.unit.160` | 160 | Large containers |
+| `size.unit.192` | 192 | Extra large containers |
+| `size.unit.256` | 256 | Expanded navigation, sidebars |
+| `size.unit.320` | 320 | Modal widths, content areas |
+| `size.unit.512` | 512 | Large content areas |
+| `size.unit.1024` | 1024 | Maximum content widths |
 </CxTable>
 
 ### Fractional and Negative Sizes
@@ -99,11 +99,11 @@ For fine-tuning and special cases:
 <CxTable>
 | Token Name | Value | Purpose |
 |------------|-------|--------|
-| `size.base.05` | 0.5px | Half-pixel adjustments |
-| `size.base.d05` | 0.05em | Relative fractional size |
-| `size.base.d15` | 1.5px | 1.5-pixel increments |
-| `size.base.d25` | 2.5px | 2.5-pixel increments |
-| `size.base.n1` through `size.base.n24` | Negative values | Negative margins, adjustments |
+| `size.unit.05` | 0.5px | Half-pixel adjustments |
+| `size.unit.d05` | 0.05em | Relative fractional size |
+| `size.unit.d15` | 1.5px | 1.5-pixel increments |
+| `size.unit.d25` | 2.5px | 2.5-pixel increments |
+| `size.unit.n1` through `size.unit.n24` | Negative values | Negative margins, adjustments |
 </CxTable>
 
 ## Contextual Sizes
@@ -214,11 +214,11 @@ Component-specific size tokens define exact dimensions for UI elements.
 
 **For semantic sizes**: Use contextual tokens (`size.context.*`)
 
-**For custom dimensions**: Use base size tokens (`size.base.*`)
+**For custom dimensions**: Use base size tokens (`size.unit.*`)
 
 ### Design Principles
 
-**Touch Targets**: Minimum 32px (size.base.32) for interactive elements on touch devices
+**Touch Targets**: Minimum 32px (size.unit.32) for interactive elements on touch devices
 
 **Icon Sizing**: Keep icon sizes at 24px (size.icon.glyph.medium) or larger for clarity
 

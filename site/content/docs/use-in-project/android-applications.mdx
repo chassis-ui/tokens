@@ -86,7 +86,7 @@ pnpm install
 pnpm tokens --brand chassis --app yourapp --platform android
 ```
 
-Generated files will be in `submodules/chassis-tokens/dist/android/chassis-yourapp/`.
+Generated files will be in `submodules/chassis-tokens/dist/android/yourapp/chassis/`.
 
 **Configure Gradle to use tokens:**
 
@@ -96,7 +96,7 @@ android {
     sourceSets {
         main {
             res.srcDirs += [
-                '../submodules/chassis-tokens/dist/android/chassis-yourapp'
+                '../submodules/chassis-tokens/dist/android/yourapp/chassis'
             ]
         }
     }
@@ -120,7 +120,7 @@ Publish tokens as an Android Library (AAR):
 ```bash
 # In your tokens repository
 mkdir -p android-library/tokens/src/main/res/values
-cp dist/android/chassis-yourapp/*.xml android-library/tokens/src/main/res/values/
+cp dist/android/yourapp/chassis/*.xml android-library/tokens/src/main/res/values/
 ```
 
 **2. Create build.gradle:**
@@ -208,7 +208,7 @@ dependencies {
 For simple projects, copy XML files directly:
 
 1. Build tokens: `pnpm tokens --platform android`
-2. Copy all `.xml` files from `dist/android/chassis-yourapp/` to `app/src/main/res/values/`
+2. Copy all `.xml` files from `dist/android/yourapp/chassis/` to `app/src/main/res/values/`
 3. Sync Gradle
 4. Rebuild when tokens change
 
@@ -681,8 +681,9 @@ YourApp/
 │   └── chassis-tokens/
 │       └── dist/
 │           └── android/
-│               └── chassis-yourapp/
-│                   ├── main.xml
+│               └── yourapp/
+│                   └── chassis/
+│                       ├── main.xml
 │                   ├── string.xml
 │                   ├── color-light.xml
 │                   ├── color-dark.xml

@@ -48,7 +48,7 @@ Transform all design tokens into platform-specific formats:
 pnpm tokens
 ```
 
-This generates token files for all brands, themes, apps, platforms, and screens defined in your configuration. Output is written to `dist/[platform]/[brand]-[app]/` with platform-specific formats (SCSS for web, Swift for iOS, XML for Android).
+This generates token files for all brands, themes, apps, platforms, and screens defined in your configuration. Output is written to `dist/[platform]/[app]/[brand]/` with platform-specific formats (SCSS for web, Swift for iOS, XML for Android).
 
 ### Selective Builds
 
