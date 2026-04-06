@@ -26,8 +26,8 @@
       "jumbo": {
         "$type": "typography",
         "$value": {
-          "fontFamily": "{typography.fontFamily.display}",
-          "fontWeight": "{typography.fontWeight.display.mass}",
+          "fontFamily": "{typography.fontFamily.text}",
+          "fontWeight": "{typography.fontWeight.text.mass}",
           "lineHeight": "125%",
           "fontSize": "{size.unit.96}",
           "letterSpacing": "{size.unit.n1}",
@@ -39,8 +39,8 @@
       "hero": {
         "$type": "typography",
         "$value": {
-          "fontFamily": "{typography.fontFamily.display}",
-          "fontWeight": "{typography.fontWeight.display.mass}",
+          "fontFamily": "{typography.fontFamily.text}",
+          "fontWeight": "{typography.fontWeight.text.mass}",
           "lineHeight": "125%",
           "fontSize": "{size.unit.64}",
           "letterSpacing": "{size.unit.n1}",
@@ -65,10 +65,10 @@
       "heading": {
         "$type": "typography",
         "$value": {
-          "fontFamily": "{typography.fontFamily.display}",
-          "fontWeight": "{typography.fontWeight.display.strong}",
-          "lineHeight": "{typography.lineHeight.display.3xlarge}",
-          "fontSize": "{typography.fontSize.display.3xlarge}",
+          "fontFamily": "{typography.fontFamily.text}",
+          "fontWeight": "{typography.fontWeight.text.strong}",
+          "lineHeight": "{typography.lineHeight.text.3xlarge}",
+          "fontSize": "{typography.fontSize.text.3xlarge}",
           "letterSpacing": "{typography.letterSpacing.base.zero}",
           "paragraphSpacing": "{typography.paragraphSpacing.base.large}",
           "textCase": "{typography.textCase.base.none}",

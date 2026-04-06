@@ -13,24 +13,16 @@
       }
     }
   },
-  "visibility": {
-    "screen": {
-      "separator": {
-        "$type": "boolean",
-        "$value": "{figma.switch.screen.mode-1}"
-      }
-    }
-  },
   "typography": {
     "fontSize": {
-      "screen": {
+      "website": {
         "hero-title": {
           "$type": "fontSizes",
           "$value": "48"
         },
         "hero-body": {
           "$type": "fontSizes",
-          "$value": "18"
+          "$value": "{typography.fontSize.text.large}"
         },
         "section-title": {
           "$type": "fontSizes",
@@ -38,70 +30,54 @@
         },
         "section-body": {
           "$type": "fontSizes",
-          "$value": "18"
+          "$value": "{typography.fontSize.text.large}"
         },
         "feature-title": {
           "$type": "fontSizes",
-          "$value": "20"
+          "$value": "{typography.fontSize.text.large}"
         },
         "feature-body": {
           "$type": "fontSizes",
-          "$value": "16"
+          "$value": "{typography.fontSize.text.medium}"
         },
         "module-title": {
           "$type": "fontSizes",
-          "$value": "18"
+          "$value": "{typography.fontSize.text.large}"
         }
       }
     }
   },
   "space": {
-    "screen": {
+    "website": {
       "section-padding-y": {
         "$type": "spacing",
         "$value": "{space.unit.64}"
       },
       "section-padding-x": {
         "$type": "spacing",
-        "$value": "{space.unit.32}"
-      },
-      "section-gap-y": {
-        "$type": "spacing",
-        "$value": "{space.unit.64}"
-      },
-      "section-gap-x": {
-        "$type": "spacing",
-        "$value": "{space.unit.48}"
-      },
-      "content-padding-y": {
-        "$type": "spacing",
-        "$value": "{space.unit.32}"
-      },
-      "content-padding-x": {
-        "$type": "spacing",
-        "$value": "{space.unit.0}"
-      },
-      "content-gap-y": {
-        "$type": "spacing",
         "$value": "{space.unit.24}"
       },
-      "content-gap-x": {
+      "section-gap": {
+        "$type": "spacing",
+        "$value": "{space.unit.32}"
+      },
+      "content-main-gap": {
+        "$type": "spacing",
+        "$value": "{space.unit.12}"
+      },
+      "content-aside-gap": {
         "$type": "spacing",
         "$value": "{space.unit.24}"
       },
       "feature-padding-y": {
         "$type": "spacing",
-        "$value": "{space.unit.32}"
+        "$value": "{space.unit.24}"
       },
       "feature-padding-x": {
         "$type": "spacing",
-        "$value": "{space.unit.0}"
-      },
-      "feature-gap-y": {
-        "$type": "spacing",
         "$value": "{space.unit.24}"
       },
-      "feature-gap-x": {
+      "feature-gap": {
         "$type": "spacing",
         "$value": "{space.unit.24}"
       },
@@ -113,18 +89,14 @@
         "$type": "spacing",
         "$value": "{space.unit.24}"
       },
-      "module-gap-y": {
-        "$type": "spacing",
-        "$value": "{space.unit.24}"
-      },
-      "module-gap-x": {
+      "module-gap": {
         "$type": "spacing",
         "$value": "{space.unit.24}"
       }
     }
   },
   "size": {
-    "screen": {
+    "website": {
       "section-thumb": {
         "$type": "sizing",
         "$value": "{size.unit.80}"
@@ -141,13 +113,13 @@
         "$type": "sizing",
         "$value": "{size.unit.40}"
       },
-      "section-w": {
+      "module-thumb": {
         "$type": "sizing",
-        "$value": "{grid.breakpoint.xlarge}"
+        "$value": "{size.unit.48}"
       },
-      "section-h": {
+      "module-icon": {
         "$type": "sizing",
-        "$value": "1024"
+        "$value": "{size.unit.40}"
       }
     }
   }
