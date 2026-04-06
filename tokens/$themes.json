@@ -8812,8 +8812,10 @@
     "$figmaCollectionId": "VariableCollectionId:5355:9779",
     "$figmaModeId": "5355:0",
     "$figmaVariableReferences": {
-      "figma.switch.screen.mode-1": "de0011d2967ce5753d78116c11ccc29b25f029b2",
       "figma.switch.screen.mode-2": "be56a5313ec9b4a3c497f4e7e06ae653b43371a6",
+      "figma.size.website.width": "4e0804a6ac69e43244520aee7287b941f7c6a8a5",
+      "figma.variant.nav": "5780efec469bf2bcaba31ef3af3b89477343db79",
+      "figma.variant.section": "0cf0e191f9aab19c0be0865fc8f3201a876c0fd3",
       "typography.fontSize.website.hero-title": "0bd659dbc36655144223be7405cf9104637d5340",
       "typography.fontSize.website.hero-body": "0ef565302caac6bde562b4d02ba763ee35c736ff",
       "typography.fontSize.website.section-title": "4b139bbbf40109062d8ca4a13504a5fe2c5de71f",
@@ -8838,7 +8840,8 @@
       "size.website.feature-icon": "1cd0b0f79a78a7b05eaf857bd8f0310e28f1f3a9",
       "size.website.module-thumb": "f8a4f574826c62ed92344c81366af7911a538bfe",
       "size.website.module-icon": "bfc1542ae5ac410e233ba2cc79a63742a1d9c7d7",
-      "figma.switch.screen.mode-3": "c4b689e13cf05ebf2adcd07c3bc17110dbb5e9a8"
+      "figma.switch.screen.mode-3": "c4b689e13cf05ebf2adcd07c3bc17110dbb5e9a8",
+      "figma.switch.screen.mode-1": "de0011d2967ce5753d78116c11ccc29b25f029b2"
     },
     "group": "screen"
   },
@@ -8860,6 +8863,9 @@
     "$figmaModeId": "5357:2",
     "$figmaVariableReferences": {
       "figma.switch.screen.mode-1": "de0011d2967ce5753d78116c11ccc29b25f029b2",
+      "figma.size.website.width": "4e0804a6ac69e43244520aee7287b941f7c6a8a5",
+      "figma.variant.nav": "5780efec469bf2bcaba31ef3af3b89477343db79",
+      "figma.variant.section": "0cf0e191f9aab19c0be0865fc8f3201a876c0fd3",
       "typography.fontSize.website.hero-title": "0bd659dbc36655144223be7405cf9104637d5340",
       "typography.fontSize.website.hero-body": "0ef565302caac6bde562b4d02ba763ee35c736ff",
       "typography.fontSize.website.section-title": "4b139bbbf40109062d8ca4a13504a5fe2c5de71f",
@@ -8892,7 +8898,15 @@
   {
     "id": "9b25cacaddd36c3b9ecfb76ffe0e61f2dd5bede5",
     "name": "small",
-    "$figmaStyleReferences": {},
+    "$figmaStyleReferences": {
+      "font.website.hero-title": "S:1da8af56a943d2923508d2ad8cfa16879104214b,",
+      "font.website.hero-body": "S:adcf27d0a725bbf9abe443fcb4c7e1592133d245,",
+      "font.website.section-title": "S:01a5cbe60d5be1f3981b49db3afc0e717bdf10ca,",
+      "font.website.section-body": "S:66eae1407e058ada609163bb63430fbb3a2d2496,",
+      "font.website.feature-title": "S:8647c9dc5201d09e771c8e48c7b262b0d7b379e1,",
+      "font.website.feature-body": "S:578460c0602e0b9db59e004c1c5e892cd6c2ef36,",
+      "font.website.module-title": "S:12c0aa9302f347ab0d1f1a05b1b37744c123082c,"
+    },
     "selectedTokenSets": {
       "base/app-base": "source",
       "base/brand-base": "source",
@@ -8907,6 +8921,9 @@
     "$figmaModeId": "5357:3",
     "$figmaVariableReferences": {
       "figma.switch.screen.mode-1": "de0011d2967ce5753d78116c11ccc29b25f029b2",
+      "figma.size.website.width": "4e0804a6ac69e43244520aee7287b941f7c6a8a5",
+      "figma.variant.nav": "5780efec469bf2bcaba31ef3af3b89477343db79",
+      "figma.variant.section": "0cf0e191f9aab19c0be0865fc8f3201a876c0fd3",
       "typography.fontSize.website.hero-title": "0bd659dbc36655144223be7405cf9104637d5340",
       "typography.fontSize.website.hero-body": "0ef565302caac6bde562b4d02ba763ee35c736ff",
       "typography.fontSize.website.section-title": "4b139bbbf40109062d8ca4a13504a5fe2c5de71f",
