@@ -1,0 +1,115 @@
+{
+  "figma": {
+    "switch": {
+      "screen": {
+        "mode-1": {
+          "$type": "boolean",
+          "$value": "false"
+        },
+        "mode-2": {
+          "$type": "boolean",
+          "$value": "false"
+        },
+        "mode-3": {
+          "$type": "boolean",
+          "$value": "false"
+        }
+      }
+    }
+  },
+  "font": {
+    "website": {
+      "hero-title": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "{typography.fontFamily.text}",
+          "fontWeight": "{typography.fontWeight.text.mass}",
+          "lineHeight": "125%",
+          "fontSize": "{typography.fontSize.website.hero-title}",
+          "letterSpacing": "{size.unit.n1}",
+          "paragraphSpacing": "{typography.paragraphSpacing.base.zero}",
+          "textCase": "{typography.textCase.base.none}",
+          "textDecoration": "{typography.textDecoration.base.none}"
+        }
+      },
+      "hero-body": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "{typography.fontFamily.text}",
+          "fontWeight": "{typography.fontWeight.text.normal}",
+          "lineHeight": "150%",
+          "fontSize": "{typography.fontSize.website.hero-body}",
+          "letterSpacing": "{typography.letterSpacing.base.zero}",
+          "paragraphSpacing": "{typography.paragraphSpacing.base.zero}",
+          "textCase": "{typography.textCase.base.none}",
+          "textDecoration": "{typography.textDecoration.base.none}"
+        }
+      },
+      "section-title": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "{typography.fontFamily.text}",
+          "fontWeight": "{typography.fontWeight.text.mass}",
+          "lineHeight": "125%",
+          "fontSize": "{typography.fontSize.website.section-title}",
+          "letterSpacing": "{size.unit.nd05}",
+          "paragraphSpacing": "{typography.paragraphSpacing.base.zero}",
+          "textCase": "{typography.textCase.base.none}",
+          "textDecoration": "{typography.textDecoration.base.none}"
+        }
+      },
+      "section-body": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "{typography.fontFamily.text}",
+          "fontWeight": "{typography.fontWeight.text.normal}",
+          "lineHeight": "150%",
+          "fontSize": "{typography.fontSize.website.section-body}",
+          "letterSpacing": "{typography.letterSpacing.base.zero}",
+          "paragraphSpacing": "{typography.paragraphSpacing.base.zero}",
+          "textCase": "{typography.textCase.base.none}",
+          "textDecoration": "{typography.textDecoration.base.none}"
+        }
+      },
+      "feature-title": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "{typography.fontFamily.text}",
+          "fontWeight": "{typography.fontWeight.text.mass}",
+          "lineHeight": "150%",
+          "fontSize": "{typography.fontSize.website.feature-title}",
+          "letterSpacing": "{typography.letterSpacing.base.zero}",
+          "paragraphSpacing": "{typography.paragraphSpacing.base.zero}",
+          "textCase": "{typography.textCase.base.none}",
+          "textDecoration": "{typography.textDecoration.base.none}"
+        }
+      },
+      "feature-body": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "{typography.fontFamily.text}",
+          "fontWeight": "{typography.fontWeight.text.normal}",
+          "lineHeight": "150%",
+          "fontSize": "{typography.fontSize.website.feature-body}",
+          "letterSpacing": "{typography.letterSpacing.base.zero}",
+          "paragraphSpacing": "{typography.paragraphSpacing.base.zero}",
+          "textCase": "{typography.textCase.base.none}",
+          "textDecoration": "{typography.textDecoration.base.none}"
+        }
+      },
+      "module-title": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "{typography.fontFamily.text}",
+          "fontWeight": "{typography.fontWeight.text.mass}",
+          "lineHeight": "150%",
+          "fontSize": "{typography.fontSize.website.module-title}",
+          "letterSpacing": "{typography.letterSpacing.base.zero}",
+          "paragraphSpacing": "{typography.paragraphSpacing.base.zero}",
+          "textCase": "{typography.textCase.base.none}",
+          "textDecoration": "{typography.textDecoration.base.none}"
+        }
+      }
+    }
+  }
+}

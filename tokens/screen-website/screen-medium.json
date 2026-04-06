@@ -2,14 +2,28 @@
   "figma": {
     "switch": {
       "screen": {
-        "mode-1": {
-          "$type": "boolean",
-          "$value": "false"
-        },
         "mode-2": {
           "$type": "boolean",
           "$value": "true"
         }
+      }
+    },
+    "size": {
+      "website": {
+        "width": {
+          "$type": "sizing",
+          "$value": "768"
+        }
+      }
+    },
+    "variant": {
+      "nav": {
+        "$type": "text",
+        "$value": "small"
+      },
+      "section": {
+        "$type": "text",
+        "$value": "large"
       }
     }
   },
@@ -42,7 +56,7 @@
         },
         "module-title": {
           "$type": "fontSizes",
-          "$value": "{typography.fontSize.text.large}"
+          "$value": "{typography.fontSize.text.medium}"
         }
       }
     }
@@ -83,15 +97,15 @@
       },
       "module-padding-y": {
         "$type": "spacing",
-        "$value": "{space.unit.24}"
+        "$value": "{space.unit.16}"
       },
       "module-padding-x": {
         "$type": "spacing",
-        "$value": "{space.unit.24}"
+        "$value": "{space.unit.16}"
       },
       "module-gap": {
         "$type": "spacing",
-        "$value": "{space.unit.24}"
+        "$value": "{space.unit.8}"
       }
     }
   },

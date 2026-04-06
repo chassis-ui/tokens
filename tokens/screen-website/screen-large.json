@@ -7,6 +7,24 @@
           "$value": "true"
         }
       }
+    },
+    "size": {
+      "website": {
+        "width": {
+          "$type": "sizing",
+          "$value": "1512"
+        }
+      }
+    },
+    "variant": {
+      "nav": {
+        "$type": "text",
+        "$value": "large"
+      },
+      "section": {
+        "$type": "text",
+        "$value": "large"
+      }
     }
   },
   "typography": {
