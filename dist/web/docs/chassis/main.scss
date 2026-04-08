@@ -4,7 +4,7 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Mon, 06 Apr 2026 17:22:55 GMT
+// Generated on Wed, 08 Apr 2026 14:58:20 GMT
 // Chassis - Tokens v0.1.0
 // Copyright 2026 Ozgur Gunes
 // Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
@@ -415,7 +415,7 @@ $cx-space-pagination-dot-gap: 0.5rem !default;
 $cx-space-table-cell-padding-y: 0.5rem !default;
 $cx-space-table-cell-padding-x: 0.5rem !default;
 $cx-space-table-cell-gap: 0.5rem !default;
-$cx-space-website-section-padding-y: 6rem !default;
+$cx-space-website-section-padding-y: 3rem !default;
 $cx-space-website-section-padding-x: 1.5rem !default;
 $cx-space-website-section-gap: 3rem !default;
 $cx-space-website-content-main-gap: 1rem !default;
@@ -425,7 +425,7 @@ $cx-space-website-feature-padding-x: 1.5rem !default;
 $cx-space-website-feature-gap: 1.5rem !default;
 $cx-space-website-module-padding-y: 1.5rem !default;
 $cx-space-website-module-padding-x: 1.5rem !default;
-$cx-space-website-module-gap: 1.5rem !default;
+$cx-space-website-module-gap: 0.5rem !default;
 $cx-opacity-level-10: 0.1 !default;
 $cx-opacity-level-20: 0.2 !default;
 $cx-opacity-level-30: 0.3 !default;
@@ -450,8 +450,11 @@ $cx-opacity-context-dim-main: 0.7 !default;
 $cx-opacity-context-dim-subtle: 0.3 !default;
 $cx-opacity-context-dim-slight: 0.05 !default;
 $cx-opacity-context-transparent-color: 0 !default;
-$cx-figma-variant-nav: large !default;
-$cx-figma-variant-section: large !default;
+$cx-figma-website-size-page-w: 94.5rem !default;
+$cx-figma-website-size-slide-min-w: 35rem !default;
+$cx-figma-website-size-card-min-w: 35rem !default;
+$cx-figma-website-variant-nav: large !default;
+$cx-figma-website-variant-section: large !default;
 $cx-color-base-palette-light-black-base: #000000 !default;
 $cx-color-base-palette-light-black-transparent: rgba(0, 0, 0, 0) !default;
 $cx-color-base-palette-light-black-contrast: #ffffff !default;
@@ -2294,7 +2297,7 @@ $cx-typography-font-size-website-section-title: 3rem !default;
 $cx-typography-font-size-website-section-body: 1.375rem !default;
 $cx-typography-font-size-website-feature-title: 1.375rem !default;
 $cx-typography-font-size-website-feature-body: 1.1875rem !default;
-$cx-typography-font-size-website-module-title: 1.375rem !default;
+$cx-typography-font-size-website-module-title: 1.1875rem !default;
 $cx-typography-line-height-text-5xlarge: 1.273em !default;
 $cx-typography-line-height-text-4xlarge: 1.263em !default;
 $cx-typography-line-height-text-3xlarge: 1.25em !default;
@@ -2541,7 +2544,7 @@ $cx-font-html-h4: ("font-family": var(--#{$prefix}font-family-html), "font-weigh
 $cx-font-html-h5: ("font-family": var(--#{$prefix}font-family-html), "font-weight": var(--#{$prefix}font-weight-html-heading), "font-size": var(--#{$prefix}font-size-html-h5), "line-height": var(--#{$prefix}line-height-html-h5), "font-style": normal, "letter-spacing": 0em, "margin-bottom": 0rem, "text-transform": none, "text-decoration": none) !default;
 $cx-font-html-h6: ("font-family": var(--#{$prefix}font-family-html), "font-weight": var(--#{$prefix}font-weight-html-heading), "font-size": var(--#{$prefix}font-size-html-h6), "line-height": var(--#{$prefix}line-height-html-h6), "font-style": normal, "letter-spacing": 0em, "margin-bottom": 0rem, "text-transform": none, "text-decoration": none) !default;
 $cx-font-html-body: ("font-family": var(--#{$prefix}font-family-html), "font-weight": var(--#{$prefix}font-weight-html-body), "font-size": var(--#{$prefix}font-size-html-body), "line-height": var(--#{$prefix}line-height-html-body), "font-style": normal, "letter-spacing": 0em, "margin-bottom": 0rem, "text-transform": none, "text-decoration": none) !default;
-$cx-font-html-code: ("font-family": var(--#{$prefix}font-family-code), "font-weight": var(--#{$prefix}font-weight-code-code), "font-size": var(--#{$prefix}font-size-code-code), "line-height": var(--#{$prefix}line-height-code-code), "font-style": normal, "letter-spacing": 0em, "margin-bottom": 0rem, "text-transform": none, "text-decoration": none) !default;
+$cx-font-html-code: ("font-family": var(--#{$prefix}font-family-code), "font-weight": var(--#{$prefix}font-weight-html-code), "font-size": var(--#{$prefix}font-size-html-code), "line-height": var(--#{$prefix}line-height-html-code), "font-style": normal, "letter-spacing": 0em, "margin-bottom": 0rem, "text-transform": none, "text-decoration": none) !default;
 $cx-font-html-paragraph: ("font-family": var(--#{$prefix}font-family-html), "font-weight": var(--#{$prefix}font-weight-html-paragraph), "font-size": var(--#{$prefix}font-size-html-paragraph), "line-height": var(--#{$prefix}line-height-html-paragraph), "font-style": normal, "letter-spacing": 0em, "margin-bottom": 1rem, "text-transform": none, "text-decoration": none) !default;
 $cx-font-html-blockquote: ("font-family": var(--#{$prefix}font-family-html), "font-weight": var(--#{$prefix}font-weight-html-blockquote), "font-size": var(--#{$prefix}font-size-html-blockquote), "line-height": var(--#{$prefix}line-height-html-blockquote), "font-style": italic, "letter-spacing": 0em, "margin-bottom": 0rem, "text-transform": none, "text-decoration": none) !default;
 $cx-font-html-list: ("font-family": var(--#{$prefix}font-family-html), "font-weight": var(--#{$prefix}font-weight-html-body), "font-size": var(--#{$prefix}font-size-html-body), "line-height": var(--#{$prefix}line-height-html-body), "font-style": normal, "letter-spacing": 0em, "margin-bottom": 0rem, "text-transform": none, "text-decoration": none) !default;
@@ -2610,13 +2613,13 @@ $cx-font-tab-large: ("font-family": var(--#{$prefix}font-family-text), "font-wei
 $cx-font-tab-small: ("font-family": var(--#{$prefix}font-family-text), "font-weight": var(--#{$prefix}font-weight-strong), "font-size": var(--#{$prefix}font-size-small), "line-height": var(--#{$prefix}line-height-small), "font-style": normal, "letter-spacing": 0em, "margin-bottom": 0rem, "text-transform": none, "text-decoration": none) !default;
 $cx-font-table-data-text: ("font-family": var(--#{$prefix}font-family-text), "font-weight": var(--#{$prefix}font-weight-normal), "font-size": var(--#{$prefix}font-size-small), "line-height": var(--#{$prefix}line-height-small), "font-style": normal, "letter-spacing": 0em, "margin-bottom": 0rem, "text-transform": none, "text-decoration": none) !default;
 $cx-font-table-head-text: ("font-family": var(--#{$prefix}font-family-text), "font-weight": var(--#{$prefix}font-weight-strong), "font-size": var(--#{$prefix}font-size-small), "line-height": var(--#{$prefix}line-height-small), "font-style": normal, "letter-spacing": 0em, "margin-bottom": 0rem, "text-transform": none, "text-decoration": none) !default;
-$cx-font-website-hero-title: ("font-family": var(--#{$prefix}font-family-text), "font-weight": var(--#{$prefix}font-weight-text-mass), "font-size": var(--#{$prefix}font-size-text-hero-title), "line-height": var(--#{$prefix}line-height-text-%), "font-style": normal, "letter-spacing": -0.0625em, "margin-bottom": 0rem, "text-transform": none, "text-decoration": none) !default;
-$cx-font-website-hero-body: ("font-family": var(--#{$prefix}font-family-text), "font-weight": var(--#{$prefix}font-weight-text-normal), "font-size": var(--#{$prefix}font-size-text-hero-body), "line-height": var(--#{$prefix}line-height-text-%), "font-style": normal, "letter-spacing": 0em, "margin-bottom": 0rem, "text-transform": none, "text-decoration": none) !default;
-$cx-font-website-section-title: ("font-family": var(--#{$prefix}font-family-text), "font-weight": var(--#{$prefix}font-weight-text-mass), "font-size": var(--#{$prefix}font-size-text-section-title), "line-height": var(--#{$prefix}line-height-text-%), "font-style": normal, "letter-spacing": -0.0313em, "margin-bottom": 0rem, "text-transform": none, "text-decoration": none) !default;
-$cx-font-website-section-body: ("font-family": var(--#{$prefix}font-family-text), "font-weight": var(--#{$prefix}font-weight-text-normal), "font-size": var(--#{$prefix}font-size-text-section-body), "line-height": var(--#{$prefix}line-height-text-%), "font-style": normal, "letter-spacing": 0em, "margin-bottom": 0rem, "text-transform": none, "text-decoration": none) !default;
-$cx-font-website-feature-title: ("font-family": var(--#{$prefix}font-family-text), "font-weight": var(--#{$prefix}font-weight-text-mass), "font-size": var(--#{$prefix}font-size-text-feature-title), "line-height": var(--#{$prefix}line-height-text-%), "font-style": normal, "letter-spacing": 0em, "margin-bottom": 0rem, "text-transform": none, "text-decoration": none) !default;
-$cx-font-website-feature-body: ("font-family": var(--#{$prefix}font-family-text), "font-weight": var(--#{$prefix}font-weight-text-normal), "font-size": var(--#{$prefix}font-size-text-feature-body), "line-height": var(--#{$prefix}line-height-text-%), "font-style": normal, "letter-spacing": 0em, "margin-bottom": 0rem, "text-transform": none, "text-decoration": none) !default;
-$cx-font-website-module-title: ("font-family": var(--#{$prefix}font-family-text), "font-weight": var(--#{$prefix}font-weight-text-mass), "font-size": var(--#{$prefix}font-size-text-module-title), "line-height": var(--#{$prefix}line-height-text-%), "font-style": normal, "letter-spacing": 0em, "margin-bottom": 0rem, "text-transform": none, "text-decoration": none) !default;
+$cx-font-website-hero-title: ("font-family": var(--#{$prefix}font-family-text), "font-weight": var(--#{$prefix}font-weight-text-mass), "font-size": var(--#{$prefix}font-size-website-hero-title), "line-height": 1.25em, "font-style": normal, "letter-spacing": -0.0625em, "margin-bottom": 0rem, "text-transform": none, "text-decoration": none) !default;
+$cx-font-website-hero-body: ("font-family": var(--#{$prefix}font-family-text), "font-weight": var(--#{$prefix}font-weight-text-normal), "font-size": var(--#{$prefix}font-size-website-hero-body), "line-height": 1.5em, "font-style": normal, "letter-spacing": 0em, "margin-bottom": 0rem, "text-transform": none, "text-decoration": none) !default;
+$cx-font-website-section-title: ("font-family": var(--#{$prefix}font-family-text), "font-weight": var(--#{$prefix}font-weight-text-mass), "font-size": var(--#{$prefix}font-size-website-section-title), "line-height": 1.25em, "font-style": normal, "letter-spacing": -0.0313em, "margin-bottom": 0rem, "text-transform": none, "text-decoration": none) !default;
+$cx-font-website-section-body: ("font-family": var(--#{$prefix}font-family-text), "font-weight": var(--#{$prefix}font-weight-text-normal), "font-size": var(--#{$prefix}font-size-website-section-body), "line-height": 1.5em, "font-style": normal, "letter-spacing": 0em, "margin-bottom": 0rem, "text-transform": none, "text-decoration": none) !default;
+$cx-font-website-feature-title: ("font-family": var(--#{$prefix}font-family-text), "font-weight": var(--#{$prefix}font-weight-text-mass), "font-size": var(--#{$prefix}font-size-website-feature-title), "line-height": 1.5em, "font-style": normal, "letter-spacing": 0em, "margin-bottom": 0rem, "text-transform": none, "text-decoration": none) !default;
+$cx-font-website-feature-body: ("font-family": var(--#{$prefix}font-family-text), "font-weight": var(--#{$prefix}font-weight-text-normal), "font-size": var(--#{$prefix}font-size-website-feature-body), "line-height": 1.5em, "font-style": normal, "letter-spacing": 0em, "margin-bottom": 0rem, "text-transform": none, "text-decoration": none) !default;
+$cx-font-website-module-title: ("font-family": var(--#{$prefix}font-family-text), "font-weight": var(--#{$prefix}font-weight-text-mass), "font-size": var(--#{$prefix}font-size-website-module-title), "line-height": 1.5em, "font-style": normal, "letter-spacing": 0em, "margin-bottom": 0rem, "text-transform": none, "text-decoration": none) !default;
 $cx-border-width-context-none: 0rem !default;
 $cx-border-width-context-thin: 0.0313rem !default;
 $cx-border-width-context-thick: 0.125rem !default;

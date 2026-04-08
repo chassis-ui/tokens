@@ -8,22 +8,30 @@
         }
       }
     },
-    "size": {
-      "website": {
-        "width": {
+    "website": {
+      "size": {
+        "page-w": {
           "$type": "sizing",
           "$value": "768"
+        },
+        "slide-min-w": {
+          "$type": "sizing",
+          "$value": "560"
+        },
+        "card-min-w": {
+          "$type": "sizing",
+          "$value": "320"
         }
-      }
-    },
-    "variant": {
-      "nav": {
-        "$type": "text",
-        "$value": "small"
       },
-      "section": {
-        "$type": "text",
-        "$value": "large"
+      "variant": {
+        "nav": {
+          "$type": "text",
+          "$value": "small"
+        },
+        "section": {
+          "$type": "text",
+          "$value": "large"
+        }
       }
     }
   },

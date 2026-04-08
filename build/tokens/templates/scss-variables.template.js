@@ -301,9 +301,7 @@ function tokenToValue(token, dictionary, options) {
       if (typeof token.original.$value !== 'object') {
         return resolveComponentTypographyValue(token, dictionary)
       }
-      return token.path[1] === 'context'
-        ? resolveContextTypographyValue(token, dictionary)
-        : resolveBasicTypographyValue(token, dictionary)
+      return resolveContextTypographyValue(token, dictionary)
     }
   } else if (token.$type === 'typography') {
     return resolveDirectTypographyValue(token, dictionary)

@@ -108,28 +108,6 @@ function resolveReferenceValue(token, dictionary) {
 }
 
 /**
- * Resolves the value of a basic typography token.
- *
- * @param {Object} token - The typography token object.
- * @param {Object} dictionary - The token dictionary for resolving references.
- * @returns {string} - The resolved typography value as a SCSS-compatible string.
- */
-function resolveBasicTypographyValue(token, dictionary) {
-  const fontFamily = splitReference(token.original.$value.fontFamily)[2]
-  const fontWeight = splitReference(token.original.$extensions['chassis'].originalFontWeight)[3]
-  const lineHeight = splitReference(token.original.$value.lineHeight)[3]
-  const fontSize = splitReference(token.original.$value.fontSize)[3]
-
-  return buildTypographyMap({
-    fontFamily: `var(--#{$prefix}font-family-${fontFamily})`,
-    fontWeight: `var(--#{$prefix}font-weight-${fontFamily}-${fontWeight})`,
-    fontSize: `var(--#{$prefix}font-size-${fontFamily}-${fontSize})`,
-    lineHeight: `var(--#{$prefix}line-height-${fontFamily}-${lineHeight})`,
-    originals: resolveOriginals(token.original.$value, dictionary)
-  })
-}
-
-/**
  * Resolves the value of a context typography token.
  *
  * @param {Object} token - The typography token object.
@@ -211,9 +189,7 @@ function tokenToValue(token, dictionary) {
     if (typeof token.original.$value !== 'object') {
       return resolveComponentTypographyValue(token, dictionary)
     }
-    return token.path[1] === 'context'
-      ? resolveContextTypographyValue(token, dictionary)
-      : resolveBasicTypographyValue(token, dictionary)
+    return resolveContextTypographyValue(token, dictionary)
   } else if (token.$type === 'lineHeight') {
     const fs = resolveReferences(
       `{typography.fontSize.${token.path[2]}.${token.path[3]}}`,

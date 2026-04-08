@@ -8,22 +8,30 @@
         }
       }
     },
-    "size": {
-      "website": {
-        "width": {
+    "website": {
+      "size": {
+        "page-w": {
           "$type": "sizing",
           "$value": "1512"
+        },
+        "slide-min-w": {
+          "$type": "sizing",
+          "$value": "560"
+        },
+        "card-min-w": {
+          "$type": "sizing",
+          "$value": "560"
         }
-      }
-    },
-    "variant": {
-      "nav": {
-        "$type": "text",
-        "$value": "large"
       },
-      "section": {
-        "$type": "text",
-        "$value": "large"
+      "variant": {
+        "nav": {
+          "$type": "text",
+          "$value": "large"
+        },
+        "section": {
+          "$type": "text",
+          "$value": "large"
+        }
       }
     }
   },
@@ -56,7 +64,7 @@
         },
         "module-title": {
           "$type": "fontSizes",
-          "$value": "{typography.fontSize.text.xlarge}"
+          "$value": "{typography.fontSize.text.large}"
         }
       }
     }
@@ -65,7 +73,7 @@
     "website": {
       "section-padding-y": {
         "$type": "spacing",
-        "$value": "{space.unit.96}"
+        "$value": "{space.unit.48}"
       },
       "section-padding-x": {
         "$type": "spacing",
@@ -105,7 +113,7 @@
       },
       "module-gap": {
         "$type": "spacing",
-        "$value": "{space.unit.24}"
+        "$value": "{space.unit.8}"
       }
     }
   },
