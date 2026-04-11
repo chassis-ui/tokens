@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.1.2] - 2026-04-11
+
+### Fixed
+- Website screen tokens font size and spacing references
+- Token naming consistency for content layout gaps
+
+### Changed
+- Regenerated distribution files for Android and iOS platforms
+- Updated example brand distribution files
+
 ## [0.1.1] - 2026-04-08
 
 ### Added
