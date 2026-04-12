@@ -1,47 +1,50 @@
 ---
-import { getConfig } from '@libs/config'
-import ResponsiveImage from '@shortcodes/ResponsiveImage.astro'
-import Code from '@shortcodes/Code.astro'
-import { getChassisDocsPath } from '@libs/path'
-import Card from '@components/Card.astro'
+import FeatureCard from '@chassis-ui/docs/components/FeatureCard.astro'
 ---
 
-<section class="py-6xlarge">
-  <div class="container">
-    <div class="row justify-content-center mb-5xlarge">
-      <div class="col-large-8 text-center">
-        <h2 class="font-hero mb-medium lh-small">
-          <span class="font-normal">Why Leading Teams Choose</span>
-          <span class="text-nowrap">Chassis Tokens</span>
+<section class="home-section py-3xlarge py-medium-6xlarge">
+  <div class="container-2xlarge section-content py-3xlarge py-medium-6xlarge">
+    <div class="row mb-3xlarge mb-medium-6xlarge">
+      <div class="section-header col col-large-10 col-xlarge-8 text-center mx-auto">
+        <h2
+          class="section-title font-3xlarge font-medium-4xlarge font-large-5xlarge mb-xsmall mb-medium-small mb-large-medium"
+        >
+          <span class="font-normal d-block">Why Leading Teams</span> Choose Chassis Tokens
         </h2>
-        <p class="font-lead">
-          Chassis Tokens gives your team a repeatable way to ship consistent interfaces across
-          brands, products, and platforms, reducing coordination overhead.
+        <p class="section-body font-medium-large font-large-xlarge m-0">
+          Chassis Tokens provide your team with a reliable method to deliver consistent interfaces
+          across brands, products, and platforms, cutting down on coordination hassles.
         </p>
       </div>
     </div>
 
-    <div class="row row-cols-1 row-cols-medium-3">
+    <div class="row row-cols-1 row-cols-medium-3 g-medium g-medium-xlarge">
       <div class="col">
-        <Card
-          title="Faster Time-to-Market"
-          body="Reduce design-to-development cycle by automating token generation and maintaining single source of truth across all platforms."
-          icon="clock-outline"
-        />
+        <FeatureCard icon="cx-clock">
+          <Fragment slot="title">Accelerate Your Time-to-Market</Fragment>
+          <Fragment slot="body">
+            Speed up the design-to-development process by automating token creation and keeping a
+            single source of truth across all platforms.
+          </Fragment>
+        </FeatureCard>
       </div>
       <div class="col">
-        <Card
-          title="Fewer Inconsistencies"
-          body="Ensure perfect design implementation with automated token sync between Figma and production code."
-          icon="check-circle-outline"
-        />
+        <FeatureCard icon="cx-check-circle">
+          <Fragment slot="title">Minimize Inconsistencies</Fragment>
+          <Fragment slot="body">
+            Achieve flawless design execution with automatic token synchronization between Figma and
+            your production code.
+          </Fragment>
+        </FeatureCard>
       </div>
       <div class="col">
-        <Card
-          title="Less Maintenance"
-          body="Token-driven architecture eliminates manual CSS updates and reduces technical debt across codebases."
-          icon="code-outline"
-        />
+        <FeatureCard icon="cx-code">
+          <Fragment slot="title">Simplify Maintenance</Fragment>
+          <Fragment slot="body">
+            A token-driven system removes the need for manual CSS tweaks and lowers technical debt
+            across your codebases.
+          </Fragment>
+        </FeatureCard>
       </div>
     </div>
   </div>

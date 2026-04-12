@@ -1,98 +1,87 @@
 ---
-import { getConfig } from '@libs/config'
-import ResponsiveImage from '@shortcodes/ResponsiveImage.astro'
-import Code from '@shortcodes/Code.astro'
-import { getChassisDocsPath } from '@libs/path'
-import Card from '@components/Card.astro'
+// Documentation section
 ---
 
-<section class="bg-even py-6xlarge">
-  <div class="container">
-    <div class="row justify-content-center mb-5xlarge">
-      <div class="col-large-8 text-center">
-        <h2 class="font-hero mb-medium">Ready to Scale Your Design System?</h2>
-        <p class="font-lead">
+<section class="home-section py-3xlarge py-medium-6xlarge bg-even">
+  <div class="container-2xlarge section-content">
+    <div class="row mb-3xlarge mb-medium-6xlarge">
+      <div class="section-header col col-large-10 col-xlarge-8 text-center mx-auto">
+        <h2
+          class="section-title font-3xlarge font-medium-4xlarge font-large-5xlarge mb-xsmall mb-medium-small mb-large-medium"
+        >
+          Ready to Scale Your Design System?
+        </h2>
+        <p class="section-body font-medium-large font-large-xlarge m-0">
           Explore how Chassis Tokens fits into your workflow, from first setup to production
           rollout.
         </p>
       </div>
     </div>
-    <div class="row g-xlarge">
-      <div class="col-medium-4">
-        <h3 class="h4 mb-medium">Quick Start</h3>
-        <ul class="list-unstyled">
+
+    <div class="row row-cols-1 row-cols-medium-3 g-medium g-medium-xlarge">
+      <div class="col">
+        <h3 class="font-large font-medium-xlarge mb-medium mb-medium-large">Quick Start</h3>
+        <ul class="list-unstyled d-flex flex-column gap-small font-medium-large">
           <li>
-            <a href="/getting-started/introduction" class="text-context-default-fg-main"
-              >Introduction</a
-            >
+            <a href="/getting-started/introduction" class="link-primary">Introduction</a>
           </li>
           <li>
-            <a href="/getting-started/tokens-studio" class="text-context-default-fg-main"
-              >Tokens Studio Setup</a
-            >
+            <a href="/getting-started/tokens-studio" class="link-primary">Tokens Studio Setup</a>
           </li>
           <li>
-            <a href="/getting-started/style-dictionary" class="text-context-default-fg-main"
-              >Style Dictionary</a
-            >
+            <a href="/getting-started/style-dictionary" class="link-primary">Style Dictionary</a>
           </li>
           <li>
-            <a href="/getting-started/figma-variables" class="text-context-default-fg-main"
-              >Figma Variables</a
-            >
+            <a href="/getting-started/figma-variables" class="link-primary">Figma Variables</a>
           </li>
         </ul>
       </div>
-      <div class="col-medium-4">
-        <h3 class="h4 mb-medium">Design Tokens</h3>
-        <ul class="list-unstyled">
+      <div class="col">
+        <h3 class="font-large font-medium-xlarge mb-medium mb-medium-large">Design Tokens</h3>
+        <ul class="list-unstyled d-flex flex-column gap-small font-medium-large">
           <li>
-            <a href="/design-tokens/color-tokens" class="text-context-default-fg-main"
-              >Color System</a
-            >
+            <a href="/design-tokens/color-tokens" class="link-primary">Color System</a>
           </li>
           <li>
-            <a href="/design-tokens/typography-tokens" class="text-context-default-fg-main"
-              >Typography</a
-            >
+            <a href="/design-tokens/typography-tokens" class="link-primary">Typography</a>
           </li>
           <li>
-            <a href="/design-tokens/size-tokens" class="text-context-default-fg-main"
-              >Sizing & Spacing</a
-            >
+            <a href="/design-tokens/size-tokens" class="link-primary">Sizing & Spacing</a>
           </li>
           <li>
-            <a href="/design-tokens/shadow-tokens" class="text-context-default-fg-main">Shadows</a>
+            <a href="/design-tokens/shadow-tokens" class="link-primary">Shadows</a>
           </li>
         </ul>
       </div>
-      <div class="col-medium-4">
-        <h3 class="h4 mb-medium">Integration</h3>
-        <ul class="list-unstyled">
+      <div class="col">
+        <h3 class="font-large font-medium-xlarge mb-medium mb-medium-large">Integration</h3>
+        <ul class="list-unstyled d-flex flex-column gap-small font-medium-large">
           <li>
-            <a href="/use-in-project/web-applications" class="text-context-default-fg-main"
-              >Web Applications</a
-            >
+            <a href="/use-in-project/web-applications" class="link-primary">Web Applications</a>
           </li>
           <li>
-            <a href="/use-in-project/ios-applications" class="text-context-default-fg-main"
-              >iOS Applications</a
-            >
+            <a href="/use-in-project/ios-applications" class="link-primary">iOS Applications</a>
           </li>
           <li>
-            <a href="/use-in-project/android-applications" class="text-context-default-fg-main"
+            <a href="/use-in-project/android-applications" class="link-primary"
               >Android Applications</a
             >
           </li>
           <li>
             <a
               href="https://github.com/chassis-ui/tokens"
-              class="text-context-default-fg-main"
-              target="_blank">GitHub Repository</a
+              class="link-primary"
+              target="_blank"
+              rel="noopener">GitHub Repository</a
             >
           </li>
         </ul>
       </div>
+    </div>
+
+    <div class="d-flex gap-medium justify-content-center mt-3xlarge mt-medium-6xlarge">
+      <a href="/getting-started" class="button primary large">Get Started</a>
+      <a href="/docs/" class="button default large">View Documentation</a>
     </div>
   </div>
 </section>

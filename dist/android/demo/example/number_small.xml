@@ -2,8 +2,8 @@
 
 <!--
   Do not edit directly, this file was auto-generated.
-  Generated on Sat, 11 Apr 2026 08:33:50 GMT
-  Chassis - Tokens v0.1.2
+  Generated on Sun, 12 Apr 2026 20:43:21 GMT
+  Chassis - Tokens v0.1.3
   Copyright 2026 Ozgur Gunes
   Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
 -->
@@ -620,11 +620,11 @@
   <dimen name="border_radius_tooltip_main">2dp</dimen>
   <dimen name="font_context_jumbo_line_height">125sp</dimen>
   <dimen name="font_context_jumbo_font_size">96sp</dimen>
-  <integer name="font_context_jumbo_letter_spacing">-1</integer>
+  <integer name="font_context_jumbo_letter_spacing">-0.5</integer>
   <dimen name="font_context_jumbo_paragraph_spacing">0sp</dimen>
   <dimen name="font_context_hero_line_height">125sp</dimen>
   <dimen name="font_context_hero_font_size">64sp</dimen>
-  <integer name="font_context_hero_letter_spacing">-1</integer>
+  <integer name="font_context_hero_letter_spacing">0</integer>
   <dimen name="font_context_hero_paragraph_spacing">0sp</dimen>
   <dimen name="font_context_lead_line_height">32sp</dimen>
   <dimen name="font_context_lead_font_size">22sp</dimen>

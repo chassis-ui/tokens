@@ -4,8 +4,8 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Sat, 11 Apr 2026 08:33:33 GMT
-// Chassis - Tokens v0.1.2
+// Generated on Sun, 12 Apr 2026 20:43:04 GMT
+// Chassis - Tokens v0.1.3
 // Copyright 2026 Ozgur Gunes
 // Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
 

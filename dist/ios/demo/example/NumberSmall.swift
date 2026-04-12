@@ -4,8 +4,8 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Sat, 11 Apr 2026 08:33:48 GMT
-// Chassis - Tokens v0.1.2
+// Generated on Sun, 12 Apr 2026 20:43:18 GMT
+// Chassis - Tokens v0.1.3
 // Copyright 2026 Ozgur Gunes
 // Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
 
@@ -624,11 +624,11 @@ public class ChassisTokens {
     @objc public static let BorderRadiusTooltipMain = CGFloat(2)
     @objc public static let FontContextJumboLineHeight = CGFloat(125)
     @objc public static let FontContextJumboFontSize = CGFloat(96)
-    @objc public static let FontContextJumboLetterSpacing = CGFloat(-1)
+    @objc public static let FontContextJumboLetterSpacing = CGFloat(-0.5)
     @objc public static let FontContextJumboParagraphSpacing = CGFloat(0)
     @objc public static let FontContextHeroLineHeight = CGFloat(125)
     @objc public static let FontContextHeroFontSize = CGFloat(64)
-    @objc public static let FontContextHeroLetterSpacing = CGFloat(-1)
+    @objc public static let FontContextHeroLetterSpacing = CGFloat(0)
     @objc public static let FontContextHeroParagraphSpacing = CGFloat(0)
     @objc public static let FontContextLeadLineHeight = CGFloat(32)
     @objc public static let FontContextLeadFontSize = CGFloat(22)

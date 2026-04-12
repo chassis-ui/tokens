@@ -27,8 +27,8 @@ importers:
         specifier: github:chassis-ui/css#app/docs
         version: https://codeload.github.com/chassis-ui/css/tar.gz/e0951c4475200d6d9b7d5828eeb07ee48351288a(@popperjs/core@2.11.8)
       '@chassis-ui/docs':
-        specifier: ^0.1.5
-        version: 0.1.5(astro@5.15.1(@types/node@22.18.12)(rollup@4.52.5)(sass@1.93.2)(typescript@5.9.3)(yaml@2.8.1))
+        specifier: ^0.1.6
+        version: 0.1.6(astro@5.15.1(@types/node@22.18.12)(rollup@4.52.5)(sass@1.93.2)(typescript@5.9.3)(yaml@2.8.1))
       '@chassis-ui/icons':
         specifier: github:chassis-ui/icons#app/docs
         version: https://codeload.github.com/chassis-ui/icons/tar.gz/6b051e49e7102d3badf330e47b5de52e053e5039
@@ -530,8 +530,8 @@ packages:
     peerDependencies:
       '@popperjs/core': ^2.11.8
 
-  '@chassis-ui/docs@0.1.5':
-    resolution: {integrity: sha512-zKntWBqE71IZTgA7WCQ+boKH/ksc1mu3a7kuImlMDfDnwtl6DiD1vu3sTQLBpxM6L+lLC0Cd8g0ZzfgCOI7BgQ==}
+  '@chassis-ui/docs@0.1.6':
+    resolution: {integrity: sha512-sJSGLO74mu2rTCpMv764JBdNnllyx4tpXDcYDJFU5QtajEaByXBSJEcNxWWQVPNbqD83mPaGn7FLmhlHCsYasw==}
     peerDependencies:
       astro: ^5.0.0
 
@@ -5960,7 +5960,7 @@ snapshots:
     dependencies:
       '@popperjs/core': 2.11.8
 
-  '@chassis-ui/docs@0.1.5(astro@5.15.1(@types/node@22.18.12)(rollup@4.52.5)(sass@1.93.2)(typescript@5.9.3)(yaml@2.8.1))':
+  '@chassis-ui/docs@0.1.6(astro@5.15.1(@types/node@22.18.12)(rollup@4.52.5)(sass@1.93.2)(typescript@5.9.3)(yaml@2.8.1))':
     dependencies:
       astro: 5.15.1(@types/node@22.18.12)(rollup@4.52.5)(sass@1.93.2)(typescript@5.9.3)(yaml@2.8.1)
 

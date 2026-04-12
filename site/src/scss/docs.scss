@@ -1,4 +1,8 @@
-@import "settings";
+// Chassis tokens for docs
+@import "../../../dist/web/docs/chassis/main";
+
+// Shared docs settings
+@import "@chassis-ui/docs/scss/settings";
 
 // Chassis CSS variables and mixins
 @import "@chassis-ui/css/scss/functions";
@@ -11,38 +15,3 @@
 
 // Shared docs styles
 @import "@chassis-ui/docs/scss/main";
-
-// Tokens docs styles
-%thumb {
-  display: flex;
-  flex-shrink: 0;
-  align-items: center;
-  justify-content: center;
-  background: var(--#{$prefix}primary-bg-main);
-  @include border-radius(8px);
-}
-
-.section-thumb {
-  @extend %thumb;
-  width: 3rem;
-  height: 3rem;
-}
-
-.section-icon {
-  --#{$prefix}icon-size: var(--#{$prefix}size-feature-icon);
-}
-
-.feature-thumb {
-  @extend %thumb;
-  width: 4rem;
-  height: 4rem;
-  margin-bottom: 1em;
-}
-
-.feature-icon {
-  --#{$prefix}icon-size: 3rem;
-}
-.feature-number {
-  @include font-size(1.75rem);
-  @include line-height(1.75rem);
-}

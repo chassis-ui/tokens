@@ -1,55 +1,47 @@
 ---
-import { getConfig } from '@libs/config'
-import ResponsiveImage from '@shortcodes/ResponsiveImage.astro'
-import Code from '@shortcodes/Code.astro'
-import { getChassisDocsPath } from '@libs/path'
-import Card from '@components/Card.astro'
+import FeatureCard from '@chassis-ui/docs/components/FeatureCard.astro'
 ---
 
-<section class="py-6xlarge">
-  <div class="container">
-    <div class="row justify-content-center mb-5xlarge">
-      <div class="col-large-8 text-center">
-        <h2 class="font-hero mb-medium">Built on Industry Standards</h2>
-        <p class="font-lead">
+<section class="home-section py-3xlarge py-medium-6xlarge">
+  <div class="container-2xlarge section-content">
+    <div class="row mb-3xlarge mb-medium-6xlarge">
+      <div class="section-header col col-large-10 col-xlarge-8 text-center mx-auto">
+        <h2
+          class="section-title font-3xlarge font-medium-4xlarge font-large-5xlarge mb-xsmall mb-medium-small mb-large-medium"
+        >
+          <span class="font-normal d-block">Built on</span> Industry Standards
+        </h2>
+        <p class="section-body font-medium-large font-large-xlarge m-0">
           Powered by battle-tested tools and open standards, Chassis Tokens fits into your existing
           stack without custom infrastructure or vendor lock-in.
         </p>
       </div>
     </div>
 
-    <div class="row row-cols-2 row-cols-medium-4 g-xlarge text-center">
+    <div class="row row-cols-2 row-cols-medium-4 g-medium g-medium-xlarge">
       <div class="col">
-        <div class="card p-xlarge">
-          <div class="card-content">
-            <h4 class="card-title">Tokens Studio</h4>
-            <p class="card-body">Token management</p>
-          </div>
-        </div>
+        <FeatureCard>
+          <Fragment slot="title">Tokens Studio</Fragment>
+          <Fragment slot="body">Token management</Fragment>
+        </FeatureCard>
       </div>
       <div class="col">
-        <div class="card p-xlarge">
-          <div class="card-content">
-            <h4 class="card-title">Style Dictionary</h4>
-            <p class="card-body">Token transformation</p>
-          </div>
-        </div>
+        <FeatureCard>
+          <Fragment slot="title">Style Dictionary</Fragment>
+          <Fragment slot="body">Token transformation</Fragment>
+        </FeatureCard>
       </div>
       <div class="col">
-        <div class="card p-xlarge">
-          <div class="card-content">
-            <h4 class="card-title">Figma Variables</h4>
-            <p class="card-body">Design integration</p>
-          </div>
-        </div>
+        <FeatureCard>
+          <Fragment slot="title">Figma Variables</Fragment>
+          <Fragment slot="body">Design integration</Fragment>
+        </FeatureCard>
       </div>
       <div class="col">
-        <div class="card p-xlarge">
-          <div class="card-content">
-            <h4 class="card-title">DTCG Format</h4>
-            <p class="card-body">W3C token standard</p>
-          </div>
-        </div>
+        <FeatureCard>
+          <Fragment slot="title">DTCG Format</Fragment>
+          <Fragment slot="body">W3C token standard</Fragment>
+        </FeatureCard>
       </div>
     </div>
   </div>

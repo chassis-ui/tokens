@@ -4,8 +4,8 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Sat, 11 Apr 2026 08:33:29 GMT
-// Chassis - Tokens v0.1.2
+// Generated on Sun, 12 Apr 2026 20:43:00 GMT
+// Chassis - Tokens v0.1.3
 // Copyright 2026 Ozgur Gunes
 // Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
 
@@ -2436,7 +2436,7 @@ public class ChassisTokens {
     @objc public static let FontContextJumboFontWeight = "bold"
     @objc public static let FontContextJumboLineHeight = CGFloat(125)
     @objc public static let FontContextJumboFontSize = CGFloat(96)
-    @objc public static let FontContextJumboLetterSpacing = CGFloat(-1)
+    @objc public static let FontContextJumboLetterSpacing = CGFloat(-0.5)
     @objc public static let FontContextJumboParagraphSpacing = CGFloat(0)
     @objc public static let FontContextJumboTextCase = "none"
     @objc public static let FontContextJumboTextDecoration = "none"
@@ -2445,7 +2445,7 @@ public class ChassisTokens {
     @objc public static let FontContextHeroFontWeight = "bold"
     @objc public static let FontContextHeroLineHeight = CGFloat(125)
     @objc public static let FontContextHeroFontSize = CGFloat(64)
-    @objc public static let FontContextHeroLetterSpacing = CGFloat(-1)
+    @objc public static let FontContextHeroLetterSpacing = CGFloat(0)
     @objc public static let FontContextHeroParagraphSpacing = CGFloat(0)
     @objc public static let FontContextHeroTextCase = "none"
     @objc public static let FontContextHeroTextDecoration = "none"
