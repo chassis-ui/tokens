@@ -2,6 +2,7 @@
 @import "../../../dist/web/docs/chassis/main";
 
 // Shared docs settings
+$enable-exclude-strokes:        true !default;
 @import "@chassis-ui/docs/scss/settings";
 
 // Chassis CSS variables and mixins

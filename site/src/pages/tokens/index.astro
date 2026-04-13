@@ -1,33 +1,30 @@
 ---
 import BaseLayout from '@chassis-ui/docs/layouts/BaseLayout.astro'
-import SectionHero from '@components/SectionHero.astro'
-import SectionGallery from '@components/SectionGallery.astro'
-import SectionTeams from '@components/SectionTeams.astro'
-import SectionRoles from '@components/SectionRoles.astro'
-import SectionFeatures from '@components/SectionFeatures.astro'
-import SectionHow from '@components/SectionHow.astro'
-import SectionTech from '@components/SectionTech.astro'
-import SectionDocs from '@components/SectionDocs.astro'
+import HeroSection from '@components/sections/HeroSection.astro'
+import GallerySection from '@components/sections/GallerySection.astro'
+import CoreSection from '@components/sections/CoreSection.astro'
+import FeaturesSection from '@components/sections/FeaturesSection.astro'
+import HowSection from '@components/sections/HowSection.astro'
+import TechSection from '@components/sections/TechSection.astro'
+import DocsSection from '@components/sections/DocsSection.astro'
 import HomeIcons from '/static/icons/cx-sprite.svg?raw'
 // import '@chassis-ui/docs/scss/home.scss'
 ---
 
 <BaseLayout title="Chassis Tokens - Enterprise Design Token System">
   <!-- Hero Section -->
-  <SectionHero />
+  <HeroSection />
   <hr class="hr container" />
-  <!-- Value Proposition -->
-  <SectionTeams />
-  <!-- Enterprise Features -->
-  <SectionFeatures />
-  <!-- Audience-Specific Benefits -->
-  <SectionRoles />
-  <!-- How It Works -->
-  <SectionHow />
+  <!-- Core Features (3 cards) -->
+  <FeaturesSection />
+  <!-- Additional Features (6 cards) -->
+  <CoreSection />
+  <!-- How It Works (3 steps) -->
+  <HowSection />
   <!-- Technical Stack -->
-  <SectionTech />
+  <TechSection />
   <!-- Documentation Section -->
-  <SectionDocs />
+  <DocsSection />
   <div class="d-none">
     <Fragment set:html={HomeIcons} />
   </div>
