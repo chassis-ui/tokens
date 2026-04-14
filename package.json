@@ -69,7 +69,7 @@
     "tokens:test": "vitest run --dir build/tokens/test",
     "site": "pnpm site:build && pnpm site:lint",
     "site:build": "pnpm sync-submodules && pnpm astro:build",
-    "site:clean": "rm -rf _site node_modules site/node_modules",
+    "site:clean": "rm -rf _site site/node_modules site/.astro site/public",
     "site:format": "prettier --write --cache site",
     "site:lint": "pnpm site:lint:eslint && pnpm site:lint:fusv && pnpm site:lint:stylelint && pnpm site:lint:prettier && pnpm site:lint:vnu",
     "site:lint:eslint": "eslint site --cache --cache-location .cache/.eslintcache --report-unused-disable-directives",

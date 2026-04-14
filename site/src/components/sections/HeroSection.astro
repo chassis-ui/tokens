@@ -4,28 +4,29 @@ import Code from '@shortcodes/Code.astro'
 import { getChassisDocsPath } from '@libs/path'
 ---
 
-<section class="home-section py-3xlarge py-medium-6xlarge">
+<div class="home-section py-3xlarge py-medium-6xlarge">
   <div class="container-2xlarge section-content py-3xlarge py-medium-6xlarge">
     <div class="row justify-content-center mb-3xlarge mb-medium-6xlarge">
-      <div class="col col-xlarge-10 text-center">
+      <header class="section-header col col-xlarge-10 text-center">
         <p
-          class="module-title fg-primary font-small font-medium-medium font-mass text-uppercase mb-xsmall mb-medium-small"
+          class="module-title fg-primary font-medium-xlarge font-mass text-uppercase mb-xsmall mb-medium-small"
         >
           CHASSIS TOKENS
         </p>
         <h1 class="font-hero mb-small mb-medium-medium mb-large-large">
-          <span class="font-normal">Scale Your Design System Across</span>
+          <span class="font-normal">Sync Design Tokens Across</span>
           <span class="d-block">Brands, Themes & Platforms</span>
         </h1>
         <p class="font-lead mb-medium mb-medium-large">
-          Unify product, design, and engineering around a single source of truth for colors,
-          typography, spacing, and more—from Figma to production code.
+          One repository for unlimited brands and applications. Unify product, design, and
+          engineering around a single source of truth for colors, typography, spacing, and more—from
+          Figma to production code.
         </p>
-      </div>
+      </header>
     </div>
 
     <div
-      class="d-flex flex-column gap-medium mb-medium mb-medium-large col col-large-6 offset-large-3"
+      class="section-features d-flex flex-column gap-medium mb-medium mb-medium-large col col-large-6 offset-large-3"
     >
       <!-- Code snippet -->
       <Code lang="bash" code="git clone git@github.com:chassis-ui/tokens.git" />
@@ -56,4 +57,4 @@ import { getChassisDocsPath } from '@libs/path'
       </p>
     </div>
   </div>
-</section>
+</div>
