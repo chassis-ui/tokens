@@ -162,6 +162,70 @@
           "$type": "borderRadius",
           "$value": "{dimension.base.20}"
         }
+      },
+      "badge": {
+        "medium": {
+          "$type": "borderRadius",
+          "$value": "{borderRadius.base.context.round}"
+        },
+        "large": {
+          "$type": "borderRadius",
+          "$value": "{borderRadius.base.context.round}"
+        },
+        "small": {
+          "$type": "borderRadius",
+          "$value": "{borderRadius.base.context.round}"
+        }
+      },
+      "button": {
+        "medium": {
+          "$type": "borderRadius",
+          "$value": "{borderRadius.base.context.medium}"
+        },
+        "large": {
+          "$type": "borderRadius",
+          "$value": "{borderRadius.base.context.medium}"
+        },
+        "small": {
+          "$type": "borderRadius",
+          "$value": "{borderRadius.base.context.medium}"
+        }
+      },
+      "chip": {
+        "medium": {
+          "$type": "borderRadius",
+          "$value": "{borderRadius.base.context.round}"
+        },
+        "large": {
+          "$type": "borderRadius",
+          "$value": "{borderRadius.base.context.round}"
+        },
+        "small": {
+          "$type": "borderRadius",
+          "$value": "{borderRadius.base.context.round}"
+        }
+      },
+      "form-input": {
+        "medium": {
+          "$type": "borderRadius",
+          "$value": "{borderRadius.base.context.medium}"
+        },
+        "large": {
+          "$type": "borderRadius",
+          "$value": "{borderRadius.base.context.medium}"
+        },
+        "small": {
+          "$type": "borderRadius",
+          "$value": "{borderRadius.base.context.medium}"
+        },
+        "floating-blunt": {
+          "$type": "borderRadius",
+          "$value": "{borderRadius.base.context.medium}"
+        },
+        "floating-sharp": {
+          "$type": "borderRadius",
+          "$value": "{borderRadius.base.context.zero}"
+        }
       }
     }
   }

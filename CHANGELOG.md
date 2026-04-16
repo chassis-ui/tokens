@@ -1,5 +1,24 @@
 # Changelog
 
+## [0.1.4] - 2026-04-16
+
+### Added
+- IntroSection component for homepage
+- Brand-specific token configuration (brand-chassis/brand-base.json)
+
+### Changed
+- Reorganized website components into dedicated sections/ folder
+- Renamed section components for consistency (SectionHero, SectionFeatures, SectionHow, etc.)
+- Updated brand tokens structure and values
+- Regenerated all distribution files for Android, iOS, and web platforms
+- Improved README documentation
+- Refactored homepage layout and structure
+
+### Removed
+- HOMEPAGE_COPY_REVIEW.md documentation file
+- CoreSection component (replaced by IntroSection)
+- Deprecated index2.astro page
+
 ## [0.1.3] - 2026-04-12
 
 ### Added

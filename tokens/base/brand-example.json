@@ -16,43 +16,43 @@
           "neutral": {
             "base": {
               "$type": "color",
-              "$value": "#757575"
+              "$value": "#6A6A6A"
             }
           },
           "danger": {
             "base": {
               "$type": "color",
-              "$value": "#E02D12"
+              "$value": "#C13515"
             }
           },
           "success": {
             "base": {
               "$type": "color",
-              "$value": "#0B8A0B"
+              "$value": "#008A05"
             }
           },
           "warning": {
             "base": {
               "$type": "color",
-              "$value": "#996E09"
+              "$value": "#E07912"
             }
           },
           "info": {
             "base": {
               "$type": "color",
-              "$value": "#098294"
+              "$value": "#428BFF"
             }
           },
           "brand": {
             "base": {
               "$type": "color",
-              "$value": "#1273E0"
+              "$value": "#FF385C"
             }
           },
           "accent": {
             "base": {
               "$type": "color",
-              "$value": "#D115C5"
+              "$value": "#222222"
             }
           }
         }
@@ -63,11 +63,11 @@
     "fontFamily": {
       "text": {
         "$type": "fontFamilies",
-        "$value": "Helvetica, Arial, sans-serif"
+        "$value": "Figtree, -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', sans-serif;"
       },
       "display": {
         "$type": "fontFamilies",
-        "$value": "'Times New Roman', Times, serif"
+        "$value": "Lora, 'Times New Roman', Times, -apple-system-ui-serif, ui-serif, serif"
       },
       "code": {
         "$type": "fontFamilies",
@@ -138,27 +138,91 @@
         },
         "small": {
           "$type": "borderRadius",
-          "$value": "{dimension.base.2}"
+          "$value": "{dimension.base.4}"
         },
         "medium": {
           "$type": "borderRadius",
-          "$value": "{dimension.base.2}"
+          "$value": "{dimension.base.8}"
         },
         "large": {
           "$type": "borderRadius",
-          "$value": "{dimension.base.2}"
+          "$value": "{dimension.base.12}"
         },
         "xlarge": {
           "$type": "borderRadius",
-          "$value": "{dimension.base.2}"
+          "$value": "{dimension.base.16}"
         },
         "2xlarge": {
           "$type": "borderRadius",
-          "$value": "{dimension.base.2}"
+          "$value": "{dimension.base.20}"
         },
         "3xlarge": {
           "$type": "borderRadius",
-          "$value": "{dimension.base.2}"
+          "$value": "{dimension.base.24}"
+        }
+      },
+      "badge": {
+        "medium": {
+          "$type": "borderRadius",
+          "$value": "{borderRadius.base.context.round}"
+        },
+        "large": {
+          "$type": "borderRadius",
+          "$value": "{borderRadius.base.context.round}"
+        },
+        "small": {
+          "$type": "borderRadius",
+          "$value": "{borderRadius.base.context.round}"
+        }
+      },
+      "button": {
+        "medium": {
+          "$type": "borderRadius",
+          "$value": "{borderRadius.base.context.round}"
+        },
+        "large": {
+          "$type": "borderRadius",
+          "$value": "{borderRadius.base.context.round}"
+        },
+        "small": {
+          "$type": "borderRadius",
+          "$value": "{borderRadius.base.context.round}"
+        }
+      },
+      "chip": {
+        "medium": {
+          "$type": "borderRadius",
+          "$value": "{borderRadius.base.context.round}"
+        },
+        "large": {
+          "$type": "borderRadius",
+          "$value": "{borderRadius.base.context.round}"
+        },
+        "small": {
+          "$type": "borderRadius",
+          "$value": "{borderRadius.base.context.round}"
+        }
+      },
+      "form-input": {
+        "medium": {
+          "$type": "borderRadius",
+          "$value": "{borderRadius.base.context.round}"
+        },
+        "large": {
+          "$type": "borderRadius",
+          "$value": "{borderRadius.base.context.round}"
+        },
+        "small": {
+          "$type": "borderRadius",
+          "$value": "{borderRadius.base.context.round}"
+        },
+        "floating-blunt": {
+          "$type": "borderRadius",
+          "$value": "{borderRadius.base.context.round}"
+        },
+        "floating-sharp": {
+          "$type": "borderRadius",
+          "$value": "{borderRadius.base.context.zero}"
         }
       }
     }
