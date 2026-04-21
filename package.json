@@ -1,6 +1,6 @@
 {
   "name": "@chassis-ui/tokens",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Design tokens for Chassis Design System. Includes token transformers, asset manager and icon generator",
   "type": "module",
   "repository": {
@@ -57,7 +57,6 @@
     "dev": "pnpm sync-assets && pnpm tokens:mundi && pnpm astro:dev",
     "preview": "pnpm astro:preview",
     "test": "pnpm tokens:test",
-
     "tokens": "pnpm tokens:build",
     "tokens:build": "node build/tokens/build.js",
     "tokens:lint": "eslint --cache --cache-location .cache/.eslintcache build/tokens",
