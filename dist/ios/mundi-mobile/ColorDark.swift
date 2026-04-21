@@ -4,7 +4,7 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Tue, 10 Mar 2026 12:37:14 GMT
+// Generated on Tue, 21 Apr 2026 07:07:21 GMT
 // Chassis - Tokens v0.1.0
 // Copyright 2026 Ozgur Gunes
 // Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
@@ -1012,7 +1012,7 @@ public class ChassisTokens {
     @objc public static let ColorSectionIconSmall = UIColor(red: 0.408, green: 0.365, blue: 0.902, alpha: 1)
     @objc public static let ColorTableFgHead = UIColor(red: 0.929, green: 0.929, blue: 0.933, alpha: 1)
     @objc public static let ColorTableFgData = UIColor(red: 0.929, green: 0.929, blue: 0.933, alpha: 1)
-    @objc public static let ColorTableBgHead = UIColor(red: 0.129, green: 0.133, blue: 0.137, alpha: 1)
+    @objc public static let ColorTableBgHead = UIColor(red: 0.184, green: 0.188, blue: 0.192, alpha: 1)
     @objc public static let ColorTableBgData = UIColor(red: 0.078, green: 0.082, blue: 0.082, alpha: 1)
     @objc public static let ColorTableBgAlt = UIColor(red: 0.129, green: 0.133, blue: 0.137, alpha: 1)
     @objc public static let ColorTableBgHover = UIColor(red: 0.184, green: 0.188, blue: 0.192, alpha: 1)

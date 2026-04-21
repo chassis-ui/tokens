@@ -38,7 +38,8 @@
       "apps": {
         "mobile": [
           "ios",
-          "android"
+          "android",
+          "web"
         ],
         "web": [
           "web"
@@ -62,29 +63,25 @@
     "tokens:lint": "eslint --cache --cache-location .cache/.eslintcache build/tokens",
     "tokens:mundi": "pnpm tokens:build --brand mundi",
     "tokens:test": "vitest run --dir build/tokens/test",
-
     "site": "pnpm site:build && pnpm site:lint",
-    "site:build": "node build/build-site.js",
-    "site:clean": "node build/build-site.js clean",
+    "site:build": "pnpm sync-submodules && pnpm astro:build",
+    "site:clean": "rm -rf _site site/node_modules site/.astro site/public",
     "site:format": "prettier --write --cache site",
     "site:lint": "pnpm site:lint:eslint && pnpm site:lint:fusv && pnpm site:lint:stylelint && pnpm site:lint:prettier && pnpm site:lint:vnu",
+    "site:lint:eslint": "eslint site --cache --cache-location .cache/.eslintcache --report-unused-disable-directives",
     "site:lint:fusv": "find-unused-sass-variables site/src/scss/",
-    "site:lint:eslint": "prettier -c --cache site",
+    "site:lint:prettier": "prettier -c --cache site",
     "site:lint:stylelint": "stylelint site/src/scss/ --cache --cache-location .cache/.stylelintcache",
     "site:lint:vnu": "node build/vnu-jar.js",
-    "site:validate": "node build/build.js validate",
-
     "astro:dev": "astro dev --root site --port 4322",
     "astro:build": "astro build --root site",
     "astro:preview": "astro preview --root site",
-
     "check": "pnpm check:code & pnpm check:lockfile & pnpm check:pnpm & wait",
     "check:code": "pnpm site:lint",
     "check:lockfile": "lockfile-lint --allowed-hosts npm --allowed-schemes https: --empty-hostname false --type npm --path package-lock.json",
     "check:pnpm": "pnpm audit --audit-level moderate",
-
     "change-version": "node build/change-version.js",
-    "sync-assets": "node build/sync-submodules.js"
+    "sync-submodules": "node build/sync-submodules.js"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.4",
@@ -93,7 +90,7 @@
     "@astrojs/prism": "^3.3.0",
     "@astrojs/sitemap": "^3.6.0",
     "@chassis-ui/css": "github:chassis-ui/css#app/docs",
-    "@chassis-ui/docs": "^0.1.3",
+    "@chassis-ui/docs": "^0.1.7",
     "@chassis-ui/icons": "github:chassis-ui/icons#app/docs",
     "@docsearch/css": "^3.9.0",
     "@docsearch/js": "^3.9.0",

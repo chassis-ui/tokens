@@ -1,0 +1,105 @@
+---
+import FeatureCard from '@chassis-ui/docs/components/FeatureCard.astro'
+---
+
+<section class="home-section py-3xlarge py-medium-6xlarge">
+  <div class="container-2xlarge section-content">
+    <div class="row mb-3xlarge mb-medium-6xlarge">
+      <header class="section-header col col-large-10 col-xlarge-8 text-center mx-auto">
+        <h2
+          class="section-title font-3xlarge font-medium-4xlarge font-large-5xlarge mb-xsmall mb-medium-small mb-large-medium"
+        >
+          <span class="font-normal d-block">Ready to Scale</span> Your Design System?
+        </h2>
+        <p class="section-body font-medium-large font-large-xlarge m-0">
+          Explore how Chassis Tokens fits into your workflow, from first setup to production
+          rollout.
+        </p>
+      </header>
+    </div>
+
+    <div class="section-features row row-cols-1 row-cols-medium-3 g-medium g-medium-xlarge">
+      <div class="col">
+        <FeatureCard icon="cx-rocket">
+          <Fragment slot="title">Quick Start</Fragment>
+          <Fragment slot="body">
+            Get up and running with Chassis Tokens in minutes. Learn the basics of token management
+            and workflow integration.
+          </Fragment>
+          <ul class="list-unstyled d-flex flex-column gap-xsmall">
+            <li>
+              <a href="/getting-started/introduction" class="link-primary">Introduction</a>
+            </li>
+            <li>
+              <a href="/getting-started/tokens-studio" class="link-primary">Tokens Studio Setup</a>
+            </li>
+            <li>
+              <a href="/getting-started/style-dictionary" class="link-primary">Style Dictionary</a>
+            </li>
+            <li>
+              <a href="/getting-started/figma-variables" class="link-primary">Figma Variables</a>
+            </li>
+          </ul>
+        </FeatureCard>
+      </div>
+      <div class="col">
+        <FeatureCard icon="cx-swatchbook">
+          <Fragment slot="title">Design Tokens</Fragment>
+          <Fragment slot="body">
+            Explore the complete token library covering colors, typography, spacing, and visual
+            effects for consistent design.
+          </Fragment>
+          <ul class="list-unstyled d-flex flex-column gap-xsmall">
+            <li>
+              <a href="/design-tokens/color-tokens" class="link-primary">Color System</a>
+            </li>
+            <li>
+              <a href="/design-tokens/typography-tokens" class="link-primary">Typography</a>
+            </li>
+            <li>
+              <a href="/design-tokens/size-tokens" class="link-primary">Sizing & Spacing</a>
+            </li>
+            <li>
+              <a href="/design-tokens/shadow-tokens" class="link-primary">Shadows</a>
+            </li>
+          </ul>
+        </FeatureCard>
+      </div>
+      <div class="col">
+        <FeatureCard icon="cx-code">
+          <Fragment slot="title">Integration</Fragment>
+          <Fragment slot="body">
+            Import tokens into your projects with platform-specific guides for web, iOS, and Android
+            development.
+          </Fragment>
+          <ul class="list-unstyled d-flex flex-column gap-xsmall">
+            <li>
+              <a href="/use-in-project/web-applications" class="link-primary">Web Applications</a>
+            </li>
+            <li>
+              <a href="/use-in-project/ios-applications" class="link-primary">iOS Applications</a>
+            </li>
+            <li>
+              <a href="/use-in-project/android-applications" class="link-primary"
+                >Android Applications</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://github.com/chassis-ui/tokens"
+                class="link-primary"
+                target="_blank"
+                rel="noopener">GitHub Repository</a
+              >
+            </li>
+          </ul>
+        </FeatureCard>
+      </div>
+    </div>
+
+    <div class="d-flex gap-medium justify-content-center mt-3xlarge mt-medium-6xlarge">
+      <a href="/getting-started" class="button primary large">Get Started</a>
+      <a href="/docs/" class="button default large">View Documentation</a>
+    </div>
+  </div>
+</section>

@@ -25,10 +25,10 @@ importers:
         version: 3.6.0
       '@chassis-ui/css':
         specifier: github:chassis-ui/css#app/docs
-        version: https://codeload.github.com/chassis-ui/css/tar.gz/3f90d1d43743a12c29637df43678044ab7c97168(@popperjs/core@2.11.8)
+        version: https://codeload.github.com/chassis-ui/css/tar.gz/76085b5ac5d4e88bc6124599269066f41f927c5f(@popperjs/core@2.11.8)
       '@chassis-ui/docs':
-        specifier: ^0.1.3
-        version: 0.1.3(astro@5.15.1(@types/node@22.18.12)(rollup@4.52.5)(sass@1.93.2)(typescript@5.9.3)(yaml@2.8.1))
+        specifier: ^0.1.7
+        version: 0.1.7(astro@5.15.1(@types/node@22.18.12)(rollup@4.52.5)(sass@1.93.2)(typescript@5.9.3)(yaml@2.8.1))
       '@chassis-ui/icons':
         specifier: github:chassis-ui/icons#app/docs
         version: https://codeload.github.com/chassis-ui/icons/tar.gz/6b051e49e7102d3badf330e47b5de52e053e5039
@@ -524,14 +524,14 @@ packages:
     resolution: {integrity: sha512-+ntATQe1AlL7nTOYjwjj6w3299CgRot48wL761TUGYpYgAou3AaONZazp0PKZyCyWhudWsjhq1nvRHOvbMzhTA==}
     engines: {node: '>=18'}
 
-  '@chassis-ui/css@https://codeload.github.com/chassis-ui/css/tar.gz/3f90d1d43743a12c29637df43678044ab7c97168':
-    resolution: {tarball: https://codeload.github.com/chassis-ui/css/tar.gz/3f90d1d43743a12c29637df43678044ab7c97168}
-    version: 0.1.0
+  '@chassis-ui/css@https://codeload.github.com/chassis-ui/css/tar.gz/76085b5ac5d4e88bc6124599269066f41f927c5f':
+    resolution: {tarball: https://codeload.github.com/chassis-ui/css/tar.gz/76085b5ac5d4e88bc6124599269066f41f927c5f}
+    version: 0.1.2
     peerDependencies:
       '@popperjs/core': ^2.11.8
 
-  '@chassis-ui/docs@0.1.3':
-    resolution: {integrity: sha512-WNISCOudHxlgtxmKgx8o7SkIpLoJvl514yNouwbFRpLe6yHbvhp3xDxj+u+lyAkZP/4OD4LVpPDyQhVMFSkxkw==}
+  '@chassis-ui/docs@0.1.7':
+    resolution: {integrity: sha512-Wl0lkuft57NjTJzGWAETtB03w7XNEyj9hXaysftIreWDqbhBZXvX92OQbYK/qLdS7ith1XGPjuJI1VQ1KHWcOw==}
     peerDependencies:
       astro: ^5.0.0
 
@@ -5956,11 +5956,11 @@ snapshots:
     dependencies:
       fontkit: 2.0.4
 
-  '@chassis-ui/css@https://codeload.github.com/chassis-ui/css/tar.gz/3f90d1d43743a12c29637df43678044ab7c97168(@popperjs/core@2.11.8)':
+  '@chassis-ui/css@https://codeload.github.com/chassis-ui/css/tar.gz/76085b5ac5d4e88bc6124599269066f41f927c5f(@popperjs/core@2.11.8)':
     dependencies:
       '@popperjs/core': 2.11.8
 
-  '@chassis-ui/docs@0.1.3(astro@5.15.1(@types/node@22.18.12)(rollup@4.52.5)(sass@1.93.2)(typescript@5.9.3)(yaml@2.8.1))':
+  '@chassis-ui/docs@0.1.7(astro@5.15.1(@types/node@22.18.12)(rollup@4.52.5)(sass@1.93.2)(typescript@5.9.3)(yaml@2.8.1))':
     dependencies:
       astro: 5.15.1(@types/node@22.18.12)(rollup@4.52.5)(sass@1.93.2)(typescript@5.9.3)(yaml@2.8.1)
 

@@ -2,7 +2,12 @@
 
 # Chassis Tokens
 
-Design tokens for the Chassis UI, supporting multi-brand, multi-theme, multi-app, and multi-platform design systems with comprehensive CLI tooling and build automation.
+> Design token generation and management for the Chassis Design System, supporting multi-brand, multi-theme, multi-app, and multi-platform output.
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![Version: 0.1.4](https://img.shields.io/badge/Version-0.1.4-blue.svg)](https://github.com/chassis-ui/tokens)
+
+## Overview
 
 **This repository contains:**
 - Design tokens in [Tokens Studio](https://tokens.studio) format (`tokens/`)
@@ -48,7 +53,7 @@ Transform all design tokens into platform-specific formats:
 pnpm tokens
 ```
 
-This generates token files for all brands, themes, apps, platforms, and screens defined in your configuration. Output is written to `dist/[platform]/[brand]-[app]/` with platform-specific formats (SCSS for web, Swift for iOS, XML for Android).
+This generates token files for all brands, themes, apps, platforms, and screens defined in your configuration. Output is written to `dist/[platform]/[app]/[brand]/` with platform-specific formats (SCSS for web, Swift for iOS, XML for Android).
 
 ### Selective Builds
 
@@ -277,40 +282,32 @@ The build system uses:
 - `build/tokens/logger.js`: Centralized logging utilities
 - `build/tokens/utils.js`: Shared utilities and helpers
 
-## Chassis UI Ecosystem
+## Chassis Ecosystem
 
 This project is part of the Chassis Design System's multi-repository architecture:
 
-- **`chassis-tokens`**: Design token generation and management (this repository)
-- **`chassis-assets`**: Asset management and distribution
-- **`chassis-icons`**: Icon generation and sprite creation
-- **`chassis-css`**: Production CSS framework
-- **`chassis-figma`**: Figma library documentation and examples.
+| Project | Description |
+|---------|-------------|
+| [chassis-website](https://github.com/chassis-ui/website) | Main website and shared documentation package |
+| [chassis-css](https://github.com/chassis-ui/css) | CSS framework and component library |
+| **chassis-tokens** | **Design token generation and management (this repository)** |
+| [chassis-icons](https://github.com/chassis-ui/icons) | Icon library and build toolkit |
+| [chassis-assets](https://github.com/chassis-ui/assets) | Multi-platform asset management |
+| [chassis-figma](https://github.com/chassis-ui/figma) | Figma component documentation |
 
-### Integration with Other Repositories
-
-The token system works alongside other Chassis repositories:
-
-1. **Design tokens** define colors, typography, spacing, and other design decisions
-2. **Assets** provide fonts, images, and illustrations referenced by tokens
-3. **Icons** are managed separately for scalability and performance
-4. **CSS framework** consumes the generated token files to build production stylesheets
-5. **Figma library** contains documentation and examples for Figma variables and components
+All documentation sites share the `@chassis-ui/docs` package for consistent layouts, components, and styling.
 
 ## Contributing
 
-This project follows the Chassis Design System contribution guidelines. For token-related contributions:
-
 1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/token-update`)
-3. Add or update tokens in the `tokens/` directory
-4. Test transformation with `pnpm tokens`
-5. Run tests with `pnpm tokens:test`
-6. Commit changes and create a pull request
-
----
+2. Create a feature branch: `git checkout -b feature/my-feature`
+3. Make your changes
+4. Test the build: `pnpm tokens && pnpm tokens:test`
+5. Commit your changes: `git commit -m "feat: add my feature"`
+6. Push to the branch: `git push origin feature/my-feature`
+7. Open a Pull Request
 
 ## License
 
-MIT License - see LICENSE file for details.
+MIT License — see [LICENSE](LICENSE) file for details.
 
