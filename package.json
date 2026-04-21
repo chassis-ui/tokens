@@ -62,6 +62,7 @@
     "tokens:lint": "eslint --cache --cache-location .cache/.eslintcache build/tokens",
     "tokens:mundi": "pnpm tokens:build --brand mundi",
     "tokens:test": "vitest run --dir build/tokens/test",
+    "tokens:zip": "node build/zip-tokens.js",
     "site": "pnpm site:build && pnpm site:lint",
     "site:build": "pnpm sync-submodules && pnpm astro:build",
     "site:clean": "rm -rf _site site/node_modules site/.astro site/public",
