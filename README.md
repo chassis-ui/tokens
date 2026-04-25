@@ -1,73 +1,147 @@
-# Chassis Design Tokens
 
-Design tokens for the Chassis Design System, a robust foundation for enterprise-grade, multi-brand, multi-app, and multi-platform design systems.
 
-This project includes token transformers, an asset manager, and an icon generator. It uses [Style Dictionary](https://amzn.github.io/style-dictionary/) and [Tokens Studio](https://tokens.studio) to bridge the gap between Figma and code repositories.
+# Chassis Tokens
+
+> Design token generation and management for the Chassis Design System, supporting multi-brand, multi-theme, multi-app, and multi-platform output.
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![Version: 0.1.4](https://img.shields.io/badge/Version-0.1.4-blue.svg)](https://github.com/chassis-ui/tokens)
+
+## Overview
+
+**This repository contains:**
+- Design tokens in [Tokens Studio](https://tokens.studio) format (`tokens/`)
+- Style Dictionary v4 transform scripts with custom extensions (`build/tokens/`)
+- Platform-specific output for Web (SCSS), iOS (Swift), and Android (XML)
+- Comprehensive test suite (97 tests) covering all build modules
+- Documentation website (`site/`)
+
+**Key features:**
+- 🎨 Multi-brand, multi-theme support with Figma Variables integration
+- 🚀 Fast selective builds with CLI filtering
+- 📦 Self-contained platform configurations (no shared dependencies)
+- 🧪 Comprehensive test coverage with Vitest
+- 📊 Progress indicators and detailed build summaries
+- 🔍 Dry-run mode for previewing tasks
+- ⚡ Optional responsive screen layer
+- 🛠️ Centralized logging with debug mode
 
 > [!NOTE]
-> This project serves as a starting point. Clone it, set your own repository as the origin, then customize tokens, icons, and assets for your needs.
+> This project is part of the Chassis UI ecosystem and handles design token generation and management. It provides tools to transform design tokens from Tokens Studio format into platform-specific output (Web SCSS, iOS Swift, Android XML) with multi-brand, multi-theme, and multi-app support.
 
 > [!WARNING]
-> This project uses `pnpm` for package management. Ensure you have `pnpm` installed globally before running the commands below.
+> This project uses `pnpm` for package management. Install it globally with `npm install -g pnpm` before running the commands below.
 
-## Install
 
-```shell
-git clone git@github.com:ozgurgunes/chassis-tokens.git
+## 🚀 Quick Start
+
+### Clone Repository
+
+Clone the repository and install dependencies:
+
+```sh
+git clone https://github.com/chassis-ui/tokens.git chassis-tokens
+cd chassis-tokens
 pnpm install
 ```
 
-## Generate Dist Folder
+### Generate Distribution
 
-```shell
-pnpm dist
-```
-
-Runs `tokens`, `assets`, and `icons` commands in parallel to create a complete `dist` folder with all necessary files.
-
-### Generate Design Tokens Only
+Transform all design tokens into platform-specific formats:
 
 ```shell
 pnpm tokens
 ```
 
-Generates tokens to `dist/tokens/[platform]/[brand]-[app]` as specified in the configuration, tailored to each `platform`. References will also be transformed to match the platform-specific format whenever possible.
+This generates token files for all brands, themes, apps, platforms, and screens defined in your configuration. Output is written to `dist/[platform]/[app]/[brand]/` with platform-specific formats (SCSS for web, Swift for iOS, XML for Android).
 
-### Generate Icon Files Only
+### Selective Builds
 
-```shell
-pnpm icons
-```
-
-Creates SVG sprite, CSS, and font files from the `icons/svgs` directory and places them into the `dist/icons` directory.
-
-### Generate Assets Only
+Build only specific tokens using CLI filters. When filters are applied, only matching combinations are generated:
 
 ```shell
-pnpm assets
+# Filter by brand
+pnpm tokens --brand chassis
+
+# Filter by theme
+pnpm tokens --theme light dark
+
+# Filter by app
+pnpm tokens --app docs
+
+# Filter by platform
+pnpm tokens --platform web ios
+
+# Filter by screen size
+pnpm tokens --screen large medium
+
+# Combine multiple filters
+pnpm tokens --brand chassis --platform web --screen large small
+
+# Build specific brand/app for production
+pnpm tokens --brand chassis --app docs --platform web
 ```
 
-Copies everything recursively from `assets/default/[app]` to `dist/assets/[platform]/[brand]-[app]` as specified in the configuration. If a file with the same name exists under `assets/[brand]`, it copies that file instead of the default file. Renames files according to Android specifications if the platform is `android`.
+**Benefits:**
+- Faster builds during development
+- Reduced output size for targeted deployments
+- Optimized CI/CD pipelines
 
-## Release
+## CLI Reference
 
-Update the version:
+### Available Options
+
+All filter options accept space-separated values:
+
+- `--brand <brands...>` — Filter by brand (e.g., `chassis test`)
+- `--theme <themes...>` — Filter by theme (e.g., `light dark`)
+- `--app <apps...>` — Filter by app (e.g., `docs test`)
+- `--platform <platforms...>` — Filter by platform (e.g., `web ios android`)
+- `--screen <screens...>` — Filter by screen size (e.g., `large medium small`)
+- `--dry-run` — Preview tasks without executing builds
+- `--help, -h` — Show help message
+- `--version, -v` — Show version number
+
+### Build Features
+
+- **Progress indicators**: Shows build status (`[1/5]`, `[2/5]`, etc.)
+- **Build summary**: Displays success/failure count and total duration
+- **Error handling**: Detailed error messages with optional stack traces
+- **Debug mode**: Set `DEBUG=1` for verbose output
+- **Selective building**: Combine filters to build only what you need
+
+### Additional Commands
 
 ```shell
-npm run release-version old_version new_version
+# Run test suite
+pnpm tokens:test
+pnpm test:watch
+
+# Update version
+pnpm change-version <old_version> <new_version>
 ```
 
-Run `assets` & `icons`.
+## Release Workflow
 
-```shell
-npm run release
+To update the version and publish new tokens:
+
+```sh
+# Update version in package.json
+pnpm change-version <old_version> <new_version>
+
+# Build tokens
+pnpm tokens
+
+# (Optional) Build documentation site
+pnpm build:astro
 ```
 
-Inspect package scripts for more commands.
+See package scripts for more commands and options.
 
-## Figma Tokens
 
-Tokens will be created as Figma variables in this structure:
+## Tokens Studio Format & Figma Variables
+
+Tokens are stored in [Tokens Studio](https://tokens.studio) format, compatible with Figma variables. Example structure:
 
 | Collection | Mode 1 | Mode 2 |
 | --- | --- | --- |
@@ -75,23 +149,18 @@ Tokens will be created as Figma variables in this structure:
 | Theme | light | dark |
 | App | docs | test |
 
-Check [Tokens Studio Documentation](https://docs.tokens.studio) and [Style Dictionary](https://style-dictionary-v4.netlify.app) for more information.
+See [Tokens Studio Documentation](https://docs.tokens.studio) and [Style Dictionary Documentation](https://amzn.github.io/style-dictionary/) for more details.
 
-## Chassis Configuration
+## Configuration
 
-The `chassis` key in the `package.json` file defines the configuration for transforming design tokens and assets. It specifies which token sets will be transformed, their formats, and their target platforms. Below is a detailed explanation of the `chassis` key and its structure:
-
-### Structure
+The `chassis` key in your `package.json` defines which brands, themes, screens, and apps/platforms are available for transformation:
 
 ```json
 "chassis": {
-  "defaults": {
-    "brandFolder": "default",
-    "tokensTheme": "light"
-  },
   "build": {
     "brands": ["chassis", "test"],
     "themes": ["light", "dark"],
+    "screens": ["large", "medium", "small"],
     "apps": {
       "docs": ["web"],
       "test": ["ios", "android"]
@@ -100,105 +169,145 @@ The `chassis` key in the `package.json` file defines the configuration for trans
 }
 ```
 
-### Key Details
+### Configuration Details
 
-#### `defaults`
-- **`brandFolder`**: Specifies the default folder for brand assets. Files in this folder will be used unless overridden by brand-specific files.
-- **`tokensTheme`**: Defines the default theme for tokens. This is used to create common token files for platforms.
+- **`brands`**: Array of brand identifiers
+- **`themes`**: Array of theme variants (light, dark, etc.)
+- **`screens`**: Array of screen sizes for responsive tokens. Set to `[]` or omit to generate single number files without screen suffixes
+- **`apps`**: Object mapping app names to their target platforms
 
-#### `build`
-The `build` key defines the token collections and their transformations. It includes the following subkeys:
+**Supported platforms:**
+- `web`: SCSS variables (rem, px, vw units)
+- `ios`: Swift classes (PascalCase naming)
+- `android`: XML resources (snake_case naming)
 
-- **`brands`**: A list of brands for which tokens will be generated. Each brand corresponds to a mode under `brand` collection in Figma.
-- **`themes`**: A list of themes for the tokens. Each theme corresponds to a mode under `theme` collection in Figma.
-- **`apps`**: A mapping of apps to their target platforms. Each app corresponds to a mode under `app` collection in Figma. Chassis has predefined output formats for each platform.
+**File naming conventions:**
+- Web: `main.scss`, `color-light.scss`, `number-large.scss`
+- iOS: `Main.swift`, `ColorLight.swift`, `NumberLarge.swift`
+- Android: `main.xml`, `color_light.xml`, `number_large.xml`
 
-### Platform Options
+Only the collections and sets defined under `build` are processed.
 
-The supported platforms for token transformations are:
-- **`web`**: Generates tokens for web applications as SCSS variables.
-- **`ios`**: Generates tokens for iOS applications as Swift classes.
-- **`android`**: Generates tokens for Android applications as XML resources.
+## Documentation Site
 
-**`web`** platform transforms dimension tokens with `rem` unit. **`web-px`** and **`web-vw`** platform options are also available (output directory will still be `web`).
+The documentation site (`site/`) provides guides, API documentation, and usage examples for working with tokens and transformation scripts. It is built with [Astro](https://astro.build/) and includes:
 
-### Behavior
+- How to extend or customize transforms
+- How to structure tokens for brands/themes/apps/screens
+- Advanced usage and troubleshooting
+- Reference documentation for all build scripts
+- Guides for integrating tokens into your design system
 
-This package only transforms the collections and sets defined under the `build` key. If a brand, theme, or app is not listed here, it will not be processed during the build.
+### Local Development
 
-### Example
+To run the documentation site locally:
 
-If you run the `pnpm tokens` command, the following transformations will occur based on the above configuration:
-- Tokens for the `chassis` and `test` brands will be generated.
-- Each brand will have tokens for the `light` and `dark` themes.
-- The `docs` app tokens will be generated for the `web` platform.
-- The `test` app tokens will be generates for the `ios` and `android` platforms.
-
-For more details on how to configure Figma tokens, refer to the [Figma Tokens Documentation](https://docs.tokens.studio) and [Style Dictionary](https://style-dictionary-v4.netlify.app).
-
-## Exporting Assets as a Designer
-
-If you are a designer in your project team and not familiar with the git workflow, we recommend using [Sourcetree](https://www.sourcetreeapp.com/), a free Git GUI client. Here are the steps to get started:
-
-### Install Sourcetree
-
-Download and install Sourcetree from [here](https://www.sourcetreeapp.com/).
-
-### Clone the Repository
-
-Follow these steps to clone the repository:
-
-- Open Sourcetree.
-- Click on "Clone/New".
-- Enter the repository URL: `git@github.com:ozgurgunes/chassis-tokens.git`.
-- Choose the destination path on your local machine.
-- Click "Clone".
-
-### Create a Work Branch
-
-Before making any changes, create a new branch to keep your work organized and separate from the main branch.
-
-1. In Sourcetree, click on the "Branch" button.
-2. Enter a name for your new branch (e.g., `design/new-feature`).
-3. Click "Create Branch".
-
-### Install Dependencies
-
-Open the terminal in Sourcetree by clicking on the terminal icon. Run the following command to install dependencies:
-
-```shell
-pnpm install
+```sh
+pnpm dev
 ```
 
-### Adding Assets
+This will start Astro on [http://localhost:4322](http://localhost:4322) (default port). You can browse and edit documentation live.
 
-Export assets to the appropriate locations:
+### Building the Site
 
-- Glyph icons: `icons/svgs`
-- Fonts: `assets/[brand]/[app]/fonts` (rename as in font tokens, e.g., `text-normal.ttf`)
-- Bitmap images, SVG illustrations, and colored icons: `assets/[brand]/[app]/images`
+To build the static documentation site for deployment:
 
-> Files under `assets/[DEFAULT_BRAND_FOLDER]` will be used for every brand unless overridden in `assets/[brand]`.
-
-`DEFAULT_BRAND_FOLDER` can be set in `package.json`, default value is `default`.
-
-### Verify File Distribution
-
-To see if the files are distributed correctly across brands and apps:
-
-```shell
-pnpm assets
+```sh
+pnpm build:astro
 ```
 
-Then, check the `dist/assets` folder to confirm the files are correctly distributed.
+The output will be generated in the `_site/` directory.
 
-### Stage, Commit & Push Changes
+### Keeping Documentation Up to Date
 
-After you are done with your work:
+To ensure documentation references the latest tokens, build tokens before building the site:
 
-- In Sourcetree, go to the "File Status" tab.
-- You will see a list of modified files. Select the files you want to stage.
-- Enter a brief description of your changes in the "Commit Message" box.
-- Click the "Commit" button.
-- Finally, click the "Push" button to upload your changes to the remote repository.
+```sh
+pnpm tokens
+pnpm build:astro
+```
+
+### Editing Documentation
+
+All documentation content is stored in `site/content/`. You can add or edit guides, API docs, and usage examples using Markdown or MDX files.
+
+## Development & Testing
+
+### Running Tests
+
+The build system includes comprehensive test coverage (97 tests) covering all modules:
+
+```sh
+# Run all tests
+pnpm tokens:test
+
+# Run tests in watch mode
+pnpm test:watch
+```
+
+**Test coverage includes:**
+- CLI argument parsing
+- Token key lookup logic
+- Task generation and filtering
+- Platform-specific configurations
+- Token transformations
+- Filter functions
+- Utility functions
+- Logger output
+- Preprocessor functionality
+
+### Debugging
+
+For verbose output with stack traces:
+
+```sh
+DEBUG=1 pnpm tokens --brand chassis
+```
+
+### Build Architecture
+
+The build system uses:
+- **Self-contained platform configs**: Each platform (web, iOS, Android) has its own independent configuration file
+- **Style Dictionary v4.4.0**: Token transformation engine
+- **Tokens Studio SD Transforms**: Figma Variables integration
+- **Vitest**: Testing framework
+- **Pure Node.js**: No external CLI parsing dependencies
+
+**Key modules:**
+- `build/tokens/build.js`: Main orchestration and task generation
+- `build/tokens/config/`: Platform-specific configurations
+- `build/tokens/filters.js`: Token filtering logic
+- `build/tokens/transforms.js`: Custom value transformations
+- `build/tokens/preprocessor.js`: Token preprocessing
+- `build/tokens/logger.js`: Centralized logging utilities
+- `build/tokens/utils.js`: Shared utilities and helpers
+
+## Chassis Ecosystem
+
+This project is part of the Chassis Design System's multi-repository architecture:
+
+| Project | Description |
+|---------|-------------|
+| [chassis-website](https://github.com/chassis-ui/website) | Main website and shared documentation package |
+| [chassis-css](https://github.com/chassis-ui/css) | CSS framework and component library |
+| **chassis-tokens** | **Design token generation and management (this repository)** |
+| [chassis-icons](https://github.com/chassis-ui/icons) | Icon library and build toolkit |
+| [chassis-assets](https://github.com/chassis-ui/assets) | Multi-platform asset management |
+| [chassis-figma](https://github.com/chassis-ui/figma) | Figma component documentation |
+
+All documentation sites share the `@chassis-ui/docs` package for consistent layouts, components, and styling.
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature/my-feature`
+3. Make your changes
+4. Test the build: `pnpm tokens && pnpm tokens:test`
+5. Commit your changes: `git commit -m "feat: add my feature"`
+6. Push to the branch: `git push origin feature/my-feature`
+7. Open a Pull Request
+
+## License
+
+MIT License — see [LICENSE](LICENSE) file for details.
 

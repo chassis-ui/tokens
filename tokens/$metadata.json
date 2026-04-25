@@ -2,19 +2,23 @@
   "tokenSetOrder": [
     "base/app-base",
     "base/app-docs",
-    "base/app-test",
+    "base/app-demo",
     "base/brand-base",
-    "base/brand-test",
-    "base/effect-base",
+    "base/brand-default",
+    "base/brand-example",
     "base/metric-base",
     "base/metric-px",
     "base/metric-rem",
-    "base/metric-vw",
     "base/motion-base",
+    "base/effect-base",
     "base/theme-base",
     "base/theme-light",
     "base/theme-dark",
     "brand-chassis/app-base",
-    "brand-chassis/brand-base"
+    "brand-chassis/brand-base",
+    "screen-website/screen-base",
+    "screen-website/screen-large",
+    "screen-website/screen-medium",
+    "screen-website/screen-small"
   ]
 }

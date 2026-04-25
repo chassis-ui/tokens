@@ -11,9 +11,7 @@
  * A mapping of token types to their respective categories.
  */
 export const tokenTypes = {
-  color: [
-    'color',
-  ],
+  color: ['color'],
   font: [
     'fontFamily',
     'fontSize',
@@ -24,18 +22,14 @@ export const tokenTypes = {
     'paragraphSpacing',
     'textCase',
     'textDecoration',
-    'typography',
+    'typography'
   ],
   gradient: ['gradient'],
   number: ['duration', 'letterSpacing', 'number', 'opacity'],
   shadow: ['shadow'],
-  size: [
-    'dimension',
-    'fontSize',
-    'lineHeight',
-    'paragraphSpacing',
-  ],
-  string : [
+  size: ['dimension', 'fontSize', 'lineHeight', 'paragraphSpacing'],
+  string: [
+    'asset',
     'content',
     'fontFamily',
     'fontStyle',
@@ -44,8 +38,8 @@ export const tokenTypes = {
     'text',
     'textCase',
     'textDecoration',
-    'type',
-  ],
+    'type'
+  ]
 }
 
 /**
@@ -80,7 +74,7 @@ export const fontWeightMap = {
   extrafett: 900,
   ultra: 950,
   ultrablack: 950,
-  extrablack: 950,
+  extrablack: 950
 }
 
 /**
@@ -91,10 +85,10 @@ export const fontWeightMap = {
  */
 export function getFontWeight(value) {
   if (typeof value === 'string') {
-    const cleanedValue = value.toLowerCase().replace(/normal|italic|oblique|\s/g, '');
-    return fontWeightMap[cleanedValue] || 400;
+    const cleanedValue = value.toLowerCase().replace(/normal|italic|oblique|\s/g, '')
+    return fontWeightMap[cleanedValue] || 400
   }
-  return value;
+  return value
 }
 
 /**
@@ -105,10 +99,10 @@ export function getFontWeight(value) {
  */
 export function getFontStyle(value) {
   if (typeof value === 'string') {
-    if (/italic/i.test(value)) return 'italic';
-    if (/oblique/i.test(value)) return 'oblique';
+    if (/italic/i.test(value)) return 'italic'
+    if (/oblique/i.test(value)) return 'oblique'
   }
-  return 'normal';
+  return 'normal'
 }
 
 /**
@@ -118,7 +112,7 @@ export function getFontStyle(value) {
  * @returns {boolean} - True if the token is referencing another token, false otherwise.
  */
 export function isReference(value) {
-  return (typeof value === 'string' && /^\{[^{}]+\}$/.test(value))
+  return typeof value === 'string' && /^\{[^{}]+\}$/.test(value)
 }
 
 /**
@@ -133,4 +127,22 @@ export function splitReference(value) {
   }
   console.warn('Not a reference:', value)
   return value
+}
+
+/**
+ * Removes unnecessary trailing zeros from a number.
+ *
+ * @param {number|string} value - The value to format.
+ * @returns {string} - Formatted number without trailing zeros.
+ */
+export function removeTrailingZeros(value) {
+  // Convert to string first if it's a number
+  const strValue = String(value)
+
+  // Only process if it contains a decimal point
+  if (strValue.includes('.')) {
+    return strValue.replace(/\.?0+$/, '')
+  }
+
+  return strValue
 }

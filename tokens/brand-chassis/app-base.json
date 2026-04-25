@@ -1,289 +1,193 @@
 {
   "color": {
-    "common": {
-      "form-input": {
-        "default": {
-          "focus": {
-            "background": {
-              "$type": "color",
-              "$value": "{color.context.default.bg-main}"
-            },
-            "border": {
-              "$type": "color",
-              "$value": "{color.context.info.icon-main}"
-            },
-            "fg-active": {
-              "$type": "color",
-              "$value": "{color.context.default.fg-main}"
-            },
-            "fg-inactive": {
-              "$type": "color",
-              "$value": "{color.context.default.fg-subtle}"
-            },
-            "assist": {
-              "$type": "color",
-              "$value": "{color.context.info.icon-main}"
-            }
-          }
-        },
-        "alternate": {
-          "focus": {
-            "background": {
-              "$type": "color",
-              "$value": "{color.context.alternate.bg-main}"
-            },
-            "border": {
-              "$type": "color",
-              "$value": "{color.context.info.icon-main}"
-            },
-            "fg-active": {
-              "$type": "color",
-              "$value": "{color.context.alternate.fg-main}"
-            },
-            "fg-inactive": {
-              "$type": "color",
-              "$value": "{color.context.alternate.fg-subtle}"
-            },
-            "assist": {
-              "$type": "color",
-              "$value": "{color.context.info.icon-main}"
-            }
-          }
-        }
-      },
-      "map": {
-        "marker-bg": {
-          "$type": "color",
-          "$value": "{color.context.primary.base-color}"
-        },
-        "marker-fg": {
-          "$type": "color",
-          "$value": "{color.context.primary.contrast-color}"
-        },
-        "path-ride": {
-          "$type": "color",
-          "$value": "{color.context.black.indicator-main}"
-        },
-        "path-walk": {
-          "$type": "color",
-          "$value": "{color.context.neutral.indicator-main}"
-        },
-        "path-drive": {
-          "$type": "color",
-          "$value": "{color.common.map.path-ride}"
-        },
-        "path-active": {
-          "$type": "color",
-          "$value": "{color.context.primary.indicator-main}"
-        },
-        "path-inactive": {
-          "$type": "color",
-          "$value": "{color.context.primary.indicator-slight}"
-        },
-        "path-inbound": {
-          "$type": "color",
-          "$value": "{color.common.map.path-ride}"
-        },
-        "path-outbound": {
-          "$type": "color",
-          "$value": "{color.common.map.path-ride}"
-        },
-        "point-active": {
-          "$type": "color",
-          "$value": "{color.context.default.indicator-main}"
-        },
-        "point-inactive": {
-          "$type": "color",
-          "$value": "{color.context.neutral.indicator-slight}"
-        },
-        "point-home": {
-          "$type": "color",
-          "$value": "{color.context.default.indicator-main}"
-        },
-        "point-male": {
-          "$type": "color",
-          "$value": "#08A8EE"
-        },
-        "point-female": {
-          "$type": "color",
-          "$value": "#E149A5"
-        },
-        "point-selected": {
-          "$type": "color",
-          "$value": "{color.context.neutral.indicator-main}"
-        },
-        "point-boarding": {
-          "$type": "color",
-          "$value": "{color.context.success.base-color}"
-        },
-        "point-landing": {
-          "$type": "color",
-          "$value": "{color.context.danger.base-color}"
-        },
-        "trip-start": {
-          "$type": "color",
-          "$value": "{color.context.success.base-color}"
-        },
-        "trip-stop": {
-          "$type": "color",
-          "$value": "{color.context.danger.base-color}"
-        }
-      },
-      "page": {
-        "bg-body": {
-          "$type": "color",
-          "$value": "{color.context.default.bg-even}"
-        },
-        "bg-section": {
-          "$type": "color",
-          "$value": "{color.context.default.bg-main}"
-        }
-      },
-      "table": {
-        "default": {
-          "bg-highlight": {
+    "form-input": {
+      "default": {
+        "focus": {
+          "background": {
             "$type": "color",
-            "$value": "{color.palette.info.10}"
+            "$value": "{color.context.default.bg-main}"
           },
-          "indicator-main": {
+          "border": {
+            "$type": "color",
+            "$value": "{color.context.info.icon-main}"
+          },
+          "fg-active": {
+            "$type": "color",
+            "$value": "{color.context.default.fg-main}"
+          },
+          "fg-inactive": {
+            "$type": "color",
+            "$value": "{color.context.default.fg-subtle}"
+          },
+          "assist": {
             "$type": "color",
             "$value": "{color.context.info.icon-main}"
           }
-        },
-        "alternate": {
-          "bg-highlight": {
+        }
+      },
+      "alternate": {
+        "focus": {
+          "background": {
             "$type": "color",
-            "$value": "{color.palette.info.90}"
+            "$value": "{color.context.alternate.bg-main}"
           },
-          "indicator-main": {
+          "border": {
+            "$type": "color",
+            "$value": "{color.context.info.icon-main}"
+          },
+          "fg-active": {
+            "$type": "color",
+            "$value": "{color.context.alternate.fg-main}"
+          },
+          "fg-inactive": {
+            "$type": "color",
+            "$value": "{color.context.alternate.fg-subtle}"
+          },
+          "assist": {
             "$type": "color",
             "$value": "{color.context.info.icon-main}"
           }
         }
       }
     },
-    "mobile": {
-      "nav-top": {
-        "segment": {
-          "default-item-active-bg": {
-            "$type": "color",
-            "$value": "{color.context.default.bg-button}"
-          },
-          "default-item-active-fg": {
-            "$type": "color",
-            "$value": "{color.context.default.fg-button}"
-          },
-          "alternate-item-active-bg": {
-            "$type": "color",
-            "$value": "{color.context.alternate.bg-button}"
-          },
-          "alternate-item-active-fg": {
-            "$type": "color",
-            "$value": "{color.context.alternate.fg-button}"
-          }
+    "map": {
+      "marker-bg": {
+        "$type": "color",
+        "$value": "{color.context.primary.base-color}"
+      },
+      "marker-fg": {
+        "$type": "color",
+        "$value": "{color.context.primary.contrast-color}"
+      },
+      "path-ride": {
+        "$type": "color",
+        "$value": "{color.context.black.cue-main}"
+      },
+      "path-walk": {
+        "$type": "color",
+        "$value": "{color.context.neutral.cue-main}"
+      },
+      "path-drive": {
+        "$type": "color",
+        "$value": "{color.map.path-ride}"
+      },
+      "path-active": {
+        "$type": "color",
+        "$value": "{color.context.primary.cue-main}"
+      },
+      "path-inactive": {
+        "$type": "color",
+        "$value": "{color.context.primary.cue-slight}"
+      },
+      "path-inbound": {
+        "$type": "color",
+        "$value": "{color.map.path-ride}"
+      },
+      "path-outbound": {
+        "$type": "color",
+        "$value": "{color.map.path-ride}"
+      },
+      "point-active": {
+        "$type": "color",
+        "$value": "{color.context.default.cue-main}"
+      },
+      "point-inactive": {
+        "$type": "color",
+        "$value": "{color.context.neutral.cue-slight}"
+      },
+      "point-home": {
+        "$type": "color",
+        "$value": "{color.context.default.cue-main}"
+      },
+      "point-male": {
+        "$type": "color",
+        "$value": "#08A8EE"
+      },
+      "point-female": {
+        "$type": "color",
+        "$value": "#E149A5"
+      },
+      "point-selected": {
+        "$type": "color",
+        "$value": "{color.context.neutral.cue-main}"
+      },
+      "point-boarding": {
+        "$type": "color",
+        "$value": "{color.context.success.base-color}"
+      },
+      "point-landing": {
+        "$type": "color",
+        "$value": "{color.context.danger.base-color}"
+      },
+      "trip-start": {
+        "$type": "color",
+        "$value": "{color.context.success.base-color}"
+      },
+      "trip-stop": {
+        "$type": "color",
+        "$value": "{color.context.danger.base-color}"
+      }
+    },
+    "page": {
+      "bg-body": {
+        "$type": "color",
+        "$value": "{color.context.default.bg-even}"
+      },
+      "bg-section": {
+        "$type": "color",
+        "$value": "{color.context.default.bg-main}"
+      }
+    },
+    "table": {
+      "default": {
+        "bg-highlight": {
+          "$type": "color",
+          "$value": "{color.palette.info.10}"
+        },
+        "cue-main": {
+          "$type": "color",
+          "$value": "{color.context.info.icon-main}"
+        }
+      },
+      "alternate": {
+        "bg-highlight": {
+          "$type": "color",
+          "$value": "{color.palette.info.90}"
+        },
+        "cue-main": {
+          "$type": "color",
+          "$value": "{color.context.info.icon-main}"
         }
       }
     }
   },
   "space": {
-    "common": {
-      "modal": {
-        "large-padding-y": {
-          "$type": "spacing",
-          "$value": "{space.context.xlarge}"
-        },
-        "large-padding-x": {
-          "$type": "spacing",
-          "$value": "{space.context.xlarge}"
-        },
-        "large-gap": {
-          "$type": "spacing",
-          "$value": "{space.context.3xlarge}"
-        }
+    "modal": {
+      "large-padding-y": {
+        "$type": "spacing",
+        "$value": "{space.context.xlarge}"
       },
-      "page": {
-        "large-padding-y": {
-          "$type": "spacing",
-          "$value": "{space.context.xlarge}"
-        },
-        "large-padding-x": {
-          "$type": "spacing",
-          "$value": "{space.context.5xlarge}"
-        },
-        "large-gap": {
-          "$type": "spacing",
-          "$value": "{space.context.3xlarge}"
-        }
+      "large-padding-x": {
+        "$type": "spacing",
+        "$value": "{space.context.xlarge}"
+      },
+      "large-gap": {
+        "$type": "spacing",
+        "$value": "{space.context.3xlarge}"
       }
     },
-    "mobile": {
-      "nav-top": {
-        "segment": {
-          "item-padding-v": {
-            "$type": "spacing",
-            "$value": "{space.context.xsmall}"
-          },
-          "item-padding-h": {
-            "$type": "spacing",
-            "$value": "{space.context.small}"
-          },
-          "frame-padding": {
-            "$type": "spacing",
-            "$value": "{space.base.0}"
-          }
-        }
-      }
-    }
-  },
-  "borderRadius": {
-    "mobile": {
-      "nav-top": {
-        "control-floating-action": {
-          "$type": "borderRadius",
-          "$value": "{borderRadius.context.round-40}"
-        },
-        "search-input-regular": {
-          "$type": "borderRadius",
-          "$value": "{borderRadius.context.round-36}"
-        },
-        "search-input-floating": {
-          "$type": "borderRadius",
-          "$value": "{borderRadius.context.round-40}"
-        },
-        "search-trip-button": {
-          "$type": "borderRadius",
-          "$value": "{borderRadius.context.round-40}"
-        },
-        "segment-item": {
-          "$type": "borderRadius",
-          "$value": "{borderRadius.context.round-40}"
-        },
-        "segment-frame": {
-          "$type": "borderRadius",
-          "$value": "{borderRadius.context.round-40}"
-        },
-        "calendar-date-day": {
-          "$type": "borderRadius",
-          "$value": "{borderRadius.context.round-24}"
-        },
-        "chip-item": {
-          "$type": "borderRadius",
-          "$value": "{borderRadius.context.round-32}"
-        }
+    "page": {
+      "large-padding-y": {
+        "$type": "spacing",
+        "$value": "{space.context.xlarge}"
       },
-      "button": {
-        "medium": {
-          "$type": "borderRadius",
-          "$value": "{borderRadius.context.round-40}"
-        },
-        "large": {
-          "$type": "borderRadius",
-          "$value": "{borderRadius.context.round-48}"
-        },
-        "small": {
-          "$type": "borderRadius",
-          "$value": "{borderRadius.context.round-32}"
-        }
+      "large-padding-x": {
+        "$type": "spacing",
+        "$value": "{space.context.5xlarge}"
+      },
+      "large-gap": {
+        "$type": "spacing",
+        "$value": "{space.context.3xlarge}"
       }
     }
   }

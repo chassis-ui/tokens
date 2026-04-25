@@ -1,0 +1,33 @@
+# This file holds all sidebar menu's entries for Chassis Tokens.
+
+- title: Getting Started
+  icon: rocket-solid
+  icon_color: yellow
+  pages:
+    - title: Introduction
+    - title: Quick Start
+    - title: Tokens Studio
+    - title: Style Dictionary
+    - title: Figma Variables
+
+- title: Use in Project
+  icon: code-solid
+  icon_color: yellow
+  pages:
+    - title: Web Applications
+    - title: iOS Applications
+    - title: Android Applications
+
+- title: Design Tokens
+  icon: swatchbook-solid
+  icon_color: red
+  pages:
+    - title: Color Tokens
+    - title: Typography Tokens
+    - title: Font Tokens
+    - title: Size Tokens
+    - title: Space Tokens
+    - title: Shadow Tokens
+    - title: Border Radius Tokens
+    - title: Border Width Tokens
+    - title: Opacity Tokens

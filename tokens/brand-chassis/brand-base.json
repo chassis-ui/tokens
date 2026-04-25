@@ -2,7 +2,7 @@
   "figma": {
     "switch": {
       "brand": {
-        "mode-1": {
+        "mode-2": {
           "$type": "boolean",
           "$value": "true"
         }
@@ -12,50 +12,52 @@
   "color": {
     "base": {
       "palette": {
-        "neutral": {
-          "main": {
-            "$type": "color",
-            "$value": "#6F8085"
-          }
-        },
-        "danger": {
-          "main": {
-            "$type": "color",
-            "$value": "#F52314"
-          }
-        },
-        "success": {
-          "main": {
-            "$type": "color",
-            "$value": "#10C263"
-          }
-        },
-        "warning": {
-          "main": {
-            "$type": "color",
-            "$value": "#F5A300"
+        "light": {
+          "neutral": {
+            "base": {
+              "$type": "color",
+              "$value": "#6F8085"
+            }
           },
-          "contrast": {
-            "$type": "color",
-            "$value": "{color.base.palette.black.main}"
-          }
-        },
-        "info": {
-          "main": {
-            "$type": "color",
-            "$value": "#1414F5"
-          }
-        },
-        "brand": {
-          "main": {
-            "$type": "color",
-            "$value": "#00A4CC"
-          }
-        },
-        "accent": {
-          "main": {
-            "$type": "color",
-            "$value": "#F55200"
+          "danger": {
+            "base": {
+              "$type": "color",
+              "$value": "#F52314"
+            }
+          },
+          "success": {
+            "base": {
+              "$type": "color",
+              "$value": "#10C263"
+            }
+          },
+          "warning": {
+            "base": {
+              "$type": "color",
+              "$value": "#F5A300"
+            },
+            "contrast": {
+              "$type": "color",
+              "$value": "{color.base.palette.light.black.base}"
+            }
+          },
+          "info": {
+            "base": {
+              "$type": "color",
+              "$value": "#1414F5"
+            }
+          },
+          "brand": {
+            "base": {
+              "$type": "color",
+              "$value": "#00A4CC"
+            }
+          },
+          "accent": {
+            "base": {
+              "$type": "color",
+              "$value": "#F55200"
+            }
           }
         }
       }
@@ -69,7 +71,7 @@
       },
       "display": {
         "$type": "fontFamilies",
-        "$value": "Outfit, Georgia, 'Times New Roman', Times, serif"
+        "$value": "'Archivo Narrow', Georgia, 'Times New Roman', Times, serif"
       },
       "code": {
         "$type": "fontFamilies",
@@ -88,11 +90,11 @@
         },
         "strong": {
           "$type": "fontWeights",
-          "$value": "Medium"
+          "$value": "Semi Bold"
         },
         "mass": {
           "$type": "fontWeights",
-          "$value": "Semi Bold"
+          "$value": "Bold"
         },
         "elegant": {
           "$type": "fontWeights",
@@ -102,7 +104,7 @@
       "display": {
         "normal": {
           "$type": "fontWeights",
-          "$value": "Regular"
+          "$value": "Medium"
         },
         "strong": {
           "$type": "fontWeights",
@@ -114,7 +116,7 @@
         },
         "elegant": {
           "$type": "fontWeights",
-          "$value": "Light"
+          "$value": "Regular"
         }
       },
       "code": {
@@ -131,37 +133,99 @@
   },
   "borderRadius": {
     "base": {
-      "xsmall": {
-        "$type": "borderRadius",
-        "$value": "{size.base.2}"
+      "context": {
+        "xsmall": {
+          "$type": "borderRadius",
+          "$value": "{dimension.base.2}"
+        },
+        "small": {
+          "$type": "borderRadius",
+          "$value": "{dimension.base.4}"
+        },
+        "medium": {
+          "$type": "borderRadius",
+          "$value": "{dimension.base.6}"
+        },
+        "large": {
+          "$type": "borderRadius",
+          "$value": "{dimension.base.10}"
+        },
+        "xlarge": {
+          "$type": "borderRadius",
+          "$value": "{dimension.base.12}"
+        },
+        "2xlarge": {
+          "$type": "borderRadius",
+          "$value": "{dimension.base.16}"
+        },
+        "3xlarge": {
+          "$type": "borderRadius",
+          "$value": "{dimension.base.20}"
+        }
       },
-      "small": {
-        "$type": "borderRadius",
-        "$value": "{size.base.4}"
+      "badge": {
+        "medium": {
+          "$type": "borderRadius",
+          "$value": "{borderRadius.base.context.round}"
+        },
+        "large": {
+          "$type": "borderRadius",
+          "$value": "{borderRadius.base.context.round}"
+        },
+        "small": {
+          "$type": "borderRadius",
+          "$value": "{borderRadius.base.context.round}"
+        }
       },
-      "medium": {
-        "$type": "borderRadius",
-        "$value": "{size.base.6}"
+      "button": {
+        "medium": {
+          "$type": "borderRadius",
+          "$value": "{borderRadius.base.context.medium}"
+        },
+        "large": {
+          "$type": "borderRadius",
+          "$value": "{borderRadius.base.context.medium}"
+        },
+        "small": {
+          "$type": "borderRadius",
+          "$value": "{borderRadius.base.context.medium}"
+        }
       },
-      "large": {
-        "$type": "borderRadius",
-        "$value": "{size.base.8}"
+      "chip": {
+        "medium": {
+          "$type": "borderRadius",
+          "$value": "{borderRadius.base.context.round}"
+        },
+        "large": {
+          "$type": "borderRadius",
+          "$value": "{borderRadius.base.context.round}"
+        },
+        "small": {
+          "$type": "borderRadius",
+          "$value": "{borderRadius.base.context.round}"
+        }
       },
-      "xlarge": {
-        "$type": "borderRadius",
-        "$value": "{size.base.12}"
-      },
-      "2xlarge": {
-        "$type": "borderRadius",
-        "$value": "{size.base.16}"
-      },
-      "3xlarge": {
-        "$type": "borderRadius",
-        "$value": "{size.base.20}"
-      },
-      "rare": {
-        "$type": "borderRadius",
-        "$value": "{size.base.5}"
+      "form-input": {
+        "medium": {
+          "$type": "borderRadius",
+          "$value": "{borderRadius.base.context.medium}"
+        },
+        "large": {
+          "$type": "borderRadius",
+          "$value": "{borderRadius.base.context.medium}"
+        },
+        "small": {
+          "$type": "borderRadius",
+          "$value": "{borderRadius.base.context.medium}"
+        },
+        "floating-blunt": {
+          "$type": "borderRadius",
+          "$value": "{borderRadius.base.context.medium}"
+        },
+        "floating-sharp": {
+          "$type": "borderRadius",
+          "$value": "{borderRadius.base.context.zero}"
+        }
       }
     }
   }

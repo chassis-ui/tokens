@@ -1,0 +1,196 @@
+---
+title: Opacity Tokens
+description: Comprehensive guide to opacity tokens defining transparency levels for colors, overlays, and UI elements throughout the design system.
+toc: true
+---
+
+<Callout type="warning" name="work-in-progress" />
+
+## Overview
+
+Opacity tokens define transparency levels used throughout the design system to control the visibility and emphasis of colors, overlays, and UI elements. They ensure consistent transparency values across all components and visual treatments.
+
+### Architecture
+
+Opacity tokens are defined in the **metric-base** token set, which is part of the foundational layer. These tokens are referenced throughout the system wherever transparency is needed—primarily in color tokens for creating semi-transparent variations and in component styles for states like disabled or subtle.
+
+**How it works:**
+
+Opacity tokens provide standard transparency values that can be applied to colors:
+- Used in rgba() color functions to create transparent variations
+- Referenced by semantic opacity tokens for specific UI purposes
+- Applied directly to elements for visual effects like overlays and dimming
+
+**Benefits:**
+
+- Consistent transparency levels across all components
+- Semantic naming makes intent clear in design and code
+- Easy to adjust transparency globally
+- Predictable visual hierarchy through standardized opacity
+
+<Callout type="info">
+Opacity tokens are used extensively in color token definitions to create transparent variations of palette colors. See the [Color Tokens]([[docsref:/design-tokens/color-tokens#transparency-colors]]) page for details on how opacity is applied to colors.
+</Callout>
+
+### Organization
+
+Opacity tokens are organized into two categories:
+
+**Base Opacity**: Numeric opacity values from 0 (fully transparent) to 1 (fully opaque) in standard increments.
+
+**Contextual Opacity**: Semantic opacity values assigned to specific UI purposes like subtle text, borders, icons, and overlays.
+
+This organization provides both precision (through base values) and clarity (through contextual tokens) when applying transparency.
+
+## Base Opacity
+
+Base opacity tokens provide standard transparency values in consistent increments. These are the foundational opacity values referenced throughout the system.
+
+<CxTable>
+| Token Name | Value | Visibility | Primary Use |
+|------------|-------|------------|-------------|
+| `opacity.level.zero` | 0 | 0% visible (fully transparent) | Invisible elements, transparent colors |
+| `opacity.level.05` | 0.05 | 5% visible | Very subtle tints |
+| `opacity.level.10` | 0.1 | 10% visible | Subtle color overlays |
+| `opacity.level.20` | 0.2 | 20% visible | Light transparency effects |
+| `opacity.level.30` | 0.3 | 30% visible | Subtle elements |
+| `opacity.level.40` | 0.4 | 40% visible | Medium-light transparency |
+| `opacity.level.50` | 0.5 | 50% visible | Half transparent |
+| `opacity.level.60` | 0.6 | 60% visible | Medium-strong visibility |
+| `opacity.level.70` | 0.7 | 70% visible | Strong visibility |
+| `opacity.level.80` | 0.8 | 80% visible | Mostly opaque |
+| `opacity.level.90` | 0.9 | 90% visible | Nearly solid |
+| `opacity.level.95` | 0.95 | 95% visible | Almost fully opaque |
+| `opacity.level.solid` | 1 | 100% visible (fully opaque) | Solid colors, no transparency |
+</CxTable>
+
+### Standard Increments
+
+The 10-point increment scale (10, 20, 30...90) provides sufficient granularity for most UI needs while maintaining simplicity. Additional values at 05 and 95 offer finer control at the transparency extremes.
+
+## Contextual Opacity
+
+Contextual opacity tokens assign semantic meaning to transparency values, making it clear what visual purpose each opacity level serves.
+
+### Foreground Opacity
+
+Opacity values for text and foreground elements to indicate importance and hierarchy.
+
+<CxTable>
+| Token Name | Value | Purpose |
+|------------|-------|---------|
+| `opacity.context.fg-subtle` | 0.5 | Subtle foreground text, de-emphasized content |
+| `opacity.context.fg-slight` | 0.25 | Very subtle text, placeholder hints |
+</CxTable>
+
+### Border Opacity
+
+Opacity values for borders and dividers.
+
+<CxTable>
+| Token Name | Value | Purpose |
+|------------|-------|---------|
+| `opacity.context.border-main` | 0.4 | Standard borders, visible divisions |
+| `opacity.context.border-subtle` | 0.15 | Subtle borders, light divisions |
+</CxTable>
+
+### Icon Opacity
+
+Opacity values for icon elements to indicate state and emphasis.
+
+<CxTable>
+| Token Name | Value | Purpose |
+|------------|-------|---------|
+| `opacity.context.icon-subtle` | 0.4 | De-emphasized icons |
+| `opacity.context.icon-slight` | 0.2 | Very subtle icons, inactive states |
+</CxTable>
+
+### Visual Cue Opacity
+
+Opacity for visual indicators and cues.
+
+<CxTable>
+| Token Name | Value | Purpose |
+|------------|-------|---------|
+| `opacity.context.cue-slight` | 0.2 | Subtle visual cues, light indicators |
+</CxTable>
+
+### Dim Overlay Opacity
+
+Opacity values for overlay effects that dim background content.
+
+<CxTable>
+| Token Name | Value | Purpose |
+|------------|-------|---------|
+| `opacity.context.dim-main` | 0.7 | Strong dimming effect, modal overlays |
+| `opacity.context.dim-subtle` | 0.3 | Medium dimming effect |
+| `opacity.context.dim-slight` | 0.05 | Very subtle dimming, light overlays |
+</CxTable>
+
+### Transparent Color
+
+<CxTable>
+| Token Name | Value | Purpose |
+|------------|-------|---------|
+| `opacity.context.transparent-color` | 0 | Fully transparent starting point for colors |
+</CxTable>
+
+## Usage in Color Tokens
+
+Opacity tokens are most commonly used in color token definitions to create transparent variations:
+
+```json
+{
+  "color.palette.primary.t-5050": {
+    "$type": "color",
+    "$value": "rgba({color.palette.primary.50}, {opacity.level.50})"
+  },
+  "color.palette.black.t-30": {
+    "$type": "color",
+    "$value": "rgba({color.palette.black.base}, {opacity.level.30})"
+  }
+}
+```
+
+This pattern allows changing transparency levels globally by adjusting opacity tokens without modifying individual color definitions.
+
+## Usage Guidelines
+
+### Accessibility
+
+- Ensure text with reduced opacity meets WCAG contrast requirements
+- Avoid using low opacity (below 0.4) for critical text or interactive elements
+- Test transparent elements against multiple background colors
+- Use opacity.context tokens for semantic meaning rather than arbitrary values
+
+### Performance
+
+- Opacity is hardware-accelerated in modern browsers
+- Prefer opacity over rgba with very low alpha for fully transparent elements
+- Avoid animating opacity on large elements if performance is critical
+
+### Best Practices
+
+**Do:**
+- Use contextual opacity tokens for semantic elements (fg-subtle, border-main)
+- Use base opacity tokens when creating new transparent color variations
+- Document the purpose when using non-standard opacity values
+- Test opacity against both light and dark backgrounds
+
+**Don't:**
+- Use arbitrary opacity values—always reference tokens
+- Stack multiple semi-transparent elements without testing visibility
+- Rely solely on opacity to convey critical information
+- Use very low opacity (< 0.1) for interactive elements
+
+### Common Patterns
+
+**Disabled States**: Use `opacity.context.fg-slight` (0.25) or `opacity.level.40` (0.4)
+
+**Subtle Text**: Use `opacity.context.fg-subtle` (0.5)
+
+**Modal Overlays**: Use `opacity.context.dim-main` (0.7) for dark overlays
+
+**Hover Effects**: Use `opacity.level.90` or `opacity.level.80` for slightly faded hover states
+
+**Dividers**: Use `opacity.context.border-subtle` (0.15) for subtle divisions

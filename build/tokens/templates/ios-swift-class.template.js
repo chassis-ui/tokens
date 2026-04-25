@@ -20,7 +20,7 @@ import { tokenTypes } from '../utils.js'
  * @param {Object} opts.options - Additional options for customization.
  * @returns {string} - Generated Swift class as a string.
  */
-export default opts => {
+export default (opts) => {
   const { dictionary, file, header, options } = opts
 
   /**
@@ -29,7 +29,7 @@ export default opts => {
    * @param {Object} dictionary - Token dictionary for reference.
    * @returns {string} - Swift representation of the token value.
    */
-  function tokenToValue(token, dictionary) {
+  function tokenToValue(token) {
     if (token.path[0] === 'gradient') {
       // TODO: Implement gradient support
       // console.warn(
@@ -46,9 +46,7 @@ export default opts => {
         const bFixed = (b / 255.0).toFixed(3)
         return `UIColor(red: ${rFixed}, green: ${gFixed}, blue: ${bFixed}, alpha: ${a})`
       } else {
-        console.warn(
-          `Invalid color token: ${token.path.join('.')} (${token.$value})`,
-        )
+        console.warn(`Invalid color token: ${token.path.join('.')} (${token.$value})`)
         return token.$value
       }
     } else if (tokenTypes.number.includes(token.$type) || tokenTypes.size.includes(token.$type)) {
@@ -81,12 +79,12 @@ export default opts => {
 // ${file.destination}
 //
 ${header}
-${options.import.map(item => `import ${item}`).join('\n')}
+${options.import.map((item) => `import ${item}`).join('\n')}
 
 ${options.accessControl ? `${options.accessControl} ` : ''}${
     options.objectType ? `${options.objectType} ` : ''
-  }${file.className ? `${file.className} ` : ''}{
-    ${dictionary.allTokens.map(token => tokenToLine(token)).join('\n    ')}
+  }${options.className ? `${options.className} ` : 'ChassisTokens'} {
+    ${dictionary.allTokens.map((token) => tokenToLine(token)).join('\n    ')}
 }
 `
 }

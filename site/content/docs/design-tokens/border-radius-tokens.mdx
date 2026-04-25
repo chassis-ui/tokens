@@ -1,0 +1,302 @@
+---
+title: Border Radius Tokens
+description: Comprehensive guide to border radius tokens defining consistent corner rounding for UI elements throughout the design system.
+toc: true
+---
+
+<Callout type="warning" name="work-in-progress" />
+
+## Overview
+
+Border radius tokens define consistent corner rounding values for UI elements throughout the design system. They contribute to the visual style and brand personality while ensuring harmonious rounded corners across all components.
+
+### Architecture
+
+Border radius tokens use a two-layer architecture where base radius values are defined in the **Brand group** and then applied through contextual and component-specific tokens in the **App group**.
+
+**How it works:**
+
+The system provides brand flexibility with application consistency:
+1. **Base border radius** (`borderRadius.base.*`) defines brand-specific rounding values
+2. **Contextual border radius** (`borderRadius.context.*`) references base values with semantic names
+3. **Component border radius** (`borderRadius.[component].*`) assigns specific rounding to UI elements
+
+**Benefits:**
+
+- Adjust brand's corner style globally by changing base tokens
+- Consistent rounding across similar components
+- Semantic naming clarifies rounding intent
+- Easy to switch between sharp, rounded, or highly rounded styles
+
+<Callout type="info">
+Border radius is a key brand identity element. Different brands can have dramatically different corner styles (sharp, subtle curves, or pill-shaped) while maintaining the same component structure.
+</Callout>
+
+### Organization
+
+Border radius tokens are organized into three categories:
+
+**Base Border Radius** (Brand group): Brand-specific rounding values that define the visual style.
+
+**Contextual Border Radius** (App group): Semantic radius scales referencing base values.
+
+**Component Border Radius** (App group): Specific rounding values for individual UI components.
+
+This organization allows brand customization while maintaining consistent application.
+
+## Base Border Radius
+
+Base border radius tokens are defined in the Brand group and establish the brand's corner rounding style.
+
+<CxTable>
+| Token Name | Default Value | Purpose |
+|------------|--------------|--------|
+| `borderRadius.base.xsmall` | 2px | Extra subtle rounding |
+| `borderRadius.base.small` | 4px | Subtle corner rounding |
+| `borderRadius.base.medium` | 8px | Standard component rounding |
+| `borderRadius.base.large` | 12px | Prominent rounding |
+| `borderRadius.base.xlarge` | 16px | Extra prominent rounding |
+| `borderRadius.base.2xlarge` | 20px | Very rounded corners |
+| `borderRadius.base.3xlarge` | 24px | Highly rounded corners |
+| `borderRadius.base.round` | 256px | Fully rounded (pill shape) |
+</CxTable>
+
+### Brand Customization
+
+Brands can override these values to achieve different visual styles:
+
+**Sharp Style** (Minimal rounding):
+```json
+{
+  "borderRadius.base.small": "2px",
+  "borderRadius.base.medium": "4px",
+  "borderRadius.base.large": "6px"
+}
+```
+
+**Rounded Style** (Moderate rounding):
+```json
+{
+  "borderRadius.base.small": "6px",
+  "borderRadius.base.medium": "12px",
+  "borderRadius.base.large": "16px"
+}
+```
+
+**Highly Rounded Style** (Soft rounding):
+```json
+{
+  "borderRadius.base.small": "8px",
+  "borderRadius.base.medium": "16px",
+  "borderRadius.base.large": "24px"
+}
+```
+
+## Contextual Border Radius
+
+Contextual border radius tokens reference base values and provide semantic naming.
+
+<CxTable>
+| Token Name | References | Purpose |
+|------------|-----------|--------|
+| `borderRadius.context.zero` | 0 | No rounding, sharp corners |
+| `borderRadius.context.xsmall` | `borderRadius.base.xsmall` | Extra subtle rounding |
+| `borderRadius.context.small` | `borderRadius.base.small` | Subtle rounding for small elements |
+| `borderRadius.context.medium` | `borderRadius.base.medium` | Standard component rounding |
+| `borderRadius.context.large` | `borderRadius.base.large` | Prominent rounding |
+| `borderRadius.context.xlarge` | `borderRadius.base.xlarge` | Extra prominent rounding |
+| `borderRadius.context.2xlarge` | `borderRadius.base.2xlarge` | Very rounded |
+| `borderRadius.context.3xlarge` | `borderRadius.base.3xlarge` | Highly rounded |
+| `borderRadius.context.round` | `borderRadius.base.round` | Fully rounded (pill) |
+</CxTable>
+
+### Precise Rounding Values
+
+For elements that need exact rounding regardless of brand:
+
+<CxTable>
+| Token Name | Value | Purpose |
+|------------|-------|--------|
+| `borderRadius.context.round-8` | 4px | Exact 8px circle radius |
+| `borderRadius.context.round-12` | 6px | Exact 12px circle radius |
+| `borderRadius.context.round-16` | 8px | Exact 16px circle radius |
+| `borderRadius.context.round-20` | 10px | Exact 20px circle radius |
+| `borderRadius.context.round-24` | 12px | Exact 24px circle radius |
+| ...continues through `round-96` | | Perfect circles for specific sizes |
+</CxTable>
+
+These tokens ensure elements with specific heights/widths can have perfectly circular corners.
+
+## Component Border Radius
+
+Component-specific border radius tokens assign rounding to individual UI elements.
+
+### Buttons & Interactive Elements
+
+<CxTable>
+| Token Name | References | Applied To |
+|------------|-----------|------------|
+| `borderRadius.button.small` | `borderRadius.context.medium` | Small buttons |
+| `borderRadius.button.medium` | `borderRadius.context.medium` | Standard buttons |
+| `borderRadius.button.large` | `borderRadius.context.medium` | Large buttons |
+</CxTable>
+
+### Badges & Chips
+
+<CxTable>
+| Token Name | References | Applied To |
+|------------|-----------|------------|
+| `borderRadius.badge.small` | `borderRadius.context.round-20` | Small badges (pill) |
+| `borderRadius.badge.medium` | `borderRadius.context.round-24` | Medium badges (pill) |
+| `borderRadius.badge.large` | `borderRadius.context.round-28` | Large badges (pill) |
+| `borderRadius.chip.small` | `borderRadius.context.round-24` | Small chips (pill) |
+| `borderRadius.chip.medium` | `borderRadius.context.round-32` | Medium chips (pill) |
+| `borderRadius.chip.large` | `borderRadius.context.round-40` | Large chips (pill) |
+</CxTable>
+
+### Form Inputs
+
+<CxTable>
+| Token Name | References | Applied To |
+|------------|-----------|------------|
+| `borderRadius.form-input.small` | `borderRadius.context.medium` | Small inputs |
+| `borderRadius.form-input.medium` | `borderRadius.context.medium` | Standard inputs |
+| `borderRadius.form-input.large` | `borderRadius.context.medium` | Large inputs |
+</CxTable>
+
+### Cards & Containers
+
+<CxTable>
+| Token Name | References | Applied To |
+|------------|-----------|------------|
+| `borderRadius.card.main` | `borderRadius.context.medium` | Card containers |
+| `borderRadius.modal.main` | `borderRadius.context.medium` | Modal dialogs |
+| `borderRadius.section.main` | `borderRadius.context.large` | Section containers |
+| `borderRadius.alert.main` | `borderRadius.context.medium` | Alert banners |
+| `borderRadius.notification.main` | `borderRadius.context.medium` | Notifications |
+</CxTable>
+
+### Dropdown & Menus
+
+<CxTable>
+| Token Name | References | Applied To |
+|------------|-----------|------------|
+| `borderRadius.dropdown.main` | `borderRadius.context.medium` | Dropdown containers |
+| `borderRadius.dropdown.item` | `borderRadius.context.small` | Individual dropdown items |
+| `borderRadius.date-picker.main` | `borderRadius.context.medium` | Date picker container |
+| `borderRadius.date-picker.day` | `borderRadius.context.small` | Day cells |
+</CxTable>
+
+### Tables & Data
+
+<CxTable>
+| Token Name | References | Applied To |
+|------------|-----------|------------|
+| `borderRadius.table.main` | `borderRadius.context.medium` | Table containers |
+</CxTable>
+
+### Pagination
+
+<CxTable>
+| Token Name | References | Applied To |
+|------------|-----------|------------|
+| `borderRadius.pagination.button` | `borderRadius.context.medium` | Pagination buttons |
+| `borderRadius.pagination.dot-idle` | `borderRadius.context.round-8` | Idle dot indicators |
+| `borderRadius.pagination.dot-active` | `borderRadius.context.round-8` | Active dot indicators |
+</CxTable>
+
+### Indicators
+
+<CxTable>
+| Token Name | References | Applied To |
+|------------|-----------|------------|
+| `borderRadius.asset.indicator` | `borderRadius.context.zero` | Status indicators |
+| `borderRadius.tooltip.main` | `borderRadius.context.small` | Tooltip containers |
+</CxTable>
+
+## Usage Guidelines
+
+### Choosing the Right Token
+
+**For components**: Use component-specific tokens (`borderRadius.button.*`, `borderRadius.card.*`)
+
+**For pills/circles**: Use precise round tokens (`borderRadius.context.round-24`)
+
+**For custom elements**: Use contextual tokens (`borderRadius.context.medium`)
+
+**For sharp corners**: Use `borderRadius.context.zero`
+
+### Design Principles
+
+**Consistency**: Use the same rounding style for similar component types
+
+**Hierarchy**: Larger elements can have more prominent rounding
+
+**Brand Alignment**: Border radius is a key brand characteristic—choose wisely
+
+**Touch Targets**: Ensure rounded buttons maintain minimum touch target size
+
+### Common Patterns
+
+**Standard Components**: Use `borderRadius.context.medium` for most UI elements
+
+**Pills & Badges**: Use precise round tokens for perfect circles
+
+**Cards**: Use `borderRadius.context.medium` or `borderRadius.context.large`
+
+**Small Elements**: Use `borderRadius.context.small` for compact components
+
+### Accessibility
+
+- Border radius doesn't directly impact accessibility
+- Ensure rounded corners don't reduce touch target size
+- Maintain sufficient contrast at corners (particularly with borders)
+- Test that rounded corners render clearly on all devices
+
+### Best Practices
+
+**Do:**
+- Use component tokens for specific UI elements
+- Use contextual tokens for custom components
+- Maintain consistency across similar elements
+- Test rounding across different screen sizes
+- Use brand base tokens for global style changes
+
+**Don't:**
+- Use arbitrary radius values—always reference tokens
+- Mix different rounding styles inconsistently
+- Use excessive rounding that distorts content
+- Forget that border radius affects visual weight
+- Apply rounding that interferes with legibility
+
+### Brand Customization Example
+
+To create a new brand with softer rounding:
+
+```json
+// brand-example.json
+{
+  "borderRadius": {
+    "base": {
+      "xsmall": {
+        "$type": "borderRadius",
+        "$value": "{dimension.base.4}"
+      },
+      "small": {
+        "$type": "borderRadius",
+        "$value": "{dimension.base.8}"
+      },
+      "medium": {
+        "$type": "borderRadius",
+        "$value": "{dimension.base.16}"
+      },
+      "large": {
+        "$type": "borderRadius",
+        "$value": "{dimension.base.20}"
+      }
+    }
+  }
+}
+```
+
+All components automatically adopt the new rounding style without individual updates.

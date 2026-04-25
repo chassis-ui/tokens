@@ -1,0 +1,277 @@
+---
+title: Space Tokens
+description: Comprehensive guide to spacing tokens defining consistent margins, padding, and gaps throughout the design system.
+toc: true
+---
+
+<Callout type="warning" name="work-in-progress" />
+
+## Overview
+
+Space tokens define consistent spacing values for margins, padding, gaps, and other whitespace throughout the design system. They create visual rhythm, improve readability, and ensure harmonious relationships between interface elements.
+
+### Architecture
+
+Space tokens follow a two-layer architecture where foundational spacing values are defined in the **metric-base** token set and then applied through contextual and component-specific tokens in the **App group**.
+
+**How it works:**
+
+The system provides progressive specificity:
+1. **Base spacing** (`space.unit.*`) defines raw spacing values using an 8-point grid
+2. **Contextual spacing** (`space.context.*`) provides semantic spacing scales (xsmall, small, medium, large)
+3. **Component spacing** (`space.[component].*`) assigns specific spacing to component parts (padding-x, padding-y, gap)
+
+**Benefits:**
+
+- Consistent spacing scale across all components
+- Predictable visual rhythm through systematic increments
+- Easy to adjust component spacing globally
+- Semantic naming clarifies spacing intent
+
+<Callout type="info">
+Spacing tokens share the same underlying dimensional values as size tokens but are semantically distinct—size tokens define element dimensions while space tokens define the whitespace between and around elements.
+</Callout>
+
+### Organization
+
+Space tokens are organized into three categories:
+
+**Base Spacing**: Raw spacing values in pixels, primarily using an 8-point grid system.
+
+**Contextual Spacing**: Semantic spacing scales from zero through 6xlarge for flexible application.
+
+**Component Spacing**: Specific padding, gap, and margin values for individual UI components.
+
+This organization balances precision with usability.
+
+## Base Spacing
+
+Base spacing tokens provide foundational whitespace values following an 8-point grid system.
+
+### Standard Spacing Scale
+
+<CxTable>
+| Token Name | Value (px) | Visual Scale | Use Cases |
+|------------|-----------|--------------|----------|
+| `space.unit.0` | 0 | None | No spacing, zero margin |
+| `space.unit.1` | 1 | Minimal | Separator lines |
+| `space.unit.2` | 2 | Tiny | Very tight spacing |
+| `space.unit.4` | 4 | Extra small | Compact layouts |
+| `space.unit.8` | 8 | Small | Base grid unit |
+| `space.unit.12` | 12 | Small-medium | Tight padding |
+| `space.unit.16` | 16 | Medium | Standard spacing |
+| `space.unit.20` | 20 | Medium-large | Comfortable spacing |
+| `space.unit.24` | 24 | Large | Generous padding |
+| `space.unit.28` | 28 | Large+ | Extra padding |
+| `space.unit.32` | 32 | Extra large | Section spacing |
+| `space.unit.36` | 36 | Extra large+ | Large gaps |
+| `space.unit.40` | 40 | 2x large | Generous sections |
+| `space.unit.48` | 48 | 3x large | Major spacing |
+| `space.unit.56` | 56 | 4x large | Large sections |
+| `space.unit.64` | 64 | 5x large | Hero spacing |
+| `space.unit.72` | 72 | 6x large | Extra large sections |
+| `space.unit.80` | 80 | 7x large | Maximum spacing |
+| `space.unit.96` | 96 | 8x large | Extreme spacing |
+| `space.unit.120` | 120 | 10x large | Page-level spacing |
+</CxTable>
+
+### Special Spacing Values
+
+<CxTable>
+| Token Name | Value | Purpose |
+|------------|-------|--------|
+| `space.unit.05` | 0.5px | Half-pixel adjustments |
+| `space.unit.d05` | 0.05em | Relative fractional spacing |
+| `space.unit.d15` | 1.5px | 1.5-pixel spacing |
+| `space.unit.d25` | 2.5px | 2.5-pixel spacing |
+| `space.unit.n1` through `space.unit.n8` | Negative values | Negative margins, overlaps |
+</CxTable>
+
+## Contextual Spacing
+
+Contextual spacing tokens provide semantic spacing values with clear sizing hierarchy.
+
+<CxTable>
+| Token Name | Value (px) | Purpose |
+|------------|-----------|--------|
+| `space.context.zero` | 0 | No spacing |
+| `space.context.4xsmall` | 1 | Minimal separation |
+| `space.context.3xsmall` | 2 | Very tight spacing |
+| `space.context.2xsmall` | 4 | Extra tight spacing |
+| `space.context.xsmall` | 8 | Tight spacing, compact layouts |
+| `space.context.small` | 12 | Small spacing, close elements |
+| `space.context.medium` | 16 | Standard spacing, default gaps |
+| `space.context.large` | 20 | Comfortable spacing |
+| `space.context.xlarge` | 24 | Generous spacing |
+| `space.context.2xlarge` | 28 | Extra generous spacing |
+| `space.context.3xlarge` | 32 | Large spacing between sections |
+| `space.context.4xlarge` | 36 | Extra large section spacing |
+| `space.context.5xlarge` | 40 | Maximum regular spacing |
+| `space.context.6xlarge` | 48 | Hero-level spacing |
+</CxTable>
+
+### Spacing Hierarchy
+
+The contextual spacing scale follows a logical progression:
+- **Micro spacing** (4xsmall - 2xsmall): 1-4px for tight, compact layouts
+- **Component spacing** (xsmall - medium): 8-16px for within-component spacing
+- **Group spacing** (large - xlarge): 20-24px for related element groups
+- **Section spacing** (2xlarge - 4xlarge): 28-36px for distinct sections
+- **Page spacing** (5xlarge - 6xlarge): 40-48px for major page divisions
+
+## Component Spacing
+
+Component-specific spacing tokens define padding, gaps, and margins for individual UI elements.
+
+### Button Spacing
+
+<CxTable>
+| Token Name | Value | Applied To |
+|------------|-------|------------|
+| `space.button.small-padding-y` | 6px | Small button vertical padding |
+| `space.button.small-padding-x` | 8px | Small button horizontal padding |
+| `space.button.small-gap` | 4px | Gap between icon and text (small) |
+| `space.button.medium-padding-y` | 8px | Medium button vertical padding |
+| `space.button.medium-padding-x` | 12px | Medium button horizontal padding |
+| `space.button.medium-gap` | 8px | Gap between icon and text (medium) |
+| `space.button.large-padding-y` | 10px | Large button vertical padding |
+| `space.button.large-padding-x` | 16px | Large button horizontal padding |
+| `space.button.large-gap` | 12px | Gap between icon and text (large) |
+</CxTable>
+
+### Form Input Spacing
+
+<CxTable>
+| Token Name | Value | Applied To |
+|------------|-------|------------|
+| `space.form-input.small-padding-y` | 6px | Small input vertical padding |
+| `space.form-input.small-padding-x` | 8px | Small input horizontal padding |
+| `space.form-input.small-gap` | 8px | Gap in small inputs |
+| `space.form-input.medium-padding-y` | 8px | Medium input vertical padding |
+| `space.form-input.medium-padding-x` | 12px | Medium input horizontal padding |
+| `space.form-input.medium-gap` | 12px | Gap in medium inputs |
+| `space.form-input.large-padding-y` | 10px | Large input vertical padding |
+| `space.form-input.large-padding-x` | 16px | Large input horizontal padding |
+| `space.form-input.large-gap` | 16px | Gap in large inputs |
+</CxTable>
+
+### Badge & Chip Spacing
+
+<CxTable>
+| Token Name | Value | Applied To |
+|------------|-------|------------|
+| `space.badge.small-padding-y` | 1px | Small badge vertical padding |
+| `space.badge.small-padding-x` | 4px | Small badge horizontal padding |
+| `space.badge.medium-padding-y` | 2px | Medium badge vertical padding |
+| `space.badge.medium-padding-x` | 4px | Medium badge horizontal padding |
+| `space.chip.medium-padding-y` | 4px | Medium chip vertical padding |
+| `space.chip.medium-padding-x` | 4px | Medium chip horizontal padding |
+| `space.chip.medium-gap` | 8px | Gap in medium chips |
+</CxTable>
+
+### Card & Modal Spacing
+
+<CxTable>
+| Token Name | Value | Applied To |
+|------------|-------|------------|
+| `space.modal.small-padding-y` | 16px | Small modal vertical padding |
+| `space.modal.small-padding-x` | 16px | Small modal horizontal padding |
+| `space.modal.small-gap` | 16px | Gap in small modals |
+| `space.modal.medium-padding-y` | 24px | Medium modal vertical padding |
+| `space.modal.medium-padding-x` | 24px | Medium modal horizontal padding |
+| `space.modal.medium-gap` | 24px | Gap in medium modals |
+| `space.modal.large-padding-y` | 32px | Large modal vertical padding |
+| `space.modal.large-padding-x` | 32px | Large modal horizontal padding |
+| `space.modal.large-gap` | 32px | Gap in large modals |
+</CxTable>
+
+### Page Spacing
+
+<CxTable>
+| Token Name | Value | Applied To |
+|------------|-------|------------|
+| `space.page.small-padding-y` | 16px | Small page vertical padding |
+| `space.page.small-padding-x` | 16px | Small page horizontal padding |
+| `space.page.medium-padding-y` | 24px | Medium page vertical padding |
+| `space.page.medium-padding-x` | 24px | Medium page horizontal padding |
+| `space.page.large-padding-y` | 32px | Large page vertical padding |
+| `space.page.large-padding-x` | 32px | Large page horizontal padding |
+</CxTable>
+
+### List & Table Spacing
+
+<CxTable>
+| Token Name | Value | Applied To |
+|------------|-------|------------|
+| `space.list.padding-y` | 12px | List item vertical padding |
+| `space.list.padding-x` | 16px | List item horizontal padding |
+| `space.list.gap` | 16px | Gap between list elements |
+| `space.table.cell-padding-y` | 8px | Table cell vertical padding |
+| `space.table.cell-padding-x` | 8px | Table cell horizontal padding |
+| `space.table.cell-gap` | 8px | Gap in table cells |
+</CxTable>
+
+## Usage Guidelines
+
+### Choosing the Right Token
+
+**For components**: Use component-specific tokens (`space.button.*`, `space.form-input.*`)
+
+**For flexible spacing**: Use contextual tokens (`space.context.*`)
+
+**For custom spacing**: Use base tokens (`space.unit.*`)
+
+### Design Principles
+
+**8-Point Grid**: Base all spacing on multiples of 8px for visual consistency
+
+**Progressive Spacing**: Larger elements should have proportionally more spacing
+
+**Breathing Room**: Ensure sufficient whitespace around interactive elements
+
+**Visual Grouping**: Use consistent spacing to indicate related elements
+
+### Spacing Scale Selection
+
+**Micro content** (labels, badges): 4-8px (xsmall)
+
+**Component internals** (button padding): 8-16px (small-medium)
+
+**Element groups** (form fields): 16-24px (medium-large)
+
+**Sections**: 24-40px (xlarge-5xlarge)
+
+**Page divisions**: 40-64px (5xlarge-6xlarge)
+
+### Accessibility
+
+- Ensure sufficient spacing between interactive elements (minimum 8px)
+- Provide adequate padding for touch targets (minimum 8px around 32px target)
+- Use consistent spacing to indicate relationships and hierarchy
+- Test spacing with actual content to avoid cramped layouts
+
+### Best Practices
+
+**Do:**
+- Use contextual spacing tokens for semantic, flexible layouts
+- Maintain consistent spacing for similar elements
+- Stick to the 8-point grid whenever possible
+- Use component tokens for specific UI elements
+- Increase spacing proportionally with element size
+
+**Don't:**
+- Use arbitrary spacing values—always reference tokens
+- Mix different spacing systems inconsistently
+- Use spacing smaller than 4px for visible gaps
+- Ignore the 8-point grid without good reason
+- Use negative spacing except for intentional overlaps
+
+### Common Patterns
+
+**Stack Spacing**: Use `space.context.medium` (16px) between stacked elements
+
+**Inline Spacing**: Use `space.context.small` (12px) or `space.context.xsmall` (8px) for inline gaps
+
+**Section Spacing**: Use `space.context.3xlarge` (32px) or larger for distinct sections
+
+**Component Padding**: Use component-specific tokens for consistent internal spacing

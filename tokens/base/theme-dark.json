@@ -14,1948 +14,3022 @@
       "default": {
         "base-color": {
           "$type": "color",
-          "$value": "{color.base.dark.default.base-color}"
+          "$value": "{color.base.context.dark.default.base-color}"
         },
         "contrast-color": {
           "$type": "color",
-          "$value": "{color.base.dark.default.contrast-color}"
+          "$value": "{color.base.context.dark.default.contrast-color}"
+        },
+        "transparent-color": {
+          "$type": "color",
+          "$value": "{color.base.context.dark.default.transparent-color}"
         },
         "fg-main": {
           "$type": "color",
-          "$value": "{color.base.dark.default.fg-main}"
+          "$value": "{color.base.context.dark.default.fg-main}"
         },
         "fg-subtle": {
           "$type": "color",
-          "$value": "{color.base.dark.default.fg-subtle}"
+          "$value": "{color.base.context.dark.default.fg-subtle}"
         },
         "fg-slight": {
           "$type": "color",
-          "$value": "{color.base.dark.default.fg-slight}"
+          "$value": "{color.base.context.dark.default.fg-slight}"
         },
         "fg-inverse": {
           "$type": "color",
-          "$value": "{color.base.dark.default.fg-inverse}"
+          "$value": "{color.base.context.dark.default.fg-inverse}"
         },
         "fg-solid": {
           "$type": "color",
-          "$value": "{color.base.dark.default.fg-solid}"
+          "$value": "{color.base.context.dark.default.fg-solid}"
         },
         "fg-highlight": {
           "$type": "color",
-          "$value": "{color.base.dark.default.fg-highlight}"
+          "$value": "{color.base.context.dark.default.fg-highlight}"
         },
         "bg-main": {
           "$type": "color",
-          "$value": "{color.base.dark.default.bg-main}"
+          "$value": "{color.base.context.dark.default.bg-main}"
         },
         "bg-even": {
           "$type": "color",
-          "$value": "{color.base.dark.default.bg-even}"
+          "$value": "{color.base.context.dark.default.bg-even}"
         },
         "bg-evident": {
           "$type": "color",
-          "$value": "{color.base.dark.default.bg-evident}"
+          "$value": "{color.base.context.dark.default.bg-evident}"
         },
         "bg-inverse": {
           "$type": "color",
-          "$value": "{color.base.dark.default.bg-inverse}"
+          "$value": "{color.base.context.dark.default.bg-inverse}"
         },
         "bg-solid": {
           "$type": "color",
-          "$value": "{color.base.dark.default.bg-solid}"
+          "$value": "{color.base.context.dark.default.bg-solid}"
         },
         "bg-highlight": {
           "$type": "color",
-          "$value": "{color.base.dark.default.bg-highlight}"
+          "$value": "{color.base.context.dark.default.bg-highlight}"
         },
         "border-main": {
           "$type": "color",
-          "$value": "{color.base.dark.default.border-main}"
+          "$value": "{color.base.context.dark.default.border-main}"
         },
         "border-subtle": {
           "$type": "color",
-          "$value": "{color.base.dark.default.border-subtle}"
+          "$value": "{color.base.context.dark.default.border-subtle}"
         },
         "icon-main": {
           "$type": "color",
-          "$value": "{color.base.dark.default.icon-main}"
+          "$value": "{color.base.context.dark.default.icon-main}"
         },
         "icon-subtle": {
           "$type": "color",
-          "$value": "{color.base.dark.default.icon-subtle}"
+          "$value": "{color.base.context.dark.default.icon-subtle}"
         },
         "icon-slight": {
           "$type": "color",
-          "$value": "{color.base.dark.default.icon-slight}"
+          "$value": "{color.base.context.dark.default.icon-slight}"
         },
-        "indicator-main": {
+        "cue-main": {
           "$type": "color",
-          "$value": "{color.base.dark.default.indicator-main}"
+          "$value": "{color.base.context.dark.default.cue-main}"
         },
-        "indicator-slight": {
+        "cue-slight": {
           "$type": "color",
-          "$value": "{color.base.dark.default.indicator-slight}"
+          "$value": "{color.base.context.dark.default.cue-slight}"
         },
         "link-main": {
           "$type": "color",
-          "$value": "{color.base.dark.default.link-main}"
+          "$value": "{color.base.context.dark.default.link-main}"
         },
         "link-hover": {
           "$type": "color",
-          "$value": "{color.base.dark.default.link-hover}"
+          "$value": "{color.base.context.dark.default.link-hover}"
         },
         "link-active": {
           "$type": "color",
-          "$value": "{color.base.dark.default.link-active}"
+          "$value": "{color.base.context.dark.default.link-active}"
         },
         "link-visited": {
           "$type": "color",
-          "$value": "{color.base.dark.default.link-visited}"
+          "$value": "{color.base.context.dark.default.link-visited}"
         },
-        "scene-shade": {
+        "dim-main": {
           "$type": "color",
-          "$value": "{color.base.dark.default.scene-shade}"
+          "$value": "{color.base.context.dark.default.dim-main}"
         },
-        "scene-dim": {
+        "dim-subtle": {
           "$type": "color",
-          "$value": "{color.base.dark.default.scene-dim}"
+          "$value": "{color.base.context.dark.default.dim-subtle}"
         },
-        "scene-blur": {
+        "dim-slight": {
           "$type": "color",
-          "$value": "{color.base.dark.default.scene-blur}"
+          "$value": "{color.base.context.dark.default.dim-slight}"
         },
-        "scene-clear": {
+        "fg-idle": {
           "$type": "color",
-          "$value": "{color.base.dark.default.scene-clear}"
-        },
-        "fg-button": {
-          "$type": "color",
-          "$value": "{color.base.dark.default.fg-button}"
+          "$value": "{color.base.context.dark.default.fg-idle}"
         },
         "fg-hover": {
           "$type": "color",
-          "$value": "{color.base.dark.default.fg-hover}"
+          "$value": "{color.base.context.dark.default.fg-hover}"
         },
         "fg-press": {
           "$type": "color",
-          "$value": "{color.base.dark.default.fg-press}"
+          "$value": "{color.base.context.dark.default.fg-press}"
         },
         "fg-disabled": {
           "$type": "color",
-          "$value": "{color.base.dark.default.fg-disabled}"
+          "$value": "{color.base.context.dark.default.fg-disabled}"
         },
-        "bg-button": {
+        "bg-idle": {
           "$type": "color",
-          "$value": "{color.base.dark.default.bg-button}"
+          "$value": "{color.base.context.dark.default.bg-idle}"
         },
         "bg-hover": {
           "$type": "color",
-          "$value": "{color.base.dark.default.bg-hover}"
+          "$value": "{color.base.context.dark.default.bg-hover}"
         },
         "bg-press": {
           "$type": "color",
-          "$value": "{color.base.dark.default.bg-press}"
+          "$value": "{color.base.context.dark.default.bg-press}"
         },
         "bg-disabled": {
           "$type": "color",
-          "$value": "{color.base.dark.default.bg-disabled}"
+          "$value": "{color.base.context.dark.default.bg-disabled}"
         }
       },
       "alternate": {
         "base-color": {
           "$type": "color",
-          "$value": "{color.base.dark.alternate.base-color}"
+          "$value": "{color.base.context.dark.alternate.base-color}"
         },
         "contrast-color": {
           "$type": "color",
-          "$value": "{color.base.dark.alternate.contrast-color}"
+          "$value": "{color.base.context.dark.alternate.contrast-color}"
+        },
+        "transparent-color": {
+          "$type": "color",
+          "$value": "{color.base.context.dark.alternate.transparent-color}"
         },
         "fg-main": {
           "$type": "color",
-          "$value": "{color.base.dark.alternate.fg-main}"
+          "$value": "{color.base.context.dark.alternate.fg-main}"
         },
         "fg-subtle": {
           "$type": "color",
-          "$value": "{color.base.dark.alternate.fg-subtle}"
+          "$value": "{color.base.context.dark.alternate.fg-subtle}"
         },
         "fg-slight": {
           "$type": "color",
-          "$value": "{color.base.dark.alternate.fg-slight}"
+          "$value": "{color.base.context.dark.alternate.fg-slight}"
         },
         "fg-inverse": {
           "$type": "color",
-          "$value": "{color.base.dark.alternate.fg-inverse}"
+          "$value": "{color.base.context.dark.alternate.fg-inverse}"
         },
         "fg-solid": {
           "$type": "color",
-          "$value": "{color.base.dark.alternate.fg-solid}"
+          "$value": "{color.base.context.dark.alternate.fg-solid}"
         },
         "fg-highlight": {
           "$type": "color",
-          "$value": "{color.base.dark.alternate.fg-highlight}"
+          "$value": "{color.base.context.dark.alternate.fg-highlight}"
         },
         "bg-main": {
           "$type": "color",
-          "$value": "{color.base.dark.alternate.bg-main}"
+          "$value": "{color.base.context.dark.alternate.bg-main}"
         },
         "bg-even": {
           "$type": "color",
-          "$value": "{color.base.dark.alternate.bg-even}"
+          "$value": "{color.base.context.dark.alternate.bg-even}"
         },
         "bg-evident": {
           "$type": "color",
-          "$value": "{color.base.dark.alternate.bg-evident}"
+          "$value": "{color.base.context.dark.alternate.bg-evident}"
         },
         "bg-inverse": {
           "$type": "color",
-          "$value": "{color.base.dark.alternate.bg-inverse}"
+          "$value": "{color.base.context.dark.alternate.bg-inverse}"
         },
         "bg-solid": {
           "$type": "color",
-          "$value": "{color.base.dark.alternate.bg-solid}"
+          "$value": "{color.base.context.dark.alternate.bg-solid}"
         },
         "bg-highlight": {
           "$type": "color",
-          "$value": "{color.base.dark.alternate.bg-highlight}"
+          "$value": "{color.base.context.dark.alternate.bg-highlight}"
         },
         "border-main": {
           "$type": "color",
-          "$value": "{color.base.dark.alternate.border-main}"
+          "$value": "{color.base.context.dark.alternate.border-main}"
         },
         "border-subtle": {
           "$type": "color",
-          "$value": "{color.base.dark.alternate.border-subtle}"
+          "$value": "{color.base.context.dark.alternate.border-subtle}"
         },
         "icon-main": {
           "$type": "color",
-          "$value": "{color.base.dark.alternate.icon-main}"
+          "$value": "{color.base.context.dark.alternate.icon-main}"
         },
         "icon-subtle": {
           "$type": "color",
-          "$value": "{color.base.dark.alternate.icon-subtle}"
+          "$value": "{color.base.context.dark.alternate.icon-subtle}"
         },
         "icon-slight": {
           "$type": "color",
-          "$value": "{color.base.dark.alternate.icon-slight}"
+          "$value": "{color.base.context.dark.alternate.icon-slight}"
         },
-        "indicator-main": {
+        "cue-main": {
           "$type": "color",
-          "$value": "{color.base.dark.alternate.indicator-main}"
+          "$value": "{color.base.context.dark.alternate.cue-main}"
         },
-        "indicator-slight": {
+        "cue-slight": {
           "$type": "color",
-          "$value": "{color.base.dark.alternate.indicator-slight}"
+          "$value": "{color.base.context.dark.alternate.cue-slight}"
         },
         "link-main": {
           "$type": "color",
-          "$value": "{color.base.dark.alternate.link-main}"
+          "$value": "{color.base.context.dark.alternate.link-main}"
         },
         "link-hover": {
           "$type": "color",
-          "$value": "{color.base.dark.alternate.link-hover}"
+          "$value": "{color.base.context.dark.alternate.link-hover}"
         },
         "link-active": {
           "$type": "color",
-          "$value": "{color.base.dark.alternate.link-active}"
+          "$value": "{color.base.context.dark.alternate.link-active}"
         },
         "link-visited": {
           "$type": "color",
-          "$value": "{color.base.dark.alternate.link-visited}"
+          "$value": "{color.base.context.dark.alternate.link-visited}"
         },
-        "scene-shade": {
+        "dim-main": {
           "$type": "color",
-          "$value": "{color.base.dark.alternate.scene-shade}"
+          "$value": "{color.base.context.dark.alternate.dim-main}"
         },
-        "scene-dim": {
+        "dim-subtle": {
           "$type": "color",
-          "$value": "{color.base.dark.alternate.scene-dim}"
+          "$value": "{color.base.context.dark.alternate.dim-subtle}"
         },
-        "scene-blur": {
+        "dim-slight": {
           "$type": "color",
-          "$value": "{color.base.dark.alternate.scene-blur}"
+          "$value": "{color.base.context.dark.alternate.dim-slight}"
         },
-        "scene-clear": {
+        "fg-idle": {
           "$type": "color",
-          "$value": "{color.base.dark.alternate.scene-clear}"
-        },
-        "fg-button": {
-          "$type": "color",
-          "$value": "{color.base.dark.alternate.fg-button}"
+          "$value": "{color.base.context.dark.alternate.fg-idle}"
         },
         "fg-hover": {
           "$type": "color",
-          "$value": "{color.base.dark.alternate.fg-hover}"
+          "$value": "{color.base.context.dark.alternate.fg-hover}"
         },
         "fg-press": {
           "$type": "color",
-          "$value": "{color.base.dark.alternate.fg-press}"
+          "$value": "{color.base.context.dark.alternate.fg-press}"
         },
         "fg-disabled": {
           "$type": "color",
-          "$value": "{color.base.dark.alternate.fg-disabled}"
+          "$value": "{color.base.context.dark.alternate.fg-disabled}"
         },
-        "bg-button": {
+        "bg-idle": {
           "$type": "color",
-          "$value": "{color.base.dark.alternate.bg-button}"
+          "$value": "{color.base.context.dark.alternate.bg-idle}"
         },
         "bg-hover": {
           "$type": "color",
-          "$value": "{color.base.dark.alternate.bg-hover}"
+          "$value": "{color.base.context.dark.alternate.bg-hover}"
         },
         "bg-press": {
           "$type": "color",
-          "$value": "{color.base.dark.alternate.bg-press}"
+          "$value": "{color.base.context.dark.alternate.bg-press}"
         },
         "bg-disabled": {
           "$type": "color",
-          "$value": "{color.base.dark.alternate.bg-disabled}"
+          "$value": "{color.base.context.dark.alternate.bg-disabled}"
         }
       },
       "primary": {
         "base-color": {
           "$type": "color",
-          "$value": "{color.base.dark.primary.base-color}"
+          "$value": "{color.base.context.dark.primary.base-color}"
         },
         "contrast-color": {
           "$type": "color",
-          "$value": "{color.base.dark.primary.contrast-color}"
+          "$value": "{color.base.context.dark.primary.contrast-color}"
+        },
+        "transparent-color": {
+          "$type": "color",
+          "$value": "{color.base.context.dark.primary.transparent-color}"
         },
         "fg-main": {
           "$type": "color",
-          "$value": "{color.base.dark.primary.fg-main}"
+          "$value": "{color.base.context.dark.primary.fg-main}"
         },
         "fg-subtle": {
           "$type": "color",
-          "$value": "{color.base.dark.primary.fg-subtle}"
+          "$value": "{color.base.context.dark.primary.fg-subtle}"
         },
         "fg-slight": {
           "$type": "color",
-          "$value": "{color.base.dark.primary.fg-slight}"
+          "$value": "{color.base.context.dark.primary.fg-slight}"
         },
         "fg-inverse": {
           "$type": "color",
-          "$value": "{color.base.dark.primary.fg-inverse}"
+          "$value": "{color.base.context.dark.primary.fg-inverse}"
         },
         "fg-solid": {
           "$type": "color",
-          "$value": "{color.base.dark.primary.fg-solid}"
+          "$value": "{color.base.context.dark.primary.fg-solid}"
         },
         "fg-highlight": {
           "$type": "color",
-          "$value": "{color.base.dark.primary.fg-highlight}"
+          "$value": "{color.base.context.dark.primary.fg-highlight}"
         },
         "bg-main": {
           "$type": "color",
-          "$value": "{color.base.dark.primary.bg-main}"
+          "$value": "{color.base.context.dark.primary.bg-main}"
         },
         "bg-even": {
           "$type": "color",
-          "$value": "{color.base.dark.primary.bg-even}"
+          "$value": "{color.base.context.dark.primary.bg-even}"
         },
         "bg-evident": {
           "$type": "color",
-          "$value": "{color.base.dark.primary.bg-evident}"
+          "$value": "{color.base.context.dark.primary.bg-evident}"
         },
         "bg-inverse": {
           "$type": "color",
-          "$value": "{color.base.dark.primary.bg-inverse}"
+          "$value": "{color.base.context.dark.primary.bg-inverse}"
         },
         "bg-highlight": {
           "$type": "color",
-          "$value": "{color.base.dark.primary.bg-highlight}"
+          "$value": "{color.base.context.dark.primary.bg-highlight}"
         },
         "border-main": {
           "$type": "color",
-          "$value": "{color.base.dark.primary.border-main}"
+          "$value": "{color.base.context.dark.primary.border-main}"
         },
         "border-subtle": {
           "$type": "color",
-          "$value": "{color.base.dark.primary.border-subtle}"
+          "$value": "{color.base.context.dark.primary.border-subtle}"
         },
         "icon-main": {
           "$type": "color",
-          "$value": "{color.base.dark.primary.icon-main}"
+          "$value": "{color.base.context.dark.primary.icon-main}"
         },
         "icon-subtle": {
           "$type": "color",
-          "$value": "{color.base.dark.primary.icon-subtle}"
+          "$value": "{color.base.context.dark.primary.icon-subtle}"
         },
         "icon-slight": {
           "$type": "color",
-          "$value": "{color.base.dark.primary.icon-slight}"
+          "$value": "{color.base.context.dark.primary.icon-slight}"
         },
-        "indicator-main": {
+        "cue-main": {
           "$type": "color",
-          "$value": "{color.base.dark.primary.indicator-main}"
+          "$value": "{color.base.context.dark.primary.cue-main}"
         },
-        "indicator-slight": {
+        "cue-slight": {
           "$type": "color",
-          "$value": "{color.base.dark.primary.indicator-slight}"
+          "$value": "{color.base.context.dark.primary.cue-slight}"
         },
         "link-main": {
           "$type": "color",
-          "$value": "{color.base.dark.primary.link-main}"
+          "$value": "{color.base.context.dark.primary.link-main}"
         },
         "link-hover": {
           "$type": "color",
-          "$value": "{color.base.dark.primary.link-hover}"
+          "$value": "{color.base.context.dark.primary.link-hover}"
         },
         "link-active": {
           "$type": "color",
-          "$value": "{color.base.dark.primary.link-active}"
+          "$value": "{color.base.context.dark.primary.link-active}"
         },
         "link-visited": {
           "$type": "color",
-          "$value": "{color.base.dark.primary.link-visited}"
+          "$value": "{color.base.context.dark.primary.link-visited}"
         },
-        "scene-shade": {
+        "dim-main": {
           "$type": "color",
-          "$value": "{color.base.dark.primary.scene-shade}"
+          "$value": "{color.base.context.dark.primary.dim-main}"
         },
-        "scene-dim": {
+        "dim-subtle": {
           "$type": "color",
-          "$value": "{color.base.dark.primary.scene-dim}"
+          "$value": "{color.base.context.dark.primary.dim-subtle}"
         },
-        "scene-blur": {
+        "dim-slight": {
           "$type": "color",
-          "$value": "{color.base.dark.primary.scene-blur}"
+          "$value": "{color.base.context.dark.primary.dim-slight}"
         },
-        "scene-clear": {
+        "fg-idle": {
           "$type": "color",
-          "$value": "{color.base.dark.primary.scene-clear}"
-        },
-        "fg-button": {
-          "$type": "color",
-          "$value": "{color.base.dark.primary.fg-button}"
+          "$value": "{color.base.context.dark.primary.fg-idle}"
         },
         "fg-hover": {
           "$type": "color",
-          "$value": "{color.base.dark.primary.fg-hover}"
+          "$value": "{color.base.context.dark.primary.fg-hover}"
         },
         "fg-press": {
           "$type": "color",
-          "$value": "{color.base.dark.primary.fg-press}"
+          "$value": "{color.base.context.dark.primary.fg-press}"
         },
         "fg-disabled": {
           "$type": "color",
-          "$value": "{color.base.dark.primary.fg-disabled}"
+          "$value": "{color.base.context.dark.primary.fg-disabled}"
         },
-        "bg-button": {
+        "bg-idle": {
           "$type": "color",
-          "$value": "{color.base.dark.primary.bg-button}"
+          "$value": "{color.base.context.dark.primary.bg-idle}"
         },
         "bg-hover": {
           "$type": "color",
-          "$value": "{color.base.dark.primary.bg-hover}"
+          "$value": "{color.base.context.dark.primary.bg-hover}"
         },
         "bg-press": {
           "$type": "color",
-          "$value": "{color.base.dark.primary.bg-press}"
+          "$value": "{color.base.context.dark.primary.bg-press}"
         },
         "bg-disabled": {
           "$type": "color",
-          "$value": "{color.base.dark.primary.bg-disabled}"
+          "$value": "{color.base.context.dark.primary.bg-disabled}"
         }
       },
       "secondary": {
         "base-color": {
           "$type": "color",
-          "$value": "{color.base.dark.secondary.base-color}"
+          "$value": "{color.base.context.dark.secondary.base-color}"
         },
         "contrast-color": {
           "$type": "color",
-          "$value": "{color.base.dark.secondary.contrast-color}"
+          "$value": "{color.base.context.dark.secondary.contrast-color}"
+        },
+        "transparent-color": {
+          "$type": "color",
+          "$value": "{color.base.context.dark.secondary.transparent-color}"
         },
         "fg-main": {
           "$type": "color",
-          "$value": "{color.base.dark.secondary.fg-main}"
+          "$value": "{color.base.context.dark.secondary.fg-main}"
         },
         "fg-subtle": {
           "$type": "color",
-          "$value": "{color.base.dark.secondary.fg-subtle}"
+          "$value": "{color.base.context.dark.secondary.fg-subtle}"
         },
         "fg-slight": {
           "$type": "color",
-          "$value": "{color.base.dark.secondary.fg-slight}"
+          "$value": "{color.base.context.dark.secondary.fg-slight}"
         },
         "fg-inverse": {
           "$type": "color",
-          "$value": "{color.base.dark.secondary.fg-inverse}"
+          "$value": "{color.base.context.dark.secondary.fg-inverse}"
         },
         "fg-solid": {
           "$type": "color",
-          "$value": "{color.base.dark.secondary.fg-solid}"
+          "$value": "{color.base.context.dark.secondary.fg-solid}"
         },
         "fg-highlight": {
           "$type": "color",
-          "$value": "{color.base.dark.secondary.fg-highlight}"
+          "$value": "{color.base.context.dark.secondary.fg-highlight}"
         },
         "bg-main": {
           "$type": "color",
-          "$value": "{color.base.dark.secondary.bg-main}"
+          "$value": "{color.base.context.dark.secondary.bg-main}"
         },
         "bg-even": {
           "$type": "color",
-          "$value": "{color.base.dark.secondary.bg-even}"
+          "$value": "{color.base.context.dark.secondary.bg-even}"
         },
         "bg-evident": {
           "$type": "color",
-          "$value": "{color.base.dark.secondary.bg-evident}"
+          "$value": "{color.base.context.dark.secondary.bg-evident}"
         },
         "bg-inverse": {
           "$type": "color",
-          "$value": "{color.base.dark.secondary.bg-inverse}"
+          "$value": "{color.base.context.dark.secondary.bg-inverse}"
         },
         "bg-solid": {
           "$type": "color",
-          "$value": "{color.base.dark.secondary.bg-solid}"
+          "$value": "{color.base.context.dark.secondary.bg-solid}"
         },
         "bg-highlight": {
           "$type": "color",
-          "$value": "{color.base.dark.secondary.bg-highlight}"
+          "$value": "{color.base.context.dark.secondary.bg-highlight}"
         },
         "border-main": {
           "$type": "color",
-          "$value": "{color.base.dark.secondary.border-main}"
+          "$value": "{color.base.context.dark.secondary.border-main}"
         },
         "border-subtle": {
           "$type": "color",
-          "$value": "{color.base.dark.secondary.border-subtle}"
+          "$value": "{color.base.context.dark.secondary.border-subtle}"
         },
         "icon-main": {
           "$type": "color",
-          "$value": "{color.base.dark.secondary.icon-main}"
+          "$value": "{color.base.context.dark.secondary.icon-main}"
         },
         "icon-subtle": {
           "$type": "color",
-          "$value": "{color.base.dark.secondary.icon-subtle}"
+          "$value": "{color.base.context.dark.secondary.icon-subtle}"
         },
         "icon-slight": {
           "$type": "color",
-          "$value": "{color.base.dark.secondary.icon-slight}"
+          "$value": "{color.base.context.dark.secondary.icon-slight}"
         },
-        "indicator-main": {
+        "cue-main": {
           "$type": "color",
-          "$value": "{color.base.dark.secondary.indicator-main}"
+          "$value": "{color.base.context.dark.secondary.cue-main}"
         },
-        "indicator-slight": {
+        "cue-slight": {
           "$type": "color",
-          "$value": "{color.base.dark.secondary.indicator-slight}"
+          "$value": "{color.base.context.dark.secondary.cue-slight}"
         },
         "link-main": {
           "$type": "color",
-          "$value": "{color.base.dark.secondary.link-main}"
+          "$value": "{color.base.context.dark.secondary.link-main}"
         },
         "link-hover": {
           "$type": "color",
-          "$value": "{color.base.dark.secondary.link-hover}"
+          "$value": "{color.base.context.dark.secondary.link-hover}"
         },
         "link-active": {
           "$type": "color",
-          "$value": "{color.base.dark.secondary.link-active}"
+          "$value": "{color.base.context.dark.secondary.link-active}"
         },
         "link-visited": {
           "$type": "color",
-          "$value": "{color.base.dark.secondary.link-visited}"
+          "$value": "{color.base.context.dark.secondary.link-visited}"
         },
-        "scene-shade": {
+        "dim-main": {
           "$type": "color",
-          "$value": "{color.base.dark.secondary.scene-shade}"
+          "$value": "{color.base.context.dark.secondary.dim-main}"
         },
-        "scene-dim": {
+        "dim-subtle": {
           "$type": "color",
-          "$value": "{color.base.dark.secondary.scene-dim}"
+          "$value": "{color.base.context.dark.secondary.dim-subtle}"
         },
-        "scene-blur": {
+        "dim-slight": {
           "$type": "color",
-          "$value": "{color.base.dark.secondary.scene-blur}"
+          "$value": "{color.base.context.dark.secondary.dim-slight}"
         },
-        "scene-clear": {
+        "fg-idle": {
           "$type": "color",
-          "$value": "{color.base.dark.secondary.scene-clear}"
-        },
-        "fg-button": {
-          "$type": "color",
-          "$value": "{color.base.dark.secondary.fg-button}"
+          "$value": "{color.base.context.dark.secondary.fg-idle}"
         },
         "fg-hover": {
           "$type": "color",
-          "$value": "{color.base.dark.secondary.fg-hover}"
+          "$value": "{color.base.context.dark.secondary.fg-hover}"
         },
         "fg-press": {
           "$type": "color",
-          "$value": "{color.base.dark.secondary.fg-press}"
+          "$value": "{color.base.context.dark.secondary.fg-press}"
         },
         "fg-disabled": {
           "$type": "color",
-          "$value": "{color.base.dark.secondary.fg-disabled}"
+          "$value": "{color.base.context.dark.secondary.fg-disabled}"
         },
-        "bg-button": {
+        "bg-idle": {
           "$type": "color",
-          "$value": "{color.base.dark.secondary.bg-button}"
+          "$value": "{color.base.context.dark.secondary.bg-idle}"
         },
         "bg-hover": {
           "$type": "color",
-          "$value": "{color.base.dark.secondary.bg-hover}"
+          "$value": "{color.base.context.dark.secondary.bg-hover}"
         },
         "bg-press": {
           "$type": "color",
-          "$value": "{color.base.dark.secondary.bg-press}"
+          "$value": "{color.base.context.dark.secondary.bg-press}"
         },
         "bg-disabled": {
           "$type": "color",
-          "$value": "{color.base.dark.secondary.bg-disabled}"
+          "$value": "{color.base.context.dark.secondary.bg-disabled}"
         }
       },
       "neutral": {
         "base-color": {
           "$type": "color",
-          "$value": "{color.base.dark.neutral.base-color}"
+          "$value": "{color.base.context.dark.neutral.base-color}"
         },
         "contrast-color": {
           "$type": "color",
-          "$value": "{color.base.dark.neutral.contrast-color}"
+          "$value": "{color.base.context.dark.neutral.contrast-color}"
+        },
+        "transparent-color": {
+          "$type": "color",
+          "$value": "{color.base.context.dark.neutral.transparent-color}"
         },
         "fg-main": {
           "$type": "color",
-          "$value": "{color.base.dark.neutral.fg-main}"
+          "$value": "{color.base.context.dark.neutral.fg-main}"
         },
         "fg-subtle": {
           "$type": "color",
-          "$value": "{color.base.dark.neutral.fg-subtle}"
+          "$value": "{color.base.context.dark.neutral.fg-subtle}"
         },
         "fg-slight": {
           "$type": "color",
-          "$value": "{color.base.dark.neutral.fg-slight}"
+          "$value": "{color.base.context.dark.neutral.fg-slight}"
         },
         "fg-inverse": {
           "$type": "color",
-          "$value": "{color.base.dark.neutral.fg-inverse}"
+          "$value": "{color.base.context.dark.neutral.fg-inverse}"
         },
         "fg-solid": {
           "$type": "color",
-          "$value": "{color.base.dark.neutral.fg-solid}"
+          "$value": "{color.base.context.dark.neutral.fg-solid}"
         },
         "fg-highlight": {
           "$type": "color",
-          "$value": "{color.base.dark.neutral.fg-highlight}"
+          "$value": "{color.base.context.dark.neutral.fg-highlight}"
         },
         "bg-main": {
           "$type": "color",
-          "$value": "{color.base.dark.neutral.bg-main}"
+          "$value": "{color.base.context.dark.neutral.bg-main}"
         },
         "bg-even": {
           "$type": "color",
-          "$value": "{color.base.dark.neutral.bg-even}"
+          "$value": "{color.base.context.dark.neutral.bg-even}"
         },
         "bg-evident": {
           "$type": "color",
-          "$value": "{color.base.dark.neutral.bg-evident}"
+          "$value": "{color.base.context.dark.neutral.bg-evident}"
         },
         "bg-inverse": {
           "$type": "color",
-          "$value": "{color.base.dark.neutral.bg-inverse}"
+          "$value": "{color.base.context.dark.neutral.bg-inverse}"
         },
         "bg-solid": {
           "$type": "color",
-          "$value": "{color.base.dark.neutral.bg-solid}"
+          "$value": "{color.base.context.dark.neutral.bg-solid}"
         },
         "bg-highlight": {
           "$type": "color",
-          "$value": "{color.base.dark.neutral.bg-highlight}"
+          "$value": "{color.base.context.dark.neutral.bg-highlight}"
         },
         "border-main": {
           "$type": "color",
-          "$value": "{color.base.dark.neutral.border-main}"
+          "$value": "{color.base.context.dark.neutral.border-main}"
         },
         "border-subtle": {
           "$type": "color",
-          "$value": "{color.base.dark.neutral.border-subtle}"
+          "$value": "{color.base.context.dark.neutral.border-subtle}"
         },
         "icon-main": {
           "$type": "color",
-          "$value": "{color.base.dark.neutral.icon-main}"
+          "$value": "{color.base.context.dark.neutral.icon-main}"
         },
         "icon-subtle": {
           "$type": "color",
-          "$value": "{color.base.dark.neutral.icon-subtle}"
+          "$value": "{color.base.context.dark.neutral.icon-subtle}"
         },
         "icon-slight": {
           "$type": "color",
-          "$value": "{color.base.dark.neutral.icon-slight}"
+          "$value": "{color.base.context.dark.neutral.icon-slight}"
         },
-        "indicator-main": {
+        "cue-main": {
           "$type": "color",
-          "$value": "{color.base.dark.neutral.indicator-main}"
+          "$value": "{color.base.context.dark.neutral.cue-main}"
         },
-        "indicator-slight": {
+        "cue-slight": {
           "$type": "color",
-          "$value": "{color.base.dark.neutral.indicator-slight}"
+          "$value": "{color.base.context.dark.neutral.cue-slight}"
         },
         "link-main": {
           "$type": "color",
-          "$value": "{color.base.dark.neutral.link-main}"
+          "$value": "{color.base.context.dark.neutral.link-main}"
         },
         "link-hover": {
           "$type": "color",
-          "$value": "{color.base.dark.neutral.link-hover}"
+          "$value": "{color.base.context.dark.neutral.link-hover}"
         },
         "link-active": {
           "$type": "color",
-          "$value": "{color.base.dark.neutral.link-active}"
+          "$value": "{color.base.context.dark.neutral.link-active}"
         },
         "link-visited": {
           "$type": "color",
-          "$value": "{color.base.dark.neutral.link-visited}"
+          "$value": "{color.base.context.dark.neutral.link-visited}"
         },
-        "scene-shade": {
+        "dim-main": {
           "$type": "color",
-          "$value": "{color.base.dark.neutral.scene-shade}"
+          "$value": "{color.base.context.dark.neutral.dim-main}"
         },
-        "scene-dim": {
+        "dim-subtle": {
           "$type": "color",
-          "$value": "{color.base.dark.neutral.scene-dim}"
+          "$value": "{color.base.context.dark.neutral.dim-subtle}"
         },
-        "scene-blur": {
+        "dim-slight": {
           "$type": "color",
-          "$value": "{color.base.dark.neutral.scene-blur}"
+          "$value": "{color.base.context.dark.neutral.dim-slight}"
         },
-        "scene-clear": {
+        "fg-idle": {
           "$type": "color",
-          "$value": "{color.base.dark.neutral.scene-clear}"
-        },
-        "fg-button": {
-          "$type": "color",
-          "$value": "{color.base.dark.neutral.fg-button}"
+          "$value": "{color.base.context.dark.neutral.fg-idle}"
         },
         "fg-hover": {
           "$type": "color",
-          "$value": "{color.base.dark.neutral.fg-hover}"
+          "$value": "{color.base.context.dark.neutral.fg-hover}"
         },
         "fg-press": {
           "$type": "color",
-          "$value": "{color.base.dark.neutral.fg-press}"
+          "$value": "{color.base.context.dark.neutral.fg-press}"
         },
         "fg-disabled": {
           "$type": "color",
-          "$value": "{color.base.dark.neutral.fg-disabled}"
+          "$value": "{color.base.context.dark.neutral.fg-disabled}"
         },
-        "bg-button": {
+        "bg-idle": {
           "$type": "color",
-          "$value": "{color.base.dark.neutral.bg-button}"
+          "$value": "{color.base.context.dark.neutral.bg-idle}"
         },
         "bg-hover": {
           "$type": "color",
-          "$value": "{color.base.dark.neutral.bg-hover}"
+          "$value": "{color.base.context.dark.neutral.bg-hover}"
         },
         "bg-press": {
           "$type": "color",
-          "$value": "{color.base.dark.neutral.bg-press}"
+          "$value": "{color.base.context.dark.neutral.bg-press}"
         },
         "bg-disabled": {
           "$type": "color",
-          "$value": "{color.base.dark.neutral.bg-disabled}"
+          "$value": "{color.base.context.dark.neutral.bg-disabled}"
         }
       },
       "danger": {
         "base-color": {
           "$type": "color",
-          "$value": "{color.base.dark.danger.base-color}"
+          "$value": "{color.base.context.dark.danger.base-color}"
         },
         "contrast-color": {
           "$type": "color",
-          "$value": "{color.base.dark.danger.contrast-color}"
+          "$value": "{color.base.context.dark.danger.contrast-color}"
+        },
+        "transparent-color": {
+          "$type": "color",
+          "$value": "{color.base.context.dark.danger.transparent-color}"
         },
         "fg-main": {
           "$type": "color",
-          "$value": "{color.base.dark.danger.fg-main}"
+          "$value": "{color.base.context.dark.danger.fg-main}"
         },
         "fg-subtle": {
           "$type": "color",
-          "$value": "{color.base.dark.danger.fg-subtle}"
+          "$value": "{color.base.context.dark.danger.fg-subtle}"
         },
         "fg-slight": {
           "$type": "color",
-          "$value": "{color.base.dark.danger.fg-slight}"
+          "$value": "{color.base.context.dark.danger.fg-slight}"
         },
         "fg-inverse": {
           "$type": "color",
-          "$value": "{color.base.dark.danger.fg-inverse}"
+          "$value": "{color.base.context.dark.danger.fg-inverse}"
         },
         "fg-solid": {
           "$type": "color",
-          "$value": "{color.base.dark.danger.fg-solid}"
+          "$value": "{color.base.context.dark.danger.fg-solid}"
         },
         "fg-highlight": {
           "$type": "color",
-          "$value": "{color.base.dark.danger.fg-highlight}"
+          "$value": "{color.base.context.dark.danger.fg-highlight}"
         },
         "bg-main": {
           "$type": "color",
-          "$value": "{color.base.dark.danger.bg-main}"
+          "$value": "{color.base.context.dark.danger.bg-main}"
         },
         "bg-even": {
           "$type": "color",
-          "$value": "{color.base.dark.danger.bg-even}"
+          "$value": "{color.base.context.dark.danger.bg-even}"
         },
         "bg-evident": {
           "$type": "color",
-          "$value": "{color.base.dark.danger.bg-evident}"
+          "$value": "{color.base.context.dark.danger.bg-evident}"
         },
         "bg-inverse": {
           "$type": "color",
-          "$value": "{color.base.dark.danger.bg-inverse}"
+          "$value": "{color.base.context.dark.danger.bg-inverse}"
         },
         "bg-solid": {
           "$type": "color",
-          "$value": "{color.base.dark.danger.bg-solid}"
+          "$value": "{color.base.context.dark.danger.bg-solid}"
         },
         "bg-highlight": {
           "$type": "color",
-          "$value": "{color.base.dark.danger.bg-highlight}"
+          "$value": "{color.base.context.dark.danger.bg-highlight}"
         },
         "border-main": {
           "$type": "color",
-          "$value": "{color.base.dark.danger.border-main}"
+          "$value": "{color.base.context.dark.danger.border-main}"
         },
         "border-subtle": {
           "$type": "color",
-          "$value": "{color.base.dark.danger.border-subtle}"
+          "$value": "{color.base.context.dark.danger.border-subtle}"
         },
         "icon-main": {
           "$type": "color",
-          "$value": "{color.base.dark.danger.icon-main}"
+          "$value": "{color.base.context.dark.danger.icon-main}"
         },
         "icon-subtle": {
           "$type": "color",
-          "$value": "{color.base.dark.danger.icon-subtle}"
+          "$value": "{color.base.context.dark.danger.icon-subtle}"
         },
         "icon-slight": {
           "$type": "color",
-          "$value": "{color.base.dark.danger.icon-slight}"
+          "$value": "{color.base.context.dark.danger.icon-slight}"
         },
-        "indicator-main": {
+        "cue-main": {
           "$type": "color",
-          "$value": "{color.base.dark.danger.indicator-main}"
+          "$value": "{color.base.context.dark.danger.cue-main}"
         },
-        "indicator-slight": {
+        "cue-slight": {
           "$type": "color",
-          "$value": "{color.base.dark.danger.indicator-slight}"
+          "$value": "{color.base.context.dark.danger.cue-slight}"
         },
         "link-main": {
           "$type": "color",
-          "$value": "{color.base.dark.danger.link-main}"
+          "$value": "{color.base.context.dark.danger.link-main}"
         },
         "link-hover": {
           "$type": "color",
-          "$value": "{color.base.dark.danger.link-hover}"
+          "$value": "{color.base.context.dark.danger.link-hover}"
         },
         "link-active": {
           "$type": "color",
-          "$value": "{color.base.dark.danger.link-active}"
+          "$value": "{color.base.context.dark.danger.link-active}"
         },
         "link-visited": {
           "$type": "color",
-          "$value": "{color.base.dark.danger.link-visited}"
+          "$value": "{color.base.context.dark.danger.link-visited}"
         },
-        "scene-shade": {
+        "dim-main": {
           "$type": "color",
-          "$value": "{color.base.dark.danger.scene-shade}"
+          "$value": "{color.base.context.dark.danger.dim-main}"
         },
-        "scene-dim": {
+        "dim-subtle": {
           "$type": "color",
-          "$value": "{color.base.dark.danger.scene-dim}"
+          "$value": "{color.base.context.dark.danger.dim-subtle}"
         },
-        "scene-blur": {
+        "dim-slight": {
           "$type": "color",
-          "$value": "{color.base.dark.danger.scene-blur}"
+          "$value": "{color.base.context.dark.danger.dim-slight}"
         },
-        "scene-clear": {
+        "fg-idle": {
           "$type": "color",
-          "$value": "{color.base.dark.danger.scene-clear}"
-        },
-        "fg-button": {
-          "$type": "color",
-          "$value": "{color.base.dark.danger.fg-button}"
+          "$value": "{color.base.context.dark.danger.fg-idle}"
         },
         "fg-hover": {
           "$type": "color",
-          "$value": "{color.base.dark.danger.fg-hover}"
+          "$value": "{color.base.context.dark.danger.fg-hover}"
         },
         "fg-press": {
           "$type": "color",
-          "$value": "{color.base.dark.danger.fg-press}"
+          "$value": "{color.base.context.dark.danger.fg-press}"
         },
         "fg-disabled": {
           "$type": "color",
-          "$value": "{color.base.dark.danger.fg-disabled}"
+          "$value": "{color.base.context.dark.danger.fg-disabled}"
         },
-        "bg-button": {
+        "bg-idle": {
           "$type": "color",
-          "$value": "{color.base.dark.danger.bg-button}"
+          "$value": "{color.base.context.dark.danger.bg-idle}"
         },
         "bg-hover": {
           "$type": "color",
-          "$value": "{color.base.dark.danger.bg-hover}"
+          "$value": "{color.base.context.dark.danger.bg-hover}"
         },
         "bg-press": {
           "$type": "color",
-          "$value": "{color.base.dark.danger.bg-press}"
+          "$value": "{color.base.context.dark.danger.bg-press}"
         },
         "bg-disabled": {
           "$type": "color",
-          "$value": "{color.base.dark.danger.bg-disabled}"
+          "$value": "{color.base.context.dark.danger.bg-disabled}"
         }
       },
       "success": {
         "base-color": {
           "$type": "color",
-          "$value": "{color.base.dark.success.base-color}"
+          "$value": "{color.base.context.dark.success.base-color}"
         },
         "contrast-color": {
           "$type": "color",
-          "$value": "{color.base.dark.success.contrast-color}"
+          "$value": "{color.base.context.dark.success.contrast-color}"
+        },
+        "transparent-color": {
+          "$type": "color",
+          "$value": "{color.base.context.dark.success.transparent-color}"
         },
         "fg-main": {
           "$type": "color",
-          "$value": "{color.base.dark.success.fg-main}"
+          "$value": "{color.base.context.dark.success.fg-main}"
         },
         "fg-subtle": {
           "$type": "color",
-          "$value": "{color.base.dark.success.fg-subtle}"
+          "$value": "{color.base.context.dark.success.fg-subtle}"
         },
         "fg-slight": {
           "$type": "color",
-          "$value": "{color.base.dark.success.fg-slight}"
+          "$value": "{color.base.context.dark.success.fg-slight}"
         },
         "fg-inverse": {
           "$type": "color",
-          "$value": "{color.base.dark.success.fg-inverse}"
+          "$value": "{color.base.context.dark.success.fg-inverse}"
         },
         "fg-solid": {
           "$type": "color",
-          "$value": "{color.base.dark.success.fg-solid}"
+          "$value": "{color.base.context.dark.success.fg-solid}"
         },
         "fg-highlight": {
           "$type": "color",
-          "$value": "{color.base.dark.success.fg-highlight}"
+          "$value": "{color.base.context.dark.success.fg-highlight}"
         },
         "bg-main": {
           "$type": "color",
-          "$value": "{color.base.dark.success.bg-main}"
+          "$value": "{color.base.context.dark.success.bg-main}"
         },
         "bg-even": {
           "$type": "color",
-          "$value": "{color.base.dark.success.bg-even}"
+          "$value": "{color.base.context.dark.success.bg-even}"
         },
         "bg-evident": {
           "$type": "color",
-          "$value": "{color.base.dark.success.bg-evident}"
+          "$value": "{color.base.context.dark.success.bg-evident}"
         },
         "bg-inverse": {
           "$type": "color",
-          "$value": "{color.base.dark.success.bg-inverse}"
+          "$value": "{color.base.context.dark.success.bg-inverse}"
         },
         "bg-solid": {
           "$type": "color",
-          "$value": "{color.base.dark.success.bg-solid}"
+          "$value": "{color.base.context.dark.success.bg-solid}"
         },
         "bg-highlight": {
           "$type": "color",
-          "$value": "{color.base.dark.success.bg-highlight}"
+          "$value": "{color.base.context.dark.success.bg-highlight}"
         },
         "border-main": {
           "$type": "color",
-          "$value": "{color.base.dark.success.border-main}"
+          "$value": "{color.base.context.dark.success.border-main}"
         },
         "border-subtle": {
           "$type": "color",
-          "$value": "{color.base.dark.success.border-subtle}"
+          "$value": "{color.base.context.dark.success.border-subtle}"
         },
         "icon-main": {
           "$type": "color",
-          "$value": "{color.base.dark.success.icon-main}"
+          "$value": "{color.base.context.dark.success.icon-main}"
         },
         "icon-subtle": {
           "$type": "color",
-          "$value": "{color.base.dark.success.icon-subtle}"
+          "$value": "{color.base.context.dark.success.icon-subtle}"
         },
         "icon-slight": {
           "$type": "color",
-          "$value": "{color.base.dark.success.icon-slight}"
+          "$value": "{color.base.context.dark.success.icon-slight}"
         },
-        "indicator-main": {
+        "cue-main": {
           "$type": "color",
-          "$value": "{color.base.dark.success.indicator-main}"
+          "$value": "{color.base.context.dark.success.cue-main}"
         },
-        "indicator-slight": {
+        "cue-slight": {
           "$type": "color",
-          "$value": "{color.base.dark.success.indicator-slight}"
+          "$value": "{color.base.context.dark.success.cue-slight}"
         },
         "link-main": {
           "$type": "color",
-          "$value": "{color.base.dark.success.link-main}"
+          "$value": "{color.base.context.dark.success.link-main}"
         },
         "link-hover": {
           "$type": "color",
-          "$value": "{color.base.dark.success.link-hover}"
+          "$value": "{color.base.context.dark.success.link-hover}"
         },
         "link-active": {
           "$type": "color",
-          "$value": "{color.base.dark.success.link-active}"
+          "$value": "{color.base.context.dark.success.link-active}"
         },
         "link-visited": {
           "$type": "color",
-          "$value": "{color.base.dark.success.link-visited}"
+          "$value": "{color.base.context.dark.success.link-visited}"
         },
-        "scene-shade": {
+        "dim-main": {
           "$type": "color",
-          "$value": "{color.base.dark.success.scene-shade}"
+          "$value": "{color.base.context.dark.success.dim-main}"
         },
-        "scene-dim": {
+        "dim-subtle": {
           "$type": "color",
-          "$value": "{color.base.dark.success.scene-dim}"
+          "$value": "{color.base.context.dark.success.dim-subtle}"
         },
-        "scene-blur": {
+        "dim-slight": {
           "$type": "color",
-          "$value": "{color.base.dark.success.scene-blur}"
+          "$value": "{color.base.context.dark.success.dim-slight}"
         },
-        "scene-clear": {
+        "fg-idle": {
           "$type": "color",
-          "$value": "{color.base.dark.success.scene-clear}"
-        },
-        "fg-button": {
-          "$type": "color",
-          "$value": "{color.base.dark.success.fg-button}"
+          "$value": "{color.base.context.dark.success.fg-idle}"
         },
         "fg-hover": {
           "$type": "color",
-          "$value": "{color.base.dark.success.fg-hover}"
+          "$value": "{color.base.context.dark.success.fg-hover}"
         },
         "fg-press": {
           "$type": "color",
-          "$value": "{color.base.dark.success.fg-press}"
+          "$value": "{color.base.context.dark.success.fg-press}"
         },
         "fg-disabled": {
           "$type": "color",
-          "$value": "{color.base.dark.success.fg-disabled}"
+          "$value": "{color.base.context.dark.success.fg-disabled}"
         },
-        "bg-button": {
+        "bg-idle": {
           "$type": "color",
-          "$value": "{color.base.dark.success.bg-button}"
+          "$value": "{color.base.context.dark.success.bg-idle}"
         },
         "bg-hover": {
           "$type": "color",
-          "$value": "{color.base.dark.success.bg-hover}"
+          "$value": "{color.base.context.dark.success.bg-hover}"
         },
         "bg-press": {
           "$type": "color",
-          "$value": "{color.base.dark.success.bg-press}"
+          "$value": "{color.base.context.dark.success.bg-press}"
         },
         "bg-disabled": {
           "$type": "color",
-          "$value": "{color.base.dark.success.bg-disabled}"
+          "$value": "{color.base.context.dark.success.bg-disabled}"
         }
       },
       "warning": {
         "base-color": {
           "$type": "color",
-          "$value": "{color.base.dark.warning.base-color}"
+          "$value": "{color.base.context.dark.warning.base-color}"
         },
         "contrast-color": {
           "$type": "color",
-          "$value": "{color.base.dark.warning.contrast-color}"
+          "$value": "{color.base.context.dark.warning.contrast-color}"
+        },
+        "transparent-color": {
+          "$type": "color",
+          "$value": "{color.base.context.dark.warning.transparent-color}"
         },
         "fg-main": {
           "$type": "color",
-          "$value": "{color.base.dark.warning.fg-main}"
+          "$value": "{color.base.context.dark.warning.fg-main}"
         },
         "fg-subtle": {
           "$type": "color",
-          "$value": "{color.base.dark.warning.fg-subtle}"
+          "$value": "{color.base.context.dark.warning.fg-subtle}"
         },
         "fg-slight": {
           "$type": "color",
-          "$value": "{color.base.dark.warning.fg-slight}"
+          "$value": "{color.base.context.dark.warning.fg-slight}"
         },
         "fg-inverse": {
           "$type": "color",
-          "$value": "{color.base.dark.warning.fg-inverse}"
+          "$value": "{color.base.context.dark.warning.fg-inverse}"
         },
         "fg-solid": {
           "$type": "color",
-          "$value": "{color.base.dark.warning.fg-solid}"
+          "$value": "{color.base.context.dark.warning.fg-solid}"
         },
         "fg-highlight": {
           "$type": "color",
-          "$value": "{color.base.dark.warning.fg-highlight}"
+          "$value": "{color.base.context.dark.warning.fg-highlight}"
         },
         "bg-main": {
           "$type": "color",
-          "$value": "{color.base.dark.warning.bg-main}"
+          "$value": "{color.base.context.dark.warning.bg-main}"
         },
         "bg-even": {
           "$type": "color",
-          "$value": "{color.base.dark.warning.bg-even}"
+          "$value": "{color.base.context.dark.warning.bg-even}"
         },
         "bg-evident": {
           "$type": "color",
-          "$value": "{color.base.dark.warning.bg-evident}"
+          "$value": "{color.base.context.dark.warning.bg-evident}"
         },
         "bg-inverse": {
           "$type": "color",
-          "$value": "{color.base.dark.warning.bg-inverse}"
+          "$value": "{color.base.context.dark.warning.bg-inverse}"
         },
         "bg-solid": {
           "$type": "color",
-          "$value": "{color.base.dark.warning.bg-solid}"
+          "$value": "{color.base.context.dark.warning.bg-solid}"
         },
         "bg-highlight": {
           "$type": "color",
-          "$value": "{color.base.dark.warning.bg-highlight}"
+          "$value": "{color.base.context.dark.warning.bg-highlight}"
         },
         "border-main": {
           "$type": "color",
-          "$value": "{color.base.dark.warning.border-main}"
+          "$value": "{color.base.context.dark.warning.border-main}"
         },
         "border-subtle": {
           "$type": "color",
-          "$value": "{color.base.dark.warning.border-subtle}"
+          "$value": "{color.base.context.dark.warning.border-subtle}"
         },
         "icon-main": {
           "$type": "color",
-          "$value": "{color.base.dark.warning.icon-main}"
+          "$value": "{color.base.context.dark.warning.icon-main}"
         },
         "icon-subtle": {
           "$type": "color",
-          "$value": "{color.base.dark.warning.icon-subtle}"
+          "$value": "{color.base.context.dark.warning.icon-subtle}"
         },
         "icon-slight": {
           "$type": "color",
-          "$value": "{color.base.dark.warning.icon-slight}"
+          "$value": "{color.base.context.dark.warning.icon-slight}"
         },
-        "indicator-main": {
+        "cue-main": {
           "$type": "color",
-          "$value": "{color.base.dark.warning.indicator-main}"
+          "$value": "{color.base.context.dark.warning.cue-main}"
         },
-        "indicator-slight": {
+        "cue-slight": {
           "$type": "color",
-          "$value": "{color.base.dark.warning.indicator-slight}"
+          "$value": "{color.base.context.dark.warning.cue-slight}"
         },
         "link-main": {
           "$type": "color",
-          "$value": "{color.base.dark.warning.link-main}"
+          "$value": "{color.base.context.dark.warning.link-main}"
         },
         "link-hover": {
           "$type": "color",
-          "$value": "{color.base.dark.warning.link-hover}"
+          "$value": "{color.base.context.dark.warning.link-hover}"
         },
         "link-active": {
           "$type": "color",
-          "$value": "{color.base.dark.warning.link-active}"
+          "$value": "{color.base.context.dark.warning.link-active}"
         },
         "link-visited": {
           "$type": "color",
-          "$value": "{color.base.dark.warning.link-visited}"
+          "$value": "{color.base.context.dark.warning.link-visited}"
         },
-        "scene-shade": {
+        "dim-main": {
           "$type": "color",
-          "$value": "{color.base.dark.warning.scene-shade}"
+          "$value": "{color.base.context.dark.warning.dim-main}"
         },
-        "scene-dim": {
+        "dim-subtle": {
           "$type": "color",
-          "$value": "{color.base.dark.warning.scene-dim}"
+          "$value": "{color.base.context.dark.warning.dim-subtle}"
         },
-        "scene-blur": {
+        "dim-slight": {
           "$type": "color",
-          "$value": "{color.base.dark.warning.scene-blur}"
+          "$value": "{color.base.context.dark.warning.dim-slight}"
         },
-        "scene-clear": {
+        "fg-idle": {
           "$type": "color",
-          "$value": "{color.base.dark.warning.scene-clear}"
-        },
-        "fg-button": {
-          "$type": "color",
-          "$value": "{color.base.dark.warning.fg-button}"
+          "$value": "{color.base.context.dark.warning.fg-idle}"
         },
         "fg-hover": {
           "$type": "color",
-          "$value": "{color.base.dark.warning.fg-hover}"
+          "$value": "{color.base.context.dark.warning.fg-hover}"
         },
         "fg-press": {
           "$type": "color",
-          "$value": "{color.base.dark.warning.fg-press}"
+          "$value": "{color.base.context.dark.warning.fg-press}"
         },
         "fg-disabled": {
           "$type": "color",
-          "$value": "{color.base.dark.warning.fg-disabled}"
+          "$value": "{color.base.context.dark.warning.fg-disabled}"
         },
-        "bg-button": {
+        "bg-idle": {
           "$type": "color",
-          "$value": "{color.base.dark.warning.bg-button}"
+          "$value": "{color.base.context.dark.warning.bg-idle}"
         },
         "bg-hover": {
           "$type": "color",
-          "$value": "{color.base.dark.warning.bg-hover}"
+          "$value": "{color.base.context.dark.warning.bg-hover}"
         },
         "bg-press": {
           "$type": "color",
-          "$value": "{color.base.dark.warning.bg-press}"
+          "$value": "{color.base.context.dark.warning.bg-press}"
         },
         "bg-disabled": {
           "$type": "color",
-          "$value": "{color.base.dark.warning.bg-disabled}"
+          "$value": "{color.base.context.dark.warning.bg-disabled}"
         }
       },
       "info": {
         "base-color": {
           "$type": "color",
-          "$value": "{color.base.dark.info.base-color}"
+          "$value": "{color.base.context.dark.info.base-color}"
         },
         "contrast-color": {
           "$type": "color",
-          "$value": "{color.base.dark.info.contrast-color}"
+          "$value": "{color.base.context.dark.info.contrast-color}"
+        },
+        "transparent-color": {
+          "$type": "color",
+          "$value": "{color.base.context.dark.info.transparent-color}"
         },
         "fg-main": {
           "$type": "color",
-          "$value": "{color.base.dark.info.fg-main}"
+          "$value": "{color.base.context.dark.info.fg-main}"
         },
         "fg-subtle": {
           "$type": "color",
-          "$value": "{color.base.dark.info.fg-subtle}"
+          "$value": "{color.base.context.dark.info.fg-subtle}"
         },
         "fg-slight": {
           "$type": "color",
-          "$value": "{color.base.dark.info.fg-slight}"
+          "$value": "{color.base.context.dark.info.fg-slight}"
         },
         "fg-inverse": {
           "$type": "color",
-          "$value": "{color.base.dark.info.fg-inverse}"
+          "$value": "{color.base.context.dark.info.fg-inverse}"
         },
         "fg-solid": {
           "$type": "color",
-          "$value": "{color.base.dark.info.fg-solid}"
+          "$value": "{color.base.context.dark.info.fg-solid}"
         },
         "fg-highlight": {
           "$type": "color",
-          "$value": "{color.base.dark.info.fg-highlight}"
+          "$value": "{color.base.context.dark.info.fg-highlight}"
         },
         "bg-main": {
           "$type": "color",
-          "$value": "{color.base.dark.info.bg-main}"
+          "$value": "{color.base.context.dark.info.bg-main}"
         },
         "bg-even": {
           "$type": "color",
-          "$value": "{color.base.dark.info.bg-even}"
+          "$value": "{color.base.context.dark.info.bg-even}"
         },
         "bg-evident": {
           "$type": "color",
-          "$value": "{color.base.dark.info.bg-evident}"
+          "$value": "{color.base.context.dark.info.bg-evident}"
         },
         "bg-inverse": {
           "$type": "color",
-          "$value": "{color.base.dark.info.bg-inverse}"
+          "$value": "{color.base.context.dark.info.bg-inverse}"
         },
         "bg-solid": {
           "$type": "color",
-          "$value": "{color.base.dark.info.bg-solid}"
+          "$value": "{color.base.context.dark.info.bg-solid}"
         },
         "bg-highlight": {
           "$type": "color",
-          "$value": "{color.base.dark.info.bg-highlight}"
+          "$value": "{color.base.context.dark.info.bg-highlight}"
         },
         "border-main": {
           "$type": "color",
-          "$value": "{color.base.dark.info.border-main}"
+          "$value": "{color.base.context.dark.info.border-main}"
         },
         "border-subtle": {
           "$type": "color",
-          "$value": "{color.base.dark.info.border-subtle}"
+          "$value": "{color.base.context.dark.info.border-subtle}"
         },
         "icon-main": {
           "$type": "color",
-          "$value": "{color.base.dark.info.icon-main}"
+          "$value": "{color.base.context.dark.info.icon-main}"
         },
         "icon-subtle": {
           "$type": "color",
-          "$value": "{color.base.dark.info.icon-subtle}"
+          "$value": "{color.base.context.dark.info.icon-subtle}"
         },
         "icon-slight": {
           "$type": "color",
-          "$value": "{color.base.dark.info.icon-slight}"
+          "$value": "{color.base.context.dark.info.icon-slight}"
         },
-        "indicator-main": {
+        "cue-main": {
           "$type": "color",
-          "$value": "{color.base.dark.info.indicator-main}"
+          "$value": "{color.base.context.dark.info.cue-main}"
         },
-        "indicator-slight": {
+        "cue-slight": {
           "$type": "color",
-          "$value": "{color.base.dark.info.indicator-slight}"
+          "$value": "{color.base.context.dark.info.cue-slight}"
         },
         "link-main": {
           "$type": "color",
-          "$value": "{color.base.dark.info.link-main}"
+          "$value": "{color.base.context.dark.info.link-main}"
         },
         "link-hover": {
           "$type": "color",
-          "$value": "{color.base.dark.info.link-hover}"
+          "$value": "{color.base.context.dark.info.link-hover}"
         },
         "link-active": {
           "$type": "color",
-          "$value": "{color.base.dark.info.link-active}"
+          "$value": "{color.base.context.dark.info.link-active}"
         },
         "link-visited": {
           "$type": "color",
-          "$value": "{color.base.dark.info.link-visited}"
+          "$value": "{color.base.context.dark.info.link-visited}"
         },
-        "scene-shade": {
+        "dim-main": {
           "$type": "color",
-          "$value": "{color.base.dark.info.scene-shade}"
+          "$value": "{color.base.context.dark.info.dim-main}"
         },
-        "scene-dim": {
+        "dim-subtle": {
           "$type": "color",
-          "$value": "{color.base.dark.info.scene-dim}"
+          "$value": "{color.base.context.dark.info.dim-subtle}"
         },
-        "scene-blur": {
+        "dim-slight": {
           "$type": "color",
-          "$value": "{color.base.dark.info.scene-blur}"
+          "$value": "{color.base.context.dark.info.dim-slight}"
         },
-        "scene-clear": {
+        "fg-idle": {
           "$type": "color",
-          "$value": "{color.base.dark.info.scene-clear}"
-        },
-        "fg-button": {
-          "$type": "color",
-          "$value": "{color.base.dark.info.fg-button}"
+          "$value": "{color.base.context.dark.info.fg-idle}"
         },
         "fg-hover": {
           "$type": "color",
-          "$value": "{color.base.dark.info.fg-hover}"
+          "$value": "{color.base.context.dark.info.fg-hover}"
         },
         "fg-press": {
           "$type": "color",
-          "$value": "{color.base.dark.info.fg-press}"
+          "$value": "{color.base.context.dark.info.fg-press}"
         },
         "fg-disabled": {
           "$type": "color",
-          "$value": "{color.base.dark.info.fg-disabled}"
+          "$value": "{color.base.context.dark.info.fg-disabled}"
         },
-        "bg-button": {
+        "bg-idle": {
           "$type": "color",
-          "$value": "{color.base.dark.info.bg-button}"
+          "$value": "{color.base.context.dark.info.bg-idle}"
         },
         "bg-hover": {
           "$type": "color",
-          "$value": "{color.base.dark.info.bg-hover}"
+          "$value": "{color.base.context.dark.info.bg-hover}"
         },
         "bg-press": {
           "$type": "color",
-          "$value": "{color.base.dark.info.bg-press}"
+          "$value": "{color.base.context.dark.info.bg-press}"
         },
         "bg-disabled": {
           "$type": "color",
-          "$value": "{color.base.dark.info.bg-disabled}"
+          "$value": "{color.base.context.dark.info.bg-disabled}"
         }
       },
       "black": {
         "base-color": {
           "$type": "color",
-          "$value": "{color.base.dark.black.base-color}"
+          "$value": "{color.base.context.dark.black.base-color}"
         },
         "contrast-color": {
           "$type": "color",
-          "$value": "{color.base.dark.black.contrast-color}"
+          "$value": "{color.base.context.dark.black.contrast-color}"
+        },
+        "transparent-color": {
+          "$type": "color",
+          "$value": "{color.base.context.dark.black.transparent-color}"
         },
         "fg-main": {
           "$type": "color",
-          "$value": "{color.base.dark.black.fg-main}"
+          "$value": "{color.base.context.dark.black.fg-main}"
         },
         "fg-subtle": {
           "$type": "color",
-          "$value": "{color.base.dark.black.fg-subtle}"
+          "$value": "{color.base.context.dark.black.fg-subtle}"
         },
         "fg-slight": {
           "$type": "color",
-          "$value": "{color.base.dark.black.fg-slight}"
+          "$value": "{color.base.context.dark.black.fg-slight}"
         },
         "fg-inverse": {
           "$type": "color",
-          "$value": "{color.base.dark.black.fg-inverse}"
+          "$value": "{color.base.context.dark.black.fg-inverse}"
         },
         "fg-solid": {
           "$type": "color",
-          "$value": "{color.base.dark.black.fg-solid}"
+          "$value": "{color.base.context.dark.black.fg-solid}"
         },
         "fg-highlight": {
           "$type": "color",
-          "$value": "{color.base.dark.black.fg-highlight}"
+          "$value": "{color.base.context.dark.black.fg-highlight}"
         },
         "bg-main": {
           "$type": "color",
-          "$value": "{color.base.dark.black.bg-main}"
+          "$value": "{color.base.context.dark.black.bg-main}"
         },
         "bg-even": {
           "$type": "color",
-          "$value": "{color.base.dark.black.bg-even}"
+          "$value": "{color.base.context.dark.black.bg-even}"
         },
         "bg-evident": {
           "$type": "color",
-          "$value": "{color.base.dark.black.bg-evident}"
+          "$value": "{color.base.context.dark.black.bg-evident}"
         },
         "bg-inverse": {
           "$type": "color",
-          "$value": "{color.base.dark.black.bg-inverse}"
+          "$value": "{color.base.context.dark.black.bg-inverse}"
         },
         "bg-solid": {
           "$type": "color",
-          "$value": "{color.base.dark.black.bg-solid}"
+          "$value": "{color.base.context.dark.black.bg-solid}"
         },
         "bg-highlight": {
           "$type": "color",
-          "$value": "{color.base.dark.black.bg-highlight}"
+          "$value": "{color.base.context.dark.black.bg-highlight}"
         },
         "border-main": {
           "$type": "color",
-          "$value": "{color.base.dark.black.border-main}"
+          "$value": "{color.base.context.dark.black.border-main}"
         },
         "border-subtle": {
           "$type": "color",
-          "$value": "{color.base.dark.black.border-subtle}"
+          "$value": "{color.base.context.dark.black.border-subtle}"
         },
         "icon-main": {
           "$type": "color",
-          "$value": "{color.base.dark.black.icon-main}"
+          "$value": "{color.base.context.dark.black.icon-main}"
         },
         "icon-subtle": {
           "$type": "color",
-          "$value": "{color.base.dark.black.icon-subtle}"
+          "$value": "{color.base.context.dark.black.icon-subtle}"
         },
         "icon-slight": {
           "$type": "color",
-          "$value": "{color.base.dark.black.icon-slight}"
+          "$value": "{color.base.context.dark.black.icon-slight}"
         },
-        "indicator-main": {
+        "cue-main": {
           "$type": "color",
-          "$value": "{color.base.dark.black.indicator-main}"
+          "$value": "{color.base.context.dark.black.cue-main}"
         },
-        "indicator-slight": {
+        "cue-slight": {
           "$type": "color",
-          "$value": "{color.base.dark.black.indicator-slight}"
+          "$value": "{color.base.context.dark.black.cue-slight}"
         },
         "link-main": {
           "$type": "color",
-          "$value": "{color.base.dark.black.link-main}"
+          "$value": "{color.base.context.dark.black.link-main}"
         },
         "link-hover": {
           "$type": "color",
-          "$value": "{color.base.dark.black.link-hover}"
+          "$value": "{color.base.context.dark.black.link-hover}"
         },
         "link-active": {
           "$type": "color",
-          "$value": "{color.base.dark.black.link-active}"
+          "$value": "{color.base.context.dark.black.link-active}"
         },
         "link-visited": {
           "$type": "color",
-          "$value": "{color.base.dark.black.link-visited}"
+          "$value": "{color.base.context.dark.black.link-visited}"
         },
-        "scene-shade": {
+        "dim-main": {
           "$type": "color",
-          "$value": "{color.base.dark.black.scene-shade}"
+          "$value": "{color.base.context.dark.black.dim-main}"
         },
-        "scene-dim": {
+        "dim-subtle": {
           "$type": "color",
-          "$value": "{color.base.dark.black.scene-dim}"
+          "$value": "{color.base.context.dark.black.dim-subtle}"
         },
-        "scene-blur": {
+        "dim-slight": {
           "$type": "color",
-          "$value": "{color.base.dark.black.scene-blur}"
+          "$value": "{color.base.context.dark.black.dim-slight}"
         },
-        "scene-clear": {
+        "fg-idle": {
           "$type": "color",
-          "$value": "{color.base.dark.black.scene-clear}"
-        },
-        "fg-button": {
-          "$type": "color",
-          "$value": "{color.base.dark.black.fg-button}"
+          "$value": "{color.base.context.dark.black.fg-idle}"
         },
         "fg-hover": {
           "$type": "color",
-          "$value": "{color.base.dark.black.fg-hover}"
+          "$value": "{color.base.context.dark.black.fg-hover}"
         },
         "fg-press": {
           "$type": "color",
-          "$value": "{color.base.dark.black.fg-press}"
+          "$value": "{color.base.context.dark.black.fg-press}"
         },
         "fg-disabled": {
           "$type": "color",
-          "$value": "{color.base.dark.black.fg-disabled}"
+          "$value": "{color.base.context.dark.black.fg-disabled}"
         },
-        "bg-button": {
+        "bg-idle": {
           "$type": "color",
-          "$value": "{color.base.dark.black.bg-button}"
+          "$value": "{color.base.context.dark.black.bg-idle}"
         },
         "bg-hover": {
           "$type": "color",
-          "$value": "{color.base.dark.black.bg-hover}"
+          "$value": "{color.base.context.dark.black.bg-hover}"
         },
         "bg-press": {
           "$type": "color",
-          "$value": "{color.base.dark.black.bg-press}"
+          "$value": "{color.base.context.dark.black.bg-press}"
         },
         "bg-disabled": {
           "$type": "color",
-          "$value": "{color.base.dark.black.bg-disabled}"
+          "$value": "{color.base.context.dark.black.bg-disabled}"
         }
       },
       "white": {
         "base-color": {
           "$type": "color",
-          "$value": "{color.base.dark.white.base-color}"
+          "$value": "{color.base.context.dark.white.base-color}"
         },
         "contrast-color": {
           "$type": "color",
-          "$value": "{color.base.dark.white.contrast-color}"
+          "$value": "{color.base.context.dark.white.contrast-color}"
+        },
+        "transparent-color": {
+          "$type": "color",
+          "$value": "{color.base.context.dark.white.transparent-color}"
         },
         "fg-main": {
           "$type": "color",
-          "$value": "{color.base.dark.white.fg-main}"
+          "$value": "{color.base.context.dark.white.fg-main}"
         },
         "fg-subtle": {
           "$type": "color",
-          "$value": "{color.base.dark.white.fg-subtle}"
+          "$value": "{color.base.context.dark.white.fg-subtle}"
         },
         "fg-slight": {
           "$type": "color",
-          "$value": "{color.base.dark.white.fg-slight}"
+          "$value": "{color.base.context.dark.white.fg-slight}"
         },
         "fg-inverse": {
           "$type": "color",
-          "$value": "{color.base.dark.white.fg-inverse}"
+          "$value": "{color.base.context.dark.white.fg-inverse}"
         },
         "fg-solid": {
           "$type": "color",
-          "$value": "{color.base.dark.white.fg-solid}"
+          "$value": "{color.base.context.dark.white.fg-solid}"
         },
         "fg-highlight": {
           "$type": "color",
-          "$value": "{color.base.dark.white.fg-highlight}"
+          "$value": "{color.base.context.dark.white.fg-highlight}"
         },
         "bg-main": {
           "$type": "color",
-          "$value": "{color.base.dark.white.bg-main}"
+          "$value": "{color.base.context.dark.white.bg-main}"
         },
         "bg-even": {
           "$type": "color",
-          "$value": "{color.base.dark.white.bg-even}"
+          "$value": "{color.base.context.dark.white.bg-even}"
         },
         "bg-evident": {
           "$type": "color",
-          "$value": "{color.base.dark.white.bg-evident}"
+          "$value": "{color.base.context.dark.white.bg-evident}"
         },
         "bg-inverse": {
           "$type": "color",
-          "$value": "{color.base.dark.white.bg-inverse}"
+          "$value": "{color.base.context.dark.white.bg-inverse}"
         },
         "bg-solid": {
           "$type": "color",
-          "$value": "{color.base.dark.white.bg-solid}"
+          "$value": "{color.base.context.dark.white.bg-solid}"
         },
         "bg-highlight": {
           "$type": "color",
-          "$value": "{color.base.dark.white.bg-highlight}"
+          "$value": "{color.base.context.dark.white.bg-highlight}"
         },
         "border-main": {
           "$type": "color",
-          "$value": "{color.base.dark.white.border-main}"
+          "$value": "{color.base.context.dark.white.border-main}"
         },
         "border-subtle": {
           "$type": "color",
-          "$value": "{color.base.dark.white.border-subtle}"
+          "$value": "{color.base.context.dark.white.border-subtle}"
         },
         "icon-main": {
           "$type": "color",
-          "$value": "{color.base.dark.white.icon-main}"
+          "$value": "{color.base.context.dark.white.icon-main}"
         },
         "icon-subtle": {
           "$type": "color",
-          "$value": "{color.base.dark.white.icon-subtle}"
+          "$value": "{color.base.context.dark.white.icon-subtle}"
         },
         "icon-slight": {
           "$type": "color",
-          "$value": "{color.base.dark.white.icon-slight}"
+          "$value": "{color.base.context.dark.white.icon-slight}"
         },
-        "indicator-main": {
+        "cue-main": {
           "$type": "color",
-          "$value": "{color.base.dark.white.indicator-main}"
+          "$value": "{color.base.context.dark.white.cue-main}"
         },
-        "indicator-slight": {
+        "cue-slight": {
           "$type": "color",
-          "$value": "{color.base.dark.white.indicator-slight}"
+          "$value": "{color.base.context.dark.white.cue-slight}"
         },
         "link-main": {
           "$type": "color",
-          "$value": "{color.base.dark.white.link-main}"
+          "$value": "{color.base.context.dark.white.link-main}"
         },
         "link-hover": {
           "$type": "color",
-          "$value": "{color.base.dark.white.link-hover}"
+          "$value": "{color.base.context.dark.white.link-hover}"
         },
         "link-active": {
           "$type": "color",
-          "$value": "{color.base.dark.white.link-active}"
+          "$value": "{color.base.context.dark.white.link-active}"
         },
         "link-visited": {
           "$type": "color",
-          "$value": "{color.base.dark.white.link-visited}"
+          "$value": "{color.base.context.dark.white.link-visited}"
         },
-        "scene-shade": {
+        "dim-main": {
           "$type": "color",
-          "$value": "{color.base.dark.white.scene-shade}"
+          "$value": "{color.base.context.dark.white.dim-main}"
         },
-        "scene-dim": {
+        "dim-subtle": {
           "$type": "color",
-          "$value": "{color.base.dark.white.scene-dim}"
+          "$value": "{color.base.context.dark.white.dim-subtle}"
         },
-        "scene-blur": {
+        "dim-slight": {
           "$type": "color",
-          "$value": "{color.base.dark.white.scene-blur}"
+          "$value": "{color.base.context.dark.white.dim-slight}"
         },
-        "scene-clear": {
+        "fg-idle": {
           "$type": "color",
-          "$value": "{color.base.dark.white.scene-clear}"
-        },
-        "fg-button": {
-          "$type": "color",
-          "$value": "{color.base.dark.white.fg-button}"
+          "$value": "{color.base.context.dark.white.fg-idle}"
         },
         "fg-hover": {
           "$type": "color",
-          "$value": "{color.base.dark.white.fg-hover}"
+          "$value": "{color.base.context.dark.white.fg-hover}"
         },
         "fg-press": {
           "$type": "color",
-          "$value": "{color.base.dark.white.fg-press}"
+          "$value": "{color.base.context.dark.white.fg-press}"
         },
         "fg-disabled": {
           "$type": "color",
-          "$value": "{color.base.dark.white.fg-disabled}"
+          "$value": "{color.base.context.dark.white.fg-disabled}"
         },
-        "bg-button": {
+        "bg-idle": {
           "$type": "color",
-          "$value": "{color.base.dark.white.bg-button}"
+          "$value": "{color.base.context.dark.white.bg-idle}"
         },
         "bg-hover": {
           "$type": "color",
-          "$value": "{color.base.dark.white.bg-hover}"
+          "$value": "{color.base.context.dark.white.bg-hover}"
         },
         "bg-press": {
           "$type": "color",
-          "$value": "{color.base.dark.white.bg-press}"
+          "$value": "{color.base.context.dark.white.bg-press}"
         },
         "bg-disabled": {
           "$type": "color",
-          "$value": "{color.base.dark.white.bg-disabled}"
+          "$value": "{color.base.context.dark.white.bg-disabled}"
         }
       },
       "brand": {
         "base-color": {
           "$type": "color",
-          "$value": "{color.base.dark.brand.base-color}"
+          "$value": "{color.base.context.dark.brand.base-color}"
         },
         "contrast-color": {
           "$type": "color",
-          "$value": "{color.base.dark.brand.contrast-color}"
+          "$value": "{color.base.context.dark.brand.contrast-color}"
+        },
+        "transparent-color": {
+          "$type": "color",
+          "$value": "{color.base.context.dark.brand.transparent-color}"
         },
         "fg-main": {
           "$type": "color",
-          "$value": "{color.base.dark.brand.fg-main}"
+          "$value": "{color.base.context.dark.brand.fg-main}"
         },
         "fg-subtle": {
           "$type": "color",
-          "$value": "{color.base.dark.brand.fg-subtle}"
+          "$value": "{color.base.context.dark.brand.fg-subtle}"
         },
         "fg-slight": {
           "$type": "color",
-          "$value": "{color.base.dark.brand.fg-slight}"
+          "$value": "{color.base.context.dark.brand.fg-slight}"
         },
         "fg-inverse": {
           "$type": "color",
-          "$value": "{color.base.dark.brand.fg-inverse}"
+          "$value": "{color.base.context.dark.brand.fg-inverse}"
         },
         "fg-solid": {
           "$type": "color",
-          "$value": "{color.base.dark.brand.fg-solid}"
+          "$value": "{color.base.context.dark.brand.fg-solid}"
         },
         "fg-highlight": {
           "$type": "color",
-          "$value": "{color.base.dark.brand.fg-highlight}"
+          "$value": "{color.base.context.dark.brand.fg-highlight}"
         },
         "bg-main": {
           "$type": "color",
-          "$value": "{color.base.dark.brand.bg-main}"
+          "$value": "{color.base.context.dark.brand.bg-main}"
         },
         "bg-even": {
           "$type": "color",
-          "$value": "{color.base.dark.brand.bg-even}"
+          "$value": "{color.base.context.dark.brand.bg-even}"
         },
         "bg-evident": {
           "$type": "color",
-          "$value": "{color.base.dark.brand.bg-evident}"
+          "$value": "{color.base.context.dark.brand.bg-evident}"
         },
         "bg-inverse": {
           "$type": "color",
-          "$value": "{color.base.dark.brand.bg-inverse}"
+          "$value": "{color.base.context.dark.brand.bg-inverse}"
         },
         "bg-solid": {
           "$type": "color",
-          "$value": "{color.base.dark.brand.bg-solid}"
+          "$value": "{color.base.context.dark.brand.bg-solid}"
         },
         "bg-highlight": {
           "$type": "color",
-          "$value": "{color.base.dark.brand.bg-highlight}"
+          "$value": "{color.base.context.dark.brand.bg-highlight}"
         },
         "border-main": {
           "$type": "color",
-          "$value": "{color.base.dark.brand.border-main}"
+          "$value": "{color.base.context.dark.brand.border-main}"
         },
         "border-subtle": {
           "$type": "color",
-          "$value": "{color.base.dark.brand.border-subtle}"
+          "$value": "{color.base.context.dark.brand.border-subtle}"
         },
         "icon-main": {
           "$type": "color",
-          "$value": "{color.base.dark.brand.icon-main}"
+          "$value": "{color.base.context.dark.brand.icon-main}"
         },
         "icon-subtle": {
           "$type": "color",
-          "$value": "{color.base.dark.brand.icon-subtle}"
+          "$value": "{color.base.context.dark.brand.icon-subtle}"
         },
         "icon-slight": {
           "$type": "color",
-          "$value": "{color.base.dark.brand.icon-slight}"
+          "$value": "{color.base.context.dark.brand.icon-slight}"
         },
-        "indicator-main": {
+        "cue-main": {
           "$type": "color",
-          "$value": "{color.base.dark.brand.indicator-main}"
+          "$value": "{color.base.context.dark.brand.cue-main}"
         },
-        "indicator-slight": {
+        "cue-slight": {
           "$type": "color",
-          "$value": "{color.base.dark.brand.indicator-slight}"
+          "$value": "{color.base.context.dark.brand.cue-slight}"
         },
         "link-main": {
           "$type": "color",
-          "$value": "{color.base.dark.brand.link-main}"
+          "$value": "{color.base.context.dark.brand.link-main}"
         },
         "link-hover": {
           "$type": "color",
-          "$value": "{color.base.dark.brand.link-hover}"
+          "$value": "{color.base.context.dark.brand.link-hover}"
         },
         "link-active": {
           "$type": "color",
-          "$value": "{color.base.dark.brand.link-active}"
+          "$value": "{color.base.context.dark.brand.link-active}"
         },
         "link-visited": {
           "$type": "color",
-          "$value": "{color.base.dark.brand.link-visited}"
+          "$value": "{color.base.context.dark.brand.link-visited}"
         },
-        "scene-shade": {
+        "dim-main": {
           "$type": "color",
-          "$value": "{color.base.dark.brand.scene-shade}"
+          "$value": "{color.base.context.dark.brand.dim-main}"
         },
-        "scene-dim": {
+        "dim-subtle": {
           "$type": "color",
-          "$value": "{color.base.dark.brand.scene-dim}"
+          "$value": "{color.base.context.dark.brand.dim-subtle}"
         },
-        "scene-blur": {
+        "dim-slight": {
           "$type": "color",
-          "$value": "{color.base.dark.brand.scene-blur}"
+          "$value": "{color.base.context.dark.brand.dim-slight}"
         },
-        "scene-clear": {
+        "fg-idle": {
           "$type": "color",
-          "$value": "{color.base.dark.brand.scene-clear}"
-        },
-        "fg-button": {
-          "$type": "color",
-          "$value": "{color.base.dark.brand.fg-button}"
+          "$value": "{color.base.context.dark.brand.fg-idle}"
         },
         "fg-hover": {
           "$type": "color",
-          "$value": "{color.base.dark.brand.fg-hover}"
+          "$value": "{color.base.context.dark.brand.fg-hover}"
         },
         "fg-press": {
           "$type": "color",
-          "$value": "{color.base.dark.brand.fg-press}"
+          "$value": "{color.base.context.dark.brand.fg-press}"
         },
         "fg-disabled": {
           "$type": "color",
-          "$value": "{color.base.dark.brand.fg-disabled}"
+          "$value": "{color.base.context.dark.brand.fg-disabled}"
         },
-        "bg-button": {
+        "bg-idle": {
           "$type": "color",
-          "$value": "{color.base.dark.brand.bg-button}"
+          "$value": "{color.base.context.dark.brand.bg-idle}"
         },
         "bg-hover": {
           "$type": "color",
-          "$value": "{color.base.dark.brand.bg-hover}"
+          "$value": "{color.base.context.dark.brand.bg-hover}"
         },
         "bg-press": {
           "$type": "color",
-          "$value": "{color.base.dark.brand.bg-press}"
+          "$value": "{color.base.context.dark.brand.bg-press}"
         },
         "bg-disabled": {
           "$type": "color",
-          "$value": "{color.base.dark.brand.bg-disabled}"
+          "$value": "{color.base.context.dark.brand.bg-disabled}"
         }
       },
       "accent": {
         "base-color": {
           "$type": "color",
-          "$value": "{color.base.dark.accent.base-color}"
+          "$value": "{color.base.context.dark.accent.base-color}"
         },
         "contrast-color": {
           "$type": "color",
-          "$value": "{color.base.dark.accent.contrast-color}"
+          "$value": "{color.base.context.dark.accent.contrast-color}"
+        },
+        "transparent-color": {
+          "$type": "color",
+          "$value": "{color.base.context.dark.accent.transparent-color}"
         },
         "fg-main": {
           "$type": "color",
-          "$value": "{color.base.dark.accent.fg-main}"
+          "$value": "{color.base.context.dark.accent.fg-main}"
         },
         "fg-subtle": {
           "$type": "color",
-          "$value": "{color.base.dark.accent.fg-subtle}"
+          "$value": "{color.base.context.dark.accent.fg-subtle}"
         },
         "fg-slight": {
           "$type": "color",
-          "$value": "{color.base.dark.accent.fg-slight}"
+          "$value": "{color.base.context.dark.accent.fg-slight}"
         },
         "fg-inverse": {
           "$type": "color",
-          "$value": "{color.base.dark.accent.fg-inverse}"
+          "$value": "{color.base.context.dark.accent.fg-inverse}"
         },
         "fg-solid": {
           "$type": "color",
-          "$value": "{color.base.dark.accent.fg-solid}"
+          "$value": "{color.base.context.dark.accent.fg-solid}"
         },
         "fg-highlight": {
           "$type": "color",
-          "$value": "{color.base.dark.accent.fg-highlight}"
+          "$value": "{color.base.context.dark.accent.fg-highlight}"
         },
         "bg-main": {
           "$type": "color",
-          "$value": "{color.base.dark.accent.bg-main}"
+          "$value": "{color.base.context.dark.accent.bg-main}"
         },
         "bg-even": {
           "$type": "color",
-          "$value": "{color.base.dark.accent.bg-even}"
+          "$value": "{color.base.context.dark.accent.bg-even}"
         },
         "bg-evident": {
           "$type": "color",
-          "$value": "{color.base.dark.accent.bg-evident}"
+          "$value": "{color.base.context.dark.accent.bg-evident}"
         },
         "bg-inverse": {
           "$type": "color",
-          "$value": "{color.base.dark.accent.bg-inverse}"
+          "$value": "{color.base.context.dark.accent.bg-inverse}"
         },
         "bg-solid": {
           "$type": "color",
-          "$value": "{color.base.dark.accent.bg-solid}"
+          "$value": "{color.base.context.dark.accent.bg-solid}"
         },
         "bg-highlight": {
           "$type": "color",
-          "$value": "{color.base.dark.accent.bg-highlight}"
+          "$value": "{color.base.context.dark.accent.bg-highlight}"
         },
         "border-main": {
           "$type": "color",
-          "$value": "{color.base.dark.accent.border-main}"
+          "$value": "{color.base.context.dark.accent.border-main}"
         },
         "border-subtle": {
           "$type": "color",
-          "$value": "{color.base.dark.accent.border-subtle}"
+          "$value": "{color.base.context.dark.accent.border-subtle}"
         },
         "icon-main": {
           "$type": "color",
-          "$value": "{color.base.dark.accent.icon-main}"
+          "$value": "{color.base.context.dark.accent.icon-main}"
         },
         "icon-subtle": {
           "$type": "color",
-          "$value": "{color.base.dark.accent.icon-subtle}"
+          "$value": "{color.base.context.dark.accent.icon-subtle}"
         },
         "icon-slight": {
           "$type": "color",
-          "$value": "{color.base.dark.accent.icon-slight}"
+          "$value": "{color.base.context.dark.accent.icon-slight}"
         },
-        "indicator-main": {
+        "cue-main": {
           "$type": "color",
-          "$value": "{color.base.dark.accent.indicator-main}"
+          "$value": "{color.base.context.dark.accent.cue-main}"
         },
-        "indicator-slight": {
+        "cue-slight": {
           "$type": "color",
-          "$value": "{color.base.dark.accent.indicator-slight}"
+          "$value": "{color.base.context.dark.accent.cue-slight}"
         },
         "link-main": {
           "$type": "color",
-          "$value": "{color.base.dark.accent.link-main}"
+          "$value": "{color.base.context.dark.accent.link-main}"
         },
         "link-hover": {
           "$type": "color",
-          "$value": "{color.base.dark.accent.link-hover}"
+          "$value": "{color.base.context.dark.accent.link-hover}"
         },
         "link-active": {
           "$type": "color",
-          "$value": "{color.base.dark.accent.link-active}"
+          "$value": "{color.base.context.dark.accent.link-active}"
         },
         "link-visited": {
           "$type": "color",
-          "$value": "{color.base.dark.accent.link-visited}"
+          "$value": "{color.base.context.dark.accent.link-visited}"
         },
-        "scene-shade": {
+        "dim-main": {
           "$type": "color",
-          "$value": "{color.base.dark.accent.scene-shade}"
+          "$value": "{color.base.context.dark.accent.dim-main}"
         },
-        "scene-dim": {
+        "dim-subtle": {
           "$type": "color",
-          "$value": "{color.base.dark.accent.scene-dim}"
+          "$value": "{color.base.context.dark.accent.dim-subtle}"
         },
-        "scene-blur": {
+        "dim-slight": {
           "$type": "color",
-          "$value": "{color.base.dark.accent.scene-blur}"
+          "$value": "{color.base.context.dark.accent.dim-slight}"
         },
-        "scene-clear": {
+        "fg-idle": {
           "$type": "color",
-          "$value": "{color.base.dark.accent.scene-clear}"
-        },
-        "fg-button": {
-          "$type": "color",
-          "$value": "{color.base.dark.accent.fg-button}"
+          "$value": "{color.base.context.dark.accent.fg-idle}"
         },
         "fg-hover": {
           "$type": "color",
-          "$value": "{color.base.dark.accent.fg-hover}"
+          "$value": "{color.base.context.dark.accent.fg-hover}"
         },
         "fg-press": {
           "$type": "color",
-          "$value": "{color.base.dark.accent.fg-press}"
+          "$value": "{color.base.context.dark.accent.fg-press}"
         },
         "fg-disabled": {
           "$type": "color",
-          "$value": "{color.base.dark.accent.fg-disabled}"
+          "$value": "{color.base.context.dark.accent.fg-disabled}"
         },
-        "bg-button": {
+        "bg-idle": {
           "$type": "color",
-          "$value": "{color.base.dark.accent.bg-button}"
+          "$value": "{color.base.context.dark.accent.bg-idle}"
         },
         "bg-hover": {
           "$type": "color",
-          "$value": "{color.base.dark.accent.bg-hover}"
+          "$value": "{color.base.context.dark.accent.bg-hover}"
         },
         "bg-press": {
           "$type": "color",
-          "$value": "{color.base.dark.accent.bg-press}"
+          "$value": "{color.base.context.dark.accent.bg-press}"
         },
         "bg-disabled": {
           "$type": "color",
-          "$value": "{color.base.dark.accent.bg-disabled}"
+          "$value": "{color.base.context.dark.accent.bg-disabled}"
         }
+      }
+    },
+    "palette": {
+      "primary": {
+        "10": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.primary.10}"
+        },
+        "20": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.primary.20}"
+        },
+        "30": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.primary.30}"
+        },
+        "40": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.primary.40}"
+        },
+        "50": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.primary.50}"
+        },
+        "60": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.primary.60}"
+        },
+        "70": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.primary.70}"
+        },
+        "80": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.primary.80}"
+        },
+        "90": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.primary.90}"
+        },
+        "95": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.primary.95}"
+        },
+        "base": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.primary.base}"
+        },
+        "transparent": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.primary.transparent}"
+        },
+        "contrast": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.primary.contrast}"
+        },
+        "05": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.primary.05}"
+        },
+        "t-5005": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.primary.t-5005}"
+        },
+        "t-5010": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.primary.t-5010}"
+        },
+        "t-5020": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.primary.t-5020}"
+        },
+        "t-5030": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.primary.t-5030}"
+        },
+        "t-5040": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.primary.t-5040}"
+        },
+        "t-5050": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.primary.t-5050}"
+        },
+        "t-5060": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.primary.t-5060}"
+        },
+        "t-5070": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.primary.t-5070}"
+        },
+        "t-5080": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.primary.t-5080}"
+        },
+        "t-5090": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.primary.t-5090}"
+        },
+        "t-5095": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.primary.t-5095}"
+        }
+      },
+      "secondary": {
+        "10": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.secondary.10}"
+        },
+        "20": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.secondary.20}"
+        },
+        "30": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.secondary.30}"
+        },
+        "40": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.secondary.40}"
+        },
+        "50": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.secondary.50}"
+        },
+        "60": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.secondary.60}"
+        },
+        "70": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.secondary.70}"
+        },
+        "80": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.secondary.80}"
+        },
+        "90": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.secondary.90}"
+        },
+        "95": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.secondary.95}"
+        },
+        "base": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.secondary.base}"
+        },
+        "transparent": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.secondary.transparent}"
+        },
+        "contrast": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.secondary.contrast}"
+        },
+        "05": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.secondary.05}"
+        },
+        "t-5005": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.secondary.t-5005}"
+        },
+        "t-5010": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.secondary.t-5010}"
+        },
+        "t-5020": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.secondary.t-5020}"
+        },
+        "t-5030": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.secondary.t-5030}"
+        },
+        "t-5040": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.secondary.t-5040}"
+        },
+        "t-5050": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.secondary.t-5050}"
+        },
+        "t-5060": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.secondary.t-5060}"
+        },
+        "t-5070": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.secondary.t-5070}"
+        },
+        "t-5080": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.secondary.t-5080}"
+        },
+        "t-5090": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.secondary.t-5090}"
+        },
+        "t-5095": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.secondary.t-5095}"
+        }
+      },
+      "neutral": {
+        "10": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.neutral.10}"
+        },
+        "20": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.neutral.20}"
+        },
+        "30": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.neutral.30}"
+        },
+        "40": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.neutral.40}"
+        },
+        "50": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.neutral.50}"
+        },
+        "60": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.neutral.60}"
+        },
+        "70": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.neutral.70}"
+        },
+        "80": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.neutral.80}"
+        },
+        "90": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.neutral.90}"
+        },
+        "95": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.neutral.95}"
+        },
+        "base": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.neutral.base}"
+        },
+        "transparent": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.neutral.transparent}"
+        },
+        "contrast": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.neutral.contrast}"
+        },
+        "05": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.neutral.05}"
+        },
+        "t-5005": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.neutral.t-5005}"
+        },
+        "t-5010": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.neutral.t-5010}"
+        },
+        "t-5020": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.neutral.t-5020}"
+        },
+        "t-5030": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.neutral.t-5030}"
+        },
+        "t-5040": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.neutral.t-5040}"
+        },
+        "t-5050": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.neutral.t-5050}"
+        },
+        "t-5060": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.neutral.t-5060}"
+        },
+        "t-5070": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.neutral.t-5070}"
+        },
+        "t-5080": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.neutral.t-5080}"
+        },
+        "t-5090": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.neutral.t-5090}"
+        },
+        "t-5095": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.neutral.t-5095}"
+        }
+      },
+      "danger": {
+        "10": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.danger.10}"
+        },
+        "20": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.danger.20}"
+        },
+        "30": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.danger.30}"
+        },
+        "40": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.danger.40}"
+        },
+        "50": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.danger.50}"
+        },
+        "60": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.danger.60}"
+        },
+        "70": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.danger.70}"
+        },
+        "80": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.danger.80}"
+        },
+        "90": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.danger.90}"
+        },
+        "95": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.danger.95}"
+        },
+        "base": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.danger.base}"
+        },
+        "transparent": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.danger.transparent}"
+        },
+        "contrast": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.danger.contrast}"
+        },
+        "05": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.danger.05}"
+        },
+        "t-5005": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.danger.t-5005}"
+        },
+        "t-5010": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.danger.t-5010}"
+        },
+        "t-5020": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.danger.t-5020}"
+        },
+        "t-5030": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.danger.t-5030}"
+        },
+        "t-5040": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.danger.t-5040}"
+        },
+        "t-5050": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.danger.t-5050}"
+        },
+        "t-5060": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.danger.t-5060}"
+        },
+        "t-5070": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.danger.t-5070}"
+        },
+        "t-5080": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.danger.t-5080}"
+        },
+        "t-5090": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.danger.t-5090}"
+        },
+        "t-5095": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.danger.t-5095}"
+        }
+      },
+      "success": {
+        "10": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.success.10}"
+        },
+        "20": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.success.20}"
+        },
+        "30": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.success.30}"
+        },
+        "40": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.success.40}"
+        },
+        "50": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.success.50}"
+        },
+        "60": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.success.60}"
+        },
+        "70": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.success.70}"
+        },
+        "80": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.success.80}"
+        },
+        "90": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.success.90}"
+        },
+        "95": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.success.95}"
+        },
+        "base": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.success.base}"
+        },
+        "transparent": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.success.transparent}"
+        },
+        "contrast": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.success.contrast}"
+        },
+        "05": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.success.05}"
+        },
+        "t-5005": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.success.t-5005}"
+        },
+        "t-5010": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.success.t-5010}"
+        },
+        "t-5020": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.success.t-5020}"
+        },
+        "t-5030": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.success.t-5030}"
+        },
+        "t-5040": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.success.t-5040}"
+        },
+        "t-5050": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.success.t-5050}"
+        },
+        "t-5060": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.success.t-5060}"
+        },
+        "t-5070": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.success.t-5070}"
+        },
+        "t-5080": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.success.t-5080}"
+        },
+        "t-5090": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.success.t-5090}"
+        },
+        "t-5095": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.success.t-5095}"
+        }
+      },
+      "warning": {
+        "10": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.warning.10}"
+        },
+        "20": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.warning.20}"
+        },
+        "30": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.warning.30}"
+        },
+        "40": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.warning.40}"
+        },
+        "50": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.warning.50}"
+        },
+        "60": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.warning.60}"
+        },
+        "70": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.warning.70}"
+        },
+        "80": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.warning.80}"
+        },
+        "90": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.warning.90}"
+        },
+        "95": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.warning.95}"
+        },
+        "base": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.warning.base}"
+        },
+        "transparent": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.warning.transparent}"
+        },
+        "contrast": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.warning.contrast}"
+        },
+        "05": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.warning.05}"
+        },
+        "t-5005": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.warning.t-5005}"
+        },
+        "t-5010": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.warning.t-5010}"
+        },
+        "t-5020": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.warning.t-5020}"
+        },
+        "t-5030": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.warning.t-5030}"
+        },
+        "t-5040": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.warning.t-5040}"
+        },
+        "t-5050": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.warning.t-5050}"
+        },
+        "t-5060": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.warning.t-5060}"
+        },
+        "t-5070": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.warning.t-5070}"
+        },
+        "t-5080": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.warning.t-5080}"
+        },
+        "t-5090": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.warning.t-5090}"
+        },
+        "t-5095": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.warning.t-5095}"
+        }
+      },
+      "info": {
+        "10": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.info.10}"
+        },
+        "20": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.info.20}"
+        },
+        "30": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.info.30}"
+        },
+        "40": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.info.40}"
+        },
+        "50": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.info.50}"
+        },
+        "60": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.info.60}"
+        },
+        "70": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.info.70}"
+        },
+        "80": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.info.80}"
+        },
+        "90": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.info.90}"
+        },
+        "95": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.info.95}"
+        },
+        "base": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.info.base}"
+        },
+        "transparent": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.info.transparent}"
+        },
+        "contrast": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.info.contrast}"
+        },
+        "05": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.info.05}"
+        },
+        "t-5005": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.info.t-5005}"
+        },
+        "t-5010": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.info.t-5010}"
+        },
+        "t-5020": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.info.t-5020}"
+        },
+        "t-5030": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.info.t-5030}"
+        },
+        "t-5040": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.info.t-5040}"
+        },
+        "t-5050": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.info.t-5050}"
+        },
+        "t-5060": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.info.t-5060}"
+        },
+        "t-5070": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.info.t-5070}"
+        },
+        "t-5080": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.info.t-5080}"
+        },
+        "t-5090": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.info.t-5090}"
+        },
+        "t-5095": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.info.t-5095}"
+        }
+      },
+      "black": {
+        "base": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.black.base}"
+        },
+        "transparent": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.black.transparent}"
+        },
+        "contrast": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.black.contrast}"
+        },
+        "t-05": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.black.t-05}"
+        },
+        "t-10": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.black.t-10}"
+        },
+        "t-20": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.black.t-20}"
+        },
+        "t-30": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.black.t-30}"
+        },
+        "t-40": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.black.t-40}"
+        },
+        "t-50": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.black.t-50}"
+        },
+        "t-60": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.black.t-60}"
+        },
+        "t-70": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.black.t-70}"
+        },
+        "t-80": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.black.t-80}"
+        },
+        "t-90": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.black.t-90}"
+        },
+        "t-95": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.black.t-95}"
+        }
+      },
+      "white": {
+        "base": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.white.base}"
+        },
+        "transparent": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.white.transparent}"
+        },
+        "contrast": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.white.contrast}"
+        },
+        "t-05": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.white.t-05}"
+        },
+        "t-10": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.white.t-10}"
+        },
+        "t-20": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.white.t-20}"
+        },
+        "t-30": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.white.t-30}"
+        },
+        "t-40": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.white.t-40}"
+        },
+        "t-50": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.white.t-50}"
+        },
+        "t-60": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.white.t-60}"
+        },
+        "t-70": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.white.t-70}"
+        },
+        "t-80": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.white.t-80}"
+        },
+        "t-90": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.white.t-90}"
+        },
+        "t-95": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.white.t-95}"
+        }
+      },
+      "brand": {
+        "10": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.brand.10}"
+        },
+        "20": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.brand.20}"
+        },
+        "30": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.brand.30}"
+        },
+        "40": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.brand.40}"
+        },
+        "50": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.brand.50}"
+        },
+        "60": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.brand.60}"
+        },
+        "70": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.brand.70}"
+        },
+        "80": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.brand.80}"
+        },
+        "90": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.brand.90}"
+        },
+        "95": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.brand.95}"
+        },
+        "base": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.brand.base}"
+        },
+        "transparent": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.brand.transparent}"
+        },
+        "contrast": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.brand.contrast}"
+        },
+        "05": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.brand.05}"
+        },
+        "t-5005": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.brand.t-5005}"
+        },
+        "t-5010": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.brand.t-5010}"
+        },
+        "t-5020": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.brand.t-5020}"
+        },
+        "t-5030": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.brand.t-5030}"
+        },
+        "t-5040": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.brand.t-5040}"
+        },
+        "t-5050": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.brand.t-5050}"
+        },
+        "t-5060": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.brand.t-5060}"
+        },
+        "t-5070": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.brand.t-5070}"
+        },
+        "t-5080": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.brand.t-5080}"
+        },
+        "t-5090": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.brand.t-5090}"
+        },
+        "t-5095": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.brand.t-5095}"
+        }
+      },
+      "accent": {
+        "10": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.accent.10}"
+        },
+        "20": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.accent.20}"
+        },
+        "30": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.accent.30}"
+        },
+        "40": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.accent.40}"
+        },
+        "50": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.accent.50}"
+        },
+        "60": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.accent.60}"
+        },
+        "70": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.accent.70}"
+        },
+        "80": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.accent.80}"
+        },
+        "90": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.accent.90}"
+        },
+        "95": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.accent.95}"
+        },
+        "base": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.accent.base}"
+        },
+        "transparent": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.accent.transparent}"
+        },
+        "contrast": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.accent.contrast}"
+        },
+        "05": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.accent.05}"
+        },
+        "t-5005": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.accent.t-5005}"
+        },
+        "t-5010": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.accent.t-5010}"
+        },
+        "t-5020": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.accent.t-5020}"
+        },
+        "t-5030": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.accent.t-5030}"
+        },
+        "t-5040": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.accent.t-5040}"
+        },
+        "t-5050": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.accent.t-5050}"
+        },
+        "t-5060": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.accent.t-5060}"
+        },
+        "t-5070": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.accent.t-5070}"
+        },
+        "t-5080": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.accent.t-5080}"
+        },
+        "t-5090": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.accent.t-5090}"
+        },
+        "t-5095": {
+          "$type": "color",
+          "$value": "{color.base.palette.dark.accent.t-5095}"
+        }
+      }
+    },
+    "shadow": {
+      "default": {
+        "$type": "color",
+        "$value": "{color.base.shadow.dark.default}"
+      },
+      "alternate": {
+        "$type": "color",
+        "$value": "{color.base.shadow.dark.alternate}"
+      },
+      "primary": {
+        "$type": "color",
+        "$value": "{color.base.shadow.dark.primary}"
+      },
+      "secondary": {
+        "$type": "color",
+        "$value": "{color.base.shadow.dark.secondary}"
+      },
+      "neutral": {
+        "$type": "color",
+        "$value": "{color.base.shadow.dark.neutral}"
+      },
+      "danger": {
+        "$type": "color",
+        "$value": "{color.base.shadow.dark.danger}"
+      },
+      "success": {
+        "$type": "color",
+        "$value": "{color.base.shadow.dark.success}"
+      },
+      "warning": {
+        "$type": "color",
+        "$value": "{color.base.shadow.dark.warning}"
+      },
+      "info": {
+        "$type": "color",
+        "$value": "{color.base.shadow.dark.info}"
       }
     },
     "utility": {
@@ -1969,11 +3043,11 @@
       },
       "inverter-default": {
         "$type": "color",
-        "$value": "{color.context.black.scene-clear}"
+        "$value": "{color.context.black.transparent-color}"
       },
       "inverter-alternate": {
         "$type": "color",
-        "$value": "{color.base.palette.black.main}"
+        "$value": "{color.palette.black.base}"
       },
       "technical-default": {
         "$type": "color",

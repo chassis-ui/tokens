@@ -1,0 +1,53 @@
+---
+import FeatureCard from '@chassis-ui/docs/components/FeatureCard.astro'
+---
+
+<section class="home-section py-3xlarge py-medium-6xlarge">
+  <div class="container-2xlarge section-content">
+    <div class="row mb-3xlarge mb-medium-6xlarge">
+      <header class="section-header col col-large-10 col-xlarge-8 text-center mx-auto">
+        <h2
+          class="section-title font-3xlarge font-medium-4xlarge font-large-5xlarge mb-xsmall mb-medium-small mb-large-medium"
+        >
+          <span class="font-normal d-block">From Design</span> to Production in 3 Steps
+        </h2>
+        <p class="section-body font-medium-large font-large-xlarge m-0">
+          Design token changes reach production code in minutes. No manual work. No translation
+          errors. Just automated synchronization across every platform.
+        </p>
+      </header>
+    </div>
+
+    <div class="section-features row row-cols-1 row-cols-medium-3 g-medium g-medium-xlarge">
+      <div class="col">
+        <FeatureCard icon="cx-number-one">
+          <Fragment slot="title">Define Tokens in Figma</Fragment>
+          <Fragment slot="body">
+            Create and manage design tokens directly in Figma using Variables. Sync changes
+            automatically with your codebase.
+          </Fragment>
+        </FeatureCard>
+      </div>
+
+      <div class="col">
+        <FeatureCard icon="cx-number-two">
+          <Fragment slot="title">Automate Token Generation</Fragment>
+          <Fragment slot="body">
+            Style Dictionary transforms your tokens into platform-ready formats with a single
+            command. SCSS, Swift, XML, and more.
+          </Fragment>
+        </FeatureCard>
+      </div>
+
+      <div class="col">
+        <FeatureCard icon="cx-number-three">
+          <Fragment slot="title">Integrate with Your Codebase</Fragment>
+          <Fragment slot="body">
+            Import generated tokens into your web, iOS, or Android projects. Type-safe and ready for
+            production.
+          </Fragment>
+        </FeatureCard>
+      </div>
+    </div>
+  </div>
+</section>

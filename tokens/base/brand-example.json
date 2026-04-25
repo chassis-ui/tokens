@@ -1,0 +1,230 @@
+{
+  "figma": {
+    "switch": {
+      "brand": {
+        "mode-3": {
+          "$type": "boolean",
+          "$value": "true"
+        }
+      }
+    }
+  },
+  "color": {
+    "base": {
+      "palette": {
+        "light": {
+          "neutral": {
+            "base": {
+              "$type": "color",
+              "$value": "#6A6A6A"
+            }
+          },
+          "danger": {
+            "base": {
+              "$type": "color",
+              "$value": "#C13515"
+            }
+          },
+          "success": {
+            "base": {
+              "$type": "color",
+              "$value": "#008A05"
+            }
+          },
+          "warning": {
+            "base": {
+              "$type": "color",
+              "$value": "#E07912"
+            }
+          },
+          "info": {
+            "base": {
+              "$type": "color",
+              "$value": "#428BFF"
+            }
+          },
+          "brand": {
+            "base": {
+              "$type": "color",
+              "$value": "#FF385C"
+            }
+          },
+          "accent": {
+            "base": {
+              "$type": "color",
+              "$value": "#222222"
+            }
+          }
+        }
+      }
+    }
+  },
+  "typography": {
+    "fontFamily": {
+      "text": {
+        "$type": "fontFamilies",
+        "$value": "'Figtree', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', sans-serif;"
+      },
+      "display": {
+        "$type": "fontFamilies",
+        "$value": "Lora, 'Times New Roman', Times, -apple-system-ui-serif, ui-serif, serif"
+      },
+      "code": {
+        "$type": "fontFamilies",
+        "$value": "'Courier New', Courier, monospace"
+      }
+    },
+    "fontWeight": {
+      "text": {
+        "normal": {
+          "$type": "fontWeights",
+          "$value": "Regular"
+        },
+        "strong": {
+          "$type": "fontWeights",
+          "$value": "SemiBold"
+        },
+        "mass": {
+          "$type": "fontWeights",
+          "$value": "Bold"
+        },
+        "elegant": {
+          "$type": "fontWeights",
+          "$value": "Light"
+        }
+      },
+      "display": {
+        "normal": {
+          "$type": "fontWeights",
+          "$value": "Regular"
+        },
+        "strong": {
+          "$type": "fontWeights",
+          "$value": "SemiBold"
+        },
+        "mass": {
+          "$type": "fontWeights",
+          "$value": "Bold"
+        },
+        "elegant": {
+          "$type": "fontWeights",
+          "$value": "Regular"
+        }
+      },
+      "code": {
+        "normal": {
+          "$type": "fontWeights",
+          "$value": "Regular"
+        },
+        "strong": {
+          "$type": "fontWeights",
+          "$value": "Bold"
+        }
+      },
+      "html": {
+        "blockquote": {
+          "$type": "fontWeights",
+          "$value": "Light Oblique"
+        }
+      }
+    }
+  },
+  "borderRadius": {
+    "base": {
+      "context": {
+        "xsmall": {
+          "$type": "borderRadius",
+          "$value": "{dimension.base.2}"
+        },
+        "small": {
+          "$type": "borderRadius",
+          "$value": "{dimension.base.4}"
+        },
+        "medium": {
+          "$type": "borderRadius",
+          "$value": "{dimension.base.8}"
+        },
+        "large": {
+          "$type": "borderRadius",
+          "$value": "{dimension.base.12}"
+        },
+        "xlarge": {
+          "$type": "borderRadius",
+          "$value": "{dimension.base.16}"
+        },
+        "2xlarge": {
+          "$type": "borderRadius",
+          "$value": "{dimension.base.20}"
+        },
+        "3xlarge": {
+          "$type": "borderRadius",
+          "$value": "{dimension.base.24}"
+        }
+      },
+      "badge": {
+        "medium": {
+          "$type": "borderRadius",
+          "$value": "{borderRadius.base.context.round}"
+        },
+        "large": {
+          "$type": "borderRadius",
+          "$value": "{borderRadius.base.context.round}"
+        },
+        "small": {
+          "$type": "borderRadius",
+          "$value": "{borderRadius.base.context.round}"
+        }
+      },
+      "button": {
+        "medium": {
+          "$type": "borderRadius",
+          "$value": "{borderRadius.base.context.round}"
+        },
+        "large": {
+          "$type": "borderRadius",
+          "$value": "{borderRadius.base.context.round}"
+        },
+        "small": {
+          "$type": "borderRadius",
+          "$value": "{borderRadius.base.context.round}"
+        }
+      },
+      "chip": {
+        "medium": {
+          "$type": "borderRadius",
+          "$value": "{borderRadius.base.context.round}"
+        },
+        "large": {
+          "$type": "borderRadius",
+          "$value": "{borderRadius.base.context.round}"
+        },
+        "small": {
+          "$type": "borderRadius",
+          "$value": "{borderRadius.base.context.round}"
+        }
+      },
+      "form-input": {
+        "medium": {
+          "$type": "borderRadius",
+          "$value": "{borderRadius.base.context.round}"
+        },
+        "large": {
+          "$type": "borderRadius",
+          "$value": "{borderRadius.base.context.round}"
+        },
+        "small": {
+          "$type": "borderRadius",
+          "$value": "{borderRadius.base.context.round}"
+        },
+        "floating-blunt": {
+          "$type": "borderRadius",
+          "$value": "{borderRadius.base.context.round}"
+        },
+        "floating-sharp": {
+          "$type": "borderRadius",
+          "$value": "{borderRadius.base.context.zero}"
+        }
+      }
+    }
+  }
+}

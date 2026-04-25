@@ -1,0 +1,601 @@
+---
+title: iOS Applications
+description: Complete guide to integrating Chassis design tokens into iOS applications using Swift classes, CocoaPods, Swift Package Manager, and platform-specific best practices.
+toc: true
+---
+
+<Callout type="warning" name="created-by-ai" />
+
+## Overview
+
+Chassis design tokens for iOS are generated as Swift classes containing static properties that provide type-safe access to design values. The tokens integrate seamlessly with UIKit and SwiftUI, offering native iOS data types like `UIColor`, `CGFloat`, and font properties.
+
+**Key Benefits:**
+
+- **Type Safety**: Swift classes with compile-time checks
+- **Native Types**: UIColor, CGFloat, and other iOS-native types
+- **UIKit & SwiftUI**: Compatible with both frameworks
+- **Consistency**: Shared design values across platforms
+- **Autocomplete**: IDE support for token discovery
+- **Theme Support**: Light and dark mode color tokens
+
+This guide covers integration using Git submodules, CocoaPods, Swift Package Manager, and manual file inclusion.
+
+## Token Output Format
+
+Tokens are generated as Swift classes with static properties:
+
+```swift
+// DesignTokens.swift
+import UIKit
+
+public class DesignTokens {
+    @objc public static let cxColorContextDefaultBgMain = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1.0)
+    @objc public static let cxColorContextDefaultFgMain = UIColor(red: 0.110, green: 0.125, blue: 0.129, alpha: 1.0)
+    @objc public static let cxSpaceBase8 = CGFloat(8.0)
+    @objc public static let cxSpaceBase16 = CGFloat(16.0)
+    @objc public static let cxBorderRadiusBase8 = CGFloat(8.0)
+    @objc public static let cxTypographyFontFamilyText = "Inter"
+    @objc public static let cxTypographyFontWeightTextNormal = "regular"
+}
+```
+
+**Generated Files:**
+
+- `main.swift` - Base tokens (spacing, sizing, typography, borders)
+- `string.swift` - String tokens (font families, asset names)
+- `color-light.swift` - Light theme color tokens
+- `color-dark.swift` - Dark theme color tokens
+- `number-large.swift` - Large screen size tokens
+- `number-medium.swift` - Medium screen size tokens
+- `number-small.swift` - Small screen size tokens
+
+## Installation Methods
+
+### Method 1: Git Submodule (Recommended)
+
+Add the tokens repository as a Git submodule to your iOS project:
+
+```bash
+# Navigate to your iOS project directory
+cd YourApp
+
+# Add tokens as submodule
+git submodule add https://github.com/chassis-ui/tokens.git Submodules/ChassisTokens
+
+# Initialize and update submodule
+git submodule update --init --recursive
+```
+
+**Build tokens for iOS:**
+
+```bash
+cd Submodules/ChassisTokens
+pnpm install
+pnpm tokens --brand chassis --app yourapp --platform ios
+```
+
+Generated token files will be in `Submodules/ChassisTokens/dist/ios/yourapp/chassis/`.
+
+**Add to Xcode:**
+
+1. Open your Xcode project
+2. Right-click your project in the navigator → Add Files to "YourApp"
+3. Navigate to `Submodules/ChassisTokens/dist/ios/yourapp/chassis/`
+4. Select all `.swift` files
+5. Choose "Create folder references" (not "Create groups")
+6. Ensure files are added to your app target
+
+**Update submodule:**
+
+```bash
+cd Submodules/ChassisTokens
+git pull origin main
+pnpm tokens --brand chassis --app yourapp --platform ios
+```
+
+### Method 2: Swift Package Manager
+
+**Create a local Swift package:**
+
+```bash
+# In your tokens repository
+cd dist/ios/yourapp/chassis
+swift package init --type library --name ChassisTokens
+```
+
+**Configure Package.swift:**
+
+```swift
+// swift-tools-version:5.9
+import PackageDescription
+
+let package = Package(
+    name: "ChassisTokens",
+    platforms: [.iOS(.v14)],
+    products: [
+        .library(
+            name: "ChassisTokens",
+            targets: ["ChassisTokens"]
+        )
+    ],
+    targets: [
+        .target(
+            name: "ChassisTokens",
+            path: "Sources"
+        )
+    ]
+)
+```
+
+**Add to your Xcode project:**
+
+1. File → Add Packages → Add Local...
+2. Select the package directory
+3. Import in your code:
+
+```swift
+import ChassisTokens
+```
+
+### Method 3: CocoaPods
+
+Create a Podspec for your tokens:
+
+```ruby
+# ChassisTokens.podspec
+Pod::Spec.new do |s|
+  s.name             = 'ChassisTokens'
+  s.version          = '0.1.0'
+  s.summary          = 'Chassis Design Tokens for iOS'
+  s.homepage         = 'https://github.com/chassis-ui/tokens'
+  s.license          = { :type => 'MIT', :file => 'LICENSE' }
+  s.author           = { 'Your Name' => 'your.email@example.com' }
+  s.source           = { :git => 'https://github.com/chassis-ui/tokens.git', :tag => s.version.to_s }
+  s.ios.deployment_target = '13.0'
+  s.swift_version = '5.0'
+  s.source_files = 'dist/ios/**/*.swift'
+end
+```
+
+**Add to Podfile:**
+
+```ruby
+target 'YourApp' do
+  use_frameworks!
+  
+  # From local path
+  pod 'ChassisTokens', :path => '../ChassisTokens'
+  
+  # Or from Git
+  # pod 'ChassisTokens', :git => 'https://github.com/chassis-ui/tokens.git'
+end
+```
+
+**Install:**
+
+```bash
+pod install
+```
+
+### Method 4: Manual File Copy
+
+For simple projects, manually copy the Swift files:
+
+1. Build tokens: `pnpm tokens --platform ios`
+2. Copy all `.swift` files from `dist/ios/yourapp/chassis/` to your Xcode project
+3. Add them to your target
+4. Rebuild when tokens change
+
+<Callout type="warning">
+Manual copying requires rebuilding your app whenever tokens change. Use submodules or SPM for better workflow.
+</Callout>
+
+## Using Tokens in UIKit
+
+### Colors
+
+```swift
+import UIKit
+
+class ViewController: UIViewController {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Background colors
+        view.backgroundColor = DesignTokens.cxColorContextDefaultBgMain
+        
+        // Create a card view
+        let cardView = UIView()
+        cardView.backgroundColor = DesignTokens.cxColorContextDefaultBgEvident
+        cardView.layer.cornerRadius = DesignTokens.cxBorderRadiusBase8
+        
+        // Add shadow
+        cardView.layer.shadowColor = DesignTokens.cxColorShadowDefault.cgColor
+        cardView.layer.shadowOffset = CGSize(width: 0, height: 2)
+        cardView.layer.shadowRadius = 8
+        cardView.layer.shadowOpacity = 0.1
+    }
+}
+```
+
+### Spacing and Layout
+
+```swift
+class ButtonView: UIView {
+    private let button = UIButton()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupLayout()
+    }
+    
+    private func setupLayout() {
+        button.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(button)
+        
+        NSLayoutConstraint.activate([
+            button.topAnchor.constraint(equalTo: topAnchor, constant: DesignTokens.cxSpaceBase16),
+            button.leadingAnchor.constraint(equalTo: leadingAnchor, constant: DesignTokens.cxSpaceBase16),
+            button.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -DesignTokens.cxSpaceBase16),
+            button.heightAnchor.constraint(equalToConstant: DesignTokens.cxSizeButtonMediumHeight)
+        ])
+        
+        // Button styling
+        button.backgroundColor = DesignTokens.cxColorContextPrimaryBgSolid
+        button.setTitleColor(DesignTokens.cxColorContextPrimaryFgSolid, for: .normal)
+        button.layer.cornerRadius = DesignTokens.cxBorderRadiusButtonMain
+        button.contentEdgeInsets = UIEdgeInsets(
+            top: DesignTokens.cxSpaceButtonPaddingBlock,
+            left: DesignTokens.cxSpaceButtonPaddingInline,
+            bottom: DesignTokens.cxSpaceButtonPaddingBlock,
+            right: DesignTokens.cxSpaceButtonPaddingInline
+        )
+    }
+}
+```
+
+### Typography
+
+```swift
+class LabelView: UIView {
+    private let titleLabel = UILabel()
+    private let bodyLabel = UILabel()
+    
+    private func setupLabels() {
+        // Title
+        titleLabel.font = UIFont(
+            name: DesignTokens.cxTypographyFontFamilyDisplay,
+            size: DesignTokens.cxTypographyFontSizeText3xlarge
+        )
+        titleLabel.textColor = DesignTokens.cxColorContextDefaultFgMain
+        
+        // Body text
+        bodyLabel.font = UIFont(
+            name: DesignTokens.cxTypographyFontFamilyText,
+            size: DesignTokens.cxTypographyFontSizeTextMedium
+        )
+        bodyLabel.textColor = DesignTokens.cxColorContextDefaultFgSubtle
+        bodyLabel.numberOfLines = 0
+    }
+}
+```
+
+## Using Tokens in SwiftUI
+
+### Colors
+
+```swift
+import SwiftUI
+
+struct ContentView: View {
+    var body: some View {
+        VStack(spacing: CGFloat(DesignTokens.cxSpaceBase16)) {
+            Text("Hello, World!")
+                .foregroundColor(Color(DesignTokens.cxColorContextDefaultFgMain))
+            
+            RoundedRectangle(cornerRadius: DesignTokens.cxBorderRadiusBase8)
+                .fill(Color(DesignTokens.cxColorContextPrimaryBgSolid))
+                .frame(height: DesignTokens.cxSizeBase64)
+        }
+        .padding(DesignTokens.cxSpaceBase16)
+        .background(Color(DesignTokens.cxColorContextDefaultBgMain))
+    }
+}
+```
+
+### Custom Token Extensions
+
+Create extensions for better SwiftUI integration:
+
+```swift
+import SwiftUI
+
+extension Color {
+    static var bgMain: Color {
+        Color(DesignTokens.cxColorContextDefaultBgMain)
+    }
+    
+    static var fgMain: Color {
+        Color(DesignTokens.cxColorContextDefaultFgMain)
+    }
+    
+    static var primaryBg: Color {
+        Color(DesignTokens.cxColorContextPrimaryBgSolid)
+    }
+}
+
+extension CGFloat {
+    static var spacing8: CGFloat { DesignTokens.cxSpaceBase8 }
+    static var spacing16: CGFloat { DesignTokens.cxSpaceBase16 }
+    static var spacing24: CGFloat { DesignTokens.cxSpaceBase24 }
+    static var radius8: CGFloat { DesignTokens.cxBorderRadiusBase8 }
+}
+
+// Use in views
+struct CardView: View {
+    var body: some View {
+        VStack {
+            Text("Card Content")
+                .foregroundColor(.fgMain)
+        }
+        .padding(.spacing16)
+        .background(.bgMain)
+        .cornerRadius(.radius8)
+    }
+}
+```
+
+## Theme Support
+
+### Dynamic Color Switching
+
+Load different token files based on theme:
+
+```swift
+import UIKit
+
+class ThemeManager {
+    static let shared = ThemeManager()
+    
+    enum Theme {
+        case light
+        case dark
+    }
+    
+    private(set) var currentTheme: Theme = .light
+    
+    func applyTheme(_ theme: Theme) {
+        currentTheme = theme
+        
+        // Import appropriate color tokens
+        switch theme {
+        case .light:
+            // Use color-light.swift tokens (default)
+            break
+        case .dark:
+            // Use color-dark.swift tokens
+            break
+        }
+        
+        // Post notification for UI updates
+        NotificationCenter.default.post(name: .themeDidChange, object: nil)
+    }
+}
+
+extension Notification.Name {
+    static let themeDidChange = Notification.Name("themeDidChange")
+}
+```
+
+### Trait Collection (iOS 13+)
+
+Use iOS native dark mode support:
+
+```swift
+class AdaptiveColorManager {
+    static func color(light: UIColor, dark: UIColor) -> UIColor {
+        if #available(iOS 13.0, *) {
+            return UIColor { traitCollection in
+                traitCollection.userInterfaceStyle == .dark ? dark : light
+            }
+        } else {
+            return light
+        }
+    }
+}
+
+// Usage
+let backgroundColor = AdaptiveColorManager.color(
+    light: DesignTokensLight.cxColorContextDefaultBgMain,
+    dark: DesignTokensDark.cxColorContextDefaultBgMain
+)
+```
+
+## Responsive Design
+
+### Screen Size Detection
+
+Use appropriate token files based on device:
+
+```swift
+import UIKit
+
+enum DeviceSize {
+    case small  // iPhone SE, iPhone 8
+    case medium // iPhone 12, iPhone 13
+    case large  // iPhone 14 Pro Max, iPad
+    
+    static var current: DeviceSize {
+        let width = UIScreen.main.bounds.width
+        switch width {
+        case 0..<375:
+            return .small
+        case 375..<414:
+            return .medium
+        default:
+            return .large
+        }
+    }
+}
+
+class TokenManager {
+    static func spacing() -> CGFloat {
+        switch DeviceSize.current {
+        case .small:
+            return DesignTokensSmall.cxSpaceBase12
+        case .medium:
+            return DesignTokensMedium.cxSpaceBase16
+        case .large:
+            return DesignTokensLarge.cxSpaceBase24
+        }
+    }
+}
+```
+
+## Best Practices
+
+### Do's
+
+✅ **Use native types**: Leverage UIColor and CGFloat for type safety
+
+✅ **Create extensions**: Build SwiftUI and UIKit extensions for easier access
+
+✅ **Version control**: Use Git submodules or SPM for token versioning
+
+✅ **Automate builds**: Set up CI/CD to rebuild tokens automatically
+
+✅ **Support dark mode**: Implement proper theme switching
+
+✅ **Use semantic tokens**: Prefer context tokens over base palette colors
+
+### Don'ts
+
+❌ **Don't hardcode values**: Always use tokens instead of magic numbers
+
+❌ **Don't modify generated files**: Changes will be overwritten on rebuild
+
+❌ **Don't mix token versions**: Keep tokens synchronized across platforms
+
+❌ **Don't ignore trait collections**: Support iOS dark mode properly
+
+❌ **Don't skip accessibility**: Use tokens that maintain proper contrast
+
+## Troubleshooting
+
+### Import Errors
+
+**Problem**: Cannot find 'DesignTokens' in scope
+
+**Solution**: Ensure Swift files are added to your target:
+1. Select file in Xcode navigator
+2. Open File Inspector
+3. Check Target Membership
+
+### Color Rendering Issues
+
+**Problem**: Colors appear incorrect
+
+**Solution**: Verify color space and alpha values:
+```swift
+// Check color components
+let color = DesignTokens.cxColorContextPrimaryBgSolid
+var r: CGFloat = 0, g: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 0
+color.getRed(&r, green: &g, blue: &b, alpha: &a)
+print("R: \(r), G: \(g), B: \(b), A: \(a)")
+```
+
+### Build Errors
+
+**Problem**: Duplicate symbol errors
+
+**Solution**: Ensure you're not importing multiple theme files simultaneously. Use conditional compilation:
+
+```swift
+#if DARK_MODE
+import DesignTokensDark
+#else
+import DesignTokensLight
+#endif
+```
+
+### Performance Issues
+
+**Problem**: Token access is slow
+
+**Solution**: Cache frequently used values:
+
+```swift
+struct TokenCache {
+    static let primaryColor = DesignTokens.cxColorContextPrimaryBgSolid
+    static let spacing = DesignTokens.cxSpaceBase16
+}
+```
+
+## Example Project Structure
+
+```
+YourApp/
+├── YourApp.xcodeproj
+├── YourApp/
+│   ├── AppDelegate.swift
+│   ├── Views/
+│   ├── ViewControllers/
+│   └── Extensions/
+│       └── TokenExtensions.swift
+├── Submodules/
+│   └── ChassisTokens/
+│       └── dist/
+│           └── ios/
+│               └── yourapp/
+│                   └── chassis/
+│                       ├── main.swift
+│                   ├── string.swift
+│                   ├── color-light.swift
+│                   ├── color-dark.swift
+│                   └── number-large.swift
+└── Podfile
+```
+
+## CI/CD Integration
+
+Automate token generation in your CI pipeline:
+
+```yaml
+# .github/workflows/build.yml
+name: Build iOS App
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: recursive
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      
+      - name: Install pnpm
+        run: npm install -g pnpm
+      
+      - name: Generate Tokens
+        run: |
+          cd Submodules/ChassisTokens
+          pnpm install
+          pnpm tokens --platform ios --brand chassis --app yourapp
+      
+      - name: Build iOS App
+        run: xcodebuild -project YourApp.xcodeproj -scheme YourApp
+```
+
+## Next Steps
+
+- Learn about [token structure and naming]([[docsref:/getting-started/tokens-studio]])
+- Explore [design token categories]([[docsref:/design-tokens/color-tokens]])
+- Understand [theme customization]([[docsref:/getting-started/build-tokens]])
+- See [cross-platform consistency]([[docsref:/use-in-project/web-applications]])
