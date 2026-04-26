@@ -1,6 +1,6 @@
 *.css
 *.scss
 site/config.yml
-site/content
-vendor/
-/tokens/
+site/src/assets
+/tokens
+/vendor
