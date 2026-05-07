@@ -7707,11 +7707,11 @@
     "fontFamily": {
       "text": {
         "$type": "fontFamilies",
-        "$value": "'Helvetica Neue', 'Helvetica', Arial, system-ui, -apple-system, sans-serif"
+        "$value": "'Open Sans', system-ui, -apple-system, sans-serif"
       },
       "display": {
         "$type": "fontFamilies",
-        "$value": "'Times New Roman', Times, serif"
+        "$value": "'Bitter', Times, serif"
       },
       "html": {
         "$type": "fontFamilies",
@@ -7719,7 +7719,7 @@
       },
       "code": {
         "$type": "fontFamilies",
-        "$value": "'Courier New', Courier, monospace"
+        "$value": "'Fira Mono', Courier, monospace"
       },
       "icon": {
         "$type": "fontFamilies",
@@ -7734,7 +7734,7 @@
         },
         "strong": {
           "$type": "fontWeights",
-          "$value": "Bold"
+          "$value": "SemiBold"
         },
         "mass": {
           "$type": "fontWeights",
@@ -7752,7 +7752,7 @@
         },
         "strong": {
           "$type": "fontWeights",
-          "$value": "Bold"
+          "$value": "SemiBold"
         },
         "mass": {
           "$type": "fontWeights",
@@ -7760,7 +7760,7 @@
         },
         "elegant": {
           "$type": "fontWeights",
-          "$value": "Regular"
+          "$value": "Light"
         }
       },
       "code": {
