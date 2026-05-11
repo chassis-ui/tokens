@@ -2,8 +2,8 @@
 
 <!--
   Do not edit directly, this file was auto-generated.
-  Generated on Thu, 16 Apr 2026 16:59:40 GMT
-  Chassis - Tokens v0.1.4
+  Generated on Mon, 11 May 2026 08:38:37 GMT
+  Chassis - Tokens v0.2.0
   Copyright 2026 Ozgur Gunes
   Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
 -->
@@ -2219,7 +2219,7 @@
   <string name="typography_font_family_icon">Chassis-Icons</string>
   <string name="typography_font_weight_text_normal_weight">regular</string>
   <string name="typography_font_weight_text_normal_style">normal</string>
-  <string name="typography_font_weight_text_strong_weight">bold</string>
+  <string name="typography_font_weight_text_strong_weight">semibold</string>
   <string name="typography_font_weight_text_strong_style">normal</string>
   <string name="typography_font_weight_text_mass_weight">bold</string>
   <string name="typography_font_weight_text_mass_style">normal</string>
@@ -2227,7 +2227,7 @@
   <string name="typography_font_weight_text_elegant_style">normal</string>
   <string name="typography_font_weight_display_normal_weight">regular</string>
   <string name="typography_font_weight_display_normal_style">normal</string>
-  <string name="typography_font_weight_display_strong_weight">bold</string>
+  <string name="typography_font_weight_display_strong_weight">semibold</string>
   <string name="typography_font_weight_display_strong_style">normal</string>
   <string name="typography_font_weight_display_mass_weight">bold</string>
   <string name="typography_font_weight_display_mass_style">normal</string>
@@ -2247,7 +2247,7 @@
   <string name="typography_font_weight_html_paragraph_style">normal</string>
   <string name="typography_font_weight_html_heading_weight">bold</string>
   <string name="typography_font_weight_html_heading_style">normal</string>
-  <string name="typography_font_weight_html_cite_weight">bold</string>
+  <string name="typography_font_weight_html_cite_weight">semibold</string>
   <string name="typography_font_weight_html_cite_style">normal</string>
   <string name="typography_font_weight_html_list_weight">regular</string>
   <string name="typography_font_weight_html_list_style">normal</string>
@@ -2456,7 +2456,7 @@
   <string name="font_context_lead_text_decoration">none</string>
   <string name="font_context_lead_font_style">normal</string>
   <string name="font_context_heading_font_family">Figtree</string>
-  <string name="font_context_heading_font_weight">bold</string>
+  <string name="font_context_heading_font_weight">semibold</string>
   <dimen name="font_context_heading_line_height">40sp</dimen>
   <dimen name="font_context_heading_font_size">32sp</dimen>
   <integer name="font_context_heading_letter_spacing">0</integer>
@@ -2465,7 +2465,7 @@
   <string name="font_context_heading_text_decoration">none</string>
   <string name="font_context_heading_font_style">normal</string>
   <string name="font_context_title_medium_font_family">Figtree</string>
-  <string name="font_context_title_medium_font_weight">bold</string>
+  <string name="font_context_title_medium_font_weight">semibold</string>
   <dimen name="font_context_title_medium_line_height">28sp</dimen>
   <dimen name="font_context_title_medium_font_size">19sp</dimen>
   <integer name="font_context_title_medium_letter_spacing">0</integer>
@@ -2474,7 +2474,7 @@
   <string name="font_context_title_medium_text_decoration">none</string>
   <string name="font_context_title_medium_font_style">normal</string>
   <string name="font_context_title_large_font_family">Figtree</string>
-  <string name="font_context_title_large_font_weight">bold</string>
+  <string name="font_context_title_large_font_weight">semibold</string>
   <dimen name="font_context_title_large_line_height">32sp</dimen>
   <dimen name="font_context_title_large_font_size">22sp</dimen>
   <integer name="font_context_title_large_letter_spacing">0</integer>
@@ -2483,7 +2483,7 @@
   <string name="font_context_title_large_text_decoration">none</string>
   <string name="font_context_title_large_font_style">normal</string>
   <string name="font_context_title_small_font_family">Figtree</string>
-  <string name="font_context_title_small_font_weight">bold</string>
+  <string name="font_context_title_small_font_weight">semibold</string>
   <dimen name="font_context_title_small_line_height">24sp</dimen>
   <dimen name="font_context_title_small_font_size">16sp</dimen>
   <integer name="font_context_title_small_letter_spacing">0</integer>
@@ -2546,7 +2546,7 @@
   <string name="font_context_highlight_small_text_decoration">none</string>
   <string name="font_context_highlight_small_font_style">normal</string>
   <string name="font_context_label_medium_font_family">Figtree</string>
-  <string name="font_context_label_medium_font_weight">bold</string>
+  <string name="font_context_label_medium_font_weight">semibold</string>
   <dimen name="font_context_label_medium_line_height">20sp</dimen>
   <dimen name="font_context_label_medium_font_size">14sp</dimen>
   <integer name="font_context_label_medium_letter_spacing">0</integer>
@@ -2555,7 +2555,7 @@
   <string name="font_context_label_medium_text_decoration">none</string>
   <string name="font_context_label_medium_font_style">normal</string>
   <string name="font_context_label_large_font_family">Figtree</string>
-  <string name="font_context_label_large_font_weight">bold</string>
+  <string name="font_context_label_large_font_weight">semibold</string>
   <dimen name="font_context_label_large_line_height">24sp</dimen>
   <dimen name="font_context_label_large_font_size">16sp</dimen>
   <integer name="font_context_label_large_letter_spacing">0</integer>
@@ -2564,7 +2564,7 @@
   <string name="font_context_label_large_text_decoration">none</string>
   <string name="font_context_label_large_font_style">normal</string>
   <string name="font_context_label_small_font_family">Figtree</string>
-  <string name="font_context_label_small_font_weight">bold</string>
+  <string name="font_context_label_small_font_weight">semibold</string>
   <dimen name="font_context_label_small_line_height">18sp</dimen>
   <dimen name="font_context_label_small_font_size">12sp</dimen>
   <integer name="font_context_label_small_letter_spacing">0</integer>
@@ -2609,7 +2609,7 @@
   <string name="font_context_link_xsmall_text_decoration">underline</string>
   <string name="font_context_link_xsmall_font_style">normal</string>
   <string name="font_context_expired_large_font_family">Figtree</string>
-  <string name="font_context_expired_large_font_weight">bold</string>
+  <string name="font_context_expired_large_font_weight">semibold</string>
   <dimen name="font_context_expired_large_line_height">28sp</dimen>
   <dimen name="font_context_expired_large_font_size">19sp</dimen>
   <integer name="font_context_expired_large_letter_spacing">0</integer>
@@ -2618,7 +2618,7 @@
   <string name="font_context_expired_large_text_decoration">line-through</string>
   <string name="font_context_expired_large_font_style">normal</string>
   <string name="font_context_expired_medium_font_family">Figtree</string>
-  <string name="font_context_expired_medium_font_weight">bold</string>
+  <string name="font_context_expired_medium_font_weight">semibold</string>
   <dimen name="font_context_expired_medium_line_height">24sp</dimen>
   <dimen name="font_context_expired_medium_font_size">16sp</dimen>
   <integer name="font_context_expired_medium_letter_spacing">0</integer>
@@ -2627,7 +2627,7 @@
   <string name="font_context_expired_medium_text_decoration">line-through</string>
   <string name="font_context_expired_medium_font_style">normal</string>
   <string name="font_context_expired_small_font_family">Figtree</string>
-  <string name="font_context_expired_small_font_weight">bold</string>
+  <string name="font_context_expired_small_font_weight">semibold</string>
   <dimen name="font_context_expired_small_line_height">20sp</dimen>
   <dimen name="font_context_expired_small_font_size">14sp</dimen>
   <integer name="font_context_expired_small_letter_spacing">0</integer>
@@ -2672,7 +2672,7 @@
   <string name="font_text_5xlarge_normal_text_decoration">none</string>
   <string name="font_text_5xlarge_normal_font_style">normal</string>
   <string name="font_text_5xlarge_strong_font_family">Figtree</string>
-  <string name="font_text_5xlarge_strong_font_weight">bold</string>
+  <string name="font_text_5xlarge_strong_font_weight">semibold</string>
   <dimen name="font_text_5xlarge_strong_line_height">56sp</dimen>
   <dimen name="font_text_5xlarge_strong_font_size">44sp</dimen>
   <integer name="font_text_5xlarge_strong_letter_spacing">0</integer>
@@ -2708,7 +2708,7 @@
   <string name="font_text_4xlarge_normal_text_decoration">none</string>
   <string name="font_text_4xlarge_normal_font_style">normal</string>
   <string name="font_text_4xlarge_strong_font_family">Figtree</string>
-  <string name="font_text_4xlarge_strong_font_weight">bold</string>
+  <string name="font_text_4xlarge_strong_font_weight">semibold</string>
   <dimen name="font_text_4xlarge_strong_line_height">48sp</dimen>
   <dimen name="font_text_4xlarge_strong_font_size">38sp</dimen>
   <integer name="font_text_4xlarge_strong_letter_spacing">0</integer>
@@ -2744,7 +2744,7 @@
   <string name="font_text_3xlarge_normal_text_decoration">none</string>
   <string name="font_text_3xlarge_normal_font_style">normal</string>
   <string name="font_text_3xlarge_strong_font_family">Figtree</string>
-  <string name="font_text_3xlarge_strong_font_weight">bold</string>
+  <string name="font_text_3xlarge_strong_font_weight">semibold</string>
   <dimen name="font_text_3xlarge_strong_line_height">40sp</dimen>
   <dimen name="font_text_3xlarge_strong_font_size">32sp</dimen>
   <integer name="font_text_3xlarge_strong_letter_spacing">0</integer>
@@ -2780,7 +2780,7 @@
   <string name="font_text_2xlarge_normal_text_decoration">none</string>
   <string name="font_text_2xlarge_normal_font_style">normal</string>
   <string name="font_text_2xlarge_strong_font_family">Figtree</string>
-  <string name="font_text_2xlarge_strong_font_weight">bold</string>
+  <string name="font_text_2xlarge_strong_font_weight">semibold</string>
   <dimen name="font_text_2xlarge_strong_line_height">36sp</dimen>
   <dimen name="font_text_2xlarge_strong_font_size">26sp</dimen>
   <integer name="font_text_2xlarge_strong_letter_spacing">0</integer>
@@ -2816,7 +2816,7 @@
   <string name="font_text_xlarge_normal_text_decoration">none</string>
   <string name="font_text_xlarge_normal_font_style">normal</string>
   <string name="font_text_xlarge_strong_font_family">Figtree</string>
-  <string name="font_text_xlarge_strong_font_weight">bold</string>
+  <string name="font_text_xlarge_strong_font_weight">semibold</string>
   <dimen name="font_text_xlarge_strong_line_height">32sp</dimen>
   <dimen name="font_text_xlarge_strong_font_size">22sp</dimen>
   <integer name="font_text_xlarge_strong_letter_spacing">0</integer>
@@ -2852,7 +2852,7 @@
   <string name="font_text_large_normal_text_decoration">none</string>
   <string name="font_text_large_normal_font_style">normal</string>
   <string name="font_text_large_strong_font_family">Figtree</string>
-  <string name="font_text_large_strong_font_weight">bold</string>
+  <string name="font_text_large_strong_font_weight">semibold</string>
   <dimen name="font_text_large_strong_line_height">28sp</dimen>
   <dimen name="font_text_large_strong_font_size">19sp</dimen>
   <integer name="font_text_large_strong_letter_spacing">0</integer>
@@ -2888,7 +2888,7 @@
   <string name="font_text_medium_normal_text_decoration">none</string>
   <string name="font_text_medium_normal_font_style">normal</string>
   <string name="font_text_medium_strong_font_family">Figtree</string>
-  <string name="font_text_medium_strong_font_weight">bold</string>
+  <string name="font_text_medium_strong_font_weight">semibold</string>
   <dimen name="font_text_medium_strong_line_height">24sp</dimen>
   <dimen name="font_text_medium_strong_font_size">16sp</dimen>
   <integer name="font_text_medium_strong_letter_spacing">0</integer>
@@ -2924,7 +2924,7 @@
   <string name="font_text_small_normal_text_decoration">none</string>
   <string name="font_text_small_normal_font_style">normal</string>
   <string name="font_text_small_strong_font_family">Figtree</string>
-  <string name="font_text_small_strong_font_weight">bold</string>
+  <string name="font_text_small_strong_font_weight">semibold</string>
   <dimen name="font_text_small_strong_line_height">20sp</dimen>
   <dimen name="font_text_small_strong_font_size">14sp</dimen>
   <integer name="font_text_small_strong_letter_spacing">0</integer>
@@ -2960,7 +2960,7 @@
   <string name="font_text_xsmall_normal_text_decoration">none</string>
   <string name="font_text_xsmall_normal_font_style">normal</string>
   <string name="font_text_xsmall_strong_font_family">Figtree</string>
-  <string name="font_text_xsmall_strong_font_weight">bold</string>
+  <string name="font_text_xsmall_strong_font_weight">semibold</string>
   <dimen name="font_text_xsmall_strong_line_height">18sp</dimen>
   <dimen name="font_text_xsmall_strong_font_size">12sp</dimen>
   <integer name="font_text_xsmall_strong_letter_spacing">0</integer>
@@ -2996,7 +2996,7 @@
   <string name="font_text_2xsmall_normal_text_decoration">none</string>
   <string name="font_text_2xsmall_normal_font_style">normal</string>
   <string name="font_text_2xsmall_strong_font_family">Figtree</string>
-  <string name="font_text_2xsmall_strong_font_weight">bold</string>
+  <string name="font_text_2xsmall_strong_font_weight">semibold</string>
   <dimen name="font_text_2xsmall_strong_line_height">14sp</dimen>
   <dimen name="font_text_2xsmall_strong_font_size">10sp</dimen>
   <integer name="font_text_2xsmall_strong_letter_spacing">0</integer>
@@ -3032,7 +3032,7 @@
   <string name="font_display_5xlarge_normal_text_decoration">none</string>
   <string name="font_display_5xlarge_normal_font_style">normal</string>
   <string name="font_display_5xlarge_strong_font_family">Lora</string>
-  <string name="font_display_5xlarge_strong_font_weight">bold</string>
+  <string name="font_display_5xlarge_strong_font_weight">semibold</string>
   <dimen name="font_display_5xlarge_strong_line_height">56sp</dimen>
   <dimen name="font_display_5xlarge_strong_font_size">44sp</dimen>
   <integer name="font_display_5xlarge_strong_letter_spacing">0</integer>
@@ -3068,7 +3068,7 @@
   <string name="font_display_4xlarge_normal_text_decoration">none</string>
   <string name="font_display_4xlarge_normal_font_style">normal</string>
   <string name="font_display_4xlarge_strong_font_family">Lora</string>
-  <string name="font_display_4xlarge_strong_font_weight">bold</string>
+  <string name="font_display_4xlarge_strong_font_weight">semibold</string>
   <dimen name="font_display_4xlarge_strong_line_height">48sp</dimen>
   <dimen name="font_display_4xlarge_strong_font_size">38sp</dimen>
   <integer name="font_display_4xlarge_strong_letter_spacing">0</integer>
@@ -3104,7 +3104,7 @@
   <string name="font_display_3xlarge_normal_text_decoration">none</string>
   <string name="font_display_3xlarge_normal_font_style">normal</string>
   <string name="font_display_3xlarge_strong_font_family">Lora</string>
-  <string name="font_display_3xlarge_strong_font_weight">bold</string>
+  <string name="font_display_3xlarge_strong_font_weight">semibold</string>
   <dimen name="font_display_3xlarge_strong_line_height">40sp</dimen>
   <dimen name="font_display_3xlarge_strong_font_size">32sp</dimen>
   <integer name="font_display_3xlarge_strong_letter_spacing">0</integer>
@@ -3140,7 +3140,7 @@
   <string name="font_display_2xlarge_normal_text_decoration">none</string>
   <string name="font_display_2xlarge_normal_font_style">normal</string>
   <string name="font_display_2xlarge_strong_font_family">Lora</string>
-  <string name="font_display_2xlarge_strong_font_weight">bold</string>
+  <string name="font_display_2xlarge_strong_font_weight">semibold</string>
   <dimen name="font_display_2xlarge_strong_line_height">36sp</dimen>
   <dimen name="font_display_2xlarge_strong_font_size">26sp</dimen>
   <integer name="font_display_2xlarge_strong_letter_spacing">0</integer>
@@ -3176,7 +3176,7 @@
   <string name="font_display_xlarge_normal_text_decoration">none</string>
   <string name="font_display_xlarge_normal_font_style">normal</string>
   <string name="font_display_xlarge_strong_font_family">Lora</string>
-  <string name="font_display_xlarge_strong_font_weight">bold</string>
+  <string name="font_display_xlarge_strong_font_weight">semibold</string>
   <dimen name="font_display_xlarge_strong_line_height">32sp</dimen>
   <dimen name="font_display_xlarge_strong_font_size">22sp</dimen>
   <integer name="font_display_xlarge_strong_letter_spacing">0</integer>
@@ -3212,7 +3212,7 @@
   <string name="font_display_large_normal_text_decoration">none</string>
   <string name="font_display_large_normal_font_style">normal</string>
   <string name="font_display_large_strong_font_family">Lora</string>
-  <string name="font_display_large_strong_font_weight">bold</string>
+  <string name="font_display_large_strong_font_weight">semibold</string>
   <dimen name="font_display_large_strong_line_height">28sp</dimen>
   <dimen name="font_display_large_strong_font_size">19sp</dimen>
   <integer name="font_display_large_strong_letter_spacing">0</integer>
@@ -3248,7 +3248,7 @@
   <string name="font_display_medium_normal_text_decoration">none</string>
   <string name="font_display_medium_normal_font_style">normal</string>
   <string name="font_display_medium_strong_font_family">Lora</string>
-  <string name="font_display_medium_strong_font_weight">bold</string>
+  <string name="font_display_medium_strong_font_weight">semibold</string>
   <dimen name="font_display_medium_strong_line_height">24sp</dimen>
   <dimen name="font_display_medium_strong_font_size">16sp</dimen>
   <integer name="font_display_medium_strong_letter_spacing">0</integer>
@@ -3284,7 +3284,7 @@
   <string name="font_display_small_normal_text_decoration">none</string>
   <string name="font_display_small_normal_font_style">normal</string>
   <string name="font_display_small_strong_font_family">Lora</string>
-  <string name="font_display_small_strong_font_weight">bold</string>
+  <string name="font_display_small_strong_font_weight">semibold</string>
   <dimen name="font_display_small_strong_line_height">20sp</dimen>
   <dimen name="font_display_small_strong_font_size">14sp</dimen>
   <integer name="font_display_small_strong_letter_spacing">0</integer>
@@ -3320,7 +3320,7 @@
   <string name="font_display_xsmall_normal_text_decoration">none</string>
   <string name="font_display_xsmall_normal_font_style">normal</string>
   <string name="font_display_xsmall_strong_font_family">Lora</string>
-  <string name="font_display_xsmall_strong_font_weight">bold</string>
+  <string name="font_display_xsmall_strong_font_weight">semibold</string>
   <dimen name="font_display_xsmall_strong_line_height">18sp</dimen>
   <dimen name="font_display_xsmall_strong_font_size">12sp</dimen>
   <integer name="font_display_xsmall_strong_letter_spacing">0</integer>
@@ -3356,7 +3356,7 @@
   <string name="font_display_2xsmall_normal_text_decoration">none</string>
   <string name="font_display_2xsmall_normal_font_style">normal</string>
   <string name="font_display_2xsmall_strong_font_family">Lora</string>
-  <string name="font_display_2xsmall_strong_font_weight">bold</string>
+  <string name="font_display_2xsmall_strong_font_weight">semibold</string>
   <dimen name="font_display_2xsmall_strong_line_height">14sp</dimen>
   <dimen name="font_display_2xsmall_strong_font_size">10sp</dimen>
   <integer name="font_display_2xsmall_strong_letter_spacing">0</integer>
@@ -3482,7 +3482,7 @@
   <string name="font_html_list_text_decoration">none</string>
   <string name="font_html_list_font_style">normal</string>
   <string name="font_html_cite_font_family">Figtree</string>
-  <string name="font_html_cite_font_weight">bold</string>
+  <string name="font_html_cite_font_weight">semibold</string>
   <dimen name="font_html_cite_line_height">20sp</dimen>
   <dimen name="font_html_cite_font_size">14sp</dimen>
   <integer name="font_html_cite_letter_spacing">0</integer>
@@ -3545,7 +3545,7 @@
   <string name="font_code_small_strong_text_decoration">none</string>
   <string name="font_code_small_strong_font_style">normal</string>
   <string name="font_accordion_medium_title_font_family">Figtree</string>
-  <string name="font_accordion_medium_title_font_weight">bold</string>
+  <string name="font_accordion_medium_title_font_weight">semibold</string>
   <dimen name="font_accordion_medium_title_line_height">24sp</dimen>
   <dimen name="font_accordion_medium_title_font_size">16sp</dimen>
   <integer name="font_accordion_medium_title_letter_spacing">0</integer>
@@ -3563,7 +3563,7 @@
   <string name="font_accordion_medium_body_text_decoration">none</string>
   <string name="font_accordion_medium_body_font_style">normal</string>
   <string name="font_accordion_large_title_font_family">Figtree</string>
-  <string name="font_accordion_large_title_font_weight">bold</string>
+  <string name="font_accordion_large_title_font_weight">semibold</string>
   <dimen name="font_accordion_large_title_line_height">28sp</dimen>
   <dimen name="font_accordion_large_title_font_size">19sp</dimen>
   <integer name="font_accordion_large_title_letter_spacing">0</integer>
@@ -3581,7 +3581,7 @@
   <string name="font_accordion_large_body_text_decoration">none</string>
   <string name="font_accordion_large_body_font_style">normal</string>
   <string name="font_accordion_small_title_font_family">Figtree</string>
-  <string name="font_accordion_small_title_font_weight">bold</string>
+  <string name="font_accordion_small_title_font_weight">semibold</string>
   <dimen name="font_accordion_small_title_line_height">20sp</dimen>
   <dimen name="font_accordion_small_title_font_size">14sp</dimen>
   <integer name="font_accordion_small_title_letter_spacing">0</integer>
@@ -3599,7 +3599,7 @@
   <string name="font_accordion_small_body_text_decoration">none</string>
   <string name="font_accordion_small_body_font_style">normal</string>
   <string name="font_alert_large_title_font_family">Figtree</string>
-  <string name="font_alert_large_title_font_weight">bold</string>
+  <string name="font_alert_large_title_font_weight">semibold</string>
   <dimen name="font_alert_large_title_line_height">32sp</dimen>
   <dimen name="font_alert_large_title_font_size">22sp</dimen>
   <integer name="font_alert_large_title_letter_spacing">0</integer>
@@ -3617,7 +3617,7 @@
   <string name="font_alert_large_body_text_decoration">none</string>
   <string name="font_alert_large_body_font_style">normal</string>
   <string name="font_alert_small_title_font_family">Figtree</string>
-  <string name="font_alert_small_title_font_weight">bold</string>
+  <string name="font_alert_small_title_font_weight">semibold</string>
   <dimen name="font_alert_small_title_line_height">28sp</dimen>
   <dimen name="font_alert_small_title_font_size">19sp</dimen>
   <integer name="font_alert_small_title_letter_spacing">0</integer>
@@ -3662,7 +3662,7 @@
   <string name="font_assist_small_text_decoration">none</string>
   <string name="font_assist_small_font_style">normal</string>
   <string name="font_badge_medium_font_family">Figtree</string>
-  <string name="font_badge_medium_font_weight">bold</string>
+  <string name="font_badge_medium_font_weight">semibold</string>
   <dimen name="font_badge_medium_line_height">20sp</dimen>
   <dimen name="font_badge_medium_font_size">14sp</dimen>
   <integer name="font_badge_medium_letter_spacing">0</integer>
@@ -3671,7 +3671,7 @@
   <string name="font_badge_medium_text_decoration">none</string>
   <string name="font_badge_medium_font_style">normal</string>
   <string name="font_badge_large_font_family">Figtree</string>
-  <string name="font_badge_large_font_weight">bold</string>
+  <string name="font_badge_large_font_weight">semibold</string>
   <dimen name="font_badge_large_line_height">24sp</dimen>
   <dimen name="font_badge_large_font_size">16sp</dimen>
   <integer name="font_badge_large_letter_spacing">0</integer>
@@ -3680,7 +3680,7 @@
   <string name="font_badge_large_text_decoration">none</string>
   <string name="font_badge_large_font_style">normal</string>
   <string name="font_badge_small_font_family">Figtree</string>
-  <string name="font_badge_small_font_weight">bold</string>
+  <string name="font_badge_small_font_weight">semibold</string>
   <dimen name="font_badge_small_line_height">18sp</dimen>
   <dimen name="font_badge_small_font_size">12sp</dimen>
   <integer name="font_badge_small_letter_spacing">0</integer>
@@ -3698,7 +3698,7 @@
   <string name="font_breadcrumb_page_text_decoration">none</string>
   <string name="font_breadcrumb_page_font_style">normal</string>
   <string name="font_button_medium_font_family">Figtree</string>
-  <string name="font_button_medium_font_weight">bold</string>
+  <string name="font_button_medium_font_weight">semibold</string>
   <dimen name="font_button_medium_line_height">24sp</dimen>
   <dimen name="font_button_medium_font_size">16sp</dimen>
   <integer name="font_button_medium_letter_spacing">0</integer>
@@ -3707,7 +3707,7 @@
   <string name="font_button_medium_text_decoration">none</string>
   <string name="font_button_medium_font_style">normal</string>
   <string name="font_button_large_font_family">Figtree</string>
-  <string name="font_button_large_font_weight">bold</string>
+  <string name="font_button_large_font_weight">semibold</string>
   <dimen name="font_button_large_line_height">28sp</dimen>
   <dimen name="font_button_large_font_size">19sp</dimen>
   <integer name="font_button_large_letter_spacing">0</integer>
@@ -3716,7 +3716,7 @@
   <string name="font_button_large_text_decoration">none</string>
   <string name="font_button_large_font_style">normal</string>
   <string name="font_button_small_font_family">Figtree</string>
-  <string name="font_button_small_font_weight">bold</string>
+  <string name="font_button_small_font_weight">semibold</string>
   <dimen name="font_button_small_line_height">20sp</dimen>
   <dimen name="font_button_small_font_size">14sp</dimen>
   <integer name="font_button_small_letter_spacing">0</integer>
@@ -3725,7 +3725,7 @@
   <string name="font_button_small_text_decoration">none</string>
   <string name="font_button_small_font_style">normal</string>
   <string name="font_chip_medium_font_family">Figtree</string>
-  <string name="font_chip_medium_font_weight">bold</string>
+  <string name="font_chip_medium_font_weight">semibold</string>
   <dimen name="font_chip_medium_line_height">20sp</dimen>
   <dimen name="font_chip_medium_font_size">14sp</dimen>
   <integer name="font_chip_medium_letter_spacing">0</integer>
@@ -3734,7 +3734,7 @@
   <string name="font_chip_medium_text_decoration">none</string>
   <string name="font_chip_medium_font_style">normal</string>
   <string name="font_chip_large_font_family">Figtree</string>
-  <string name="font_chip_large_font_weight">bold</string>
+  <string name="font_chip_large_font_weight">semibold</string>
   <dimen name="font_chip_large_line_height">24sp</dimen>
   <dimen name="font_chip_large_font_size">16sp</dimen>
   <integer name="font_chip_large_letter_spacing">0</integer>
@@ -3743,7 +3743,7 @@
   <string name="font_chip_large_text_decoration">none</string>
   <string name="font_chip_large_font_style">normal</string>
   <string name="font_chip_small_font_family">Figtree</string>
-  <string name="font_chip_small_font_weight">bold</string>
+  <string name="font_chip_small_font_weight">semibold</string>
   <dimen name="font_chip_small_line_height">18sp</dimen>
   <dimen name="font_chip_small_font_size">12sp</dimen>
   <integer name="font_chip_small_letter_spacing">0</integer>
@@ -3761,7 +3761,7 @@
   <string name="font_date_picker_day_text_decoration">none</string>
   <string name="font_date_picker_day_font_style">normal</string>
   <string name="font_date_picker_today_font_family">Figtree</string>
-  <string name="font_date_picker_today_font_weight">bold</string>
+  <string name="font_date_picker_today_font_weight">semibold</string>
   <dimen name="font_date_picker_today_line_height">20sp</dimen>
   <dimen name="font_date_picker_today_font_size">14sp</dimen>
   <integer name="font_date_picker_today_letter_spacing">0</integer>
@@ -3770,7 +3770,7 @@
   <string name="font_date_picker_today_text_decoration">none</string>
   <string name="font_date_picker_today_font_style">normal</string>
   <string name="font_date_picker_label_font_family">Figtree</string>
-  <string name="font_date_picker_label_font_weight">bold</string>
+  <string name="font_date_picker_label_font_weight">semibold</string>
   <dimen name="font_date_picker_label_line_height">20sp</dimen>
   <dimen name="font_date_picker_label_font_size">14sp</dimen>
   <integer name="font_date_picker_label_letter_spacing">0</integer>
@@ -3779,7 +3779,7 @@
   <string name="font_date_picker_label_text_decoration">none</string>
   <string name="font_date_picker_label_font_style">normal</string>
   <string name="font_dropdown_title_font_family">Figtree</string>
-  <string name="font_dropdown_title_font_weight">bold</string>
+  <string name="font_dropdown_title_font_weight">semibold</string>
   <dimen name="font_dropdown_title_line_height">20sp</dimen>
   <dimen name="font_dropdown_title_font_size">14sp</dimen>
   <integer name="font_dropdown_title_letter_spacing">0</integer>
@@ -3797,7 +3797,7 @@
   <string name="font_dropdown_item_text_decoration">none</string>
   <string name="font_dropdown_item_font_style">normal</string>
   <string name="font_form_input_medium_label_font_family">Figtree</string>
-  <string name="font_form_input_medium_label_font_weight">bold</string>
+  <string name="font_form_input_medium_label_font_weight">semibold</string>
   <dimen name="font_form_input_medium_label_line_height">24sp</dimen>
   <dimen name="font_form_input_medium_label_font_size">16sp</dimen>
   <integer name="font_form_input_medium_label_letter_spacing">0</integer>
@@ -3806,7 +3806,7 @@
   <string name="font_form_input_medium_label_text_decoration">none</string>
   <string name="font_form_input_medium_label_font_style">normal</string>
   <string name="font_form_input_large_label_font_family">Figtree</string>
-  <string name="font_form_input_large_label_font_weight">bold</string>
+  <string name="font_form_input_large_label_font_weight">semibold</string>
   <dimen name="font_form_input_large_label_line_height">28sp</dimen>
   <dimen name="font_form_input_large_label_font_size">19sp</dimen>
   <integer name="font_form_input_large_label_letter_spacing">0</integer>
@@ -3815,7 +3815,7 @@
   <string name="font_form_input_large_label_text_decoration">none</string>
   <string name="font_form_input_large_label_font_style">normal</string>
   <string name="font_form_input_small_label_font_family">Figtree</string>
-  <string name="font_form_input_small_label_font_weight">bold</string>
+  <string name="font_form_input_small_label_font_weight">semibold</string>
   <dimen name="font_form_input_small_label_line_height">20sp</dimen>
   <dimen name="font_form_input_small_label_font_size">14sp</dimen>
   <integer name="font_form_input_small_label_letter_spacing">0</integer>
@@ -3869,7 +3869,7 @@
   <string name="font_form_input_floating_label_text_decoration">none</string>
   <string name="font_form_input_floating_label_font_style">normal</string>
   <string name="font_modal_large_title_font_family">Figtree</string>
-  <string name="font_modal_large_title_font_weight">bold</string>
+  <string name="font_modal_large_title_font_weight">semibold</string>
   <dimen name="font_modal_large_title_line_height">32sp</dimen>
   <dimen name="font_modal_large_title_font_size">22sp</dimen>
   <integer name="font_modal_large_title_letter_spacing">0</integer>
@@ -3887,7 +3887,7 @@
   <string name="font_modal_large_subtitle_text_decoration">none</string>
   <string name="font_modal_large_subtitle_font_style">normal</string>
   <string name="font_modal_medium_title_font_family">Figtree</string>
-  <string name="font_modal_medium_title_font_weight">bold</string>
+  <string name="font_modal_medium_title_font_weight">semibold</string>
   <dimen name="font_modal_medium_title_line_height">28sp</dimen>
   <dimen name="font_modal_medium_title_font_size">19sp</dimen>
   <integer name="font_modal_medium_title_letter_spacing">0</integer>
@@ -3905,7 +3905,7 @@
   <string name="font_modal_medium_subtitle_text_decoration">none</string>
   <string name="font_modal_medium_subtitle_font_style">normal</string>
   <string name="font_modal_small_title_font_family">Figtree</string>
-  <string name="font_modal_small_title_font_weight">bold</string>
+  <string name="font_modal_small_title_font_weight">semibold</string>
   <dimen name="font_modal_small_title_line_height">24sp</dimen>
   <dimen name="font_modal_small_title_font_size">16sp</dimen>
   <integer name="font_modal_small_title_letter_spacing">0</integer>
@@ -3923,7 +3923,7 @@
   <string name="font_modal_small_subtitle_text_decoration">none</string>
   <string name="font_modal_small_subtitle_font_style">normal</string>
   <string name="font_notification_title_font_family">Figtree</string>
-  <string name="font_notification_title_font_weight">bold</string>
+  <string name="font_notification_title_font_weight">semibold</string>
   <dimen name="font_notification_title_line_height">28sp</dimen>
   <dimen name="font_notification_title_font_size">19sp</dimen>
   <integer name="font_notification_title_letter_spacing">0</integer>
@@ -3941,7 +3941,7 @@
   <string name="font_notification_message_text_decoration">none</string>
   <string name="font_notification_message_font_style">normal</string>
   <string name="font_page_large_title_font_family">Figtree</string>
-  <string name="font_page_large_title_font_weight">bold</string>
+  <string name="font_page_large_title_font_weight">semibold</string>
   <dimen name="font_page_large_title_line_height">36sp</dimen>
   <dimen name="font_page_large_title_font_size">26sp</dimen>
   <integer name="font_page_large_title_letter_spacing">0</integer>
@@ -3959,7 +3959,7 @@
   <string name="font_page_large_subtitle_text_decoration">none</string>
   <string name="font_page_large_subtitle_font_style">normal</string>
   <string name="font_page_medium_title_font_family">Figtree</string>
-  <string name="font_page_medium_title_font_weight">bold</string>
+  <string name="font_page_medium_title_font_weight">semibold</string>
   <dimen name="font_page_medium_title_line_height">36sp</dimen>
   <dimen name="font_page_medium_title_font_size">26sp</dimen>
   <integer name="font_page_medium_title_letter_spacing">0</integer>
@@ -3977,7 +3977,7 @@
   <string name="font_page_medium_subtitle_text_decoration">none</string>
   <string name="font_page_medium_subtitle_font_style">normal</string>
   <string name="font_page_small_title_font_family">Figtree</string>
-  <string name="font_page_small_title_font_weight">bold</string>
+  <string name="font_page_small_title_font_weight">semibold</string>
   <dimen name="font_page_small_title_line_height">32sp</dimen>
   <dimen name="font_page_small_title_font_size">22sp</dimen>
   <integer name="font_page_small_title_letter_spacing">0</integer>
@@ -3995,7 +3995,7 @@
   <string name="font_page_small_subtitle_text_decoration">none</string>
   <string name="font_page_small_subtitle_font_style">normal</string>
   <string name="font_section_header_large_font_family">Figtree</string>
-  <string name="font_section_header_large_font_weight">bold</string>
+  <string name="font_section_header_large_font_weight">semibold</string>
   <dimen name="font_section_header_large_line_height">28sp</dimen>
   <dimen name="font_section_header_large_font_size">19sp</dimen>
   <integer name="font_section_header_large_letter_spacing">0</integer>
@@ -4004,7 +4004,7 @@
   <string name="font_section_header_large_text_decoration">none</string>
   <string name="font_section_header_large_font_style">normal</string>
   <string name="font_section_header_medium_font_family">Figtree</string>
-  <string name="font_section_header_medium_font_weight">bold</string>
+  <string name="font_section_header_medium_font_weight">semibold</string>
   <dimen name="font_section_header_medium_line_height">24sp</dimen>
   <dimen name="font_section_header_medium_font_size">16sp</dimen>
   <integer name="font_section_header_medium_letter_spacing">0</integer>
@@ -4013,7 +4013,7 @@
   <string name="font_section_header_medium_text_decoration">none</string>
   <string name="font_section_header_medium_font_style">normal</string>
   <string name="font_section_header_small_font_family">Figtree</string>
-  <string name="font_section_header_small_font_weight">bold</string>
+  <string name="font_section_header_small_font_weight">semibold</string>
   <dimen name="font_section_header_small_line_height">20sp</dimen>
   <dimen name="font_section_header_small_font_size">14sp</dimen>
   <integer name="font_section_header_small_letter_spacing">0</integer>
@@ -4022,7 +4022,7 @@
   <string name="font_section_header_small_text_decoration">none</string>
   <string name="font_section_header_small_font_style">normal</string>
   <string name="font_tab_medium_font_family">Figtree</string>
-  <string name="font_tab_medium_font_weight">bold</string>
+  <string name="font_tab_medium_font_weight">semibold</string>
   <dimen name="font_tab_medium_line_height">24sp</dimen>
   <dimen name="font_tab_medium_font_size">16sp</dimen>
   <integer name="font_tab_medium_letter_spacing">0</integer>
@@ -4031,7 +4031,7 @@
   <string name="font_tab_medium_text_decoration">none</string>
   <string name="font_tab_medium_font_style">normal</string>
   <string name="font_tab_large_font_family">Figtree</string>
-  <string name="font_tab_large_font_weight">bold</string>
+  <string name="font_tab_large_font_weight">semibold</string>
   <dimen name="font_tab_large_line_height">28sp</dimen>
   <dimen name="font_tab_large_font_size">19sp</dimen>
   <integer name="font_tab_large_letter_spacing">0</integer>
@@ -4040,7 +4040,7 @@
   <string name="font_tab_large_text_decoration">none</string>
   <string name="font_tab_large_font_style">normal</string>
   <string name="font_tab_small_font_family">Figtree</string>
-  <string name="font_tab_small_font_weight">bold</string>
+  <string name="font_tab_small_font_weight">semibold</string>
   <dimen name="font_tab_small_line_height">20sp</dimen>
   <dimen name="font_tab_small_font_size">14sp</dimen>
   <integer name="font_tab_small_letter_spacing">0</integer>
@@ -4058,7 +4058,7 @@
   <string name="font_table_data_text_text_decoration">none</string>
   <string name="font_table_data_text_font_style">normal</string>
   <string name="font_table_head_text_font_family">Figtree</string>
-  <string name="font_table_head_text_font_weight">bold</string>
+  <string name="font_table_head_text_font_weight">semibold</string>
   <dimen name="font_table_head_text_line_height">20sp</dimen>
   <dimen name="font_table_head_text_font_size">14sp</dimen>
   <integer name="font_table_head_text_letter_spacing">0</integer>
