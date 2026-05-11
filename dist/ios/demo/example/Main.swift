@@ -4,8 +4,8 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Thu, 16 Apr 2026 16:59:39 GMT
-// Chassis - Tokens v0.1.4
+// Generated on Mon, 11 May 2026 08:38:37 GMT
+// Chassis - Tokens v0.2.0
 // Copyright 2026 Ozgur Gunes
 // Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
 
@@ -2223,7 +2223,7 @@ public class ChassisTokens {
     @objc public static let TypographyFontFamilyIcon = "Chassis-Icons"
     @objc public static let TypographyFontWeightTextNormalWeight = "regular"
     @objc public static let TypographyFontWeightTextNormalStyle = "normal"
-    @objc public static let TypographyFontWeightTextStrongWeight = "bold"
+    @objc public static let TypographyFontWeightTextStrongWeight = "semibold"
     @objc public static let TypographyFontWeightTextStrongStyle = "normal"
     @objc public static let TypographyFontWeightTextMassWeight = "bold"
     @objc public static let TypographyFontWeightTextMassStyle = "normal"
@@ -2231,7 +2231,7 @@ public class ChassisTokens {
     @objc public static let TypographyFontWeightTextElegantStyle = "normal"
     @objc public static let TypographyFontWeightDisplayNormalWeight = "regular"
     @objc public static let TypographyFontWeightDisplayNormalStyle = "normal"
-    @objc public static let TypographyFontWeightDisplayStrongWeight = "bold"
+    @objc public static let TypographyFontWeightDisplayStrongWeight = "semibold"
     @objc public static let TypographyFontWeightDisplayStrongStyle = "normal"
     @objc public static let TypographyFontWeightDisplayMassWeight = "bold"
     @objc public static let TypographyFontWeightDisplayMassStyle = "normal"
@@ -2251,7 +2251,7 @@ public class ChassisTokens {
     @objc public static let TypographyFontWeightHtmlParagraphStyle = "normal"
     @objc public static let TypographyFontWeightHtmlHeadingWeight = "bold"
     @objc public static let TypographyFontWeightHtmlHeadingStyle = "normal"
-    @objc public static let TypographyFontWeightHtmlCiteWeight = "bold"
+    @objc public static let TypographyFontWeightHtmlCiteWeight = "semibold"
     @objc public static let TypographyFontWeightHtmlCiteStyle = "normal"
     @objc public static let TypographyFontWeightHtmlListWeight = "regular"
     @objc public static let TypographyFontWeightHtmlListStyle = "normal"
@@ -2460,7 +2460,7 @@ public class ChassisTokens {
     @objc public static let FontContextLeadTextDecoration = "none"
     @objc public static let FontContextLeadFontStyle = "normal"
     @objc public static let FontContextHeadingFontFamily = "Figtree"
-    @objc public static let FontContextHeadingFontWeight = "bold"
+    @objc public static let FontContextHeadingFontWeight = "semibold"
     @objc public static let FontContextHeadingLineHeight = CGFloat(40)
     @objc public static let FontContextHeadingFontSize = CGFloat(32)
     @objc public static let FontContextHeadingLetterSpacing = CGFloat(0)
@@ -2469,7 +2469,7 @@ public class ChassisTokens {
     @objc public static let FontContextHeadingTextDecoration = "none"
     @objc public static let FontContextHeadingFontStyle = "normal"
     @objc public static let FontContextTitleMediumFontFamily = "Figtree"
-    @objc public static let FontContextTitleMediumFontWeight = "bold"
+    @objc public static let FontContextTitleMediumFontWeight = "semibold"
     @objc public static let FontContextTitleMediumLineHeight = CGFloat(28)
     @objc public static let FontContextTitleMediumFontSize = CGFloat(19)
     @objc public static let FontContextTitleMediumLetterSpacing = CGFloat(0)
@@ -2478,7 +2478,7 @@ public class ChassisTokens {
     @objc public static let FontContextTitleMediumTextDecoration = "none"
     @objc public static let FontContextTitleMediumFontStyle = "normal"
     @objc public static let FontContextTitleLargeFontFamily = "Figtree"
-    @objc public static let FontContextTitleLargeFontWeight = "bold"
+    @objc public static let FontContextTitleLargeFontWeight = "semibold"
     @objc public static let FontContextTitleLargeLineHeight = CGFloat(32)
     @objc public static let FontContextTitleLargeFontSize = CGFloat(22)
     @objc public static let FontContextTitleLargeLetterSpacing = CGFloat(0)
@@ -2487,7 +2487,7 @@ public class ChassisTokens {
     @objc public static let FontContextTitleLargeTextDecoration = "none"
     @objc public static let FontContextTitleLargeFontStyle = "normal"
     @objc public static let FontContextTitleSmallFontFamily = "Figtree"
-    @objc public static let FontContextTitleSmallFontWeight = "bold"
+    @objc public static let FontContextTitleSmallFontWeight = "semibold"
     @objc public static let FontContextTitleSmallLineHeight = CGFloat(24)
     @objc public static let FontContextTitleSmallFontSize = CGFloat(16)
     @objc public static let FontContextTitleSmallLetterSpacing = CGFloat(0)
@@ -2550,7 +2550,7 @@ public class ChassisTokens {
     @objc public static let FontContextHighlightSmallTextDecoration = "none"
     @objc public static let FontContextHighlightSmallFontStyle = "normal"
     @objc public static let FontContextLabelMediumFontFamily = "Figtree"
-    @objc public static let FontContextLabelMediumFontWeight = "bold"
+    @objc public static let FontContextLabelMediumFontWeight = "semibold"
     @objc public static let FontContextLabelMediumLineHeight = CGFloat(20)
     @objc public static let FontContextLabelMediumFontSize = CGFloat(14)
     @objc public static let FontContextLabelMediumLetterSpacing = CGFloat(0)
@@ -2559,7 +2559,7 @@ public class ChassisTokens {
     @objc public static let FontContextLabelMediumTextDecoration = "none"
     @objc public static let FontContextLabelMediumFontStyle = "normal"
     @objc public static let FontContextLabelLargeFontFamily = "Figtree"
-    @objc public static let FontContextLabelLargeFontWeight = "bold"
+    @objc public static let FontContextLabelLargeFontWeight = "semibold"
     @objc public static let FontContextLabelLargeLineHeight = CGFloat(24)
     @objc public static let FontContextLabelLargeFontSize = CGFloat(16)
     @objc public static let FontContextLabelLargeLetterSpacing = CGFloat(0)
@@ -2568,7 +2568,7 @@ public class ChassisTokens {
     @objc public static let FontContextLabelLargeTextDecoration = "none"
     @objc public static let FontContextLabelLargeFontStyle = "normal"
     @objc public static let FontContextLabelSmallFontFamily = "Figtree"
-    @objc public static let FontContextLabelSmallFontWeight = "bold"
+    @objc public static let FontContextLabelSmallFontWeight = "semibold"
     @objc public static let FontContextLabelSmallLineHeight = CGFloat(18)
     @objc public static let FontContextLabelSmallFontSize = CGFloat(12)
     @objc public static let FontContextLabelSmallLetterSpacing = CGFloat(0)
@@ -2613,7 +2613,7 @@ public class ChassisTokens {
     @objc public static let FontContextLinkXsmallTextDecoration = "underline"
     @objc public static let FontContextLinkXsmallFontStyle = "normal"
     @objc public static let FontContextExpiredLargeFontFamily = "Figtree"
-    @objc public static let FontContextExpiredLargeFontWeight = "bold"
+    @objc public static let FontContextExpiredLargeFontWeight = "semibold"
     @objc public static let FontContextExpiredLargeLineHeight = CGFloat(28)
     @objc public static let FontContextExpiredLargeFontSize = CGFloat(19)
     @objc public static let FontContextExpiredLargeLetterSpacing = CGFloat(0)
@@ -2622,7 +2622,7 @@ public class ChassisTokens {
     @objc public static let FontContextExpiredLargeTextDecoration = "line-through"
     @objc public static let FontContextExpiredLargeFontStyle = "normal"
     @objc public static let FontContextExpiredMediumFontFamily = "Figtree"
-    @objc public static let FontContextExpiredMediumFontWeight = "bold"
+    @objc public static let FontContextExpiredMediumFontWeight = "semibold"
     @objc public static let FontContextExpiredMediumLineHeight = CGFloat(24)
     @objc public static let FontContextExpiredMediumFontSize = CGFloat(16)
     @objc public static let FontContextExpiredMediumLetterSpacing = CGFloat(0)
@@ -2631,7 +2631,7 @@ public class ChassisTokens {
     @objc public static let FontContextExpiredMediumTextDecoration = "line-through"
     @objc public static let FontContextExpiredMediumFontStyle = "normal"
     @objc public static let FontContextExpiredSmallFontFamily = "Figtree"
-    @objc public static let FontContextExpiredSmallFontWeight = "bold"
+    @objc public static let FontContextExpiredSmallFontWeight = "semibold"
     @objc public static let FontContextExpiredSmallLineHeight = CGFloat(20)
     @objc public static let FontContextExpiredSmallFontSize = CGFloat(14)
     @objc public static let FontContextExpiredSmallLetterSpacing = CGFloat(0)
@@ -2676,7 +2676,7 @@ public class ChassisTokens {
     @objc public static let FontText5xlargeNormalTextDecoration = "none"
     @objc public static let FontText5xlargeNormalFontStyle = "normal"
     @objc public static let FontText5xlargeStrongFontFamily = "Figtree"
-    @objc public static let FontText5xlargeStrongFontWeight = "bold"
+    @objc public static let FontText5xlargeStrongFontWeight = "semibold"
     @objc public static let FontText5xlargeStrongLineHeight = CGFloat(56)
     @objc public static let FontText5xlargeStrongFontSize = CGFloat(44)
     @objc public static let FontText5xlargeStrongLetterSpacing = CGFloat(0)
@@ -2712,7 +2712,7 @@ public class ChassisTokens {
     @objc public static let FontText4xlargeNormalTextDecoration = "none"
     @objc public static let FontText4xlargeNormalFontStyle = "normal"
     @objc public static let FontText4xlargeStrongFontFamily = "Figtree"
-    @objc public static let FontText4xlargeStrongFontWeight = "bold"
+    @objc public static let FontText4xlargeStrongFontWeight = "semibold"
     @objc public static let FontText4xlargeStrongLineHeight = CGFloat(48)
     @objc public static let FontText4xlargeStrongFontSize = CGFloat(38)
     @objc public static let FontText4xlargeStrongLetterSpacing = CGFloat(0)
@@ -2748,7 +2748,7 @@ public class ChassisTokens {
     @objc public static let FontText3xlargeNormalTextDecoration = "none"
     @objc public static let FontText3xlargeNormalFontStyle = "normal"
     @objc public static let FontText3xlargeStrongFontFamily = "Figtree"
-    @objc public static let FontText3xlargeStrongFontWeight = "bold"
+    @objc public static let FontText3xlargeStrongFontWeight = "semibold"
     @objc public static let FontText3xlargeStrongLineHeight = CGFloat(40)
     @objc public static let FontText3xlargeStrongFontSize = CGFloat(32)
     @objc public static let FontText3xlargeStrongLetterSpacing = CGFloat(0)
@@ -2784,7 +2784,7 @@ public class ChassisTokens {
     @objc public static let FontText2xlargeNormalTextDecoration = "none"
     @objc public static let FontText2xlargeNormalFontStyle = "normal"
     @objc public static let FontText2xlargeStrongFontFamily = "Figtree"
-    @objc public static let FontText2xlargeStrongFontWeight = "bold"
+    @objc public static let FontText2xlargeStrongFontWeight = "semibold"
     @objc public static let FontText2xlargeStrongLineHeight = CGFloat(36)
     @objc public static let FontText2xlargeStrongFontSize = CGFloat(26)
     @objc public static let FontText2xlargeStrongLetterSpacing = CGFloat(0)
@@ -2820,7 +2820,7 @@ public class ChassisTokens {
     @objc public static let FontTextXlargeNormalTextDecoration = "none"
     @objc public static let FontTextXlargeNormalFontStyle = "normal"
     @objc public static let FontTextXlargeStrongFontFamily = "Figtree"
-    @objc public static let FontTextXlargeStrongFontWeight = "bold"
+    @objc public static let FontTextXlargeStrongFontWeight = "semibold"
     @objc public static let FontTextXlargeStrongLineHeight = CGFloat(32)
     @objc public static let FontTextXlargeStrongFontSize = CGFloat(22)
     @objc public static let FontTextXlargeStrongLetterSpacing = CGFloat(0)
@@ -2856,7 +2856,7 @@ public class ChassisTokens {
     @objc public static let FontTextLargeNormalTextDecoration = "none"
     @objc public static let FontTextLargeNormalFontStyle = "normal"
     @objc public static let FontTextLargeStrongFontFamily = "Figtree"
-    @objc public static let FontTextLargeStrongFontWeight = "bold"
+    @objc public static let FontTextLargeStrongFontWeight = "semibold"
     @objc public static let FontTextLargeStrongLineHeight = CGFloat(28)
     @objc public static let FontTextLargeStrongFontSize = CGFloat(19)
     @objc public static let FontTextLargeStrongLetterSpacing = CGFloat(0)
@@ -2892,7 +2892,7 @@ public class ChassisTokens {
     @objc public static let FontTextMediumNormalTextDecoration = "none"
     @objc public static let FontTextMediumNormalFontStyle = "normal"
     @objc public static let FontTextMediumStrongFontFamily = "Figtree"
-    @objc public static let FontTextMediumStrongFontWeight = "bold"
+    @objc public static let FontTextMediumStrongFontWeight = "semibold"
     @objc public static let FontTextMediumStrongLineHeight = CGFloat(24)
     @objc public static let FontTextMediumStrongFontSize = CGFloat(16)
     @objc public static let FontTextMediumStrongLetterSpacing = CGFloat(0)
@@ -2928,7 +2928,7 @@ public class ChassisTokens {
     @objc public static let FontTextSmallNormalTextDecoration = "none"
     @objc public static let FontTextSmallNormalFontStyle = "normal"
     @objc public static let FontTextSmallStrongFontFamily = "Figtree"
-    @objc public static let FontTextSmallStrongFontWeight = "bold"
+    @objc public static let FontTextSmallStrongFontWeight = "semibold"
     @objc public static let FontTextSmallStrongLineHeight = CGFloat(20)
     @objc public static let FontTextSmallStrongFontSize = CGFloat(14)
     @objc public static let FontTextSmallStrongLetterSpacing = CGFloat(0)
@@ -2964,7 +2964,7 @@ public class ChassisTokens {
     @objc public static let FontTextXsmallNormalTextDecoration = "none"
     @objc public static let FontTextXsmallNormalFontStyle = "normal"
     @objc public static let FontTextXsmallStrongFontFamily = "Figtree"
-    @objc public static let FontTextXsmallStrongFontWeight = "bold"
+    @objc public static let FontTextXsmallStrongFontWeight = "semibold"
     @objc public static let FontTextXsmallStrongLineHeight = CGFloat(18)
     @objc public static let FontTextXsmallStrongFontSize = CGFloat(12)
     @objc public static let FontTextXsmallStrongLetterSpacing = CGFloat(0)
@@ -3000,7 +3000,7 @@ public class ChassisTokens {
     @objc public static let FontText2xsmallNormalTextDecoration = "none"
     @objc public static let FontText2xsmallNormalFontStyle = "normal"
     @objc public static let FontText2xsmallStrongFontFamily = "Figtree"
-    @objc public static let FontText2xsmallStrongFontWeight = "bold"
+    @objc public static let FontText2xsmallStrongFontWeight = "semibold"
     @objc public static let FontText2xsmallStrongLineHeight = CGFloat(14)
     @objc public static let FontText2xsmallStrongFontSize = CGFloat(10)
     @objc public static let FontText2xsmallStrongLetterSpacing = CGFloat(0)
@@ -3036,7 +3036,7 @@ public class ChassisTokens {
     @objc public static let FontDisplay5xlargeNormalTextDecoration = "none"
     @objc public static let FontDisplay5xlargeNormalFontStyle = "normal"
     @objc public static let FontDisplay5xlargeStrongFontFamily = "Lora"
-    @objc public static let FontDisplay5xlargeStrongFontWeight = "bold"
+    @objc public static let FontDisplay5xlargeStrongFontWeight = "semibold"
     @objc public static let FontDisplay5xlargeStrongLineHeight = CGFloat(56)
     @objc public static let FontDisplay5xlargeStrongFontSize = CGFloat(44)
     @objc public static let FontDisplay5xlargeStrongLetterSpacing = CGFloat(0)
@@ -3072,7 +3072,7 @@ public class ChassisTokens {
     @objc public static let FontDisplay4xlargeNormalTextDecoration = "none"
     @objc public static let FontDisplay4xlargeNormalFontStyle = "normal"
     @objc public static let FontDisplay4xlargeStrongFontFamily = "Lora"
-    @objc public static let FontDisplay4xlargeStrongFontWeight = "bold"
+    @objc public static let FontDisplay4xlargeStrongFontWeight = "semibold"
     @objc public static let FontDisplay4xlargeStrongLineHeight = CGFloat(48)
     @objc public static let FontDisplay4xlargeStrongFontSize = CGFloat(38)
     @objc public static let FontDisplay4xlargeStrongLetterSpacing = CGFloat(0)
@@ -3108,7 +3108,7 @@ public class ChassisTokens {
     @objc public static let FontDisplay3xlargeNormalTextDecoration = "none"
     @objc public static let FontDisplay3xlargeNormalFontStyle = "normal"
     @objc public static let FontDisplay3xlargeStrongFontFamily = "Lora"
-    @objc public static let FontDisplay3xlargeStrongFontWeight = "bold"
+    @objc public static let FontDisplay3xlargeStrongFontWeight = "semibold"
     @objc public static let FontDisplay3xlargeStrongLineHeight = CGFloat(40)
     @objc public static let FontDisplay3xlargeStrongFontSize = CGFloat(32)
     @objc public static let FontDisplay3xlargeStrongLetterSpacing = CGFloat(0)
@@ -3144,7 +3144,7 @@ public class ChassisTokens {
     @objc public static let FontDisplay2xlargeNormalTextDecoration = "none"
     @objc public static let FontDisplay2xlargeNormalFontStyle = "normal"
     @objc public static let FontDisplay2xlargeStrongFontFamily = "Lora"
-    @objc public static let FontDisplay2xlargeStrongFontWeight = "bold"
+    @objc public static let FontDisplay2xlargeStrongFontWeight = "semibold"
     @objc public static let FontDisplay2xlargeStrongLineHeight = CGFloat(36)
     @objc public static let FontDisplay2xlargeStrongFontSize = CGFloat(26)
     @objc public static let FontDisplay2xlargeStrongLetterSpacing = CGFloat(0)
@@ -3180,7 +3180,7 @@ public class ChassisTokens {
     @objc public static let FontDisplayXlargeNormalTextDecoration = "none"
     @objc public static let FontDisplayXlargeNormalFontStyle = "normal"
     @objc public static let FontDisplayXlargeStrongFontFamily = "Lora"
-    @objc public static let FontDisplayXlargeStrongFontWeight = "bold"
+    @objc public static let FontDisplayXlargeStrongFontWeight = "semibold"
     @objc public static let FontDisplayXlargeStrongLineHeight = CGFloat(32)
     @objc public static let FontDisplayXlargeStrongFontSize = CGFloat(22)
     @objc public static let FontDisplayXlargeStrongLetterSpacing = CGFloat(0)
@@ -3216,7 +3216,7 @@ public class ChassisTokens {
     @objc public static let FontDisplayLargeNormalTextDecoration = "none"
     @objc public static let FontDisplayLargeNormalFontStyle = "normal"
     @objc public static let FontDisplayLargeStrongFontFamily = "Lora"
-    @objc public static let FontDisplayLargeStrongFontWeight = "bold"
+    @objc public static let FontDisplayLargeStrongFontWeight = "semibold"
     @objc public static let FontDisplayLargeStrongLineHeight = CGFloat(28)
     @objc public static let FontDisplayLargeStrongFontSize = CGFloat(19)
     @objc public static let FontDisplayLargeStrongLetterSpacing = CGFloat(0)
@@ -3252,7 +3252,7 @@ public class ChassisTokens {
     @objc public static let FontDisplayMediumNormalTextDecoration = "none"
     @objc public static let FontDisplayMediumNormalFontStyle = "normal"
     @objc public static let FontDisplayMediumStrongFontFamily = "Lora"
-    @objc public static let FontDisplayMediumStrongFontWeight = "bold"
+    @objc public static let FontDisplayMediumStrongFontWeight = "semibold"
     @objc public static let FontDisplayMediumStrongLineHeight = CGFloat(24)
     @objc public static let FontDisplayMediumStrongFontSize = CGFloat(16)
     @objc public static let FontDisplayMediumStrongLetterSpacing = CGFloat(0)
@@ -3288,7 +3288,7 @@ public class ChassisTokens {
     @objc public static let FontDisplaySmallNormalTextDecoration = "none"
     @objc public static let FontDisplaySmallNormalFontStyle = "normal"
     @objc public static let FontDisplaySmallStrongFontFamily = "Lora"
-    @objc public static let FontDisplaySmallStrongFontWeight = "bold"
+    @objc public static let FontDisplaySmallStrongFontWeight = "semibold"
     @objc public static let FontDisplaySmallStrongLineHeight = CGFloat(20)
     @objc public static let FontDisplaySmallStrongFontSize = CGFloat(14)
     @objc public static let FontDisplaySmallStrongLetterSpacing = CGFloat(0)
@@ -3324,7 +3324,7 @@ public class ChassisTokens {
     @objc public static let FontDisplayXsmallNormalTextDecoration = "none"
     @objc public static let FontDisplayXsmallNormalFontStyle = "normal"
     @objc public static let FontDisplayXsmallStrongFontFamily = "Lora"
-    @objc public static let FontDisplayXsmallStrongFontWeight = "bold"
+    @objc public static let FontDisplayXsmallStrongFontWeight = "semibold"
     @objc public static let FontDisplayXsmallStrongLineHeight = CGFloat(18)
     @objc public static let FontDisplayXsmallStrongFontSize = CGFloat(12)
     @objc public static let FontDisplayXsmallStrongLetterSpacing = CGFloat(0)
@@ -3360,7 +3360,7 @@ public class ChassisTokens {
     @objc public static let FontDisplay2xsmallNormalTextDecoration = "none"
     @objc public static let FontDisplay2xsmallNormalFontStyle = "normal"
     @objc public static let FontDisplay2xsmallStrongFontFamily = "Lora"
-    @objc public static let FontDisplay2xsmallStrongFontWeight = "bold"
+    @objc public static let FontDisplay2xsmallStrongFontWeight = "semibold"
     @objc public static let FontDisplay2xsmallStrongLineHeight = CGFloat(14)
     @objc public static let FontDisplay2xsmallStrongFontSize = CGFloat(10)
     @objc public static let FontDisplay2xsmallStrongLetterSpacing = CGFloat(0)
@@ -3486,7 +3486,7 @@ public class ChassisTokens {
     @objc public static let FontHtmlListTextDecoration = "none"
     @objc public static let FontHtmlListFontStyle = "normal"
     @objc public static let FontHtmlCiteFontFamily = "Figtree"
-    @objc public static let FontHtmlCiteFontWeight = "bold"
+    @objc public static let FontHtmlCiteFontWeight = "semibold"
     @objc public static let FontHtmlCiteLineHeight = CGFloat(20)
     @objc public static let FontHtmlCiteFontSize = CGFloat(14)
     @objc public static let FontHtmlCiteLetterSpacing = CGFloat(0)
@@ -3549,7 +3549,7 @@ public class ChassisTokens {
     @objc public static let FontCodeSmallStrongTextDecoration = "none"
     @objc public static let FontCodeSmallStrongFontStyle = "normal"
     @objc public static let FontAccordionMediumTitleFontFamily = "Figtree"
-    @objc public static let FontAccordionMediumTitleFontWeight = "bold"
+    @objc public static let FontAccordionMediumTitleFontWeight = "semibold"
     @objc public static let FontAccordionMediumTitleLineHeight = CGFloat(24)
     @objc public static let FontAccordionMediumTitleFontSize = CGFloat(16)
     @objc public static let FontAccordionMediumTitleLetterSpacing = CGFloat(0)
@@ -3567,7 +3567,7 @@ public class ChassisTokens {
     @objc public static let FontAccordionMediumBodyTextDecoration = "none"
     @objc public static let FontAccordionMediumBodyFontStyle = "normal"
     @objc public static let FontAccordionLargeTitleFontFamily = "Figtree"
-    @objc public static let FontAccordionLargeTitleFontWeight = "bold"
+    @objc public static let FontAccordionLargeTitleFontWeight = "semibold"
     @objc public static let FontAccordionLargeTitleLineHeight = CGFloat(28)
     @objc public static let FontAccordionLargeTitleFontSize = CGFloat(19)
     @objc public static let FontAccordionLargeTitleLetterSpacing = CGFloat(0)
@@ -3585,7 +3585,7 @@ public class ChassisTokens {
     @objc public static let FontAccordionLargeBodyTextDecoration = "none"
     @objc public static let FontAccordionLargeBodyFontStyle = "normal"
     @objc public static let FontAccordionSmallTitleFontFamily = "Figtree"
-    @objc public static let FontAccordionSmallTitleFontWeight = "bold"
+    @objc public static let FontAccordionSmallTitleFontWeight = "semibold"
     @objc public static let FontAccordionSmallTitleLineHeight = CGFloat(20)
     @objc public static let FontAccordionSmallTitleFontSize = CGFloat(14)
     @objc public static let FontAccordionSmallTitleLetterSpacing = CGFloat(0)
@@ -3603,7 +3603,7 @@ public class ChassisTokens {
     @objc public static let FontAccordionSmallBodyTextDecoration = "none"
     @objc public static let FontAccordionSmallBodyFontStyle = "normal"
     @objc public static let FontAlertLargeTitleFontFamily = "Figtree"
-    @objc public static let FontAlertLargeTitleFontWeight = "bold"
+    @objc public static let FontAlertLargeTitleFontWeight = "semibold"
     @objc public static let FontAlertLargeTitleLineHeight = CGFloat(32)
     @objc public static let FontAlertLargeTitleFontSize = CGFloat(22)
     @objc public static let FontAlertLargeTitleLetterSpacing = CGFloat(0)
@@ -3621,7 +3621,7 @@ public class ChassisTokens {
     @objc public static let FontAlertLargeBodyTextDecoration = "none"
     @objc public static let FontAlertLargeBodyFontStyle = "normal"
     @objc public static let FontAlertSmallTitleFontFamily = "Figtree"
-    @objc public static let FontAlertSmallTitleFontWeight = "bold"
+    @objc public static let FontAlertSmallTitleFontWeight = "semibold"
     @objc public static let FontAlertSmallTitleLineHeight = CGFloat(28)
     @objc public static let FontAlertSmallTitleFontSize = CGFloat(19)
     @objc public static let FontAlertSmallTitleLetterSpacing = CGFloat(0)
@@ -3666,7 +3666,7 @@ public class ChassisTokens {
     @objc public static let FontAssistSmallTextDecoration = "none"
     @objc public static let FontAssistSmallFontStyle = "normal"
     @objc public static let FontBadgeMediumFontFamily = "Figtree"
-    @objc public static let FontBadgeMediumFontWeight = "bold"
+    @objc public static let FontBadgeMediumFontWeight = "semibold"
     @objc public static let FontBadgeMediumLineHeight = CGFloat(20)
     @objc public static let FontBadgeMediumFontSize = CGFloat(14)
     @objc public static let FontBadgeMediumLetterSpacing = CGFloat(0)
@@ -3675,7 +3675,7 @@ public class ChassisTokens {
     @objc public static let FontBadgeMediumTextDecoration = "none"
     @objc public static let FontBadgeMediumFontStyle = "normal"
     @objc public static let FontBadgeLargeFontFamily = "Figtree"
-    @objc public static let FontBadgeLargeFontWeight = "bold"
+    @objc public static let FontBadgeLargeFontWeight = "semibold"
     @objc public static let FontBadgeLargeLineHeight = CGFloat(24)
     @objc public static let FontBadgeLargeFontSize = CGFloat(16)
     @objc public static let FontBadgeLargeLetterSpacing = CGFloat(0)
@@ -3684,7 +3684,7 @@ public class ChassisTokens {
     @objc public static let FontBadgeLargeTextDecoration = "none"
     @objc public static let FontBadgeLargeFontStyle = "normal"
     @objc public static let FontBadgeSmallFontFamily = "Figtree"
-    @objc public static let FontBadgeSmallFontWeight = "bold"
+    @objc public static let FontBadgeSmallFontWeight = "semibold"
     @objc public static let FontBadgeSmallLineHeight = CGFloat(18)
     @objc public static let FontBadgeSmallFontSize = CGFloat(12)
     @objc public static let FontBadgeSmallLetterSpacing = CGFloat(0)
@@ -3702,7 +3702,7 @@ public class ChassisTokens {
     @objc public static let FontBreadcrumbPageTextDecoration = "none"
     @objc public static let FontBreadcrumbPageFontStyle = "normal"
     @objc public static let FontButtonMediumFontFamily = "Figtree"
-    @objc public static let FontButtonMediumFontWeight = "bold"
+    @objc public static let FontButtonMediumFontWeight = "semibold"
     @objc public static let FontButtonMediumLineHeight = CGFloat(24)
     @objc public static let FontButtonMediumFontSize = CGFloat(16)
     @objc public static let FontButtonMediumLetterSpacing = CGFloat(0)
@@ -3711,7 +3711,7 @@ public class ChassisTokens {
     @objc public static let FontButtonMediumTextDecoration = "none"
     @objc public static let FontButtonMediumFontStyle = "normal"
     @objc public static let FontButtonLargeFontFamily = "Figtree"
-    @objc public static let FontButtonLargeFontWeight = "bold"
+    @objc public static let FontButtonLargeFontWeight = "semibold"
     @objc public static let FontButtonLargeLineHeight = CGFloat(28)
     @objc public static let FontButtonLargeFontSize = CGFloat(19)
     @objc public static let FontButtonLargeLetterSpacing = CGFloat(0)
@@ -3720,7 +3720,7 @@ public class ChassisTokens {
     @objc public static let FontButtonLargeTextDecoration = "none"
     @objc public static let FontButtonLargeFontStyle = "normal"
     @objc public static let FontButtonSmallFontFamily = "Figtree"
-    @objc public static let FontButtonSmallFontWeight = "bold"
+    @objc public static let FontButtonSmallFontWeight = "semibold"
     @objc public static let FontButtonSmallLineHeight = CGFloat(20)
     @objc public static let FontButtonSmallFontSize = CGFloat(14)
     @objc public static let FontButtonSmallLetterSpacing = CGFloat(0)
@@ -3729,7 +3729,7 @@ public class ChassisTokens {
     @objc public static let FontButtonSmallTextDecoration = "none"
     @objc public static let FontButtonSmallFontStyle = "normal"
     @objc public static let FontChipMediumFontFamily = "Figtree"
-    @objc public static let FontChipMediumFontWeight = "bold"
+    @objc public static let FontChipMediumFontWeight = "semibold"
     @objc public static let FontChipMediumLineHeight = CGFloat(20)
     @objc public static let FontChipMediumFontSize = CGFloat(14)
     @objc public static let FontChipMediumLetterSpacing = CGFloat(0)
@@ -3738,7 +3738,7 @@ public class ChassisTokens {
     @objc public static let FontChipMediumTextDecoration = "none"
     @objc public static let FontChipMediumFontStyle = "normal"
     @objc public static let FontChipLargeFontFamily = "Figtree"
-    @objc public static let FontChipLargeFontWeight = "bold"
+    @objc public static let FontChipLargeFontWeight = "semibold"
     @objc public static let FontChipLargeLineHeight = CGFloat(24)
     @objc public static let FontChipLargeFontSize = CGFloat(16)
     @objc public static let FontChipLargeLetterSpacing = CGFloat(0)
@@ -3747,7 +3747,7 @@ public class ChassisTokens {
     @objc public static let FontChipLargeTextDecoration = "none"
     @objc public static let FontChipLargeFontStyle = "normal"
     @objc public static let FontChipSmallFontFamily = "Figtree"
-    @objc public static let FontChipSmallFontWeight = "bold"
+    @objc public static let FontChipSmallFontWeight = "semibold"
     @objc public static let FontChipSmallLineHeight = CGFloat(18)
     @objc public static let FontChipSmallFontSize = CGFloat(12)
     @objc public static let FontChipSmallLetterSpacing = CGFloat(0)
@@ -3765,7 +3765,7 @@ public class ChassisTokens {
     @objc public static let FontDatePickerDayTextDecoration = "none"
     @objc public static let FontDatePickerDayFontStyle = "normal"
     @objc public static let FontDatePickerTodayFontFamily = "Figtree"
-    @objc public static let FontDatePickerTodayFontWeight = "bold"
+    @objc public static let FontDatePickerTodayFontWeight = "semibold"
     @objc public static let FontDatePickerTodayLineHeight = CGFloat(20)
     @objc public static let FontDatePickerTodayFontSize = CGFloat(14)
     @objc public static let FontDatePickerTodayLetterSpacing = CGFloat(0)
@@ -3774,7 +3774,7 @@ public class ChassisTokens {
     @objc public static let FontDatePickerTodayTextDecoration = "none"
     @objc public static let FontDatePickerTodayFontStyle = "normal"
     @objc public static let FontDatePickerLabelFontFamily = "Figtree"
-    @objc public static let FontDatePickerLabelFontWeight = "bold"
+    @objc public static let FontDatePickerLabelFontWeight = "semibold"
     @objc public static let FontDatePickerLabelLineHeight = CGFloat(20)
     @objc public static let FontDatePickerLabelFontSize = CGFloat(14)
     @objc public static let FontDatePickerLabelLetterSpacing = CGFloat(0)
@@ -3783,7 +3783,7 @@ public class ChassisTokens {
     @objc public static let FontDatePickerLabelTextDecoration = "none"
     @objc public static let FontDatePickerLabelFontStyle = "normal"
     @objc public static let FontDropdownTitleFontFamily = "Figtree"
-    @objc public static let FontDropdownTitleFontWeight = "bold"
+    @objc public static let FontDropdownTitleFontWeight = "semibold"
     @objc public static let FontDropdownTitleLineHeight = CGFloat(20)
     @objc public static let FontDropdownTitleFontSize = CGFloat(14)
     @objc public static let FontDropdownTitleLetterSpacing = CGFloat(0)
@@ -3801,7 +3801,7 @@ public class ChassisTokens {
     @objc public static let FontDropdownItemTextDecoration = "none"
     @objc public static let FontDropdownItemFontStyle = "normal"
     @objc public static let FontFormInputMediumLabelFontFamily = "Figtree"
-    @objc public static let FontFormInputMediumLabelFontWeight = "bold"
+    @objc public static let FontFormInputMediumLabelFontWeight = "semibold"
     @objc public static let FontFormInputMediumLabelLineHeight = CGFloat(24)
     @objc public static let FontFormInputMediumLabelFontSize = CGFloat(16)
     @objc public static let FontFormInputMediumLabelLetterSpacing = CGFloat(0)
@@ -3810,7 +3810,7 @@ public class ChassisTokens {
     @objc public static let FontFormInputMediumLabelTextDecoration = "none"
     @objc public static let FontFormInputMediumLabelFontStyle = "normal"
     @objc public static let FontFormInputLargeLabelFontFamily = "Figtree"
-    @objc public static let FontFormInputLargeLabelFontWeight = "bold"
+    @objc public static let FontFormInputLargeLabelFontWeight = "semibold"
     @objc public static let FontFormInputLargeLabelLineHeight = CGFloat(28)
     @objc public static let FontFormInputLargeLabelFontSize = CGFloat(19)
     @objc public static let FontFormInputLargeLabelLetterSpacing = CGFloat(0)
@@ -3819,7 +3819,7 @@ public class ChassisTokens {
     @objc public static let FontFormInputLargeLabelTextDecoration = "none"
     @objc public static let FontFormInputLargeLabelFontStyle = "normal"
     @objc public static let FontFormInputSmallLabelFontFamily = "Figtree"
-    @objc public static let FontFormInputSmallLabelFontWeight = "bold"
+    @objc public static let FontFormInputSmallLabelFontWeight = "semibold"
     @objc public static let FontFormInputSmallLabelLineHeight = CGFloat(20)
     @objc public static let FontFormInputSmallLabelFontSize = CGFloat(14)
     @objc public static let FontFormInputSmallLabelLetterSpacing = CGFloat(0)
@@ -3873,7 +3873,7 @@ public class ChassisTokens {
     @objc public static let FontFormInputFloatingLabelTextDecoration = "none"
     @objc public static let FontFormInputFloatingLabelFontStyle = "normal"
     @objc public static let FontModalLargeTitleFontFamily = "Figtree"
-    @objc public static let FontModalLargeTitleFontWeight = "bold"
+    @objc public static let FontModalLargeTitleFontWeight = "semibold"
     @objc public static let FontModalLargeTitleLineHeight = CGFloat(32)
     @objc public static let FontModalLargeTitleFontSize = CGFloat(22)
     @objc public static let FontModalLargeTitleLetterSpacing = CGFloat(0)
@@ -3891,7 +3891,7 @@ public class ChassisTokens {
     @objc public static let FontModalLargeSubtitleTextDecoration = "none"
     @objc public static let FontModalLargeSubtitleFontStyle = "normal"
     @objc public static let FontModalMediumTitleFontFamily = "Figtree"
-    @objc public static let FontModalMediumTitleFontWeight = "bold"
+    @objc public static let FontModalMediumTitleFontWeight = "semibold"
     @objc public static let FontModalMediumTitleLineHeight = CGFloat(28)
     @objc public static let FontModalMediumTitleFontSize = CGFloat(19)
     @objc public static let FontModalMediumTitleLetterSpacing = CGFloat(0)
@@ -3909,7 +3909,7 @@ public class ChassisTokens {
     @objc public static let FontModalMediumSubtitleTextDecoration = "none"
     @objc public static let FontModalMediumSubtitleFontStyle = "normal"
     @objc public static let FontModalSmallTitleFontFamily = "Figtree"
-    @objc public static let FontModalSmallTitleFontWeight = "bold"
+    @objc public static let FontModalSmallTitleFontWeight = "semibold"
     @objc public static let FontModalSmallTitleLineHeight = CGFloat(24)
     @objc public static let FontModalSmallTitleFontSize = CGFloat(16)
     @objc public static let FontModalSmallTitleLetterSpacing = CGFloat(0)
@@ -3927,7 +3927,7 @@ public class ChassisTokens {
     @objc public static let FontModalSmallSubtitleTextDecoration = "none"
     @objc public static let FontModalSmallSubtitleFontStyle = "normal"
     @objc public static let FontNotificationTitleFontFamily = "Figtree"
-    @objc public static let FontNotificationTitleFontWeight = "bold"
+    @objc public static let FontNotificationTitleFontWeight = "semibold"
     @objc public static let FontNotificationTitleLineHeight = CGFloat(28)
     @objc public static let FontNotificationTitleFontSize = CGFloat(19)
     @objc public static let FontNotificationTitleLetterSpacing = CGFloat(0)
@@ -3945,7 +3945,7 @@ public class ChassisTokens {
     @objc public static let FontNotificationMessageTextDecoration = "none"
     @objc public static let FontNotificationMessageFontStyle = "normal"
     @objc public static let FontPageLargeTitleFontFamily = "Figtree"
-    @objc public static let FontPageLargeTitleFontWeight = "bold"
+    @objc public static let FontPageLargeTitleFontWeight = "semibold"
     @objc public static let FontPageLargeTitleLineHeight = CGFloat(36)
     @objc public static let FontPageLargeTitleFontSize = CGFloat(26)
     @objc public static let FontPageLargeTitleLetterSpacing = CGFloat(0)
@@ -3963,7 +3963,7 @@ public class ChassisTokens {
     @objc public static let FontPageLargeSubtitleTextDecoration = "none"
     @objc public static let FontPageLargeSubtitleFontStyle = "normal"
     @objc public static let FontPageMediumTitleFontFamily = "Figtree"
-    @objc public static let FontPageMediumTitleFontWeight = "bold"
+    @objc public static let FontPageMediumTitleFontWeight = "semibold"
     @objc public static let FontPageMediumTitleLineHeight = CGFloat(36)
     @objc public static let FontPageMediumTitleFontSize = CGFloat(26)
     @objc public static let FontPageMediumTitleLetterSpacing = CGFloat(0)
@@ -3981,7 +3981,7 @@ public class ChassisTokens {
     @objc public static let FontPageMediumSubtitleTextDecoration = "none"
     @objc public static let FontPageMediumSubtitleFontStyle = "normal"
     @objc public static let FontPageSmallTitleFontFamily = "Figtree"
-    @objc public static let FontPageSmallTitleFontWeight = "bold"
+    @objc public static let FontPageSmallTitleFontWeight = "semibold"
     @objc public static let FontPageSmallTitleLineHeight = CGFloat(32)
     @objc public static let FontPageSmallTitleFontSize = CGFloat(22)
     @objc public static let FontPageSmallTitleLetterSpacing = CGFloat(0)
@@ -3999,7 +3999,7 @@ public class ChassisTokens {
     @objc public static let FontPageSmallSubtitleTextDecoration = "none"
     @objc public static let FontPageSmallSubtitleFontStyle = "normal"
     @objc public static let FontSectionHeaderLargeFontFamily = "Figtree"
-    @objc public static let FontSectionHeaderLargeFontWeight = "bold"
+    @objc public static let FontSectionHeaderLargeFontWeight = "semibold"
     @objc public static let FontSectionHeaderLargeLineHeight = CGFloat(28)
     @objc public static let FontSectionHeaderLargeFontSize = CGFloat(19)
     @objc public static let FontSectionHeaderLargeLetterSpacing = CGFloat(0)
@@ -4008,7 +4008,7 @@ public class ChassisTokens {
     @objc public static let FontSectionHeaderLargeTextDecoration = "none"
     @objc public static let FontSectionHeaderLargeFontStyle = "normal"
     @objc public static let FontSectionHeaderMediumFontFamily = "Figtree"
-    @objc public static let FontSectionHeaderMediumFontWeight = "bold"
+    @objc public static let FontSectionHeaderMediumFontWeight = "semibold"
     @objc public static let FontSectionHeaderMediumLineHeight = CGFloat(24)
     @objc public static let FontSectionHeaderMediumFontSize = CGFloat(16)
     @objc public static let FontSectionHeaderMediumLetterSpacing = CGFloat(0)
@@ -4017,7 +4017,7 @@ public class ChassisTokens {
     @objc public static let FontSectionHeaderMediumTextDecoration = "none"
     @objc public static let FontSectionHeaderMediumFontStyle = "normal"
     @objc public static let FontSectionHeaderSmallFontFamily = "Figtree"
-    @objc public static let FontSectionHeaderSmallFontWeight = "bold"
+    @objc public static let FontSectionHeaderSmallFontWeight = "semibold"
     @objc public static let FontSectionHeaderSmallLineHeight = CGFloat(20)
     @objc public static let FontSectionHeaderSmallFontSize = CGFloat(14)
     @objc public static let FontSectionHeaderSmallLetterSpacing = CGFloat(0)
@@ -4026,7 +4026,7 @@ public class ChassisTokens {
     @objc public static let FontSectionHeaderSmallTextDecoration = "none"
     @objc public static let FontSectionHeaderSmallFontStyle = "normal"
     @objc public static let FontTabMediumFontFamily = "Figtree"
-    @objc public static let FontTabMediumFontWeight = "bold"
+    @objc public static let FontTabMediumFontWeight = "semibold"
     @objc public static let FontTabMediumLineHeight = CGFloat(24)
     @objc public static let FontTabMediumFontSize = CGFloat(16)
     @objc public static let FontTabMediumLetterSpacing = CGFloat(0)
@@ -4035,7 +4035,7 @@ public class ChassisTokens {
     @objc public static let FontTabMediumTextDecoration = "none"
     @objc public static let FontTabMediumFontStyle = "normal"
     @objc public static let FontTabLargeFontFamily = "Figtree"
-    @objc public static let FontTabLargeFontWeight = "bold"
+    @objc public static let FontTabLargeFontWeight = "semibold"
     @objc public static let FontTabLargeLineHeight = CGFloat(28)
     @objc public static let FontTabLargeFontSize = CGFloat(19)
     @objc public static let FontTabLargeLetterSpacing = CGFloat(0)
@@ -4044,7 +4044,7 @@ public class ChassisTokens {
     @objc public static let FontTabLargeTextDecoration = "none"
     @objc public static let FontTabLargeFontStyle = "normal"
     @objc public static let FontTabSmallFontFamily = "Figtree"
-    @objc public static let FontTabSmallFontWeight = "bold"
+    @objc public static let FontTabSmallFontWeight = "semibold"
     @objc public static let FontTabSmallLineHeight = CGFloat(20)
     @objc public static let FontTabSmallFontSize = CGFloat(14)
     @objc public static let FontTabSmallLetterSpacing = CGFloat(0)
@@ -4062,7 +4062,7 @@ public class ChassisTokens {
     @objc public static let FontTableDataTextTextDecoration = "none"
     @objc public static let FontTableDataTextFontStyle = "normal"
     @objc public static let FontTableHeadTextFontFamily = "Figtree"
-    @objc public static let FontTableHeadTextFontWeight = "bold"
+    @objc public static let FontTableHeadTextFontWeight = "semibold"
     @objc public static let FontTableHeadTextLineHeight = CGFloat(20)
     @objc public static let FontTableHeadTextFontSize = CGFloat(14)
     @objc public static let FontTableHeadTextLetterSpacing = CGFloat(0)
