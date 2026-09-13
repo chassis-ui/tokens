@@ -130,6 +130,44 @@ export function splitReference(value) {
 }
 
 /**
+ * Maps long-form scale-step names to the short-form abbreviations used by
+ * chassis-css's own generated CSS custom properties (e.g. `--border-radius-md`,
+ * `--box-shadow-lg`). Token *names* and values keep their long-form spelling —
+ * this only rewrites the segment chassis-css templates splice into a
+ * `var(--...)` reference, so generated SCSS keeps resolving against
+ * chassis-css's actual custom property names without renaming the tokens
+ * themselves. Anything not in the table (component names, html-scale keys
+ * like "h1"/"body", etc.) passes through unchanged.
+ */
+export const scaleAbbreviations = {
+  '2xsmall': '2xs',
+  xsmall: 'xs',
+  small: 'sm',
+  medium: 'md',
+  large: 'lg',
+  xlarge: 'xl',
+  '2xlarge': '2xl',
+  '3xlarge': '3xl',
+  '4xlarge': '4xl',
+  '5xlarge': '5xl',
+  '6xlarge': '6xl',
+  '3xsmall': '3xs',
+  '4xsmall': '4xs'
+}
+
+/**
+ * Abbreviates a scale-step name for use in a generated `var(--...)` reference,
+ * via `scaleAbbreviations`. Returns the input unchanged if it isn't a
+ * recognized scale-step name.
+ *
+ * @param {string} name - The scale-step name (e.g. "medium").
+ * @returns {string} - The abbreviated name (e.g. "md"), or `name` unchanged.
+ */
+export function abbreviateScale(name) {
+  return scaleAbbreviations[name] || name
+}
+
+/**
  * Removes unnecessary trailing zeros from a number.
  *
  * @param {number|string} value - The value to format.
