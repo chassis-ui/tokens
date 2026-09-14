@@ -7283,11 +7283,11 @@
     "fontFamily": {
       "text": {
         "$type": "fontFamilies",
-        "$value": "'Helvetica Neue', 'Helvetica', Arial, system-ui, -apple-system, sans-serif"
+        "$value": "'Open Sans', system-ui, sans-serif"
       },
       "display": {
         "$type": "fontFamilies",
-        "$value": "'Times New Roman', Times, -apple-system-ui-serif, ui-serif, serif"
+        "$value": "Merriweather, ui-serif, serif"
       },
       "html": {
         "$type": "fontFamilies",
@@ -7310,7 +7310,7 @@
         },
         "strong": {
           "$type": "fontWeights",
-          "$value": "Bold"
+          "$value": "SemiBold"
         },
         "mass": {
           "$type": "fontWeights",
@@ -7328,7 +7328,7 @@
         },
         "strong": {
           "$type": "fontWeights",
-          "$value": "Bold"
+          "$value": "SemiBold"
         },
         "mass": {
           "$type": "fontWeights",
