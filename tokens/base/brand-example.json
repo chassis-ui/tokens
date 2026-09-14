@@ -254,6 +254,32 @@
           "$type": "borderRadius",
           "$value": "{borderRadius.base.context.full}"
         }
+      },
+      "segment": {
+        "medium-bar": {
+          "$type": "borderRadius",
+          "$value": "{borderRadius.base.context.full}"
+        },
+        "medium-item": {
+          "$type": "borderRadius",
+          "$value": "{borderRadius.base.context.full}"
+        },
+        "large-bar": {
+          "$type": "borderRadius",
+          "$value": "{borderRadius.base.context.full}"
+        },
+        "large-item": {
+          "$type": "borderRadius",
+          "$value": "{borderRadius.base.context.full}"
+        },
+        "small-bar": {
+          "$type": "borderRadius",
+          "$value": "{borderRadius.base.context.full}"
+        },
+        "small-item": {
+          "$type": "borderRadius",
+          "$value": "{borderRadius.base.context.full}"
+        }
       }
     }
   }
