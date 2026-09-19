@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.5.0] - 2026-09-19
+
+### Added
+- `demo-a` and `demo-b` brands, each with their own base, app, and (for `demo-b`) mobile/web/metric token sets
+- `segment` component tokens (color, size, spacing, border-radius, and box-shadow) for a new segmented-control component
+- `page.bg-body`/`page.bg-section` color tokens for the demo app
+
+### Changed
+- Set the default brand's `text`/`display` font families to Open Sans and Merriweather, and its `strong` font weight from Bold to SemiBold
+- Abbreviated long-form scale-step names (e.g. `medium` → `md`, `xlarge` → `xl`) in generated `var(--...)` references for shadow, border-radius, and border-width tokens, matching chassis-css's own custom property names
+- Reworked `alert`/context box-shadow tokens to reference shared `shadow.elevation.default.*` presets instead of duplicating drop-shadow layer definitions
+- Corrected the package repository URL format in package.json (`git+https://...`)
+- Upgraded `@chassis-ui/css` and `@chassis-ui/docs` to `0.5.0-0`
+
 ## [0.4.0] - 2026-08-25
 
 ### Changed

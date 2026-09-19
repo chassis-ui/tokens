@@ -4642,66 +4642,15 @@
       },
       "small": {
         "$type": "boxShadow",
-        "$value": [
-          {
-            "color": "{color.shadow.default}",
-            "type": "dropShadow",
-            "x": "{dimension.base.0}",
-            "y": "{dimension.base.0}",
-            "blur": "{dimension.base.1}",
-            "spread": "{dimension.base.0}"
-          },
-          {
-            "color": "{color.shadow.default}",
-            "type": "dropShadow",
-            "x": "{dimension.base.0}",
-            "y": "{dimension.base.0}",
-            "blur": "{dimension.base.8}",
-            "spread": "{dimension.base.0}"
-          }
-        ]
+        "$value": "{shadow.elevation.default.10}"
       },
       "medium": {
         "$type": "boxShadow",
-        "$value": [
-          {
-            "color": "{color.shadow.default}",
-            "type": "dropShadow",
-            "x": "{dimension.base.0}",
-            "y": "{dimension.base.0}",
-            "blur": "{dimension.base.1}",
-            "spread": "{dimension.base.0}"
-          },
-          {
-            "color": "{color.shadow.default}",
-            "type": "dropShadow",
-            "x": "{dimension.base.0}",
-            "y": "{dimension.base.1}",
-            "blur": "{dimension.base.8}",
-            "spread": "{dimension.base.2}"
-          }
-        ]
+        "$value": "{shadow.elevation.default.20}"
       },
       "large": {
         "$type": "boxShadow",
-        "$value": [
-          {
-            "color": "{color.shadow.default}",
-            "type": "dropShadow",
-            "x": "{dimension.base.0}",
-            "y": "{dimension.base.0}",
-            "blur": "{dimension.base.1}",
-            "spread": "{dimension.base.0}"
-          },
-          {
-            "color": "{color.shadow.default}",
-            "type": "dropShadow",
-            "x": "{dimension.base.0}",
-            "y": "{dimension.base.1}",
-            "blur": "{dimension.base.24}",
-            "spread": "{dimension.base.8}"
-          }
-        ]
+        "$value": "{shadow.elevation.default.40}"
       },
       "inset": {
         "$type": "boxShadow",

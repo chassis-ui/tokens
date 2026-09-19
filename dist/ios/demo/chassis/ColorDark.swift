@@ -4,7 +4,7 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Tue, 08 Sep 2026 08:19:16 GMT
+// Generated on Thu, 17 Sep 2026 12:19:48 GMT
 // Chassis - Tokens v0.4.0
 // Copyright 2026 Ozgur Gunes
 // Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
@@ -939,7 +939,7 @@ public class ChassisTokens {
     @objc public static let ColorMessageBgEmbed = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 0.05)
     @objc public static let ColorMessageFgStatus = UIColor(red: 0.914, green: 0.925, blue: 0.929, alpha: 1)
     @objc public static let ColorMessageBgStatus = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 0.05)
-    @objc public static let ColorPageBgBody = UIColor(red: 0.067, green: 0.075, blue: 0.078, alpha: 1)
+    @objc public static let ColorPageBgBody = UIColor(red: 0.110, green: 0.125, blue: 0.129, alpha: 1)
     @objc public static let ColorPageBgSection = UIColor(red: 0.067, green: 0.075, blue: 0.078, alpha: 1)
     @objc public static let ColorPaginationDotIdle = UIColor(red: 0.914, green: 0.925, blue: 0.929, alpha: 0.25)
     @objc public static let ColorPaginationDotActive = UIColor(red: 0.914, green: 0.925, blue: 0.929, alpha: 1)
