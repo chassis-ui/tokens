@@ -1,0 +1,290 @@
+{
+  "color": {
+    "common": {
+      "form-input": {
+        "default": {
+          "focus": {
+            "background": {
+              "value": "{color.context.default.bg-main}",
+              "type": "color"
+            },
+            "border": {
+              "value": "{color.context.info.icon-main}",
+              "type": "color"
+            },
+            "fg-active": {
+              "value": "{color.context.default.fg-main}",
+              "type": "color"
+            },
+            "fg-inactive": {
+              "value": "{color.context.default.fg-subtle}",
+              "type": "color"
+            },
+            "assist": {
+              "value": "{color.context.info.icon-main}",
+              "type": "color"
+            }
+          }
+        },
+        "alternate": {
+          "focus": {
+            "background": {
+              "value": "{color.context.alternate.bg-main}",
+              "type": "color"
+            },
+            "border": {
+              "value": "{color.context.info.icon-main}",
+              "type": "color"
+            },
+            "fg-active": {
+              "value": "{color.context.alternate.fg-main}",
+              "type": "color"
+            },
+            "fg-inactive": {
+              "value": "{color.context.alternate.fg-subtle}",
+              "type": "color"
+            },
+            "assist": {
+              "value": "{color.context.info.icon-main}",
+              "type": "color"
+            }
+          }
+        }
+      },
+      "map": {
+        "marker-bg": {
+          "value": "{color.context.primary.base-color}",
+          "type": "color"
+        },
+        "marker-fg": {
+          "value": "{color.context.primary.contrast-color}",
+          "type": "color"
+        },
+        "path-ride": {
+          "value": "{color.context.black.indicator-main}",
+          "type": "color"
+        },
+        "path-walk": {
+          "value": "{color.context.neutral.indicator-main}",
+          "type": "color"
+        },
+        "path-drive": {
+          "value": "{color.common.map.path-ride}",
+          "type": "color"
+        },
+        "path-active": {
+          "value": "{color.context.primary.indicator-main}",
+          "type": "color"
+        },
+        "path-inactive": {
+          "value": "{color.context.primary.indicator-slight}",
+          "type": "color"
+        },
+        "path-inbound": {
+          "value": "{color.common.map.path-ride}",
+          "type": "color"
+        },
+        "path-outbound": {
+          "value": "{color.common.map.path-ride}",
+          "type": "color"
+        },
+        "point-active": {
+          "value": "{color.context.default.indicator-main}",
+          "type": "color"
+        },
+        "point-inactive": {
+          "value": "{color.context.neutral.indicator-slight}",
+          "type": "color"
+        },
+        "point-home": {
+          "value": "{color.context.default.indicator-main}",
+          "type": "color"
+        },
+        "point-male": {
+          "value": "#08A8EE",
+          "type": "color"
+        },
+        "point-female": {
+          "value": "#E149A5",
+          "type": "color"
+        },
+        "point-selected": {
+          "value": "{color.context.neutral.indicator-main}",
+          "type": "color"
+        },
+        "point-boarding": {
+          "value": "{color.context.success.base-color}",
+          "type": "color"
+        },
+        "point-landing": {
+          "value": "{color.context.danger.base-color}",
+          "type": "color"
+        },
+        "trip-start": {
+          "value": "{color.context.success.base-color}",
+          "type": "color"
+        },
+        "trip-stop": {
+          "value": "{color.context.danger.base-color}",
+          "type": "color"
+        }
+      },
+      "page": {
+        "bg-body": {
+          "value": "{color.context.default.bg-even}",
+          "type": "color"
+        },
+        "bg-section": {
+          "value": "{color.context.default.bg-main}",
+          "type": "color"
+        }
+      },
+      "table": {
+        "default": {
+          "bg-highlight": {
+            "value": "{color.palette.info.10}",
+            "type": "color"
+          },
+          "indicator-main": {
+            "value": "{color.context.info.icon-main}",
+            "type": "color"
+          }
+        },
+        "alternate": {
+          "bg-highlight": {
+            "value": "{color.palette.info.90}",
+            "type": "color"
+          },
+          "indicator-main": {
+            "value": "{color.context.info.icon-main}",
+            "type": "color"
+          }
+        }
+      }
+    },
+    "mobile": {
+      "nav-top": {
+        "segment": {
+          "default-item-active-bg": {
+            "value": "{color.context.default.bg-button}",
+            "type": "color"
+          },
+          "default-item-active-fg": {
+            "value": "{color.context.default.fg-button}",
+            "type": "color"
+          },
+          "alternate-item-active-bg": {
+            "value": "{color.context.alternate.bg-button}",
+            "type": "color"
+          },
+          "alternate-item-active-fg": {
+            "value": "{color.context.alternate.fg-button}",
+            "type": "color"
+          }
+        }
+      }
+    }
+  },
+  "space": {
+    "common": {
+      "modal": {
+        "large-padding-y": {
+          "value": "{space.context.xlarge}",
+          "type": "spacing"
+        },
+        "large-padding-x": {
+          "value": "{space.context.xlarge}",
+          "type": "spacing"
+        },
+        "large-gap": {
+          "value": "{space.context.3xlarge}",
+          "type": "spacing"
+        }
+      },
+      "page": {
+        "large-padding-y": {
+          "value": "{space.context.xlarge}",
+          "type": "spacing"
+        },
+        "large-padding-x": {
+          "value": "{space.context.5xlarge}",
+          "type": "spacing"
+        },
+        "large-gap": {
+          "value": "{space.context.3xlarge}",
+          "type": "spacing"
+        }
+      }
+    },
+    "mobile": {
+      "nav-top": {
+        "segment": {
+          "item-padding-v": {
+            "value": "{space.context.xsmall}",
+            "type": "spacing"
+          },
+          "item-padding-h": {
+            "value": "{space.context.small}",
+            "type": "spacing"
+          },
+          "frame-padding": {
+            "value": "{space.base.0}",
+            "type": "spacing"
+          }
+        }
+      }
+    }
+  },
+  "borderRadius": {
+    "mobile": {
+      "nav-top": {
+        "control-floating-action": {
+          "value": "{borderRadius.context.round-40}",
+          "type": "borderRadius"
+        },
+        "search-input-regular": {
+          "value": "{borderRadius.context.round-36}",
+          "type": "borderRadius"
+        },
+        "search-input-floating": {
+          "value": "{borderRadius.context.round-40}",
+          "type": "borderRadius"
+        },
+        "search-trip-button": {
+          "value": "{borderRadius.context.round-40}",
+          "type": "borderRadius"
+        },
+        "segment-item": {
+          "value": "{borderRadius.context.round-40}",
+          "type": "borderRadius"
+        },
+        "segment-frame": {
+          "value": "{borderRadius.context.round-40}",
+          "type": "borderRadius"
+        },
+        "calendar-date-day": {
+          "value": "{borderRadius.context.round-24}",
+          "type": "borderRadius"
+        },
+        "chip-item": {
+          "value": "{borderRadius.context.round-32}",
+          "type": "borderRadius"
+        }
+      },
+      "button": {
+        "medium": {
+          "value": "{borderRadius.context.round-40}",
+          "type": "borderRadius"
+        },
+        "large": {
+          "value": "{borderRadius.context.round-48}",
+          "type": "borderRadius"
+        },
+        "small": {
+          "value": "{borderRadius.context.round-32}",
+          "type": "borderRadius"
+        }
+      }
+    }
+  }
+}

@@ -4,8 +4,8 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Sat, 04 Jul 2026 14:27:15 GMT
-// Chassis - Tokens v0.3.0
+// Generated on Thu, 17 Sep 2026 12:19:47 GMT
+// Chassis - Tokens v0.4.0
 // Copyright 2026 Ozgur Gunes
 // Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
 
@@ -844,26 +844,26 @@ $cx-color-button-info-border-idle: var(--info-transparent-color) !default;
 $cx-color-button-info-border-disabled: var(--info-transparent-color) !default;
 $cx-color-button-info-border-hover: var(--info-transparent-color) !default;
 $cx-color-button-info-border-press: var(--info-transparent-color) !default;
-$cx-color-date-picker-fg-idle: var(--default-fg-main) !default;
-$cx-color-date-picker-bg-idle: var(--default-transparent-color) !default;
-$cx-color-date-picker-fg-hover: var(--default-fg-main) !default;
-$cx-color-date-picker-bg-hover: var(--default-bg-even) !default;
-$cx-color-date-picker-fg-press: var(--default-fg-main) !default;
-$cx-color-date-picker-bg-press: var(--default-bg-evident) !default;
-$cx-color-date-picker-fg-active: var(--white-base-color) !default;
-$cx-color-date-picker-bg-active: var(--default-cue-main) !default;
-$cx-color-date-picker-fg-range: var(--default-fg-idle) !default;
-$cx-color-date-picker-bg-range: var(--default-bg-highlight) !default;
-$cx-color-date-picker-fg-today: var(--default-cue-main) !default;
-$cx-color-date-picker-bg-today: var(--default-transparent-color) !default;
-$cx-color-date-picker-fg-weekend: var(--default-fg-subtle) !default;
-$cx-color-date-picker-bg-weekend: var(--default-transparent-color) !default;
-$cx-color-date-picker-fg-outside: var(--default-fg-slight) !default;
-$cx-color-date-picker-bg-outside: var(--default-transparent-color) !default;
-$cx-color-date-picker-fg-main: var(--default-fg-main) !default;
-$cx-color-date-picker-bg-main: var(--default-bg-main) !default;
-$cx-color-date-picker-border-main: var(--default-transparent-color) !default;
-$cx-color-date-picker-border-subtle: var(--default-border-subtle) !default;
+$cx-color-datepicker-fg-idle: var(--default-fg-main) !default;
+$cx-color-datepicker-bg-idle: var(--default-transparent-color) !default;
+$cx-color-datepicker-fg-hover: var(--default-fg-main) !default;
+$cx-color-datepicker-bg-hover: var(--default-bg-even) !default;
+$cx-color-datepicker-fg-press: var(--default-fg-main) !default;
+$cx-color-datepicker-bg-press: var(--default-bg-evident) !default;
+$cx-color-datepicker-fg-active: var(--white-base-color) !default;
+$cx-color-datepicker-bg-active: var(--default-cue-main) !default;
+$cx-color-datepicker-fg-range: var(--default-fg-idle) !default;
+$cx-color-datepicker-bg-range: var(--default-bg-highlight) !default;
+$cx-color-datepicker-fg-today: var(--default-cue-main) !default;
+$cx-color-datepicker-bg-today: var(--default-transparent-color) !default;
+$cx-color-datepicker-fg-weekend: var(--default-fg-subtle) !default;
+$cx-color-datepicker-bg-weekend: var(--default-transparent-color) !default;
+$cx-color-datepicker-fg-outside: var(--default-fg-slight) !default;
+$cx-color-datepicker-bg-outside: var(--default-transparent-color) !default;
+$cx-color-datepicker-fg-main: var(--default-fg-main) !default;
+$cx-color-datepicker-bg-main: var(--default-bg-main) !default;
+$cx-color-datepicker-border-main: var(--default-transparent-color) !default;
+$cx-color-datepicker-border-subtle: var(--default-border-subtle) !default;
 $cx-color-dropdown-fg-idle: var(--default-fg-main) !default;
 $cx-color-dropdown-bg-idle: var(--default-transparent-color) !default;
 $cx-color-dropdown-icon-idle: var(--default-icon-main) !default;
@@ -957,6 +957,11 @@ $cx-color-section-fg-small: var(--default-fg-main) !default;
 $cx-color-section-icon-large: var(--default-icon-main) !default;
 $cx-color-section-icon-medium: var(--default-icon-main) !default;
 $cx-color-section-icon-small: var(--default-icon-main) !default;
+$cx-color-segment-bg-bar: var(--default-dim-slight) !default;
+$cx-color-segment-bg-idle: var(--default-transparent-color) !default;
+$cx-color-segment-fg-idle: var(--default-fg-main) !default;
+$cx-color-segment-bg-active: var(--default-bg-main) !default;
+$cx-color-segment-fg-active: var(--default-fg-main) !default;
 $cx-color-table-fg-head: var(--default-fg-main) !default;
 $cx-color-table-fg-data: var(--default-fg-main) !default;
 $cx-color-table-bg-head: var(--default-bg-evident) !default;

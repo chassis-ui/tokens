@@ -8,11 +8,13 @@ subtitle:               "Multi-Brand Design Tokens for Web, iOS & Android"
 description:            "Design tokens for Chassis UI in Tokens Studio format, with Style Dictionary build scripts that output Web (SCSS), iOS (Swift), and Android (XML) themes."
 authors:                "Ozgur Gunes"
 
-current_version:        "0.3.0"
-github_org:             "https://github.com/chassis-ui"
+current_version:        "0.5.0"
 repo:                   "https://github.com/chassis-ui/tokens"
 blog:                   "https://chassis-ui.com/blog/"
-x:                      "chassis_ui"
+
+github_org:             "chassis-ui"
+figma_handle:           "chassis_ui"
+x_username:             "chassis_ui"
 
 analytics:
   google_id:            "G-QGR8C28VYN"

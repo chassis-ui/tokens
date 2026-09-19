@@ -1810,7 +1810,7 @@
         "$value": "{font.text.xsmall.strong}"
       }
     },
-    "date-picker": {
+    "datepicker": {
       "day": {
         "$type": "typography",
         "$value": "{font.text.small.normal}"
@@ -1942,6 +1942,20 @@
       "header-small": {
         "$type": "typography",
         "$value": "{font.text.small.strong}"
+      }
+    },
+    "segment": {
+      "medium": {
+        "$type": "typography",
+        "$value": "{font.text.small.normal}"
+      },
+      "large": {
+        "$type": "typography",
+        "$value": "{font.text.medium.normal}"
+      },
+      "small": {
+        "$type": "typography",
+        "$value": "{font.text.xsmall.normal}"
       }
     },
     "tab": {
@@ -2560,7 +2574,7 @@
         }
       }
     },
-    "date-picker": {
+    "datepicker": {
       "fg-idle": {
         "$type": "color",
         "$value": "{color.context.default.fg-main}"
@@ -3042,6 +3056,28 @@
         "$value": "{color.context.default.icon-main}"
       }
     },
+    "segment": {
+      "bg-bar": {
+        "$type": "color",
+        "$value": "{color.context.default.dim-slight}"
+      },
+      "bg-idle": {
+        "$type": "color",
+        "$value": "{color.context.default.transparent-color}"
+      },
+      "fg-idle": {
+        "$type": "color",
+        "$value": "{color.context.default.fg-main}"
+      },
+      "bg-active": {
+        "$type": "color",
+        "$value": "{color.context.default.bg-main}"
+      },
+      "fg-active": {
+        "$type": "color",
+        "$value": "{color.context.default.fg-main}"
+      }
+    },
     "table": {
       "fg-head": {
         "$type": "color",
@@ -3322,20 +3358,20 @@
         "$value": "{size.unit.8}"
       }
     },
-    "date-picker": {
+    "datepicker": {
       "day-width": {
         "$type": "sizing",
-        "$value": "{size.unit.40}"
+        "$value": "{size.unit.32}"
       },
       "day-height": {
         "$type": "sizing",
-        "$value": "{size.unit.40}"
+        "$value": "{size.unit.32}"
       },
       "week-width": {
         "$type": "sizing",
-        "$value": "{size.date-picker.day-width}*7"
+        "$value": "{size.datepicker.day-width}*7"
       },
-      "menu-width": {
+      "preset-width": {
         "$type": "sizing",
         "$value": "{size.unit.120}"
       }
@@ -3451,7 +3487,33 @@
       },
       "dot-active-w": {
         "$type": "sizing",
-        "$value": "{size.unit.8}"
+        "$value": "{size.unit.16}"
+      }
+    },
+    "segment": {
+      "medium-main": {
+        "$type": "sizing",
+        "$value": "{size.unit.32}"
+      },
+      "medium-icon": {
+        "$type": "sizing",
+        "$value": "{size.unit.20}"
+      },
+      "large-main": {
+        "$type": "sizing",
+        "$value": "{size.unit.40}"
+      },
+      "large-icon": {
+        "$type": "sizing",
+        "$value": "{size.unit.24}"
+      },
+      "small-main": {
+        "$type": "sizing",
+        "$value": "{size.unit.24}"
+      },
+      "small-icon": {
+        "$type": "sizing",
+        "$value": "{size.unit.16}"
       }
     }
   },
@@ -3784,7 +3846,7 @@
         "$value": "{space.unit.4}"
       }
     },
-    "date-picker": {
+    "datepicker": {
       "padding-y": {
         "$type": "spacing",
         "$value": "{space.unit.8}"
@@ -3989,6 +4051,56 @@
         "$type": "spacing",
         "$value": "{space.unit.8}"
       }
+    },
+    "segment": {
+      "medium-bar-padding": {
+        "$type": "spacing",
+        "$value": "{space.unit.4}"
+      },
+      "medium-padding-y": {
+        "$type": "spacing",
+        "$value": "{space.unit.6}"
+      },
+      "medium-padding-x": {
+        "$type": "spacing",
+        "$value": "{space.unit.12}"
+      },
+      "medium-gap": {
+        "$type": "spacing",
+        "$value": "{space.unit.8}"
+      },
+      "large-bar-padding": {
+        "$type": "spacing",
+        "$value": "{space.unit.4}"
+      },
+      "large-padding-y": {
+        "$type": "spacing",
+        "$value": "{space.unit.8}"
+      },
+      "large-padding-x": {
+        "$type": "spacing",
+        "$value": "{space.unit.16}"
+      },
+      "large-gap": {
+        "$type": "spacing",
+        "$value": "{space.unit.8}"
+      },
+      "small-bar-padding": {
+        "$type": "spacing",
+        "$value": "{space.unit.4}"
+      },
+      "small-padding-y": {
+        "$type": "spacing",
+        "$value": "{space.unit.3}"
+      },
+      "small-padding-x": {
+        "$type": "spacing",
+        "$value": "{space.unit.8}"
+      },
+      "small-gap": {
+        "$type": "spacing",
+        "$value": "{space.unit.8}"
+      }
     }
   },
   "borderRadius": {
@@ -4110,18 +4222,18 @@
         "$value": "{borderRadius.context.medium}"
       }
     },
-    "date-picker": {
+    "datepicker": {
       "main": {
         "$type": "borderRadius",
-        "$value": "{borderRadius.context.medium}"
+        "$value": "{borderRadius.base.datepicker.main}"
       },
       "day": {
         "$type": "borderRadius",
-        "$value": "{borderRadius.context.small}"
+        "$value": "{borderRadius.base.datepicker.day}"
       },
       "menu": {
         "$type": "borderRadius",
-        "$value": "{borderRadius.context.small}"
+        "$value": "{borderRadius.base.datepicker.menu}"
       }
     },
     "dropdown": {
@@ -4186,6 +4298,32 @@
       "main": {
         "$type": "borderRadius",
         "$value": "{borderRadius.context.large}"
+      }
+    },
+    "segment": {
+      "medium-bar": {
+        "$type": "borderRadius",
+        "$value": "{borderRadius.base.segment.medium-bar}"
+      },
+      "medium-item": {
+        "$type": "borderRadius",
+        "$value": "{borderRadius.base.segment.medium-item}"
+      },
+      "large-bar": {
+        "$type": "borderRadius",
+        "$value": "{borderRadius.base.segment.large-bar}"
+      },
+      "large-item": {
+        "$type": "borderRadius",
+        "$value": "{borderRadius.base.segment.large-item}"
+      },
+      "small-bar": {
+        "$type": "borderRadius",
+        "$value": "{borderRadius.base.segment.small-bar}"
+      },
+      "small-item": {
+        "$type": "borderRadius",
+        "$value": "{borderRadius.base.segment.small-item}"
       }
     },
     "tab": {
@@ -4294,7 +4432,7 @@
         "$value": "{borderWidth.context.medium}"
       }
     },
-    "date-picker": {
+    "datepicker": {
       "main": {
         "$type": "borderWidth",
         "$value": "{borderWidth.context.medium}"
@@ -4504,66 +4642,15 @@
       },
       "small": {
         "$type": "boxShadow",
-        "$value": [
-          {
-            "color": "{color.shadow.default}",
-            "type": "dropShadow",
-            "x": "{dimension.base.0}",
-            "y": "{dimension.base.0}",
-            "blur": "{dimension.base.1}",
-            "spread": "{dimension.base.0}"
-          },
-          {
-            "color": "{color.shadow.default}",
-            "type": "dropShadow",
-            "x": "{dimension.base.0}",
-            "y": "{dimension.base.0}",
-            "blur": "{dimension.base.8}",
-            "spread": "{dimension.base.0}"
-          }
-        ]
+        "$value": "{shadow.elevation.default.10}"
       },
       "medium": {
         "$type": "boxShadow",
-        "$value": [
-          {
-            "color": "{color.shadow.default}",
-            "type": "dropShadow",
-            "x": "{dimension.base.0}",
-            "y": "{dimension.base.0}",
-            "blur": "{dimension.base.1}",
-            "spread": "{dimension.base.0}"
-          },
-          {
-            "color": "{color.shadow.default}",
-            "type": "dropShadow",
-            "x": "{dimension.base.0}",
-            "y": "{dimension.base.1}",
-            "blur": "{dimension.base.8}",
-            "spread": "{dimension.base.2}"
-          }
-        ]
+        "$value": "{shadow.elevation.default.20}"
       },
       "large": {
         "$type": "boxShadow",
-        "$value": [
-          {
-            "color": "{color.shadow.default}",
-            "type": "dropShadow",
-            "x": "{dimension.base.0}",
-            "y": "{dimension.base.0}",
-            "blur": "{dimension.base.1}",
-            "spread": "{dimension.base.0}"
-          },
-          {
-            "color": "{color.shadow.default}",
-            "type": "dropShadow",
-            "x": "{dimension.base.0}",
-            "y": "{dimension.base.1}",
-            "blur": "{dimension.base.24}",
-            "spread": "{dimension.base.8}"
-          }
-        ]
+        "$value": "{shadow.elevation.default.40}"
       },
       "inset": {
         "$type": "boxShadow",
@@ -4647,7 +4734,7 @@
         "$value": "{shadow.context.medium}"
       }
     },
-    "date-picker": {
+    "datepicker": {
       "main": {
         "$type": "boxShadow",
         "$value": "{shadow.context.medium}"
@@ -4710,6 +4797,12 @@
             "spread": "{dimension.base.nd25}"
           }
         ]
+      }
+    },
+    "segment": {
+      "item": {
+        "$type": "boxShadow",
+        "$value": "{shadow.context.small}"
       }
     },
     "table": {

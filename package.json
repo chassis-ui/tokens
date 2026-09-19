@@ -1,11 +1,11 @@
 {
   "name": "@chassis-ui/tokens",
-  "version": "0.3.0",
+  "version": "0.5.0",
   "description": "Design tokens for Chassis Design System. Includes token transformers, asset manager and icon generator",
   "type": "module",
   "repository": {
     "type": "git",
-    "url": "https://github.com/chassis-ui/tokens.git"
+    "url": "git+https://github.com/chassis-ui/tokens.git"
   },
   "bugs": {
     "url": "https://github.com/chassis-ui/tokens/issues"
@@ -93,9 +93,9 @@
     "@astrojs/markdown-remark": "^7.2.1",
     "@astrojs/mdx": "^7.0.2",
     "@astrojs/sitemap": "^3.7.3",
-    "@chassis-ui/css": "^0.3.2",
-    "@chassis-ui/docs": "^0.3.6",
-    "@chassis-ui/icons": "^0.3.0",
+    "@chassis-ui/css": "^0.5.0-0",
+    "@chassis-ui/docs": "^0.5.0-0",
+    "@chassis-ui/icons": "^0.3.1",
     "@eslint/js": "^10.0.1",
     "@floating-ui/dom": "^1.7.6",
     "@pagefind/component-ui": "^1.5.2",

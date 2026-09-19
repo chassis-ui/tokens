@@ -9,7 +9,7 @@
  */
 
 import { getReferences, resolveReferences } from 'style-dictionary/utils'
-import { isReference, splitReference, removeTrailingZeros } from '../utils.js'
+import { isReference, splitReference, removeTrailingZeros, abbreviateScale } from '../utils.js'
 
 const usesDtcg = true
 
@@ -71,10 +71,10 @@ function resolveReferenceValue(token, dictionary) {
     'color|primitive': (ref) => `var(--${ref[2]}-${ref[3]})`,
     'space|context': (ref) => `var(--space-${ref[2]})`,
     'opacity|context': (ref) => `var(--opacity-${ref[2]})`,
-    'shadow|context': (ref) => `var(--box-shadow-${ref[2]})`,
+    'shadow|context': (ref) => `var(--box-shadow-${abbreviateScale(ref[2])})`,
     'opacity|level': (ref) => `var(--opacity-${ref[2]})`,
-    'borderRadius|context': (ref) => `var(--border-radius-${ref[2]})`,
-    'borderWidth|context': (ref) => `var(--border-width-${ref[2]})`
+    'borderRadius|context': (ref) => `var(--border-radius-${abbreviateScale(ref[2])})`,
+    'borderWidth|context': (ref) => `var(--border-width-${abbreviateScale(ref[2])})`
   }
 
   const key = `${ref[0]}|${ref[1] || ''}`.trim()
@@ -88,7 +88,7 @@ function resolveReferenceValue(token, dictionary) {
     const cssProperty = ref[0] === 'borderRadius' ? 'border-radius' : 'border-width'
     // Direct base.context reference
     if (ref[2] === 'context') {
-      return `var(--${cssProperty}-${ref[3]})`
+      return `var(--${cssProperty}-${abbreviateScale(ref[3])})`
     }
     // Follow chain: base.<component>.<size> → base.context.<size>
     try {
@@ -97,7 +97,7 @@ function resolveReferenceValue(token, dictionary) {
         const innerRef = splitReference(refToken.original.$value)
         if (innerRef[0] === ref[0] && innerRef.includes('context')) {
           const name = innerRef[innerRef.length - 1]
-          return `var(--${cssProperty}-${name})`
+          return `var(--${cssProperty}-${abbreviateScale(name)})`
         }
       }
     } catch {
@@ -129,12 +129,12 @@ function resolveContextTypographyValue(token, dictionary) {
 
   const fontSize =
     referenceFs && referenceFs.$type === 'fontSize'
-      ? `var(--font-size-${referenceFs.path[2]}-${referenceFs.path[3]})`
+      ? `var(--font-size-${referenceFs.path[2]}-${abbreviateScale(referenceFs.path[3])})`
       : referenceFs.$value
   // If the reference is a percentage, convert it to a decimal
   const lineHeight =
     referenceLh && referenceLh.$type === 'lineHeight'
-      ? `var(--line-height-${referenceLh.path[2]}-${referenceLh.path[3]})`
+      ? `var(--line-height-${referenceLh.path[2]}-${abbreviateScale(referenceLh.path[3])})`
       : referenceLh.$value
         ? referenceLh.$value
         : referenceLh.endsWith('%')
@@ -164,8 +164,8 @@ function resolveComponentTypographyValue(token, dictionary) {
   return buildTypographyMap({
     fontFamily: `var(--font-family-${ref[1]})`,
     fontWeight: `var(--font-weight-${ref[3]})`,
-    fontSize: `var(--font-size-${ref[2]})`,
-    lineHeight: `var(--line-height-${ref[2]})`,
+    fontSize: `var(--font-size-${abbreviateScale(ref[2])})`,
+    lineHeight: `var(--line-height-${abbreviateScale(ref[2])})`,
     originals: resolveOriginals(res.original.$value, dictionary)
   })
 }

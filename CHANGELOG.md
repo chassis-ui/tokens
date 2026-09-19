@@ -1,5 +1,35 @@
 # Changelog
 
+## [0.5.0] - 2026-09-19
+
+### Added
+- `demo-a` and `demo-b` brands, each with their own base, app, and (for `demo-b`) mobile/web/metric token sets
+- `segment` component tokens (color, size, spacing, border-radius, and box-shadow) for a new segmented-control component
+- `page.bg-body`/`page.bg-section` color tokens for the demo app
+
+### Changed
+- Set the default brand's `text`/`display` font families to Open Sans and Merriweather, and its `strong` font weight from Bold to SemiBold
+- Abbreviated long-form scale-step names (e.g. `medium` → `md`, `xlarge` → `xl`) in generated `var(--...)` references for shadow, border-radius, and border-width tokens, matching chassis-css's own custom property names
+- Reworked `alert`/context box-shadow tokens to reference shared `shadow.elevation.default.*` presets instead of duplicating drop-shadow layer definitions
+- Corrected the package repository URL format in package.json (`git+https://...`)
+- Upgraded `@chassis-ui/css` and `@chassis-ui/docs` to `0.5.0-0`
+
+## [0.4.0] - 2026-08-25
+
+### Changed
+- Renamed `date-picker` component tokens to `datepicker` across base, brand, and theme token files
+- Reduced datepicker day cell size from `size.unit.40` to `size.unit.32` and bound its border-radius tokens to a dedicated `borderRadius.base.datepicker` group instead of generic context tokens
+- Renamed datepicker `menu-width` size token to `preset-width`
+- Doubled the active pagination dot width (`dot-active-w`) from `size.unit.8` to `size.unit.16`
+- Moved Pagefind's search index under a `tokens/pagefind` subdirectory (`site:pagefind` output and dev-server copy path) to match the site's production path prefix
+- Reworked the dev-only Vite config in `site/src/libs/astro.ts` to alias `@chassis-ui/css` to its built JS entry and exclude `@chassis-ui/docs` from dependency optimization, preventing duplicate module instances during `astro dev`
+- Replaced inline `<svg><use></svg>` icon markup in the homepage hero with the `@chassis-ui/docs` `Icon` shortcode
+- Restructured `site/config.yml` social/org fields (`github_org`, `x` → `x_username`, added `figma_handle`) and updated the corresponding config schema
+- Upgraded `@chassis-ui/docs` and other dependencies; bumped `pnpm/action-setup` and `softprops/action-gh-release` versions in the publish-release workflow
+
+### Fixed
+- Hero section "Get Started" clone command referencing the wrong repository
+
 ## [0.3.0] - 2026-07-04
 
 ### Added

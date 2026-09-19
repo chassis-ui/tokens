@@ -7283,11 +7283,11 @@
     "fontFamily": {
       "text": {
         "$type": "fontFamilies",
-        "$value": "'Helvetica Neue', 'Helvetica', Arial, system-ui, -apple-system, sans-serif"
+        "$value": "'Open Sans', system-ui, sans-serif"
       },
       "display": {
         "$type": "fontFamilies",
-        "$value": "'Times New Roman', Times, -apple-system-ui-serif, ui-serif, serif"
+        "$value": "Merriweather, ui-serif, serif"
       },
       "html": {
         "$type": "fontFamilies",
@@ -7310,7 +7310,7 @@
         },
         "strong": {
           "$type": "fontWeights",
-          "$value": "Bold"
+          "$value": "SemiBold"
         },
         "mass": {
           "$type": "fontWeights",
@@ -7328,7 +7328,7 @@
         },
         "strong": {
           "$type": "fontWeights",
-          "$value": "Bold"
+          "$value": "SemiBold"
         },
         "mass": {
           "$type": "fontWeights",
@@ -7771,7 +7771,21 @@
           "$value": "{borderRadius.base.context.medium}"
         }
       },
-      "form-input": {
+      "datepicker": {
+        "main": {
+          "$type": "borderRadius",
+          "$value": "{borderRadius.base.context.medium}"
+        },
+        "day": {
+          "$type": "borderRadius",
+          "$value": "{borderRadius.base.context.small}"
+        },
+        "menu": {
+          "$type": "borderRadius",
+          "$value": "{borderRadius.base.context.small}"
+        }
+      },
+     "form-input": {
         "medium": {
           "$type": "borderRadius",
           "$value": "{borderRadius.base.context.medium}"
@@ -7791,6 +7805,32 @@
         "floating-sharp": {
           "$type": "borderRadius",
           "$value": "{borderRadius.base.context.zero}"
+        }
+      },
+      "segment": {
+        "medium-bar": {
+          "$type": "borderRadius",
+          "$value": "{borderRadius.base.context.medium}"
+        },
+        "medium-item": {
+          "$type": "borderRadius",
+          "$value": "{borderRadius.base.context.small}"
+        },
+        "large-bar": {
+          "$type": "borderRadius",
+          "$value": "{borderRadius.base.context.medium}"
+        },
+        "large-item": {
+          "$type": "borderRadius",
+          "$value": "{borderRadius.base.context.small}"
+        },
+        "small-bar": {
+          "$type": "borderRadius",
+          "$value": "{borderRadius.base.context.medium}"
+        },
+        "small-item": {
+          "$type": "borderRadius",
+          "$value": "{borderRadius.base.context.small}"
         }
       }
     }

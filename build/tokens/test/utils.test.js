@@ -91,6 +91,31 @@ describe('Utils Module', () => {
     })
   })
 
+  describe('abbreviateScale', () => {
+    test('should abbreviate known scale-step names', () => {
+      expect(utilsModule.abbreviateScale('medium')).toBe('md')
+      expect(utilsModule.abbreviateScale('small')).toBe('sm')
+      expect(utilsModule.abbreviateScale('large')).toBe('lg')
+      expect(utilsModule.abbreviateScale('xsmall')).toBe('xs')
+      expect(utilsModule.abbreviateScale('xlarge')).toBe('xl')
+      expect(utilsModule.abbreviateScale('2xsmall')).toBe('2xs')
+      expect(utilsModule.abbreviateScale('2xlarge')).toBe('2xl')
+      expect(utilsModule.abbreviateScale('3xsmall')).toBe('3xs')
+      expect(utilsModule.abbreviateScale('3xlarge')).toBe('3xl')
+      expect(utilsModule.abbreviateScale('4xsmall')).toBe('4xs')
+      expect(utilsModule.abbreviateScale('4xlarge')).toBe('4xl')
+      expect(utilsModule.abbreviateScale('5xlarge')).toBe('5xl')
+      expect(utilsModule.abbreviateScale('6xlarge')).toBe('6xl')
+    })
+
+    test('should pass through names that are not scale steps', () => {
+      expect(utilsModule.abbreviateScale('h1')).toBe('h1')
+      expect(utilsModule.abbreviateScale('body')).toBe('body')
+      expect(utilsModule.abbreviateScale('button')).toBe('button')
+      expect(utilsModule.abbreviateScale('context')).toBe('context')
+    })
+  })
+
   describe('getFontStyle', () => {
     test('should return italicfor italic font style', () => {
       expect(utilsModule.getFontStyle('italic')).toBe('italic')
