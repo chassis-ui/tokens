@@ -16,55 +16,43 @@
           "primary": {
             "base": {
               "$type": "color",
-              "$value": "#FF385C"
+              "$value": "#7A2E6F"
             }
           },
           "secondary": {
             "base": {
               "$type": "color",
-              "$value": "#222222"
+              "$value": "#241E1C"
             }
           },
           "neutral": {
             "base": {
               "$type": "color",
-              "$value": "#6A6A6A"
+              "$value": "#8A817A"
             }
           },
           "danger": {
             "base": {
               "$type": "color",
-              "$value": "#C13515"
+              "$value": "#B3261E"
             }
           },
           "success": {
             "base": {
               "$type": "color",
-              "$value": "#008A05"
+              "$value": "#22703F"
             }
           },
           "warning": {
             "base": {
               "$type": "color",
-              "$value": "#E07912"
+              "$value": "#8A5600"
             }
           },
           "info": {
             "base": {
               "$type": "color",
-              "$value": "#428BFF"
-            }
-          },
-          "brand": {
-            "base": {
-              "$type": "color",
-              "$value": "#FF385C"
-            }
-          },
-          "accent": {
-            "base": {
-              "$type": "color",
-              "$value": "#222222"
+              "$value": "#2E5C9E"
             }
           }
         }
@@ -75,11 +63,11 @@
     "fontFamily": {
       "text": {
         "$type": "fontFamilies",
-        "$value": "'Figtree', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', sans-serif"
+        "$value": "'Source Serif 4','Source Serif Pro', ui-serif, serif"
       },
       "display": {
         "$type": "fontFamilies",
-        "$value": "Lora, 'Times New Roman', Times, -apple-system-ui-serif, ui-serif, serif"
+        "$value": "'DM sans', Inter, system-ui, sans-serif"
       },
       "code": {
         "$type": "fontFamilies",

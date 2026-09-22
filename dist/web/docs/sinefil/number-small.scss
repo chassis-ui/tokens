@@ -1,11 +1,11 @@
 
 //
-// number-medium.scss
+// number-small.scss
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Thu, 17 Sep 2026 12:19:59 GMT
-// Chassis - Tokens v0.4.0
+// Generated on Tue, 22 Sep 2026 15:43:23 GMT
+// Chassis - Tokens v0.5.0
 // Copyright 2026 Ozgur Gunes
 // Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
 
@@ -241,12 +241,12 @@ $cx-size-segment-large-main: 2.5rem !default;
 $cx-size-segment-large-icon: 1.5rem !default;
 $cx-size-segment-small-main: 1.5rem !default;
 $cx-size-segment-small-icon: 1rem !default;
-$cx-size-website-section-thumb: 5rem !default;
-$cx-size-website-section-icon: 4rem !default;
-$cx-size-website-feature-thumb: 3rem !default;
-$cx-size-website-feature-icon: 2.5rem !default;
-$cx-size-website-module-thumb: 3rem !default;
-$cx-size-website-module-icon: 2.5rem !default;
+$cx-size-website-section-thumb: 4rem !default;
+$cx-size-website-section-icon: 3rem !default;
+$cx-size-website-feature-thumb: 2.5rem !default;
+$cx-size-website-feature-icon: 2rem !default;
+$cx-size-website-module-thumb: 2.5rem !default;
+$cx-size-website-module-icon: 2rem !default;
 $cx-space-unit-0: 0rem !default;
 $cx-space-unit-1: 0.0625rem !default;
 $cx-space-unit-2: 0.125rem !default;
@@ -435,17 +435,17 @@ $cx-space-segment-small-bar-padding: 0.25rem !default;
 $cx-space-segment-small-padding-y: 0.1875rem !default;
 $cx-space-segment-small-padding-x: 0.5rem !default;
 $cx-space-segment-small-gap: 0.5rem !default;
-$cx-space-website-section-padding-y: 4rem !default;
-$cx-space-website-section-padding-x: 1.5rem !default;
+$cx-space-website-section-padding-y: 2rem !default;
+$cx-space-website-section-padding-x: 1rem !default;
 $cx-space-website-section-gap: 2rem !default;
-$cx-space-website-content-header-gap: 0.75rem !default;
-$cx-space-website-content-features-gap: 1.5rem !default;
-$cx-space-website-feature-padding-y: 1.5rem !default;
-$cx-space-website-feature-padding-x: 1.5rem !default;
-$cx-space-website-feature-gap: 1.5rem !default;
-$cx-space-website-module-padding-y: 1rem !default;
+$cx-space-website-content-headers-gap: 0.5rem !default;
+$cx-space-website-content-features-gap: 1rem !default;
+$cx-space-website-feature-padding-y: 1rem !default;
+$cx-space-website-feature-padding-x: 1rem !default;
+$cx-space-website-feature-gap: 1rem !default;
+$cx-space-website-module-padding-y: 0.75rem !default;
 $cx-space-website-module-padding-x: 1rem !default;
-$cx-space-website-module-gap: 0.5rem !default;
+$cx-space-website-module-gap: 1rem !default;
 $cx-opacity-level-10: 0.1 !default;
 $cx-opacity-level-20: 0.2 !default;
 $cx-opacity-level-30: 0.3 !default;
@@ -470,8 +470,8 @@ $cx-opacity-context-dim-main: 0.7 !default;
 $cx-opacity-context-dim-subtle: 0.3 !default;
 $cx-opacity-context-dim-slight: 0.05 !default;
 $cx-opacity-context-transparent-color: 0 !default;
-$cx-figma-website-size-page-w: 48rem !default;
-$cx-figma-website-size-slide-min-w: 35rem !default;
+$cx-figma-website-size-page-w: 25rem !default;
+$cx-figma-website-size-slide-min-w: 20rem !default;
 $cx-figma-website-size-card-min-w: 20rem !default;
 $cx-typography-font-size-text-5xlarge: 2.75rem !default;
 $cx-typography-font-size-text-4xlarge: 2.375rem !default;
@@ -508,10 +508,10 @@ $cx-typography-font-size-html-cite: 0.875rem !default;
 $cx-typography-font-size-code-large: 1.1875rem !default;
 $cx-typography-font-size-code-medium: 1rem !default;
 $cx-typography-font-size-code-small: 0.875rem !default;
-$cx-typography-font-size-website-hero-title: 3rem !default;
+$cx-typography-font-size-website-hero-title: 2rem !default;
 $cx-typography-font-size-website-hero-body: 1.1875rem !default;
-$cx-typography-font-size-website-section-title: 2rem !default;
-$cx-typography-font-size-website-section-body: 1.1875rem !default;
+$cx-typography-font-size-website-section-title: 1.625rem !default;
+$cx-typography-font-size-website-section-body: 1rem !default;
 $cx-typography-font-size-website-feature-title: 1.1875rem !default;
 $cx-typography-font-size-website-feature-body: 1rem !default;
 $cx-typography-font-size-website-module-title: 1rem !default;
