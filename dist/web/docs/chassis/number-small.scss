@@ -4,7 +4,7 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Tue, 22 Sep 2026 15:43:22 GMT
+// Generated on Wed, 23 Sep 2026 11:18:46 GMT
 // Chassis - Tokens v0.5.0
 // Copyright 2026 Ozgur Gunes
 // Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
@@ -565,6 +565,7 @@ $cx-border-radius-base-context-2xlarge: 1rem !default;
 $cx-border-radius-base-context-3xlarge: 1.5rem !default;
 $cx-border-radius-base-context-4xlarge: 2rem !default;
 $cx-border-radius-base-context-full: 16rem !default;
+$cx-border-radius-base-alert-main: 0.5rem !default;
 $cx-border-radius-base-badge-medium: 16rem !default;
 $cx-border-radius-base-badge-large: 16rem !default;
 $cx-border-radius-base-badge-small: 16rem !default;
@@ -574,14 +575,18 @@ $cx-border-radius-base-button-small: 0.375rem !default;
 $cx-border-radius-base-chip-medium: 16rem !default;
 $cx-border-radius-base-chip-large: 16rem !default;
 $cx-border-radius-base-chip-small: 16rem !default;
-$cx-border-radius-base-datepicker-main: 0.375rem !default;
-$cx-border-radius-base-datepicker-day: 0.25rem !default;
-$cx-border-radius-base-datepicker-menu: 0.25rem !default;
+$cx-border-radius-base-datepicker-main: 0.5rem !default;
+$cx-border-radius-base-datepicker-day: 0.375rem !default;
+$cx-border-radius-base-datepicker-menu: 0.375rem !default;
+$cx-border-radius-base-dropdown-main: 0.375rem !default;
+$cx-border-radius-base-dropdown-item: 0.25rem !default;
 $cx-border-radius-base-form-input-medium: 0.375rem !default;
 $cx-border-radius-base-form-input-large: 0.375rem !default;
 $cx-border-radius-base-form-input-small: 0.375rem !default;
 $cx-border-radius-base-form-input-floating-blunt: 0.375rem !default;
 $cx-border-radius-base-form-input-floating-sharp: 0rem !default;
+$cx-border-radius-base-modal-main: 0.5rem !default;
+$cx-border-radius-base-notification-main: 0.375rem !default;
 $cx-border-radius-base-segment-medium-bar: 0.375rem !default;
 $cx-border-radius-base-segment-medium-item: 0.25rem !default;
 $cx-border-radius-base-segment-large-bar: 0.375rem !default;
@@ -613,9 +618,9 @@ $cx-border-radius-chip-medium: var(--border-radius-full) !default;
 $cx-border-radius-chip-large: var(--border-radius-full) !default;
 $cx-border-radius-chip-small: var(--border-radius-full) !default;
 $cx-border-radius-table-main: var(--border-radius-md) !default;
-$cx-border-radius-datepicker-main: var(--border-radius-md) !default;
-$cx-border-radius-datepicker-day: var(--border-radius-sm) !default;
-$cx-border-radius-datepicker-menu: var(--border-radius-sm) !default;
+$cx-border-radius-datepicker-main: var(--border-radius-lg) !default;
+$cx-border-radius-datepicker-day: var(--border-radius-md) !default;
+$cx-border-radius-datepicker-menu: var(--border-radius-md) !default;
 $cx-border-radius-dropdown-main: var(--border-radius-md) !default;
 $cx-border-radius-dropdown-item: var(--border-radius-sm) !default;
 $cx-border-radius-form-input-medium: var(--border-radius-md) !default;

@@ -4165,7 +4165,7 @@
     "alert": {
       "main": {
         "$type": "borderRadius",
-        "$value": "{borderRadius.context.large}"
+        "$value": "{borderRadius.base.alert.main}"
       }
     },
     "badge": {
@@ -4239,11 +4239,11 @@
     "dropdown": {
       "main": {
         "$type": "borderRadius",
-        "$value": "{borderRadius.context.medium}"
+        "$value": "{borderRadius.base.dropdown.main}"
       },
       "item": {
         "$type": "borderRadius",
-        "$value": "{borderRadius.context.small}"
+        "$value": "{borderRadius.base.dropdown.item}"
       }
     },
     "form-input": {
@@ -4271,13 +4271,13 @@
     "modal": {
       "main": {
         "$type": "borderRadius",
-        "$value": "{borderRadius.context.large}"
+        "$value": "{borderRadius.base.modal.main}"
       }
     },
     "notification": {
       "main": {
         "$type": "borderRadius",
-        "$value": "{borderRadius.context.medium}"
+        "$value": "{borderRadius.base.notification.main}"
       }
     },
     "pagination": {

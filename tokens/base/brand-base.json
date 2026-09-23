@@ -7729,6 +7729,12 @@
           "$value": "{dimension.base.256}"
         }
       },
+      "alert": {
+        "main": {
+          "$type": "borderRadius",
+          "$value": "{borderRadius.base.context.large}"
+        }
+      },
       "badge": {
         "medium": {
           "$type": "borderRadius",
@@ -7774,18 +7780,28 @@
       "datepicker": {
         "main": {
           "$type": "borderRadius",
-          "$value": "{borderRadius.base.context.medium}"
+          "$value": "{borderRadius.base.context.large}"
         },
         "day": {
           "$type": "borderRadius",
-          "$value": "{borderRadius.base.context.small}"
+          "$value": "{borderRadius.base.context.medium}"
         },
         "menu": {
+          "$type": "borderRadius",
+          "$value": "{borderRadius.base.context.medium}"
+        }
+      },
+      "dropdown": {
+        "main": {
+          "$type": "borderRadius",
+          "$value": "{borderRadius.base.context.medium}"
+        },
+        "item": {
           "$type": "borderRadius",
           "$value": "{borderRadius.base.context.small}"
         }
       },
-     "form-input": {
+      "form-input": {
         "medium": {
           "$type": "borderRadius",
           "$value": "{borderRadius.base.context.medium}"
@@ -7805,6 +7821,18 @@
         "floating-sharp": {
           "$type": "borderRadius",
           "$value": "{borderRadius.base.context.zero}"
+        }
+      },
+      "modal": {
+        "main": {
+          "$type": "borderRadius",
+          "$value": "{borderRadius.base.context.large}"
+        }
+      },
+      "notification": {
+        "main": {
+          "$type": "borderRadius",
+          "$value": "{borderRadius.base.context.medium}"
         }
       },
       "segment": {
