@@ -79,8 +79,8 @@
                 "studio.tokens": {
                   "modify": {
                     "type": "lighten",
-                    "value": "0.85",
-                    "space": "srgb"
+                    "value": "{modify.lighten.10}",
+                    "space": "{modify.space}"
                   }
                 }
               }
@@ -92,8 +92,8 @@
                 "studio.tokens": {
                   "modify": {
                     "type": "lighten",
-                    "value": "0.7",
-                    "space": "srgb"
+                    "value": "{modify.lighten.20}",
+                    "space": "{modify.space}"
                   }
                 }
               }
@@ -105,8 +105,8 @@
                 "studio.tokens": {
                   "modify": {
                     "type": "lighten",
-                    "value": "0.5",
-                    "space": "srgb"
+                    "value": "{modify.lighten.30}",
+                    "space": "{modify.space}"
                   }
                 }
               }
@@ -118,8 +118,8 @@
                 "studio.tokens": {
                   "modify": {
                     "type": "lighten",
-                    "value": "0.25",
-                    "space": "srgb"
+                    "value": "{modify.lighten.40}",
+                    "space": "{modify.space}"
                   }
                 }
               }
@@ -135,8 +135,8 @@
                 "studio.tokens": {
                   "modify": {
                     "type": "darken",
-                    "value": "0.30",
-                    "space": "srgb"
+                    "value": "{modify.darken.60}",
+                    "space": "{modify.space}"
                   }
                 }
               }
@@ -148,8 +148,8 @@
                 "studio.tokens": {
                   "modify": {
                     "type": "darken",
-                    "value": "0.50",
-                    "space": "srgb"
+                    "value": "{modify.darken.70}",
+                    "space": "{modify.space}"
                   }
                 }
               }
@@ -161,8 +161,8 @@
                 "studio.tokens": {
                   "modify": {
                     "type": "darken",
-                    "value": "0.65",
-                    "space": "srgb"
+                    "value": "{modify.darken.80}",
+                    "space": "{modify.space}"
                   }
                 }
               }
@@ -174,8 +174,8 @@
                 "studio.tokens": {
                   "modify": {
                     "type": "darken",
-                    "value": "0.75",
-                    "space": "srgb"
+                    "value": "{modify.darken.90}",
+                    "space": "{modify.space}"
                   }
                 }
               }
@@ -187,8 +187,8 @@
                 "studio.tokens": {
                   "modify": {
                     "type": "darken",
-                    "value": "0.85",
-                    "space": "srgb"
+                    "value": "{modify.darken.95}",
+                    "space": "{modify.space}"
                   }
                 }
               }
@@ -200,8 +200,8 @@
                 "studio.tokens": {
                   "modify": {
                     "type": "lighten",
-                    "value": "0.93",
-                    "space": "srgb"
+                    "value": "{modify.lighten.05}",
+                    "space": "{modify.space}"
                   }
                 }
               }

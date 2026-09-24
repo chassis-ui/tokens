@@ -28,7 +28,7 @@
           "neutral": {
             "base": {
               "$type": "color",
-              "$value": "#8A817A"
+              "$value": "#7E756E"
             }
           },
           "danger": {
@@ -56,46 +56,6 @@
             }
           }
         }
-      },
-      "context": {
-        "dark": {
-          "primary": {
-            "base-color": {
-              "$type": "color",
-              "$value": "{color.base.primitive.dark.primary.40}"
-            }
-          },
-          "secondary": {
-            "base-color": {
-              "$type": "color",
-              "$value": "{color.base.primitive.dark.secondary.40}"
-            }
-          },
-          "danger": {
-            "base-color": {
-              "$type": "color",
-              "$value": "{color.base.primitive.dark.danger.40}"
-            }
-          },
-          "success": {
-            "base-color": {
-              "$type": "color",
-              "$value": "{color.base.primitive.dark.success.40}"
-            }
-          },
-          "warning": {
-            "base-color": {
-              "$type": "color",
-              "$value": "{color.base.primitive.dark.warning.40}"
-            }
-          },
-          "info": {
-            "base-color": {
-              "$type": "color",
-              "$value": "{color.base.primitive.dark.info.40}"
-            }
-          }
-        }
       }
     }
   },
@@ -103,7 +63,7 @@
     "fontFamily": {
       "text": {
         "$type": "fontFamilies",
-        "$value": "'DM sans', Inter, system-ui, sans-serif"
+        "$value": "'DM Sans', Inter, system-ui, sans-serif"
       },
       "display": {
         "$type": "fontFamilies",
@@ -152,7 +112,7 @@
         },
         "elegant": {
           "$type": "fontWeights",
-          "$value": "Regular"
+          "$value": "Light"
         }
       },
       "code": {

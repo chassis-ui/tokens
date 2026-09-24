@@ -2601,11 +2601,11 @@
       },
       "fg-active": {
         "$type": "color",
-        "$value": "{color.context.white.base-color}"
+        "$value": "{color.context.primary.contrast-color}"
       },
       "bg-active": {
         "$type": "color",
-        "$value": "{color.context.default.cue-main}"
+        "$value": "{color.context.primary.base-color}"
       },
       "fg-range": {
         "$type": "color",

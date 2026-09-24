@@ -286,5 +286,55 @@
         "$value": "-2.5px"
       }
     }
+  },
+  "modify": {
+    "space": {
+      "$type": "other",
+      "$value": "srgb"
+    },
+    "lighten": {
+      "10": {
+        "$type": "other",
+        "$value": "0.85"
+      },
+      "20": {
+        "$type": "other",
+        "$value": "0.7"
+      },
+      "30": {
+        "$type": "other",
+        "$value": "0.5"
+      },
+      "40": {
+        "$type": "other",
+        "$value": "0.25"
+      },
+      "05": {
+        "$type": "other",
+        "$value": "0.93"
+      }
+    },
+    "darken": {
+      "60": {
+        "$type": "other",
+        "$value": "0.25"
+      },
+      "70": {
+        "$type": "other",
+        "$value": "0.50"
+      },
+      "80": {
+        "$type": "other",
+        "$value": "0.70"
+      },
+      "90": {
+        "$type": "other",
+        "$value": "0.80"
+      },
+      "95": {
+        "$type": "other",
+        "$value": "0.85"
+      }
+    }
   }
 }
