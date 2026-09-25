@@ -288,10 +288,6 @@
     }
   },
   "modify": {
-    "space": {
-      "$type": "other",
-      "$value": "srgb"
-    },
     "lighten": {
       "10": {
         "$type": "other",

@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.5.3] - 2026-09-25
+
+### Fixed
+- Removed the `modify.space` preset token and hardcoded `srgb` directly in each color's lighten/darken modifier, since Figma doesn't resolve token references inside a modifier's `space` property. `modify.lighten.*`/`modify.darken.*` value references are unaffected.
+
 ## [0.5.2] - 2026-09-24
 
 ### Changed

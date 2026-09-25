@@ -80,7 +80,7 @@
                   "modify": {
                     "type": "lighten",
                     "value": "{modify.lighten.10}",
-                    "space": "{modify.space}"
+                    "space": "srgb"
                   }
                 }
               }
@@ -93,7 +93,7 @@
                   "modify": {
                     "type": "lighten",
                     "value": "{modify.lighten.20}",
-                    "space": "{modify.space}"
+                    "space": "srgb"
                   }
                 }
               }
@@ -106,7 +106,7 @@
                   "modify": {
                     "type": "lighten",
                     "value": "{modify.lighten.30}",
-                    "space": "{modify.space}"
+                    "space": "srgb"
                   }
                 }
               }
@@ -119,7 +119,7 @@
                   "modify": {
                     "type": "lighten",
                     "value": "{modify.lighten.40}",
-                    "space": "{modify.space}"
+                    "space": "srgb"
                   }
                 }
               }
@@ -136,7 +136,7 @@
                   "modify": {
                     "type": "darken",
                     "value": "{modify.darken.60}",
-                    "space": "{modify.space}"
+                    "space": "srgb"
                   }
                 }
               }
@@ -149,7 +149,7 @@
                   "modify": {
                     "type": "darken",
                     "value": "{modify.darken.70}",
-                    "space": "{modify.space}"
+                    "space": "srgb"
                   }
                 }
               }
@@ -162,7 +162,7 @@
                   "modify": {
                     "type": "darken",
                     "value": "{modify.darken.80}",
-                    "space": "{modify.space}"
+                    "space": "srgb"
                   }
                 }
               }
@@ -175,7 +175,7 @@
                   "modify": {
                     "type": "darken",
                     "value": "{modify.darken.90}",
-                    "space": "{modify.space}"
+                    "space": "srgb"
                   }
                 }
               }
@@ -188,7 +188,7 @@
                   "modify": {
                     "type": "darken",
                     "value": "{modify.darken.95}",
-                    "space": "{modify.space}"
+                    "space": "srgb"
                   }
                 }
               }
@@ -201,7 +201,7 @@
                   "modify": {
                     "type": "lighten",
                     "value": "{modify.lighten.05}",
-                    "space": "{modify.space}"
+                    "space": "srgb"
                   }
                 }
               }
