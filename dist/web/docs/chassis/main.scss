@@ -4,8 +4,8 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Thu, 24 Sep 2026 16:51:28 GMT
-// Chassis - Tokens v0.5.1
+// Generated on Fri, 25 Sep 2026 06:59:50 GMT
+// Chassis - Tokens v0.5.2
 // Copyright 2026 Ozgur Gunes
 // Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
 
@@ -1566,7 +1566,7 @@ $cx-color-base-context-dark-white-fg-idle: #000000 !default;
 $cx-color-base-context-dark-white-fg-hover: rgba(0, 0, 0, 0.9) !default;
 $cx-color-base-context-dark-white-fg-press: rgba(0, 0, 0, 0.9) !default;
 $cx-color-base-context-dark-white-fg-disabled: rgba(0, 0, 0, 0.25) !default;
-$cx-color-base-context-dark-primary-base-color: #00A4CC !default;
+$cx-color-base-context-dark-primary-base-color: #40bbd9 !default;
 $cx-color-base-context-dark-primary-contrast-color: #ffffff !default;
 $cx-color-base-context-dark-primary-transparent-color: rgba(0, 164, 204, 0) !default;
 $cx-color-base-context-dark-primary-fg-main: #40bbd9 !default;
@@ -1605,7 +1605,7 @@ $cx-color-base-context-dark-primary-fg-idle: #ffffff !default;
 $cx-color-base-context-dark-primary-fg-hover: rgba(255, 255, 255, 0.9) !default;
 $cx-color-base-context-dark-primary-fg-press: rgba(255, 255, 255, 0.9) !default;
 $cx-color-base-context-dark-primary-fg-disabled: rgba(255, 255, 255, 0.25) !default;
-$cx-color-base-context-dark-secondary-base-color: #F55200 !default;
+$cx-color-base-context-dark-secondary-base-color: #f87d40 !default;
 $cx-color-base-context-dark-secondary-contrast-color: #ffffff !default;
 $cx-color-base-context-dark-secondary-transparent-color: rgba(245, 82, 0, 0) !default;
 $cx-color-base-context-dark-secondary-fg-main: #f87d40 !default;
@@ -1644,7 +1644,7 @@ $cx-color-base-context-dark-secondary-fg-idle: #ffffff !default;
 $cx-color-base-context-dark-secondary-fg-hover: rgba(255, 255, 255, 0.9) !default;
 $cx-color-base-context-dark-secondary-fg-press: rgba(255, 255, 255, 0.9) !default;
 $cx-color-base-context-dark-secondary-fg-disabled: rgba(255, 255, 255, 0.25) !default;
-$cx-color-base-context-dark-neutral-base-color: #6F8085 !default;
+$cx-color-base-context-dark-neutral-base-color: #93a0a4 !default;
 $cx-color-base-context-dark-neutral-contrast-color: #ffffff !default;
 $cx-color-base-context-dark-neutral-transparent-color: rgba(111, 128, 133, 0) !default;
 $cx-color-base-context-dark-neutral-fg-main: #93a0a4 !default;
@@ -1683,7 +1683,7 @@ $cx-color-base-context-dark-neutral-fg-idle: #ffffff !default;
 $cx-color-base-context-dark-neutral-fg-hover: rgba(255, 255, 255, 0.9) !default;
 $cx-color-base-context-dark-neutral-fg-press: rgba(255, 255, 255, 0.9) !default;
 $cx-color-base-context-dark-neutral-fg-disabled: rgba(255, 255, 255, 0.25) !default;
-$cx-color-base-context-dark-danger-base-color: #F52314 !default;
+$cx-color-base-context-dark-danger-base-color: #f85a4f !default;
 $cx-color-base-context-dark-danger-contrast-color: #ffffff !default;
 $cx-color-base-context-dark-danger-transparent-color: rgba(245, 35, 20, 0) !default;
 $cx-color-base-context-dark-danger-fg-main: #f85a4f !default;
@@ -1722,7 +1722,7 @@ $cx-color-base-context-dark-danger-fg-idle: #ffffff !default;
 $cx-color-base-context-dark-danger-fg-hover: rgba(255, 255, 255, 0.9) !default;
 $cx-color-base-context-dark-danger-fg-press: rgba(255, 255, 255, 0.9) !default;
 $cx-color-base-context-dark-danger-fg-disabled: rgba(255, 255, 255, 0.25) !default;
-$cx-color-base-context-dark-success-base-color: #10C263 !default;
+$cx-color-base-context-dark-success-base-color: #4cd18a !default;
 $cx-color-base-context-dark-success-contrast-color: #ffffff !default;
 $cx-color-base-context-dark-success-transparent-color: rgba(16, 194, 99, 0) !default;
 $cx-color-base-context-dark-success-fg-main: #4cd18a !default;
@@ -1761,7 +1761,7 @@ $cx-color-base-context-dark-success-fg-idle: #ffffff !default;
 $cx-color-base-context-dark-success-fg-hover: rgba(255, 255, 255, 0.9) !default;
 $cx-color-base-context-dark-success-fg-press: rgba(255, 255, 255, 0.9) !default;
 $cx-color-base-context-dark-success-fg-disabled: rgba(255, 255, 255, 0.25) !default;
-$cx-color-base-context-dark-warning-base-color: #F5A300 !default;
+$cx-color-base-context-dark-warning-base-color: #f8ba40 !default;
 $cx-color-base-context-dark-warning-contrast-color: #000000 !default;
 $cx-color-base-context-dark-warning-transparent-color: rgba(245, 163, 0, 0) !default;
 $cx-color-base-context-dark-warning-fg-main: #f8ba40 !default;
@@ -1800,7 +1800,7 @@ $cx-color-base-context-dark-warning-fg-idle: #000000 !default;
 $cx-color-base-context-dark-warning-fg-hover: rgba(0, 0, 0, 0.9) !default;
 $cx-color-base-context-dark-warning-fg-press: rgba(0, 0, 0, 0.9) !default;
 $cx-color-base-context-dark-warning-fg-disabled: rgba(0, 0, 0, 0.25) !default;
-$cx-color-base-context-dark-info-base-color: #1414F5 !default;
+$cx-color-base-context-dark-info-base-color: #4f4ff8 !default;
 $cx-color-base-context-dark-info-contrast-color: #ffffff !default;
 $cx-color-base-context-dark-info-transparent-color: rgba(20, 20, 245, 0) !default;
 $cx-color-base-context-dark-info-fg-main: #4f4ff8 !default;

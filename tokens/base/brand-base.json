@@ -6094,7 +6094,7 @@
           "primary": {
             "base-color": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.primary.base}"
+              "$value": "{color.base.primitive.dark.primary.40}"
             },
             "contrast-color": {
               "$type": "color",
@@ -6252,7 +6252,7 @@
           "secondary": {
             "base-color": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.secondary.base}"
+              "$value": "{color.base.primitive.dark.secondary.40}"
             },
             "contrast-color": {
               "$type": "color",
@@ -6410,7 +6410,7 @@
           "neutral": {
             "base-color": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.neutral.base}"
+              "$value": "{color.base.primitive.dark.neutral.40}"
             },
             "contrast-color": {
               "$type": "color",
@@ -6568,7 +6568,7 @@
           "danger": {
             "base-color": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.danger.base}"
+              "$value": "{color.base.primitive.dark.danger.40}"
             },
             "contrast-color": {
               "$type": "color",
@@ -6726,7 +6726,7 @@
           "success": {
             "base-color": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.success.base}"
+              "$value": "{color.base.primitive.dark.success.40}"
             },
             "contrast-color": {
               "$type": "color",
@@ -6884,7 +6884,7 @@
           "warning": {
             "base-color": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.warning.base}"
+              "$value": "{color.base.primitive.dark.warning.40}"
             },
             "contrast-color": {
               "$type": "color",
@@ -7042,7 +7042,7 @@
           "info": {
             "base-color": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.info.base}"
+              "$value": "{color.base.primitive.dark.info.40}"
             },
             "contrast-color": {
               "$type": "color",

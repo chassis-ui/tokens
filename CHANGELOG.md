@@ -1,5 +1,22 @@
 # Changelog
 
+## [0.5.2] - 2026-09-24
+
+### Changed
+- Dark mode context base colors mapped to scale 40
+
+## [0.5.1] - 2026-09-25
+
+### Added
+- Dedicated `borderRadius.base.*` tokens for the alert, dropdown (main/item), modal, and notification components, replacing shared `borderRadius.context.*` references
+- Shared `modify.space`/`modify.lighten.*`/`modify.darken.*` preset tokens for color lighten/darken modifiers
+
+### Changed
+- Renamed the `example` brand to `sinefil` (`base/brand-example` → `brand-sinefil/brand-base`)
+- Renamed the `metric-px` token set to `metric-source`
+- Reworked brand color lighten/darken modify tokens to reference the shared `modify.*` presets instead of duplicating raw values per color
+- Changed the segment component's active foreground/background colors from white/default-cue to the primary context's contrast/base colors
+
 ## [0.5.0] - 2026-09-19
 
 ### Added

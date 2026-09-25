@@ -58,7 +58,7 @@ function registerDictionary() {
     name: 'cxFileHeader',
     fileHeader: async (defaultMessages = []) => [
       ...defaultMessages,
-      `Chassis - Tokens v0.5.1`,
+      `Chassis - Tokens v0.5.2`,
       `Copyright 2026 Ozgur Gunes`,
       `Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)`
     ]

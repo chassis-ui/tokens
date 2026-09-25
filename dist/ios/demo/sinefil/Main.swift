@@ -4,8 +4,8 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Thu, 24 Sep 2026 16:51:30 GMT
-// Chassis - Tokens v0.5.1
+// Generated on Fri, 25 Sep 2026 06:59:52 GMT
+// Chassis - Tokens v0.5.2
 // Copyright 2026 Ozgur Gunes
 // Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
 
@@ -1567,7 +1567,7 @@ public class ChassisTokens {
     @objc public static let ColorBaseContextDarkWhiteFgHover = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0.9)
     @objc public static let ColorBaseContextDarkWhiteFgPress = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0.9)
     @objc public static let ColorBaseContextDarkWhiteFgDisabled = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0.25)
-    @objc public static let ColorBaseContextDarkPrimaryBaseColor = UIColor(red: 0.478, green: 0.180, blue: 0.435, alpha: 1)
+    @objc public static let ColorBaseContextDarkPrimaryBaseColor = UIColor(red: 0.608, green: 0.384, blue: 0.576, alpha: 1)
     @objc public static let ColorBaseContextDarkPrimaryContrastColor = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1)
     @objc public static let ColorBaseContextDarkPrimaryTransparentColor = UIColor(red: 0.478, green: 0.180, blue: 0.435, alpha: 0)
     @objc public static let ColorBaseContextDarkPrimaryFgMain = UIColor(red: 0.608, green: 0.384, blue: 0.576, alpha: 1)
@@ -1606,7 +1606,7 @@ public class ChassisTokens {
     @objc public static let ColorBaseContextDarkPrimaryFgHover = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 0.9)
     @objc public static let ColorBaseContextDarkPrimaryFgPress = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 0.9)
     @objc public static let ColorBaseContextDarkPrimaryFgDisabled = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 0.25)
-    @objc public static let ColorBaseContextDarkSecondaryBaseColor = UIColor(red: 0.141, green: 0.118, blue: 0.110, alpha: 1)
+    @objc public static let ColorBaseContextDarkSecondaryBaseColor = UIColor(red: 0.357, green: 0.337, blue: 0.333, alpha: 1)
     @objc public static let ColorBaseContextDarkSecondaryContrastColor = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1)
     @objc public static let ColorBaseContextDarkSecondaryTransparentColor = UIColor(red: 0.141, green: 0.118, blue: 0.110, alpha: 0)
     @objc public static let ColorBaseContextDarkSecondaryFgMain = UIColor(red: 0.357, green: 0.337, blue: 0.333, alpha: 1)
@@ -1645,7 +1645,7 @@ public class ChassisTokens {
     @objc public static let ColorBaseContextDarkSecondaryFgHover = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 0.9)
     @objc public static let ColorBaseContextDarkSecondaryFgPress = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 0.9)
     @objc public static let ColorBaseContextDarkSecondaryFgDisabled = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 0.25)
-    @objc public static let ColorBaseContextDarkNeutralBaseColor = UIColor(red: 0.494, green: 0.459, blue: 0.431, alpha: 1)
+    @objc public static let ColorBaseContextDarkNeutralBaseColor = UIColor(red: 0.620, green: 0.596, blue: 0.573, alpha: 1)
     @objc public static let ColorBaseContextDarkNeutralContrastColor = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1)
     @objc public static let ColorBaseContextDarkNeutralTransparentColor = UIColor(red: 0.494, green: 0.459, blue: 0.431, alpha: 0)
     @objc public static let ColorBaseContextDarkNeutralFgMain = UIColor(red: 0.620, green: 0.596, blue: 0.573, alpha: 1)
@@ -1684,7 +1684,7 @@ public class ChassisTokens {
     @objc public static let ColorBaseContextDarkNeutralFgHover = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 0.9)
     @objc public static let ColorBaseContextDarkNeutralFgPress = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 0.9)
     @objc public static let ColorBaseContextDarkNeutralFgDisabled = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 0.25)
-    @objc public static let ColorBaseContextDarkDangerBaseColor = UIColor(red: 0.702, green: 0.149, blue: 0.118, alpha: 1)
+    @objc public static let ColorBaseContextDarkDangerBaseColor = UIColor(red: 0.776, green: 0.361, blue: 0.337, alpha: 1)
     @objc public static let ColorBaseContextDarkDangerContrastColor = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1)
     @objc public static let ColorBaseContextDarkDangerTransparentColor = UIColor(red: 0.702, green: 0.149, blue: 0.118, alpha: 0)
     @objc public static let ColorBaseContextDarkDangerFgMain = UIColor(red: 0.776, green: 0.361, blue: 0.337, alpha: 1)
@@ -1723,7 +1723,7 @@ public class ChassisTokens {
     @objc public static let ColorBaseContextDarkDangerFgHover = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 0.9)
     @objc public static let ColorBaseContextDarkDangerFgPress = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 0.9)
     @objc public static let ColorBaseContextDarkDangerFgDisabled = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 0.25)
-    @objc public static let ColorBaseContextDarkSuccessBaseColor = UIColor(red: 0.133, green: 0.439, blue: 0.247, alpha: 1)
+    @objc public static let ColorBaseContextDarkSuccessBaseColor = UIColor(red: 0.349, green: 0.580, blue: 0.435, alpha: 1)
     @objc public static let ColorBaseContextDarkSuccessContrastColor = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1)
     @objc public static let ColorBaseContextDarkSuccessTransparentColor = UIColor(red: 0.133, green: 0.439, blue: 0.247, alpha: 0)
     @objc public static let ColorBaseContextDarkSuccessFgMain = UIColor(red: 0.349, green: 0.580, blue: 0.435, alpha: 1)
@@ -1762,7 +1762,7 @@ public class ChassisTokens {
     @objc public static let ColorBaseContextDarkSuccessFgHover = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 0.9)
     @objc public static let ColorBaseContextDarkSuccessFgPress = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 0.9)
     @objc public static let ColorBaseContextDarkSuccessFgDisabled = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 0.25)
-    @objc public static let ColorBaseContextDarkWarningBaseColor = UIColor(red: 0.541, green: 0.337, blue: 0.000, alpha: 1)
+    @objc public static let ColorBaseContextDarkWarningBaseColor = UIColor(red: 0.655, green: 0.502, blue: 0.251, alpha: 1)
     @objc public static let ColorBaseContextDarkWarningContrastColor = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1)
     @objc public static let ColorBaseContextDarkWarningTransparentColor = UIColor(red: 0.541, green: 0.337, blue: 0.000, alpha: 0)
     @objc public static let ColorBaseContextDarkWarningFgMain = UIColor(red: 0.655, green: 0.502, blue: 0.251, alpha: 1)
@@ -1801,7 +1801,7 @@ public class ChassisTokens {
     @objc public static let ColorBaseContextDarkWarningFgHover = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 0.9)
     @objc public static let ColorBaseContextDarkWarningFgPress = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 0.9)
     @objc public static let ColorBaseContextDarkWarningFgDisabled = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 0.25)
-    @objc public static let ColorBaseContextDarkInfoBaseColor = UIColor(red: 0.180, green: 0.361, blue: 0.620, alpha: 1)
+    @objc public static let ColorBaseContextDarkInfoBaseColor = UIColor(red: 0.384, green: 0.522, blue: 0.714, alpha: 1)
     @objc public static let ColorBaseContextDarkInfoContrastColor = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1)
     @objc public static let ColorBaseContextDarkInfoTransparentColor = UIColor(red: 0.180, green: 0.361, blue: 0.620, alpha: 0)
     @objc public static let ColorBaseContextDarkInfoFgMain = UIColor(red: 0.384, green: 0.522, blue: 0.714, alpha: 1)
