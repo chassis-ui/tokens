@@ -31,7 +31,7 @@ If a phase is too large, split it into `Na`, `Nb` rows. If a fact in this file i
 | Phase | Scope | Model | Status | Commit | Date |
 | --- | --- | --- | --- | --- | --- |
 | 0 | Golden harness | Sonnet | Done | `rewrite(phase 0)` | 2026-09-27 |
-| 1 | iOS and Android value encoders | Opus | Not started | | |
+| 1 | iOS and Android value encoders | Opus | Done | `rewrite(phase 1)` | 2026-09-27 |
 | 2 | Web value encoder | Opus | Not started | | |
 | 3 | Web `var(--…)` policy | Fable | Not started | | |
 | 4 | Upgrade to SD 5.5 and sd-transforms 2.0 | Fable | Not started | | |
@@ -42,6 +42,7 @@ If a phase is too large, split it into `Na`, `Nb` rows. If a fact in this file i
 
 - **Branch:** `dev/rewrite`. One commit per phase. No pushes, no version bumps.
 - **Frozen folders:** `tokens/`, `site/`, `dist/`. No phase changes them. If a phase cannot pass the golden diff without changing output, stop and ask Ozgur.
+- **Never run the build into `dist/` during the rewrite.** Use `pnpm tokens:verify`, or pass `--out <dir>` when running `build/tokens/build.js` directly. Before committing, `git status --short dist` must be empty.
 - **Golden diff:** every phase ends with `pnpm tokens:verify` green in strict mode. The check builds into `dist-next/` and compares against committed `dist/`, ignoring lines that contain `Generated on` or `Chassis - Tokens v`.
 - **No legacy copy of the build.** Committed `dist/` is the reference output and git holds the old code.
 - **Tests:** new unit tests use real tokens copied from `tokens/` as fixtures, never mocks of `style-dictionary`. The 99 existing mock-based tests stay green while the code they cover exists; when a phase removes that code, it removes the test.
@@ -197,13 +198,15 @@ Usage for later phases: `pnpm tokens:verify` checks all 42 files (about 20 s). `
 
 Goal: the Swift and XML templates contain no value logic.
 
-- [ ] `build/tokens/values/ios.js`: `encode(token)` with the iOS rules from the contract.
-- [ ] `build/tokens/values/android.js`: `encode(token)` and `resourceType(token)` with the Android rules, in the stated order.
-- [ ] Templates call the encoders and do nothing else. Delete the dead Android reference branch and the empty gradient blocks.
-- [ ] The iOS template currently overwrites `token.$value` while printing colours. The encoder must not mutate the token.
-- [ ] Keep `tinycolor2` for colour parsing in this phase.
-- [ ] Unit tests with fixtures covering every branch: opaque and translucent colour, font family list, multi-word font weight, each `sp` rule, letter spacing, `dp`, expanded shadow and typography sub-tokens.
-- [ ] Acceptance: `pnpm tokens:verify` green; unit tests green.
+- [x] `build/tokens/values/ios.js`: `encode(token)` with the iOS rules from the contract.
+- [x] `build/tokens/values/android.js`: `encode(token)` and `resourceType(token)` with the Android rules, in the stated order.
+- [x] Templates call the encoders and do nothing else. Delete the dead Android reference branch and the empty gradient blocks.
+- [x] The iOS template currently overwrites `token.$value` while printing colours. The encoder must not mutate the token.
+- [x] Keep `tinycolor2` for colour parsing in this phase.
+- [x] Unit tests with fixtures covering every branch: opaque and translucent colour, font family list, multi-word font weight, each `sp` rule, letter spacing, `dp`, expanded shadow and typography sub-tokens.
+- [x] Acceptance: `pnpm tokens:verify` green; unit tests green.
+
+Result: helpers used by both platforms live in `build/tokens/values/shared.js` (`parseColor`, `firstFontFamily`, `fontWeightName`). The fixture `build/tokens/test/fixtures/mobile-tokens.json` holds 25 resolved tokens per platform from the real build, one per branch reached by current tokens plus edge cases, with expected values copied from `dist/`.
 
 ## Phase 2: web value encoder
 
@@ -256,7 +259,7 @@ Goal: the new build is simple, and a stale `dist/` cannot be published.
 - [ ] Do not split sets between SD `include` and `source`. Add a test that `brand-chassis/brand-base` values win over `base/brand-base`.
 - [ ] Read the version for the file header from `package.json`. Remove `build/tokens/build.js` from `FILES` in `build/change-version.js`.
 - [ ] Delete `web-px.js`, `web-vw.js`, `scss-variables.template.js`, and the `cx/test` transform and format.
-- [ ] Replace `tinycolor2` only if the golden diff stays green; otherwise keep it.
+- [ ] Replace `tinycolor2` only if the golden diff stays green; otherwise keep it. A replacement must also turn a `linear-gradient(…)` value into its first colour stop, as tinycolor does (see Known oddities).
 - [ ] Replace the remaining mock-based tests with fixture tests. Rewrite `build/tokens/test/README.md`.
 - [ ] `.github/workflows/publish-release.yml`: run `pnpm tokens:verify` before `npm publish`.
 - [ ] README: new layout, CLI flags, how to verify. Remove `test:watch`, `build:astro` and `test:coverage`, which do not exist. Add a CHANGELOG entry.
@@ -270,6 +273,7 @@ These are part of the frozen contract. They are listed so nobody "fixes" them by
 - A `125%` line height prints as `CGFloat(125)` on iOS and `125sp` on Android.
 - Font weight on iOS and Android is a name string such as `"bold"`.
 - Android asset tokens hold raw `<svg>` markup inside `<string>`.
+- The 88 `gradient.primitive.*` tokens are typed `color` with `linear-gradient(…)` values. Web prints the gradient. iOS and Android print only its first colour stop, because tinycolor parses the gradient string leniently: `linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, #000000 100%)` becomes `UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0)` and `#00000000`.
 - The `path[1] == dimension` filter matches nothing, so `dimension.base.*` is emitted.
 
 ## Risks
@@ -293,3 +297,4 @@ Append-only.
 
 - 2026-09-27 (planning): Reviewed the plan of 2026-09-22 against the code, `dist/` and the published library versions. Found that per-platform `source` lists do not exist in Style Dictionary, that platform encoding cannot run as a value transform, and several stale facts. Rewrote the plan from scratch with template logic as the first priority. Proved the encoder approach with an iOS prototype (14 files identical to `dist/`) and confirmed the transform approach fails. Ozgur confirmed the branch and that output is frozen, so the output-change phase was removed. Next: Phase 0.
 - 2026-09-27 (Phase 0, Opus 5.5): Added `build/tokens/verify.js`, `build/tokens/test/golden.test.js`, the `tokens:verify` script, `--out` on the build (threaded through `config/index.js` into every platform config as an `outDir` argument, default `dist`) and `dist-next` in `.gitignore`. Verified: `pnpm tokens:verify` passes, 42 of 42 files; `pnpm tokens:test` passes, 100 tests (99 existing plus the golden test); `dist/` untouched. Negative checks: a changed value, a deleted file, an extra file and a duplicate XML name were each reported and failed the run; `--out dist`, `--out .` and `--out ./dist/` were refused. No new lint warnings; the two existing ones (unused `join` in `build.js`, unused function in `scss-variables.template.js`) are left for Phase 6. Surprise: `pnpm tokens:test` now takes about 21 s because the golden test runs the full build. Next: Phase 1.
+- 2026-09-27 (Phase 1, Opus 5.5): Added `build/tokens/values/{shared,ios,android}.js`; the Swift and XML templates now only print. Removed the dead Android `@` reference branch, the unused `file.resourceType` / `file.resourceMap` overrides (no config sets them), the empty gradient blocks and the iOS `token.$value` overwrite. Added `values-ios.test.js` and `values-android.test.js` (56 tests) with a fixture of real resolved tokens. Verified: `pnpm tokens:verify` passes, 42 of 42 files; `pnpm tokens:test` passes, 156 tests; no new lint warnings. Injected three regressions (colour rounding, a dropped `sp` rule, the old `$value` overwrite); each failed the intended test. Surprises: (1) gradient colour tokens print their first colour stop on mobile, a tinycolor quirk now recorded under Known oddities; the unparseable-colour fallback (warn, print raw) is still unused by current tokens and was kept unchanged. (2) One diagnostic `build.js` run without `--out` rewrote the timestamp line of six `dist/ios` files; only timestamps changed, the files were restored with `git checkout`, and a ground rule now forbids building into `dist/`. Next: Phase 2.
