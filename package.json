@@ -66,6 +66,7 @@
     "tokens:lint": "eslint --cache --cache-location .cache/.eslintcache build/tokens",
     "tokens:site": "pnpm tokens:build --brand chassis --app docs",
     "tokens:test": "vitest run --dir build/tokens/test",
+    "tokens:verify": "node build/tokens/verify.js",
     "tokens:zip": "node build/zip-tokens.js",
     "site": "pnpm site:build && pnpm site:lint",
     "site:build": "pnpm sync-submodules && pnpm astro:build && pnpm site:pagefind",

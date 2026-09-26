@@ -108,6 +108,7 @@ Options:
   --platform <platforms...> Filter by platform(s)
   --theme <themes...>       Filter by theme(s)
   --screen <screens...>     Filter by screen(s)
+  --out <dir>               Output root directory (default: dist)
   --dry-run                 Show tasks without executing
   --help, -h                Show this help
   --version, -v             Show version
@@ -132,6 +133,7 @@ Examples:
     platforms: [],
     themes: [],
     screens: [],
+    out: 'dist',
     dryRun: args.includes('--dry-run')
   }
 
@@ -139,6 +141,15 @@ Examples:
   const keys = ['brands', 'apps', 'platforms', 'themes', 'screens']
 
   for (let i = 0; i < args.length; i++) {
+    if (args[i] === '--out') {
+      const dir = args[i + 1]
+      if (!dir || dir.startsWith('--')) {
+        throw new Error('--out requires a directory')
+      }
+      options.out = dir.replace(/[/\\]+$/, '')
+      i++
+      continue
+    }
     const flagIndex = flags.indexOf(args[i])
     if (flagIndex !== -1) {
       while (i + 1 < args.length && !args[i + 1].startsWith('--')) {
@@ -164,6 +175,7 @@ Examples:
  */
 function generateTasks(tokens, filters, options = buildOptions) {
   const { brands, themes, apps, screens } = options
+  const outDir = filters.out
   const filterList = (all, param) =>
     param && param.length > 0 ? all.filter((x) => param.includes(x)) : all
 
@@ -184,7 +196,7 @@ function generateTasks(tokens, filters, options = buildOptions) {
   const baseTasks = brandsFiltered.flatMap((brand) =>
     appsFiltered.flatMap(([app, platforms]) =>
       platformsFiltered(platforms).map((platform) => {
-        const cfg = config({ brand, app, platform })
+        const cfg = config({ brand, app, platform, outDir })
         const key = findTokenKey(tokens, brand, app)
         cfg.source = key ? tokens[key].map((tokenset) => `tokens/${tokenset}.json`) : []
         return {
@@ -204,7 +216,7 @@ function generateTasks(tokens, filters, options = buildOptions) {
     appsFiltered.flatMap(([app, platforms]) =>
       platformsFiltered(platforms).flatMap((platform) =>
         themesFiltered.map((theme) => {
-          const cfg = config({ brand, app, platform, theme })
+          const cfg = config({ brand, app, platform, theme, outDir })
           const key = findTokenKey(tokens, brand, app, theme)
           cfg.source = key ? tokens[key].map((tokenset) => `tokens/${tokenset}.json`) : []
           return { brand, app, platform, theme, screen: undefined, cfg }
@@ -223,7 +235,7 @@ function generateTasks(tokens, filters, options = buildOptions) {
 
         // If no screens configured, generate single number file (pass null to indicate no screen suffix)
         if (!screens || screens.length === 0 || screensFiltered.length === 0) {
-          const cfg = config({ brand, app, platform, screen: null })
+          const cfg = config({ brand, app, platform, screen: null, outDir })
           const key = findTokenKey(tokens, brand, app, theme)
           cfg.source = key ? tokens[key].map((tokenset) => `tokens/${tokenset}.json`) : []
           return [{ brand, app, platform, theme, screen: null, cfg }]
@@ -231,7 +243,7 @@ function generateTasks(tokens, filters, options = buildOptions) {
 
         // Generate number file for each screen
         return screensFiltered.map((screen) => {
-          const cfg = config({ brand, app, platform, screen })
+          const cfg = config({ brand, app, platform, screen, outDir })
           const key = findTokenKey(tokens, brand, app, theme, screen)
           cfg.source = key ? tokens[key].map((tokenset) => `tokens/${tokenset}.json`) : []
           return { brand, app, platform, theme, screen, cfg }

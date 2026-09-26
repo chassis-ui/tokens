@@ -22,14 +22,14 @@ const platforms = {
 /**
  * Main configuration function for Style Dictionary
  */
-export default function ({ brand, app, platform, theme, screen }) {
+export default function ({ brand, app, platform, theme, screen, outDir }) {
   const getPlatformConfig = platforms[platform]
 
   if (!getPlatformConfig) {
     throw new Error(`Unknown platform: ${platform}`)
   }
 
-  const config = getPlatformConfig(brand, app, theme, screen)
+  const config = getPlatformConfig(brand, app, theme, screen, outDir)
 
   return {
     preprocessors: ['cx/global'],

@@ -71,11 +71,11 @@ function generateFiles(theme, screen) {
 /**
  * iOS platform configuration
  */
-export default function (brand, app, theme, screen) {
+export default function (brand, app, theme, screen, outDir = 'dist') {
   return {
     transforms,
     expand,
-    buildPath: `dist/ios/${app}/${brand}/`,
+    buildPath: `${outDir}/ios/${app}/${brand}/`,
     options,
     files: generateFiles(theme, screen)
   }

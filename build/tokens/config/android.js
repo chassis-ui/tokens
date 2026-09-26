@@ -58,11 +58,11 @@ function generateFiles(theme, screen) {
 /**
  * Android platform configuration
  */
-export default function (brand, app, theme, screen) {
+export default function (brand, app, theme, screen, outDir = 'dist') {
   return {
     transforms,
     expand,
-    buildPath: `dist/android/${app}/${brand}/`,
+    buildPath: `${outDir}/android/${app}/${brand}/`,
     options,
     files: generateFiles(theme, screen)
   }

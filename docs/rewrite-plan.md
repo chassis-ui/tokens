@@ -21,7 +21,7 @@ When Ozgur says "continue", Claude does this:
 3. Do that one phase only. Tick checklist items in this file as they land.
 4. Run the phase's acceptance check.
 5. Commit as `rewrite(phase N): <summary>` with the co-author trailer. Include this file. Do not push.
-6. Update the Status board and add a Session log entry: what was done, what was verified, what is left, surprises.
+6. Update the Status board (the Commit column holds the commit subject, because a commit cannot contain its own hash) and add a Session log entry: what was done, what was verified, what is left, surprises.
 7. Stop. End with a short summary and ask whether to continue with the next phase.
 
 If a phase is too large, split it into `Na`, `Nb` rows. If a fact in this file is wrong, fix the file first.
@@ -30,7 +30,7 @@ If a phase is too large, split it into `Na`, `Nb` rows. If a fact in this file i
 
 | Phase | Scope | Model | Status | Commit | Date |
 | --- | --- | --- | --- | --- | --- |
-| 0 | Golden harness | Sonnet | Not started | | |
+| 0 | Golden harness | Sonnet | Done | `rewrite(phase 0)` | 2026-09-27 |
 | 1 | iOS and Android value encoders | Opus | Not started | | |
 | 2 | Web value encoder | Opus | Not started | | |
 | 3 | Web `var(--…)` policy | Fable | Not started | | |
@@ -184,12 +184,14 @@ Scale abbreviations: 4xsmall→4xs, 3xsmall→3xs, 2xsmall→2xs, xsmall→xs, s
 
 Goal: one command that proves a build output equals `dist/`. No change to build behaviour.
 
-- [ ] `build/tokens/verify.js`: compare a directory (default `dist-next/`) against `dist/` file by file, skipping the two header lines. Report missing, extra and differing files with the first differing lines. Exit non-zero on any difference.
-- [ ] In the same script, fail if a `$cx-*` name, a Swift `static let` name or an XML `name=""` appears twice in one file.
-- [ ] Add `--out <dir>` to the build so it can write somewhere other than `dist/`. Default stays `dist/`.
-- [ ] Scripts: `tokens:verify` runs the build into `dist-next/` and then the comparison. Add `dist-next/` to `.gitignore`.
-- [ ] `build/tokens/test/golden.test.js`: runs the same check under vitest.
-- [ ] Acceptance: `pnpm tokens:verify` green; `git status` shows `dist/` untouched.
+- [x] `build/tokens/verify.js`: compare a directory (default `dist-next/`) against `dist/` file by file, skipping the two header lines. Report missing, extra and differing files with the first differing lines. Exit non-zero on any difference.
+- [x] In the same script, fail if a `$cx-*` name, a Swift `static let` name or an XML `name=""` appears twice in one file.
+- [x] Add `--out <dir>` to the build so it can write somewhere other than `dist/`. Default stays `dist/`.
+- [x] Scripts: `tokens:verify` runs the build into `dist-next/` and then the comparison. Add `dist-next/` to `.gitignore`.
+- [x] `build/tokens/test/golden.test.js`: runs the same check under vitest.
+- [x] Acceptance: `pnpm tokens:verify` green; `git status` shows `dist/` untouched.
+
+Usage for later phases: `pnpm tokens:verify` checks all 42 files (about 20 s). `pnpm tokens:verify --platform ios` builds and checks one platform only (about 8 s). `node build/tokens/verify.js --skip-build` re-compares an existing `dist-next/`. The verifier deletes its output directory before building and refuses any directory that is or contains `dist/`.
 
 ## Phase 1: iOS and Android value encoders
 
@@ -290,3 +292,4 @@ These are part of the frozen contract. They are listed so nobody "fixes" them by
 Append-only.
 
 - 2026-09-27 (planning): Reviewed the plan of 2026-09-22 against the code, `dist/` and the published library versions. Found that per-platform `source` lists do not exist in Style Dictionary, that platform encoding cannot run as a value transform, and several stale facts. Rewrote the plan from scratch with template logic as the first priority. Proved the encoder approach with an iOS prototype (14 files identical to `dist/`) and confirmed the transform approach fails. Ozgur confirmed the branch and that output is frozen, so the output-change phase was removed. Next: Phase 0.
+- 2026-09-27 (Phase 0, Opus 5.5): Added `build/tokens/verify.js`, `build/tokens/test/golden.test.js`, the `tokens:verify` script, `--out` on the build (threaded through `config/index.js` into every platform config as an `outDir` argument, default `dist`) and `dist-next` in `.gitignore`. Verified: `pnpm tokens:verify` passes, 42 of 42 files; `pnpm tokens:test` passes, 100 tests (99 existing plus the golden test); `dist/` untouched. Negative checks: a changed value, a deleted file, an extra file and a duplicate XML name were each reported and failed the run; `--out dist`, `--out .` and `--out ./dist/` were refused. No new lint warnings; the two existing ones (unused `join` in `build.js`, unused function in `scss-variables.template.js`) are left for Phase 6. Surprise: `pnpm tokens:test` now takes about 21 s because the golden test runs the full build. Next: Phase 1.

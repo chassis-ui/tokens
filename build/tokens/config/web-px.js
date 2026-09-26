@@ -57,11 +57,11 @@ function generateFiles(theme, screen) {
 /**
  * Web platform configuration with px units
  */
-export default function (brand, app, theme, screen) {
+export default function (brand, app, theme, screen, outDir = 'dist') {
   return {
     prefix: 'cx',
     transforms,
-    buildPath: `dist/web/${app}/${brand}/`,
+    buildPath: `${outDir}/web/${app}/${brand}/`,
     options,
     files: generateFiles(theme, screen)
   }
