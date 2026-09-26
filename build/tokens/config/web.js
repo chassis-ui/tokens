@@ -19,7 +19,6 @@ const transforms = [
   'ts/color/modifiers',
   'ts/color/css/hexrgba',
   'ts/typography/fontWeight',
-  'cx/typography/web',
   'cx/shadow/web',
   'cx/size/rem'
 ]

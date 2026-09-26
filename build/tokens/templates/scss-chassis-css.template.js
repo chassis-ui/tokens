@@ -9,7 +9,8 @@
  */
 
 import { getReferences, resolveReferences } from 'style-dictionary/utils'
-import { isReference, splitReference, removeTrailingZeros, abbreviateScale } from '../utils.js'
+import { isReference, splitReference, abbreviateScale } from '../utils.js'
+import { encode, percentToEm, typographyMap } from '../values/web.js'
 
 const usesDtcg = true
 
@@ -30,31 +31,6 @@ function resolveOriginals(originalValue, dictionary) {
     textCase: resolveReferences(originalValue.textCase, dictionary.tokens, { usesDtcg }),
     textDecoration: resolveReferences(originalValue.textDecoration, dictionary.tokens, { usesDtcg })
   }
-}
-
-/**
- * Builds a SCSS-compatible typography map string from resolved values.
- *
- * @param {Object} params - The typography values.
- * @param {string} params.fontFamily - The font-family value.
- * @param {string} params.fontWeight - The font-weight value.
- * @param {string} params.fontSize - The font-size value.
- * @param {string} params.lineHeight - The line-height value.
- * @param {Object} params.originals - The resolved original properties.
- * @returns {string} - The SCSS typography map string.
- */
-function buildTypographyMap({ fontFamily, fontWeight, fontSize, lineHeight, originals }) {
-  return `(${[
-    `"font-family": ${fontFamily}`,
-    `"font-weight": ${fontWeight}`,
-    `"font-size": ${fontSize}`,
-    `"line-height": ${lineHeight}`,
-    `"font-style": ${originals.fontStyle}`,
-    `"letter-spacing": ${parseFloat(originals.letterSpacing)}em`,
-    `"margin-bottom": ${originals.paragraphSpacing}`,
-    `"text-transform": ${originals.textCase}`,
-    `"text-decoration": ${originals.textDecoration}`
-  ].join(', ')})`
 }
 
 /**
@@ -131,22 +107,20 @@ function resolveContextTypographyValue(token, dictionary) {
     referenceFs && referenceFs.$type === 'fontSize'
       ? `var(--font-size-${referenceFs.path[2]}-${abbreviateScale(referenceFs.path[3])})`
       : referenceFs.$value
-  // If the reference is a percentage, convert it to a decimal
+  // A literal (non-reference) line height may be a percentage
   const lineHeight =
     referenceLh && referenceLh.$type === 'lineHeight'
       ? `var(--line-height-${referenceLh.path[2]}-${abbreviateScale(referenceLh.path[3])})`
       : referenceLh.$value
         ? referenceLh.$value
-        : referenceLh.endsWith('%')
-          ? `${parseFloat(referenceLh) / 100}em`
-          : referenceLh
+        : percentToEm(referenceLh)
 
-  return buildTypographyMap({
+  return typographyMap({
     fontFamily: `var(--font-family-${fontFamily})`,
     fontWeight: `var(--font-weight-${fontWeight[2]}-${fontWeight[3]})`,
     fontSize,
     lineHeight,
-    originals: resolveOriginals(token.original.$value, dictionary)
+    ...resolveOriginals(token.original.$value, dictionary)
   })
 }
 
@@ -161,12 +135,12 @@ function resolveComponentTypographyValue(token, dictionary) {
   const ref = splitReference(token.original.$value)
   const res = getReferences(token.original.$value, dictionary.tokens, { usesDtcg })[0]
 
-  return buildTypographyMap({
+  return typographyMap({
     fontFamily: `var(--font-family-${ref[1]})`,
     fontWeight: `var(--font-weight-${ref[3]})`,
     fontSize: `var(--font-size-${abbreviateScale(ref[2])})`,
     lineHeight: `var(--line-height-${abbreviateScale(ref[2])})`,
-    originals: resolveOriginals(res.original.$value, dictionary)
+    ...resolveOriginals(res.original.$value, dictionary)
   })
 }
 
@@ -197,23 +171,10 @@ function tokenToValue(token, dictionary) {
       return resolveComponentTypographyValue(token, dictionary)
     }
     return resolveContextTypographyValue(token, dictionary)
-  } else if (token.$type === 'lineHeight') {
-    const fs = resolveReferences(
-      `{typography.fontSize.${token.path[2]}.${token.path[3]}}`,
-      dictionary.tokens,
-      {
-        usesDtcg
-      }
-    )
-    const lh = parseFloat(token.$value) / parseFloat(fs)
-    return `${removeTrailingZeros(lh.toFixed(3))}em`
-  } else if (token.path[1] === 'letterSpacing') {
-    return `${parseFloat(token.$value)}em`
-  } else if (token.$type === 'asset') {
-    return `"${token.$value}"`
-  } else {
-    return token.$value
   }
+  return encode(token, {
+    resolveReference: (reference) => resolveReferences(reference, dictionary.tokens, { usesDtcg })
+  })
 }
 
 /**

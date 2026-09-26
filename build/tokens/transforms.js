@@ -8,6 +8,7 @@
  */
 
 import { tokenTypes } from './utils.js'
+import { cssShadow, remSize } from './values/web.js'
 
 /**
  * Registers custom transforms for Style Dictionary.
@@ -63,21 +64,7 @@ export default function (StyleDictionary) {
     type: 'value',
     transitive: true,
     filter: (token) => tokenTypes.size.includes(token.$type),
-    transform: function (token, config) {
-      const values = String(token.$value).split(' ')
-      return values
-        .map((value) => {
-          if (value.endsWith('rem')) return value
-          let parsed = parseFloat(value)
-          if (isNaN(parsed)) {
-            throw new Error(
-              `Invalid Number: '${token.name}: ${token.$value}' is not a valid number, cannot transform to 'rem'.`
-            )
-          }
-          return `${parsed / config.basePxFontSize}rem`
-        })
-        .join(' ')
-    }
+    transform: (token, config) => remSize(token, config.basePxFontSize)
   })
 
   /**
@@ -113,17 +100,7 @@ export default function (StyleDictionary) {
     type: 'value',
     transitive: true,
     filter: (token) => tokenTypes.shadow.includes(token.$type),
-    transform: function (token) {
-      if (typeof token.$value !== 'object') {
-        return token.$value
-      }
-      const shadow = Array.isArray(token.$value) ? token.$value : [token.$value]
-      const value = shadow.map((s) => {
-        const { offsetX, offsetY, blur, color, spread, type } = s
-        return `${offsetX} ${offsetY} ${blur} ${spread} ${color}${type === 'innerShadow' ? ' inset' : ''}`
-      })
-      return `${value.join(', ')}`
-    }
+    transform: (token) => cssShadow(token.$value)
   })
 
   /**
