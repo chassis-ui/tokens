@@ -9,28 +9,28 @@
 
 **This repository contains:**
 
-- Design tokens in [Tokens Studio](https://tokens.studio) format (`packages/tokens/tokens/`)
-- Style Dictionary 5 build scripts with custom extensions (`packages/tokens/build/tokens/`)
+- Design tokens in [Tokens Studio](https://tokens.studio) format (`packages/tokens/source/`)
+- Style Dictionary 5 build scripts with custom extensions (`packages/tokens/build/`)
 - Platform-specific output for Web (SCSS), iOS (Swift), and Android (XML), committed in `packages/tokens/dist/` and published to npm as `@chassis-ui/tokens`
 - A test suite on real tokens, and a golden check that compares a fresh build with `dist/`
-- Documentation website (`site/`)
+- Documentation website (`packages/site/`)
 
 ### Repository Layout
 
-The repository is a [pnpm workspace](https://pnpm.io/workspaces) with two packages:
+The repository is a [pnpm workspace](https://pnpm.io/workspaces) with two packages, in the layout of the other Chassis repositories such as [chassis-react](https://github.com/chassis-ui/react):
 
-| Folder             | Package                          | Contents                                                                                       |
-| ------------------ | -------------------------------- | ---------------------------------------------------------------------------------------------- |
-| `packages/tokens/` | `@chassis-ui/tokens` (published) | `tokens/`, `build/tokens/`, `dist/`, the build configuration in `package.json`, `CHANGELOG.md` |
-| `site/`            | `chassis-tokens-site` (private)  | The documentation site, its assets submodule (`site/vendor/assets`) and its own dependencies   |
+| Folder             | Package                          | Contents                                                                                                                                                      |
+| ------------------ | -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `packages/tokens/` | `@chassis-ui/tokens` (published) | `source/` (the Tokens Studio token files), `build/` (the Style Dictionary build), `test/`, `dist/`, the build configuration in `package.json`, `CHANGELOG.md` |
+| `packages/site/`   | `chassis-tokens-site` (private)  | The documentation site and its dependencies                                                                                                                   |
 
-The root holds the workspace configuration, the shared Prettier configuration, the CI workflows and `build/change-version.js`. Run the commands in this README from the root; they call the packages. To work on the tokens without the site's dependencies, install only the tokens package:
+The root holds the workspace configuration, the lint and format configurations with their dependencies, the CI workflows, the repository scripts in `build/` (`change-version.js`, `sync-submodules.js`, `html-validate.js`), the assets submodule in `vendor/assets` and the site output in `_site/`. Run the commands in this README from the root; they call the packages. To work on the tokens without the site's dependencies, install only the tokens package:
 
 ```sh
 pnpm install --filter @chassis-ui/tokens
 ```
 
-Paths in the build sections below (`tokens/`, `build/tokens/`, `dist/`, `package.json`) are relative to `packages/tokens/`.
+Paths in the build sections below (`source/`, `build/`, `test/`, `dist/`, `package.json`) are relative to `packages/tokens/`.
 
 **Key features:**
 
@@ -107,7 +107,7 @@ pnpm tokens --brand chassis --app docs --platform web
 
 ### Verify the Output
 
-Check that the committed `dist/` matches a fresh build of `tokens/`:
+Check that the committed `dist/` matches a fresh build of `source/`:
 
 ```shell
 pnpm tokens:verify
@@ -120,20 +120,20 @@ The check builds into `dist-next/` and compares every file with `dist/`, ignorin
 pnpm tokens:verify --platform ios
 
 # Compare an existing dist-next/ without building (from packages/tokens/)
-node build/tokens/verify.js --skip-build
+node build/verify.js --skip-build
 ```
 
 The check also fails when a reference in the output names nothing the output declares: an Android `@type/name` without a `<type name="name">` in the same file, or a SCSS `$name` that no SCSS file of the directory declares.
 
-The release workflow runs `pnpm tokens:verify` before publishing, so a `dist/` that does not match `tokens/` cannot be released. After changing tokens, run `pnpm tokens` and commit the updated `dist/`.
+The release workflow runs `pnpm tokens:verify` before publishing, so a `dist/` that does not match `source/` cannot be released. After changing tokens, run `pnpm tokens` and commit the updated `dist/`.
 
-The [presets](#presets-for-other-css-frameworks) write nothing into `dist/`. Their reference output is in `build/tokens/test/golden/`, checked by:
+The [presets](#presets-for-other-css-frameworks) write nothing into `dist/`. Their reference output is in `test/golden/`, checked by:
 
 ```shell
 pnpm tokens:verify:presets
 ```
 
-After changing tokens, write the preset baselines again; `build/tokens/test/README.md` has the commands.
+After changing tokens, write the preset baselines again; `test/README.md` has the commands.
 
 ## CLI Reference
 
@@ -241,11 +241,11 @@ The `chassis` key in your `package.json` defines which brands, themes, screens, 
 
 - **`brands`**: Array of brand identifiers
 - **`themes`**: Array of theme variants (light, dark, etc.)
-- **`screens`**: Array of screen sizes for responsive tokens. Set to `[]` or omit to generate single number files without screen suffixes; `tokens/$themes.json` must then have no screen group
+- **`screens`**: Array of screen sizes for responsive tokens. Set to `[]` or omit to generate single number files without screen suffixes; `source/$themes.json` must then have no screen group
 - **`apps`**: Object mapping app names to their target platforms
 - **`options`**: (Optional) Style Dictionary options by platform name, merged into the options of that platform, e.g. `{ "web-px": { "outputReferences": true } }`. The build fails when it names a platform that no app uses
 
-The token sets of each file come from `tokens/$themes.json`. Colour files use the sets of their theme, number files the sets of their screen, and every other file the sets of the first theme and the first screen listed here.
+The token sets of each file come from `source/$themes.json`. Colour files use the sets of their theme, number files the sets of their screen, and every other file the sets of the first theme and the first screen listed here.
 
 **Supported platforms:**
 
@@ -317,11 +317,11 @@ public static let ColorAccordionItemFgColor = ColorContextDefaultFgMain
 
 iOS and Android follow the same rule: a token names a constant or resource of its own file only when that one has the same type and value. Base colours and sizes computed with math print their values. A Swift constant cannot name one of another file.
 
-Each platform file in `build/tokens/config/` can also be edited directly; `web-px.js`, `web-vw.js` and `web-scss.js` each call `webConfig({ unit, format })` from `web.js`.
+Each platform file in `build/config/` can also be edited directly; `web-px.js`, `web-vw.js` and `web-scss.js` each call `webConfig({ unit, format })` from `web.js`.
 
 ## Documentation Site
 
-The documentation site (`site/`) provides guides, API documentation, and usage examples for working with tokens and transformation scripts. It is built with [Astro](https://astro.build/) and includes:
+The documentation site (`packages/site/`) provides guides, API documentation, and usage examples for working with tokens and transformation scripts. It is built with [Astro](https://astro.build/) and includes:
 
 - How to extend or customize transforms
 - How to structure tokens for brands/themes/apps/screens
@@ -347,7 +347,7 @@ To build the static documentation site for deployment:
 pnpm site:build
 ```
 
-The output will be generated in the `site/_site/` directory.
+The output will be generated in the `_site/` directory at the repository root.
 
 ### Keeping Documentation Up to Date
 
@@ -361,7 +361,7 @@ This builds the `chassis` tokens for the `docs` app (`pnpm tokens:site`) and the
 
 ### Editing Documentation
 
-All documentation content is stored in `site/content/`. You can add or edit guides, API docs, and usage examples using Markdown or MDX files.
+All documentation content is stored in `packages/site/content/`. You can add or edit guides, API docs, and usage examples using Markdown or MDX files.
 
 ## Development & Testing
 
@@ -383,7 +383,7 @@ pnpm tokens:test
 - The preprocessor, filters, transforms and token order
 - Logger output
 
-See [packages/tokens/build/tokens/test/README.md](packages/tokens/build/tokens/test/README.md) for the test files and fixtures.
+See [packages/tokens/test/README.md](packages/tokens/test/README.md) for the test files and fixtures.
 
 ### Debugging
 
@@ -411,21 +411,21 @@ A build runs in three steps:
 
 **Key modules:**
 
-- `build/tokens/build.js`: Build plan (one Style Dictionary instance per token-set list) and CLI
-- `build/tokens/config/`: Platform-specific configurations
-- `build/tokens/preprocessor.js`: Token preprocessing
-- `build/tokens/filters.js`: Which tokens go into which file
-- `build/tokens/transforms.js`: Custom value transforms that run before resolution (`rem`, `px` and `vw` sizes, CSS shadows)
-- `build/tokens/formats.js` and `build/tokens/templates/`: Output formats; `templates/references.js` finds the token that an iOS or Android reference names
-- `build/tokens/values/`: Value encoders for iOS, Android and web
-- `build/tokens/reference-policy.js`: Which web tokens print a reference and which token it names, shared by both web formats
-- `build/tokens/css-var-policy.js`: The `var(--…)` names of the Chassis CSS format
-- `build/tokens/scss-var-policy.js`: The values and `$…` names of the SCSS variables format
-- `build/tokens/icons.js`: The icon assets, an Xcode asset catalog and Android vector drawables, written by Style Dictionary actions from the SVG icon tokens
-- `build/tokens/theme-colors.js`: The iOS `Color.swift` whose colours follow the appearance, written after the builds from the light and dark colour files
-- `build/tokens/verify.js`: Golden check against `dist/` and the preset baselines
-- `build/tokens/logger.js`: Centralized logging utilities
-- `build/tokens/utils.js`: Token type groups and number formatting
+- `build/build.js`: Build plan (one Style Dictionary instance per token-set list) and CLI
+- `build/config/`: Platform-specific configurations
+- `build/preprocessor.js`: Token preprocessing
+- `build/filters.js`: Which tokens go into which file
+- `build/transforms.js`: Custom value transforms that run before resolution (`rem`, `px` and `vw` sizes, CSS shadows)
+- `build/formats.js` and `build/templates/`: Output formats; `templates/references.js` finds the token that an iOS or Android reference names
+- `build/values/`: Value encoders for iOS, Android and web
+- `build/reference-policy.js`: Which web tokens print a reference and which token it names, shared by both web formats
+- `build/css-var-policy.js`: The `var(--…)` names of the Chassis CSS format
+- `build/scss-var-policy.js`: The values and `$…` names of the SCSS variables format
+- `build/icons.js`: The icon assets, an Xcode asset catalog and Android vector drawables, written by Style Dictionary actions from the SVG icon tokens
+- `build/theme-colors.js`: The iOS `Color.swift` whose colours follow the appearance, written after the builds from the light and dark colour files
+- `build/verify.js`: Golden check against `dist/` and the preset baselines
+- `build/logger.js`: Centralized logging utilities
+- `build/utils.js`: Token type groups and number formatting
 
 ## Chassis Ecosystem
 

@@ -38,7 +38,8 @@ jobs:
           node-version: ${{ matrix.node }}
           cache: pnpm
 
-      # Only the tokens package: the build must not depend on the site's packages
+      # The tokens package and the root's lint tools, not the site: the build must not
+      # depend on the site's packages
       - name: Install dependencies
         run: pnpm install --frozen-lockfile --filter @chassis-ui/tokens
 

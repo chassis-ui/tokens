@@ -43,19 +43,19 @@ The presets for teams that do not use Chassis CSS are kept, in the new structure
 ### Changed
 
 - Upgraded to Style Dictionary 5.5 and `@tokens-studio/sd-transforms` 2.0; the build now needs Node.js 22 or later
-- Moved platform value encoding (`UIColor(…)`, ARGB colours, `sp`/`dp`, quoting, `em` units, `var(--…)` references) out of the output templates into tested modules (`build/tokens/values/` and the web reference policies), which run on fully resolved tokens
+- Moved platform value encoding (`UIColor(…)`, ARGB colours, `sp`/`dp`, quoting, `em` units, `var(--…)` references) out of the output templates into tested modules (`build/values/` and the web reference policies), which run on fully resolved tokens
 - Build one Style Dictionary instance per token-set list instead of one run per file group: a full build runs 16 builds instead of 36 and takes about 6 s instead of 20 s
 - Replaced the copy of the sd-transforms preprocessor with the official type alignment plus the Chassis steps (letter spacing as a number, splitting every font weight into weight and style)
 - The file header reads the version from `package.json`
 - `--dry-run` lists the builds and the files each would write
-- The build fails on a broken token reference, and when `tokens/$themes.json` has no token sets for a configured brand, app, theme or screen
+- The build fails on a broken token reference, and when `source/$themes.json` has no token sets for a configured brand, app, theme or screen
 - Replaced the mock-based tests with tests on real tokens and `dist/`
 - The npm package holds all of `dist/`: the iOS and Android files (Swift, XML, the icon asset catalog and drawables) as well as the web SCSS. It held the SCSS files and the asset catalog's `Contents.json` files only
 - `package.json` has an `exports` map: `@chassis-ui/tokens/dist/*` and `@chassis-ui/tokens/package.json`. Every `dist/` path resolves as before; other paths in the package no longer resolve through Node
 - `pnpm check` fails when one of its steps fails; it ran them in the background and always passed
 - Updated the dev dependencies within their ranges, among them Astro 7.3, so `pnpm audit` reports no advisory (it reported 39, one critical). The token build packages (Style Dictionary, sd-transforms, svg2vectordrawable, tinycolor2) and the Chassis CSS and docs packages the site uses kept their versions
 - The release workflow publishes only after the CI checks pass on the same commit, installs with `--frozen-lockfile`, and pins its actions to commit SHAs
-- The repository is a pnpm workspace: this package is built and published from `packages/tokens/`, with only the build's dependencies, and the documentation site is a separate private package in `site/`. The npm page shows a README for the package instead of the repository's. The package contents did not change
+- The repository is a pnpm workspace: this package is built and published from `packages/tokens/`, with only the build's dependencies, and the documentation site is a separate private package in `packages/site/`. The token files are in `source/`, the build in `build/` and its tests in `test/` of the package. The npm page shows a README for the package instead of the repository's. The package contents did not change
 
 ### Added
 
@@ -64,7 +64,7 @@ The presets for teams that do not use Chassis CSS are kept, in the new structure
 - `web-scss` platform: SCSS variables with resolved values in rem units, for CSS frameworks other than Chassis CSS
 - `chassis.build.options`: Style Dictionary options by platform, such as `outputReferences`
 - `--config <file>` build option, to read the build configuration from a JSON file
-- `pnpm tokens:verify:presets`: checks each preset against its baseline in `build/tokens/test/golden/`
+- `pnpm tokens:verify:presets`: checks each preset against its baseline in `test/golden/`
 - `ios-swiftui` and `android-compose` platforms: Swift files with SwiftUI values and Kotlin objects for Jetpack Compose, with the same tokens and values as `ios` and `android`, written to `dist/ios-swiftui/` and `dist/android-compose/`
 - `outputReferences` for the iOS format: a constant names another constant of the same class when it has the same type and value; base colours and sizes computed with math print their values
 - CI for pull requests (`.github/workflows/ci.yml`): token lint, tests and golden checks on Node.js 22 and 24, the site lint and build, and `pnpm audit`

@@ -76,6 +76,7 @@ If a phase is too large, split it into `Na`, `Nb` rows. If a fact in this file i
 | 25    | CI for pull requests                                                        | Opus   | Done                              | `rewrite(phase 25)`                  | 2026-09-27 |
 | 26    | Merge preparation and 0.6.0                                                 | Opus   | Done (merged locally, not pushed) | `rewrite(phase 26)`, merge `588874e` | 2026-09-27 |
 | 27    | Workspace split: tokens and site (optional)                                 | Opus   | Done                              | `rewrite(phase 27)`                  | 2026-09-27 |
+| 27b   | Align the layout with chassis-react                                         | Opus   | Done                              | `rewrite(phase 27b)`                 | 2026-09-27 |
 | 28    | Contributor docs and README                                                 | Opus   | Not started                       |                                      |            |
 | 29    | Release automation                                                          | Opus   | Not started                       |                                      |            |
 | 30    | Token diff report on pull requests                                          | Opus   | Not started                       |                                      |            |
@@ -104,7 +105,7 @@ If a phase is too large, split it into `Na`, `Nb` rows. If a fact in this file i
   - Settings outside the repository (npm trusted publisher, GitHub branch protection, repository secrets, Vercel project settings) are Ozgur's. The phase writes the steps into its Result as a checklist, and Claude does not change them.
   - A workflow file cannot run until it is pushed. Its phase checks it with `actionlint` (downloaded to the session scratchpad, with approval) and runs each job's commands locally. The first real run is recorded in the next session's log entry.
   - Tools downloaded for a check (actionlint, aapt2, kotlinc) go to the session scratchpad, never into the repository, as in Phases 20 and 21.
-  - After Phase 27, if it is done, `build/`, `tokens/` and `dist/` live under `packages/tokens/`. Paths in later phases are written for the current layout; read them relative to `packages/tokens/`.
+  - After Phase 27b, the token files are in `packages/tokens/source/`, the build in `packages/tokens/build/`, its tests in `packages/tokens/test/` and the output in `packages/tokens/dist/`; the site is `packages/site/`. Later phases name the old paths (`tokens/`, `build/tokens/`, `site/`); read them in the new layout.
 
 ## Facts verified on 2026-09-27
 
@@ -1180,6 +1181,56 @@ Settings for Ozgur, outside the repository:
 2. Vercel: `vercel.json` sets the output to `site/_site`. If the project's settings override the output directory or the root directory, update them; the install runs at the root and the build command is still `pnpm site:build`.
 3. npm: the package's page on npmjs.com shows `packages/tokens/README.md` from the next release on.
 
+## Phase 27b: align the layout with chassis-react
+
+Goal: the workspace of Phase 27 follows the layout that `chassis-react` and `chassis-website` already use, and its folder names read well.
+
+Why: Phase 27 followed the plan's wording (`site/` as a package) without checking the sibling repositories. Ozgur pointed out that `../chassis-react` and `../chassis-website` already have `packages/<library>` and `packages/site`, with repository tooling, the assets submodule, the site output and the lint configurations at the root, and that `packages/tokens/tokens` and `build/tokens` read badly.
+
+Decisions (Ozgur, 2026-09-27):
+
+- Build code in `packages/tokens/build/` (was `build/tokens/`), tests, fixtures and baselines in `packages/tokens/test/`.
+- Token JSON in `packages/tokens/source/` (was `tokens/`). The Tokens Studio sync path becomes `packages/tokens/source`.
+- The site in `packages/site/`, with the root layout of `chassis-react`: `vendor/assets`, `build/sync-submodules.js`, `build/html-validate.js`, `pagefind.yml`, `stylelint.config.js` and the `_site` output at the root.
+- One ESLint configuration at the root, as in the siblings. A tokens-only install then also installs the root's lint packages.
+- Issues found in sibling packages are drafted for their repositories and filed only after Ozgur approves the text.
+
+- [x] Move the folders with `git mv`; update the build's paths (`source/`, the package root in `verify.js` and the tests), the package scripts and the root scripts.
+- [x] Move the lint and tooling dependencies to the root; the tokens package keeps the build packages and `vitest`, the site its Astro and page dependencies.
+- [x] Site paths relative to `packages/site/`: `../../vendor/assets`, `outDir: '../../_site'`, the Pagefind copy in `src/libs/astro.ts`.
+- [x] Root `eslint.config.js`, `stylelint.config.js`, `.prettierignore` and `.prettierrc.json` with repository paths; `vercel.json` writes to `_site` again.
+- [x] Update `change-version.js`, CI, the READMEs, the tests README, the CHANGELOG line and the site pages.
+- [x] Acceptance: the npm file names, `dist/` (exact renames) and the site output equal the Phase 27 baselines; the effective ESLint configuration of the six sample files equals the one before Phase 27; every CI job passes in a clean clone; the dev server renders a page.
+
+Result: the repository has the layout of `chassis-react`. `dist/`, the npm file names and the site output did not change, and the ESLint configuration of every checked file is the one from before Phase 27.
+
+| Folder             | Holds                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| root               | `package.json` (private, 20 dev dependencies: ESLint, Prettier, stylelint, `find-unused-sass-variables`, `html-validate`, `globby`, `picocolors`, `pagefind`, `typescript`), `pnpm-workspace.yaml`, `eslint.config.js`, `stylelint.config.js`, `.prettierrc.json`, `.prettierignore`, `pagefind.yml`, `build/` (`change-version.js`, `sync-submodules.js`, `html-validate.js`), `vendor/assets`, `_site/` (output), `.github/`, `docs/`, `vercel.json` |
+| `packages/tokens/` | `@chassis-ui/tokens`: `source/`, `build/`, `test/` (with `fixtures/` and `golden/`), `dist/`, `package.json`, `README.md`, `CHANGELOG.md`, `LICENSE`; 5 dev dependencies (the four build packages and `vitest`)                                                                                                                                                                                                                                        |
+| `packages/site/`   | `chassis-tokens-site`: the site; 27 dev dependencies and `@chassis-ui/tokens` from the workspace                                                                                                                                                                                                                                                                                                                                                       |
+
+- Moves use `git mv`: 223 exact renames, including all of `dist/` and `source/`; the others changed paths or imports. The submodule is back at `vendor/assets` at commit `04fd3a7`.
+- The build: `build.js` reads `source/$themes.json` and `source/<set>.json` (the error message names `source/$themes.json`); `verify.js` finds the package root at `../` and the baselines at `../test/golden`; the usage texts say `node build/build.js`. The tests import from `../build/`, and their root is `../`. Package scripts: `build`, `build:site`, `clean`, `test` (`vitest run --dir test`), `verify`, `verify:presets`. Lint is a root script: `tokens:lint` runs ESLint on `packages/tokens/build` and `packages/tokens/test`.
+- The root configurations are the pre-Phase 27 files with repository paths (`packages/site/…`); the Phase 27 workarounds are gone: the Prettier Astro plugin is a top-level plugin again, ESLint's Prettier rule has no ignore path, and `packages/site/tsconfig.json` equals the pre-Phase 27 file.
+- The site: `outDir: '../../_site'`, the assets at `../../vendor/assets/dist/web/docs`, and the Pagefind copy in `src/libs/astro.ts` from `../../_site`, as in `chassis-react`. Its package scripts are `dev`, `build`, `preview`, `check`, `clean`. Root scripts run the submodule sync, Pagefind and the site lint (`site:build` is sync, Astro, Pagefind). `vercel.json` writes to `_site` again, as before Phase 27. `.gitignore` names `packages/site/dist` and `packages/site/public`.
+- `change-version.js` rewrites `README.md` and `packages/site/config.yml`.
+- Docs: the README layout section, the tests README (its steps for the old commit `a072bf9` keep that commit's paths, with a note), the quick start, the Style Dictionary, Tokens Studio, iOS and Android pages, and the 0.6.0 CHANGELOG entries, which name `source/`, `build/` and `test/`, since the split ships in 0.6.0.
+
+Checked:
+
+- `npm pack --dry-run` in `packages/tokens/`: the same 118 file names as before Phase 27. The lockfile resolves the same 1044 packages as after Phase 27.
+- `eslint --print-config` for `build/build.js`, `test/build.test.js` and four site files (`.ts`, `.astro`, browser `.js`, the Astro config): each equals the pre-Phase 27 configuration of the same file, byte for byte.
+- The site output equals the pre-Phase 27 build except the six guide pages whose text changed: 3911 files, 3900 identical, the 7 bundled assets identical by content, 33 Pagefind files. `check:astro` is back to 32 files, 0 errors and the old hint.
+- In a clean clone: the Tokens job passes on Node.js 22.19.0 and 24.18.0 with `--filter @chassis-ui/tokens` (745 tests, 114 files, 8 presets); the Site and Audit jobs pass on 22.19.0, `site:build` included (submodule sync, 22 pages, Pagefind).
+- A tokens-only install now has 551 packages: the build's and every root tool (ESLint with its Astro plugins, stylelint, Pagefind, `html-validate`, TypeScript), as decided. The site's own packages (Astro, `@astrojs/*`, the Chassis packages, Zod, the Pagefind UI) are not installed; `sass` still is, as the optional peer of `vite`. Correction to Phase 27: its count of 294 was taken from a long-format directory listing and is off by about one.
+- `astro dev` from the site package: the Tokens Studio page renders with its sidebar, fonts, both images from `vendor/assets` and the path `packages/tokens/source/`; no console errors. `actionlint` passes; `change-version --dry-run` finds all three files.
+
+Settings for Ozgur, replacing those of Phase 27:
+
+1. Tokens Studio: the sync file path becomes `packages/tokens/source` (it was `tokens`).
+2. Vercel: nothing to change; the output is `_site` again, as before Phase 27.
+
 ## Phase 28: contributor docs and README
 
 Goal: someone new can change a token, a platform or the site and open a correct pull request without asking.
@@ -1395,3 +1446,4 @@ Append-only.
 - 2026-09-27 (Phase 26, Opus 5.5): Moved the CHANGELOG entry to 0.6.0 with a Breaking changes section, bumped the version to 0.6.0 with `change-version`, rebuilt `dist/` (header lines only, 58 files) and wrote the pull request description into the Result. Verified: every CI command passes in a clean clone on Node.js 22 and the Tokens job on 24; `npm pack` shows 0.6.0; every changed `dist/` line is a header line. Surprise: the first draft of the breaking changes used `semi-bold` weights as the example, but the example tokens printed `regular`; corrected after checking `main`. Next: Ozgur pushes, opens the pull request, merges and releases; then Phase 27 on `dev/production`.
 - 2026-09-27 (after Phase 26): Ozgur asked why a pull request was needed and chose to merge locally. Merged `dev/rewrite` into `main` with `git merge --no-ff` (`588874e`, tree equal to `dev/rewrite`) after checking with `git fetch` that `main` equalled `origin/main`. Not pushed; pushing `main` is the 0.6.0 release. Created `dev/production` from `main`. The Phase 25 branch protection advice was corrected: no required pull request.
 - 2026-09-27 (Phase 27, Opus 5.5): Asked Ozgur first, because the full split makes this site's layout differ from the other four Chassis repositories; Ozgur chose the full split. Moved the tokens package to `packages/tokens/` and the site's submodule, scripts and configs into `site/` with `git mv`, wrote three `package.json` files and `pnpm-workspace.yaml`, split the ESLint config, moved the Prettier Astro plugin into its override, made the site's paths relative to `site/`, pointed `change-version.js`, CI, the release and Vercel at the new folders, wrote a README for the npm package and updated the docs. Verified: the npm file names, `dist/` (309 exact renames) and the site output (3911 files) are unchanged; every CI job passes in a clean clone, the Tokens job with a tokens-only install; the dev server renders a page without errors. Surprises: (1) the site's data loader also read `./site/…`, found by the first build. (2) `astro check` type-checked the submodule's own site once it sat under `site/`, with 4 errors; `tsconfig.json` excludes `vendor`. (3) ESLint's Prettier rule looked for `.prettierignore` in `site/`, so `src/assets` was no longer ignored. (4) The root's Prettier plugin and `sass` still arrive with a tokens-only install. (5) The "View on GitHub" links were broken before the split; not fixed here. Next: Phase 28.
+- 2026-09-27 (Phase 27b, Opus 5.5): Ozgur asked why `build/tokens` and `packages/tokens/tokens` were kept, why the site was not under `packages/`, and asked for sibling-package issues to be filed in their repositories. Checked `chassis-react` and `chassis-website`: both have `packages/<name>` and `packages/site` with tooling, submodule, output and lint configurations at the root. Ozgur chose `build/` + `test/`, `source/`, `packages/site` with that root layout, one root ESLint configuration, and issue drafts. Moved everything with `git mv`, restored the pre-Phase 27 root configurations with repository paths, moved the lint and tooling dependencies to the root, and updated the build paths, tests, scripts, CI comment, `change-version.js`, `vercel.json`, `.gitignore` and the docs. Verified: npm file names, `dist/`, the resolved packages, the ESLint configuration of six files (equal to before Phase 27) and the site output are unchanged; every CI job passes in a clean clone; the dev server renders without errors. Surprises: (1) `git mv` into a missing `vendor/` failed and Finder recreated `.DS_Store` files that blocked `rmdir`; both handled. (2) `.gitignore` still named `site/public`, so Prettier checked the site's generated `public/`; fixed. (3) `ls` is aliased to the long format here, which made two anchored package counts read zero; recounted with `command ls -1`. Next: the issue drafts for Ozgur, then Phase 28.
