@@ -24,6 +24,10 @@ Added 2026-09-27, after Phase 12:
 
 6. **Fix the iOS and Android output.** Unlike Phases 0 to 12, these phases change `dist/` on purpose: values that are wrong on the platform (Phases 13 to 15), the file layout that stops the files from being used together (Phases 17 to 19), and native outputs the platforms lack (Phases 20 to 22). Phase 16 is housekeeping. Each change needs Ozgur's approval in Open decisions before its phase starts.
 
+Added 2026-09-27, after Phase 22:
+
+7. **Make the package production-ready.** The build is done and checked, but the repository around it is not: the npm package leaves out the iOS and Android output, no check runs on a pull request, `pnpm check` cannot fail, releases are a manual version bump, and there are no contributor docs. Phases 23 to 26 fix what is broken and merge the branch as 0.6.0. Phases 27 to 35 add what a maintained, contributor-friendly package needs. None of them changes the content of `dist/`.
+
 ## Session protocol
 
 When Ozgur says "continue", Claude does this:
@@ -67,6 +71,19 @@ If a phase is too large, split it into `Na`, `Nb` rows. If a fact in this file i
 | 20 | SwiftUI and Compose outputs (optional) | Opus | Done | `rewrite(phase 20)` | 2026-09-27 |
 | 21 | Icon assets (optional) | Opus | Done | `rewrite(phase 21)` | 2026-09-27 |
 | 22 | Platform shadow values (optional) | Opus | Done | `rewrite(phase 22)` | 2026-09-27 |
+| 23 | Package contents and scripts | Opus | Not started | | |
+| 24 | Lint and audit clean | Sonnet | Not started | | |
+| 25 | CI for pull requests | Opus | Not started | | |
+| 26 | Merge preparation and 0.6.0 | Opus | Not started | | |
+| 27 | Workspace split: tokens and site (optional) | Opus | Not started | | |
+| 28 | Contributor docs and README | Opus | Not started | | |
+| 29 | Release automation | Opus | Not started | | |
+| 30 | Token diff report on pull requests | Opus | Not started | | |
+| 31 | Token source lint | Opus | Not started | | |
+| 32 | Type checking of the build code | Opus | Not started | | |
+| 33 | Native compile checks in CI | Fable | Not started | | |
+| 34 | Swift package and Android library (optional) | Fable | Not started | | |
+| 35 | Retire the plan | Sonnet | Not started | | |
 
 ## Ground rules
 
@@ -80,6 +97,14 @@ If a phase is too large, split it into `Na`, `Nb` rows. If a fact in this file i
 - **Output changes (Phases 13 to 22):** these phases change `dist/` on purpose, and only as Open decisions approved. The phase builds both brands into `dist-next/`, reviews the difference against `dist/`, and copies the changed files into `dist/`; every line outside the approved change must stay equal, which the header-insensitive diff shows. The iOS and Android preset baselines (`ios-references`, `android-references`) are rewritten the same way. The phase result lists each changed group of lines with a count and one example, and the CHANGELOG entry marks what breaks app code. `dist/` must compile: `swiftc` with the stand-in UIKit for every Swift file, and aapt2 for every Android file (aapt2 is downloaded to the session scratchpad, as on 2026-09-27; it is not in the repo). The Output contract section is updated in the same phase.
 - **Tests:** new unit tests use real tokens copied from `tokens/` as fixtures, never mocks of `style-dictionary`. The 99 existing mock-based tests stay green while the code they cover exists; when a phase removes that code, it removes the test.
 - **Build config stays in `package.json` `chassis.build`:** brands `chassis` and `sinefil`; themes `light`, `dark`; screens `large`, `medium`, `small`; apps `docs` (web) and `demo` (ios, android).
+- **Production phases (23 to 35):**
+  - Branch: Phases 23 to 25 commit on `dev/rewrite`. Phase 26 prepares the merge; Ozgur pushes, opens the pull request, merges and releases. Phases 27 to 35 commit on `dev/production`, created from `main` after the merge. One commit per phase, no pushes; Ozgur pushes.
+  - Output: no phase changes the content of `dist/` or of the preset baselines. Every phase ends with `pnpm tokens:verify`, `pnpm tokens:verify:presets` and `pnpm tokens:test` green. The only `dist/` change is Phase 26's version header, if approved.
+  - `tokens/` stays frozen. `site/` changes only where a phase says so.
+  - Settings outside the repository (npm trusted publisher, GitHub branch protection, repository secrets, Vercel project settings) are Ozgur's. The phase writes the steps into its Result as a checklist, and Claude does not change them.
+  - A workflow file cannot run until it is pushed. Its phase checks it with `actionlint` (downloaded to the session scratchpad, with approval) and runs each job's commands locally. The first real run is recorded in the next session's log entry.
+  - Tools downloaded for a check (actionlint, aapt2, kotlinc) go to the session scratchpad, never into the repository, as in Phases 20 and 21.
+  - After Phase 27, if it is done, `build/`, `tokens/` and `dist/` live under `packages/tokens/`. Paths in later phases are written for the current layout; read them relative to `packages/tokens/`.
 
 ## Facts verified on 2026-09-27
 
@@ -159,6 +184,26 @@ Measured on 2026-09-27 with a prototype in a scratch copy of the repository, bra
 - 715 of the 4460 names in `Main.swift` are base colours naming base colours. The Android rule prints values for base colours, so with that rule `Main.swift` has 3745 names.
 - `static let` is initialised lazily on first use, so a name costs one extra lookup the first time. A cycle would deadlock at run time, but Style Dictionary rejects circular token references before printing.
 - File sizes change both ways: the colour files shrink from 167 KB to 143 KB, the number files grow from 215 KB to 239 KB (`DimensionBase16` is longer than `CGFloat(16)`), `Main.swift` grows from 566 KB to 571 KB. Type-checking `Main.swift` took 0.49 s against 0.74 s for the `dist/` file.
+
+### Facts about the repository (Phases 23 to 35)
+
+Measured on `dev/rewrite` at `rewrite(phase 22)`:
+
+- Green: `pnpm tokens:test` (745 tests), `pnpm tokens:lint`, `pnpm tokens:verify` (114 files) and `pnpm tokens:verify:presets` (8 presets).
+- `npm pack --dry-run` lists 37 files, 102.7 kB packed. The `files` glob `dist/**/*.{css,scss,json,js,ts}` keeps the 14 web SCSS files and the iOS asset catalog's `Contents.json` files, and drops every `.swift`, `.xml`, `.kt` and `.svg`. So no iOS or Android output reaches npm, and the asset catalog ships without its images. All 114 `dist/` files together are about 750 kB gzipped.
+- The package description names a "token transformer, asset manager and icon generator", but `build/` is not published.
+- The only workflow is `.github/workflows/publish-release.yml`, on push to `main`. It runs `pnpm install` without `--frozen-lockfile` and `pnpm tokens:verify`, then publishes with the long-lived `NPM_CHASSIS_UI` token. It runs no tests and no lint. Nothing runs on a pull request.
+- `pnpm check` runs its steps as `a & b & c & wait`. A bare `wait` exits 0, so `check` passes when a step fails. `check:lockfile` reads `package-lock.json`, which does not exist in this pnpm repository, so it always fails; lockfile-lint reads npm and yarn lockfiles only.
+- `pnpm site:lint` fails: Prettier reports 6 files under `site/src/components/homepage/`. `README.md`, `CHANGELOG.md` and `publish-release.yml` did not pass Prettier before the rewrite either (Phase 6a and Phase 11 logs).
+- `pnpm audit` reports 39 advisories (1 critical, 27 high, 11 moderate), all in dev dependencies. Most come through Astro and `@astrojs/check`; the critical one is an Astro remote code execution in AVIF image optimisation. The site is built on Vercel, so it matters there.
+- About 31 of the 53 dev dependencies are used only by `site/` (Astro and its plugins, Pagefind, `@chassis-ui/css`, `@chassis-ui/docs`, calendar, clipboard and StackBlitz libraries). A contributor who changes a token installs all of them.
+- `site:lint:vnu`, `build/vnu-jar.js` and the `vnu-jar` dependency are still there, though the CHANGELOG says `html-validate` replaced them. Nothing in CI or the docs runs `tokens:zip` (`build/zip-tokens.js`).
+- `build/` holds about 3,500 lines of JavaScript with no type checking (no `checkJs`, no `// @ts-check`), though `typescript` is a dev dependency and Style Dictionary ships types.
+- `change-version.js` rewrites the version in `package.json`, `README.md` (a hardcoded badge) and `site/config.yml` (`current_version`).
+- The README's CLI examples use a `test` brand and app that the configuration does not have, and it says the platform configs have "no shared dependencies", though `web-px`, `web-vw` and `web-scss` call `webConfig()` from `web.js`.
+- There is no `CONTRIBUTING.md`, `SECURITY.md`, code of conduct, `CODEOWNERS`, issue or pull request template, or Dependabot or Renovate configuration.
+- `dev/rewrite` is 37 commits ahead of `main`: 287 files, about 229,000 lines added and 48,000 removed, most of it `dist/` (9.7 MB) and the preset baselines (9.5 MB).
+- The iOS and Android compile checks of Phases 13 to 22 ran by hand: `swiftc` with a stand-in UIKit, aapt2 and kotlinc from the scratchpad. The iOS SDK and `actool` need Xcode, which this machine does not have.
 
 ## Design decisions
 
@@ -922,6 +967,155 @@ Result: every box shadow blur on iOS is followed by a `…Radius` constant with 
 Checked: all Swift files of both brands and of the `ios-references` build type-check in one module; the iOS guide's shadow example compiles in a package against the new files and sets a radius of 4, `shadowOpacity` 1 and the colour's alpha 0.1.
 
 
+## Phase 23: package contents and scripts
+
+Goal: the npm package holds every output the docs describe, and the package scripts fail when something is wrong.
+
+- [ ] `files`: publish every file of `dist/` (Swift, XML, Kotlin, SVG, JSON, SCSS), as decided below. Also `README.md`, `LICENSE` and `CHANGELOG.md`, which npm adds by default.
+- [ ] `exports`: add the map decided below. Every path that consumers use today must still resolve, above all `dist/web/docs/chassis/main.scss`, which `@chassis-ui/css` forwards.
+- [ ] `description`: replace it with text that says what the package holds (decided below).
+- [ ] `check`: remove `check:lockfile`, and run the other steps so that any failure fails `check`, in sequence or with a runner that returns the first failure.
+- [ ] Remove `site:lint:vnu`, `build/vnu-jar.js` and the `vnu-jar` dependency, and `tokens:zip` with `build/zip-tokens.js`, if approved.
+- [ ] Update the quick start and the README where they say that the package holds the web SCSS files only.
+- [ ] Acceptance:
+  - `npm pack --dry-run` lists all 114 `dist/` files and no file outside `dist/` apart from `package.json`, `README.md`, `LICENSE` and `CHANGELOG.md`.
+  - A consumer check in the scratchpad: install the packed tarball into an empty project, then compile `@use '@chassis-ui/tokens/dist/web/docs/chassis/main'` with Dart Sass through the `pkg:` importer and through a load path, and `require.resolve` one Swift file, one Android file and `package.json`.
+  - `pnpm check` fails when one of its steps is made to fail, and passes otherwise.
+  - The usual `dist/` and test checks from the ground rules.
+
+
+## Phase 24: lint and audit clean
+
+Goal: every lint and audit command the CI of Phase 25 will run passes.
+
+- [x] Format the 6 files under `site/src/components/homepage/` with Prettier (formatting only; an exception to the frozen `site/` folder). Done by Ozgur on 2026-09-27; `pnpm site:lint` passes.
+- [ ] Format `README.md`, `CHANGELOG.md` and `publish-release.yml` with Prettier.
+- [ ] Update Astro, `@astrojs/check` and the other packages in the audit report to versions without the advisories. For an advisory with no fixed version, add a `pnpm.auditConfig.ignoreGhsas` entry with the reason in the Result.
+- [ ] Acceptance: `pnpm site:lint`, `pnpm check` (Phase 23's version), `prettier -c` on the repository, `pnpm astro:build` with the page count unchanged (22), and the usual `dist/` and test checks. The Result lists every updated package with its old and new version, and every ignored advisory.
+
+
+## Phase 25: CI for pull requests
+
+Goal: every pull request and every push runs the checks, and the release cannot publish without them.
+
+- [ ] `.github/workflows/ci.yml`, on `pull_request` and on `push` to any branch:
+  - `tokens` job, on the Node versions decided below: `pnpm install --frozen-lockfile`, `tokens:lint`, `tokens:test`, `tokens:verify`, `tokens:verify:presets`.
+  - `site` job: `site:lint`, `check:astro`, `astro:build`.
+  - `audit` job: `check:pnpm`.
+  - Concurrency group per branch, cancelling older runs; `permissions: contents: read`.
+- [ ] `publish-release.yml`: `--frozen-lockfile`, and it publishes only after the CI jobs pass on the same commit (a reusable workflow call or `needs`).
+- [ ] `.github/dependabot.yml` for npm and GitHub Actions, as decided below.
+- [ ] Pin actions as decided below.
+- [ ] Acceptance: `actionlint` passes on both workflows; each job's commands run green locally in a clean clone with `pnpm install --frozen-lockfile`; the Result lists the branch protection settings for Ozgur to set on `main` (required checks: the job names).
+
+
+## Phase 26: merge preparation and 0.6.0
+
+Goal: `dev/rewrite` merges into `main` and is released as one version.
+
+- [ ] Move the `[Unreleased]` CHANGELOG entry to the version decided below. Add a "Breaking changes" section first: Node 22, the iOS type and file names (Phase 17), font weights (Phase 14), line heights and letter spacing (Phase 13), gradients (Phase 15), Android float resources, and the files added to the npm package (Phase 23). Each with the change an app must make.
+- [ ] Bump the version with `pnpm change-version`. Rebuild `dist/` for the new header, if approved: only the version and timestamp lines may change, which `pnpm tokens:verify` shows.
+- [ ] Write the pull request description into the Result: what changed, how it was checked, and the breaking changes, taken from the CHANGELOG.
+- [ ] Ozgur pushes `dev/rewrite`, opens the pull request, waits for the CI of Phase 25, merges and lets the release workflow publish. Claude does not push.
+- [ ] Acceptance: before the push, every local check of Phase 25 passes in a clean clone; `npm pack --dry-run` shows the new version. After the release, the next session records the CI run, the npm version and the GitHub release in the log.
+
+
+## Phase 27: workspace split, tokens and site (optional)
+
+Goal: a contributor who changes tokens installs and runs only the token build; the site keeps its own dependencies.
+
+- [ ] A pnpm workspace with a private root: `packages/tokens/` holds `tokens/`, `build/`, `dist/`, its tests and the published `package.json`; `site/` becomes a workspace package with its own `package.json` and the site-only dependencies. The `vendor/assets` submodule moves with the site, if it is only the site's.
+- [ ] Inside the published tarball, paths do not change: `dist/` stays at the package root, so consumers see no difference.
+- [ ] Root scripts call the packages (`pnpm --filter`), so `pnpm tokens`, `pnpm test` and `pnpm dev` still work from the root.
+- [ ] Update the CI and release workflows, `vercel.json`, the lint configs, `.gitignore`, the README and the site pages that name repository paths.
+- [ ] Acceptance: `npm pack --dry-run` in `packages/tokens/` lists the same file names as before the split; `pnpm install` in the tokens package alone installs no site dependency; every check of Phase 25 passes; `pnpm astro:build` builds 22 pages; the Result lists the Vercel setting to change, if any.
+
+
+## Phase 28: contributor docs and README
+
+Goal: someone new can change a token, a platform or the site and open a correct pull request without asking.
+
+- [ ] `CONTRIBUTING.md`: setup; the token flow (edit in Tokens Studio, sync, `pnpm tokens`, commit `dist/`); when and how to rewrite the preset baselines; the native compile checks; the output-change rule (a change to `dist/` needs a CHANGELOG line and says what breaks); commit and branch conventions; how a release happens (after Phase 29).
+- [ ] `SECURITY.md` and `CODE_OF_CONDUCT.md`, as decided below.
+- [ ] `.github/CODEOWNERS`, issue templates (bug, token change, platform request) and a pull request template with the checklist of `CONTRIBUTING.md`.
+- [ ] README: npm and CI badges instead of the hardcoded version badge (then remove `README.md` from `change-version.js`); CLI examples with the brands and apps of the configuration; no "no shared dependencies" claim; replace the emoji feature list with install, use, customize and release sections; link to `CONTRIBUTING.md` and the site.
+- [ ] Acceptance: every command in `CONTRIBUTING.md` and the README runs as written in a clean clone; every link resolves; Prettier passes; the issue template YAML is valid (GitHub's issue forms schema).
+
+
+## Phase 29: release automation
+
+Goal: versions and CHANGELOG entries come from pull requests, and npm publishes with provenance and without a long-lived token.
+
+- [ ] Add the tool decided below (Changesets recommended). With Changesets: a pull request adds a changeset file; on `main`, the Changesets action opens a "Version Packages" pull request that bumps the version and writes the CHANGELOG; merging it publishes.
+- [ ] The version step also writes `current_version` in `site/config.yml`, which `change-version.js` does today. Then remove `change-version.js` and its script, if approved.
+- [ ] Publish with npm trusted publishing (OIDC, `id-token: write`) and `--provenance`, then create the GitHub release with the CHANGELOG entry as its body.
+- [ ] The CI of Phase 25 fails a pull request that changes `tokens/`, `build/` or `dist/` without a changeset.
+- [ ] Result: the steps for Ozgur: add the trusted publisher on npmjs.com, then delete the `NPM_CHASSIS_UI` secret after the first release with provenance.
+- [ ] Acceptance: `actionlint` passes; `pnpm changeset status` works; a dry run of the version step on a scratch branch bumps `package.json`, writes the CHANGELOG and `site/config.yml`; `npm publish --dry-run` lists the files of Phase 23.
+
+
+## Phase 30: token diff report on pull requests
+
+Goal: a reviewer sees what a pull request does to the tokens without reading `dist/`.
+
+- [ ] `build/tokens/diff.js`: compares two `dist/` trees and reports, by platform and file, the names added, removed and changed in value, and a removed and an added name with the same value in the same file as a possible rename. It marks removed and renamed names as breaking.
+- [ ] CI: build the base branch's `dist/` into a scratch folder, run the diff against the pull request's `dist/`, and write the report as the job summary (and as a pull request comment, if approved).
+- [ ] Tests on real `dist/` fixtures.
+- [ ] Acceptance: run on real commits of this branch, the report shows: for the `headers-gap` rename, one possible rename in each of the 6 small-screen files; for Phase 22, 3168 added iOS lines and nothing else; for Phase 14, value changes on weight lines only. A pull request with no token change reports nothing.
+
+
+## Phase 31: token source lint
+
+Goal: mistakes in `tokens/` fail before a build, with a message that names the token set and the token.
+
+- [ ] `build/tokens/lint-tokens.js` and `pnpm tokens:lint:source`, run in CI. Rules, as decided below:
+  - the sets of one group (themes, screens) declare the same names; the `headers-gap` mistake would have failed here
+  - names use the case and characters the platforms need
+  - every font weight name is one that `fontWeightNumber` knows
+  - every token has a type
+  - no two sets of one list declare the same name with different types
+- [ ] Tests with fixtures copied from `tokens/`, and one broken fixture per rule.
+- [ ] Acceptance: passes on `tokens/`; each rule fails on its broken fixture; putting `headers-gap` back into the small screen set of a scratch copy fails with the set and token named.
+
+
+## Phase 32: type checking of the build code
+
+Goal: type errors in `build/` fail CI.
+
+- [ ] A `tsconfig.json` for `build/` with `allowJs`, `checkJs` and `noEmit`, at the strictness decided below; `pnpm tokens:typecheck`, run in CI.
+- [ ] Fix what it reports with JSDoc types, using the types Style Dictionary ships. No behaviour change.
+- [ ] Acceptance: `pnpm tokens:typecheck` passes; the usual `dist/` and test checks; the Result lists the kinds of errors found and any that were real bugs.
+
+
+## Phase 33: native compile checks in CI
+
+Goal: CI compiles the iOS and Android output against the real SDKs, which this machine cannot do.
+
+- [ ] iOS job on a macOS runner with Xcode: type-check every Swift file of `dist/ios/` and of the `ios-swiftui` and `ios-references` baselines against the iOS simulator SDK (real UIKit and SwiftUI); compile each `Icons.xcassets` with `actool`; build the guide's `Package.swift` example.
+- [ ] Android job: a small Gradle project under `build/native/android/` that compiles the `res/` tree and the `android-compose` baseline against the real Android SDK and Compose, and links the drawables against `android.jar`. Dependencies are pinned; Gradle caches in CI.
+- [ ] Both jobs run on pull requests that change `tokens/`, `build/` or `dist/`, as decided below.
+- [ ] Acceptance: `actionlint` passes; the Android job runs locally if the SDK is downloaded with approval, else its first CI run is the check; the macOS job's first CI run is the check. Both are recorded in the next session log. A deliberately broken Swift and XML file fails each job on a scratch branch.
+
+
+## Phase 34: Swift package and Android library (optional)
+
+Goal: mobile apps install the tokens with their package manager instead of copying files.
+
+- [ ] iOS: a `Package.swift` at the repository root (Swift Package Manager reads only the root), with one library product per app and brand, as decided below, pointing at `dist/ios/<app>/<brand>/`, with the asset catalog as a resource. Apps depend on a git tag.
+- [ ] Android: a library module that packages the `res/` tree (and the Compose objects, if selected) as an AAR, published where decided below.
+- [ ] Update the iOS and Android guides with the install steps.
+- [ ] Acceptance: in CI (Phase 33's jobs), a sample app target resolves the Swift package and reads a token; a sample Gradle app depends on the AAR and reads a resource. `swift package describe` passes locally.
+
+
+## Phase 35: retire the plan
+
+Goal: the repository keeps what a contributor needs from this plan and drops the session protocol.
+
+- [ ] Write `docs/architecture.md`: the design decisions, the output contract, the platform rules and the known oddities, updated to the final code. Link it from `CONTRIBUTING.md` and the README.
+- [ ] Delete `docs/rewrite-plan.md` (git history keeps it), or move it, as decided below.
+- [ ] Acceptance: every fact in `docs/architecture.md` matches the code and `dist/`; every link resolves; Prettier passes.
+
+
 ## Known oddities in the output (kept as they are)
 
 These are part of the frozen contract. They are listed so nobody "fixes" them by accident. Added 2026-09-27: Phases 13 to 16 change the letter spacing, line height, font weight and gradient items and remove the dead filter condition, each only after Ozgur approves it in Open decisions.
@@ -980,6 +1174,34 @@ Added 2026-09-27 for Phases 13 to 22. Ozgur confirmed all recommendations on 202
 - [x] Phase 20: download `kotlinc` into the session scratchpad to compile the Compose output? Yes.
 - [x] Phase 21, Android converter: add the `svg2vectordrawable` npm package as a dev dependency (recommended), or write a converter for the subset of SVG the icons use? `svg2vectordrawable`.
 
+Added 2026-09-27 for Phases 23 to 35. Ozgur confirmed all recommendations on 2026-09-27.
+
+- [x] Order: merge after Phase 25, then do Phases 27 to 35 on `dev/production` (recommended, so `main` stops lagging 37 commits behind), or do every phase on `dev/rewrite` and merge last? Merge after Phase 25.
+- [x] Phase 23, package contents: publish all of `dist/` (recommended; 114 files, about 750 kB gzipped instead of 103 kB), or keep the web files only and say so in the iOS and Android guides? All of `dist/`.
+- [x] Phase 23, `exports`: `{ "./dist/*": "./dist/*", "./package.json": "./package.json" }` (recommended; every current path keeps working and nothing outside `dist/` resolves), or no `exports` field? That map.
+- [x] Phase 23, description: "Design tokens for the Chassis Design System, built from Tokens Studio into SCSS, Swift, SwiftUI, Android resources and Jetpack Compose" (recommended), or other text? That text.
+- [x] Phase 23: remove `site:lint:vnu`, `build/vnu-jar.js` and `vnu-jar` (recommended; `html-validate` replaced them)? Remove them.
+- [x] Phase 23: remove `tokens:zip` and `build/zip-tokens.js` (recommended; nothing runs it and the npm tarball and GitHub release already hold the files), or keep it? Remove them.
+- [x] Phase 24: format the 6 homepage components in the frozen `site/` folder with Prettier (formatting only)? Recommended: yes. Yes; Ozgur formatted them on 2026-09-27, committed as `style(site): format the homepage components with Prettier`.
+- [x] Phase 24: update the site dependencies to clear the audit, including Astro, and ignore only advisories with no fix, each with a reason? Recommended: yes. Yes.
+- [x] Phase 25, Node versions: the `tokens` job on Node 22 and 24, the other jobs on 22 (recommended)? Yes.
+- [x] Phase 25, action versions: pin each action to a commit SHA with the version in a comment, updated by Dependabot (recommended), or use version tags? Pin to commit SHAs.
+- [x] Phase 25, dependency updates: Dependabot, weekly, one grouped pull request for dev dependencies and one for actions (recommended), or Renovate? Dependabot, weekly, grouped.
+- [x] Phase 26, version: 0.6.0 (recommended; under 1.0 a minor version marks breaking changes), or 1.0.0? 0.6.0.
+- [x] Phase 26, merge: a merge commit that keeps the phase commits (recommended; each is one checked step), or a squash? A merge commit.
+- [x] Phase 26: rebuild `dist/` so the file headers show the new version (only header lines change)? Recommended: yes. Yes.
+- [x] Phase 27: do the workspace split (recommended), or drop the phase? Do it.
+- [x] Phase 28, code of conduct: Contributor Covenant 2.1 (recommended)? Security reports: GitHub private vulnerability reporting (recommended; no email address in the repository), or an email address? Contributor Covenant 2.1 and GitHub private vulnerability reporting.
+- [x] Phase 28, `CODEOWNERS`: Ozgur for everything, or other owners for `tokens/` and `site/`? Ozgur for everything (no other owner was named; the recommendations did not cover this one, so Phase 28 confirms it before writing the file).
+- [x] Phase 29, release tool: Changesets (recommended; versions and CHANGELOG entries come from pull requests, and it fits one package), or release-please (versions from conventional commit messages)? Changesets.
+- [x] Phase 29: remove `change-version.js` once the version step writes `site/config.yml` (recommended)? Yes.
+- [x] Phase 30, where the diff appears: the job summary only (recommended; needs no write permission and works for pull requests from forks), or also a pull request comment? The job summary only.
+- [x] Phase 31, rules: all five listed in the phase, as errors (recommended), or some as warnings? All five, as errors.
+- [x] Phase 32, strictness: `checkJs` without `strict` first (recommended), then `strict` in a later phase, or `strict` at once? `checkJs` without `strict` first.
+- [x] Phase 33, when the native jobs run: only on pull requests that change `tokens/`, `build/` or `dist/`, and on `main` (recommended; macOS minutes cost ten times Linux minutes), or on every pull request? Only when those folders change, and on `main`.
+- [x] Phase 34: do it, or drop it? If done: which app and brand pairs become Swift products (recommended: every pair in `chassis.build.apps` with an iOS platform), and where the AAR is published (GitHub Packages, Maven Central, or no AAR and only the Swift package)? Do it: every app and brand pair with an iOS platform becomes a Swift product. The AAR has no recommended destination yet; Phase 34 asks before publishing it.
+- [x] Phase 35: delete `docs/rewrite-plan.md` after writing `docs/architecture.md` (recommended), or move it to `docs/history/`? Delete it.
+
 ## Session log
 
 Append-only.
@@ -1024,3 +1246,5 @@ Append-only.
 - 2026-09-27 (Phase 20, Opus 5.5): Added `values/swiftui.js`, `values/compose.js`, `templates/constants.js`, `templates/compose-object.template.js`, the formats `cx/swiftui` and `cx/compose-object`, the configs `ios-swiftui.js` and `android-compose.js`, and `swiftConfig` in `config/ios.js`; exported `colorChannels` and `fontWeightConstant` from `values/ios.js` and `encodeValue` from `values/android.js`. Downloaded `kotlinc` 2.4.20 to the scratchpad. Added two baselines and 65 tests (`values-swiftui.test.js`, `values-compose.test.js`, template, config and golden tests). Documented the presets in the README, the Style Dictionary page, both guides and the CHANGELOG. Verified: `pnpm tokens:verify` passes, 58 of 58 files, unchanged; 8 preset checks pass; `pnpm tokens:test` passes, 731 tests; lint and Prettier report nothing; the value comparison and compile checks above pass; `pnpm astro:build` built 22 pages and the new anchors resolve. Injected six regressions (SwiftUI `alpha:`, `UIFont.Weight` in SwiftUI, stored Compose properties, negatives without parentheses, letter spacing as `Float`, no `$` escape); each failed 1 to 5 tests. Surprises: (1) the SwiftUI files first lacked `public`, because only the UIKit format called `setSwiftFileProperties`; the config now sets it. (2) The 64 KB reason for getters did not hold (51411 bytes); the forward references are the reason that does. (3) A stored-property check first compiled unchanged code, because macOS `sed` has no `\w`; it was redone with `perl`. Next: Phase 21, which adds `svg2vectordrawable` as a dev dependency (approved in Open decisions).
 - 2026-09-27 (Phase 21, Opus 5.5): Added `svg2vectordrawable` 2.9.1 as a dev dependency, `build/tokens/icons.js` with the actions `cx/ios-icons` and `cx/android-icons`, and the actions in the iOS and Android configs for the main file's build. Copied the 56 new files into `dist/` and the icons into the two reference baselines. Added `icons.test.js` and icon checks in `build.test.js`; `golden.test.js` expects 27 and 23 files for the reference presets. Documented the icons in both guides, the Style Dictionary page, the README, the CHANGELOG and the tests README, and changed the guide's `Package.swift` to exclude the catalog. Verified: `pnpm tokens:verify` passes, 114 of 114 files; 8 preset checks pass; `pnpm tokens:test` passes, 739 tests; lint and Prettier report nothing; the image set, drawable, rendering and aapt2 checks above; `pnpm astro:build` built 22 pages. Injected five regressions (no black fill, two decimals, no template rendering, icons in every iOS build, every asset taken as an icon); each failed a test. Surprises: (1) the converter's defaults drop the fill and round to two decimals; (2) linking drawables needs `android.jar`, unlike values; (3) an asset catalog in a SwiftPM target folder needs Xcode even when not declared. Next: Phase 22.
 - 2026-09-27 (Phase 22, Opus 5.5): Added `derivedConstants` to `values/ios.js` (the `…Radius` of a box shadow blur) and its hook in `templates/constants.js`. Measured that Core Animation multiplies the colour's alpha by `shadowOpacity` and that 271 shadow colours change alpha in dark mode, so `…Opacity` and `…OpaqueColor` were dropped from the phase. Copied the 8 changed files into `dist/` and 4 into the `ios-references` baseline; only `Radius` lines were added (3168). Added a `shadowParts` fixture (three real parts with their Tokens Studio extensions) and 6 tests. Rewrote the iOS guide's shadow section and updated the Style Dictionary page and the CHANGELOG. Verified: `pnpm tokens:verify` passes, 114 of 114 files; 8 preset checks pass; `pnpm tokens:test` passes, 745 tests; lint and Prettier report nothing; the Swift files type-check and the guide's example runs; `pnpm astro:build` built 22 pages. Injected three regressions (radius equal to the blur, a radius for every blur, the template dropping derived constants); each failed 1 to 4 tests. Surprises: (1) the `bg-blur` tokens are box shadows in Tokens Studio, so they get a radius too. (2) The opacity parts the plan asked for would have been redundant and could not follow dark mode. All phases are done.
+- 2026-09-27 (Phases 23 to 35 planning, Opus 5.5): Ozgur asked what the package lacks to be production-ready and contributor-friendly, then asked for the answer as phases. Measured the repository (see Facts about the repository): the npm package holds 37 files and no iOS or Android output; no workflow runs on a pull request; `pnpm check` cannot fail; `site:lint` fails on 6 files; `pnpm audit` reports 39 advisories, 1 critical in Astro; about 31 of 53 dev dependencies serve only the site. Added Phases 23 to 35, a ground rule for them and 25 open decisions. Nothing in `build/`, `dist/`, `tokens/` or `site/` changed. Next: Ozgur's answers, then Phase 23.
+- 2026-09-27 (Phases 23 to 35 decisions): Ozgur confirmed all recommendations. `CODEOWNERS` had no recommendation; the plan assumes Ozgur for everything and Phase 28 confirms it. Phase 34's AAR destination had no recommendation; Phase 34 asks before publishing. Ozgur formatted the 6 homepage components with Prettier (class attributes joined onto one line, nothing else); `pnpm site:lint` passes, and that item of Phase 24 is ticked. The plan was committed as `rewrite(plan): add phases 23 to 35 for production readiness`. Next: Phase 23.
