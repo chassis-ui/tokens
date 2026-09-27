@@ -9,7 +9,7 @@
 
 import { readFileSync } from 'node:fs'
 import { afterEach, describe, expect, test, vi } from 'vitest'
-import { encode, partName, reference } from '../values/ios.js'
+import { derivedConstants, encode, partName, reference } from '../values/ios.js'
 
 const fixture = JSON.parse(
   readFileSync(new URL('./fixtures/mobile-tokens.json', import.meta.url), 'utf8')
@@ -187,5 +187,32 @@ describe('iOS part names', () => {
     expect(partName({ name: 'GradientPrimitiveBlackL000' }, ['stop1', 'color'])).toBe(
       'GradientPrimitiveBlackL000Stop1Color'
     )
+  })
+})
+
+describe('iOS derived constants', () => {
+  const shadow = (label) => structuredClone(fixture.shadowParts.find((c) => c.case === label).token)
+
+  test('a shadow blur is followed by its Core Animation radius, half the blur', () => {
+    expect(derivedConstants(shadow('shadow blur'))).toEqual([
+      { name: 'ShadowContextSmall1Radius', type: 'dimension', value: 'CGFloat(4)' }
+    ])
+  })
+
+  test('every box shadow blur has one, including bg-blur', () => {
+    expect(derivedConstants(shadow('blur of the bg-blur box shadow'))).toEqual([
+      { name: 'BgBlurDefaultRadius', type: 'dimension', value: 'CGFloat(24)' }
+    ])
+  })
+
+  test('other shadow parts and blurs outside a shadow have none', () => {
+    expect(derivedConstants(shadow('shadow spread'))).toEqual([])
+    const plain = { ...shadow('shadow blur'), $extensions: {} }
+    expect(derivedConstants(plain)).toEqual([])
+  })
+
+  test('the radius keeps three decimals', () => {
+    const odd = { ...shadow('shadow blur'), $value: '7px' }
+    expect(derivedConstants(odd)[0].value).toBe('CGFloat(3.5)')
   })
 })

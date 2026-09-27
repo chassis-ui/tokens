@@ -17,12 +17,17 @@ import { encodingContext, firstReferencedToken } from './references.js'
  * @param {Object} dictionary - Token dictionary with `tokens` and `allTokens`.
  * @param {Object} [settings] - `outputReferences`: name other constants where the
  *   platform's `reference` allows it.
- * @param {Object} values - The platform's value module: `encode`, `reference` and
- *   `partName`, e.g. `values/ios.js`.
+ * @param {Object} values - The platform's value module: `encode`, `reference`,
+ *   `partName`, and optionally `derivedConstants`, which returns constants printed after
+ *   a token, e.g. `values/ios.js`.
  * @returns {Object[]} `{ name, type, value, printed }`: the value, and what the constant
  *   prints, which is the value or the name of another constant.
  */
-export function tokenConstants(dictionary, settings = {}, { encode, reference, partName }) {
+export function tokenConstants(
+  dictionary,
+  settings = {},
+  { encode, reference, partName, derivedConstants = () => [] }
+) {
   // The reference a token prints with `outputReferences`, if any
   const referenceOf = (token, context) => {
     const target = firstReferencedToken(token, dictionary.tokens)
@@ -34,10 +39,14 @@ export function tokenConstants(dictionary, settings = {}, { encode, reference, p
       ? gradientParts(token).map((part) => ({ ...part, name: partName(token, part.segments) }))
       : [token]
 
-  return dictionary.allTokens.flatMap(printedTokens).map((token) => {
+  return dictionary.allTokens.flatMap(printedTokens).flatMap((token) => {
     const context = encodingContext(token, dictionary.tokens)
     const value = encode(token, context)
     const printed = (settings.outputReferences && referenceOf(token, context)) || value
-    return { name: token.name, type: token.$type, value, printed }
+    const derived = derivedConstants(token).map((constant) => ({
+      ...constant,
+      printed: constant.value
+    }))
+    return [{ name: token.name, type: token.$type, value, printed }, ...derived]
   })
 }

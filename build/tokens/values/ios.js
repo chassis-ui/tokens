@@ -150,3 +150,28 @@ export function partName(token, segments) {
     token.name + segments.map((segment) => segment[0].toUpperCase() + segment.slice(1)).join('')
   )
 }
+
+/**
+ * Returns the constants iOS prints after a token, derived from it: for the blur of a
+ * shadow, the `CALayer.shadowRadius` that draws about the same shadow, half the CSS blur.
+ * The shadow colour needs no derived constant: Core Animation multiplies its alpha by
+ * `shadowOpacity`, so the colour with `shadowOpacity = 1` gives the CSS shadow.
+ *
+ * @param {Object} token - A resolved token with `name`, `path`, `$value` and `$extensions`.
+ * @returns {Object[]} `{ name, type, value }` per derived constant, e.g.
+ *   `{ name: 'ShadowContextSmall1Radius', type: 'dimension', value: 'CGFloat(4)' }`
+ */
+export function derivedConstants(token) {
+  const shadowPart = token.$extensions?.['studio.tokens']?.originalType === 'boxShadow'
+  if (!shadowPart || token.path[token.path.length - 1] !== 'blur' || !token.name.endsWith('Blur')) {
+    return []
+  }
+  const radius = Number((parseFloat(token.$value) / 2).toFixed(3))
+  return [
+    {
+      name: `${token.name.slice(0, -'Blur'.length)}Radius`,
+      type: token.$type,
+      value: `CGFloat(${radius})`
+    }
+  ]
+}

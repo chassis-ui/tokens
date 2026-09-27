@@ -377,3 +377,24 @@ describe('SwiftUI and Compose templates', () => {
     expect(print(true)).toContain('val sizeUnit16 get() = dimensionBase16\n')
   })
 })
+
+describe('Derived constants in the mobile templates', () => {
+  const fixture = JSON.parse(
+    readFileSync(new URL('./fixtures/mobile-tokens.json', import.meta.url), 'utf8')
+  )
+  const blur = fixture.shadowParts.find((c) => c.case === 'shadow blur').token
+  const dictionary = { tokens: {}, allTokens: [blur] }
+
+  test('UIKit prints the radius right after the blur', () => {
+    expect(swiftConstants(dictionary).map((c) => [c.name, c.printed])).toEqual([
+      ['ShadowContextSmall1Blur', 'CGFloat(8)'],
+      ['ShadowContextSmall1Radius', 'CGFloat(4)']
+    ])
+  })
+
+  test('SwiftUI and Compose print no derived constants', () => {
+    expect(swiftConstants(dictionary, {}, swiftuiValues)).toHaveLength(1)
+    const compose = { ...blur, name: 'shadowContextSmall1Blur' }
+    expect(tokenConstants({ tokens: {}, allTokens: [compose] }, {}, composeValues)).toHaveLength(1)
+  })
+})

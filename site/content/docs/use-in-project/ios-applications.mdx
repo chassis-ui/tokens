@@ -233,25 +233,31 @@ ChassisTokensNumberLarge.FontContextLeadLetterSpacing // 0
 
 ## Shadows and Opacity
 
-Shadow tokens are split into their parts:
+Shadow tokens are split into their parts, with the CSS meaning of each, and one part for Core Animation: `…Radius`, half the CSS blur, which is about the same shadow as `shadowRadius`.
+
+```swift
+public static let ShadowContextSmall1Blur = CGFloat(8)
+public static let ShadowContextSmall1Radius = CGFloat(4)
+```
+
+The colour carries the shadow's opacity. Core Animation multiplies it by `shadowOpacity`, so set that to `1`:
 
 ```swift
 import UIKit
 import ChassisTokens
 
 func applySmallShadow(to layer: CALayer) {
-    let color = ChassisTokensColorLight.ShadowContextSmall1Color
-    layer.shadowColor = color.withAlphaComponent(1).cgColor
-    layer.shadowOpacity = Float(color.cgColor.alpha)
+    layer.shadowColor = ChassisTokensColor.ShadowContextSmall1Color.cgColor
+    layer.shadowOpacity = 1
     layer.shadowOffset = CGSize(
         width: ChassisTokensNumberLarge.ShadowContextSmall1OffsetX,
         height: ChassisTokensNumberLarge.ShadowContextSmall1OffsetY
     )
-    layer.shadowRadius = ChassisTokensNumberLarge.ShadowContextSmall1Blur / 2
+    layer.shadowRadius = ChassisTokensNumberLarge.ShadowContextSmall1Radius
 }
 ```
 
-Core Animation shadows have no spread, and their radius is about half of a CSS blur. Opacity tokens are fractions, such as `OpacityLevel40` (`0.4`).
+`cgColor` takes the value of the current appearance, and many shadow colours are darker in dark mode, so apply the shadow again when the trait collection changes. Core Animation shadows have no spread. Opacity tokens are fractions, such as `OpacityLevel40` (`0.4`).
 
 ## Best Practices
 

@@ -246,6 +246,7 @@ public enum ChassisTokensColorLight {
 - Sizes and numbers: `CGFloat`
 - Font families: the first family of the stack only
 - Font weights: `UIFont.Weight` constants (`UIFont.Weight.semibold`)
+- Shadows: after the blur of each box shadow, a `…Radius` constant with half the blur, for `CALayer.shadowRadius`
 - Icons: the SVG icon tokens also become `Icons.xcassets`, one vector image set per icon, written by the action `cx/ios-icons` in the build of the main file
 - Gradients: split into an angle and the colour and position of each stop (`GradientPrimitiveBlackL000Angle`, `…Stop1Color`, `…Stop1Position`)
 - Typography parts: a percentage line height becomes points of the token's font size (`125%` of `96` is `120`)
