@@ -52,13 +52,15 @@ The build system is defined in `build/tokens/` directory with the following stru
 - **build.js**: Plans one build per brand, app and token-set list, registers the extensions and runs the builds
 - **config/**: Platform-specific settings and file generation logic
 - **preprocessor.js**: Token preprocessing before transformation
-- **transforms.js**: Custom value transformations (rem sizes and CSS shadows)
+- **transforms.js**: Custom value transformations (rem, px and vw sizes, and CSS shadows)
 - **filters.js**: Which tokens go into which output file
 - **formats.js**: Output format definitions (SCSS, Swift, Android XML)
 - **templates/**: Custom format templates for each platform; they only print
 - **values/**: Value encoders for iOS, Android and web, which run on resolved tokens
-- **css-var-policy.js**: Which web tokens print a `var(--…)` reference, and its name
-- **verify.js**: Golden check that compares a fresh build with the committed `dist/`
+- **reference-policy.js**: Which web tokens print a reference and which token it names, shared by both web formats
+- **css-var-policy.js**: The `var(--…)` names of the Chassis CSS format
+- **scss-var-policy.js**: The values and `$…` names of the SCSS variables format
+- **verify.js**: Golden check that compares a fresh build with the committed `dist/`, and each preset with its baseline
 
 ### Build Options
 
@@ -85,7 +87,14 @@ This configuration defines:
 - **Brands**: Available brand identities to build
 - **Themes**: Color mode variations to generate
 - **Screens**: (Optional) Responsive breakpoint sizes. When configured, generates separate number files per screen (e.g., `number-large.scss`). When omitted or empty, generates a single `number.scss` file; `tokens/$themes.json` must then have no screen group
-- **Apps**: Applications and their target platforms
+- **Apps**: Applications and their target platforms. A web app can use `web` (Chassis CSS) or one of the [presets for other CSS frameworks](#presets-for-other-css-frameworks)
+- **Options**: (Optional) Style Dictionary options by platform name, merged into the options of that platform. The build fails when it names a platform that no app uses:
+
+```json
+"options": {
+  "android": { "outputReferences": true }
+}
+```
 
 ### Build Command
 
@@ -131,6 +140,7 @@ pnpm tokens --brand chassis --theme light dark --app docs
 - `--platform <platforms...>` — Filter by platform
 - `--screen <screens...>` — Filter by screen
 - `--out <dir>` — Write to another output root instead of `dist`
+- `--config <file>` — Read the build configuration from a JSON file instead of `chassis.build` in `package.json`
 - `--dry-run` — List the builds and the files each would write, without building
 - `--help, -h` — Show help
 - `--version, -v` — Show version
@@ -143,7 +153,13 @@ Check that the committed `dist/` matches a fresh build of `tokens/`:
 pnpm tokens:verify
 ```
 
-The check builds into `dist-next/` and compares every file with `dist/`, ignoring the timestamp and version lines of the file headers. It also fails when a token name appears twice in one file. Add `--platform ios` to build and check one platform only. The release workflow runs this check before publishing to npm.
+The check builds into `dist-next/` and compares every file with `dist/`, ignoring the timestamp and version lines of the file headers. It also fails when a token name appears twice in one file, and when a reference names nothing the output declares. Add `--platform ios` to build and check one platform only. The release workflow runs this check before publishing to npm.
+
+The presets write nothing into `dist/`. Their reference output is in `build/tokens/test/golden/`:
+
+```bash
+pnpm tokens:verify:presets
+```
 
 ## Platform Support
 
@@ -154,7 +170,7 @@ Chassis Tokens supports multiple platforms with tailored transformations for eac
 <CxTable>
 | Platform | Output | Naming | Unit | Color Format |
 |----------|--------|--------|------|--------------|
-| Web | SCSS | kebab-case | rem/em | hex/rgba |
+| Web | SCSS | kebab-case | rem, px or vw; em | hex/rgba |
 | iOS | Swift | PascalCase | CGFloat | UIColor |
 | Android | XML | snake_case | dp/sp | ARGB hex |
 </CxTable>
@@ -176,6 +192,38 @@ $cx-space-context-medium: 1rem !default;
 - Size transform: `cx/size/rem`
 - Prefix: `cx`
 - Format: `cx/scss-chassis-css`
+
+### Presets for Other CSS Frameworks
+
+Chassis Tokens is meant to be owned and customized. The `web` platform is set up for Chassis CSS, whose custom properties it references. A team with its own CSS framework needs plain SCSS variables instead. Select one of these platforms for a web app in the build options:
+
+<CxTable>
+| Platform | Format | Size transform | Sizes |
+|----------|--------|----------------|-------|
+| `web` | `cx/scss-chassis-css` | `cx/size/rem` | `1rem` |
+| `web-scss` | `cx/scss-variables` | `cx/size/rem` | `1rem` |
+| `web-px` | `cx/scss-variables` | `cx/size/px` | `16px` |
+| `web-vw` | `cx/scss-variables` | `cx/size/vw` | `1vw` |
+</CxTable>
+
+```json
+"apps": {
+  "docs": ["web-px"]
+}
+```
+
+All web platforms write the same files to `dist/web/<app>/<brand>/`, with the same names. The presets print resolved values:
+
+```scss
+// main.scss (web-px)
+$cx-color-accordion-item-fg-color: #161a1b !default;
+$cx-border-radius-accordion-main: 6px !default;
+$cx-space-accordion-medium-title-padding-y: 12px !default;
+```
+
+With the `outputReferences` option they print SCSS variable references instead. See [cx/scss-variables](#cxscss-variables).
+
+The platform files `config/web-scss.js`, `config/web-px.js` and `config/web-vw.js` each call `webConfig({ unit, format })` from `config/web.js`, and can be edited like any other platform file.
 
 ### iOS Platform
 
@@ -218,6 +266,7 @@ Generates Android XML resource files:
 - Naming convention: snake_case
 - Size units: `sp` for font sizes, line heights and paragraph spacing, `dp` for other sizes
 - Color format: ARGB hex (`#aarrggbb`)
+- References: optional, with `outputReferences` (see [cx/android-resources](#cxandroid-resources))
 
 ## Output Files
 
@@ -345,6 +394,24 @@ Converts size values to rem units, without rounding:
 // Output: 1.5rem
 ```
 
+### cx/size/px
+
+Gives size values the unit px, for the `web-px` preset:
+
+```javascript
+// Input:  24
+// Output: 24px
+```
+
+### cx/size/vw
+
+Converts size values to vw units, without rounding, for the `web-vw` preset. `basePxFontSize` pixels are `1vw`:
+
+```javascript
+// Input:  24 (with basePxFontSize: 16)
+// Output: 1.5vw
+```
+
 ### cx/shadow/web
 
 Converts shadow tokens into CSS box-shadow format:
@@ -400,7 +467,7 @@ Tokens typed `boolean` or `other` are not written to any file.
 
 ## Formats
 
-Formats define the output structure for each platform. Chassis Tokens provides custom format templates. The templates only print: each value comes from the encoders in `build/tokens/values/` and, on the web, from `build/tokens/css-var-policy.js`.
+Formats define the output structure for each platform. Chassis Tokens provides custom format templates. The templates only print: each value comes from the encoders in `build/tokens/values/` and, on the web, from the reference policies (`reference-policy.js`, with `css-var-policy.js` or `scss-var-policy.js`).
 
 ### cx/scss-chassis-css
 
@@ -428,6 +495,42 @@ CSS custom property references enable runtime theme switching and value inherita
 
 <Callout type="info">
 Composite font tokens (starting with `font.*`) are transformed into Sass maps, making it easier to access and apply typography styles as a complete set rather than individual properties. This enables more maintainable and reusable typography mixins.
+</Callout>
+
+### cx/scss-variables
+
+Generates SCSS variable files for CSS frameworks other than Chassis CSS. The `web-scss`, `web-px` and `web-vw` presets use it. It has two modes, set with the `outputReferences` option.
+
+Without `outputReferences` (default), every value is resolved:
+
+```scss
+$cx-color-accordion-item-fg-color: #161a1b !default;
+$cx-border-radius-accordion-main: 6px !default;
+$cx-font-context-lead: ("font-family": "Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif", "font-weight": 400, "font-size": 22px, "line-height": 1.455em, "font-style": normal, "letter-spacing": 0em, "margin-bottom": 0px, "text-transform": none, "text-decoration": none) !default;
+```
+
+With `outputReferences`, a token prints the SCSS variable of the token it references, where the Chassis CSS format prints a custom property. Shadows are the exception: they print their value. Typography maps name the variables of their family, weight, style, size and line height:
+
+```json
+"apps": { "docs": ["web-px"] },
+"options": { "web-px": { "outputReferences": true } }
+```
+
+```scss
+$cx-color-accordion-item-fg-color: $cx-color-context-default-fg-main !default;
+$cx-border-radius-accordion-main: $cx-border-radius-context-medium !default;
+$cx-font-context-lead: ("font-family": $cx-typography-font-family-text, "font-weight": $cx-typography-font-weight-text-normal-weight, "font-size": $cx-typography-font-size-text-xlarge, "line-height": $cx-typography-line-height-text-xlarge, "font-style": $cx-typography-font-weight-text-normal-style, ...) !default;
+```
+
+**Features:**
+
+- File header with copyright and license
+- Resolved values, or SCSS variable references with `outputReferences`
+- Composite typography tokens output as Sass maps
+- Line heights in `em`, relative to the font size, and letter spacing in `em`, in every unit
+
+<Callout type="warning">
+With `outputReferences`, load a colour file (`color-light.scss` or `color-dark.scss`) before `main.scss`: the colour tokens of `main.scss` reference variables that the colour files declare. The other files use only variables they declare themselves. The build fails when a reference would name a variable that no file declares.
 </Callout>
 
 ### cx/ios-swift-class
@@ -472,6 +575,21 @@ Generates Android XML resource files:
 - Type-specific resource tags (`color`, `dimen`, `integer`, `string`)
 - Android units (dp, sp)
 - Typography and shadow tokens expanded into one resource per part
+- Optional references to other resources, with `outputReferences`
+
+With `outputReferences`, a token whose value references another token of the same file prints a reference to that resource:
+
+```json
+"options": { "android": { "outputReferences": true } }
+```
+
+```xml
+<dimen name="space_context_medium">@dimen/size_unit_16</dimen>
+<string name="font_context_jumbo_font_family">@string/typography_font_family_text</string>
+<dimen name="font_context_jumbo_font_size">96sp</dimen>
+```
+
+A token prints its value when a reference would not compile or would change the value: when the referenced resource is another element, or encodes to another value (`font_context_jumbo_font_size` is `96sp`, its reference `size_unit_96` is `96dp`). Base colours and sizes computed with math also print their values.
 
 ## Preprocessor
 
@@ -526,9 +644,14 @@ const transforms = [
   'ts/color/modifiers',
   'ts/color/css/hexrgba',
   'ts/typography/fontWeight',
-  'cx/shadow/web',
-  'cx/size/rem'
+  'cx/shadow/web'
 ]
+
+// The size transform of the unit is added last: cx/size/rem, cx/size/px or cx/size/vw
+export function webConfig({ unit = 'rem', format = 'cx/scss-chassis-css' } = {}) {
+  // ...
+  transforms: [...transforms, `cx/size/${unit}`]
+}
 ```
 
 ### File Headers
@@ -611,7 +734,7 @@ The build stops on any broken reference instead of writing a file with unresolve
 **Solutions:**
 
 - Check platform configuration specifies correct transforms
-- Verify `basePxFontSize` is set for the rem transform
+- Verify `basePxFontSize` is set for the rem and vw transforms
 - Ensure token type matches transform filter
 
 **Problem**: Colors not formatted correctly

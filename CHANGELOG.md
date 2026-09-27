@@ -4,9 +4,15 @@
 
 The token build was rewritten. The files in `dist/` are unchanged.
 
+The presets for teams that do not use Chassis CSS are kept, in the new structure: `web-px`, `web-vw`, the `cx/scss-variables` format, and `outputReferences` for SCSS and Android. Their output is the same as before, with these fixes:
+
+- `web-px` typography maps divide the letter spacing by the base font size, as `web-vw` does: `-0.5px` prints `-0.0313em`, not `-0.5em`
+- Android references are printed only when they compile and keep the value. 30 lines now print their value: 16 letter spacing references to a `<dimen>` as `@integer/…`, 8 font sizes in `sp` that referenced a size in `dp`, and 6 `rgba()` colours that referenced another element or lost their alpha
+- A SCSS variables reference to a variable that no file declares fails the build
+
 ### Changed
 - Upgraded to Style Dictionary 5.5 and `@tokens-studio/sd-transforms` 2.0; the build now needs Node.js 22 or later
-- Moved platform value encoding (`UIColor(…)`, ARGB colours, `sp`/`dp`, quoting, `em` units, `var(--…)` references) out of the output templates into tested modules (`build/tokens/values/`, `build/tokens/css-var-policy.js`), which run on fully resolved tokens
+- Moved platform value encoding (`UIColor(…)`, ARGB colours, `sp`/`dp`, quoting, `em` units, `var(--…)` references) out of the output templates into tested modules (`build/tokens/values/` and the web reference policies), which run on fully resolved tokens
 - Build one Style Dictionary instance per token-set list instead of one run per file group: a full build runs 16 builds instead of 36 and takes about 6 s instead of 20 s
 - Replaced the copy of the sd-transforms preprocessor with the official type alignment plus the Chassis steps (letter spacing as a number, splitting every font weight into weight and style)
 - The file header reads the version from `package.json`
@@ -15,11 +21,15 @@ The token build was rewritten. The files in `dist/` are unchanged.
 - Replaced the mock-based tests with tests on real tokens and `dist/`
 
 ### Added
-- `pnpm tokens:verify`: builds into `dist-next/` and compares every file with `dist/`; the release workflow runs it before publishing
+- `pnpm tokens:verify`: builds into `dist-next/` and compares every file with `dist/`; the release workflow runs it before publishing. It also fails on a reference that names nothing the output declares
 - `--out <dir>` build option
+- `web-scss` platform: SCSS variables with resolved values in rem units, for CSS frameworks other than Chassis CSS
+- `chassis.build.options`: Style Dictionary options by platform, such as `outputReferences`
+- `--config <file>` build option, to read the build configuration from a JSON file
+- `pnpm tokens:verify:presets`: checks each preset against its baseline in `build/tokens/test/golden/`
 
 ### Removed
-- The unused `web-px` and `web-vw` platform configurations, the `cx/scss-variables` format and its template, the `cx/size/px`, `cx/size/vw`, `cx/typography/web` and `cx/test` transforms, the `cx/test` format and the `cx/colorTokens` filter
+- The unused `cx/typography/web` and `cx/test` transforms, the `cx/test` format and the `cx/colorTokens` filter
 
 ## [0.5.3] - 2026-09-25
 

@@ -106,7 +106,17 @@ pnpm tokens:verify --platform ios
 node build/tokens/verify.js --skip-build
 ```
 
+The check also fails when a reference in the output names nothing the output declares: an Android `@type/name` without a `<type name="name">` in the same file, or a SCSS `$name` that no SCSS file of the directory declares.
+
 The release workflow runs `pnpm tokens:verify` before publishing, so a `dist/` that does not match `tokens/` cannot be released. After changing tokens, run `pnpm tokens` and commit the updated `dist/`.
+
+The [presets](#presets-for-other-css-frameworks) write nothing into `dist/`. Their reference output is in `build/tokens/test/golden/`, checked by:
+
+```shell
+pnpm tokens:verify:presets
+```
+
+After changing tokens, write the preset baselines again; `build/tokens/test/README.md` has the commands.
 
 ## CLI Reference
 
@@ -120,6 +130,7 @@ All filter options accept space-separated values:
 - `--platform <platforms...>` — Filter by platform (e.g., `web ios android`)
 - `--screen <screens...>` — Filter by screen size (e.g., `large medium small`)
 - `--out <dir>` — Write to another output root instead of `dist` (e.g., `--out dist-next`)
+- `--config <file>` — Read the build configuration from a JSON file instead of `chassis.build` in `package.json`
 - `--dry-run` — List the builds and the files each would write, without building
 - `--help, -h` — Show help message
 - `--version, -v` — Show version number
@@ -141,6 +152,9 @@ pnpm tokens:test
 
 # Check dist/ against a fresh build
 pnpm tokens:verify
+
+# Check the presets against their baselines
+pnpm tokens:verify:presets
 
 # Update version
 pnpm change-version <old_version> <new_version>
@@ -203,11 +217,13 @@ The `chassis` key in your `package.json` defines which brands, themes, screens, 
 - **`themes`**: Array of theme variants (light, dark, etc.)
 - **`screens`**: Array of screen sizes for responsive tokens. Set to `[]` or omit to generate single number files without screen suffixes; `tokens/$themes.json` must then have no screen group
 - **`apps`**: Object mapping app names to their target platforms
+- **`options`**: (Optional) Style Dictionary options by platform name, merged into the options of that platform, e.g. `{ "web-px": { "outputReferences": true } }`. The build fails when it names a platform that no app uses
 
 The token sets of each file come from `tokens/$themes.json`. Colour files use the sets of their theme, number files the sets of their screen, and every other file the sets of the first theme and the first screen listed here.
 
 **Supported platforms:**
-- `web`: SCSS variables (rem units)
+- `web`: SCSS variables for Chassis CSS (rem units, `var(--…)` references)
+- `web-scss`, `web-px`, `web-vw`: SCSS variables for other CSS frameworks (see [below](#presets-for-other-css-frameworks))
 - `ios`: Swift classes (PascalCase naming)
 - `android`: XML resources (snake_case naming)
 
@@ -217,6 +233,48 @@ The token sets of each file come from `tokens/$themes.json`. Colour files use th
 - Android: `main.xml`, `color_light.xml`, `number_large.xml`
 
 Only the collections and sets defined under `build` are processed.
+
+### Presets for Other CSS Frameworks
+
+Chassis Tokens is meant to be owned and customized. The default `web` platform writes SCSS for [Chassis CSS](https://github.com/chassis-ui/css): theme-aware values print the CSS custom properties that Chassis CSS generates, such as `var(--default-fg-main)`. A team with its own CSS framework needs plain SCSS variables instead. Select one of these platforms for a web app:
+
+| Platform | Format | Sizes |
+| --- | --- | --- |
+| `web` | `cx/scss-chassis-css` | `rem` |
+| `web-scss` | `cx/scss-variables` | `rem` |
+| `web-px` | `cx/scss-variables` | `px` |
+| `web-vw` | `cx/scss-variables` | `vw` (16 px is `1vw`) |
+
+```json
+"apps": {
+  "docs": ["web-scss"]
+}
+```
+
+All web platforms write the same files to `dist/web/<app>/<brand>/`. The SCSS variables format prints resolved values:
+
+```scss
+$cx-color-accordion-item-fg-color: #161a1b !default;
+$cx-border-radius-accordion-main: 0.375rem !default;
+```
+
+With `outputReferences`, it prints the SCSS variable of the referenced token instead, where the Chassis CSS format prints a custom property (except shadows):
+
+```json
+"apps": { "docs": ["web-px"] },
+"options": { "web-px": { "outputReferences": true } }
+```
+
+```scss
+$cx-color-accordion-item-fg-color: $cx-color-context-default-fg-main !default;
+$cx-border-radius-accordion-main: $cx-border-radius-context-medium !default;
+```
+
+With references, load a colour file before `main.scss`: its colour tokens reference variables of `color-<theme>.scss`. The other files use only variables they declare themselves. The build fails when a reference names a variable that no file declares.
+
+`outputReferences` also works on `android`: tokens print `@color/…`, `@dimen/…` references to resources of the same file. A token prints its value instead when the reference would not compile or would change the value, for example a font size in `sp` that references a size in `dp`. The iOS format prints values only.
+
+Each platform file in `build/tokens/config/` can also be edited directly; `web-px.js`, `web-vw.js` and `web-scss.js` each call `webConfig({ unit, format })` from `web.js`.
 
 ## Documentation Site
 
@@ -296,7 +354,7 @@ DEBUG=1 pnpm tokens --brand chassis
 The build system uses:
 - **Style Dictionary 5.5**: Token transformation engine (Node.js 22 or later)
 - **Tokens Studio SD Transforms 2.0**: Type alignment, math, colour modifiers and theme permutations
-- **Self-contained platform configs**: Each platform (web, iOS, Android) has its own independent configuration file
+- **Self-contained platform configs**: Each platform (web and its presets, iOS, Android) has its own configuration file
 - **Vitest**: Testing framework
 - **Pure Node.js**: No external CLI parsing dependencies
 
@@ -304,18 +362,20 @@ A build runs in three steps:
 
 1. **Preprocess**: `preprocessor.js` aligns types, splits every font weight into weight and style, and numbers the tokens in source order.
 2. **Transform**: Style Dictionary transforms only what is safe before references are resolved: names, math, colour modifiers, `rem` sizes and CSS shadows.
-3. **Format**: The formats print one line per resolved token. Platform values (`UIColor(…)`, ARGB colours, `sp`/`dp`, quoting, `em`, `var(--…)` references) come from pure functions in `values/` and `css-var-policy.js`, which run after resolution.
+3. **Format**: The formats print one line per resolved token. Platform values (`UIColor(…)`, ARGB colours, `sp`/`dp`, quoting, `em`, `var(--…)`, `$…` and `@type/…` references) come from pure functions in `values/` and the web reference policies, which run after resolution.
 
 **Key modules:**
 - `build/tokens/build.js`: Build plan (one Style Dictionary instance per token-set list) and CLI
 - `build/tokens/config/`: Platform-specific configurations
 - `build/tokens/preprocessor.js`: Token preprocessing
 - `build/tokens/filters.js`: Which tokens go into which file
-- `build/tokens/transforms.js`: Custom value transforms that run before resolution
+- `build/tokens/transforms.js`: Custom value transforms that run before resolution (`rem`, `px` and `vw` sizes, CSS shadows)
 - `build/tokens/formats.js` and `build/tokens/templates/`: Output formats
 - `build/tokens/values/`: Value encoders for iOS, Android and web
-- `build/tokens/css-var-policy.js`: Which web tokens print a `var(--…)` reference, and its name
-- `build/tokens/verify.js`: Golden check against `dist/`
+- `build/tokens/reference-policy.js`: Which web tokens print a reference and which token it names, shared by both web formats
+- `build/tokens/css-var-policy.js`: The `var(--…)` names of the Chassis CSS format
+- `build/tokens/scss-var-policy.js`: The values and `$…` names of the SCSS variables format
+- `build/tokens/verify.js`: Golden check against `dist/` and the preset baselines
 - `build/tokens/logger.js`: Centralized logging utilities
 - `build/tokens/utils.js`: Token type groups and number formatting
 
