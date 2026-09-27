@@ -37,7 +37,7 @@ If a phase is too large, split it into `Na`, `Nb` rows. If a fact in this file i
 | 4 | Upgrade to SD 5.5 and sd-transforms 2.0 | Fable | Done | `rewrite(phase 4)` | 2026-09-27 |
 | 5 | Replace forked preprocessor (optional) | Opus | Done | `rewrite(phase 5)` | 2026-09-27 |
 | 6a | Cleanup, version header, CI guard | Opus | Done | `rewrite(phase 6a)` | 2026-09-27 |
-| 6b | Build loop | Opus | Not started | | |
+| 6b | Build loop | Opus | Done | `rewrite(phase 6b)` | 2026-09-27 |
 | 6c | Tests README, docs, final acceptance | Sonnet | Not started | | |
 
 ## Ground rules
@@ -53,7 +53,7 @@ If a phase is too large, split it into `Na`, `Nb` rows. If a fact in this file i
 ## Facts verified on 2026-09-27
 
 - The SD 4.4.0 build (sd-transforms 1.3.0, Node 24) reproduces all 42 files in `dist/` exactly, apart from the timestamp line. It takes about 20 s for 36 runs. It reports 200 to 264 token collisions per light run and 3000 to 3064 per dark run.
-- The SD 5.5.5 build (sd-transforms 2.0.3, Node 24), in place since Phase 4, reproduces the same 42 files in about 9.5 s. It counts collisions differently: 21 to 34 per light run and 715 to 728 per dark run.
+- The SD 5.5.5 build (sd-transforms 2.0.3, Node 24), in place since Phase 4, reproduces the same 42 files in about 9.5 s with 36 runs, and in about 5.8 s with 16 instances since Phase 6b. It counts collisions differently: 21 to 34 per light run and 715 to 728 per dark run.
 - `pnpm tokens:test` passes: 8 files, 99 tests.
 - Latest published versions: `style-dictionary` 5.5.5 (needs Node 22 or later), `@tokens-studio/sd-transforms` 2.0.3 (needs SD 5; its changelog lists no other breaking change).
 - Style Dictionary accepts `source` and `include` only at the top level of the config, in both 4.4 and 5.5.5. All platforms of one instance share one token dictionary.
@@ -99,7 +99,7 @@ So each platform gets an encoder module:
 
 ### One instance per token-set list
 
-Phase 6 builds one `StyleDictionary` instance per row of the token-set table above, with one SD platform per target platform of the app. That is 16 instances and 24 platform exports instead of 36 runs. Expect roughly a third off the build time, which is about 9.5 s since Phase 4.
+Phase 6 builds one `StyleDictionary` instance per row of the token-set table above, with one SD platform per target platform of the app. That is 16 instances and 24 platform exports instead of 36 runs. Done in Phase 6b: the build time went from about 9.5 s to about 5.8 s.
 
 Every instance lists its sets in `source`, in the order `permutateThemes` returns them, exactly as today. This keeps override precedence and token order unchanged.
 
@@ -202,7 +202,7 @@ Goal: one command that proves a build output equals `dist/`. No change to build 
 - [x] `build/tokens/test/golden.test.js`: runs the same check under vitest.
 - [x] Acceptance: `pnpm tokens:verify` green; `git status` shows `dist/` untouched.
 
-Usage for later phases: `pnpm tokens:verify` checks all 42 files (about 10 s since Phase 4). `pnpm tokens:verify --platform ios` builds and checks one platform only (about 4 s). `node build/tokens/verify.js --skip-build` re-compares an existing `dist-next/`. The verifier deletes its output directory before building and refuses any directory that is or contains `dist/`.
+Usage for later phases: `pnpm tokens:verify` checks all 42 files (about 6 s since Phase 6b). `pnpm tokens:verify --platform ios` builds and checks one platform only (about 3 s). `node build/tokens/verify.js --skip-build` re-compares an existing `dist-next/`. The verifier deletes its output directory before building and refuses any directory that is or contains `dist/`.
 
 ## Phase 1: iOS and Android value encoders
 
@@ -327,12 +327,31 @@ The CI step runs on Node 22, as the workflow sets; the check was run locally on 
 
 ### Phase 6b: build loop
 
-- [ ] Build one instance per token-set list (see Design decisions). Resolve the lists directly from `$themes.json`.
-- [ ] Token order inside files must stay the same. If it changes, fix the set order; do not regenerate `dist/`.
-- [ ] Do not split sets between SD `include` and `source`. Add a test that `brand-chassis/brand-base` values win over `base/brand-base`.
-- [ ] Keep the CLI flags (`--brand`, `--app`, `--platform`, `--theme`, `--screen`, `--out`, `--dry-run`); `verify.js` relies on `--out` and `--platform`.
-- [ ] Replace the mock-based tests of `build.js` and `config/` (`build.test.js`, `cli.test.js`, `config.test.js`) with tests on real tokens.
-- [ ] Acceptance: `pnpm tokens:verify` and `pnpm tokens:test` green; build time recorded.
+- [x] Build one instance per token-set list (see Design decisions). Resolve the lists directly from `$themes.json`.
+- [x] Token order inside files must stay the same. If it changes, fix the set order; do not regenerate `dist/`.
+- [x] Do not split sets between SD `include` and `source`. Add a test that `brand-chassis/brand-base` values win over `base/brand-base`.
+- [x] Keep the CLI flags (`--brand`, `--app`, `--platform`, `--theme`, `--screen`, `--out`, `--dry-run`); `verify.js` relies on `--out` and `--platform`.
+- [x] Replace the mock-based tests of `build.js` and `config/` (`build.test.js`, `cli.test.js`, `config.test.js`) with tests on real tokens.
+- [x] Acceptance: `pnpm tokens:verify` and `pnpm tokens:test` green; build time recorded.
+
+Result: `build.js` exports two pure functions. `planBuilds(sets, buildOptions, filters)` returns one build per brand, app and token-set list, with its platforms, its outputs and its token files. `parseArgs(args)` returns the filters and flags instead of exiting. `config/index.js` turns a build into one Style Dictionary configuration with `source` and one platform per target platform; each platform config takes a list of outputs (`{ kind: 'base' }`, `{ kind: 'color', theme }`, `{ kind: 'number', screen }`). `run()` builds each instance with `buildAllPlatforms`. The build takes about 5.8 s instead of 9.5 s.
+
+The token-set list of an output is `<brand>_<app>_<theme>_<screen>` from `permutateThemes`, with the output's own theme or screen and the first configured one (`chassis.build.themes[0]`, `screens[0]`) otherwise. The old loop took the first `$themes.json` permutation that started with the brand and app, which is the same list today.
+
+Behaviour changes, none of which changes a file the full build writes:
+
+| Case | Old loop | Now |
+| --- | --- | --- |
+| `--theme dark` | number files built from the dark token sets | built from the first theme's sets, as in a full build |
+| `--screen` with no configured screen matching | a `number` file without a screen suffix | no number file |
+| A token-set list missing from `$themes.json` | built with no tokens | throws, naming the list |
+| `--help`, `--version` | printed and exited inside `parseArgs` | printed by `run()`; `--version` reads `package.json` |
+| `cleanPlatform` before each build | called | not called; it only deleted files the build rewrites |
+| `--dry-run` | listed tasks | lists builds with the files of each platform |
+
+Filtered builds were compared with `dist/` file by file: `--theme dark` (36 files), `--screen small` (30), `--brand sinefil --platform android` (7), `--app docs --theme light --screen medium --brand chassis` (4) and `--platform ios --screen xlarge --brand chassis` (4). All match.
+
+The new `build.test.js` takes its expectations from the real `package.json`, `tokens/$themes.json` and the file list of `dist/`: the plan writes exactly the 42 files of `dist/`, and each filter writes a subset of them. The precedence test builds a Style Dictionary instance from the planned `source` and checks that `typography.fontFamily.text` has the value of `brand-chassis/brand-base.json`, not of `base/brand-base.json`.
 
 ### Phase 6c: tests README, docs, final acceptance
 
@@ -379,3 +398,4 @@ Append-only.
 - 2026-09-27 (Phase 5, Fable 5.1): Checked sd-transforms 2.0.3: it still does not split plain `fontWeight` tokens. Rewrote `build/tokens/preprocessor.js` on the official `alignTypes` with own steps for letter spacing, font styles, `fontWeightPath` and `sourceOrder` (264 to 131 lines). Built the variant with the official `addFontStyles` as well (107 lines) and rejected it: it raised the build time from 9.5 s to 17.9 s. Extended `preprocessor-tokens.json` with real letter spacing, text and shadow tokens and added 15 tests; regenerated `css-var-tokens.json`, in which only the place of `originalType` changed. Verified: `pnpm tokens:verify` passes, 42 of 42 files, in 9.5 s; `pnpm tokens:test` passes, 321 tests; no new lint warnings; `dist/` untouched. Compared the fork and the new preprocessor on the real merged dictionaries of two token-set lists: equal, in the same key order, apart from where `originalType` is stored. Compared both on 15 font weight spellings: equal except for the empty string. Compared a dump of all web tokens before and after: identical. Injected four regressions (letter spacing as dimension, plain weights not split, style not lowercased, weight not resolved); each failed the intended tests and the golden check. Surprise: the official `addFontStyles` is about 20 times slower than the fork. The Model column says Opus for this phase; it was done with Fable because the session continued. Next: Phase 6.
 - 2026-09-27 (Phase 6 split, Opus 5.5): Split Phase 6 into 6a (cleanup, version header, CI guard), 6b (build loop) and 6c (tests README, docs, final acceptance), since the items touch different files and each needs its own golden check.
 - 2026-09-27 (Phase 6a, Opus 5.5): Deleted `web-px.js`, `web-vw.js`, `scss-variables.template.js`, the transforms `cx/test`, `cx/typography/web`, `cx/size/px`, `cx/size/vw`, the formats `cx/test`, `cx/scss-variables`, the unused filter `cx/colorTokens`, and `isReference` / `splitReference` from `utils.js`. The file header reads the version from `package.json`; `change-version.js` no longer rewrites `build.js`. The release workflow runs `pnpm tokens:verify` before `npm publish`. Kept `tinycolor2` (see the 6a result). Replaced the 9 mock-based tests of `filters.js` and `transforms.js` with 52 tests on real tokens and a new fixture. Verified: `pnpm tokens:verify` passes, 42 of 42 files, in 9.6 s; header lines match `dist/`; `pnpm tokens:test` passes, 364 tests; lint reports no warnings (two before); `dist/` untouched. Injected four regressions (utility colours in the theme file, fonts dropped from main, shadow transform on every type, rem transform not transitive); each failed the intended test. Surprises: (1) `cx/colorTokens` was unused and not in the plan's list. (2) `publish-release.yml` was already not Prettier-formatted before this change; left as it was. Next: Phase 6b.
+- 2026-09-27 (Phase 6b, Opus 5.5): Replaced the 36-run loop with one Style Dictionary instance per token-set list: 16 instances, 24 platform exports, 42 files. `build.js` now exports `planBuilds` and `parseArgs`; the platform configs take a list of outputs; `logger.dryRun` lists builds and their files. Replaced the mock-based `build.test.js`, `cli.test.js` and `config.test.js` with tests on the real configuration, `$themes.json` and `dist/` file list, added the precedence test, and updated the dry-run tests in `logger.test.js`. Build time: 9.5 s before, 5.8 s after (three runs). Verified: `pnpm tokens:verify` passes, 42 of 42 files; `--platform ios` and `--platform web` pass; five filtered builds match `dist/` for every file they write; `pnpm tokens:test` passes, 360 tests; lint reports no warnings; `dist/` untouched. Injected five regressions (base from the last theme, one instance per output, token sets reversed, platform filter ignored, and an earlier malformed variant of the second); each failed the intended tests, and the first and third also failed the golden check. The one-instance-per-output regression passes the golden check, since output is the same, and is caught only by the plan test. Surprises: (1) `transforms.test.js` called the web config with the old signature and failed to load; fixed. (2) The old `--theme dark` build used dark token sets for number files; output is the same either way. Next: Phase 6c. Note for 6c: its acceptance runs `pnpm tokens:site`, which writes into `dist/`; restore the timestamp lines with `git checkout dist` afterwards.

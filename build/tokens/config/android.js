@@ -26,44 +26,41 @@ const expand = {
 }
 
 /**
- * Generates file configurations based on context
+ * Returns the files of one output.
+ * @param {Object} output - `{ kind: 'base' }`, `{ kind: 'color', theme }` or
+ *   `{ kind: 'number', screen }`; `screen` is undefined when no screens are configured.
  */
-function generateFiles(theme, screen) {
-  // Base files (no theme, no screen)
-  if (!theme && screen === undefined) {
-    return [
-      { destination: 'main.xml', filter: 'cx/allTokens', format },
-      { destination: 'string.xml', filter: 'cx/stringTokens', format }
-    ]
+function generateFiles({ kind, theme, screen }) {
+  switch (kind) {
+    case 'base':
+      return [
+        { destination: 'main.xml', filter: 'cx/allTokens', format },
+        { destination: 'string.xml', filter: 'cx/stringTokens', format }
+      ]
+    case 'color':
+      return [{ destination: `color_${theme}.xml`, filter: 'cx/themeTokens', format }]
+    case 'number':
+      return [
+        {
+          destination: screen ? `number_${screen}.xml` : 'number.xml',
+          filter: 'cx/numberTokens',
+          format
+        }
+      ]
+    default:
+      throw new Error(`Unknown output: ${kind}`)
   }
-
-  // Color files (theme only)
-  if (theme && !screen) {
-    return [{ destination: `color_${theme}.xml`, filter: 'cx/themeTokens', format }]
-  }
-
-  // Number files (with screen suffix)
-  if (screen) {
-    return [{ destination: `number_${screen}.xml`, filter: 'cx/numberTokens', format }]
-  }
-
-  // Number files (without screen suffix when screens are optional)
-  if (screen === null) {
-    return [{ destination: 'number.xml', filter: 'cx/numberTokens', format }]
-  }
-
-  return []
 }
 
 /**
  * Android platform configuration
  */
-export default function (brand, app, theme, screen, outDir = 'dist') {
+export default function (brand, app, outputs, outDir = 'dist') {
   return {
     transforms,
     expand,
     buildPath: `${outDir}/android/${app}/${brand}/`,
     options,
-    files: generateFiles(theme, screen)
+    files: outputs.flatMap(generateFiles)
   }
 }

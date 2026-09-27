@@ -9,30 +9,39 @@ import web from './web.js'
 import ios from './ios.js'
 import android from './android.js'
 
-const platforms = {
+const platformConfigs = {
   web,
   ios,
   android
 }
 
 /**
- * Main configuration function for Style Dictionary
+ * Returns the Style Dictionary configuration for one token-set list: one platform per
+ * target platform of the app, each writing the files of every output.
+ *
+ * @param {Object} build
+ * @param {string} build.brand - Brand name.
+ * @param {string} build.app - App name.
+ * @param {string[]} build.platforms - Target platforms, e.g. `['ios', 'android']`.
+ * @param {Object[]} build.outputs - The outputs built from this token-set list.
+ * @param {string[]} build.source - Token files, in override order.
+ * @param {string} [build.outDir] - Output root directory.
+ * @returns {Object} The Style Dictionary configuration.
  */
-export default function ({ brand, app, platform, theme, screen, outDir }) {
-  const getPlatformConfig = platforms[platform]
-
-  if (!getPlatformConfig) {
-    throw new Error(`Unknown platform: ${platform}`)
-  }
-
-  const config = getPlatformConfig(brand, app, theme, screen, outDir)
-
+export default function ({ brand, app, platforms, outputs, source, outDir }) {
   return {
+    source,
     preprocessors: ['cx/global'],
     // verbosity: default, verbose, silent
     log: { errors: { brokenReferences: 'throw' } },
-    platforms: {
-      [platform]: config
-    }
+    platforms: Object.fromEntries(
+      platforms.map((platform) => {
+        const platformConfig = platformConfigs[platform]
+        if (!platformConfig) {
+          throw new Error(`Unknown platform: ${platform}`)
+        }
+        return [platform, platformConfig(brand, app, outputs, outDir)]
+      })
+    )
   }
 }

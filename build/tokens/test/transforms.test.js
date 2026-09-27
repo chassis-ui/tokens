@@ -16,7 +16,7 @@ const webTokens = read('./fixtures/web-tokens.json')
 const filterTokens = read('./fixtures/filter-tokens.json')
 
 const transform = (name) => transforms.find((item) => item.name === name)
-const platform = web('chassis', 'docs')
+const platform = web('chassis', 'docs', [])
 const typesMatching = (name) =>
   [...new Set(filterTokens.cases.map(({ token }) => token.$type))]
     .filter((type) => transform(name).filter({ $type: type }))

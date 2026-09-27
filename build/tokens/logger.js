@@ -111,16 +111,17 @@ export default {
   },
 
   /**
-   * Log dry-run results
+   * Log dry-run results: each planned build with the files it would write
    */
-  dryRun(tasks) {
+  dryRun(builds) {
     if (currentLevel >= LogLevel.INFO) {
-      console.log(`\n🔍 Dry run - showing ${tasks.length} task(s) that would be generated:\n`)
-      tasks.forEach((task) => {
-        let id = `${task.platform}/${task.brand}-${task.app}`
-        if (task.theme) id += `-${task.theme}`
-        if (task.screen) id += `-${task.screen}`
-        console.log(`  • ${id}`)
+      console.log(`\n🔍 Dry run - showing ${builds.length} build(s) that would run:\n`)
+      builds.forEach(({ key, cfg }) => {
+        console.log(`  • ${key}`)
+        Object.values(cfg.platforms).forEach(({ buildPath, files }) => {
+          const destinations = files.map((file) => file.destination).join(', ')
+          console.log(`      ${buildPath}: ${destinations}`)
+        })
       })
       console.log()
     }
