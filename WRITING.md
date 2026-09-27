@@ -114,18 +114,18 @@ Prefer active voice, with the actor named: the build, the format, the token, the
 
 The project has one word for each concept. Using a synonym makes the reader wonder whether it's a second concept.
 
-| Use                             | For                                                                                                                      | Not                                                          |
-| ------------------------------- | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------ |
-| brand                           | An option of the `brand` group                                                                                           | product, tenant                                              |
-| group, option                   | A group of `$themes.json` and one choice of it: the core groups `brand`, `theme`, `app`, and the optional group `screen` | theme group, theme (Tokens Studio's words), layer, dimension |
-| app                             | An option of the `app` group                                                                                             | project, application (except in page titles)                 |
-| theme                           | An option of the `theme` group                                                                                           | mode, color scheme                                           |
-| screen                          | An option of the `screen` group                                                                                          | breakpoint, viewport, device                                 |
-| platform                        | A build target: `web`, `ios`, `android`, and the presets                                                                 | target, output format                                        |
-| preset                          | A platform for adopters: `web-scss`, `web-px`, `web-vw`, `ios-swiftui`, `android-compose`                                | variant, flavor                                              |
-| token set                       | One JSON file of `source/`                                                                                               | token file, collection                                       |
-| base, context, component tokens | The three token levels (see [§10](#10-standard-section-order))                                                           | semantic, alias, global tokens                               |
-| the build                       | The Style Dictionary build in `packages/tokens/build/`                                                                   | the pipeline, the generator, the script                      |
+| Use                             | For                                                                                                                      | Not                                                                 |
+| ------------------------------- | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------- |
+| brand                           | An option of the `brand` group                                                                                           | product, tenant                                                     |
+| group, option                   | A group of `$themes.json` and one choice of it: the core groups `brand`, `theme`, `app`, and the optional group `screen` | theme group, theme (Tokens Studio's words), level, layer, dimension |
+| app                             | An option of the `app` group                                                                                             | project, application (except in page titles)                        |
+| theme                           | An option of the `theme` group                                                                                           | mode, color scheme                                                  |
+| screen                          | An option of the `screen` group                                                                                          | breakpoint, viewport, device                                        |
+| platform                        | A build target: `web`, `ios`, `android`, and the presets                                                                 | target, output format                                               |
+| preset                          | A platform for adopters: `web-scss`, `web-px`, `web-vw`, `ios-swiftui`, `android-compose`                                | variant, flavor                                                     |
+| token set                       | One JSON file of `source/`                                                                                               | token file, collection                                              |
+| base, context, component tokens | The three token levels (see [§10](#10-standard-section-order))                                                           | semantic, alias, global tokens                                      |
+| the build                       | The Style Dictionary build in `packages/tokens/build/`                                                                   | the pipeline, the generator, the script                             |
 
 **Three core groups and an optional one.** The token system is built on three groups: `brand`, `theme`, and `app`. `screen` is an optional fourth group. Chassis Tokens is meant to be owned and customized, so an adopter can remove the `screen` group or add a group of their own. Write about the groups in this way: name the three core groups first, call `screen` optional, and don't present the committed options (`chassis`, `light`, `docs`, `large`) as the only ones.
 
