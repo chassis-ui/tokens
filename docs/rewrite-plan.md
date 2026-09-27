@@ -71,7 +71,7 @@ If a phase is too large, split it into `Na`, `Nb` rows. If a fact in this file i
 | 20 | SwiftUI and Compose outputs (optional) | Opus | Done | `rewrite(phase 20)` | 2026-09-27 |
 | 21 | Icon assets (optional) | Opus | Done | `rewrite(phase 21)` | 2026-09-27 |
 | 22 | Platform shadow values (optional) | Opus | Done | `rewrite(phase 22)` | 2026-09-27 |
-| 23 | Package contents and scripts | Opus | Not started | | |
+| 23 | Package contents and scripts | Opus | Done | `rewrite(phase 23)` | 2026-09-27 |
 | 24 | Lint and audit clean | Sonnet | Not started | | |
 | 25 | CI for pull requests | Opus | Not started | | |
 | 26 | Merge preparation and 0.6.0 | Opus | Not started | | |
@@ -971,17 +971,32 @@ Checked: all Swift files of both brands and of the `ios-references` build type-c
 
 Goal: the npm package holds every output the docs describe, and the package scripts fail when something is wrong.
 
-- [ ] `files`: publish every file of `dist/` (Swift, XML, Kotlin, SVG, JSON, SCSS), as decided below. Also `README.md`, `LICENSE` and `CHANGELOG.md`, which npm adds by default.
-- [ ] `exports`: add the map decided below. Every path that consumers use today must still resolve, above all `dist/web/docs/chassis/main.scss`, which `@chassis-ui/css` forwards.
-- [ ] `description`: replace it with text that says what the package holds (decided below).
-- [ ] `check`: remove `check:lockfile`, and run the other steps so that any failure fails `check`, in sequence or with a runner that returns the first failure.
-- [ ] Remove `site:lint:vnu`, `build/vnu-jar.js` and the `vnu-jar` dependency, and `tokens:zip` with `build/zip-tokens.js`, if approved.
-- [ ] Update the quick start and the README where they say that the package holds the web SCSS files only.
-- [ ] Acceptance:
+- [x] `files`: publish every file of `dist/` (Swift, XML, Kotlin, SVG, JSON, SCSS), as decided below. Also `README.md`, `LICENSE` and `CHANGELOG.md`, which npm adds by default.
+- [x] `exports`: add the map decided below. Every path that consumers use today must still resolve, above all `dist/web/docs/chassis/main.scss`, which `@chassis-ui/css` forwards.
+- [x] `description`: replace it with text that says what the package holds (decided below).
+- [x] `check`: remove `check:lockfile`, and run the other steps so that any failure fails `check`, in sequence or with a runner that returns the first failure.
+- [x] Remove `site:lint:vnu`, `build/vnu-jar.js` and the `vnu-jar` dependency, and `tokens:zip` with `build/zip-tokens.js`, if approved.
+- [x] Update the quick start and the README where they say that the package holds the web SCSS files only.
+- [x] Acceptance:
   - `npm pack --dry-run` lists all 114 `dist/` files and no file outside `dist/` apart from `package.json`, `README.md`, `LICENSE` and `CHANGELOG.md`.
   - A consumer check in the scratchpad: install the packed tarball into an empty project, then compile `@use '@chassis-ui/tokens/dist/web/docs/chassis/main'` with Dart Sass through the `pkg:` importer and through a load path, and `require.resolve` one Swift file, one Android file and `package.json`.
   - `pnpm check` fails when one of its steps is made to fail, and passes otherwise.
   - The usual `dist/` and test checks from the ground rules.
+
+Result: the npm package holds all of `dist/`, Node resolves only `dist/*` and `package.json`, and `pnpm check` fails when a step fails.
+
+- `files` is `["dist", "CHANGELOG.md"]`; npm adds `package.json`, `README.md` and `LICENSE` itself. The tarball has 118 files, 691.6 kB packed and 9.9 MB unpacked (was 37 files, 102.7 kB): 46 XML, 18 SVG, 16 Swift, 20 JSON and 14 SCSS files. There is no Kotlin file, because no configured app uses `android-compose`.
+- `exports` is `{ "./dist/*": "./dist/*", "./package.json": "./package.json" }`. The description is the approved text.
+- `check` is `pnpm check:astro && pnpm check:pnpm`. It fails today, because `pnpm audit` reports 37 advisories (39 before; `lockfile-lint` brought 2); Phase 24 clears them.
+- Removed `build/vnu-jar.js`, `build/zip-tokens.js`, the scripts `site:lint:vnu`, `tokens:zip` and `check:lockfile`, and the dependencies `vnu-jar` and `lockfile-lint`. `*.zip` stays in `.gitignore`.
+- The quick start and the iOS and Android guides say the package holds the iOS and Android files; the README overview says `dist/` is published to npm. The web guide's sentence that the package holds the default output (not the presets) is still true and did not change.
+
+Checked:
+
+- `npm pack --dry-run` lists the 114 files of `git ls-files dist` exactly, and outside `dist/` only `CHANGELOG.md`, `LICENSE`, `README.md` and `package.json`.
+- Consumer check in the scratchpad: the packed tarball installed offline into an empty project. Dart Sass compiled `@use "pkg:@chassis-ui/tokens/dist/web/docs/chassis/main"` with `NodePackageImporter`, and `@forward "@chassis-ui/tokens/dist/web/docs/chassis/main"` (the line `@chassis-ui/css` uses) with `node_modules` as load path; both print `1rem` for `$cx-space-context-medium`. `require.resolve` finds a SCSS, a Swift, an Android XML and an asset catalog SVG file, and `package.json`; `README.md` does not resolve.
+- `pnpm check` exits 1 as it is (audit), 0 with `check:pnpm` replaced by `true`, and 1 with `check:astro` replaced by `false`; `package.json` was restored after each.
+- `pnpm tokens:verify` passes, 114 of 114 files; the 8 preset checks pass; `pnpm tokens:test` passes, 745 tests; lint reports nothing; `pnpm site:lint` passes; `pnpm astro:build` built 22 pages, and the three changed sentences are in the built pages; `dist/` untouched.
 
 
 ## Phase 24: lint and audit clean
@@ -1248,3 +1263,4 @@ Append-only.
 - 2026-09-27 (Phase 22, Opus 5.5): Added `derivedConstants` to `values/ios.js` (the `…Radius` of a box shadow blur) and its hook in `templates/constants.js`. Measured that Core Animation multiplies the colour's alpha by `shadowOpacity` and that 271 shadow colours change alpha in dark mode, so `…Opacity` and `…OpaqueColor` were dropped from the phase. Copied the 8 changed files into `dist/` and 4 into the `ios-references` baseline; only `Radius` lines were added (3168). Added a `shadowParts` fixture (three real parts with their Tokens Studio extensions) and 6 tests. Rewrote the iOS guide's shadow section and updated the Style Dictionary page and the CHANGELOG. Verified: `pnpm tokens:verify` passes, 114 of 114 files; 8 preset checks pass; `pnpm tokens:test` passes, 745 tests; lint and Prettier report nothing; the Swift files type-check and the guide's example runs; `pnpm astro:build` built 22 pages. Injected three regressions (radius equal to the blur, a radius for every blur, the template dropping derived constants); each failed 1 to 4 tests. Surprises: (1) the `bg-blur` tokens are box shadows in Tokens Studio, so they get a radius too. (2) The opacity parts the plan asked for would have been redundant and could not follow dark mode. All phases are done.
 - 2026-09-27 (Phases 23 to 35 planning, Opus 5.5): Ozgur asked what the package lacks to be production-ready and contributor-friendly, then asked for the answer as phases. Measured the repository (see Facts about the repository): the npm package holds 37 files and no iOS or Android output; no workflow runs on a pull request; `pnpm check` cannot fail; `site:lint` fails on 6 files; `pnpm audit` reports 39 advisories, 1 critical in Astro; about 31 of 53 dev dependencies serve only the site. Added Phases 23 to 35, a ground rule for them and 25 open decisions. Nothing in `build/`, `dist/`, `tokens/` or `site/` changed. Next: Ozgur's answers, then Phase 23.
 - 2026-09-27 (Phases 23 to 35 decisions): Ozgur confirmed all recommendations. `CODEOWNERS` had no recommendation; the plan assumes Ozgur for everything and Phase 28 confirms it. Phase 34's AAR destination had no recommendation; Phase 34 asks before publishing. Ozgur formatted the 6 homepage components with Prettier (class attributes joined onto one line, nothing else); `pnpm site:lint` passes, and that item of Phase 24 is ticked. The plan was committed as `rewrite(plan): add phases 23 to 35 for production readiness`. Next: Phase 23.
+- 2026-09-27 (Phase 23, Opus 5.5): Set `files` to all of `dist/` plus `CHANGELOG.md`, added the `exports` map and the new description, made `check` sequential with `&&`, and removed the vnu, zip and lockfile-lint scripts, files and dependencies. Updated the quick start, the iOS and Android guides, the README overview and the CHANGELOG. Verified: the packed file list equals `git ls-files dist` plus four files; the consumer check above (Sass `pkg:` importer, load path, Node resolution, blocked path); `pnpm check` fails and passes as it should; `pnpm tokens:verify`, the 8 preset checks, 745 tests, lint, `site:lint` and `astro:build` (22 pages) pass; `dist/` untouched. Surprises: (1) the tarball grows to 691.6 kB packed, below the plan's estimate of about 750 kB. (2) Removing `lockfile-lint` also removed 2 of the 39 audit advisories. (3) `pnpm check` now fails on the audit until Phase 24. Next: Phase 24.

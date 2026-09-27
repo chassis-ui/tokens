@@ -1,7 +1,7 @@
 {
   "name": "@chassis-ui/tokens",
   "version": "0.5.3",
-  "description": "Design tokens for Chassis Design System. Includes token transformers, asset manager and icon generator",
+  "description": "Design tokens for the Chassis Design System, built from Tokens Studio into SCSS, Swift, SwiftUI, Android resources and Jetpack Compose",
   "type": "module",
   "repository": {
     "type": "git",
@@ -24,8 +24,13 @@
     "token transform"
   ],
   "files": [
-    "dist/**/*.{css,scss,json,js,ts}"
+    "dist",
+    "CHANGELOG.md"
   ],
+  "exports": {
+    "./dist/*": "./dist/*",
+    "./package.json": "./package.json"
+  },
   "chassis": {
     "build": {
       "brands": [
@@ -71,7 +76,6 @@
     "tokens:test": "vitest run --dir build/tokens/test",
     "tokens:verify": "node build/tokens/verify.js",
     "tokens:verify:presets": "node build/tokens/verify.js --preset all",
-    "tokens:zip": "node build/zip-tokens.js",
     "site": "pnpm site:build && pnpm site:lint",
     "site:build": "pnpm sync-submodules && pnpm astro:build && pnpm site:pagefind",
     "site:clean": "rm -rf _site site/node_modules site/.astro site/public",
@@ -81,14 +85,12 @@
     "site:lint:prettier": "prettier -c --cache site",
     "site:lint:stylelint": "stylelint site/src/scss/ --cache --cache-location .cache/.stylelintcache",
     "site:lint:html": "node build/html-validate.js",
-    "site:lint:vnu": "node build/vnu-jar.js",
     "site:pagefind": "pagefind --site _site --output-subdir tokens/pagefind",
     "astro:dev": "astro dev --root site --port 4322",
     "astro:build": "astro build --root site",
     "astro:preview": "astro preview --root site",
-    "check": "pnpm check:astro & pnpm check:lockfile & pnpm check:pnpm & wait",
+    "check": "pnpm check:astro && pnpm check:pnpm",
     "check:astro": "astro check --root site",
-    "check:lockfile": "lockfile-lint --allowed-hosts npm --allowed-schemes https: --empty-hostname false --type npm --path package-lock.json",
     "check:pnpm": "pnpm audit --audit-level moderate",
     "change-version": "node build/change-version.js",
     "sync-submodules": "node build/sync-submodules.js"
@@ -124,7 +126,6 @@
     "html-validate": "^11.5.5",
     "htmlparser2": "^12.0.0",
     "js-yaml": "^5.2.1",
-    "lockfile-lint": "^5.0.0",
     "mdast-util-mdx-jsx": "^3.2.0",
     "pagefind": "^1.5.2",
     "picocolors": "^1.1.1",
@@ -145,7 +146,6 @@
     "unist-util-visit": "^5.1.0",
     "vanilla-calendar-pro": "^3.1.0",
     "vitest": "^4.1.9",
-    "vnu-jar": "26.7.3",
     "zod": "^4.4.3"
   },
   "packageManager": "pnpm@10.33.2+sha512.a90faf6feeab71ad6c6e57f94e0fe1a12f5dcc22cd754db40ae9593eb6a3e0b6b12e3540218bb37ae083404b1f2ce6db2a4121e979829b4aff94b99f49da1cf8"

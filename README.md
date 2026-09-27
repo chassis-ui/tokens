@@ -12,7 +12,7 @@
 **This repository contains:**
 - Design tokens in [Tokens Studio](https://tokens.studio) format (`tokens/`)
 - Style Dictionary 5 build scripts with custom extensions (`build/tokens/`)
-- Platform-specific output for Web (SCSS), iOS (Swift), and Android (XML), committed in `dist/`
+- Platform-specific output for Web (SCSS), iOS (Swift), and Android (XML), committed in `dist/` and published to npm as `@chassis-ui/tokens`
 - A test suite on real tokens, and a golden check that compares a fresh build with `dist/`
 - Documentation website (`site/`)
 

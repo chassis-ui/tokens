@@ -21,6 +21,9 @@ The presets for teams that do not use Chassis CSS are kept, in the new structure
 - `--dry-run` lists the builds and the files each would write
 - The build fails on a broken token reference, and when `tokens/$themes.json` has no token sets for a configured brand, app, theme or screen
 - Replaced the mock-based tests with tests on real tokens and `dist/`
+- The npm package holds all of `dist/`: the iOS and Android files (Swift, XML, the icon asset catalog and drawables) as well as the web SCSS. It held the SCSS files and the asset catalog's `Contents.json` files only
+- `package.json` has an `exports` map: `@chassis-ui/tokens/dist/*` and `@chassis-ui/tokens/package.json`. Every `dist/` path resolves as before; other paths in the package no longer resolve through Node
+- `pnpm check` fails when one of its steps fails; it ran them in the background and always passed
 
 ### Added
 - `pnpm tokens:verify`: builds into `dist-next/` and compares every file with `dist/`; the release workflow runs it before publishing. It also fails on a reference that names nothing the output declares
@@ -34,6 +37,8 @@ The presets for teams that do not use Chassis CSS are kept, in the new structure
 
 ### Removed
 - The unused `cx/typography/web` and `cx/test` transforms, the `cx/test` format and the `cx/colorTokens` filter
+- The `site:lint:vnu` script and the `vnu-jar` dependency, which `html-validate` replaced, and the `tokens:zip` script
+- The `check:lockfile` script and the `lockfile-lint` dependency: it read `package-lock.json`, which this pnpm repository does not have
 
 ### Fixed
 - Android opacity and letter spacing tokens are float resources (`<item type="dimen" format="float">`) instead of `<integer>`. Android rejects fractions such as `0.4` in integer resources, so `main.xml` and the number files did not compile. Read them with `ResourcesCompat.getFloat`; references to them are `@dimen/…`
