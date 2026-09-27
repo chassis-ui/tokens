@@ -230,7 +230,7 @@ The token sets of each file come from `tokens/$themes.json`. Colour files use th
 **File naming conventions:**
 - Web: `main.scss`, `color-light.scss`, `number-large.scss`
 - iOS: `ChassisTokens.swift`, `ColorLight.swift`, `NumberLarge.swift` (types `ChassisTokens`, `ChassisTokensColorLight`, `ChassisTokensNumberLarge`), and `Color.swift` (`ChassisTokensColor`), whose colours follow the light and dark appearance
-- Android: `main.xml`, `color_light.xml`, `number_large.xml`
+- Android: `main.xml`, `color_light.xml`, `number_large.xml`, and the same resources as a resource tree under `res/` (`values`, `values-night`, `values-sw600dp`, `values-sw840dp`; the screen folders are set with `options.android.screens`)
 
 Only the collections and sets defined under `build` are processed.
 

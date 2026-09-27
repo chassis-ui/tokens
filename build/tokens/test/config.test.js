@@ -18,6 +18,8 @@ const build = {
   app: 'demo',
   platforms: ['ios', 'android'],
   outputs,
+  themes: ['light', 'dark'],
+  screens: ['large', 'medium', 'small'],
   source: ['tokens/base/metric-source.json', 'tokens/brand-chassis/brand-base.json']
 }
 
@@ -73,7 +75,9 @@ describe('config', () => {
       ['main.xml', 'string.xml', 'color_light.xml', 'number_large.xml', 'number.xml']
     ]
   ])('%s writes each output with its filter', (platform, format, names) => {
-    const written = files(platform, [...outputs, { kind: 'number' }])
+    const written = files(platform, [...outputs, { kind: 'number' }]).filter(
+      (file) => !file.destination.startsWith('res/')
+    )
     expect(
       written.map(({ destination, filter, format }) => ({ destination, filter, format }))
     ).toEqual([
@@ -83,6 +87,51 @@ describe('config', () => {
       { destination: names[3], filter: 'cx/numberTokens', format },
       { destination: names[4], filter: 'cx/numberTokens', format }
     ])
+  })
+
+  test('Android writes a resource tree next to the flat files', () => {
+    const tree = files('android', [
+      ...outputs,
+      { kind: 'color', theme: 'dark' },
+      { kind: 'number', screen: 'medium' },
+      { kind: 'number', screen: 'small' }
+    ]).filter((file) => file.destination.startsWith('res/'))
+    expect(tree.map(({ destination, filter }) => [destination, filter])).toEqual([
+      ['res/values/string.xml', 'cx/stringTokens'],
+      ['res/values/color_base.xml', 'cx/baseColorTokens'],
+      ['res/values/color.xml', 'cx/themeTokens'],
+      ['res/values-sw840dp/number.xml', 'cx/numberTokens'],
+      ['res/values-night/color.xml', 'cx/themeTokens'],
+      ['res/values-sw600dp/number.xml', 'cx/numberTokens'],
+      ['res/values/number.xml', 'cx/numberTokens']
+    ])
+  })
+
+  test('Android puts the screens in the folders of options.android.screens', () => {
+    const platformOptions = {
+      android: { screens: { large: '', medium: 'w600dp', small: 'h480dp' } }
+    }
+    const tree = config({
+      ...build,
+      platforms: ['android'],
+      platformOptions
+    }).platforms.android.files.filter((file) => file.destination.endsWith('/number.xml'))
+    expect(tree.map((file) => file.destination)).toEqual(['res/values/number.xml'])
+    const small = config({
+      ...build,
+      platforms: ['android'],
+      outputs: [{ kind: 'number', screen: 'small' }],
+      platformOptions
+    }).platforms.android.files
+    expect(small.map((file) => file.destination)).toEqual([
+      'number_small.xml',
+      'res/values-h480dp/number.xml'
+    ])
+  })
+
+  test('Android puts no theme but the first and dark in the tree', () => {
+    const contrast = files('android', [{ kind: 'color', theme: 'contrast' }])
+    expect(contrast.map((file) => file.destination)).toEqual(['color_contrast.xml'])
   })
 
   test('iOS files declare one type each, so they can share a target', () => {

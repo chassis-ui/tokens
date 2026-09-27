@@ -36,7 +36,26 @@ Names are snake_case without a prefix, such as `space_context_medium`. The Andro
 
 ## Generated Files
 
-The build writes seven files to `dist/android/<app>/<brand>/`. The configured Android app is `demo`:
+The build writes to `dist/android/<app>/<brand>/`. The configured Android app is `demo`. The `res/` folder is a resource tree an app can use as it is:
+
+```
+res/
+├── values/
+│   ├── color.xml          light colours
+│   ├── color_base.xml     base colours, the palette behind the context colours
+│   ├── number.xml         sizes and numbers of the small screen
+│   └── string.xml         font families, font weights, strings and SVG icons
+├── values-night/
+│   └── color.xml          dark colours
+├── values-sw600dp/
+│   └── number.xml         sizes and numbers of the medium screen
+└── values-sw840dp/
+    └── number.xml         sizes and numbers of the large screen
+```
+
+Android picks the values for the current configuration: the dark colours in night mode, and the numbers of the widest screen folder that fits. The folder of each screen is set in the build options; see [Screen Folders](#screen-folders).
+
+Next to the tree, the build writes the same resources as flat files:
 
 <CxTable>
 | File | Contents |
@@ -50,8 +69,6 @@ The build writes seven files to `dist/android/<app>/<brand>/`. The configured An
 <Callout type="warning">
 Do not put `main.xml` in one resource folder with the other files. It declares the resources of `string.xml` and the large number file, and the component colours of the light colour file, some with other values, so the build fails with `has a conflicting value`.
 </Callout>
-
-The string, colour and number files share no names with each other. Together they hold everything in `main.xml` except the base colours (`color_base_*`), which are the raw palette behind the context colours.
 
 ## Build the Tokens
 
@@ -68,45 +85,38 @@ The files are written to `submodules/chassis-tokens/dist/android/demo/chassis/`.
 
 ## Add the Tokens to Your App
 
-### One File
+### Resource Tree
 
-If your app needs one theme and one screen size, copy `main.xml` to `app/src/main/res/values/`. It holds every token except the dark colours, the other screen sizes and the context colours (`color_context_*`), which are in the colour files only.
+Add the built `res/` folder to the resources of your app module. Gradle merges it with the app's own resources, and every build of the tokens is picked up without copying:
 
-### Resource Qualifiers
-
-For dark mode and several screen sizes, copy the string, colour and number files into resource folders with qualifiers. Android picks the values for the current configuration:
-
-```
-app/src/main/res/
-├── values/
-│   ├── color_light.xml
-│   ├── number_small.xml
-│   └── string.xml
-├── values-night/
-│   └── color_dark.xml
-├── values-sw600dp/
-│   └── number_medium.xml
-└── values-sw840dp/
-    └── number_large.xml
+```kotlin
+// app/build.gradle.kts
+android {
+    sourceSets["main"].res.srcDir("../submodules/chassis-tokens/dist/android/demo/chassis/res")
+}
 ```
 
-The colour files declare the same names, and so do the number files, so each folder overrides the default values. Which screen size matches which qualifier is your choice.
-
-A script keeps the folders up to date after each build:
+To keep the tokens inside the app, copy the folder instead:
 
 ```bash
-#!/bin/sh
-# scripts/sync-tokens.sh
-set -e
-TOKENS=submodules/chassis-tokens/dist/android/demo/chassis
-RES=app/src/main/res
-
-mkdir -p "$RES/values" "$RES/values-night" "$RES/values-sw600dp" "$RES/values-sw840dp"
-cp "$TOKENS/color_light.xml" "$TOKENS/number_small.xml" "$TOKENS/string.xml" "$RES/values/"
-cp "$TOKENS/color_dark.xml" "$RES/values-night/"
-cp "$TOKENS/number_medium.xml" "$RES/values-sw600dp/"
-cp "$TOKENS/number_large.xml" "$RES/values-sw840dp/"
+cp -R submodules/chassis-tokens/dist/android/demo/chassis/res/. app/src/main/res/
 ```
+
+### Screen Folders
+
+By default the small screen goes into `values`, the medium screen into `values-sw600dp` and the large screen into `values-sw840dp`, the Material Design width classes. Set other folders in `chassis.build` of `package.json`, with `""` for the default folder:
+
+```json
+"options": {
+  "android": { "screens": { "small": "", "medium": "sw600dp", "large": "sw840dp" } }
+}
+```
+
+Every screen needs a folder, and exactly one screen goes into the default folder, which Android uses when no other folder fits; the build fails otherwise. With screens other than `small`, `medium` and `large`, set the folders. The first theme goes into `values` and `dark` into `values-night`; other themes have only their flat file.
+
+### One File
+
+If your app needs one theme and one screen size, copy `main.xml` to `app/src/main/res/values/` instead. It holds every token except the dark colours and the other screen sizes.
 
 ## Use Tokens in XML
 
@@ -235,7 +245,7 @@ Read the angle and positions with `ResourcesCompat.getFloat` and the colours wit
 
 ✅ **Prefer context tokens**: Use `color_context_*`, `space_context_*` and `border_radius_context_*` over base and primitive tokens.
 
-✅ **Use resource qualifiers**: Let Android pick the dark colours and the screen sizes, instead of choosing values in code.
+✅ **Use the resource tree**: Let Android pick the dark colours and the screen sizes from `res/`, instead of choosing values in code.
 
 ✅ **Change tokens at the source**: Chassis Tokens is meant to be owned and customized. Change values in Tokens Studio and rebuild, instead of editing the generated files.
 
@@ -247,7 +257,7 @@ Read the angle and positions with `ResourcesCompat.getFloat` and the colours wit
 
 ### Resource Has a Conflicting Value
 
-`main.xml` is in a resource folder with a string, colour or number file. Use either `main.xml` alone or the other files, as in [Resource Qualifiers](#resource-qualifiers).
+`main.xml` is in a resource folder with a string, colour or number file. Use either `main.xml` alone or the resource tree, as in [Resource Tree](#resource-tree).
 
 ### Unresolved Reference to a Resource
 
@@ -259,11 +269,11 @@ Opacity and letter spacing are float items. Files built before this change print
 
 ### Resources$NotFoundException
 
-A resource exists only in a qualified folder, such as `values-sw600dp`, and the app runs in a configuration without it. Every resource needs a value in `values/`.
+A resource exists only in a qualified folder, such as `values-sw600dp`, and the app runs in a configuration without it. Every resource needs a value in `values/`; the built tree has one, because exactly one screen goes into the default folder.
 
 ## Continuous Integration
 
-Build the tokens and copy them before the app. The build needs Node.js 22 or later:
+Build the tokens before the app. With the resource tree added as a source folder, as in [Resource Tree](#resource-tree), Gradle reads the built files directly. The build needs Node.js 22 or later:
 
 ```yaml
 # .github/workflows/android.yml
@@ -290,9 +300,6 @@ jobs:
         run: |
           pnpm install
           pnpm tokens --brand chassis --app demo --platform android
-
-      - name: Copy tokens
-        run: sh scripts/sync-tokens.sh
 
       - uses: actions/setup-java@v5
         with:

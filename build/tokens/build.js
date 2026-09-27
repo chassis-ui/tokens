@@ -12,6 +12,7 @@ import { promises } from 'fs'
 import StyleDictionary from 'style-dictionary'
 import { permutateThemes, register as registerStudio } from '@tokens-studio/sd-transforms'
 import config from './config/index.js'
+import { screenQualifiers } from './config/android.js'
 import registerFilters from './filters.js'
 import registerTransforms from './transforms.js'
 import registerFormats from './formats.js'
@@ -69,6 +70,13 @@ async function loadConfig(configFile) {
   const unknown = Object.keys(buildOptions.options ?? {}).filter((key) => !platforms.includes(key))
   if (unknown.length > 0) {
     throw new Error(`Invalid ${source}: options for platforms no app uses: ${unknown.join(', ')}`)
+  }
+  if (platforms.includes('android')) {
+    try {
+      screenQualifiers(buildOptions.screens, buildOptions.options?.android?.screens)
+    } catch (error) {
+      throw new Error(`Invalid ${source}: ${error.message}`, { cause: error })
+    }
   }
   return { version: packageJson.version, buildOptions }
 }
@@ -167,8 +175,8 @@ function parseArgs(args = process.argv.slice(2)) {
  *   `permutateThemes` returns them from `tokens/$themes.json`.
  * @param {Object} buildOptions - `chassis.build` from `package.json`.
  * @param {Object} [filters] - Filters from `parseArgs`; an empty filter selects all.
- * @returns {Object[]} Builds with `brand`, `app`, `key`, `platforms`, `outputs` and
- *   `source`, the token files in override order.
+ * @returns {Object[]} Builds with `brand`, `app`, `key`, `platforms`, `outputs`, the
+ *   configured `themes` and `screens`, and `source`, the token files in override order.
  * @throws {Error} When a token-set list is missing from `sets`.
  */
 function planBuilds(sets, buildOptions, filters = {}) {
@@ -211,6 +219,8 @@ function planBuilds(sets, buildOptions, filters = {}) {
           key,
           platforms,
           outputs: keyOutputs,
+          themes,
+          screens,
           source: sets[key].map((tokenSet) => `tokens/${tokenSet}.json`)
         })
       }

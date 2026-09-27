@@ -63,7 +63,7 @@ If a phase is too large, split it into `Na`, `Nb` rows. If a fact in this file i
 | 16 | Dead `dimension` filter condition | Sonnet | Done | `rewrite(phase 16)` | 2026-09-27 |
 | 17 | iOS type and file names | Opus | Done | `rewrite(phase 17)` | 2026-09-27 |
 | 18 | iOS colours that follow dark mode | Fable | Done | `rewrite(phase 18)` | 2026-09-27 |
-| 19 | Android resource tree | Fable | Not started | | |
+| 19 | Android resource tree | Fable | Done | `rewrite(phase 19)` | 2026-09-27 |
 | 20 | SwiftUI and Compose outputs (optional) | Opus | Not started | | |
 | 21 | Icon assets (optional) | Opus | Not started | | |
 | 22 | Platform shadow values (optional) | Opus | Not started | | |
@@ -196,13 +196,13 @@ Every instance lists its sets in `source`, in the order `permutateThemes` return
 
 ### Files
 
-`dist/<platform>/<app>/<brand>/`, seven files each, 42 in total; since Phase 18 iOS has an eighth, `Color.swift`, so 44.
+`dist/<platform>/<app>/<brand>/`, seven files each, 42 in total; since Phase 18 iOS has an eighth, `Color.swift`, so 44; since Phase 19 Android also has a resource tree of 7 files under `res/`, so 58.
 
 | Platform | Files |
 | --- | --- |
 | web | `main.scss`, `string.scss`, `color-<theme>.scss`, `number-<screen>.scss` |
 | iOS | `ChassisTokens.swift` (`Main.swift` until Phase 17), `String.swift`, `Color<Theme>.swift`, `Number<Screen>.swift`, and `Color.swift` when the themes include `light` and `dark` (since Phase 18) |
-| Android | `main.xml`, `string.xml`, `color_<theme>.xml`, `number_<screen>.xml` |
+| Android | `main.xml`, `string.xml`, `color_<theme>.xml`, `number_<screen>.xml`, and since Phase 19 `res/values/{string,color_base,color,number}.xml`, `res/values-night/color.xml` and `res/values-<qualifier>/number.xml` |
 
 ### Filters
 
@@ -820,10 +820,32 @@ Facts, `chassis` on 2026-09-27:
 - Android picks a qualified folder (`values-sw600dp`) over `values`, so the default folder must hold the smallest screen.
 - The Android guide copies files into `values`, `values-night` and `values-sw…dp` with a script.
 
-- [ ] Write `res/values/`, `res/values-night/` and one `res/values-<qualifier>/` per other screen under `dist/android/<app>/<brand>/`, with the qualifiers set in `chassis.build` as decided below.
-- [ ] Decide where the base colours go (see below).
-- [ ] Keep or drop the flat files, as decided below.
-- [ ] Acceptance: aapt2 compiles and links the tree for both brands; every resource of the flat files is in the tree with the value of its theme and screen; the Android guide drops the sync script.
+- [x] Write `res/values/`, `res/values-night/` and one `res/values-<qualifier>/` per other screen under `dist/android/<app>/<brand>/`, with the qualifiers set in `chassis.build` as decided below. (Changed while doing it: the map is `chassis.build.options.android.screens`, next to the other Android options, instead of a new `chassis.build.android` key.)
+- [x] Decide where the base colours go (see below). (`res/values/color_base.xml`, with a new filter `cx/baseColorTokens`.)
+- [x] Keep or drop the flat files, as decided below. (Kept for one release.)
+- [x] Acceptance: aapt2 compiles and links the tree for both brands; every resource of the flat files is in the tree with the value of its theme and screen; the Android guide drops the sync script.
+
+Result: the Android build writes a resource tree next to the flat files, 7 files per brand. No existing file changed; `dist/` has 58 files.
+
+| File | Contents | Same as |
+| --- | --- | --- |
+| `res/values/string.xml` | strings, font families and weights, icons | `string.xml` |
+| `res/values/color_base.xml` | the 1382 base colours, which were only in `main.xml` | new |
+| `res/values/color.xml` | colours of the first theme | `color_light.xml` |
+| `res/values/number.xml` | numbers of the default screen | `number_small.xml` |
+| `res/values-night/color.xml` | colours of `dark` | `color_dark.xml` |
+| `res/values-sw600dp/number.xml`, `res/values-sw840dp/number.xml` | numbers of medium and large | `number_medium.xml`, `number_large.xml` |
+
+The screen folders come from `options.android.screens`, by default `{ small: '', medium: 'sw600dp', large: 'sw840dp' }` (`DEFAULT_SCREEN_QUALIFIERS` in `config/android.js`). `loadConfig` checks them when an app builds Android: every screen needs a folder, and exactly one screen goes into the default folder. Without screens, the one number file goes into `values`. Themes other than the first and `dark` get no tree file. `planBuilds` now carries the configured `themes` and `screens`, which `config/index.js` passes to the platform configs with their options.
+
+Checked:
+
+- Each tree file equals its flat file, apart from the timestamp line, for both brands and the `android-references` baseline; `color_base.xml` prints values with `outputReferences`, since base colours never print references.
+- aapt2 compiles and links each brand's `res/` folder as the build writes it, and its resource dump shows the qualified values, such as `size_website_section_icon` at `48dp`, `64dp` (`sw600dp`) and `80dp` (`sw840dp`), and `color_context_default_bg_main` at `#ffffffff` and `#ff111314` (`night`).
+- Every resource of `main.xml` is in the tree with the same type and the value of the light theme and the large screen (6487 of 6487, both brands).
+
+The Android guide adds the tree as a Gradle resource folder (`sourceSets["main"].res.srcDir(…)`), which is not compiled here (no Android SDK), or copies it; the sync script and its CI step are gone.
+
 
 ## Phase 20: SwiftUI and Compose outputs (optional)
 
@@ -950,3 +972,4 @@ Append-only.
 - 2026-09-27 (Phase 16, Opus 5.5): Removed the `path[1] !== 'dimension'` condition from the main and number filters, after checking that no token set has a `dimension` group at `path[1]`; the filter comment now says why `dimension.base.*` is emitted. Replaced the test that kept the exclusion. Verified: `pnpm tokens:verify` passes, 42 of 42 files, with no change; the six preset checks pass; `pnpm tokens:test` passes, 643 tests; lint and Prettier report nothing; putting the condition back failed the new test. The site docs do not mention the condition, so they did not change. Next: Phase 17.
 - 2026-09-27 (Phase 17, Opus 5.5): The iOS config names each file's type (`swiftFile` in `config/ios.js`) and makes the types enums; the template prints `@objc` only for classes. `Main.swift` became `ChassisTokens.swift` in `dist/` and the `ios-references` baseline, with `git mv`. Every changed line is an `@objc` prefix, a type line or the main file's name comment (41194 lines). Updated the config, build, format and verify tests and the fixture labels, and added config and template tests (638 unit tests, 646 with the golden ones). Rewrote the setup parts of the iOS guide and updated the Style Dictionary page, the introduction, the quick start, the README and the CHANGELOG. Verified: `pnpm tokens:verify` passes, 42 of 42 files; the six preset checks pass; all tests pass; lint and Prettier report nothing; all files compile in one module and as one package library, and the guide's examples compile; `pnpm astro:build` built 22 pages. Injected four regressions (always `@objc`, one type name for every file, classes again, the old main file name); each failed 1 to 8 tests. Surprises: (1) the template's default class name had no trailing space but a custom one did, so a custom `className` printed `X  {`; fixed. (2) Swift allows a module and a type both named `ChassisTokens`; `ChassisTokens.SpaceContextMedium` resolves to the type, which the package check confirmed. Next: Phase 18.
 - 2026-09-27 (Phase 18, Opus 5.5): Split the iOS template into `swiftConstants` and `swiftFile`, added `theme-colors.js` (collect, combine, write), the `theme` mark on the iOS colour files, the collection in the iOS format, `planThemeColors` and the write step in `build.js`, and the extra files in the dry run. Added `Color.swift` to `dist/` for both brands and to the `ios-references` baseline; nothing else changed. Added a `themeColors` fixture (real light and dark constants), `theme-colors.test.js` and plan tests; `golden.test.js` expects 8 files for `ios-references`. Updated the iOS guide, the Style Dictionary page, the README, the CHANGELOG and the tests README. Verified: `pnpm tokens:verify` passes, 44 of 44 files; the six preset checks pass; `pnpm tokens:test` passes, 658 tests; lint and Prettier report nothing; the run-time check above passes for 1533 colours per build; the package and the guide's examples compile; `pnpm astro:build` built 22 pages. Injected five regressions (same constants printed as values, no name check, light and dark swapped, the plan ignoring the themes, the format not collecting); each failed 1 to 3 tests, the last one only in the golden test. Surprises: (1) no current token names a constant in one theme but a value in the other, so that rule is tested on a constructed variant of a real pair. (2) The first run-time check of the references build covered only the 704 constants that print a `UIColor` directly; it was repeated with all 1533 colour names. Next: Phase 19.
+- 2026-09-27 (Phase 19, Fable 5.1 per the Model column; done with Opus 5.5): Added the resource tree to `config/android.js` (`screenQualifiers`, `DEFAULT_SCREEN_QUALIFIERS`, `resourceFile`), the `cx/baseColorTokens` filter, the screen folder check in `loadConfig`, and `themes` and `screens` on each planned build. Copied the 14 new files into `dist/` and 7 into the `android-references` baseline; no existing file changed. Updated the config, build, filter and golden tests, and added tree, qualifier and `loadConfig` tests (666 tests). Rewrote the setup of the Android guide and updated the Style Dictionary page, the README and the CHANGELOG. Verified: `pnpm tokens:verify` passes, 58 of 58 files; the six preset checks pass; all tests pass; lint and Prettier report nothing; aapt2 links both trees as built and the references tree; `pnpm astro:build` built 22 pages. Injected six regressions (dark colours in the default folder, numbers ignoring the qualifiers, no base colours, no default folder check, `options.android.screens` ignored, the base colour filter taking all colours); each failed 1 to 19 tests. Surprise: the tree files equal the flat files byte for byte apart from the timestamp, because the Android format prints no file name. Next: Phase 20, which needs `kotlinc` downloaded to the scratchpad (approved in Open decisions).

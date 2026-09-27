@@ -58,7 +58,9 @@ describe('Golden output', () => {
     const { config, expectedDir } = presetPaths(preset)
     const result = await compareOutput(expectedDir, await build({ config }))
     expect(result.ok, formatReport(result, `golden/${preset}/`)).toBe(true)
-    // ios-references also has the colour file that follows the appearance
-    expect(result.compared).toBe(preset === 'ios-references' ? 8 : 7)
+    // ios-references also has the colour file that follows the appearance, and
+    // android-references the resource tree
+    const files = { 'ios-references': 8, 'android-references': 14 }
+    expect(result.compared).toBe(files[preset] ?? 7)
   })
 })

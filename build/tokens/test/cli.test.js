@@ -129,6 +129,44 @@ describe('loadConfig', () => {
     )
   })
 
+  describe('Android screen folders', () => {
+    const android = { ...base, apps: { demo: ['android'] }, screens: ['large', 'medium', 'small'] }
+
+    test('accepts the default folders for large, medium and small', async () => {
+      await expect(loadConfig(await write(android))).resolves.toBeTruthy()
+    })
+
+    test('accepts other screens with their folders in options.android.screens', async () => {
+      const screens = { phone: '', tablet: 'sw600dp' }
+      const file = await write({
+        ...android,
+        screens: ['phone', 'tablet'],
+        options: { android: { screens } }
+      })
+      await expect(loadConfig(file)).resolves.toBeTruthy()
+    })
+
+    test('throws on a screen without a folder', async () => {
+      const file = await write({ ...android, screens: ['phone', 'tablet'] })
+      await expect(loadConfig(file)).rejects.toThrow(
+        `Invalid ${file}: no Android resource qualifier for the screens phone, tablet; set them in options.android.screens`
+      )
+    })
+
+    test('throws unless exactly one screen is in the default folder', async () => {
+      const screens = { large: 'sw840dp', medium: 'sw600dp', small: 'sw320dp' }
+      const file = await write({ ...android, options: { android: { screens } } })
+      await expect(loadConfig(file)).rejects.toThrow(
+        'options.android.screens must put exactly one screen in the default folder ("") but puts 0'
+      )
+    })
+
+    test('does not check the folders when no app builds Android', async () => {
+      const file = await write({ ...base, screens: ['phone'] })
+      await expect(loadConfig(file)).resolves.toBeTruthy()
+    })
+  })
+
   test('throws on a configuration without apps', async () => {
     const file = await write({ brands: ['chassis'], themes: ['light'] })
     await expect(loadConfig(file)).rejects.toThrow(

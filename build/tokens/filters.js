@@ -27,6 +27,10 @@ export const filters = {
     tokenTypes.size.includes(token.$type) ||
     tokenTypes.string.includes(token.$type),
 
+  // Base colours, the raw palette behind the context colours; only main has them otherwise.
+  'cx/baseColorTokens': (token) =>
+    tokenTypes.color.includes(token.$type) && token.path[1] === 'base',
+
   // Theme colours, without base and utility colours.
   'cx/themeTokens': (token) =>
     tokenTypes.color.includes(token.$type) && !['base', 'utility'].includes(token.path[1]),

@@ -43,7 +43,7 @@ describe('planBuilds', () => {
   const builds = planBuilds(sets, buildOptions)
 
   test('writes exactly the files of dist/', () => {
-    expect(distFiles).toHaveLength(44)
+    expect(distFiles).toHaveLength(58)
     expect([...destinations(builds), ...planThemeColors(builds, 'dist')].sort()).toEqual(distFiles)
   })
 
@@ -116,6 +116,11 @@ describe('planBuilds', () => {
       'dist/android/demo/chassis/color_light.xml',
       'dist/android/demo/chassis/main.xml',
       'dist/android/demo/chassis/number.xml',
+      'dist/android/demo/chassis/res/values-night/color.xml',
+      'dist/android/demo/chassis/res/values/color.xml',
+      'dist/android/demo/chassis/res/values/color_base.xml',
+      'dist/android/demo/chassis/res/values/number.xml',
+      'dist/android/demo/chassis/res/values/string.xml',
       'dist/android/demo/chassis/string.xml',
       'dist/ios/demo/chassis/ChassisTokens.swift',
       'dist/ios/demo/chassis/ColorDark.swift',
@@ -135,12 +140,12 @@ describe('planBuilds with filters', () => {
   const plan = (filters) => planBuilds(sets, buildOptions, filters)
 
   test.each([
-    [{ brands: ['sinefil'] }, 21],
+    [{ brands: ['sinefil'] }, 28],
     [{ apps: ['docs'] }, 14],
-    [{ platforms: ['android'] }, 14],
-    [{ themes: ['dark'] }, 36],
-    [{ screens: ['small'] }, 30],
-    [{ screens: ['xlarge'] }, 24]
+    [{ platforms: ['android'] }, 28],
+    [{ themes: ['dark'] }, 48],
+    [{ screens: ['small'] }, 40],
+    [{ screens: ['xlarge'] }, 32]
   ])('%o writes %i files of dist/', (filters, count) => {
     const files = destinations(plan(filters))
     expect(files).toHaveLength(count)
