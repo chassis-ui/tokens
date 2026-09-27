@@ -46,7 +46,7 @@ The right prose voice depends on the doc category. There are two conventions, an
 
 **Tutorial voice** (getting-started and use-in-project docs) allows second-person "you"/"your" — they read naturally in a step-by-step guide where the reader installs a package, runs a build, or adds files to an app. Reference sections inside a guide (a table of build options, a list of generated files) still read better without a pronoun.
 
-**Good:** "If your app needs one theme and one screen size, `ChassisTokens.swift` alone holds every token it needs."
+**Good:** "If you build the tokens from your own fork, use the URL of your repository in place of this one."
 
 **Bad (still avoid even in tutorial docs):** "We've now built the tokens. Our next step is to add them to the app."
 
@@ -57,6 +57,8 @@ The right prose voice depends on the doc category. There are two conventions, an
 Every `##`, `###`, and `####` heading must be followed by at least one explanatory sentence before any code example, table, bullet list, or sub-heading, naming what the section is about and why it matters — a bare heading followed by a table tells readers _what_ exists but not _when to reach for it_.
 
 **Floor:** one full sentence is enough — don't pad.
+
+**Exception:** `## Best practices`, `## Troubleshooting`, and `## Next steps` may go directly into their entries. Their names say what follows, and a sentence there is filler.
 
 **Good:**
 
@@ -114,7 +116,8 @@ The project has one word for each concept. Using a synonym makes the reader wond
 
 | Use                             | For                                                                                       | Not                                          |
 | ------------------------------- | ----------------------------------------------------------------------------------------- | -------------------------------------------- |
-| brand                           | An option of the `brand` group: `chassis`, `sinefil`                                      | product, tenant                              |
+| brand                           | An option of the `brand` group; the build writes `chassis` and `sinefil`                  | product, tenant                              |
+| group, option                   | A group of `$themes.json` (`brand`, `app`, `theme`, `screen`) and one choice of it        | theme group, theme (Tokens Studio's words)   |
 | app                             | An option of the `app` group: `docs`, `demo`                                              | project, application (except in page titles) |
 | theme                           | `light`, `dark`                                                                           | mode, color scheme                           |
 | screen                          | `large`, `medium`, `small`                                                                | breakpoint, viewport, device                 |
@@ -143,6 +146,7 @@ Backtick every code reference. A token has one name in the source and one per pl
 | iOS output                                    | Constant, with its type when the file matters | `` `SpaceContextMedium` ``, `` `ChassisTokens.SpaceContextMedium` ``      |
 | Android output                                | Resource reference                            | `` `@dimen/space_context_medium` ``, `` `R.dimen.space_context_medium` `` |
 | Compose output                                | Property                                      | `` `spaceContextMedium` ``                                                |
+| Figma Variable                                | Slash path                                    | `` `space/context/medium` ``                                              |
 | Custom property of Chassis CSS                | In full, with `var()` when it's a value       | `` `--space-medium` ``, `` `var(--space-medium)` ``                       |
 
 Token reference docs use dot paths; platform docs use the names of their platform. Don't use a platform name where the dot path is meant — `$cx-space-context-medium` doesn't exist for an Android developer.
@@ -168,6 +172,8 @@ grep -rn "space-context-medium" packages/tokens/dist/web/docs/chassis/
 **Generated code is copied, not retyped.** A code block that shows what the build writes holds lines of `dist/` exactly as they are, including their order and spacing. Shorten a block by leaving lines out, never by editing a line.
 
 **Values belong to a brand, a theme, and a screen.** A value in a doc is the value of the `chassis` brand, the `light` theme, and the `large` screen unless the doc says otherwise. Say so when the value differs elsewhere: "`#161a1b` in the light theme, `#e9eced` in the dark theme."
+
+**Sizes are design pixels.** Write a size as `16px`, also when the source holds `16` without a unit and the build treats it as a size. A value that the build prints without a unit, such as an opacity or a column count, is written without one.
 
 ### 8. Counts, versions, and configuration
 
@@ -224,9 +230,9 @@ Each doc type has a section order. Skip sections that don't apply; don't reorder
 ## Platform output           (always last)
 ```
 
-**The three levels.** _Base tokens_ hold raw values (`space.unit.16`, `color.base.*`). _Context tokens_ name a value by its role (`space.context.medium`, `color.context.default.fg-main`). _Component tokens_ assign a value to a part of a component (`space.button.medium-gap`). Use these three names in headings and prose; a category that lacks a level skips its section.
+**The three levels.** _Base tokens_ hold raw values (`space.unit.16`, `color.base.*`). _Context tokens_ name a value by its role (`space.context.medium`, `color.context.default.fg-main`). _Component tokens_ assign a value to a part of a component (`space.button.medium-gap`). Use these three names in headings and prose; a category that lacks a level skips its section. A category without levels, such as `typography.*`, names its sections after what the tokens hold ("Font sizes", "Line heights"), between `## Introduction` and `## Usage`.
 
-**Color has a fourth group.** `color.base.*` holds the palette of every theme, and `color.primitive.*` holds the palette of the current theme, between the base and the context tokens. "Primitive" is the name of that group only; it gets a `## Primitive colors` section after `## Base tokens`, and no other category uses the word.
+**Color has a fourth group.** `color.base.*` holds the palettes and the context colors of every theme. `color.primitive.*` holds the palette of the current theme, next to the context tokens: both reference `color.base.*`, and gradients and shadows use the primitive colors. "Primitive" is the name of that group only; it gets a `## Primitive colors` section after `## Base tokens`, and no other category uses the word.
 
 **Platform docs** (`use-in-project/*.mdx`) follow the order in which a developer meets the tokens. The three platform docs share this order, so a section added to one usually belongs in all three:
 
@@ -239,12 +245,14 @@ Each doc type has a section order. Skip sections that don't apply; don't reorder
 ## Screen sizes
 ## Typography
 ## Shadows, gradients, icons (one ## each, as they apply to the platform)
+## Build options             (presets and options that change the output, one ### each)
+## Continuous integration
 ## Best practices
 ## Troubleshooting           (see §16)
 ## Next steps                (always last)
 ```
 
-**Guides** (`getting-started/*.mdx`) use a looser structure but still lead with an intro paragraph, list requirements under `## Prerequisites`, order their sections as the reader performs them, and close with `## Troubleshooting` and `## Next steps`.
+**Guides** (`getting-started/*.mdx`) use a looser structure but still lead with an intro paragraph under `## Introduction`, list requirements under `## Prerequisites`, order their sections as the reader performs them, and close with `## Troubleshooting` and `## Next steps`.
 
 **Canonical section names.** Older docs use variants like "Overview", "Usage Guidelines", "Related Topics", and "See Also" — going forward, **use `## Introduction`, `## Usage`, and `## Next steps`**.
 
@@ -282,6 +290,8 @@ See the [web]([[docsref:/use-in-project/web-applications]]), [iOS]([[docsref:/us
 
 Use one token of the page as the example, the same on every platform, with the values of `dist/`. Add a sentence for each platform rule the reader would not guess: a line height in percent that prints in points, letter spacing with a different unit per platform, a shadow split into parts. Rules that apply to every category belong in the platform docs, not here.
 
+A composite token, such as a font or a shadow, prints as one value on the web and as one constant per part on iOS and Android. Show one part in the template table, say which, and add a second table or an excerpt of `dist/` for the other parts.
+
 ---
 
 ## Components and conventions
@@ -295,6 +305,8 @@ Tokens are listed in Markdown tables wrapped in `<CxTable>`, which makes them sc
 | First  | `Token`   | The dot path, in backticks                                                                                                                                                    |
 | Second | `Value`   | The resolved value in backticks, with its unit (`` `16px` ``); for a token that references another, the reference (`` `{size.unit.16}` ``) may follow in a `Reference` column |
 | Last   | `Purpose` | A phrase, no trailing period: what the token is applied to                                                                                                                    |
+
+A table may replace `Value` with one column per variant when the values differ: `Light` and `Dark`, `large`, `medium`, and `small`, or `chassis` and `sinefil`. A composite token gets one column per property in place of `Value`.
 
 List tokens in source order, which is the order of the generated files. A scale of more than ~20 steps shows the steps in use and names the pattern of the rest in the intro sentence.
 
@@ -327,7 +339,7 @@ Each entry of `## Troubleshooting` is a `###` heading that names the symptom in 
 ```mdx
 ### Undefined variable
 
-Sass stops with `Undefined variable: $cx-color-context-default-fg-main`. Context colors are declared in the color files only, so `main.scss` alone does not have them. Load `color-light.scss` or `color-dark.scss` next to `main.scss`.
+Sass stops with `Error: Undefined variable.` and points at `$cx-color-context-default-fg-main`. Context colors are declared in the color files only, so `main.scss` alone does not have them. Load `color-light.scss` or `color-dark.scss` next to `main.scss`.
 ```
 
 **Bad:**
@@ -338,7 +350,7 @@ Sass stops with `Undefined variable: $cx-color-context-default-fg-main`. Context
 You may run into this error if something is wrong with your imports. Check your setup.
 ```
 
-Quote the message as the tool prints it, so a search for the error finds the page. Keep the heading to the symptom; the full message with its token or type name belongs in the body.
+Quote the message as the tool prints it, so a search for the error finds the page. Keep the heading to the symptom; the full message with its token or type name belongs in the body. Write the variable parts of a message as placeholders in angle brackets. A problem without a message, such as a dark theme that stays light, starts with the symptom as the reader sees it.
 
 ### 17. Cross-references
 
@@ -353,7 +365,7 @@ Quote the message as the tool prints it, so a search for the error finds the pag
 
 **Configuration values.** `[[config:<key>]]` prints a value of `packages/site/config.yml`, in prose, links, and code blocks: `[[config:current_version]]`, `[[config:repo]]`.
 
-**Other Chassis docs.** Link the page on `chassis-ui.com` with a standard Markdown link. Chassis CSS owns the custom properties that the `web` platform prints; link its doc rather than describing them here.
+**Other Chassis docs.** Use a standard Markdown link. Chassis CSS owns the custom properties that the `web` platform prints; link [its repository](https://github.com/chassis-ui/css) rather than describing them here, until a page of its docs is agreed on as the target.
 
 **External references.** Standard Markdown links. Prefer the official docs of Tokens Studio, Style Dictionary, Figma, Apple, and Android over blog posts.
 
@@ -399,7 +411,7 @@ If a one-liner is _demonstrating syntax_ rather than something to copy, prefer a
 
 ### 21. Document length and splitting
 
-A doc is too long when a `##` section has more than three `###` sub-sections on distinct topics, the doc exceeds ~600 lines of MDX, or the ToC requires scrolling to see all top-level sections. Split along the natural axis: **by concern** (the build reference, the presets, and the troubleshooting of one tool become sibling docs) or **by platform**. Token reference docs with many component tables are the exception: tables are scanned, not read, so a long `## Component tokens` section is fine. Don't split for size alone — a 700-line doc that reads end-to-end beats three 200-line stubs that force the reader to chase context across pages.
+A doc is too long when a `##` section has more than three `###` sub-sections on distinct topics, the doc exceeds ~600 lines of MDX, or the ToC requires scrolling to see all top-level sections. Split along the natural axis: **by concern** (the build reference, the presets, and the troubleshooting of one tool become sibling docs) or **by platform**. Sections that are lists are the exception: the component tables of a token reference doc, the formats of the build, and the entries of `## Troubleshooting` are scanned, not read, so many `###` sub-sections there are fine. Don't split for size alone — a 700-line doc that reads end-to-end beats three 200-line stubs that force the reader to chase context across pages.
 
 ---
 
