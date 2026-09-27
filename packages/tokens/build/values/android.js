@@ -102,7 +102,7 @@ export function resourceTag(token) {
 }
 
 /**
- * Formats a colour as ARGB hex.
+ * Formats a color as ARGB hex.
  *
  * @param {Object} token - A resolved token of type `color`.
  * @returns {string} e.g. `#80b7c0c2`
@@ -186,7 +186,7 @@ export function encodeValue(token, context = {}) {
 
 /**
  * Returns the reference a token prints with `outputReferences`: the resource of the
- * first token its original value references. There is none for base colours, for sizes
+ * first token its original value references. There is none for base colors, for sizes
  * computed with math, and when the reference would not compile or would change the
  * value: the referenced resource must be of the same kind and encode to the same
  * value.

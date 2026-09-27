@@ -32,7 +32,7 @@ describe('iOS encode', () => {
     }
   })
 
-  test('prints an unparseable colour as is and warns', () => {
+  test('prints an unparseable color as is and warns', () => {
     const warn = vi.spyOn(console, 'warn').mockImplementation(() => {})
     const token = { ...tokenNamed('ColorBasePrimitiveLightBlackBase'), $value: 'not-a-color' }
 
@@ -68,8 +68,8 @@ describe('iOS reference', () => {
     expect(reference(token, undefined)).toBeUndefined()
   })
 
-  test('none for a base colour, even when the reference would be safe', () => {
-    const { token, target } = caseNamed('base colour with a reference')
+  test('none for a base color, even when the reference would be safe', () => {
+    const { token, target } = caseNamed('base color with a reference')
     expect(encode(target)).toBe(encode(token))
     expect(reference(token, target)).toBeUndefined()
     expect(
@@ -77,8 +77,8 @@ describe('iOS reference', () => {
     ).toBe(target.name)
   })
 
-  test('none for a colour with a modifier, whose value differs from its target', () => {
-    const { token, target } = caseNamed('base colour with a modifier')
+  test('none for a color with a modifier, whose value differs from its target', () => {
+    const { token, target } = caseNamed('base color with a modifier')
     const context = { ...token, path: ['color', 'context', ...token.path.slice(2)] }
     expect(encode(context)).not.toBe(encode(target))
     expect(reference(context, target)).toBeUndefined()
@@ -98,10 +98,8 @@ describe('iOS reference', () => {
     )
   })
 
-  test('none for an rgba() colour whose alpha the target lacks', () => {
-    const { token, target } = caseNamed(
-      'rgba() colour whose first reference is a colour: alpha lost'
-    )
+  test('none for an rgba() color whose alpha the target lacks', () => {
+    const { token, target } = caseNamed('rgba() color whose first reference is a color: alpha lost')
     expect(encode(token)).toContain('alpha: 0.5)')
     expect(encode(target)).toContain('alpha: 1)')
     expect(reference(token, target)).toBeUndefined()
@@ -109,7 +107,7 @@ describe('iOS reference', () => {
 
   test('none when the target is another Swift type', () => {
     const { token, target } = caseNamed(
-      'rgba() colour whose first reference is an opacity: another Swift type'
+      'rgba() color whose first reference is an opacity: another Swift type'
     )
     expect(encode(target)).toBe('CGFloat(0.5)')
     expect(reference(token, target)).toBeUndefined()

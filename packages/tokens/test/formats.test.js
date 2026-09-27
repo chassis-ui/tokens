@@ -92,18 +92,18 @@ describe('SCSS template', () => {
     })
   }
 
-  const colour = tokens['color.accordion.item-fg-color']
+  const color = tokens['color.accordion.item-fg-color']
   const target = tokens['color.context.default.base-color']
 
   test('names a variable of another file', () => {
-    const token = { ...colour, original: { $value: '{color.context.default.base-color}' } }
+    const token = { ...color, original: { $value: '{color.context.default.base-color}' } }
     expect(print(token, [token, target])).toContain(
       '$cx-color-accordion-item-fg-color: $cx-color-context-default-base-color !default;'
     )
   })
 
   test('throws when the referenced token does not exist', () => {
-    const token = { ...colour, original: { $value: '{color.context.default.missing}' } }
+    const token = { ...color, original: { $value: '{color.context.default.missing}' } }
     expect(() => print(token, [token, target])).toThrow(
       'No file declares a variable for color.context.default.missing'
     )
@@ -112,7 +112,7 @@ describe('SCSS template', () => {
   test('throws when every file filters the referenced token out', () => {
     // Tokens typed boolean are in no file
     const flag = { ...target, $type: 'boolean', path: ['color', 'context', 'default', 'flag'] }
-    const token = { ...colour, original: { $value: '{color.context.default.flag}' } }
+    const token = { ...color, original: { $value: '{color.context.default.flag}' } }
     expect(() => print(token, [token, flag])).toThrow(
       'No file declares a variable for color.context.default.flag'
     )
@@ -308,7 +308,7 @@ describe('Gradients in the mobile templates', () => {
     expect(swift).not.toContain(`static let ${gradient.names.ios} =`)
   })
 
-  test.each(cases)('iOS names the stop colours with outputReferences, $case', (gradient) => {
+  test.each(cases)('iOS names the stop colors with outputReferences, $case', (gradient) => {
     const swift = printIos(gradient, true)
     for (const line of iosLines(gradient.expectedWithReferences.ios)) expect(swift).toContain(line)
   })
@@ -322,7 +322,7 @@ describe('Gradients in the mobile templates', () => {
     expect(xml).not.toContain(`name="${gradient.names.android}">`)
   })
 
-  test.each(cases)('Android names the stop colours with outputReferences, $case', (gradient) => {
+  test.each(cases)('Android names the stop colors with outputReferences, $case', (gradient) => {
     const xml = printAndroid(gradient, true)
     for (const line of gradient.expectedWithReferences.android) {
       expect(xml).toMatch(androidLine(line))
@@ -338,8 +338,8 @@ describe('SwiftUI and Compose templates', () => {
   const tree = { [target.path[0]]: { base: { [target.path[2]]: target } } }
 
   test('SwiftUI constants use the SwiftUI values', () => {
-    const colour = fixture.ios.find((c) => c.token.$type === 'color').token
-    const [constant] = swiftConstants({ tokens: {}, allTokens: [colour] }, {}, swiftuiValues)
+    const color = fixture.ios.find((c) => c.token.$type === 'color').token
+    const [constant] = swiftConstants({ tokens: {}, allTokens: [color] }, {}, swiftuiValues)
     expect(constant.printed).toMatch(/^Color\(red: /)
   })
 

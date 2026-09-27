@@ -2,7 +2,7 @@
  * @file ios.js
  * @description Encodes resolved tokens as Swift values, and decides when a token names
  *              another constant instead. Runs at print time, after Style Dictionary has
- *              resolved every reference, because converting a colour to `UIColor(…)` any
+ *              resolved every reference, because converting a color to `UIColor(…)` any
  *              earlier would break the tokens that reference it.
  *
  * @copyright Copyright (c) 2026 Ozgur Gunes
@@ -20,12 +20,12 @@ import {
 } from './shared.js'
 
 /**
- * Returns the channels of a colour as Swift numbers: red, green and blue from 0 to 1 with
+ * Returns the channels of a color as Swift numbers: red, green and blue from 0 to 1 with
  * three decimals, and the alpha as parsed. UIKit and SwiftUI print the same channels.
  *
  * @param {Object} token - A resolved token of type `color`.
  * @returns {Object|null} e.g. `{ red: '0.000', green: '0.643', blue: '0.800', alpha: 1 }`,
- *   or null when the colour does not parse.
+ *   or null when the color does not parse.
  */
 export function colorChannels(token) {
   const color = parseColor(token)
@@ -36,7 +36,7 @@ export function colorChannels(token) {
 }
 
 /**
- * Formats a colour as a `UIColor` with three-decimal channels.
+ * Formats a color as a `UIColor` with three-decimal channels.
  *
  * @param {Object} token - A resolved token of type `color`.
  * @returns {string} e.g. `UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0.1)`
@@ -117,7 +117,7 @@ export function encode(token, context = {}) {
 
 /**
  * Returns the constant a token names with `outputReferences`: the constant of the first
- * token its original value references. There is none for base colours and for sizes
+ * token its original value references. There is none for base colors and for sizes
  * computed with math, as on Android, and none when the target encodes to other Swift
  * text. The text holds the Swift type (`UIColor(…)`, `CGFloat(…)`, a string literal),
  * so equal text means the same type and value.
@@ -154,8 +154,8 @@ export function partName(token, segments) {
 /**
  * Returns the constants iOS prints after a token, derived from it: for the blur of a
  * shadow, the `CALayer.shadowRadius` that draws about the same shadow, half the CSS blur.
- * The shadow colour needs no derived constant: Core Animation multiplies its alpha by
- * `shadowOpacity`, so the colour with `shadowOpacity = 1` gives the CSS shadow.
+ * The shadow color needs no derived constant: Core Animation multiplies its alpha by
+ * `shadowOpacity`, so the color with `shadowOpacity = 1` gives the CSS shadow.
  *
  * @param {Object} token - A resolved token with `name`, `path`, `$value` and `$extensions`.
  * @returns {Object[]} `{ name, type, value }` per derived constant, e.g.

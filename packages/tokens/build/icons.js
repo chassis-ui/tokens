@@ -39,7 +39,7 @@ export function iconTokens(tokens) {
 /**
  * Returns the files of an Xcode image set for an icon: the SVG, and a `Contents.json`
  * that keeps the vector (so it scales without blurring) and renders the image as a
- * template, so it takes the tint colour as `currentcolor` does on the web.
+ * template, so it takes the tint color as `currentcolor` does on the web.
  *
  * @param {Object} token - An icon token with `name` and `$value`.
  * @returns {Object} Contents by path inside the catalog, e.g.
@@ -75,7 +75,7 @@ export function iosCatalog(icons) {
 }
 
 /**
- * Converts an icon to an Android vector drawable. A vector path without a fill colour
+ * Converts an icon to an Android vector drawable. A vector path without a fill color
  * draws nothing, so paths without one are filled black, which a tint replaces as
  * `currentcolor` does on the web. Coordinates keep three decimals, as in the tokens.
  *

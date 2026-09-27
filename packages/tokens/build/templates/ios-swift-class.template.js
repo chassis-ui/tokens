@@ -3,7 +3,7 @@
  * @description Template for generating Swift types from design tokens. Prints one
  *              `static let` per token; the value and the constant it names come from
  *              `values/ios.js`. The constants and the file are separate steps, so the
- *              dynamic colour file (`theme-colors.js`) prints through the same code.
+ *              dynamic color file (`theme-colors.js`) prints through the same code.
  *
  * @copyright Copyright (c) 2025 Ozgur Gunes
  * @license MIT

@@ -44,8 +44,8 @@ function toPascalCase(name) {
  * @param {string} name - The file name without `.swift`, e.g. `ColorLight`.
  * @param {string} filter - The file's filter.
  * @param {string} format - The file's format.
- * @param {Object} [options] - More file options; `theme` marks a colour file for the
- *   colour file that follows the appearance (`theme-colors.js`).
+ * @param {Object} [options] - More file options; `theme` marks a color file for the
+ *   color file that follows the appearance (`theme-colors.js`).
  */
 function swiftFile(name, filter, format, options = {}) {
   const className = name === 'ChassisTokens' ? name : `ChassisTokens${name}`
@@ -86,7 +86,7 @@ function generateFiles({ kind, theme, screen }, { format, themeColors }) {
  * @param {string} settings.format - The format of every file.
  * @param {string} settings.folder - The folder under the output root, e.g. `ios`.
  * @param {string[]} settings.imports - The modules every file imports.
- * @param {boolean} [settings.themeColors] - Mark the colour files for `Color.swift`.
+ * @param {boolean} [settings.themeColors] - Mark the color files for `Color.swift`.
  * @param {boolean} [settings.icons] - Write the icon asset catalog with the main file.
  */
 export function swiftConfig({ format, folder, imports, themeColors, icons }) {
@@ -104,7 +104,7 @@ export function swiftConfig({ format, folder, imports, themeColors, icons }) {
 }
 
 /**
- * The UIKit output. Its colour files also make `Color.swift`, whose colours follow the
+ * The UIKit output. Its color files also make `Color.swift`, whose colors follow the
  * appearance (`theme-colors.js`), and it writes the icons as an asset catalog
  * (`icons.js`).
  */

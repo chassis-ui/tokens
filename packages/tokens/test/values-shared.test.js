@@ -23,11 +23,11 @@ const gradientCase = (label) =>
   structuredClone(fixture.gradients.cases.find((c) => c.case === label).token)
 
 describe('isGradient', () => {
-  test('is true for a colour token holding a gradient', () => {
+  test('is true for a color token holding a gradient', () => {
     expect(isGradient(gradientCase('0deg, two stops'))).toBe(true)
   })
 
-  test('is false for a plain colour and for another type', () => {
+  test('is false for a plain color and for another type', () => {
     const [{ token }] = fixture.gradients.stopColors
     expect(isGradient(token)).toBe(false)
     expect(isGradient({ $type: 'string', $value: 'linear-gradient(red, blue)' })).toBe(false)
@@ -61,7 +61,7 @@ describe('parseLinearGradient', () => {
     expect(stops.map((stop) => stop.position)).toEqual([0, 0.45, 0.9, 1])
   })
 
-  test('keeps references and commas inside a stop colour', () => {
+  test('keeps references and commas inside a stop color', () => {
     const { stops } = parseLinearGradient(gradientCase('0deg, two stops').original.$value)
     expect(stops.map((stop) => stop.color)).toEqual([
       '{color.primitive.black.transparent}',
@@ -80,7 +80,7 @@ describe('parseLinearGradient', () => {
 })
 
 describe('gradientParts', () => {
-  test('expands a gradient into its angle and the colour and position of each stop', () => {
+  test('expands a gradient into its angle and the color and position of each stop', () => {
     const token = gradientCase('0deg, two stops')
     const parts = gradientParts(token)
     expect(parts.map((part) => [part.segments.join('.'), part.$type, part.$value])).toEqual([
@@ -93,7 +93,7 @@ describe('gradientParts', () => {
     expect(parts[1].path).toEqual([...token.path, 'stop1', 'color'])
   })
 
-  test('keeps the referenced colour of each stop as its original value', () => {
+  test('keeps the referenced color of each stop as its original value', () => {
     const parts = gradientParts(gradientCase('0deg, two stops'))
     expect(parts[1].original.$value).toBe('{color.primitive.black.transparent}')
     expect(parts[0].original.$value).toBe(0)
@@ -115,7 +115,7 @@ describe('gradientParts', () => {
 describe('parseColor', () => {
   test('fails on a gradient instead of reading its first stop', () => {
     expect(() => parseColor(gradientCase('0deg, two stops'))).toThrow(
-      'Gradient gradient.primitive.black.l-000 is printed as parts, not as a colour'
+      'Gradient gradient.primitive.black.l-000 is printed as parts, not as a color'
     )
   })
 })

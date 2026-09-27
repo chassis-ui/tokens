@@ -97,7 +97,7 @@ describe('icon actions', () => {
     })
   })
 
-  test('do not run in the builds of the colour and number files', () => {
+  test('do not run in the builds of the color and number files', () => {
     const none = { ios: [], android: [], 'ios-swiftui': [], 'android-compose': [] }
     expect(actions([{ kind: 'color', theme: 'dark' }])).toEqual(none)
     expect(actions([{ kind: 'number', screen: 'small' }])).toEqual(none)
