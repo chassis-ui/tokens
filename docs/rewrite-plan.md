@@ -12,6 +12,10 @@ In priority order:
 
 The rewrite changes where logic lives, not what the build emits. Token JSON and output values, formats, file names and token order do not change, in any phase.
 
+Added 2026-09-27, after Phase 7:
+
+4. **Bring back the adopter presets.** Chassis Tokens is an "own and customize" package. Its defaults target Chassis CSS, but a team with its own CSS framework needs plain SCSS variables. The old build had presets for this (`web-px`, `web-vw`, the `cx/scss-variables` format) and an `outputReferences` option for SCSS and Android. Phases 1 and 6a deleted them as unused, because no configured app selects them. That was wrong: they are features for adopters. Phases 8 to 11 restore them in the new structure.
+
 ## Session protocol
 
 When Ozgur says "continue", Claude does this:
@@ -40,6 +44,10 @@ If a phase is too large, split it into `Na`, `Nb` rows. If a fact in this file i
 | 6b | Build loop | Opus | Done | `rewrite(phase 6b)` | 2026-09-27 |
 | 6c | Tests README, docs, final acceptance | Opus | Done | `rewrite(phase 6c)` | 2026-09-27 |
 | 7 | Site docs | Opus | Done | `rewrite(phase 7)` | 2026-09-27 |
+| 8 | Preset baselines, SCSS variable presets (resolved) | Fable | Not started | | |
+| 9 | SCSS variable references (`outputReferences`) | Opus | Not started | | |
+| 10 | Android references (`outputReferences`) | Opus | Not started | | |
+| 11 | Preset docs | Opus | Not started | | |
 
 ## Ground rules
 
@@ -48,6 +56,7 @@ If a phase is too large, split it into `Na`, `Nb` rows. If a fact in this file i
 - **Never run the build into `dist/` during the rewrite.** Use `pnpm tokens:verify`, or pass `--out <dir>` when running `build/tokens/build.js` directly. Before committing, `git status --short dist` must be empty.
 - **Golden diff:** every phase ends with `pnpm tokens:verify` green in strict mode. The check builds into `dist-next/` and compares against committed `dist/`, ignoring lines that contain `Generated on` or `Chassis - Tokens v`.
 - **No legacy copy of the build.** Committed `dist/` is the reference output and git holds the old code.
+- **Preset baselines (Phases 8 to 10):** the presets write nothing into `dist/`, so their reference output is built once from the old code on `main` and committed under `build/tokens/test/golden/<preset>/`. A preset phase ends with its preset check green and `pnpm tokens:verify` green. Lines that differ from the old output on purpose are listed in the phase result, one row per rule, and need Ozgur's approval first.
 - **Tests:** new unit tests use real tokens copied from `tokens/` as fixtures, never mocks of `style-dictionary`. The 99 existing mock-based tests stay green while the code they cover exists; when a phase removes that code, it removes the test.
 - **Build config stays in `package.json` `chassis.build`:** brands `chassis` and `sinefil`; themes `light`, `dark`; screens `large`, `medium`, `small`; apps `docs` (web) and `demo` (ios, android).
 
@@ -70,8 +79,8 @@ If a phase is too large, split it into `Na`, `Nb` rows. If a fact in this file i
 - 564 colour tokens have the form `rgba({colour reference}, {opacity reference})`, and 180 colour tokens apply a lighten or darken modifier to a reference.
 - In sd-transforms 1.3.0 and 2.0.3, `alwaysAddFontStyle` applies to typography tokens only. Plain `fontWeight` tokens without a style word are not split into `weight` and `style` by the official preprocessor.
 - In sd-transforms 2.0.3 the official `addFontStyles` takes about 210 ms per run on the real token sets, against about 10 ms for the Chassis code, because it converts the whole dictionary to a map for every font weight it resolves. Over 36 runs that is about 8 s. The official `alignTypes` takes about 5 ms.
-- `web-px`, `web-vw`, the `scss-variables` template, the `cx/test` transform and format, and the `cx/colorTokens` filter were not used by any configured app. They were deleted in Phase 6a.
-- The Android template's `@type/name` reference branch never runs, because `outputReferences` is never set.
+- `web-px`, `web-vw`, the `scss-variables` template, the `cx/test` transform and format, and the `cx/colorTokens` filter were not used by any configured app. They were deleted in Phase 6a. Correction of 2026-09-27: `web-px`, `web-vw` and `scss-variables` are adopter presets, not dead code (see Facts about the presets).
+- The Android template's `@type/name` reference branch never runs, because `outputReferences` is never set. Correction of 2026-09-27: it is an adopter option; Phase 1 deleted it and Phase 10 restores it.
 - No token in the built sets has a description, and `dist/` contains no per-token comments.
 - The token set `brand-chassis/app-base` is not selected by any theme in `$themes.json`, so it is never built.
 - The `dictionary.tokens` that a format receives is already filtered by the file's filter, in SD 4.4 and in SD 5.5. The web reference lookups therefore see only the tokens of the file being printed (`main.scss` has no `color.primitive.*`, for example).
@@ -83,7 +92,44 @@ If a phase is too large, split it into `Na`, `Nb` rows. If a fact in this file i
 - Prototype, run in a scratch copy against the real tokens: the iOS value logic moved into a pure `encode(token)` function with a print-only template. All 14 iOS files came out identical to `dist/`.
 - Counter-test: the same colour encoding registered as a Style Dictionary value transform fails the build with `Invalid color: rgba(UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1), 0)`.
 
+### Facts about the presets
+
+Verified on 2026-09-27 by building the old code: `git archive main build/tokens tokens package.json` into a scratch directory, `style-dictionary` 4.4.0, `@tokens-studio/sd-transforms` 1.3.0, `tinycolor2` 1.6.0, Node 24, brand `chassis`.
+
+How the old build offered them:
+
+- A preset was a platform name in `chassis.build.apps`, for example `"docs": ["web-px"]`. `config/index.js` knew `web`, `web-px`, `web-vw`, `ios` and `android`. All three web presets wrote to `dist/web/<app>/<brand>/`.
+- `web` used the format `cx/scss-chassis-css` with `cx/size/rem`. `web-px` and `web-vw` used `cx/scss-variables` with `cx/size/px` and `cx/size/vw`. No preset combined rem with `cx/scss-variables`; an adopter changed the `format` constant in `config/web.js`.
+- `outputReferences` was set by hand in the `options` object of a platform config. Only the `cx/scss-variables` and `cx/android-resources` templates read it. The iOS template did not.
+
+What the old build printed:
+
+| Build | Result |
+| --- | --- |
+| `web-px`, resolved | 7 files, 6953 variables, no references, 472 KB |
+| `web-vw`, resolved | builds; `16px` prints `1vw` |
+| `web-px`, `outputReferences` | 1238 of 6953 lines print `$cx-…`: 810 colours to `color-context`, 164 border radii, 72 border widths, 192 typography maps. Every name is defined in one of the 7 files, and every reference means the same value as the resolved build. |
+| `android`, resolved | identical to `dist/android` |
+| `android`, `outputReferences` | 14243 of 19885 lines print `@type/name`, 1.6 MB. 18 lines name a resource that does not exist, and 30 lines mean another value than the resolved build. |
+
+- With SCSS references, 270 lines of `main.scss` use a variable that another file defines (`$cx-color-context-…` from `color-<theme>.scss`, border tokens from `number-<screen>.scss`). The adopter must load the colour and number files before `main.scss`.
+- The old SCSS reference rule is narrower than its name: only single references in `color`, `space`, `opacity`, `borderRadius` and `borderWidth` print a variable, with the same exceptions as the `var(--…)` policy. Current tokens reach only colours and borders. The `opacity` rows would print `$cx-opacity-<step>`, which no file defines; no current token reaches them.
+- Resolved typography maps quote the whole family list as one string (`"font-family": "Inter, system-ui, …"`). With references the map holds the variable, which is an unquoted list.
+- Letter spacing prints the number of the size with `em`. With `cx/size/rem` and `cx/size/vw` the size is divided by 16 first (`-0.0313em`). With `cx/size/px` it is not: `font.context.jumbo` prints `"letter-spacing": -0.5em`.
+- The 18 broken Android lines use the resource type of the referencing token, not of the target: `@integer/size_unit_0`, `@integer/size_unit_nd05` and `@integer/size_unit_n1` (the targets are `dimen`), and `@color/opacity_context_fg_subtle` (the target is not a colour).
+- The 30 Android lines with another meaning: font sizes that reference `size.unit.*` (`96sp` becomes `@dimen/size_unit_96`, which is `96dp`), letter spacing, and the `bg-blur` colours, whose `rgba({colour}, {opacity})` value prints a reference to the colour alone and loses the alpha (`#80b7c0c2` becomes `#ffb7c0c2`).
+
 ## Design decisions
+
+### Presets are configuration, references are a policy
+
+Added 2026-09-27 for Phases 8 to 10. The presets come back inside the structure of Phases 1 to 3. No value logic returns to a template, and there is no second SCSS template.
+
+- **Selection stays as it was:** a platform name in `chassis.build.apps` (`web`, `web-px`, `web-vw`, and the new `web-scss`: rem with SCSS variables). `config/web.js` becomes a factory with two settings, `unit` (`rem`, `px`, `vw`) and `references` (`css-var`, `scss-var`, `none`). `web-px.js`, `web-vw.js` and `web-scss.js` are a few lines each that call it. Both format names, `cx/scss-chassis-css` and `cx/scss-variables`, stay registered, because adopters' own configs name them.
+- **Units** are Style Dictionary transforms again (`cx/size/px`, `cx/size/vw`), backed by pure functions in `values/web.js`, like `cx/size/rem`. They are safe before resolution.
+- **SCSS references** are a second policy module beside `css-var-policy.js`. It shares the eligibility rule and the typography logic and differs in the name it prints: `$<name of the referenced token>`. `options.outputReferences: true` selects `scss-var`; without it the preset prints resolved values.
+- **Android references** are one pure function in `values/android.js` that takes the token and the token it references and returns `@type/name` or nothing. The template passes the lookup in, as the SCSS template does.
+- **A reference is printed only when it is safe:** the target is emitted, the resource type of the target is used, and the encoded target equals the encoded token. This changes 48 Android lines of the old output. Ozgur confirmed it on 2026-09-27.
 
 ### Platform encoding happens after resolution, in pure functions
 
@@ -377,6 +423,47 @@ Result: every code example on the Style Dictionary page was replaced with lines 
 
 Not changed, because they are outside the build pages: the quick start still shows `dist/css/` paths, which do not exist, and `web-applications.mdx` (marked as AI-generated) was not checked beyond the unit statements.
 
+## Phase 8: preset baselines, SCSS variable presets (resolved)
+
+Goal: `web-px` and `web-vw` build again and print what the old build printed, apart from the approved letter spacing of `web-px`. The new `web-scss` prints what the old build printed with `cx/scss-variables` and `cx/size/rem`. A check proves it.
+
+- [ ] Build the baselines from `main` as described under Facts about the presets, brand `chassis` only: `web-px`, `web-vw` and `web-scss` resolved, `web-px` with `outputReferences`, `android` with `outputReferences`. For `web-scss`, set the format of the old `config/web.js` to `cx/scss-variables`. Commit them under `build/tokens/test/golden/<preset>/` (about 3 MB). Record the exact commands in `build/tokens/test/README.md`. Check that `package.json` `files` keeps them out of the published package.
+- [ ] `verify.js --preset <name>`: build the preset into a scratch directory and compare it with its baseline, with the same header rules and duplicate-name check as the `dist/` comparison. The build needs a way to select a preset without editing `package.json`; pass the app-to-platform map to `planBuilds` from the verifier.
+- [ ] `values/web.js`: `pxSize` and `vwSize` beside `remSize`. Register `cx/size/px` and `cx/size/vw` in `transforms.js`.
+- [ ] `config/web.js` becomes a factory (`unit`, `references`). Add `config/web-px.js`, `config/web-vw.js` and `config/web-scss.js` and list them in `config/index.js`. Register the format `cx/scss-variables`; it uses the thin SCSS template.
+- [ ] `web-px` letter spacing is the pixel value divided by `basePxFontSize`. Every letter spacing line of `web-px` must equal the same line of `web-scss`. The `web-px` baseline holds the corrected lines; record their number.
+- [ ] Resolved typography maps: a `none` policy that builds the map from resolved parts, with the family list quoted as the old build did.
+- [ ] Unit tests on real tokens for the two size functions and the resolved typography map.
+- [ ] Acceptance: `verify.js --preset web-px`, `--preset web-vw` and `--preset web-scss` green; `pnpm tokens:verify` green; all tests green; `dist/` untouched.
+
+## Phase 9: SCSS variable references
+
+Goal: `outputReferences: true` on a SCSS variable preset prints `$cx-…` references as the old build did.
+
+- [ ] `build/tokens/scss-var-policy.js`: the `scss-var` naming. Move what both policies share (eligibility, exceptions, the chain follow, the typography parts) into functions both modules call; do not copy it.
+- [ ] Read `options.outputReferences` in the web config factory, not in the template.
+- [ ] Throw when a reference names a variable that no file of the build emits.
+- [ ] Unit tests on real tokens: one per referencing group, each exception, `font.context.jumbo`, `font.button.medium`.
+- [ ] Acceptance: `verify.js --preset web-px-references` green; `pnpm tokens:verify` green; all tests green.
+
+## Phase 10: Android references
+
+Goal: `outputReferences: true` on the Android config prints `@type/name` references that compile.
+
+- [ ] `values/android.js`: `reference(token, target)`, with the two old conditions (no references for `color.base`, none for math on sizes) and the safety rule from Design decisions if Ozgur approves it.
+- [ ] The template passes the reference lookup in and prints `reference(…) ?? encode(token)`.
+- [ ] Unit tests on real tokens: a plain reference, a `color.base` token, math on a size, and one token for each of the broken cases under Facts about the presets.
+- [ ] Acceptance: `verify.js --preset android-references` green, apart from the approved lines; every `@type/name` in the output names an element of that type in the same build; `pnpm tokens:verify` green.
+
+## Phase 11: preset docs
+
+Goal: an adopter can find and use the presets.
+
+- [ ] README: the presets, how to select one in `chassis.build.apps`, `outputReferences`, and the file load order for SCSS references.
+- [ ] `site/content/docs/getting-started/style-dictionary.mdx`: bring back the `cx/scss-variables` section, the unit transforms and the `outputReferences` text that Phase 7 removed, with examples copied from the baselines. `site/content/docs/use-in-project/web-applications.mdx`: rem, px and vw again. This needs the same exception to the frozen `site/` folder as Phase 7.
+- [ ] CHANGELOG: remove the presets from the `Removed` entry of `[Unreleased]`; describe any approved difference in output.
+- [ ] Acceptance: `pnpm astro:build` succeeds; the edited pages pass Prettier.
+
 ## Known oddities in the output (kept as they are)
 
 These are part of the frozen contract. They are listed so nobody "fixes" them by accident.
@@ -404,6 +491,15 @@ These are part of the frozen contract. They are listed so nobody "fixes" them by
 - [x] Phase 5: do it (confirmed 2026-09-27).
 - [x] The site documentation describes code that no longer exists, and `site/` is frozen. `site/content/docs/getting-started/style-dictionary.mdx` mentions Node 18, px and vw units, the `cx/scss-variables` format, the `cx/size/px`, `cx/size/vw` and `cx/typography/web` transforms and the `cx/colorTokens` filter. `site/content/docs/use-in-project/web-applications.mdx` says the SCSS supports rem, px and vw units. Update these pages, or leave them? Update them (confirmed 2026-09-27; done in Phase 7).
 
+Added 2026-09-27 for the presets. Ozgur confirmed all six on 2026-09-27.
+
+- [x] Restore the presets in the new structure (Phases 8 to 11), not by copying the old files back from `main`. The old `scss-variables` template is 320 lines of value logic, which is what this rewrite removed.
+- [x] SCSS output, resolved and with references: identical to the old build, line for line, apart from the next item.
+- [x] `web-px` letter spacing: divide by 16, as the rem and vw presets do (`-0.0313em`). The old build printed the pixel number with `em` (`-0.5em`), which is 48 px of negative spacing on a 96 px heading.
+- [x] Android references: print a reference only when it is safe. This turns 18 lines that do not compile and 30 lines with another value into literals.
+- [x] Add a ready-made preset for rem with SCSS variables (`web-scss`), which the old build did not have.
+- [x] Update the site docs again in Phase 11.
+
 ## Session log
 
 Append-only.
@@ -420,3 +516,5 @@ Append-only.
 - 2026-09-27 (Phase 6b, Opus 5.5): Replaced the 36-run loop with one Style Dictionary instance per token-set list: 16 instances, 24 platform exports, 42 files. `build.js` now exports `planBuilds` and `parseArgs`; the platform configs take a list of outputs; `logger.dryRun` lists builds and their files. Replaced the mock-based `build.test.js`, `cli.test.js` and `config.test.js` with tests on the real configuration, `$themes.json` and `dist/` file list, added the precedence test, and updated the dry-run tests in `logger.test.js`. Build time: 9.5 s before, 5.8 s after (three runs). Verified: `pnpm tokens:verify` passes, 42 of 42 files; `--platform ios` and `--platform web` pass; five filtered builds match `dist/` for every file they write; `pnpm tokens:test` passes, 360 tests; lint reports no warnings; `dist/` untouched. Injected five regressions (base from the last theme, one instance per output, token sets reversed, platform filter ignored, and an earlier malformed variant of the second); each failed the intended tests, and the first and third also failed the golden check. The one-instance-per-output regression passes the golden check, since output is the same, and is caught only by the plan test. Surprises: (1) `transforms.test.js` called the web config with the old signature and failed to load; fixed. (2) The old `--theme dark` build used dark token sets for number files; output is the same either way. Next: Phase 6c. Note for 6c: its acceptance runs `pnpm tokens:site`, which writes into `dist/`; restore the timestamp lines with `git checkout dist` afterwards.
 - 2026-09-27 (Phase 6c, Opus 5.5): Rewrote `build/tokens/test/README.md`, updated `README.md` and added an `[Unreleased]` CHANGELOG entry. Verified: `pnpm tokens:verify` passes, 42 of 42 files, in 5.8 s; `pnpm tokens:test` passes, 360 tests; lint reports no warnings; `pnpm tokens:site` succeeds and changed only timestamp lines in `dist/`, which were restored; `pnpm astro:build` built 22 pages with no warnings. Surprises: (1) The site docs are out of date and `site/` is frozen; recorded under Open decisions. (2) Between the 6b commit and the start of this phase, the timestamp lines of all 21 `sinefil` files in `dist/` were rewritten at 03:50:51, as a `--brand sinefil` build into `dist/` would do. Content was identical. No command of this session builds into `dist/` without `--out`, two full test runs (including the one running at that time) left `dist/` untouched, and the terminal showed no command; the repository is in a Dropbox folder. The files were restored with `git checkout -- dist`, and `dist/` stayed clean through every later step. The Model column said Sonnet for this phase; it was done with Opus. All phases are done.
 - 2026-09-27 (Phase 7, Opus 5.5): Ozgur approved updating the site docs. Rewrote the build parts of `style-dictionary.mdx` with examples from `dist/`, updated `quick-start.mdx` and two statements in `web-applications.mdx`, and relaxed the frozen-folder rule for this phase. Verified: the three pages pass Prettier, as before; `pnpm astro:build` built 22 pages with no warnings; the rendered Style Dictionary page contains the new sections and none of the deleted names, and its tables and code blocks render (checked in the browser); `dist/` untouched. Left for later: the `dist/css/` paths in the quick start and a full check of `web-applications.mdx`.
+- 2026-09-27 (preset planning, Fable 5.1): Ozgur pointed out that the rewrite dropped the adopter presets: `web-px`, `web-vw`, the `cx/scss-variables` format and `outputReferences` for SCSS and Android. Built the old code from `main` in a scratch directory with each preset and measured the output (see Facts about the presets). The SCSS presets work, resolved and with references. The Android reference output has 18 lines that name missing resources and 30 that change the value. Added Phases 8 to 11, a design decision and six open decisions. Nothing in `build/` changed. Not committed. Next: Ozgur's answers to the open decisions, then Phase 8.
+- 2026-09-27 (preset decisions): Ozgur confirmed all six open decisions. The plan was committed as `rewrite(plan): add phases 8 to 11 for the adopter presets`.
