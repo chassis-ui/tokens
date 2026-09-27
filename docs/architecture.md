@@ -159,7 +159,7 @@ So the main file holds every token except the theme colours, with the values of 
 
 SCSS with the prefix `cx`: the header line `$prefix: cx- !default;`, then one `$cx-<name>: <value> !default;` per token between `// scss-docs-start design-tokens` and `// scss-docs-end design-tokens`.
 
-- **Sizes**: pixels divided by 16 with `rem`, not rounded; zero is `0rem`.
+- **Sizes**: pixels divided by 16 with `rem`; zero is `0rem`. A size that holds its value is not rounded (`dimension.base.05` is `0.03125rem`); a size that references another is rounded to four decimals, as math on rem values is (`size.unit.05` is `0.0313rem`).
 - **Colours**: `#ffffff`, or `rgba(22, 26, 27, 0.5)` with alpha.
 - **Line height tokens**: divided by the font size token at the same step, `typography.fontSize.<path[2]>.<path[3]>`, three decimals with trailing zeros removed, `em` (`1.25em`).
 - **Letter spacing** (tokens under `letterSpacing` and the `letter-spacing` of typography maps): pixels divided by 16, four decimals, `em` (`-0.5px` is `-0.0313em`).
@@ -189,7 +189,7 @@ The short scale names are `4xs`, `3xs`, `2xs`, `xs`, `sm`, `md`, `lg`, `xl` and 
 
 #### SCSS variables of the presets
 
-`web-scss`, `web-px` and `web-vw` print resolved values. Their typography maps quote the font family list as one string (`"font-family": "Inter, system-ui, …"`). With `outputReferences`, single references in the groups `color`, `space`, `opacity`, `borderRadius` and `borderWidth` print the variable of the token that the shared rules above name (`$cx-color-context-default-fg-main`), and typography maps hold variables. A variable may be declared by another file of the build, so an app loads the colour and number files before `main.scss`; the build fails when no file declares it.
+`web-scss`, `web-px` and `web-vw` print resolved values. Their typography maps quote the font family list as one string (`"font-family": "Inter, system-ui, …"`). With `outputReferences`, single references in the groups `color`, `space`, `opacity`, `borderRadius` and `borderWidth` print the variable of the token that the shared rules above name (`$cx-color-context-default-fg-main`), and typography maps hold variables. A variable may be declared by another file of the build, so an app loads a colour file before `main.scss`, whose colour tokens reference variables of `color-<theme>.scss`; the other files use only variables they declare themselves. The build fails when no file declares a variable.
 
 ### iOS
 
@@ -205,7 +205,7 @@ The short scale names are `4xs`, `3xs`, `2xs`, `xs`, `sm`, `md`, `lg`, `xl` and 
 
 `Color.swift` declares `ChassisTokensColor`, as described in [the design decisions](#the-colours-that-follow-dark-mode-are-written-after-the-builds).
 
-**SwiftUI** (`ios-swiftui`): the same constants with `import SwiftUI`, colours as `Color(red: 1.000, green: 1.000, blue: 1.000, opacity: 1)` and weights as `Font.Weight.<name>`.
+**SwiftUI** (`ios-swiftui`): the same constants, without the `…Radius` of the shadows, with `import SwiftUI`, colours as `Color(red: 1.000, green: 1.000, blue: 1.000, opacity: 1)` and weights as `Font.Weight.<name>`.
 
 ### Android
 
