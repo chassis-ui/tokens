@@ -36,7 +36,9 @@ If a phase is too large, split it into `Na`, `Nb` rows. If a fact in this file i
 | 3 | Web `var(--…)` policy | Fable | Done | `rewrite(phase 3)` | 2026-09-27 |
 | 4 | Upgrade to SD 5.5 and sd-transforms 2.0 | Fable | Done | `rewrite(phase 4)` | 2026-09-27 |
 | 5 | Replace forked preprocessor (optional) | Opus | Done | `rewrite(phase 5)` | 2026-09-27 |
-| 6 | Build loop, cleanup, CI, docs | Sonnet | Not started | | |
+| 6a | Cleanup, version header, CI guard | Opus | Done | `rewrite(phase 6a)` | 2026-09-27 |
+| 6b | Build loop | Opus | Not started | | |
+| 6c | Tests README, docs, final acceptance | Sonnet | Not started | | |
 
 ## Ground rules
 
@@ -67,7 +69,7 @@ If a phase is too large, split it into `Na`, `Nb` rows. If a fact in this file i
 - 564 colour tokens have the form `rgba({colour reference}, {opacity reference})`, and 180 colour tokens apply a lighten or darken modifier to a reference.
 - In sd-transforms 1.3.0 and 2.0.3, `alwaysAddFontStyle` applies to typography tokens only. Plain `fontWeight` tokens without a style word are not split into `weight` and `style` by the official preprocessor.
 - In sd-transforms 2.0.3 the official `addFontStyles` takes about 210 ms per run on the real token sets, against about 10 ms for the Chassis code, because it converts the whole dictionary to a map for every font weight it resolves. Over 36 runs that is about 8 s. The official `alignTypes` takes about 5 ms.
-- `web-px`, `web-vw`, the `scss-variables` template and the `cx/test` transform and format are not used by any configured app.
+- `web-px`, `web-vw`, the `scss-variables` template, the `cx/test` transform and format, and the `cx/colorTokens` filter were not used by any configured app. They were deleted in Phase 6a.
 - The Android template's `@type/name` reference branch never runs, because `outputReferences` is never set.
 - No token in the built sets has a description, and `dist/` contains no per-token comments.
 - The token set `brand-chassis/app-base` is not selected by any theme in `$themes.json`, so it is never built.
@@ -304,14 +306,37 @@ Differences from the fork:
 
 Goal: the new build is simple, and a stale `dist/` cannot be published.
 
+Split on 2026-09-27 into three commits, because the items touch different files and each needs its own golden check.
+
+### Phase 6a: cleanup, version header, CI guard
+
+- [x] Delete `web-px.js`, `web-vw.js`, `scss-variables.template.js`, the `cx/test` transform and format, the `cx/typography/web`, `cx/size/px` and `cx/size/vw` transforms (used only by `web-px` and `web-vw`), and the `cx/scss-variables` format. Then delete `isReference` and `splitReference` from `utils.js`. Also delete the `cx/colorTokens` filter, which no config uses.
+- [x] Read the version for the file header from `package.json`. Remove `build/tokens/build.js` from `FILES` in `build/change-version.js`.
+- [x] Replace `tinycolor2` only if the golden diff stays green; otherwise keep it. A replacement must also turn a `linear-gradient(…)` value into its first colour stop, as tinycolor does (see Known oddities).
+- [x] Replace the mock-based tests of `filters.js` and `transforms.js` with tests on real tokens.
+- [x] `.github/workflows/publish-release.yml`: run `pnpm tokens:verify` before `npm publish`.
+- [x] Acceptance: `pnpm tokens:verify` and `pnpm tokens:test` green; no new lint warnings.
+
+Result: 877 lines deleted, 154 added. `filters.js` now exports `filters` (name to function) and `transforms.js` exports `transforms` (the two definitions); both register what they export. The golden check ignores the version header line, so the header was compared separately: all 42 files print `Chassis - Tokens v0.5.3`, as in `dist/`. The two lint warnings noted in Phase 0 are gone with the code that caused them.
+
+`tinycolor2` is kept. The only replacement already installed, `colorjs.io` 0.5.2 (a dependency of sd-transforms), throws on the 88 `linear-gradient(…)` colour tokens and returns channels as fractions. Using it would need code to take the first colour stop and to round channels as tinycolor does, and a direct dependency of 8.1 MB instead of 312 KB. Nothing would get simpler.
+
+The filter test takes its expected results from `dist/`: for every token of a real light-and-large web run (3559 tokens), the four filters agree with which of `main.scss`, `color-light.scss`, `number-large.scss` and `string.scss` declare it. The fixture `filter-tokens.json` keeps one token per type, per colour group and per result (36). The transform test uses the web config's own `basePxFontSize`.
+
+The CI step runs on Node 22, as the workflow sets; the check was run locally on Node 24 only.
+
+### Phase 6b: build loop
+
 - [ ] Build one instance per token-set list (see Design decisions). Resolve the lists directly from `$themes.json`.
 - [ ] Token order inside files must stay the same. If it changes, fix the set order; do not regenerate `dist/`.
 - [ ] Do not split sets between SD `include` and `source`. Add a test that `brand-chassis/brand-base` values win over `base/brand-base`.
-- [ ] Read the version for the file header from `package.json`. Remove `build/tokens/build.js` from `FILES` in `build/change-version.js`.
-- [ ] Delete `web-px.js`, `web-vw.js`, `scss-variables.template.js`, the `cx/test` transform and format, the `cx/typography/web`, `cx/size/px` and `cx/size/vw` transforms (used only by `web-px` and `web-vw`), and the `cx/scss-variables` format. Then delete `isReference` and `splitReference` from `utils.js`.
-- [ ] Replace `tinycolor2` only if the golden diff stays green; otherwise keep it. A replacement must also turn a `linear-gradient(…)` value into its first colour stop, as tinycolor does (see Known oddities).
-- [ ] Replace the remaining mock-based tests with fixture tests. Rewrite `build/tokens/test/README.md`.
-- [ ] `.github/workflows/publish-release.yml`: run `pnpm tokens:verify` before `npm publish`.
+- [ ] Keep the CLI flags (`--brand`, `--app`, `--platform`, `--theme`, `--screen`, `--out`, `--dry-run`); `verify.js` relies on `--out` and `--platform`.
+- [ ] Replace the mock-based tests of `build.js` and `config/` (`build.test.js`, `cli.test.js`, `config.test.js`) with tests on real tokens.
+- [ ] Acceptance: `pnpm tokens:verify` and `pnpm tokens:test` green; build time recorded.
+
+### Phase 6c: tests README, docs, final acceptance
+
+- [ ] Rewrite `build/tokens/test/README.md`.
 - [ ] README: new layout, CLI flags, how to verify. Remove `test:watch`, `build:astro` and `test:coverage`, which do not exist. Add a CHANGELOG entry.
 - [ ] Acceptance: `pnpm tokens:verify` and `pnpm tokens:test` green; `pnpm tokens:site && pnpm astro:build` succeeds.
 
@@ -352,3 +377,5 @@ Append-only.
 - 2026-09-27 (Phase 3, Fable 5.1): Added `build/tokens/css-var-policy.js`; the SCSS template now prints one line per token through `webValue` and holds no policy (211 to 43 lines). The chain follow is a loop bounded by `MAX_HOPS = 1` that throws on a cycle. Removed `getFontWeight`, `getFontStyle` and `fontWeightMap` from `utils.js` with their 11 tests, and moved `abbreviateScale` and `scaleAbbreviations` from `utils.js` to the policy module with their tests. Added `css-var-policy.test.js` (129 tests) and a fixture of real tokens. Verified: `pnpm tokens:verify` passes, 42 of 42 files; `pnpm tokens:test` passes, 299 tests; no new lint warnings; `dist/` untouched. Injected twelve regressions (missing abbreviation, four dropped exceptions, two hops, follow across groups, typography naming, percent line height, dropped literal fallback, no cycle check); each failed the intended tests. Surprises: (1) six of the ten table rows and the whole `borderWidth` follow are not reached by any current token, so their tests use constructed references. (2) The plan expected `splitReference` and `isReference` to become unused, but the dead `scss-variables.template.js` imports them; they stay until Phase 6. (3) Four unreachable cases that printed broken text now throw (see the Phase 3 result); this does not change any output. Next: Phase 4.
 - 2026-09-27 (Phase 4, Fable 5.1): Upgraded in place to `style-dictionary` 5.5.5 and `@tokens-studio/sd-transforms` 2.0.3; added `engines.node >= 22` and an explicit `log.errors.brokenReferences: 'throw'`. Fixed the two breaks described in the Phase 4 result: the font weight path is stored as segments (`fontWeightPath`), and tokens are numbered in source order (`sourceOrder`) and sorted in the formats. Added 7 tests (`formats.test.js`, a block in `preprocessor.test.js` with source tokens copied from `tokens/`) and regenerated `css-var-tokens.json` from the SD 5.5 build; only the extension key changed in it. Build time for 36 runs: 19.7 s before, 9.5 s after (two runs each). Verified: `pnpm tokens:verify` passes, 42 of 42 files; `pnpm tokens:test` passes, 306 tests; no new lint warnings; `dist/` untouched; a scratch token with a missing reference fails the build. Compared a dump of all web tokens between SD 4.4 and SD 5.5: resolved values, printed values and lookups are identical, so math and rounding did not change. Injected three regressions (no sort, numbering before the weight split, font weight kept as a reference); each failed the intended tests, and the first and third also failed the golden check. Surprises: (1) SD 5 moves expanded tokens to the end, which the plan did not foresee. (2) The collision counts in the facts were wrong for dark runs and are corrected. (3) `pnpm add` reported two peer warnings for ESLint plugins that want ESLint 9 or lower; they exist without this change. Not checked: whether sd-transforms 2.0 splits plain `fontWeight` tokens, which is the first item of Phase 5. Next: Phase 5, which needs Ozgur's decision.
 - 2026-09-27 (Phase 5, Fable 5.1): Checked sd-transforms 2.0.3: it still does not split plain `fontWeight` tokens. Rewrote `build/tokens/preprocessor.js` on the official `alignTypes` with own steps for letter spacing, font styles, `fontWeightPath` and `sourceOrder` (264 to 131 lines). Built the variant with the official `addFontStyles` as well (107 lines) and rejected it: it raised the build time from 9.5 s to 17.9 s. Extended `preprocessor-tokens.json` with real letter spacing, text and shadow tokens and added 15 tests; regenerated `css-var-tokens.json`, in which only the place of `originalType` changed. Verified: `pnpm tokens:verify` passes, 42 of 42 files, in 9.5 s; `pnpm tokens:test` passes, 321 tests; no new lint warnings; `dist/` untouched. Compared the fork and the new preprocessor on the real merged dictionaries of two token-set lists: equal, in the same key order, apart from where `originalType` is stored. Compared both on 15 font weight spellings: equal except for the empty string. Compared a dump of all web tokens before and after: identical. Injected four regressions (letter spacing as dimension, plain weights not split, style not lowercased, weight not resolved); each failed the intended tests and the golden check. Surprise: the official `addFontStyles` is about 20 times slower than the fork. The Model column says Opus for this phase; it was done with Fable because the session continued. Next: Phase 6.
+- 2026-09-27 (Phase 6 split, Opus 5.5): Split Phase 6 into 6a (cleanup, version header, CI guard), 6b (build loop) and 6c (tests README, docs, final acceptance), since the items touch different files and each needs its own golden check.
+- 2026-09-27 (Phase 6a, Opus 5.5): Deleted `web-px.js`, `web-vw.js`, `scss-variables.template.js`, the transforms `cx/test`, `cx/typography/web`, `cx/size/px`, `cx/size/vw`, the formats `cx/test`, `cx/scss-variables`, the unused filter `cx/colorTokens`, and `isReference` / `splitReference` from `utils.js`. The file header reads the version from `package.json`; `change-version.js` no longer rewrites `build.js`. The release workflow runs `pnpm tokens:verify` before `npm publish`. Kept `tinycolor2` (see the 6a result). Replaced the 9 mock-based tests of `filters.js` and `transforms.js` with 52 tests on real tokens and a new fixture. Verified: `pnpm tokens:verify` passes, 42 of 42 files, in 9.6 s; header lines match `dist/`; `pnpm tokens:test` passes, 364 tests; lint reports no warnings (two before); `dist/` untouched. Injected four regressions (utility colours in the theme file, fonts dropped from main, shadow transform on every type, rem transform not transitive); each failed the intended test. Surprises: (1) `cx/colorTokens` was unused and not in the plan's list. (2) `publish-release.yml` was already not Prettier-formatted before this change; left as it was. Next: Phase 6b.

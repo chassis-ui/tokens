@@ -11,72 +11,40 @@
 import { tokenTypes } from './utils.js'
 
 /**
+ * The custom filters by name. The `path[1] !== 'dimension'` exclusion matches no current
+ * token; it is kept because the output contract includes it.
+ */
+export const filters = {
+  // Everything that goes into main: all emitted types, without base and theme colours.
+  'cx/allTokens': (token) =>
+    (tokenTypes.color.includes(token.$type) &&
+      !['primitive', 'context', 'utility'].includes(token.path[1])) ||
+    tokenTypes.font.includes(token.$type) ||
+    tokenTypes.gradient.includes(token.$type) ||
+    tokenTypes.number.includes(token.$type) ||
+    tokenTypes.shadow.includes(token.$type) ||
+    (tokenTypes.size.includes(token.$type) && token.path[1] !== 'dimension') ||
+    tokenTypes.string.includes(token.$type),
+
+  // Theme colours, without base and utility colours.
+  'cx/themeTokens': (token) =>
+    tokenTypes.color.includes(token.$type) && !['base', 'utility'].includes(token.path[1]),
+
+  // Numbers and sizes, which change with the screen.
+  'cx/numberTokens': (token) =>
+    tokenTypes.number.includes(token.$type) ||
+    (tokenTypes.size.includes(token.$type) && token.path[1] !== 'dimension'),
+
+  // Strings, font names and assets.
+  'cx/stringTokens': (token) => tokenTypes.string.includes(token.$type)
+}
+
+/**
  * Registers custom filters with Style Dictionary.
  * @param {Object} StyleDictionary - The Style Dictionary instance.
  */
 export default function (StyleDictionary) {
-  /**
-   * A filter to include all tokens except certain excluded types.
-   */
-  StyleDictionary.registerFilter({
-    name: 'cx/allTokens',
-    filter: (token) => {
-      return (
-        (tokenTypes.color.includes(token.$type) &&
-          !['primitive', 'context', 'utility'].includes(token.path[1])) ||
-        tokenTypes.font.includes(token.$type) ||
-        tokenTypes.gradient.includes(token.$type) ||
-        tokenTypes.number.includes(token.$type) ||
-        tokenTypes.shadow.includes(token.$type) ||
-        (tokenTypes.size.includes(token.$type) && token.path[1] !== 'dimension') ||
-        tokenTypes.string.includes(token.$type)
-      )
-    }
-  })
-
-  /**
-   * A filter to include only color tokens, excluding specific categories.
-   */
-  StyleDictionary.registerFilter({
-    name: 'cx/colorTokens',
-    filter: (token) => {
-      return (
-        tokenTypes.color.includes(token.$type) &&
-        !['primitive', 'context', 'utility'].includes(token.path[1])
-      )
-    }
-  })
-
-  /**
-   * A filter to include only color tokens, excluding specific categories.
-   */
-  StyleDictionary.registerFilter({
-    name: 'cx/themeTokens',
-    filter: (token) => {
-      return tokenTypes.color.includes(token.$type) && !['base', 'utility'].includes(token.path[1])
-    }
-  })
-
-  /**
-   * A filter to include only number tokens and certain size tokens.
-   */
-  StyleDictionary.registerFilter({
-    name: 'cx/numberTokens',
-    filter: (token) => {
-      return (
-        tokenTypes.number.includes(token.$type) ||
-        (tokenTypes.size.includes(token.$type) && token.path[1] !== 'dimension')
-      )
-    }
-  })
-
-  /**
-   * A filter to include only string tokens.
-   */
-  StyleDictionary.registerFilter({
-    name: 'cx/stringTokens',
-    filter: (token) => {
-      return tokenTypes.string.includes(token.$type)
-    }
-  })
+  Object.entries(filters).forEach(([name, filter]) =>
+    StyleDictionary.registerFilter({ name, filter })
+  )
 }

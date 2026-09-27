@@ -8,7 +8,6 @@
  */
 
 import { promises, readFileSync } from 'fs'
-import { join } from 'path'
 import StyleDictionary from 'style-dictionary'
 import { permutateThemes, register as registerStudio } from '@tokens-studio/sd-transforms'
 import config from './config/index.js'
@@ -41,6 +40,8 @@ async function loadConfig() {
  * preprocessors, filters, transforms, formats, and file headers.
  */
 function registerDictionary() {
+  const { version } = packageJson
+
   registerStudio(StyleDictionary, {
     'ts/color/modifiers': { format: 'hex' }
   })
@@ -58,7 +59,7 @@ function registerDictionary() {
     name: 'cxFileHeader',
     fileHeader: async (defaultMessages = []) => [
       ...defaultMessages,
-      `Chassis - Tokens v0.5.3`,
+      `Chassis - Tokens v${version}`,
       `Copyright 2026 Ozgur Gunes`,
       `Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)`
     ]

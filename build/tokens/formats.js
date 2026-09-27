@@ -8,10 +8,9 @@
  * @license MIT
  */
 
-import { fileHeader, sortByName, setSwiftFileProperties } from 'style-dictionary/utils'
+import { fileHeader, setSwiftFileProperties } from 'style-dictionary/utils'
 import androidResourcesTemplate from './templates/android-resources.template.js'
 import iosSwiftClassTemplate from './templates/ios-swift-class.template.js'
-import scssVariablesTemplate from './templates/scss-variables.template.js'
 import scssChassisCSSTemplate from './templates/scss-chassis-css.template.js'
 
 /**
@@ -31,23 +30,6 @@ export function inSourceOrder(tokens) {
  */
 export default function (StyleDictionary) {
   /**
-   * A test format for debugging purposes.
-   */
-  StyleDictionary.registerFormat({
-    name: 'cx/test',
-    format: ({ dictionary }) => {
-      const allTokens = dictionary.allTokens.sort(sortByName)
-      return (
-        allTokens
-          // .map(token => `${JSON.stringify(token, null, 2)}`)
-          .map((token) => `  ${token.name}: ${token.$type}`)
-          // .map(token => `  ${token.name}: ${token.$value}`)
-          .join('\n')
-      )
-    }
-  })
-
-  /**
    * A format to generate SCSS variables for Chassis CSS.
    */
   StyleDictionary.registerFormat({
@@ -57,20 +39,6 @@ export default function (StyleDictionary) {
       const header = await fileHeader({ file, formatting, commentStyle })
       dictionary.allTokens = inSourceOrder(dictionary.allTokens)
       return scssChassisCSSTemplate({ dictionary, options, file, header, platform })
-    }
-  })
-
-  /**
-   * A format to generate SCSS variables.
-   */
-  StyleDictionary.registerFormat({
-    name: 'cx/scss-variables',
-    format: async function ({ dictionary, options, file, platform }) {
-      const { formatting, commentStyle } = options
-      const header = await fileHeader({ file, formatting, commentStyle })
-      dictionary.allTokens = [...dictionary.allTokens]
-      // .sort(sortByName)
-      return scssVariablesTemplate({ dictionary, options, file, header, platform })
     }
   })
 

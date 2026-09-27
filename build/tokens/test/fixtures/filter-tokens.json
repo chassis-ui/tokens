@@ -1,0 +1,293 @@
+{
+  "source": "Resolved chassis/docs web tokens (light and large sets) from the SD 5.5 build, extracted 2026-09-27. \"files\" lists the filters whose file in the committed dist/web/docs/chassis/ declares the token: cx/allTokens main.scss, cx/themeTokens color-light.scss, cx/numberTokens number-large.scss, cx/stringTokens string.scss. One token per type, per colour group and per result.",
+  "cases": [
+    {
+      "token": {
+        "name": "cx-dimension-base-0",
+        "path": ["dimension", "base", "0"],
+        "$type": "dimension"
+      },
+      "files": ["cx/allTokens", "cx/numberTokens"]
+    },
+    {
+      "token": {
+        "name": "cx-modify-lighten-10",
+        "path": ["modify", "lighten", "10"],
+        "$type": "other"
+      },
+      "files": []
+    },
+    {
+      "token": {
+        "name": "cx-opacity-level-10",
+        "path": ["opacity", "level", "10"],
+        "$type": "opacity"
+      },
+      "files": ["cx/allTokens", "cx/numberTokens"]
+    },
+    {
+      "token": {
+        "name": "cx-figma-switch-brand-mode-1",
+        "path": ["figma", "switch", "brand", "mode-1"],
+        "$type": "boolean"
+      },
+      "files": []
+    },
+    {
+      "token": {
+        "name": "cx-figma-website-variant-nav",
+        "path": ["figma", "website", "variant", "nav"],
+        "$type": "content"
+      },
+      "files": ["cx/allTokens", "cx/stringTokens"]
+    },
+    {
+      "token": {
+        "name": "cx-color-base-primitive-light-black-base",
+        "path": ["color", "base", "primitive", "light", "black", "base"],
+        "$type": "color"
+      },
+      "files": ["cx/allTokens"]
+    },
+    {
+      "token": {
+        "name": "cx-color-context-default-base-color",
+        "path": ["color", "context", "default", "base-color"],
+        "$type": "color"
+      },
+      "files": ["cx/themeTokens"]
+    },
+    {
+      "token": {
+        "name": "cx-color-primitive-primary-10",
+        "path": ["color", "primitive", "primary", "10"],
+        "$type": "color"
+      },
+      "files": ["cx/themeTokens"]
+    },
+    {
+      "token": {
+        "name": "cx-color-shadow-default",
+        "path": ["color", "shadow", "default"],
+        "$type": "color"
+      },
+      "files": ["cx/allTokens", "cx/themeTokens"]
+    },
+    {
+      "token": {
+        "name": "cx-color-utility-container-default",
+        "path": ["color", "utility", "container-default"],
+        "$type": "color"
+      },
+      "files": []
+    },
+    {
+      "token": {
+        "name": "cx-color-accordion-item-fg-color",
+        "path": ["color", "accordion", "item-fg-color"],
+        "$type": "color"
+      },
+      "files": ["cx/allTokens", "cx/themeTokens"]
+    },
+    {
+      "token": {
+        "name": "cx-color-button-default-fg-idle",
+        "path": ["color", "button", "default", "fg-idle"],
+        "$type": "color"
+      },
+      "files": ["cx/allTokens", "cx/themeTokens"]
+    },
+    {
+      "token": {
+        "name": "cx-color-datepicker-fg-idle",
+        "path": ["color", "datepicker", "fg-idle"],
+        "$type": "color"
+      },
+      "files": ["cx/allTokens", "cx/themeTokens"]
+    },
+    {
+      "token": {
+        "name": "cx-color-dropdown-fg-idle",
+        "path": ["color", "dropdown", "fg-idle"],
+        "$type": "color"
+      },
+      "files": ["cx/allTokens", "cx/themeTokens"]
+    },
+    {
+      "token": {
+        "name": "cx-color-form-input-idle-bg-regular",
+        "path": ["color", "form-input", "idle", "bg-regular"],
+        "$type": "color"
+      },
+      "files": ["cx/allTokens", "cx/themeTokens"]
+    },
+    {
+      "token": {
+        "name": "cx-color-list-icon",
+        "path": ["color", "list", "icon"],
+        "$type": "color"
+      },
+      "files": ["cx/allTokens", "cx/themeTokens"]
+    },
+    {
+      "token": {
+        "name": "cx-color-map-marker-bg",
+        "path": ["color", "map", "marker-bg"],
+        "$type": "color"
+      },
+      "files": ["cx/allTokens", "cx/themeTokens"]
+    },
+    {
+      "token": {
+        "name": "cx-color-message-bg-chat",
+        "path": ["color", "message", "bg-chat"],
+        "$type": "color"
+      },
+      "files": ["cx/allTokens", "cx/themeTokens"]
+    },
+    {
+      "token": {
+        "name": "cx-color-page-bg-body",
+        "path": ["color", "page", "bg-body"],
+        "$type": "color"
+      },
+      "files": ["cx/allTokens", "cx/themeTokens"]
+    },
+    {
+      "token": {
+        "name": "cx-color-pagination-dot-idle",
+        "path": ["color", "pagination", "dot-idle"],
+        "$type": "color"
+      },
+      "files": ["cx/allTokens", "cx/themeTokens"]
+    },
+    {
+      "token": {
+        "name": "cx-color-progress-fg-past",
+        "path": ["color", "progress", "fg-past"],
+        "$type": "color"
+      },
+      "files": ["cx/allTokens", "cx/themeTokens"]
+    },
+    {
+      "token": {
+        "name": "cx-color-section-fg-large",
+        "path": ["color", "section", "fg-large"],
+        "$type": "color"
+      },
+      "files": ["cx/allTokens", "cx/themeTokens"]
+    },
+    {
+      "token": {
+        "name": "cx-color-segment-bg-bar",
+        "path": ["color", "segment", "bg-bar"],
+        "$type": "color"
+      },
+      "files": ["cx/allTokens", "cx/themeTokens"]
+    },
+    {
+      "token": {
+        "name": "cx-color-table-fg-head",
+        "path": ["color", "table", "fg-head"],
+        "$type": "color"
+      },
+      "files": ["cx/allTokens", "cx/themeTokens"]
+    },
+    {
+      "token": {
+        "name": "cx-typography-font-family-text",
+        "path": ["typography", "fontFamily", "text"],
+        "$type": "fontFamily"
+      },
+      "files": ["cx/allTokens", "cx/stringTokens"]
+    },
+    {
+      "token": {
+        "name": "cx-typography-font-weight-text-normal-weight",
+        "path": ["typography", "fontWeight", "text", "normal", "weight"],
+        "$type": "fontWeight"
+      },
+      "files": ["cx/allTokens", "cx/stringTokens"]
+    },
+    {
+      "token": {
+        "name": "cx-typography-font-weight-text-normal-style",
+        "path": ["typography", "fontWeight", "text", "normal", "style"],
+        "$type": "fontStyle"
+      },
+      "files": ["cx/allTokens", "cx/stringTokens"]
+    },
+    {
+      "token": {
+        "name": "cx-typography-font-size-text-5xlarge",
+        "path": ["typography", "fontSize", "text", "5xlarge"],
+        "$type": "fontSize"
+      },
+      "files": ["cx/allTokens", "cx/numberTokens"]
+    },
+    {
+      "token": {
+        "name": "cx-typography-line-height-text-5xlarge",
+        "path": ["typography", "lineHeight", "text", "5xlarge"],
+        "$type": "lineHeight"
+      },
+      "files": ["cx/allTokens", "cx/numberTokens"]
+    },
+    {
+      "token": {
+        "name": "cx-typography-letter-spacing-base-zero",
+        "path": ["typography", "letterSpacing", "base", "zero"],
+        "$type": "number"
+      },
+      "files": ["cx/allTokens", "cx/numberTokens"]
+    },
+    {
+      "token": {
+        "name": "cx-typography-text-case-base-none",
+        "path": ["typography", "textCase", "base", "none"],
+        "$type": "textCase"
+      },
+      "files": ["cx/allTokens", "cx/stringTokens"]
+    },
+    {
+      "token": {
+        "name": "cx-typography-text-decoration-base-none",
+        "path": ["typography", "textDecoration", "base", "none"],
+        "$type": "textDecoration"
+      },
+      "files": ["cx/allTokens", "cx/stringTokens"]
+    },
+    {
+      "token": {
+        "name": "cx-gradient-primitive-black-l-000",
+        "path": ["gradient", "primitive", "black", "l-000"],
+        "$type": "color"
+      },
+      "files": ["cx/themeTokens"]
+    },
+    {
+      "token": {
+        "name": "cx-font-context-jumbo",
+        "path": ["font", "context", "jumbo"],
+        "$type": "typography"
+      },
+      "files": ["cx/allTokens"]
+    },
+    {
+      "token": {
+        "name": "cx-icon-accordion-indicator",
+        "path": ["icon", "accordion", "indicator"],
+        "$type": "asset"
+      },
+      "files": ["cx/allTokens", "cx/stringTokens"]
+    },
+    {
+      "token": {
+        "name": "cx-shadow-context-none",
+        "path": ["shadow", "context", "none"],
+        "$type": "shadow"
+      },
+      "files": ["cx/allTokens"]
+    }
+  ]
+}

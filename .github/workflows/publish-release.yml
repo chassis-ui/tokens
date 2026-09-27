@@ -57,6 +57,10 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
+      # Fails when the committed dist/ differs from a fresh build of tokens/
+      - name: Verify dist/
+        run: pnpm tokens:verify
+
       - name: Publish @chassis-ui/tokens
         run: npm publish --access public
         env:

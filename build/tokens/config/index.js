@@ -6,15 +6,11 @@
  */
 
 import web from './web.js'
-import webPx from './web-px.js'
-import webVw from './web-vw.js'
 import ios from './ios.js'
 import android from './android.js'
 
 const platforms = {
   web,
-  'web-px': webPx,
-  'web-vw': webVw,
   ios,
   android
 }

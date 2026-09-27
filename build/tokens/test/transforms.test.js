@@ -1,55 +1,62 @@
 /**
  * @file transforms.test.js
- * @description Test suite for custom token transformations
+ * @description Tests for the custom value transforms, using resolved tokens and values
+ *              from the real build.
  * @copyright Copyright (c) 2026 Ozgur Gunes
  * @license MIT
  */
 
-import { describe, test, expect, beforeEach, vi } from 'vitest'
+import { readFileSync } from 'node:fs'
+import { describe, expect, test } from 'vitest'
+import web from '../config/web.js'
+import registerTransforms, { transforms } from '../transforms.js'
 
-describe('Token Transforms', () => {
-  let transformsModule
-  let mockStyleDictionary
+const read = (file) => JSON.parse(readFileSync(new URL(file, import.meta.url), 'utf8'))
+const webTokens = read('./fixtures/web-tokens.json')
+const filterTokens = read('./fixtures/filter-tokens.json')
 
-  beforeEach(async () => {
-    mockStyleDictionary = {
-      registerTransform: vi.fn()
+const transform = (name) => transforms.find((item) => item.name === name)
+const platform = web('chassis', 'docs')
+const typesMatching = (name) =>
+  [...new Set(filterTokens.cases.map(({ token }) => token.$type))]
+    .filter((type) => transform(name).filter({ $type: type }))
+    .sort()
+
+describe('cx/size/rem', () => {
+  test('applies to the size types', () => {
+    expect(typesMatching('cx/size/rem')).toEqual(['dimension', 'fontSize', 'lineHeight'])
+  })
+
+  test.each(webTokens.remSize)('$case ($token.name)', ({ token, expected }) => {
+    expect(transform('cx/size/rem').transform(token, platform)).toBe(expected)
+  })
+})
+
+describe('cx/shadow/web', () => {
+  test('applies to shadow tokens', () => {
+    expect(typesMatching('cx/shadow/web')).toEqual(['shadow'])
+  })
+
+  test.each(webTokens.cssShadow)('$case', ({ value, expected }) => {
+    expect(transform('cx/shadow/web').transform({ $value: value }, platform)).toBe(expected)
+  })
+})
+
+describe('transforms', () => {
+  test('are the custom transforms the web config uses', () => {
+    const custom = platform.transforms.filter((name) => name.startsWith('cx/'))
+    expect(transforms.map((item) => item.name).sort()).toEqual(custom.sort())
+  })
+
+  test('also apply to tokens whose value is a reference', () => {
+    for (const item of transforms) {
+      expect(item).toMatchObject({ type: 'value', transitive: true })
     }
-    transformsModule = await import('../transforms.js')
   })
 
-  describe('Transform Registration', () => {
-    test('should register all custom transforms', () => {
-      transformsModule.default(mockStyleDictionary)
-
-      const registeredTransforms = mockStyleDictionary.registerTransform.mock.calls.map(
-        (call) => call[0].name
-      )
-
-      expect(registeredTransforms.length).toBeGreaterThan(0)
-      expect(registeredTransforms).toBeTruthy()
-    })
-
-    test('should register transforms with required properties', () => {
-      transformsModule.default(mockStyleDictionary)
-
-      mockStyleDictionary.registerTransform.mock.calls.forEach((call) => {
-        const transform = call[0]
-        expect(transform).toHaveProperty('name')
-        expect(transform).toHaveProperty('type')
-        expect(transform).toHaveProperty('transform')
-      })
-    })
-  })
-
-  describe('Transform Function Signatures', () => {
-    test('all transforms should have transform function', () => {
-      transformsModule.default(mockStyleDictionary)
-
-      mockStyleDictionary.registerTransform.mock.calls.forEach((call) => {
-        const transform = call[0]
-        expect(typeof transform.transform).toBe('function')
-      })
-    })
+  test('are registered as defined', () => {
+    const registered = []
+    registerTransforms({ registerTransform: (item) => registered.push(item) })
+    expect(registered).toEqual(transforms)
   })
 })
