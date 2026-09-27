@@ -1,21 +1,55 @@
 # Chassis Tokens
 
-> Design token generation and management for the Chassis Design System, supporting multi-brand, multi-theme, multi-app, and multi-platform output.
+> Design tokens for the Chassis Design System: multi-brand, multi-theme and multi-app tokens from Tokens Studio, built into SCSS for the web, Swift for iOS and resources for Android.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![Version: 0.6.0](https://img.shields.io/badge/Version-0.6.0-blue.svg)](https://github.com/chassis-ui/tokens)
+[![npm version](https://img.shields.io/npm/v/@chassis-ui/tokens)](https://www.npmjs.com/package/@chassis-ui/tokens)
+[![Release](https://github.com/chassis-ui/tokens/actions/workflows/publish-release.yml/badge.svg?branch=main)](https://github.com/chassis-ui/tokens/actions/workflows/publish-release.yml)
 
 ## Overview
 
-**This repository contains:**
+Chassis Tokens holds the design tokens of the Chassis Design System in [Tokens Studio](https://tokens.studio) format, synced with Figma, and a [Style Dictionary](https://styledictionary.com) build that turns them into files for each platform. The output is committed and published to npm as [`@chassis-ui/tokens`](https://www.npmjs.com/package/@chassis-ui/tokens); [Chassis CSS](https://github.com/chassis-ui/css) is built on it. The [documentation site](https://chassis-ui.com/tokens/docs/getting-started/introduction/) covers the tokens and how to use them on each platform.
 
-- Design tokens in [Tokens Studio](https://tokens.studio) format (`packages/tokens/source/`)
-- Style Dictionary 5 build scripts with custom extensions (`packages/tokens/build/`)
-- Platform-specific output for Web (SCSS), iOS (Swift), and Android (XML), committed in `packages/tokens/dist/` and published to npm as `@chassis-ui/tokens`
-- A test suite on real tokens, and a golden check that compares a fresh build with `dist/`
-- Documentation website (`packages/site/`)
+Chassis Tokens is meant to be owned and customized: a team can clone it, change the tokens in Tokens Studio, and build its own brands, apps and platforms.
 
-### Repository Layout
+## Features
+
+- **Brands, themes, apps and screen sizes**: each combination of token sets in Tokens Studio becomes its own set of files; the configured build writes two brands, light and dark themes and three screen sizes.
+- **Web**: SCSS variables for Chassis CSS, and presets with plain SCSS variables in `rem`, `px` or `vw` for other CSS frameworks.
+- **iOS**: Swift constants with `UIColor` values that follow dark mode, an icon asset catalog, and SwiftUI output.
+- **Android**: a resource tree with night and screen-size qualifiers, vector drawables for the icons, and Jetpack Compose output.
+- **References**: with `outputReferences`, a token names the token it references (a SCSS variable, a Swift constant or an Android resource) wherever that compiles and keeps the value.
+- **Checked output**: a fresh build must equal the committed `dist/`, checked in CI and before every release, and the tests run on real tokens.
+
+## Getting Started
+
+### Installation
+
+```sh
+npm install @chassis-ui/tokens
+```
+
+The package holds the files of `packages/tokens/dist/`: `dist/web/docs/<brand>/` (SCSS), `dist/ios/demo/<brand>/` (Swift and `Icons.xcassets`) and `dist/android/demo/<brand>/` (the `res/` tree), for the brands `chassis` and `sinefil`.
+
+### Usage
+
+Web, with Sass modules:
+
+```scss
+@use '@chassis-ui/tokens/dist/web/docs/chassis/main' as tokens;
+
+.card {
+  padding: tokens.$cx-space-context-medium;
+}
+```
+
+iOS: add the Swift files and `Icons.xcassets` of one app and brand to your target, then read `ChassisTokens.SpaceContextMedium` or `ChassisTokensColor.ColorContextDefaultBgMain`.
+
+Android: add `dist/android/<app>/<brand>/res` as a resource folder of your module, then read `R.dimen.space_context_medium` or `R.color.color_context_default_bg_main`.
+
+The guides for [web](https://chassis-ui.com/tokens/docs/use-in-project/web-applications/), [iOS](https://chassis-ui.com/tokens/docs/use-in-project/ios-applications/) and [Android](https://chassis-ui.com/tokens/docs/use-in-project/android-applications/) cover themes, screen sizes and setup in detail.
+
+## Repository Layout
 
 The repository is a [pnpm workspace](https://pnpm.io/workspaces) with two packages, in the layout of the other Chassis repositories such as [chassis-react](https://github.com/chassis-ui/react):
 
@@ -24,37 +58,11 @@ The repository is a [pnpm workspace](https://pnpm.io/workspaces) with two packag
 | `packages/tokens/` | `@chassis-ui/tokens` (published) | `source/` (the Tokens Studio token files), `build/` (the Style Dictionary build), `test/`, `dist/`, the build configuration in `package.json`, `CHANGELOG.md` |
 | `packages/site/`   | `chassis-tokens-site` (private)  | The documentation site and its dependencies                                                                                                                   |
 
-The root holds the workspace configuration, the lint and format configurations with their dependencies, the CI workflows, the repository scripts in `build/` (`change-version.js`, `sync-submodules.js`, `html-validate.js`), the assets submodule in `vendor/assets` and the site output in `_site/`. Run the commands in this README from the root; they call the packages. To work on the tokens without the site's dependencies, install only the tokens package:
+The root holds the workspace configuration, the lint and format configurations with their dependencies, the CI workflows, the repository scripts in `build/` (`change-version.js`, `sync-submodules.js`, `html-validate.js`), the assets submodule in `vendor/assets` and the site output in `_site/`. Paths in the sections below (`source/`, `build/`, `test/`, `dist/`, `package.json`) are relative to `packages/tokens/`.
 
-```sh
-pnpm install --filter @chassis-ui/tokens
-```
+## Development
 
-Paths in the build sections below (`source/`, `build/`, `test/`, `dist/`, `package.json`) are relative to `packages/tokens/`.
-
-**Key features:**
-
-- 🎨 Multi-brand, multi-theme support with Figma Variables integration
-- 🚀 Fast selective builds with CLI filtering
-- 📦 Self-contained platform configurations (no shared dependencies)
-- 🧪 Comprehensive test coverage with Vitest
-- 📊 Progress indicators and detailed build summaries
-- 🔍 Dry-run mode for previewing builds
-- ✅ Golden check against the committed `dist/`, also run before every release
-- ⚡ Optional responsive screen layer
-- 🛠️ Centralized logging with debug mode
-
-> [!NOTE]
-> This project is part of the Chassis UI ecosystem and handles design token generation and management. It provides tools to transform design tokens from Tokens Studio format into platform-specific output (Web SCSS, iOS Swift, Android XML) with multi-brand, multi-theme, and multi-app support.
-
-> [!WARNING]
-> This project uses `pnpm` for package management and needs Node.js 22 or later. Install pnpm globally with `npm install -g pnpm` before running the commands below.
-
-## 🚀 Quick Start
-
-### Clone Repository
-
-Clone the repository and install dependencies:
+You need Node.js 22 or later and pnpm. Clone the repository and install the dependencies; run every command from the root:
 
 ```sh
 git clone https://github.com/chassis-ui/tokens.git chassis-tokens
@@ -62,166 +70,129 @@ cd chassis-tokens
 pnpm install
 ```
 
-### Generate Distribution
+To work on the tokens without the site's dependencies, install only the tokens package (and the root's lint tools):
 
-Transform all design tokens into platform-specific formats:
+```sh
+pnpm install --filter @chassis-ui/tokens
+```
 
-```shell
+[CONTRIBUTING.md](.github/CONTRIBUTING.md) describes how to change tokens, the build and the site, and what a pull request needs.
+
+### Build the Tokens
+
+```sh
 pnpm tokens
 ```
 
-This generates token files for all brands, themes, apps, platforms, and screens defined in your configuration. Output is written to `dist/[platform]/[app]/[brand]/` with platform-specific formats (SCSS for web, Swift for iOS, XML for Android).
+This writes the files of every brand, app, theme, platform and screen in the configuration to `dist/<platform>/<app>/<brand>/`. Filters build a part of it, and can be combined:
 
-### Selective Builds
-
-Build only specific tokens using CLI filters. When filters are applied, only matching combinations are generated:
-
-```shell
-# Filter by brand
+```sh
 pnpm tokens --brand chassis
-
-# Filter by theme
-pnpm tokens --theme light dark
-
-# Filter by app
-pnpm tokens --app docs
-
-# Filter by platform
-pnpm tokens --platform web ios
-
-# Filter by screen size
-pnpm tokens --screen large medium
-
-# Combine multiple filters
-pnpm tokens --brand chassis --platform web --screen large small
-
-# Build specific brand/app for production
-pnpm tokens --brand chassis --app docs --platform web
+pnpm tokens --app docs --platform web
+pnpm tokens --brand sinefil --platform ios android --screen large small
+pnpm tokens --theme light dark --dry-run
 ```
 
-**Benefits:**
+| Option                      | Effect                                                                                     |
+| --------------------------- | ------------------------------------------------------------------------------------------ |
+| `--brand <brands...>`       | Only these brands, such as `chassis sinefil`                                               |
+| `--theme <themes...>`       | Only these themes, such as `light dark`                                                    |
+| `--app <apps...>`           | Only these apps, such as `docs demo`                                                       |
+| `--platform <platforms...>` | Only these platforms, such as `web ios android`                                            |
+| `--screen <screens...>`     | Only these screen sizes, such as `large medium small`                                      |
+| `--out <dir>`               | Write to another output root instead of `dist`, such as `dist-next`                        |
+| `--config <file>`           | Read the build configuration from a JSON file instead of `chassis.build` in `package.json` |
+| `--dry-run`                 | List the builds and the files each would write, without building                           |
+| `--help`, `-h`              | Show the help                                                                              |
+| `--version`, `-v`           | Show the version                                                                           |
 
-- Faster builds during development
-- Reduced output size for targeted deployments
-- Optimized CI/CD pipelines
+Each brand and app is built once per list of token sets, writing the files of every platform of the app; a full build runs 16 builds. Set `DEBUG=1` for verbose output with stack traces:
+
+```sh
+DEBUG=1 pnpm tokens --brand chassis
+```
 
 ### Verify the Output
 
 Check that the committed `dist/` matches a fresh build of `source/`:
 
-```shell
+```sh
 pnpm tokens:verify
 ```
 
-The check builds into `dist-next/` and compares every file with `dist/`, ignoring the timestamp and version lines of the file headers. It also fails when a token name appears twice in one file. It never writes to `dist/`.
+The check builds into `dist-next/` and compares every file with `dist/`, ignoring the timestamp and version lines of the file headers. It fails when a token name appears twice in one file, and when a reference names nothing the output declares: an Android `@type/name` without a `<type name="name">` in the same file, or a SCSS `$name` that no SCSS file of the directory declares. It never writes to `dist/`.
 
-```shell
+```sh
 # Build and check one platform only
 pnpm tokens:verify --platform ios
 
-# Compare an existing dist-next/ without building (from packages/tokens/)
-node build/verify.js --skip-build
+# Compare the dist-next/ of the last run again without building, with the same
+# --platform (from packages/tokens/)
+node build/verify.js --skip-build --platform ios
 ```
-
-The check also fails when a reference in the output names nothing the output declares: an Android `@type/name` without a `<type name="name">` in the same file, or a SCSS `$name` that no SCSS file of the directory declares.
-
-The release workflow runs `pnpm tokens:verify` before publishing, so a `dist/` that does not match `source/` cannot be released. After changing tokens, run `pnpm tokens` and commit the updated `dist/`.
 
 The [presets](#presets-for-other-css-frameworks) write nothing into `dist/`. Their reference output is in `test/golden/`, checked by:
 
-```shell
+```sh
 pnpm tokens:verify:presets
 ```
 
-After changing tokens, write the preset baselines again; `test/README.md` has the commands.
+After changing tokens, run `pnpm tokens`, commit the updated `dist/` and write the preset baselines again; [CONTRIBUTING.md](.github/CONTRIBUTING.md#changing-tokens) has the commands.
 
-## CLI Reference
+### Tests
 
-### Available Options
-
-All filter options accept space-separated values:
-
-- `--brand <brands...>` — Filter by brand (e.g., `chassis test`)
-- `--theme <themes...>` — Filter by theme (e.g., `light dark`)
-- `--app <apps...>` — Filter by app (e.g., `docs test`)
-- `--platform <platforms...>` — Filter by platform (e.g., `web ios android`)
-- `--screen <screens...>` — Filter by screen size (e.g., `large medium small`)
-- `--out <dir>` — Write to another output root instead of `dist` (e.g., `--out dist-next`)
-- `--config <file>` — Read the build configuration from a JSON file instead of `chassis.build` in `package.json`
-- `--dry-run` — List the builds and the files each would write, without building
-- `--help, -h` — Show help message
-- `--version, -v` — Show version number
-
-### Build Features
-
-- **One build per token-set list**: Each brand and app is built once per list of token sets, writing the files of every platform of the app. A full build runs 16 builds.
-- **Progress indicators**: Shows build status (`[1/16]`, `[2/16]`, etc.)
-- **Build summary**: Displays success/failure count and total duration
-- **Error handling**: Detailed error messages with optional stack traces
-- **Debug mode**: Set `DEBUG=1` for verbose output
-- **Selective building**: Combine filters to build only what you need
-
-### Additional Commands
-
-```shell
-# Run test suite
-pnpm tokens:test
-
-# Check dist/ against a fresh build
-pnpm tokens:verify
-
-# Check the presets against their baselines
-pnpm tokens:verify:presets
-
-# Update version
-pnpm change-version <old_version> <new_version>
-```
-
-## Release Workflow
-
-To update the version and publish new tokens:
+The tests use real tokens and the committed `dist/`, not mocks of Style Dictionary. They cover the golden check, the build plan, the CLI and platform configurations, the value encoders for iOS, Android and web and their references, the web reference policies, the preprocessor, filters, transforms and token order.
 
 ```sh
-# Update version in package.json
-pnpm change-version <old_version> <new_version>
-
-# Build tokens and check the result
-pnpm tokens
-pnpm tokens:verify
-
-# (Optional) Build documentation site
-pnpm site:build
+pnpm tokens:test
 ```
 
-Pushing to `main` publishes the version in `package.json` if it is not on npm yet. The release workflow first runs the CI checks below on the same commit, then `pnpm tokens:verify`, and stops if either fails.
+See [packages/tokens/test/README.md](packages/tokens/test/README.md) for the test files, fixtures and preset baselines.
 
-### Continuous Integration
+### Build Architecture
 
-Every pull request runs `.github/workflows/ci.yml`:
+The build uses [Style Dictionary](https://styledictionary.com) 5.5 and [`@tokens-studio/sd-transforms`](https://github.com/tokens-studio/sd-transforms) 2.0 (type alignment, math, colour modifiers and theme permutations). A build runs in three steps:
 
-- **Tokens** (Node.js 22 and 24): `tokens:lint`, `tokens:test`, `tokens:verify`, `tokens:verify:presets`
-- **Site**: `lint:prettier` (the whole repository), `site:lint`, `check:astro`, `site:build`
-- **Audit**: `pnpm audit` for moderate advisories and above
+1. **Preprocess**: `preprocessor.js` aligns types, splits every font weight into weight and style, and numbers the tokens in source order.
+2. **Transform**: Style Dictionary transforms only what is safe before references are resolved: names, math, colour modifiers, `rem` sizes and CSS shadows.
+3. **Format**: The formats print one line per resolved token. Platform values (`UIColor(…)`, ARGB colours, `sp`/`dp`, quoting, `em`, `var(--…)`, `$…`, `@type/…` and Swift constant references) come from pure functions in `values/` and the web reference policies, which run after resolution.
 
-Run the same commands locally before opening a pull request. Dependabot opens weekly pull requests for npm packages and GitHub Actions; the actions are pinned to commit SHAs.
+Key modules in `build/`:
 
-See package scripts for more commands and options.
-
-## Tokens Studio Format & Figma Variables
-
-Tokens are stored in [Tokens Studio](https://tokens.studio) format, compatible with Figma variables. Example structure:
-
-| Collection | Mode 1  | Mode 2 |
-| ---------- | ------- | ------ |
-| Brand      | chassis | test   |
-| Theme      | light   | dark   |
-| App        | docs    | test   |
-
-See [Tokens Studio Documentation](https://docs.tokens.studio) and [Style Dictionary Documentation](https://amzn.github.io/style-dictionary/) for more details.
+- `build.js`: Build plan (one Style Dictionary instance per token-set list) and CLI
+- `config/`: Platform configurations; the web presets share `webConfig()` from `web.js`
+- `preprocessor.js`: Token preprocessing
+- `filters.js`: Which tokens go into which file
+- `transforms.js`: Custom value transforms that run before resolution (`rem`, `px` and `vw` sizes, CSS shadows)
+- `formats.js` and `templates/`: Output formats; `templates/references.js` finds the token that an iOS or Android reference names
+- `values/`: Value encoders for iOS, Android and web
+- `reference-policy.js`: Which web tokens print a reference and which token it names, shared by both web formats
+- `css-var-policy.js`: The `var(--…)` names of the Chassis CSS format
+- `scss-var-policy.js`: The values and `$…` names of the SCSS variables format
+- `icons.js`: The icon assets, an Xcode asset catalog and Android vector drawables, written by Style Dictionary actions from the SVG icon tokens
+- `theme-colors.js`: The iOS `Color.swift` whose colours follow the appearance, written after the builds from the light and dark colour files
+- `verify.js`: Golden check against `dist/` and the preset baselines
+- `logger.js`: Logging
+- `utils.js`: Token type groups and number formatting
 
 ## Configuration
 
-The `chassis` key in your `package.json` defines which brands, themes, screens, and apps/platforms are available for transformation:
+### Token Sets
+
+The token files are in Tokens Studio format, with one theme group per collection. `source/$themes.json` has these groups and options:
+
+| Group    | Options                                             |
+| -------- | --------------------------------------------------- |
+| `brand`  | `default`, `chassis`, `sinefil`, `demo-a`, `demo-b` |
+| `app`    | `docs`, `demo`                                      |
+| `theme`  | `light`, `dark`                                     |
+| `screen` | `large`, `medium`, `small`                          |
+
+See the [Tokens Studio documentation](https://docs.tokens.studio) and the [Tokens Studio guide](https://chassis-ui.com/tokens/docs/getting-started/tokens-studio/) of this project.
+
+### Build Options
+
+The `chassis.build` key of `package.json` defines which brands, themes, screens and apps the build writes:
 
 ```json
 "chassis": {
@@ -237,17 +208,15 @@ The `chassis` key in your `package.json` defines which brands, themes, screens, 
 }
 ```
 
-### Configuration Details
-
-- **`brands`**: Array of brand identifiers
-- **`themes`**: Array of theme variants (light, dark, etc.)
-- **`screens`**: Array of screen sizes for responsive tokens. Set to `[]` or omit to generate single number files without screen suffixes; `source/$themes.json` must then have no screen group
-- **`apps`**: Object mapping app names to their target platforms
+- **`brands`**: Brand names
+- **`themes`**: Theme names, such as `light` and `dark`
+- **`screens`**: Screen sizes for responsive tokens. Set to `[]` or omit to generate single number files without screen suffixes; `source/$themes.json` must then have no screen group
+- **`apps`**: App names mapped to their platforms
 - **`options`**: (Optional) Style Dictionary options by platform name, merged into the options of that platform, e.g. `{ "web-px": { "outputReferences": true } }`. The build fails when it names a platform that no app uses
 
-The token sets of each file come from `source/$themes.json`. Colour files use the sets of their theme, number files the sets of their screen, and every other file the sets of the first theme and the first screen listed here.
+The token sets of each file come from `source/$themes.json`. Colour files use the sets of their theme, number files the sets of their screen, and every other file the sets of the first theme and the first screen listed here. Only the brands, themes, screens and apps listed here are built.
 
-**Supported platforms:**
+**Platforms:**
 
 - `web`: SCSS variables for Chassis CSS (rem units, `var(--…)` references)
 - `web-scss`, `web-px`, `web-vw`: SCSS variables for other CSS frameworks (see [below](#presets-for-other-css-frameworks))
@@ -256,17 +225,15 @@ The token sets of each file come from `source/$themes.json`. Colour files use th
 - `ios-swiftui`: Swift types with SwiftUI values (`Color`, `Font.Weight`), written to `dist/ios-swiftui/<app>/<brand>/`
 - `android-compose`: Kotlin objects for Jetpack Compose (`Color`, `.dp`, `.sp`, `.em`, `FontWeight`), written to `dist/android-compose/<app>/<brand>/`, in the package `chassis.tokens` or `options["android-compose"].packageName`
 
-**File naming conventions:**
+**File names:**
 
 - Web: `main.scss`, `color-light.scss`, `number-large.scss`
 - iOS: `ChassisTokens.swift`, `ColorLight.swift`, `NumberLarge.swift` (types `ChassisTokens`, `ChassisTokensColorLight`, `ChassisTokensNumberLarge`), and `Color.swift` (`ChassisTokensColor`), whose colours follow the light and dark appearance
 - Android: `main.xml`, `color_light.xml`, `number_large.xml`, and the same resources as a resource tree under `res/` (`values`, `values-night`, `values-sw600dp`, `values-sw840dp`; the screen folders are set with `options.android.screens`)
 
-Only the collections and sets defined under `build` are processed.
-
 ### Presets for Other CSS Frameworks
 
-Chassis Tokens is meant to be owned and customized. The default `web` platform writes SCSS for [Chassis CSS](https://github.com/chassis-ui/css): theme-aware values print the CSS custom properties that Chassis CSS generates, such as `var(--default-fg-main)`. A team with its own CSS framework needs plain SCSS variables instead. Select one of these platforms for a web app:
+The default `web` platform writes SCSS for [Chassis CSS](https://github.com/chassis-ui/css): theme-aware values print the CSS custom properties that Chassis CSS generates, such as `var(--default-fg-main)`. A team with its own CSS framework needs plain SCSS variables instead. Select one of these platforms for a web app:
 
 | Platform   | Format                | Sizes                 |
 | ---------- | --------------------- | --------------------- |
@@ -321,111 +288,28 @@ Each platform file in `build/config/` can also be edited directly; `web-px.js`, 
 
 ## Documentation Site
 
-The documentation site (`packages/site/`) provides guides, API documentation, and usage examples for working with tokens and transformation scripts. It is built with [Astro](https://astro.build/) and includes:
-
-- How to extend or customize transforms
-- How to structure tokens for brands/themes/apps/screens
-- Advanced usage and troubleshooting
-- Reference documentation for all build scripts
-- Guides for integrating tokens into your design system
-
-### Local Development
-
-To run the documentation site locally:
+The documentation site in `packages/site/` is built with [Astro](https://astro.build/) and the shared `@chassis-ui/docs` package. It covers the token categories, the Tokens Studio and Style Dictionary setup, and guides for web, iOS and Android projects. Its pages are in `packages/site/content/`.
 
 ```sh
+# Build the chassis tokens of the docs app and run the site at http://localhost:4322/tokens/
 pnpm dev
-```
 
-This will start Astro on [http://localhost:4322](http://localhost:4322) (default port). You can browse and edit documentation live.
+# Build the tokens and the site into _site/
+pnpm build
 
-### Building the Site
-
-To build the static documentation site for deployment:
-
-```sh
+# Build the site only
 pnpm site:build
 ```
 
-The output will be generated in the `_site/` directory at the repository root.
+## Continuous Integration and Releases
 
-### Keeping Documentation Up to Date
+Every pull request runs `.github/workflows/ci.yml`:
 
-To ensure documentation references the latest tokens, build tokens before building the site:
+- **Tokens** (Node.js 22 and 24): `tokens:lint`, `tokens:test`, `tokens:verify`, `tokens:verify:presets`
+- **Site**: `lint:prettier` (the whole repository), `site:lint`, `check:astro`, `site:build`
+- **Audit**: `pnpm audit` for moderate advisories and above
 
-```sh
-pnpm build
-```
-
-This builds the `chassis` tokens for the `docs` app (`pnpm tokens:site`) and then the site.
-
-### Editing Documentation
-
-All documentation content is stored in `packages/site/content/`. You can add or edit guides, API docs, and usage examples using Markdown or MDX files.
-
-## Development & Testing
-
-### Running Tests
-
-The tests use real tokens and the committed `dist/`, not mocks of Style Dictionary:
-
-```sh
-# Run all tests, including the golden check
-pnpm tokens:test
-```
-
-**Test coverage includes:**
-
-- The golden check: a full build must match `dist/`
-- The build plan, CLI filters and platform configurations
-- The value encoders for iOS, Android and web, and their references
-- The web `var(--…)` reference policy
-- The preprocessor, filters, transforms and token order
-- Logger output
-
-See [packages/tokens/test/README.md](packages/tokens/test/README.md) for the test files and fixtures.
-
-### Debugging
-
-For verbose output with stack traces:
-
-```sh
-DEBUG=1 pnpm tokens --brand chassis
-```
-
-### Build Architecture
-
-The build system uses:
-
-- **Style Dictionary 5.5**: Token transformation engine (Node.js 22 or later)
-- **Tokens Studio SD Transforms 2.0**: Type alignment, math, colour modifiers and theme permutations
-- **Self-contained platform configs**: Each platform (web and its presets, iOS, Android) has its own configuration file
-- **Vitest**: Testing framework
-- **Pure Node.js**: No external CLI parsing dependencies
-
-A build runs in three steps:
-
-1. **Preprocess**: `preprocessor.js` aligns types, splits every font weight into weight and style, and numbers the tokens in source order.
-2. **Transform**: Style Dictionary transforms only what is safe before references are resolved: names, math, colour modifiers, `rem` sizes and CSS shadows.
-3. **Format**: The formats print one line per resolved token. Platform values (`UIColor(…)`, ARGB colours, `sp`/`dp`, quoting, `em`, `var(--…)`, `$…`, `@type/…` and Swift constant references) come from pure functions in `values/` and the web reference policies, which run after resolution.
-
-**Key modules:**
-
-- `build/build.js`: Build plan (one Style Dictionary instance per token-set list) and CLI
-- `build/config/`: Platform-specific configurations
-- `build/preprocessor.js`: Token preprocessing
-- `build/filters.js`: Which tokens go into which file
-- `build/transforms.js`: Custom value transforms that run before resolution (`rem`, `px` and `vw` sizes, CSS shadows)
-- `build/formats.js` and `build/templates/`: Output formats; `templates/references.js` finds the token that an iOS or Android reference names
-- `build/values/`: Value encoders for iOS, Android and web
-- `build/reference-policy.js`: Which web tokens print a reference and which token it names, shared by both web formats
-- `build/css-var-policy.js`: The `var(--…)` names of the Chassis CSS format
-- `build/scss-var-policy.js`: The values and `$…` names of the SCSS variables format
-- `build/icons.js`: The icon assets, an Xcode asset catalog and Android vector drawables, written by Style Dictionary actions from the SVG icon tokens
-- `build/theme-colors.js`: The iOS `Color.swift` whose colours follow the appearance, written after the builds from the light and dark colour files
-- `build/verify.js`: Golden check against `dist/` and the preset baselines
-- `build/logger.js`: Centralized logging utilities
-- `build/utils.js`: Token type groups and number formatting
+Pushing `main` runs the release workflow: the same CI checks on that commit, then `pnpm tokens:verify`, `npm publish` of `@chassis-ui/tokens` if its version is not on npm yet, and a GitHub release. Dependabot opens weekly pull requests for npm packages and GitHub Actions; the actions are pinned to commit SHAs.
 
 ## Chassis Ecosystem
 
@@ -435,6 +319,7 @@ This project is part of the Chassis Design System's multi-repository architectur
 | -------------------------------------------------------- | ------------------------------------------------------------ |
 | [chassis-website](https://github.com/chassis-ui/website) | Main website and shared documentation package                |
 | [chassis-css](https://github.com/chassis-ui/css)         | CSS framework and component library                          |
+| [chassis-react](https://github.com/chassis-ui/react)     | React component library                                      |
 | **chassis-tokens**                                       | **Design token generation and management (this repository)** |
 | [chassis-icons](https://github.com/chassis-ui/icons)     | Icon library and build toolkit                               |
 | [chassis-assets](https://github.com/chassis-ui/assets)   | Multi-platform asset management                              |
@@ -444,13 +329,7 @@ All documentation sites share the `@chassis-ui/docs` package for consistent layo
 
 ## Contributing
 
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature/my-feature`
-3. Make your changes
-4. Build and test: `pnpm tokens && pnpm tokens:verify && pnpm tokens:test`
-5. Commit your changes: `git commit -m "feat: add my feature"`
-6. Push to the branch: `git push origin feature/my-feature`
-7. Open a Pull Request
+Contributions are welcome. [CONTRIBUTING.md](.github/CONTRIBUTING.md) covers the setup, the conventions and what a pull request needs; please follow the [Code of Conduct](.github/CODE_OF_CONDUCT.md). Report security vulnerabilities privately, as described in [SECURITY.md](.github/SECURITY.md).
 
 ## License
 

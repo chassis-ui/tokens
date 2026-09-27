@@ -1,0 +1,158 @@
+# Contributing to Chassis Tokens
+
+Thanks for taking the time to contribute. This doc covers dev setup, conventions, and what a pull
+request needs before it can be merged. For the build and test details it links to the docs that
+are kept up to date, rather than repeating them.
+
+## Dev setup
+
+You need Node.js 22 or later and pnpm (the version in `packageManager` of the root
+`package.json`; `corepack enable` picks it up).
+
+```sh
+git clone https://github.com/chassis-ui/tokens.git chassis-tokens
+cd chassis-tokens
+pnpm install
+```
+
+This repo is a pnpm workspace with two packages:
+
+- [`packages/tokens`](../packages/tokens/) — `@chassis-ui/tokens`, the published package: the
+  token files in `source/`, the Style Dictionary build in `build/`, its tests in `test/` and the
+  output in `dist/`.
+- [`packages/site`](../packages/site/) — `chassis-tokens-site`, the Astro documentation site. It
+  is never published to npm.
+
+The root holds the lint and format configurations, the repository scripts in `build/`, the
+assets submodule in `vendor/assets` (the site needs it; `pnpm dev` and `pnpm site:build` fetch
+and build it) and the CI workflows. Run every command from the root.
+
+To work on the tokens only, install the tokens package and the root's lint tools without the
+site's dependencies:
+
+```sh
+pnpm install --filter @chassis-ui/tokens
+```
+
+## Branch and commit conventions
+
+Commits follow a loose `<type>(<scope>): <description>` convention:
+
+- **Types in use**: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`, `ci`.
+- **Scopes in use**: a platform (`web`, `ios`, `android`), `tokens` for token files, `site` for
+  the documentation site; omitted for changes that span several or none of them.
+- Examples from this repo's history: `fix(tokens): use Light Italic for the sinefil blockquote
+weight`, `fix(android): ...`, `style(site): format the homepage components with Prettier`.
+
+Branch names aren't templated; name yours descriptively (for example `fix/android-letter-spacing`).
+
+## Changing tokens
+
+The token files in `packages/tokens/source/` are in [Tokens Studio](https://tokens.studio)
+format. Edit them in Figma with Tokens Studio, synced to this repository with the file path
+`packages/tokens/source`, or edit the JSON directly. Then:
+
+1. Rebuild the output and review every changed line:
+
+   ```sh
+   pnpm tokens
+   git diff packages/tokens/dist
+   ```
+
+2. Check that `dist/` matches a fresh build:
+
+   ```sh
+   pnpm tokens:verify
+   ```
+
+3. Write the preset baselines again, since they are built from the same tokens, and review their
+   difference the same way:
+
+   ```sh
+   cd packages/tokens
+   for config in test/golden/*.json; do
+     node build/build.js --config "$config" --out "test/golden/$(basename "$config" .json)"
+   done
+   cd ../..
+   pnpm tokens:verify:presets
+   ```
+
+4. Add a line to [`packages/tokens/CHANGELOG.md`](../packages/tokens/CHANGELOG.md) under
+   `## [Unreleased]` (add the heading at the top if it isn't there), saying what changed and what
+   an app has to change, if anything.
+
+Token names are the public API: renaming or removing a token breaks every app that uses it.
+
+## Changing the build
+
+The build in `packages/tokens/build/` follows two rules; please keep them:
+
+- **Templates only print.** Platform values (`UIColor(…)`, ARGB colours, `sp` and `dp`, quoting,
+  references) come from pure functions in `build/values/` and the web reference policies, which
+  run on fully resolved tokens. They are not Style Dictionary value transforms, because
+  referenced tokens would be encoded before the tokens that reference them.
+- **Tests use real tokens.** Fixtures are copied from `source/` and `dist/`; no test mocks
+  Style Dictionary. See [`packages/tokens/test/README.md`](../packages/tokens/test/README.md) for
+  the test files, the fixtures and the preset baselines.
+
+After a change, run:
+
+```sh
+pnpm tokens:lint
+pnpm tokens:test
+pnpm tokens:verify
+pnpm tokens:verify:presets
+```
+
+A change that is meant to change the output also updates `dist/` (`pnpm tokens`), the preset
+baselines (see [Changing tokens](#changing-tokens)) and the CHANGELOG. For iOS and Android output,
+CI does not compile the files yet: check that the Swift files build in an app target and that the
+Android `res/` tree builds in an app module before opening the pull request.
+
+## Changing the site
+
+The pages are in `packages/site/content/`. Run the site locally at
+`http://localhost:4322/tokens/` with:
+
+```sh
+pnpm dev
+```
+
+Before opening a pull request:
+
+```sh
+pnpm site:lint
+pnpm check:astro
+pnpm site:build
+```
+
+## What a pull request needs before merge
+
+- **Passing CI**: `.github/workflows/ci.yml` runs the token lint, tests and golden checks on
+  Node.js 22 and 24, the site lint, `astro check` and site build, Prettier on the whole repository
+  (`pnpm lint:prettier`) and `pnpm audit`. The commands above run the same checks locally.
+- **A CHANGELOG line** in `packages/tokens/CHANGELOG.md` for anything that changes the published
+  package: token names or values, file names, formats or the package contents. A pull request
+  that only touches the site, the docs or the tooling doesn't need one.
+- **The rebuilt `dist/`** committed with any change to tokens or the build that changes the
+  output.
+
+## Releases
+
+A maintainer releases by setting the version and moving the `## [Unreleased]` entries of the
+CHANGELOG under it:
+
+```sh
+pnpm change-version <old_version> <new_version>
+```
+
+Pushing `main` then runs the release workflow: the CI checks, `pnpm tokens:verify`, `npm publish`
+of `@chassis-ui/tokens` if that version is not on npm yet, and a GitHub release.
+
+## Using the issue tracker
+
+Search existing (including closed) issues first, then
+[open a new one](https://github.com/chassis-ui/tokens/issues/new/choose) if your bug or idea isn't
+already covered. For a security vulnerability, don't open a public issue; see
+[`SECURITY.md`](SECURITY.md). Everyone taking part follows the
+[Code of Conduct](CODE_OF_CONDUCT.md).

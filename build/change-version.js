@@ -28,7 +28,7 @@ import { promisify } from 'node:util'
 
 // Configuration: Files that contain version references to be updated
 // These files contain hardcoded version numbers that need to be kept in sync
-const FILES = ['README.md', 'packages/site/config.yml']
+const FILES = ['packages/site/config.yml']
 
 // The published package, whose package.json holds the version
 const PACKAGE_DIR = 'packages/tokens'

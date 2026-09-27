@@ -1,0 +1,11 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Documentation
+    url: https://chassis-ui.com/tokens/docs/getting-started/introduction/
+    about: How to use the tokens on the web, iOS and Android, and how to customize the build.
+  - name: Chassis CSS (the styling layer)
+    url: https://github.com/chassis-ui/css
+    about: Report styling and visual issues against the CSS framework that uses these tokens.
+  - name: Security vulnerability
+    url: https://github.com/chassis-ui/tokens/security/advisories/new
+    about: Report it privately, not as a public issue.
