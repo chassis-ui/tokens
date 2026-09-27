@@ -358,7 +358,7 @@
       }
     },
     {
-      "case": "integer: typography.letterSpacing is a bare number",
+      "case": "float: typography.letterSpacing is a bare number",
       "token": {
         "name": "typography_letter_spacing_base_zero",
         "path": ["typography", "letterSpacing", "base", "zero"],
@@ -366,12 +366,12 @@
         "$value": "0px"
       },
       "expected": {
-        "element": "integer",
+        "element": "item",
         "value": "0"
       }
     },
     {
-      "case": "integer: letterSpacing type is a bare number",
+      "case": "float: letterSpacing type is a bare number",
       "token": {
         "name": "font_context_jumbo_letter_spacing",
         "path": ["font", "context", "jumbo", "letterSpacing"],
@@ -379,12 +379,12 @@
         "$value": "-0.5px"
       },
       "expected": {
-        "element": "integer",
+        "element": "item",
         "value": "-0.5"
       }
     },
     {
-      "case": "integer: opacity as is",
+      "case": "float: opacity as is",
       "token": {
         "name": "opacity_level_10",
         "path": ["opacity", "level", "10"],
@@ -392,7 +392,7 @@
         "$value": "0.1"
       },
       "expected": {
-        "element": "integer",
+        "element": "item",
         "value": "0.1"
       }
     },
@@ -659,7 +659,7 @@
       }
     },
     {
-      "case": "integer reference",
+      "case": "float reference",
       "file": "main.xml",
       "token": {
         "name": "font_context_hero_letter_spacing",
@@ -680,8 +680,8 @@
         }
       },
       "expected": {
-        "element": "integer",
-        "value": "@integer/typography_letter_spacing_base_zero"
+        "element": "item",
+        "value": "@dimen/typography_letter_spacing_base_zero"
       }
     },
     {
@@ -775,7 +775,7 @@
         }
       },
       "expected": {
-        "element": "integer",
+        "element": "item",
         "value": "0"
       }
     },
@@ -801,7 +801,7 @@
         }
       },
       "expected": {
-        "element": "integer",
+        "element": "item",
         "value": "-0.5"
       }
     },

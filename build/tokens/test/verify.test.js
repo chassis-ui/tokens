@@ -42,6 +42,16 @@ describe('undeclared references', () => {
     expect(result.ok, formatReport(result)).toBe(true)
   })
 
+  test('reads the type of a float item', async () => {
+    const result = await check({
+      'android/main.xml': xml(
+        '<item name="opacity_level_10" type="dimen" format="float">0.1</item>',
+        '<item name="opacity_context_dim_slight" type="dimen" format="float">@dimen/opacity_level_10</item>'
+      )
+    })
+    expect(result.ok, formatReport(result)).toBe(true)
+  })
+
   test('reports an Android reference to another type', async () => {
     const result = await check({
       'android/main.xml': xml(

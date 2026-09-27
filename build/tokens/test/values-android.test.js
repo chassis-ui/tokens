@@ -9,7 +9,7 @@
 
 import { readFileSync } from 'node:fs'
 import { afterEach, describe, expect, test, vi } from 'vitest'
-import { encode, reference, resourceType } from '../values/android.js'
+import { encode, reference, resourceKind, resourceTag, resourceType } from '../values/android.js'
 
 const fixture = JSON.parse(
   readFileSync(new URL('./fixtures/mobile-tokens.json', import.meta.url), 'utf8')
@@ -23,8 +23,36 @@ describe('Android encode and resourceType', () => {
   })
 
   test.each(fixture.android)('$case ($token.name)', ({ token, expected }) => {
-    expect(resourceType(token)).toBe(expected.element)
+    expect(resourceTag(token).tag).toBe(expected.element)
     expect(encode(token)).toBe(expected.value)
+  })
+
+  // Android integer resources reject fractions such as 0.4 (aapt2: invalid integer)
+  test.each(['float: opacity as is', 'float: letterSpacing type is a bare number'])(
+    '%s prints a float dimen item',
+    (label) => {
+      const { token } = fixture.android.find((c) => c.case === label)
+      expect(resourceKind(token)).toBe('float')
+      expect(resourceType(token)).toBe('dimen')
+      expect(resourceTag(token)).toEqual({
+        tag: 'item',
+        attributes: ' type="dimen" format="float"'
+      })
+    }
+  )
+
+  test('prints every opacity and letter spacing as a float, whole or not', () => {
+    const opacity = fixture.android.find((c) => c.case === 'float: opacity as is').token
+    expect(resourceKind({ ...opacity, $value: '1' })).toBe('float')
+    const spacing = tokenNamed('typography_letter_spacing_base_zero')
+    expect(spacing.$type).toBe('number')
+    expect(resourceKind(spacing)).toBe('float')
+  })
+
+  test('keeps other number types as integers', () => {
+    const opacity = fixture.android.find((c) => c.case === 'float: opacity as is').token
+    const zIndex = { ...opacity, $type: 'number', path: ['z', 'index', 'top'] }
+    expect(resourceTag(zIndex)).toEqual({ tag: 'integer', attributes: '' })
   })
 
   test('does not modify the token', () => {
@@ -57,7 +85,7 @@ describe('Android reference', () => {
   test.each(fixture.androidReferences)(
     '$case ($token.name in $file)',
     ({ token, target, expected }) => {
-      expect(resourceType(token)).toBe(expected.element)
+      expect(resourceTag(token).tag).toBe(expected.element)
       expect(reference(token, target) ?? encode(token)).toBe(expected.value)
     }
   )
@@ -75,7 +103,7 @@ describe('Android reference', () => {
 
   test('none for a base colour, even when the reference would be safe', () => {
     const { token, target } = caseNamed('base colour with a reference')
-    expect([resourceType(target), encode(target)]).toEqual([resourceType(token), encode(token)])
+    expect([resourceKind(target), encode(target)]).toEqual([resourceKind(token), encode(token)])
     expect(reference(token, target)).toBeUndefined()
     expect(
       reference({ ...token, path: ['color', 'context', ...token.path.slice(2)] }, target)
@@ -96,9 +124,20 @@ describe('Android reference', () => {
     )
   })
 
-  test('none when the target is another element with the same number', () => {
-    const { token, target } = caseNamed('integer reference')
-    const dimen = { ...target, $type: 'dimension', $value: '0' }
+  test('names a float resource as a dimen', () => {
+    const { token, target } = caseNamed('float reference')
+    expect(reference(token, target)).toBe(`@dimen/${target.name}`)
+  })
+
+  test('none when the target is another kind with the same number', () => {
+    const { token, target } = caseNamed('float reference')
+    const dimen = {
+      ...target,
+      name: 'size_unit_0',
+      path: ['size', 'unit', '0'],
+      $type: 'dimension',
+      $value: '0'
+    }
     expect(encode(token)).toBe('0')
     expect(reference(token, dimen)).toBeUndefined()
   })

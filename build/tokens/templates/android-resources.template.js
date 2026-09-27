@@ -9,7 +9,7 @@
  */
 
 import { getReferences } from 'style-dictionary/utils'
-import { encode, reference, resourceType } from '../values/android.js'
+import { encode, reference, resourceTag } from '../values/android.js'
 
 /**
  * Generates an Android resources XML file from the provided tokens.
@@ -32,10 +32,10 @@ export default (opts) => {
     })[0]
 
   const tokenToLine = (token) => {
-    const element = resourceType(token)
+    const { tag, attributes } = resourceTag(token)
     const value = (settings.outputReferences && reference(token, targetOf(token))) || encode(token)
     const comment = token.comment ? ` <!-- ${token.comment} -->` : ''
-    return `<${element} name="${token.name}">${value}</${element}>${comment}`
+    return `<${tag} name="${token.name}"${attributes}>${value}</${tag}>${comment}`
   }
 
   return `<?xml version="1.0" encoding="UTF-8"?>

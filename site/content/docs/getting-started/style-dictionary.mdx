@@ -257,7 +257,7 @@ Generates Android XML resource files:
   <color name="color_context_default_fg_main">#ff161a1b</color>
   <dimen name="space_context_medium">16dp</dimen>
   <dimen name="font_context_lead_font_size">22sp</dimen>
-  <integer name="opacity_level_10">0.1</integer>
+  <item name="opacity_level_10" type="dimen" format="float">0.1</item>
 </resources>
 ```
 
@@ -266,6 +266,7 @@ Generates Android XML resource files:
 - Naming convention: snake_case
 - Size units: `sp` for font sizes, line heights and paragraph spacing, `dp` for other sizes
 - Color format: ARGB hex (`#aarrggbb`)
+- Opacity and letter spacing: float resources (`<item type="dimen" format="float">`), because Android integer resources reject fractions
 - References: optional, with `outputReferences` (see [cx/android-resources](#cxandroid-resources))
 
 ## Output Files
@@ -572,7 +573,7 @@ Generates Android XML resource files:
 
 - snake_case resource names
 - Proper XML structure
-- Type-specific resource tags (`color`, `dimen`, `integer`, `string`)
+- Type-specific resource tags (`color`, `dimen`, float `item`, `integer`, `string`)
 - Android units (dp, sp)
 - Typography and shadow tokens expanded into one resource per part
 - Optional references to other resources, with `outputReferences`

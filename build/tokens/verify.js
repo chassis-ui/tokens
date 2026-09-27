@@ -55,8 +55,9 @@ const MAX_REPORTED_LINES = 5
  * `<type name="name">` in the same file; a SCSS `$name` needs a `$name:` in a SCSS file
  * of the same directory.
  */
-const XML_REFERENCE = /^\s*<\w+ name="[^"]+">@(\w+)\/(\w+)</gm
-const XML_DECLARATION = /^\s*<(\w+) name="([^"]+)">/gm
+const XML_REFERENCE = /^\s*<\w+ name="[^"]+"[^>]*>@(\w+)\/(\w+)</gm
+// `<dimen name="…">`, or `<item name="…" type="dimen" …>`
+const XML_DECLARATION = /^\s*<(\w+) name="([^"]+)"(?: type="(\w+)")?[^>]*>/gm
 const SCSS_VALUE = /^\$[\w-]+: (.*)$/gm
 const SCSS_VARIABLE = /\$([\w-]+)/g
 
@@ -123,7 +124,7 @@ function findUndeclaredReferences(texts) {
     const references = new Set()
     if (extname(file) === '.xml') {
       const declared = new Set(
-        [...text.matchAll(XML_DECLARATION)].map(([, type, name]) => `${type}/${name}`)
+        [...text.matchAll(XML_DECLARATION)].map(([, tag, name, type]) => `${type ?? tag}/${name}`)
       )
       for (const [, type, name] of text.matchAll(XML_REFERENCE)) {
         if (!declared.has(`${type}/${name}`)) references.add(`@${type}/${name}`)

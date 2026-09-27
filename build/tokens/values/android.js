@@ -13,16 +13,22 @@ import { tokenTypes } from '../utils.js'
 import { firstFontFamily, fontWeightName, parseColor } from './shared.js'
 
 /**
- * Resource element per token type group. Groups are checked in `tokenTypes` order and
- * the first group with an element wins, so `letterSpacing` (font and number groups)
- * becomes `integer` and `fontFamily` (font and string groups) becomes `string`.
+ * Resource kind per token type group. Groups are checked in `tokenTypes` order and the
+ * first group with a kind wins, so `fontFamily` (font and string groups) becomes
+ * `string`.
  */
-const RESOURCE_ELEMENTS = {
+const RESOURCE_KINDS = {
   color: 'color',
   number: 'integer',
   size: 'dimen',
   string: 'string'
 }
+
+/**
+ * Types whose values are fractions, such as `0.4` or `-0.5`. Android integer resources
+ * reject them, so they are float resources: `<item type="dimen" format="float">`.
+ */
+const FLOAT_TYPES = ['opacity', 'letterSpacing']
 
 /**
  * Size keys and types that use scale-independent pixels.
@@ -31,18 +37,47 @@ const SP_KEYS = ['fontSize', 'lineHeight', 'paragraphSpacing']
 const SP_TYPES = ['fontSize', 'lineHeight']
 
 /**
- * Returns the Android resource element for a token.
+ * Returns the kind of Android resource a token becomes.
  *
- * @param {Object} token - A resolved token with `$type`.
- * @returns {string} `color`, `integer`, `dimen` or `string`.
+ * @param {Object} token - A resolved token with `$type` and `path`.
+ * @returns {string} `color`, `float`, `integer`, `dimen` or `string`.
  */
-export function resourceType(token) {
+export function resourceKind(token) {
+  if (FLOAT_TYPES.includes(token.$type) || token.path[1] === 'letterSpacing') {
+    return 'float'
+  }
   for (const [group, types] of Object.entries(tokenTypes)) {
-    if (RESOURCE_ELEMENTS[group] && types.includes(token.$type)) {
-      return RESOURCE_ELEMENTS[group]
+    if (RESOURCE_KINDS[group] && types.includes(token.$type)) {
+      return RESOURCE_KINDS[group]
     }
   }
   return 'string'
+}
+
+/**
+ * Returns the Android resource type of a token, as references and the `R` class name
+ * it: a float resource is a `dimen`.
+ *
+ * @param {Object} token - A resolved token with `$type` and `path`.
+ * @returns {string} `color`, `integer`, `dimen` or `string`.
+ */
+export function resourceType(token) {
+  const kind = resourceKind(token)
+  return kind === 'float' ? 'dimen' : kind
+}
+
+/**
+ * Returns the XML element that declares a token and the attributes after its name.
+ *
+ * @param {Object} token - A resolved token with `$type` and `path`.
+ * @returns {Object} e.g. `{ tag: 'dimen', attributes: '' }` or
+ *   `{ tag: 'item', attributes: ' type="dimen" format="float"' }`
+ */
+export function resourceTag(token) {
+  const kind = resourceKind(token)
+  return kind === 'float'
+    ? { tag: 'item', attributes: ' type="dimen" format="float"' }
+    : { tag: kind, attributes: '' }
 }
 
 /**
@@ -102,7 +137,7 @@ const WITHOUT_MATH = /^[+\-*/]?[^+*/]*$/
  * Returns the reference a token prints with `outputReferences`: the resource of the
  * first token its original value references. There is none for base colours, for sizes
  * computed with math, and when the reference would not compile or would change the
- * value: the referenced resource must be of the same element and encode to the same
+ * value: the referenced resource must be of the same kind and encode to the same
  * value.
  *
  * @param {Object} token - A resolved token with `$type`, `$value`, `path` and `original`.
@@ -117,7 +152,8 @@ export function reference(token, target) {
     return undefined
   }
 
-  const element = resourceType(token)
-  if (resourceType(target) !== element || encode(target) !== encode(token)) return undefined
-  return `@${element}/${target.name}`
+  if (resourceKind(target) !== resourceKind(token) || encode(target) !== encode(token)) {
+    return undefined
+  }
+  return `@${resourceType(token)}/${target.name}`
 }

@@ -2,7 +2,7 @@
 
 ## [Unreleased]
 
-The token build was rewritten. The files in `dist/` are unchanged.
+The token build was rewritten. The files in `dist/` are unchanged, except Android opacity and letter spacing (see Fixed).
 
 The presets for teams that do not use Chassis CSS are kept, in the new structure: `web-px`, `web-vw`, the `cx/scss-variables` format, and `outputReferences` for SCSS and Android. Their output is the same as before, with these fixes:
 
@@ -30,6 +30,9 @@ The presets for teams that do not use Chassis CSS are kept, in the new structure
 
 ### Removed
 - The unused `cx/typography/web` and `cx/test` transforms, the `cx/test` format and the `cx/colorTokens` filter
+
+### Fixed
+- Android opacity and letter spacing tokens are float resources (`<item type="dimen" format="float">`) instead of `<integer>`. Android rejects fractions such as `0.4` in integer resources, so `main.xml` and the number files did not compile. Read them with `ResourcesCompat.getFloat`; references to them are `@dimen/…`
 
 ## [0.5.3] - 2026-09-25
 
