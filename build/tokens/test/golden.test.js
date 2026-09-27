@@ -43,8 +43,14 @@ describe('Golden output', () => {
     expect(result.ok, formatReport(result)).toBe(true)
   })
 
-  test('the presets with a baseline are the SCSS variable presets', () => {
-    expect(presets).toEqual(['web-px', 'web-px-references', 'web-scss', 'web-vw'])
+  test('the presets with a baseline', () => {
+    expect(presets).toEqual([
+      'android-references',
+      'web-px',
+      'web-px-references',
+      'web-scss',
+      'web-vw'
+    ])
   })
 
   test.each(presets)('preset %s reproduces its baseline', { timeout: 60_000 }, async (preset) => {

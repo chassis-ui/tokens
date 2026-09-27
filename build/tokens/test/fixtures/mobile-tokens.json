@@ -1,5 +1,5 @@
 {
-  "source": "Resolved chassis/demo tokens from the SD 4.4 build and the matching committed dist lines, extracted 2026-09-27.",
+  "source": "Resolved chassis/demo tokens from the SD 4.4 build and the matching committed dist lines, extracted 2026-09-27. \"androidReferences\" holds tokens of the SD 5.5 build with outputReferences, the first token of the same file that each references, and the matching lines of build/tokens/test/golden/android-references/.",
   "ios": [
     {
       "case": "dimension becomes CGFloat",
@@ -576,6 +576,311 @@
       "expected": {
         "element": "dimen",
         "value": "0.5dp"
+      }
+    }
+  ],
+  "androidReferences": [
+    {
+      "case": "dimen reference",
+      "file": "main.xml",
+      "token": {
+        "name": "size_unit_16",
+        "path": ["size", "unit", "16"],
+        "$type": "dimension",
+        "$value": "16px",
+        "original": {
+          "$value": "{dimension.base.16}"
+        }
+      },
+      "target": {
+        "name": "dimension_base_16",
+        "path": ["dimension", "base", "16"],
+        "$type": "dimension",
+        "$value": "16px",
+        "original": {
+          "$value": "16px"
+        }
+      },
+      "expected": {
+        "element": "dimen",
+        "value": "@dimen/dimension_base_16"
+      }
+    },
+    {
+      "case": "colour reference",
+      "file": "color_light.xml",
+      "token": {
+        "name": "color_accordion_item_fg_color",
+        "path": ["color", "accordion", "item-fg-color"],
+        "$type": "color",
+        "$value": "#161a1b",
+        "original": {
+          "$value": "{color.context.default.fg-main}"
+        }
+      },
+      "target": {
+        "name": "color_context_default_fg_main",
+        "path": ["color", "context", "default", "fg-main"],
+        "$type": "color",
+        "$value": "#161a1b",
+        "original": {
+          "$value": "{color.base.context.light.default.fg-main}"
+        }
+      },
+      "expected": {
+        "element": "color",
+        "value": "@color/color_context_default_fg_main"
+      }
+    },
+    {
+      "case": "string reference of an expanded typography token",
+      "file": "main.xml",
+      "token": {
+        "name": "font_context_jumbo_font_family",
+        "path": ["font", "context", "jumbo", "fontFamily"],
+        "$type": "fontFamily",
+        "$value": "Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif",
+        "original": {
+          "$value": "{typography.fontFamily.text}"
+        }
+      },
+      "target": {
+        "name": "typography_font_family_text",
+        "path": ["typography", "fontFamily", "text"],
+        "$type": "fontFamily",
+        "$value": "Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif",
+        "original": {
+          "$value": "Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif"
+        }
+      },
+      "expected": {
+        "element": "string",
+        "value": "@string/typography_font_family_text"
+      }
+    },
+    {
+      "case": "integer reference",
+      "file": "main.xml",
+      "token": {
+        "name": "font_context_hero_letter_spacing",
+        "path": ["font", "context", "hero", "letterSpacing"],
+        "$type": "letterSpacing",
+        "$value": "0px",
+        "original": {
+          "$value": "{typography.letterSpacing.base.zero}"
+        }
+      },
+      "target": {
+        "name": "typography_letter_spacing_base_zero",
+        "path": ["typography", "letterSpacing", "base", "zero"],
+        "$type": "number",
+        "$value": "0px",
+        "original": {
+          "$value": "{size.unit.0}"
+        }
+      },
+      "expected": {
+        "element": "integer",
+        "value": "@integer/typography_letter_spacing_base_zero"
+      }
+    },
+    {
+      "case": "base colour with a reference",
+      "file": "main.xml",
+      "token": {
+        "name": "color_base_primitive_light_black_contrast",
+        "path": ["color", "base", "primitive", "light", "black", "contrast"],
+        "$type": "color",
+        "$value": "#ffffff",
+        "original": {
+          "$value": "{color.base.primitive.light.white.base}"
+        }
+      },
+      "target": {
+        "name": "color_base_primitive_light_white_base",
+        "path": ["color", "base", "primitive", "light", "white", "base"],
+        "$type": "color",
+        "$value": "#ffffff",
+        "original": {
+          "$value": "#ffffff"
+        }
+      },
+      "expected": {
+        "element": "color",
+        "value": "#ffffffff"
+      }
+    },
+    {
+      "case": "size computed with math",
+      "file": "main.xml",
+      "token": {
+        "name": "size_datepicker_week_width",
+        "path": ["size", "datepicker", "week-width"],
+        "$type": "dimension",
+        "$value": "224px",
+        "original": {
+          "$value": "{size.datepicker.day-width}*7"
+        }
+      },
+      "target": {
+        "name": "size_datepicker_day_width",
+        "path": ["size", "datepicker", "day-width"],
+        "$type": "dimension",
+        "$value": "32px",
+        "original": {
+          "$value": "{size.unit.32}"
+        }
+      },
+      "expected": {
+        "element": "dimen",
+        "value": "224dp"
+      }
+    },
+    {
+      "case": "reference to a token of another file",
+      "file": "main.xml",
+      "token": {
+        "name": "color_accordion_item_fg_color",
+        "path": ["color", "accordion", "item-fg-color"],
+        "$type": "color",
+        "$value": "#161a1b",
+        "original": {
+          "$value": "{color.context.default.fg-main}"
+        }
+      },
+      "expected": {
+        "element": "color",
+        "value": "#ff161a1b"
+      }
+    },
+    {
+      "case": "letter spacing referencing a size: other element",
+      "file": "main.xml",
+      "token": {
+        "name": "typography_letter_spacing_base_zero",
+        "path": ["typography", "letterSpacing", "base", "zero"],
+        "$type": "number",
+        "$value": "0px",
+        "original": {
+          "$value": "{size.unit.0}"
+        }
+      },
+      "target": {
+        "name": "size_unit_0",
+        "path": ["size", "unit", "0"],
+        "$type": "dimension",
+        "$value": "0px",
+        "original": {
+          "$value": "{dimension.base.0}"
+        }
+      },
+      "expected": {
+        "element": "integer",
+        "value": "0"
+      }
+    },
+    {
+      "case": "expanded letter spacing referencing a size: other element",
+      "file": "main.xml",
+      "token": {
+        "name": "font_context_jumbo_letter_spacing",
+        "path": ["font", "context", "jumbo", "letterSpacing"],
+        "$type": "letterSpacing",
+        "$value": "-0.5px",
+        "original": {
+          "$value": "{size.unit.nd05}"
+        }
+      },
+      "target": {
+        "name": "size_unit_nd05",
+        "path": ["size", "unit", "nd05"],
+        "$type": "dimension",
+        "$value": "-0.5px",
+        "original": {
+          "$value": "{dimension.base.nd05}"
+        }
+      },
+      "expected": {
+        "element": "integer",
+        "value": "-0.5"
+      }
+    },
+    {
+      "case": "font size referencing a size: sp, not dp",
+      "file": "main.xml",
+      "token": {
+        "name": "font_context_jumbo_font_size",
+        "path": ["font", "context", "jumbo", "fontSize"],
+        "$type": "dimension",
+        "$value": "96px",
+        "original": {
+          "$value": "{size.unit.96}"
+        }
+      },
+      "target": {
+        "name": "size_unit_96",
+        "path": ["size", "unit", "96"],
+        "$type": "dimension",
+        "$value": "96px",
+        "original": {
+          "$value": "{dimension.base.96}"
+        }
+      },
+      "expected": {
+        "element": "dimen",
+        "value": "96sp"
+      }
+    },
+    {
+      "case": "rgba() colour whose first reference is an opacity: other element",
+      "file": "main.xml",
+      "token": {
+        "name": "bg_blur_default_color",
+        "path": ["bg-blur", "default", "color"],
+        "$type": "color",
+        "$value": "rgba(183, 192, 194, 0.5)",
+        "original": {
+          "$value": "rgba({color.primitive.neutral.30}, {opacity.context.fg-subtle})"
+        }
+      },
+      "target": {
+        "name": "opacity_context_fg_subtle",
+        "path": ["opacity", "context", "fg-subtle"],
+        "$type": "opacity",
+        "$value": "0.5",
+        "original": {
+          "$value": "0.5"
+        }
+      },
+      "expected": {
+        "element": "color",
+        "value": "#80b7c0c2"
+      }
+    },
+    {
+      "case": "rgba() colour whose first reference is a colour: alpha lost",
+      "file": "color_light.xml",
+      "token": {
+        "name": "bg_blur_default_color",
+        "path": ["bg-blur", "default", "color"],
+        "$type": "color",
+        "$value": "rgba(183, 192, 194, 0.5)",
+        "original": {
+          "$value": "rgba({color.primitive.neutral.30}, {opacity.context.fg-subtle})"
+        }
+      },
+      "target": {
+        "name": "color_primitive_neutral_30",
+        "path": ["color", "primitive", "neutral", "30"],
+        "$type": "color",
+        "$value": "#b7c0c2",
+        "original": {
+          "$value": "{color.base.primitive.light.neutral.30}"
+        }
+      },
+      "expected": {
+        "element": "color",
+        "value": "#80b7c0c2"
       }
     }
   ]

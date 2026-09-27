@@ -1,8 +1,9 @@
 /**
  * @file android.js
- * @description Encodes resolved tokens as Android resource values and picks the resource
- *              element for each token. Runs at print time, after Style Dictionary has
- *              resolved every reference.
+ * @description Encodes resolved tokens as Android resource values, picks the resource
+ *              element for each token, and decides when a token prints a reference to
+ *              another resource. Runs at print time, after Style Dictionary has resolved
+ *              every reference.
  *
  * @copyright Copyright (c) 2026 Ozgur Gunes
  * @license MIT
@@ -90,4 +91,33 @@ export function encode(token) {
     return `${parseFloat(value)}dp`
   }
   return String(value)
+}
+
+/**
+ * A size value without math: at most a leading sign or operator, then no operator.
+ */
+const WITHOUT_MATH = /^[+\-*/]?[^+*/]*$/
+
+/**
+ * Returns the reference a token prints with `outputReferences`: the resource of the
+ * first token its original value references. There is none for base colours, for sizes
+ * computed with math, and when the reference would not compile or would change the
+ * value: the referenced resource must be of the same element and encode to the same
+ * value.
+ *
+ * @param {Object} token - A resolved token with `$type`, `$value`, `path` and `original`.
+ * @param {Object} [target] - The first token that the original value references, from
+ *   the same file.
+ * @returns {string|undefined} e.g. `@dimen/size_unit_16`
+ */
+export function reference(token, target) {
+  if (!target) return undefined
+  if (token.$type === 'color' && token.path[1] === 'base') return undefined
+  if (tokenTypes.size.includes(token.$type) && !WITHOUT_MATH.test(token.original.$value)) {
+    return undefined
+  }
+
+  const element = resourceType(token)
+  if (resourceType(target) !== element || encode(target) !== encode(token)) return undefined
+  return `@${element}/${target.name}`
 }

@@ -3,7 +3,8 @@
  * @description Golden check. Builds the tokens into a scratch directory and compares
  *              every file with the committed `dist/`, ignoring the timestamp and
  *              version header lines. Also fails when a token name appears twice in
- *              one file, because Sass rejects duplicate `$cx-*` variables. With
+ *              one file, because Sass rejects duplicate `$cx-*` variables, and when a
+ *              reference names nothing the output declares. With
  *              `--preset`, builds a preset that writes nothing into `dist/` and
  *              compares it with its baseline in `build/tokens/test/golden/`.
  *
@@ -50,6 +51,16 @@ const NAME_PATTERNS = {
 const MAX_REPORTED_LINES = 5
 
 /**
+ * References in values, and the declarations they need. An Android `@type/name` needs a
+ * `<type name="name">` in the same file; a SCSS `$name` needs a `$name:` in a SCSS file
+ * of the same directory.
+ */
+const XML_REFERENCE = /^\s*<\w+ name="[^"]+">@(\w+)\/(\w+)</gm
+const XML_DECLARATION = /^\s*<(\w+) name="([^"]+)">/gm
+const SCSS_VALUE = /^\$[\w-]+: (.*)$/gm
+const SCSS_VARIABLE = /\$([\w-]+)/g
+
+/**
  * Lists files under a directory as sorted, `/`-separated relative paths.
  * Dotfiles (e.g. `.DS_Store`) are ignored. A missing directory yields no files.
  */
@@ -93,6 +104,44 @@ function findDuplicateNames(file, text) {
 }
 
 /**
+ * Returns the references in the output files that name nothing the output declares.
+ *
+ * @param {Map<string, string>} texts - File contents by relative path.
+ * @returns {Object[]} `{ file, references }` per file with undeclared references.
+ */
+function findUndeclaredReferences(texts) {
+  const scssDeclared = new Map()
+  for (const [file, text] of texts) {
+    if (extname(file) !== '.scss') continue
+    const dir = file.slice(0, file.lastIndexOf('/'))
+    if (!scssDeclared.has(dir)) scssDeclared.set(dir, new Set())
+    for (const [, name] of text.matchAll(NAME_PATTERNS['.scss'])) scssDeclared.get(dir).add(name)
+  }
+
+  const result = []
+  for (const [file, text] of texts) {
+    const references = new Set()
+    if (extname(file) === '.xml') {
+      const declared = new Set(
+        [...text.matchAll(XML_DECLARATION)].map(([, type, name]) => `${type}/${name}`)
+      )
+      for (const [, type, name] of text.matchAll(XML_REFERENCE)) {
+        if (!declared.has(`${type}/${name}`)) references.add(`@${type}/${name}`)
+      }
+    } else if (extname(file) === '.scss') {
+      const declared = scssDeclared.get(file.slice(0, file.lastIndexOf('/')))
+      for (const [, value] of text.matchAll(SCSS_VALUE)) {
+        for (const [, name] of value.matchAll(SCSS_VARIABLE)) {
+          if (!declared.has(name)) references.add(`$${name}`)
+        }
+      }
+    }
+    if (references.size > 0) result.push({ file, references: [...references] })
+  }
+  return result
+}
+
+/**
  * Compares two files line by line, position for position.
  */
 function diffLines(expectedText, actualText) {
@@ -121,7 +170,8 @@ function diffLines(expectedText, actualText) {
  * @param {string} actualDir - Output of the build under test.
  * @param {Object} [options]
  * @param {string[]} [options.platforms] - Limit the reference files to these platforms.
- * @returns {Promise<Object>} `{ ok, compared, missing, extra, differing, duplicates }`
+ * @returns {Promise<Object>} `{ ok, compared, missing, extra, differing, duplicates,
+ *   undeclared }`
  */
 export async function compareOutput(expectedDir, actualDir, { platforms = [] } = {}) {
   const inScope = (file) => platforms.length === 0 || platforms.includes(file.split('/')[0])
@@ -138,8 +188,10 @@ export async function compareOutput(expectedDir, actualDir, { platforms = [] } =
     missing: expected.filter((file) => !actualSet.has(file)),
     extra: actual.filter((file) => !expectedSet.has(file)),
     differing: [],
-    duplicates: []
+    duplicates: [],
+    undeclared: []
   }
+  const texts = new Map()
 
   for (const file of expected.filter((file) => actualSet.has(file))) {
     const [expectedText, actualText] = await Promise.all([
@@ -147,6 +199,7 @@ export async function compareOutput(expectedDir, actualDir, { platforms = [] } =
       readFile(join(actualDir, file), 'utf8')
     ])
     result.compared++
+    texts.set(file, actualText)
 
     const diff = diffLines(expectedText, actualText)
     if (diff.count > 0) result.differing.push({ file, ...diff })
@@ -155,11 +208,14 @@ export async function compareOutput(expectedDir, actualDir, { platforms = [] } =
     if (names.length > 0) result.duplicates.push({ file, names })
   }
 
+  result.undeclared = findUndeclaredReferences(texts)
+
   result.ok =
     result.missing.length === 0 &&
     result.extra.length === 0 &&
     result.differing.length === 0 &&
-    result.duplicates.length === 0
+    result.duplicates.length === 0 &&
+    result.undeclared.length === 0
   return result
 }
 
@@ -187,9 +243,13 @@ export function formatReport(result, reference = 'dist/') {
   for (const { file, names } of result.duplicates) {
     out.push(`  duplicate  ${file}: ${names.join(', ')}`)
   }
+  for (const { file, references } of result.undeclared) {
+    out.push(`  undeclared ${file}: ${references.slice(0, MAX_REPORTED_LINES).join(', ')}`)
+  }
   out.push(
     `  ${result.compared} compared, ${result.missing.length} missing, ${result.extra.length} extra, ` +
-      `${result.differing.length} differing, ${result.duplicates.length} with duplicate names`
+      `${result.differing.length} differing, ${result.duplicates.length} with duplicate names, ` +
+      `${result.undeclared.length} with undeclared references`
   )
   return out.join('\n')
 }

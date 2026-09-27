@@ -88,7 +88,8 @@ export default function (StyleDictionary) {
       const { formatting, commentStyle } = options
       const header = await fileHeader({ file, formatting, commentStyle })
       dictionary.allTokens = inSourceOrder(dictionary.allTokens)
-      return androidResourcesTemplate({ dictionary, options, file, header, platform })
+      const settings = { outputReferences: options.outputReferences === true }
+      return androidResourcesTemplate({ dictionary, options, file, header, platform, settings })
     }
   })
 }

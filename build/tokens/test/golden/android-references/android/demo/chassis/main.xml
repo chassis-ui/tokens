@@ -2251,7 +2251,7 @@
   <dimen name="typography_line_height_code_large">28sp</dimen>
   <dimen name="typography_line_height_code_medium">24sp</dimen>
   <dimen name="typography_line_height_code_small">20sp</dimen>
-  <integer name="typography_letter_spacing_base_zero">@integer/size_unit_0</integer>
+  <integer name="typography_letter_spacing_base_zero">0</integer>
   <dimen name="typography_paragraph_spacing_base_zero">0sp</dimen>
   <dimen name="typography_paragraph_spacing_base_small">8sp</dimen>
   <dimen name="typography_paragraph_spacing_base_medium">16sp</dimen>
@@ -2355,8 +2355,8 @@
   <string name="font_context_jumbo_font_family">@string/typography_font_family_text</string>
   <string name="font_context_jumbo_font_weight">bold</string>
   <dimen name="font_context_jumbo_line_height">125sp</dimen>
-  <dimen name="font_context_jumbo_font_size">@dimen/size_unit_96</dimen>
-  <integer name="font_context_jumbo_letter_spacing">@integer/size_unit_nd05</integer>
+  <dimen name="font_context_jumbo_font_size">96sp</dimen>
+  <integer name="font_context_jumbo_letter_spacing">-0.5</integer>
   <dimen name="font_context_jumbo_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
   <string name="font_context_jumbo_text_case">@string/typography_text_case_base_none</string>
   <string name="font_context_jumbo_text_decoration">@string/typography_text_decoration_base_none</string>
@@ -2364,7 +2364,7 @@
   <string name="font_context_hero_font_family">@string/typography_font_family_text</string>
   <string name="font_context_hero_font_weight">bold</string>
   <dimen name="font_context_hero_line_height">125sp</dimen>
-  <dimen name="font_context_hero_font_size">@dimen/size_unit_64</dimen>
+  <dimen name="font_context_hero_font_size">64sp</dimen>
   <integer name="font_context_hero_letter_spacing">@integer/typography_letter_spacing_base_zero</integer>
   <dimen name="font_context_hero_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
   <string name="font_context_hero_text_case">@string/typography_text_case_base_none</string>
@@ -4021,7 +4021,7 @@
   <string name="font_website_hero_title_font_weight">bold</string>
   <dimen name="font_website_hero_title_line_height">125sp</dimen>
   <dimen name="font_website_hero_title_font_size">@dimen/typography_font_size_website_hero_title</dimen>
-  <integer name="font_website_hero_title_letter_spacing">@integer/size_unit_n1</integer>
+  <integer name="font_website_hero_title_letter_spacing">-1</integer>
   <dimen name="font_website_hero_title_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
   <string name="font_website_hero_title_text_case">@string/typography_text_case_base_none</string>
   <string name="font_website_hero_title_text_decoration">@string/typography_text_decoration_base_none</string>
@@ -4039,7 +4039,7 @@
   <string name="font_website_section_title_font_weight">bold</string>
   <dimen name="font_website_section_title_line_height">125sp</dimen>
   <dimen name="font_website_section_title_font_size">@dimen/typography_font_size_website_section_title</dimen>
-  <integer name="font_website_section_title_letter_spacing">@integer/size_unit_nd05</integer>
+  <integer name="font_website_section_title_letter_spacing">-0.5</integer>
   <dimen name="font_website_section_title_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
   <string name="font_website_section_title_text_case">@string/typography_text_case_base_none</string>
   <string name="font_website_section_title_text_decoration">@string/typography_text_decoration_base_none</string>
@@ -6484,13 +6484,13 @@
   <dimen name="shadow_glow_info_spread">@dimen/dimension_base_0</dimen>
   <dimen name="shadow_glow_info_offset_x">@dimen/dimension_base_0</dimen>
   <dimen name="shadow_glow_info_offset_y">@dimen/dimension_base_0</dimen>
-  <color name="bg_blur_default_color">@color/opacity_context_fg_subtle</color>
+  <color name="bg_blur_default_color">#80b7c0c2</color>
   <string name="bg_blur_default_type">dropShadow</string>
   <dimen name="bg_blur_default_blur">@dimen/dimension_base_48</dimen>
   <dimen name="bg_blur_default_spread">@dimen/dimension_base_0</dimen>
   <dimen name="bg_blur_default_offset_x">@dimen/dimension_base_0</dimen>
   <dimen name="bg_blur_default_offset_y">@dimen/dimension_base_0</dimen>
-  <color name="bg_blur_alternate_color">@color/opacity_context_fg_subtle</color>
+  <color name="bg_blur_alternate_color">#80384043</color>
   <string name="bg_blur_alternate_type">dropShadow</string>
   <dimen name="bg_blur_alternate_blur">@dimen/dimension_base_48</dimen>
   <dimen name="bg_blur_alternate_spread">@dimen/dimension_base_0</dimen>

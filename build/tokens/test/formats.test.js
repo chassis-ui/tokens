@@ -1,7 +1,7 @@
 /**
  * @file formats.test.js
- * @description Tests for the token order of the formats and the lookups of the SCSS
- *              template, using real tokens.
+ * @description Tests for the token order of the formats and the lookups of the SCSS and
+ *              Android templates, using real tokens.
  * @copyright Copyright (c) 2026 Ozgur Gunes
  * @license MIT
  */
@@ -11,6 +11,7 @@ import { describe, expect, test } from 'vitest'
 import { inSourceOrder } from '../formats.js'
 import { scssValue } from '../scss-var-policy.js'
 import scssTemplate from '../templates/scss.template.js'
+import androidTemplate from '../templates/android-resources.template.js'
 
 /**
  * A token as the formats see it, reduced to what the order needs.
@@ -110,5 +111,27 @@ describe('SCSS template', () => {
     expect(() => print(token, [token, flag])).toThrow(
       'No file declares a variable for color.context.default.flag'
     )
+  })
+})
+
+describe('Android template', () => {
+  const fixture = JSON.parse(
+    readFileSync(new URL('./fixtures/mobile-tokens.json', import.meta.url), 'utf8')
+  )
+  const { token, target } = fixture.androidReferences.find((c) => c.case === 'dimen reference')
+  const tree = { [target.path[0]]: { base: { [target.path[2]]: target } } }
+  const print = (outputReferences) =>
+    androidTemplate({
+      dictionary: { tokens: tree, allTokens: [token] },
+      header: '',
+      settings: { outputReferences }
+    })
+
+  test('prints the reference with outputReferences', () => {
+    expect(print(true)).toContain(`<dimen name="size_unit_16">@dimen/dimension_base_16</dimen>`)
+  })
+
+  test('prints the value without it', () => {
+    expect(print(false)).toContain(`<dimen name="size_unit_16">16dp</dimen>`)
   })
 })

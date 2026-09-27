@@ -46,7 +46,7 @@ If a phase is too large, split it into `Na`, `Nb` rows. If a fact in this file i
 | 7 | Site docs | Opus | Done | `rewrite(phase 7)` | 2026-09-27 |
 | 8 | Preset baselines, SCSS variable presets (resolved) | Fable | Done | `rewrite(phase 8)` | 2026-09-27 |
 | 9 | SCSS variable references (`outputReferences`) | Opus | Done | `rewrite(phase 9)` | 2026-09-27 |
-| 10 | Android references (`outputReferences`) | Opus | Not started | | |
+| 10 | Android references (`outputReferences`) | Opus | Done | `rewrite(phase 10)` | 2026-09-27 |
 | 11 | Preset docs | Opus | Not started | | |
 
 ## Ground rules
@@ -117,6 +117,7 @@ What the old build printed:
 - Resolved typography maps quote the whole family list as one string (`"font-family": "Inter, system-ui, …"`). With references the map holds the variable, which is an unquoted list.
 - Letter spacing prints the number of the size with `em`. With `cx/size/rem` and `cx/size/vw` the size is divided by 16 first (`-0.0313em`). With `cx/size/px` it is not: `font.context.jumbo` prints `"letter-spacing": -0.5em`.
 - The 18 broken Android lines use the resource type of the referencing token, not of the target: `@integer/size_unit_0`, `@integer/size_unit_nd05` and `@integer/size_unit_n1` (the targets are `dimen`), and `@color/opacity_context_fg_subtle` (the target is not a colour).
+- Correction of 2026-09-27 (Phase 10): the 18 lines are among the 30, so 30 lines are affected, not 48.
 - The 30 Android lines with another meaning: font sizes that reference `size.unit.*` (`96sp` becomes `@dimen/size_unit_96`, which is `96dp`), letter spacing, and the `bg-blur` colours, whose `rgba({colour}, {opacity})` value prints a reference to the colour alone and loses the alpha (`#80b7c0c2` becomes `#ffb7c0c2`).
 
 ## Design decisions
@@ -129,7 +130,7 @@ Added 2026-09-27 for Phases 8 to 10. The presets come back inside the structure 
 - **Units** are Style Dictionary transforms again (`cx/size/px`, `cx/size/vw`), backed by pure functions in `values/web.js`, like `cx/size/rem`. They are safe before resolution.
 - **SCSS references** are a second policy module beside `css-var-policy.js`. The rules both share are in `reference-policy.js`: eligibility, which token a reference names, the chain follow and the typography maps. They differ in the name they print: `$<name of the named token>`. The format `cx/scss-variables` prints references when `options.outputReferences` is `true`, as in the old build; without it the preset prints resolved values. `chassis.build.options.<platform>` is merged into the Style Dictionary options of that platform, so `outputReferences` can be set without editing a config file.
 - **Android references** are one pure function in `values/android.js` that takes the token and the token it references and returns `@type/name` or nothing. The template passes the lookup in, as the SCSS template does.
-- **A reference is printed only when it is safe:** the target is emitted, the resource type of the target is used, and the encoded target equals the encoded token. This changes 48 Android lines of the old output. Ozgur confirmed it on 2026-09-27.
+- **A reference is printed only when it is safe:** the target is emitted, the resource type of the target is used, and the encoded target equals the encoded token. This changes 48 Android lines of the old output. Ozgur confirmed it on 2026-09-27. (Phase 10: the target must be in the same file, as in the old build, and of the same element as the token, so the type printed is both. The change is 30 lines; the 18 broken lines are among the 30.)
 
 ### Platform encoding happens after resolution, in pure functions
 
@@ -502,10 +503,25 @@ Behaviour of the SCSS variables format in cases that no current token reaches, c
 
 Goal: `outputReferences: true` on the Android config prints `@type/name` references that compile.
 
-- [ ] `values/android.js`: `reference(token, target)`, with the two old conditions (no references for `color.base`, none for math on sizes) and the safety rule from Design decisions if Ozgur approves it.
-- [ ] The template passes the reference lookup in and prints `reference(…) ?? encode(token)`.
-- [ ] Unit tests on real tokens: a plain reference, a `color.base` token, math on a size, and one token for each of the broken cases under Facts about the presets.
-- [ ] Acceptance: `verify.js --preset android-references` green, apart from the approved lines; every `@type/name` in the output names an element of that type in the same build; `pnpm tokens:verify` green.
+- [x] `values/android.js`: `reference(token, target)`, with the two old conditions (no references for `color.base`, none for math on sizes) and the safety rule from Design decisions if Ozgur approves it.
+- [x] The template passes the reference lookup in and prints `reference(…) ?? encode(token)`.
+- [x] Unit tests on real tokens: a plain reference, a `color.base` token, math on a size, and one token for each of the broken cases under Facts about the presets.
+- [x] Acceptance: `verify.js --preset android-references` green, apart from the approved lines; every `@type/name` in the output names an element of that type in the same build; `pnpm tokens:verify` green.
+
+Result: `outputReferences` on the Android config prints `@type/name` references again, set like the SCSS one: `"options": { "android": { "outputReferences": true } }`. Compared with the old build, 14213 references are the same and 30 lines print their value instead. Each of the 30 lines equals the line of the committed `dist/android/demo/chassis/`:
+
+| Tokens | Files | Lines | Old build | Problem |
+| --- | --- | --- | --- | --- |
+| four letter spacing tokens | `main`, `number_*` | 16 | `@integer/size_unit_0`, `…_nd05`, `…_n1` | no such `<integer>`: the target is a `<dimen>` |
+| `font_context_jumbo_font_size`, `font_context_hero_font_size` | `main`, `number_*` | 8 | `@dimen/size_unit_96`, `…_64` | `96dp` instead of `96sp` |
+| `bg_blur_default_color`, `bg_blur_alternate_color` | `main` | 2 | `@color/opacity_context_fg_subtle` | no such `<color>` |
+| `bg_blur_default_color`, `bg_blur_alternate_color` | `color_*` | 4 | `@color/color_primitive_neutral_30`, `…_70` | the alpha of `rgba()` is lost |
+
+The rule, in `reference(token, target)`: the target is the first token that the original value references, looked up in the file's own tokens as before. There is no reference for a base colour, for a size computed with math, when the target is another element, or when the target encodes to another value. The element check changes no line of the current output, because every element mismatch also has another value, so only its unit test covers it.
+
+The golden comparison now also fails when an `@type/name` names no `<type name="name">` of the same file, or a SCSS `$name` names no variable of the SCSS files in the same directory. `dist/` and all five baselines pass; the old Android output fails it with 18 references in 4 files.
+
+The iOS format has no `outputReferences`, as before.
 
 ## Phase 11: preset docs
 
@@ -572,3 +588,4 @@ Append-only.
 - 2026-09-27 (preset decisions): Ozgur confirmed all six open decisions. The plan was committed as `rewrite(plan): add phases 8 to 11 for the adopter presets`.
 - 2026-09-27 (Phase 8, Fable 5.1): Built five baselines from `main` (`a072bf9`) with a script and committed them under `build/tokens/test/golden/`. Added the presets `web-scss`, `web-px` and `web-vw`, the transforms `cx/size/px` and `cx/size/vw`, the format `cx/scss-variables` with resolved values, `--config` on the build and `--preset` on the verifier. Renamed the SCSS template to `scss.template.js`. Added `scss-var-policy.test.js` (43 tests) with a fixture of real tokens of the three presets, and tests for the size functions, the transforms, the configurations, `--config` and the preset baselines. Verified: `pnpm tokens:verify:presets` passes, 7 of 7 files for each of the three presets; `pnpm tokens:verify` passes, 42 of 42 files; `pnpm tokens:test` passes, 445 tests; lint reports no warnings; `dist/` untouched. Injected five regressions (px letter spacing not divided, family list not quoted, vw not divided, preset format ignored, line height not relative); each failed the intended tests. Surprises: (1) only 3 lines of `web-px` have a letter spacing other than zero. (2) The plan named a `references` setting for the factory; the code uses `format`, because the old interface selects references with `options.outputReferences`, and the plan was corrected. (3) The baselines depend on `tokens/`, so a token change needs new baselines; the tests README says how. Next: Phase 9.
 - 2026-09-27 (Phase 9, Opus 5.5): Moved the rules both web reference policies share into `build/tokens/reference-policy.js`; `css-var-policy.js` keeps only the Chassis CSS names (330 to 141 lines). Added `outputReferences` to `scss-var-policy.js` with SCSS variable names, `references.variable` in the SCSS template, `chassis.build.options` for Style Dictionary options by platform, and the `web-px-references` check. Added `reference-policy.test.js`, reference cases in `scss-var-policy.test.js` (34 captured from the real build, 5 constructed), template tests in `formats.test.js`, `loadConfig` tests and a config test; moved the `isReference` and `referencePath` tests. Verified: `pnpm tokens:verify:presets` passes, 7 of 7 files for each of the four presets; `pnpm tokens:verify` passes, 42 of 42 files; `pnpm tokens:test` passes, 517 tests; lint reports no warnings; `dist/` untouched. Injected seven regressions (shadow in the SCSS groups, no `base.context` rule, follow naming `base.context`, font style as a value, no declared-variable check, `outputReferences` ignored, platform options not merged); each failed the intended tests. Surprises: (1) the old SCSS format named followed border radii `<group>.context.<step>`, not the `base.context` token the chain ends at, which is also what the Chassis CSS names mean; this became the shared `referenceTarget`. (2) The target of a SCSS reference is usually in another file (`color-<theme>.scss`, `number-<screen>.scss`), which the file's own dictionary does not hold, so the variable lookup uses `dictionary.unfilteredTokens`. (3) The plan asked to read `outputReferences` in the web config factory; it is read from the platform options instead, which the old interface used and `chassis.build.options` can set. Next: Phase 10.
+- 2026-09-27 (Phase 10, Opus 5.5): Added `reference(token, target)` to `values/android.js` with the two old conditions and the safe-reference rule; the Android template looks the target up in the file's tokens and prints the reference only with `outputReferences`. Added the `android-references` check and wrote the 30 approved lines into its baseline. Added the undeclared-reference check to `verify.js`. Added 19 tests in `values-android.test.js` with 12 cases captured from the real build, Android template tests in `formats.test.js`, and `verify.test.js`. Verified: all 30 changed lines equal the `dist/` lines; the 14213 references left each name an element of the same type in the same file with the same value; `pnpm tokens:verify:presets` passes for the five presets; `pnpm tokens:verify` passes, 42 of 42 files; `pnpm tokens:test` passes, 544 tests; lint reports no warnings; `dist/` untouched. Injected seven regressions (no value check, no element check, no base colour rule, no math rule, `outputReferences` ignored, undeclared check off twice); each failed the intended tests. Surprises: (1) the plan counted 48 affected lines; the 18 broken ones are among the 30 with another value, so 30 lines changed. (2) Removing the element check changes no output line, because each mismatch also changes the value. (3) Old Android references only reach tokens of the same file, because Style Dictionary gives the format the filtered tokens; this was kept, so `main.xml` colours that reference theme colours print values. Next: Phase 11.

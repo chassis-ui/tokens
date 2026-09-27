@@ -1,0 +1,88 @@
+/**
+ * @file verify.test.js
+ * @description Tests for the undeclared-reference check of the golden comparison, on
+ *              lines copied from the preset baselines.
+ * @copyright Copyright (c) 2026 Ozgur Gunes
+ * @license MIT
+ */
+
+import { mkdir, mkdtemp, rm, writeFile } from 'node:fs/promises'
+import { tmpdir } from 'node:os'
+import { dirname, join } from 'node:path'
+import { afterAll, describe, expect, test } from 'vitest'
+import { compareOutput, formatReport } from '../verify.js'
+
+describe('undeclared references', () => {
+  const dirs = []
+
+  /**
+   * Writes the files into a new directory and compares it with itself.
+   */
+  async function check(files) {
+    const dir = await mkdtemp(join(tmpdir(), 'chassis-tokens-verify-'))
+    dirs.push(dir)
+    for (const [file, text] of Object.entries(files)) {
+      await mkdir(dirname(join(dir, file)), { recursive: true })
+      await writeFile(join(dir, file), text)
+    }
+    return compareOutput(dir, dir)
+  }
+
+  afterAll(async () => {
+    await Promise.all(dirs.map((dir) => rm(dir, { recursive: true, force: true })))
+  })
+
+  const xml = (...lines) => `<resources>\n  ${lines.join('\n  ')}\n</resources>\n`
+  const dimen = '<dimen name="size_unit_0">0dp</dimen>'
+
+  test('accepts an Android reference to an element of the same type in the file', async () => {
+    const result = await check({
+      'android/main.xml': xml(dimen, '<dimen name="space_unit_0">@dimen/size_unit_0</dimen>')
+    })
+    expect(result.ok, formatReport(result)).toBe(true)
+  })
+
+  test('reports an Android reference to another type', async () => {
+    const result = await check({
+      'android/main.xml': xml(
+        dimen,
+        '<integer name="typography_letter_spacing_base_zero">@integer/size_unit_0</integer>'
+      )
+    })
+    expect(result.ok).toBe(false)
+    expect(result.undeclared).toEqual([
+      { file: 'android/main.xml', references: ['@integer/size_unit_0'] }
+    ])
+    expect(formatReport(result)).toContain('undeclared android/main.xml: @integer/size_unit_0')
+  })
+
+  test('reports an Android reference to another file', async () => {
+    const result = await check({
+      'android/main.xml': xml('<dimen name="space_unit_0">@dimen/size_unit_0</dimen>'),
+      'android/number.xml': xml(dimen)
+    })
+    expect(result.undeclared).toEqual([
+      { file: 'android/main.xml', references: ['@dimen/size_unit_0'] }
+    ])
+  })
+
+  test('accepts a SCSS variable of another file in the same directory', async () => {
+    const result = await check({
+      'web/main.scss':
+        '$prefix: cx- !default;\n$cx-color-accordion-item-fg-color: $cx-color-context-default-fg-main !default;\n',
+      'web/color-light.scss': '$cx-color-context-default-fg-main: #161a1b !default;\n'
+    })
+    expect(result.ok, formatReport(result)).toBe(true)
+  })
+
+  test('reports a SCSS variable that no file of the directory declares', async () => {
+    const result = await check({
+      'web/main.scss':
+        '$cx-font-context-jumbo: ("font-family": $cx-typography-font-family-text, "font-weight": 700) !default;\n',
+      'other/string.scss': '$cx-typography-font-family-text: "Inter" !default;\n'
+    })
+    expect(result.undeclared).toEqual([
+      { file: 'web/main.scss', references: ['$cx-typography-font-family-text'] }
+    ])
+  })
+})
