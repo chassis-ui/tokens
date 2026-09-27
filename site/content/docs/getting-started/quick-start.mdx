@@ -202,7 +202,7 @@ The build system uses Style Dictionary with custom transforms and formatters. Se
 
 ## Use Tokens in Your Project
 
-After building tokens, you can integrate them into your applications. Tokens can be imported as CSS, SCSS variables, JavaScript modules, or platform-specific formats.
+After building tokens, you can integrate them into your applications. Tokens are built as SCSS variables for the web, Swift classes for iOS and XML resources for Android.
 
 ### Import Built Tokens
 
@@ -212,16 +212,18 @@ Import tokens directly into your project, or install the package from npm:
 # Install from npm
 npm install @chassis-ui/tokens
 
-# Or copy built tokens to your project
-cp -r dist/css/* /path/to/project/src/styles/
+# Or copy the built SCSS of one app and brand to your project
+cp -r dist/web/docs/chassis/* /path/to/project/src/styles/tokens/
 
 # Create a sync script in your project's package.json
 {
   "scripts": {
-    "sync-tokens": "cp -r node_modules/@chassis-ui/tokens/dist/css/* src/styles/tokens/"
+    "sync-tokens": "cp -r node_modules/@chassis-ui/tokens/dist/web/docs/chassis/* src/styles/tokens/"
   }
 }
 ```
+
+Replace `docs` and `chassis` with your app and brand. The npm package contains the web SCSS files only; the iOS and Android files are in `dist/ios/` and `dist/android/` of the repository.
 
 ### Platform Integrations
 
@@ -244,7 +246,7 @@ Key directories in the Chassis Tokens repository:
 |-----------|---------|
 | `tokens/` | Source token JSON files managed by Tokens Studio |
 | `build/tokens/` | Build scripts, transforms, and formatters for Style Dictionary |
-| `dist/` | Built tokens for each platform (CSS, SCSS, JS, iOS, Android) |
+| `dist/` | Built tokens for each platform (SCSS, Swift, Android XML) |
 | `site/` | Documentation website |
 </CxTable>
 
