@@ -4,8 +4,8 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Sun, 27 Sep 2026 07:17:11 GMT
-// Chassis - Tokens v0.5.3
+// Generated on Sun, 27 Sep 2026 20:31:53 GMT
+// Chassis - Tokens v0.6.0
 // Copyright 2026 Ozgur Gunes
 // Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
 
@@ -225,11 +225,11 @@ $cx-size-modal-window-small-w: 360px !default;
 $cx-size-modal-window-xlarge-h: 720px !default;
 $cx-size-modal-window-large-h: 600px !default;
 $cx-size-modal-window-medium-h: 480px !default;
-$cx-size-modal-window-small-h: 640px !default;
+$cx-size-modal-window-small-h: 360px !default;
 $cx-size-notification-icon: 28px !default;
 $cx-size-nav-left-width: 256px !default;
 $cx-size-nav-left-width-expanded: 256px !default;
-$cx-size-nav-left-wdith-collapsed: 72px !default;
+$cx-size-nav-left-width-collapsed: 72px !default;
 $cx-size-nav-top-height: 64px !default;
 $cx-size-pagination-dot-idle-h: 8px !default;
 $cx-size-pagination-dot-idle-w: 8px !default;
@@ -282,7 +282,7 @@ $cx-space-unit-104: 104px !default;
 $cx-space-unit-112: 112px !default;
 $cx-space-unit-120: 120px !default;
 $cx-space-unit-128: 128px !default;
-$cx-space-unit-136: 128px !default;
+$cx-space-unit-136: 136px !default;
 $cx-space-unit-05: 0.5px !default;
 $cx-space-unit-d05: 0.5px !default;
 $cx-space-unit-d15: 1.5px !default;
@@ -470,9 +470,6 @@ $cx-opacity-context-dim-main: 0.7 !default;
 $cx-opacity-context-dim-subtle: 0.3 !default;
 $cx-opacity-context-dim-slight: 0.05 !default;
 $cx-opacity-context-transparent-color: 0 !default;
-$cx-figma-website-size-page-w: 400px !default;
-$cx-figma-website-size-slide-min-w: 320px !default;
-$cx-figma-website-size-card-min-w: 320px !default;
 $cx-typography-font-size-text-5xlarge: 44px !default;
 $cx-typography-font-size-text-4xlarge: 38px !default;
 $cx-typography-font-size-text-3xlarge: 32px !default;
@@ -644,9 +641,6 @@ $cx-border-radius-tab-medium: 6px !default;
 $cx-border-radius-tab-large: 8px !default;
 $cx-border-radius-tab-small: 6px !default;
 $cx-border-radius-tooltip-main: 4px !default;
-$cx-border-width-context-none: 0px !default;
-$cx-border-width-context-thin: 0.5px !default;
-$cx-border-width-context-thick: 2px !default;
 $cx-border-width-context-zero: 0px !default;
 $cx-border-width-context-small: 0.5px !default;
 $cx-border-width-context-medium: 1px !default;

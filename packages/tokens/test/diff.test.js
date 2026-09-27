@@ -255,15 +255,15 @@ describe('compareDist', () => {
   test('reports the Phase 22 radius lines as additions and lists 25 of them', async () => {
     const result = await trees({
       base: {
-        [SWIFT_SMALL]: (text) => text.replace(/^.*static let (Shadow|BgBlur)\w*Radius = .*\n/gm, '')
+        [SWIFT_SMALL]: (text) => text.replace(/^.*static let Shadow\w*Radius = .*\n/gm, '')
       }
     })
     expect(result.files).toHaveLength(1)
     const [entry] = result.files
-    expect(entry.added.length).toBe(396)
+    expect(entry.added.length).toBe(394)
     expect(entry.removed.length + entry.changed.length + entry.renamed.length).toBe(0)
     const report = formatReport(result)
-    expect(report).toContain('- …and 371 more')
+    expect(report).toContain('- …and 369 more')
     expect(report).not.toContain('Breaking')
   })
 

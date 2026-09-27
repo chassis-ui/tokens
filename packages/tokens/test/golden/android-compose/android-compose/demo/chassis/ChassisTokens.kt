@@ -3,8 +3,8 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Sun, 27 Sep 2026 11:29:41 GMT
-// Chassis - Tokens v0.5.3
+// Generated on Sun, 27 Sep 2026 20:31:46 GMT
+// Chassis - Tokens v0.6.0
 // Copyright 2026 Ozgur Gunes
 // Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
 
@@ -231,11 +231,11 @@ object ChassisTokens {
     val sizeModalWindowXlargeH get() = 720.dp
     val sizeModalWindowLargeH get() = 600.dp
     val sizeModalWindowMediumH get() = 480.dp
-    val sizeModalWindowSmallH get() = 640.dp
+    val sizeModalWindowSmallH get() = 360.dp
     val sizeNotificationIcon get() = 28.dp
     val sizeNavLeftWidth get() = 256.dp
     val sizeNavLeftWidthExpanded get() = 256.dp
-    val sizeNavLeftWdithCollapsed get() = 72.dp
+    val sizeNavLeftWidthCollapsed get() = 72.dp
     val sizeNavTopHeight get() = 64.dp
     val sizePaginationDotIdleH get() = 8.dp
     val sizePaginationDotIdleW get() = 8.dp
@@ -288,7 +288,7 @@ object ChassisTokens {
     val spaceUnit112 get() = 112.dp
     val spaceUnit120 get() = 120.dp
     val spaceUnit128 get() = 128.dp
-    val spaceUnit136 get() = 128.dp
+    val spaceUnit136 get() = 136.dp
     val spaceUnit05 get() = 0.5.dp
     val spaceUnitD05 get() = 0.5.dp
     val spaceUnitD15 get() = 1.5.dp
@@ -441,7 +441,7 @@ object ChassisTokens {
     val spaceSegmentSmallPaddingY get() = 3.dp
     val spaceSegmentSmallPaddingX get() = 8.dp
     val spaceSegmentSmallGap get() = 8.dp
-    val spaceWebsiteSectionPaddingY get() = 48.dp
+    val spaceWebsiteSectionPaddingY get() = 64.dp
     val spaceWebsiteSectionPaddingX get() = 24.dp
     val spaceWebsiteSectionGap get() = 48.dp
     val spaceWebsiteContentHeaderGap get() = 16.dp
@@ -476,11 +476,6 @@ object ChassisTokens {
     val opacityContextDimSubtle get() = 0.3f
     val opacityContextDimSlight get() = 0.05f
     val opacityContextTransparentColor get() = 0f
-    val figmaWebsiteSizePageW get() = 1512.dp
-    val figmaWebsiteSizeSlideMinW get() = 560.dp
-    val figmaWebsiteSizeCardMinW get() = 560.dp
-    val figmaWebsiteVariantNav get() = "large"
-    val figmaWebsiteVariantSection get() = "large"
     val colorBasePrimitiveLightBlackBase get() = Color(0xFF000000)
     val colorBasePrimitiveLightBlackTransparent get() = Color(0x00000000)
     val colorBasePrimitiveLightBlackContrast get() = Color(0xFFFFFFFF)
@@ -4089,9 +4084,6 @@ object ChassisTokens {
     val fontWebsiteModuleTitleTextCase get() = "none"
     val fontWebsiteModuleTitleTextDecoration get() = "none"
     val fontWebsiteModuleTitleFontStyle get() = "normal"
-    val borderWidthContextNone get() = 0.dp
-    val borderWidthContextThin get() = 0.5.dp
-    val borderWidthContextThick get() = 2.dp
     val borderWidthContextZero get() = 0.dp
     val borderWidthContextSmall get() = 0.5.dp
     val borderWidthContextMedium get() = 1.dp
@@ -4147,39 +4139,47 @@ object ChassisTokens {
     val gridGutterXsmall get() = 8.dp
     val shadowContextNoneBlur get() = 0.dp
     val shadowContextNoneSpread get() = 0.dp
+    val shadowContextNoneColor get() = Color(0x00000000)
     val shadowContextNoneType get() = "dropShadow"
     val shadowContextNoneOffsetX get() = 0.dp
     val shadowContextNoneOffsetY get() = 0.dp
+    val shadowContextSmall1Color get() = Color(0x1A000000)
     val shadowContextSmall1Type get() = "dropShadow"
     val shadowContextSmall1Blur get() = 8.dp
     val shadowContextSmall1Spread get() = (-2).dp
     val shadowContextSmall1OffsetX get() = 0.dp
     val shadowContextSmall1OffsetY get() = 2.dp
+    val shadowContextSmall2Color get() = Color(0x1A000000)
     val shadowContextSmall2Type get() = "dropShadow"
     val shadowContextSmall2Blur get() = 4.dp
     val shadowContextSmall2Spread get() = (-1).dp
     val shadowContextSmall2OffsetX get() = 0.dp
     val shadowContextSmall2OffsetY get() = 1.dp
+    val shadowContextMedium1Color get() = Color(0x1A000000)
     val shadowContextMedium1Type get() = "dropShadow"
     val shadowContextMedium1Blur get() = 16.dp
     val shadowContextMedium1Spread get() = (-4).dp
     val shadowContextMedium1OffsetX get() = 0.dp
     val shadowContextMedium1OffsetY get() = 4.dp
+    val shadowContextMedium2Color get() = Color(0x1A000000)
     val shadowContextMedium2Type get() = "dropShadow"
     val shadowContextMedium2Blur get() = 8.dp
     val shadowContextMedium2Spread get() = (-2).dp
     val shadowContextMedium2OffsetX get() = 0.dp
     val shadowContextMedium2OffsetY get() = 2.dp
+    val shadowContextLarge1Color get() = Color(0x1A000000)
     val shadowContextLarge1Type get() = "dropShadow"
     val shadowContextLarge1Blur get() = 24.dp
     val shadowContextLarge1Spread get() = (-6).dp
     val shadowContextLarge1OffsetX get() = 0.dp
     val shadowContextLarge1OffsetY get() = 6.dp
+    val shadowContextLarge2Color get() = Color(0x1A000000)
     val shadowContextLarge2Type get() = "dropShadow"
     val shadowContextLarge2Blur get() = 12.dp
     val shadowContextLarge2Spread get() = (-3).dp
     val shadowContextLarge2OffsetX get() = 0.dp
     val shadowContextLarge2OffsetY get() = 3.dp
+    val shadowContextInsetColor get() = Color(0x1A000000)
     val shadowContextInsetType get() = "innerShadow"
     val shadowContextInsetBlur get() = 4.dp
     val shadowContextInsetSpread get() = 0.dp
@@ -4187,39 +4187,47 @@ object ChassisTokens {
     val shadowContextInsetOffsetY get() = 2.dp
     val shadowContextIdleBlur get() = 0.dp
     val shadowContextIdleSpread get() = 0.dp
+    val shadowContextIdleColor get() = Color(0x00000000)
     val shadowContextIdleType get() = "dropShadow"
     val shadowContextIdleOffsetX get() = 0.dp
     val shadowContextIdleOffsetY get() = 0.dp
     val shadowContextDisabledBlur get() = 0.dp
     val shadowContextDisabledSpread get() = 0.dp
+    val shadowContextDisabledColor get() = Color(0x00000000)
     val shadowContextDisabledType get() = "dropShadow"
     val shadowContextDisabledOffsetX get() = 0.dp
     val shadowContextDisabledOffsetY get() = 0.dp
+    val shadowContextHover1Color get() = Color(0x1A000000)
     val shadowContextHover1Type get() = "dropShadow"
     val shadowContextHover1Blur get() = 16.dp
     val shadowContextHover1Spread get() = (-4).dp
     val shadowContextHover1OffsetX get() = 0.dp
     val shadowContextHover1OffsetY get() = 4.dp
+    val shadowContextHover2Color get() = Color(0x1A000000)
     val shadowContextHover2Type get() = "dropShadow"
     val shadowContextHover2Blur get() = 8.dp
     val shadowContextHover2Spread get() = (-2).dp
     val shadowContextHover2OffsetX get() = 0.dp
     val shadowContextHover2OffsetY get() = 2.dp
+    val shadowContextPress1Color get() = Color(0x1A000000)
     val shadowContextPress1Type get() = "dropShadow"
     val shadowContextPress1Blur get() = 8.dp
     val shadowContextPress1Spread get() = (-2).dp
     val shadowContextPress1OffsetX get() = 0.dp
     val shadowContextPress1OffsetY get() = 2.dp
+    val shadowContextPress2Color get() = Color(0x1A000000)
     val shadowContextPress2Type get() = "dropShadow"
     val shadowContextPress2Blur get() = 4.dp
     val shadowContextPress2Spread get() = (-1).dp
     val shadowContextPress2OffsetX get() = 0.dp
     val shadowContextPress2OffsetY get() = 1.dp
+    val shadowContextFocusColor get() = Color(0xFF00A4CC)
     val shadowContextFocusType get() = "dropShadow"
     val shadowContextFocusBlur get() = 4.dp
     val shadowContextFocusSpread get() = 0.dp
     val shadowContextFocusOffsetX get() = 0.dp
     val shadowContextFocusOffsetY get() = 0.dp
+    val shadowContextHighlightColor get() = Color(0xFF00A4CC)
     val shadowContextHighlightType get() = "dropShadow"
     val shadowContextHighlightBlur get() = 4.dp
     val shadowContextHighlightSpread get() = 0.dp
@@ -6493,16 +6501,4 @@ object ChassisTokens {
     val shadowGlowInfoSpread get() = 0.dp
     val shadowGlowInfoOffsetX get() = 0.dp
     val shadowGlowInfoOffsetY get() = 0.dp
-    val bgBlurDefaultColor get() = Color(0x80B7C0C2)
-    val bgBlurDefaultType get() = "dropShadow"
-    val bgBlurDefaultBlur get() = 48.dp
-    val bgBlurDefaultSpread get() = 0.dp
-    val bgBlurDefaultOffsetX get() = 0.dp
-    val bgBlurDefaultOffsetY get() = 0.dp
-    val bgBlurAlternateColor get() = Color(0x80384043)
-    val bgBlurAlternateType get() = "dropShadow"
-    val bgBlurAlternateBlur get() = 48.dp
-    val bgBlurAlternateSpread get() = 0.dp
-    val bgBlurAlternateOffsetX get() = 0.dp
-    val bgBlurAlternateOffsetY get() = 0.dp
 }

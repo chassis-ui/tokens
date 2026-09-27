@@ -4,8 +4,8 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Sun, 27 Sep 2026 11:29:40 GMT
-// Chassis - Tokens v0.5.3
+// Generated on Sun, 27 Sep 2026 20:31:51 GMT
+// Chassis - Tokens v0.6.0
 // Copyright 2026 Ozgur Gunes
 // Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
 
@@ -226,11 +226,11 @@ public enum ChassisTokensNumberMedium {
     public static let SizeModalWindowXlargeH = CGFloat(720)
     public static let SizeModalWindowLargeH = CGFloat(600)
     public static let SizeModalWindowMediumH = CGFloat(480)
-    public static let SizeModalWindowSmallH = CGFloat(640)
+    public static let SizeModalWindowSmallH = CGFloat(360)
     public static let SizeNotificationIcon = CGFloat(28)
     public static let SizeNavLeftWidth = CGFloat(256)
     public static let SizeNavLeftWidthExpanded = CGFloat(256)
-    public static let SizeNavLeftWdithCollapsed = CGFloat(72)
+    public static let SizeNavLeftWidthCollapsed = CGFloat(72)
     public static let SizeNavTopHeight = CGFloat(64)
     public static let SizePaginationDotIdleH = CGFloat(8)
     public static let SizePaginationDotIdleW = CGFloat(8)
@@ -283,7 +283,7 @@ public enum ChassisTokensNumberMedium {
     public static let SpaceUnit112 = CGFloat(112)
     public static let SpaceUnit120 = CGFloat(120)
     public static let SpaceUnit128 = CGFloat(128)
-    public static let SpaceUnit136 = CGFloat(128)
+    public static let SpaceUnit136 = CGFloat(136)
     public static let SpaceUnit05 = CGFloat(0.5)
     public static let SpaceUnitD05 = CGFloat(0.5)
     public static let SpaceUnitD15 = CGFloat(1.5)
@@ -436,7 +436,7 @@ public enum ChassisTokensNumberMedium {
     public static let SpaceSegmentSmallPaddingY = CGFloat(3)
     public static let SpaceSegmentSmallPaddingX = CGFloat(8)
     public static let SpaceSegmentSmallGap = CGFloat(8)
-    public static let SpaceWebsiteSectionPaddingY = CGFloat(64)
+    public static let SpaceWebsiteSectionPaddingY = CGFloat(48)
     public static let SpaceWebsiteSectionPaddingX = CGFloat(24)
     public static let SpaceWebsiteSectionGap = CGFloat(32)
     public static let SpaceWebsiteContentHeaderGap = CGFloat(12)
@@ -471,9 +471,6 @@ public enum ChassisTokensNumberMedium {
     public static let OpacityContextDimSubtle = CGFloat(0.3)
     public static let OpacityContextDimSlight = CGFloat(0.05)
     public static let OpacityContextTransparentColor = CGFloat(0)
-    public static let FigmaWebsiteSizePageW = CGFloat(768)
-    public static let FigmaWebsiteSizeSlideMinW = CGFloat(560)
-    public static let FigmaWebsiteSizeCardMinW = CGFloat(320)
     public static let TypographyFontSizeText5xlarge = CGFloat(44)
     public static let TypographyFontSizeText4xlarge = CGFloat(38)
     public static let TypographyFontSizeText3xlarge = CGFloat(32)
@@ -1413,9 +1410,6 @@ public enum ChassisTokensNumberMedium {
     public static let FontWebsiteModuleTitleFontSize = CGFloat(16)
     public static let FontWebsiteModuleTitleLetterSpacing = CGFloat(0)
     public static let FontWebsiteModuleTitleParagraphSpacing = CGFloat(0)
-    public static let BorderWidthContextNone = CGFloat(0)
-    public static let BorderWidthContextThin = CGFloat(0.5)
-    public static let BorderWidthContextThick = CGFloat(2)
     public static let BorderWidthContextZero = CGFloat(0)
     public static let BorderWidthContextSmall = CGFloat(0.5)
     public static let BorderWidthContextMedium = CGFloat(1)
@@ -3036,12 +3030,4 @@ public enum ChassisTokensNumberMedium {
     public static let ShadowGlowInfoSpread = CGFloat(0)
     public static let ShadowGlowInfoOffsetX = CGFloat(0)
     public static let ShadowGlowInfoOffsetY = CGFloat(0)
-    public static let BgBlurDefaultBlur = CGFloat(48)
-    public static let BgBlurDefaultSpread = CGFloat(0)
-    public static let BgBlurDefaultOffsetX = CGFloat(0)
-    public static let BgBlurDefaultOffsetY = CGFloat(0)
-    public static let BgBlurAlternateBlur = CGFloat(48)
-    public static let BgBlurAlternateSpread = CGFloat(0)
-    public static let BgBlurAlternateOffsetX = CGFloat(0)
-    public static let BgBlurAlternateOffsetY = CGFloat(0)
 }

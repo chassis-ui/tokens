@@ -3,8 +3,8 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Sun, 27 Sep 2026 11:29:41 GMT
-// Chassis - Tokens v0.5.3
+// Generated on Sun, 27 Sep 2026 20:31:46 GMT
+// Chassis - Tokens v0.6.0
 // Copyright 2026 Ozgur Gunes
 // Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
 
@@ -1813,6 +1813,4 @@ object ChassisTokensColorLight {
     val shadowGlowSuccessColor get() = Color(0xFF10C263)
     val shadowGlowWarningColor get() = Color(0xFFF5A300)
     val shadowGlowInfoColor get() = Color(0xFF1414F5)
-    val bgBlurDefaultColor get() = Color(0x80B7C0C2)
-    val bgBlurAlternateColor get() = Color(0x80384043)
 }

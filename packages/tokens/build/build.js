@@ -114,7 +114,8 @@ function registerDictionary(version) {
 }
 
 /**
- * Parses command line arguments for selective builds. Unknown arguments are ignored.
+ * Parses command line arguments for selective builds. Unknown arguments are ignored;
+ * `planBuilds` checks the filter values against the configuration.
  * @param {string[]} [args] - The arguments after the script name.
  * @returns {Object} Filters (`brands`, `apps`, `platforms`, `themes`, `screens`), the
  *   output directory (`out`), the configuration file (`config`, when given) and the
@@ -157,13 +158,46 @@ function parseArgs(args = process.argv.slice(2)) {
     }
     const flagIndex = flags.indexOf(args[i])
     if (flagIndex !== -1) {
+      const values = options[keys[flagIndex]]
+      const before = values.length
       while (i + 1 < args.length && !args[i + 1].startsWith('--')) {
-        options[keys[flagIndex]].push(args[++i])
+        values.push(args[++i])
+      }
+      if (values.length === before) {
+        throw new Error(`${flags[flagIndex]} requires a value`)
       }
     }
   }
 
   return options
+}
+
+/**
+ * Checks the filter values against the configuration, so that a mistyped value fails
+ * instead of building nothing.
+ * @param {Object} buildOptions - `chassis.build` from `package.json`.
+ * @param {Object} filters - Filters from `parseArgs`.
+ * @throws {Error} When a filter names a brand, app, platform, theme or screen that the
+ *   configuration does not have.
+ */
+function checkFilters(buildOptions, filters) {
+  const { brands, themes, screens = [], apps } = buildOptions
+  const known = {
+    brand: [brands, filters.brands],
+    app: [Object.keys(apps), filters.apps],
+    platform: [[...new Set(Object.values(apps).flat())], filters.platforms],
+    theme: [themes, filters.themes],
+    screen: [screens, filters.screens]
+  }
+  const problems = Object.entries(known).flatMap(([flag, [values, selected = []]]) => {
+    const unknown = selected.filter((value) => !values.includes(value))
+    if (unknown.length === 0) return []
+    const configured = values.length > 0 ? values.join(', ') : 'none'
+    return [`--${flag} ${unknown.join(' ')} (configured: ${configured})`]
+  })
+  if (problems.length > 0) {
+    throw new Error(`Unknown filter values: ${problems.join('; ')}`)
+  }
 }
 
 /**
@@ -179,9 +213,12 @@ function parseArgs(args = process.argv.slice(2)) {
  * @param {Object} [filters] - Filters from `parseArgs`; an empty filter selects all.
  * @returns {Object[]} Builds with `brand`, `app`, `key`, `platforms`, `outputs`, the
  *   configured `themes` and `screens`, and `source`, the token files in override order.
- * @throws {Error} When a token-set list is missing from `sets`.
+ * @throws {Error} When a filter names a value the configuration does not have, when the
+ *   filters together select no build (such as an app without the selected platform), or
+ *   when a token-set list is missing from `sets`.
  */
 function planBuilds(sets, buildOptions, filters = {}) {
+  checkFilters(buildOptions, filters)
   const { brands, themes, screens = [], apps } = buildOptions
   const select = (all, selected) =>
     selected?.length > 0 ? all.filter((item) => selected.includes(item)) : all
@@ -227,6 +264,9 @@ function planBuilds(sets, buildOptions, filters = {}) {
         })
       }
     }
+  }
+  if (builds.length === 0) {
+    throw new Error('The filters select no build: no selected app has a selected platform')
   }
   return builds
 }

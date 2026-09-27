@@ -2,8 +2,8 @@
 
 <!--
   Do not edit directly, this file was auto-generated.
-  Generated on Sun, 27 Sep 2026 09:54:41 GMT
-  Chassis - Tokens v0.5.3
+  Generated on Sun, 27 Sep 2026 20:31:47 GMT
+  Chassis - Tokens v0.6.0
   Copyright 2026 Ozgur Gunes
   Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
 -->
@@ -222,11 +222,11 @@
   <dimen name="size_modal_window_xlarge_h">720dp</dimen>
   <dimen name="size_modal_window_large_h">600dp</dimen>
   <dimen name="size_modal_window_medium_h">480dp</dimen>
-  <dimen name="size_modal_window_small_h">640dp</dimen>
+  <dimen name="size_modal_window_small_h">360dp</dimen>
   <dimen name="size_notification_icon">@dimen/size_unit_28</dimen>
   <dimen name="size_nav_left_width">@dimen/size_nav_left_width_expanded</dimen>
   <dimen name="size_nav_left_width_expanded">@dimen/size_unit_256</dimen>
-  <dimen name="size_nav_left_wdith_collapsed">@dimen/size_unit_72</dimen>
+  <dimen name="size_nav_left_width_collapsed">@dimen/size_unit_72</dimen>
   <dimen name="size_nav_top_height">@dimen/size_unit_64</dimen>
   <dimen name="size_pagination_dot_idle_h">@dimen/size_unit_8</dimen>
   <dimen name="size_pagination_dot_idle_w">@dimen/size_unit_8</dimen>
@@ -279,7 +279,7 @@
   <dimen name="space_unit_112">@dimen/dimension_base_112</dimen>
   <dimen name="space_unit_120">@dimen/dimension_base_120</dimen>
   <dimen name="space_unit_128">@dimen/dimension_base_128</dimen>
-  <dimen name="space_unit_136">@dimen/dimension_base_128</dimen>
+  <dimen name="space_unit_136">@dimen/dimension_base_136</dimen>
   <dimen name="space_unit_05">@dimen/dimension_base_05</dimen>
   <dimen name="space_unit_d05">@dimen/dimension_base_d05</dimen>
   <dimen name="space_unit_d15">@dimen/dimension_base_d15</dimen>
@@ -432,7 +432,7 @@
   <dimen name="space_segment_small_padding_y">@dimen/space_unit_3</dimen>
   <dimen name="space_segment_small_padding_x">@dimen/space_unit_8</dimen>
   <dimen name="space_segment_small_gap">@dimen/space_unit_8</dimen>
-  <dimen name="space_website_section_padding_y">@dimen/space_unit_48</dimen>
+  <dimen name="space_website_section_padding_y">@dimen/space_unit_64</dimen>
   <dimen name="space_website_section_padding_x">@dimen/space_unit_24</dimen>
   <dimen name="space_website_section_gap">@dimen/space_unit_48</dimen>
   <dimen name="space_website_content_header_gap">@dimen/space_unit_16</dimen>
@@ -467,11 +467,6 @@
   <item name="opacity_context_dim_subtle" type="dimen" format="float">0.3</item>
   <item name="opacity_context_dim_slight" type="dimen" format="float">0.05</item>
   <item name="opacity_context_transparent_color" type="dimen" format="float">0</item>
-  <dimen name="figma_website_size_page_w">1512dp</dimen>
-  <dimen name="figma_website_size_slide_min_w">560dp</dimen>
-  <dimen name="figma_website_size_card_min_w">560dp</dimen>
-  <string name="figma_website_variant_nav">large</string>
-  <string name="figma_website_variant_section">large</string>
   <color name="color_base_primitive_light_black_base">#ff000000</color>
   <color name="color_base_primitive_light_black_transparent">#00000000</color>
   <color name="color_base_primitive_light_black_contrast">#ffffffff</color>
@@ -3398,8 +3393,8 @@
   <string name="font_html_blockquote_font_style">italic</string>
   <string name="font_html_list_font_family">@string/typography_font_family_html</string>
   <integer name="font_html_list_font_weight">400</integer>
-  <dimen name="font_html_list_line_height">@dimen/typography_line_height_html_body</dimen>
-  <dimen name="font_html_list_font_size">@dimen/typography_font_size_html_body</dimen>
+  <dimen name="font_html_list_line_height">@dimen/typography_line_height_html_list</dimen>
+  <dimen name="font_html_list_font_size">@dimen/typography_font_size_html_list</dimen>
   <item name="font_html_list_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_base_zero</item>
   <dimen name="font_html_list_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
   <string name="font_html_list_text_case">@string/typography_text_case_base_none</string>
@@ -4080,9 +4075,6 @@
   <string name="font_website_module_title_text_case">@string/typography_text_case_base_none</string>
   <string name="font_website_module_title_text_decoration">@string/typography_text_decoration_base_none</string>
   <string name="font_website_module_title_font_style">normal</string>
-  <dimen name="border_width_context_none">@dimen/size_unit_0</dimen>
-  <dimen name="border_width_context_thin">@dimen/size_unit_05</dimen>
-  <dimen name="border_width_context_thick">@dimen/size_unit_2</dimen>
   <dimen name="border_width_context_zero">@dimen/size_unit_0</dimen>
   <dimen name="border_width_context_small">@dimen/size_unit_05</dimen>
   <dimen name="border_width_context_medium">@dimen/size_unit_1</dimen>
@@ -4138,39 +4130,47 @@
   <dimen name="grid_gutter_xsmall">8dp</dimen>
   <dimen name="shadow_context_none_blur">@dimen/dimension_base_0</dimen>
   <dimen name="shadow_context_none_spread">@dimen/dimension_base_0</dimen>
+  <color name="shadow_context_none_color">#00000000</color>
   <string name="shadow_context_none_type">dropShadow</string>
   <dimen name="shadow_context_none_offset_x">@dimen/dimension_base_0</dimen>
   <dimen name="shadow_context_none_offset_y">@dimen/dimension_base_0</dimen>
+  <color name="shadow_context_small_1_color">@color/color_shadow_default</color>
   <string name="shadow_context_small_1_type">dropShadow</string>
   <dimen name="shadow_context_small_1_blur">@dimen/dimension_base_8</dimen>
   <dimen name="shadow_context_small_1_spread">@dimen/dimension_base_n2</dimen>
   <dimen name="shadow_context_small_1_offset_x">@dimen/dimension_base_0</dimen>
   <dimen name="shadow_context_small_1_offset_y">@dimen/dimension_base_2</dimen>
+  <color name="shadow_context_small_2_color">@color/color_shadow_default</color>
   <string name="shadow_context_small_2_type">dropShadow</string>
   <dimen name="shadow_context_small_2_blur">@dimen/dimension_base_4</dimen>
   <dimen name="shadow_context_small_2_spread">@dimen/dimension_base_n1</dimen>
   <dimen name="shadow_context_small_2_offset_x">@dimen/dimension_base_0</dimen>
   <dimen name="shadow_context_small_2_offset_y">@dimen/dimension_base_1</dimen>
+  <color name="shadow_context_medium_1_color">@color/color_shadow_default</color>
   <string name="shadow_context_medium_1_type">dropShadow</string>
   <dimen name="shadow_context_medium_1_blur">@dimen/dimension_base_16</dimen>
   <dimen name="shadow_context_medium_1_spread">@dimen/dimension_base_n4</dimen>
   <dimen name="shadow_context_medium_1_offset_x">@dimen/dimension_base_0</dimen>
   <dimen name="shadow_context_medium_1_offset_y">@dimen/dimension_base_4</dimen>
+  <color name="shadow_context_medium_2_color">@color/color_shadow_default</color>
   <string name="shadow_context_medium_2_type">dropShadow</string>
   <dimen name="shadow_context_medium_2_blur">@dimen/dimension_base_8</dimen>
   <dimen name="shadow_context_medium_2_spread">@dimen/dimension_base_n2</dimen>
   <dimen name="shadow_context_medium_2_offset_x">@dimen/dimension_base_0</dimen>
   <dimen name="shadow_context_medium_2_offset_y">@dimen/dimension_base_2</dimen>
+  <color name="shadow_context_large_1_color">@color/color_shadow_default</color>
   <string name="shadow_context_large_1_type">dropShadow</string>
   <dimen name="shadow_context_large_1_blur">@dimen/dimension_base_24</dimen>
   <dimen name="shadow_context_large_1_spread">@dimen/dimension_base_n6</dimen>
   <dimen name="shadow_context_large_1_offset_x">@dimen/dimension_base_0</dimen>
   <dimen name="shadow_context_large_1_offset_y">@dimen/dimension_base_6</dimen>
+  <color name="shadow_context_large_2_color">@color/color_shadow_default</color>
   <string name="shadow_context_large_2_type">dropShadow</string>
   <dimen name="shadow_context_large_2_blur">@dimen/dimension_base_12</dimen>
   <dimen name="shadow_context_large_2_spread">@dimen/dimension_base_n3</dimen>
   <dimen name="shadow_context_large_2_offset_x">@dimen/dimension_base_0</dimen>
   <dimen name="shadow_context_large_2_offset_y">@dimen/dimension_base_3</dimen>
+  <color name="shadow_context_inset_color">@color/color_shadow_default</color>
   <string name="shadow_context_inset_type">innerShadow</string>
   <dimen name="shadow_context_inset_blur">@dimen/dimension_base_4</dimen>
   <dimen name="shadow_context_inset_spread">@dimen/dimension_base_0</dimen>
@@ -4178,39 +4178,47 @@
   <dimen name="shadow_context_inset_offset_y">@dimen/dimension_base_2</dimen>
   <dimen name="shadow_context_idle_blur">@dimen/dimension_base_0</dimen>
   <dimen name="shadow_context_idle_spread">@dimen/dimension_base_0</dimen>
+  <color name="shadow_context_idle_color">#00000000</color>
   <string name="shadow_context_idle_type">dropShadow</string>
   <dimen name="shadow_context_idle_offset_x">@dimen/dimension_base_0</dimen>
   <dimen name="shadow_context_idle_offset_y">@dimen/dimension_base_0</dimen>
   <dimen name="shadow_context_disabled_blur">@dimen/dimension_base_0</dimen>
   <dimen name="shadow_context_disabled_spread">@dimen/dimension_base_0</dimen>
+  <color name="shadow_context_disabled_color">#00000000</color>
   <string name="shadow_context_disabled_type">dropShadow</string>
   <dimen name="shadow_context_disabled_offset_x">@dimen/dimension_base_0</dimen>
   <dimen name="shadow_context_disabled_offset_y">@dimen/dimension_base_0</dimen>
+  <color name="shadow_context_hover_1_color">@color/color_shadow_default</color>
   <string name="shadow_context_hover_1_type">dropShadow</string>
   <dimen name="shadow_context_hover_1_blur">@dimen/dimension_base_16</dimen>
   <dimen name="shadow_context_hover_1_spread">@dimen/dimension_base_n4</dimen>
   <dimen name="shadow_context_hover_1_offset_x">@dimen/dimension_base_0</dimen>
   <dimen name="shadow_context_hover_1_offset_y">@dimen/dimension_base_4</dimen>
+  <color name="shadow_context_hover_2_color">@color/color_shadow_default</color>
   <string name="shadow_context_hover_2_type">dropShadow</string>
   <dimen name="shadow_context_hover_2_blur">@dimen/dimension_base_8</dimen>
   <dimen name="shadow_context_hover_2_spread">@dimen/dimension_base_n2</dimen>
   <dimen name="shadow_context_hover_2_offset_x">@dimen/dimension_base_0</dimen>
   <dimen name="shadow_context_hover_2_offset_y">@dimen/dimension_base_2</dimen>
+  <color name="shadow_context_press_1_color">@color/color_shadow_default</color>
   <string name="shadow_context_press_1_type">dropShadow</string>
   <dimen name="shadow_context_press_1_blur">@dimen/dimension_base_8</dimen>
   <dimen name="shadow_context_press_1_spread">@dimen/dimension_base_n2</dimen>
   <dimen name="shadow_context_press_1_offset_x">@dimen/dimension_base_0</dimen>
   <dimen name="shadow_context_press_1_offset_y">@dimen/dimension_base_2</dimen>
+  <color name="shadow_context_press_2_color">@color/color_shadow_default</color>
   <string name="shadow_context_press_2_type">dropShadow</string>
   <dimen name="shadow_context_press_2_blur">@dimen/dimension_base_4</dimen>
   <dimen name="shadow_context_press_2_spread">@dimen/dimension_base_n1</dimen>
   <dimen name="shadow_context_press_2_offset_x">@dimen/dimension_base_0</dimen>
   <dimen name="shadow_context_press_2_offset_y">@dimen/dimension_base_1</dimen>
+  <color name="shadow_context_focus_color">#ff00a4cc</color>
   <string name="shadow_context_focus_type">dropShadow</string>
   <dimen name="shadow_context_focus_blur">@dimen/dimension_base_4</dimen>
   <dimen name="shadow_context_focus_spread">@dimen/dimension_base_0</dimen>
   <dimen name="shadow_context_focus_offset_x">@dimen/dimension_base_0</dimen>
   <dimen name="shadow_context_focus_offset_y">@dimen/dimension_base_0</dimen>
+  <color name="shadow_context_highlight_color">#ff00a4cc</color>
   <string name="shadow_context_highlight_type">dropShadow</string>
   <dimen name="shadow_context_highlight_blur">@dimen/dimension_base_4</dimen>
   <dimen name="shadow_context_highlight_spread">@dimen/dimension_base_0</dimen>
@@ -4633,7 +4641,7 @@
   <color name="shadow_elevation_alternate_05_2_color">@color/color_shadow_alternate</color>
   <string name="shadow_elevation_alternate_05_2_type">dropShadow</string>
   <dimen name="shadow_elevation_alternate_05_2_blur">@dimen/dimension_base_2</dimen>
-  <dimen name="shadow_elevation_alternate_05_2_spread">-0.5dp</dimen>
+  <dimen name="shadow_elevation_alternate_05_2_spread">@dimen/dimension_base_nd05</dimen>
   <dimen name="shadow_elevation_alternate_05_2_offset_x">@dimen/dimension_base_0</dimen>
   <dimen name="shadow_elevation_alternate_05_2_offset_y">@dimen/dimension_base_d05</dimen>
   <color name="shadow_elevation_primary_10_1_color">@color/color_shadow_default</color>
@@ -4825,7 +4833,7 @@
   <color name="shadow_elevation_primary_05_2_color">@color/color_shadow_default</color>
   <string name="shadow_elevation_primary_05_2_type">dropShadow</string>
   <dimen name="shadow_elevation_primary_05_2_blur">@dimen/dimension_base_2</dimen>
-  <dimen name="shadow_elevation_primary_05_2_spread">-0.5dp</dimen>
+  <dimen name="shadow_elevation_primary_05_2_spread">@dimen/dimension_base_nd05</dimen>
   <dimen name="shadow_elevation_primary_05_2_offset_x">@dimen/dimension_base_0</dimen>
   <dimen name="shadow_elevation_primary_05_2_offset_y">@dimen/dimension_base_d05</dimen>
   <color name="shadow_elevation_primary_05_3_color">@color/color_shadow_primary</color>
@@ -5023,7 +5031,7 @@
   <color name="shadow_elevation_secondary_05_2_color">@color/color_shadow_default</color>
   <string name="shadow_elevation_secondary_05_2_type">dropShadow</string>
   <dimen name="shadow_elevation_secondary_05_2_blur">@dimen/dimension_base_2</dimen>
-  <dimen name="shadow_elevation_secondary_05_2_spread">-0.5dp</dimen>
+  <dimen name="shadow_elevation_secondary_05_2_spread">@dimen/dimension_base_nd05</dimen>
   <dimen name="shadow_elevation_secondary_05_2_offset_x">@dimen/dimension_base_0</dimen>
   <dimen name="shadow_elevation_secondary_05_2_offset_y">@dimen/dimension_base_d05</dimen>
   <color name="shadow_elevation_secondary_05_3_color">@color/color_shadow_secondary</color>
@@ -5221,7 +5229,7 @@
   <color name="shadow_elevation_neutral_05_2_color">@color/color_shadow_default</color>
   <string name="shadow_elevation_neutral_05_2_type">dropShadow</string>
   <dimen name="shadow_elevation_neutral_05_2_blur">@dimen/dimension_base_2</dimen>
-  <dimen name="shadow_elevation_neutral_05_2_spread">-0.5dp</dimen>
+  <dimen name="shadow_elevation_neutral_05_2_spread">@dimen/dimension_base_nd05</dimen>
   <dimen name="shadow_elevation_neutral_05_2_offset_x">@dimen/dimension_base_0</dimen>
   <dimen name="shadow_elevation_neutral_05_2_offset_y">@dimen/dimension_base_d05</dimen>
   <color name="shadow_elevation_neutral_05_3_color">@color/color_shadow_neutral</color>
@@ -5419,7 +5427,7 @@
   <color name="shadow_elevation_danger_05_2_color">@color/color_shadow_default</color>
   <string name="shadow_elevation_danger_05_2_type">dropShadow</string>
   <dimen name="shadow_elevation_danger_05_2_blur">@dimen/dimension_base_2</dimen>
-  <dimen name="shadow_elevation_danger_05_2_spread">-0.5dp</dimen>
+  <dimen name="shadow_elevation_danger_05_2_spread">@dimen/dimension_base_nd05</dimen>
   <dimen name="shadow_elevation_danger_05_2_offset_x">@dimen/dimension_base_0</dimen>
   <dimen name="shadow_elevation_danger_05_2_offset_y">@dimen/dimension_base_d05</dimen>
   <color name="shadow_elevation_danger_05_3_color">@color/color_shadow_danger</color>
@@ -5617,7 +5625,7 @@
   <color name="shadow_elevation_success_05_2_color">@color/color_shadow_default</color>
   <string name="shadow_elevation_success_05_2_type">dropShadow</string>
   <dimen name="shadow_elevation_success_05_2_blur">@dimen/dimension_base_2</dimen>
-  <dimen name="shadow_elevation_success_05_2_spread">-0.5dp</dimen>
+  <dimen name="shadow_elevation_success_05_2_spread">@dimen/dimension_base_nd05</dimen>
   <dimen name="shadow_elevation_success_05_2_offset_x">@dimen/dimension_base_0</dimen>
   <dimen name="shadow_elevation_success_05_2_offset_y">@dimen/dimension_base_d05</dimen>
   <color name="shadow_elevation_success_05_3_color">@color/color_shadow_success</color>
@@ -5815,7 +5823,7 @@
   <color name="shadow_elevation_warning_05_2_color">@color/color_shadow_default</color>
   <string name="shadow_elevation_warning_05_2_type">dropShadow</string>
   <dimen name="shadow_elevation_warning_05_2_blur">@dimen/dimension_base_2</dimen>
-  <dimen name="shadow_elevation_warning_05_2_spread">-0.5dp</dimen>
+  <dimen name="shadow_elevation_warning_05_2_spread">@dimen/dimension_base_nd05</dimen>
   <dimen name="shadow_elevation_warning_05_2_offset_x">@dimen/dimension_base_0</dimen>
   <dimen name="shadow_elevation_warning_05_2_offset_y">@dimen/dimension_base_d05</dimen>
   <color name="shadow_elevation_warning_05_3_color">@color/color_shadow_warning</color>
@@ -6013,7 +6021,7 @@
   <color name="shadow_elevation_info_05_2_color">@color/color_shadow_default</color>
   <string name="shadow_elevation_info_05_2_type">dropShadow</string>
   <dimen name="shadow_elevation_info_05_2_blur">@dimen/dimension_base_2</dimen>
-  <dimen name="shadow_elevation_info_05_2_spread">-0.5dp</dimen>
+  <dimen name="shadow_elevation_info_05_2_spread">@dimen/dimension_base_nd05</dimen>
   <dimen name="shadow_elevation_info_05_2_offset_x">@dimen/dimension_base_0</dimen>
   <dimen name="shadow_elevation_info_05_2_offset_y">@dimen/dimension_base_d05</dimen>
   <color name="shadow_elevation_info_05_3_color">@color/color_shadow_info</color>
@@ -6211,7 +6219,7 @@
   <color name="shadow_elevation_brand_05_2_color">@color/color_shadow_default</color>
   <string name="shadow_elevation_brand_05_2_type">dropShadow</string>
   <dimen name="shadow_elevation_brand_05_2_blur">@dimen/dimension_base_2</dimen>
-  <dimen name="shadow_elevation_brand_05_2_spread">-0.5dp</dimen>
+  <dimen name="shadow_elevation_brand_05_2_spread">@dimen/dimension_base_nd05</dimen>
   <dimen name="shadow_elevation_brand_05_2_offset_x">@dimen/dimension_base_0</dimen>
   <dimen name="shadow_elevation_brand_05_2_offset_y">@dimen/dimension_base_d05</dimen>
   <color name="shadow_elevation_brand_05_3_color">#3300a4cc</color>
@@ -6409,7 +6417,7 @@
   <color name="shadow_elevation_accent_05_2_color">@color/color_shadow_default</color>
   <string name="shadow_elevation_accent_05_2_type">dropShadow</string>
   <dimen name="shadow_elevation_accent_05_2_blur">@dimen/dimension_base_2</dimen>
-  <dimen name="shadow_elevation_accent_05_2_spread">-0.5dp</dimen>
+  <dimen name="shadow_elevation_accent_05_2_spread">@dimen/dimension_base_nd05</dimen>
   <dimen name="shadow_elevation_accent_05_2_offset_x">@dimen/dimension_base_0</dimen>
   <dimen name="shadow_elevation_accent_05_2_offset_y">@dimen/dimension_base_d05</dimen>
   <color name="shadow_elevation_accent_05_3_color">#33f55200</color>
@@ -6418,7 +6426,7 @@
   <dimen name="shadow_elevation_accent_05_3_spread">@dimen/dimension_base_n1</dimen>
   <dimen name="shadow_elevation_accent_05_3_offset_x">@dimen/dimension_base_0</dimen>
   <dimen name="shadow_elevation_accent_05_3_offset_y">@dimen/dimension_base_1</dimen>
-  <color name="shadow_glow_default_color">@color/color_base_context_light_default_fg_main</color>
+  <color name="shadow_glow_default_color">#ff161a1b</color>
   <string name="shadow_glow_default_type">dropShadow</string>
   <dimen name="shadow_glow_default_blur">@dimen/dimension_base_4</dimen>
   <dimen name="shadow_glow_default_spread">@dimen/dimension_base_0</dimen>
@@ -6426,74 +6434,62 @@
   <dimen name="shadow_glow_default_offset_y">@dimen/dimension_base_0</dimen>
   <dimen name="shadow_glow_alternate_blur">@dimen/dimension_base_4</dimen>
   <dimen name="shadow_glow_alternate_spread">@dimen/dimension_base_0</dimen>
-  <color name="shadow_glow_alternate_color">@color/color_base_context_light_alternate_fg_main</color>
+  <color name="shadow_glow_alternate_color">#ffe9eced</color>
   <string name="shadow_glow_alternate_type">dropShadow</string>
   <dimen name="shadow_glow_alternate_offset_x">@dimen/dimension_base_0</dimen>
   <dimen name="shadow_glow_alternate_offset_y">@dimen/dimension_base_0</dimen>
-  <color name="shadow_glow_black_color">@color/color_base_context_light_black_base_color</color>
+  <color name="shadow_glow_black_color">#ff000000</color>
   <string name="shadow_glow_black_type">dropShadow</string>
   <dimen name="shadow_glow_black_blur">@dimen/dimension_base_4</dimen>
   <dimen name="shadow_glow_black_spread">@dimen/dimension_base_0</dimen>
   <dimen name="shadow_glow_black_offset_x">@dimen/dimension_base_0</dimen>
   <dimen name="shadow_glow_black_offset_y">@dimen/dimension_base_0</dimen>
-  <color name="shadow_glow_white_color">@color/color_base_context_light_white_base_color</color>
+  <color name="shadow_glow_white_color">#ffffffff</color>
   <string name="shadow_glow_white_type">dropShadow</string>
   <dimen name="shadow_glow_white_blur">@dimen/dimension_base_4</dimen>
   <dimen name="shadow_glow_white_spread">@dimen/dimension_base_0</dimen>
   <dimen name="shadow_glow_white_offset_x">@dimen/dimension_base_0</dimen>
   <dimen name="shadow_glow_white_offset_y">@dimen/dimension_base_0</dimen>
-  <color name="shadow_glow_primary_color">@color/color_base_context_light_primary_base_color</color>
+  <color name="shadow_glow_primary_color">#ff00a4cc</color>
   <string name="shadow_glow_primary_type">dropShadow</string>
   <dimen name="shadow_glow_primary_blur">@dimen/dimension_base_4</dimen>
   <dimen name="shadow_glow_primary_spread">@dimen/dimension_base_0</dimen>
   <dimen name="shadow_glow_primary_offset_x">@dimen/dimension_base_0</dimen>
   <dimen name="shadow_glow_primary_offset_y">@dimen/dimension_base_0</dimen>
-  <color name="shadow_glow_secondary_color">@color/color_base_context_light_secondary_base_color</color>
+  <color name="shadow_glow_secondary_color">#fff55200</color>
   <string name="shadow_glow_secondary_type">dropShadow</string>
   <dimen name="shadow_glow_secondary_blur">@dimen/dimension_base_4</dimen>
   <dimen name="shadow_glow_secondary_spread">@dimen/dimension_base_0</dimen>
   <dimen name="shadow_glow_secondary_offset_x">@dimen/dimension_base_0</dimen>
   <dimen name="shadow_glow_secondary_offset_y">@dimen/dimension_base_0</dimen>
-  <color name="shadow_glow_neutral_color">@color/color_base_context_light_neutral_base_color</color>
+  <color name="shadow_glow_neutral_color">#ff6f8085</color>
   <string name="shadow_glow_neutral_type">dropShadow</string>
   <dimen name="shadow_glow_neutral_blur">@dimen/dimension_base_4</dimen>
   <dimen name="shadow_glow_neutral_spread">@dimen/dimension_base_0</dimen>
   <dimen name="shadow_glow_neutral_offset_x">@dimen/dimension_base_0</dimen>
   <dimen name="shadow_glow_neutral_offset_y">@dimen/dimension_base_0</dimen>
-  <color name="shadow_glow_danger_color">@color/color_base_context_light_danger_base_color</color>
+  <color name="shadow_glow_danger_color">#fff52314</color>
   <string name="shadow_glow_danger_type">dropShadow</string>
   <dimen name="shadow_glow_danger_blur">@dimen/dimension_base_4</dimen>
   <dimen name="shadow_glow_danger_spread">@dimen/dimension_base_0</dimen>
   <dimen name="shadow_glow_danger_offset_x">@dimen/dimension_base_0</dimen>
   <dimen name="shadow_glow_danger_offset_y">@dimen/dimension_base_0</dimen>
-  <color name="shadow_glow_success_color">@color/color_base_context_light_success_base_color</color>
+  <color name="shadow_glow_success_color">#ff10c263</color>
   <string name="shadow_glow_success_type">dropShadow</string>
   <dimen name="shadow_glow_success_blur">@dimen/dimension_base_4</dimen>
   <dimen name="shadow_glow_success_spread">@dimen/dimension_base_0</dimen>
   <dimen name="shadow_glow_success_offset_x">@dimen/dimension_base_0</dimen>
   <dimen name="shadow_glow_success_offset_y">@dimen/dimension_base_0</dimen>
-  <color name="shadow_glow_warning_color">@color/color_base_context_light_warning_base_color</color>
+  <color name="shadow_glow_warning_color">#fff5a300</color>
   <string name="shadow_glow_warning_type">dropShadow</string>
   <dimen name="shadow_glow_warning_blur">@dimen/dimension_base_4</dimen>
   <dimen name="shadow_glow_warning_spread">@dimen/dimension_base_0</dimen>
   <dimen name="shadow_glow_warning_offset_x">@dimen/dimension_base_0</dimen>
   <dimen name="shadow_glow_warning_offset_y">@dimen/dimension_base_0</dimen>
-  <color name="shadow_glow_info_color">@color/color_base_context_light_info_base_color</color>
+  <color name="shadow_glow_info_color">#ff1414f5</color>
   <string name="shadow_glow_info_type">dropShadow</string>
   <dimen name="shadow_glow_info_blur">@dimen/dimension_base_4</dimen>
   <dimen name="shadow_glow_info_spread">@dimen/dimension_base_0</dimen>
   <dimen name="shadow_glow_info_offset_x">@dimen/dimension_base_0</dimen>
   <dimen name="shadow_glow_info_offset_y">@dimen/dimension_base_0</dimen>
-  <color name="bg_blur_default_color">#80b7c0c2</color>
-  <string name="bg_blur_default_type">dropShadow</string>
-  <dimen name="bg_blur_default_blur">@dimen/dimension_base_48</dimen>
-  <dimen name="bg_blur_default_spread">@dimen/dimension_base_0</dimen>
-  <dimen name="bg_blur_default_offset_x">@dimen/dimension_base_0</dimen>
-  <dimen name="bg_blur_default_offset_y">@dimen/dimension_base_0</dimen>
-  <color name="bg_blur_alternate_color">#80384043</color>
-  <string name="bg_blur_alternate_type">dropShadow</string>
-  <dimen name="bg_blur_alternate_blur">@dimen/dimension_base_48</dimen>
-  <dimen name="bg_blur_alternate_spread">@dimen/dimension_base_0</dimen>
-  <dimen name="bg_blur_alternate_offset_x">@dimen/dimension_base_0</dimen>
-  <dimen name="bg_blur_alternate_offset_y">@dimen/dimension_base_0</dimen>
 </resources>

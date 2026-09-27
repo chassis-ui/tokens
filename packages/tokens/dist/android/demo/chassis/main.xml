@@ -2,7 +2,7 @@
 
 <!--
   Do not edit directly, this file was auto-generated.
-  Generated on Sun, 27 Sep 2026 13:50:04 GMT
+  Generated on Sun, 27 Sep 2026 20:28:09 GMT
   Chassis - Tokens v0.6.0
   Copyright 2026 Ozgur Gunes
   Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
@@ -222,11 +222,11 @@
   <dimen name="size_modal_window_xlarge_h">720dp</dimen>
   <dimen name="size_modal_window_large_h">600dp</dimen>
   <dimen name="size_modal_window_medium_h">480dp</dimen>
-  <dimen name="size_modal_window_small_h">640dp</dimen>
+  <dimen name="size_modal_window_small_h">360dp</dimen>
   <dimen name="size_notification_icon">28dp</dimen>
   <dimen name="size_nav_left_width">256dp</dimen>
   <dimen name="size_nav_left_width_expanded">256dp</dimen>
-  <dimen name="size_nav_left_wdith_collapsed">72dp</dimen>
+  <dimen name="size_nav_left_width_collapsed">72dp</dimen>
   <dimen name="size_nav_top_height">64dp</dimen>
   <dimen name="size_pagination_dot_idle_h">8dp</dimen>
   <dimen name="size_pagination_dot_idle_w">8dp</dimen>
@@ -279,7 +279,7 @@
   <dimen name="space_unit_112">112dp</dimen>
   <dimen name="space_unit_120">120dp</dimen>
   <dimen name="space_unit_128">128dp</dimen>
-  <dimen name="space_unit_136">128dp</dimen>
+  <dimen name="space_unit_136">136dp</dimen>
   <dimen name="space_unit_05">0.5dp</dimen>
   <dimen name="space_unit_d05">0.5dp</dimen>
   <dimen name="space_unit_d15">1.5dp</dimen>
@@ -432,7 +432,7 @@
   <dimen name="space_segment_small_padding_y">3dp</dimen>
   <dimen name="space_segment_small_padding_x">8dp</dimen>
   <dimen name="space_segment_small_gap">8dp</dimen>
-  <dimen name="space_website_section_padding_y">48dp</dimen>
+  <dimen name="space_website_section_padding_y">64dp</dimen>
   <dimen name="space_website_section_padding_x">24dp</dimen>
   <dimen name="space_website_section_gap">48dp</dimen>
   <dimen name="space_website_content_header_gap">16dp</dimen>
@@ -467,11 +467,6 @@
   <item name="opacity_context_dim_subtle" type="dimen" format="float">0.3</item>
   <item name="opacity_context_dim_slight" type="dimen" format="float">0.05</item>
   <item name="opacity_context_transparent_color" type="dimen" format="float">0</item>
-  <dimen name="figma_website_size_page_w">1512dp</dimen>
-  <dimen name="figma_website_size_slide_min_w">560dp</dimen>
-  <dimen name="figma_website_size_card_min_w">560dp</dimen>
-  <string name="figma_website_variant_nav">large</string>
-  <string name="figma_website_variant_section">large</string>
   <color name="color_base_primitive_light_black_base">#ff000000</color>
   <color name="color_base_primitive_light_black_transparent">#00000000</color>
   <color name="color_base_primitive_light_black_contrast">#ffffffff</color>
@@ -4080,9 +4075,6 @@
   <string name="font_website_module_title_text_case">none</string>
   <string name="font_website_module_title_text_decoration">none</string>
   <string name="font_website_module_title_font_style">normal</string>
-  <dimen name="border_width_context_none">0dp</dimen>
-  <dimen name="border_width_context_thin">0.5dp</dimen>
-  <dimen name="border_width_context_thick">2dp</dimen>
   <dimen name="border_width_context_zero">0dp</dimen>
   <dimen name="border_width_context_small">0.5dp</dimen>
   <dimen name="border_width_context_medium">1dp</dimen>
@@ -4138,39 +4130,47 @@
   <dimen name="grid_gutter_xsmall">8dp</dimen>
   <dimen name="shadow_context_none_blur">0dp</dimen>
   <dimen name="shadow_context_none_spread">0dp</dimen>
+  <color name="shadow_context_none_color">#00000000</color>
   <string name="shadow_context_none_type">dropShadow</string>
   <dimen name="shadow_context_none_offset_x">0dp</dimen>
   <dimen name="shadow_context_none_offset_y">0dp</dimen>
+  <color name="shadow_context_small_1_color">#1a000000</color>
   <string name="shadow_context_small_1_type">dropShadow</string>
   <dimen name="shadow_context_small_1_blur">8dp</dimen>
   <dimen name="shadow_context_small_1_spread">-2dp</dimen>
   <dimen name="shadow_context_small_1_offset_x">0dp</dimen>
   <dimen name="shadow_context_small_1_offset_y">2dp</dimen>
+  <color name="shadow_context_small_2_color">#1a000000</color>
   <string name="shadow_context_small_2_type">dropShadow</string>
   <dimen name="shadow_context_small_2_blur">4dp</dimen>
   <dimen name="shadow_context_small_2_spread">-1dp</dimen>
   <dimen name="shadow_context_small_2_offset_x">0dp</dimen>
   <dimen name="shadow_context_small_2_offset_y">1dp</dimen>
+  <color name="shadow_context_medium_1_color">#1a000000</color>
   <string name="shadow_context_medium_1_type">dropShadow</string>
   <dimen name="shadow_context_medium_1_blur">16dp</dimen>
   <dimen name="shadow_context_medium_1_spread">-4dp</dimen>
   <dimen name="shadow_context_medium_1_offset_x">0dp</dimen>
   <dimen name="shadow_context_medium_1_offset_y">4dp</dimen>
+  <color name="shadow_context_medium_2_color">#1a000000</color>
   <string name="shadow_context_medium_2_type">dropShadow</string>
   <dimen name="shadow_context_medium_2_blur">8dp</dimen>
   <dimen name="shadow_context_medium_2_spread">-2dp</dimen>
   <dimen name="shadow_context_medium_2_offset_x">0dp</dimen>
   <dimen name="shadow_context_medium_2_offset_y">2dp</dimen>
+  <color name="shadow_context_large_1_color">#1a000000</color>
   <string name="shadow_context_large_1_type">dropShadow</string>
   <dimen name="shadow_context_large_1_blur">24dp</dimen>
   <dimen name="shadow_context_large_1_spread">-6dp</dimen>
   <dimen name="shadow_context_large_1_offset_x">0dp</dimen>
   <dimen name="shadow_context_large_1_offset_y">6dp</dimen>
+  <color name="shadow_context_large_2_color">#1a000000</color>
   <string name="shadow_context_large_2_type">dropShadow</string>
   <dimen name="shadow_context_large_2_blur">12dp</dimen>
   <dimen name="shadow_context_large_2_spread">-3dp</dimen>
   <dimen name="shadow_context_large_2_offset_x">0dp</dimen>
   <dimen name="shadow_context_large_2_offset_y">3dp</dimen>
+  <color name="shadow_context_inset_color">#1a000000</color>
   <string name="shadow_context_inset_type">innerShadow</string>
   <dimen name="shadow_context_inset_blur">4dp</dimen>
   <dimen name="shadow_context_inset_spread">0dp</dimen>
@@ -4178,39 +4178,47 @@
   <dimen name="shadow_context_inset_offset_y">2dp</dimen>
   <dimen name="shadow_context_idle_blur">0dp</dimen>
   <dimen name="shadow_context_idle_spread">0dp</dimen>
+  <color name="shadow_context_idle_color">#00000000</color>
   <string name="shadow_context_idle_type">dropShadow</string>
   <dimen name="shadow_context_idle_offset_x">0dp</dimen>
   <dimen name="shadow_context_idle_offset_y">0dp</dimen>
   <dimen name="shadow_context_disabled_blur">0dp</dimen>
   <dimen name="shadow_context_disabled_spread">0dp</dimen>
+  <color name="shadow_context_disabled_color">#00000000</color>
   <string name="shadow_context_disabled_type">dropShadow</string>
   <dimen name="shadow_context_disabled_offset_x">0dp</dimen>
   <dimen name="shadow_context_disabled_offset_y">0dp</dimen>
+  <color name="shadow_context_hover_1_color">#1a000000</color>
   <string name="shadow_context_hover_1_type">dropShadow</string>
   <dimen name="shadow_context_hover_1_blur">16dp</dimen>
   <dimen name="shadow_context_hover_1_spread">-4dp</dimen>
   <dimen name="shadow_context_hover_1_offset_x">0dp</dimen>
   <dimen name="shadow_context_hover_1_offset_y">4dp</dimen>
+  <color name="shadow_context_hover_2_color">#1a000000</color>
   <string name="shadow_context_hover_2_type">dropShadow</string>
   <dimen name="shadow_context_hover_2_blur">8dp</dimen>
   <dimen name="shadow_context_hover_2_spread">-2dp</dimen>
   <dimen name="shadow_context_hover_2_offset_x">0dp</dimen>
   <dimen name="shadow_context_hover_2_offset_y">2dp</dimen>
+  <color name="shadow_context_press_1_color">#1a000000</color>
   <string name="shadow_context_press_1_type">dropShadow</string>
   <dimen name="shadow_context_press_1_blur">8dp</dimen>
   <dimen name="shadow_context_press_1_spread">-2dp</dimen>
   <dimen name="shadow_context_press_1_offset_x">0dp</dimen>
   <dimen name="shadow_context_press_1_offset_y">2dp</dimen>
+  <color name="shadow_context_press_2_color">#1a000000</color>
   <string name="shadow_context_press_2_type">dropShadow</string>
   <dimen name="shadow_context_press_2_blur">4dp</dimen>
   <dimen name="shadow_context_press_2_spread">-1dp</dimen>
   <dimen name="shadow_context_press_2_offset_x">0dp</dimen>
   <dimen name="shadow_context_press_2_offset_y">1dp</dimen>
+  <color name="shadow_context_focus_color">#ff00a4cc</color>
   <string name="shadow_context_focus_type">dropShadow</string>
   <dimen name="shadow_context_focus_blur">4dp</dimen>
   <dimen name="shadow_context_focus_spread">0dp</dimen>
   <dimen name="shadow_context_focus_offset_x">0dp</dimen>
   <dimen name="shadow_context_focus_offset_y">0dp</dimen>
+  <color name="shadow_context_highlight_color">#ff00a4cc</color>
   <string name="shadow_context_highlight_type">dropShadow</string>
   <dimen name="shadow_context_highlight_blur">4dp</dimen>
   <dimen name="shadow_context_highlight_spread">0dp</dimen>
@@ -6484,16 +6492,4 @@
   <dimen name="shadow_glow_info_spread">0dp</dimen>
   <dimen name="shadow_glow_info_offset_x">0dp</dimen>
   <dimen name="shadow_glow_info_offset_y">0dp</dimen>
-  <color name="bg_blur_default_color">#80b7c0c2</color>
-  <string name="bg_blur_default_type">dropShadow</string>
-  <dimen name="bg_blur_default_blur">48dp</dimen>
-  <dimen name="bg_blur_default_spread">0dp</dimen>
-  <dimen name="bg_blur_default_offset_x">0dp</dimen>
-  <dimen name="bg_blur_default_offset_y">0dp</dimen>
-  <color name="bg_blur_alternate_color">#80384043</color>
-  <string name="bg_blur_alternate_type">dropShadow</string>
-  <dimen name="bg_blur_alternate_blur">48dp</dimen>
-  <dimen name="bg_blur_alternate_spread">0dp</dimen>
-  <dimen name="bg_blur_alternate_offset_x">0dp</dimen>
-  <dimen name="bg_blur_alternate_offset_y">0dp</dimen>
 </resources>

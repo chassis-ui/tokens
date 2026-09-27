@@ -4,8 +4,8 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Sun, 27 Sep 2026 10:17:19 GMT
-// Chassis - Tokens v0.5.3
+// Generated on Sun, 27 Sep 2026 20:31:48 GMT
+// Chassis - Tokens v0.6.0
 // Copyright 2026 Ozgur Gunes
 // Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
 
@@ -1797,17 +1797,15 @@ public enum ChassisTokensColorLight {
     public static let ShadowElevationAccent051Color = ColorShadowDefault
     public static let ShadowElevationAccent052Color = ColorShadowDefault
     public static let ShadowElevationAccent053Color = ColorPrimitiveAccentT5020
-    public static let ShadowGlowDefaultColor = UIColor(red: 0.086, green: 0.102, blue: 0.106, alpha: 1)
-    public static let ShadowGlowAlternateColor = UIColor(red: 0.914, green: 0.925, blue: 0.929, alpha: 1)
-    public static let ShadowGlowBlackColor = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1)
-    public static let ShadowGlowWhiteColor = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1)
-    public static let ShadowGlowPrimaryColor = UIColor(red: 0.000, green: 0.643, blue: 0.800, alpha: 1)
-    public static let ShadowGlowSecondaryColor = UIColor(red: 0.961, green: 0.322, blue: 0.000, alpha: 1)
-    public static let ShadowGlowNeutralColor = UIColor(red: 0.435, green: 0.502, blue: 0.522, alpha: 1)
-    public static let ShadowGlowDangerColor = UIColor(red: 0.961, green: 0.137, blue: 0.078, alpha: 1)
-    public static let ShadowGlowSuccessColor = UIColor(red: 0.063, green: 0.761, blue: 0.388, alpha: 1)
-    public static let ShadowGlowWarningColor = UIColor(red: 0.961, green: 0.639, blue: 0.000, alpha: 1)
-    public static let ShadowGlowInfoColor = UIColor(red: 0.078, green: 0.078, blue: 0.961, alpha: 1)
-    public static let BgBlurDefaultColor = UIColor(red: 0.718, green: 0.753, blue: 0.761, alpha: 0.5)
-    public static let BgBlurAlternateColor = UIColor(red: 0.220, green: 0.251, blue: 0.263, alpha: 0.5)
+    public static let ShadowGlowDefaultColor = ColorContextDefaultFgMain
+    public static let ShadowGlowAlternateColor = ColorContextAlternateFgMain
+    public static let ShadowGlowBlackColor = ColorContextBlackBaseColor
+    public static let ShadowGlowWhiteColor = ColorContextWhiteBaseColor
+    public static let ShadowGlowPrimaryColor = ColorContextPrimaryBaseColor
+    public static let ShadowGlowSecondaryColor = ColorContextSecondaryBaseColor
+    public static let ShadowGlowNeutralColor = ColorContextNeutralBaseColor
+    public static let ShadowGlowDangerColor = ColorContextDangerBaseColor
+    public static let ShadowGlowSuccessColor = ColorContextSuccessBaseColor
+    public static let ShadowGlowWarningColor = ColorContextWarningBaseColor
+    public static let ShadowGlowInfoColor = ColorContextInfoBaseColor
 }

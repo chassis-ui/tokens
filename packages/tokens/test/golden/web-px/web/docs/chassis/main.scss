@@ -4,8 +4,8 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Sun, 27 Sep 2026 07:17:10 GMT
-// Chassis - Tokens v0.5.3
+// Generated on Sun, 27 Sep 2026 20:31:52 GMT
+// Chassis - Tokens v0.6.0
 // Copyright 2026 Ozgur Gunes
 // Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
 
@@ -225,11 +225,11 @@ $cx-size-modal-window-small-w: 360px !default;
 $cx-size-modal-window-xlarge-h: 720px !default;
 $cx-size-modal-window-large-h: 600px !default;
 $cx-size-modal-window-medium-h: 480px !default;
-$cx-size-modal-window-small-h: 640px !default;
+$cx-size-modal-window-small-h: 360px !default;
 $cx-size-notification-icon: 28px !default;
 $cx-size-nav-left-width: 256px !default;
 $cx-size-nav-left-width-expanded: 256px !default;
-$cx-size-nav-left-wdith-collapsed: 72px !default;
+$cx-size-nav-left-width-collapsed: 72px !default;
 $cx-size-nav-top-height: 64px !default;
 $cx-size-pagination-dot-idle-h: 8px !default;
 $cx-size-pagination-dot-idle-w: 8px !default;
@@ -282,7 +282,7 @@ $cx-space-unit-104: 104px !default;
 $cx-space-unit-112: 112px !default;
 $cx-space-unit-120: 120px !default;
 $cx-space-unit-128: 128px !default;
-$cx-space-unit-136: 128px !default;
+$cx-space-unit-136: 136px !default;
 $cx-space-unit-05: 0.5px !default;
 $cx-space-unit-d05: 0.5px !default;
 $cx-space-unit-d15: 1.5px !default;
@@ -435,7 +435,7 @@ $cx-space-segment-small-bar-padding: 4px !default;
 $cx-space-segment-small-padding-y: 3px !default;
 $cx-space-segment-small-padding-x: 8px !default;
 $cx-space-segment-small-gap: 8px !default;
-$cx-space-website-section-padding-y: 48px !default;
+$cx-space-website-section-padding-y: 64px !default;
 $cx-space-website-section-padding-x: 24px !default;
 $cx-space-website-section-gap: 48px !default;
 $cx-space-website-content-header-gap: 16px !default;
@@ -470,11 +470,6 @@ $cx-opacity-context-dim-main: 0.7 !default;
 $cx-opacity-context-dim-subtle: 0.3 !default;
 $cx-opacity-context-dim-slight: 0.05 !default;
 $cx-opacity-context-transparent-color: 0 !default;
-$cx-figma-website-size-page-w: 1512px !default;
-$cx-figma-website-size-slide-min-w: 560px !default;
-$cx-figma-website-size-card-min-w: 560px !default;
-$cx-figma-website-variant-nav: large !default;
-$cx-figma-website-variant-section: large !default;
 $cx-color-base-primitive-light-black-base: #000000 !default;
 $cx-color-base-primitive-light-black-transparent: rgba(0, 0, 0, 0) !default;
 $cx-color-base-primitive-light-black-contrast: #ffffff !default;
@@ -2547,9 +2542,6 @@ $cx-font-website-section-body: ("font-family": "Inter, system-ui, -apple-system,
 $cx-font-website-feature-title: ("font-family": "Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif", "font-weight": 700, "font-size": 22px, "line-height": 1.5em, "font-style": normal, "letter-spacing": 0em, "margin-bottom": 0px, "text-transform": none, "text-decoration": none) !default;
 $cx-font-website-feature-body: ("font-family": "Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif", "font-weight": 400, "font-size": 19px, "line-height": 1.5em, "font-style": normal, "letter-spacing": 0em, "margin-bottom": 0px, "text-transform": none, "text-decoration": none) !default;
 $cx-font-website-module-title: ("font-family": "Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif", "font-weight": 700, "font-size": 19px, "line-height": 1.5em, "font-style": normal, "letter-spacing": 0em, "margin-bottom": 0px, "text-transform": none, "text-decoration": none) !default;
-$cx-border-width-context-none: 0px !default;
-$cx-border-width-context-thin: 0.5px !default;
-$cx-border-width-context-thick: 2px !default;
 $cx-border-width-context-zero: 0px !default;
 $cx-border-width-context-small: 0.5px !default;
 $cx-border-width-context-medium: 1px !default;
@@ -2651,7 +2643,7 @@ $cx-shadow-elevation-alternate-70: 0px 12px 48px -12px rgba(0, 0, 0, 0.2), 0px 6
 $cx-shadow-elevation-alternate-80: 0px 14px 56px -14px rgba(0, 0, 0, 0.2), 0px 7px 28px -7px rgba(0, 0, 0, 0.2) !default;
 $cx-shadow-elevation-alternate-90: 0px 16px 64px -16px rgba(0, 0, 0, 0.2), 0px 8px 32px -8px rgba(0, 0, 0, 0.2) !default;
 $cx-shadow-elevation-alternate-95: 0px 20px 80px -20px rgba(0, 0, 0, 0.2), 0px 10px 40px -10px rgba(0, 0, 0, 0.2) !default;
-$cx-shadow-elevation-alternate-05: 0px 1px 4px -1px rgba(0, 0, 0, 0.2), 0px 0.5px 2px -0.5 rgba(0, 0, 0, 0.2) !default;
+$cx-shadow-elevation-alternate-05: 0px 1px 4px -1px rgba(0, 0, 0, 0.2), 0px 0.5px 2px -0.5px rgba(0, 0, 0, 0.2) !default;
 $cx-shadow-elevation-primary-10: 0px 2px 8px -2px rgba(0, 0, 0, 0.1), 0px 1px 4px -1px rgba(0, 0, 0, 0.1), 0px 2px 8px -2px rgba(0, 164, 204, 0.4) !default;
 $cx-shadow-elevation-primary-20: 0px 4px 16px -4px rgba(0, 0, 0, 0.1), 0px 2px 8px -2px rgba(0, 0, 0, 0.1), 0px 4px 16px -4px rgba(0, 164, 204, 0.4) !default;
 $cx-shadow-elevation-primary-30: 0px 5px 20px -5px rgba(0, 0, 0, 0.1), 0px 2.5px 10px -2.5px rgba(0, 0, 0, 0.1), 0px 5px 20px -5px rgba(0, 164, 204, 0.4) !default;
@@ -2662,7 +2654,7 @@ $cx-shadow-elevation-primary-70: 0px 12px 48px -12px rgba(0, 0, 0, 0.1), 0px 6px
 $cx-shadow-elevation-primary-80: 0px 14px 56px -14px rgba(0, 0, 0, 0.1), 0px 7px 28px -7px rgba(0, 0, 0, 0.1), 0px 14px 56px -14px rgba(0, 164, 204, 0.4) !default;
 $cx-shadow-elevation-primary-90: 0px 16px 64px -16px rgba(0, 0, 0, 0.1), 0px 8px 32px -8px rgba(0, 0, 0, 0.1), 0px 16px 64px -16px rgba(0, 164, 204, 0.4) !default;
 $cx-shadow-elevation-primary-95: 0px 20px 80px -20px rgba(0, 0, 0, 0.1), 0px 10px 40px -10px rgba(0, 0, 0, 0.1), 0px 20px 80px -20px rgba(0, 164, 204, 0.4) !default;
-$cx-shadow-elevation-primary-05: 0px 1px 4px -1px rgba(0, 0, 0, 0.1), 0px 0.5px 2px -0.5 rgba(0, 0, 0, 0.1), 0px 1px 4px -1px rgba(0, 164, 204, 0.4) !default;
+$cx-shadow-elevation-primary-05: 0px 1px 4px -1px rgba(0, 0, 0, 0.1), 0px 0.5px 2px -0.5px rgba(0, 0, 0, 0.1), 0px 1px 4px -1px rgba(0, 164, 204, 0.4) !default;
 $cx-shadow-elevation-secondary-10: 0px 2px 8px -2px rgba(0, 0, 0, 0.1), 0px 1px 4px -1px rgba(0, 0, 0, 0.1), 0px 2px 8px -2px rgba(245, 82, 0, 0.4) !default;
 $cx-shadow-elevation-secondary-20: 0px 4px 16px -4px rgba(0, 0, 0, 0.1), 0px 2px 8px -2px rgba(0, 0, 0, 0.1), 0px 4px 16px -4px rgba(245, 82, 0, 0.4) !default;
 $cx-shadow-elevation-secondary-30: 0px 5px 20px -5px rgba(0, 0, 0, 0.1), 0px 2.5px 10px -2.5px rgba(0, 0, 0, 0.1), 0px 5px 20px -5px rgba(245, 82, 0, 0.4) !default;
@@ -2673,7 +2665,7 @@ $cx-shadow-elevation-secondary-70: 0px 12px 48px -12px rgba(0, 0, 0, 0.1), 0px 6
 $cx-shadow-elevation-secondary-80: 0px 14px 56px -14px rgba(0, 0, 0, 0.1), 0px 7px 28px -7px rgba(0, 0, 0, 0.1), 0px 14px 56px -14px rgba(245, 82, 0, 0.4) !default;
 $cx-shadow-elevation-secondary-90: 0px 16px 64px -16px rgba(0, 0, 0, 0.1), 0px 8px 32px -8px rgba(0, 0, 0, 0.1), 0px 16px 64px -16px rgba(245, 82, 0, 0.4) !default;
 $cx-shadow-elevation-secondary-95: 0px 20px 80px -20px rgba(0, 0, 0, 0.1), 0px 10px 40px -10px rgba(0, 0, 0, 0.1), 0px 20px 80px -20px rgba(245, 82, 0, 0.4) !default;
-$cx-shadow-elevation-secondary-05: 0px 1px 4px -1px rgba(0, 0, 0, 0.1), 0px 0.5px 2px -0.5 rgba(0, 0, 0, 0.1), 0px 1px 4px -1px rgba(245, 82, 0, 0.4) !default;
+$cx-shadow-elevation-secondary-05: 0px 1px 4px -1px rgba(0, 0, 0, 0.1), 0px 0.5px 2px -0.5px rgba(0, 0, 0, 0.1), 0px 1px 4px -1px rgba(245, 82, 0, 0.4) !default;
 $cx-shadow-elevation-neutral-10: 0px 2px 8px -2px rgba(0, 0, 0, 0.1), 0px 1px 4px -1px rgba(0, 0, 0, 0.1), 0px 2px 8px -2px rgba(111, 128, 133, 0.4) !default;
 $cx-shadow-elevation-neutral-20: 0px 4px 16px -4px rgba(0, 0, 0, 0.1), 0px 2px 8px -2px rgba(0, 0, 0, 0.1), 0px 4px 16px -4px rgba(111, 128, 133, 0.4) !default;
 $cx-shadow-elevation-neutral-30: 0px 5px 20px -5px rgba(0, 0, 0, 0.1), 0px 2.5px 10px -2.5px rgba(0, 0, 0, 0.1), 0px 5px 20px -5px rgba(111, 128, 133, 0.4) !default;
@@ -2684,7 +2676,7 @@ $cx-shadow-elevation-neutral-70: 0px 12px 48px -12px rgba(0, 0, 0, 0.1), 0px 6px
 $cx-shadow-elevation-neutral-80: 0px 14px 56px -14px rgba(0, 0, 0, 0.1), 0px 7px 28px -7px rgba(0, 0, 0, 0.1), 0px 14px 56px -14px rgba(111, 128, 133, 0.4) !default;
 $cx-shadow-elevation-neutral-90: 0px 16px 64px -16px rgba(0, 0, 0, 0.1), 0px 8px 32px -8px rgba(0, 0, 0, 0.1), 0px 16px 64px -16px rgba(111, 128, 133, 0.4) !default;
 $cx-shadow-elevation-neutral-95: 0px 20px 80px -20px rgba(0, 0, 0, 0.1), 0px 10px 40px -10px rgba(0, 0, 0, 0.1), 0px 20px 80px -20px rgba(111, 128, 133, 0.4) !default;
-$cx-shadow-elevation-neutral-05: 0px 1px 4px -1px rgba(0, 0, 0, 0.1), 0px 0.5px 2px -0.5 rgba(0, 0, 0, 0.1), 0px 1px 4px -1px rgba(111, 128, 133, 0.4) !default;
+$cx-shadow-elevation-neutral-05: 0px 1px 4px -1px rgba(0, 0, 0, 0.1), 0px 0.5px 2px -0.5px rgba(0, 0, 0, 0.1), 0px 1px 4px -1px rgba(111, 128, 133, 0.4) !default;
 $cx-shadow-elevation-danger-10: 0px 2px 8px -2px rgba(0, 0, 0, 0.1), 0px 1px 4px -1px rgba(0, 0, 0, 0.1), 0px 2px 8px -2px rgba(245, 35, 20, 0.4) !default;
 $cx-shadow-elevation-danger-20: 0px 4px 16px -4px rgba(0, 0, 0, 0.1), 0px 2px 8px -2px rgba(0, 0, 0, 0.1), 0px 4px 16px -4px rgba(245, 35, 20, 0.4) !default;
 $cx-shadow-elevation-danger-30: 0px 5px 20px -5px rgba(0, 0, 0, 0.1), 0px 2.5px 10px -2.5px rgba(0, 0, 0, 0.1), 0px 5px 20px -5px rgba(245, 35, 20, 0.4) !default;
@@ -2695,7 +2687,7 @@ $cx-shadow-elevation-danger-70: 0px 12px 48px -12px rgba(0, 0, 0, 0.1), 0px 6px 
 $cx-shadow-elevation-danger-80: 0px 14px 56px -14px rgba(0, 0, 0, 0.1), 0px 7px 28px -7px rgba(0, 0, 0, 0.1), 0px 14px 56px -14px rgba(245, 35, 20, 0.4) !default;
 $cx-shadow-elevation-danger-90: 0px 16px 64px -16px rgba(0, 0, 0, 0.1), 0px 8px 32px -8px rgba(0, 0, 0, 0.1), 0px 16px 64px -16px rgba(245, 35, 20, 0.4) !default;
 $cx-shadow-elevation-danger-95: 0px 20px 80px -20px rgba(0, 0, 0, 0.1), 0px 10px 40px -10px rgba(0, 0, 0, 0.1), 0px 20px 80px -20px rgba(245, 35, 20, 0.4) !default;
-$cx-shadow-elevation-danger-05: 0px 1px 4px -1px rgba(0, 0, 0, 0.1), 0px 0.5px 2px -0.5 rgba(0, 0, 0, 0.1), 0px 1px 4px -1px rgba(245, 35, 20, 0.4) !default;
+$cx-shadow-elevation-danger-05: 0px 1px 4px -1px rgba(0, 0, 0, 0.1), 0px 0.5px 2px -0.5px rgba(0, 0, 0, 0.1), 0px 1px 4px -1px rgba(245, 35, 20, 0.4) !default;
 $cx-shadow-elevation-success-10: 0px 2px 8px -2px rgba(0, 0, 0, 0.1), 0px 1px 4px -1px rgba(0, 0, 0, 0.1), 0px 2px 8px -2px rgba(16, 194, 99, 0.4) !default;
 $cx-shadow-elevation-success-20: 0px 4px 16px -4px rgba(0, 0, 0, 0.1), 0px 2px 8px -2px rgba(0, 0, 0, 0.1), 0px 4px 16px -4px rgba(16, 194, 99, 0.4) !default;
 $cx-shadow-elevation-success-30: 0px 5px 20px -5px rgba(0, 0, 0, 0.1), 0px 2.5px 10px -2.5px rgba(0, 0, 0, 0.1), 0px 5px 20px -5px rgba(16, 194, 99, 0.4) !default;
@@ -2706,7 +2698,7 @@ $cx-shadow-elevation-success-70: 0px 12px 48px -12px rgba(0, 0, 0, 0.1), 0px 6px
 $cx-shadow-elevation-success-80: 0px 14px 56px -14px rgba(0, 0, 0, 0.1), 0px 7px 28px -7px rgba(0, 0, 0, 0.1), 0px 14px 56px -14px rgba(16, 194, 99, 0.4) !default;
 $cx-shadow-elevation-success-90: 0px 16px 64px -16px rgba(0, 0, 0, 0.1), 0px 8px 32px -8px rgba(0, 0, 0, 0.1), 0px 16px 64px -16px rgba(16, 194, 99, 0.4) !default;
 $cx-shadow-elevation-success-95: 0px 20px 80px -20px rgba(0, 0, 0, 0.1), 0px 10px 40px -10px rgba(0, 0, 0, 0.1), 0px 20px 80px -20px rgba(16, 194, 99, 0.4) !default;
-$cx-shadow-elevation-success-05: 0px 1px 4px -1px rgba(0, 0, 0, 0.1), 0px 0.5px 2px -0.5 rgba(0, 0, 0, 0.1), 0px 1px 4px -1px rgba(16, 194, 99, 0.4) !default;
+$cx-shadow-elevation-success-05: 0px 1px 4px -1px rgba(0, 0, 0, 0.1), 0px 0.5px 2px -0.5px rgba(0, 0, 0, 0.1), 0px 1px 4px -1px rgba(16, 194, 99, 0.4) !default;
 $cx-shadow-elevation-warning-10: 0px 2px 8px -2px rgba(0, 0, 0, 0.1), 0px 1px 4px -1px rgba(0, 0, 0, 0.1), 0px 2px 8px -2px rgba(245, 163, 0, 0.4) !default;
 $cx-shadow-elevation-warning-20: 0px 4px 16px -4px rgba(0, 0, 0, 0.1), 0px 2px 8px -2px rgba(0, 0, 0, 0.1), 0px 4px 16px -4px rgba(245, 163, 0, 0.4) !default;
 $cx-shadow-elevation-warning-30: 0px 5px 20px -5px rgba(0, 0, 0, 0.1), 0px 2.5px 10px -2.5px rgba(0, 0, 0, 0.1), 0px 5px 20px -5px rgba(245, 163, 0, 0.4) !default;
@@ -2717,7 +2709,7 @@ $cx-shadow-elevation-warning-70: 0px 12px 48px -12px rgba(0, 0, 0, 0.1), 0px 6px
 $cx-shadow-elevation-warning-80: 0px 14px 56px -14px rgba(0, 0, 0, 0.1), 0px 7px 28px -7px rgba(0, 0, 0, 0.1), 0px 14px 56px -14px rgba(245, 163, 0, 0.4) !default;
 $cx-shadow-elevation-warning-90: 0px 16px 64px -16px rgba(0, 0, 0, 0.1), 0px 8px 32px -8px rgba(0, 0, 0, 0.1), 0px 16px 64px -16px rgba(245, 163, 0, 0.4) !default;
 $cx-shadow-elevation-warning-95: 0px 20px 80px -20px rgba(0, 0, 0, 0.1), 0px 10px 40px -10px rgba(0, 0, 0, 0.1), 0px 20px 80px -20px rgba(245, 163, 0, 0.4) !default;
-$cx-shadow-elevation-warning-05: 0px 1px 4px -1px rgba(0, 0, 0, 0.1), 0px 0.5px 2px -0.5 rgba(0, 0, 0, 0.1), 0px 1px 4px -1px rgba(245, 163, 0, 0.4) !default;
+$cx-shadow-elevation-warning-05: 0px 1px 4px -1px rgba(0, 0, 0, 0.1), 0px 0.5px 2px -0.5px rgba(0, 0, 0, 0.1), 0px 1px 4px -1px rgba(245, 163, 0, 0.4) !default;
 $cx-shadow-elevation-info-10: 0px 2px 8px -2px rgba(0, 0, 0, 0.1), 0px 1px 4px -1px rgba(0, 0, 0, 0.1), 0px 2px 8px -2px rgba(20, 20, 245, 0.4) !default;
 $cx-shadow-elevation-info-20: 0px 4px 16px -4px rgba(0, 0, 0, 0.1), 0px 2px 8px -2px rgba(0, 0, 0, 0.1), 0px 4px 16px -4px rgba(20, 20, 245, 0.4) !default;
 $cx-shadow-elevation-info-30: 0px 5px 20px -5px rgba(0, 0, 0, 0.1), 0px 2.5px 10px -2.5px rgba(0, 0, 0, 0.1), 0px 5px 20px -5px rgba(20, 20, 245, 0.4) !default;
@@ -2728,7 +2720,7 @@ $cx-shadow-elevation-info-70: 0px 12px 48px -12px rgba(0, 0, 0, 0.1), 0px 6px 24
 $cx-shadow-elevation-info-80: 0px 14px 56px -14px rgba(0, 0, 0, 0.1), 0px 7px 28px -7px rgba(0, 0, 0, 0.1), 0px 14px 56px -14px rgba(20, 20, 245, 0.4) !default;
 $cx-shadow-elevation-info-90: 0px 16px 64px -16px rgba(0, 0, 0, 0.1), 0px 8px 32px -8px rgba(0, 0, 0, 0.1), 0px 16px 64px -16px rgba(20, 20, 245, 0.4) !default;
 $cx-shadow-elevation-info-95: 0px 20px 80px -20px rgba(0, 0, 0, 0.1), 0px 10px 40px -10px rgba(0, 0, 0, 0.1), 0px 20px 80px -20px rgba(20, 20, 245, 0.4) !default;
-$cx-shadow-elevation-info-05: 0px 1px 4px -1px rgba(0, 0, 0, 0.1), 0px 0.5px 2px -0.5 rgba(0, 0, 0, 0.1), 0px 1px 4px -1px rgba(20, 20, 245, 0.4) !default;
+$cx-shadow-elevation-info-05: 0px 1px 4px -1px rgba(0, 0, 0, 0.1), 0px 0.5px 2px -0.5px rgba(0, 0, 0, 0.1), 0px 1px 4px -1px rgba(20, 20, 245, 0.4) !default;
 $cx-shadow-elevation-brand-10: 0px 2px 8px -2px rgba(0, 0, 0, 0.1), 0px 1px 4px -1px rgba(0, 0, 0, 0.1), 0px 2px 8px -2px rgba(0, 164, 204, 0.2) !default;
 $cx-shadow-elevation-brand-20: 0px 4px 16px -4px rgba(0, 0, 0, 0.1), 0px 2px 8px -2px rgba(0, 0, 0, 0.1), 0px 4px 16px -4px rgba(0, 164, 204, 0.2) !default;
 $cx-shadow-elevation-brand-30: 0px 5px 20px -5px rgba(0, 0, 0, 0.1), 0px 2.5px 10px -2.5px rgba(0, 0, 0, 0.1), 0px 5px 20px -5px rgba(0, 164, 204, 0.2) !default;
@@ -2739,7 +2731,7 @@ $cx-shadow-elevation-brand-70: 0px 12px 48px -12px rgba(0, 0, 0, 0.1), 0px 6px 2
 $cx-shadow-elevation-brand-80: 0px 14px 56px -14px rgba(0, 0, 0, 0.1), 0px 7px 28px -7px rgba(0, 0, 0, 0.1), 0px 14px 56px -14px rgba(0, 164, 204, 0.2) !default;
 $cx-shadow-elevation-brand-90: 0px 16px 64px -16px rgba(0, 0, 0, 0.1), 0px 8px 32px -8px rgba(0, 0, 0, 0.1), 0px 16px 64px -16px rgba(0, 164, 204, 0.2) !default;
 $cx-shadow-elevation-brand-95: 0px 20px 80px -20px rgba(0, 0, 0, 0.1), 0px 10px 40px -10px rgba(0, 0, 0, 0.1), 0px 20px 80px -20px rgba(0, 164, 204, 0.2) !default;
-$cx-shadow-elevation-brand-05: 0px 1px 4px -1px rgba(0, 0, 0, 0.1), 0px 0.5px 2px -0.5 rgba(0, 0, 0, 0.1), 0px 1px 4px -1px rgba(0, 164, 204, 0.2) !default;
+$cx-shadow-elevation-brand-05: 0px 1px 4px -1px rgba(0, 0, 0, 0.1), 0px 0.5px 2px -0.5px rgba(0, 0, 0, 0.1), 0px 1px 4px -1px rgba(0, 164, 204, 0.2) !default;
 $cx-shadow-elevation-accent-10: 0px 2px 8px -2px rgba(0, 0, 0, 0.1), 0px 1px 4px -1px rgba(0, 0, 0, 0.1), 0px 2px 8px -2px rgba(245, 82, 0, 0.2) !default;
 $cx-shadow-elevation-accent-20: 0px 4px 16px -4px rgba(0, 0, 0, 0.1), 0px 2px 8px -2px rgba(0, 0, 0, 0.1), 0px 4px 16px -4px rgba(245, 82, 0, 0.2) !default;
 $cx-shadow-elevation-accent-30: 0px 5px 20px -5px rgba(0, 0, 0, 0.1), 0px 2.5px 10px -2.5px rgba(0, 0, 0, 0.1), 0px 5px 20px -5px rgba(245, 82, 0, 0.2) !default;
@@ -2750,7 +2742,7 @@ $cx-shadow-elevation-accent-70: 0px 12px 48px -12px rgba(0, 0, 0, 0.1), 0px 6px 
 $cx-shadow-elevation-accent-80: 0px 14px 56px -14px rgba(0, 0, 0, 0.1), 0px 7px 28px -7px rgba(0, 0, 0, 0.1), 0px 14px 56px -14px rgba(245, 82, 0, 0.2) !default;
 $cx-shadow-elevation-accent-90: 0px 16px 64px -16px rgba(0, 0, 0, 0.1), 0px 8px 32px -8px rgba(0, 0, 0, 0.1), 0px 16px 64px -16px rgba(245, 82, 0, 0.2) !default;
 $cx-shadow-elevation-accent-95: 0px 20px 80px -20px rgba(0, 0, 0, 0.1), 0px 10px 40px -10px rgba(0, 0, 0, 0.1), 0px 20px 80px -20px rgba(245, 82, 0, 0.2) !default;
-$cx-shadow-elevation-accent-05: 0px 1px 4px -1px rgba(0, 0, 0, 0.1), 0px 0.5px 2px -0.5 rgba(0, 0, 0, 0.1), 0px 1px 4px -1px rgba(245, 82, 0, 0.2) !default;
+$cx-shadow-elevation-accent-05: 0px 1px 4px -1px rgba(0, 0, 0, 0.1), 0px 0.5px 2px -0.5px rgba(0, 0, 0, 0.1), 0px 1px 4px -1px rgba(245, 82, 0, 0.2) !default;
 $cx-shadow-glow-default: 0px 0px 4px 0px #161a1b !default;
 $cx-shadow-glow-alternate: 0px 0px 4px 0px #e9eced !default;
 $cx-shadow-glow-black: 0px 0px 4px 0px #000000 !default;
@@ -2762,6 +2754,4 @@ $cx-shadow-glow-danger: 0px 0px 4px 0px #F52314 !default;
 $cx-shadow-glow-success: 0px 0px 4px 0px #10C263 !default;
 $cx-shadow-glow-warning: 0px 0px 4px 0px #F5A300 !default;
 $cx-shadow-glow-info: 0px 0px 4px 0px #1414F5 !default;
-$cx-bg-blur-default: 0px 0px 48px 0px rgba(183, 192, 194, 0.5) !default;
-$cx-bg-blur-alternate: 0px 0px 48px 0px rgba(56, 64, 67, 0.5) !default;
 // scss-docs-end design-tokens

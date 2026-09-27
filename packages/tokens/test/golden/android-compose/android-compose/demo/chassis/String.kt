@@ -3,8 +3,8 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Sun, 27 Sep 2026 11:29:41 GMT
-// Chassis - Tokens v0.5.3
+// Generated on Sun, 27 Sep 2026 20:31:46 GMT
+// Chassis - Tokens v0.6.0
 // Copyright 2026 Ozgur Gunes
 // Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
 
@@ -18,8 +18,6 @@ import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
 
 object ChassisTokensString {
-    val figmaWebsiteVariantNav get() = "large"
-    val figmaWebsiteVariantSection get() = "large"
     val typographyFontFamilyText get() = "Inter"
     val typographyFontFamilyDisplay get() = "Archivo Narrow"
     val typographyFontFamilyHtml get() = "Inter"
@@ -1431,6 +1429,4 @@ object ChassisTokensString {
     val shadowGlowSuccessType get() = "dropShadow"
     val shadowGlowWarningType get() = "dropShadow"
     val shadowGlowInfoType get() = "dropShadow"
-    val bgBlurDefaultType get() = "dropShadow"
-    val bgBlurAlternateType get() = "dropShadow"
 }

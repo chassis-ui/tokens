@@ -4,7 +4,7 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Sun, 27 Sep 2026 13:50:07 GMT
+// Generated on Sun, 27 Sep 2026 20:28:12 GMT
 // Chassis - Tokens v0.6.0
 // Copyright 2026 Ozgur Gunes
 // Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
@@ -1808,6 +1808,4 @@ public enum ChassisTokensColorLight {
     public static let ShadowGlowSuccessColor = UIColor(red: 0.133, green: 0.439, blue: 0.247, alpha: 1)
     public static let ShadowGlowWarningColor = UIColor(red: 0.541, green: 0.337, blue: 0.000, alpha: 1)
     public static let ShadowGlowInfoColor = UIColor(red: 0.180, green: 0.361, blue: 0.620, alpha: 1)
-    public static let BgBlurDefaultColor = UIColor(red: 0.749, green: 0.729, blue: 0.718, alpha: 0.5)
-    public static let BgBlurAlternateColor = UIColor(red: 0.247, green: 0.231, blue: 0.216, alpha: 0.5)
 }

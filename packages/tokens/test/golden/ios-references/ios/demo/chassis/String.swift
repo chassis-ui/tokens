@@ -4,8 +4,8 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Sun, 27 Sep 2026 10:17:19 GMT
-// Chassis - Tokens v0.5.3
+// Generated on Sun, 27 Sep 2026 20:31:48 GMT
+// Chassis - Tokens v0.6.0
 // Copyright 2026 Ozgur Gunes
 // Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
 
@@ -13,8 +13,6 @@
 import UIKit
 
 public enum ChassisTokensString {
-    public static let FigmaWebsiteVariantNav = "large"
-    public static let FigmaWebsiteVariantSection = "large"
     public static let TypographyFontFamilyText = "Inter"
     public static let TypographyFontFamilyDisplay = "Archivo Narrow"
     public static let TypographyFontFamilyHtml = TypographyFontFamilyText
@@ -1426,6 +1424,4 @@ public enum ChassisTokensString {
     public static let ShadowGlowSuccessType = "dropShadow"
     public static let ShadowGlowWarningType = "dropShadow"
     public static let ShadowGlowInfoType = "dropShadow"
-    public static let BgBlurDefaultType = "dropShadow"
-    public static let BgBlurAlternateType = "dropShadow"
 }

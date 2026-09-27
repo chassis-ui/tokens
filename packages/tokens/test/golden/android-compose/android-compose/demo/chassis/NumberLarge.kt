@@ -3,8 +3,8 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Sun, 27 Sep 2026 11:29:41 GMT
-// Chassis - Tokens v0.5.3
+// Generated on Sun, 27 Sep 2026 20:31:46 GMT
+// Chassis - Tokens v0.6.0
 // Copyright 2026 Ozgur Gunes
 // Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
 
@@ -231,11 +231,11 @@ object ChassisTokensNumberLarge {
     val sizeModalWindowXlargeH get() = 720.dp
     val sizeModalWindowLargeH get() = 600.dp
     val sizeModalWindowMediumH get() = 480.dp
-    val sizeModalWindowSmallH get() = 640.dp
+    val sizeModalWindowSmallH get() = 360.dp
     val sizeNotificationIcon get() = 28.dp
     val sizeNavLeftWidth get() = 256.dp
     val sizeNavLeftWidthExpanded get() = 256.dp
-    val sizeNavLeftWdithCollapsed get() = 72.dp
+    val sizeNavLeftWidthCollapsed get() = 72.dp
     val sizeNavTopHeight get() = 64.dp
     val sizePaginationDotIdleH get() = 8.dp
     val sizePaginationDotIdleW get() = 8.dp
@@ -288,7 +288,7 @@ object ChassisTokensNumberLarge {
     val spaceUnit112 get() = 112.dp
     val spaceUnit120 get() = 120.dp
     val spaceUnit128 get() = 128.dp
-    val spaceUnit136 get() = 128.dp
+    val spaceUnit136 get() = 136.dp
     val spaceUnit05 get() = 0.5.dp
     val spaceUnitD05 get() = 0.5.dp
     val spaceUnitD15 get() = 1.5.dp
@@ -441,7 +441,7 @@ object ChassisTokensNumberLarge {
     val spaceSegmentSmallPaddingY get() = 3.dp
     val spaceSegmentSmallPaddingX get() = 8.dp
     val spaceSegmentSmallGap get() = 8.dp
-    val spaceWebsiteSectionPaddingY get() = 48.dp
+    val spaceWebsiteSectionPaddingY get() = 64.dp
     val spaceWebsiteSectionPaddingX get() = 24.dp
     val spaceWebsiteSectionGap get() = 48.dp
     val spaceWebsiteContentHeaderGap get() = 16.dp
@@ -476,9 +476,6 @@ object ChassisTokensNumberLarge {
     val opacityContextDimSubtle get() = 0.3f
     val opacityContextDimSlight get() = 0.05f
     val opacityContextTransparentColor get() = 0f
-    val figmaWebsiteSizePageW get() = 1512.dp
-    val figmaWebsiteSizeSlideMinW get() = 560.dp
-    val figmaWebsiteSizeCardMinW get() = 560.dp
     val typographyFontSizeText5xlarge get() = 44.sp
     val typographyFontSizeText4xlarge get() = 38.sp
     val typographyFontSizeText3xlarge get() = 32.sp
@@ -1418,9 +1415,6 @@ object ChassisTokensNumberLarge {
     val fontWebsiteModuleTitleFontSize get() = 19.sp
     val fontWebsiteModuleTitleLetterSpacing get() = 0.em
     val fontWebsiteModuleTitleParagraphSpacing get() = 0.sp
-    val borderWidthContextNone get() = 0.dp
-    val borderWidthContextThin get() = 0.5.dp
-    val borderWidthContextThick get() = 2.dp
     val borderWidthContextZero get() = 0.dp
     val borderWidthContextSmall get() = 0.5.dp
     val borderWidthContextMedium get() = 1.dp
@@ -3041,12 +3035,4 @@ object ChassisTokensNumberLarge {
     val shadowGlowInfoSpread get() = 0.dp
     val shadowGlowInfoOffsetX get() = 0.dp
     val shadowGlowInfoOffsetY get() = 0.dp
-    val bgBlurDefaultBlur get() = 48.dp
-    val bgBlurDefaultSpread get() = 0.dp
-    val bgBlurDefaultOffsetX get() = 0.dp
-    val bgBlurDefaultOffsetY get() = 0.dp
-    val bgBlurAlternateBlur get() = 48.dp
-    val bgBlurAlternateSpread get() = 0.dp
-    val bgBlurAlternateOffsetX get() = 0.dp
-    val bgBlurAlternateOffsetY get() = 0.dp
 }

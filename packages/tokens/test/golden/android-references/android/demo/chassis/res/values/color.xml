@@ -2,8 +2,8 @@
 
 <!--
   Do not edit directly, this file was auto-generated.
-  Generated on Sun, 27 Sep 2026 11:06:41 GMT
-  Chassis - Tokens v0.5.3
+  Generated on Sun, 27 Sep 2026 20:31:47 GMT
+  Chassis - Tokens v0.6.0
   Copyright 2026 Ozgur Gunes
   Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
 -->
@@ -1793,17 +1793,15 @@
   <color name="shadow_elevation_accent_05_1_color">@color/color_shadow_default</color>
   <color name="shadow_elevation_accent_05_2_color">@color/color_shadow_default</color>
   <color name="shadow_elevation_accent_05_3_color">@color/color_primitive_accent_t_5020</color>
-  <color name="shadow_glow_default_color">#ff161a1b</color>
-  <color name="shadow_glow_alternate_color">#ffe9eced</color>
-  <color name="shadow_glow_black_color">#ff000000</color>
-  <color name="shadow_glow_white_color">#ffffffff</color>
-  <color name="shadow_glow_primary_color">#ff00a4cc</color>
-  <color name="shadow_glow_secondary_color">#fff55200</color>
-  <color name="shadow_glow_neutral_color">#ff6f8085</color>
-  <color name="shadow_glow_danger_color">#fff52314</color>
-  <color name="shadow_glow_success_color">#ff10c263</color>
-  <color name="shadow_glow_warning_color">#fff5a300</color>
-  <color name="shadow_glow_info_color">#ff1414f5</color>
-  <color name="bg_blur_default_color">#80b7c0c2</color>
-  <color name="bg_blur_alternate_color">#80384043</color>
+  <color name="shadow_glow_default_color">@color/color_context_default_fg_main</color>
+  <color name="shadow_glow_alternate_color">@color/color_context_alternate_fg_main</color>
+  <color name="shadow_glow_black_color">@color/color_context_black_base_color</color>
+  <color name="shadow_glow_white_color">@color/color_context_white_base_color</color>
+  <color name="shadow_glow_primary_color">@color/color_context_primary_base_color</color>
+  <color name="shadow_glow_secondary_color">@color/color_context_secondary_base_color</color>
+  <color name="shadow_glow_neutral_color">@color/color_context_neutral_base_color</color>
+  <color name="shadow_glow_danger_color">@color/color_context_danger_base_color</color>
+  <color name="shadow_glow_success_color">@color/color_context_success_base_color</color>
+  <color name="shadow_glow_warning_color">@color/color_context_warning_base_color</color>
+  <color name="shadow_glow_info_color">@color/color_context_info_base_color</color>
 </resources>

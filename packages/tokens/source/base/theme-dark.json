@@ -388,6 +388,10 @@
           "$type": "color",
           "$value": "{color.base.context.dark.primary.bg-inverse}"
         },
+        "bg-solid": {
+          "$type": "color",
+          "$value": "{color.base.context.dark.primary.bg-solid}"
+        },
         "bg-highlight": {
           "$type": "color",
           "$value": "{color.base.context.dark.primary.bg-highlight}"
@@ -2828,6 +2832,14 @@
       "container-alternate": {
         "$type": "color",
         "$value": "#f4f5f6"
+      },
+      "container-prototype": {
+        "$type": "color",
+        "$value": "#444444"
+      },
+      "container-flow": {
+        "$type": "color",
+        "$value": "#333333"
       },
       "inverter-default": {
         "$type": "color",

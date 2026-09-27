@@ -36,6 +36,14 @@ describe('parseArgs', () => {
     expect(parseArgs([flag, ...values])[key]).toEqual(values)
   })
 
+  test.each(['--brand', '--app', '--platform', '--theme', '--screen'])(
+    '%s without a value throws',
+    (flag) => {
+      expect(() => parseArgs([flag])).toThrow(`${flag} requires a value`)
+      expect(() => parseArgs([flag, '--dry-run'])).toThrow(`${flag} requires a value`)
+    }
+  )
+
   test('reads several filters at once', () => {
     const options = parseArgs([
       '--brand',

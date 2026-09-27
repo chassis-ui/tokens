@@ -12,6 +12,12 @@ const options = {
   formatting: { fileHeaderTimestamp: true }
 }
 
+/**
+ * Decimals that math on a size keeps. The sizes are pixels divided by 16, so ten decimals
+ * never round one; they only drop the floating-point noise of the math.
+ */
+export const MATH_FRACTION_DIGITS = 10
+
 const transforms = [
   'name/kebab',
   'ts/resolveMath',
@@ -61,6 +67,9 @@ export function webConfig({ unit = 'rem', format = 'cx/scss-chassis-css' } = {})
     return {
       prefix: 'cx',
       basePxFontSize: 16,
+      // Math on sizes (`ts/resolveMath`) rounds to four decimals by default, which would
+      // round a size that references another: `0.03125rem` would become `0.0313rem`.
+      mathFractionDigits: MATH_FRACTION_DIGITS,
       transforms: [...transforms, `cx/size/${unit}`],
       buildPath: `${outDir}/web/${app}/${brand}/`,
       options,
