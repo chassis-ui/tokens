@@ -21,6 +21,7 @@
     "tokens:build": "pnpm --filter @chassis-ui/tokens build",
     "tokens:diff": "pnpm --silent --filter @chassis-ui/tokens diff",
     "tokens:lint": "eslint --cache --cache-location .cache/.eslintcache packages/tokens/build packages/tokens/test",
+    "tokens:lint:source": "pnpm --filter @chassis-ui/tokens lint:source",
     "tokens:site": "pnpm --filter @chassis-ui/tokens build:site",
     "tokens:test": "pnpm --filter @chassis-ui/tokens test",
     "tokens:verify": "pnpm --filter @chassis-ui/tokens verify",

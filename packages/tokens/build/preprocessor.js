@@ -69,7 +69,7 @@ function addTypes(dictionary) {
  * @returns {Object} - e.g. `{ weight: 'Light', style: 'italic' }`; the style is `normal`
  *   when the font weight names none.
  */
-function splitWeightStyle(fontWeight) {
+export function splitWeightStyle(fontWeight) {
   // `Italic` alone means the regular weight in italic
   if (fontStyles.includes(fontWeight.toLowerCase())) {
     return { weight: 'Regular', style: fontWeight.toLowerCase() }

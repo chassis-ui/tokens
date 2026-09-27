@@ -112,6 +112,22 @@ Each brand and app is built once per list of token sets, writing the files of ev
 DEBUG=1 pnpm tokens --brand chassis
 ```
 
+### Lint the Token Source
+
+Check `source/` for mistakes the build would accept, before building:
+
+```sh
+pnpm tokens:lint:source
+```
+
+It reads the token sets that `source/$themes.json` selects and fails, naming the token set and the token, when:
+
+- the options of the `theme` or `screen` group declare different names in their sets, as when one screen names a token `headers-gap` and the others `header-gap`
+- a name has characters other than letters, digits and single hyphens, starts with a digit, or becomes the same SCSS, Swift, Android or Compose name as another token
+- a font weight is not one the build knows (`Semi Bold`, `SemiBold` and `semi-bold` are all `600`; a style word such as `Italic` may follow)
+- a token has no `$type`, or a value is not a token (such as `value` and `type` without `$`)
+- two sets of one token-set list declare the same name with different types
+
 ### Verify the Output
 
 Check that the committed `dist/` matches a fresh build of `source/`:
@@ -319,7 +335,7 @@ pnpm site:build
 
 Every pull request runs `.github/workflows/ci.yml`:
 
-- **Tokens** (Node.js 22 and 24): `tokens:lint`, `tokens:test`, `tokens:verify`, `tokens:verify:presets`
+- **Tokens** (Node.js 22 and 24): `tokens:lint`, `tokens:lint:source`, `tokens:test`, `tokens:verify`, `tokens:verify:presets`
 - **Site**: `lint:prettier` (the whole repository), `site:lint`, `check:astro`, `site:build`
 - **Audit**: `pnpm audit` for moderate advisories and above
 - **Token diff**: the [token diff report](#token-diff-report) of the pull request against its base branch, in the job summary

@@ -52,12 +52,17 @@ The token files in `packages/tokens/source/` are in [Tokens Studio](https://toke
 format. Edit them in Figma with Tokens Studio, synced to this repository with the file path
 `packages/tokens/source`, or edit the JSON directly. Then:
 
-1. Rebuild the output and review every changed line:
+1. Lint the token source, rebuild the output and review every changed line:
 
    ```sh
+   pnpm tokens:lint:source
    pnpm tokens
    pnpm tokens:diff
    ```
+
+   `pnpm tokens:lint:source` names the token set and the token of mistakes the build would
+   accept: a name that one theme or screen declares and another does not, a name the platforms
+   cannot use, an unknown font weight, a token without a type, or one name with two types.
 
    `pnpm tokens:diff` lists the token names added, removed, renamed and changed in value in each
    file of `dist/`, against `main`; `git diff packages/tokens/dist` shows the lines. CI adds the
@@ -102,6 +107,7 @@ After a change, run:
 
 ```sh
 pnpm tokens:lint
+pnpm tokens:lint:source
 pnpm tokens:test
 pnpm tokens:verify
 pnpm tokens:verify:presets

@@ -46,6 +46,10 @@ jobs:
       - name: Lint
         run: pnpm tokens:lint
 
+      # Mistakes in source/ that the build would accept, named by token set and token
+      - name: Lint token source
+        run: pnpm tokens:lint:source
+
       - name: Test
         run: pnpm tokens:test
 

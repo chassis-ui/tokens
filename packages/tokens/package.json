@@ -70,6 +70,7 @@
     "build:site": "node build/build.js --brand chassis --app docs",
     "clean": "rm -rf dist",
     "diff": "node build/diff.js",
+    "lint:source": "node build/lint-tokens.js",
     "test": "vitest run --dir test",
     "verify": "node build/verify.js",
     "verify:presets": "node build/verify.js --preset all"
