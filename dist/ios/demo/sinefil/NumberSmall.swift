@@ -4,7 +4,7 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Fri, 25 Sep 2026 10:39:34 GMT
+// Generated on Sun, 27 Sep 2026 08:34:22 GMT
 // Chassis - Tokens v0.5.3
 // Copyright 2026 Ozgur Gunes
 // Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
@@ -439,7 +439,7 @@ public class ChassisTokens {
     @objc public static let SpaceWebsiteSectionPaddingY = CGFloat(32)
     @objc public static let SpaceWebsiteSectionPaddingX = CGFloat(16)
     @objc public static let SpaceWebsiteSectionGap = CGFloat(32)
-    @objc public static let SpaceWebsiteContentHeadersGap = CGFloat(8)
+    @objc public static let SpaceWebsiteContentHeaderGap = CGFloat(8)
     @objc public static let SpaceWebsiteContentFeaturesGap = CGFloat(16)
     @objc public static let SpaceWebsiteFeaturePaddingY = CGFloat(16)
     @objc public static let SpaceWebsiteFeaturePaddingX = CGFloat(16)

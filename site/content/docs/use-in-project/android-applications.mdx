@@ -205,7 +205,6 @@ Shadow tokens are split into their parts, such as `shadow_context_small_1_offset
 
 - **Icons**: SVG icon tokens (`icon_*`) are strings that hold SVG markup, such as `getString(R.string.icon_accordion_indicator)`. Android cannot draw an SVG string directly: render it with an SVG library, or use vector drawables for icons.
 - **Gradients**: gradient tokens (`gradient_primitive_*`) hold only the first colour stop of the gradient.
-- **One token name differs on small screens**: `number_small.xml` declares `space_website_content_headers_gap` where the other number files declare `space_website_content_header_gap`. With the layout above, `space_website_content_header_gap` has no default value. The name comes from the token source and needs to be fixed there.
 
 ## Best Practices
 
@@ -235,7 +234,7 @@ Opacity and letter spacing are float items. Files built before this change print
 
 ### Resources$NotFoundException
 
-A resource exists only in a qualified folder, such as `values-sw600dp`, and the app runs in a configuration without it. Every resource needs a value in `values/`. See the name that differs on small screens under [Known Limitations](#known-limitations).
+A resource exists only in a qualified folder, such as `values-sw600dp`, and the app runs in a configuration without it. Every resource needs a value in `values/`.
 
 ## Continuous Integration
 
