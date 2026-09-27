@@ -18,7 +18,7 @@ This guide walks you through setting up the repository, managing tokens, buildin
 
 Before working with Chassis Tokens, ensure you have the following installed and configured:
 
-- **Node.js**: Version 18 or higher required for running the build scripts
+- **Node.js**: Version 22 or higher required for running the build scripts
 - **pnpm**: Package manager used by Chassis Tokens (install with `npm install -g pnpm`)
 - **Git**: For cloning the repository and version control
 - **Repository Access**: Appropriate permissions to clone or fork the Chassis Tokens repository
@@ -92,7 +92,7 @@ Define your specific brands, themes, and applications in the `chassis` configura
 {
   "chassis": {
     "build": {
-      "brands": ["chassis", "example"],
+      "brands": ["chassis", "sinefil"],
       "themes": ["light", "dark"],
       "screens": ["large", "medium", "small"],
       "apps": {
@@ -142,7 +142,7 @@ Use command-line filters to build specific combinations. All filter options acce
 
 ```bash
 # Filter by brand
-pnpm tokens --brand chassis example
+pnpm tokens --brand chassis sinefil
 
 # Filter by theme
 pnpm tokens --theme light dark
@@ -153,6 +153,9 @@ pnpm tokens --app docs demo
 # Filter by platform
 pnpm tokens --platform web ios android
 
+# Filter by screen
+pnpm tokens --screen large small
+
 # Combine multiple filters
 pnpm tokens --brand chassis --theme light dark --app docs
 ```
@@ -161,17 +164,20 @@ pnpm tokens --brand chassis --theme light dark --app docs
 
 Available command-line options:
 
-- `--brand <brands...>` — Filter by brand (e.g., `chassis example`)
+- `--brand <brands...>` — Filter by brand (e.g., `chassis sinefil`)
 - `--theme <themes...>` — Filter by theme (e.g., `light dark`)
 - `--app <apps...>` — Filter by app (e.g., `docs demo`)
 - `--platform <platforms...>` — Filter by platform (e.g., `web ios android`)
-- `--dry-run` — Preview tasks without executing builds
+- `--screen <screens...>` — Filter by screen (e.g., `large medium small`)
+- `--out <dir>` — Write to another output root instead of `dist`
+- `--dry-run` — List the builds and the files each would write, without building
 - `--help, -h` — Show help message
 - `--version, -v` — Show version number
 
 **Build Features:**
 
-- Progress indicators show build status (`[1/5]`, `[2/5]`, etc.)
+- One build per brand, app and token-set list; a full build runs 16 builds
+- Progress indicators show build status (`[1/16]`, `[2/16]`, etc.)
 - Build summary displays success/failure count and duration
 - Set `DEBUG=1` for verbose output with stack traces
 
@@ -185,8 +191,12 @@ dist/[platform]/[app]/[brand]/
 ├── string.[ext]          -> String tokens
 ├── color-light.[ext]     -> Light theme colors
 ├── color-dark.[ext]      -> Dark theme colors
-└── number.[ext]          -> Number tokens
+└── number-large.[ext]    -> Number tokens, one file per screen
 ```
+
+File names follow each platform's convention: `color-light.scss` on the web, `ColorLight.swift` on iOS and `color_light.xml` on Android. Without configured screens, a single `number` file holds all number tokens.
+
+To check that the committed `dist/` matches a fresh build of the tokens, run `pnpm tokens:verify`. The release workflow runs the same check before publishing.
 
 The build system uses Style Dictionary with custom transforms and formatters. See the [Style Dictionary]([[docsref:/getting-started/style-dictionary]]) documentation for details on how the build system works and how to customize it.
 
@@ -248,6 +258,7 @@ pnpm tokens                     # Build all tokens
 pnpm tokens --brand chassis     # Build specific brand
 pnpm tokens --dry-run           # Preview without building
 pnpm tokens:test                # Run build tests
+pnpm tokens:verify              # Check dist/ against a fresh build
 pnpm dev                        # Start documentation site
 ```
 

@@ -39,11 +39,12 @@ If a phase is too large, split it into `Na`, `Nb` rows. If a fact in this file i
 | 6a | Cleanup, version header, CI guard | Opus | Done | `rewrite(phase 6a)` | 2026-09-27 |
 | 6b | Build loop | Opus | Done | `rewrite(phase 6b)` | 2026-09-27 |
 | 6c | Tests README, docs, final acceptance | Opus | Done | `rewrite(phase 6c)` | 2026-09-27 |
+| 7 | Site docs | Opus | Done | `rewrite(phase 7)` | 2026-09-27 |
 
 ## Ground rules
 
 - **Branch:** `dev/rewrite`. One commit per phase. No pushes, no version bumps.
-- **Frozen folders:** `tokens/`, `site/`, `dist/`. No phase changes them. If a phase cannot pass the golden diff without changing output, stop and ask Ozgur.
+- **Frozen folders:** `tokens/`, `site/`, `dist/`. No phase changes them, except Phase 7, which Ozgur approved for the build pages of `site/content/docs/`. If a phase cannot pass the golden diff without changing output, stop and ask Ozgur.
 - **Never run the build into `dist/` during the rewrite.** Use `pnpm tokens:verify`, or pass `--out <dir>` when running `build/tokens/build.js` directly. Before committing, `git status --short dist` must be empty.
 - **Golden diff:** every phase ends with `pnpm tokens:verify` green in strict mode. The check builds into `dist-next/` and compares against committed `dist/`, ignoring lines that contain `Generated on` or `Chassis - Tokens v`.
 - **No legacy copy of the build.** Committed `dist/` is the reference output and git holds the old code.
@@ -363,6 +364,19 @@ Result: the tests README describes the principles, each test file and each fixtu
 
 The site documentation in `site/` is out of date, but `site/` is frozen, so it was not changed (see Open decisions).
 
+## Phase 7: site docs
+
+Goal: the site pages about the build describe the rewritten build. Approved by Ozgur on 2026-09-27, as an exception to the frozen `site/` folder.
+
+- [x] `site/content/docs/getting-started/style-dictionary.mdx`: Node 22, the build files, the build steps, the real configuration, the CLI flags, `pnpm tokens:verify`, the web, iOS and Android output, filters, formats, the preprocessor, theme permutations and troubleshooting. Remove the deleted `cx/scss-variables` format, `cx/size/px`, `cx/size/vw` and `cx/typography/web` transforms and `cx/colorTokens` filter.
+- [x] `site/content/docs/getting-started/quick-start.mdx`: Node 22, the `sinefil` brand, the CLI flags, the output file names and `pnpm tokens:verify`.
+- [x] `site/content/docs/use-in-project/web-applications.mdx`: rem units only.
+- [x] Acceptance: `pnpm astro:build` succeeds; the edited pages pass Prettier.
+
+Result: every code example on the Style Dictionary page was replaced with lines from the committed `dist/`. The old examples showed names and formats the build never produced (`public class Tokens`, `UIColor(red: 0.00, …)`, `#0066FF` colours, `var(--#{$prefix}…)`). Other statements that were wrong before the rewrite were fixed on the lines being edited: the brand `example` (renamed `sinefil` in 0.5.1), the `cx/themeTokens` and `cx/allTokens` descriptions, the Android colour format, and `pnpm validate`, which does not exist.
+
+Not changed, because they are outside the build pages: the quick start still shows `dist/css/` paths, which do not exist, and `web-applications.mdx` (marked as AI-generated) was not checked beyond the unit statements.
+
 ## Known oddities in the output (kept as they are)
 
 These are part of the frozen contract. They are listed so nobody "fixes" them by accident.
@@ -388,7 +402,7 @@ These are part of the frozen contract. They are listed so nobody "fixes" them by
 - [x] Branch is `dev/rewrite` (confirmed 2026-09-27).
 - [x] Token JSON and output do not change (confirmed 2026-09-27).
 - [x] Phase 5: do it (confirmed 2026-09-27).
-- [ ] The site documentation describes code that no longer exists, and `site/` is frozen. `site/content/docs/getting-started/style-dictionary.mdx` mentions Node 18, px and vw units, the `cx/scss-variables` format, the `cx/size/px`, `cx/size/vw` and `cx/typography/web` transforms and the `cx/colorTokens` filter. `site/content/docs/use-in-project/web-applications.mdx` says the SCSS supports rem, px and vw units. Update these pages, or leave them?
+- [x] The site documentation describes code that no longer exists, and `site/` is frozen. `site/content/docs/getting-started/style-dictionary.mdx` mentions Node 18, px and vw units, the `cx/scss-variables` format, the `cx/size/px`, `cx/size/vw` and `cx/typography/web` transforms and the `cx/colorTokens` filter. `site/content/docs/use-in-project/web-applications.mdx` says the SCSS supports rem, px and vw units. Update these pages, or leave them? Update them (confirmed 2026-09-27; done in Phase 7).
 
 ## Session log
 
@@ -405,3 +419,4 @@ Append-only.
 - 2026-09-27 (Phase 6a, Opus 5.5): Deleted `web-px.js`, `web-vw.js`, `scss-variables.template.js`, the transforms `cx/test`, `cx/typography/web`, `cx/size/px`, `cx/size/vw`, the formats `cx/test`, `cx/scss-variables`, the unused filter `cx/colorTokens`, and `isReference` / `splitReference` from `utils.js`. The file header reads the version from `package.json`; `change-version.js` no longer rewrites `build.js`. The release workflow runs `pnpm tokens:verify` before `npm publish`. Kept `tinycolor2` (see the 6a result). Replaced the 9 mock-based tests of `filters.js` and `transforms.js` with 52 tests on real tokens and a new fixture. Verified: `pnpm tokens:verify` passes, 42 of 42 files, in 9.6 s; header lines match `dist/`; `pnpm tokens:test` passes, 364 tests; lint reports no warnings (two before); `dist/` untouched. Injected four regressions (utility colours in the theme file, fonts dropped from main, shadow transform on every type, rem transform not transitive); each failed the intended test. Surprises: (1) `cx/colorTokens` was unused and not in the plan's list. (2) `publish-release.yml` was already not Prettier-formatted before this change; left as it was. Next: Phase 6b.
 - 2026-09-27 (Phase 6b, Opus 5.5): Replaced the 36-run loop with one Style Dictionary instance per token-set list: 16 instances, 24 platform exports, 42 files. `build.js` now exports `planBuilds` and `parseArgs`; the platform configs take a list of outputs; `logger.dryRun` lists builds and their files. Replaced the mock-based `build.test.js`, `cli.test.js` and `config.test.js` with tests on the real configuration, `$themes.json` and `dist/` file list, added the precedence test, and updated the dry-run tests in `logger.test.js`. Build time: 9.5 s before, 5.8 s after (three runs). Verified: `pnpm tokens:verify` passes, 42 of 42 files; `--platform ios` and `--platform web` pass; five filtered builds match `dist/` for every file they write; `pnpm tokens:test` passes, 360 tests; lint reports no warnings; `dist/` untouched. Injected five regressions (base from the last theme, one instance per output, token sets reversed, platform filter ignored, and an earlier malformed variant of the second); each failed the intended tests, and the first and third also failed the golden check. The one-instance-per-output regression passes the golden check, since output is the same, and is caught only by the plan test. Surprises: (1) `transforms.test.js` called the web config with the old signature and failed to load; fixed. (2) The old `--theme dark` build used dark token sets for number files; output is the same either way. Next: Phase 6c. Note for 6c: its acceptance runs `pnpm tokens:site`, which writes into `dist/`; restore the timestamp lines with `git checkout dist` afterwards.
 - 2026-09-27 (Phase 6c, Opus 5.5): Rewrote `build/tokens/test/README.md`, updated `README.md` and added an `[Unreleased]` CHANGELOG entry. Verified: `pnpm tokens:verify` passes, 42 of 42 files, in 5.8 s; `pnpm tokens:test` passes, 360 tests; lint reports no warnings; `pnpm tokens:site` succeeds and changed only timestamp lines in `dist/`, which were restored; `pnpm astro:build` built 22 pages with no warnings. Surprises: (1) The site docs are out of date and `site/` is frozen; recorded under Open decisions. (2) Between the 6b commit and the start of this phase, the timestamp lines of all 21 `sinefil` files in `dist/` were rewritten at 03:50:51, as a `--brand sinefil` build into `dist/` would do. Content was identical. No command of this session builds into `dist/` without `--out`, two full test runs (including the one running at that time) left `dist/` untouched, and the terminal showed no command; the repository is in a Dropbox folder. The files were restored with `git checkout -- dist`, and `dist/` stayed clean through every later step. The Model column said Sonnet for this phase; it was done with Opus. All phases are done.
+- 2026-09-27 (Phase 7, Opus 5.5): Ozgur approved updating the site docs. Rewrote the build parts of `style-dictionary.mdx` with examples from `dist/`, updated `quick-start.mdx` and two statements in `web-applications.mdx`, and relaxed the frozen-folder rule for this phase. Verified: the three pages pass Prettier, as before; `pnpm astro:build` built 22 pages with no warnings; the rendered Style Dictionary page contains the new sections and none of the deleted names, and its tables and code blocks render (checked in the browser); `dist/` untouched. Left for later: the `dist/css/` paths in the quick start and a full check of `web-applications.mdx`.

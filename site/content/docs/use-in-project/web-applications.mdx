@@ -8,7 +8,7 @@ toc: true
 
 ## Overview
 
-Chassis design tokens provide platform-agnostic design values that can be integrated into web applications in multiple ways. Tokens are transformed into SCSS variables with support for rem, px, and vw units, making them compatible with any modern web build pipeline.
+Chassis design tokens provide platform-agnostic design values that can be integrated into web applications in multiple ways. Tokens are transformed into SCSS variables with sizes in rem units, making them compatible with any modern web build pipeline.
 
 **Key Benefits:**
 
@@ -676,7 +676,7 @@ module.exports = {
 
 ❌ **Don't override tokens directly**: Create custom variables that reference tokens
 
-❌ **Don't mix unit systems**: Stick to one unit system (rem, px, or vw) per project
+❌ **Don't mix unit systems**: Token sizes are in rem; avoid mixing them with hard-coded px values
 
 ❌ **Don't ignore accessibility**: Use tokens that maintain proper contrast ratios
 
