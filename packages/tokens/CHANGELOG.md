@@ -69,6 +69,7 @@ The presets for teams that do not use Chassis CSS are kept, in the new structure
 - `ios-swiftui` and `android-compose` platforms: Swift files with SwiftUI values and Kotlin objects for Jetpack Compose, with the same tokens and values as `ios` and `android`, written to `dist/ios-swiftui/` and `dist/android-compose/`
 - `outputReferences` for the iOS format: a constant names another constant of the same class when it has the same type and value; base colours and sizes computed with math print their values
 - CI for pull requests (`.github/workflows/ci.yml`): token lint, tests and golden checks on Node.js 22 and 24, the site lint and build, and `pnpm audit`
+- A token diff report (`pnpm tokens:diff`, `build/diff.js`): the names added, removed, renamed and changed in value in each `dist/` file against another branch or commit. CI writes it to the job summary of every pull request
 - Dependabot for npm packages and GitHub Actions, weekly
 - `pnpm lint:prettier`: Prettier on the whole repository
 

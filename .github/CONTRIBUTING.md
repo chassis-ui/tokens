@@ -56,8 +56,12 @@ format. Edit them in Figma with Tokens Studio, synced to this repository with th
 
    ```sh
    pnpm tokens
-   git diff packages/tokens/dist
+   pnpm tokens:diff
    ```
+
+   `pnpm tokens:diff` lists the token names added, removed, renamed and changed in value in each
+   file of `dist/`, against `main`; `git diff packages/tokens/dist` shows the lines. CI adds the
+   same report to the job summary of the pull request.
 
 2. Check that `dist/` matches a fresh build:
 

@@ -137,11 +137,25 @@ The [presets](#presets-for-other-css-frameworks) write nothing into `dist/`. The
 pnpm tokens:verify:presets
 ```
 
+### Token Diff Report
+
+See what a change does to the tokens without reading `dist/`: the names added, removed and changed in value in each file, and a removed and an added name with the same value as a possible rename. Removed and renamed names are marked breaking. Header lines are ignored, and the icon assets are compared as whole files.
+
+```sh
+# The working dist/ against main's
+pnpm tokens:diff
+
+# Against another branch, tag or commit; --head takes a ref or a directory too
+pnpm tokens:diff --base v0.5.3
+```
+
+The report is Markdown. On a pull request, CI writes it to the job summary.
+
 After changing tokens, run `pnpm tokens`, commit the updated `dist/` and write the preset baselines again; [CONTRIBUTING.md](.github/CONTRIBUTING.md#changing-tokens) has the commands.
 
 ### Tests
 
-The tests use real tokens and the committed `dist/`, not mocks of Style Dictionary. They cover the golden check, the build plan, the CLI and platform configurations, the value encoders for iOS, Android and web and their references, the web reference policies, the preprocessor, filters, transforms and token order.
+The tests use real tokens and the committed `dist/`, not mocks of Style Dictionary. They cover the golden check, the build plan, the CLI and platform configurations, the value encoders for iOS, Android and web and their references, the web reference policies, the preprocessor, filters, transforms, token order and the token diff report.
 
 ```sh
 pnpm tokens:test
@@ -308,6 +322,7 @@ Every pull request runs `.github/workflows/ci.yml`:
 - **Tokens** (Node.js 22 and 24): `tokens:lint`, `tokens:test`, `tokens:verify`, `tokens:verify:presets`
 - **Site**: `lint:prettier` (the whole repository), `site:lint`, `check:astro`, `site:build`
 - **Audit**: `pnpm audit` for moderate advisories and above
+- **Token diff**: the [token diff report](#token-diff-report) of the pull request against its base branch, in the job summary
 - **Changeset**: a pull request that changes `source/`, `build/` or `dist/` must add a changeset (`pnpm changeset`)
 
 Releases use [Changesets](https://changesets.dev). Pushing `main` runs the release workflow, after the same CI checks on that commit: pending changesets open or update a "Version Packages" pull request, which bumps the version and writes the CHANGELOG. Merging it publishes `@chassis-ui/tokens` to npm with trusted publishing and provenance, and creates a GitHub release from the CHANGELOG entry. See [Releases](.github/CONTRIBUTING.md#releases). Dependabot opens weekly pull requests for npm packages and GitHub Actions; the actions are pinned to commit SHAs.

@@ -124,6 +124,34 @@ jobs:
           BASE_REF: ${{ github.base_ref }}
         run: pnpm changeset status --since "origin/$BASE_REF"
 
+  # What the pull request does to the tokens, in the job summary: the names added, removed,
+  # renamed and changed in each dist/ file. It compares the committed dist/ of the test merge
+  # commit with that of its first parent, the base branch; the Tokens job checks that both
+  # equal a fresh build. Needs no install: build/diff.js uses Node.js only.
+  token-diff:
+    name: Token diff
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
+        with:
+          # The merge commit and its parents
+          fetch-depth: 2
+          persist-credentials: false
+
+      - name: Setup Node.js
+        uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
+        with:
+          node-version: 22
+
+      - name: Token diff report
+        run: |
+          node packages/tokens/build/diff.js --base HEAD^1 > "$RUNNER_TEMP/token-diff.md"
+          cat "$RUNNER_TEMP/token-diff.md" >> "$GITHUB_STEP_SUMMARY"
+          cat "$RUNNER_TEMP/token-diff.md"
+
   audit:
     name: Audit
     runs-on: ubuntu-latest
