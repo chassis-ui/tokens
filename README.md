@@ -189,11 +189,11 @@ pnpm tokens:typecheck
 
 ### Build Architecture
 
-The build uses [Style Dictionary](https://styledictionary.com) 5.5 and [`@tokens-studio/sd-transforms`](https://github.com/tokens-studio/sd-transforms) 2.0 (type alignment, math, colour modifiers and theme permutations). A build runs in three steps:
+The build uses [Style Dictionary](https://styledictionary.com) 5.5 and [`@tokens-studio/sd-transforms`](https://github.com/tokens-studio/sd-transforms) 2.0 (type alignment, math, color modifiers and theme permutations). A build runs in three steps:
 
 1. **Preprocess**: `preprocessor.js` aligns types, splits every font weight into weight and style, and numbers the tokens in source order.
-2. **Transform**: Style Dictionary transforms only what is safe before references are resolved: names, math, colour modifiers, `rem` sizes and CSS shadows.
-3. **Format**: The formats print one line per resolved token. Platform values (`UIColor(…)`, ARGB colours, `sp`/`dp`, quoting, `em`, `var(--…)`, `$…`, `@type/…` and Swift constant references) come from pure functions in `values/` and the web reference policies, which run after resolution.
+2. **Transform**: Style Dictionary transforms only what is safe before references are resolved: names, math, color modifiers, `rem` sizes and CSS shadows.
+3. **Format**: The formats print one line per resolved token. Platform values (`UIColor(…)`, ARGB colors, `sp`/`dp`, quoting, `em`, `var(--…)`, `$…`, `@type/…` and Swift constant references) come from pure functions in `values/` and the web reference policies, which run after resolution.
 
 Key modules in `build/`:
 
@@ -208,7 +208,7 @@ Key modules in `build/`:
 - `css-var-policy.js`: The `var(--…)` names of the Chassis CSS format
 - `scss-var-policy.js`: The values and `$…` names of the SCSS variables format
 - `icons.js`: The icon assets, an Xcode asset catalog and Android vector drawables, written by Style Dictionary actions from the SVG icon tokens
-- `theme-colors.js`: The iOS `Color.swift` whose colours follow the appearance, written after the builds from the light and dark colour files
+- `theme-colors.js`: The iOS `Color.swift` whose colors follow the appearance, written after the builds from the light and dark color files
 - `verify.js`: Golden check against `dist/` and the preset baselines
 - `logger.js`: Logging
 - `utils.js`: Token type groups and number formatting
@@ -254,7 +254,7 @@ The `chassis.build` key of `package.json` defines which brands, themes, screens 
 - **`apps`**: App names mapped to their platforms
 - **`options`**: (Optional) Style Dictionary options by platform name, merged into the options of that platform, e.g. `{ "web-px": { "outputReferences": true } }`. The build fails when it names a platform that no app uses
 
-The token sets of each file come from `source/$themes.json`. Colour files use the sets of their theme, number files the sets of their screen, and every other file the sets of the first theme and the first screen listed here. Only the brands, themes, screens and apps listed here are built.
+The token sets of each file come from `source/$themes.json`. Color files use the sets of their theme, number files the sets of their screen, and every other file the sets of the first theme and the first screen listed here. Only the brands, themes, screens and apps listed here are built.
 
 **Platforms:**
 
@@ -268,7 +268,7 @@ The token sets of each file come from `source/$themes.json`. Colour files use th
 **File names:**
 
 - Web: `main.scss`, `color-light.scss`, `number-large.scss`
-- iOS: `ChassisTokens.swift`, `ColorLight.swift`, `NumberLarge.swift` (types `ChassisTokens`, `ChassisTokensColorLight`, `ChassisTokensNumberLarge`), and `Color.swift` (`ChassisTokensColor`), whose colours follow the light and dark appearance
+- iOS: `ChassisTokens.swift`, `ColorLight.swift`, `NumberLarge.swift` (types `ChassisTokens`, `ChassisTokensColorLight`, `ChassisTokensNumberLarge`), and `Color.swift` (`ChassisTokensColor`), whose colors follow the light and dark appearance
 - Android: `main.xml`, `color_light.xml`, `number_large.xml`, and the same resources as a resource tree under `res/` (`values`, `values-night`, `values-sw600dp`, `values-sw840dp`; the screen folders are set with `options.android.screens`)
 
 ### Presets for Other CSS Frameworks
@@ -307,7 +307,7 @@ $cx-color-accordion-item-fg-color: $cx-color-context-default-fg-main !default;
 $cx-border-radius-accordion-main: $cx-border-radius-context-medium !default;
 ```
 
-With references, load a colour file before `main.scss`: its colour tokens reference variables of `color-<theme>.scss`. The other files use only variables they declare themselves. The build fails when a reference names a variable that no file declares.
+With references, load a color file before `main.scss`: its color tokens reference variables of `color-<theme>.scss`. The other files use only variables they declare themselves. The build fails when a reference names a variable that no file declares.
 
 `outputReferences` also works on `android`: tokens print `@color/…`, `@dimen/…` references to resources of the same file. A token prints its value instead when the reference would not compile or would change the value, for example a font size in `sp` that references a size in `dp`.
 
@@ -322,7 +322,7 @@ public static let SizeUnit4 = DimensionBase4
 public static let ColorAccordionItemFgColor = ColorContextDefaultFgMain
 ```
 
-iOS and Android follow the same rule: a token names a constant or resource of its own file only when that one has the same type and value. Base colours and sizes computed with math print their values. A Swift constant cannot name one of another file.
+iOS and Android follow the same rule: a token names a constant or resource of its own file only when that one has the same type and value. Base colors and sizes computed with math print their values. A Swift constant cannot name one of another file.
 
 Each platform file in `build/config/` can also be edited directly; `web-px.js`, `web-vw.js` and `web-scss.js` each call `webConfig({ unit, format })` from `web.js`.
 

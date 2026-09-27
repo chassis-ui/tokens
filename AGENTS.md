@@ -50,7 +50,7 @@ Run the checks of the area you changed, and report the ones that fail.
   with. Change the source or
   the build, rebuild, and review the result with `pnpm tokens:diff`. The commands that write the
   preset baselines again are in [CONTRIBUTING.md](.github/CONTRIBUTING.md#changing-tokens).
-- **Templates only print.** Platform values (`UIColor(…)`, ARGB colours, `sp` and `dp`, quoting,
+- **Templates only print.** Platform values (`UIColor(…)`, ARGB colors, `sp` and `dp`, quoting,
   references) come from the pure functions in `build/values/` and the reference policies, which
   run on resolved tokens. Do not encode a value in a template, and do not register an encoder
   as a Style Dictionary value transform: it breaks every token that references another.

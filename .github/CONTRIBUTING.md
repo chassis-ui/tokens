@@ -109,7 +109,7 @@ The build in `packages/tokens/build/` follows three rules; please keep them. The
 output contract and the known oddities of the output are in
 [docs/architecture.md](../docs/architecture.md).
 
-- **Templates only print.** Platform values (`UIColor(…)`, ARGB colours, `sp` and `dp`, quoting,
+- **Templates only print.** Platform values (`UIColor(…)`, ARGB colors, `sp` and `dp`, quoting,
   references) come from pure functions in `build/values/` and the web reference policies, which
   run on fully resolved tokens. They are not Style Dictionary value transforms, because
   referenced tokens would be encoded before the tokens that reference them.
