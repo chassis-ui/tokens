@@ -1,8 +1,36 @@
 # Changelog
 
-## [Unreleased]
+## [0.6.0] - 2026-09-27
 
-The token build was rewritten. The files in `dist/` are unchanged, except Android opacity, letter spacing and icons, and one renamed token (see Fixed).
+The token build was rewritten on Style Dictionary 5.5, and the iOS and Android output was fixed so that it compiles and holds values the platforms can use. The web SCSS output is the same apart from one renamed token and one font style. The npm package now holds the iOS and Android files too.
+
+### Breaking changes
+
+Web:
+
+- `$cx-space-website-content-headers-gap` in `number-small.scss` is now `$cx-space-website-content-header-gap`, the name the medium and large files use. Rename it where you use it
+- `package.json` has an `exports` map, so Node and bundlers resolve only `@chassis-ui/tokens/dist/…` and `@chassis-ui/tokens/package.json`. Every `dist/` path works as before; import nothing else from the package
+
+iOS:
+
+- Each file declares its own type, and `Main.swift` is now `ChassisTokens.swift`. The types are `ChassisTokens` (main file), `ChassisTokensString`, `ChassisTokensColorLight`, `ChassisTokensColorDark`, `ChassisTokensNumber<Screen>` and the new `ChassisTokensColor`. They are caseless `enum`s without `@objc`, not classes. Replace `ChassisTokens.X` from a colour, number or string file with that file's type, such as `ChassisTokensColorLight.ColorContextDefaultBgMain`, or use `ChassisTokensColor` for colours that follow dark mode
+- Font weights are `UIFont.Weight` (`UIFont.Weight.regular`), not `String` (`"regular"`). Pass them to `UIFont.systemFont(ofSize:weight:)` directly and remove any name-to-weight mapping
+- Line heights that are a percentage in the design are points (`CGFloat(120)` for a 96 pt font at 125%), not the percentage (`CGFloat(125)`). Use the value as the line height
+- Gradient tokens are an `…Angle`, and a `…Stop<N>Color` and `…Stop<N>Position` per stop. The single gradient constant, which held the first stop colour only, is gone
+
+Android:
+
+- Opacity and letter spacing tokens are `<item type="dimen" format="float">`, not `<integer>` (which did not compile). Read them with `ResourcesCompat.getFloat(resources, R.dimen.…)`, and reference them as `@dimen/…`
+- Font weights are `<integer>` from 100 to 900 (`400`), not `<string>` (`regular`). Read them with `resources.getInteger(R.integer.…)`
+- Letter spacing of typography tokens is in ems of the font size (`-0.0052`), not design pixels (`-0.5`). Pass it to `TextView.setLetterSpacing` or `android:letterSpacing` as it is. The standalone letter spacing scale stays in pixels
+- Line heights that are a percentage in the design are `sp` (`120sp`), not the percentage (`125sp`)
+- Gradient tokens are an `…_angle`, and a `…_stop_<n>_color` and `…_stop_<n>_position` per stop, instead of one colour resource
+
+Build:
+
+- The build needs Node.js 22 or later, and `engines` says so. npm and pnpm warn when a project that installs the package runs an older Node.js; they refuse only with `engine-strict`
+
+### Presets for other CSS frameworks
 
 The presets for teams that do not use Chassis CSS are kept, in the new structure: `web-px`, `web-vw`, the `cx/scss-variables` format, and `outputReferences` for SCSS and Android. Their output is the same as before, with these fixes:
 

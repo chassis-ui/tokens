@@ -3,7 +3,7 @@
 > Design token generation and management for the Chassis Design System, supporting multi-brand, multi-theme, multi-app, and multi-platform output.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![Version: 0.5.3](https://img.shields.io/badge/Version-0.5.3-blue.svg)](https://github.com/chassis-ui/tokens)
+[![Version: 0.6.0](https://img.shields.io/badge/Version-0.6.0-blue.svg)](https://github.com/chassis-ui/tokens)
 
 ## Overview
 

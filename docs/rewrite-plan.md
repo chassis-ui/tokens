@@ -44,46 +44,46 @@ If a phase is too large, split it into `Na`, `Nb` rows. If a fact in this file i
 
 ## Status board
 
-| Phase | Scope                                                                       | Model  | Status      | Commit              | Date       |
-| ----- | --------------------------------------------------------------------------- | ------ | ----------- | ------------------- | ---------- |
-| 0     | Golden harness                                                              | Sonnet | Done        | `rewrite(phase 0)`  | 2026-09-27 |
-| 1     | iOS and Android value encoders                                              | Opus   | Done        | `rewrite(phase 1)`  | 2026-09-27 |
-| 2     | Web value encoder                                                           | Opus   | Done        | `rewrite(phase 2)`  | 2026-09-27 |
-| 3     | Web `var(--…)` policy                                                       | Fable  | Done        | `rewrite(phase 3)`  | 2026-09-27 |
-| 4     | Upgrade to SD 5.5 and sd-transforms 2.0                                     | Fable  | Done        | `rewrite(phase 4)`  | 2026-09-27 |
-| 5     | Replace forked preprocessor (optional)                                      | Opus   | Done        | `rewrite(phase 5)`  | 2026-09-27 |
-| 6a    | Cleanup, version header, CI guard                                           | Opus   | Done        | `rewrite(phase 6a)` | 2026-09-27 |
-| 6b    | Build loop                                                                  | Opus   | Done        | `rewrite(phase 6b)` | 2026-09-27 |
-| 6c    | Tests README, docs, final acceptance                                        | Opus   | Done        | `rewrite(phase 6c)` | 2026-09-27 |
-| 7     | Site docs                                                                   | Opus   | Done        | `rewrite(phase 7)`  | 2026-09-27 |
-| 8     | Preset baselines, SCSS variable presets (resolved)                          | Fable  | Done        | `rewrite(phase 8)`  | 2026-09-27 |
-| 9     | SCSS variable references (`outputReferences`)                               | Opus   | Done        | `rewrite(phase 9)`  | 2026-09-27 |
-| 10    | Android references (`outputReferences`)                                     | Opus   | Done        | `rewrite(phase 10)` | 2026-09-27 |
-| 11    | Preset docs                                                                 | Opus   | Done        | `rewrite(phase 11)` | 2026-09-27 |
-| 12    | iOS references (`outputReferences`), new                                    | Opus   | Done        | `rewrite(phase 12)` | 2026-09-27 |
-| 13    | Mobile typography values: percent line height, Android letter spacing in em | Opus   | Done        | `rewrite(phase 13)` | 2026-09-27 |
-| 14    | Font weights as numbers                                                     | Opus   | Done        | `rewrite(phase 14)` | 2026-09-27 |
-| 15    | Gradients on mobile as parts                                                | Opus   | Done        | `rewrite(phase 15)` | 2026-09-27 |
-| 16    | Dead `dimension` filter condition                                           | Sonnet | Done        | `rewrite(phase 16)` | 2026-09-27 |
-| 17    | iOS type and file names                                                     | Opus   | Done        | `rewrite(phase 17)` | 2026-09-27 |
-| 18    | iOS colours that follow dark mode                                           | Fable  | Done        | `rewrite(phase 18)` | 2026-09-27 |
-| 19    | Android resource tree                                                       | Fable  | Done        | `rewrite(phase 19)` | 2026-09-27 |
-| 20    | SwiftUI and Compose outputs (optional)                                      | Opus   | Done        | `rewrite(phase 20)` | 2026-09-27 |
-| 21    | Icon assets (optional)                                                      | Opus   | Done        | `rewrite(phase 21)` | 2026-09-27 |
-| 22    | Platform shadow values (optional)                                           | Opus   | Done        | `rewrite(phase 22)` | 2026-09-27 |
-| 23    | Package contents and scripts                                                | Opus   | Done        | `rewrite(phase 23)` | 2026-09-27 |
-| 24    | Lint and audit clean                                                        | Sonnet | Done        | `rewrite(phase 24)` | 2026-09-27 |
-| 25    | CI for pull requests                                                        | Opus   | Done        | `rewrite(phase 25)` | 2026-09-27 |
-| 26    | Merge preparation and 0.6.0                                                 | Opus   | Not started |                     |            |
-| 27    | Workspace split: tokens and site (optional)                                 | Opus   | Not started |                     |            |
-| 28    | Contributor docs and README                                                 | Opus   | Not started |                     |            |
-| 29    | Release automation                                                          | Opus   | Not started |                     |            |
-| 30    | Token diff report on pull requests                                          | Opus   | Not started |                     |            |
-| 31    | Token source lint                                                           | Opus   | Not started |                     |            |
-| 32    | Type checking of the build code                                             | Opus   | Not started |                     |            |
-| 33    | Native compile checks in CI                                                 | Fable  | Not started |                     |            |
-| 34    | Swift package and Android library (optional)                                | Fable  | Not started |                     |            |
-| 35    | Retire the plan                                                             | Sonnet | Not started |                     |            |
+| Phase | Scope                                                                       | Model  | Status                                   | Commit              | Date       |
+| ----- | --------------------------------------------------------------------------- | ------ | ---------------------------------------- | ------------------- | ---------- |
+| 0     | Golden harness                                                              | Sonnet | Done                                     | `rewrite(phase 0)`  | 2026-09-27 |
+| 1     | iOS and Android value encoders                                              | Opus   | Done                                     | `rewrite(phase 1)`  | 2026-09-27 |
+| 2     | Web value encoder                                                           | Opus   | Done                                     | `rewrite(phase 2)`  | 2026-09-27 |
+| 3     | Web `var(--…)` policy                                                       | Fable  | Done                                     | `rewrite(phase 3)`  | 2026-09-27 |
+| 4     | Upgrade to SD 5.5 and sd-transforms 2.0                                     | Fable  | Done                                     | `rewrite(phase 4)`  | 2026-09-27 |
+| 5     | Replace forked preprocessor (optional)                                      | Opus   | Done                                     | `rewrite(phase 5)`  | 2026-09-27 |
+| 6a    | Cleanup, version header, CI guard                                           | Opus   | Done                                     | `rewrite(phase 6a)` | 2026-09-27 |
+| 6b    | Build loop                                                                  | Opus   | Done                                     | `rewrite(phase 6b)` | 2026-09-27 |
+| 6c    | Tests README, docs, final acceptance                                        | Opus   | Done                                     | `rewrite(phase 6c)` | 2026-09-27 |
+| 7     | Site docs                                                                   | Opus   | Done                                     | `rewrite(phase 7)`  | 2026-09-27 |
+| 8     | Preset baselines, SCSS variable presets (resolved)                          | Fable  | Done                                     | `rewrite(phase 8)`  | 2026-09-27 |
+| 9     | SCSS variable references (`outputReferences`)                               | Opus   | Done                                     | `rewrite(phase 9)`  | 2026-09-27 |
+| 10    | Android references (`outputReferences`)                                     | Opus   | Done                                     | `rewrite(phase 10)` | 2026-09-27 |
+| 11    | Preset docs                                                                 | Opus   | Done                                     | `rewrite(phase 11)` | 2026-09-27 |
+| 12    | iOS references (`outputReferences`), new                                    | Opus   | Done                                     | `rewrite(phase 12)` | 2026-09-27 |
+| 13    | Mobile typography values: percent line height, Android letter spacing in em | Opus   | Done                                     | `rewrite(phase 13)` | 2026-09-27 |
+| 14    | Font weights as numbers                                                     | Opus   | Done                                     | `rewrite(phase 14)` | 2026-09-27 |
+| 15    | Gradients on mobile as parts                                                | Opus   | Done                                     | `rewrite(phase 15)` | 2026-09-27 |
+| 16    | Dead `dimension` filter condition                                           | Sonnet | Done                                     | `rewrite(phase 16)` | 2026-09-27 |
+| 17    | iOS type and file names                                                     | Opus   | Done                                     | `rewrite(phase 17)` | 2026-09-27 |
+| 18    | iOS colours that follow dark mode                                           | Fable  | Done                                     | `rewrite(phase 18)` | 2026-09-27 |
+| 19    | Android resource tree                                                       | Fable  | Done                                     | `rewrite(phase 19)` | 2026-09-27 |
+| 20    | SwiftUI and Compose outputs (optional)                                      | Opus   | Done                                     | `rewrite(phase 20)` | 2026-09-27 |
+| 21    | Icon assets (optional)                                                      | Opus   | Done                                     | `rewrite(phase 21)` | 2026-09-27 |
+| 22    | Platform shadow values (optional)                                           | Opus   | Done                                     | `rewrite(phase 22)` | 2026-09-27 |
+| 23    | Package contents and scripts                                                | Opus   | Done                                     | `rewrite(phase 23)` | 2026-09-27 |
+| 24    | Lint and audit clean                                                        | Sonnet | Done                                     | `rewrite(phase 24)` | 2026-09-27 |
+| 25    | CI for pull requests                                                        | Opus   | Done                                     | `rewrite(phase 25)` | 2026-09-27 |
+| 26    | Merge preparation and 0.6.0                                                 | Opus   | Waiting for Ozgur (push, merge, release) | `rewrite(phase 26)` | 2026-09-27 |
+| 27    | Workspace split: tokens and site (optional)                                 | Opus   | Not started                              |                     |            |
+| 28    | Contributor docs and README                                                 | Opus   | Not started                              |                     |            |
+| 29    | Release automation                                                          | Opus   | Not started                              |                     |            |
+| 30    | Token diff report on pull requests                                          | Opus   | Not started                              |                     |            |
+| 31    | Token source lint                                                           | Opus   | Not started                              |                     |            |
+| 32    | Type checking of the build code                                             | Opus   | Not started                              |                     |            |
+| 33    | Native compile checks in CI                                                 | Fable  | Not started                              |                     |            |
+| 34    | Swift package and Android library (optional)                                | Fable  | Not started                              |                     |            |
+| 35    | Retire the plan                                                             | Sonnet | Not started                              |                     |            |
 
 ## Ground rules
 
@@ -1059,11 +1059,77 @@ Settings for Ozgur on GitHub, after the first CI run (the check names appear onl
 
 Goal: `dev/rewrite` merges into `main` and is released as one version.
 
-- [ ] Move the `[Unreleased]` CHANGELOG entry to the version decided below. Add a "Breaking changes" section first: Node 22, the iOS type and file names (Phase 17), font weights (Phase 14), line heights and letter spacing (Phase 13), gradients (Phase 15), Android float resources, and the files added to the npm package (Phase 23). Each with the change an app must make.
-- [ ] Bump the version with `pnpm change-version`. Rebuild `dist/` for the new header, if approved: only the version and timestamp lines may change, which `pnpm tokens:verify` shows.
-- [ ] Write the pull request description into the Result: what changed, how it was checked, and the breaking changes, taken from the CHANGELOG.
+- [x] Move the `[Unreleased]` CHANGELOG entry to the version decided below. Add a "Breaking changes" section first: Node 22, the iOS type and file names (Phase 17), font weights (Phase 14), line heights and letter spacing (Phase 13), gradients (Phase 15), Android float resources, and the files added to the npm package (Phase 23). Each with the change an app must make.
+- [x] Bump the version with `pnpm change-version`. Rebuild `dist/` for the new header, if approved: only the version and timestamp lines may change, which `pnpm tokens:verify` shows.
+- [x] Write the pull request description into the Result: what changed, how it was checked, and the breaking changes, taken from the CHANGELOG.
 - [ ] Ozgur pushes `dev/rewrite`, opens the pull request, waits for the CI of Phase 25, merges and lets the release workflow publish. Claude does not push.
 - [ ] Acceptance: before the push, every local check of Phase 25 passes in a clean clone; `npm pack --dry-run` shows the new version. After the release, the next session records the CI run, the npm version and the GitHub release in the log.
+
+Result: `dev/rewrite` is ready to merge as 0.6.0. Waiting for Ozgur to push, open the pull request, merge and release.
+
+- `CHANGELOG.md`: `[Unreleased]` is `[0.6.0] - 2026-09-27`, with a new introduction and a "Breaking changes" section first, by platform (web 2, iOS 4, Android 5, build 1), each with what an app must change. The preset paragraphs, which followed the introduction, have their own heading now. Every example value in the section was checked against `dist/` and `main`; the first draft named `semi-bold` weights, but the old output printed `regular` for the example tokens, and was corrected.
+- Not listed as breaking, because nothing an app uses changes: the `sinefil` blockquote style (`oblique` to `italic`, a value), the added iOS `Color.swift`, `…Radius` constants and icon catalog, the Android `res/` tree and drawables, the escaped Android strings (they compiled to empty strings before), and the added npm files.
+- `pnpm change-version 0.5.3 0.6.0` changed `package.json`, the README badge and `site/config.yml`. `pnpm tokens` rebuilt `dist/`: 58 files changed (the 56 icon files have no header), and every changed line is a `Chassis - Tokens v0.6.0` or `Generated on` line. The preset baselines keep their 0.5.3 headers, which the checks ignore.
+- The branch is 43 commits ahead of `main` with this one: 311 files, about 231,700 lines added and 50,100 removed.
+
+Checked:
+
+- In a clean clone with this phase's changes: every CI command passes on Node.js 22.19.0 (install, `tokens:lint`, `tokens:test` 745 tests, `tokens:verify` 114 files, `tokens:verify:presets` 8 presets, `lint:prettier`, `site:lint`, `check:astro`, `site:build` 22 pages with the submodule build, `check:pnpm`), and the Tokens job's commands on 24.18.0.
+- `npm pack --dry-run`: `chassis-ui-tokens-0.6.0.tgz`, 118 files, 693.1 kB.
+
+Steps for Ozgur:
+
+1. `git push -u origin dev/rewrite`
+2. Open the pull request from `dev/rewrite` into `main` with the title and description below (for example `gh pr create --base main --head dev/rewrite --title "Rewrite the token build and release 0.6.0" --body-file <file>`).
+3. Wait for CI (the first real run of `ci.yml`), then merge with **Create a merge commit**, as decided.
+4. The push to `main` runs the release: CI, then `npm publish` of 0.6.0 and the GitHub release `v0.6.0`. The `NPM_CHASSIS_UI` secret must still be valid.
+5. Set the branch protection of Phase 25 once the check names exist.
+6. Tell Claude how it went; the next session records the CI run, the npm version and the GitHub release, marks this phase Done and creates `dev/production` from `main` for Phase 27.
+
+Title: `Rewrite the token build and release 0.6.0`
+
+```markdown
+## Summary
+
+Rewrites the token build on Style Dictionary 5.5 and sd-transforms 2.0, fixes the iOS and Android output so that it compiles and holds values the platforms can use, keeps the presets for other CSS frameworks, and makes the repository ready to release: CI on pull requests, the whole of `dist/` in the npm package, and a clean audit. Version 0.6.0.
+
+The web SCSS output is the same apart from one renamed token and one font style. The iOS and Android output has breaking changes, listed below and in `CHANGELOG.md`.
+
+## What changed
+
+- **Build:** platform value encoding (`UIColor`, ARGB, `sp`/`dp`, quoting, `em`, references) moved out of the templates into tested pure functions in `build/tokens/values/`, which run on resolved tokens. One Style Dictionary instance per token-set list: 16 builds in about 6 s, instead of 36 runs in about 20 s.
+- **Web:** `headers-gap` is `header-gap` in the small screen file, and the `sinefil` blockquote style is `italic` instead of `oblique`. Nothing else in `dist/web/` changed.
+- **iOS:** one type per file (`ChassisTokens.swift`, `ChassisTokensColorLight`, …), `Color.swift` with colours that follow dark mode, `UIFont.Weight` weights, line heights in points, gradients as angle and stop parts, a `…Radius` for box shadows, and an `Icons.xcassets` catalog.
+- **Android:** float resources for opacity and letter spacing (the `<integer>` files did not compile), integer weights, letter spacing in ems, line heights in `sp`, gradients as parts, escaped strings (icons compiled to empty strings), a `res/` tree with `values-night` and `values-sw…dp`, and vector drawables for the icons.
+- **Presets:** `web-scss`, `web-px`, `web-vw` and `outputReferences` for SCSS, Android and iOS; new `ios-swiftui` and `android-compose` platforms. Each has a baseline in `build/tokens/test/golden/`.
+- **Package:** the npm package holds all of `dist/` (118 files, 693 kB packed; it held the web SCSS only), an `exports` map for `dist/*` and `package.json`, and a new description.
+- **Repository:** CI on pull requests (`.github/workflows/ci.yml`), a release that runs CI first, Dependabot, actions pinned to commit SHAs, `pnpm audit` clean (was 39 advisories, 1 critical), Prettier clean, `pnpm check` that can fail.
+- **Docs:** the web, iOS and Android guides were rewritten and their examples compiled; the Style Dictionary page documents the build and the presets.
+
+## Breaking changes
+
+- **Web:** `$cx-space-website-content-headers-gap` → `$cx-space-website-content-header-gap` (small screen). Paths outside `dist/` no longer resolve through Node.
+- **iOS:** `Main.swift` → `ChassisTokens.swift`; every file declares its own `enum` type instead of `class ChassisTokens`; no `@objc`. Weights are `UIFont.Weight`; percentage line heights are points; gradients are parts.
+- **Android:** opacity and letter spacing are `<item type="dimen" format="float">` (read with `ResourcesCompat.getFloat`); weights are `<integer>`; typography letter spacing is in ems; percentage line heights are `sp`; gradients are parts.
+- **Build:** Node.js 22 or later.
+
+`CHANGELOG.md` says what an app must change for each.
+
+## How it was checked
+
+- `pnpm tokens:verify`: a fresh build equals the committed `dist/`, all 114 files, ignoring the version and timestamp header lines. `pnpm tokens:verify:presets`: all 8 preset baselines.
+- `pnpm tokens:test`: 745 tests on real tokens, without mocks of Style Dictionary.
+- iOS: every Swift file type-checked with `swiftc` (a stand-in UIKit; SwiftUI against the macOS SDK), and the guides' examples ran. Android: aapt2 compiled and linked the resources; the Compose output compiled with `kotlinc` against stand-ins. Compile checks against the real iOS and Android SDKs in CI come in a later phase.
+- The site builds 22 pages; before and after the dependency updates, every file is the same apart from whitespace, two CSS vendor prefixes and bundled JavaScript.
+- Every CI job's commands pass in a clean clone on Node.js 22 and 24.
+
+## After merging
+
+- The release workflow runs CI, then publishes `@chassis-ui/tokens@0.6.0` to npm and creates the GitHub release `v0.6.0`.
+- `docs/rewrite-plan.md` stays until the last planned phase replaces it with `docs/architecture.md`.
+
+🤖 Generated with [Claude Code](https://claude.com/claude-code)
+```
 
 ## Phase 27: workspace split, tokens and site (optional)
 
@@ -1287,3 +1353,4 @@ Append-only.
 - 2026-09-27 (Phase 23, Opus 5.5): Set `files` to all of `dist/` plus `CHANGELOG.md`, added the `exports` map and the new description, made `check` sequential with `&&`, and removed the vnu, zip and lockfile-lint scripts, files and dependencies. Updated the quick start, the iOS and Android guides, the README overview and the CHANGELOG. Verified: the packed file list equals `git ls-files dist` plus four files; the consumer check above (Sass `pkg:` importer, load path, Node resolution, blocked path); `pnpm check` fails and passes as it should; `pnpm tokens:verify`, the 8 preset checks, 745 tests, lint, `site:lint` and `astro:build` (22 pages) pass; `dist/` untouched. Surprises: (1) the tarball grows to 691.6 kB packed, below the plan's estimate of about 750 kB. (2) Removing `lockfile-lint` also removed 2 of the 39 audit advisories. (3) `pnpm check` now fails on the audit until Phase 24. Next: Phase 24.
 - 2026-09-27 (Phase 24, Opus 5.5 per session; the Model column says Sonnet): Formatted six files with Prettier and ignored `pnpm-lock.yaml`; updated the dev dependencies within their ranges except the four build packages, then `qs` alone; pinned `@chassis-ui/css` and `@chassis-ui/docs` back to 0.5.0-0. Verified: `pnpm audit` clean, `pnpm check`, `site:lint`, `prettier -c .`, `pnpm tokens:verify`, 8 preset checks, 745 tests and lint pass; the site built with old and new dependencies differs only as listed in the Result; `dist/` untouched. Surprises: (1) a broad update also upgrades `@chassis-ui/css`, which changes the Chassis CSS files the site serves; it was reverted. (2) Astro 7.3 prints 17 harmless Vite warnings about `use astro:head-inject`. (3) Every advisory had a fixed version, so no ignore list was needed. Next: Phase 25.
 - 2026-09-27 (Phase 25, Opus 5.5): Added `.github/workflows/ci.yml` (Tokens on Node 22 and 24, Site, Audit), `.github/dependabot.yml` and `pnpm lint:prettier`; the release calls CI first, installs with `--frozen-lockfile` and pins its actions. Downloaded `actionlint` 1.7.12 and `ajv` to the scratchpad. Verified: `actionlint` clean with shellcheck, and it fails on two injected errors; `dependabot.yml` matches the SchemaStore schema; every job's commands pass in a clean clone (Tokens on Node 22.19.0 and 24.18.0, Site with the submodule build, Audit without `node_modules`); the usual checks pass; `dist/` untouched. Surprises: (1) the planned `push` trigger on every branch would run CI twice per pull request push, so CI runs on pull requests and inside the release instead. (2) The site cannot build from a clean clone with `astro:build` alone: it needs the assets submodule built, so the Site job runs `site:build`, as Vercel does. (3) Newer majors of `checkout` and `setup-node` (v7) exist; the pins keep the majors in use. Next: Phase 26, which ends with Ozgur pushing, opening the pull request and merging.
+- 2026-09-27 (Phase 26, Opus 5.5): Moved the CHANGELOG entry to 0.6.0 with a Breaking changes section, bumped the version to 0.6.0 with `change-version`, rebuilt `dist/` (header lines only, 58 files) and wrote the pull request description into the Result. Verified: every CI command passes in a clean clone on Node.js 22 and the Tokens job on 24; `npm pack` shows 0.6.0; every changed `dist/` line is a header line. Surprise: the first draft of the breaking changes used `semi-bold` weights as the example, but the example tokens printed `regular`; corrected after checking `main`. Next: Ozgur pushes, opens the pull request, merges and releases; then Phase 27 on `dev/production`.
