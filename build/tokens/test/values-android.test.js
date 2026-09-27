@@ -233,3 +233,32 @@ describe('Android typography parts', () => {
     expect(encode(token, context)).toBe(encode(token, { fontSize: '1000' }))
   })
 })
+
+describe('Android font weights', () => {
+  const weight = (value) => ({
+    ...tokenNamed('typography_font_weight_text_strong_weight'),
+    $value: value
+  })
+
+  test('are integer resources', () => {
+    expect(resourceTag(weight('Semi Bold'))).toEqual({ tag: 'integer', attributes: '' })
+    expect(resourceType(weight('Semi Bold'))).toBe('integer')
+  })
+
+  test.each([
+    ['Semi Bold', '600'],
+    ['SemiBold', '600'],
+    ['semi-bold', '600'],
+    ['Light', '300'],
+    ['Ultra Black', '950'],
+    ['600', '600']
+  ])('%s is %s', (value, number) => {
+    expect(encode(weight(value))).toBe(number)
+  })
+
+  test('an unknown name fails with the token path', () => {
+    expect(() => encode(weight('Chunky'))).toThrow(
+      'Unknown font weight "Chunky" in typography.fontWeight.text.strong.weight'
+    )
+  })
+})

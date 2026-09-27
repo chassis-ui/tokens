@@ -1,5 +1,5 @@
 {
-  "source": "Resolved chassis/demo tokens from the SD 4.4 build and the matching committed dist lines, extracted 2026-09-27. \"androidReferences\" holds tokens of the SD 5.5 build with outputReferences, the first token of the same file that each references, and the matching lines of build/tokens/test/golden/android-references/. \"iosReferences\" holds the same for the iOS build with outputReferences and build/tokens/test/golden/ios-references/. \"context\" holds the font size part that the templates pass for line height and letter spacing parts, and \"typographyParts\" holds such parts with the lines of dist/; both were captured from the build and the expected lines updated in Phase 13 (2026-09-27).",
+  "source": "Resolved chassis/demo tokens from the SD 4.4 build and the matching committed dist lines, extracted 2026-09-27. \"androidReferences\" holds tokens of the SD 5.5 build with outputReferences, the first token of the same file that each references, and the matching lines of build/tokens/test/golden/android-references/. \"iosReferences\" holds the same for the iOS build with outputReferences and build/tokens/test/golden/ios-references/. \"context\" holds the font size part that the templates pass for line height and letter spacing parts, and \"typographyParts\" holds such parts with the lines of dist/; both were captured from the build and the expected lines updated in Phase 13 (2026-09-27). Font weight cases were updated from dist/ in Phase 14.",
   "ios": [
     {
       "case": "dimension becomes CGFloat",
@@ -92,24 +92,24 @@
       "expected": "\"Inter\""
     },
     {
-      "case": "fontWeight: one word",
+      "case": "fontWeight: a name becomes a UIFont.Weight",
       "token": {
         "name": "TypographyFontWeightTextNormalWeight",
         "path": ["typography", "fontWeight", "text", "normal", "weight"],
         "$type": "fontWeight",
         "$value": "Regular"
       },
-      "expected": "\"regular\""
+      "expected": "UIFont.Weight.regular"
     },
     {
-      "case": "fontWeight: space becomes hyphen",
+      "case": "fontWeight: \"Semi Bold\" (Inter) is semibold",
       "token": {
         "name": "TypographyFontWeightTextStrongWeight",
         "path": ["typography", "fontWeight", "text", "strong", "weight"],
         "$type": "fontWeight",
         "$value": "Semi Bold"
       },
-      "expected": "\"semi-bold\""
+      "expected": "UIFont.Weight.semibold"
     },
     {
       "case": "asset is quoted",
@@ -212,14 +212,14 @@
       "expected": "\"Archivo Narrow\""
     },
     {
-      "case": "fontWeight: no space",
+      "case": "fontWeight: \"SemiBold\" (Archivo Narrow) is semibold",
       "token": {
         "name": "TypographyFontWeightDisplayStrongWeight",
         "path": ["typography", "fontWeight", "display", "strong", "weight"],
         "$type": "fontWeight",
         "$value": "SemiBold"
       },
-      "expected": "\"semibold\""
+      "expected": "UIFont.Weight.semibold"
     },
     {
       "case": "dimension: percent line height becomes points of the font size",
@@ -422,7 +422,7 @@
       }
     },
     {
-      "case": "string: fontWeight lowercased",
+      "case": "integer: a fontWeight name becomes its number",
       "token": {
         "name": "typography_font_weight_text_normal_weight",
         "path": ["typography", "fontWeight", "text", "normal", "weight"],
@@ -430,8 +430,8 @@
         "$value": "Regular"
       },
       "expected": {
-        "element": "string",
-        "value": "regular"
+        "element": "integer",
+        "value": "400"
       }
     },
     {
@@ -565,7 +565,7 @@
       }
     },
     {
-      "case": "fontWeight: space becomes hyphen",
+      "case": "integer: \"Semi Bold\" (Inter) is 600",
       "token": {
         "name": "typography_font_weight_text_strong_weight",
         "path": ["typography", "fontWeight", "text", "strong", "weight"],
@@ -573,8 +573,8 @@
         "$value": "Semi Bold"
       },
       "expected": {
-        "element": "string",
-        "value": "semi-bold"
+        "element": "integer",
+        "value": "600"
       }
     },
     {

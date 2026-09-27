@@ -58,7 +58,7 @@ If a phase is too large, split it into `Na`, `Nb` rows. If a fact in this file i
 | 11 | Preset docs | Opus | Done | `rewrite(phase 11)` | 2026-09-27 |
 | 12 | iOS references (`outputReferences`), new | Opus | Done | `rewrite(phase 12)` | 2026-09-27 |
 | 13 | Mobile typography values: percent line height, Android letter spacing in em | Opus | Done | `rewrite(phase 13)` | 2026-09-27 |
-| 14 | Font weights as numbers | Opus | Not started | | |
+| 14 | Font weights as numbers | Opus | Done | `rewrite(phase 14)` | 2026-09-27 |
 | 15 | Gradients on mobile as parts | Opus | Not started | | |
 | 16 | Dead `dimension` filter condition | Sonnet | Not started | | |
 | 17 | iOS type and file names | Opus | Not started | | |
@@ -266,14 +266,14 @@ Scale abbreviations: 4xsmall→4xs, 3xsmall→3xs, 2xsmall→2xs, xsmall→xs, s
 - Colours: `UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1)`, three decimals per channel, alpha as parsed.
 - Number and size groups: `CGFloat(<parseFloat>)`. Since Phase 13, a percentage line height is the percentage of the font size part of the same typography token, to three decimals (`125%` of `96` is `CGFloat(120)`).
 - fontFamily: first family only, quotes stripped, then double-quoted.
-- fontWeight: lowercase, first space replaced by a hyphen, double-quoted.
+- fontWeight: since Phase 14, a `UIFont.Weight` constant (`UIFont.Weight.semibold`), from the weight number of the web's name map, rounded to the nearest hundred from 100 to 900. It was the lowercase name, first space replaced by a hyphen, double-quoted.
 - Other string-group types: double-quoted.
 
 ### Android
 
 `<resources>` with one element per token, snake_case names, same expansion as iOS.
 
-- Element by type: size group → `dimen`, color → `color`, string group and content → `string`, number group → `integer`, anything else → `string`. Changed 2026-09-27 with Ozgur's approval: opacity and letter spacing (type `opacity` or `letterSpacing`, or `path[1] == letterSpacing`) → `<item type="dimen" format="float">`, because aapt2 rejects fractions in `<integer>`. References to them are `@dimen/…`.
+- Element by type: size group → `dimen`, color → `color`, string group and content → `string`, number group → `integer`, anything else → `string`. Changed 2026-09-27 with Ozgur's approval: opacity and letter spacing (type `opacity` or `letterSpacing`, or `path[1] == letterSpacing`) → `<item type="dimen" format="float">`, because aapt2 rejects fractions in `<integer>`. References to them are `@dimen/…`. Since Phase 14, font weights → `<integer>` with the weight number of the web's name map (`600`); they were lowercase name strings.
 - Colours: ARGB hex8 (`#80b7c0c2`).
 - `sp` when the last path segment is fontSize, lineHeight or paragraphSpacing, or the type is fontSize or lineHeight, or `path[1]` is `paragraphSpacing`. Since Phase 13, a percentage line height is the percentage of the font size part of the same typography token (`120sp`).
 - Bare number when `path[1]` is `letterSpacing` or the type is `letterSpacing`. Since Phase 13, the letter spacing part of a typography token is in ems of its font size, to four decimals (`-0.0052`); the standalone scale keeps its px number.
@@ -668,11 +668,29 @@ Goal: font weights that the platforms take without a name map.
 
 Facts: font weights print as names from the token source, lowercased with the first space replaced by a hyphen. The sources spell the same weight two ways, on purpose, because each is the style name of its font in Figma (confirmed by Ozgur, 2026-09-27); `tokens/` keeps them: `Semi Bold` becomes `semi-bold` and `SemiBold` becomes `semibold`. In `chassis`, the text font and the HTML cite weight are `semi-bold` and the display strong weight is `semibold`; in `sinefil`, all three are `semibold`. The 18 weight tokens per brand use `light`, `regular`, `medium`, `semi-bold`/`semibold` and `bold`. The weight is also a part of every typography token (`…FontWeight`). Font style parts (`normal`, `italic`) are separate and do not change.
 
-- [ ] One map in `values/shared.js` from every spelling to a number (the web output already turns the names into numbers; reuse its map if it fits): thin 100, extra light 200, light 300, regular and normal 400, medium 500, semi bold 600, bold 700, extra bold 800, black 900. Spaces, hyphens and case do not matter. An unknown name fails the build with the token path.
-- [ ] Android: weights print as `<integer>` (`600`), for Compose `FontWeight(600)` and `Typeface.create(family, 600, italic)` (API 28).
-- [ ] iOS: the type decided below.
-- [ ] Unit tests: every spelling in the current tokens, an unknown name.
-- [ ] Acceptance: only weight lines change, both brands; compile checks pass; the guides show the new use.
+- [x] One map in `values/shared.js` from every spelling to a number (the web output already turns the names into numbers; reuse its map if it fits). (Done as `fontWeightNumber`, which calls `transformFontWeight` of sd-transforms, the function behind the web's `ts/typography/fontWeight`, after replacing hyphens with spaces. The map also has 950 for ultra black; weights above 1000 fail.): thin 100, extra light 200, light 300, regular and normal 400, medium 500, semi bold 600, bold 700, extra bold 800, black 900. Spaces, hyphens and case do not matter. An unknown name fails the build with the token path.
+- [x] Android: weights print as `<integer>` (`600`), for Compose `FontWeight(600)` and `Typeface.create(family, 600, italic)` (API 28).
+- [x] iOS: the type decided below.
+- [x] Unit tests: every spelling in the current tokens, an unknown name.
+- [x] Acceptance: only weight lines change, both brands; compile checks pass; the guides show the new use.
+
+Result: iOS and Android print weights, and the web, iOS and Android share one name map. 1680 lines of `dist/` changed: 210 in each `Main`/`main` and string file of both brands (18 weight tokens and 192 typography parts per file), and nothing else.
+
+| Weight in the tokens | Lines per platform | iOS | Android |
+| --- | --- | --- | --- |
+| `Regular` | 312 | `UIFont.Weight.regular` | `400` |
+| `Semi Bold` (Inter) | 114 | `UIFont.Weight.semibold` | `600` |
+| `SemiBold` (Archivo Narrow, DM Sans, Source Serif 4) | 158 | `UIFont.Weight.semibold` | `600` |
+| `Bold` | 160 | `UIFont.Weight.bold` | `700` |
+| `Light` | 74 | `UIFont.Weight.light` | `300` |
+| `Medium` | 22 | `UIFont.Weight.medium` | `500` |
+
+On Android the weights are `<integer>` elements; they stay in `string.xml` and `main.xml`, because the file filters select by type group and `fontWeight` is in the string group. Font style parts (`normal`, `italic`) did not change. No weight prints a reference with `outputReferences`: every weight part holds the resolved weight, not a reference. The two reference baselines changed in the same 210 lines per file, each equal to the new line of `dist/`.
+
+`values/shared.js` imports `transformFontWeight` from `@tokens-studio/sd-transforms`, which loads `style-dictionary/utils`. The encoders still take plain tokens and return strings; the import keeps one name map for all platforms instead of a copy.
+
+Checked: all Swift files of both brands type-check with the stand-in UIKit, which now also maps `UIFont` to `NSFont`; a program reading `String.swift` gets `NSFont.Weight.semibold` for both spellings (raw value 0.3). aapt2 compiles and links both brands and reads `integer/font_context_jumbo_font_weight` as `700`.
+
 
 ## Phase 15: gradients on mobile as parts
 
@@ -771,7 +789,7 @@ Facts: shadow tokens are expanded into `OffsetX`, `OffsetY`, `Blur`, `Spread` an
 These are part of the frozen contract. They are listed so nobody "fixes" them by accident. Added 2026-09-27: Phases 13 to 16 change the letter spacing, line height, font weight and gradient items and remove the dead filter condition, each only after Ozgur approves it in Open decisions.
 
 - Fixed in Phase 13: Android letter spacing printed its number in design pixels (`-0.5`), and a `125%` line height printed as `CGFloat(125)` on iOS and `125sp` on Android.
-- Font weight on iOS and Android is a name string such as `"bold"`.
+- Fixed in Phase 14: font weight on iOS and Android was a name string such as `"bold"`.
 - Android asset tokens hold SVG markup inside `<string>`. It was raw markup, which aapt2 dropped, so the icons compiled to empty strings; since 2026-09-27 it is escaped and compiles to the SVG text.
 - The 88 `gradient.primitive.*` tokens are typed `color` with `linear-gradient(…)` values. Web prints the gradient. iOS and Android print only its first colour stop, because tinycolor parses the gradient string leniently: `linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, #000000 100%)` becomes `UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0)` and `#00000000`.
 - The `path[1] == dimension` filter matches nothing, so `dimension.base.*` is emitted.
@@ -859,3 +877,4 @@ Append-only.
 - 2026-09-27 (Phases 13 to 22 planning, Opus 5.5): Ozgur asked how to fix the iOS and Android issues and oddities, then asked for them as phases. Measured the facts on `dist/` for both brands: 9 percent line heights per file, 3 Android letter spacing parts other than zero, two spellings of semi bold, 88 gradients per colour file printing their first stop, `main.xml` conflicting with 409 dark colours and 61 screen values, 1382 base colours only in `main.xml`, and no constant in the Objective-C header despite `@objc`. Added Phases 13 to 22, a ground rule for approved output changes and 14 open decisions. Nothing in `build/` or `dist/` changed. Next: Ozgur's answers, then Phase 13.
 - 2026-09-27 (Phases 13 to 22 decisions, Opus 5.5): Ozgur confirmed all recommendations except making the semi bold spelling consistent in Tokens Studio: each spelling is the style name of its font in Figma, and the Phase 14 map accepts both. The check of the style names found `Light Oblique` for the `sinefil` blockquote weight, where the other brands use `Light Italic`; Source Serif 4 names its italic styles `Italic`. At Ozgur's request it was changed in `tokens/brand-sinefil/brand-base.json` and committed as `fix(tokens): use Light Italic for the sinefil blockquote weight`: 11 lines in 6 `sinefil` files of `dist/` changed from `oblique` to `italic`, nothing else; `pnpm tokens:verify`, the six preset checks and 582 tests pass. Not checked against Figma's own font list, because no Figma file was given. The plan was committed as `rewrite(plan): add phases 13 to 22 for the iOS and Android output`. Next: Phase 13.
 - 2026-09-27 (Phase 13, Opus 5.5): Added `percentLineHeight` and `letterSpacingEm` to `values/shared.js`, a font size context to `encode` and `reference` of both mobile encoders, and `encodingContext` to `templates/references.js`, which the iOS and Android templates call. Rebuilt both brands into the scratchpad and copied the 16 changed files into `dist/` and the 8 changed baseline files into `golden/`; every changed line is a line height or letter spacing part (168 lines in `dist/`). Added contexts to 6 fixture cases, 9 `typographyParts` cases captured from the build, 16 tests in `values-ios.test.js` and `values-android.test.js`, and 2 template tests in `formats.test.js`. Updated the iOS and Android guides, the Style Dictionary page, the CHANGELOG and the tests README. Verified: `pnpm tokens:verify` passes, 42 of 42 files; the six preset checks pass; `pnpm tokens:test` passes, 601 tests; lint and Prettier report nothing; `swiftc` and aapt2 pass for both brands; `pnpm astro:build` built 22 pages. Injected six regressions (template drops the context, Android letter spacing in px, iOS percentage kept, three-decimal rounding, reference without context, context lookup finds nothing); each failed 1 to 7 unit tests. Surprises: (1) font size parts are `96px` in some files and `22` without a unit in others; `parseFloat` reads both. (2) A bare `> file` in zsh waits for input, which stalled a diff command; the harness moved it to the background and it was stopped. Next: Phase 14.
+- 2026-09-27 (Phase 14, Opus 5.5): Replaced `fontWeightName` with `fontWeightNumber` in `values/shared.js`, which uses the web's map through `transformFontWeight` and fails on an unknown name. iOS prints `UIFont.Weight.<name>` at the nearest hundred; Android prints `<integer>` weights. Copied the 8 changed files into `dist/` and the 4 changed baseline files into `golden/`; every changed line is a weight line (1680 in `dist/`), and both spellings of semi bold give 600. Updated 5 fixture cases from `dist/`, added 19 weight tests, and updated the iOS and Android guides, the Style Dictionary page and the CHANGELOG. Verified: `pnpm tokens:verify` passes, 42 of 42 files; the six preset checks pass; `pnpm tokens:test` passes, 619 tests; lint and Prettier report nothing; `swiftc` (type check and a run-time weight check) and aapt2 pass for both brands; `pnpm astro:build` built 22 pages. Injected five regressions (Android weight as a string element, hyphen spelling not read, no unknown-name check, iOS rounding down, `thin` and `ultraLight` swapped); each failed 1 to 3 tests. Surprises: (1) no weight prints a reference, because typography parts hold the resolved weight. (2) The sd-transforms map gives `ultra black` 950, which iOS rounds to `.black`. Next: Phase 15.

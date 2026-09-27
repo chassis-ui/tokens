@@ -2,7 +2,7 @@
 
 <!--
   Do not edit directly, this file was auto-generated.
-  Generated on Sun, 27 Sep 2026 09:46:53 GMT
+  Generated on Sun, 27 Sep 2026 09:53:47 GMT
   Chassis - Tokens v0.5.3
   Copyright 2026 Ozgur Gunes
   Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
@@ -2138,41 +2138,41 @@
   <string name="typography_font_family_html">Source Serif 4</string>
   <string name="typography_font_family_code">IBM Plex Mono</string>
   <string name="typography_font_family_icon">Chassis-Icons</string>
-  <string name="typography_font_weight_text_normal_weight">regular</string>
+  <integer name="typography_font_weight_text_normal_weight">400</integer>
   <string name="typography_font_weight_text_normal_style">normal</string>
-  <string name="typography_font_weight_text_strong_weight">semibold</string>
+  <integer name="typography_font_weight_text_strong_weight">600</integer>
   <string name="typography_font_weight_text_strong_style">normal</string>
-  <string name="typography_font_weight_text_mass_weight">bold</string>
+  <integer name="typography_font_weight_text_mass_weight">700</integer>
   <string name="typography_font_weight_text_mass_style">normal</string>
-  <string name="typography_font_weight_text_elegant_weight">light</string>
+  <integer name="typography_font_weight_text_elegant_weight">300</integer>
   <string name="typography_font_weight_text_elegant_style">normal</string>
-  <string name="typography_font_weight_display_normal_weight">regular</string>
+  <integer name="typography_font_weight_display_normal_weight">400</integer>
   <string name="typography_font_weight_display_normal_style">normal</string>
-  <string name="typography_font_weight_display_strong_weight">semibold</string>
+  <integer name="typography_font_weight_display_strong_weight">600</integer>
   <string name="typography_font_weight_display_strong_style">normal</string>
-  <string name="typography_font_weight_display_mass_weight">bold</string>
+  <integer name="typography_font_weight_display_mass_weight">700</integer>
   <string name="typography_font_weight_display_mass_style">normal</string>
-  <string name="typography_font_weight_display_elegant_weight">light</string>
+  <integer name="typography_font_weight_display_elegant_weight">300</integer>
   <string name="typography_font_weight_display_elegant_style">normal</string>
-  <string name="typography_font_weight_code_normal_weight">regular</string>
+  <integer name="typography_font_weight_code_normal_weight">400</integer>
   <string name="typography_font_weight_code_normal_style">normal</string>
-  <string name="typography_font_weight_code_strong_weight">bold</string>
+  <integer name="typography_font_weight_code_strong_weight">700</integer>
   <string name="typography_font_weight_code_strong_style">normal</string>
-  <string name="typography_font_weight_html_code_weight">regular</string>
+  <integer name="typography_font_weight_html_code_weight">400</integer>
   <string name="typography_font_weight_html_code_style">normal</string>
-  <string name="typography_font_weight_html_blockquote_weight">light</string>
+  <integer name="typography_font_weight_html_blockquote_weight">300</integer>
   <string name="typography_font_weight_html_blockquote_style">italic</string>
-  <string name="typography_font_weight_html_body_weight">regular</string>
+  <integer name="typography_font_weight_html_body_weight">400</integer>
   <string name="typography_font_weight_html_body_style">normal</string>
-  <string name="typography_font_weight_html_paragraph_weight">regular</string>
+  <integer name="typography_font_weight_html_paragraph_weight">400</integer>
   <string name="typography_font_weight_html_paragraph_style">normal</string>
-  <string name="typography_font_weight_html_heading_weight">bold</string>
+  <integer name="typography_font_weight_html_heading_weight">700</integer>
   <string name="typography_font_weight_html_heading_style">normal</string>
-  <string name="typography_font_weight_html_cite_weight">semibold</string>
+  <integer name="typography_font_weight_html_cite_weight">600</integer>
   <string name="typography_font_weight_html_cite_style">normal</string>
-  <string name="typography_font_weight_html_list_weight">regular</string>
+  <integer name="typography_font_weight_html_list_weight">400</integer>
   <string name="typography_font_weight_html_list_style">normal</string>
-  <string name="typography_font_weight_html_bold_weight">bold</string>
+  <integer name="typography_font_weight_html_bold_weight">700</integer>
   <string name="typography_font_weight_html_bold_style">normal</string>
   <dimen name="typography_font_size_text_5xlarge">44sp</dimen>
   <dimen name="typography_font_size_text_4xlarge">38sp</dimen>
@@ -2353,7 +2353,7 @@
   <dimen name="border_radius_tab_small">2dp</dimen>
   <dimen name="border_radius_tooltip_main">1dp</dimen>
   <string name="font_context_jumbo_font_family">DM Sans</string>
-  <string name="font_context_jumbo_font_weight">bold</string>
+  <integer name="font_context_jumbo_font_weight">700</integer>
   <dimen name="font_context_jumbo_line_height">120sp</dimen>
   <dimen name="font_context_jumbo_font_size">96sp</dimen>
   <item name="font_context_jumbo_letter_spacing" type="dimen" format="float">-0.0052</item>
@@ -2362,7 +2362,7 @@
   <string name="font_context_jumbo_text_decoration">none</string>
   <string name="font_context_jumbo_font_style">normal</string>
   <string name="font_context_hero_font_family">DM Sans</string>
-  <string name="font_context_hero_font_weight">bold</string>
+  <integer name="font_context_hero_font_weight">700</integer>
   <dimen name="font_context_hero_line_height">80sp</dimen>
   <dimen name="font_context_hero_font_size">64sp</dimen>
   <item name="font_context_hero_letter_spacing" type="dimen" format="float">0</item>
@@ -2371,7 +2371,7 @@
   <string name="font_context_hero_text_decoration">none</string>
   <string name="font_context_hero_font_style">normal</string>
   <string name="font_context_lead_font_family">DM Sans</string>
-  <string name="font_context_lead_font_weight">regular</string>
+  <integer name="font_context_lead_font_weight">400</integer>
   <dimen name="font_context_lead_line_height">32sp</dimen>
   <dimen name="font_context_lead_font_size">22sp</dimen>
   <item name="font_context_lead_letter_spacing" type="dimen" format="float">0</item>
@@ -2380,7 +2380,7 @@
   <string name="font_context_lead_text_decoration">none</string>
   <string name="font_context_lead_font_style">normal</string>
   <string name="font_context_heading_font_family">DM Sans</string>
-  <string name="font_context_heading_font_weight">semibold</string>
+  <integer name="font_context_heading_font_weight">600</integer>
   <dimen name="font_context_heading_line_height">40sp</dimen>
   <dimen name="font_context_heading_font_size">32sp</dimen>
   <item name="font_context_heading_letter_spacing" type="dimen" format="float">0</item>
@@ -2389,7 +2389,7 @@
   <string name="font_context_heading_text_decoration">none</string>
   <string name="font_context_heading_font_style">normal</string>
   <string name="font_context_title_medium_font_family">DM Sans</string>
-  <string name="font_context_title_medium_font_weight">semibold</string>
+  <integer name="font_context_title_medium_font_weight">600</integer>
   <dimen name="font_context_title_medium_line_height">28sp</dimen>
   <dimen name="font_context_title_medium_font_size">19sp</dimen>
   <item name="font_context_title_medium_letter_spacing" type="dimen" format="float">0</item>
@@ -2398,7 +2398,7 @@
   <string name="font_context_title_medium_text_decoration">none</string>
   <string name="font_context_title_medium_font_style">normal</string>
   <string name="font_context_title_large_font_family">DM Sans</string>
-  <string name="font_context_title_large_font_weight">semibold</string>
+  <integer name="font_context_title_large_font_weight">600</integer>
   <dimen name="font_context_title_large_line_height">32sp</dimen>
   <dimen name="font_context_title_large_font_size">22sp</dimen>
   <item name="font_context_title_large_letter_spacing" type="dimen" format="float">0</item>
@@ -2407,7 +2407,7 @@
   <string name="font_context_title_large_text_decoration">none</string>
   <string name="font_context_title_large_font_style">normal</string>
   <string name="font_context_title_small_font_family">DM Sans</string>
-  <string name="font_context_title_small_font_weight">semibold</string>
+  <integer name="font_context_title_small_font_weight">600</integer>
   <dimen name="font_context_title_small_line_height">24sp</dimen>
   <dimen name="font_context_title_small_font_size">16sp</dimen>
   <item name="font_context_title_small_letter_spacing" type="dimen" format="float">0</item>
@@ -2416,7 +2416,7 @@
   <string name="font_context_title_small_text_decoration">none</string>
   <string name="font_context_title_small_font_style">normal</string>
   <string name="font_context_body_medium_font_family">DM Sans</string>
-  <string name="font_context_body_medium_font_weight">regular</string>
+  <integer name="font_context_body_medium_font_weight">400</integer>
   <dimen name="font_context_body_medium_line_height">24sp</dimen>
   <dimen name="font_context_body_medium_font_size">16sp</dimen>
   <item name="font_context_body_medium_letter_spacing" type="dimen" format="float">0</item>
@@ -2425,7 +2425,7 @@
   <string name="font_context_body_medium_text_decoration">none</string>
   <string name="font_context_body_medium_font_style">normal</string>
   <string name="font_context_body_large_font_family">DM Sans</string>
-  <string name="font_context_body_large_font_weight">regular</string>
+  <integer name="font_context_body_large_font_weight">400</integer>
   <dimen name="font_context_body_large_line_height">28sp</dimen>
   <dimen name="font_context_body_large_font_size">19sp</dimen>
   <item name="font_context_body_large_letter_spacing" type="dimen" format="float">0</item>
@@ -2434,7 +2434,7 @@
   <string name="font_context_body_large_text_decoration">none</string>
   <string name="font_context_body_large_font_style">normal</string>
   <string name="font_context_body_small_font_family">DM Sans</string>
-  <string name="font_context_body_small_font_weight">regular</string>
+  <integer name="font_context_body_small_font_weight">400</integer>
   <dimen name="font_context_body_small_line_height">20sp</dimen>
   <dimen name="font_context_body_small_font_size">14sp</dimen>
   <item name="font_context_body_small_letter_spacing" type="dimen" format="float">0</item>
@@ -2443,7 +2443,7 @@
   <string name="font_context_body_small_text_decoration">none</string>
   <string name="font_context_body_small_font_style">normal</string>
   <string name="font_context_highlight_medium_font_family">DM Sans</string>
-  <string name="font_context_highlight_medium_font_weight">regular</string>
+  <integer name="font_context_highlight_medium_font_weight">400</integer>
   <dimen name="font_context_highlight_medium_line_height">24sp</dimen>
   <dimen name="font_context_highlight_medium_font_size">16sp</dimen>
   <item name="font_context_highlight_medium_letter_spacing" type="dimen" format="float">0</item>
@@ -2452,7 +2452,7 @@
   <string name="font_context_highlight_medium_text_decoration">none</string>
   <string name="font_context_highlight_medium_font_style">normal</string>
   <string name="font_context_highlight_large_font_family">DM Sans</string>
-  <string name="font_context_highlight_large_font_weight">regular</string>
+  <integer name="font_context_highlight_large_font_weight">400</integer>
   <dimen name="font_context_highlight_large_line_height">28sp</dimen>
   <dimen name="font_context_highlight_large_font_size">19sp</dimen>
   <item name="font_context_highlight_large_letter_spacing" type="dimen" format="float">0</item>
@@ -2461,7 +2461,7 @@
   <string name="font_context_highlight_large_text_decoration">none</string>
   <string name="font_context_highlight_large_font_style">normal</string>
   <string name="font_context_highlight_small_font_family">DM Sans</string>
-  <string name="font_context_highlight_small_font_weight">regular</string>
+  <integer name="font_context_highlight_small_font_weight">400</integer>
   <dimen name="font_context_highlight_small_line_height">20sp</dimen>
   <dimen name="font_context_highlight_small_font_size">14sp</dimen>
   <item name="font_context_highlight_small_letter_spacing" type="dimen" format="float">0</item>
@@ -2470,7 +2470,7 @@
   <string name="font_context_highlight_small_text_decoration">none</string>
   <string name="font_context_highlight_small_font_style">normal</string>
   <string name="font_context_label_medium_font_family">DM Sans</string>
-  <string name="font_context_label_medium_font_weight">semibold</string>
+  <integer name="font_context_label_medium_font_weight">600</integer>
   <dimen name="font_context_label_medium_line_height">20sp</dimen>
   <dimen name="font_context_label_medium_font_size">14sp</dimen>
   <item name="font_context_label_medium_letter_spacing" type="dimen" format="float">0</item>
@@ -2479,7 +2479,7 @@
   <string name="font_context_label_medium_text_decoration">none</string>
   <string name="font_context_label_medium_font_style">normal</string>
   <string name="font_context_label_large_font_family">DM Sans</string>
-  <string name="font_context_label_large_font_weight">semibold</string>
+  <integer name="font_context_label_large_font_weight">600</integer>
   <dimen name="font_context_label_large_line_height">24sp</dimen>
   <dimen name="font_context_label_large_font_size">16sp</dimen>
   <item name="font_context_label_large_letter_spacing" type="dimen" format="float">0</item>
@@ -2488,7 +2488,7 @@
   <string name="font_context_label_large_text_decoration">none</string>
   <string name="font_context_label_large_font_style">normal</string>
   <string name="font_context_label_small_font_family">DM Sans</string>
-  <string name="font_context_label_small_font_weight">semibold</string>
+  <integer name="font_context_label_small_font_weight">600</integer>
   <dimen name="font_context_label_small_line_height">18sp</dimen>
   <dimen name="font_context_label_small_font_size">12sp</dimen>
   <item name="font_context_label_small_letter_spacing" type="dimen" format="float">0</item>
@@ -2497,7 +2497,7 @@
   <string name="font_context_label_small_text_decoration">none</string>
   <string name="font_context_label_small_font_style">normal</string>
   <string name="font_context_link_large_font_family">DM Sans</string>
-  <string name="font_context_link_large_font_weight">regular</string>
+  <integer name="font_context_link_large_font_weight">400</integer>
   <dimen name="font_context_link_large_line_height">28sp</dimen>
   <dimen name="font_context_link_large_font_size">19sp</dimen>
   <item name="font_context_link_large_letter_spacing" type="dimen" format="float">0</item>
@@ -2506,7 +2506,7 @@
   <string name="font_context_link_large_text_decoration">underline</string>
   <string name="font_context_link_large_font_style">normal</string>
   <string name="font_context_link_medium_font_family">DM Sans</string>
-  <string name="font_context_link_medium_font_weight">regular</string>
+  <integer name="font_context_link_medium_font_weight">400</integer>
   <dimen name="font_context_link_medium_line_height">24sp</dimen>
   <dimen name="font_context_link_medium_font_size">16sp</dimen>
   <item name="font_context_link_medium_letter_spacing" type="dimen" format="float">0</item>
@@ -2515,7 +2515,7 @@
   <string name="font_context_link_medium_text_decoration">underline</string>
   <string name="font_context_link_medium_font_style">normal</string>
   <string name="font_context_link_small_font_family">DM Sans</string>
-  <string name="font_context_link_small_font_weight">regular</string>
+  <integer name="font_context_link_small_font_weight">400</integer>
   <dimen name="font_context_link_small_line_height">20sp</dimen>
   <dimen name="font_context_link_small_font_size">14sp</dimen>
   <item name="font_context_link_small_letter_spacing" type="dimen" format="float">0</item>
@@ -2524,7 +2524,7 @@
   <string name="font_context_link_small_text_decoration">underline</string>
   <string name="font_context_link_small_font_style">normal</string>
   <string name="font_context_link_xsmall_font_family">DM Sans</string>
-  <string name="font_context_link_xsmall_font_weight">regular</string>
+  <integer name="font_context_link_xsmall_font_weight">400</integer>
   <dimen name="font_context_link_xsmall_line_height">18sp</dimen>
   <dimen name="font_context_link_xsmall_font_size">12sp</dimen>
   <item name="font_context_link_xsmall_letter_spacing" type="dimen" format="float">0</item>
@@ -2533,7 +2533,7 @@
   <string name="font_context_link_xsmall_text_decoration">underline</string>
   <string name="font_context_link_xsmall_font_style">normal</string>
   <string name="font_context_expired_large_font_family">DM Sans</string>
-  <string name="font_context_expired_large_font_weight">semibold</string>
+  <integer name="font_context_expired_large_font_weight">600</integer>
   <dimen name="font_context_expired_large_line_height">28sp</dimen>
   <dimen name="font_context_expired_large_font_size">19sp</dimen>
   <item name="font_context_expired_large_letter_spacing" type="dimen" format="float">0</item>
@@ -2542,7 +2542,7 @@
   <string name="font_context_expired_large_text_decoration">line-through</string>
   <string name="font_context_expired_large_font_style">normal</string>
   <string name="font_context_expired_medium_font_family">DM Sans</string>
-  <string name="font_context_expired_medium_font_weight">semibold</string>
+  <integer name="font_context_expired_medium_font_weight">600</integer>
   <dimen name="font_context_expired_medium_line_height">24sp</dimen>
   <dimen name="font_context_expired_medium_font_size">16sp</dimen>
   <item name="font_context_expired_medium_letter_spacing" type="dimen" format="float">0</item>
@@ -2551,7 +2551,7 @@
   <string name="font_context_expired_medium_text_decoration">line-through</string>
   <string name="font_context_expired_medium_font_style">normal</string>
   <string name="font_context_expired_small_font_family">DM Sans</string>
-  <string name="font_context_expired_small_font_weight">semibold</string>
+  <integer name="font_context_expired_small_font_weight">600</integer>
   <dimen name="font_context_expired_small_line_height">20sp</dimen>
   <dimen name="font_context_expired_small_font_size">14sp</dimen>
   <item name="font_context_expired_small_letter_spacing" type="dimen" format="float">0</item>
@@ -2560,7 +2560,7 @@
   <string name="font_context_expired_small_text_decoration">line-through</string>
   <string name="font_context_expired_small_font_style">normal</string>
   <string name="font_context_code_large_font_family">IBM Plex Mono</string>
-  <string name="font_context_code_large_font_weight">regular</string>
+  <integer name="font_context_code_large_font_weight">400</integer>
   <dimen name="font_context_code_large_line_height">28sp</dimen>
   <dimen name="font_context_code_large_font_size">19sp</dimen>
   <item name="font_context_code_large_letter_spacing" type="dimen" format="float">0</item>
@@ -2569,7 +2569,7 @@
   <string name="font_context_code_large_text_decoration">none</string>
   <string name="font_context_code_large_font_style">normal</string>
   <string name="font_context_code_medium_font_family">IBM Plex Mono</string>
-  <string name="font_context_code_medium_font_weight">regular</string>
+  <integer name="font_context_code_medium_font_weight">400</integer>
   <dimen name="font_context_code_medium_line_height">24sp</dimen>
   <dimen name="font_context_code_medium_font_size">16sp</dimen>
   <item name="font_context_code_medium_letter_spacing" type="dimen" format="float">0</item>
@@ -2578,7 +2578,7 @@
   <string name="font_context_code_medium_text_decoration">none</string>
   <string name="font_context_code_medium_font_style">normal</string>
   <string name="font_context_code_small_font_family">IBM Plex Mono</string>
-  <string name="font_context_code_small_font_weight">regular</string>
+  <integer name="font_context_code_small_font_weight">400</integer>
   <dimen name="font_context_code_small_line_height">20sp</dimen>
   <dimen name="font_context_code_small_font_size">14sp</dimen>
   <item name="font_context_code_small_letter_spacing" type="dimen" format="float">0</item>
@@ -2587,7 +2587,7 @@
   <string name="font_context_code_small_text_decoration">none</string>
   <string name="font_context_code_small_font_style">normal</string>
   <string name="font_text_5xlarge_normal_font_family">DM Sans</string>
-  <string name="font_text_5xlarge_normal_font_weight">regular</string>
+  <integer name="font_text_5xlarge_normal_font_weight">400</integer>
   <dimen name="font_text_5xlarge_normal_line_height">56sp</dimen>
   <dimen name="font_text_5xlarge_normal_font_size">44sp</dimen>
   <item name="font_text_5xlarge_normal_letter_spacing" type="dimen" format="float">0</item>
@@ -2596,7 +2596,7 @@
   <string name="font_text_5xlarge_normal_text_decoration">none</string>
   <string name="font_text_5xlarge_normal_font_style">normal</string>
   <string name="font_text_5xlarge_strong_font_family">DM Sans</string>
-  <string name="font_text_5xlarge_strong_font_weight">semibold</string>
+  <integer name="font_text_5xlarge_strong_font_weight">600</integer>
   <dimen name="font_text_5xlarge_strong_line_height">56sp</dimen>
   <dimen name="font_text_5xlarge_strong_font_size">44sp</dimen>
   <item name="font_text_5xlarge_strong_letter_spacing" type="dimen" format="float">0</item>
@@ -2605,7 +2605,7 @@
   <string name="font_text_5xlarge_strong_text_decoration">none</string>
   <string name="font_text_5xlarge_strong_font_style">normal</string>
   <string name="font_text_5xlarge_mass_font_family">DM Sans</string>
-  <string name="font_text_5xlarge_mass_font_weight">bold</string>
+  <integer name="font_text_5xlarge_mass_font_weight">700</integer>
   <dimen name="font_text_5xlarge_mass_line_height">56sp</dimen>
   <dimen name="font_text_5xlarge_mass_font_size">44sp</dimen>
   <item name="font_text_5xlarge_mass_letter_spacing" type="dimen" format="float">0</item>
@@ -2614,7 +2614,7 @@
   <string name="font_text_5xlarge_mass_text_decoration">none</string>
   <string name="font_text_5xlarge_mass_font_style">normal</string>
   <string name="font_text_5xlarge_elegant_font_family">DM Sans</string>
-  <string name="font_text_5xlarge_elegant_font_weight">light</string>
+  <integer name="font_text_5xlarge_elegant_font_weight">300</integer>
   <dimen name="font_text_5xlarge_elegant_line_height">56sp</dimen>
   <dimen name="font_text_5xlarge_elegant_font_size">44sp</dimen>
   <item name="font_text_5xlarge_elegant_letter_spacing" type="dimen" format="float">0</item>
@@ -2623,7 +2623,7 @@
   <string name="font_text_5xlarge_elegant_text_decoration">none</string>
   <string name="font_text_5xlarge_elegant_font_style">normal</string>
   <string name="font_text_4xlarge_normal_font_family">DM Sans</string>
-  <string name="font_text_4xlarge_normal_font_weight">regular</string>
+  <integer name="font_text_4xlarge_normal_font_weight">400</integer>
   <dimen name="font_text_4xlarge_normal_line_height">48sp</dimen>
   <dimen name="font_text_4xlarge_normal_font_size">38sp</dimen>
   <item name="font_text_4xlarge_normal_letter_spacing" type="dimen" format="float">0</item>
@@ -2632,7 +2632,7 @@
   <string name="font_text_4xlarge_normal_text_decoration">none</string>
   <string name="font_text_4xlarge_normal_font_style">normal</string>
   <string name="font_text_4xlarge_strong_font_family">DM Sans</string>
-  <string name="font_text_4xlarge_strong_font_weight">semibold</string>
+  <integer name="font_text_4xlarge_strong_font_weight">600</integer>
   <dimen name="font_text_4xlarge_strong_line_height">48sp</dimen>
   <dimen name="font_text_4xlarge_strong_font_size">38sp</dimen>
   <item name="font_text_4xlarge_strong_letter_spacing" type="dimen" format="float">0</item>
@@ -2641,7 +2641,7 @@
   <string name="font_text_4xlarge_strong_text_decoration">none</string>
   <string name="font_text_4xlarge_strong_font_style">normal</string>
   <string name="font_text_4xlarge_mass_font_family">DM Sans</string>
-  <string name="font_text_4xlarge_mass_font_weight">bold</string>
+  <integer name="font_text_4xlarge_mass_font_weight">700</integer>
   <dimen name="font_text_4xlarge_mass_line_height">48sp</dimen>
   <dimen name="font_text_4xlarge_mass_font_size">38sp</dimen>
   <item name="font_text_4xlarge_mass_letter_spacing" type="dimen" format="float">0</item>
@@ -2650,7 +2650,7 @@
   <string name="font_text_4xlarge_mass_text_decoration">none</string>
   <string name="font_text_4xlarge_mass_font_style">normal</string>
   <string name="font_text_4xlarge_elegant_font_family">DM Sans</string>
-  <string name="font_text_4xlarge_elegant_font_weight">light</string>
+  <integer name="font_text_4xlarge_elegant_font_weight">300</integer>
   <dimen name="font_text_4xlarge_elegant_line_height">48sp</dimen>
   <dimen name="font_text_4xlarge_elegant_font_size">38sp</dimen>
   <item name="font_text_4xlarge_elegant_letter_spacing" type="dimen" format="float">0</item>
@@ -2659,7 +2659,7 @@
   <string name="font_text_4xlarge_elegant_text_decoration">none</string>
   <string name="font_text_4xlarge_elegant_font_style">normal</string>
   <string name="font_text_3xlarge_normal_font_family">DM Sans</string>
-  <string name="font_text_3xlarge_normal_font_weight">regular</string>
+  <integer name="font_text_3xlarge_normal_font_weight">400</integer>
   <dimen name="font_text_3xlarge_normal_line_height">40sp</dimen>
   <dimen name="font_text_3xlarge_normal_font_size">32sp</dimen>
   <item name="font_text_3xlarge_normal_letter_spacing" type="dimen" format="float">0</item>
@@ -2668,7 +2668,7 @@
   <string name="font_text_3xlarge_normal_text_decoration">none</string>
   <string name="font_text_3xlarge_normal_font_style">normal</string>
   <string name="font_text_3xlarge_strong_font_family">DM Sans</string>
-  <string name="font_text_3xlarge_strong_font_weight">semibold</string>
+  <integer name="font_text_3xlarge_strong_font_weight">600</integer>
   <dimen name="font_text_3xlarge_strong_line_height">40sp</dimen>
   <dimen name="font_text_3xlarge_strong_font_size">32sp</dimen>
   <item name="font_text_3xlarge_strong_letter_spacing" type="dimen" format="float">0</item>
@@ -2677,7 +2677,7 @@
   <string name="font_text_3xlarge_strong_text_decoration">none</string>
   <string name="font_text_3xlarge_strong_font_style">normal</string>
   <string name="font_text_3xlarge_mass_font_family">DM Sans</string>
-  <string name="font_text_3xlarge_mass_font_weight">bold</string>
+  <integer name="font_text_3xlarge_mass_font_weight">700</integer>
   <dimen name="font_text_3xlarge_mass_line_height">40sp</dimen>
   <dimen name="font_text_3xlarge_mass_font_size">32sp</dimen>
   <item name="font_text_3xlarge_mass_letter_spacing" type="dimen" format="float">0</item>
@@ -2686,7 +2686,7 @@
   <string name="font_text_3xlarge_mass_text_decoration">none</string>
   <string name="font_text_3xlarge_mass_font_style">normal</string>
   <string name="font_text_3xlarge_elegant_font_family">DM Sans</string>
-  <string name="font_text_3xlarge_elegant_font_weight">light</string>
+  <integer name="font_text_3xlarge_elegant_font_weight">300</integer>
   <dimen name="font_text_3xlarge_elegant_line_height">40sp</dimen>
   <dimen name="font_text_3xlarge_elegant_font_size">32sp</dimen>
   <item name="font_text_3xlarge_elegant_letter_spacing" type="dimen" format="float">0</item>
@@ -2695,7 +2695,7 @@
   <string name="font_text_3xlarge_elegant_text_decoration">none</string>
   <string name="font_text_3xlarge_elegant_font_style">normal</string>
   <string name="font_text_2xlarge_normal_font_family">DM Sans</string>
-  <string name="font_text_2xlarge_normal_font_weight">regular</string>
+  <integer name="font_text_2xlarge_normal_font_weight">400</integer>
   <dimen name="font_text_2xlarge_normal_line_height">36sp</dimen>
   <dimen name="font_text_2xlarge_normal_font_size">26sp</dimen>
   <item name="font_text_2xlarge_normal_letter_spacing" type="dimen" format="float">0</item>
@@ -2704,7 +2704,7 @@
   <string name="font_text_2xlarge_normal_text_decoration">none</string>
   <string name="font_text_2xlarge_normal_font_style">normal</string>
   <string name="font_text_2xlarge_strong_font_family">DM Sans</string>
-  <string name="font_text_2xlarge_strong_font_weight">semibold</string>
+  <integer name="font_text_2xlarge_strong_font_weight">600</integer>
   <dimen name="font_text_2xlarge_strong_line_height">36sp</dimen>
   <dimen name="font_text_2xlarge_strong_font_size">26sp</dimen>
   <item name="font_text_2xlarge_strong_letter_spacing" type="dimen" format="float">0</item>
@@ -2713,7 +2713,7 @@
   <string name="font_text_2xlarge_strong_text_decoration">none</string>
   <string name="font_text_2xlarge_strong_font_style">normal</string>
   <string name="font_text_2xlarge_mass_font_family">DM Sans</string>
-  <string name="font_text_2xlarge_mass_font_weight">bold</string>
+  <integer name="font_text_2xlarge_mass_font_weight">700</integer>
   <dimen name="font_text_2xlarge_mass_line_height">36sp</dimen>
   <dimen name="font_text_2xlarge_mass_font_size">26sp</dimen>
   <item name="font_text_2xlarge_mass_letter_spacing" type="dimen" format="float">0</item>
@@ -2722,7 +2722,7 @@
   <string name="font_text_2xlarge_mass_text_decoration">none</string>
   <string name="font_text_2xlarge_mass_font_style">normal</string>
   <string name="font_text_2xlarge_elegant_font_family">DM Sans</string>
-  <string name="font_text_2xlarge_elegant_font_weight">light</string>
+  <integer name="font_text_2xlarge_elegant_font_weight">300</integer>
   <dimen name="font_text_2xlarge_elegant_line_height">36sp</dimen>
   <dimen name="font_text_2xlarge_elegant_font_size">26sp</dimen>
   <item name="font_text_2xlarge_elegant_letter_spacing" type="dimen" format="float">0</item>
@@ -2731,7 +2731,7 @@
   <string name="font_text_2xlarge_elegant_text_decoration">none</string>
   <string name="font_text_2xlarge_elegant_font_style">normal</string>
   <string name="font_text_xlarge_normal_font_family">DM Sans</string>
-  <string name="font_text_xlarge_normal_font_weight">regular</string>
+  <integer name="font_text_xlarge_normal_font_weight">400</integer>
   <dimen name="font_text_xlarge_normal_line_height">32sp</dimen>
   <dimen name="font_text_xlarge_normal_font_size">22sp</dimen>
   <item name="font_text_xlarge_normal_letter_spacing" type="dimen" format="float">0</item>
@@ -2740,7 +2740,7 @@
   <string name="font_text_xlarge_normal_text_decoration">none</string>
   <string name="font_text_xlarge_normal_font_style">normal</string>
   <string name="font_text_xlarge_strong_font_family">DM Sans</string>
-  <string name="font_text_xlarge_strong_font_weight">semibold</string>
+  <integer name="font_text_xlarge_strong_font_weight">600</integer>
   <dimen name="font_text_xlarge_strong_line_height">32sp</dimen>
   <dimen name="font_text_xlarge_strong_font_size">22sp</dimen>
   <item name="font_text_xlarge_strong_letter_spacing" type="dimen" format="float">0</item>
@@ -2749,7 +2749,7 @@
   <string name="font_text_xlarge_strong_text_decoration">none</string>
   <string name="font_text_xlarge_strong_font_style">normal</string>
   <string name="font_text_xlarge_mass_font_family">DM Sans</string>
-  <string name="font_text_xlarge_mass_font_weight">bold</string>
+  <integer name="font_text_xlarge_mass_font_weight">700</integer>
   <dimen name="font_text_xlarge_mass_line_height">32sp</dimen>
   <dimen name="font_text_xlarge_mass_font_size">22sp</dimen>
   <item name="font_text_xlarge_mass_letter_spacing" type="dimen" format="float">0</item>
@@ -2758,7 +2758,7 @@
   <string name="font_text_xlarge_mass_text_decoration">none</string>
   <string name="font_text_xlarge_mass_font_style">normal</string>
   <string name="font_text_xlarge_elegant_font_family">DM Sans</string>
-  <string name="font_text_xlarge_elegant_font_weight">light</string>
+  <integer name="font_text_xlarge_elegant_font_weight">300</integer>
   <dimen name="font_text_xlarge_elegant_line_height">32sp</dimen>
   <dimen name="font_text_xlarge_elegant_font_size">22sp</dimen>
   <item name="font_text_xlarge_elegant_letter_spacing" type="dimen" format="float">0</item>
@@ -2767,7 +2767,7 @@
   <string name="font_text_xlarge_elegant_text_decoration">none</string>
   <string name="font_text_xlarge_elegant_font_style">normal</string>
   <string name="font_text_large_normal_font_family">DM Sans</string>
-  <string name="font_text_large_normal_font_weight">regular</string>
+  <integer name="font_text_large_normal_font_weight">400</integer>
   <dimen name="font_text_large_normal_line_height">28sp</dimen>
   <dimen name="font_text_large_normal_font_size">19sp</dimen>
   <item name="font_text_large_normal_letter_spacing" type="dimen" format="float">0</item>
@@ -2776,7 +2776,7 @@
   <string name="font_text_large_normal_text_decoration">none</string>
   <string name="font_text_large_normal_font_style">normal</string>
   <string name="font_text_large_strong_font_family">DM Sans</string>
-  <string name="font_text_large_strong_font_weight">semibold</string>
+  <integer name="font_text_large_strong_font_weight">600</integer>
   <dimen name="font_text_large_strong_line_height">28sp</dimen>
   <dimen name="font_text_large_strong_font_size">19sp</dimen>
   <item name="font_text_large_strong_letter_spacing" type="dimen" format="float">0</item>
@@ -2785,7 +2785,7 @@
   <string name="font_text_large_strong_text_decoration">none</string>
   <string name="font_text_large_strong_font_style">normal</string>
   <string name="font_text_large_mass_font_family">DM Sans</string>
-  <string name="font_text_large_mass_font_weight">bold</string>
+  <integer name="font_text_large_mass_font_weight">700</integer>
   <dimen name="font_text_large_mass_line_height">28sp</dimen>
   <dimen name="font_text_large_mass_font_size">19sp</dimen>
   <item name="font_text_large_mass_letter_spacing" type="dimen" format="float">0</item>
@@ -2794,7 +2794,7 @@
   <string name="font_text_large_mass_text_decoration">none</string>
   <string name="font_text_large_mass_font_style">normal</string>
   <string name="font_text_large_elegant_font_family">DM Sans</string>
-  <string name="font_text_large_elegant_font_weight">light</string>
+  <integer name="font_text_large_elegant_font_weight">300</integer>
   <dimen name="font_text_large_elegant_line_height">28sp</dimen>
   <dimen name="font_text_large_elegant_font_size">19sp</dimen>
   <item name="font_text_large_elegant_letter_spacing" type="dimen" format="float">0</item>
@@ -2803,7 +2803,7 @@
   <string name="font_text_large_elegant_text_decoration">none</string>
   <string name="font_text_large_elegant_font_style">normal</string>
   <string name="font_text_medium_normal_font_family">DM Sans</string>
-  <string name="font_text_medium_normal_font_weight">regular</string>
+  <integer name="font_text_medium_normal_font_weight">400</integer>
   <dimen name="font_text_medium_normal_line_height">24sp</dimen>
   <dimen name="font_text_medium_normal_font_size">16sp</dimen>
   <item name="font_text_medium_normal_letter_spacing" type="dimen" format="float">0</item>
@@ -2812,7 +2812,7 @@
   <string name="font_text_medium_normal_text_decoration">none</string>
   <string name="font_text_medium_normal_font_style">normal</string>
   <string name="font_text_medium_strong_font_family">DM Sans</string>
-  <string name="font_text_medium_strong_font_weight">semibold</string>
+  <integer name="font_text_medium_strong_font_weight">600</integer>
   <dimen name="font_text_medium_strong_line_height">24sp</dimen>
   <dimen name="font_text_medium_strong_font_size">16sp</dimen>
   <item name="font_text_medium_strong_letter_spacing" type="dimen" format="float">0</item>
@@ -2821,7 +2821,7 @@
   <string name="font_text_medium_strong_text_decoration">none</string>
   <string name="font_text_medium_strong_font_style">normal</string>
   <string name="font_text_medium_mass_font_family">DM Sans</string>
-  <string name="font_text_medium_mass_font_weight">bold</string>
+  <integer name="font_text_medium_mass_font_weight">700</integer>
   <dimen name="font_text_medium_mass_line_height">24sp</dimen>
   <dimen name="font_text_medium_mass_font_size">16sp</dimen>
   <item name="font_text_medium_mass_letter_spacing" type="dimen" format="float">0</item>
@@ -2830,7 +2830,7 @@
   <string name="font_text_medium_mass_text_decoration">none</string>
   <string name="font_text_medium_mass_font_style">normal</string>
   <string name="font_text_medium_elegant_font_family">DM Sans</string>
-  <string name="font_text_medium_elegant_font_weight">light</string>
+  <integer name="font_text_medium_elegant_font_weight">300</integer>
   <dimen name="font_text_medium_elegant_line_height">24sp</dimen>
   <dimen name="font_text_medium_elegant_font_size">16sp</dimen>
   <item name="font_text_medium_elegant_letter_spacing" type="dimen" format="float">0</item>
@@ -2839,7 +2839,7 @@
   <string name="font_text_medium_elegant_text_decoration">none</string>
   <string name="font_text_medium_elegant_font_style">normal</string>
   <string name="font_text_small_normal_font_family">DM Sans</string>
-  <string name="font_text_small_normal_font_weight">regular</string>
+  <integer name="font_text_small_normal_font_weight">400</integer>
   <dimen name="font_text_small_normal_line_height">20sp</dimen>
   <dimen name="font_text_small_normal_font_size">14sp</dimen>
   <item name="font_text_small_normal_letter_spacing" type="dimen" format="float">0</item>
@@ -2848,7 +2848,7 @@
   <string name="font_text_small_normal_text_decoration">none</string>
   <string name="font_text_small_normal_font_style">normal</string>
   <string name="font_text_small_strong_font_family">DM Sans</string>
-  <string name="font_text_small_strong_font_weight">semibold</string>
+  <integer name="font_text_small_strong_font_weight">600</integer>
   <dimen name="font_text_small_strong_line_height">20sp</dimen>
   <dimen name="font_text_small_strong_font_size">14sp</dimen>
   <item name="font_text_small_strong_letter_spacing" type="dimen" format="float">0</item>
@@ -2857,7 +2857,7 @@
   <string name="font_text_small_strong_text_decoration">none</string>
   <string name="font_text_small_strong_font_style">normal</string>
   <string name="font_text_small_mass_font_family">DM Sans</string>
-  <string name="font_text_small_mass_font_weight">bold</string>
+  <integer name="font_text_small_mass_font_weight">700</integer>
   <dimen name="font_text_small_mass_line_height">20sp</dimen>
   <dimen name="font_text_small_mass_font_size">14sp</dimen>
   <item name="font_text_small_mass_letter_spacing" type="dimen" format="float">0</item>
@@ -2866,7 +2866,7 @@
   <string name="font_text_small_mass_text_decoration">none</string>
   <string name="font_text_small_mass_font_style">normal</string>
   <string name="font_text_small_elegant_font_family">DM Sans</string>
-  <string name="font_text_small_elegant_font_weight">light</string>
+  <integer name="font_text_small_elegant_font_weight">300</integer>
   <dimen name="font_text_small_elegant_line_height">20sp</dimen>
   <dimen name="font_text_small_elegant_font_size">14sp</dimen>
   <item name="font_text_small_elegant_letter_spacing" type="dimen" format="float">0</item>
@@ -2875,7 +2875,7 @@
   <string name="font_text_small_elegant_text_decoration">none</string>
   <string name="font_text_small_elegant_font_style">normal</string>
   <string name="font_text_xsmall_normal_font_family">DM Sans</string>
-  <string name="font_text_xsmall_normal_font_weight">regular</string>
+  <integer name="font_text_xsmall_normal_font_weight">400</integer>
   <dimen name="font_text_xsmall_normal_line_height">18sp</dimen>
   <dimen name="font_text_xsmall_normal_font_size">12sp</dimen>
   <item name="font_text_xsmall_normal_letter_spacing" type="dimen" format="float">0</item>
@@ -2884,7 +2884,7 @@
   <string name="font_text_xsmall_normal_text_decoration">none</string>
   <string name="font_text_xsmall_normal_font_style">normal</string>
   <string name="font_text_xsmall_strong_font_family">DM Sans</string>
-  <string name="font_text_xsmall_strong_font_weight">semibold</string>
+  <integer name="font_text_xsmall_strong_font_weight">600</integer>
   <dimen name="font_text_xsmall_strong_line_height">18sp</dimen>
   <dimen name="font_text_xsmall_strong_font_size">12sp</dimen>
   <item name="font_text_xsmall_strong_letter_spacing" type="dimen" format="float">0</item>
@@ -2893,7 +2893,7 @@
   <string name="font_text_xsmall_strong_text_decoration">none</string>
   <string name="font_text_xsmall_strong_font_style">normal</string>
   <string name="font_text_xsmall_mass_font_family">DM Sans</string>
-  <string name="font_text_xsmall_mass_font_weight">bold</string>
+  <integer name="font_text_xsmall_mass_font_weight">700</integer>
   <dimen name="font_text_xsmall_mass_line_height">18sp</dimen>
   <dimen name="font_text_xsmall_mass_font_size">12sp</dimen>
   <item name="font_text_xsmall_mass_letter_spacing" type="dimen" format="float">0</item>
@@ -2902,7 +2902,7 @@
   <string name="font_text_xsmall_mass_text_decoration">none</string>
   <string name="font_text_xsmall_mass_font_style">normal</string>
   <string name="font_text_xsmall_elegant_font_family">DM Sans</string>
-  <string name="font_text_xsmall_elegant_font_weight">light</string>
+  <integer name="font_text_xsmall_elegant_font_weight">300</integer>
   <dimen name="font_text_xsmall_elegant_line_height">18sp</dimen>
   <dimen name="font_text_xsmall_elegant_font_size">12sp</dimen>
   <item name="font_text_xsmall_elegant_letter_spacing" type="dimen" format="float">0</item>
@@ -2911,7 +2911,7 @@
   <string name="font_text_xsmall_elegant_text_decoration">none</string>
   <string name="font_text_xsmall_elegant_font_style">normal</string>
   <string name="font_text_2xsmall_normal_font_family">DM Sans</string>
-  <string name="font_text_2xsmall_normal_font_weight">regular</string>
+  <integer name="font_text_2xsmall_normal_font_weight">400</integer>
   <dimen name="font_text_2xsmall_normal_line_height">14sp</dimen>
   <dimen name="font_text_2xsmall_normal_font_size">10sp</dimen>
   <item name="font_text_2xsmall_normal_letter_spacing" type="dimen" format="float">0</item>
@@ -2920,7 +2920,7 @@
   <string name="font_text_2xsmall_normal_text_decoration">none</string>
   <string name="font_text_2xsmall_normal_font_style">normal</string>
   <string name="font_text_2xsmall_strong_font_family">DM Sans</string>
-  <string name="font_text_2xsmall_strong_font_weight">semibold</string>
+  <integer name="font_text_2xsmall_strong_font_weight">600</integer>
   <dimen name="font_text_2xsmall_strong_line_height">14sp</dimen>
   <dimen name="font_text_2xsmall_strong_font_size">10sp</dimen>
   <item name="font_text_2xsmall_strong_letter_spacing" type="dimen" format="float">0</item>
@@ -2929,7 +2929,7 @@
   <string name="font_text_2xsmall_strong_text_decoration">none</string>
   <string name="font_text_2xsmall_strong_font_style">normal</string>
   <string name="font_text_2xsmall_mass_font_family">DM Sans</string>
-  <string name="font_text_2xsmall_mass_font_weight">bold</string>
+  <integer name="font_text_2xsmall_mass_font_weight">700</integer>
   <dimen name="font_text_2xsmall_mass_line_height">14sp</dimen>
   <dimen name="font_text_2xsmall_mass_font_size">10sp</dimen>
   <item name="font_text_2xsmall_mass_letter_spacing" type="dimen" format="float">0</item>
@@ -2938,7 +2938,7 @@
   <string name="font_text_2xsmall_mass_text_decoration">none</string>
   <string name="font_text_2xsmall_mass_font_style">normal</string>
   <string name="font_text_2xsmall_elegant_font_family">DM Sans</string>
-  <string name="font_text_2xsmall_elegant_font_weight">light</string>
+  <integer name="font_text_2xsmall_elegant_font_weight">300</integer>
   <dimen name="font_text_2xsmall_elegant_line_height">14sp</dimen>
   <dimen name="font_text_2xsmall_elegant_font_size">10sp</dimen>
   <item name="font_text_2xsmall_elegant_letter_spacing" type="dimen" format="float">0</item>
@@ -2947,7 +2947,7 @@
   <string name="font_text_2xsmall_elegant_text_decoration">none</string>
   <string name="font_text_2xsmall_elegant_font_style">normal</string>
   <string name="font_display_5xlarge_normal_font_family">Source Serif 4</string>
-  <string name="font_display_5xlarge_normal_font_weight">regular</string>
+  <integer name="font_display_5xlarge_normal_font_weight">400</integer>
   <dimen name="font_display_5xlarge_normal_line_height">56sp</dimen>
   <dimen name="font_display_5xlarge_normal_font_size">44sp</dimen>
   <item name="font_display_5xlarge_normal_letter_spacing" type="dimen" format="float">0</item>
@@ -2956,7 +2956,7 @@
   <string name="font_display_5xlarge_normal_text_decoration">none</string>
   <string name="font_display_5xlarge_normal_font_style">normal</string>
   <string name="font_display_5xlarge_strong_font_family">Source Serif 4</string>
-  <string name="font_display_5xlarge_strong_font_weight">semibold</string>
+  <integer name="font_display_5xlarge_strong_font_weight">600</integer>
   <dimen name="font_display_5xlarge_strong_line_height">56sp</dimen>
   <dimen name="font_display_5xlarge_strong_font_size">44sp</dimen>
   <item name="font_display_5xlarge_strong_letter_spacing" type="dimen" format="float">0</item>
@@ -2965,7 +2965,7 @@
   <string name="font_display_5xlarge_strong_text_decoration">none</string>
   <string name="font_display_5xlarge_strong_font_style">normal</string>
   <string name="font_display_5xlarge_mass_font_family">Source Serif 4</string>
-  <string name="font_display_5xlarge_mass_font_weight">bold</string>
+  <integer name="font_display_5xlarge_mass_font_weight">700</integer>
   <dimen name="font_display_5xlarge_mass_line_height">56sp</dimen>
   <dimen name="font_display_5xlarge_mass_font_size">44sp</dimen>
   <item name="font_display_5xlarge_mass_letter_spacing" type="dimen" format="float">0</item>
@@ -2974,7 +2974,7 @@
   <string name="font_display_5xlarge_mass_text_decoration">none</string>
   <string name="font_display_5xlarge_mass_font_style">normal</string>
   <string name="font_display_5xlarge_elegant_font_family">Source Serif 4</string>
-  <string name="font_display_5xlarge_elegant_font_weight">light</string>
+  <integer name="font_display_5xlarge_elegant_font_weight">300</integer>
   <dimen name="font_display_5xlarge_elegant_line_height">56sp</dimen>
   <dimen name="font_display_5xlarge_elegant_font_size">44sp</dimen>
   <item name="font_display_5xlarge_elegant_letter_spacing" type="dimen" format="float">0</item>
@@ -2983,7 +2983,7 @@
   <string name="font_display_5xlarge_elegant_text_decoration">none</string>
   <string name="font_display_5xlarge_elegant_font_style">normal</string>
   <string name="font_display_4xlarge_normal_font_family">Source Serif 4</string>
-  <string name="font_display_4xlarge_normal_font_weight">regular</string>
+  <integer name="font_display_4xlarge_normal_font_weight">400</integer>
   <dimen name="font_display_4xlarge_normal_line_height">48sp</dimen>
   <dimen name="font_display_4xlarge_normal_font_size">38sp</dimen>
   <item name="font_display_4xlarge_normal_letter_spacing" type="dimen" format="float">0</item>
@@ -2992,7 +2992,7 @@
   <string name="font_display_4xlarge_normal_text_decoration">none</string>
   <string name="font_display_4xlarge_normal_font_style">normal</string>
   <string name="font_display_4xlarge_strong_font_family">Source Serif 4</string>
-  <string name="font_display_4xlarge_strong_font_weight">semibold</string>
+  <integer name="font_display_4xlarge_strong_font_weight">600</integer>
   <dimen name="font_display_4xlarge_strong_line_height">48sp</dimen>
   <dimen name="font_display_4xlarge_strong_font_size">38sp</dimen>
   <item name="font_display_4xlarge_strong_letter_spacing" type="dimen" format="float">0</item>
@@ -3001,7 +3001,7 @@
   <string name="font_display_4xlarge_strong_text_decoration">none</string>
   <string name="font_display_4xlarge_strong_font_style">normal</string>
   <string name="font_display_4xlarge_mass_font_family">Source Serif 4</string>
-  <string name="font_display_4xlarge_mass_font_weight">bold</string>
+  <integer name="font_display_4xlarge_mass_font_weight">700</integer>
   <dimen name="font_display_4xlarge_mass_line_height">48sp</dimen>
   <dimen name="font_display_4xlarge_mass_font_size">38sp</dimen>
   <item name="font_display_4xlarge_mass_letter_spacing" type="dimen" format="float">0</item>
@@ -3010,7 +3010,7 @@
   <string name="font_display_4xlarge_mass_text_decoration">none</string>
   <string name="font_display_4xlarge_mass_font_style">normal</string>
   <string name="font_display_4xlarge_elegant_font_family">Source Serif 4</string>
-  <string name="font_display_4xlarge_elegant_font_weight">light</string>
+  <integer name="font_display_4xlarge_elegant_font_weight">300</integer>
   <dimen name="font_display_4xlarge_elegant_line_height">48sp</dimen>
   <dimen name="font_display_4xlarge_elegant_font_size">38sp</dimen>
   <item name="font_display_4xlarge_elegant_letter_spacing" type="dimen" format="float">0</item>
@@ -3019,7 +3019,7 @@
   <string name="font_display_4xlarge_elegant_text_decoration">none</string>
   <string name="font_display_4xlarge_elegant_font_style">normal</string>
   <string name="font_display_3xlarge_normal_font_family">Source Serif 4</string>
-  <string name="font_display_3xlarge_normal_font_weight">regular</string>
+  <integer name="font_display_3xlarge_normal_font_weight">400</integer>
   <dimen name="font_display_3xlarge_normal_line_height">40sp</dimen>
   <dimen name="font_display_3xlarge_normal_font_size">32sp</dimen>
   <item name="font_display_3xlarge_normal_letter_spacing" type="dimen" format="float">0</item>
@@ -3028,7 +3028,7 @@
   <string name="font_display_3xlarge_normal_text_decoration">none</string>
   <string name="font_display_3xlarge_normal_font_style">normal</string>
   <string name="font_display_3xlarge_strong_font_family">Source Serif 4</string>
-  <string name="font_display_3xlarge_strong_font_weight">semibold</string>
+  <integer name="font_display_3xlarge_strong_font_weight">600</integer>
   <dimen name="font_display_3xlarge_strong_line_height">40sp</dimen>
   <dimen name="font_display_3xlarge_strong_font_size">32sp</dimen>
   <item name="font_display_3xlarge_strong_letter_spacing" type="dimen" format="float">0</item>
@@ -3037,7 +3037,7 @@
   <string name="font_display_3xlarge_strong_text_decoration">none</string>
   <string name="font_display_3xlarge_strong_font_style">normal</string>
   <string name="font_display_3xlarge_mass_font_family">Source Serif 4</string>
-  <string name="font_display_3xlarge_mass_font_weight">bold</string>
+  <integer name="font_display_3xlarge_mass_font_weight">700</integer>
   <dimen name="font_display_3xlarge_mass_line_height">40sp</dimen>
   <dimen name="font_display_3xlarge_mass_font_size">32sp</dimen>
   <item name="font_display_3xlarge_mass_letter_spacing" type="dimen" format="float">0</item>
@@ -3046,7 +3046,7 @@
   <string name="font_display_3xlarge_mass_text_decoration">none</string>
   <string name="font_display_3xlarge_mass_font_style">normal</string>
   <string name="font_display_3xlarge_elegant_font_family">Source Serif 4</string>
-  <string name="font_display_3xlarge_elegant_font_weight">light</string>
+  <integer name="font_display_3xlarge_elegant_font_weight">300</integer>
   <dimen name="font_display_3xlarge_elegant_line_height">40sp</dimen>
   <dimen name="font_display_3xlarge_elegant_font_size">32sp</dimen>
   <item name="font_display_3xlarge_elegant_letter_spacing" type="dimen" format="float">0</item>
@@ -3055,7 +3055,7 @@
   <string name="font_display_3xlarge_elegant_text_decoration">none</string>
   <string name="font_display_3xlarge_elegant_font_style">normal</string>
   <string name="font_display_2xlarge_normal_font_family">Source Serif 4</string>
-  <string name="font_display_2xlarge_normal_font_weight">regular</string>
+  <integer name="font_display_2xlarge_normal_font_weight">400</integer>
   <dimen name="font_display_2xlarge_normal_line_height">36sp</dimen>
   <dimen name="font_display_2xlarge_normal_font_size">26sp</dimen>
   <item name="font_display_2xlarge_normal_letter_spacing" type="dimen" format="float">0</item>
@@ -3064,7 +3064,7 @@
   <string name="font_display_2xlarge_normal_text_decoration">none</string>
   <string name="font_display_2xlarge_normal_font_style">normal</string>
   <string name="font_display_2xlarge_strong_font_family">Source Serif 4</string>
-  <string name="font_display_2xlarge_strong_font_weight">semibold</string>
+  <integer name="font_display_2xlarge_strong_font_weight">600</integer>
   <dimen name="font_display_2xlarge_strong_line_height">36sp</dimen>
   <dimen name="font_display_2xlarge_strong_font_size">26sp</dimen>
   <item name="font_display_2xlarge_strong_letter_spacing" type="dimen" format="float">0</item>
@@ -3073,7 +3073,7 @@
   <string name="font_display_2xlarge_strong_text_decoration">none</string>
   <string name="font_display_2xlarge_strong_font_style">normal</string>
   <string name="font_display_2xlarge_mass_font_family">Source Serif 4</string>
-  <string name="font_display_2xlarge_mass_font_weight">bold</string>
+  <integer name="font_display_2xlarge_mass_font_weight">700</integer>
   <dimen name="font_display_2xlarge_mass_line_height">36sp</dimen>
   <dimen name="font_display_2xlarge_mass_font_size">26sp</dimen>
   <item name="font_display_2xlarge_mass_letter_spacing" type="dimen" format="float">0</item>
@@ -3082,7 +3082,7 @@
   <string name="font_display_2xlarge_mass_text_decoration">none</string>
   <string name="font_display_2xlarge_mass_font_style">normal</string>
   <string name="font_display_2xlarge_elegant_font_family">Source Serif 4</string>
-  <string name="font_display_2xlarge_elegant_font_weight">light</string>
+  <integer name="font_display_2xlarge_elegant_font_weight">300</integer>
   <dimen name="font_display_2xlarge_elegant_line_height">36sp</dimen>
   <dimen name="font_display_2xlarge_elegant_font_size">26sp</dimen>
   <item name="font_display_2xlarge_elegant_letter_spacing" type="dimen" format="float">0</item>
@@ -3091,7 +3091,7 @@
   <string name="font_display_2xlarge_elegant_text_decoration">none</string>
   <string name="font_display_2xlarge_elegant_font_style">normal</string>
   <string name="font_display_xlarge_normal_font_family">Source Serif 4</string>
-  <string name="font_display_xlarge_normal_font_weight">regular</string>
+  <integer name="font_display_xlarge_normal_font_weight">400</integer>
   <dimen name="font_display_xlarge_normal_line_height">32sp</dimen>
   <dimen name="font_display_xlarge_normal_font_size">22sp</dimen>
   <item name="font_display_xlarge_normal_letter_spacing" type="dimen" format="float">0</item>
@@ -3100,7 +3100,7 @@
   <string name="font_display_xlarge_normal_text_decoration">none</string>
   <string name="font_display_xlarge_normal_font_style">normal</string>
   <string name="font_display_xlarge_strong_font_family">Source Serif 4</string>
-  <string name="font_display_xlarge_strong_font_weight">semibold</string>
+  <integer name="font_display_xlarge_strong_font_weight">600</integer>
   <dimen name="font_display_xlarge_strong_line_height">32sp</dimen>
   <dimen name="font_display_xlarge_strong_font_size">22sp</dimen>
   <item name="font_display_xlarge_strong_letter_spacing" type="dimen" format="float">0</item>
@@ -3109,7 +3109,7 @@
   <string name="font_display_xlarge_strong_text_decoration">none</string>
   <string name="font_display_xlarge_strong_font_style">normal</string>
   <string name="font_display_xlarge_mass_font_family">Source Serif 4</string>
-  <string name="font_display_xlarge_mass_font_weight">bold</string>
+  <integer name="font_display_xlarge_mass_font_weight">700</integer>
   <dimen name="font_display_xlarge_mass_line_height">32sp</dimen>
   <dimen name="font_display_xlarge_mass_font_size">22sp</dimen>
   <item name="font_display_xlarge_mass_letter_spacing" type="dimen" format="float">0</item>
@@ -3118,7 +3118,7 @@
   <string name="font_display_xlarge_mass_text_decoration">none</string>
   <string name="font_display_xlarge_mass_font_style">normal</string>
   <string name="font_display_xlarge_elegant_font_family">Source Serif 4</string>
-  <string name="font_display_xlarge_elegant_font_weight">light</string>
+  <integer name="font_display_xlarge_elegant_font_weight">300</integer>
   <dimen name="font_display_xlarge_elegant_line_height">32sp</dimen>
   <dimen name="font_display_xlarge_elegant_font_size">22sp</dimen>
   <item name="font_display_xlarge_elegant_letter_spacing" type="dimen" format="float">0</item>
@@ -3127,7 +3127,7 @@
   <string name="font_display_xlarge_elegant_text_decoration">none</string>
   <string name="font_display_xlarge_elegant_font_style">normal</string>
   <string name="font_display_large_normal_font_family">Source Serif 4</string>
-  <string name="font_display_large_normal_font_weight">regular</string>
+  <integer name="font_display_large_normal_font_weight">400</integer>
   <dimen name="font_display_large_normal_line_height">28sp</dimen>
   <dimen name="font_display_large_normal_font_size">19sp</dimen>
   <item name="font_display_large_normal_letter_spacing" type="dimen" format="float">0</item>
@@ -3136,7 +3136,7 @@
   <string name="font_display_large_normal_text_decoration">none</string>
   <string name="font_display_large_normal_font_style">normal</string>
   <string name="font_display_large_strong_font_family">Source Serif 4</string>
-  <string name="font_display_large_strong_font_weight">semibold</string>
+  <integer name="font_display_large_strong_font_weight">600</integer>
   <dimen name="font_display_large_strong_line_height">28sp</dimen>
   <dimen name="font_display_large_strong_font_size">19sp</dimen>
   <item name="font_display_large_strong_letter_spacing" type="dimen" format="float">0</item>
@@ -3145,7 +3145,7 @@
   <string name="font_display_large_strong_text_decoration">none</string>
   <string name="font_display_large_strong_font_style">normal</string>
   <string name="font_display_large_mass_font_family">Source Serif 4</string>
-  <string name="font_display_large_mass_font_weight">bold</string>
+  <integer name="font_display_large_mass_font_weight">700</integer>
   <dimen name="font_display_large_mass_line_height">28sp</dimen>
   <dimen name="font_display_large_mass_font_size">19sp</dimen>
   <item name="font_display_large_mass_letter_spacing" type="dimen" format="float">0</item>
@@ -3154,7 +3154,7 @@
   <string name="font_display_large_mass_text_decoration">none</string>
   <string name="font_display_large_mass_font_style">normal</string>
   <string name="font_display_large_elegant_font_family">Source Serif 4</string>
-  <string name="font_display_large_elegant_font_weight">light</string>
+  <integer name="font_display_large_elegant_font_weight">300</integer>
   <dimen name="font_display_large_elegant_line_height">28sp</dimen>
   <dimen name="font_display_large_elegant_font_size">19sp</dimen>
   <item name="font_display_large_elegant_letter_spacing" type="dimen" format="float">0</item>
@@ -3163,7 +3163,7 @@
   <string name="font_display_large_elegant_text_decoration">none</string>
   <string name="font_display_large_elegant_font_style">normal</string>
   <string name="font_display_medium_normal_font_family">Source Serif 4</string>
-  <string name="font_display_medium_normal_font_weight">regular</string>
+  <integer name="font_display_medium_normal_font_weight">400</integer>
   <dimen name="font_display_medium_normal_line_height">24sp</dimen>
   <dimen name="font_display_medium_normal_font_size">16sp</dimen>
   <item name="font_display_medium_normal_letter_spacing" type="dimen" format="float">0</item>
@@ -3172,7 +3172,7 @@
   <string name="font_display_medium_normal_text_decoration">none</string>
   <string name="font_display_medium_normal_font_style">normal</string>
   <string name="font_display_medium_strong_font_family">Source Serif 4</string>
-  <string name="font_display_medium_strong_font_weight">semibold</string>
+  <integer name="font_display_medium_strong_font_weight">600</integer>
   <dimen name="font_display_medium_strong_line_height">24sp</dimen>
   <dimen name="font_display_medium_strong_font_size">16sp</dimen>
   <item name="font_display_medium_strong_letter_spacing" type="dimen" format="float">0</item>
@@ -3181,7 +3181,7 @@
   <string name="font_display_medium_strong_text_decoration">none</string>
   <string name="font_display_medium_strong_font_style">normal</string>
   <string name="font_display_medium_mass_font_family">Source Serif 4</string>
-  <string name="font_display_medium_mass_font_weight">bold</string>
+  <integer name="font_display_medium_mass_font_weight">700</integer>
   <dimen name="font_display_medium_mass_line_height">24sp</dimen>
   <dimen name="font_display_medium_mass_font_size">16sp</dimen>
   <item name="font_display_medium_mass_letter_spacing" type="dimen" format="float">0</item>
@@ -3190,7 +3190,7 @@
   <string name="font_display_medium_mass_text_decoration">none</string>
   <string name="font_display_medium_mass_font_style">normal</string>
   <string name="font_display_medium_elegant_font_family">Source Serif 4</string>
-  <string name="font_display_medium_elegant_font_weight">light</string>
+  <integer name="font_display_medium_elegant_font_weight">300</integer>
   <dimen name="font_display_medium_elegant_line_height">24sp</dimen>
   <dimen name="font_display_medium_elegant_font_size">16sp</dimen>
   <item name="font_display_medium_elegant_letter_spacing" type="dimen" format="float">0</item>
@@ -3199,7 +3199,7 @@
   <string name="font_display_medium_elegant_text_decoration">none</string>
   <string name="font_display_medium_elegant_font_style">normal</string>
   <string name="font_display_small_normal_font_family">Source Serif 4</string>
-  <string name="font_display_small_normal_font_weight">regular</string>
+  <integer name="font_display_small_normal_font_weight">400</integer>
   <dimen name="font_display_small_normal_line_height">20sp</dimen>
   <dimen name="font_display_small_normal_font_size">14sp</dimen>
   <item name="font_display_small_normal_letter_spacing" type="dimen" format="float">0</item>
@@ -3208,7 +3208,7 @@
   <string name="font_display_small_normal_text_decoration">none</string>
   <string name="font_display_small_normal_font_style">normal</string>
   <string name="font_display_small_strong_font_family">Source Serif 4</string>
-  <string name="font_display_small_strong_font_weight">semibold</string>
+  <integer name="font_display_small_strong_font_weight">600</integer>
   <dimen name="font_display_small_strong_line_height">20sp</dimen>
   <dimen name="font_display_small_strong_font_size">14sp</dimen>
   <item name="font_display_small_strong_letter_spacing" type="dimen" format="float">0</item>
@@ -3217,7 +3217,7 @@
   <string name="font_display_small_strong_text_decoration">none</string>
   <string name="font_display_small_strong_font_style">normal</string>
   <string name="font_display_small_mass_font_family">Source Serif 4</string>
-  <string name="font_display_small_mass_font_weight">bold</string>
+  <integer name="font_display_small_mass_font_weight">700</integer>
   <dimen name="font_display_small_mass_line_height">20sp</dimen>
   <dimen name="font_display_small_mass_font_size">14sp</dimen>
   <item name="font_display_small_mass_letter_spacing" type="dimen" format="float">0</item>
@@ -3226,7 +3226,7 @@
   <string name="font_display_small_mass_text_decoration">none</string>
   <string name="font_display_small_mass_font_style">normal</string>
   <string name="font_display_small_elegant_font_family">Source Serif 4</string>
-  <string name="font_display_small_elegant_font_weight">light</string>
+  <integer name="font_display_small_elegant_font_weight">300</integer>
   <dimen name="font_display_small_elegant_line_height">20sp</dimen>
   <dimen name="font_display_small_elegant_font_size">14sp</dimen>
   <item name="font_display_small_elegant_letter_spacing" type="dimen" format="float">0</item>
@@ -3235,7 +3235,7 @@
   <string name="font_display_small_elegant_text_decoration">none</string>
   <string name="font_display_small_elegant_font_style">normal</string>
   <string name="font_display_xsmall_normal_font_family">Source Serif 4</string>
-  <string name="font_display_xsmall_normal_font_weight">regular</string>
+  <integer name="font_display_xsmall_normal_font_weight">400</integer>
   <dimen name="font_display_xsmall_normal_line_height">18sp</dimen>
   <dimen name="font_display_xsmall_normal_font_size">12sp</dimen>
   <item name="font_display_xsmall_normal_letter_spacing" type="dimen" format="float">0</item>
@@ -3244,7 +3244,7 @@
   <string name="font_display_xsmall_normal_text_decoration">none</string>
   <string name="font_display_xsmall_normal_font_style">normal</string>
   <string name="font_display_xsmall_strong_font_family">Source Serif 4</string>
-  <string name="font_display_xsmall_strong_font_weight">semibold</string>
+  <integer name="font_display_xsmall_strong_font_weight">600</integer>
   <dimen name="font_display_xsmall_strong_line_height">18sp</dimen>
   <dimen name="font_display_xsmall_strong_font_size">12sp</dimen>
   <item name="font_display_xsmall_strong_letter_spacing" type="dimen" format="float">0</item>
@@ -3253,7 +3253,7 @@
   <string name="font_display_xsmall_strong_text_decoration">none</string>
   <string name="font_display_xsmall_strong_font_style">normal</string>
   <string name="font_display_xsmall_mass_font_family">Source Serif 4</string>
-  <string name="font_display_xsmall_mass_font_weight">bold</string>
+  <integer name="font_display_xsmall_mass_font_weight">700</integer>
   <dimen name="font_display_xsmall_mass_line_height">18sp</dimen>
   <dimen name="font_display_xsmall_mass_font_size">12sp</dimen>
   <item name="font_display_xsmall_mass_letter_spacing" type="dimen" format="float">0</item>
@@ -3262,7 +3262,7 @@
   <string name="font_display_xsmall_mass_text_decoration">none</string>
   <string name="font_display_xsmall_mass_font_style">normal</string>
   <string name="font_display_xsmall_elegant_font_family">Source Serif 4</string>
-  <string name="font_display_xsmall_elegant_font_weight">light</string>
+  <integer name="font_display_xsmall_elegant_font_weight">300</integer>
   <dimen name="font_display_xsmall_elegant_line_height">18sp</dimen>
   <dimen name="font_display_xsmall_elegant_font_size">12sp</dimen>
   <item name="font_display_xsmall_elegant_letter_spacing" type="dimen" format="float">0</item>
@@ -3271,7 +3271,7 @@
   <string name="font_display_xsmall_elegant_text_decoration">none</string>
   <string name="font_display_xsmall_elegant_font_style">normal</string>
   <string name="font_display_2xsmall_normal_font_family">Source Serif 4</string>
-  <string name="font_display_2xsmall_normal_font_weight">regular</string>
+  <integer name="font_display_2xsmall_normal_font_weight">400</integer>
   <dimen name="font_display_2xsmall_normal_line_height">14sp</dimen>
   <dimen name="font_display_2xsmall_normal_font_size">10sp</dimen>
   <item name="font_display_2xsmall_normal_letter_spacing" type="dimen" format="float">0</item>
@@ -3280,7 +3280,7 @@
   <string name="font_display_2xsmall_normal_text_decoration">none</string>
   <string name="font_display_2xsmall_normal_font_style">normal</string>
   <string name="font_display_2xsmall_strong_font_family">Source Serif 4</string>
-  <string name="font_display_2xsmall_strong_font_weight">semibold</string>
+  <integer name="font_display_2xsmall_strong_font_weight">600</integer>
   <dimen name="font_display_2xsmall_strong_line_height">14sp</dimen>
   <dimen name="font_display_2xsmall_strong_font_size">10sp</dimen>
   <item name="font_display_2xsmall_strong_letter_spacing" type="dimen" format="float">0</item>
@@ -3289,7 +3289,7 @@
   <string name="font_display_2xsmall_strong_text_decoration">none</string>
   <string name="font_display_2xsmall_strong_font_style">normal</string>
   <string name="font_display_2xsmall_mass_font_family">Source Serif 4</string>
-  <string name="font_display_2xsmall_mass_font_weight">bold</string>
+  <integer name="font_display_2xsmall_mass_font_weight">700</integer>
   <dimen name="font_display_2xsmall_mass_line_height">14sp</dimen>
   <dimen name="font_display_2xsmall_mass_font_size">10sp</dimen>
   <item name="font_display_2xsmall_mass_letter_spacing" type="dimen" format="float">0</item>
@@ -3298,7 +3298,7 @@
   <string name="font_display_2xsmall_mass_text_decoration">none</string>
   <string name="font_display_2xsmall_mass_font_style">normal</string>
   <string name="font_display_2xsmall_elegant_font_family">Source Serif 4</string>
-  <string name="font_display_2xsmall_elegant_font_weight">light</string>
+  <integer name="font_display_2xsmall_elegant_font_weight">300</integer>
   <dimen name="font_display_2xsmall_elegant_line_height">14sp</dimen>
   <dimen name="font_display_2xsmall_elegant_font_size">10sp</dimen>
   <item name="font_display_2xsmall_elegant_letter_spacing" type="dimen" format="float">0</item>
@@ -3307,7 +3307,7 @@
   <string name="font_display_2xsmall_elegant_text_decoration">none</string>
   <string name="font_display_2xsmall_elegant_font_style">normal</string>
   <string name="font_html_h1_font_family">Source Serif 4</string>
-  <string name="font_html_h1_font_weight">bold</string>
+  <integer name="font_html_h1_font_weight">700</integer>
   <dimen name="font_html_h1_line_height">46sp</dimen>
   <dimen name="font_html_h1_font_size">38sp</dimen>
   <item name="font_html_h1_letter_spacing" type="dimen" format="float">0</item>
@@ -3316,7 +3316,7 @@
   <string name="font_html_h1_text_decoration">none</string>
   <string name="font_html_h1_font_style">normal</string>
   <string name="font_html_h2_font_family">Source Serif 4</string>
-  <string name="font_html_h2_font_weight">bold</string>
+  <integer name="font_html_h2_font_weight">700</integer>
   <dimen name="font_html_h2_line_height">40sp</dimen>
   <dimen name="font_html_h2_font_size">32sp</dimen>
   <item name="font_html_h2_letter_spacing" type="dimen" format="float">0</item>
@@ -3325,7 +3325,7 @@
   <string name="font_html_h2_text_decoration">none</string>
   <string name="font_html_h2_font_style">normal</string>
   <string name="font_html_h3_font_family">Source Serif 4</string>
-  <string name="font_html_h3_font_weight">bold</string>
+  <integer name="font_html_h3_font_weight">700</integer>
   <dimen name="font_html_h3_line_height">32sp</dimen>
   <dimen name="font_html_h3_font_size">26sp</dimen>
   <item name="font_html_h3_letter_spacing" type="dimen" format="float">0</item>
@@ -3334,7 +3334,7 @@
   <string name="font_html_h3_text_decoration">none</string>
   <string name="font_html_h3_font_style">normal</string>
   <string name="font_html_h4_font_family">Source Serif 4</string>
-  <string name="font_html_h4_font_weight">bold</string>
+  <integer name="font_html_h4_font_weight">700</integer>
   <dimen name="font_html_h4_line_height">28sp</dimen>
   <dimen name="font_html_h4_font_size">22sp</dimen>
   <item name="font_html_h4_letter_spacing" type="dimen" format="float">0</item>
@@ -3343,7 +3343,7 @@
   <string name="font_html_h4_text_decoration">none</string>
   <string name="font_html_h4_font_style">normal</string>
   <string name="font_html_h5_font_family">Source Serif 4</string>
-  <string name="font_html_h5_font_weight">bold</string>
+  <integer name="font_html_h5_font_weight">700</integer>
   <dimen name="font_html_h5_line_height">24sp</dimen>
   <dimen name="font_html_h5_font_size">19sp</dimen>
   <item name="font_html_h5_letter_spacing" type="dimen" format="float">0</item>
@@ -3352,7 +3352,7 @@
   <string name="font_html_h5_text_decoration">none</string>
   <string name="font_html_h5_font_style">normal</string>
   <string name="font_html_h6_font_family">Source Serif 4</string>
-  <string name="font_html_h6_font_weight">bold</string>
+  <integer name="font_html_h6_font_weight">700</integer>
   <dimen name="font_html_h6_line_height">20sp</dimen>
   <dimen name="font_html_h6_font_size">16sp</dimen>
   <item name="font_html_h6_letter_spacing" type="dimen" format="float">0</item>
@@ -3361,7 +3361,7 @@
   <string name="font_html_h6_text_decoration">none</string>
   <string name="font_html_h6_font_style">normal</string>
   <string name="font_html_body_font_family">Source Serif 4</string>
-  <string name="font_html_body_font_weight">regular</string>
+  <integer name="font_html_body_font_weight">400</integer>
   <dimen name="font_html_body_line_height">24sp</dimen>
   <dimen name="font_html_body_font_size">16sp</dimen>
   <item name="font_html_body_letter_spacing" type="dimen" format="float">0</item>
@@ -3370,7 +3370,7 @@
   <string name="font_html_body_text_decoration">none</string>
   <string name="font_html_body_font_style">normal</string>
   <string name="font_html_code_font_family">IBM Plex Mono</string>
-  <string name="font_html_code_font_weight">regular</string>
+  <integer name="font_html_code_font_weight">400</integer>
   <dimen name="font_html_code_line_height">24sp</dimen>
   <dimen name="font_html_code_font_size">16sp</dimen>
   <item name="font_html_code_letter_spacing" type="dimen" format="float">0</item>
@@ -3379,7 +3379,7 @@
   <string name="font_html_code_text_decoration">none</string>
   <string name="font_html_code_font_style">normal</string>
   <string name="font_html_paragraph_font_family">Source Serif 4</string>
-  <string name="font_html_paragraph_font_weight">regular</string>
+  <integer name="font_html_paragraph_font_weight">400</integer>
   <dimen name="font_html_paragraph_line_height">24sp</dimen>
   <dimen name="font_html_paragraph_font_size">16sp</dimen>
   <item name="font_html_paragraph_letter_spacing" type="dimen" format="float">0</item>
@@ -3388,7 +3388,7 @@
   <string name="font_html_paragraph_text_decoration">none</string>
   <string name="font_html_paragraph_font_style">normal</string>
   <string name="font_html_blockquote_font_family">Source Serif 4</string>
-  <string name="font_html_blockquote_font_weight">light</string>
+  <integer name="font_html_blockquote_font_weight">300</integer>
   <dimen name="font_html_blockquote_line_height">24sp</dimen>
   <dimen name="font_html_blockquote_font_size">16sp</dimen>
   <item name="font_html_blockquote_letter_spacing" type="dimen" format="float">0</item>
@@ -3397,7 +3397,7 @@
   <string name="font_html_blockquote_text_decoration">none</string>
   <string name="font_html_blockquote_font_style">italic</string>
   <string name="font_html_list_font_family">Source Serif 4</string>
-  <string name="font_html_list_font_weight">regular</string>
+  <integer name="font_html_list_font_weight">400</integer>
   <dimen name="font_html_list_line_height">24sp</dimen>
   <dimen name="font_html_list_font_size">16sp</dimen>
   <item name="font_html_list_letter_spacing" type="dimen" format="float">0</item>
@@ -3406,7 +3406,7 @@
   <string name="font_html_list_text_decoration">none</string>
   <string name="font_html_list_font_style">normal</string>
   <string name="font_html_cite_font_family">Source Serif 4</string>
-  <string name="font_html_cite_font_weight">semibold</string>
+  <integer name="font_html_cite_font_weight">600</integer>
   <dimen name="font_html_cite_line_height">20sp</dimen>
   <dimen name="font_html_cite_font_size">14sp</dimen>
   <item name="font_html_cite_letter_spacing" type="dimen" format="float">0</item>
@@ -3415,7 +3415,7 @@
   <string name="font_html_cite_text_decoration">none</string>
   <string name="font_html_cite_font_style">normal</string>
   <string name="font_code_large_normal_font_family">IBM Plex Mono</string>
-  <string name="font_code_large_normal_font_weight">regular</string>
+  <integer name="font_code_large_normal_font_weight">400</integer>
   <dimen name="font_code_large_normal_line_height">28sp</dimen>
   <dimen name="font_code_large_normal_font_size">19sp</dimen>
   <item name="font_code_large_normal_letter_spacing" type="dimen" format="float">0</item>
@@ -3424,7 +3424,7 @@
   <string name="font_code_large_normal_text_decoration">none</string>
   <string name="font_code_large_normal_font_style">normal</string>
   <string name="font_code_large_strong_font_family">IBM Plex Mono</string>
-  <string name="font_code_large_strong_font_weight">bold</string>
+  <integer name="font_code_large_strong_font_weight">700</integer>
   <dimen name="font_code_large_strong_line_height">28sp</dimen>
   <dimen name="font_code_large_strong_font_size">19sp</dimen>
   <item name="font_code_large_strong_letter_spacing" type="dimen" format="float">0</item>
@@ -3433,7 +3433,7 @@
   <string name="font_code_large_strong_text_decoration">none</string>
   <string name="font_code_large_strong_font_style">normal</string>
   <string name="font_code_medium_normal_font_family">IBM Plex Mono</string>
-  <string name="font_code_medium_normal_font_weight">regular</string>
+  <integer name="font_code_medium_normal_font_weight">400</integer>
   <dimen name="font_code_medium_normal_line_height">24sp</dimen>
   <dimen name="font_code_medium_normal_font_size">16sp</dimen>
   <item name="font_code_medium_normal_letter_spacing" type="dimen" format="float">0</item>
@@ -3442,7 +3442,7 @@
   <string name="font_code_medium_normal_text_decoration">none</string>
   <string name="font_code_medium_normal_font_style">normal</string>
   <string name="font_code_medium_strong_font_family">IBM Plex Mono</string>
-  <string name="font_code_medium_strong_font_weight">bold</string>
+  <integer name="font_code_medium_strong_font_weight">700</integer>
   <dimen name="font_code_medium_strong_line_height">24sp</dimen>
   <dimen name="font_code_medium_strong_font_size">16sp</dimen>
   <item name="font_code_medium_strong_letter_spacing" type="dimen" format="float">0</item>
@@ -3451,7 +3451,7 @@
   <string name="font_code_medium_strong_text_decoration">none</string>
   <string name="font_code_medium_strong_font_style">normal</string>
   <string name="font_code_small_normal_font_family">IBM Plex Mono</string>
-  <string name="font_code_small_normal_font_weight">regular</string>
+  <integer name="font_code_small_normal_font_weight">400</integer>
   <dimen name="font_code_small_normal_line_height">20sp</dimen>
   <dimen name="font_code_small_normal_font_size">14sp</dimen>
   <item name="font_code_small_normal_letter_spacing" type="dimen" format="float">0</item>
@@ -3460,7 +3460,7 @@
   <string name="font_code_small_normal_text_decoration">none</string>
   <string name="font_code_small_normal_font_style">normal</string>
   <string name="font_code_small_strong_font_family">IBM Plex Mono</string>
-  <string name="font_code_small_strong_font_weight">bold</string>
+  <integer name="font_code_small_strong_font_weight">700</integer>
   <dimen name="font_code_small_strong_line_height">20sp</dimen>
   <dimen name="font_code_small_strong_font_size">14sp</dimen>
   <item name="font_code_small_strong_letter_spacing" type="dimen" format="float">0</item>
@@ -3469,7 +3469,7 @@
   <string name="font_code_small_strong_text_decoration">none</string>
   <string name="font_code_small_strong_font_style">normal</string>
   <string name="font_accordion_medium_title_font_family">DM Sans</string>
-  <string name="font_accordion_medium_title_font_weight">semibold</string>
+  <integer name="font_accordion_medium_title_font_weight">600</integer>
   <dimen name="font_accordion_medium_title_line_height">24sp</dimen>
   <dimen name="font_accordion_medium_title_font_size">16sp</dimen>
   <item name="font_accordion_medium_title_letter_spacing" type="dimen" format="float">0</item>
@@ -3478,7 +3478,7 @@
   <string name="font_accordion_medium_title_text_decoration">none</string>
   <string name="font_accordion_medium_title_font_style">normal</string>
   <string name="font_accordion_medium_body_font_family">DM Sans</string>
-  <string name="font_accordion_medium_body_font_weight">regular</string>
+  <integer name="font_accordion_medium_body_font_weight">400</integer>
   <dimen name="font_accordion_medium_body_line_height">24sp</dimen>
   <dimen name="font_accordion_medium_body_font_size">16sp</dimen>
   <item name="font_accordion_medium_body_letter_spacing" type="dimen" format="float">0</item>
@@ -3487,7 +3487,7 @@
   <string name="font_accordion_medium_body_text_decoration">none</string>
   <string name="font_accordion_medium_body_font_style">normal</string>
   <string name="font_accordion_large_title_font_family">DM Sans</string>
-  <string name="font_accordion_large_title_font_weight">semibold</string>
+  <integer name="font_accordion_large_title_font_weight">600</integer>
   <dimen name="font_accordion_large_title_line_height">28sp</dimen>
   <dimen name="font_accordion_large_title_font_size">19sp</dimen>
   <item name="font_accordion_large_title_letter_spacing" type="dimen" format="float">0</item>
@@ -3496,7 +3496,7 @@
   <string name="font_accordion_large_title_text_decoration">none</string>
   <string name="font_accordion_large_title_font_style">normal</string>
   <string name="font_accordion_large_body_font_family">DM Sans</string>
-  <string name="font_accordion_large_body_font_weight">regular</string>
+  <integer name="font_accordion_large_body_font_weight">400</integer>
   <dimen name="font_accordion_large_body_line_height">28sp</dimen>
   <dimen name="font_accordion_large_body_font_size">19sp</dimen>
   <item name="font_accordion_large_body_letter_spacing" type="dimen" format="float">0</item>
@@ -3505,7 +3505,7 @@
   <string name="font_accordion_large_body_text_decoration">none</string>
   <string name="font_accordion_large_body_font_style">normal</string>
   <string name="font_accordion_small_title_font_family">DM Sans</string>
-  <string name="font_accordion_small_title_font_weight">semibold</string>
+  <integer name="font_accordion_small_title_font_weight">600</integer>
   <dimen name="font_accordion_small_title_line_height">20sp</dimen>
   <dimen name="font_accordion_small_title_font_size">14sp</dimen>
   <item name="font_accordion_small_title_letter_spacing" type="dimen" format="float">0</item>
@@ -3514,7 +3514,7 @@
   <string name="font_accordion_small_title_text_decoration">none</string>
   <string name="font_accordion_small_title_font_style">normal</string>
   <string name="font_accordion_small_body_font_family">DM Sans</string>
-  <string name="font_accordion_small_body_font_weight">regular</string>
+  <integer name="font_accordion_small_body_font_weight">400</integer>
   <dimen name="font_accordion_small_body_line_height">20sp</dimen>
   <dimen name="font_accordion_small_body_font_size">14sp</dimen>
   <item name="font_accordion_small_body_letter_spacing" type="dimen" format="float">0</item>
@@ -3523,7 +3523,7 @@
   <string name="font_accordion_small_body_text_decoration">none</string>
   <string name="font_accordion_small_body_font_style">normal</string>
   <string name="font_alert_large_title_font_family">DM Sans</string>
-  <string name="font_alert_large_title_font_weight">semibold</string>
+  <integer name="font_alert_large_title_font_weight">600</integer>
   <dimen name="font_alert_large_title_line_height">32sp</dimen>
   <dimen name="font_alert_large_title_font_size">22sp</dimen>
   <item name="font_alert_large_title_letter_spacing" type="dimen" format="float">0</item>
@@ -3532,7 +3532,7 @@
   <string name="font_alert_large_title_text_decoration">none</string>
   <string name="font_alert_large_title_font_style">normal</string>
   <string name="font_alert_large_body_font_family">DM Sans</string>
-  <string name="font_alert_large_body_font_weight">regular</string>
+  <integer name="font_alert_large_body_font_weight">400</integer>
   <dimen name="font_alert_large_body_line_height">28sp</dimen>
   <dimen name="font_alert_large_body_font_size">19sp</dimen>
   <item name="font_alert_large_body_letter_spacing" type="dimen" format="float">0</item>
@@ -3541,7 +3541,7 @@
   <string name="font_alert_large_body_text_decoration">none</string>
   <string name="font_alert_large_body_font_style">normal</string>
   <string name="font_alert_small_title_font_family">DM Sans</string>
-  <string name="font_alert_small_title_font_weight">semibold</string>
+  <integer name="font_alert_small_title_font_weight">600</integer>
   <dimen name="font_alert_small_title_line_height">28sp</dimen>
   <dimen name="font_alert_small_title_font_size">19sp</dimen>
   <item name="font_alert_small_title_letter_spacing" type="dimen" format="float">0</item>
@@ -3550,7 +3550,7 @@
   <string name="font_alert_small_title_text_decoration">none</string>
   <string name="font_alert_small_title_font_style">normal</string>
   <string name="font_alert_small_body_font_family">DM Sans</string>
-  <string name="font_alert_small_body_font_weight">regular</string>
+  <integer name="font_alert_small_body_font_weight">400</integer>
   <dimen name="font_alert_small_body_line_height">24sp</dimen>
   <dimen name="font_alert_small_body_font_size">16sp</dimen>
   <item name="font_alert_small_body_letter_spacing" type="dimen" format="float">0</item>
@@ -3559,7 +3559,7 @@
   <string name="font_alert_small_body_text_decoration">none</string>
   <string name="font_alert_small_body_font_style">normal</string>
   <string name="font_assist_medium_font_family">DM Sans</string>
-  <string name="font_assist_medium_font_weight">regular</string>
+  <integer name="font_assist_medium_font_weight">400</integer>
   <dimen name="font_assist_medium_line_height">24sp</dimen>
   <dimen name="font_assist_medium_font_size">16sp</dimen>
   <item name="font_assist_medium_letter_spacing" type="dimen" format="float">0</item>
@@ -3568,7 +3568,7 @@
   <string name="font_assist_medium_text_decoration">none</string>
   <string name="font_assist_medium_font_style">normal</string>
   <string name="font_assist_large_font_family">DM Sans</string>
-  <string name="font_assist_large_font_weight">regular</string>
+  <integer name="font_assist_large_font_weight">400</integer>
   <dimen name="font_assist_large_line_height">28sp</dimen>
   <dimen name="font_assist_large_font_size">19sp</dimen>
   <item name="font_assist_large_letter_spacing" type="dimen" format="float">0</item>
@@ -3577,7 +3577,7 @@
   <string name="font_assist_large_text_decoration">none</string>
   <string name="font_assist_large_font_style">normal</string>
   <string name="font_assist_small_font_family">DM Sans</string>
-  <string name="font_assist_small_font_weight">regular</string>
+  <integer name="font_assist_small_font_weight">400</integer>
   <dimen name="font_assist_small_line_height">20sp</dimen>
   <dimen name="font_assist_small_font_size">14sp</dimen>
   <item name="font_assist_small_letter_spacing" type="dimen" format="float">0</item>
@@ -3586,7 +3586,7 @@
   <string name="font_assist_small_text_decoration">none</string>
   <string name="font_assist_small_font_style">normal</string>
   <string name="font_badge_medium_font_family">DM Sans</string>
-  <string name="font_badge_medium_font_weight">semibold</string>
+  <integer name="font_badge_medium_font_weight">600</integer>
   <dimen name="font_badge_medium_line_height">20sp</dimen>
   <dimen name="font_badge_medium_font_size">14sp</dimen>
   <item name="font_badge_medium_letter_spacing" type="dimen" format="float">0</item>
@@ -3595,7 +3595,7 @@
   <string name="font_badge_medium_text_decoration">none</string>
   <string name="font_badge_medium_font_style">normal</string>
   <string name="font_badge_large_font_family">DM Sans</string>
-  <string name="font_badge_large_font_weight">semibold</string>
+  <integer name="font_badge_large_font_weight">600</integer>
   <dimen name="font_badge_large_line_height">24sp</dimen>
   <dimen name="font_badge_large_font_size">16sp</dimen>
   <item name="font_badge_large_letter_spacing" type="dimen" format="float">0</item>
@@ -3604,7 +3604,7 @@
   <string name="font_badge_large_text_decoration">none</string>
   <string name="font_badge_large_font_style">normal</string>
   <string name="font_badge_small_font_family">DM Sans</string>
-  <string name="font_badge_small_font_weight">semibold</string>
+  <integer name="font_badge_small_font_weight">600</integer>
   <dimen name="font_badge_small_line_height">18sp</dimen>
   <dimen name="font_badge_small_font_size">12sp</dimen>
   <item name="font_badge_small_letter_spacing" type="dimen" format="float">0</item>
@@ -3613,7 +3613,7 @@
   <string name="font_badge_small_text_decoration">none</string>
   <string name="font_badge_small_font_style">normal</string>
   <string name="font_breadcrumb_page_font_family">DM Sans</string>
-  <string name="font_breadcrumb_page_font_weight">regular</string>
+  <integer name="font_breadcrumb_page_font_weight">400</integer>
   <dimen name="font_breadcrumb_page_line_height">24sp</dimen>
   <dimen name="font_breadcrumb_page_font_size">16sp</dimen>
   <item name="font_breadcrumb_page_letter_spacing" type="dimen" format="float">0</item>
@@ -3622,7 +3622,7 @@
   <string name="font_breadcrumb_page_text_decoration">none</string>
   <string name="font_breadcrumb_page_font_style">normal</string>
   <string name="font_button_medium_font_family">DM Sans</string>
-  <string name="font_button_medium_font_weight">semibold</string>
+  <integer name="font_button_medium_font_weight">600</integer>
   <dimen name="font_button_medium_line_height">24sp</dimen>
   <dimen name="font_button_medium_font_size">16sp</dimen>
   <item name="font_button_medium_letter_spacing" type="dimen" format="float">0</item>
@@ -3631,7 +3631,7 @@
   <string name="font_button_medium_text_decoration">none</string>
   <string name="font_button_medium_font_style">normal</string>
   <string name="font_button_large_font_family">DM Sans</string>
-  <string name="font_button_large_font_weight">semibold</string>
+  <integer name="font_button_large_font_weight">600</integer>
   <dimen name="font_button_large_line_height">28sp</dimen>
   <dimen name="font_button_large_font_size">19sp</dimen>
   <item name="font_button_large_letter_spacing" type="dimen" format="float">0</item>
@@ -3640,7 +3640,7 @@
   <string name="font_button_large_text_decoration">none</string>
   <string name="font_button_large_font_style">normal</string>
   <string name="font_button_small_font_family">DM Sans</string>
-  <string name="font_button_small_font_weight">semibold</string>
+  <integer name="font_button_small_font_weight">600</integer>
   <dimen name="font_button_small_line_height">20sp</dimen>
   <dimen name="font_button_small_font_size">14sp</dimen>
   <item name="font_button_small_letter_spacing" type="dimen" format="float">0</item>
@@ -3649,7 +3649,7 @@
   <string name="font_button_small_text_decoration">none</string>
   <string name="font_button_small_font_style">normal</string>
   <string name="font_chip_medium_font_family">DM Sans</string>
-  <string name="font_chip_medium_font_weight">semibold</string>
+  <integer name="font_chip_medium_font_weight">600</integer>
   <dimen name="font_chip_medium_line_height">20sp</dimen>
   <dimen name="font_chip_medium_font_size">14sp</dimen>
   <item name="font_chip_medium_letter_spacing" type="dimen" format="float">0</item>
@@ -3658,7 +3658,7 @@
   <string name="font_chip_medium_text_decoration">none</string>
   <string name="font_chip_medium_font_style">normal</string>
   <string name="font_chip_large_font_family">DM Sans</string>
-  <string name="font_chip_large_font_weight">semibold</string>
+  <integer name="font_chip_large_font_weight">600</integer>
   <dimen name="font_chip_large_line_height">24sp</dimen>
   <dimen name="font_chip_large_font_size">16sp</dimen>
   <item name="font_chip_large_letter_spacing" type="dimen" format="float">0</item>
@@ -3667,7 +3667,7 @@
   <string name="font_chip_large_text_decoration">none</string>
   <string name="font_chip_large_font_style">normal</string>
   <string name="font_chip_small_font_family">DM Sans</string>
-  <string name="font_chip_small_font_weight">semibold</string>
+  <integer name="font_chip_small_font_weight">600</integer>
   <dimen name="font_chip_small_line_height">18sp</dimen>
   <dimen name="font_chip_small_font_size">12sp</dimen>
   <item name="font_chip_small_letter_spacing" type="dimen" format="float">0</item>
@@ -3676,7 +3676,7 @@
   <string name="font_chip_small_text_decoration">none</string>
   <string name="font_chip_small_font_style">normal</string>
   <string name="font_datepicker_day_font_family">DM Sans</string>
-  <string name="font_datepicker_day_font_weight">regular</string>
+  <integer name="font_datepicker_day_font_weight">400</integer>
   <dimen name="font_datepicker_day_line_height">20sp</dimen>
   <dimen name="font_datepicker_day_font_size">14sp</dimen>
   <item name="font_datepicker_day_letter_spacing" type="dimen" format="float">0</item>
@@ -3685,7 +3685,7 @@
   <string name="font_datepicker_day_text_decoration">none</string>
   <string name="font_datepicker_day_font_style">normal</string>
   <string name="font_datepicker_today_font_family">DM Sans</string>
-  <string name="font_datepicker_today_font_weight">semibold</string>
+  <integer name="font_datepicker_today_font_weight">600</integer>
   <dimen name="font_datepicker_today_line_height">20sp</dimen>
   <dimen name="font_datepicker_today_font_size">14sp</dimen>
   <item name="font_datepicker_today_letter_spacing" type="dimen" format="float">0</item>
@@ -3694,7 +3694,7 @@
   <string name="font_datepicker_today_text_decoration">none</string>
   <string name="font_datepicker_today_font_style">normal</string>
   <string name="font_datepicker_label_font_family">DM Sans</string>
-  <string name="font_datepicker_label_font_weight">semibold</string>
+  <integer name="font_datepicker_label_font_weight">600</integer>
   <dimen name="font_datepicker_label_line_height">20sp</dimen>
   <dimen name="font_datepicker_label_font_size">14sp</dimen>
   <item name="font_datepicker_label_letter_spacing" type="dimen" format="float">0</item>
@@ -3703,7 +3703,7 @@
   <string name="font_datepicker_label_text_decoration">none</string>
   <string name="font_datepicker_label_font_style">normal</string>
   <string name="font_dropdown_title_font_family">DM Sans</string>
-  <string name="font_dropdown_title_font_weight">semibold</string>
+  <integer name="font_dropdown_title_font_weight">600</integer>
   <dimen name="font_dropdown_title_line_height">20sp</dimen>
   <dimen name="font_dropdown_title_font_size">14sp</dimen>
   <item name="font_dropdown_title_letter_spacing" type="dimen" format="float">0</item>
@@ -3712,7 +3712,7 @@
   <string name="font_dropdown_title_text_decoration">none</string>
   <string name="font_dropdown_title_font_style">normal</string>
   <string name="font_dropdown_item_font_family">DM Sans</string>
-  <string name="font_dropdown_item_font_weight">regular</string>
+  <integer name="font_dropdown_item_font_weight">400</integer>
   <dimen name="font_dropdown_item_line_height">24sp</dimen>
   <dimen name="font_dropdown_item_font_size">16sp</dimen>
   <item name="font_dropdown_item_letter_spacing" type="dimen" format="float">0</item>
@@ -3721,7 +3721,7 @@
   <string name="font_dropdown_item_text_decoration">none</string>
   <string name="font_dropdown_item_font_style">normal</string>
   <string name="font_form_input_medium_label_font_family">DM Sans</string>
-  <string name="font_form_input_medium_label_font_weight">semibold</string>
+  <integer name="font_form_input_medium_label_font_weight">600</integer>
   <dimen name="font_form_input_medium_label_line_height">24sp</dimen>
   <dimen name="font_form_input_medium_label_font_size">16sp</dimen>
   <item name="font_form_input_medium_label_letter_spacing" type="dimen" format="float">0</item>
@@ -3730,7 +3730,7 @@
   <string name="font_form_input_medium_label_text_decoration">none</string>
   <string name="font_form_input_medium_label_font_style">normal</string>
   <string name="font_form_input_large_label_font_family">DM Sans</string>
-  <string name="font_form_input_large_label_font_weight">semibold</string>
+  <integer name="font_form_input_large_label_font_weight">600</integer>
   <dimen name="font_form_input_large_label_line_height">28sp</dimen>
   <dimen name="font_form_input_large_label_font_size">19sp</dimen>
   <item name="font_form_input_large_label_letter_spacing" type="dimen" format="float">0</item>
@@ -3739,7 +3739,7 @@
   <string name="font_form_input_large_label_text_decoration">none</string>
   <string name="font_form_input_large_label_font_style">normal</string>
   <string name="font_form_input_small_label_font_family">DM Sans</string>
-  <string name="font_form_input_small_label_font_weight">semibold</string>
+  <integer name="font_form_input_small_label_font_weight">600</integer>
   <dimen name="font_form_input_small_label_line_height">20sp</dimen>
   <dimen name="font_form_input_small_label_font_size">14sp</dimen>
   <item name="font_form_input_small_label_letter_spacing" type="dimen" format="float">0</item>
@@ -3748,7 +3748,7 @@
   <string name="font_form_input_small_label_text_decoration">none</string>
   <string name="font_form_input_small_label_font_style">normal</string>
   <string name="font_form_input_medium_text_font_family">DM Sans</string>
-  <string name="font_form_input_medium_text_font_weight">regular</string>
+  <integer name="font_form_input_medium_text_font_weight">400</integer>
   <dimen name="font_form_input_medium_text_line_height">24sp</dimen>
   <dimen name="font_form_input_medium_text_font_size">16sp</dimen>
   <item name="font_form_input_medium_text_letter_spacing" type="dimen" format="float">0</item>
@@ -3757,7 +3757,7 @@
   <string name="font_form_input_medium_text_text_decoration">none</string>
   <string name="font_form_input_medium_text_font_style">normal</string>
   <string name="font_form_input_large_text_font_family">DM Sans</string>
-  <string name="font_form_input_large_text_font_weight">regular</string>
+  <integer name="font_form_input_large_text_font_weight">400</integer>
   <dimen name="font_form_input_large_text_line_height">28sp</dimen>
   <dimen name="font_form_input_large_text_font_size">19sp</dimen>
   <item name="font_form_input_large_text_letter_spacing" type="dimen" format="float">0</item>
@@ -3766,7 +3766,7 @@
   <string name="font_form_input_large_text_text_decoration">none</string>
   <string name="font_form_input_large_text_font_style">normal</string>
   <string name="font_form_input_small_text_font_family">DM Sans</string>
-  <string name="font_form_input_small_text_font_weight">regular</string>
+  <integer name="font_form_input_small_text_font_weight">400</integer>
   <dimen name="font_form_input_small_text_line_height">20sp</dimen>
   <dimen name="font_form_input_small_text_font_size">14sp</dimen>
   <item name="font_form_input_small_text_letter_spacing" type="dimen" format="float">0</item>
@@ -3775,7 +3775,7 @@
   <string name="font_form_input_small_text_text_decoration">none</string>
   <string name="font_form_input_small_text_font_style">normal</string>
   <string name="font_form_input_floating_text_font_family">DM Sans</string>
-  <string name="font_form_input_floating_text_font_weight">regular</string>
+  <integer name="font_form_input_floating_text_font_weight">400</integer>
   <dimen name="font_form_input_floating_text_line_height">24sp</dimen>
   <dimen name="font_form_input_floating_text_font_size">16sp</dimen>
   <item name="font_form_input_floating_text_letter_spacing" type="dimen" format="float">0</item>
@@ -3784,7 +3784,7 @@
   <string name="font_form_input_floating_text_text_decoration">none</string>
   <string name="font_form_input_floating_text_font_style">normal</string>
   <string name="font_form_input_floating_label_font_family">DM Sans</string>
-  <string name="font_form_input_floating_label_font_weight">regular</string>
+  <integer name="font_form_input_floating_label_font_weight">400</integer>
   <dimen name="font_form_input_floating_label_line_height">18sp</dimen>
   <dimen name="font_form_input_floating_label_font_size">12sp</dimen>
   <item name="font_form_input_floating_label_letter_spacing" type="dimen" format="float">0</item>
@@ -3793,7 +3793,7 @@
   <string name="font_form_input_floating_label_text_decoration">none</string>
   <string name="font_form_input_floating_label_font_style">normal</string>
   <string name="font_modal_large_title_font_family">DM Sans</string>
-  <string name="font_modal_large_title_font_weight">semibold</string>
+  <integer name="font_modal_large_title_font_weight">600</integer>
   <dimen name="font_modal_large_title_line_height">32sp</dimen>
   <dimen name="font_modal_large_title_font_size">22sp</dimen>
   <item name="font_modal_large_title_letter_spacing" type="dimen" format="float">0</item>
@@ -3802,7 +3802,7 @@
   <string name="font_modal_large_title_text_decoration">none</string>
   <string name="font_modal_large_title_font_style">normal</string>
   <string name="font_modal_large_subtitle_font_family">DM Sans</string>
-  <string name="font_modal_large_subtitle_font_weight">regular</string>
+  <integer name="font_modal_large_subtitle_font_weight">400</integer>
   <dimen name="font_modal_large_subtitle_line_height">24sp</dimen>
   <dimen name="font_modal_large_subtitle_font_size">16sp</dimen>
   <item name="font_modal_large_subtitle_letter_spacing" type="dimen" format="float">0</item>
@@ -3811,7 +3811,7 @@
   <string name="font_modal_large_subtitle_text_decoration">none</string>
   <string name="font_modal_large_subtitle_font_style">normal</string>
   <string name="font_modal_medium_title_font_family">DM Sans</string>
-  <string name="font_modal_medium_title_font_weight">semibold</string>
+  <integer name="font_modal_medium_title_font_weight">600</integer>
   <dimen name="font_modal_medium_title_line_height">28sp</dimen>
   <dimen name="font_modal_medium_title_font_size">19sp</dimen>
   <item name="font_modal_medium_title_letter_spacing" type="dimen" format="float">0</item>
@@ -3820,7 +3820,7 @@
   <string name="font_modal_medium_title_text_decoration">none</string>
   <string name="font_modal_medium_title_font_style">normal</string>
   <string name="font_modal_medium_subtitle_font_family">DM Sans</string>
-  <string name="font_modal_medium_subtitle_font_weight">regular</string>
+  <integer name="font_modal_medium_subtitle_font_weight">400</integer>
   <dimen name="font_modal_medium_subtitle_line_height">24sp</dimen>
   <dimen name="font_modal_medium_subtitle_font_size">16sp</dimen>
   <item name="font_modal_medium_subtitle_letter_spacing" type="dimen" format="float">0</item>
@@ -3829,7 +3829,7 @@
   <string name="font_modal_medium_subtitle_text_decoration">none</string>
   <string name="font_modal_medium_subtitle_font_style">normal</string>
   <string name="font_modal_small_title_font_family">DM Sans</string>
-  <string name="font_modal_small_title_font_weight">semibold</string>
+  <integer name="font_modal_small_title_font_weight">600</integer>
   <dimen name="font_modal_small_title_line_height">24sp</dimen>
   <dimen name="font_modal_small_title_font_size">16sp</dimen>
   <item name="font_modal_small_title_letter_spacing" type="dimen" format="float">0</item>
@@ -3838,7 +3838,7 @@
   <string name="font_modal_small_title_text_decoration">none</string>
   <string name="font_modal_small_title_font_style">normal</string>
   <string name="font_modal_small_subtitle_font_family">DM Sans</string>
-  <string name="font_modal_small_subtitle_font_weight">regular</string>
+  <integer name="font_modal_small_subtitle_font_weight">400</integer>
   <dimen name="font_modal_small_subtitle_line_height">24sp</dimen>
   <dimen name="font_modal_small_subtitle_font_size">16sp</dimen>
   <item name="font_modal_small_subtitle_letter_spacing" type="dimen" format="float">0</item>
@@ -3847,7 +3847,7 @@
   <string name="font_modal_small_subtitle_text_decoration">none</string>
   <string name="font_modal_small_subtitle_font_style">normal</string>
   <string name="font_notification_title_font_family">DM Sans</string>
-  <string name="font_notification_title_font_weight">semibold</string>
+  <integer name="font_notification_title_font_weight">600</integer>
   <dimen name="font_notification_title_line_height">28sp</dimen>
   <dimen name="font_notification_title_font_size">19sp</dimen>
   <item name="font_notification_title_letter_spacing" type="dimen" format="float">0</item>
@@ -3856,7 +3856,7 @@
   <string name="font_notification_title_text_decoration">none</string>
   <string name="font_notification_title_font_style">normal</string>
   <string name="font_notification_message_font_family">DM Sans</string>
-  <string name="font_notification_message_font_weight">regular</string>
+  <integer name="font_notification_message_font_weight">400</integer>
   <dimen name="font_notification_message_line_height">24sp</dimen>
   <dimen name="font_notification_message_font_size">16sp</dimen>
   <item name="font_notification_message_letter_spacing" type="dimen" format="float">0</item>
@@ -3865,7 +3865,7 @@
   <string name="font_notification_message_text_decoration">none</string>
   <string name="font_notification_message_font_style">normal</string>
   <string name="font_page_large_title_font_family">DM Sans</string>
-  <string name="font_page_large_title_font_weight">semibold</string>
+  <integer name="font_page_large_title_font_weight">600</integer>
   <dimen name="font_page_large_title_line_height">36sp</dimen>
   <dimen name="font_page_large_title_font_size">26sp</dimen>
   <item name="font_page_large_title_letter_spacing" type="dimen" format="float">0</item>
@@ -3874,7 +3874,7 @@
   <string name="font_page_large_title_text_decoration">none</string>
   <string name="font_page_large_title_font_style">normal</string>
   <string name="font_page_large_subtitle_font_family">DM Sans</string>
-  <string name="font_page_large_subtitle_font_weight">regular</string>
+  <integer name="font_page_large_subtitle_font_weight">400</integer>
   <dimen name="font_page_large_subtitle_line_height">24sp</dimen>
   <dimen name="font_page_large_subtitle_font_size">16sp</dimen>
   <item name="font_page_large_subtitle_letter_spacing" type="dimen" format="float">0</item>
@@ -3883,7 +3883,7 @@
   <string name="font_page_large_subtitle_text_decoration">none</string>
   <string name="font_page_large_subtitle_font_style">normal</string>
   <string name="font_page_medium_title_font_family">DM Sans</string>
-  <string name="font_page_medium_title_font_weight">semibold</string>
+  <integer name="font_page_medium_title_font_weight">600</integer>
   <dimen name="font_page_medium_title_line_height">36sp</dimen>
   <dimen name="font_page_medium_title_font_size">26sp</dimen>
   <item name="font_page_medium_title_letter_spacing" type="dimen" format="float">0</item>
@@ -3892,7 +3892,7 @@
   <string name="font_page_medium_title_text_decoration">none</string>
   <string name="font_page_medium_title_font_style">normal</string>
   <string name="font_page_medium_subtitle_font_family">DM Sans</string>
-  <string name="font_page_medium_subtitle_font_weight">regular</string>
+  <integer name="font_page_medium_subtitle_font_weight">400</integer>
   <dimen name="font_page_medium_subtitle_line_height">24sp</dimen>
   <dimen name="font_page_medium_subtitle_font_size">16sp</dimen>
   <item name="font_page_medium_subtitle_letter_spacing" type="dimen" format="float">0</item>
@@ -3901,7 +3901,7 @@
   <string name="font_page_medium_subtitle_text_decoration">none</string>
   <string name="font_page_medium_subtitle_font_style">normal</string>
   <string name="font_page_small_title_font_family">DM Sans</string>
-  <string name="font_page_small_title_font_weight">semibold</string>
+  <integer name="font_page_small_title_font_weight">600</integer>
   <dimen name="font_page_small_title_line_height">32sp</dimen>
   <dimen name="font_page_small_title_font_size">22sp</dimen>
   <item name="font_page_small_title_letter_spacing" type="dimen" format="float">0</item>
@@ -3910,7 +3910,7 @@
   <string name="font_page_small_title_text_decoration">none</string>
   <string name="font_page_small_title_font_style">normal</string>
   <string name="font_page_small_subtitle_font_family">DM Sans</string>
-  <string name="font_page_small_subtitle_font_weight">regular</string>
+  <integer name="font_page_small_subtitle_font_weight">400</integer>
   <dimen name="font_page_small_subtitle_line_height">24sp</dimen>
   <dimen name="font_page_small_subtitle_font_size">16sp</dimen>
   <item name="font_page_small_subtitle_letter_spacing" type="dimen" format="float">0</item>
@@ -3919,7 +3919,7 @@
   <string name="font_page_small_subtitle_text_decoration">none</string>
   <string name="font_page_small_subtitle_font_style">normal</string>
   <string name="font_section_header_large_font_family">DM Sans</string>
-  <string name="font_section_header_large_font_weight">semibold</string>
+  <integer name="font_section_header_large_font_weight">600</integer>
   <dimen name="font_section_header_large_line_height">28sp</dimen>
   <dimen name="font_section_header_large_font_size">19sp</dimen>
   <item name="font_section_header_large_letter_spacing" type="dimen" format="float">0</item>
@@ -3928,7 +3928,7 @@
   <string name="font_section_header_large_text_decoration">none</string>
   <string name="font_section_header_large_font_style">normal</string>
   <string name="font_section_header_medium_font_family">DM Sans</string>
-  <string name="font_section_header_medium_font_weight">semibold</string>
+  <integer name="font_section_header_medium_font_weight">600</integer>
   <dimen name="font_section_header_medium_line_height">24sp</dimen>
   <dimen name="font_section_header_medium_font_size">16sp</dimen>
   <item name="font_section_header_medium_letter_spacing" type="dimen" format="float">0</item>
@@ -3937,7 +3937,7 @@
   <string name="font_section_header_medium_text_decoration">none</string>
   <string name="font_section_header_medium_font_style">normal</string>
   <string name="font_section_header_small_font_family">DM Sans</string>
-  <string name="font_section_header_small_font_weight">semibold</string>
+  <integer name="font_section_header_small_font_weight">600</integer>
   <dimen name="font_section_header_small_line_height">20sp</dimen>
   <dimen name="font_section_header_small_font_size">14sp</dimen>
   <item name="font_section_header_small_letter_spacing" type="dimen" format="float">0</item>
@@ -3946,7 +3946,7 @@
   <string name="font_section_header_small_text_decoration">none</string>
   <string name="font_section_header_small_font_style">normal</string>
   <string name="font_segment_medium_font_family">DM Sans</string>
-  <string name="font_segment_medium_font_weight">regular</string>
+  <integer name="font_segment_medium_font_weight">400</integer>
   <dimen name="font_segment_medium_line_height">20sp</dimen>
   <dimen name="font_segment_medium_font_size">14sp</dimen>
   <item name="font_segment_medium_letter_spacing" type="dimen" format="float">0</item>
@@ -3955,7 +3955,7 @@
   <string name="font_segment_medium_text_decoration">none</string>
   <string name="font_segment_medium_font_style">normal</string>
   <string name="font_segment_large_font_family">DM Sans</string>
-  <string name="font_segment_large_font_weight">regular</string>
+  <integer name="font_segment_large_font_weight">400</integer>
   <dimen name="font_segment_large_line_height">24sp</dimen>
   <dimen name="font_segment_large_font_size">16sp</dimen>
   <item name="font_segment_large_letter_spacing" type="dimen" format="float">0</item>
@@ -3964,7 +3964,7 @@
   <string name="font_segment_large_text_decoration">none</string>
   <string name="font_segment_large_font_style">normal</string>
   <string name="font_segment_small_font_family">DM Sans</string>
-  <string name="font_segment_small_font_weight">regular</string>
+  <integer name="font_segment_small_font_weight">400</integer>
   <dimen name="font_segment_small_line_height">18sp</dimen>
   <dimen name="font_segment_small_font_size">12sp</dimen>
   <item name="font_segment_small_letter_spacing" type="dimen" format="float">0</item>
@@ -3973,7 +3973,7 @@
   <string name="font_segment_small_text_decoration">none</string>
   <string name="font_segment_small_font_style">normal</string>
   <string name="font_tab_medium_font_family">DM Sans</string>
-  <string name="font_tab_medium_font_weight">semibold</string>
+  <integer name="font_tab_medium_font_weight">600</integer>
   <dimen name="font_tab_medium_line_height">24sp</dimen>
   <dimen name="font_tab_medium_font_size">16sp</dimen>
   <item name="font_tab_medium_letter_spacing" type="dimen" format="float">0</item>
@@ -3982,7 +3982,7 @@
   <string name="font_tab_medium_text_decoration">none</string>
   <string name="font_tab_medium_font_style">normal</string>
   <string name="font_tab_large_font_family">DM Sans</string>
-  <string name="font_tab_large_font_weight">semibold</string>
+  <integer name="font_tab_large_font_weight">600</integer>
   <dimen name="font_tab_large_line_height">28sp</dimen>
   <dimen name="font_tab_large_font_size">19sp</dimen>
   <item name="font_tab_large_letter_spacing" type="dimen" format="float">0</item>
@@ -3991,7 +3991,7 @@
   <string name="font_tab_large_text_decoration">none</string>
   <string name="font_tab_large_font_style">normal</string>
   <string name="font_tab_small_font_family">DM Sans</string>
-  <string name="font_tab_small_font_weight">semibold</string>
+  <integer name="font_tab_small_font_weight">600</integer>
   <dimen name="font_tab_small_line_height">20sp</dimen>
   <dimen name="font_tab_small_font_size">14sp</dimen>
   <item name="font_tab_small_letter_spacing" type="dimen" format="float">0</item>
@@ -4000,7 +4000,7 @@
   <string name="font_tab_small_text_decoration">none</string>
   <string name="font_tab_small_font_style">normal</string>
   <string name="font_table_data_text_font_family">DM Sans</string>
-  <string name="font_table_data_text_font_weight">regular</string>
+  <integer name="font_table_data_text_font_weight">400</integer>
   <dimen name="font_table_data_text_line_height">20sp</dimen>
   <dimen name="font_table_data_text_font_size">14sp</dimen>
   <item name="font_table_data_text_letter_spacing" type="dimen" format="float">0</item>
@@ -4009,7 +4009,7 @@
   <string name="font_table_data_text_text_decoration">none</string>
   <string name="font_table_data_text_font_style">normal</string>
   <string name="font_table_head_text_font_family">DM Sans</string>
-  <string name="font_table_head_text_font_weight">semibold</string>
+  <integer name="font_table_head_text_font_weight">600</integer>
   <dimen name="font_table_head_text_line_height">20sp</dimen>
   <dimen name="font_table_head_text_font_size">14sp</dimen>
   <item name="font_table_head_text_letter_spacing" type="dimen" format="float">0</item>
@@ -4018,7 +4018,7 @@
   <string name="font_table_head_text_text_decoration">none</string>
   <string name="font_table_head_text_font_style">normal</string>
   <string name="font_website_hero_title_font_family">DM Sans</string>
-  <string name="font_website_hero_title_font_weight">bold</string>
+  <integer name="font_website_hero_title_font_weight">700</integer>
   <dimen name="font_website_hero_title_line_height">80sp</dimen>
   <dimen name="font_website_hero_title_font_size">64sp</dimen>
   <item name="font_website_hero_title_letter_spacing" type="dimen" format="float">-0.0156</item>
@@ -4027,7 +4027,7 @@
   <string name="font_website_hero_title_text_decoration">none</string>
   <string name="font_website_hero_title_font_style">normal</string>
   <string name="font_website_hero_body_font_family">DM Sans</string>
-  <string name="font_website_hero_body_font_weight">regular</string>
+  <integer name="font_website_hero_body_font_weight">400</integer>
   <dimen name="font_website_hero_body_line_height">33sp</dimen>
   <dimen name="font_website_hero_body_font_size">22sp</dimen>
   <item name="font_website_hero_body_letter_spacing" type="dimen" format="float">0</item>
@@ -4036,7 +4036,7 @@
   <string name="font_website_hero_body_text_decoration">none</string>
   <string name="font_website_hero_body_font_style">normal</string>
   <string name="font_website_section_title_font_family">DM Sans</string>
-  <string name="font_website_section_title_font_weight">bold</string>
+  <integer name="font_website_section_title_font_weight">700</integer>
   <dimen name="font_website_section_title_line_height">60sp</dimen>
   <dimen name="font_website_section_title_font_size">48sp</dimen>
   <item name="font_website_section_title_letter_spacing" type="dimen" format="float">-0.0104</item>
@@ -4045,7 +4045,7 @@
   <string name="font_website_section_title_text_decoration">none</string>
   <string name="font_website_section_title_font_style">normal</string>
   <string name="font_website_section_body_font_family">DM Sans</string>
-  <string name="font_website_section_body_font_weight">regular</string>
+  <integer name="font_website_section_body_font_weight">400</integer>
   <dimen name="font_website_section_body_line_height">33sp</dimen>
   <dimen name="font_website_section_body_font_size">22sp</dimen>
   <item name="font_website_section_body_letter_spacing" type="dimen" format="float">0</item>
@@ -4054,7 +4054,7 @@
   <string name="font_website_section_body_text_decoration">none</string>
   <string name="font_website_section_body_font_style">normal</string>
   <string name="font_website_feature_title_font_family">DM Sans</string>
-  <string name="font_website_feature_title_font_weight">bold</string>
+  <integer name="font_website_feature_title_font_weight">700</integer>
   <dimen name="font_website_feature_title_line_height">33sp</dimen>
   <dimen name="font_website_feature_title_font_size">22sp</dimen>
   <item name="font_website_feature_title_letter_spacing" type="dimen" format="float">0</item>
@@ -4063,7 +4063,7 @@
   <string name="font_website_feature_title_text_decoration">none</string>
   <string name="font_website_feature_title_font_style">normal</string>
   <string name="font_website_feature_body_font_family">DM Sans</string>
-  <string name="font_website_feature_body_font_weight">regular</string>
+  <integer name="font_website_feature_body_font_weight">400</integer>
   <dimen name="font_website_feature_body_line_height">28.5sp</dimen>
   <dimen name="font_website_feature_body_font_size">19sp</dimen>
   <item name="font_website_feature_body_letter_spacing" type="dimen" format="float">0</item>
@@ -4072,7 +4072,7 @@
   <string name="font_website_feature_body_text_decoration">none</string>
   <string name="font_website_feature_body_font_style">normal</string>
   <string name="font_website_module_title_font_family">DM Sans</string>
-  <string name="font_website_module_title_font_weight">bold</string>
+  <integer name="font_website_module_title_font_weight">700</integer>
   <dimen name="font_website_module_title_line_height">28.5sp</dimen>
   <dimen name="font_website_module_title_font_size">19sp</dimen>
   <item name="font_website_module_title_letter_spacing" type="dimen" format="float">0</item>

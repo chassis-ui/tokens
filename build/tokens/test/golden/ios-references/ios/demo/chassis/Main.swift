@@ -4,7 +4,7 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Sun, 27 Sep 2026 09:46:34 GMT
+// Generated on Sun, 27 Sep 2026 09:54:39 GMT
 // Chassis - Tokens v0.5.3
 // Copyright 2026 Ozgur Gunes
 // Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
@@ -2142,41 +2142,41 @@ public class ChassisTokens {
     @objc public static let TypographyFontFamilyHtml = TypographyFontFamilyText
     @objc public static let TypographyFontFamilyCode = "Fira Code"
     @objc public static let TypographyFontFamilyIcon = "Chassis-Icons"
-    @objc public static let TypographyFontWeightTextNormalWeight = "regular"
+    @objc public static let TypographyFontWeightTextNormalWeight = UIFont.Weight.regular
     @objc public static let TypographyFontWeightTextNormalStyle = "normal"
-    @objc public static let TypographyFontWeightTextStrongWeight = "semi-bold"
+    @objc public static let TypographyFontWeightTextStrongWeight = UIFont.Weight.semibold
     @objc public static let TypographyFontWeightTextStrongStyle = "normal"
-    @objc public static let TypographyFontWeightTextMassWeight = "bold"
+    @objc public static let TypographyFontWeightTextMassWeight = UIFont.Weight.bold
     @objc public static let TypographyFontWeightTextMassStyle = "normal"
-    @objc public static let TypographyFontWeightTextElegantWeight = "light"
+    @objc public static let TypographyFontWeightTextElegantWeight = UIFont.Weight.light
     @objc public static let TypographyFontWeightTextElegantStyle = "normal"
-    @objc public static let TypographyFontWeightDisplayNormalWeight = "medium"
+    @objc public static let TypographyFontWeightDisplayNormalWeight = UIFont.Weight.medium
     @objc public static let TypographyFontWeightDisplayNormalStyle = "normal"
-    @objc public static let TypographyFontWeightDisplayStrongWeight = "semibold"
+    @objc public static let TypographyFontWeightDisplayStrongWeight = UIFont.Weight.semibold
     @objc public static let TypographyFontWeightDisplayStrongStyle = "normal"
-    @objc public static let TypographyFontWeightDisplayMassWeight = "bold"
+    @objc public static let TypographyFontWeightDisplayMassWeight = UIFont.Weight.bold
     @objc public static let TypographyFontWeightDisplayMassStyle = "normal"
-    @objc public static let TypographyFontWeightDisplayElegantWeight = "regular"
+    @objc public static let TypographyFontWeightDisplayElegantWeight = UIFont.Weight.regular
     @objc public static let TypographyFontWeightDisplayElegantStyle = "normal"
-    @objc public static let TypographyFontWeightCodeNormalWeight = "regular"
+    @objc public static let TypographyFontWeightCodeNormalWeight = UIFont.Weight.regular
     @objc public static let TypographyFontWeightCodeNormalStyle = "normal"
-    @objc public static let TypographyFontWeightCodeStrongWeight = "bold"
+    @objc public static let TypographyFontWeightCodeStrongWeight = UIFont.Weight.bold
     @objc public static let TypographyFontWeightCodeStrongStyle = "normal"
-    @objc public static let TypographyFontWeightHtmlCodeWeight = "regular"
+    @objc public static let TypographyFontWeightHtmlCodeWeight = UIFont.Weight.regular
     @objc public static let TypographyFontWeightHtmlCodeStyle = "normal"
-    @objc public static let TypographyFontWeightHtmlBlockquoteWeight = "light"
+    @objc public static let TypographyFontWeightHtmlBlockquoteWeight = UIFont.Weight.light
     @objc public static let TypographyFontWeightHtmlBlockquoteStyle = "italic"
-    @objc public static let TypographyFontWeightHtmlBodyWeight = "regular"
+    @objc public static let TypographyFontWeightHtmlBodyWeight = UIFont.Weight.regular
     @objc public static let TypographyFontWeightHtmlBodyStyle = "normal"
-    @objc public static let TypographyFontWeightHtmlParagraphWeight = "regular"
+    @objc public static let TypographyFontWeightHtmlParagraphWeight = UIFont.Weight.regular
     @objc public static let TypographyFontWeightHtmlParagraphStyle = "normal"
-    @objc public static let TypographyFontWeightHtmlHeadingWeight = "bold"
+    @objc public static let TypographyFontWeightHtmlHeadingWeight = UIFont.Weight.bold
     @objc public static let TypographyFontWeightHtmlHeadingStyle = "normal"
-    @objc public static let TypographyFontWeightHtmlCiteWeight = "semi-bold"
+    @objc public static let TypographyFontWeightHtmlCiteWeight = UIFont.Weight.semibold
     @objc public static let TypographyFontWeightHtmlCiteStyle = "normal"
-    @objc public static let TypographyFontWeightHtmlListWeight = "regular"
+    @objc public static let TypographyFontWeightHtmlListWeight = UIFont.Weight.regular
     @objc public static let TypographyFontWeightHtmlListStyle = "normal"
-    @objc public static let TypographyFontWeightHtmlBoldWeight = "bold"
+    @objc public static let TypographyFontWeightHtmlBoldWeight = UIFont.Weight.bold
     @objc public static let TypographyFontWeightHtmlBoldStyle = "normal"
     @objc public static let TypographyFontSizeText5xlarge = CGFloat(44)
     @objc public static let TypographyFontSizeText4xlarge = CGFloat(38)
@@ -2357,7 +2357,7 @@ public class ChassisTokens {
     @objc public static let BorderRadiusTabSmall = BorderRadiusContextMedium
     @objc public static let BorderRadiusTooltipMain = BorderRadiusContextSmall
     @objc public static let FontContextJumboFontFamily = TypographyFontFamilyText
-    @objc public static let FontContextJumboFontWeight = "bold"
+    @objc public static let FontContextJumboFontWeight = UIFont.Weight.bold
     @objc public static let FontContextJumboLineHeight = CGFloat(120)
     @objc public static let FontContextJumboFontSize = SizeUnit96
     @objc public static let FontContextJumboLetterSpacing = SizeUnitNd05
@@ -2366,7 +2366,7 @@ public class ChassisTokens {
     @objc public static let FontContextJumboTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontContextJumboFontStyle = "normal"
     @objc public static let FontContextHeroFontFamily = TypographyFontFamilyText
-    @objc public static let FontContextHeroFontWeight = "bold"
+    @objc public static let FontContextHeroFontWeight = UIFont.Weight.bold
     @objc public static let FontContextHeroLineHeight = CGFloat(80)
     @objc public static let FontContextHeroFontSize = SizeUnit64
     @objc public static let FontContextHeroLetterSpacing = TypographyLetterSpacingBaseZero
@@ -2375,7 +2375,7 @@ public class ChassisTokens {
     @objc public static let FontContextHeroTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontContextHeroFontStyle = "normal"
     @objc public static let FontContextLeadFontFamily = TypographyFontFamilyText
-    @objc public static let FontContextLeadFontWeight = "regular"
+    @objc public static let FontContextLeadFontWeight = UIFont.Weight.regular
     @objc public static let FontContextLeadLineHeight = TypographyLineHeightTextXlarge
     @objc public static let FontContextLeadFontSize = TypographyFontSizeTextXlarge
     @objc public static let FontContextLeadLetterSpacing = TypographyLetterSpacingBaseZero
@@ -2384,7 +2384,7 @@ public class ChassisTokens {
     @objc public static let FontContextLeadTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontContextLeadFontStyle = "normal"
     @objc public static let FontContextHeadingFontFamily = TypographyFontFamilyText
-    @objc public static let FontContextHeadingFontWeight = "semi-bold"
+    @objc public static let FontContextHeadingFontWeight = UIFont.Weight.semibold
     @objc public static let FontContextHeadingLineHeight = TypographyLineHeightText3xlarge
     @objc public static let FontContextHeadingFontSize = TypographyFontSizeText3xlarge
     @objc public static let FontContextHeadingLetterSpacing = TypographyLetterSpacingBaseZero
@@ -2393,7 +2393,7 @@ public class ChassisTokens {
     @objc public static let FontContextHeadingTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontContextHeadingFontStyle = "normal"
     @objc public static let FontContextTitleMediumFontFamily = TypographyFontFamilyText
-    @objc public static let FontContextTitleMediumFontWeight = "semi-bold"
+    @objc public static let FontContextTitleMediumFontWeight = UIFont.Weight.semibold
     @objc public static let FontContextTitleMediumLineHeight = TypographyLineHeightTextLarge
     @objc public static let FontContextTitleMediumFontSize = TypographyFontSizeTextLarge
     @objc public static let FontContextTitleMediumLetterSpacing = TypographyLetterSpacingBaseZero
@@ -2402,7 +2402,7 @@ public class ChassisTokens {
     @objc public static let FontContextTitleMediumTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontContextTitleMediumFontStyle = "normal"
     @objc public static let FontContextTitleLargeFontFamily = TypographyFontFamilyText
-    @objc public static let FontContextTitleLargeFontWeight = "semi-bold"
+    @objc public static let FontContextTitleLargeFontWeight = UIFont.Weight.semibold
     @objc public static let FontContextTitleLargeLineHeight = TypographyLineHeightTextXlarge
     @objc public static let FontContextTitleLargeFontSize = TypographyFontSizeTextXlarge
     @objc public static let FontContextTitleLargeLetterSpacing = TypographyLetterSpacingBaseZero
@@ -2411,7 +2411,7 @@ public class ChassisTokens {
     @objc public static let FontContextTitleLargeTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontContextTitleLargeFontStyle = "normal"
     @objc public static let FontContextTitleSmallFontFamily = TypographyFontFamilyText
-    @objc public static let FontContextTitleSmallFontWeight = "semi-bold"
+    @objc public static let FontContextTitleSmallFontWeight = UIFont.Weight.semibold
     @objc public static let FontContextTitleSmallLineHeight = TypographyLineHeightTextMedium
     @objc public static let FontContextTitleSmallFontSize = TypographyFontSizeTextMedium
     @objc public static let FontContextTitleSmallLetterSpacing = TypographyLetterSpacingBaseZero
@@ -2420,7 +2420,7 @@ public class ChassisTokens {
     @objc public static let FontContextTitleSmallTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontContextTitleSmallFontStyle = "normal"
     @objc public static let FontContextBodyMediumFontFamily = TypographyFontFamilyText
-    @objc public static let FontContextBodyMediumFontWeight = "regular"
+    @objc public static let FontContextBodyMediumFontWeight = UIFont.Weight.regular
     @objc public static let FontContextBodyMediumLineHeight = TypographyLineHeightTextMedium
     @objc public static let FontContextBodyMediumFontSize = TypographyFontSizeTextMedium
     @objc public static let FontContextBodyMediumLetterSpacing = TypographyLetterSpacingBaseZero
@@ -2429,7 +2429,7 @@ public class ChassisTokens {
     @objc public static let FontContextBodyMediumTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontContextBodyMediumFontStyle = "normal"
     @objc public static let FontContextBodyLargeFontFamily = TypographyFontFamilyText
-    @objc public static let FontContextBodyLargeFontWeight = "regular"
+    @objc public static let FontContextBodyLargeFontWeight = UIFont.Weight.regular
     @objc public static let FontContextBodyLargeLineHeight = TypographyLineHeightTextLarge
     @objc public static let FontContextBodyLargeFontSize = TypographyFontSizeTextLarge
     @objc public static let FontContextBodyLargeLetterSpacing = TypographyLetterSpacingBaseZero
@@ -2438,7 +2438,7 @@ public class ChassisTokens {
     @objc public static let FontContextBodyLargeTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontContextBodyLargeFontStyle = "normal"
     @objc public static let FontContextBodySmallFontFamily = TypographyFontFamilyText
-    @objc public static let FontContextBodySmallFontWeight = "regular"
+    @objc public static let FontContextBodySmallFontWeight = UIFont.Weight.regular
     @objc public static let FontContextBodySmallLineHeight = TypographyLineHeightTextSmall
     @objc public static let FontContextBodySmallFontSize = TypographyFontSizeTextSmall
     @objc public static let FontContextBodySmallLetterSpacing = TypographyLetterSpacingBaseZero
@@ -2447,7 +2447,7 @@ public class ChassisTokens {
     @objc public static let FontContextBodySmallTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontContextBodySmallFontStyle = "normal"
     @objc public static let FontContextHighlightMediumFontFamily = TypographyFontFamilyText
-    @objc public static let FontContextHighlightMediumFontWeight = "regular"
+    @objc public static let FontContextHighlightMediumFontWeight = UIFont.Weight.regular
     @objc public static let FontContextHighlightMediumLineHeight = TypographyLineHeightTextMedium
     @objc public static let FontContextHighlightMediumFontSize = TypographyFontSizeTextMedium
     @objc public static let FontContextHighlightMediumLetterSpacing = TypographyLetterSpacingBaseZero
@@ -2456,7 +2456,7 @@ public class ChassisTokens {
     @objc public static let FontContextHighlightMediumTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontContextHighlightMediumFontStyle = "normal"
     @objc public static let FontContextHighlightLargeFontFamily = TypographyFontFamilyText
-    @objc public static let FontContextHighlightLargeFontWeight = "regular"
+    @objc public static let FontContextHighlightLargeFontWeight = UIFont.Weight.regular
     @objc public static let FontContextHighlightLargeLineHeight = TypographyLineHeightTextLarge
     @objc public static let FontContextHighlightLargeFontSize = TypographyFontSizeTextLarge
     @objc public static let FontContextHighlightLargeLetterSpacing = TypographyLetterSpacingBaseZero
@@ -2465,7 +2465,7 @@ public class ChassisTokens {
     @objc public static let FontContextHighlightLargeTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontContextHighlightLargeFontStyle = "normal"
     @objc public static let FontContextHighlightSmallFontFamily = TypographyFontFamilyText
-    @objc public static let FontContextHighlightSmallFontWeight = "regular"
+    @objc public static let FontContextHighlightSmallFontWeight = UIFont.Weight.regular
     @objc public static let FontContextHighlightSmallLineHeight = TypographyLineHeightTextSmall
     @objc public static let FontContextHighlightSmallFontSize = TypographyFontSizeTextSmall
     @objc public static let FontContextHighlightSmallLetterSpacing = TypographyLetterSpacingBaseZero
@@ -2474,7 +2474,7 @@ public class ChassisTokens {
     @objc public static let FontContextHighlightSmallTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontContextHighlightSmallFontStyle = "normal"
     @objc public static let FontContextLabelMediumFontFamily = TypographyFontFamilyText
-    @objc public static let FontContextLabelMediumFontWeight = "semi-bold"
+    @objc public static let FontContextLabelMediumFontWeight = UIFont.Weight.semibold
     @objc public static let FontContextLabelMediumLineHeight = TypographyLineHeightTextSmall
     @objc public static let FontContextLabelMediumFontSize = TypographyFontSizeTextSmall
     @objc public static let FontContextLabelMediumLetterSpacing = TypographyLetterSpacingBaseZero
@@ -2483,7 +2483,7 @@ public class ChassisTokens {
     @objc public static let FontContextLabelMediumTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontContextLabelMediumFontStyle = "normal"
     @objc public static let FontContextLabelLargeFontFamily = TypographyFontFamilyText
-    @objc public static let FontContextLabelLargeFontWeight = "semi-bold"
+    @objc public static let FontContextLabelLargeFontWeight = UIFont.Weight.semibold
     @objc public static let FontContextLabelLargeLineHeight = TypographyLineHeightTextMedium
     @objc public static let FontContextLabelLargeFontSize = TypographyFontSizeTextMedium
     @objc public static let FontContextLabelLargeLetterSpacing = TypographyLetterSpacingBaseZero
@@ -2492,7 +2492,7 @@ public class ChassisTokens {
     @objc public static let FontContextLabelLargeTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontContextLabelLargeFontStyle = "normal"
     @objc public static let FontContextLabelSmallFontFamily = TypographyFontFamilyText
-    @objc public static let FontContextLabelSmallFontWeight = "semi-bold"
+    @objc public static let FontContextLabelSmallFontWeight = UIFont.Weight.semibold
     @objc public static let FontContextLabelSmallLineHeight = TypographyLineHeightTextXsmall
     @objc public static let FontContextLabelSmallFontSize = TypographyFontSizeTextXsmall
     @objc public static let FontContextLabelSmallLetterSpacing = TypographyLetterSpacingBaseZero
@@ -2501,7 +2501,7 @@ public class ChassisTokens {
     @objc public static let FontContextLabelSmallTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontContextLabelSmallFontStyle = "normal"
     @objc public static let FontContextLinkLargeFontFamily = TypographyFontFamilyText
-    @objc public static let FontContextLinkLargeFontWeight = "regular"
+    @objc public static let FontContextLinkLargeFontWeight = UIFont.Weight.regular
     @objc public static let FontContextLinkLargeLineHeight = TypographyLineHeightTextLarge
     @objc public static let FontContextLinkLargeFontSize = TypographyFontSizeTextLarge
     @objc public static let FontContextLinkLargeLetterSpacing = TypographyLetterSpacingBaseZero
@@ -2510,7 +2510,7 @@ public class ChassisTokens {
     @objc public static let FontContextLinkLargeTextDecoration = TypographyTextDecorationBaseUnderline
     @objc public static let FontContextLinkLargeFontStyle = "normal"
     @objc public static let FontContextLinkMediumFontFamily = TypographyFontFamilyText
-    @objc public static let FontContextLinkMediumFontWeight = "regular"
+    @objc public static let FontContextLinkMediumFontWeight = UIFont.Weight.regular
     @objc public static let FontContextLinkMediumLineHeight = TypographyLineHeightTextMedium
     @objc public static let FontContextLinkMediumFontSize = TypographyFontSizeTextMedium
     @objc public static let FontContextLinkMediumLetterSpacing = TypographyLetterSpacingBaseZero
@@ -2519,7 +2519,7 @@ public class ChassisTokens {
     @objc public static let FontContextLinkMediumTextDecoration = TypographyTextDecorationBaseUnderline
     @objc public static let FontContextLinkMediumFontStyle = "normal"
     @objc public static let FontContextLinkSmallFontFamily = TypographyFontFamilyText
-    @objc public static let FontContextLinkSmallFontWeight = "regular"
+    @objc public static let FontContextLinkSmallFontWeight = UIFont.Weight.regular
     @objc public static let FontContextLinkSmallLineHeight = TypographyLineHeightTextSmall
     @objc public static let FontContextLinkSmallFontSize = TypographyFontSizeTextSmall
     @objc public static let FontContextLinkSmallLetterSpacing = TypographyLetterSpacingBaseZero
@@ -2528,7 +2528,7 @@ public class ChassisTokens {
     @objc public static let FontContextLinkSmallTextDecoration = TypographyTextDecorationBaseUnderline
     @objc public static let FontContextLinkSmallFontStyle = "normal"
     @objc public static let FontContextLinkXsmallFontFamily = TypographyFontFamilyText
-    @objc public static let FontContextLinkXsmallFontWeight = "regular"
+    @objc public static let FontContextLinkXsmallFontWeight = UIFont.Weight.regular
     @objc public static let FontContextLinkXsmallLineHeight = TypographyLineHeightTextXsmall
     @objc public static let FontContextLinkXsmallFontSize = TypographyFontSizeTextXsmall
     @objc public static let FontContextLinkXsmallLetterSpacing = TypographyLetterSpacingBaseZero
@@ -2537,7 +2537,7 @@ public class ChassisTokens {
     @objc public static let FontContextLinkXsmallTextDecoration = TypographyTextDecorationBaseUnderline
     @objc public static let FontContextLinkXsmallFontStyle = "normal"
     @objc public static let FontContextExpiredLargeFontFamily = TypographyFontFamilyText
-    @objc public static let FontContextExpiredLargeFontWeight = "semi-bold"
+    @objc public static let FontContextExpiredLargeFontWeight = UIFont.Weight.semibold
     @objc public static let FontContextExpiredLargeLineHeight = TypographyLineHeightTextLarge
     @objc public static let FontContextExpiredLargeFontSize = TypographyFontSizeTextLarge
     @objc public static let FontContextExpiredLargeLetterSpacing = TypographyLetterSpacingBaseZero
@@ -2546,7 +2546,7 @@ public class ChassisTokens {
     @objc public static let FontContextExpiredLargeTextDecoration = TypographyTextDecorationBaseLineThrough
     @objc public static let FontContextExpiredLargeFontStyle = "normal"
     @objc public static let FontContextExpiredMediumFontFamily = TypographyFontFamilyText
-    @objc public static let FontContextExpiredMediumFontWeight = "semi-bold"
+    @objc public static let FontContextExpiredMediumFontWeight = UIFont.Weight.semibold
     @objc public static let FontContextExpiredMediumLineHeight = TypographyLineHeightTextMedium
     @objc public static let FontContextExpiredMediumFontSize = TypographyFontSizeTextMedium
     @objc public static let FontContextExpiredMediumLetterSpacing = TypographyLetterSpacingBaseZero
@@ -2555,7 +2555,7 @@ public class ChassisTokens {
     @objc public static let FontContextExpiredMediumTextDecoration = TypographyTextDecorationBaseLineThrough
     @objc public static let FontContextExpiredMediumFontStyle = "normal"
     @objc public static let FontContextExpiredSmallFontFamily = TypographyFontFamilyText
-    @objc public static let FontContextExpiredSmallFontWeight = "semi-bold"
+    @objc public static let FontContextExpiredSmallFontWeight = UIFont.Weight.semibold
     @objc public static let FontContextExpiredSmallLineHeight = TypographyLineHeightTextSmall
     @objc public static let FontContextExpiredSmallFontSize = TypographyFontSizeTextSmall
     @objc public static let FontContextExpiredSmallLetterSpacing = TypographyLetterSpacingBaseZero
@@ -2564,7 +2564,7 @@ public class ChassisTokens {
     @objc public static let FontContextExpiredSmallTextDecoration = TypographyTextDecorationBaseLineThrough
     @objc public static let FontContextExpiredSmallFontStyle = "normal"
     @objc public static let FontContextCodeLargeFontFamily = TypographyFontFamilyCode
-    @objc public static let FontContextCodeLargeFontWeight = "regular"
+    @objc public static let FontContextCodeLargeFontWeight = UIFont.Weight.regular
     @objc public static let FontContextCodeLargeLineHeight = TypographyLineHeightCodeLarge
     @objc public static let FontContextCodeLargeFontSize = TypographyFontSizeCodeLarge
     @objc public static let FontContextCodeLargeLetterSpacing = TypographyLetterSpacingBaseZero
@@ -2573,7 +2573,7 @@ public class ChassisTokens {
     @objc public static let FontContextCodeLargeTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontContextCodeLargeFontStyle = "normal"
     @objc public static let FontContextCodeMediumFontFamily = TypographyFontFamilyCode
-    @objc public static let FontContextCodeMediumFontWeight = "regular"
+    @objc public static let FontContextCodeMediumFontWeight = UIFont.Weight.regular
     @objc public static let FontContextCodeMediumLineHeight = TypographyLineHeightCodeMedium
     @objc public static let FontContextCodeMediumFontSize = TypographyFontSizeCodeMedium
     @objc public static let FontContextCodeMediumLetterSpacing = TypographyLetterSpacingBaseZero
@@ -2582,7 +2582,7 @@ public class ChassisTokens {
     @objc public static let FontContextCodeMediumTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontContextCodeMediumFontStyle = "normal"
     @objc public static let FontContextCodeSmallFontFamily = TypographyFontFamilyCode
-    @objc public static let FontContextCodeSmallFontWeight = "regular"
+    @objc public static let FontContextCodeSmallFontWeight = UIFont.Weight.regular
     @objc public static let FontContextCodeSmallLineHeight = TypographyLineHeightCodeSmall
     @objc public static let FontContextCodeSmallFontSize = TypographyFontSizeCodeSmall
     @objc public static let FontContextCodeSmallLetterSpacing = TypographyLetterSpacingBaseZero
@@ -2591,7 +2591,7 @@ public class ChassisTokens {
     @objc public static let FontContextCodeSmallTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontContextCodeSmallFontStyle = "normal"
     @objc public static let FontText5xlargeNormalFontFamily = TypographyFontFamilyText
-    @objc public static let FontText5xlargeNormalFontWeight = "regular"
+    @objc public static let FontText5xlargeNormalFontWeight = UIFont.Weight.regular
     @objc public static let FontText5xlargeNormalLineHeight = TypographyLineHeightText5xlarge
     @objc public static let FontText5xlargeNormalFontSize = TypographyFontSizeText5xlarge
     @objc public static let FontText5xlargeNormalLetterSpacing = TypographyLetterSpacingBaseZero
@@ -2600,7 +2600,7 @@ public class ChassisTokens {
     @objc public static let FontText5xlargeNormalTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontText5xlargeNormalFontStyle = "normal"
     @objc public static let FontText5xlargeStrongFontFamily = TypographyFontFamilyText
-    @objc public static let FontText5xlargeStrongFontWeight = "semi-bold"
+    @objc public static let FontText5xlargeStrongFontWeight = UIFont.Weight.semibold
     @objc public static let FontText5xlargeStrongLineHeight = TypographyLineHeightText5xlarge
     @objc public static let FontText5xlargeStrongFontSize = TypographyFontSizeText5xlarge
     @objc public static let FontText5xlargeStrongLetterSpacing = TypographyLetterSpacingBaseZero
@@ -2609,7 +2609,7 @@ public class ChassisTokens {
     @objc public static let FontText5xlargeStrongTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontText5xlargeStrongFontStyle = "normal"
     @objc public static let FontText5xlargeMassFontFamily = TypographyFontFamilyText
-    @objc public static let FontText5xlargeMassFontWeight = "bold"
+    @objc public static let FontText5xlargeMassFontWeight = UIFont.Weight.bold
     @objc public static let FontText5xlargeMassLineHeight = TypographyLineHeightText5xlarge
     @objc public static let FontText5xlargeMassFontSize = TypographyFontSizeText5xlarge
     @objc public static let FontText5xlargeMassLetterSpacing = TypographyLetterSpacingBaseZero
@@ -2618,7 +2618,7 @@ public class ChassisTokens {
     @objc public static let FontText5xlargeMassTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontText5xlargeMassFontStyle = "normal"
     @objc public static let FontText5xlargeElegantFontFamily = TypographyFontFamilyText
-    @objc public static let FontText5xlargeElegantFontWeight = "light"
+    @objc public static let FontText5xlargeElegantFontWeight = UIFont.Weight.light
     @objc public static let FontText5xlargeElegantLineHeight = TypographyLineHeightText5xlarge
     @objc public static let FontText5xlargeElegantFontSize = TypographyFontSizeText5xlarge
     @objc public static let FontText5xlargeElegantLetterSpacing = TypographyLetterSpacingBaseZero
@@ -2627,7 +2627,7 @@ public class ChassisTokens {
     @objc public static let FontText5xlargeElegantTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontText5xlargeElegantFontStyle = "normal"
     @objc public static let FontText4xlargeNormalFontFamily = TypographyFontFamilyText
-    @objc public static let FontText4xlargeNormalFontWeight = "regular"
+    @objc public static let FontText4xlargeNormalFontWeight = UIFont.Weight.regular
     @objc public static let FontText4xlargeNormalLineHeight = TypographyLineHeightText4xlarge
     @objc public static let FontText4xlargeNormalFontSize = TypographyFontSizeText4xlarge
     @objc public static let FontText4xlargeNormalLetterSpacing = TypographyLetterSpacingBaseZero
@@ -2636,7 +2636,7 @@ public class ChassisTokens {
     @objc public static let FontText4xlargeNormalTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontText4xlargeNormalFontStyle = "normal"
     @objc public static let FontText4xlargeStrongFontFamily = TypographyFontFamilyText
-    @objc public static let FontText4xlargeStrongFontWeight = "semi-bold"
+    @objc public static let FontText4xlargeStrongFontWeight = UIFont.Weight.semibold
     @objc public static let FontText4xlargeStrongLineHeight = TypographyLineHeightText4xlarge
     @objc public static let FontText4xlargeStrongFontSize = TypographyFontSizeText4xlarge
     @objc public static let FontText4xlargeStrongLetterSpacing = TypographyLetterSpacingBaseZero
@@ -2645,7 +2645,7 @@ public class ChassisTokens {
     @objc public static let FontText4xlargeStrongTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontText4xlargeStrongFontStyle = "normal"
     @objc public static let FontText4xlargeMassFontFamily = TypographyFontFamilyText
-    @objc public static let FontText4xlargeMassFontWeight = "bold"
+    @objc public static let FontText4xlargeMassFontWeight = UIFont.Weight.bold
     @objc public static let FontText4xlargeMassLineHeight = TypographyLineHeightText4xlarge
     @objc public static let FontText4xlargeMassFontSize = TypographyFontSizeText4xlarge
     @objc public static let FontText4xlargeMassLetterSpacing = TypographyLetterSpacingBaseZero
@@ -2654,7 +2654,7 @@ public class ChassisTokens {
     @objc public static let FontText4xlargeMassTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontText4xlargeMassFontStyle = "normal"
     @objc public static let FontText4xlargeElegantFontFamily = TypographyFontFamilyText
-    @objc public static let FontText4xlargeElegantFontWeight = "light"
+    @objc public static let FontText4xlargeElegantFontWeight = UIFont.Weight.light
     @objc public static let FontText4xlargeElegantLineHeight = TypographyLineHeightText4xlarge
     @objc public static let FontText4xlargeElegantFontSize = TypographyFontSizeText4xlarge
     @objc public static let FontText4xlargeElegantLetterSpacing = TypographyLetterSpacingBaseZero
@@ -2663,7 +2663,7 @@ public class ChassisTokens {
     @objc public static let FontText4xlargeElegantTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontText4xlargeElegantFontStyle = "normal"
     @objc public static let FontText3xlargeNormalFontFamily = TypographyFontFamilyText
-    @objc public static let FontText3xlargeNormalFontWeight = "regular"
+    @objc public static let FontText3xlargeNormalFontWeight = UIFont.Weight.regular
     @objc public static let FontText3xlargeNormalLineHeight = TypographyLineHeightText3xlarge
     @objc public static let FontText3xlargeNormalFontSize = TypographyFontSizeText3xlarge
     @objc public static let FontText3xlargeNormalLetterSpacing = TypographyLetterSpacingBaseZero
@@ -2672,7 +2672,7 @@ public class ChassisTokens {
     @objc public static let FontText3xlargeNormalTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontText3xlargeNormalFontStyle = "normal"
     @objc public static let FontText3xlargeStrongFontFamily = TypographyFontFamilyText
-    @objc public static let FontText3xlargeStrongFontWeight = "semi-bold"
+    @objc public static let FontText3xlargeStrongFontWeight = UIFont.Weight.semibold
     @objc public static let FontText3xlargeStrongLineHeight = TypographyLineHeightText3xlarge
     @objc public static let FontText3xlargeStrongFontSize = TypographyFontSizeText3xlarge
     @objc public static let FontText3xlargeStrongLetterSpacing = TypographyLetterSpacingBaseZero
@@ -2681,7 +2681,7 @@ public class ChassisTokens {
     @objc public static let FontText3xlargeStrongTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontText3xlargeStrongFontStyle = "normal"
     @objc public static let FontText3xlargeMassFontFamily = TypographyFontFamilyText
-    @objc public static let FontText3xlargeMassFontWeight = "bold"
+    @objc public static let FontText3xlargeMassFontWeight = UIFont.Weight.bold
     @objc public static let FontText3xlargeMassLineHeight = TypographyLineHeightText3xlarge
     @objc public static let FontText3xlargeMassFontSize = TypographyFontSizeText3xlarge
     @objc public static let FontText3xlargeMassLetterSpacing = TypographyLetterSpacingBaseZero
@@ -2690,7 +2690,7 @@ public class ChassisTokens {
     @objc public static let FontText3xlargeMassTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontText3xlargeMassFontStyle = "normal"
     @objc public static let FontText3xlargeElegantFontFamily = TypographyFontFamilyText
-    @objc public static let FontText3xlargeElegantFontWeight = "light"
+    @objc public static let FontText3xlargeElegantFontWeight = UIFont.Weight.light
     @objc public static let FontText3xlargeElegantLineHeight = TypographyLineHeightText3xlarge
     @objc public static let FontText3xlargeElegantFontSize = TypographyFontSizeText3xlarge
     @objc public static let FontText3xlargeElegantLetterSpacing = TypographyLetterSpacingBaseZero
@@ -2699,7 +2699,7 @@ public class ChassisTokens {
     @objc public static let FontText3xlargeElegantTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontText3xlargeElegantFontStyle = "normal"
     @objc public static let FontText2xlargeNormalFontFamily = TypographyFontFamilyText
-    @objc public static let FontText2xlargeNormalFontWeight = "regular"
+    @objc public static let FontText2xlargeNormalFontWeight = UIFont.Weight.regular
     @objc public static let FontText2xlargeNormalLineHeight = TypographyLineHeightText2xlarge
     @objc public static let FontText2xlargeNormalFontSize = TypographyFontSizeText2xlarge
     @objc public static let FontText2xlargeNormalLetterSpacing = TypographyLetterSpacingBaseZero
@@ -2708,7 +2708,7 @@ public class ChassisTokens {
     @objc public static let FontText2xlargeNormalTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontText2xlargeNormalFontStyle = "normal"
     @objc public static let FontText2xlargeStrongFontFamily = TypographyFontFamilyText
-    @objc public static let FontText2xlargeStrongFontWeight = "semi-bold"
+    @objc public static let FontText2xlargeStrongFontWeight = UIFont.Weight.semibold
     @objc public static let FontText2xlargeStrongLineHeight = TypographyLineHeightText2xlarge
     @objc public static let FontText2xlargeStrongFontSize = TypographyFontSizeText2xlarge
     @objc public static let FontText2xlargeStrongLetterSpacing = TypographyLetterSpacingBaseZero
@@ -2717,7 +2717,7 @@ public class ChassisTokens {
     @objc public static let FontText2xlargeStrongTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontText2xlargeStrongFontStyle = "normal"
     @objc public static let FontText2xlargeMassFontFamily = TypographyFontFamilyText
-    @objc public static let FontText2xlargeMassFontWeight = "bold"
+    @objc public static let FontText2xlargeMassFontWeight = UIFont.Weight.bold
     @objc public static let FontText2xlargeMassLineHeight = TypographyLineHeightText2xlarge
     @objc public static let FontText2xlargeMassFontSize = TypographyFontSizeText2xlarge
     @objc public static let FontText2xlargeMassLetterSpacing = TypographyLetterSpacingBaseZero
@@ -2726,7 +2726,7 @@ public class ChassisTokens {
     @objc public static let FontText2xlargeMassTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontText2xlargeMassFontStyle = "normal"
     @objc public static let FontText2xlargeElegantFontFamily = TypographyFontFamilyText
-    @objc public static let FontText2xlargeElegantFontWeight = "light"
+    @objc public static let FontText2xlargeElegantFontWeight = UIFont.Weight.light
     @objc public static let FontText2xlargeElegantLineHeight = TypographyLineHeightText2xlarge
     @objc public static let FontText2xlargeElegantFontSize = TypographyFontSizeText2xlarge
     @objc public static let FontText2xlargeElegantLetterSpacing = TypographyLetterSpacingBaseZero
@@ -2735,7 +2735,7 @@ public class ChassisTokens {
     @objc public static let FontText2xlargeElegantTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontText2xlargeElegantFontStyle = "normal"
     @objc public static let FontTextXlargeNormalFontFamily = TypographyFontFamilyText
-    @objc public static let FontTextXlargeNormalFontWeight = "regular"
+    @objc public static let FontTextXlargeNormalFontWeight = UIFont.Weight.regular
     @objc public static let FontTextXlargeNormalLineHeight = TypographyLineHeightTextXlarge
     @objc public static let FontTextXlargeNormalFontSize = TypographyFontSizeTextXlarge
     @objc public static let FontTextXlargeNormalLetterSpacing = TypographyLetterSpacingBaseZero
@@ -2744,7 +2744,7 @@ public class ChassisTokens {
     @objc public static let FontTextXlargeNormalTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontTextXlargeNormalFontStyle = "normal"
     @objc public static let FontTextXlargeStrongFontFamily = TypographyFontFamilyText
-    @objc public static let FontTextXlargeStrongFontWeight = "semi-bold"
+    @objc public static let FontTextXlargeStrongFontWeight = UIFont.Weight.semibold
     @objc public static let FontTextXlargeStrongLineHeight = TypographyLineHeightTextXlarge
     @objc public static let FontTextXlargeStrongFontSize = TypographyFontSizeTextXlarge
     @objc public static let FontTextXlargeStrongLetterSpacing = TypographyLetterSpacingBaseZero
@@ -2753,7 +2753,7 @@ public class ChassisTokens {
     @objc public static let FontTextXlargeStrongTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontTextXlargeStrongFontStyle = "normal"
     @objc public static let FontTextXlargeMassFontFamily = TypographyFontFamilyText
-    @objc public static let FontTextXlargeMassFontWeight = "bold"
+    @objc public static let FontTextXlargeMassFontWeight = UIFont.Weight.bold
     @objc public static let FontTextXlargeMassLineHeight = TypographyLineHeightTextXlarge
     @objc public static let FontTextXlargeMassFontSize = TypographyFontSizeTextXlarge
     @objc public static let FontTextXlargeMassLetterSpacing = TypographyLetterSpacingBaseZero
@@ -2762,7 +2762,7 @@ public class ChassisTokens {
     @objc public static let FontTextXlargeMassTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontTextXlargeMassFontStyle = "normal"
     @objc public static let FontTextXlargeElegantFontFamily = TypographyFontFamilyText
-    @objc public static let FontTextXlargeElegantFontWeight = "light"
+    @objc public static let FontTextXlargeElegantFontWeight = UIFont.Weight.light
     @objc public static let FontTextXlargeElegantLineHeight = TypographyLineHeightTextXlarge
     @objc public static let FontTextXlargeElegantFontSize = TypographyFontSizeTextXlarge
     @objc public static let FontTextXlargeElegantLetterSpacing = TypographyLetterSpacingBaseZero
@@ -2771,7 +2771,7 @@ public class ChassisTokens {
     @objc public static let FontTextXlargeElegantTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontTextXlargeElegantFontStyle = "normal"
     @objc public static let FontTextLargeNormalFontFamily = TypographyFontFamilyText
-    @objc public static let FontTextLargeNormalFontWeight = "regular"
+    @objc public static let FontTextLargeNormalFontWeight = UIFont.Weight.regular
     @objc public static let FontTextLargeNormalLineHeight = TypographyLineHeightTextLarge
     @objc public static let FontTextLargeNormalFontSize = TypographyFontSizeTextLarge
     @objc public static let FontTextLargeNormalLetterSpacing = TypographyLetterSpacingBaseZero
@@ -2780,7 +2780,7 @@ public class ChassisTokens {
     @objc public static let FontTextLargeNormalTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontTextLargeNormalFontStyle = "normal"
     @objc public static let FontTextLargeStrongFontFamily = TypographyFontFamilyText
-    @objc public static let FontTextLargeStrongFontWeight = "semi-bold"
+    @objc public static let FontTextLargeStrongFontWeight = UIFont.Weight.semibold
     @objc public static let FontTextLargeStrongLineHeight = TypographyLineHeightTextLarge
     @objc public static let FontTextLargeStrongFontSize = TypographyFontSizeTextLarge
     @objc public static let FontTextLargeStrongLetterSpacing = TypographyLetterSpacingBaseZero
@@ -2789,7 +2789,7 @@ public class ChassisTokens {
     @objc public static let FontTextLargeStrongTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontTextLargeStrongFontStyle = "normal"
     @objc public static let FontTextLargeMassFontFamily = TypographyFontFamilyText
-    @objc public static let FontTextLargeMassFontWeight = "bold"
+    @objc public static let FontTextLargeMassFontWeight = UIFont.Weight.bold
     @objc public static let FontTextLargeMassLineHeight = TypographyLineHeightTextLarge
     @objc public static let FontTextLargeMassFontSize = TypographyFontSizeTextLarge
     @objc public static let FontTextLargeMassLetterSpacing = TypographyLetterSpacingBaseZero
@@ -2798,7 +2798,7 @@ public class ChassisTokens {
     @objc public static let FontTextLargeMassTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontTextLargeMassFontStyle = "normal"
     @objc public static let FontTextLargeElegantFontFamily = TypographyFontFamilyText
-    @objc public static let FontTextLargeElegantFontWeight = "light"
+    @objc public static let FontTextLargeElegantFontWeight = UIFont.Weight.light
     @objc public static let FontTextLargeElegantLineHeight = TypographyLineHeightTextLarge
     @objc public static let FontTextLargeElegantFontSize = TypographyFontSizeTextLarge
     @objc public static let FontTextLargeElegantLetterSpacing = TypographyLetterSpacingBaseZero
@@ -2807,7 +2807,7 @@ public class ChassisTokens {
     @objc public static let FontTextLargeElegantTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontTextLargeElegantFontStyle = "normal"
     @objc public static let FontTextMediumNormalFontFamily = TypographyFontFamilyText
-    @objc public static let FontTextMediumNormalFontWeight = "regular"
+    @objc public static let FontTextMediumNormalFontWeight = UIFont.Weight.regular
     @objc public static let FontTextMediumNormalLineHeight = TypographyLineHeightTextMedium
     @objc public static let FontTextMediumNormalFontSize = TypographyFontSizeTextMedium
     @objc public static let FontTextMediumNormalLetterSpacing = TypographyLetterSpacingBaseZero
@@ -2816,7 +2816,7 @@ public class ChassisTokens {
     @objc public static let FontTextMediumNormalTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontTextMediumNormalFontStyle = "normal"
     @objc public static let FontTextMediumStrongFontFamily = TypographyFontFamilyText
-    @objc public static let FontTextMediumStrongFontWeight = "semi-bold"
+    @objc public static let FontTextMediumStrongFontWeight = UIFont.Weight.semibold
     @objc public static let FontTextMediumStrongLineHeight = TypographyLineHeightTextMedium
     @objc public static let FontTextMediumStrongFontSize = TypographyFontSizeTextMedium
     @objc public static let FontTextMediumStrongLetterSpacing = TypographyLetterSpacingBaseZero
@@ -2825,7 +2825,7 @@ public class ChassisTokens {
     @objc public static let FontTextMediumStrongTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontTextMediumStrongFontStyle = "normal"
     @objc public static let FontTextMediumMassFontFamily = TypographyFontFamilyText
-    @objc public static let FontTextMediumMassFontWeight = "bold"
+    @objc public static let FontTextMediumMassFontWeight = UIFont.Weight.bold
     @objc public static let FontTextMediumMassLineHeight = TypographyLineHeightTextMedium
     @objc public static let FontTextMediumMassFontSize = TypographyFontSizeTextMedium
     @objc public static let FontTextMediumMassLetterSpacing = TypographyLetterSpacingBaseZero
@@ -2834,7 +2834,7 @@ public class ChassisTokens {
     @objc public static let FontTextMediumMassTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontTextMediumMassFontStyle = "normal"
     @objc public static let FontTextMediumElegantFontFamily = TypographyFontFamilyText
-    @objc public static let FontTextMediumElegantFontWeight = "light"
+    @objc public static let FontTextMediumElegantFontWeight = UIFont.Weight.light
     @objc public static let FontTextMediumElegantLineHeight = TypographyLineHeightTextMedium
     @objc public static let FontTextMediumElegantFontSize = TypographyFontSizeTextMedium
     @objc public static let FontTextMediumElegantLetterSpacing = TypographyLetterSpacingBaseZero
@@ -2843,7 +2843,7 @@ public class ChassisTokens {
     @objc public static let FontTextMediumElegantTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontTextMediumElegantFontStyle = "normal"
     @objc public static let FontTextSmallNormalFontFamily = TypographyFontFamilyText
-    @objc public static let FontTextSmallNormalFontWeight = "regular"
+    @objc public static let FontTextSmallNormalFontWeight = UIFont.Weight.regular
     @objc public static let FontTextSmallNormalLineHeight = TypographyLineHeightTextSmall
     @objc public static let FontTextSmallNormalFontSize = TypographyFontSizeTextSmall
     @objc public static let FontTextSmallNormalLetterSpacing = TypographyLetterSpacingBaseZero
@@ -2852,7 +2852,7 @@ public class ChassisTokens {
     @objc public static let FontTextSmallNormalTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontTextSmallNormalFontStyle = "normal"
     @objc public static let FontTextSmallStrongFontFamily = TypographyFontFamilyText
-    @objc public static let FontTextSmallStrongFontWeight = "semi-bold"
+    @objc public static let FontTextSmallStrongFontWeight = UIFont.Weight.semibold
     @objc public static let FontTextSmallStrongLineHeight = TypographyLineHeightTextSmall
     @objc public static let FontTextSmallStrongFontSize = TypographyFontSizeTextSmall
     @objc public static let FontTextSmallStrongLetterSpacing = TypographyLetterSpacingBaseZero
@@ -2861,7 +2861,7 @@ public class ChassisTokens {
     @objc public static let FontTextSmallStrongTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontTextSmallStrongFontStyle = "normal"
     @objc public static let FontTextSmallMassFontFamily = TypographyFontFamilyText
-    @objc public static let FontTextSmallMassFontWeight = "bold"
+    @objc public static let FontTextSmallMassFontWeight = UIFont.Weight.bold
     @objc public static let FontTextSmallMassLineHeight = TypographyLineHeightTextSmall
     @objc public static let FontTextSmallMassFontSize = TypographyFontSizeTextSmall
     @objc public static let FontTextSmallMassLetterSpacing = TypographyLetterSpacingBaseZero
@@ -2870,7 +2870,7 @@ public class ChassisTokens {
     @objc public static let FontTextSmallMassTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontTextSmallMassFontStyle = "normal"
     @objc public static let FontTextSmallElegantFontFamily = TypographyFontFamilyText
-    @objc public static let FontTextSmallElegantFontWeight = "light"
+    @objc public static let FontTextSmallElegantFontWeight = UIFont.Weight.light
     @objc public static let FontTextSmallElegantLineHeight = TypographyLineHeightTextSmall
     @objc public static let FontTextSmallElegantFontSize = TypographyFontSizeTextSmall
     @objc public static let FontTextSmallElegantLetterSpacing = TypographyLetterSpacingBaseZero
@@ -2879,7 +2879,7 @@ public class ChassisTokens {
     @objc public static let FontTextSmallElegantTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontTextSmallElegantFontStyle = "normal"
     @objc public static let FontTextXsmallNormalFontFamily = TypographyFontFamilyText
-    @objc public static let FontTextXsmallNormalFontWeight = "regular"
+    @objc public static let FontTextXsmallNormalFontWeight = UIFont.Weight.regular
     @objc public static let FontTextXsmallNormalLineHeight = TypographyLineHeightTextXsmall
     @objc public static let FontTextXsmallNormalFontSize = TypographyFontSizeTextXsmall
     @objc public static let FontTextXsmallNormalLetterSpacing = TypographyLetterSpacingBaseZero
@@ -2888,7 +2888,7 @@ public class ChassisTokens {
     @objc public static let FontTextXsmallNormalTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontTextXsmallNormalFontStyle = "normal"
     @objc public static let FontTextXsmallStrongFontFamily = TypographyFontFamilyText
-    @objc public static let FontTextXsmallStrongFontWeight = "semi-bold"
+    @objc public static let FontTextXsmallStrongFontWeight = UIFont.Weight.semibold
     @objc public static let FontTextXsmallStrongLineHeight = TypographyLineHeightTextXsmall
     @objc public static let FontTextXsmallStrongFontSize = TypographyFontSizeTextXsmall
     @objc public static let FontTextXsmallStrongLetterSpacing = TypographyLetterSpacingBaseZero
@@ -2897,7 +2897,7 @@ public class ChassisTokens {
     @objc public static let FontTextXsmallStrongTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontTextXsmallStrongFontStyle = "normal"
     @objc public static let FontTextXsmallMassFontFamily = TypographyFontFamilyText
-    @objc public static let FontTextXsmallMassFontWeight = "bold"
+    @objc public static let FontTextXsmallMassFontWeight = UIFont.Weight.bold
     @objc public static let FontTextXsmallMassLineHeight = TypographyLineHeightTextXsmall
     @objc public static let FontTextXsmallMassFontSize = TypographyFontSizeTextXsmall
     @objc public static let FontTextXsmallMassLetterSpacing = TypographyLetterSpacingBaseZero
@@ -2906,7 +2906,7 @@ public class ChassisTokens {
     @objc public static let FontTextXsmallMassTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontTextXsmallMassFontStyle = "normal"
     @objc public static let FontTextXsmallElegantFontFamily = TypographyFontFamilyText
-    @objc public static let FontTextXsmallElegantFontWeight = "light"
+    @objc public static let FontTextXsmallElegantFontWeight = UIFont.Weight.light
     @objc public static let FontTextXsmallElegantLineHeight = TypographyLineHeightTextXsmall
     @objc public static let FontTextXsmallElegantFontSize = TypographyFontSizeTextXsmall
     @objc public static let FontTextXsmallElegantLetterSpacing = TypographyLetterSpacingBaseZero
@@ -2915,7 +2915,7 @@ public class ChassisTokens {
     @objc public static let FontTextXsmallElegantTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontTextXsmallElegantFontStyle = "normal"
     @objc public static let FontText2xsmallNormalFontFamily = TypographyFontFamilyText
-    @objc public static let FontText2xsmallNormalFontWeight = "regular"
+    @objc public static let FontText2xsmallNormalFontWeight = UIFont.Weight.regular
     @objc public static let FontText2xsmallNormalLineHeight = TypographyLineHeightText2xsmall
     @objc public static let FontText2xsmallNormalFontSize = TypographyFontSizeText2xsmall
     @objc public static let FontText2xsmallNormalLetterSpacing = TypographyLetterSpacingBaseZero
@@ -2924,7 +2924,7 @@ public class ChassisTokens {
     @objc public static let FontText2xsmallNormalTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontText2xsmallNormalFontStyle = "normal"
     @objc public static let FontText2xsmallStrongFontFamily = TypographyFontFamilyText
-    @objc public static let FontText2xsmallStrongFontWeight = "semi-bold"
+    @objc public static let FontText2xsmallStrongFontWeight = UIFont.Weight.semibold
     @objc public static let FontText2xsmallStrongLineHeight = TypographyLineHeightText2xsmall
     @objc public static let FontText2xsmallStrongFontSize = TypographyFontSizeText2xsmall
     @objc public static let FontText2xsmallStrongLetterSpacing = TypographyLetterSpacingBaseZero
@@ -2933,7 +2933,7 @@ public class ChassisTokens {
     @objc public static let FontText2xsmallStrongTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontText2xsmallStrongFontStyle = "normal"
     @objc public static let FontText2xsmallMassFontFamily = TypographyFontFamilyText
-    @objc public static let FontText2xsmallMassFontWeight = "bold"
+    @objc public static let FontText2xsmallMassFontWeight = UIFont.Weight.bold
     @objc public static let FontText2xsmallMassLineHeight = TypographyLineHeightText2xsmall
     @objc public static let FontText2xsmallMassFontSize = TypographyFontSizeText2xsmall
     @objc public static let FontText2xsmallMassLetterSpacing = TypographyLetterSpacingBaseZero
@@ -2942,7 +2942,7 @@ public class ChassisTokens {
     @objc public static let FontText2xsmallMassTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontText2xsmallMassFontStyle = "normal"
     @objc public static let FontText2xsmallElegantFontFamily = TypographyFontFamilyText
-    @objc public static let FontText2xsmallElegantFontWeight = "light"
+    @objc public static let FontText2xsmallElegantFontWeight = UIFont.Weight.light
     @objc public static let FontText2xsmallElegantLineHeight = TypographyLineHeightText2xsmall
     @objc public static let FontText2xsmallElegantFontSize = TypographyFontSizeText2xsmall
     @objc public static let FontText2xsmallElegantLetterSpacing = TypographyLetterSpacingBaseZero
@@ -2951,7 +2951,7 @@ public class ChassisTokens {
     @objc public static let FontText2xsmallElegantTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontText2xsmallElegantFontStyle = "normal"
     @objc public static let FontDisplay5xlargeNormalFontFamily = TypographyFontFamilyDisplay
-    @objc public static let FontDisplay5xlargeNormalFontWeight = "medium"
+    @objc public static let FontDisplay5xlargeNormalFontWeight = UIFont.Weight.medium
     @objc public static let FontDisplay5xlargeNormalLineHeight = TypographyLineHeightDisplay5xlarge
     @objc public static let FontDisplay5xlargeNormalFontSize = TypographyFontSizeDisplay5xlarge
     @objc public static let FontDisplay5xlargeNormalLetterSpacing = TypographyLetterSpacingBaseZero
@@ -2960,7 +2960,7 @@ public class ChassisTokens {
     @objc public static let FontDisplay5xlargeNormalTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontDisplay5xlargeNormalFontStyle = "normal"
     @objc public static let FontDisplay5xlargeStrongFontFamily = TypographyFontFamilyDisplay
-    @objc public static let FontDisplay5xlargeStrongFontWeight = "semibold"
+    @objc public static let FontDisplay5xlargeStrongFontWeight = UIFont.Weight.semibold
     @objc public static let FontDisplay5xlargeStrongLineHeight = TypographyLineHeightDisplay5xlarge
     @objc public static let FontDisplay5xlargeStrongFontSize = TypographyFontSizeDisplay5xlarge
     @objc public static let FontDisplay5xlargeStrongLetterSpacing = TypographyLetterSpacingBaseZero
@@ -2969,7 +2969,7 @@ public class ChassisTokens {
     @objc public static let FontDisplay5xlargeStrongTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontDisplay5xlargeStrongFontStyle = "normal"
     @objc public static let FontDisplay5xlargeMassFontFamily = TypographyFontFamilyDisplay
-    @objc public static let FontDisplay5xlargeMassFontWeight = "bold"
+    @objc public static let FontDisplay5xlargeMassFontWeight = UIFont.Weight.bold
     @objc public static let FontDisplay5xlargeMassLineHeight = TypographyLineHeightDisplay5xlarge
     @objc public static let FontDisplay5xlargeMassFontSize = TypographyFontSizeDisplay5xlarge
     @objc public static let FontDisplay5xlargeMassLetterSpacing = TypographyLetterSpacingBaseZero
@@ -2978,7 +2978,7 @@ public class ChassisTokens {
     @objc public static let FontDisplay5xlargeMassTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontDisplay5xlargeMassFontStyle = "normal"
     @objc public static let FontDisplay5xlargeElegantFontFamily = TypographyFontFamilyDisplay
-    @objc public static let FontDisplay5xlargeElegantFontWeight = "regular"
+    @objc public static let FontDisplay5xlargeElegantFontWeight = UIFont.Weight.regular
     @objc public static let FontDisplay5xlargeElegantLineHeight = TypographyLineHeightDisplay5xlarge
     @objc public static let FontDisplay5xlargeElegantFontSize = TypographyFontSizeDisplay5xlarge
     @objc public static let FontDisplay5xlargeElegantLetterSpacing = TypographyLetterSpacingBaseZero
@@ -2987,7 +2987,7 @@ public class ChassisTokens {
     @objc public static let FontDisplay5xlargeElegantTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontDisplay5xlargeElegantFontStyle = "normal"
     @objc public static let FontDisplay4xlargeNormalFontFamily = TypographyFontFamilyDisplay
-    @objc public static let FontDisplay4xlargeNormalFontWeight = "medium"
+    @objc public static let FontDisplay4xlargeNormalFontWeight = UIFont.Weight.medium
     @objc public static let FontDisplay4xlargeNormalLineHeight = TypographyLineHeightDisplay4xlarge
     @objc public static let FontDisplay4xlargeNormalFontSize = TypographyFontSizeDisplay4xlarge
     @objc public static let FontDisplay4xlargeNormalLetterSpacing = TypographyLetterSpacingBaseZero
@@ -2996,7 +2996,7 @@ public class ChassisTokens {
     @objc public static let FontDisplay4xlargeNormalTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontDisplay4xlargeNormalFontStyle = "normal"
     @objc public static let FontDisplay4xlargeStrongFontFamily = TypographyFontFamilyDisplay
-    @objc public static let FontDisplay4xlargeStrongFontWeight = "semibold"
+    @objc public static let FontDisplay4xlargeStrongFontWeight = UIFont.Weight.semibold
     @objc public static let FontDisplay4xlargeStrongLineHeight = TypographyLineHeightDisplay4xlarge
     @objc public static let FontDisplay4xlargeStrongFontSize = TypographyFontSizeDisplay4xlarge
     @objc public static let FontDisplay4xlargeStrongLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3005,7 +3005,7 @@ public class ChassisTokens {
     @objc public static let FontDisplay4xlargeStrongTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontDisplay4xlargeStrongFontStyle = "normal"
     @objc public static let FontDisplay4xlargeMassFontFamily = TypographyFontFamilyDisplay
-    @objc public static let FontDisplay4xlargeMassFontWeight = "bold"
+    @objc public static let FontDisplay4xlargeMassFontWeight = UIFont.Weight.bold
     @objc public static let FontDisplay4xlargeMassLineHeight = TypographyLineHeightDisplay4xlarge
     @objc public static let FontDisplay4xlargeMassFontSize = TypographyFontSizeDisplay4xlarge
     @objc public static let FontDisplay4xlargeMassLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3014,7 +3014,7 @@ public class ChassisTokens {
     @objc public static let FontDisplay4xlargeMassTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontDisplay4xlargeMassFontStyle = "normal"
     @objc public static let FontDisplay4xlargeElegantFontFamily = TypographyFontFamilyDisplay
-    @objc public static let FontDisplay4xlargeElegantFontWeight = "regular"
+    @objc public static let FontDisplay4xlargeElegantFontWeight = UIFont.Weight.regular
     @objc public static let FontDisplay4xlargeElegantLineHeight = TypographyLineHeightDisplay4xlarge
     @objc public static let FontDisplay4xlargeElegantFontSize = TypographyFontSizeDisplay4xlarge
     @objc public static let FontDisplay4xlargeElegantLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3023,7 +3023,7 @@ public class ChassisTokens {
     @objc public static let FontDisplay4xlargeElegantTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontDisplay4xlargeElegantFontStyle = "normal"
     @objc public static let FontDisplay3xlargeNormalFontFamily = TypographyFontFamilyDisplay
-    @objc public static let FontDisplay3xlargeNormalFontWeight = "medium"
+    @objc public static let FontDisplay3xlargeNormalFontWeight = UIFont.Weight.medium
     @objc public static let FontDisplay3xlargeNormalLineHeight = TypographyLineHeightDisplay3xlarge
     @objc public static let FontDisplay3xlargeNormalFontSize = TypographyFontSizeDisplay3xlarge
     @objc public static let FontDisplay3xlargeNormalLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3032,7 +3032,7 @@ public class ChassisTokens {
     @objc public static let FontDisplay3xlargeNormalTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontDisplay3xlargeNormalFontStyle = "normal"
     @objc public static let FontDisplay3xlargeStrongFontFamily = TypographyFontFamilyDisplay
-    @objc public static let FontDisplay3xlargeStrongFontWeight = "semibold"
+    @objc public static let FontDisplay3xlargeStrongFontWeight = UIFont.Weight.semibold
     @objc public static let FontDisplay3xlargeStrongLineHeight = TypographyLineHeightDisplay3xlarge
     @objc public static let FontDisplay3xlargeStrongFontSize = TypographyFontSizeDisplay3xlarge
     @objc public static let FontDisplay3xlargeStrongLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3041,7 +3041,7 @@ public class ChassisTokens {
     @objc public static let FontDisplay3xlargeStrongTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontDisplay3xlargeStrongFontStyle = "normal"
     @objc public static let FontDisplay3xlargeMassFontFamily = TypographyFontFamilyDisplay
-    @objc public static let FontDisplay3xlargeMassFontWeight = "bold"
+    @objc public static let FontDisplay3xlargeMassFontWeight = UIFont.Weight.bold
     @objc public static let FontDisplay3xlargeMassLineHeight = TypographyLineHeightDisplay3xlarge
     @objc public static let FontDisplay3xlargeMassFontSize = TypographyFontSizeDisplay3xlarge
     @objc public static let FontDisplay3xlargeMassLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3050,7 +3050,7 @@ public class ChassisTokens {
     @objc public static let FontDisplay3xlargeMassTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontDisplay3xlargeMassFontStyle = "normal"
     @objc public static let FontDisplay3xlargeElegantFontFamily = TypographyFontFamilyDisplay
-    @objc public static let FontDisplay3xlargeElegantFontWeight = "regular"
+    @objc public static let FontDisplay3xlargeElegantFontWeight = UIFont.Weight.regular
     @objc public static let FontDisplay3xlargeElegantLineHeight = TypographyLineHeightDisplay3xlarge
     @objc public static let FontDisplay3xlargeElegantFontSize = TypographyFontSizeDisplay3xlarge
     @objc public static let FontDisplay3xlargeElegantLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3059,7 +3059,7 @@ public class ChassisTokens {
     @objc public static let FontDisplay3xlargeElegantTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontDisplay3xlargeElegantFontStyle = "normal"
     @objc public static let FontDisplay2xlargeNormalFontFamily = TypographyFontFamilyDisplay
-    @objc public static let FontDisplay2xlargeNormalFontWeight = "medium"
+    @objc public static let FontDisplay2xlargeNormalFontWeight = UIFont.Weight.medium
     @objc public static let FontDisplay2xlargeNormalLineHeight = TypographyLineHeightDisplay2xlarge
     @objc public static let FontDisplay2xlargeNormalFontSize = TypographyFontSizeDisplay2xlarge
     @objc public static let FontDisplay2xlargeNormalLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3068,7 +3068,7 @@ public class ChassisTokens {
     @objc public static let FontDisplay2xlargeNormalTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontDisplay2xlargeNormalFontStyle = "normal"
     @objc public static let FontDisplay2xlargeStrongFontFamily = TypographyFontFamilyDisplay
-    @objc public static let FontDisplay2xlargeStrongFontWeight = "semibold"
+    @objc public static let FontDisplay2xlargeStrongFontWeight = UIFont.Weight.semibold
     @objc public static let FontDisplay2xlargeStrongLineHeight = TypographyLineHeightDisplay2xlarge
     @objc public static let FontDisplay2xlargeStrongFontSize = TypographyFontSizeDisplay2xlarge
     @objc public static let FontDisplay2xlargeStrongLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3077,7 +3077,7 @@ public class ChassisTokens {
     @objc public static let FontDisplay2xlargeStrongTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontDisplay2xlargeStrongFontStyle = "normal"
     @objc public static let FontDisplay2xlargeMassFontFamily = TypographyFontFamilyDisplay
-    @objc public static let FontDisplay2xlargeMassFontWeight = "bold"
+    @objc public static let FontDisplay2xlargeMassFontWeight = UIFont.Weight.bold
     @objc public static let FontDisplay2xlargeMassLineHeight = TypographyLineHeightDisplay2xlarge
     @objc public static let FontDisplay2xlargeMassFontSize = TypographyFontSizeDisplay2xlarge
     @objc public static let FontDisplay2xlargeMassLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3086,7 +3086,7 @@ public class ChassisTokens {
     @objc public static let FontDisplay2xlargeMassTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontDisplay2xlargeMassFontStyle = "normal"
     @objc public static let FontDisplay2xlargeElegantFontFamily = TypographyFontFamilyDisplay
-    @objc public static let FontDisplay2xlargeElegantFontWeight = "regular"
+    @objc public static let FontDisplay2xlargeElegantFontWeight = UIFont.Weight.regular
     @objc public static let FontDisplay2xlargeElegantLineHeight = TypographyLineHeightDisplay2xlarge
     @objc public static let FontDisplay2xlargeElegantFontSize = TypographyFontSizeDisplay2xlarge
     @objc public static let FontDisplay2xlargeElegantLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3095,7 +3095,7 @@ public class ChassisTokens {
     @objc public static let FontDisplay2xlargeElegantTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontDisplay2xlargeElegantFontStyle = "normal"
     @objc public static let FontDisplayXlargeNormalFontFamily = TypographyFontFamilyDisplay
-    @objc public static let FontDisplayXlargeNormalFontWeight = "medium"
+    @objc public static let FontDisplayXlargeNormalFontWeight = UIFont.Weight.medium
     @objc public static let FontDisplayXlargeNormalLineHeight = TypographyLineHeightDisplayXlarge
     @objc public static let FontDisplayXlargeNormalFontSize = TypographyFontSizeDisplayXlarge
     @objc public static let FontDisplayXlargeNormalLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3104,7 +3104,7 @@ public class ChassisTokens {
     @objc public static let FontDisplayXlargeNormalTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontDisplayXlargeNormalFontStyle = "normal"
     @objc public static let FontDisplayXlargeStrongFontFamily = TypographyFontFamilyDisplay
-    @objc public static let FontDisplayXlargeStrongFontWeight = "semibold"
+    @objc public static let FontDisplayXlargeStrongFontWeight = UIFont.Weight.semibold
     @objc public static let FontDisplayXlargeStrongLineHeight = TypographyLineHeightDisplayXlarge
     @objc public static let FontDisplayXlargeStrongFontSize = TypographyFontSizeDisplayXlarge
     @objc public static let FontDisplayXlargeStrongLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3113,7 +3113,7 @@ public class ChassisTokens {
     @objc public static let FontDisplayXlargeStrongTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontDisplayXlargeStrongFontStyle = "normal"
     @objc public static let FontDisplayXlargeMassFontFamily = TypographyFontFamilyDisplay
-    @objc public static let FontDisplayXlargeMassFontWeight = "bold"
+    @objc public static let FontDisplayXlargeMassFontWeight = UIFont.Weight.bold
     @objc public static let FontDisplayXlargeMassLineHeight = TypographyLineHeightDisplayXlarge
     @objc public static let FontDisplayXlargeMassFontSize = TypographyFontSizeDisplayXlarge
     @objc public static let FontDisplayXlargeMassLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3122,7 +3122,7 @@ public class ChassisTokens {
     @objc public static let FontDisplayXlargeMassTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontDisplayXlargeMassFontStyle = "normal"
     @objc public static let FontDisplayXlargeElegantFontFamily = TypographyFontFamilyDisplay
-    @objc public static let FontDisplayXlargeElegantFontWeight = "regular"
+    @objc public static let FontDisplayXlargeElegantFontWeight = UIFont.Weight.regular
     @objc public static let FontDisplayXlargeElegantLineHeight = TypographyLineHeightDisplayXlarge
     @objc public static let FontDisplayXlargeElegantFontSize = TypographyFontSizeDisplayXlarge
     @objc public static let FontDisplayXlargeElegantLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3131,7 +3131,7 @@ public class ChassisTokens {
     @objc public static let FontDisplayXlargeElegantTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontDisplayXlargeElegantFontStyle = "normal"
     @objc public static let FontDisplayLargeNormalFontFamily = TypographyFontFamilyDisplay
-    @objc public static let FontDisplayLargeNormalFontWeight = "medium"
+    @objc public static let FontDisplayLargeNormalFontWeight = UIFont.Weight.medium
     @objc public static let FontDisplayLargeNormalLineHeight = TypographyLineHeightDisplayLarge
     @objc public static let FontDisplayLargeNormalFontSize = TypographyFontSizeDisplayLarge
     @objc public static let FontDisplayLargeNormalLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3140,7 +3140,7 @@ public class ChassisTokens {
     @objc public static let FontDisplayLargeNormalTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontDisplayLargeNormalFontStyle = "normal"
     @objc public static let FontDisplayLargeStrongFontFamily = TypographyFontFamilyDisplay
-    @objc public static let FontDisplayLargeStrongFontWeight = "semibold"
+    @objc public static let FontDisplayLargeStrongFontWeight = UIFont.Weight.semibold
     @objc public static let FontDisplayLargeStrongLineHeight = TypographyLineHeightDisplayLarge
     @objc public static let FontDisplayLargeStrongFontSize = TypographyFontSizeDisplayLarge
     @objc public static let FontDisplayLargeStrongLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3149,7 +3149,7 @@ public class ChassisTokens {
     @objc public static let FontDisplayLargeStrongTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontDisplayLargeStrongFontStyle = "normal"
     @objc public static let FontDisplayLargeMassFontFamily = TypographyFontFamilyDisplay
-    @objc public static let FontDisplayLargeMassFontWeight = "bold"
+    @objc public static let FontDisplayLargeMassFontWeight = UIFont.Weight.bold
     @objc public static let FontDisplayLargeMassLineHeight = TypographyLineHeightDisplayLarge
     @objc public static let FontDisplayLargeMassFontSize = TypographyFontSizeDisplayLarge
     @objc public static let FontDisplayLargeMassLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3158,7 +3158,7 @@ public class ChassisTokens {
     @objc public static let FontDisplayLargeMassTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontDisplayLargeMassFontStyle = "normal"
     @objc public static let FontDisplayLargeElegantFontFamily = TypographyFontFamilyDisplay
-    @objc public static let FontDisplayLargeElegantFontWeight = "regular"
+    @objc public static let FontDisplayLargeElegantFontWeight = UIFont.Weight.regular
     @objc public static let FontDisplayLargeElegantLineHeight = TypographyLineHeightDisplayLarge
     @objc public static let FontDisplayLargeElegantFontSize = TypographyFontSizeDisplayLarge
     @objc public static let FontDisplayLargeElegantLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3167,7 +3167,7 @@ public class ChassisTokens {
     @objc public static let FontDisplayLargeElegantTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontDisplayLargeElegantFontStyle = "normal"
     @objc public static let FontDisplayMediumNormalFontFamily = TypographyFontFamilyDisplay
-    @objc public static let FontDisplayMediumNormalFontWeight = "medium"
+    @objc public static let FontDisplayMediumNormalFontWeight = UIFont.Weight.medium
     @objc public static let FontDisplayMediumNormalLineHeight = TypographyLineHeightDisplayMedium
     @objc public static let FontDisplayMediumNormalFontSize = TypographyFontSizeDisplayMedium
     @objc public static let FontDisplayMediumNormalLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3176,7 +3176,7 @@ public class ChassisTokens {
     @objc public static let FontDisplayMediumNormalTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontDisplayMediumNormalFontStyle = "normal"
     @objc public static let FontDisplayMediumStrongFontFamily = TypographyFontFamilyDisplay
-    @objc public static let FontDisplayMediumStrongFontWeight = "semibold"
+    @objc public static let FontDisplayMediumStrongFontWeight = UIFont.Weight.semibold
     @objc public static let FontDisplayMediumStrongLineHeight = TypographyLineHeightDisplayMedium
     @objc public static let FontDisplayMediumStrongFontSize = TypographyFontSizeDisplayMedium
     @objc public static let FontDisplayMediumStrongLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3185,7 +3185,7 @@ public class ChassisTokens {
     @objc public static let FontDisplayMediumStrongTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontDisplayMediumStrongFontStyle = "normal"
     @objc public static let FontDisplayMediumMassFontFamily = TypographyFontFamilyDisplay
-    @objc public static let FontDisplayMediumMassFontWeight = "bold"
+    @objc public static let FontDisplayMediumMassFontWeight = UIFont.Weight.bold
     @objc public static let FontDisplayMediumMassLineHeight = TypographyLineHeightDisplayMedium
     @objc public static let FontDisplayMediumMassFontSize = TypographyFontSizeDisplayMedium
     @objc public static let FontDisplayMediumMassLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3194,7 +3194,7 @@ public class ChassisTokens {
     @objc public static let FontDisplayMediumMassTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontDisplayMediumMassFontStyle = "normal"
     @objc public static let FontDisplayMediumElegantFontFamily = TypographyFontFamilyDisplay
-    @objc public static let FontDisplayMediumElegantFontWeight = "regular"
+    @objc public static let FontDisplayMediumElegantFontWeight = UIFont.Weight.regular
     @objc public static let FontDisplayMediumElegantLineHeight = TypographyLineHeightDisplayMedium
     @objc public static let FontDisplayMediumElegantFontSize = TypographyFontSizeDisplayMedium
     @objc public static let FontDisplayMediumElegantLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3203,7 +3203,7 @@ public class ChassisTokens {
     @objc public static let FontDisplayMediumElegantTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontDisplayMediumElegantFontStyle = "normal"
     @objc public static let FontDisplaySmallNormalFontFamily = TypographyFontFamilyDisplay
-    @objc public static let FontDisplaySmallNormalFontWeight = "medium"
+    @objc public static let FontDisplaySmallNormalFontWeight = UIFont.Weight.medium
     @objc public static let FontDisplaySmallNormalLineHeight = TypographyLineHeightDisplaySmall
     @objc public static let FontDisplaySmallNormalFontSize = TypographyFontSizeDisplaySmall
     @objc public static let FontDisplaySmallNormalLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3212,7 +3212,7 @@ public class ChassisTokens {
     @objc public static let FontDisplaySmallNormalTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontDisplaySmallNormalFontStyle = "normal"
     @objc public static let FontDisplaySmallStrongFontFamily = TypographyFontFamilyDisplay
-    @objc public static let FontDisplaySmallStrongFontWeight = "semibold"
+    @objc public static let FontDisplaySmallStrongFontWeight = UIFont.Weight.semibold
     @objc public static let FontDisplaySmallStrongLineHeight = TypographyLineHeightDisplaySmall
     @objc public static let FontDisplaySmallStrongFontSize = TypographyFontSizeDisplaySmall
     @objc public static let FontDisplaySmallStrongLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3221,7 +3221,7 @@ public class ChassisTokens {
     @objc public static let FontDisplaySmallStrongTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontDisplaySmallStrongFontStyle = "normal"
     @objc public static let FontDisplaySmallMassFontFamily = TypographyFontFamilyDisplay
-    @objc public static let FontDisplaySmallMassFontWeight = "bold"
+    @objc public static let FontDisplaySmallMassFontWeight = UIFont.Weight.bold
     @objc public static let FontDisplaySmallMassLineHeight = TypographyLineHeightDisplaySmall
     @objc public static let FontDisplaySmallMassFontSize = TypographyFontSizeDisplaySmall
     @objc public static let FontDisplaySmallMassLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3230,7 +3230,7 @@ public class ChassisTokens {
     @objc public static let FontDisplaySmallMassTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontDisplaySmallMassFontStyle = "normal"
     @objc public static let FontDisplaySmallElegantFontFamily = TypographyFontFamilyDisplay
-    @objc public static let FontDisplaySmallElegantFontWeight = "regular"
+    @objc public static let FontDisplaySmallElegantFontWeight = UIFont.Weight.regular
     @objc public static let FontDisplaySmallElegantLineHeight = TypographyLineHeightDisplaySmall
     @objc public static let FontDisplaySmallElegantFontSize = TypographyFontSizeDisplaySmall
     @objc public static let FontDisplaySmallElegantLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3239,7 +3239,7 @@ public class ChassisTokens {
     @objc public static let FontDisplaySmallElegantTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontDisplaySmallElegantFontStyle = "normal"
     @objc public static let FontDisplayXsmallNormalFontFamily = TypographyFontFamilyDisplay
-    @objc public static let FontDisplayXsmallNormalFontWeight = "medium"
+    @objc public static let FontDisplayXsmallNormalFontWeight = UIFont.Weight.medium
     @objc public static let FontDisplayXsmallNormalLineHeight = TypographyLineHeightDisplayXsmall
     @objc public static let FontDisplayXsmallNormalFontSize = TypographyFontSizeDisplayXsmall
     @objc public static let FontDisplayXsmallNormalLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3248,7 +3248,7 @@ public class ChassisTokens {
     @objc public static let FontDisplayXsmallNormalTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontDisplayXsmallNormalFontStyle = "normal"
     @objc public static let FontDisplayXsmallStrongFontFamily = TypographyFontFamilyDisplay
-    @objc public static let FontDisplayXsmallStrongFontWeight = "semibold"
+    @objc public static let FontDisplayXsmallStrongFontWeight = UIFont.Weight.semibold
     @objc public static let FontDisplayXsmallStrongLineHeight = TypographyLineHeightDisplayXsmall
     @objc public static let FontDisplayXsmallStrongFontSize = TypographyFontSizeDisplayXsmall
     @objc public static let FontDisplayXsmallStrongLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3257,7 +3257,7 @@ public class ChassisTokens {
     @objc public static let FontDisplayXsmallStrongTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontDisplayXsmallStrongFontStyle = "normal"
     @objc public static let FontDisplayXsmallMassFontFamily = TypographyFontFamilyDisplay
-    @objc public static let FontDisplayXsmallMassFontWeight = "bold"
+    @objc public static let FontDisplayXsmallMassFontWeight = UIFont.Weight.bold
     @objc public static let FontDisplayXsmallMassLineHeight = TypographyLineHeightDisplayXsmall
     @objc public static let FontDisplayXsmallMassFontSize = TypographyFontSizeDisplayXsmall
     @objc public static let FontDisplayXsmallMassLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3266,7 +3266,7 @@ public class ChassisTokens {
     @objc public static let FontDisplayXsmallMassTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontDisplayXsmallMassFontStyle = "normal"
     @objc public static let FontDisplayXsmallElegantFontFamily = TypographyFontFamilyDisplay
-    @objc public static let FontDisplayXsmallElegantFontWeight = "regular"
+    @objc public static let FontDisplayXsmallElegantFontWeight = UIFont.Weight.regular
     @objc public static let FontDisplayXsmallElegantLineHeight = TypographyLineHeightDisplayXsmall
     @objc public static let FontDisplayXsmallElegantFontSize = TypographyFontSizeDisplayXsmall
     @objc public static let FontDisplayXsmallElegantLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3275,7 +3275,7 @@ public class ChassisTokens {
     @objc public static let FontDisplayXsmallElegantTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontDisplayXsmallElegantFontStyle = "normal"
     @objc public static let FontDisplay2xsmallNormalFontFamily = TypographyFontFamilyDisplay
-    @objc public static let FontDisplay2xsmallNormalFontWeight = "medium"
+    @objc public static let FontDisplay2xsmallNormalFontWeight = UIFont.Weight.medium
     @objc public static let FontDisplay2xsmallNormalLineHeight = TypographyLineHeightDisplay2xsmall
     @objc public static let FontDisplay2xsmallNormalFontSize = TypographyFontSizeDisplay2xsmall
     @objc public static let FontDisplay2xsmallNormalLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3284,7 +3284,7 @@ public class ChassisTokens {
     @objc public static let FontDisplay2xsmallNormalTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontDisplay2xsmallNormalFontStyle = "normal"
     @objc public static let FontDisplay2xsmallStrongFontFamily = TypographyFontFamilyDisplay
-    @objc public static let FontDisplay2xsmallStrongFontWeight = "semibold"
+    @objc public static let FontDisplay2xsmallStrongFontWeight = UIFont.Weight.semibold
     @objc public static let FontDisplay2xsmallStrongLineHeight = TypographyLineHeightDisplay2xsmall
     @objc public static let FontDisplay2xsmallStrongFontSize = TypographyFontSizeDisplay2xsmall
     @objc public static let FontDisplay2xsmallStrongLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3293,7 +3293,7 @@ public class ChassisTokens {
     @objc public static let FontDisplay2xsmallStrongTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontDisplay2xsmallStrongFontStyle = "normal"
     @objc public static let FontDisplay2xsmallMassFontFamily = TypographyFontFamilyDisplay
-    @objc public static let FontDisplay2xsmallMassFontWeight = "bold"
+    @objc public static let FontDisplay2xsmallMassFontWeight = UIFont.Weight.bold
     @objc public static let FontDisplay2xsmallMassLineHeight = TypographyLineHeightDisplay2xsmall
     @objc public static let FontDisplay2xsmallMassFontSize = TypographyFontSizeDisplay2xsmall
     @objc public static let FontDisplay2xsmallMassLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3302,7 +3302,7 @@ public class ChassisTokens {
     @objc public static let FontDisplay2xsmallMassTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontDisplay2xsmallMassFontStyle = "normal"
     @objc public static let FontDisplay2xsmallElegantFontFamily = TypographyFontFamilyDisplay
-    @objc public static let FontDisplay2xsmallElegantFontWeight = "regular"
+    @objc public static let FontDisplay2xsmallElegantFontWeight = UIFont.Weight.regular
     @objc public static let FontDisplay2xsmallElegantLineHeight = TypographyLineHeightDisplay2xsmall
     @objc public static let FontDisplay2xsmallElegantFontSize = TypographyFontSizeDisplay2xsmall
     @objc public static let FontDisplay2xsmallElegantLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3311,7 +3311,7 @@ public class ChassisTokens {
     @objc public static let FontDisplay2xsmallElegantTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontDisplay2xsmallElegantFontStyle = "normal"
     @objc public static let FontHtmlH1FontFamily = TypographyFontFamilyHtml
-    @objc public static let FontHtmlH1FontWeight = "bold"
+    @objc public static let FontHtmlH1FontWeight = UIFont.Weight.bold
     @objc public static let FontHtmlH1LineHeight = TypographyLineHeightHtmlH1
     @objc public static let FontHtmlH1FontSize = TypographyFontSizeHtmlH1
     @objc public static let FontHtmlH1LetterSpacing = TypographyLetterSpacingBaseZero
@@ -3320,7 +3320,7 @@ public class ChassisTokens {
     @objc public static let FontHtmlH1TextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontHtmlH1FontStyle = "normal"
     @objc public static let FontHtmlH2FontFamily = TypographyFontFamilyHtml
-    @objc public static let FontHtmlH2FontWeight = "bold"
+    @objc public static let FontHtmlH2FontWeight = UIFont.Weight.bold
     @objc public static let FontHtmlH2LineHeight = TypographyLineHeightHtmlH2
     @objc public static let FontHtmlH2FontSize = TypographyFontSizeHtmlH2
     @objc public static let FontHtmlH2LetterSpacing = TypographyLetterSpacingBaseZero
@@ -3329,7 +3329,7 @@ public class ChassisTokens {
     @objc public static let FontHtmlH2TextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontHtmlH2FontStyle = "normal"
     @objc public static let FontHtmlH3FontFamily = TypographyFontFamilyHtml
-    @objc public static let FontHtmlH3FontWeight = "bold"
+    @objc public static let FontHtmlH3FontWeight = UIFont.Weight.bold
     @objc public static let FontHtmlH3LineHeight = TypographyLineHeightHtmlH3
     @objc public static let FontHtmlH3FontSize = TypographyFontSizeHtmlH3
     @objc public static let FontHtmlH3LetterSpacing = TypographyLetterSpacingBaseZero
@@ -3338,7 +3338,7 @@ public class ChassisTokens {
     @objc public static let FontHtmlH3TextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontHtmlH3FontStyle = "normal"
     @objc public static let FontHtmlH4FontFamily = TypographyFontFamilyHtml
-    @objc public static let FontHtmlH4FontWeight = "bold"
+    @objc public static let FontHtmlH4FontWeight = UIFont.Weight.bold
     @objc public static let FontHtmlH4LineHeight = TypographyLineHeightHtmlH4
     @objc public static let FontHtmlH4FontSize = TypographyFontSizeHtmlH4
     @objc public static let FontHtmlH4LetterSpacing = TypographyLetterSpacingBaseZero
@@ -3347,7 +3347,7 @@ public class ChassisTokens {
     @objc public static let FontHtmlH4TextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontHtmlH4FontStyle = "normal"
     @objc public static let FontHtmlH5FontFamily = TypographyFontFamilyHtml
-    @objc public static let FontHtmlH5FontWeight = "bold"
+    @objc public static let FontHtmlH5FontWeight = UIFont.Weight.bold
     @objc public static let FontHtmlH5LineHeight = TypographyLineHeightHtmlH5
     @objc public static let FontHtmlH5FontSize = TypographyFontSizeHtmlH5
     @objc public static let FontHtmlH5LetterSpacing = TypographyLetterSpacingBaseZero
@@ -3356,7 +3356,7 @@ public class ChassisTokens {
     @objc public static let FontHtmlH5TextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontHtmlH5FontStyle = "normal"
     @objc public static let FontHtmlH6FontFamily = TypographyFontFamilyHtml
-    @objc public static let FontHtmlH6FontWeight = "bold"
+    @objc public static let FontHtmlH6FontWeight = UIFont.Weight.bold
     @objc public static let FontHtmlH6LineHeight = TypographyLineHeightHtmlH6
     @objc public static let FontHtmlH6FontSize = TypographyFontSizeHtmlH6
     @objc public static let FontHtmlH6LetterSpacing = TypographyLetterSpacingBaseZero
@@ -3365,7 +3365,7 @@ public class ChassisTokens {
     @objc public static let FontHtmlH6TextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontHtmlH6FontStyle = "normal"
     @objc public static let FontHtmlBodyFontFamily = TypographyFontFamilyHtml
-    @objc public static let FontHtmlBodyFontWeight = "regular"
+    @objc public static let FontHtmlBodyFontWeight = UIFont.Weight.regular
     @objc public static let FontHtmlBodyLineHeight = TypographyLineHeightHtmlBody
     @objc public static let FontHtmlBodyFontSize = TypographyFontSizeHtmlBody
     @objc public static let FontHtmlBodyLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3374,7 +3374,7 @@ public class ChassisTokens {
     @objc public static let FontHtmlBodyTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontHtmlBodyFontStyle = "normal"
     @objc public static let FontHtmlCodeFontFamily = TypographyFontFamilyCode
-    @objc public static let FontHtmlCodeFontWeight = "regular"
+    @objc public static let FontHtmlCodeFontWeight = UIFont.Weight.regular
     @objc public static let FontHtmlCodeLineHeight = TypographyLineHeightHtmlCode
     @objc public static let FontHtmlCodeFontSize = TypographyFontSizeHtmlCode
     @objc public static let FontHtmlCodeLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3383,7 +3383,7 @@ public class ChassisTokens {
     @objc public static let FontHtmlCodeTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontHtmlCodeFontStyle = "normal"
     @objc public static let FontHtmlParagraphFontFamily = TypographyFontFamilyHtml
-    @objc public static let FontHtmlParagraphFontWeight = "regular"
+    @objc public static let FontHtmlParagraphFontWeight = UIFont.Weight.regular
     @objc public static let FontHtmlParagraphLineHeight = TypographyLineHeightHtmlParagraph
     @objc public static let FontHtmlParagraphFontSize = TypographyFontSizeHtmlParagraph
     @objc public static let FontHtmlParagraphLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3392,7 +3392,7 @@ public class ChassisTokens {
     @objc public static let FontHtmlParagraphTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontHtmlParagraphFontStyle = "normal"
     @objc public static let FontHtmlBlockquoteFontFamily = TypographyFontFamilyHtml
-    @objc public static let FontHtmlBlockquoteFontWeight = "light"
+    @objc public static let FontHtmlBlockquoteFontWeight = UIFont.Weight.light
     @objc public static let FontHtmlBlockquoteLineHeight = TypographyLineHeightHtmlBlockquote
     @objc public static let FontHtmlBlockquoteFontSize = TypographyFontSizeHtmlBlockquote
     @objc public static let FontHtmlBlockquoteLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3401,7 +3401,7 @@ public class ChassisTokens {
     @objc public static let FontHtmlBlockquoteTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontHtmlBlockquoteFontStyle = "italic"
     @objc public static let FontHtmlListFontFamily = TypographyFontFamilyHtml
-    @objc public static let FontHtmlListFontWeight = "regular"
+    @objc public static let FontHtmlListFontWeight = UIFont.Weight.regular
     @objc public static let FontHtmlListLineHeight = TypographyLineHeightHtmlBody
     @objc public static let FontHtmlListFontSize = TypographyFontSizeHtmlBody
     @objc public static let FontHtmlListLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3410,7 +3410,7 @@ public class ChassisTokens {
     @objc public static let FontHtmlListTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontHtmlListFontStyle = "normal"
     @objc public static let FontHtmlCiteFontFamily = TypographyFontFamilyHtml
-    @objc public static let FontHtmlCiteFontWeight = "semi-bold"
+    @objc public static let FontHtmlCiteFontWeight = UIFont.Weight.semibold
     @objc public static let FontHtmlCiteLineHeight = TypographyLineHeightHtmlCite
     @objc public static let FontHtmlCiteFontSize = TypographyFontSizeHtmlCite
     @objc public static let FontHtmlCiteLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3419,7 +3419,7 @@ public class ChassisTokens {
     @objc public static let FontHtmlCiteTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontHtmlCiteFontStyle = "normal"
     @objc public static let FontCodeLargeNormalFontFamily = TypographyFontFamilyCode
-    @objc public static let FontCodeLargeNormalFontWeight = "regular"
+    @objc public static let FontCodeLargeNormalFontWeight = UIFont.Weight.regular
     @objc public static let FontCodeLargeNormalLineHeight = TypographyLineHeightCodeLarge
     @objc public static let FontCodeLargeNormalFontSize = TypographyFontSizeCodeLarge
     @objc public static let FontCodeLargeNormalLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3428,7 +3428,7 @@ public class ChassisTokens {
     @objc public static let FontCodeLargeNormalTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontCodeLargeNormalFontStyle = "normal"
     @objc public static let FontCodeLargeStrongFontFamily = TypographyFontFamilyCode
-    @objc public static let FontCodeLargeStrongFontWeight = "bold"
+    @objc public static let FontCodeLargeStrongFontWeight = UIFont.Weight.bold
     @objc public static let FontCodeLargeStrongLineHeight = TypographyLineHeightCodeLarge
     @objc public static let FontCodeLargeStrongFontSize = TypographyFontSizeCodeLarge
     @objc public static let FontCodeLargeStrongLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3437,7 +3437,7 @@ public class ChassisTokens {
     @objc public static let FontCodeLargeStrongTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontCodeLargeStrongFontStyle = "normal"
     @objc public static let FontCodeMediumNormalFontFamily = TypographyFontFamilyCode
-    @objc public static let FontCodeMediumNormalFontWeight = "regular"
+    @objc public static let FontCodeMediumNormalFontWeight = UIFont.Weight.regular
     @objc public static let FontCodeMediumNormalLineHeight = TypographyLineHeightCodeMedium
     @objc public static let FontCodeMediumNormalFontSize = TypographyFontSizeCodeMedium
     @objc public static let FontCodeMediumNormalLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3446,7 +3446,7 @@ public class ChassisTokens {
     @objc public static let FontCodeMediumNormalTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontCodeMediumNormalFontStyle = "normal"
     @objc public static let FontCodeMediumStrongFontFamily = TypographyFontFamilyCode
-    @objc public static let FontCodeMediumStrongFontWeight = "bold"
+    @objc public static let FontCodeMediumStrongFontWeight = UIFont.Weight.bold
     @objc public static let FontCodeMediumStrongLineHeight = TypographyLineHeightCodeMedium
     @objc public static let FontCodeMediumStrongFontSize = TypographyFontSizeCodeMedium
     @objc public static let FontCodeMediumStrongLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3455,7 +3455,7 @@ public class ChassisTokens {
     @objc public static let FontCodeMediumStrongTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontCodeMediumStrongFontStyle = "normal"
     @objc public static let FontCodeSmallNormalFontFamily = TypographyFontFamilyCode
-    @objc public static let FontCodeSmallNormalFontWeight = "regular"
+    @objc public static let FontCodeSmallNormalFontWeight = UIFont.Weight.regular
     @objc public static let FontCodeSmallNormalLineHeight = TypographyLineHeightCodeSmall
     @objc public static let FontCodeSmallNormalFontSize = TypographyFontSizeCodeSmall
     @objc public static let FontCodeSmallNormalLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3464,7 +3464,7 @@ public class ChassisTokens {
     @objc public static let FontCodeSmallNormalTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontCodeSmallNormalFontStyle = "normal"
     @objc public static let FontCodeSmallStrongFontFamily = TypographyFontFamilyCode
-    @objc public static let FontCodeSmallStrongFontWeight = "bold"
+    @objc public static let FontCodeSmallStrongFontWeight = UIFont.Weight.bold
     @objc public static let FontCodeSmallStrongLineHeight = TypographyLineHeightCodeSmall
     @objc public static let FontCodeSmallStrongFontSize = TypographyFontSizeCodeSmall
     @objc public static let FontCodeSmallStrongLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3473,7 +3473,7 @@ public class ChassisTokens {
     @objc public static let FontCodeSmallStrongTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontCodeSmallStrongFontStyle = "normal"
     @objc public static let FontAccordionMediumTitleFontFamily = TypographyFontFamilyText
-    @objc public static let FontAccordionMediumTitleFontWeight = "semi-bold"
+    @objc public static let FontAccordionMediumTitleFontWeight = UIFont.Weight.semibold
     @objc public static let FontAccordionMediumTitleLineHeight = TypographyLineHeightTextMedium
     @objc public static let FontAccordionMediumTitleFontSize = TypographyFontSizeTextMedium
     @objc public static let FontAccordionMediumTitleLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3482,7 +3482,7 @@ public class ChassisTokens {
     @objc public static let FontAccordionMediumTitleTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontAccordionMediumTitleFontStyle = "normal"
     @objc public static let FontAccordionMediumBodyFontFamily = TypographyFontFamilyText
-    @objc public static let FontAccordionMediumBodyFontWeight = "regular"
+    @objc public static let FontAccordionMediumBodyFontWeight = UIFont.Weight.regular
     @objc public static let FontAccordionMediumBodyLineHeight = TypographyLineHeightTextMedium
     @objc public static let FontAccordionMediumBodyFontSize = TypographyFontSizeTextMedium
     @objc public static let FontAccordionMediumBodyLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3491,7 +3491,7 @@ public class ChassisTokens {
     @objc public static let FontAccordionMediumBodyTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontAccordionMediumBodyFontStyle = "normal"
     @objc public static let FontAccordionLargeTitleFontFamily = TypographyFontFamilyText
-    @objc public static let FontAccordionLargeTitleFontWeight = "semi-bold"
+    @objc public static let FontAccordionLargeTitleFontWeight = UIFont.Weight.semibold
     @objc public static let FontAccordionLargeTitleLineHeight = TypographyLineHeightTextLarge
     @objc public static let FontAccordionLargeTitleFontSize = TypographyFontSizeTextLarge
     @objc public static let FontAccordionLargeTitleLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3500,7 +3500,7 @@ public class ChassisTokens {
     @objc public static let FontAccordionLargeTitleTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontAccordionLargeTitleFontStyle = "normal"
     @objc public static let FontAccordionLargeBodyFontFamily = TypographyFontFamilyText
-    @objc public static let FontAccordionLargeBodyFontWeight = "regular"
+    @objc public static let FontAccordionLargeBodyFontWeight = UIFont.Weight.regular
     @objc public static let FontAccordionLargeBodyLineHeight = TypographyLineHeightTextLarge
     @objc public static let FontAccordionLargeBodyFontSize = TypographyFontSizeTextLarge
     @objc public static let FontAccordionLargeBodyLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3509,7 +3509,7 @@ public class ChassisTokens {
     @objc public static let FontAccordionLargeBodyTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontAccordionLargeBodyFontStyle = "normal"
     @objc public static let FontAccordionSmallTitleFontFamily = TypographyFontFamilyText
-    @objc public static let FontAccordionSmallTitleFontWeight = "semi-bold"
+    @objc public static let FontAccordionSmallTitleFontWeight = UIFont.Weight.semibold
     @objc public static let FontAccordionSmallTitleLineHeight = TypographyLineHeightTextSmall
     @objc public static let FontAccordionSmallTitleFontSize = TypographyFontSizeTextSmall
     @objc public static let FontAccordionSmallTitleLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3518,7 +3518,7 @@ public class ChassisTokens {
     @objc public static let FontAccordionSmallTitleTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontAccordionSmallTitleFontStyle = "normal"
     @objc public static let FontAccordionSmallBodyFontFamily = TypographyFontFamilyText
-    @objc public static let FontAccordionSmallBodyFontWeight = "regular"
+    @objc public static let FontAccordionSmallBodyFontWeight = UIFont.Weight.regular
     @objc public static let FontAccordionSmallBodyLineHeight = TypographyLineHeightTextSmall
     @objc public static let FontAccordionSmallBodyFontSize = TypographyFontSizeTextSmall
     @objc public static let FontAccordionSmallBodyLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3527,7 +3527,7 @@ public class ChassisTokens {
     @objc public static let FontAccordionSmallBodyTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontAccordionSmallBodyFontStyle = "normal"
     @objc public static let FontAlertLargeTitleFontFamily = TypographyFontFamilyText
-    @objc public static let FontAlertLargeTitleFontWeight = "semi-bold"
+    @objc public static let FontAlertLargeTitleFontWeight = UIFont.Weight.semibold
     @objc public static let FontAlertLargeTitleLineHeight = TypographyLineHeightTextXlarge
     @objc public static let FontAlertLargeTitleFontSize = TypographyFontSizeTextXlarge
     @objc public static let FontAlertLargeTitleLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3536,7 +3536,7 @@ public class ChassisTokens {
     @objc public static let FontAlertLargeTitleTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontAlertLargeTitleFontStyle = "normal"
     @objc public static let FontAlertLargeBodyFontFamily = TypographyFontFamilyText
-    @objc public static let FontAlertLargeBodyFontWeight = "regular"
+    @objc public static let FontAlertLargeBodyFontWeight = UIFont.Weight.regular
     @objc public static let FontAlertLargeBodyLineHeight = TypographyLineHeightTextLarge
     @objc public static let FontAlertLargeBodyFontSize = TypographyFontSizeTextLarge
     @objc public static let FontAlertLargeBodyLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3545,7 +3545,7 @@ public class ChassisTokens {
     @objc public static let FontAlertLargeBodyTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontAlertLargeBodyFontStyle = "normal"
     @objc public static let FontAlertSmallTitleFontFamily = TypographyFontFamilyText
-    @objc public static let FontAlertSmallTitleFontWeight = "semi-bold"
+    @objc public static let FontAlertSmallTitleFontWeight = UIFont.Weight.semibold
     @objc public static let FontAlertSmallTitleLineHeight = TypographyLineHeightTextLarge
     @objc public static let FontAlertSmallTitleFontSize = TypographyFontSizeTextLarge
     @objc public static let FontAlertSmallTitleLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3554,7 +3554,7 @@ public class ChassisTokens {
     @objc public static let FontAlertSmallTitleTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontAlertSmallTitleFontStyle = "normal"
     @objc public static let FontAlertSmallBodyFontFamily = TypographyFontFamilyText
-    @objc public static let FontAlertSmallBodyFontWeight = "regular"
+    @objc public static let FontAlertSmallBodyFontWeight = UIFont.Weight.regular
     @objc public static let FontAlertSmallBodyLineHeight = TypographyLineHeightTextMedium
     @objc public static let FontAlertSmallBodyFontSize = TypographyFontSizeTextMedium
     @objc public static let FontAlertSmallBodyLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3563,7 +3563,7 @@ public class ChassisTokens {
     @objc public static let FontAlertSmallBodyTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontAlertSmallBodyFontStyle = "normal"
     @objc public static let FontAssistMediumFontFamily = TypographyFontFamilyText
-    @objc public static let FontAssistMediumFontWeight = "regular"
+    @objc public static let FontAssistMediumFontWeight = UIFont.Weight.regular
     @objc public static let FontAssistMediumLineHeight = TypographyLineHeightTextMedium
     @objc public static let FontAssistMediumFontSize = TypographyFontSizeTextMedium
     @objc public static let FontAssistMediumLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3572,7 +3572,7 @@ public class ChassisTokens {
     @objc public static let FontAssistMediumTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontAssistMediumFontStyle = "normal"
     @objc public static let FontAssistLargeFontFamily = TypographyFontFamilyText
-    @objc public static let FontAssistLargeFontWeight = "regular"
+    @objc public static let FontAssistLargeFontWeight = UIFont.Weight.regular
     @objc public static let FontAssistLargeLineHeight = TypographyLineHeightTextLarge
     @objc public static let FontAssistLargeFontSize = TypographyFontSizeTextLarge
     @objc public static let FontAssistLargeLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3581,7 +3581,7 @@ public class ChassisTokens {
     @objc public static let FontAssistLargeTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontAssistLargeFontStyle = "normal"
     @objc public static let FontAssistSmallFontFamily = TypographyFontFamilyText
-    @objc public static let FontAssistSmallFontWeight = "regular"
+    @objc public static let FontAssistSmallFontWeight = UIFont.Weight.regular
     @objc public static let FontAssistSmallLineHeight = TypographyLineHeightTextSmall
     @objc public static let FontAssistSmallFontSize = TypographyFontSizeTextSmall
     @objc public static let FontAssistSmallLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3590,7 +3590,7 @@ public class ChassisTokens {
     @objc public static let FontAssistSmallTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontAssistSmallFontStyle = "normal"
     @objc public static let FontBadgeMediumFontFamily = TypographyFontFamilyText
-    @objc public static let FontBadgeMediumFontWeight = "semi-bold"
+    @objc public static let FontBadgeMediumFontWeight = UIFont.Weight.semibold
     @objc public static let FontBadgeMediumLineHeight = TypographyLineHeightTextSmall
     @objc public static let FontBadgeMediumFontSize = TypographyFontSizeTextSmall
     @objc public static let FontBadgeMediumLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3599,7 +3599,7 @@ public class ChassisTokens {
     @objc public static let FontBadgeMediumTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontBadgeMediumFontStyle = "normal"
     @objc public static let FontBadgeLargeFontFamily = TypographyFontFamilyText
-    @objc public static let FontBadgeLargeFontWeight = "semi-bold"
+    @objc public static let FontBadgeLargeFontWeight = UIFont.Weight.semibold
     @objc public static let FontBadgeLargeLineHeight = TypographyLineHeightTextMedium
     @objc public static let FontBadgeLargeFontSize = TypographyFontSizeTextMedium
     @objc public static let FontBadgeLargeLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3608,7 +3608,7 @@ public class ChassisTokens {
     @objc public static let FontBadgeLargeTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontBadgeLargeFontStyle = "normal"
     @objc public static let FontBadgeSmallFontFamily = TypographyFontFamilyText
-    @objc public static let FontBadgeSmallFontWeight = "semi-bold"
+    @objc public static let FontBadgeSmallFontWeight = UIFont.Weight.semibold
     @objc public static let FontBadgeSmallLineHeight = TypographyLineHeightTextXsmall
     @objc public static let FontBadgeSmallFontSize = TypographyFontSizeTextXsmall
     @objc public static let FontBadgeSmallLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3617,7 +3617,7 @@ public class ChassisTokens {
     @objc public static let FontBadgeSmallTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontBadgeSmallFontStyle = "normal"
     @objc public static let FontBreadcrumbPageFontFamily = TypographyFontFamilyText
-    @objc public static let FontBreadcrumbPageFontWeight = "regular"
+    @objc public static let FontBreadcrumbPageFontWeight = UIFont.Weight.regular
     @objc public static let FontBreadcrumbPageLineHeight = TypographyLineHeightTextMedium
     @objc public static let FontBreadcrumbPageFontSize = TypographyFontSizeTextMedium
     @objc public static let FontBreadcrumbPageLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3626,7 +3626,7 @@ public class ChassisTokens {
     @objc public static let FontBreadcrumbPageTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontBreadcrumbPageFontStyle = "normal"
     @objc public static let FontButtonMediumFontFamily = TypographyFontFamilyText
-    @objc public static let FontButtonMediumFontWeight = "semi-bold"
+    @objc public static let FontButtonMediumFontWeight = UIFont.Weight.semibold
     @objc public static let FontButtonMediumLineHeight = TypographyLineHeightTextMedium
     @objc public static let FontButtonMediumFontSize = TypographyFontSizeTextMedium
     @objc public static let FontButtonMediumLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3635,7 +3635,7 @@ public class ChassisTokens {
     @objc public static let FontButtonMediumTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontButtonMediumFontStyle = "normal"
     @objc public static let FontButtonLargeFontFamily = TypographyFontFamilyText
-    @objc public static let FontButtonLargeFontWeight = "semi-bold"
+    @objc public static let FontButtonLargeFontWeight = UIFont.Weight.semibold
     @objc public static let FontButtonLargeLineHeight = TypographyLineHeightTextLarge
     @objc public static let FontButtonLargeFontSize = TypographyFontSizeTextLarge
     @objc public static let FontButtonLargeLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3644,7 +3644,7 @@ public class ChassisTokens {
     @objc public static let FontButtonLargeTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontButtonLargeFontStyle = "normal"
     @objc public static let FontButtonSmallFontFamily = TypographyFontFamilyText
-    @objc public static let FontButtonSmallFontWeight = "semi-bold"
+    @objc public static let FontButtonSmallFontWeight = UIFont.Weight.semibold
     @objc public static let FontButtonSmallLineHeight = TypographyLineHeightTextSmall
     @objc public static let FontButtonSmallFontSize = TypographyFontSizeTextSmall
     @objc public static let FontButtonSmallLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3653,7 +3653,7 @@ public class ChassisTokens {
     @objc public static let FontButtonSmallTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontButtonSmallFontStyle = "normal"
     @objc public static let FontChipMediumFontFamily = TypographyFontFamilyText
-    @objc public static let FontChipMediumFontWeight = "semi-bold"
+    @objc public static let FontChipMediumFontWeight = UIFont.Weight.semibold
     @objc public static let FontChipMediumLineHeight = TypographyLineHeightTextSmall
     @objc public static let FontChipMediumFontSize = TypographyFontSizeTextSmall
     @objc public static let FontChipMediumLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3662,7 +3662,7 @@ public class ChassisTokens {
     @objc public static let FontChipMediumTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontChipMediumFontStyle = "normal"
     @objc public static let FontChipLargeFontFamily = TypographyFontFamilyText
-    @objc public static let FontChipLargeFontWeight = "semi-bold"
+    @objc public static let FontChipLargeFontWeight = UIFont.Weight.semibold
     @objc public static let FontChipLargeLineHeight = TypographyLineHeightTextMedium
     @objc public static let FontChipLargeFontSize = TypographyFontSizeTextMedium
     @objc public static let FontChipLargeLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3671,7 +3671,7 @@ public class ChassisTokens {
     @objc public static let FontChipLargeTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontChipLargeFontStyle = "normal"
     @objc public static let FontChipSmallFontFamily = TypographyFontFamilyText
-    @objc public static let FontChipSmallFontWeight = "semi-bold"
+    @objc public static let FontChipSmallFontWeight = UIFont.Weight.semibold
     @objc public static let FontChipSmallLineHeight = TypographyLineHeightTextXsmall
     @objc public static let FontChipSmallFontSize = TypographyFontSizeTextXsmall
     @objc public static let FontChipSmallLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3680,7 +3680,7 @@ public class ChassisTokens {
     @objc public static let FontChipSmallTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontChipSmallFontStyle = "normal"
     @objc public static let FontDatepickerDayFontFamily = TypographyFontFamilyText
-    @objc public static let FontDatepickerDayFontWeight = "regular"
+    @objc public static let FontDatepickerDayFontWeight = UIFont.Weight.regular
     @objc public static let FontDatepickerDayLineHeight = TypographyLineHeightTextSmall
     @objc public static let FontDatepickerDayFontSize = TypographyFontSizeTextSmall
     @objc public static let FontDatepickerDayLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3689,7 +3689,7 @@ public class ChassisTokens {
     @objc public static let FontDatepickerDayTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontDatepickerDayFontStyle = "normal"
     @objc public static let FontDatepickerTodayFontFamily = TypographyFontFamilyText
-    @objc public static let FontDatepickerTodayFontWeight = "semi-bold"
+    @objc public static let FontDatepickerTodayFontWeight = UIFont.Weight.semibold
     @objc public static let FontDatepickerTodayLineHeight = TypographyLineHeightTextSmall
     @objc public static let FontDatepickerTodayFontSize = TypographyFontSizeTextSmall
     @objc public static let FontDatepickerTodayLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3698,7 +3698,7 @@ public class ChassisTokens {
     @objc public static let FontDatepickerTodayTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontDatepickerTodayFontStyle = "normal"
     @objc public static let FontDatepickerLabelFontFamily = TypographyFontFamilyText
-    @objc public static let FontDatepickerLabelFontWeight = "semi-bold"
+    @objc public static let FontDatepickerLabelFontWeight = UIFont.Weight.semibold
     @objc public static let FontDatepickerLabelLineHeight = TypographyLineHeightTextSmall
     @objc public static let FontDatepickerLabelFontSize = TypographyFontSizeTextSmall
     @objc public static let FontDatepickerLabelLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3707,7 +3707,7 @@ public class ChassisTokens {
     @objc public static let FontDatepickerLabelTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontDatepickerLabelFontStyle = "normal"
     @objc public static let FontDropdownTitleFontFamily = TypographyFontFamilyText
-    @objc public static let FontDropdownTitleFontWeight = "semi-bold"
+    @objc public static let FontDropdownTitleFontWeight = UIFont.Weight.semibold
     @objc public static let FontDropdownTitleLineHeight = TypographyLineHeightTextSmall
     @objc public static let FontDropdownTitleFontSize = TypographyFontSizeTextSmall
     @objc public static let FontDropdownTitleLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3716,7 +3716,7 @@ public class ChassisTokens {
     @objc public static let FontDropdownTitleTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontDropdownTitleFontStyle = "normal"
     @objc public static let FontDropdownItemFontFamily = TypographyFontFamilyText
-    @objc public static let FontDropdownItemFontWeight = "regular"
+    @objc public static let FontDropdownItemFontWeight = UIFont.Weight.regular
     @objc public static let FontDropdownItemLineHeight = TypographyLineHeightTextMedium
     @objc public static let FontDropdownItemFontSize = TypographyFontSizeTextMedium
     @objc public static let FontDropdownItemLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3725,7 +3725,7 @@ public class ChassisTokens {
     @objc public static let FontDropdownItemTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontDropdownItemFontStyle = "normal"
     @objc public static let FontFormInputMediumLabelFontFamily = TypographyFontFamilyText
-    @objc public static let FontFormInputMediumLabelFontWeight = "semi-bold"
+    @objc public static let FontFormInputMediumLabelFontWeight = UIFont.Weight.semibold
     @objc public static let FontFormInputMediumLabelLineHeight = TypographyLineHeightTextMedium
     @objc public static let FontFormInputMediumLabelFontSize = TypographyFontSizeTextMedium
     @objc public static let FontFormInputMediumLabelLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3734,7 +3734,7 @@ public class ChassisTokens {
     @objc public static let FontFormInputMediumLabelTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontFormInputMediumLabelFontStyle = "normal"
     @objc public static let FontFormInputLargeLabelFontFamily = TypographyFontFamilyText
-    @objc public static let FontFormInputLargeLabelFontWeight = "semi-bold"
+    @objc public static let FontFormInputLargeLabelFontWeight = UIFont.Weight.semibold
     @objc public static let FontFormInputLargeLabelLineHeight = TypographyLineHeightTextLarge
     @objc public static let FontFormInputLargeLabelFontSize = TypographyFontSizeTextLarge
     @objc public static let FontFormInputLargeLabelLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3743,7 +3743,7 @@ public class ChassisTokens {
     @objc public static let FontFormInputLargeLabelTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontFormInputLargeLabelFontStyle = "normal"
     @objc public static let FontFormInputSmallLabelFontFamily = TypographyFontFamilyText
-    @objc public static let FontFormInputSmallLabelFontWeight = "semi-bold"
+    @objc public static let FontFormInputSmallLabelFontWeight = UIFont.Weight.semibold
     @objc public static let FontFormInputSmallLabelLineHeight = TypographyLineHeightTextSmall
     @objc public static let FontFormInputSmallLabelFontSize = TypographyFontSizeTextSmall
     @objc public static let FontFormInputSmallLabelLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3752,7 +3752,7 @@ public class ChassisTokens {
     @objc public static let FontFormInputSmallLabelTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontFormInputSmallLabelFontStyle = "normal"
     @objc public static let FontFormInputMediumTextFontFamily = TypographyFontFamilyText
-    @objc public static let FontFormInputMediumTextFontWeight = "regular"
+    @objc public static let FontFormInputMediumTextFontWeight = UIFont.Weight.regular
     @objc public static let FontFormInputMediumTextLineHeight = TypographyLineHeightTextMedium
     @objc public static let FontFormInputMediumTextFontSize = TypographyFontSizeTextMedium
     @objc public static let FontFormInputMediumTextLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3761,7 +3761,7 @@ public class ChassisTokens {
     @objc public static let FontFormInputMediumTextTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontFormInputMediumTextFontStyle = "normal"
     @objc public static let FontFormInputLargeTextFontFamily = TypographyFontFamilyText
-    @objc public static let FontFormInputLargeTextFontWeight = "regular"
+    @objc public static let FontFormInputLargeTextFontWeight = UIFont.Weight.regular
     @objc public static let FontFormInputLargeTextLineHeight = TypographyLineHeightTextLarge
     @objc public static let FontFormInputLargeTextFontSize = TypographyFontSizeTextLarge
     @objc public static let FontFormInputLargeTextLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3770,7 +3770,7 @@ public class ChassisTokens {
     @objc public static let FontFormInputLargeTextTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontFormInputLargeTextFontStyle = "normal"
     @objc public static let FontFormInputSmallTextFontFamily = TypographyFontFamilyText
-    @objc public static let FontFormInputSmallTextFontWeight = "regular"
+    @objc public static let FontFormInputSmallTextFontWeight = UIFont.Weight.regular
     @objc public static let FontFormInputSmallTextLineHeight = TypographyLineHeightTextSmall
     @objc public static let FontFormInputSmallTextFontSize = TypographyFontSizeTextSmall
     @objc public static let FontFormInputSmallTextLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3779,7 +3779,7 @@ public class ChassisTokens {
     @objc public static let FontFormInputSmallTextTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontFormInputSmallTextFontStyle = "normal"
     @objc public static let FontFormInputFloatingTextFontFamily = TypographyFontFamilyText
-    @objc public static let FontFormInputFloatingTextFontWeight = "regular"
+    @objc public static let FontFormInputFloatingTextFontWeight = UIFont.Weight.regular
     @objc public static let FontFormInputFloatingTextLineHeight = TypographyLineHeightTextMedium
     @objc public static let FontFormInputFloatingTextFontSize = TypographyFontSizeTextMedium
     @objc public static let FontFormInputFloatingTextLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3788,7 +3788,7 @@ public class ChassisTokens {
     @objc public static let FontFormInputFloatingTextTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontFormInputFloatingTextFontStyle = "normal"
     @objc public static let FontFormInputFloatingLabelFontFamily = TypographyFontFamilyText
-    @objc public static let FontFormInputFloatingLabelFontWeight = "regular"
+    @objc public static let FontFormInputFloatingLabelFontWeight = UIFont.Weight.regular
     @objc public static let FontFormInputFloatingLabelLineHeight = TypographyLineHeightTextXsmall
     @objc public static let FontFormInputFloatingLabelFontSize = TypographyFontSizeTextXsmall
     @objc public static let FontFormInputFloatingLabelLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3797,7 +3797,7 @@ public class ChassisTokens {
     @objc public static let FontFormInputFloatingLabelTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontFormInputFloatingLabelFontStyle = "normal"
     @objc public static let FontModalLargeTitleFontFamily = TypographyFontFamilyText
-    @objc public static let FontModalLargeTitleFontWeight = "semi-bold"
+    @objc public static let FontModalLargeTitleFontWeight = UIFont.Weight.semibold
     @objc public static let FontModalLargeTitleLineHeight = TypographyLineHeightTextXlarge
     @objc public static let FontModalLargeTitleFontSize = TypographyFontSizeTextXlarge
     @objc public static let FontModalLargeTitleLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3806,7 +3806,7 @@ public class ChassisTokens {
     @objc public static let FontModalLargeTitleTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontModalLargeTitleFontStyle = "normal"
     @objc public static let FontModalLargeSubtitleFontFamily = TypographyFontFamilyText
-    @objc public static let FontModalLargeSubtitleFontWeight = "regular"
+    @objc public static let FontModalLargeSubtitleFontWeight = UIFont.Weight.regular
     @objc public static let FontModalLargeSubtitleLineHeight = TypographyLineHeightTextMedium
     @objc public static let FontModalLargeSubtitleFontSize = TypographyFontSizeTextMedium
     @objc public static let FontModalLargeSubtitleLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3815,7 +3815,7 @@ public class ChassisTokens {
     @objc public static let FontModalLargeSubtitleTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontModalLargeSubtitleFontStyle = "normal"
     @objc public static let FontModalMediumTitleFontFamily = TypographyFontFamilyText
-    @objc public static let FontModalMediumTitleFontWeight = "semi-bold"
+    @objc public static let FontModalMediumTitleFontWeight = UIFont.Weight.semibold
     @objc public static let FontModalMediumTitleLineHeight = TypographyLineHeightTextLarge
     @objc public static let FontModalMediumTitleFontSize = TypographyFontSizeTextLarge
     @objc public static let FontModalMediumTitleLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3824,7 +3824,7 @@ public class ChassisTokens {
     @objc public static let FontModalMediumTitleTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontModalMediumTitleFontStyle = "normal"
     @objc public static let FontModalMediumSubtitleFontFamily = TypographyFontFamilyText
-    @objc public static let FontModalMediumSubtitleFontWeight = "regular"
+    @objc public static let FontModalMediumSubtitleFontWeight = UIFont.Weight.regular
     @objc public static let FontModalMediumSubtitleLineHeight = TypographyLineHeightTextMedium
     @objc public static let FontModalMediumSubtitleFontSize = TypographyFontSizeTextMedium
     @objc public static let FontModalMediumSubtitleLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3833,7 +3833,7 @@ public class ChassisTokens {
     @objc public static let FontModalMediumSubtitleTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontModalMediumSubtitleFontStyle = "normal"
     @objc public static let FontModalSmallTitleFontFamily = TypographyFontFamilyText
-    @objc public static let FontModalSmallTitleFontWeight = "semi-bold"
+    @objc public static let FontModalSmallTitleFontWeight = UIFont.Weight.semibold
     @objc public static let FontModalSmallTitleLineHeight = TypographyLineHeightTextMedium
     @objc public static let FontModalSmallTitleFontSize = TypographyFontSizeTextMedium
     @objc public static let FontModalSmallTitleLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3842,7 +3842,7 @@ public class ChassisTokens {
     @objc public static let FontModalSmallTitleTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontModalSmallTitleFontStyle = "normal"
     @objc public static let FontModalSmallSubtitleFontFamily = TypographyFontFamilyText
-    @objc public static let FontModalSmallSubtitleFontWeight = "regular"
+    @objc public static let FontModalSmallSubtitleFontWeight = UIFont.Weight.regular
     @objc public static let FontModalSmallSubtitleLineHeight = TypographyLineHeightTextMedium
     @objc public static let FontModalSmallSubtitleFontSize = TypographyFontSizeTextMedium
     @objc public static let FontModalSmallSubtitleLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3851,7 +3851,7 @@ public class ChassisTokens {
     @objc public static let FontModalSmallSubtitleTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontModalSmallSubtitleFontStyle = "normal"
     @objc public static let FontNotificationTitleFontFamily = TypographyFontFamilyText
-    @objc public static let FontNotificationTitleFontWeight = "semi-bold"
+    @objc public static let FontNotificationTitleFontWeight = UIFont.Weight.semibold
     @objc public static let FontNotificationTitleLineHeight = TypographyLineHeightTextLarge
     @objc public static let FontNotificationTitleFontSize = TypographyFontSizeTextLarge
     @objc public static let FontNotificationTitleLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3860,7 +3860,7 @@ public class ChassisTokens {
     @objc public static let FontNotificationTitleTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontNotificationTitleFontStyle = "normal"
     @objc public static let FontNotificationMessageFontFamily = TypographyFontFamilyText
-    @objc public static let FontNotificationMessageFontWeight = "regular"
+    @objc public static let FontNotificationMessageFontWeight = UIFont.Weight.regular
     @objc public static let FontNotificationMessageLineHeight = TypographyLineHeightTextMedium
     @objc public static let FontNotificationMessageFontSize = TypographyFontSizeTextMedium
     @objc public static let FontNotificationMessageLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3869,7 +3869,7 @@ public class ChassisTokens {
     @objc public static let FontNotificationMessageTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontNotificationMessageFontStyle = "normal"
     @objc public static let FontPageLargeTitleFontFamily = TypographyFontFamilyText
-    @objc public static let FontPageLargeTitleFontWeight = "semi-bold"
+    @objc public static let FontPageLargeTitleFontWeight = UIFont.Weight.semibold
     @objc public static let FontPageLargeTitleLineHeight = TypographyLineHeightText2xlarge
     @objc public static let FontPageLargeTitleFontSize = TypographyFontSizeText2xlarge
     @objc public static let FontPageLargeTitleLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3878,7 +3878,7 @@ public class ChassisTokens {
     @objc public static let FontPageLargeTitleTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontPageLargeTitleFontStyle = "normal"
     @objc public static let FontPageLargeSubtitleFontFamily = TypographyFontFamilyText
-    @objc public static let FontPageLargeSubtitleFontWeight = "regular"
+    @objc public static let FontPageLargeSubtitleFontWeight = UIFont.Weight.regular
     @objc public static let FontPageLargeSubtitleLineHeight = TypographyLineHeightTextMedium
     @objc public static let FontPageLargeSubtitleFontSize = TypographyFontSizeTextMedium
     @objc public static let FontPageLargeSubtitleLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3887,7 +3887,7 @@ public class ChassisTokens {
     @objc public static let FontPageLargeSubtitleTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontPageLargeSubtitleFontStyle = "normal"
     @objc public static let FontPageMediumTitleFontFamily = TypographyFontFamilyText
-    @objc public static let FontPageMediumTitleFontWeight = "semi-bold"
+    @objc public static let FontPageMediumTitleFontWeight = UIFont.Weight.semibold
     @objc public static let FontPageMediumTitleLineHeight = TypographyLineHeightText2xlarge
     @objc public static let FontPageMediumTitleFontSize = TypographyFontSizeText2xlarge
     @objc public static let FontPageMediumTitleLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3896,7 +3896,7 @@ public class ChassisTokens {
     @objc public static let FontPageMediumTitleTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontPageMediumTitleFontStyle = "normal"
     @objc public static let FontPageMediumSubtitleFontFamily = TypographyFontFamilyText
-    @objc public static let FontPageMediumSubtitleFontWeight = "regular"
+    @objc public static let FontPageMediumSubtitleFontWeight = UIFont.Weight.regular
     @objc public static let FontPageMediumSubtitleLineHeight = TypographyLineHeightTextMedium
     @objc public static let FontPageMediumSubtitleFontSize = TypographyFontSizeTextMedium
     @objc public static let FontPageMediumSubtitleLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3905,7 +3905,7 @@ public class ChassisTokens {
     @objc public static let FontPageMediumSubtitleTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontPageMediumSubtitleFontStyle = "normal"
     @objc public static let FontPageSmallTitleFontFamily = TypographyFontFamilyText
-    @objc public static let FontPageSmallTitleFontWeight = "semi-bold"
+    @objc public static let FontPageSmallTitleFontWeight = UIFont.Weight.semibold
     @objc public static let FontPageSmallTitleLineHeight = TypographyLineHeightTextXlarge
     @objc public static let FontPageSmallTitleFontSize = TypographyFontSizeTextXlarge
     @objc public static let FontPageSmallTitleLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3914,7 +3914,7 @@ public class ChassisTokens {
     @objc public static let FontPageSmallTitleTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontPageSmallTitleFontStyle = "normal"
     @objc public static let FontPageSmallSubtitleFontFamily = TypographyFontFamilyText
-    @objc public static let FontPageSmallSubtitleFontWeight = "regular"
+    @objc public static let FontPageSmallSubtitleFontWeight = UIFont.Weight.regular
     @objc public static let FontPageSmallSubtitleLineHeight = TypographyLineHeightTextMedium
     @objc public static let FontPageSmallSubtitleFontSize = TypographyFontSizeTextMedium
     @objc public static let FontPageSmallSubtitleLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3923,7 +3923,7 @@ public class ChassisTokens {
     @objc public static let FontPageSmallSubtitleTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontPageSmallSubtitleFontStyle = "normal"
     @objc public static let FontSectionHeaderLargeFontFamily = TypographyFontFamilyText
-    @objc public static let FontSectionHeaderLargeFontWeight = "semi-bold"
+    @objc public static let FontSectionHeaderLargeFontWeight = UIFont.Weight.semibold
     @objc public static let FontSectionHeaderLargeLineHeight = TypographyLineHeightTextLarge
     @objc public static let FontSectionHeaderLargeFontSize = TypographyFontSizeTextLarge
     @objc public static let FontSectionHeaderLargeLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3932,7 +3932,7 @@ public class ChassisTokens {
     @objc public static let FontSectionHeaderLargeTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontSectionHeaderLargeFontStyle = "normal"
     @objc public static let FontSectionHeaderMediumFontFamily = TypographyFontFamilyText
-    @objc public static let FontSectionHeaderMediumFontWeight = "semi-bold"
+    @objc public static let FontSectionHeaderMediumFontWeight = UIFont.Weight.semibold
     @objc public static let FontSectionHeaderMediumLineHeight = TypographyLineHeightTextMedium
     @objc public static let FontSectionHeaderMediumFontSize = TypographyFontSizeTextMedium
     @objc public static let FontSectionHeaderMediumLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3941,7 +3941,7 @@ public class ChassisTokens {
     @objc public static let FontSectionHeaderMediumTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontSectionHeaderMediumFontStyle = "normal"
     @objc public static let FontSectionHeaderSmallFontFamily = TypographyFontFamilyText
-    @objc public static let FontSectionHeaderSmallFontWeight = "semi-bold"
+    @objc public static let FontSectionHeaderSmallFontWeight = UIFont.Weight.semibold
     @objc public static let FontSectionHeaderSmallLineHeight = TypographyLineHeightTextSmall
     @objc public static let FontSectionHeaderSmallFontSize = TypographyFontSizeTextSmall
     @objc public static let FontSectionHeaderSmallLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3950,7 +3950,7 @@ public class ChassisTokens {
     @objc public static let FontSectionHeaderSmallTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontSectionHeaderSmallFontStyle = "normal"
     @objc public static let FontSegmentMediumFontFamily = TypographyFontFamilyText
-    @objc public static let FontSegmentMediumFontWeight = "regular"
+    @objc public static let FontSegmentMediumFontWeight = UIFont.Weight.regular
     @objc public static let FontSegmentMediumLineHeight = TypographyLineHeightTextSmall
     @objc public static let FontSegmentMediumFontSize = TypographyFontSizeTextSmall
     @objc public static let FontSegmentMediumLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3959,7 +3959,7 @@ public class ChassisTokens {
     @objc public static let FontSegmentMediumTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontSegmentMediumFontStyle = "normal"
     @objc public static let FontSegmentLargeFontFamily = TypographyFontFamilyText
-    @objc public static let FontSegmentLargeFontWeight = "regular"
+    @objc public static let FontSegmentLargeFontWeight = UIFont.Weight.regular
     @objc public static let FontSegmentLargeLineHeight = TypographyLineHeightTextMedium
     @objc public static let FontSegmentLargeFontSize = TypographyFontSizeTextMedium
     @objc public static let FontSegmentLargeLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3968,7 +3968,7 @@ public class ChassisTokens {
     @objc public static let FontSegmentLargeTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontSegmentLargeFontStyle = "normal"
     @objc public static let FontSegmentSmallFontFamily = TypographyFontFamilyText
-    @objc public static let FontSegmentSmallFontWeight = "regular"
+    @objc public static let FontSegmentSmallFontWeight = UIFont.Weight.regular
     @objc public static let FontSegmentSmallLineHeight = TypographyLineHeightTextXsmall
     @objc public static let FontSegmentSmallFontSize = TypographyFontSizeTextXsmall
     @objc public static let FontSegmentSmallLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3977,7 +3977,7 @@ public class ChassisTokens {
     @objc public static let FontSegmentSmallTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontSegmentSmallFontStyle = "normal"
     @objc public static let FontTabMediumFontFamily = TypographyFontFamilyText
-    @objc public static let FontTabMediumFontWeight = "semi-bold"
+    @objc public static let FontTabMediumFontWeight = UIFont.Weight.semibold
     @objc public static let FontTabMediumLineHeight = TypographyLineHeightTextMedium
     @objc public static let FontTabMediumFontSize = TypographyFontSizeTextMedium
     @objc public static let FontTabMediumLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3986,7 +3986,7 @@ public class ChassisTokens {
     @objc public static let FontTabMediumTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontTabMediumFontStyle = "normal"
     @objc public static let FontTabLargeFontFamily = TypographyFontFamilyText
-    @objc public static let FontTabLargeFontWeight = "semi-bold"
+    @objc public static let FontTabLargeFontWeight = UIFont.Weight.semibold
     @objc public static let FontTabLargeLineHeight = TypographyLineHeightTextLarge
     @objc public static let FontTabLargeFontSize = TypographyFontSizeTextLarge
     @objc public static let FontTabLargeLetterSpacing = TypographyLetterSpacingBaseZero
@@ -3995,7 +3995,7 @@ public class ChassisTokens {
     @objc public static let FontTabLargeTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontTabLargeFontStyle = "normal"
     @objc public static let FontTabSmallFontFamily = TypographyFontFamilyText
-    @objc public static let FontTabSmallFontWeight = "semi-bold"
+    @objc public static let FontTabSmallFontWeight = UIFont.Weight.semibold
     @objc public static let FontTabSmallLineHeight = TypographyLineHeightTextSmall
     @objc public static let FontTabSmallFontSize = TypographyFontSizeTextSmall
     @objc public static let FontTabSmallLetterSpacing = TypographyLetterSpacingBaseZero
@@ -4004,7 +4004,7 @@ public class ChassisTokens {
     @objc public static let FontTabSmallTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontTabSmallFontStyle = "normal"
     @objc public static let FontTableDataTextFontFamily = TypographyFontFamilyText
-    @objc public static let FontTableDataTextFontWeight = "regular"
+    @objc public static let FontTableDataTextFontWeight = UIFont.Weight.regular
     @objc public static let FontTableDataTextLineHeight = TypographyLineHeightTextSmall
     @objc public static let FontTableDataTextFontSize = TypographyFontSizeTextSmall
     @objc public static let FontTableDataTextLetterSpacing = TypographyLetterSpacingBaseZero
@@ -4013,7 +4013,7 @@ public class ChassisTokens {
     @objc public static let FontTableDataTextTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontTableDataTextFontStyle = "normal"
     @objc public static let FontTableHeadTextFontFamily = TypographyFontFamilyText
-    @objc public static let FontTableHeadTextFontWeight = "semi-bold"
+    @objc public static let FontTableHeadTextFontWeight = UIFont.Weight.semibold
     @objc public static let FontTableHeadTextLineHeight = TypographyLineHeightTextSmall
     @objc public static let FontTableHeadTextFontSize = TypographyFontSizeTextSmall
     @objc public static let FontTableHeadTextLetterSpacing = TypographyLetterSpacingBaseZero
@@ -4022,7 +4022,7 @@ public class ChassisTokens {
     @objc public static let FontTableHeadTextTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontTableHeadTextFontStyle = "normal"
     @objc public static let FontWebsiteHeroTitleFontFamily = TypographyFontFamilyText
-    @objc public static let FontWebsiteHeroTitleFontWeight = "bold"
+    @objc public static let FontWebsiteHeroTitleFontWeight = UIFont.Weight.bold
     @objc public static let FontWebsiteHeroTitleLineHeight = CGFloat(80)
     @objc public static let FontWebsiteHeroTitleFontSize = TypographyFontSizeWebsiteHeroTitle
     @objc public static let FontWebsiteHeroTitleLetterSpacing = SizeUnitN1
@@ -4031,7 +4031,7 @@ public class ChassisTokens {
     @objc public static let FontWebsiteHeroTitleTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontWebsiteHeroTitleFontStyle = "normal"
     @objc public static let FontWebsiteHeroBodyFontFamily = TypographyFontFamilyText
-    @objc public static let FontWebsiteHeroBodyFontWeight = "regular"
+    @objc public static let FontWebsiteHeroBodyFontWeight = UIFont.Weight.regular
     @objc public static let FontWebsiteHeroBodyLineHeight = CGFloat(33)
     @objc public static let FontWebsiteHeroBodyFontSize = TypographyFontSizeWebsiteHeroBody
     @objc public static let FontWebsiteHeroBodyLetterSpacing = TypographyLetterSpacingBaseZero
@@ -4040,7 +4040,7 @@ public class ChassisTokens {
     @objc public static let FontWebsiteHeroBodyTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontWebsiteHeroBodyFontStyle = "normal"
     @objc public static let FontWebsiteSectionTitleFontFamily = TypographyFontFamilyText
-    @objc public static let FontWebsiteSectionTitleFontWeight = "bold"
+    @objc public static let FontWebsiteSectionTitleFontWeight = UIFont.Weight.bold
     @objc public static let FontWebsiteSectionTitleLineHeight = CGFloat(60)
     @objc public static let FontWebsiteSectionTitleFontSize = TypographyFontSizeWebsiteSectionTitle
     @objc public static let FontWebsiteSectionTitleLetterSpacing = SizeUnitNd05
@@ -4049,7 +4049,7 @@ public class ChassisTokens {
     @objc public static let FontWebsiteSectionTitleTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontWebsiteSectionTitleFontStyle = "normal"
     @objc public static let FontWebsiteSectionBodyFontFamily = TypographyFontFamilyText
-    @objc public static let FontWebsiteSectionBodyFontWeight = "regular"
+    @objc public static let FontWebsiteSectionBodyFontWeight = UIFont.Weight.regular
     @objc public static let FontWebsiteSectionBodyLineHeight = CGFloat(33)
     @objc public static let FontWebsiteSectionBodyFontSize = TypographyFontSizeWebsiteSectionBody
     @objc public static let FontWebsiteSectionBodyLetterSpacing = TypographyLetterSpacingBaseZero
@@ -4058,7 +4058,7 @@ public class ChassisTokens {
     @objc public static let FontWebsiteSectionBodyTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontWebsiteSectionBodyFontStyle = "normal"
     @objc public static let FontWebsiteFeatureTitleFontFamily = TypographyFontFamilyText
-    @objc public static let FontWebsiteFeatureTitleFontWeight = "bold"
+    @objc public static let FontWebsiteFeatureTitleFontWeight = UIFont.Weight.bold
     @objc public static let FontWebsiteFeatureTitleLineHeight = CGFloat(33)
     @objc public static let FontWebsiteFeatureTitleFontSize = TypographyFontSizeWebsiteFeatureTitle
     @objc public static let FontWebsiteFeatureTitleLetterSpacing = TypographyLetterSpacingBaseZero
@@ -4067,7 +4067,7 @@ public class ChassisTokens {
     @objc public static let FontWebsiteFeatureTitleTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontWebsiteFeatureTitleFontStyle = "normal"
     @objc public static let FontWebsiteFeatureBodyFontFamily = TypographyFontFamilyText
-    @objc public static let FontWebsiteFeatureBodyFontWeight = "regular"
+    @objc public static let FontWebsiteFeatureBodyFontWeight = UIFont.Weight.regular
     @objc public static let FontWebsiteFeatureBodyLineHeight = CGFloat(28.5)
     @objc public static let FontWebsiteFeatureBodyFontSize = TypographyFontSizeWebsiteFeatureBody
     @objc public static let FontWebsiteFeatureBodyLetterSpacing = TypographyLetterSpacingBaseZero
@@ -4076,7 +4076,7 @@ public class ChassisTokens {
     @objc public static let FontWebsiteFeatureBodyTextDecoration = TypographyTextDecorationBaseNone
     @objc public static let FontWebsiteFeatureBodyFontStyle = "normal"
     @objc public static let FontWebsiteModuleTitleFontFamily = TypographyFontFamilyText
-    @objc public static let FontWebsiteModuleTitleFontWeight = "bold"
+    @objc public static let FontWebsiteModuleTitleFontWeight = UIFont.Weight.bold
     @objc public static let FontWebsiteModuleTitleLineHeight = CGFloat(28.5)
     @objc public static let FontWebsiteModuleTitleFontSize = TypographyFontSizeWebsiteModuleTitle
     @objc public static let FontWebsiteModuleTitleLetterSpacing = TypographyLetterSpacingBaseZero

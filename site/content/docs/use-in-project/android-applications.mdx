@@ -27,8 +27,9 @@ Chassis Tokens are built for Android as XML resource files, one resource per tok
 | Font sizes, line heights, paragraph spacing | `dimen` in `sp` | `22sp` |
 | Other sizes and spacing | `dimen` in `dp` | `16dp` |
 | Opacity and letter spacing | `dimen` float item | `0.4` |
+| Font weights | `integer`, 100 to 900 | `600` |
 | Other whole numbers | `integer` | none in the current tokens |
-| Font families, font weights, other strings and SVG icons | `string`, escaped | `Inter` |
+| Font families, other strings and SVG icons | `string`, escaped | `Inter` |
 </CxTable>
 
 Names are snake_case without a prefix, such as `space_context_medium`. The Android files are not in the npm package; build them from the repository.
@@ -186,14 +187,14 @@ Typography tokens are split into one resource per property:
 
 ```xml
 <string name="font_context_lead_font_family">Inter</string>
-<string name="font_context_lead_font_weight">regular</string>
+<integer name="font_context_lead_font_weight">400</integer>
 <dimen name="font_context_lead_font_size">22sp</dimen>
 <dimen name="font_context_lead_line_height">32sp</dimen>
 <item name="font_context_lead_letter_spacing" type="dimen" format="float">0</item>
 ```
 
 - **Font family** is the first family of the stack. Map it to a font resource that your app bundles.
-- **Font weight** is a name such as `regular` or `semi-bold`, not a number. Map the names your app uses to weights or font resources.
+- **Font weight** is a number from 100 to 900, such as `400` or `600`. Compose takes it as `FontWeight(integerResource(R.integer.font_context_lead_font_weight))`, and `Typeface.create(family, weight, italic)` takes it on API 28 and later. The design's weight names map as on the web: `Semi Bold` and `SemiBold` are both `600`.
 - **Line height** is in `sp`. A design value in percent is converted with the font size of the same typography token: `font_context_jumbo_line_height` is `125%` of `96`, so `120sp`.
 - **Letter spacing** of a typography token is in ems of its font size, which `TextView.setLetterSpacing` and `android:letterSpacing` take; in Compose, use `value.em`. `font_context_jumbo_letter_spacing` is `-0.0052`: `-0.5` design pixels at `96`. The letter spacing scale (`typography_letter_spacing_*`) has no font size and stays in design pixels.
 

@@ -12,7 +12,7 @@
 import { tokenTypes } from '../utils.js'
 import {
   firstFontFamily,
-  fontWeightName,
+  fontWeightNumber,
   isBaseColor,
   isSizeWithMath,
   letterSpacingEm,
@@ -45,7 +45,9 @@ const SP_KEYS = ['fontSize', 'lineHeight', 'paragraphSpacing']
 const SP_TYPES = ['fontSize', 'lineHeight']
 
 /**
- * Returns the kind of Android resource a token becomes.
+ * Returns the kind of Android resource a token becomes. Font weights are integers
+ * (`600`), which Compose's `FontWeight` and `Typeface.create` take, although their type
+ * is in the string group.
  *
  * @param {Object} token - A resolved token with `$type` and `path`.
  * @returns {string} `color`, `float`, `integer`, `dimen` or `string`.
@@ -54,6 +56,7 @@ export function resourceKind(token) {
   if (FLOAT_TYPES.includes(token.$type) || token.path[1] === 'letterSpacing') {
     return 'float'
   }
+  if (token.$type === 'fontWeight') return 'integer'
   for (const [group, types] of Object.entries(tokenTypes)) {
     if (RESOURCE_KINDS[group] && types.includes(token.$type)) {
       return RESOURCE_KINDS[group]
@@ -152,7 +155,7 @@ function encodeValue(token, context) {
     return firstFontFamily(value)
   }
   if (type === 'fontWeight') {
-    return fontWeightName(value)
+    return `${fontWeightNumber(token)}`
   }
   if (
     SP_KEYS.includes(path[path.length - 1]) ||

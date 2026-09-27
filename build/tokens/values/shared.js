@@ -7,6 +7,7 @@
  * @license MIT
  */
 
+import { transformFontWeight } from '@tokens-studio/sd-transforms'
 import Color from 'tinycolor2'
 import { tokenTypes } from '../utils.js'
 
@@ -42,13 +43,22 @@ export function firstFontFamily(value) {
 }
 
 /**
- * Returns a font weight name in lowercase, with its first space replaced by a hyphen.
+ * Returns the number of a font weight, with the map the web output uses
+ * (`ts/typography/fontWeight` of sd-transforms). Case, spaces and hyphens do not
+ * matter, so `Semi Bold`, `SemiBold` and `semi-bold` are all `600`: the token source
+ * keeps the style name each font has in Figma. A number passes as it is.
  *
- * @param {string} value - e.g. `Semi Bold`
- * @returns {string} e.g. `semi-bold`
+ * @param {Object} token - A resolved `fontWeight` token with `$value` and `path`.
+ * @returns {number} e.g. `600`
+ * @throws {Error} When the name is not a known weight, with the token path.
  */
-export function fontWeightName(value) {
-  return value.replace(' ', '-').toLowerCase()
+export function fontWeightNumber(token) {
+  const name = String(token.$value).replace(/-/g, ' ')
+  const weight = Number(transformFontWeight({ $type: 'fontWeight', $value: name }))
+  if (!Number.isInteger(weight) || weight < 1 || weight > 1000) {
+    throw new Error(`Unknown font weight "${token.$value}" in ${token.path.join('.')}`)
+  }
+  return weight
 }
 
 /**

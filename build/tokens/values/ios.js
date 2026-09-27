@@ -12,7 +12,7 @@
 import { tokenTypes } from '../utils.js'
 import {
   firstFontFamily,
-  fontWeightName,
+  fontWeightNumber,
   isBaseColor,
   isSizeWithMath,
   parseColor,
@@ -31,6 +31,33 @@ function encodeColor(token) {
   const { r, g, b, a } = color.toRgb()
   const channel = (value) => (value / 255).toFixed(3)
   return `UIColor(red: ${channel(r)}, green: ${channel(g)}, blue: ${channel(b)}, alpha: ${a})`
+}
+
+/**
+ * `UIFont.Weight` constants by weight number, as SwiftUI's `Font.Weight` orders them.
+ */
+const FONT_WEIGHTS = {
+  100: 'ultraLight',
+  200: 'thin',
+  300: 'light',
+  400: 'regular',
+  500: 'medium',
+  600: 'semibold',
+  700: 'bold',
+  800: 'heavy',
+  900: 'black'
+}
+
+/**
+ * Formats a font weight as a `UIFont.Weight` constant: the weight number rounded to the
+ * nearest hundred, from 100 to 900.
+ *
+ * @param {Object} token - A resolved token of type `fontWeight`.
+ * @returns {string} e.g. `UIFont.Weight.semibold`
+ */
+function encodeFontWeight(token) {
+  const hundred = Math.min(900, Math.max(100, Math.round(fontWeightNumber(token) / 100) * 100))
+  return `UIFont.Weight.${FONT_WEIGHTS[hundred]}`
 }
 
 /**
@@ -54,7 +81,7 @@ export function encode(token, context = {}) {
     return `"${firstFontFamily(value)}"`
   }
   if (type === 'fontWeight') {
-    return `"${fontWeightName(value)}"`
+    return encodeFontWeight(token)
   }
   if (tokenTypes.string.includes(type)) {
     return `"${value}"`

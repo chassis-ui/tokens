@@ -149,3 +149,35 @@ describe('iOS typography parts', () => {
     expect(reference(token, target, context, { fontSize: '64px' })).toBeUndefined()
   })
 })
+
+describe('iOS font weights', () => {
+  const weight = (value) => ({
+    ...tokenNamed('TypographyFontWeightTextStrongWeight'),
+    $value: value
+  })
+
+  test.each([
+    ['Semi Bold', 'semibold'],
+    ['SemiBold', 'semibold'],
+    ['semi-bold', 'semibold'],
+    ['Thin', 'ultraLight'],
+    ['Extra Light', 'thin'],
+    ['Extra Bold', 'heavy'],
+    ['Black', 'black'],
+    ['600', 'semibold']
+  ])('%s is UIFont.Weight.%s', (value, name) => {
+    expect(encode(weight(value))).toBe(`UIFont.Weight.${name}`)
+  })
+
+  test('rounds to the nearest hundred from 100 to 900', () => {
+    expect(encode(weight('Ultra Black'))).toBe('UIFont.Weight.black')
+    expect(encode(weight('350'))).toBe('UIFont.Weight.regular')
+    expect(encode(weight('340'))).toBe('UIFont.Weight.light')
+  })
+
+  test('an unknown name fails with the token path', () => {
+    expect(() => encode(weight('Chunky'))).toThrow(
+      'Unknown font weight "Chunky" in typography.fontWeight.text.strong.weight'
+    )
+  })
+})

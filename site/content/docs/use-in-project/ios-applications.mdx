@@ -185,14 +185,14 @@ Typography tokens are split into one constant per property:
 
 ```swift
 ChassisTokensString.ChassisTokens.FontContextLeadFontFamily      // "Inter"
-ChassisTokensString.ChassisTokens.FontContextLeadFontWeight      // "regular"
+ChassisTokensString.ChassisTokens.FontContextLeadFontWeight      // UIFont.Weight.regular
 ChassisTokensLarge.ChassisTokens.FontContextLeadFontSize         // 22
 ChassisTokensLarge.ChassisTokens.FontContextLeadLineHeight       // 32
 ChassisTokensLarge.ChassisTokens.FontContextLeadLetterSpacing    // 0
 ```
 
 - **Font family** is the first family of the stack. `UIFont(name:size:)` returns `nil` unless the app bundles and registers that font.
-- **Font weight** is a name such as `"regular"` or `"semi-bold"`, not a `UIFont.Weight`. Map the names your app uses to weights or to font file names.
+- **Font weight** is a `UIFont.Weight`, such as `.regular` or `.semibold`, which `UIFont.systemFont(ofSize:weight:)` takes. For a custom font, map the weight to a font file name. The design's weight names map as on the web: `Semi Bold` and `SemiBold` are both `.semibold`.
 - **Line height** is in points. A design value in percent is converted with the font size of the same typography token: `FontContextJumboLineHeight` is `125%` of `96`, so `120`.
 - **Letter spacing** is in points.
 
