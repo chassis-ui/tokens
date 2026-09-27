@@ -28,7 +28,7 @@ Chassis Tokens are built for Android as XML resource files, one resource per tok
 | Other sizes and spacing | `dimen` in `dp` | `16dp` |
 | Opacity and letter spacing | `dimen` float item | `0.4` |
 | Other whole numbers | `integer` | none in the current tokens |
-| Font families, font weights and other strings | `string` | `Inter` |
+| Font families, font weights, other strings and SVG icons | `string`, escaped | `Inter` |
 </CxTable>
 
 Names are snake_case without a prefix, such as `space_context_medium`. The Android files are not in the npm package; build them from the repository.
@@ -203,7 +203,7 @@ Shadow tokens are split into their parts, such as `shadow_context_small_1_offset
 
 ## Known Limitations
 
-- **Icons**: SVG icon tokens (`icon_*`) contain SVG markup, which Android's resource compiler drops, so they compile to empty strings. Use vector drawables for icons.
+- **Icons**: SVG icon tokens (`icon_*`) are strings that hold SVG markup, such as `getString(R.string.icon_accordion_indicator)`. Android cannot draw an SVG string directly: render it with an SVG library, or use vector drawables for icons.
 - **Gradients**: gradient tokens (`gradient_primitive_*`) hold only the first colour stop of the gradient.
 - **One token name differs on small screens**: `number_small.xml` declares `space_website_content_headers_gap` where the other number files declare `space_website_content_header_gap`. With the layout above, `space_website_content_header_gap` has no default value. The name comes from the token source and needs to be fixed there.
 

@@ -94,13 +94,44 @@ function encodeColor(token) {
 }
 
 /**
- * Encodes a resolved token as the text content of its resource element.
- * The order of the checks matters and matches the frozen output contract.
+ * Escapes text for an Android string resource. XML special characters become entities,
+ * so markup such as an SVG icon stays text; aapt2 would otherwise read it as styling
+ * tags and drop it. Backslashes, quotes and apostrophes get a backslash, and a leading
+ * `@` or `?` too, so aapt2 does not read the text as a reference.
+ *
+ * @param {string} text - e.g. `<svg xmlns='http://www.w3.org/2000/svg'>…</svg>`
+ * @returns {string} e.g. `&lt;svg xmlns=\'http://www.w3.org/2000/svg\'&gt;…&lt;/svg&gt;`
+ */
+export function escapeString(text) {
+  return String(text)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/\\/g, '\\\\')
+    .replace(/(['"])/g, '\\$1')
+    .replace(/^([@?])/, '\\$1')
+}
+
+/**
+ * Encodes a resolved token as the text content of its resource element. String
+ * resources are escaped.
  *
  * @param {Object} token - A resolved token with `$type`, `$value` and `path`.
  * @returns {string} The resource value.
  */
 export function encode(token) {
+  const value = encodeValue(token)
+  return resourceKind(token) === 'string' ? escapeString(value) : value
+}
+
+/**
+ * Encodes a resolved token's value before string escaping. The order of the checks
+ * matters and matches the frozen output contract.
+ *
+ * @param {Object} token - A resolved token with `$type`, `$value` and `path`.
+ * @returns {string} The value.
+ */
+function encodeValue(token) {
   const { $type: type, $value: value, path } = token
 
   if (type === 'color') {
