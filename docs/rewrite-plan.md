@@ -16,6 +16,10 @@ Added 2026-09-27, after Phase 7:
 
 4. **Bring back the adopter presets.** Chassis Tokens is an "own and customize" package. Its defaults target Chassis CSS, but a team with its own CSS framework needs plain SCSS variables. The old build had presets for this (`web-px`, `web-vw`, the `cx/scss-variables` format) and an `outputReferences` option for SCSS and Android. Phases 1 and 6a deleted them as unused, because no configured app selects them. That was wrong: they are features for adopters. Phases 8 to 11 restore them in the new structure.
 
+Added 2026-09-27, after Phase 11:
+
+5. **iOS references.** A new adopter option: `outputReferences` on `ios` prints the name of another constant of the same Swift class, with the safe rule of the Android references. The old build never had it, so there is no old output to match. Phase 12 adds it.
+
 ## Session protocol
 
 When Ozgur says "continue", Claude does this:
@@ -48,6 +52,7 @@ If a phase is too large, split it into `Na`, `Nb` rows. If a fact in this file i
 | 9 | SCSS variable references (`outputReferences`) | Opus | Done | `rewrite(phase 9)` | 2026-09-27 |
 | 10 | Android references (`outputReferences`) | Opus | Done | `rewrite(phase 10)` | 2026-09-27 |
 | 11 | Preset docs | Opus | Done | `rewrite(phase 11)` | 2026-09-27 |
+| 12 | iOS references (`outputReferences`), new | Opus | Not started | | |
 
 ## Ground rules
 
@@ -57,6 +62,7 @@ If a phase is too large, split it into `Na`, `Nb` rows. If a fact in this file i
 - **Golden diff:** every phase ends with `pnpm tokens:verify` green in strict mode. The check builds into `dist-next/` and compares against committed `dist/`, ignoring lines that contain `Generated on` or `Chassis - Tokens v`.
 - **No legacy copy of the build.** Committed `dist/` is the reference output and git holds the old code.
 - **Preset baselines (Phases 8 to 10):** the presets write nothing into `dist/`, so their reference output is built once from the old code on `main` and committed under `build/tokens/test/golden/<preset>/`. A preset phase ends with its preset check green and `pnpm tokens:verify` green. Lines that differ from the old output on purpose are listed in the phase result, one row per rule, and need Ozgur's approval first.
+- **iOS reference baseline (Phase 12):** the old build has no iOS references, so the `ios-references` baseline is written by the new code. It is accepted only after a line-by-line comparison with committed `dist/ios/demo/chassis/`: every line that prints a value equals the `dist/` line, and every line that prints a name has, in `dist/`, the same value as the line that declares that name in the same file.
 - **Tests:** new unit tests use real tokens copied from `tokens/` as fixtures, never mocks of `style-dictionary`. The 99 existing mock-based tests stay green while the code they cover exists; when a phase removes that code, it removes the test.
 - **Build config stays in `package.json` `chassis.build`:** brands `chassis` and `sinefil`; themes `light`, `dark`; screens `large`, `medium`, `small`; apps `docs` (web) and `demo` (ios, android).
 
@@ -120,6 +126,25 @@ What the old build printed:
 - Correction of 2026-09-27 (Phase 10): the 18 lines are among the 30, so 30 lines are affected, not 48.
 - The 30 Android lines with another meaning: font sizes that reference `size.unit.*` (`96sp` becomes `@dimen/size_unit_96`, which is `96dp`), letter spacing, and the `bg-blur` colours, whose `rgba({colour}, {opacity})` value prints a reference to the colour alone and loses the alpha (`#80b7c0c2` becomes `#ffb7c0c2`).
 
+### Facts about iOS references
+
+Measured on 2026-09-27 with a prototype in a scratch copy of the repository, brand `chassis`, app `demo`. The prototype template printed the name of the first token that the original value references, looked up in the file's own tokens as the Android template does, when that token encodes to the same Swift text and the value is not a size computed with math. It did not exclude base colours.
+
+| File | Lines that print a name | Value kept: target in another file | Value kept: target encodes differently | Value kept: math |
+| --- | --- | --- | --- | --- |
+| `Main.swift` | 4460 of 6487 | 300 | 658 | 1 |
+| `String.swift` | 577 of 1415 | 0 | 0 | 0 |
+| `ColorLight.swift`, `ColorDark.swift` | 741 of 1445 each | 702 each | 2 each | 0 |
+| `NumberLarge.swift`, `…Medium`, `…Small` | 2811 of 3031 each | 0 | 0 | 1 each |
+
+- A reference is the bare constant name: `@objc public static let SizeUnit4 = DimensionBase4`. Swift accepts an unqualified static member in a static property initializer, so the line does not depend on the class name, which `options.className` can change.
+- All 7 files type-check with `swiftc -typecheck` (Swift 6.4) against a stand-in UIKit module (`@_exported import AppKit; public typealias UIColor = NSColor`). There is no Xcode on this machine.
+- The value check is needed. The 660 lines whose target encodes differently are `rgba({colour}, {opacity.level.*})` colours, where the target has alpha 1 (`ColorBasePrimitiveLightPrimaryT5040` on `…Primary50`: alpha 0.4 against 1), and colours with a Tokens Studio lighten or darken modifier (`ColorBasePrimitiveLightSuccess90` on `…SuccessBase`).
+- The colour files cannot name the base colours they reference, because `color.base.*` is only in `Main.swift`. Every file declares `ChassisTokens`, so a reference across files is not possible.
+- 715 of the 4460 names in `Main.swift` are base colours naming base colours. The Android rule prints values for base colours, so with that rule `Main.swift` has 3745 names.
+- `static let` is initialised lazily on first use, so a name costs one extra lookup the first time. A cycle would deadlock at run time, but Style Dictionary rejects circular token references before printing.
+- File sizes change both ways: the colour files shrink from 167 KB to 143 KB, the number files grow from 215 KB to 239 KB (`DimensionBase16` is longer than `CGFloat(16)`), `Main.swift` grows from 566 KB to 571 KB. Type-checking `Main.swift` took 0.49 s against 0.74 s for the `dist/` file.
+
 ## Design decisions
 
 ### Presets are configuration, references are a policy
@@ -131,6 +156,7 @@ Added 2026-09-27 for Phases 8 to 10. The presets come back inside the structure 
 - **SCSS references** are a second policy module beside `css-var-policy.js`. The rules both share are in `reference-policy.js`: eligibility, which token a reference names, the chain follow and the typography maps. They differ in the name they print: `$<name of the named token>`. The format `cx/scss-variables` prints references when `options.outputReferences` is `true`, as in the old build; without it the preset prints resolved values. `chassis.build.options.<platform>` is merged into the Style Dictionary options of that platform, so `outputReferences` can be set without editing a config file.
 - **Android references** are one pure function in `values/android.js` that takes the token and the token it references and returns `@type/name` or nothing. The template passes the lookup in, as the SCSS template does.
 - **A reference is printed only when it is safe:** the target is emitted, the resource type of the target is used, and the encoded target equals the encoded token. This changes 48 Android lines of the old output. Ozgur confirmed it on 2026-09-27. (Phase 10: the target must be in the same file, as in the old build, and of the same element as the token, so the type printed is both. The change is 30 lines; the 18 broken lines are among the 30.)
+- **iOS references** (added 2026-09-27, Phase 12) follow the Android design: one pure function `reference(token, target)` in `values/ios.js` that returns the constant name or nothing, with the target looked up in the file's own tokens by the template. The option is read from the platform options, so `"options": { "ios": { "outputReferences": true } }` in `chassis.build` sets it. Without it the output is `dist/` as it is.
 
 ### Platform encoding happens after resolution, in pure functions
 
@@ -539,6 +565,20 @@ Load order, measured on the `web-px-references` baseline: only `main.scss` uses 
 
 Also corrected on the edited pages: the `config/web.js` transform list, which now leaves the size transform to `webConfig`, and the troubleshooting line about `basePxFontSize`, which the vw transform uses too.
 
+## Phase 12: iOS references
+
+Goal: `outputReferences: true` on `ios` prints the names of other constants of the same class where that is safe, and `dist/` does not change. This is a new option; the old build and the Phase 10 result say the iOS format prints values only.
+
+- [ ] `values/ios.js`: `reference(token, target)` returns the bare constant name of `target`, or `undefined` when there is no target, when the token is a base colour (the Android rule, confirmed 2026-09-27), when the value is a size computed with math, or when `encode(target) !== encode(token)`. Share the math pattern (`WITHOUT_MATH`) with `values/android.js` through `values/shared.js` instead of copying it.
+- [ ] `formats.js` passes `settings.outputReferences` from the platform options to the iOS template, as it does for Android.
+- [ ] `templates/ios-swift-class.template.js` looks the target up in `dictionary.tokens` with `getReferences`, as the Android template does, and prints `reference(…) || encode(token)`.
+- [ ] `verify.js`: extend the undeclared-reference check to `.swift`. A right-hand side that is a bare name must be a `static let` of the same file.
+- [ ] Baseline `build/tokens/test/golden/ios-references.json` (`{ "demo": ["ios"] }`, `options.ios.outputReferences`) and `ios-references/`, written by the new code. Before committing it, run a one-off comparison with `dist/ios/demo/chassis/` (see Ground rules) and record the counts in the result.
+- [ ] Unit tests in `values-ios.test.js` on real tokens captured from the build: a plain colour reference, a number reference (`SizeUnit4` on `DimensionBase4`), a string reference, a base colour, an `rgba({colour}, {opacity})` colour, a colour with a modifier, a size with math, and a target of another Swift type. Template tests in `formats.test.js`: names only with `outputReferences`, values without it. A `verify.test.js` case for an undeclared Swift name.
+- [ ] Docs: `README.md` (replace "The iOS format prints values only"), the `cx/ios-swift-class` section of `site/content/docs/getting-started/style-dictionary.mdx`, `site/content/docs/use-in-project/ios-applications.mdx`, and the `[Unreleased]` CHANGELOG entry. Examples are copied from the baseline. Ozgur approved this exception to the frozen `site/` folder on 2026-09-27, as for Phases 7 and 11.
+- [ ] Acceptance: `node build/tokens/verify.js --preset ios-references` green; `pnpm tokens:verify:presets` green for all six presets; `pnpm tokens:verify` green, 42 of 42 files, `dist/` untouched; all tests green; lint clean; the 7 baseline files type-check with `swiftc -typecheck` against the stand-in UIKit module; the edited pages pass Prettier and `pnpm astro:build` succeeds.
+- [ ] Regressions to inject: no value check, no math rule, no base colour rule, `outputReferences` ignored, undeclared Swift check off. Each must fail a test.
+
 ## Known oddities in the output (kept as they are)
 
 These are part of the frozen contract. They are listed so nobody "fixes" them by accident.
@@ -575,6 +615,12 @@ Added 2026-09-27 for the presets. Ozgur confirmed all six on 2026-09-27.
 - [x] Add a ready-made preset for rem with SCSS variables (`web-scss`), which the old build did not have.
 - [x] Update the site docs again in Phase 11.
 
+Added 2026-09-27 for Phase 12, iOS references. Ozgur confirmed all three on 2026-09-27.
+
+- [x] Base colours: print values for `color.base.*`, as the Android rule does (`Main.swift`: 3745 names), or let them name other base colours where the value check allows it (4460 names)? The Android rule, so both platforms follow one rule and the docs describe it once.
+- [x] Reference form: the bare name (`= DimensionBase4`), which works with any `className`, or qualified (`= ChassisTokens.DimensionBase4`)? The bare name.
+- [x] Update `README.md`, `CHANGELOG.md` and the two site pages in Phase 12, with the same exception to the frozen `site/` folder as Phases 7 and 11? Yes.
+
 ## Session log
 
 Append-only.
@@ -604,3 +650,5 @@ Append-only.
 - 2026-09-27 (after the guides, Opus 5.5): With Ozgur's approval, escaped Android string resources in `values/android.js` (`escapeString`), so aapt2 keeps the SVG markup of the icon tokens as text instead of dropping it. Only the 9 icon strings of each brand contain characters that need escaping, so `dist/android` changed in 36 lines (`string.xml` and `main.xml` of both brands) and the `android-references` baseline in 18. Verified with aapt2: each of the 9 icons compiles to exactly the SVG that the iOS file prints; `&`, both quotes, a backslash and a leading `@` or `?` stay literal text. `pnpm tokens:verify` passes, 42 of 42 files; all five preset baselines pass; `pnpm tokens:test` passes, 560 tests; lint reports no warnings. Removing the entity escaping, the quote escaping or the call in `encode` failed 5 to 7 tests each. Still open: `space.website.content.headers-gap` in the small screen set of `tokens/`.
 - 2026-09-27 (Ozgur, committed by Opus 5.5): Ozgur renamed `space.website.content.headers-gap` to `header-gap` in `tokens/screen-website/screen-small.json` (the frozen `tokens/` folder, changed by its owner). The build changed one line in each of the 6 small-screen files of `dist/` and in each of the 5 preset baselines, the rename and nothing else. Removed the limitation from the iOS and Android guides. Verified: `pnpm tokens:verify` passes, 42 of 42 files; all five preset baselines pass; `pnpm tokens:test` passes; aapt2 links the Android qualifier layout, and every number file now declares the same names.
 
+- 2026-09-27 (Phase 12 planning, Opus 5.5): Ozgur asked whether iOS could have `outputReferences` like Android. Built a prototype template in a scratch copy and measured it (see Facts about iOS references): 4460 of 6487 lines of `Main.swift` print a name, and all 7 files type-check with a stand-in UIKit. The value check keeps 660 lines as values that would otherwise lose an alpha or a colour modifier. Added Phase 12, a design decision, a ground rule for its baseline and three open decisions. Nothing in `build/` changed. Next: Ozgur's answers to the open decisions, then Phase 12.
+- 2026-09-27 (Phase 12 decisions): Ozgur confirmed all three open decisions: the Android base colour rule, bare constant names, and the docs update with an exception to the frozen `site/` folder. The plan was committed as `rewrite(plan): add phase 12 for iOS references`. Next: Phase 12.
