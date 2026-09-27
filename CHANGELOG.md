@@ -13,6 +13,7 @@ The presets for teams that do not use Chassis CSS are kept, in the new structure
 `outputReferences` now also works on iOS (new): a Swift constant names another constant of the same class, such as `SizeUnit4 = DimensionBase4`, with the same rule as Android.
 
 ### Changed
+
 - Upgraded to Style Dictionary 5.5 and `@tokens-studio/sd-transforms` 2.0; the build now needs Node.js 22 or later
 - Moved platform value encoding (`UIColor(…)`, ARGB colours, `sp`/`dp`, quoting, `em` units, `var(--…)` references) out of the output templates into tested modules (`build/tokens/values/` and the web reference policies), which run on fully resolved tokens
 - Build one Style Dictionary instance per token-set list instead of one run per file group: a full build runs 16 builds instead of 36 and takes about 6 s instead of 20 s
@@ -24,8 +25,10 @@ The presets for teams that do not use Chassis CSS are kept, in the new structure
 - The npm package holds all of `dist/`: the iOS and Android files (Swift, XML, the icon asset catalog and drawables) as well as the web SCSS. It held the SCSS files and the asset catalog's `Contents.json` files only
 - `package.json` has an `exports` map: `@chassis-ui/tokens/dist/*` and `@chassis-ui/tokens/package.json`. Every `dist/` path resolves as before; other paths in the package no longer resolve through Node
 - `pnpm check` fails when one of its steps fails; it ran them in the background and always passed
+- Updated the dev dependencies within their ranges, among them Astro 7.3, so `pnpm audit` reports no advisory (it reported 39, one critical). The token build packages (Style Dictionary, sd-transforms, svg2vectordrawable, tinycolor2) and the Chassis CSS and docs packages the site uses kept their versions
 
 ### Added
+
 - `pnpm tokens:verify`: builds into `dist-next/` and compares every file with `dist/`; the release workflow runs it before publishing. It also fails on a reference that names nothing the output declares
 - `--out <dir>` build option
 - `web-scss` platform: SCSS variables with resolved values in rem units, for CSS frameworks other than Chassis CSS
@@ -36,11 +39,13 @@ The presets for teams that do not use Chassis CSS are kept, in the new structure
 - `outputReferences` for the iOS format: a constant names another constant of the same class when it has the same type and value; base colours and sizes computed with math print their values
 
 ### Removed
+
 - The unused `cx/typography/web` and `cx/test` transforms, the `cx/test` format and the `cx/colorTokens` filter
 - The `site:lint:vnu` script and the `vnu-jar` dependency, which `html-validate` replaced, and the `tokens:zip` script
 - The `check:lockfile` script and the `lockfile-lint` dependency: it read `package-lock.json`, which this pnpm repository does not have
 
 ### Fixed
+
 - Android opacity and letter spacing tokens are float resources (`<item type="dimen" format="float">`) instead of `<integer>`. Android rejects fractions such as `0.4` in integer resources, so `main.xml` and the number files did not compile. Read them with `ResourcesCompat.getFloat`; references to them are `@dimen/…`
 - Renamed `space.website.content.headers-gap` to `space.website.content.header-gap` in the small screen token set, so every screen declares the same name. On Android, the small screen had no value for `header-gap` in the default folder
 - iOS and Android line heights that are a percentage in the design (`125%`, `150%`) are sizes of the typography token's font size: `FontContextJumboLineHeight` is `CGFloat(120)` and `font_context_jumbo_line_height` is `120sp`, not `125`. 9 typography tokens per file of `Main` and the number files
@@ -59,20 +64,24 @@ The presets for teams that do not use Chassis CSS are kept, in the new structure
 ## [0.5.3] - 2026-09-25
 
 ### Fixed
+
 - Removed the `modify.space` preset token and hardcoded `srgb` directly in each color's lighten/darken modifier, since Figma doesn't resolve token references inside a modifier's `space` property. `modify.lighten.*`/`modify.darken.*` value references are unaffected.
 
 ## [0.5.2] - 2026-09-24
 
 ### Changed
+
 - Dark mode context base colors mapped to scale 40
 
 ## [0.5.1] - 2026-09-25
 
 ### Added
+
 - Dedicated `borderRadius.base.*` tokens for the alert, dropdown (main/item), modal, and notification components, replacing shared `borderRadius.context.*` references
 - Shared `modify.space`/`modify.lighten.*`/`modify.darken.*` preset tokens for color lighten/darken modifiers
 
 ### Changed
+
 - Renamed the `example` brand to `sinefil` (`base/brand-example` → `brand-sinefil/brand-base`)
 - Renamed the `metric-px` token set to `metric-source`
 - Reworked brand color lighten/darken modify tokens to reference the shared `modify.*` presets instead of duplicating raw values per color
@@ -81,11 +90,13 @@ The presets for teams that do not use Chassis CSS are kept, in the new structure
 ## [0.5.0] - 2026-09-19
 
 ### Added
+
 - `demo-a` and `demo-b` brands, each with their own base, app, and (for `demo-b`) mobile/web/metric token sets
 - `segment` component tokens (color, size, spacing, border-radius, and box-shadow) for a new segmented-control component
 - `page.bg-body`/`page.bg-section` color tokens for the demo app
 
 ### Changed
+
 - Set the default brand's `text`/`display` font families to Open Sans and Merriweather, and its `strong` font weight from Bold to SemiBold
 - Abbreviated long-form scale-step names (e.g. `medium` → `md`, `xlarge` → `xl`) in generated `var(--...)` references for shadow, border-radius, and border-width tokens, matching chassis-css's own custom property names
 - Reworked `alert`/context box-shadow tokens to reference shared `shadow.elevation.default.*` presets instead of duplicating drop-shadow layer definitions
@@ -95,6 +106,7 @@ The presets for teams that do not use Chassis CSS are kept, in the new structure
 ## [0.4.0] - 2026-08-25
 
 ### Changed
+
 - Renamed `date-picker` component tokens to `datepicker` across base, brand, and theme token files
 - Reduced datepicker day cell size from `size.unit.40` to `size.unit.32` and bound its border-radius tokens to a dedicated `borderRadius.base.datepicker` group instead of generic context tokens
 - Renamed datepicker `menu-width` size token to `preset-width`
@@ -106,11 +118,13 @@ The presets for teams that do not use Chassis CSS are kept, in the new structure
 - Upgraded `@chassis-ui/docs` and other dependencies; bumped `pnpm/action-setup` and `softprops/action-gh-release` versions in the publish-release workflow
 
 ### Fixed
+
 - Hero section "Get Started" clone command referencing the wrong repository
 
 ## [0.3.0] - 2026-07-04
 
 ### Added
+
 - HTML validation build script (build/html-validate.js) replacing the vnu-jar based site:lint:vnu step
 - Pagefind site search integration (pagefind.yml, site:pagefind script)
 - Additional design token documentation content (border-radius, border-width, font, opacity, shadow, size, space, and typography tokens)
@@ -120,6 +134,7 @@ The presets for teams that do not use Chassis CSS are kept, in the new structure
 - Alert component box-shadow token
 
 ### Changed
+
 - Renamed homepage section components folder from sections/ to homepage/
 - Refactored SCSS chassis-css and scss-variables build templates
 - Reworked site/src/libs/astro.ts, config.ts, data.ts, and shortcode.ts helpers
@@ -136,6 +151,7 @@ The presets for teams that do not use Chassis CSS are kept, in the new structure
 - Refreshed getting-started and use-in-project documentation (Figma Variables, Style Dictionary, Tokens Studio, Android/iOS/Web application guides)
 
 ### Removed
+
 - Unused site shortcodes and libs: Code.astro, Example.astro, ResponsiveImage.astro, chassis.ts, placeholder.ts, prism.ts, algolia-plugin.js
 - Unused static scripts: example-mode.js, validate-forms.js
 - `preview` root script (superseded by `astro:preview`)
@@ -145,26 +161,31 @@ The presets for teams that do not use Chassis CSS are kept, in the new structure
 ## [0.2.0] - 2026-05-11
 
 ### Added
+
 - GitHub Actions publish-release workflow (.github/workflows/publish-release.yml)
 - Token distribution zip build script (build/zip-tokens.js) and `tokens:zip` script
 
 ### Changed
+
 - Upgraded Astro, ESLint, and related devDependencies
 - Switched `@chassis-ui/css` and `@chassis-ui/docs` from git branch references to published npm versions
 - Refactored website sections and homepage copy
 - Updated package descriptions and site configuration
 
 ### Removed
+
 - Legacy release workflow (.github/workflows/release.yml)
 - Unused site assets: application.js, color-modes.js, search.js, sidebar.js, snippets partials, Blockquote.astro, window.d.ts, docs-versions.yml, versions.astro
 
 ## [0.1.4] - 2026-04-16
 
 ### Added
+
 - IntroSection component for homepage
 - Brand-specific token configuration (brand-chassis/brand-base.json)
 
 ### Changed
+
 - Reorganized website components into dedicated sections/ folder
 - Renamed section components for consistency (SectionHero, SectionFeatures, SectionHow, etc.)
 - Updated brand tokens structure and values
@@ -173,6 +194,7 @@ The presets for teams that do not use Chassis CSS are kept, in the new structure
 - Refactored homepage layout and structure
 
 ### Removed
+
 - HOMEPAGE_COPY_REVIEW.md documentation file
 - CoreSection component (replaced by IntroSection)
 - Deprecated index2.astro page
@@ -180,10 +202,12 @@ The presets for teams that do not use Chassis CSS are kept, in the new structure
 ## [0.1.3] - 2026-04-12
 
 ### Added
+
 - Comprehensive homepage copy review and recommendations (HOMEPAGE_COPY_REVIEW.md)
 - FeatureCard component implementation across all homepage sections
 
 ### Changed
+
 - Standardized all homepage sections to use FeatureCard component
 - Unified icon naming convention to cx- prefix (cx-clock, cx-check-circle, cx-code, etc.)
 - Updated SectionTeams, SectionFeatures, SectionRoles, SectionHow, SectionTech to use Fragment slots
@@ -191,22 +215,26 @@ The presets for teams that do not use Chassis CSS are kept, in the new structure
 - Enhanced hero messaging to emphasize automation and consistency
 
 ### Fixed
+
 - Icon references from old naming (-outline suffix) to standardized cx- prefix
 - Slot implementation from div to Fragment for proper Astro component usage
 
 ## [0.1.2] - 2026-04-11
 
 ### Fixed
+
 - Website screen tokens font size and spacing references
 - Token naming consistency for content layout gaps
 
 ### Changed
+
 - Regenerated distribution files for Android and iOS platforms
 - Updated example brand distribution files
 
 ## [0.1.1] - 2026-04-08
 
 ### Added
+
 - Astro-based documentation site with comprehensive guides
 - Documentation for Tokens Studio, Style Dictionary, Figma Variables
 - Quick start guide and color tokens documentation
@@ -214,6 +242,7 @@ The presets for teams that do not use Chassis CSS are kept, in the new structure
 - Screen-specific tokens (small, medium, large)
 
 ### Changed
+
 - Upgraded to Style Dictionary v4 with complete build system refactor
 - Improved build system with enhanced format templates
 - Updated SCSS variable and CSS templates with prefix support
@@ -224,6 +253,7 @@ The presets for teams that do not use Chassis CSS are kept, in the new structure
 - Updated package name to `@chassis-ui/tokens`
 
 ### Fixed
+
 - SCSS variables template font token output
 - Mode switches for default brand
 - Button color tokens
@@ -234,6 +264,7 @@ The presets for teams that do not use Chassis CSS are kept, in the new structure
 ## [0.1.0] - 2025-02-15
 
 ### Initiated
+
 - Initial setup of project structure.
 - Added basic configuration files.
 - Created initial set of tokens.

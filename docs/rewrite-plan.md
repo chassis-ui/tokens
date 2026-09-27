@@ -44,46 +44,46 @@ If a phase is too large, split it into `Na`, `Nb` rows. If a fact in this file i
 
 ## Status board
 
-| Phase | Scope | Model | Status | Commit | Date |
-| --- | --- | --- | --- | --- | --- |
-| 0 | Golden harness | Sonnet | Done | `rewrite(phase 0)` | 2026-09-27 |
-| 1 | iOS and Android value encoders | Opus | Done | `rewrite(phase 1)` | 2026-09-27 |
-| 2 | Web value encoder | Opus | Done | `rewrite(phase 2)` | 2026-09-27 |
-| 3 | Web `var(--…)` policy | Fable | Done | `rewrite(phase 3)` | 2026-09-27 |
-| 4 | Upgrade to SD 5.5 and sd-transforms 2.0 | Fable | Done | `rewrite(phase 4)` | 2026-09-27 |
-| 5 | Replace forked preprocessor (optional) | Opus | Done | `rewrite(phase 5)` | 2026-09-27 |
-| 6a | Cleanup, version header, CI guard | Opus | Done | `rewrite(phase 6a)` | 2026-09-27 |
-| 6b | Build loop | Opus | Done | `rewrite(phase 6b)` | 2026-09-27 |
-| 6c | Tests README, docs, final acceptance | Opus | Done | `rewrite(phase 6c)` | 2026-09-27 |
-| 7 | Site docs | Opus | Done | `rewrite(phase 7)` | 2026-09-27 |
-| 8 | Preset baselines, SCSS variable presets (resolved) | Fable | Done | `rewrite(phase 8)` | 2026-09-27 |
-| 9 | SCSS variable references (`outputReferences`) | Opus | Done | `rewrite(phase 9)` | 2026-09-27 |
-| 10 | Android references (`outputReferences`) | Opus | Done | `rewrite(phase 10)` | 2026-09-27 |
-| 11 | Preset docs | Opus | Done | `rewrite(phase 11)` | 2026-09-27 |
-| 12 | iOS references (`outputReferences`), new | Opus | Done | `rewrite(phase 12)` | 2026-09-27 |
-| 13 | Mobile typography values: percent line height, Android letter spacing in em | Opus | Done | `rewrite(phase 13)` | 2026-09-27 |
-| 14 | Font weights as numbers | Opus | Done | `rewrite(phase 14)` | 2026-09-27 |
-| 15 | Gradients on mobile as parts | Opus | Done | `rewrite(phase 15)` | 2026-09-27 |
-| 16 | Dead `dimension` filter condition | Sonnet | Done | `rewrite(phase 16)` | 2026-09-27 |
-| 17 | iOS type and file names | Opus | Done | `rewrite(phase 17)` | 2026-09-27 |
-| 18 | iOS colours that follow dark mode | Fable | Done | `rewrite(phase 18)` | 2026-09-27 |
-| 19 | Android resource tree | Fable | Done | `rewrite(phase 19)` | 2026-09-27 |
-| 20 | SwiftUI and Compose outputs (optional) | Opus | Done | `rewrite(phase 20)` | 2026-09-27 |
-| 21 | Icon assets (optional) | Opus | Done | `rewrite(phase 21)` | 2026-09-27 |
-| 22 | Platform shadow values (optional) | Opus | Done | `rewrite(phase 22)` | 2026-09-27 |
-| 23 | Package contents and scripts | Opus | Done | `rewrite(phase 23)` | 2026-09-27 |
-| 24 | Lint and audit clean | Sonnet | Not started | | |
-| 25 | CI for pull requests | Opus | Not started | | |
-| 26 | Merge preparation and 0.6.0 | Opus | Not started | | |
-| 27 | Workspace split: tokens and site (optional) | Opus | Not started | | |
-| 28 | Contributor docs and README | Opus | Not started | | |
-| 29 | Release automation | Opus | Not started | | |
-| 30 | Token diff report on pull requests | Opus | Not started | | |
-| 31 | Token source lint | Opus | Not started | | |
-| 32 | Type checking of the build code | Opus | Not started | | |
-| 33 | Native compile checks in CI | Fable | Not started | | |
-| 34 | Swift package and Android library (optional) | Fable | Not started | | |
-| 35 | Retire the plan | Sonnet | Not started | | |
+| Phase | Scope                                                                       | Model  | Status      | Commit              | Date       |
+| ----- | --------------------------------------------------------------------------- | ------ | ----------- | ------------------- | ---------- |
+| 0     | Golden harness                                                              | Sonnet | Done        | `rewrite(phase 0)`  | 2026-09-27 |
+| 1     | iOS and Android value encoders                                              | Opus   | Done        | `rewrite(phase 1)`  | 2026-09-27 |
+| 2     | Web value encoder                                                           | Opus   | Done        | `rewrite(phase 2)`  | 2026-09-27 |
+| 3     | Web `var(--…)` policy                                                       | Fable  | Done        | `rewrite(phase 3)`  | 2026-09-27 |
+| 4     | Upgrade to SD 5.5 and sd-transforms 2.0                                     | Fable  | Done        | `rewrite(phase 4)`  | 2026-09-27 |
+| 5     | Replace forked preprocessor (optional)                                      | Opus   | Done        | `rewrite(phase 5)`  | 2026-09-27 |
+| 6a    | Cleanup, version header, CI guard                                           | Opus   | Done        | `rewrite(phase 6a)` | 2026-09-27 |
+| 6b    | Build loop                                                                  | Opus   | Done        | `rewrite(phase 6b)` | 2026-09-27 |
+| 6c    | Tests README, docs, final acceptance                                        | Opus   | Done        | `rewrite(phase 6c)` | 2026-09-27 |
+| 7     | Site docs                                                                   | Opus   | Done        | `rewrite(phase 7)`  | 2026-09-27 |
+| 8     | Preset baselines, SCSS variable presets (resolved)                          | Fable  | Done        | `rewrite(phase 8)`  | 2026-09-27 |
+| 9     | SCSS variable references (`outputReferences`)                               | Opus   | Done        | `rewrite(phase 9)`  | 2026-09-27 |
+| 10    | Android references (`outputReferences`)                                     | Opus   | Done        | `rewrite(phase 10)` | 2026-09-27 |
+| 11    | Preset docs                                                                 | Opus   | Done        | `rewrite(phase 11)` | 2026-09-27 |
+| 12    | iOS references (`outputReferences`), new                                    | Opus   | Done        | `rewrite(phase 12)` | 2026-09-27 |
+| 13    | Mobile typography values: percent line height, Android letter spacing in em | Opus   | Done        | `rewrite(phase 13)` | 2026-09-27 |
+| 14    | Font weights as numbers                                                     | Opus   | Done        | `rewrite(phase 14)` | 2026-09-27 |
+| 15    | Gradients on mobile as parts                                                | Opus   | Done        | `rewrite(phase 15)` | 2026-09-27 |
+| 16    | Dead `dimension` filter condition                                           | Sonnet | Done        | `rewrite(phase 16)` | 2026-09-27 |
+| 17    | iOS type and file names                                                     | Opus   | Done        | `rewrite(phase 17)` | 2026-09-27 |
+| 18    | iOS colours that follow dark mode                                           | Fable  | Done        | `rewrite(phase 18)` | 2026-09-27 |
+| 19    | Android resource tree                                                       | Fable  | Done        | `rewrite(phase 19)` | 2026-09-27 |
+| 20    | SwiftUI and Compose outputs (optional)                                      | Opus   | Done        | `rewrite(phase 20)` | 2026-09-27 |
+| 21    | Icon assets (optional)                                                      | Opus   | Done        | `rewrite(phase 21)` | 2026-09-27 |
+| 22    | Platform shadow values (optional)                                           | Opus   | Done        | `rewrite(phase 22)` | 2026-09-27 |
+| 23    | Package contents and scripts                                                | Opus   | Done        | `rewrite(phase 23)` | 2026-09-27 |
+| 24    | Lint and audit clean                                                        | Sonnet | Done        | `rewrite(phase 24)` | 2026-09-27 |
+| 25    | CI for pull requests                                                        | Opus   | Not started |                     |            |
+| 26    | Merge preparation and 0.6.0                                                 | Opus   | Not started |                     |            |
+| 27    | Workspace split: tokens and site (optional)                                 | Opus   | Not started |                     |            |
+| 28    | Contributor docs and README                                                 | Opus   | Not started |                     |            |
+| 29    | Release automation                                                          | Opus   | Not started |                     |            |
+| 30    | Token diff report on pull requests                                          | Opus   | Not started |                     |            |
+| 31    | Token source lint                                                           | Opus   | Not started |                     |            |
+| 32    | Type checking of the build code                                             | Opus   | Not started |                     |            |
+| 33    | Native compile checks in CI                                                 | Fable  | Not started |                     |            |
+| 34    | Swift package and Android library (optional)                                | Fable  | Not started |                     |            |
+| 35    | Retire the plan                                                             | Sonnet | Not started |                     |            |
 
 ## Ground rules
 
@@ -115,12 +115,12 @@ If a phase is too large, split it into `Na`, `Nb` rows. If a fact in this file i
 - Style Dictionary accepts `source` and `include` only at the top level of the config, in both 4.4 and 5.5.5. All platforms of one instance share one token dictionary.
 - The build uses four distinct token-set lists per (brand, app). They differ only in the theme set and the screen set:
 
-| Token sets | Files |
-| --- | --- |
-| light + large | main, string, color-light, number-large |
-| dark + large | color-dark |
-| light + medium | number-medium |
-| light + small | number-small |
+| Token sets     | Files                                   |
+| -------------- | --------------------------------------- |
+| light + large  | main, string, color-light, number-large |
+| dark + large   | color-dark                              |
+| light + medium | number-medium                           |
+| light + small  | number-small                            |
 
 - 564 colour tokens have the form `rgba({colour reference}, {opacity reference})`, and 180 colour tokens apply a lighten or darken modifier to a reference.
 - In sd-transforms 1.3.0 and 2.0.3, `alwaysAddFontStyle` applies to typography tokens only. Plain `fontWeight` tokens without a style word are not split into `weight` and `style` by the official preprocessor.
@@ -150,13 +150,13 @@ How the old build offered them:
 
 What the old build printed:
 
-| Build | Result |
-| --- | --- |
-| `web-px`, resolved | 7 files, 6953 variables, no references, 472 KB |
-| `web-vw`, resolved | builds; `16px` prints `1vw` |
-| `web-px`, `outputReferences` | 1238 of 6953 lines print `$cx-…`: 810 colours to `color-context`, 164 border radii, 72 border widths, 192 typography maps. Every name is defined in one of the 7 files, and every reference means the same value as the resolved build. |
-| `android`, resolved | identical to `dist/android` |
-| `android`, `outputReferences` | 14243 of 19885 lines print `@type/name`, 1.6 MB. 18 lines name a resource that does not exist, and 30 lines mean another value than the resolved build. |
+| Build                         | Result                                                                                                                                                                                                                                  |
+| ----------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `web-px`, resolved            | 7 files, 6953 variables, no references, 472 KB                                                                                                                                                                                          |
+| `web-vw`, resolved            | builds; `16px` prints `1vw`                                                                                                                                                                                                             |
+| `web-px`, `outputReferences`  | 1238 of 6953 lines print `$cx-…`: 810 colours to `color-context`, 164 border radii, 72 border widths, 192 typography maps. Every name is defined in one of the 7 files, and every reference means the same value as the resolved build. |
+| `android`, resolved           | identical to `dist/android`                                                                                                                                                                                                             |
+| `android`, `outputReferences` | 14243 of 19885 lines print `@type/name`, 1.6 MB. 18 lines name a resource that does not exist, and 30 lines mean another value than the resolved build.                                                                                 |
 
 - With SCSS references, 270 lines of `main.scss` use a variable that another file defines (`$cx-color-context-…` from `color-<theme>.scss`, border tokens from `number-<screen>.scss`). The adopter must load the colour and number files before `main.scss`.
 - The old SCSS reference rule is narrower than its name: only single references in `color`, `space`, `opacity`, `borderRadius` and `borderWidth` print a variable, with the same exceptions as the `var(--…)` policy. Current tokens reach only colours and borders. The `opacity` rows would print `$cx-opacity-<step>`, which no file defines; no current token reaches them.
@@ -170,12 +170,12 @@ What the old build printed:
 
 Measured on 2026-09-27 with a prototype in a scratch copy of the repository, brand `chassis`, app `demo`. The prototype template printed the name of the first token that the original value references, looked up in the file's own tokens as the Android template does, when that token encodes to the same Swift text and the value is not a size computed with math. It did not exclude base colours.
 
-| File | Lines that print a name | Value kept: target in another file | Value kept: target encodes differently | Value kept: math |
-| --- | --- | --- | --- | --- |
-| `Main.swift` | 4460 of 6487 | 300 | 658 | 1 |
-| `String.swift` | 577 of 1415 | 0 | 0 | 0 |
-| `ColorLight.swift`, `ColorDark.swift` | 741 of 1445 each | 702 each | 2 each | 0 |
-| `NumberLarge.swift`, `…Medium`, `…Small` | 2811 of 3031 each | 0 | 0 | 1 each |
+| File                                     | Lines that print a name | Value kept: target in another file | Value kept: target encodes differently | Value kept: math |
+| ---------------------------------------- | ----------------------- | ---------------------------------- | -------------------------------------- | ---------------- |
+| `Main.swift`                             | 4460 of 6487            | 300                                | 658                                    | 1                |
+| `String.swift`                           | 577 of 1415             | 0                                  | 0                                      | 0                |
+| `ColorLight.swift`, `ColorDark.swift`    | 741 of 1445 each        | 702 each                           | 2 each                                 | 0                |
+| `NumberLarge.swift`, `…Medium`, `…Small` | 2811 of 3031 each       | 0                                  | 0                                      | 1 each           |
 
 - A reference is the bare constant name: `@objc public static let SizeUnit4 = DimensionBase4`. Swift accepts an unqualified static member in a static property initializer, so the line does not depend on the class name, which `options.className` can change.
 - All 7 files type-check with `swiftc -typecheck` (Swift 6.4) against a stand-in UIKit module (`@_exported import AppKit; public typealias UIColor = NSColor`). There is no Xcode on this machine.
@@ -243,20 +243,20 @@ Every instance lists its sets in `source`, in the order `permutateThemes` return
 
 `dist/<platform>/<app>/<brand>/`, seven files each, 42 in total; since Phase 18 iOS has an eighth, `Color.swift`, so 44; since Phase 19 Android also has a resource tree of 7 files under `res/`, so 58; since Phase 21 the icons add `Icons.xcassets` (19 files) and 9 drawables per brand, so 114.
 
-| Platform | Files |
-| --- | --- |
-| web | `main.scss`, `string.scss`, `color-<theme>.scss`, `number-<screen>.scss` |
-| iOS | `ChassisTokens.swift` (`Main.swift` until Phase 17), `String.swift`, `Color<Theme>.swift`, `Number<Screen>.swift`, and `Color.swift` when the themes include `light` and `dark` (since Phase 18) |
-| Android | `main.xml`, `string.xml`, `color_<theme>.xml`, `number_<screen>.xml`, and since Phase 19 `res/values/{string,color_base,color,number}.xml`, `res/values-night/color.xml` and `res/values-<qualifier>/number.xml` |
+| Platform | Files                                                                                                                                                                                                            |
+| -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| web      | `main.scss`, `string.scss`, `color-<theme>.scss`, `number-<screen>.scss`                                                                                                                                         |
+| iOS      | `ChassisTokens.swift` (`Main.swift` until Phase 17), `String.swift`, `Color<Theme>.swift`, `Number<Screen>.swift`, and `Color.swift` when the themes include `light` and `dark` (since Phase 18)                 |
+| Android  | `main.xml`, `string.xml`, `color_<theme>.xml`, `number_<screen>.xml`, and since Phase 19 `res/values/{string,color_base,color,number}.xml`, `res/values-night/color.xml` and `res/values-<qualifier>/number.xml` |
 
 ### Filters
 
-| File | Included types | Exclusions |
-| --- | --- | --- |
-| main | color, font group, gradient, number group, shadow, size group, string group | colours with `path[1]` in primitive, context, utility |
-| color-* | color | `path[1]` in base, utility |
-| number-* | duration, letterSpacing, number, opacity, size group | none |
-| string | asset, content, fontFamily, fontStyle, fontWeight, string, text, textCase, textDecoration, type | none |
+| File     | Included types                                                                                  | Exclusions                                            |
+| -------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
+| main     | color, font group, gradient, number group, shadow, size group, string group                     | colours with `path[1]` in primitive, context, utility |
+| color-*  | color                                                                                           | `path[1]` in base, utility                            |
+| number-* | duration, letterSpacing, number, opacity, size group                                            | none                                                  |
+| string   | asset, content, fontFamily, fontStyle, fontWeight, string, text, textCase, textDecoration, type | none                                                  |
 
 - font group: fontFamily, fontSize, fontStyle, fontWeight, letterSpacing, lineHeight, paragraphSpacing, textCase, textDecoration, typography
 - size group: dimension, fontSize, lineHeight, paragraphSpacing
@@ -286,16 +286,16 @@ A token prints `var(--name)` when its original value is a single reference and `
 - borderRadius and borderWidth tokens whose `path[1]` is `context` or `base`
 - shadow tokens whose `path[2]` is idle, hover, press, disabled, focus or highlight
 
-| Referenced path | Emitted |
-| --- | --- |
-| `color.context.X.Y`, `color.primitive.X.Y` | `--X-Y` |
-| `space.context.X` | `--space-X` |
-| `opacity.context.X`, `opacity.level.X` | `--opacity-X` |
-| `shadow.context.X` | `--box-shadow-<abbr X>` |
-| `borderRadius.context.X`, `borderRadius.base.context.X` | `--border-radius-<abbr X>` |
-| `borderWidth.context.X`, `borderWidth.base.context.X` | `--border-width-<abbr X>` |
+| Referenced path                                                     | Emitted                                                                                             |
+| ------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| `color.context.X.Y`, `color.primitive.X.Y`                          | `--X-Y`                                                                                             |
+| `space.context.X`                                                   | `--space-X`                                                                                         |
+| `opacity.context.X`, `opacity.level.X`                              | `--opacity-X`                                                                                       |
+| `shadow.context.X`                                                  | `--box-shadow-<abbr X>`                                                                             |
+| `borderRadius.context.X`, `borderRadius.base.context.X`             | `--border-radius-<abbr X>`                                                                          |
+| `borderWidth.context.X`, `borderWidth.base.context.X`               | `--border-width-<abbr X>`                                                                           |
 | `borderRadius.base.<component>.X`, `borderWidth.base.<component>.X` | follow one more reference; if it is the same `path[0]` and contains `context`, use its last segment |
-| anything else | the resolved literal value |
+| anything else                                                       | the resolved literal value                                                                          |
 
 Typography maps:
 
@@ -385,12 +385,12 @@ The fixture `build/tokens/test/fixtures/css-var-tokens.json` holds 34 emitted to
 
 Behaviour in cases that no current token reaches, where the old template printed broken text, is now an error that names the token:
 
-| Case | Old template | Now |
-| --- | --- | --- |
-| Typography with a literal font size | `"font-size": undefined` | throws |
-| Typography with a literal font family or weight | one character of the string in the name | throws |
-| Reference-valued typography whose reference is not `font.<family>.<size>.<weight>` | `undefined` in the names | throws |
-| Reference cycle in the chain follow | not checked | throws |
+| Case                                                                               | Old template                            | Now    |
+| ---------------------------------------------------------------------------------- | --------------------------------------- | ------ |
+| Typography with a literal font size                                                | `"font-size": undefined`                | throws |
+| Typography with a literal font family or weight                                    | one character of the string in the name | throws |
+| Reference-valued typography whose reference is not `font.<family>.<size>.<weight>` | `undefined` in the names                | throws |
+| Reference cycle in the chain follow                                                | not checked                             | throws |
 
 ## Phase 4: upgrade to SD 5.5 and sd-transforms 2.0
 
@@ -405,10 +405,10 @@ Goal: same output on the new libraries, upgraded in place.
 
 Result: installed `style-dictionary` 5.5.5 and `@tokens-studio/sd-transforms` 2.0.3. Two things broke and were fixed in the build code; no value changed.
 
-| Problem on SD 5 | Fix |
-| --- | --- |
-| All 36 runs failed with 16 reference errors: `originalFontWeight` held references to groups | The preprocessor stores `$extensions.chassis.fontWeightPath` as path segments (`['typography', 'fontWeight', 'text', 'mass']`), only when the font weight is a single reference. `originalFontWeight` is gone. The policy module reads the segments. |
-| 20 iOS and Android files had the same lines in another order: expanded typography and shadow tokens moved to the end | The preprocessor numbers every token in source order (`$extensions.chassis.sourceOrder`), after the weight and style split. Expanded sub-tokens inherit the number. The three formats sort by it with `inSourceOrder` from `formats.js`. |
+| Problem on SD 5                                                                                                      | Fix                                                                                                                                                                                                                                                  |
+| -------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| All 36 runs failed with 16 reference errors: `originalFontWeight` held references to groups                          | The preprocessor stores `$extensions.chassis.fontWeightPath` as path segments (`['typography', 'fontWeight', 'text', 'mass']`), only when the font weight is a single reference. `originalFontWeight` is gone. The policy module reads the segments. |
+| 20 iOS and Android files had the same lines in another order: expanded typography and shadow tokens moved to the end | The preprocessor numbers every token in source order (`$extensions.chassis.sourceOrder`), after the weight and style split. Expanded sub-tokens inherit the number. The three formats sort by it with `inSourceOrder` from `formats.js`.             |
 
 The dead `scss-variables.template.js` and `cx/test` transform still read `originalFontWeight`. They are not used by any configured app and go in Phase 6.
 
@@ -425,11 +425,11 @@ Result: `build/tokens/preprocessor.js` went from 264 to 131 lines and is still t
 
 Two variants were built and measured. Both pass the golden check and produce the same dictionary as the fork.
 
-| Variant | Lines | Build time, 36 runs |
-| --- | --- | --- |
-| Fork | 264 | 9.5 s |
-| Official `alignTypes` and official `addFontStyles`, plus a split of the remaining font weights | 107 | 17.9 s |
-| Official `alignTypes`, own `addFontStyles` (chosen) | 131 | 9.5 s |
+| Variant                                                                                        | Lines | Build time, 36 runs |
+| ---------------------------------------------------------------------------------------------- | ----- | ------------------- |
+| Fork                                                                                           | 264   | 9.5 s               |
+| Official `alignTypes` and official `addFontStyles`, plus a split of the remaining font weights | 107   | 17.9 s              |
+| Official `alignTypes`, own `addFontStyles` (chosen)                                            | 131   | 9.5 s               |
 
 The official `addFontStyles` was not used because it is slow (see Facts) and because it does not split plain font weights, so Chassis code for the split is needed either way. To switch later, replace the own `addFontStyles` with the official one called with `alwaysAddFontStyle: true`, then split the `fontWeight` tokens it left whole.
 
@@ -477,14 +477,14 @@ The token-set list of an output is `<brand>_<app>_<theme>_<screen>` from `permut
 
 Behaviour changes, none of which changes a file the full build writes:
 
-| Case | Old loop | Now |
-| --- | --- | --- |
-| `--theme dark` | number files built from the dark token sets | built from the first theme's sets, as in a full build |
-| `--screen` with no configured screen matching | a `number` file without a screen suffix | no number file |
-| A token-set list missing from `$themes.json` | built with no tokens | throws, naming the list |
-| `--help`, `--version` | printed and exited inside `parseArgs` | printed by `run()`; `--version` reads `package.json` |
-| `cleanPlatform` before each build | called | not called; it only deleted files the build rewrites |
-| `--dry-run` | listed tasks | lists builds with the files of each platform |
+| Case                                          | Old loop                                    | Now                                                   |
+| --------------------------------------------- | ------------------------------------------- | ----------------------------------------------------- |
+| `--theme dark`                                | number files built from the dark token sets | built from the first theme's sets, as in a full build |
+| `--screen` with no configured screen matching | a `number` file without a screen suffix     | no number file                                        |
+| A token-set list missing from `$themes.json`  | built with no tokens                        | throws, naming the list                               |
+| `--help`, `--version`                         | printed and exited inside `parseArgs`       | printed by `run()`; `--version` reads `package.json`  |
+| `cleanPlatform` before each build             | called                                      | not called; it only deleted files the build rewrites  |
+| `--dry-run`                                   | listed tasks                                | lists builds with the files of each platform          |
 
 Filtered builds were compared with `dist/` file by file: `--theme dark` (36 files), `--screen small` (30), `--brand sinefil --platform android` (7), `--app docs --theme light --screen medium --brand chassis` (4) and `--platform ios --screen xlarge --brand chassis` (4). All match.
 
@@ -528,11 +528,11 @@ Goal: `web-px` and `web-vw` build again and print what the old build printed, ap
 
 Result: three presets can be named in `chassis.build.apps`: `web-scss`, `web-px` and `web-vw`. Each is a file of one statement in `build/tokens/config/` that calls `webConfig({ unit, format })` from `config/web.js`. All write to `dist/web/<app>/<brand>/`, as `web` does.
 
-| Preset | Compared with the old build |
-| --- | --- |
-| `web-vw` | identical, 7 files |
-| `web-scss` | identical, 7 files |
-| `web-px` | identical apart from 3 lines of `main.scss`, the approved letter spacing |
+| Preset     | Compared with the old build                                              |
+| ---------- | ------------------------------------------------------------------------ |
+| `web-vw`   | identical, 7 files                                                       |
+| `web-scss` | identical, 7 files                                                       |
+| `web-px`   | identical apart from 3 lines of `main.scss`, the approved letter spacing |
 
 The three lines are the typography maps with a letter spacing other than zero: `font.context.jumbo` and `font.website.section-title` (`-0.5em` became `-0.0313em`) and `font.website.hero-title` (`-1em` became `-0.0625em`). All 193 letter spacing lines of `web-px/main.scss` equal those of `web-scss`. A letter spacing in px is divided by `basePxFontSize` and rounded to four decimals, which is how `ts/resolveMath` rounds the rem value.
 
@@ -570,23 +570,23 @@ The old way, adding `outputReferences: true` to the `options` of a platform conf
 
 Modules:
 
-| Module | Lines | Contents |
-| --- | --- | --- |
-| `reference-policy.js` (new) | 278 | `isReference`, `referencePath`, `startsWith`, `printsReference(token, groups)`, `referenceTarget`, the chain follow, `typographyObject`, `typographyReference`, and the data `literalTokens`, `referenceTargets`, `followedGroups`, `MAX_HOPS` |
-| `css-var-policy.js` | 330 → 141 | the Chassis CSS groups, custom property names, scale abbreviations |
-| `scss-var-policy.js` | 31 → 99 | the SCSS variables groups (without `shadow`) and variable names |
-| `templates/scss.template.js` | 43 → 59 | adds `references.variable(path)`, which looks the token up in `dictionary.unfilteredTokens` and throws when no file filter selects it |
+| Module                       | Lines     | Contents                                                                                                                                                                                                                                       |
+| ---------------------------- | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `reference-policy.js` (new)  | 278       | `isReference`, `referencePath`, `startsWith`, `printsReference(token, groups)`, `referenceTarget`, the chain follow, `typographyObject`, `typographyReference`, and the data `literalTokens`, `referenceTargets`, `followedGroups`, `MAX_HOPS` |
+| `css-var-policy.js`          | 330 → 141 | the Chassis CSS groups, custom property names, scale abbreviations                                                                                                                                                                             |
+| `scss-var-policy.js`         | 31 → 99   | the SCSS variables groups (without `shadow`) and variable names                                                                                                                                                                                |
+| `templates/scss.template.js` | 43 → 59   | adds `references.variable(path)`, which looks the token up in `dictionary.unfilteredTokens` and throws when no file filter selects it                                                                                                          |
 
 `referenceTarget` returns the path of the token that a reference names. A reference to `<group>.base.context.<step>` and a followed `base.<component>` alias both name `<group>.context.<step>`. The two policies name that path: `var(--border-radius-lg)` and `$cx-border-radius-context-large`. `customProperties` lost its two `base.context` rows, which this rule covers.
 
 Behaviour of the SCSS variables format in cases that no current token reaches, compared with the old template:
 
-| Case | Old template | Now |
-| --- | --- | --- |
-| Reference to `opacity.context.X` or `opacity.level.X` | `$cx-opacity-X`, which no file declares | `$cx-opacity-context-X`, `$cx-opacity-level-X` |
-| Reference to `borderWidth.base.context.X`, or to a `borderWidth.base.<component>` alias | the value | `$cx-border-width-context-X` |
-| Reference to a variable that no file declares | printed | throws, naming the token and the path |
-| Reference with more segments than the old name pattern | segments dropped | the full name of the token |
+| Case                                                                                    | Old template                            | Now                                            |
+| --------------------------------------------------------------------------------------- | --------------------------------------- | ---------------------------------------------- |
+| Reference to `opacity.context.X` or `opacity.level.X`                                   | `$cx-opacity-X`, which no file declares | `$cx-opacity-context-X`, `$cx-opacity-level-X` |
+| Reference to `borderWidth.base.context.X`, or to a `borderWidth.base.<component>` alias | the value                               | `$cx-border-width-context-X`                   |
+| Reference to a variable that no file declares                                           | printed                                 | throws, naming the token and the path          |
+| Reference with more segments than the old name pattern                                  | segments dropped                        | the full name of the token                     |
 
 ## Phase 10: Android references
 
@@ -599,12 +599,12 @@ Goal: `outputReferences: true` on the Android config prints `@type/name` referen
 
 Result: `outputReferences` on the Android config prints `@type/name` references again, set like the SCSS one: `"options": { "android": { "outputReferences": true } }`. Compared with the old build, 14213 references are the same and 30 lines print their value instead. Each of the 30 lines equals the line of the committed `dist/android/demo/chassis/`:
 
-| Tokens | Files | Lines | Old build | Problem |
-| --- | --- | --- | --- | --- |
-| four letter spacing tokens | `main`, `number_*` | 16 | `@integer/size_unit_0`, `…_nd05`, `…_n1` | no such `<integer>`: the target is a `<dimen>` |
-| `font_context_jumbo_font_size`, `font_context_hero_font_size` | `main`, `number_*` | 8 | `@dimen/size_unit_96`, `…_64` | `96dp` instead of `96sp` |
-| `bg_blur_default_color`, `bg_blur_alternate_color` | `main` | 2 | `@color/opacity_context_fg_subtle` | no such `<color>` |
-| `bg_blur_default_color`, `bg_blur_alternate_color` | `color_*` | 4 | `@color/color_primitive_neutral_30`, `…_70` | the alpha of `rgba()` is lost |
+| Tokens                                                        | Files              | Lines | Old build                                   | Problem                                        |
+| ------------------------------------------------------------- | ------------------ | ----- | ------------------------------------------- | ---------------------------------------------- |
+| four letter spacing tokens                                    | `main`, `number_*` | 16    | `@integer/size_unit_0`, `…_nd05`, `…_n1`    | no such `<integer>`: the target is a `<dimen>` |
+| `font_context_jumbo_font_size`, `font_context_hero_font_size` | `main`, `number_*` | 8     | `@dimen/size_unit_96`, `…_64`               | `96dp` instead of `96sp`                       |
+| `bg_blur_default_color`, `bg_blur_alternate_color`            | `main`             | 2     | `@color/opacity_context_fg_subtle`          | no such `<color>`                              |
+| `bg_blur_default_color`, `bg_blur_alternate_color`            | `color_*`          | 4     | `@color/color_primitive_neutral_30`, `…_70` | the alpha of `rgba()` is lost                  |
 
 The rule, in `reference(token, target)`: the target is the first token that the original value references, looked up in the file's own tokens as before. There is no reference for a base colour, for a size computed with math, when the target is another element, or when the target encodes to another value. The element check changes no line of the current output, because every element mismatch also has another value, so only its unit test covers it.
 
@@ -643,12 +643,12 @@ Goal: `outputReferences: true` on `ios` prints the names of other constants of t
 
 Result: `"options": { "ios": { "outputReferences": true } }` makes a Swift constant name the constant of the first token its value references, in the same file, when both encode to the same Swift text. Without the option the output is `dist/` as before.
 
-| File | Lines that name a constant | Lines that print a value |
-| --- | --- | --- |
-| `Main.swift` | 3745 | 2742 |
-| `String.swift` | 577 | 838 |
-| `ColorLight.swift`, `ColorDark.swift` | 741 each | 704 each |
-| `NumberLarge.swift`, `…Medium`, `…Small` | 2811 each | 220 each |
+| File                                     | Lines that name a constant | Lines that print a value |
+| ---------------------------------------- | -------------------------- | ------------------------ |
+| `Main.swift`                             | 3745                       | 2742                     |
+| `String.swift`                           | 577                        | 838                      |
+| `ColorLight.swift`, `ColorDark.swift`    | 741 each                   | 704 each                 |
+| `NumberLarge.swift`, `…Medium`, `…Small` | 2811 each                  | 220 each                 |
 
 The 14237 names are as the prototype measured, minus the 715 base colours of `Main.swift` that the Android rule turns into values.
 
@@ -660,20 +660,19 @@ How the baseline was accepted, against `dist/ios/demo/chassis/`:
 
 Modules:
 
-| Module | Change |
-| --- | --- |
-| `values/shared.js` | `isBaseColor(token)` and `isSizeWithMath(token)`, the two conditions both platforms share; `WITHOUT_MATH` moved here from `android.js` |
-| `values/ios.js` | `reference(token, target)`: the bare constant name, or `undefined` |
-| `values/android.js` | `reference` calls the shared conditions; no change in output |
-| `templates/references.js` (new) | `firstReferencedToken(token, tokens)`, the lookup both mobile templates use |
-| `templates/ios-swift-class.template.js` | prints `reference(…) \|\| encode(token)` with `settings.outputReferences` |
-| `formats.js` | passes `settings.outputReferences` to the iOS template |
-| `verify.js` | the undeclared-reference check reads Swift: a value that is a bare name must be a `static let` of the same file |
+| Module                                  | Change                                                                                                                                 |
+| --------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| `values/shared.js`                      | `isBaseColor(token)` and `isSizeWithMath(token)`, the two conditions both platforms share; `WITHOUT_MATH` moved here from `android.js` |
+| `values/ios.js`                         | `reference(token, target)`: the bare constant name, or `undefined`                                                                     |
+| `values/android.js`                     | `reference` calls the shared conditions; no change in output                                                                           |
+| `templates/references.js` (new)         | `firstReferencedToken(token, tokens)`, the lookup both mobile templates use                                                            |
+| `templates/ios-swift-class.template.js` | prints `reference(…) \|\| encode(token)` with `settings.outputReferences`                                                              |
+| `formats.js`                            | passes `settings.outputReferences` to the iOS template                                                                                 |
+| `verify.js`                             | the undeclared-reference check reads Swift: a value that is a bare name must be a `static let` of the same file                        |
 
 Real cases in the fixture cover a case the plan expected to construct: `BgBlurDefaultColor` in `Main.swift` references `OpacityContextFgSubtle` first, a `CGFloat`, so the target is another Swift type. The colours with a lighten or darken modifier are all base colours, so the base colour rule already prints their values; their test moves one to a context path to reach the value check. The math rule changes no current line either: `SizeDatepickerWeekWidth` (`{size.datepicker.day-width}*7`) also fails the value check, as on Android, so only its unit test covers it.
 
 The docs describe the option in the README, the Style Dictionary page (iOS platform and `cx/ios-swift-class`), the iOS guide (a section "Constant References") and the CHANGELOG. Every Swift example is a line of the baseline.
-
 
 ## Phase 13: mobile typography values
 
@@ -694,11 +693,11 @@ Facts, measured on `dist/` of 2026-09-27 (both brands are the same):
 
 Result: 168 lines of `dist/` changed, and nothing else. Web output did not change.
 
-| Change | Files | Lines per file | Example |
-| --- | --- | --- | --- |
-| Percentage line height in points | iOS `Main`, `Number*`, both brands (8 files) | 9 | `FontContextJumboLineHeight = CGFloat(120)`, was `CGFloat(125)` |
-| Percentage line height in `sp` | Android `main`, `number_*`, both brands (8 files) | 9 | `font_context_jumbo_line_height` `120sp`, was `125sp` |
-| Letter spacing in em | Android `main`, `number_*`, both brands (8 files) | 3 | `font_context_jumbo_letter_spacing` `-0.0052`, was `-0.5` |
+| Change                           | Files                                             | Lines per file | Example                                                         |
+| -------------------------------- | ------------------------------------------------- | -------------- | --------------------------------------------------------------- |
+| Percentage line height in points | iOS `Main`, `Number*`, both brands (8 files)      | 9              | `FontContextJumboLineHeight = CGFloat(120)`, was `CGFloat(125)` |
+| Percentage line height in `sp`   | Android `main`, `number_*`, both brands (8 files) | 9              | `font_context_jumbo_line_height` `120sp`, was `125sp`           |
+| Letter spacing in em             | Android `main`, `number_*`, both brands (8 files) | 3              | `font_context_jumbo_letter_spacing` `-0.0052`, was `-0.5`       |
 
 The values follow the font size of each screen: `font.website.hero-body` is `33` on large and `28.5` on small screens (`150%` of `22` and `19`), `font.website.hero-title` letter spacing is `-0.0156`, `-0.0208` and `-0.0313` em (`-1px` at `64`, `48` and `32`). The 190 zero letter spacings print `0` as before, and `font_context_hero_letter_spacing` still names `@dimen/typography_letter_spacing_base_zero` with `outputReferences`, since both are `0`.
 
@@ -707,7 +706,6 @@ The `ios-references` and `android-references` baselines changed in the same line
 Checked: all Swift files of both brands type-check (stand-in UIKit); aapt2 compiles and links the Android qualifier layout of the guide and `main.xml` alone, for both brands, and its resource dump shows `-0.0052` and `120.000000sp`.
 
 A percentage line height or a letter spacing part without a font size in its file fails the build with the token path. No current token reaches it.
-
 
 ## Phase 14: font weights as numbers
 
@@ -723,21 +721,20 @@ Facts: font weights print as names from the token source, lowercased with the fi
 
 Result: iOS and Android print weights, and the web, iOS and Android share one name map. 1680 lines of `dist/` changed: 210 in each `Main`/`main` and string file of both brands (18 weight tokens and 192 typography parts per file), and nothing else.
 
-| Weight in the tokens | Lines per platform | iOS | Android |
-| --- | --- | --- | --- |
-| `Regular` | 312 | `UIFont.Weight.regular` | `400` |
-| `Semi Bold` (Inter) | 114 | `UIFont.Weight.semibold` | `600` |
-| `SemiBold` (Archivo Narrow, DM Sans, Source Serif 4) | 158 | `UIFont.Weight.semibold` | `600` |
-| `Bold` | 160 | `UIFont.Weight.bold` | `700` |
-| `Light` | 74 | `UIFont.Weight.light` | `300` |
-| `Medium` | 22 | `UIFont.Weight.medium` | `500` |
+| Weight in the tokens                                 | Lines per platform | iOS                      | Android |
+| ---------------------------------------------------- | ------------------ | ------------------------ | ------- |
+| `Regular`                                            | 312                | `UIFont.Weight.regular`  | `400`   |
+| `Semi Bold` (Inter)                                  | 114                | `UIFont.Weight.semibold` | `600`   |
+| `SemiBold` (Archivo Narrow, DM Sans, Source Serif 4) | 158                | `UIFont.Weight.semibold` | `600`   |
+| `Bold`                                               | 160                | `UIFont.Weight.bold`     | `700`   |
+| `Light`                                              | 74                 | `UIFont.Weight.light`    | `300`   |
+| `Medium`                                             | 22                 | `UIFont.Weight.medium`   | `500`   |
 
 On Android the weights are `<integer>` elements; they stay in `string.xml` and `main.xml`, because the file filters select by type group and `fontWeight` is in the string group. Font style parts (`normal`, `italic`) did not change. No weight prints a reference with `outputReferences`: every weight part holds the resolved weight, not a reference. The two reference baselines changed in the same 210 lines per file, each equal to the new line of `dist/`.
 
 `values/shared.js` imports `transformFontWeight` from `@tokens-studio/sd-transforms`, which loads `style-dictionary/utils`. The encoders still take plain tokens and return strings; the import keeps one name map for all platforms instead of a copy.
 
 Checked: all Swift files of both brands type-check with the stand-in UIKit, which now also maps `UIFont` to `NSFont`; a program reading `String.swift` gets `NSFont.Weight.semibold` for both spellings (raw value 0.3). aapt2 compiles and links both brands and reads `integer/font_context_jumbo_font_weight` as `700`.
-
 
 ## Phase 15: gradients on mobile as parts
 
@@ -752,11 +749,11 @@ Facts: the 88 `gradient.primitive.*` tokens per colour file are typed `color` wi
 
 Result: each gradient prints five parts on iOS and Android instead of one wrong colour. In each colour file of both brands, the 88 gradient lines became 440 part lines, and nothing else changed (8 files, 704 lines out, 3520 in). Web output did not change.
 
-| Part | iOS | Android |
-| --- | --- | --- |
-| Angle | `GradientPrimitiveBlackL000Angle = CGFloat(0)` | `<item name="gradient_primitive_black_l_000_angle" type="dimen" format="float">0</item>` |
-| Stop colour | `…Stop1Color = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0)` | `<color name="…_stop_1_color">#00000000</color>` |
-| Stop position | `…Stop1Position = CGFloat(0)` | float item `0` |
+| Part          | iOS                                                                      | Android                                                                                  |
+| ------------- | ------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------- |
+| Angle         | `GradientPrimitiveBlackL000Angle = CGFloat(0)`                           | `<item name="gradient_primitive_black_l_000_angle" type="dimen" format="float">0</item>` |
+| Stop colour   | `…Stop1Color = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0)` | `<color name="…_stop_1_color">#00000000</color>`                                         |
+| Stop position | `…Stop1Position = CGFloat(0)`                                            | float item `0`                                                                           |
 
 - The 12 gradients with a negative angle (`-45deg`, `-90deg`) print it from 0 to 360: `GradientPrimitiveBlackL315Angle` is `315`, which matches its name.
 - All 3520 parts equal the gradient that the web prints for the same token, compared stop by stop (angle, colour through tinycolor, position).
@@ -766,7 +763,6 @@ Result: each gradient prints five parts on iOS and Android instead of one wrong 
 The parser reads `linear-gradient` with an angle in degrees, a side keyword (`to right`) or no direction (180), and stops with or without a percentage; stops without one get the positions CSS gives them. Corner keywords, `turn`, `rad`, other gradients and a single stop fail the build with the token path. The parts are built in the template, from `gradientParts` in `values/shared.js`, because one Style Dictionary instance serves the web and mobile platforms, so the preprocessor cannot expand gradients for mobile only.
 
 Checked: the 21 Swift files of `dist/` and the baseline type-check; the iOS guide's `CAGradientLayer` example compiles against the new `ColorLight.swift` and gives the CSS directions for 0, 90, 180 and 315; aapt2 compiles and links both brands and the reference baseline. The guide's Kotlin example is not compiled (no Kotlin compiler here; Phase 20 downloads one).
-
 
 ## Phase 16: dead `dimension` filter condition
 
@@ -778,7 +774,6 @@ Facts: the `path[1] == dimension` exclusion in the main and number filters match
 - [x] Acceptance: `pnpm tokens:verify` and all preset checks green with no change; tests green.
 
 Result: `cx/allTokens` and `cx/numberTokens` include every size-group token; the dead condition is gone from `filters.js`, the Filters table and Known oddities. No token set in `tokens/` has a `dimension` group at `path[1]`, so the output of both brands is unchanged. The test that kept the exclusion now requires the opposite: `dimension.base.0`, and a size token with `dimension` at `path[1]`, are in the main and number files. Putting the condition back fails it.
-
 
 ## Phase 17: iOS type and file names
 
@@ -799,11 +794,11 @@ Facts:
 
 Result: every iOS file declares its own caseless enum, and the main file is `ChassisTokens.swift`.
 
-| File | Type |
-| --- | --- |
-| `ChassisTokens.swift` (was `Main.swift`) | `ChassisTokens` |
-| `String.swift` | `ChassisTokensString` |
-| `ColorLight.swift`, `ColorDark.swift` | `ChassisTokensColorLight`, `ChassisTokensColorDark` |
+| File                                                                                            | Type                                                  |
+| ----------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
+| `ChassisTokens.swift` (was `Main.swift`)                                                        | `ChassisTokens`                                       |
+| `String.swift`                                                                                  | `ChassisTokensString`                                 |
+| `ColorLight.swift`, `ColorDark.swift`                                                           | `ChassisTokensColorLight`, `ChassisTokensColorDark`   |
 | `NumberLarge.swift`, `NumberMedium.swift`, `NumberSmall.swift` (`Number.swift` without screens) | `ChassisTokensNumberLarge`, … (`ChassisTokensNumber`) |
 
 In `dist/ios` of both brands, 41194 lines changed and nothing else: the `@objc ` prefix of every constant, the type line of each file, and the file name comment of the main file. Android and web did not change. The `ios-references` baseline changed the same way.
@@ -817,7 +812,6 @@ Checked:
 - The iOS guide's `Package.swift` validates with `swift package describe`; the same package with a stand-in UIKit target (which adds `UITraitCollection` and `UIColor(dynamicProvider:)` for the examples) builds an app from every token-using Swift block of the guide, and the gradient example runs. The SwiftUI block is not compiled: `Color(uiColor:)` exists only on iOS.
 
 The iOS guide drops the one-module-per-file setup, the ambiguity and redeclaration workarounds and the `Main.swift` exclusion: files go into one target or one package library, and code writes the type (`ChassisTokensColorLight.ColorContextDefaultBgMain`).
-
 
 ## Phase 18: iOS colours that follow dark mode
 
@@ -833,10 +827,10 @@ Facts: the light and dark colour files are written by two Style Dictionary insta
 
 Result: the build writes `dist/ios/<app>/<brand>/Color.swift` with `public enum ChassisTokensColor`, after all Style Dictionary instances have run. No other file changed; `dist/` has 44 files.
 
-| Constant | Printed | `chassis` |
-| --- | --- | --- |
-| differs between light and dark | `UIColor { $0.userInterfaceStyle == .dark ? <dark> : <light> }` | 657 |
-| the same in both themes | as in the colour files | 1140 |
+| Constant                       | Printed                                                         | `chassis` |
+| ------------------------------ | --------------------------------------------------------------- | --------- |
+| differs between light and dark | `UIColor { $0.userInterfaceStyle == .dark ? <dark> : <light> }` | 657       |
+| the same in both themes        | as in the colour files                                          | 1140      |
 
 How it works:
 
@@ -852,7 +846,6 @@ Checked:
 - The 8 files compile as one package library, and the iOS guide's examples compile against it.
 
 The guide's dark mode section now uses `ChassisTokensColor` instead of a hand-written `UIColor.token(light:dark:)` helper.
-
 
 ## Phase 19: Android resource tree
 
@@ -872,14 +865,14 @@ Facts, `chassis` on 2026-09-27:
 
 Result: the Android build writes a resource tree next to the flat files, 7 files per brand. No existing file changed; `dist/` has 58 files.
 
-| File | Contents | Same as |
-| --- | --- | --- |
-| `res/values/string.xml` | strings, font families and weights, icons | `string.xml` |
-| `res/values/color_base.xml` | the 1382 base colours, which were only in `main.xml` | new |
-| `res/values/color.xml` | colours of the first theme | `color_light.xml` |
-| `res/values/number.xml` | numbers of the default screen | `number_small.xml` |
-| `res/values-night/color.xml` | colours of `dark` | `color_dark.xml` |
-| `res/values-sw600dp/number.xml`, `res/values-sw840dp/number.xml` | numbers of medium and large | `number_medium.xml`, `number_large.xml` |
+| File                                                             | Contents                                             | Same as                                 |
+| ---------------------------------------------------------------- | ---------------------------------------------------- | --------------------------------------- |
+| `res/values/string.xml`                                          | strings, font families and weights, icons            | `string.xml`                            |
+| `res/values/color_base.xml`                                      | the 1382 base colours, which were only in `main.xml` | new                                     |
+| `res/values/color.xml`                                           | colours of the first theme                           | `color_light.xml`                       |
+| `res/values/number.xml`                                          | numbers of the default screen                        | `number_small.xml`                      |
+| `res/values-night/color.xml`                                     | colours of `dark`                                    | `color_dark.xml`                        |
+| `res/values-sw600dp/number.xml`, `res/values-sw840dp/number.xml` | numbers of medium and large                          | `number_medium.xml`, `number_large.xml` |
 
 The screen folders come from `options.android.screens`, by default `{ small: '', medium: 'sw600dp', large: 'sw840dp' }` (`DEFAULT_SCREEN_QUALIFIERS` in `config/android.js`). `loadConfig` checks them when an app builds Android: every screen needs a folder, and exactly one screen goes into the default folder. Without screens, the one number file goes into `values`. Themes other than the first and `dark` get no tree file. `planBuilds` now carries the configured `themes` and `screens`, which `config/index.js` passes to the platform configs with their options.
 
@@ -891,7 +884,6 @@ Checked:
 
 The Android guide adds the tree as a Gradle resource folder (`sourceSets["main"].res.srcDir(…)`), which is not compiled here (no Android SDK), or copies it; the sync script and its CI step are gone.
 
-
 ## Phase 20: SwiftUI and Compose outputs (optional)
 
 Goal: native code outputs for apps that use SwiftUI or Jetpack Compose.
@@ -902,10 +894,10 @@ Goal: native code outputs for apps that use SwiftUI or Jetpack Compose.
 
 Result: two opt-in platforms, selected in `chassis.build.apps` like the web presets. Neither is in the repository's own configuration, so `dist/` did not change.
 
-| Platform | Folder | Files | Example |
-| --- | --- | --- | --- |
-| `ios-swiftui` | `dist/ios-swiftui/<app>/<brand>/` | the 7 Swift files of `ios`, same types | `public static let ColorContextDefaultBgMain = Color(red: 1.000, green: 1.000, blue: 1.000, opacity: 1)` |
-| `android-compose` | `dist/android-compose/<app>/<brand>/` | `ChassisTokens.kt`, `String.kt`, `Color<Theme>.kt`, `Number<Screen>.kt`, one `object` each | `val fontContextJumboLetterSpacing get() = (-0.0052).em` |
+| Platform          | Folder                                | Files                                                                                      | Example                                                                                                  |
+| ----------------- | ------------------------------------- | ------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------- |
+| `ios-swiftui`     | `dist/ios-swiftui/<app>/<brand>/`     | the 7 Swift files of `ios`, same types                                                     | `public static let ColorContextDefaultBgMain = Color(red: 1.000, green: 1.000, blue: 1.000, opacity: 1)` |
+| `android-compose` | `dist/android-compose/<app>/<brand>/` | `ChassisTokens.kt`, `String.kt`, `Color<Theme>.kt`, `Number<Screen>.kt`, one `object` each | `val fontContextJumboLetterSpacing get() = (-0.0052).em`                                                 |
 
 - `values/swiftui.js` prints colours as `Color(…opacity:)` and weights as `Font.Weight`, and takes every other value, the part names and the reference rule from `values/ios.js` (equal UIKit text means equal SwiftUI text). `values/compose.js` prints the values of `values/android.js` in Kotlin: `Color(0xAARRGGBB)`, `16.dp`, `22.sp`, `(-0.0052).em` for letter spacing parts, `0.4f` for other floats, `FontWeight(600)`, and escaped string literals; references follow the Android rule and name the camelCase property.
 - The constant loop of the iOS template moved to `templates/constants.js` (`tokenConstants`), which the Swift, SwiftUI and Compose formats call with their value module. `config/ios.js` became a factory, `swiftConfig`; only `ios` marks its colour files for `Color.swift`. The Swift configs set `accessControl: 'public'`, which the UIKit format had from `setSwiftFileProperties` and the SwiftUI format did not.
@@ -919,7 +911,6 @@ Checked:
 - The 7 Kotlin files compile together with `kotlinc` 2.4.20 (downloaded to the session scratchpad from JetBrains' GitHub release, 89729132 bytes, as approved), against stand-ins with the signatures of `androidx.compose` (`Color(Long)`, `Color(Int)`, `Int`/`Double` `.dp`, `.sp`, `.em`, `FontWeight(Int)`), and so do the files with `outputReferences` and another package (14389 names). The real Compose libraries were not downloaded.
 - Baselines `golden/ios-swiftui/` and `golden/android-compose/` (7 files each, 1.5 MB and 1.1 MB), written by the build and equal to the checked output; `pnpm tokens:verify:presets` checks 8 presets.
 
-
 ## Phase 21: icon assets (optional)
 
 Goal: icons that iOS and Android can draw. Today the 9 icon tokens per brand are SVG text in strings.
@@ -931,10 +922,10 @@ Goal: icons that iOS and Android can draw. Today the 9 icon tokens per brand are
 
 Result: the 9 SVG icon tokens of each brand are also icon assets. The string tokens did not change; `dist/` gained 56 files (114 in all) and nothing else changed.
 
-| Platform | Files | Content |
-| --- | --- | --- |
-| iOS | `Icons.xcassets/Contents.json` and `Icons.xcassets/<Name>.imageset/{<Name>.svg, Contents.json}` | the SVG of the token; `preserves-vector-representation` and `template-rendering-intent: template`, so the icon scales and takes the tint colour |
-| Android | `res/drawable/<name>.xml` | a vector drawable from `svg2vectordrawable` 2.9.1 (MIT, new dev dependency) with `fillBlack` and three decimals |
+| Platform | Files                                                                                           | Content                                                                                                                                         |
+| -------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| iOS      | `Icons.xcassets/Contents.json` and `Icons.xcassets/<Name>.imageset/{<Name>.svg, Contents.json}` | the SVG of the token; `preserves-vector-representation` and `template-rendering-intent: template`, so the icon scales and takes the tint colour |
+| Android  | `res/drawable/<name>.xml`                                                                       | a vector drawable from `svg2vectordrawable` 2.9.1 (MIT, new dev dependency) with `fillBlack` and three decimals                                 |
 
 - `build/tokens/icons.js` holds the pure parts (`iconTokens`, `iosImageSet`, `iosCatalog`, `androidDrawable`) and registers two Style Dictionary actions, `cx/ios-icons` and `cx/android-icons`. The iOS and Android configs run them only in the build of the main file, where the icon tokens are; the SwiftUI and Compose presets do not.
 - The converter drops the `currentcolor` fill of the root `svg`, and a vector path without a fill colour draws nothing, so `fillBlack` fills every path black for a tint to replace. Its default of two decimals rounded the tokens' three (`1.205` became `1.2`); `floatPrecision: 3` keeps them.
@@ -945,7 +936,6 @@ Checked:
 - Every image set's SVG equals the icon token's text, every `Contents.json` is valid JSON with the expected keys, and the catalog has one image set per icon constant of `String.swift` (both brands). `actool` needs Xcode, so the catalog is not compiled here.
 - aapt2 compiles every drawable of both brands. Linking drawables needs the framework attributes of `android.jar` (`android:height`, `android:viewportWidth`), which are not here; the values folders still link.
 - A Swift package whose target folder holds `Icons.xcassets` makes `swift build` run `actool`, even without a `resources` entry, so it fails without Xcode. The iOS guide's `Package.swift` therefore excludes the catalog, which then goes into the app target; that package builds without Xcode.
-
 
 ## Phase 22: platform shadow values (optional)
 
@@ -965,7 +955,6 @@ Result: every box shadow blur on iOS is followed by a `…Radius` constant with 
 - The factor of one half is the usual conversion between a CSS blur and `shadowRadius`, which the iOS guide already used; it was not measured against a browser here.
 
 Checked: all Swift files of both brands and of the `ios-references` build type-check in one module; the iOS guide's shadow example compiles in a package against the new files and sets a radius of 4, `shadowOpacity` 1 and the colour's alpha 0.1.
-
 
 ## Phase 23: package contents and scripts
 
@@ -998,16 +987,28 @@ Checked:
 - `pnpm check` exits 1 as it is (audit), 0 with `check:pnpm` replaced by `true`, and 1 with `check:astro` replaced by `false`; `package.json` was restored after each.
 - `pnpm tokens:verify` passes, 114 of 114 files; the 8 preset checks pass; `pnpm tokens:test` passes, 745 tests; lint reports nothing; `pnpm site:lint` passes; `pnpm astro:build` built 22 pages, and the three changed sentences are in the built pages; `dist/` untouched.
 
-
 ## Phase 24: lint and audit clean
 
 Goal: every lint and audit command the CI of Phase 25 will run passes.
 
 - [x] Format the 6 files under `site/src/components/homepage/` with Prettier (formatting only; an exception to the frozen `site/` folder). Done by Ozgur on 2026-09-27; `pnpm site:lint` passes.
-- [ ] Format `README.md`, `CHANGELOG.md` and `publish-release.yml` with Prettier.
-- [ ] Update Astro, `@astrojs/check` and the other packages in the audit report to versions without the advisories. For an advisory with no fixed version, add a `pnpm.auditConfig.ignoreGhsas` entry with the reason in the Result.
-- [ ] Acceptance: `pnpm site:lint`, `pnpm check` (Phase 23's version), `prettier -c` on the repository, `pnpm astro:build` with the page count unchanged (22), and the usual `dist/` and test checks. The Result lists every updated package with its old and new version, and every ignored advisory.
+- [x] Format `README.md`, `CHANGELOG.md` and `publish-release.yml` with Prettier.
+- [x] Update Astro, `@astrojs/check` and the other packages in the audit report to versions without the advisories. For an advisory with no fixed version, add a `pnpm.auditConfig.ignoreGhsas` entry with the reason in the Result.
+- [x] Acceptance: `pnpm site:lint`, `pnpm check` (Phase 23's version), `prettier -c` on the repository, `pnpm astro:build` with the page count unchanged (22), and the usual `dist/` and test checks. The Result lists every updated package with its old and new version, and every ignored advisory.
 
+Result: `pnpm audit` reports no advisory, and Prettier, `site:lint` and `pnpm check` pass on the whole repository.
+
+- Prettier: formatted `README.md`, `CHANGELOG.md`, `publish-release.yml`, and also `docs/rewrite-plan.md`, `pagefind.yml` and `vercel.json`, which `prettier -c .` reported too. Ignoring whitespace, the only text change in the Markdown files is one table separator row; the YAML files changed quotes and `vercel.json` joined two arrays onto one line. Added `pnpm-lock.yaml` to `.prettierignore`, since pnpm writes it.
+- Audit: 37 advisories (39 before Phase 23), all with a fixed version, so no `ignoreGhsas` entry was needed. `pnpm update --depth Infinity` within the existing ranges, excluding the four packages that produce `dist/` (`style-dictionary`, `@tokens-studio/sd-transforms`, `svg2vectordrawable`, `tinycolor2`), cleared 35. The other two were `qs` under `style-dictionary`, which the exclusion held back; `qs` alone went from 6.15.3 to 6.16.0, inside its parent's `^6.12.3`, and the four packages kept their versions.
+- The update also moved `@chassis-ui/css` from 0.5.0-0 to 0.5.2, which changes Chassis CSS files the site copies (for example `--cx-primary-60`), and `@chassis-ui/docs` to 0.5.0. Neither was needed for the audit, so both are back at 0.5.0-0 with their `^` ranges. Updating them is Ozgur's call, outside this phase.
+- Direct dev dependencies updated: `@astrojs/check` 0.9.9 → 0.9.10, `@astrojs/markdown-remark` 7.2.1 → 7.3.1, `@astrojs/mdx` 7.0.2 → 7.0.8, `@astrojs/sitemap` 3.7.3 → 3.7.4, `@floating-ui/dom` 1.7.6 → 1.8.0, `@shikijs/transformers` 4.3.1 → 4.4.3, `astro` 7.0.6 → 7.3.5, `autoprefixer` 10.5.2 → 10.6.1, `eslint` 10.6.0 → 10.11.0, `globals` 17.7.0 → 17.12.0, `globby` 16.2.0 → 16.2.4, `html-validate` 11.5.5 → 11.16.0, `js-yaml` 5.2.1 → 5.4.2, `postcss` 8.5.16 → 8.5.28, `prettier` 3.9.4 → 3.9.9, `sass` 1.101.0 → 1.105.0, `typescript-eslint` 8.62.1 → 8.70.1, `vanilla-calendar-pro` 3.1.0 → 3.4.0, `vitest` 4.1.9 → 4.1.11, `zod` 4.4.3 → 4.6.5. `package.json` ranges now start at these versions.
+
+Checked:
+
+- `pnpm audit`: no known vulnerabilities. `pnpm check` exits 0 (`astro check`: 0 errors, 0 warnings, 0 hints). `pnpm site:lint` and `prettier -c .` pass. `pnpm install --frozen-lockfile` passes.
+- The site built with the old dependencies (a scratch worktree at `rewrite(phase 23)`, `--frozen-lockfile`) and with the new ones: 22 pages each. Of 3911 files (Pagefind left out), 3886 are identical once hashed asset names are normalised, 18 pages differ only in whitespace between tags, the docs stylesheet gains `-webkit-user-select` and `-moz-user-select` (newer autoprefixer data), and 6 bundled JavaScript chunks differ (newer Vite and libraries).
+- Astro 7.3 prints 17 Vite warnings, one per MDX page, that the module-level directive `use astro:head-inject` "may not be preserved when bundling". The old build printed none. The built HTML is the same, including the stylesheet link in every head, so the warnings change nothing here.
+- `pnpm tokens:verify` passes, 114 of 114 files; the 8 preset checks pass; `pnpm tokens:test` passes, 745 tests; `tokens:lint` reports nothing; `dist/` untouched.
 
 ## Phase 25: CI for pull requests
 
@@ -1023,7 +1024,6 @@ Goal: every pull request and every push runs the checks, and the release cannot 
 - [ ] Pin actions as decided below.
 - [ ] Acceptance: `actionlint` passes on both workflows; each job's commands run green locally in a clean clone with `pnpm install --frozen-lockfile`; the Result lists the branch protection settings for Ozgur to set on `main` (required checks: the job names).
 
-
 ## Phase 26: merge preparation and 0.6.0
 
 Goal: `dev/rewrite` merges into `main` and is released as one version.
@@ -1033,7 +1033,6 @@ Goal: `dev/rewrite` merges into `main` and is released as one version.
 - [ ] Write the pull request description into the Result: what changed, how it was checked, and the breaking changes, taken from the CHANGELOG.
 - [ ] Ozgur pushes `dev/rewrite`, opens the pull request, waits for the CI of Phase 25, merges and lets the release workflow publish. Claude does not push.
 - [ ] Acceptance: before the push, every local check of Phase 25 passes in a clean clone; `npm pack --dry-run` shows the new version. After the release, the next session records the CI run, the npm version and the GitHub release in the log.
-
 
 ## Phase 27: workspace split, tokens and site (optional)
 
@@ -1045,7 +1044,6 @@ Goal: a contributor who changes tokens installs and runs only the token build; t
 - [ ] Update the CI and release workflows, `vercel.json`, the lint configs, `.gitignore`, the README and the site pages that name repository paths.
 - [ ] Acceptance: `npm pack --dry-run` in `packages/tokens/` lists the same file names as before the split; `pnpm install` in the tokens package alone installs no site dependency; every check of Phase 25 passes; `pnpm astro:build` builds 22 pages; the Result lists the Vercel setting to change, if any.
 
-
 ## Phase 28: contributor docs and README
 
 Goal: someone new can change a token, a platform or the site and open a correct pull request without asking.
@@ -1055,7 +1053,6 @@ Goal: someone new can change a token, a platform or the site and open a correct 
 - [ ] `.github/CODEOWNERS`, issue templates (bug, token change, platform request) and a pull request template with the checklist of `CONTRIBUTING.md`.
 - [ ] README: npm and CI badges instead of the hardcoded version badge (then remove `README.md` from `change-version.js`); CLI examples with the brands and apps of the configuration; no "no shared dependencies" claim; replace the emoji feature list with install, use, customize and release sections; link to `CONTRIBUTING.md` and the site.
 - [ ] Acceptance: every command in `CONTRIBUTING.md` and the README runs as written in a clean clone; every link resolves; Prettier passes; the issue template YAML is valid (GitHub's issue forms schema).
-
 
 ## Phase 29: release automation
 
@@ -1068,7 +1065,6 @@ Goal: versions and CHANGELOG entries come from pull requests, and npm publishes 
 - [ ] Result: the steps for Ozgur: add the trusted publisher on npmjs.com, then delete the `NPM_CHASSIS_UI` secret after the first release with provenance.
 - [ ] Acceptance: `actionlint` passes; `pnpm changeset status` works; a dry run of the version step on a scratch branch bumps `package.json`, writes the CHANGELOG and `site/config.yml`; `npm publish --dry-run` lists the files of Phase 23.
 
-
 ## Phase 30: token diff report on pull requests
 
 Goal: a reviewer sees what a pull request does to the tokens without reading `dist/`.
@@ -1077,7 +1073,6 @@ Goal: a reviewer sees what a pull request does to the tokens without reading `di
 - [ ] CI: build the base branch's `dist/` into a scratch folder, run the diff against the pull request's `dist/`, and write the report as the job summary (and as a pull request comment, if approved).
 - [ ] Tests on real `dist/` fixtures.
 - [ ] Acceptance: run on real commits of this branch, the report shows: for the `headers-gap` rename, one possible rename in each of the 6 small-screen files; for Phase 22, 3168 added iOS lines and nothing else; for Phase 14, value changes on weight lines only. A pull request with no token change reports nothing.
-
 
 ## Phase 31: token source lint
 
@@ -1092,7 +1087,6 @@ Goal: mistakes in `tokens/` fail before a build, with a message that names the t
 - [ ] Tests with fixtures copied from `tokens/`, and one broken fixture per rule.
 - [ ] Acceptance: passes on `tokens/`; each rule fails on its broken fixture; putting `headers-gap` back into the small screen set of a scratch copy fails with the set and token named.
 
-
 ## Phase 32: type checking of the build code
 
 Goal: type errors in `build/` fail CI.
@@ -1100,7 +1094,6 @@ Goal: type errors in `build/` fail CI.
 - [ ] A `tsconfig.json` for `build/` with `allowJs`, `checkJs` and `noEmit`, at the strictness decided below; `pnpm tokens:typecheck`, run in CI.
 - [ ] Fix what it reports with JSDoc types, using the types Style Dictionary ships. No behaviour change.
 - [ ] Acceptance: `pnpm tokens:typecheck` passes; the usual `dist/` and test checks; the Result lists the kinds of errors found and any that were real bugs.
-
 
 ## Phase 33: native compile checks in CI
 
@@ -1111,7 +1104,6 @@ Goal: CI compiles the iOS and Android output against the real SDKs, which this m
 - [ ] Both jobs run on pull requests that change `tokens/`, `build/` or `dist/`, as decided below.
 - [ ] Acceptance: `actionlint` passes; the Android job runs locally if the SDK is downloaded with approval, else its first CI run is the check; the macOS job's first CI run is the check. Both are recorded in the next session log. A deliberately broken Swift and XML file fails each job on a scratch branch.
 
-
 ## Phase 34: Swift package and Android library (optional)
 
 Goal: mobile apps install the tokens with their package manager instead of copying files.
@@ -1121,7 +1113,6 @@ Goal: mobile apps install the tokens with their package manager instead of copyi
 - [ ] Update the iOS and Android guides with the install steps.
 - [ ] Acceptance: in CI (Phase 33's jobs), a sample app target resolves the Swift package and reads a token; a sample Gradle app depends on the AAR and reads a resource. `swift package describe` passes locally.
 
-
 ## Phase 35: retire the plan
 
 Goal: the repository keeps what a contributor needs from this plan and drops the session protocol.
@@ -1129,7 +1120,6 @@ Goal: the repository keeps what a contributor needs from this plan and drops the
 - [ ] Write `docs/architecture.md`: the design decisions, the output contract, the platform rules and the known oddities, updated to the final code. Link it from `CONTRIBUTING.md` and the README.
 - [ ] Delete `docs/rewrite-plan.md` (git history keeps it), or move it, as decided below.
 - [ ] Acceptance: every fact in `docs/architecture.md` matches the code and `dist/`; every link resolves; Prettier passes.
-
 
 ## Known oddities in the output (kept as they are)
 
@@ -1143,12 +1133,12 @@ These are part of the frozen contract. They are listed so nobody "fixes" them by
 
 ## Risks
 
-| Risk | Plan |
-| --- | --- |
-| An encoder differs from the template in rounding or branch order | Golden diff after every phase; fixtures cover every branch |
-| SD 5 changes reference or math behaviour | Phase 4 is isolated, so a red diff has one cause |
-| Token order changes with the new build loop | Phase 6 keeps the current set order; strict diff catches any change |
-| `@chassis-ui/css` fails on duplicate `$cx-*` names | Harness checks uniqueness; Phase 6 runs the site build |
+| Risk                                                             | Plan                                                                |
+| ---------------------------------------------------------------- | ------------------------------------------------------------------- |
+| An encoder differs from the template in rounding or branch order | Golden diff after every phase; fixtures cover every branch          |
+| SD 5 changes reference or math behaviour                         | Phase 4 is isolated, so a red diff has one cause                    |
+| Token order changes with the new build loop                      | Phase 6 keeps the current set order; strict diff catches any change |
+| `@chassis-ui/css` fails on duplicate `$cx-*` names               | Harness checks uniqueness; Phase 6 runs the site build              |
 
 ## Open decisions for Ozgur
 
@@ -1264,3 +1254,4 @@ Append-only.
 - 2026-09-27 (Phases 23 to 35 planning, Opus 5.5): Ozgur asked what the package lacks to be production-ready and contributor-friendly, then asked for the answer as phases. Measured the repository (see Facts about the repository): the npm package holds 37 files and no iOS or Android output; no workflow runs on a pull request; `pnpm check` cannot fail; `site:lint` fails on 6 files; `pnpm audit` reports 39 advisories, 1 critical in Astro; about 31 of 53 dev dependencies serve only the site. Added Phases 23 to 35, a ground rule for them and 25 open decisions. Nothing in `build/`, `dist/`, `tokens/` or `site/` changed. Next: Ozgur's answers, then Phase 23.
 - 2026-09-27 (Phases 23 to 35 decisions): Ozgur confirmed all recommendations. `CODEOWNERS` had no recommendation; the plan assumes Ozgur for everything and Phase 28 confirms it. Phase 34's AAR destination had no recommendation; Phase 34 asks before publishing. Ozgur formatted the 6 homepage components with Prettier (class attributes joined onto one line, nothing else); `pnpm site:lint` passes, and that item of Phase 24 is ticked. The plan was committed as `rewrite(plan): add phases 23 to 35 for production readiness`. Next: Phase 23.
 - 2026-09-27 (Phase 23, Opus 5.5): Set `files` to all of `dist/` plus `CHANGELOG.md`, added the `exports` map and the new description, made `check` sequential with `&&`, and removed the vnu, zip and lockfile-lint scripts, files and dependencies. Updated the quick start, the iOS and Android guides, the README overview and the CHANGELOG. Verified: the packed file list equals `git ls-files dist` plus four files; the consumer check above (Sass `pkg:` importer, load path, Node resolution, blocked path); `pnpm check` fails and passes as it should; `pnpm tokens:verify`, the 8 preset checks, 745 tests, lint, `site:lint` and `astro:build` (22 pages) pass; `dist/` untouched. Surprises: (1) the tarball grows to 691.6 kB packed, below the plan's estimate of about 750 kB. (2) Removing `lockfile-lint` also removed 2 of the 39 audit advisories. (3) `pnpm check` now fails on the audit until Phase 24. Next: Phase 24.
+- 2026-09-27 (Phase 24, Opus 5.5 per session; the Model column says Sonnet): Formatted six files with Prettier and ignored `pnpm-lock.yaml`; updated the dev dependencies within their ranges except the four build packages, then `qs` alone; pinned `@chassis-ui/css` and `@chassis-ui/docs` back to 0.5.0-0. Verified: `pnpm audit` clean, `pnpm check`, `site:lint`, `prettier -c .`, `pnpm tokens:verify`, 8 preset checks, 745 tests and lint pass; the site built with old and new dependencies differs only as listed in the Result; `dist/` untouched. Surprises: (1) a broad update also upgrades `@chassis-ui/css`, which changes the Chassis CSS files the site serves; it was reverted. (2) Astro 7.3 prints 17 harmless Vite warnings about `use astro:head-inject`. (3) Every advisory had a fixed version, so no ignore list was needed. Next: Phase 25.

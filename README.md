@@ -1,5 +1,3 @@
-
-
 # Chassis Tokens
 
 > Design token generation and management for the Chassis Design System, supporting multi-brand, multi-theme, multi-app, and multi-platform output.
@@ -10,6 +8,7 @@
 ## Overview
 
 **This repository contains:**
+
 - Design tokens in [Tokens Studio](https://tokens.studio) format (`tokens/`)
 - Style Dictionary 5 build scripts with custom extensions (`build/tokens/`)
 - Platform-specific output for Web (SCSS), iOS (Swift), and Android (XML), committed in `dist/` and published to npm as `@chassis-ui/tokens`
@@ -17,6 +16,7 @@
 - Documentation website (`site/`)
 
 **Key features:**
+
 - 🎨 Multi-brand, multi-theme support with Figma Variables integration
 - 🚀 Fast selective builds with CLI filtering
 - 📦 Self-contained platform configurations (no shared dependencies)
@@ -32,7 +32,6 @@
 
 > [!WARNING]
 > This project uses `pnpm` for package management and needs Node.js 22 or later. Install pnpm globally with `npm install -g pnpm` before running the commands below.
-
 
 ## 🚀 Quick Start
 
@@ -84,6 +83,7 @@ pnpm tokens --brand chassis --app docs --platform web
 ```
 
 **Benefits:**
+
 - Faster builds during development
 - Reduced output size for targeted deployments
 - Optimized CI/CD pipelines
@@ -180,16 +180,15 @@ Pushing to `main` publishes the version in `package.json` if it is not on npm ye
 
 See package scripts for more commands and options.
 
-
 ## Tokens Studio Format & Figma Variables
 
 Tokens are stored in [Tokens Studio](https://tokens.studio) format, compatible with Figma variables. Example structure:
 
-| Collection | Mode 1 | Mode 2 |
-| --- | --- | --- |
-| Brand | chassis | test |
-| Theme | light | dark |
-| App | docs | test |
+| Collection | Mode 1  | Mode 2 |
+| ---------- | ------- | ------ |
+| Brand      | chassis | test   |
+| Theme      | light   | dark   |
+| App        | docs    | test   |
 
 See [Tokens Studio Documentation](https://docs.tokens.studio) and [Style Dictionary Documentation](https://amzn.github.io/style-dictionary/) for more details.
 
@@ -222,6 +221,7 @@ The `chassis` key in your `package.json` defines which brands, themes, screens, 
 The token sets of each file come from `tokens/$themes.json`. Colour files use the sets of their theme, number files the sets of their screen, and every other file the sets of the first theme and the first screen listed here.
 
 **Supported platforms:**
+
 - `web`: SCSS variables for Chassis CSS (rem units, `var(--…)` references)
 - `web-scss`, `web-px`, `web-vw`: SCSS variables for other CSS frameworks (see [below](#presets-for-other-css-frameworks))
 - `ios`: Swift types, one caseless enum per file (PascalCase naming)
@@ -230,6 +230,7 @@ The token sets of each file come from `tokens/$themes.json`. Colour files use th
 - `android-compose`: Kotlin objects for Jetpack Compose (`Color`, `.dp`, `.sp`, `.em`, `FontWeight`), written to `dist/android-compose/<app>/<brand>/`, in the package `chassis.tokens` or `options["android-compose"].packageName`
 
 **File naming conventions:**
+
 - Web: `main.scss`, `color-light.scss`, `number-large.scss`
 - iOS: `ChassisTokens.swift`, `ColorLight.swift`, `NumberLarge.swift` (types `ChassisTokens`, `ChassisTokensColorLight`, `ChassisTokensNumberLarge`), and `Color.swift` (`ChassisTokensColor`), whose colours follow the light and dark appearance
 - Android: `main.xml`, `color_light.xml`, `number_large.xml`, and the same resources as a resource tree under `res/` (`values`, `values-night`, `values-sw600dp`, `values-sw840dp`; the screen folders are set with `options.android.screens`)
@@ -240,12 +241,12 @@ Only the collections and sets defined under `build` are processed.
 
 Chassis Tokens is meant to be owned and customized. The default `web` platform writes SCSS for [Chassis CSS](https://github.com/chassis-ui/css): theme-aware values print the CSS custom properties that Chassis CSS generates, such as `var(--default-fg-main)`. A team with its own CSS framework needs plain SCSS variables instead. Select one of these platforms for a web app:
 
-| Platform | Format | Sizes |
-| --- | --- | --- |
-| `web` | `cx/scss-chassis-css` | `rem` |
-| `web-scss` | `cx/scss-variables` | `rem` |
-| `web-px` | `cx/scss-variables` | `px` |
-| `web-vw` | `cx/scss-variables` | `vw` (16 px is `1vw`) |
+| Platform   | Format                | Sizes                 |
+| ---------- | --------------------- | --------------------- |
+| `web`      | `cx/scss-chassis-css` | `rem`                 |
+| `web-scss` | `cx/scss-variables`   | `rem`                 |
+| `web-px`   | `cx/scss-variables`   | `px`                  |
+| `web-vw`   | `cx/scss-variables`   | `vw` (16 px is `1vw`) |
 
 ```json
 "apps": {
@@ -347,6 +348,7 @@ pnpm tokens:test
 ```
 
 **Test coverage includes:**
+
 - The golden check: a full build must match `dist/`
 - The build plan, CLI filters and platform configurations
 - The value encoders for iOS, Android and web, and their references
@@ -367,6 +369,7 @@ DEBUG=1 pnpm tokens --brand chassis
 ### Build Architecture
 
 The build system uses:
+
 - **Style Dictionary 5.5**: Token transformation engine (Node.js 22 or later)
 - **Tokens Studio SD Transforms 2.0**: Type alignment, math, colour modifiers and theme permutations
 - **Self-contained platform configs**: Each platform (web and its presets, iOS, Android) has its own configuration file
@@ -380,6 +383,7 @@ A build runs in three steps:
 3. **Format**: The formats print one line per resolved token. Platform values (`UIColor(…)`, ARGB colours, `sp`/`dp`, quoting, `em`, `var(--…)`, `$…`, `@type/…` and Swift constant references) come from pure functions in `values/` and the web reference policies, which run after resolution.
 
 **Key modules:**
+
 - `build/tokens/build.js`: Build plan (one Style Dictionary instance per token-set list) and CLI
 - `build/tokens/config/`: Platform-specific configurations
 - `build/tokens/preprocessor.js`: Token preprocessing
@@ -400,14 +404,14 @@ A build runs in three steps:
 
 This project is part of the Chassis Design System's multi-repository architecture:
 
-| Project | Description |
-|---------|-------------|
-| [chassis-website](https://github.com/chassis-ui/website) | Main website and shared documentation package |
-| [chassis-css](https://github.com/chassis-ui/css) | CSS framework and component library |
-| **chassis-tokens** | **Design token generation and management (this repository)** |
-| [chassis-icons](https://github.com/chassis-ui/icons) | Icon library and build toolkit |
-| [chassis-assets](https://github.com/chassis-ui/assets) | Multi-platform asset management |
-| [chassis-figma](https://github.com/chassis-ui/figma) | Figma component documentation |
+| Project                                                  | Description                                                  |
+| -------------------------------------------------------- | ------------------------------------------------------------ |
+| [chassis-website](https://github.com/chassis-ui/website) | Main website and shared documentation package                |
+| [chassis-css](https://github.com/chassis-ui/css)         | CSS framework and component library                          |
+| **chassis-tokens**                                       | **Design token generation and management (this repository)** |
+| [chassis-icons](https://github.com/chassis-ui/icons)     | Icon library and build toolkit                               |
+| [chassis-assets](https://github.com/chassis-ui/assets)   | Multi-platform asset management                              |
+| [chassis-figma](https://github.com/chassis-ui/figma)     | Figma component documentation                                |
 
 All documentation sites share the `@chassis-ui/docs` package for consistent layouts, components, and styling.
 
@@ -424,4 +428,3 @@ All documentation sites share the `@chassis-ui/docs` package for consistent layo
 ## License
 
 MIT License — see [LICENSE](LICENSE) file for details.
-

@@ -69,8 +69,8 @@ jobs:
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v3
         with:
-          tag_name: "v${{ needs.detect-changes.outputs.tokens-version }}"
-          name: "@chassis-ui/tokens v${{ needs.detect-changes.outputs.tokens-version }}"
+          tag_name: 'v${{ needs.detect-changes.outputs.tokens-version }}'
+          name: '@chassis-ui/tokens v${{ needs.detect-changes.outputs.tokens-version }}'
           body: |
             Published @chassis-ui/tokens v${{ needs.detect-changes.outputs.tokens-version }} to npm.
 
