@@ -1,136 +1,50 @@
-# Design Tokens Build System - Test Suite
+# Token build tests
 
-This directory contains comprehensive test suites for the design tokens build system, ensuring robust functionality across all components.
+Tests for the token build in `build/tokens/`. Run them from the repository root:
 
-## Test Structure
-
-```
-tests/
-├── README.md           # This documentation
-├── build.test.js       # Tests for main build orchestrator
-└── config.test.js      # Tests for configuration generator
+```sh
+pnpm tokens:test
 ```
 
-## Test Coverage
+The run takes about 10 seconds, most of it for the golden test, which builds every file.
 
-### Build System Tests (`build.test.js`)
+## Principles
 
-Tests the main build orchestration logic including:
+- **Real tokens, not mocks.** Tests use tokens from `tokens/`, resolved tokens captured from the real build, the real `package.json` configuration and `tokens/$themes.json`. No test mocks `style-dictionary`.
+- **`dist/` is the reference.** Expected values come from the committed `dist/`. The build must not change what it writes, so a test that disagrees with `dist/` is a bug in the build, not in `dist/`.
+- **Pure functions first.** Value encoding, the web reference policy, the build plan and argument parsing are pure functions, tested without running Style Dictionary.
 
-#### Task Generation
-- ✅ **Base Task Generation**: Verifies that base tasks are created for all brand/app/platform combinations
-- ✅ **Color Task Generation**: Ensures color tasks are generated for all themes
-- ✅ **Number Task Generation**: Confirms number tasks are created for all screen sizes
-- ✅ **Duplicate Prevention**: Validates that no duplicate tasks are created
+## Test files
 
-#### CLI Parameter Filtering
-- ✅ **Brand Filtering**: Tests filtering by `--brand` parameter
-- ✅ **Theme Filtering**: Tests filtering by `--theme` parameter
-- ✅ **Screen Filtering**: Tests filtering by `--screen` parameter
-- ✅ **App Filtering**: Tests filtering by `--app` parameter
-- ✅ **Multiple Filters**: Tests combined filtering with multiple parameters
+| File                                                                 | What it checks                                                                                                                                                                             |
+| -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `golden.test.js`                                                     | A full build into a temporary directory matches `dist/` file by file, apart from the timestamp and version header lines. Same check as `pnpm tokens:verify`.                               |
+| `build.test.js`                                                      | The build plan: one build per brand, app and token-set list, the files it writes (exactly those of `dist/`), CLI filters, and that `brand-chassis/brand-base` overrides `base/brand-base`. |
+| `cli.test.js`                                                        | Command line arguments of `build.js`.                                                                                                                                                      |
+| `config.test.js`                                                     | The Style Dictionary configuration of a build: source, preprocessor, error policy, output paths, and the file, filter and format of each output.                                           |
+| `preprocessor.test.js`                                               | Type alignment, the font weight and style split, the font weight path and the source order.                                                                                                |
+| `filters.test.js`                                                    | Which tokens go into `main`, `color-*`, `number-*` and `string`.                                                                                                                           |
+| `transforms.test.js`                                                 | The `cx/size/rem` and `cx/shadow/web` transforms.                                                                                                                                          |
+| `formats.test.js`                                                    | Tokens are printed in source order, including tokens that Style Dictionary expands.                                                                                                        |
+| `values-ios.test.js`, `values-android.test.js`, `values-web.test.js` | The value encoders in `values/`.                                                                                                                                                           |
+| `css-var-policy.test.js`                                             | Which web tokens print a `var(--…)` reference, the name of the custom property, and typography maps.                                                                                       |
+| `utils.test.js`                                                      | The token type groups.                                                                                                                                                                     |
+| `logger.test.js`                                                     | Log output.                                                                                                                                                                                |
 
-#### Token Source Resolution
-- ✅ **Source Assignment**: Verifies correct token sources are assigned to tasks
-- ✅ **Missing Token Handling**: Tests graceful handling of missing token keys
-- ✅ **Source Format Validation**: Ensures source paths follow expected format
+## Fixtures
 
-#### Configuration Integration
-- ✅ **Config Function Calls**: Validates that configuration generator is called correctly
-- ✅ **Parameter Passing**: Tests that correct parameters are passed to config function
+The files in `fixtures/` are snapshots taken from the real build on 2026-09-27. Each has a `source` field that says where its data comes from.
 
-#### Edge Cases
-- ✅ **Empty Build Options**: Tests behavior with empty configuration
-- ✅ **Single Combinations**: Tests minimal brand/app/theme/screen combinations
+| Fixture                    | Used by                        | Contents                                                                                   |
+| -------------------------- | ------------------------------ | ------------------------------------------------------------------------------------------ |
+| `mobile-tokens.json`       | `values-ios`, `values-android` | Resolved iOS and Android tokens, with the lines `dist/` prints for them                    |
+| `web-tokens.json`          | `values-web`, `transforms`     | Resolved web tokens and transform inputs, with the values `dist/` prints                   |
+| `css-var-tokens.json`      | `css-var-policy`               | Web tokens under test with the lines `dist/` prints, and every token they look up          |
+| `filter-tokens.json`       | `filters`, `transforms`        | One web token per type, colour group and result, with the files of `dist/` that declare it |
+| `preprocessor-tokens.json` | `preprocessor`                 | Token slices copied from `tokens/`, in source form                                         |
 
-### Configuration Tests (`config.test.js`)
+When tokens change, the fixtures stay valid: they hold their own copies. When the build is meant to change its output, which the rewrite plan does not allow, update the expected values from the new `dist/` in the same commit.
 
-Tests the Style Dictionary configuration generator including:
+## Checking that a test can fail
 
-#### File Generation Logic
-- ✅ **Base Files**: Verifies generation of `main.scss` and `string.scss` for base configurations
-- ✅ **Theme Files**: Tests generation of `color-{theme}.scss` for theme configurations
-- ✅ **Screen Files**: Tests generation of `number-{screen}.scss` for screen configurations
-
-#### Platform-specific Configurations
-- ✅ **Web Platform**: Tests web platform configuration generation
-- ✅ **iOS Platform**: Tests iOS platform configuration generation
-- ✅ **Android Platform**: Tests Android platform configuration generation
-
-#### Build Path Generation
-- ✅ **Path Structure**: Validates correct build path structure for different combinations
-- ✅ **Brand/App Combinations**: Tests various brand and app combinations
-
-#### File Filter Application
-- ✅ **Filter Assignment**: Ensures correct filters are applied to different file types
-
-#### Format Application
-- ✅ **SCSS Format**: Tests SCSS format assignment for web platform
-- ✅ **Swift Format**: Tests Swift format assignment for iOS platform
-- ✅ **XML Format**: Tests XML format assignment for Android platform
-
-#### Edge Cases
-- ✅ **Missing Parameters**: Tests graceful handling of missing optional parameters
-- ✅ **Unique Configurations**: Validates that different parameters produce unique configurations
-
-## Test Framework
-
-- **Test Runner**: Vitest (chosen for better ES module support)
-- **Mocking**: Comprehensive mocking of external dependencies
-- **Assertions**: Extensive assertion coverage for all critical paths
-- **Edge Cases**: Thorough testing of error conditions and edge cases
-
-## Running Tests
-
-```bash
-# Run all tests
-pnpm test
-
-# Run tests in watch mode
-pnpm test:watch
-
-# Run tests with coverage report
-pnpm test:coverage
-```
-
-## Configuration
-
-The test suite is configured via `vitest.config.js` in the project root with:
-- Test file pattern: `tests/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts}`
-- Node.js environment for testing build scripts
-- Coverage reporting for `build/` directory
-- 10-second test timeout
-
-## Test Files
-
-- `build.test.js` - Tests for the main build orchestrator
-- `config.test.js` - Tests for the configuration generator
-
-## Coverage Areas
-
-| Component | Test Coverage | Status |
-|-----------|---------------|--------|
-| Task Generation | 100% | ✅ Complete |
-| CLI Filtering | 100% | ✅ Complete |
-| Configuration Generation | 100% | ✅ Complete |
-| File Generation Logic | 100% | ✅ Complete |
-| Platform Support | 100% | ✅ Complete |
-| Error Handling | 100% | ✅ Complete |
-
-## Key Test Scenarios
-
-1. **Full Build Process**: Tests complete build with all brands, themes, apps, and screens
-2. **Selective Building**: Tests CLI parameter filtering for selective builds
-3. **File Generation**: Tests that correct files are generated based on parameters
-4. **Duplication Prevention**: Ensures no duplicate files are created
-5. **Platform Compatibility**: Tests multi-platform output generation
-6. **Error Resilience**: Tests graceful handling of missing or invalid configurations
-
-## Test Results Summary
-
-- **Total Tests**: 24
-- **Passing**: 24 ✅
-- **Failing**: 0 ❌
-- **Coverage**: 100% of critical paths
-
-All tests pass successfully, providing confidence in the build system's reliability and correctness.
+A new test should fail when the code it covers is wrong. While writing one, break the code on purpose (for example, drop an exception from the reference policy), run the test, and restore the code.

@@ -1,5 +1,26 @@
 # Changelog
 
+## [Unreleased]
+
+The token build was rewritten. The files in `dist/` are unchanged.
+
+### Changed
+- Upgraded to Style Dictionary 5.5 and `@tokens-studio/sd-transforms` 2.0; the build now needs Node.js 22 or later
+- Moved platform value encoding (`UIColor(…)`, ARGB colours, `sp`/`dp`, quoting, `em` units, `var(--…)` references) out of the output templates into tested modules (`build/tokens/values/`, `build/tokens/css-var-policy.js`), which run on fully resolved tokens
+- Build one Style Dictionary instance per token-set list instead of one run per file group: a full build runs 16 builds instead of 36 and takes about 6 s instead of 20 s
+- Replaced the copy of the sd-transforms preprocessor with the official type alignment plus the Chassis steps (letter spacing as a number, splitting every font weight into weight and style)
+- The file header reads the version from `package.json`
+- `--dry-run` lists the builds and the files each would write
+- The build fails on a broken token reference, and when `tokens/$themes.json` has no token sets for a configured brand, app, theme or screen
+- Replaced the mock-based tests with tests on real tokens and `dist/`
+
+### Added
+- `pnpm tokens:verify`: builds into `dist-next/` and compares every file with `dist/`; the release workflow runs it before publishing
+- `--out <dir>` build option
+
+### Removed
+- The unused `web-px` and `web-vw` platform configurations, the `cx/scss-variables` format and its template, the `cx/size/px`, `cx/size/vw`, `cx/typography/web` and `cx/test` transforms, the `cx/test` format and the `cx/colorTokens` filter
+
 ## [0.5.3] - 2026-09-25
 
 ### Fixed

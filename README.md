@@ -11,9 +11,9 @@
 
 **This repository contains:**
 - Design tokens in [Tokens Studio](https://tokens.studio) format (`tokens/`)
-- Style Dictionary v4 transform scripts with custom extensions (`build/tokens/`)
-- Platform-specific output for Web (SCSS), iOS (Swift), and Android (XML)
-- Comprehensive test suite (97 tests) covering all build modules
+- Style Dictionary 5 build scripts with custom extensions (`build/tokens/`)
+- Platform-specific output for Web (SCSS), iOS (Swift), and Android (XML), committed in `dist/`
+- A test suite on real tokens, and a golden check that compares a fresh build with `dist/`
 - Documentation website (`site/`)
 
 **Key features:**
@@ -22,7 +22,8 @@
 - 📦 Self-contained platform configurations (no shared dependencies)
 - 🧪 Comprehensive test coverage with Vitest
 - 📊 Progress indicators and detailed build summaries
-- 🔍 Dry-run mode for previewing tasks
+- 🔍 Dry-run mode for previewing builds
+- ✅ Golden check against the committed `dist/`, also run before every release
 - ⚡ Optional responsive screen layer
 - 🛠️ Centralized logging with debug mode
 
@@ -30,7 +31,7 @@
 > This project is part of the Chassis UI ecosystem and handles design token generation and management. It provides tools to transform design tokens from Tokens Studio format into platform-specific output (Web SCSS, iOS Swift, Android XML) with multi-brand, multi-theme, and multi-app support.
 
 > [!WARNING]
-> This project uses `pnpm` for package management. Install it globally with `npm install -g pnpm` before running the commands below.
+> This project uses `pnpm` for package management and needs Node.js 22 or later. Install pnpm globally with `npm install -g pnpm` before running the commands below.
 
 
 ## 🚀 Quick Start
@@ -87,6 +88,26 @@ pnpm tokens --brand chassis --app docs --platform web
 - Reduced output size for targeted deployments
 - Optimized CI/CD pipelines
 
+### Verify the Output
+
+Check that the committed `dist/` matches a fresh build of `tokens/`:
+
+```shell
+pnpm tokens:verify
+```
+
+The check builds into `dist-next/` and compares every file with `dist/`, ignoring the timestamp and version lines of the file headers. It also fails when a token name appears twice in one file. It never writes to `dist/`.
+
+```shell
+# Build and check one platform only
+pnpm tokens:verify --platform ios
+
+# Compare an existing dist-next/ without building
+node build/tokens/verify.js --skip-build
+```
+
+The release workflow runs `pnpm tokens:verify` before publishing, so a `dist/` that does not match `tokens/` cannot be released. After changing tokens, run `pnpm tokens` and commit the updated `dist/`.
+
 ## CLI Reference
 
 ### Available Options
@@ -98,13 +119,15 @@ All filter options accept space-separated values:
 - `--app <apps...>` — Filter by app (e.g., `docs test`)
 - `--platform <platforms...>` — Filter by platform (e.g., `web ios android`)
 - `--screen <screens...>` — Filter by screen size (e.g., `large medium small`)
-- `--dry-run` — Preview tasks without executing builds
+- `--out <dir>` — Write to another output root instead of `dist` (e.g., `--out dist-next`)
+- `--dry-run` — List the builds and the files each would write, without building
 - `--help, -h` — Show help message
 - `--version, -v` — Show version number
 
 ### Build Features
 
-- **Progress indicators**: Shows build status (`[1/5]`, `[2/5]`, etc.)
+- **One build per token-set list**: Each brand and app is built once per list of token sets, writing the files of every platform of the app. A full build runs 16 builds.
+- **Progress indicators**: Shows build status (`[1/16]`, `[2/16]`, etc.)
 - **Build summary**: Displays success/failure count and total duration
 - **Error handling**: Detailed error messages with optional stack traces
 - **Debug mode**: Set `DEBUG=1` for verbose output
@@ -115,7 +138,9 @@ All filter options accept space-separated values:
 ```shell
 # Run test suite
 pnpm tokens:test
-pnpm test:watch
+
+# Check dist/ against a fresh build
+pnpm tokens:verify
 
 # Update version
 pnpm change-version <old_version> <new_version>
@@ -129,12 +154,15 @@ To update the version and publish new tokens:
 # Update version in package.json
 pnpm change-version <old_version> <new_version>
 
-# Build tokens
+# Build tokens and check the result
 pnpm tokens
+pnpm tokens:verify
 
 # (Optional) Build documentation site
-pnpm build:astro
+pnpm site:build
 ```
+
+Pushing to `main` publishes the version in `package.json` if it is not on npm yet. The workflow runs `pnpm tokens:verify` first and stops if `dist/` is out of date.
 
 See package scripts for more commands and options.
 
@@ -158,12 +186,12 @@ The `chassis` key in your `package.json` defines which brands, themes, screens, 
 ```json
 "chassis": {
   "build": {
-    "brands": ["chassis", "test"],
+    "brands": ["chassis", "sinefil"],
     "themes": ["light", "dark"],
     "screens": ["large", "medium", "small"],
     "apps": {
       "docs": ["web"],
-      "test": ["ios", "android"]
+      "demo": ["ios", "android"]
     }
   }
 }
@@ -173,11 +201,13 @@ The `chassis` key in your `package.json` defines which brands, themes, screens, 
 
 - **`brands`**: Array of brand identifiers
 - **`themes`**: Array of theme variants (light, dark, etc.)
-- **`screens`**: Array of screen sizes for responsive tokens. Set to `[]` or omit to generate single number files without screen suffixes
+- **`screens`**: Array of screen sizes for responsive tokens. Set to `[]` or omit to generate single number files without screen suffixes; `tokens/$themes.json` must then have no screen group
 - **`apps`**: Object mapping app names to their target platforms
 
+The token sets of each file come from `tokens/$themes.json`. Colour files use the sets of their theme, number files the sets of their screen, and every other file the sets of the first theme and the first screen listed here.
+
 **Supported platforms:**
-- `web`: SCSS variables (rem, px, vw units)
+- `web`: SCSS variables (rem units)
 - `ios`: Swift classes (PascalCase naming)
 - `android`: XML resources (snake_case naming)
 
@@ -213,7 +243,7 @@ This will start Astro on [http://localhost:4322](http://localhost:4322) (default
 To build the static documentation site for deployment:
 
 ```sh
-pnpm build:astro
+pnpm site:build
 ```
 
 The output will be generated in the `_site/` directory.
@@ -223,9 +253,10 @@ The output will be generated in the `_site/` directory.
 To ensure documentation references the latest tokens, build tokens before building the site:
 
 ```sh
-pnpm tokens
-pnpm build:astro
+pnpm build
 ```
+
+This builds the `chassis` tokens for the `docs` app (`pnpm tokens:site`) and then the site.
 
 ### Editing Documentation
 
@@ -235,26 +266,22 @@ All documentation content is stored in `site/content/`. You can add or edit guid
 
 ### Running Tests
 
-The build system includes comprehensive test coverage (97 tests) covering all modules:
+The tests use real tokens and the committed `dist/`, not mocks of Style Dictionary:
 
 ```sh
-# Run all tests
+# Run all tests, including the golden check
 pnpm tokens:test
-
-# Run tests in watch mode
-pnpm test:watch
 ```
 
 **Test coverage includes:**
-- CLI argument parsing
-- Token key lookup logic
-- Task generation and filtering
-- Platform-specific configurations
-- Token transformations
-- Filter functions
-- Utility functions
+- The golden check: a full build must match `dist/`
+- The build plan, CLI filters and platform configurations
+- The value encoders for iOS, Android and web
+- The web `var(--…)` reference policy
+- The preprocessor, filters, transforms and token order
 - Logger output
-- Preprocessor functionality
+
+See [build/tokens/test/README.md](build/tokens/test/README.md) for the test files and fixtures.
 
 ### Debugging
 
@@ -267,20 +294,30 @@ DEBUG=1 pnpm tokens --brand chassis
 ### Build Architecture
 
 The build system uses:
+- **Style Dictionary 5.5**: Token transformation engine (Node.js 22 or later)
+- **Tokens Studio SD Transforms 2.0**: Type alignment, math, colour modifiers and theme permutations
 - **Self-contained platform configs**: Each platform (web, iOS, Android) has its own independent configuration file
-- **Style Dictionary v4.4.0**: Token transformation engine
-- **Tokens Studio SD Transforms**: Figma Variables integration
 - **Vitest**: Testing framework
 - **Pure Node.js**: No external CLI parsing dependencies
 
+A build runs in three steps:
+
+1. **Preprocess**: `preprocessor.js` aligns types, splits every font weight into weight and style, and numbers the tokens in source order.
+2. **Transform**: Style Dictionary transforms only what is safe before references are resolved: names, math, colour modifiers, `rem` sizes and CSS shadows.
+3. **Format**: The formats print one line per resolved token. Platform values (`UIColor(…)`, ARGB colours, `sp`/`dp`, quoting, `em`, `var(--…)` references) come from pure functions in `values/` and `css-var-policy.js`, which run after resolution.
+
 **Key modules:**
-- `build/tokens/build.js`: Main orchestration and task generation
+- `build/tokens/build.js`: Build plan (one Style Dictionary instance per token-set list) and CLI
 - `build/tokens/config/`: Platform-specific configurations
-- `build/tokens/filters.js`: Token filtering logic
-- `build/tokens/transforms.js`: Custom value transformations
 - `build/tokens/preprocessor.js`: Token preprocessing
+- `build/tokens/filters.js`: Which tokens go into which file
+- `build/tokens/transforms.js`: Custom value transforms that run before resolution
+- `build/tokens/formats.js` and `build/tokens/templates/`: Output formats
+- `build/tokens/values/`: Value encoders for iOS, Android and web
+- `build/tokens/css-var-policy.js`: Which web tokens print a `var(--…)` reference, and its name
+- `build/tokens/verify.js`: Golden check against `dist/`
 - `build/tokens/logger.js`: Centralized logging utilities
-- `build/tokens/utils.js`: Shared utilities and helpers
+- `build/tokens/utils.js`: Token type groups and number formatting
 
 ## Chassis Ecosystem
 
@@ -302,7 +339,7 @@ All documentation sites share the `@chassis-ui/docs` package for consistent layo
 1. Fork the repository
 2. Create a feature branch: `git checkout -b feature/my-feature`
 3. Make your changes
-4. Test the build: `pnpm tokens && pnpm tokens:test`
+4. Build and test: `pnpm tokens && pnpm tokens:verify && pnpm tokens:test`
 5. Commit your changes: `git commit -m "feat: add my feature"`
 6. Push to the branch: `git push origin feature/my-feature`
 7. Open a Pull Request
