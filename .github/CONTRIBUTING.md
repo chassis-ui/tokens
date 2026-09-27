@@ -119,9 +119,18 @@ pnpm tokens:verify:presets
 ```
 
 A change that is meant to change the output also updates `dist/` (`pnpm tokens`), the preset
-baselines (see [Changing tokens](#changing-tokens)) and adds a changeset. For iOS and Android output,
-CI does not compile the files yet: check that the Swift files build in an app target and that the
-Android `res/` tree builds in an app module before opening the pull request.
+baselines (see [Changing tokens](#changing-tokens)) and adds a changeset.
+
+CI compiles the iOS and Android output of your pull request against the real SDKs: the Swift
+files, the asset catalogs and the iOS guide's Swift package with Xcode, and the Android resources
+and Compose objects with Gradle. You don't have to install anything for this. To run the checks
+yourself, with Xcode or with a JDK and the Android SDK installed, see
+[Native compile checks](../packages/tokens/test/README.md#native-compile-checks):
+
+```sh
+pnpm tokens:native:ios
+pnpm tokens:native:android
+```
 
 ## Changing the site
 

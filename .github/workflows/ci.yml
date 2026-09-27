@@ -180,3 +180,101 @@ jobs:
 
       - name: Audit dependencies
         run: pnpm check:pnpm
+
+  # Whether the native jobs run. A pull request runs them only when it changes the token
+  # source, the build, the output, the preset baselines or the checks themselves, because
+  # macOS minutes cost ten times Linux minutes. Every other event runs them: a push to main,
+  # through publish-release.yml, and a manual run.
+  native-changes:
+    name: Native changes
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      native: ${{ steps.changes.outputs.native }}
+    steps:
+      - name: Checkout
+        if: github.event_name == 'pull_request'
+        uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
+        with:
+          # The merge commit and its parents
+          fetch-depth: 2
+          persist-credentials: false
+
+      - name: Changed paths
+        id: changes
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+        run: |
+          if [ "$EVENT_NAME" != pull_request ]; then
+            echo "Not a pull request, the native jobs run"
+            echo "native=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          # The test merge commit against its first parent, the base branch
+          changed=$(git diff --name-only HEAD^1 HEAD -- \
+            packages/tokens/source \
+            packages/tokens/build \
+            packages/tokens/dist \
+            packages/tokens/test/golden \
+            packages/tokens/test/native \
+            packages/tokens/package.json \
+            packages/site/content/docs/use-in-project/ios-applications.mdx \
+            .github/workflows/ci.yml)
+
+          if [ -n "$changed" ]; then
+            echo "$changed"
+            echo "native=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "No change to the tokens, the build, the output or the native checks"
+            echo "native=false" >> "$GITHUB_OUTPUT"
+          fi
+
+  # The Swift files against the iOS simulator SDK (UIKit and SwiftUI), the asset catalogs
+  # with actool, and the Package.swift of the iOS guide. Needs no install: a shell script
+  native-ios:
+    name: Native iOS
+    needs: native-changes
+    if: needs.native-changes.outputs.native == 'true'
+    runs-on: macos-26
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
+        with:
+          persist-credentials: false
+
+      - name: Compile the iOS output
+        run: packages/tokens/test/native/ios/check.sh
+
+  # The Android resources, compiled and linked against android.jar, and the Compose objects
+  # against Jetpack Compose, with the Gradle project of test/native/android. The runner has
+  # the Android SDK
+  native-android:
+    name: Native Android
+    needs: native-changes
+    if: needs.native-changes.outputs.native == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
+        with:
+          persist-credentials: false
+
+      - name: Setup Java
+        uses: actions/setup-java@de7274f081f381c8f8158605e0321c36c376e2e6 # v6.0.1
+        with:
+          distribution: temurin
+          java-version: 21
+
+      # Checks the Gradle wrapper against Gradle's checksums and caches Gradle's downloads,
+      # with the open source cache of the action
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@9c971963bec38e04b3d30dcc455b5382be2fdbfb # v6.3.0
+        with:
+          cache-provider: basic
+
+      - name: Compile the Android output
+        working-directory: packages/tokens/test/native/android
+        run: ./gradlew compileTokens

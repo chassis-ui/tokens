@@ -129,6 +129,39 @@ A change in `source/` changes `dist/` and the baselines. After the new `dist/` i
 node build/build.js --config test/golden/web-px.json --out test/golden/web-px
 ```
 
+## Native compile checks
+
+`native/` compiles the iOS and Android output against the real SDKs. CI runs both checks (the **Native iOS** and **Native Android** jobs) on a pull request that changes `source/`, `build/`, `dist/`, the baselines or the checks, and on every push to `main`, so nobody has to install an SDK to contribute. Both checks find the output folders themselves: every folder of `dist/` and of the baselines in `golden/` with files of the platform, so a new brand, app or preset baseline is checked without a change here.
+
+### iOS
+
+```sh
+pnpm tokens:native:ios
+```
+
+`native/ios/check.sh` needs Xcode; the command line tools alone have no iOS SDK and no asset compiler. It writes to a temporary folder only. Its steps can run alone: `native/ios/check.sh swift`, `assets` or `package`.
+
+| Step      | What it checks                                                                                                                                                                                                                                            |
+| --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `swift`   | The Swift files of each folder type-check together as one module against the iOS simulator SDK, with real UIKit and SwiftUI, for iOS 13, in the Swift 5 and the Swift 6 language mode: `dist/ios/`, and the `ios-references` and `ios-swiftui` baselines. |
+| `assets`  | `actool` compiles each `Icons.xcassets`, and the compiled catalog holds every image set.                                                                                                                                                                  |
+| `package` | The `Package.swift` of the iOS guide, read from `packages/site/content/docs/use-in-project/ios-applications.mdx`, builds for the iOS simulator with `xcodebuild`, at the root of a copy of its target folder.                                             |
+
+### Android
+
+```sh
+pnpm tokens:native:android
+```
+
+`native/android/` is a Gradle project. It needs a JDK (17 or later) and the Android SDK with platform 36, with `ANDROID_HOME` set or `sdk.dir` in a `local.properties` file in that folder; the Gradle wrapper downloads Gradle itself. The versions of the Android Gradle plugin, Kotlin and Compose are pinned in `gradle/libs.versions.toml`, and the Gradle version in `gradle/wrapper/gradle-wrapper.properties`; Dependabot updates them.
+
+| Module      | What it checks                                                                                                                                                                                                                                                                                                                                     |
+| ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `resources` | An application module with one product flavor per check, because only an application links its resources against `android.jar`. For each output folder (`dist/android/<app>/<brand>/` and the `android-references` baseline): the `res/` tree with its drawables (`…Tree`), and each flat file alone as a values file (`…Main`, `…ColorLight`, …). |
+| `compose`   | A library module with the Compose compiler: the Kotlin objects of each Compose folder (the `android-compose` baseline, and `dist/android-compose/` when an app selects the platform) compile against Jetpack Compose.                                                                                                                              |
+
+`./gradlew compileTokens` runs every check; `./gradlew :resources:processDistDemoChassisTreeDebugResources` runs one.
+
 ## Checking that a test can fail
 
 A new test should fail when the code it covers is wrong. While writing one, break the code on purpose (for example, drop an exception from the reference policy), run the test, and restore the code.

@@ -71,6 +71,8 @@
     "clean": "rm -rf dist",
     "diff": "node build/diff.js",
     "lint:source": "node build/lint-tokens.js",
+    "native:android": "test/native/android/gradlew --project-dir test/native/android compileTokens",
+    "native:ios": "test/native/ios/check.sh",
     "test": "vitest run --dir test",
     "typecheck": "tsc -p tsconfig.json",
     "verify": "node build/verify.js",

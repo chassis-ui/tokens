@@ -25,6 +25,6 @@ behind each of these.
 - [ ] **Changeset** (`pnpm changeset`) if the published package changed, saying what an app has
       to change; an empty one (`pnpm changeset --empty`) if `source/`, `build/` or `dist/` changed
       but nothing is released
-- [ ] Swift files and the Android `res/` tree checked in an app, if the iOS or Android output
+- [ ] The **Native iOS** and **Native Android** checks of CI pass, if the iOS or Android output
       changed
 - [ ] `pnpm site:lint` and `pnpm check:astro` pass, if the site changed

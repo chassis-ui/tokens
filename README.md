@@ -346,8 +346,12 @@ Every pull request runs `.github/workflows/ci.yml`:
 - **Audit**: `pnpm audit` for moderate advisories and above
 - **Token diff**: the [token diff report](#token-diff-report) of the pull request against its base branch, in the job summary
 - **Changeset**: a pull request that changes `source/`, `build/` or `dist/` must add a changeset (`pnpm changeset`)
+- **Native iOS** (macOS, Xcode): every Swift file of `dist/` and of the preset baselines type-checked against the iOS simulator SDK, the asset catalogs compiled with `actool`, and the iOS guide's `Package.swift` built
+- **Native Android**: the resources of `dist/` and of the preset baselines compiled and linked against the Android SDK, and the Compose objects compiled against Jetpack Compose, with the Gradle project in `test/native/android/`
 
-Releases use [Changesets](https://changesets.dev). Pushing `main` runs the release workflow, after the same CI checks on that commit: pending changesets open or update a "Version Packages" pull request, which bumps the version and writes the CHANGELOG. Merging it publishes `@chassis-ui/tokens` to npm with trusted publishing and provenance, and creates a GitHub release from the CHANGELOG entry. See [Releases](.github/CONTRIBUTING.md#releases). Dependabot opens weekly pull requests for npm packages and GitHub Actions; the actions are pinned to commit SHAs.
+The two native jobs run on a pull request only when it changes `source/`, `build/`, `dist/`, the preset baselines or the checks themselves, and on every push to `main`. See [Native compile checks](packages/tokens/test/README.md#native-compile-checks).
+
+Releases use [Changesets](https://changesets.dev). Pushing `main` runs the release workflow, after the same CI checks on that commit: pending changesets open or update a "Version Packages" pull request, which bumps the version and writes the CHANGELOG. Merging it publishes `@chassis-ui/tokens` to npm with trusted publishing and provenance, and creates a GitHub release from the CHANGELOG entry. See [Releases](.github/CONTRIBUTING.md#releases). Dependabot opens weekly pull requests for npm packages, GitHub Actions and the Gradle project of the native checks; the actions are pinned to commit SHAs.
 
 ## Chassis Ecosystem
 
