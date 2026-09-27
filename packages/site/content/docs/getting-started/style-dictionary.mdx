@@ -14,9 +14,11 @@ This page is the reference of the build for a team that builds its own tokens: h
 
 The build, its configuration, and its output are in `packages/tokens/`, the folder of the published package. Paths on this page that start with `source/`, `build/`, `dist/`, or `test/` are relative to that folder.
 
+The generated code on this page shows the format of each platform. Its values are those of the `chassis` brand in the current version, and differ in other brands.
+
 ### Build steps
 
-The build runs Style Dictionary once per [token-set list](#token-set-lists), in five steps:
+The build runs Style Dictionary once per [token-set list](#token-set-lists), in these steps:
 
 1. **Preprocess**: the [preprocessor](#preprocessor) aligns the token types, splits every font weight into a weight and a style, and numbers the tokens in source order.
 2. **Transform**: the [transforms](#transforms) convert names, math, color modifiers, web sizes, and web shadows.
@@ -24,7 +26,7 @@ The build runs Style Dictionary once per [token-set list](#token-set-lists), in 
 4. **Filter**: the [filters](#filters) select the tokens of each file.
 5. **Format**: the [formats](#formats) print one line per token, in source order, and encode each value for its platform.
 
-Platform values such as `UIColor(…)`, `#ff161a1b`, and `16dp` are encoded in the format step, after the references are resolved. A transform runs before that, and the tokens that reference a token receive its transformed value: the shadow color `rgba({color.primitive.neutral.30}, {opacity.context.fg-subtle})` needs a plain color, not a `UIColor(…)`. Add the encoding of a new platform to a format, not to a transform.
+Platform values such as `UIColor(…)`, ARGB hex colors, and sizes in `dp` are encoded in the format step, after the references are resolved. A transform runs before that, and the tokens that reference a token receive its transformed value: the shadow color `rgba({color.primitive.neutral.30}, {opacity.context.fg-subtle})` needs a plain color, not a `UIColor(…)`. Add the encoding of a new platform to a format, not to a transform.
 
 ## Prerequisites
 
@@ -47,13 +49,13 @@ To install the tokens package without the dependencies of the documentation site
 
 ## Run the build
 
-Run the commands of this page from the repository root. Without options, the build writes the files of every brand, app, theme, platform, and screen of the [build options](#build-options):
+Run the commands of this page from the repository root. Without options, the build writes the files of every brand, theme, app, platform, and screen of the [build options](#build-options):
 
 ```bash
 pnpm tokens
 ```
 
-The files go to `dist/<platform>/<app>/<brand>/`. With the committed build options, the build runs 16 times: once per brand, app, and token-set list.
+The files go to `dist/<platform>/<app>/<brand>/`. The build runs Style Dictionary once per brand, app, and token-set list.
 
 ### Command line options
 
@@ -74,7 +76,7 @@ The options select a part of the build, change where the build reads and writes,
 | `--version`, `-v` | Show the version |
 </CxTable>
 
-The first five options are filters. Each takes one or more values separated by spaces, and you can combine them:
+The options from `--brand` to `--screen` are filters. Each takes one or more values separated by spaces, and you can combine them:
 
 ```bash
 pnpm tokens --brand chassis
@@ -109,11 +111,11 @@ The build prints each token-set list with the files it writes:
       dist/web/docs/chassis/: color-dark.scss
 ```
 
-The lists of the `medium` and `small` screens follow, each with its number file.
+The lists of the other screens follow, each with its number file.
 
 ## Build options
 
-The build options name the brands, themes, screens, and apps that the build writes, and the platforms of each app. The committed options are in `chassis.build` of `packages/tokens/package.json`:
+The token system is built on three core groups, `brand`, `theme`, and `app`, and on an optional fourth group, `screen`. The build options name the options of each group that the build writes, and the platforms of each app. The committed build options are in `chassis.build` of `packages/tokens/package.json`:
 
 ```json
 "chassis": {
@@ -134,31 +136,32 @@ The build options name the brands, themes, screens, and apps that the build writ
 | --- | --- | --- |
 | `brands` | Yes | Options of the `brand` group of `source/$themes.json` |
 | `themes` | Yes | Options of the `theme` group; the first is the default |
-| `screens` | No | Options of the `screen` group; the first is the default |
 | `apps` | Yes | Options of the `app` group, each with its [platforms](#platforms) |
+| `screens` | No | Options of the `screen` group; the first is the default |
 | `options` | No | Style Dictionary options by platform name; see [Platform options](#platform-options) |
 </CxTable>
 
-The build writes only what these keys list. To build the tokens of your own app, add the app to `apps` and give it token sets in `source/$themes.json`.
+The names in the block are the committed configuration, not the system. The build writes only what the keys list, so to build a brand, a theme, or an app of your own, add its name to the key of its group and give it token sets in `source/$themes.json`.
 
-Without `screens`, the build writes one number file with no screen in its name, such as `number.scss`. `source/$themes.json` must then have no `screen` group.
+To build without screens, set `screens` to `[]` or leave the key out, and remove the `screen` group from `source/$themes.json`. The build then writes one number file with no screen in its name: `number.scss` on the web, `Number.swift` on iOS, and `number.xml` with `res/values/number.xml` on Android.
 
 ### Token-set lists
 
-A token-set list is the list of token sets that one run of Style Dictionary reads. `source/$themes.json` has the groups `brand`, `app`, `theme`, and `screen`, and the build combines one option of each group into a list named `<brand>_<app>_<theme>_<screen>`, such as `chassis_docs_light_large`. Every name in the build options must be an option of its group.
+A token-set list is the list of token sets that one run of Style Dictionary reads. The build combines one option of each group of `source/$themes.json` into a list named `<brand>_<app>_<theme>_<screen>`, or `<brand>_<app>_<theme>` without screens. `chassis_docs_light_large` is a list of the committed configuration. Every name in the build options must be an option of its group.
 
-The files of a brand and an app that need the same token sets share one list. With two themes and three screens, each brand and app has four lists:
+The files of a brand and an app that need the same token sets share one list:
 
 <CxTable>
 | Token-set list | Files |
 | --- | --- |
-| First theme, first screen (`light`, `large`) | Main, string, light colors, large numbers |
-| `dark`, `large` | Dark colors |
-| `light`, `medium` | Medium numbers |
-| `light`, `small` | Small numbers |
+| First theme, first screen | The main file, the string file, the color file of the first theme, the number file of the first screen |
+| Each other theme, first screen | The color file of the theme |
+| First theme, each other screen | The number file of the screen |
 </CxTable>
 
 A list holds its token sets in the order of `source/$themes.json`, so a later token set overrides an earlier one, as in Tokens Studio. Style Dictionary reports these overrides as token collisions in every build; they are expected.
+
+Chassis Tokens is meant to be owned and customized, so you can add a group of your own. A new group adds a segment to the name of every token-set list. `planBuilds` in `packages/tokens/build/build.js` makes that name from the brand, the app, the theme, and the screen, and decides which files each list writes, so a new group needs a change there.
 
 ### Platform options
 
@@ -176,7 +179,7 @@ The `options` key holds Style Dictionary options by platform name. The build mer
 
 ## Platforms
 
-A platform is a build target that an app selects in `chassis.build.apps`. The committed build options use `web`, `ios`, and `android`, which write the published package; the other five platforms are [presets](#presets).
+A platform is a build target that an app selects in `chassis.build.apps`. The committed build options use `web`, `ios`, and `android`, which write the published package; the other platforms are [presets](#presets).
 
 <CxTable>
 | Platform | Format | Output folder | Output |
@@ -191,17 +194,17 @@ A platform is a build target that an app selects in `chassis.build.apps`. The co
 | `android-compose` | `cx/compose-object` | `dist/android-compose/<app>/<brand>/` | Kotlin objects for Jetpack Compose |
 </CxTable>
 
-Each platform has its own name and value for a token. `space.context.medium`, which is `16px` in the source, prints as:
+Each platform has its own name and format for a token. `space.context.medium`, which references `{size.unit.16}`, prints as:
 
 <CxTable>
-| Platform | Name | Value |
+| Platform | Name | Format |
 | --- | --- | --- |
-| `web`, `web-scss` | `$cx-space-context-medium` | `1rem` |
-| `web-px` | `$cx-space-context-medium` | `16px` |
-| `web-vw` | `$cx-space-context-medium` | `1vw` |
-| `ios`, `ios-swiftui` | `SpaceContextMedium` | `CGFloat(16)` |
-| `android` | `@dimen/space_context_medium` | `16dp` |
-| `android-compose` | `spaceContextMedium` | `16.dp` |
+| `web`, `web-scss` | `$cx-space-context-medium` | A size in `rem` |
+| `web-px` | `$cx-space-context-medium` | A size in `px` |
+| `web-vw` | `$cx-space-context-medium` | A size in `vw` |
+| `ios`, `ios-swiftui` | `SpaceContextMedium` | A `CGFloat` in points |
+| `android` | `@dimen/space_context_medium` | A `<dimen>` in `dp` |
+| `android-compose` | `spaceContextMedium` | A size with `.dp` |
 </CxTable>
 
 The [formats](#formats) hold the value rules of each platform. The guides for [web]([[docsref:/use-in-project/web-applications]]), [iOS]([[docsref:/use-in-project/ios-applications]]), and [Android]([[docsref:/use-in-project/android-applications]]) show how to use the files in an app.
@@ -212,7 +215,7 @@ A preset is a platform for a team that owns its tokens and does not use Chassis 
 
 ### Presets for other CSS frameworks
 
-The `web` platform prints the custom properties of [Chassis CSS](https://github.com/chassis-ui/css), such as `var(--default-fg-main)`, so its SCSS works only with Chassis CSS. The presets `web-scss`, `web-px`, and `web-vw` print resolved values in the unit of their name, where 16 pixels are `1rem` and `1vw`. In `chassis.build` of `packages/tokens/package.json`:
+The `web` platform prints the custom properties of [Chassis CSS](https://github.com/chassis-ui/css), such as `var(--default-fg-main)`, so its SCSS works only with Chassis CSS. The presets `web-scss`, `web-px`, and `web-vw` print resolved values in the unit of their name. In `chassis.build` of `packages/tokens/package.json`:
 
 ```json
 "apps": {
@@ -220,15 +223,7 @@ The `web` platform prints the custom properties of [Chassis CSS](https://github.
 }
 ```
 
-The build writes every value of `main.scss` resolved, with sizes in pixels:
-
-```scss
-$cx-space-accordion-medium-title-padding-y: 12px !default;
-$cx-color-accordion-item-fg-color: #161a1b !default;
-$cx-border-radius-accordion-main: 6px !default;
-```
-
-The four web platforms write the same file names to the same folder, `dist/web/<app>/<brand>/`, so give an app one of them. Line heights and letter spacing are in `em` in every unit.
+The build then writes every value resolved, with sizes in pixels; [cx/scss-variables](#cxscss-variables) shows the format. The web platforms write the same file names to the same folder, `dist/web/<app>/<brand>/`, so give an app one of them. Line heights and letter spacing are in `em` in every unit.
 
 Each preset is a file of `packages/tokens/build/config/` that calls `webConfig({ unit, format })` of `web.js`. You can edit these files as any other platform file.
 
@@ -252,7 +247,7 @@ Each file of these presets holds one theme or one screen. For colors that follow
 
 ## Generated files
 
-Every platform writes four kinds of files: a main file, a string file, one color file per theme, and one number file per screen.
+Every platform writes a main file, a string file, one color file per theme, and one number file per screen.
 
 <CxTable>
 | Platform | Files |
@@ -301,8 +296,7 @@ Set the option per platform. In `chassis.build` of `packages/tokens/package.json
 "apps": { "docs": ["web-px"], "demo": ["ios", "android"] },
 "options": {
   "web-px": { "outputReferences": true },
-  "ios": { "outputReferences": true },
-  "android": { "outputReferences": true }
+  "ios": { "outputReferences": true }
 }
 ```
 
@@ -318,10 +312,8 @@ Set the option per platform. In `chassis.build` of `packages/tokens/package.json
 In SCSS, a color, space, opacity, border radius, or border width token prints a variable when the Chassis CSS format prints a custom property for it. Typography maps name the variables of their family, weight, size, line height, and style. Shadows print their value. The `web-px` preset writes:
 
 ```scss
-$cx-color-accordion-item-fg-color: $cx-color-context-default-fg-main !default;
 $cx-border-radius-accordion-main: $cx-border-radius-context-medium !default;
-$cx-font-context-lead: ("font-family": $cx-typography-font-family-text, "font-weight": $cx-typography-font-weight-text-normal-weight, "font-size": $cx-typography-font-size-text-xlarge, "line-height": $cx-typography-line-height-text-xlarge, "font-style": $cx-typography-font-weight-text-normal-style, "letter-spacing": 0em, "margin-bottom": 0px, "text-transform": none, "text-decoration": none) !default;
-$cx-shadow-alert-main: 0px 6px 24px -6px rgba(0, 0, 0, 0.1), 0px 3px 12px -3px rgba(0, 0, 0, 0.1) !default;
+$cx-border-width-accordion-main: $cx-border-width-context-medium !default;
 ```
 
 <Callout type="warning">
@@ -334,15 +326,14 @@ On iOS and Android, a token names the token it references only when that token i
     public static let SizeUnit4 = DimensionBase4
     public static let SizeDatepickerWeekWidth = CGFloat(224)
     public static let SpaceContextMedium = SizeUnit16
-    public static let ColorAccordionItemFgColor = UIColor(red: 0.086, green: 0.102, blue: 0.106, alpha: 1)
+    public static let BorderRadiusAccordionMain = BorderRadiusContextMedium
 ```
 
-`SizeDatepickerWeekWidth` is `{size.datepicker.day-width}*7`, so it prints its value. `ColorAccordionItemFgColor` prints its value because the context colors are in the color files; in `ColorLight.swift` it is `ColorContextDefaultFgMain`. The `android` platform writes in `main.xml`:
+`SizeDatepickerWeekWidth` is `{size.datepicker.day-width}*7`, so it prints its value. `ColorAccordionItemFgColor` prints its value in `ChassisTokens.swift` too, because the context colors are in the color files; in `ColorLight.swift` it is `ColorContextDefaultFgMain`. The `android` platform writes in `main.xml`:
 
 ```xml
   <dimen name="size_unit_4">@dimen/dimension_base_4</dimen>
   <dimen name="space_context_medium">@dimen/size_unit_16</dimen>
-  <string name="font_context_jumbo_font_family">@string/typography_font_family_text</string>
   <dimen name="font_context_jumbo_font_size">96sp</dimen>
 ```
 
@@ -350,7 +341,7 @@ The font size prints its value because it is in `sp`, and the size it references
 
 ## Check the output
 
-Three commands check the token source and the output of the build. Run the first before you build and the other two after.
+These commands check the token source and the output of the build. Run the source lint before you build, and the other two after.
 
 ### Lint the source
 
@@ -390,11 +381,11 @@ The report compares the working `dist/` with the `dist/` of `main`. Add `--base`
 
 ## Preprocessor
 
-The preprocessor `cx/global` prepares the tokens of every build before the transforms run. It does four things:
+The preprocessor `cx/global` prepares the tokens of every build before the transforms run. It changes the tokens in these ways:
 
 - It aligns the types of Tokens Studio with the types of Style Dictionary, with `alignTypes` of `@tokens-studio/sd-transforms`: `fontWeights` becomes `fontWeight`.
 - It types letter spacing tokens as `number`, so the size transforms leave them alone.
-- It splits every font weight token into a `weight` and a `style` token. `typography.fontWeight.html.blockquote` is `Light Italic`, and the web output has `$cx-typography-font-weight-html-blockquote-weight: 300` and `$cx-typography-font-weight-html-blockquote-style: italic`. A weight without a style gets the style `normal`.
+- It splits every font weight token into a `weight` and a `style` token. `typography.fontWeight.html.blockquote` names a weight and a style, and becomes `typography.fontWeight.html.blockquote.weight` and `typography.fontWeight.html.blockquote.style`. A weight that names no style gets the style `normal`.
 - It numbers the tokens in source order. The formats sort by this number, so the parts of a typography or shadow token stand where the token is in the source.
 
 ## Transforms
@@ -404,28 +395,41 @@ Transforms run before the references are resolved. Each platform lists its trans
 <CxTable>
 | Transform | Platforms | Effect |
 | --- | --- | --- |
-| `name/kebab` | Web platforms | `space-context-medium` |
-| `name/pascal` | `ios`, `ios-swiftui` | `SpaceContextMedium` |
-| `name/snake` | `android` | `space_context_medium` |
-| `name/camel` | `android-compose` | `spaceContextMedium` |
-| `ts/resolveMath` | All | `{size.datepicker.day-width}*7` becomes `224px` |
+| `name/kebab` | Web platforms | Names in the form `space-context-medium` |
+| `name/pascal` | `ios`, `ios-swiftui` | Names in the form `SpaceContextMedium` |
+| `name/snake` | `android` | Names in the form `space_context_medium` |
+| `name/camel` | `android-compose` | Names in the form `spaceContextMedium` |
+| `ts/resolveMath` | All | Computes a value with math, such as `{size.datepicker.day-width}*7` |
 | `ts/color/modifiers` | All | Applies the color modifiers of Tokens Studio |
-| `ts/color/css/hexrgba` | All | `rgba({color.primitive.neutral.30}, {opacity.context.fg-subtle})` becomes `rgba(183, 192, 194, 0.5)` |
-| `ts/typography/fontWeight` | Web platforms | `Semi Bold` becomes `600` |
+| `ts/color/css/hexrgba` | All | Turns a color with an alpha, such as `rgba({color.primitive.neutral.30}, {opacity.context.fg-subtle})`, into a CSS `rgba()` color |
+| `ts/typography/fontWeight` | Web platforms | Turns the name of a font weight into its number |
 </CxTable>
 
-The name transforms come from Style Dictionary and the `ts/` transforms from `@tokens-studio/sd-transforms`. The build registers four transforms of its own in `packages/tokens/build/transforms.js`, all for the web platforms:
+The name transforms come from Style Dictionary and the `ts/` transforms from `@tokens-studio/sd-transforms`. The build registers the `cx/` transforms in `packages/tokens/build/transforms.js`, all for the web platforms:
 
 <CxTable>
 | Transform | Platforms | Tokens | Effect |
 | --- | --- | --- | --- |
-| `cx/size/rem` | `web`, `web-scss` | Sizes | Divides pixels by 16, without rounding: `6px` becomes `0.375rem` |
-| `cx/size/px` | `web-px` | Sizes | Gives the number the unit `px`: `6px` stays `6px` |
-| `cx/size/vw` | `web-vw` | Sizes | Divides pixels by 16, without rounding: `6px` becomes `0.375vw` |
-| `cx/shadow/web` | Web platforms | Shadows | Joins the parts of each layer into a CSS `box-shadow`, with `inset` for an inner shadow |
+| `cx/size/rem` | `web`, `web-scss` | Sizes | Divides the design pixels by `basePxFontSize` and adds `rem` |
+| `cx/size/px` | `web-px` | Sizes | Adds `px` to the design pixels |
+| `cx/size/vw` | `web-vw` | Sizes | Divides the design pixels by `basePxFontSize` and adds `vw` |
+| `cx/shadow/web` | Web platforms | Shadows | Joins the parts of each layer into a CSS `box-shadow` |
 </CxTable>
 
-Sizes are the tokens typed `dimension`, `fontSize`, `lineHeight`, or `paragraphSpacing`. The divisor of `cx/size/rem` and `cx/size/vw` is `basePxFontSize` of the platform, which `packages/tokens/build/config/web.js` sets to `16`. `cx/shadow/web` turns `shadow.context.inset`, one inner shadow layer, into `0rem 0.125rem 0.25rem 0rem rgba(0, 0, 0, 0.1) inset`.
+Sizes are the tokens typed `dimension`, `fontSize`, `lineHeight`, or `paragraphSpacing`. `basePxFontSize` is an option of the platform, which `packages/tokens/build/config/web.js` sets to `16`. `dimension.base.05` holds half a design pixel, and `size.unit.05` references it. With `cx/size/rem`, the build writes in `main.scss`:
+
+```scss
+$cx-dimension-base-05: 0.03125rem !default;
+$cx-size-unit-05: 0.0313rem !default;
+```
+
+A size that holds its value is not rounded, and a size that references another size is rounded to four decimals.
+
+`cx/shadow/web` prints each layer of a shadow as its horizontal offset, vertical offset, blur, spread, and color, with `inset` after an inner shadow, and joins the layers with commas. The build writes in `main.scss`:
+
+```scss
+$cx-shadow-context-inset: 0rem 0.125rem 0.25rem 0rem rgba(0, 0, 0, 0.1) inset !default;
+```
 
 ## Filters
 
@@ -435,7 +439,7 @@ A filter selects the tokens of one kind of file by their type and path. Every pl
 | Filter | Files | Tokens | Example |
 | --- | --- | --- | --- |
 | `cx/allTokens` | Main | Every type that the build writes, without the colors whose second path segment is `primitive`, `context`, or `utility` | `color.accordion.item-fg-color` |
-| `cx/stringTokens` | String | `asset`, `content`, `fontFamily`, `fontStyle`, `fontWeight`, `string`, `text`, `textCase`, `textDecoration`, `type` | `typography.fontFamily.text` |
+| `cx/stringTokens` | String | `asset`, `content`, `fontFamily`, `fontStyle`, `fontWeight`, `string`, `text`, `textCase`, `textDecoration`, `type` | `icon.accordion.indicator` |
 | `cx/themeTokens` | Color | Colors whose second path segment is not `base` or `utility` | `color.context.default.fg-main` |
 | `cx/numberTokens` | Number | `duration`, `letterSpacing`, `number`, `opacity`, and the sizes | `space.context.medium` |
 | `cx/baseColorTokens` | `res/values/color_base.xml` of Android | Colors whose second path segment is `base` | `color.base.context.light.default.fg-main` |
@@ -454,31 +458,31 @@ This format prints SCSS variables for Chassis CSS, and the `web` platform uses i
 ```scss
 $cx-space-context-medium: 1rem !default;
 $cx-color-accordion-item-fg-color: var(--default-fg-main) !default;
-$cx-typography-font-weight-text-strong-weight: 600 !default;
 $cx-typography-line-height-text-medium: 1.5em !default;
 $cx-border-radius-accordion-main: var(--border-radius-md) !default;
 $cx-font-context-lead: ("font-family": var(--font-family-text), "font-weight": var(--font-weight-text-normal), "font-size": var(--font-size-text-xl), "line-height": var(--line-height-text-xl), "font-style": normal, "letter-spacing": 0em, "margin-bottom": 0rem, "text-transform": none, "text-decoration": none) !default;
-$cx-shadow-alert-main: var(--box-shadow-lg) !default;
 ```
 
 A token prints `var(--<name>)` when its value is a single reference to a token that Chassis CSS has a custom property for: `color.context.*`, `color.primitive.*`, `space.context.*`, `opacity.context.*`, `opacity.level.*`, `shadow.context.*`, `borderRadius.context.*`, or `borderWidth.context.*`. The name follows the referenced path, with the scale steps shortened as in Chassis CSS: `medium` becomes `md`, and `xlarge` becomes `xl`. Every other token prints its value:
 
-- Colors are `#161a1b`, or `rgba(22, 26, 27, 0.5)` with an alpha.
-- A line height token is divided by the font size token of the same step and printed in `em`: `24` at a font size of `16` is `1.5em`.
-- Letter spacing is in `em`, the pixels divided by 16.
+- Sizes are in `rem`.
+- Colors are hex, or `rgba()` when they have an alpha.
+- A line height token is divided by the font size token of the same step, and printed in `em`.
+- Letter spacing is in `em`: the design pixels divided by `basePxFontSize`.
 - Font weights are numbers, font families keep their whole list, and assets are in double quotes.
-- A typography token is a Sass map.
+- A typography token is a Sass map, with a custom property for its family, weight, size, and line height.
 
 ### cx/scss-variables
 
-This format prints SCSS variables for other CSS frameworks, and the presets `web-scss`, `web-px`, and `web-vw` use it. It prints the file of `cx/scss-chassis-css` with every value resolved. The `web-px` preset writes:
+This format prints SCSS variables for other CSS frameworks, and the presets `web-scss`, `web-px`, and `web-vw` use it. It prints the file of `cx/scss-chassis-css` with every value resolved. The `web-scss` preset writes in `main.scss`:
 
 ```scss
-$cx-font-context-lead: ("font-family": "Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif", "font-weight": 400, "font-size": 22px, "line-height": 1.455em, "font-style": normal, "letter-spacing": 0em, "margin-bottom": 0px, "text-transform": none, "text-decoration": none) !default;
-$cx-shadow-alert-main: 0px 6px 24px -6px rgba(0, 0, 0, 0.1), 0px 3px 12px -3px rgba(0, 0, 0, 0.1) !default;
+$cx-space-context-medium: 1rem !default;
+$cx-color-accordion-item-fg-color: #161a1b !default;
+$cx-border-radius-accordion-main: 0.375rem !default;
 ```
 
-A typography map quotes the font family list as one string. With `outputReferences`, the format prints SCSS variables; see [References](#references).
+The Sass map of a typography token holds resolved values too, and quotes the list of font families as one string. With `outputReferences`, the format prints SCSS variables; see [References](#references).
 
 ### cx/ios-swift-class
 
@@ -489,10 +493,7 @@ import UIKit
 
 public enum ChassisTokens {
     public static let SpaceContextMedium = CGFloat(16)
-    public static let OpacityLevel10 = CGFloat(0.1)
     public static let ColorButtonPrimaryBgIdle = UIColor(red: 0.000, green: 0.643, blue: 0.800, alpha: 1)
-    public static let TypographyFontFamilyText = "Inter"
-    public static let TypographyFontWeightTextStrongWeight = UIFont.Weight.semibold
     public static let FontContextJumboLineHeight = CGFloat(120)
     public static let FontContextJumboFontSize = CGFloat(96)
     public static let FontContextJumboLetterSpacing = CGFloat(-0.5)
@@ -502,8 +503,8 @@ public enum ChassisTokens {
 ```
 
 - Colors are `UIColor` with three decimals per channel. Numbers and sizes are `CGFloat`, in points.
-- A font family is the first family of the list. A font weight is a `UIFont.Weight` constant.
-- A typography or shadow token becomes one constant per part. A line height in percent prints in points of the font size of its token: `125%` of `96` is `CGFloat(120)`.
+- A font family is a string with the first family of the list. A font weight is a `UIFont.Weight` constant.
+- A typography or shadow token becomes one constant per part. A line height in percent prints in points, as that share of the font size of its token.
 - After the blur of each shadow layer, a `…Radius` constant holds half the blur, for the `shadowRadius` of Core Animation.
 - A gradient becomes an angle, and a color and a position per stop: `GradientPrimitiveBlackL000Angle`, `GradientPrimitiveBlackL000Stop1Color`, `GradientPrimitiveBlackL000Stop1Position`. The format reads `linear-gradient()` with a direction in `deg`, or `to top`, `to right`, `to bottom`, or `to left`.
 
@@ -528,25 +529,25 @@ This format prints a `<resources>` file with one element per token, and the `and
   <dimen name="space_context_medium">16dp</dimen>
   <item name="opacity_level_10" type="dimen" format="float">0.1</item>
   <color name="color_button_primary_bg_idle">#ff00a4cc</color>
-  <string name="typography_font_family_text">Inter</string>
-  <integer name="typography_font_weight_text_strong_weight">600</integer>
   <dimen name="font_context_jumbo_line_height">120sp</dimen>
   <dimen name="font_context_jumbo_font_size">96sp</dimen>
   <item name="font_context_jumbo_letter_spacing" type="dimen" format="float">-0.0052</item>
 </resources>
 ```
 
+The type of a token decides its element:
+
 <CxTable>
-| Tokens | Element | Example |
+| Tokens | Element | Format |
 | --- | --- | --- |
-| Opacity, letter spacing, gradient angles and positions | `<item type="dimen" format="float">` | `0.1` |
-| Font weights | `<integer>`, from 100 to 900 | `600` |
-| Colors | `<color>`, as `#aarrggbb` | `#ff00a4cc` |
-| Sizes | `<dimen>` | `16dp`, `96sp` |
-| Everything else | `<string>`, escaped | `Inter` |
+| Opacity, letter spacing, gradient angles and positions | `<item type="dimen" format="float">` | A number |
+| Font weights | `<integer>` | A weight number |
+| Colors | `<color>` | ARGB hex |
+| Sizes | `<dimen>` | A size in `dp` or `sp` |
+| Everything else | `<string>` | Text, escaped for Android |
 </CxTable>
 
-Font sizes, line heights, and paragraph spacing are in `sp`, and other sizes in `dp`. The letter spacing of a typography token is in ems of its font size, which `android:letterSpacing` takes: `-0.5px` at `96` is `-0.0052`. Typography, shadow, and gradient tokens become parts as on iOS, without the `…Radius` constants.
+Font sizes, line heights, and paragraph spacing are in `sp`, and other sizes in `dp`. The letter spacing of a typography token is in ems of its font size, which `android:letterSpacing` takes. Typography, shadow, and gradient tokens become parts as on iOS, without the `…Radius` constants.
 
 ### cx/compose-object
 
@@ -563,7 +564,7 @@ object ChassisTokensNumberLarge {
 }
 ```
 
-Colors are `Color(0xFF161A1B)`, font weights `FontWeight(600)`, and strings Kotlin string literals. Every property is a getter, because with `outputReferences` a property may name one that the file declares later.
+Colors are `Color(0xAARRGGBB)`, font weights are `FontWeight` with the weight number, and strings are Kotlin string literals. Every property is a getter, because with `outputReferences` a property may name one that the file declares later.
 
 ## Troubleshooting
 
@@ -575,7 +576,7 @@ The build stops with `Unknown platform: web-rem`. An app of `chassis.build.apps`
 
 ### No token sets
 
-The build stops with `No token sets for acme_docs_light_large in source/$themes.json`. A brand, app, theme, or screen of the build options is not an option of its group in `source/$themes.json`, or the build options have no `screens` and `$themes.json` has a `screen` group. Check the spelling of the name, or add the option in Tokens Studio.
+The build stops with `No token sets for acme_docs_light_large in source/$themes.json`. A brand, app, theme, or screen of the build options is not an option of its group in `source/$themes.json`, or the build options have no `screens` and `source/$themes.json` has a `screen` group. Check the spelling of the name, or add the option in Tokens Studio.
 
 ### Unused platform options
 
@@ -584,10 +585,6 @@ The build stops with `Invalid package.json: options for platforms no app uses: w
 ### Android screen folders
 
 The build stops with `no Android resource qualifier for the screens large; set them in options.android.screens`, or with `options.android.screens must put exactly one screen in the default folder ("") but puts 0`. The defaults cover the screens `small`, `medium`, and `large`, and `options.android.screens` replaces them as a whole. Give every screen of `chassis.build.screens` a qualifier in `options.android.screens`, and give exactly one screen the qualifier `""`.
-
-### No builds selected
-
-The build prints `Processing 0 build(s)...` and writes nothing. The value of a filter matches no brand, app, platform, theme, or screen of the build options, and the build does not report unknown values. Check the values with `--dry-run`.
 
 ### Broken reference
 
@@ -599,7 +596,7 @@ A build with `outputReferences` fails with `No file declares a variable for`, fo
 
 ### Unknown font weight
 
-A build of an iOS or Android platform fails with `Unknown font weight "Extra Heavy" in typography.fontWeight.text.strong.weight`. The build knows the weight names of `ts/typography/fontWeight`, in any case and with spaces or hyphens: `Semi Bold`, `SemiBold`, and `semi-bold` are all `600`. Use one of these names in the token; `pnpm tokens:lint:source` finds the token before the build.
+A build of an iOS or Android platform fails with `Unknown font weight "Extra Heavy" in typography.fontWeight.text.strong.weight`. The build knows the weight names of `ts/typography/fontWeight`, and ignores case, spaces, and hyphens in them. Use one of these names in the token; `pnpm tokens:lint:source` finds the token before the build.
 
 ### Golden check failed
 

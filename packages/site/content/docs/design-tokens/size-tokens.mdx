@@ -1,6 +1,6 @@
 ---
 title: Size Tokens
-description: Size tokens hold the widths and heights of components, icons, and layout parts, from the pixel scale to the sizes of each component.
+description: Size tokens hold the widths and heights of components, icons, and layout parts, from the base scale to the sizes of each component.
 toc: true
 ---
 
@@ -10,14 +10,14 @@ toc: true
 
 Size tokens hold the dimensions of an element: the height of a button, the size of an icon, the width of a modal window. The whitespace inside and between elements belongs to the [space tokens]([[docsref:/design-tokens/space-tokens]]), whose page has the same sections as this one.
 
-The values are design pixels, and the build converts them to the unit of each platform, as [Platform output](#platform-output) shows. A size token holds the same value for every brand, app, and theme of the configuration. Only the tokens of `size.website.*` change with the screen.
+A size is a number of design pixels, and the build converts it to the unit of each platform, as [Platform output](#platform-output) shows. In the committed token sets, no brand, theme, or app overrides a size token. The tokens of `size.website.*` differ per screen, the optional fourth group.
 
 ### Token levels
 
-Each level references the level below it, so a pixel value is written once, in `dimension.base.*`. The chain of `16px` shows the three levels:
+Each level references the level below it, so a size is written once, in `dimension.base.*`. The chain of one step shows the three levels:
 
 ```text
-dimension.base.16                  16px
+dimension.base.16                  holds the size
 └── size.unit.16                   {dimension.base.16}
     ├── size.context.2xsmall       {size.unit.16}
     ├── size.icon.glyph.xsmall     {size.unit.16}
@@ -38,98 +38,57 @@ Context and component tokens both reference `size.unit.*`. No component token re
 
 ## Base tokens
 
-The base level has two groups. `dimension.base.*` holds the pixel values, and `size.unit.*` references them one to one under the name of the category.
+The base level holds the scale. `dimension.base.*` holds the sizes, and `size.unit.*` references them one to one under the name of the category.
 
 ### Dimension scale
 
-`dimension.base.*` names a step by its pixel value: `dimension.base.16` holds `16px`. The steps go from `0` to `10` by 1, from `12` to `32` by 2, from `36` to `80` by 4, and from `88` to `136` by 8, followed by `160`, `192`, `256`, `320`, `512`, and `1024`. The size, space, border radius, and shadow tokens reference this scale.
+`dimension.base.*` holds a size in design pixels, and the name of a step states that size: `dimension.base.16` is sixteen design pixels. The steps are close together at the start of the scale and further apart toward its end. The size, space, border radius, and shadow tokens reference this scale.
 
-Steps that are not a positive whole number have a prefix. `d` marks a fraction and `n` a negative value; the negative steps are `n1` to `n10`, `n12`, `n14`, `n16`, `n18`, `n20`, `n24`, `nd05`, `nd15`, and `nd25`. `dimension.base.scale` is not a step of the scale.
+A step that is not a positive whole number has a prefix:
 
-<CxTable>
-| Token | Value |
-| --- | --- |
-| `dimension.base.scale` | `1px` |
-| `dimension.base.05` | `0.5px` |
-| `dimension.base.d05` | `0.5px` |
-| `dimension.base.d15` | `1.5px` |
-| `dimension.base.d25` | `2.5px` |
-| `dimension.base.n1` | `-1px` |
-| `dimension.base.n24` | `-24px` |
-| `dimension.base.nd05` | `-0.5px` |
-| `dimension.base.nd15` | `-1.5px` |
-| `dimension.base.nd25` | `-2.5px` |
-</CxTable>
+- `d` marks a fraction: `d15` is one and a half, and `d25` is two and a half.
+- `05` and `d05` are both a half.
+- `n` marks a negative size: `n4` is minus four, and `nd15` is minus one and a half.
 
 ### Size units
 
-`size.unit.*` has a token for every step of the dimension scale, with the name of the step: `size.unit.16` is `{dimension.base.16}`, and `size.unit.n4` is `{dimension.base.n4}`. The table lists the steps that other tokens reference.
-
-<CxTable>
-| Token | Value |
-| --- | --- |
-| `size.unit.0` | `0px` |
-| `size.unit.1` | `1px` |
-| `size.unit.2` | `2px` |
-| `size.unit.4` | `4px` |
-| `size.unit.8` | `8px` |
-| `size.unit.12` | `12px` |
-| `size.unit.16` | `16px` |
-| `size.unit.20` | `20px` |
-| `size.unit.24` | `24px` |
-| `size.unit.28` | `28px` |
-| `size.unit.32` | `32px` |
-| `size.unit.36` | `36px` |
-| `size.unit.40` | `40px` |
-| `size.unit.48` | `48px` |
-| `size.unit.56` | `56px` |
-| `size.unit.64` | `64px` |
-| `size.unit.72` | `72px` |
-| `size.unit.80` | `80px` |
-| `size.unit.96` | `96px` |
-| `size.unit.120` | `120px` |
-| `size.unit.256` | `256px` |
-| `size.unit.05` | `0.5px` |
-| `size.unit.d15` | `1.5px` |
-| `size.unit.n1` | `-1px` |
-| `size.unit.nd05` | `-0.5px` |
-</CxTable>
+`size.unit.*` has a token for every step of the dimension scale, under the name of the step: `size.unit.16` references `{dimension.base.16}`, and `size.unit.n4` references `{dimension.base.n4}`. The context and component tokens of this page reference these tokens.
 
 ## Context tokens
 
-`size.context.*` names steps of the scale by role, from `2xsmall` with `16px` to `2xlarge` with `64px`, 8 pixels apart. Reach for them to size an element that has no component token.
+`size.context.*` names evenly spaced steps of the scale by role, from `2xsmall` to `2xlarge`. Reach for them to size an element that has no component token.
 
 <CxTable>
-| Token | Value | Reference |
-| --- | --- | --- |
-| `size.context.2xlarge` | `64px` | `{size.unit.64}` |
-| `size.context.xlarge` | `56px` | `{size.unit.56}` |
-| `size.context.large` | `48px` | `{size.unit.48}` |
-| `size.context.medium` | `40px` | `{size.unit.40}` |
-| `size.context.small` | `32px` | `{size.unit.32}` |
-| `size.context.xsmall` | `24px` | `{size.unit.24}` |
-| `size.context.2xsmall` | `16px` | `{size.unit.16}` |
+| Token | Reference |
+| --- | --- |
+| `size.context.2xlarge` | `{size.unit.64}` |
+| `size.context.xlarge` | `{size.unit.56}` |
+| `size.context.large` | `{size.unit.48}` |
+| `size.context.medium` | `{size.unit.40}` |
+| `size.context.small` | `{size.unit.32}` |
+| `size.context.xsmall` | `{size.unit.24}` |
+| `size.context.2xsmall` | `{size.unit.16}` |
 </CxTable>
 
 ### Icon sizes
 
-`size.icon.glyph.*` names the sizes of an icon, from `3xsmall` with `8px` to `6xlarge` with `64px`. Most component tokens for an icon reference `size.unit.*` directly; `size.dropdown.icon` references `size.icon.glyph.small`.
+`size.icon.glyph.*` names the sizes of an icon, from `3xsmall` to `6xlarge`. Most component tokens for an icon reference `size.unit.*` directly; `size.dropdown.icon` references `size.icon.glyph.small`.
 
 <CxTable>
-| Token | Value | Reference |
-| --- | --- | --- |
-| `size.icon.glyph.6xlarge` | `64px` | `{size.unit.64}` |
-| `size.icon.glyph.5xlarge` | `56px` | `{size.unit.56}` |
-| `size.icon.glyph.4xlarge` | `48px` | `{size.unit.48}` |
-| `size.icon.glyph.3xlarge` | `40px` | `{size.unit.40}` |
-| `size.icon.glyph.2xlarge` | `36px` | `{size.unit.36}` |
-| `size.icon.glyph.xlarge` | `32px` | `{size.unit.32}` |
-| `size.icon.glyph.large` | `28px` | `{size.unit.28}` |
-| `size.icon.glyph.medium` | `24px` | `{size.unit.24}` |
-| `size.icon.glyph.small` | `20px` | `{size.unit.20}` |
-| `size.icon.glyph.xsmall` | `16px` | `{size.unit.16}` |
-| `size.icon.glyph.2xsmall` | `12px` | `{size.unit.12}` |
-| `size.icon.glyph.3xsmall` | `8px` | `{size.unit.8}` |
+| Token | Reference |
+| --- | --- |
+| `size.icon.glyph.6xlarge` | `{size.unit.64}` |
+| `size.icon.glyph.5xlarge` | `{size.unit.56}` |
+| `size.icon.glyph.4xlarge` | `{size.unit.48}` |
+| `size.icon.glyph.3xlarge` | `{size.unit.40}` |
+| `size.icon.glyph.2xlarge` | `{size.unit.36}` |
+| `size.icon.glyph.xlarge` | `{size.unit.32}` |
+| `size.icon.glyph.large` | `{size.unit.28}` |
+| `size.icon.glyph.medium` | `{size.unit.24}` |
+| `size.icon.glyph.small` | `{size.unit.20}` |
+| `size.icon.glyph.xsmall` | `{size.unit.16}` |
+| `size.icon.glyph.2xsmall` | `{size.unit.12}` |
+| `size.icon.glyph.3xsmall` | `{size.unit.8}` |
 </CxTable>
 
 ### Asset sizes
@@ -137,37 +96,37 @@ Steps that are not a positive whole number have a prefix. `d` marks a fraction a
 `size.asset.*` holds the size of an indicator and of a separator. The [border width tokens]([[docsref:/design-tokens/border-width-tokens]]) `borderWidth.asset.indicator` and `borderWidth.asset.separator` reference them.
 
 <CxTable>
-| Token | Value | Reference |
-| --- | --- | --- |
-| `size.asset.indicator` | `4px` | `{size.unit.4}` |
-| `size.asset.separator` | `1px` | `{size.unit.1}` |
+| Token | Reference |
+| --- | --- |
+| `size.asset.indicator` | `{size.unit.4}` |
+| `size.asset.separator` | `{size.unit.1}` |
 </CxTable>
 
 ## Component tokens
 
-Component tokens hold the sizes of the parts of one component. A component with sizes has a token per size and part, `size.<component>.<size>-<part>`, in the source order `medium`, `large`, `small`. The part `main` is the component itself; parts like `icon`, `caret`, and `avatar` are elements inside it. A component token references a step of `size.unit.*` unless its section names another reference.
+Component tokens hold the sizes of the parts of one component. A component with sizes has a token per size and part, `size.<component>.<size>-<part>`, in the source order `medium`, `large`, `small`. The part `main` is the component itself; parts like `icon`, `caret`, and `avatar` are elements inside it.
 
 ### Accordion
 
 Accordion sizes hold the indicator of each accordion size.
 
 <CxTable>
-| Token | Value |
+| Token | Reference |
 | --- | --- |
-| `size.accordion.medium-indicator` | `24px` |
-| `size.accordion.large-indicator` | `28px` |
-| `size.accordion.small-indicator` | `20px` |
+| `size.accordion.medium-indicator` | `{size.unit.24}` |
+| `size.accordion.large-indicator` | `{size.unit.28}` |
+| `size.accordion.small-indicator` | `{size.unit.20}` |
 </CxTable>
 
 ### Alert
 
-Alert sizes hold the icon of the large and the small alert. Both tokens hold `40px`.
+Alert sizes hold the icon of the large and the small alert.
 
 <CxTable>
-| Token | Value |
+| Token | Reference |
 | --- | --- |
-| `size.alert.large-icon` | `40px` |
-| `size.alert.small-icon` | `40px` |
+| `size.alert.large-icon` | `{size.unit.40}` |
+| `size.alert.small-icon` | `{size.unit.40}` |
 </CxTable>
 
 ### Badge
@@ -175,14 +134,14 @@ Alert sizes hold the icon of the large and the small alert. Both tokens hold `40
 Badge sizes hold the badge and its icon for each badge size.
 
 <CxTable>
-| Token | Value |
+| Token | Reference |
 | --- | --- |
-| `size.badge.medium-main` | `24px` |
-| `size.badge.medium-icon` | `16px` |
-| `size.badge.large-main` | `28px` |
-| `size.badge.large-icon` | `20px` |
-| `size.badge.small-main` | `20px` |
-| `size.badge.small-icon` | `12px` |
+| `size.badge.medium-main` | `{size.unit.24}` |
+| `size.badge.medium-icon` | `{size.unit.16}` |
+| `size.badge.large-main` | `{size.unit.28}` |
+| `size.badge.large-icon` | `{size.unit.20}` |
+| `size.badge.small-main` | `{size.unit.20}` |
+| `size.badge.small-icon` | `{size.unit.12}` |
 </CxTable>
 
 ### Button
@@ -190,17 +149,17 @@ Badge sizes hold the badge and its icon for each badge size.
 Button sizes hold the button, its icon, and its caret for each button size.
 
 <CxTable>
-| Token | Value |
+| Token | Reference |
 | --- | --- |
-| `size.button.medium-main` | `40px` |
-| `size.button.medium-icon` | `24px` |
-| `size.button.medium-caret` | `20px` |
-| `size.button.large-main` | `48px` |
-| `size.button.large-icon` | `28px` |
-| `size.button.large-caret` | `24px` |
-| `size.button.small-main` | `32px` |
-| `size.button.small-icon` | `20px` |
-| `size.button.small-caret` | `16px` |
+| `size.button.medium-main` | `{size.unit.40}` |
+| `size.button.medium-icon` | `{size.unit.24}` |
+| `size.button.medium-caret` | `{size.unit.20}` |
+| `size.button.large-main` | `{size.unit.48}` |
+| `size.button.large-icon` | `{size.unit.28}` |
+| `size.button.large-caret` | `{size.unit.24}` |
+| `size.button.small-main` | `{size.unit.32}` |
+| `size.button.small-icon` | `{size.unit.20}` |
+| `size.button.small-caret` | `{size.unit.16}` |
 </CxTable>
 
 ### Chip
@@ -208,17 +167,17 @@ Button sizes hold the button, its icon, and its caret for each button size.
 Chip sizes hold the chip, its icon, and its avatar for each chip size.
 
 <CxTable>
-| Token | Value |
+| Token | Reference |
 | --- | --- |
-| `size.chip.medium-main` | `32px` |
-| `size.chip.medium-icon` | `20px` |
-| `size.chip.medium-avatar` | `24px` |
-| `size.chip.large-main` | `40px` |
-| `size.chip.large-icon` | `24px` |
-| `size.chip.large-avatar` | `32px` |
-| `size.chip.small-main` | `24px` |
-| `size.chip.small-icon` | `16px` |
-| `size.chip.small-avatar` | `20px` |
+| `size.chip.medium-main` | `{size.unit.32}` |
+| `size.chip.medium-icon` | `{size.unit.20}` |
+| `size.chip.medium-avatar` | `{size.unit.24}` |
+| `size.chip.large-main` | `{size.unit.40}` |
+| `size.chip.large-icon` | `{size.unit.24}` |
+| `size.chip.large-avatar` | `{size.unit.32}` |
+| `size.chip.small-main` | `{size.unit.24}` |
+| `size.chip.small-icon` | `{size.unit.16}` |
+| `size.chip.small-avatar` | `{size.unit.20}` |
 </CxTable>
 
 ### List
@@ -226,35 +185,35 @@ Chip sizes hold the chip, its icon, and its avatar for each chip size.
 List sizes hold the icon, the image, and the disclosure of a list item.
 
 <CxTable>
-| Token | Value |
+| Token | Reference |
 | --- | --- |
-| `size.list.icon` | `24px` |
-| `size.list.image` | `40px` |
-| `size.list.disclosure` | `8px` |
+| `size.list.icon` | `{size.unit.24}` |
+| `size.list.image` | `{size.unit.40}` |
+| `size.list.disclosure` | `{size.unit.8}` |
 </CxTable>
 
 ### Date picker
 
-Date picker sizes hold the width and the height of a day, and the widths of a week and of a preset. The source computes `size.datepicker.week-width` as `{size.datepicker.day-width}*7`, which resolves to `224px`.
+Date picker sizes hold the width and the height of a day, and the widths of a week and of a preset. The source computes the width of a week from the width of a day.
 
 <CxTable>
-| Token | Value |
+| Token | Reference |
 | --- | --- |
-| `size.datepicker.day-width` | `32px` |
-| `size.datepicker.day-height` | `32px` |
-| `size.datepicker.week-width` | `224px` |
-| `size.datepicker.preset-width` | `120px` |
+| `size.datepicker.day-width` | `{size.unit.32}` |
+| `size.datepicker.day-height` | `{size.unit.32}` |
+| `size.datepicker.week-width` | `{size.datepicker.day-width}*7` |
+| `size.datepicker.preset-width` | `{size.unit.120}` |
 </CxTable>
 
 ### Dropdown
 
-Dropdown sizes hold the icon and the disclosure of a dropdown. `size.dropdown.icon` references `{size.icon.glyph.small}`.
+Dropdown sizes hold the icon and the disclosure of a dropdown. The icon follows the icon sizes of the context level.
 
 <CxTable>
-| Token | Value |
+| Token | Reference |
 | --- | --- |
-| `size.dropdown.icon` | `20px` |
-| `size.dropdown.disclosure` | `16px` |
+| `size.dropdown.icon` | `{size.icon.glyph.small}` |
+| `size.dropdown.disclosure` | `{size.unit.16}` |
 </CxTable>
 
 ### Form input
@@ -262,54 +221,41 @@ Dropdown sizes hold the icon and the disclosure of a dropdown. `size.dropdown.ic
 Form input sizes hold the icon and the caret of each input size. The group has no `main` token.
 
 <CxTable>
-| Token | Value |
+| Token | Reference |
 | --- | --- |
-| `size.form-input.medium-icon` | `20px` |
-| `size.form-input.medium-caret` | `20px` |
-| `size.form-input.large-icon` | `24px` |
-| `size.form-input.large-caret` | `24px` |
-| `size.form-input.small-icon` | `16px` |
-| `size.form-input.small-caret` | `16px` |
+| `size.form-input.medium-icon` | `{size.unit.20}` |
+| `size.form-input.medium-caret` | `{size.unit.20}` |
+| `size.form-input.large-icon` | `{size.unit.24}` |
+| `size.form-input.large-caret` | `{size.unit.24}` |
+| `size.form-input.small-icon` | `{size.unit.16}` |
+| `size.form-input.small-caret` | `{size.unit.16}` |
 </CxTable>
 
 ### Modal
 
-Modal sizes hold the width (`-w`) and the height (`-h`) of the modal window, from `small` to `xlarge`. The source holds these values as numbers without a unit and without a reference; the build reads them as pixels.
-
-<CxTable>
-| Token | Value |
-| --- | --- |
-| `size.modal.window-xlarge-w` | `1140` |
-| `size.modal.window-large-w` | `800` |
-| `size.modal.window-medium-w` | `560` |
-| `size.modal.window-small-w` | `360` |
-| `size.modal.window-xlarge-h` | `720` |
-| `size.modal.window-large-h` | `600` |
-| `size.modal.window-medium-h` | `480` |
-| `size.modal.window-small-h` | `640` |
-</CxTable>
+Modal sizes hold the width and the height of the modal window: `size.modal.window-<size>-w` and `size.modal.window-<size>-h`, for the sizes `small`, `medium`, `large`, and `xlarge`. These tokens hold a size of their own and reference no step of the scale.
 
 ### Notification
 
 Notification sizes hold the icon of a notification.
 
 <CxTable>
-| Token | Value |
+| Token | Reference |
 | --- | --- |
-| `size.notification.icon` | `28px` |
+| `size.notification.icon` | `{size.unit.28}` |
 </CxTable>
 
 ### Navigation
 
-Navigation sizes hold the width of the left navigation and the height of the top navigation. `size.nav-left.width` references `{size.nav-left.width-expanded}`. The source spells the collapsed width `wdith-collapsed`, and the generated names keep that spelling.
+Navigation sizes hold the widths of the left navigation and the height of the top navigation. `size.nav-left.width` references the expanded width.
 
 <CxTable>
-| Token | Value |
+| Token | Reference |
 | --- | --- |
-| `size.nav-left.width` | `256px` |
-| `size.nav-left.width-expanded` | `256px` |
-| `size.nav-left.wdith-collapsed` | `72px` |
-| `size.nav-top.height` | `64px` |
+| `size.nav-left.width` | `{size.nav-left.width-expanded}` |
+| `size.nav-left.width-expanded` | `{size.unit.256}` |
+| `size.nav-left.wdith-collapsed` | `{size.unit.72}` |
+| `size.nav-top.height` | `{size.unit.64}` |
 </CxTable>
 
 ### Pagination
@@ -317,12 +263,12 @@ Navigation sizes hold the width of the left navigation and the height of the top
 Pagination sizes hold the width (`-w`) and the height (`-h`) of a dot in its idle and its active state.
 
 <CxTable>
-| Token | Value |
+| Token | Reference |
 | --- | --- |
-| `size.pagination.dot-idle-h` | `8px` |
-| `size.pagination.dot-idle-w` | `8px` |
-| `size.pagination.dot-active-h` | `8px` |
-| `size.pagination.dot-active-w` | `16px` |
+| `size.pagination.dot-idle-h` | `{size.unit.8}` |
+| `size.pagination.dot-idle-w` | `{size.unit.8}` |
+| `size.pagination.dot-active-h` | `{size.unit.8}` |
+| `size.pagination.dot-active-w` | `{size.unit.16}` |
 </CxTable>
 
 ### Segment
@@ -330,79 +276,36 @@ Pagination sizes hold the width (`-w`) and the height (`-h`) of a dot in its idl
 Segment sizes hold the segment and its icon for each segment size.
 
 <CxTable>
-| Token | Value |
+| Token | Reference |
 | --- | --- |
-| `size.segment.medium-main` | `32px` |
-| `size.segment.medium-icon` | `20px` |
-| `size.segment.large-main` | `40px` |
-| `size.segment.large-icon` | `24px` |
-| `size.segment.small-main` | `24px` |
-| `size.segment.small-icon` | `16px` |
+| `size.segment.medium-main` | `{size.unit.32}` |
+| `size.segment.medium-icon` | `{size.unit.20}` |
+| `size.segment.large-main` | `{size.unit.40}` |
+| `size.segment.large-icon` | `{size.unit.24}` |
+| `size.segment.small-main` | `{size.unit.24}` |
+| `size.segment.small-icon` | `{size.unit.16}` |
 </CxTable>
 
 ### Website
 
-Website sizes hold the thumb and the icon of a section, a feature, and a module of a website. They are the size tokens that change with the screen: each screen has its own token set, `screen-website/screen-<screen>.json`, with the same names.
+Website sizes hold the thumb and the icon of a section, a feature, and a module of a website. They differ per screen: each option of the `screen` group has its own token set, `screen-website/screen-<screen>.json`, with the same names. The columns are the screens of the committed configuration.
 
 <CxTable>
 | Token | `large` | `medium` | `small` |
 | --- | --- | --- | --- |
-| `size.website.section-thumb` | `96px` | `80px` | `64px` |
-| `size.website.section-icon` | `80px` | `64px` | `48px` |
-| `size.website.feature-thumb` | `56px` | `48px` | `40px` |
-| `size.website.feature-icon` | `48px` | `40px` | `32px` |
-| `size.website.module-thumb` | `56px` | `48px` | `40px` |
-| `size.website.module-icon` | `48px` | `40px` | `32px` |
+| `size.website.section-thumb` | `{size.unit.96}` | `{size.unit.80}` | `{size.unit.64}` |
+| `size.website.section-icon` | `{size.unit.80}` | `{size.unit.64}` | `{size.unit.48}` |
+| `size.website.feature-thumb` | `{size.unit.56}` | `{size.unit.48}` | `{size.unit.40}` |
+| `size.website.feature-icon` | `{size.unit.48}` | `{size.unit.40}` | `{size.unit.32}` |
+| `size.website.module-thumb` | `{size.unit.56}` | `{size.unit.48}` | `{size.unit.40}` |
+| `size.website.module-icon` | `{size.unit.48}` | `{size.unit.40}` | `{size.unit.32}` |
 </CxTable>
 
 ## Grid tokens
 
-`grid.*` is a group of its own, next to `size.*`, in `base/app-base.json`. It holds the widths of the layout grid in steps from `xsmall` to `2xlarge`. The source holds the values as numbers without a unit; the build reads them as pixels. Grid tokens hold the same value on every screen.
+`grid.*` is a group of its own, next to `size.*`, in `base/app-base.json`. It holds the widths of the layout grid, named `grid.<part>.<step>` with the steps `xsmall`, `small`, `medium`, `large`, `xlarge`, and `2xlarge`. The tokens hold a size of their own, reference no step of the scale, and are the same on every screen.
 
-### Breakpoints
-
-`grid.breakpoint.*` holds the breakpoint of each step, from `400` to `1536`.
-
-<CxTable>
-| Token | Value |
-| --- | --- |
-| `grid.breakpoint.2xlarge` | `1536` |
-| `grid.breakpoint.xlarge` | `1280` |
-| `grid.breakpoint.large` | `1024` |
-| `grid.breakpoint.medium` | `768` |
-| `grid.breakpoint.small` | `576` |
-| `grid.breakpoint.xsmall` | `400` |
-</CxTable>
-
-### Containers
-
-`grid.container.*` holds the width of the container at each step, which is smaller than the breakpoint of the same step.
-
-<CxTable>
-| Token | Value |
-| --- | --- |
-| `grid.container.2xlarge` | `1440` |
-| `grid.container.xlarge` | `1200` |
-| `grid.container.large` | `960` |
-| `grid.container.medium` | `720` |
-| `grid.container.small` | `540` |
-| `grid.container.xsmall` | `360` |
-</CxTable>
-
-### Gutters
-
-`grid.gutter.*` holds the gutter of each step, from `8` to `48`. The page gaps `space.page.large-gap`, `space.page.medium-gap`, and `space.page.small-gap` of the [space tokens]([[docsref:/design-tokens/space-tokens]]) reference `grid.gutter.medium`.
-
-<CxTable>
-| Token | Value |
-| --- | --- |
-| `grid.gutter.2xlarge` | `48` |
-| `grid.gutter.xlarge` | `40` |
-| `grid.gutter.large` | `32` |
-| `grid.gutter.medium` | `24` |
-| `grid.gutter.small` | `16` |
-| `grid.gutter.xsmall` | `8` |
-</CxTable>
+`grid.breakpoint.*` holds the breakpoints, `grid.container.*` the width of the container at each breakpoint, and `grid.gutter.*` the gutters. The container of a step is narrower than the breakpoint of that step. The page gaps `space.page.large-gap`, `space.page.medium-gap`, and `space.page.small-gap` of the [space tokens]([[docsref:/design-tokens/space-tokens]]) reference `grid.gutter.medium`.
 
 ## Usage
 
@@ -414,28 +317,28 @@ Use the most specific token that names the element, and go down a level only whe
 
 - Use a component token for the part that it names: `size.button.medium-icon` for the icon of a medium button.
 - Use `size.icon.glyph.*` for an icon and `size.context.*` for another element that has no component token.
-- Use `size.unit.*` when no context token holds the value. The context scale ends at `64px`, and the unit scale goes on to `1024px`.
+- Use `size.unit.*` when no context token holds the size. The unit scale has steps between and beyond those of the context scale.
 - Leave `dimension.base.*` to the token sets. It is in the output because the unit tokens reference it.
 
 ### Size and space
 
-A size token sets a width or a height; a space token sets a padding or a gap. `size.unit.16` and `space.unit.16` hold the same value, because both reference `dimension.base.16`. The context tokens of both categories reference `size.unit.*`, so a change to `size.unit.16` changes `size.context.2xsmall` and `space.context.medium`.
+A size token sets a width or a height; a space token sets a padding or a gap. `size.unit.16` and `space.unit.16` hold the same size, because both reference `dimension.base.16`. The context tokens of both categories reference `size.unit.*`, so a change to `size.unit.16` changes `size.context.2xsmall` and `space.context.medium`.
 
 ## Platform output
 
 Size tokens print in `rem` on the web, as `CGFloat` points on iOS, and as `dp` dimension resources on Android.
 
 <CxTable>
-| Platform | Name | Value |
+| Platform | Name | Format |
 | --- | --- | --- |
-| Web | `$cx-size-context-medium` | `2.5rem` |
-| iOS | `SizeContextMedium` | `CGFloat(40)` |
-| Android | `@dimen/size_context_medium` | `40dp` |
+| Web | `$cx-size-context-medium` | A size in `rem` |
+| iOS | `SizeContextMedium` | A `CGFloat` in points |
+| Android | `@dimen/size_context_medium` | A `<dimen>` in `dp` |
 </CxTable>
 
-The web platform divides the pixels by 16, so `40px` prints `2.5rem` and `0px` prints `0rem`. A unit token with a fraction prints four decimals: `size.unit.05` holds `0.5px` and prints `0.0313rem`, while `dimension.base.05` prints `0.03125rem`. A value without a unit prints like a pixel value: `size.modal.window-small-w` holds `360` and prints `22.5rem`, `CGFloat(360)`, and `360dp`.
+The web platform converts design pixels to `rem` at sixteen pixels per `rem`. iOS and Android keep the number of design pixels, as points and as `dp`.
 
-The build writes every level with its resolved value, `dimension.base.*` included. In `main.scss`:
+The build writes every level with its resolved size, `dimension.base.*` included. The values in the examples are those of the `chassis` brand in the current version and differ in other brands. In `main.scss`:
 
 ```scss
 $cx-dimension-base-16: 1rem !default;
@@ -451,10 +354,6 @@ With the `outputReferences` option, a token names the token that it references, 
     public static let SizeContext2xsmall = SizeUnit16
 ```
 
-The main file of each platform holds the values of the first configured screen, `large`. The values of `size.website.*` on another screen are in the number file of that screen. The build writes in `number-small.scss`:
-
-```scss
-$cx-size-website-section-thumb: 4rem !default;
-```
+The main file of each platform holds `size.website.*` of the first configured screen. The number file of a screen, such as `number-small.scss`, holds them for that screen.
 
 See the [web]([[docsref:/use-in-project/web-applications]]), [iOS]([[docsref:/use-in-project/ios-applications]]), and [Android]([[docsref:/use-in-project/android-applications]]) docs for the files that hold these names.

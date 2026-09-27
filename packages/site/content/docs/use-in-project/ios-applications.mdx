@@ -8,38 +8,39 @@ toc: true
 
 ## Introduction
 
-The iOS output of Chassis Tokens is Swift. Every file declares one type, a caseless `enum`, with one static constant per token. Names are in PascalCase without a prefix. The build writes lines such as these of `ChassisTokens.swift`:
+The iOS output of Chassis Tokens is Swift. Every file declares one type, a caseless `enum`, with one static constant per token. Names are in PascalCase without a prefix.
+
+The values in the examples of this page are those of the `chassis` brand in the current version, and they differ in other brands. The build writes lines such as these of `ChassisTokens.swift`:
 
 ```swift
 import UIKit
 
 public enum ChassisTokens {
     public static let SpaceContextMedium = CGFloat(16)
-    public static let OpacityLevel40 = CGFloat(0.4)
-    public static let TypographyFontFamilyText = "Inter"
+    public static let ColorAccordionItemFgColor = UIColor(red: 0.086, green: 0.102, blue: 0.106, alpha: 1)
 }
 ```
 
-Colors are `UIColor`, sizes and numbers are `CGFloat`, font weights are `UIFont.Weight`, and everything else is a `String`. Sizes are in points, one point for one design pixel, and opacities are fractions.
+Colors are `UIColor`, sizes and numbers are `CGFloat`, font weights are `UIFont.Weight`, and everything else is a `String`. Sizes are in points, one point for one design pixel, and opacities are numbers from `0` to `1`.
 
 The values are UIKit values, which SwiftUI views can use too. The `ios-swiftui` preset writes SwiftUI values; you build it from the repository, as [SwiftUI values](#swiftui-values) describes.
 
 ## Generated files
 
-The build writes the iOS files to `dist/ios/<app>/<brand>/`. The configured iOS app is `demo`, and the configured brands are `chassis` and `sinefil`.
+The build writes one folder for each brand and app, `dist/ios/<app>/<brand>/`, with one color file per theme and one number file per screen. The committed configuration builds the iOS app `demo` for the brands `chassis` and `sinefil`, with the themes `light` and `dark` and the screens `large`, `medium` and `small`.
 
 <CxTable>
 | File | Type | Contents |
 | --- | --- | --- |
-| `ChassisTokens.swift` | `ChassisTokens` | Every token except the theme colors: base and component colors, sizes, spacing, border radii and widths, opacities, typography, shadows, strings and icons. Component colors have the values of the light theme, sizes the values of the large screen |
+| `ChassisTokens.swift` | `ChassisTokens` | Every token except the theme colors: base and component colors, sizes, spacing, border radii and widths, opacities, typography, shadows, strings and icons. Component colors are those of the first theme, sizes those of the first screen |
 | `String.swift` | `ChassisTokensString` | Font families, font weights and styles, text cases and decorations, and the SVG text of the icons |
-| `Color.swift` | `ChassisTokensColor` | The theme colors, each with the values of the light and the dark theme |
-| `ColorLight.swift`, `ColorDark.swift` | `ChassisTokensColorLight`, `ChassisTokensColorDark` | The theme colors of one theme: context, primitive and component colors, gradients and shadow colors |
-| `NumberLarge.swift`, `NumberMedium.swift`, `NumberSmall.swift` | `ChassisTokensNumberLarge`, `ChassisTokensNumberMedium`, `ChassisTokensNumberSmall` | Sizes, spacing, border radii and widths, font sizes, line heights and opacities of one screen |
+| `Color.swift` | `ChassisTokensColor` | The theme colors, each with the colors of the `light` and the `dark` theme |
+| `Color<Theme>.swift` | `ChassisTokensColor<Theme>` | The theme colors of one theme: context, primitive and component colors, gradients and shadow colors. `ColorLight.swift` and `ColorDark.swift` in the committed configuration |
+| `Number<Screen>.swift` | `ChassisTokensNumber<Screen>` | Sizes, spacing, border radii and widths, font sizes, line heights and opacities of one screen. `NumberLarge.swift`, `NumberMedium.swift` and `NumberSmall.swift` in the committed configuration |
 | `Icons.xcassets` | | One image set per icon |
 </CxTable>
 
-Every file declares another type, so all of them can be in one target. The string, color and number types share no names with each other. `ChassisTokens` repeats the constants of `ChassisTokensString` and `ChassisTokensNumberLarge` and the component colors of `ChassisTokensColorLight`, and adds the base colors (`ColorBase…`). It has no context colors: `ColorContext…` constants are in the color types only.
+Every file declares another type, so all of them can be in one target. The string, color and number types share no names with each other. `ChassisTokens` repeats the constants of `ChassisTokensString` and of the number type of the first screen, and the component colors of the color type of the first theme, and adds the base colors (`ColorBase…`). The theme colors are in the color types by design: read `ColorContext…` constants from there.
 
 ## Installation
 
@@ -47,7 +48,7 @@ Install the Swift package to use the tokens as they are. The same files are in t
 
 ### Swift package
 
-The repository is a Swift package with one library per app and brand, named `ChassisTokens<App><Brand>`: `ChassisTokensDemoChassis` and `ChassisTokensDemoSinefil` for the configured app. A library holds the Swift files of its folder in `dist/ios/`, with the icon catalog as a resource, and needs iOS 13 or later.
+The repository is a Swift package with one library for each app and brand, named `ChassisTokens<App><Brand>`: `ChassisTokensDemoChassis` and `ChassisTokensDemoSinefil` in the committed configuration. A library holds the Swift files of its folder in `dist/ios/`, with the icon catalog as a resource, and needs iOS 13 or later.
 
 In Xcode, choose **File → Add Package Dependencies…**, enter `[[config:repo]].git`, choose a version and add the library of your brand to the app target. In a package, add the dependency to `Package.swift`:
 
@@ -85,7 +86,7 @@ Add the Swift files of `node_modules/@chassis-ui/tokens/dist/ios/demo/<brand>/` 
 
 ### Build from source
 
-The repository holds the token sets and the build, for a team that changes the tokens, adds a brand or an app, or needs a preset. Add it to your project, for example as a Git submodule. The build needs Node.js 22 or later and pnpm:
+The repository holds the token sets and the build, for a team that changes the tokens, adds a brand, a theme or an app, or needs a preset. Add it to your project, for example as a Git submodule. The build needs Node.js 22 or later and pnpm:
 
 ```bash
 git submodule add [[config:repo]].git vendor/chassis-tokens
@@ -94,7 +95,7 @@ pnpm install --filter @chassis-ui/tokens
 pnpm tokens --brand chassis --app demo --platform ios
 ```
 
-The build writes the files to `vendor/chassis-tokens/packages/tokens/dist/ios/demo/chassis/`. The repository commits `dist/`, so the files of the configured apps and brands are there before the first build.
+The build writes the files to `vendor/chassis-tokens/packages/tokens/dist/ios/demo/chassis/`. The repository commits `dist/`, so the files of the committed configuration are there before the first build.
 
 To build the tokens of your own app, add it to `chassis.build.apps` in `packages/tokens/package.json` and give it token sets in `packages/tokens/source/$themes.json`. The [Style Dictionary guide]([[docsref:/getting-started/style-dictionary#build-options]]) describes the build options.
 
@@ -145,13 +146,13 @@ struct Card: View {
 
 ## Themes
 
-`ChassisTokensColor` holds every theme color once. A color that differs between the light and the dark theme follows the interface style of the view that uses it. The build writes to `Color.swift`:
+The color types of the themes declare the same constants, each with the colors of its theme. The committed configuration has the themes `light` and `dark`. When the configured themes include these two, the build also writes `Color.swift`, whose type `ChassisTokensColor` holds every theme color once. A color that differs between the two themes follows the interface style of the view that uses it. The build writes to `Color.swift`:
 
 ```swift
     public static let ColorContextDefaultBgMain = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.067, green: 0.075, blue: 0.078, alpha: 1) : UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1) }
 ```
 
-Use these colors in views, and the appearance of each view picks the value:
+Use these colors in views, and the appearance of each view picks the color:
 
 ```swift
 import ChassisTokensDemoChassis
@@ -163,11 +164,13 @@ func applyTheme(to view: UIView, label: UILabel) {
 }
 ```
 
-`ChassisTokensColorLight` and `ChassisTokensColorDark` hold the colors of one theme each, for code that needs a fixed theme. The build writes `Color.swift` when the configured themes include `light` and `dark`; another theme has only its own file, `Color<Theme>.swift`.
+`ChassisTokensColorLight` and `ChassisTokensColorDark` hold the colors of one theme each, for code that needs a fixed theme. A theme with another name has its own file and type, `Color<Theme>.swift` and `ChassisTokensColor<Theme>`, and the app chooses between the types.
 
 ## Screen sizes
 
-Each number type declares the same constants with the values of one screen, and `ChassisTokens` has the values of the large screen. In the current tokens, the values that differ between screens belong to the `website` groups, such as `SizeWebsiteSectionIcon`: `80` on the large, `64` on the medium and `48` on the small screen.
+The `screen` group is optional. A configuration without screens, with `screens` empty or left out of `chassis.build` and no `screen` group in `$themes.json`, writes one number file without a screen suffix, `Number.swift`, with the type `ChassisTokensNumber`.
+
+The committed configuration has the screens `large`, `medium` and `small`. Each number type declares the same constants with the values of one screen, and `ChassisTokens` has the values of the first screen, `large`. In the current tokens, the constants that differ between screens belong to the `website` groups, such as `SizeWebsiteSectionIcon`.
 
 Choose the number type for the current layout. The tokens do not tie a screen to a device or a size class, so the size class of this example is a choice of the app:
 
@@ -184,14 +187,7 @@ func sectionIconSize(for traits: UITraitCollection) -> CGFloat {
 
 ## Typography
 
-A typography token is split into one constant per property. The build writes the strings and the font weight to `String.swift`:
-
-```swift
-    public static let FontContextLeadFontFamily = "Inter"
-    public static let FontContextLeadFontWeight = UIFont.Weight.regular
-```
-
-It writes the numbers to the number files, here `NumberLarge.swift`:
+A typography token is split into one constant per property. The numbers are in the number types, and the build writes them to the number files, here `NumberLarge.swift`:
 
 ```swift
     public static let FontContextLeadLineHeight = CGFloat(32)
@@ -199,7 +195,7 @@ It writes the numbers to the number files, here `NumberLarge.swift`:
     public static let FontContextLeadLetterSpacing = CGFloat(0)
 ```
 
-Use the size and the weight for a system font:
+The other properties are in `ChassisTokensString`: the font family, the text case, the text decoration and the font style as a `String`, such as `FontContextLeadFontFamily`, and the font weight as a `UIFont.Weight`, `FontContextLeadFontWeight`. Use the size and the weight for a system font:
 
 ```swift
 import ChassisTokensDemoChassis
@@ -215,14 +211,14 @@ func leadFont() -> UIFont {
 
 The constants follow these rules:
 
-- The font family is the first family of the font stack. `UIFont(name:size:)` returns `nil` unless the app bundles and registers that font.
-- The font weight is a `UIFont.Weight`, such as `.regular` or `.semibold`. The weight names `Semi Bold` and `SemiBold` of the token sets are both `.semibold`.
-- The line height is in points. A line height in percent is that percentage of the font size of the same token: `FontContextJumboLineHeight` is `125%` of `96`, so `CGFloat(120)`.
-- The letter spacing is in points, such as `CGFloat(-0.5)` for `FontContextJumboLetterSpacing`.
+- The font family is the first family of the list that the token holds. `UIFont(name:size:)` returns `nil` unless the app bundles and registers that font.
+- The font weight is the `UIFont.Weight` of the weight that the token names.
+- The line height is in points. A line height in percent is converted with the font size of the same typography token.
+- The letter spacing is in points.
 
 ## Shadows
 
-A shadow token is split into its layers and their parts, such as `ShadowContextSmall1…` and `ShadowContextSmall2…` for the two layers of one shadow. The build writes the numbers of a layer to the number files, with the CSS meaning of each part and with `…Radius`, half the blur, for the `shadowRadius` of Core Animation:
+A shadow token is split into its layers and their parts. The name of a part holds the number of its layer, from `1`, as in `ShadowContextSmall1Blur`. The build writes the numbers of a layer to the number files, with the CSS meaning of each part and with `…Radius`, half the blur, for the `shadowRadius` of Core Animation:
 
 ```swift
     public static let ShadowContextSmall1Blur = CGFloat(8)
@@ -232,13 +228,7 @@ A shadow token is split into its layers and their parts, such as `ShadowContextS
     public static let ShadowContextSmall1OffsetY = CGFloat(2)
 ```
 
-It writes the color of a layer to the color files, here `ColorLight.swift`:
-
-```swift
-    public static let ShadowContextSmall1Color = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0.1)
-```
-
-The color carries the opacity of the shadow. Core Animation multiplies it by `shadowOpacity`, so set that to `1`. A layer of Core Animation has one shadow and no spread; this function applies the first layer of the token:
+It writes the color of a layer, `ShadowContextSmall1Color`, to the color files as a `UIColor`. The color carries the opacity of the shadow in its alpha. Core Animation multiplies it by `shadowOpacity`, so set that to `1`. A layer of Core Animation has one shadow and no spread; this function applies the first layer of the token:
 
 ```swift
 import ChassisTokensDemoChassis
@@ -255,18 +245,16 @@ func applySmallShadow(to layer: CALayer) {
 }
 ```
 
-`cgColor` takes the value of the current appearance. `ShadowContextSmall1Color` has an alpha of `0.1` in the light theme and `0.4` in the dark theme, so apply the shadow again when the trait collection changes.
+`cgColor` takes the color of the current appearance, and the shadow colors differ between the themes. Apply the shadow again when the trait collection changes.
 
 ## Gradients
 
-A gradient token is split into its parts: the angle, and the color and the position of each stop. The build writes them to the color files:
+A gradient token is split into its parts: the angle, and the color and the position of each stop, numbered from `1`. The build writes them to the color files:
 
 ```swift
     public static let GradientPrimitiveBlackL000Angle = CGFloat(0)
     public static let GradientPrimitiveBlackL000Stop1Color = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0)
     public static let GradientPrimitiveBlackL000Stop1Position = CGFloat(0)
-    public static let GradientPrimitiveBlackL000Stop2Color = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1)
-    public static let GradientPrimitiveBlackL000Stop2Position = CGFloat(1)
 ```
 
 The angle is the CSS angle in degrees: `0` points up and angles turn clockwise, so `90` runs from left to right. Positions go from `0` to `1`. Turn the parts into a `CAGradientLayer`:
@@ -407,45 +395,39 @@ jobs:
 
 ## Best practices
 
-These practices follow from which type declares a constant and from what its value holds.
-
 ✅ **Use `ChassisTokensColor` in views**: Its constants, such as `ColorContextDefaultBgMain`, follow the light and dark appearance. `ChassisTokensColorLight` and `ChassisTokensColorDark` never change.
 
-✅ **Take screen values from the number types**: `ChassisTokens` has the large screen only. Read `SizeWebsiteSectionIcon` and the other `…Website…` constants from `ChassisTokensNumberMedium` and `ChassisTokensNumberSmall` for the other screens.
+✅ **Take screen values from the number types**: `ChassisTokens` has the first screen only. Read `SizeWebsiteSectionIcon` and the other `…Website…` constants from the number type of the screen.
 
 ✅ **Change tokens at the source**: A build overwrites the files of `dist/`. Change the token sets in `packages/tokens/source/` and build again.
 
 ❌ **Don't lower `shadowOpacity`**: `ShadowContextSmall1Color` carries the opacity of the shadow in its alpha. A `shadowOpacity` below `1` makes the shadow lighter than the token.
 
-❌ **Don't read context colors from `ChassisTokens`**: It has base and component colors only. `ColorContextDefaultFgMain` is in `ChassisTokensColor`, `ChassisTokensColorLight` and `ChassisTokensColorDark`.
+❌ **Don't read theme colors from `ChassisTokens`**: The theme colors are in the color types. Read `ColorContextDefaultFgMain` from `ChassisTokensColor`, `ChassisTokensColorLight` or `ChassisTokensColorDark`.
 
 ## Troubleshooting
 
-Each entry names a symptom, the message of the Swift compiler where there is one, its cause and the fix.
-
 ### Invalid redeclaration
 
-The compiler stops with `invalid redeclaration of 'ChassisTokens'`. One file is in the target twice, or the files come from a version before 0.6.0, in which every file declared `ChassisTokens`. Add each file once, and replace files of an older version with the current ones.
+The compiler stops with `invalid redeclaration of 'ChassisTokens'`. One file is in the target twice, or the files come from an older version, in which every file declared `ChassisTokens`. Add each file once, and replace files of an older version with the current ones.
 
 ### Type not in scope
 
-The compiler stops with `cannot find 'ChassisTokensColorLight' in scope`. The file that declares the type is not in the target, or the library of the package is not imported. Add `ColorLight.swift` to the target, or add `import ChassisTokensDemoChassis` to the file.
+The compiler stops with `cannot find '<type>' in scope`, such as `cannot find 'ChassisTokensColorLight' in scope`. The file that declares the type is not in the target, or the library of the package is not imported. Add the file of the type to the target, here `ColorLight.swift`, or add `import ChassisTokensDemoChassis` to the file.
 
 ### Ambiguous type
 
-The compiler stops with `ambiguous use of 'ChassisTokensColor'`. The file imports two libraries of the package, which declare the same types. Name the library before the type, such as `ChassisTokensDemoChassis.ChassisTokensColor`, or import one library per file.
+The compiler stops with `ambiguous use of '<type>'`, such as `ambiguous use of 'ChassisTokensColor'`. The file imports two libraries of the package, which declare the same types. Name the library before the type, such as `ChassisTokensDemoChassis.ChassisTokensColor`, or import one library per file.
 
 ### Missing constant
 
-The compiler stops with `type 'ChassisTokens' has no member 'ColorContextDefaultFgMain'`. The type does not declare the constant. Context colors are in the color types only, so read them from `ChassisTokensColor`. For another constant, check its name in the generated file: names are in PascalCase without a prefix, such as `SpaceContextMedium`.
+The compiler stops with `type 'ChassisTokens' has no member '<constant>'`. The type does not declare the constant. The theme colors are in the color types, so read `ColorContext…` constants from `ChassisTokensColor`. For another constant, check its name in the generated file: names are in PascalCase without a prefix, such as `SpaceContextMedium`.
 
 ### Icon is nil
 
 `UIImage(named: "IconChipRemove")` returns `nil`, without a message. With the Swift package, the catalog is in the resource bundle of the library and not in the bundle of the app. Pass that bundle, as in [Icons](#icons).
 
 ## Next steps
-
-The guides and the token reference cover what this page leaves out:
 
 - Read how the token sets are organized in the [Tokens Studio guide]([[docsref:/getting-started/tokens-studio]]).
 - Read how the build turns them into files in the [Style Dictionary guide]([[docsref:/getting-started/style-dictionary]]).

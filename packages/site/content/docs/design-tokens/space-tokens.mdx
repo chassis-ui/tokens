@@ -1,6 +1,6 @@
 ---
 title: Space Tokens
-description: Space tokens hold the padding and the gaps of components, pages, and layouts, from the pixel scale to the spacing of each component.
+description: Space tokens hold the padding and the gaps of components, pages, and layouts, from the base scale to the spacing of each component.
 toc: true
 ---
 
@@ -10,14 +10,14 @@ toc: true
 
 Space tokens hold the whitespace inside and between elements: the padding of a button, the gap between an icon and its label, the padding of a page. The dimensions of the elements belong to the [size tokens]([[docsref:/design-tokens/size-tokens]]), whose page has the same sections as this one.
 
-The values are design pixels, and the build converts them to the unit of each platform, as [Platform output](#platform-output) shows. A space token holds the same value for every brand, app, and theme of the configuration. Only the tokens of `space.website.*` change with the screen.
+A space is a number of design pixels, and the build converts it to the unit of each platform, as [Platform output](#platform-output) shows. In the committed token sets, no brand, theme, or app overrides a space token. The tokens of `space.website.*` differ per screen, the optional fourth group.
 
 ### Token levels
 
-Each level references the level below it, so a pixel value is written once, in `dimension.base.*`. The chain of `16px` shows the three levels:
+Each level references the level below it, so a size is written once, in `dimension.base.*`. The chain of one step shows the three levels:
 
 ```text
-dimension.base.16                       16px
+dimension.base.16                       holds the size
 ├── space.unit.16                       {dimension.base.16}
 │   └── space.button.large-padding-x    {space.unit.16}
 └── size.unit.16                        {dimension.base.16}
@@ -38,137 +38,109 @@ The two upper levels reference different scales. Component tokens reference `spa
 
 ## Base tokens
 
-The base level has two groups. `dimension.base.*` holds the pixel values, and `space.unit.*` references them under the name of the category.
+The base level holds the scale. `dimension.base.*` holds the sizes, and `space.unit.*` references them under the name of the category.
 
 ### Dimension scale
 
-`dimension.base.*` names a step by its pixel value: `dimension.base.16` holds `16px`. The size and the space tokens share this scale, and the [size tokens]([[docsref:/design-tokens/size-tokens#dimension-scale]]) page lists its steps and its prefixes for fractions and negative values.
+`dimension.base.*` holds a size in design pixels, and the name of a step states that size. The size and the space tokens share this scale; the [size tokens]([[docsref:/design-tokens/size-tokens#dimension-scale]]) page explains the names of its steps and the prefixes `d` and `n`.
 
 ### Space units
 
-`space.unit.*` has a token for a part of the dimension scale, with the name of the step: `space.unit.16` is `{dimension.base.16}`. The positive steps end at `136`, the steps `14`, `18`, `22`, `26`, and `30` are left out, and the negative steps are `n1` to `n6`, `n8`, `nd05`, `nd15`, and `nd25`. The table lists the steps that other tokens reference.
-
-<CxTable>
-| Token | Value |
-| --- | --- |
-| `space.unit.0` | `0px` |
-| `space.unit.1` | `1px` |
-| `space.unit.2` | `2px` |
-| `space.unit.3` | `3px` |
-| `space.unit.4` | `4px` |
-| `space.unit.6` | `6px` |
-| `space.unit.8` | `8px` |
-| `space.unit.10` | `10px` |
-| `space.unit.12` | `12px` |
-| `space.unit.16` | `16px` |
-| `space.unit.20` | `20px` |
-| `space.unit.24` | `24px` |
-| `space.unit.28` | `28px` |
-| `space.unit.32` | `32px` |
-| `space.unit.44` | `44px` |
-| `space.unit.48` | `48px` |
-| `space.unit.56` | `56px` |
-| `space.unit.64` | `64px` |
-| `space.unit.68` | `68px` |
-</CxTable>
-
-<Callout type="warning">
-`space.unit.136` holds `128px`, not `136px`: the source references `{dimension.base.128}` in it.
-</Callout>
+`space.unit.*` has a token for a part of the dimension scale, under the name of the step: `space.unit.16` references `{dimension.base.16}`, and `space.unit.n4` references `{dimension.base.n4}`. It has fewer steps than `size.unit.*`: the scale ends earlier, and it has fewer negative steps. The component tokens of this page reference these tokens.
 
 ## Context tokens
 
-`space.context.*` names steps of the scale by role, from `zero` with `0px` to `6xlarge` with `48px`. Reach for them in layouts and in components that have no component token.
+`space.context.*` names steps of the scale by role, from `zero` to `6xlarge`. Reach for them in layouts and in components that have no component token.
 
 <CxTable>
-| Token | Value | Reference |
-| --- | --- | --- |
-| `space.context.zero` | `0px` | `{size.unit.0}` |
-| `space.context.4xsmall` | `1px` | `{size.unit.1}` |
-| `space.context.3xsmall` | `2px` | `{size.unit.2}` |
-| `space.context.2xsmall` | `4px` | `{size.unit.4}` |
-| `space.context.xsmall` | `8px` | `{size.unit.8}` |
-| `space.context.small` | `12px` | `{size.unit.12}` |
-| `space.context.medium` | `16px` | `{size.unit.16}` |
-| `space.context.large` | `20px` | `{size.unit.20}` |
-| `space.context.xlarge` | `24px` | `{size.unit.24}` |
-| `space.context.2xlarge` | `28px` | `{size.unit.28}` |
-| `space.context.3xlarge` | `32px` | `{size.unit.32}` |
-| `space.context.4xlarge` | `36px` | `{size.unit.36}` |
-| `space.context.5xlarge` | `40px` | `{size.unit.40}` |
-| `space.context.6xlarge` | `48px` | `{size.unit.48}` |
+| Token | Reference |
+| --- | --- |
+| `space.context.zero` | `{size.unit.0}` |
+| `space.context.4xsmall` | `{size.unit.1}` |
+| `space.context.3xsmall` | `{size.unit.2}` |
+| `space.context.2xsmall` | `{size.unit.4}` |
+| `space.context.xsmall` | `{size.unit.8}` |
+| `space.context.small` | `{size.unit.12}` |
+| `space.context.medium` | `{size.unit.16}` |
+| `space.context.large` | `{size.unit.20}` |
+| `space.context.xlarge` | `{size.unit.24}` |
+| `space.context.2xlarge` | `{size.unit.28}` |
+| `space.context.3xlarge` | `{size.unit.32}` |
+| `space.context.4xlarge` | `{size.unit.36}` |
+| `space.context.5xlarge` | `{size.unit.40}` |
+| `space.context.6xlarge` | `{size.unit.48}` |
 </CxTable>
 
 ## Component tokens
 
-Component tokens hold the spacing of the parts of one component. A component with sizes has a token per size and part, `space.<component>.<size>-<part>`, in the source order `medium`, `large`, `small`. The parts are `padding-y` and `padding-x` for the vertical and the horizontal padding, `gap`, and `nudge`. A component token references a step of `space.unit.*` unless its section names another reference.
+Component tokens hold the spacing of the parts of one component. A component with sizes has a token per size and part, `space.<component>.<size>-<part>`, in the source order `medium`, `large`, `small`. The parts are `padding-y` and `padding-x` for the vertical and the horizontal padding, `gap`, and `nudge`.
 
 ### Accordion
 
 Accordion spacing holds the padding of the title, the padding of the body, and the gap for each accordion size. The body has a token per side: `-t`, `-b`, `-s`, and `-e` for top, bottom, start, and end.
 
 <CxTable>
-| Token | Value |
+| Token | Reference |
 | --- | --- |
-| `space.accordion.medium-title-padding-y` | `12px` |
-| `space.accordion.medium-title-padding-x` | `16px` |
-| `space.accordion.medium-body-padding-t` | `4px` |
-| `space.accordion.medium-body-padding-b` | `28px` |
-| `space.accordion.medium-body-padding-s` | `56px` |
-| `space.accordion.medium-body-padding-e` | `16px` |
-| `space.accordion.medium-gap` | `16px` |
-| `space.accordion.large-title-padding-y` | `16px` |
-| `space.accordion.large-title-padding-x` | `20px` |
-| `space.accordion.large-body-padding-t` | `12px` |
-| `space.accordion.large-body-padding-b` | `32px` |
-| `space.accordion.large-body-padding-s` | `68px` |
-| `space.accordion.large-body-padding-e` | `20px` |
-| `space.accordion.large-gap` | `20px` |
-| `space.accordion.small-title-padding-y` | `12px` |
-| `space.accordion.small-title-padding-x` | `12px` |
-| `space.accordion.small-body-padding-t` | `2px` |
-| `space.accordion.small-body-padding-b` | `16px` |
-| `space.accordion.small-body-padding-s` | `44px` |
-| `space.accordion.small-body-padding-e` | `12px` |
-| `space.accordion.small-gap` | `12px` |
+| `space.accordion.medium-title-padding-y` | `{space.unit.12}` |
+| `space.accordion.medium-title-padding-x` | `{space.unit.16}` |
+| `space.accordion.medium-body-padding-t` | `{space.unit.4}` |
+| `space.accordion.medium-body-padding-b` | `{space.unit.28}` |
+| `space.accordion.medium-body-padding-s` | `{space.unit.56}` |
+| `space.accordion.medium-body-padding-e` | `{space.unit.16}` |
+| `space.accordion.medium-gap` | `{space.unit.16}` |
+| `space.accordion.large-title-padding-y` | `{space.unit.16}` |
+| `space.accordion.large-title-padding-x` | `{space.unit.20}` |
+| `space.accordion.large-body-padding-t` | `{space.unit.12}` |
+| `space.accordion.large-body-padding-b` | `{space.unit.32}` |
+| `space.accordion.large-body-padding-s` | `{space.unit.68}` |
+| `space.accordion.large-body-padding-e` | `{space.unit.20}` |
+| `space.accordion.large-gap` | `{space.unit.20}` |
+| `space.accordion.small-title-padding-y` | `{space.unit.12}` |
+| `space.accordion.small-title-padding-x` | `{space.unit.12}` |
+| `space.accordion.small-body-padding-t` | `{space.unit.2}` |
+| `space.accordion.small-body-padding-b` | `{space.unit.16}` |
+| `space.accordion.small-body-padding-s` | `{space.unit.44}` |
+| `space.accordion.small-body-padding-e` | `{space.unit.12}` |
+| `space.accordion.small-gap` | `{space.unit.12}` |
 </CxTable>
 
 ### Alert
 
-Alert spacing holds the padding and two gaps, `gap-main` and `gap-body`, of the large and the small alert.
+Alert spacing holds the padding and the gaps `gap-main` and `gap-body` of the large and the small alert.
 
 <CxTable>
-| Token | Value |
+| Token | Reference |
 | --- | --- |
-| `space.alert.large-padding-y` | `32px` |
-| `space.alert.large-padding-x` | `32px` |
-| `space.alert.large-gap-main` | `24px` |
-| `space.alert.large-gap-body` | `8px` |
-| `space.alert.small-padding-y` | `16px` |
-| `space.alert.small-padding-x` | `16px` |
-| `space.alert.small-gap-main` | `16px` |
-| `space.alert.small-gap-body` | `8px` |
+| `space.alert.large-padding-y` | `{space.unit.32}` |
+| `space.alert.large-padding-x` | `{space.unit.32}` |
+| `space.alert.large-gap-main` | `{space.unit.24}` |
+| `space.alert.large-gap-body` | `{space.unit.8}` |
+| `space.alert.small-padding-y` | `{space.unit.16}` |
+| `space.alert.small-padding-x` | `{space.unit.16}` |
+| `space.alert.small-gap-main` | `{space.unit.16}` |
+| `space.alert.small-gap-body` | `{space.unit.8}` |
 </CxTable>
 
 ### Badge
 
-Badge spacing holds the padding, the gap, and the nudge for each badge size. The gap is `0px` in every size.
+Badge spacing holds the padding, the gap, and the nudge for each badge size.
 
 <CxTable>
-| Token | Value |
+| Token | Reference |
 | --- | --- |
-| `space.badge.medium-padding-y` | `2px` |
-| `space.badge.medium-padding-x` | `4px` |
-| `space.badge.medium-gap` | `0px` |
-| `space.badge.medium-nudge` | `4px` |
-| `space.badge.large-padding-y` | `2px` |
-| `space.badge.large-padding-x` | `4px` |
-| `space.badge.large-gap` | `0px` |
-| `space.badge.large-nudge` | `6px` |
-| `space.badge.small-padding-y` | `1px` |
-| `space.badge.small-padding-x` | `4px` |
-| `space.badge.small-gap` | `0px` |
-| `space.badge.small-nudge` | `4px` |
+| `space.badge.medium-padding-y` | `{space.unit.2}` |
+| `space.badge.medium-padding-x` | `{space.unit.4}` |
+| `space.badge.medium-gap` | `{space.unit.0}` |
+| `space.badge.medium-nudge` | `{space.unit.4}` |
+| `space.badge.large-padding-y` | `{space.unit.2}` |
+| `space.badge.large-padding-x` | `{space.unit.4}` |
+| `space.badge.large-gap` | `{space.unit.0}` |
+| `space.badge.large-nudge` | `{space.unit.6}` |
+| `space.badge.small-padding-y` | `{space.unit.1}` |
+| `space.badge.small-padding-x` | `{space.unit.4}` |
+| `space.badge.small-gap` | `{space.unit.0}` |
+| `space.badge.small-nudge` | `{space.unit.4}` |
 </CxTable>
 
 ### Button
@@ -176,20 +148,20 @@ Badge spacing holds the padding, the gap, and the nudge for each badge size. The
 Button spacing holds the padding, the gap, and the nudge for each button size.
 
 <CxTable>
-| Token | Value |
+| Token | Reference |
 | --- | --- |
-| `space.button.medium-padding-y` | `8px` |
-| `space.button.medium-padding-x` | `12px` |
-| `space.button.medium-gap` | `8px` |
-| `space.button.medium-nudge` | `4px` |
-| `space.button.large-padding-y` | `10px` |
-| `space.button.large-padding-x` | `16px` |
-| `space.button.large-gap` | `12px` |
-| `space.button.large-nudge` | `4px` |
-| `space.button.small-padding-y` | `6px` |
-| `space.button.small-padding-x` | `8px` |
-| `space.button.small-gap` | `4px` |
-| `space.button.small-nudge` | `4px` |
+| `space.button.medium-padding-y` | `{space.unit.8}` |
+| `space.button.medium-padding-x` | `{space.unit.12}` |
+| `space.button.medium-gap` | `{space.unit.8}` |
+| `space.button.medium-nudge` | `{space.unit.4}` |
+| `space.button.large-padding-y` | `{space.unit.10}` |
+| `space.button.large-padding-x` | `{space.unit.16}` |
+| `space.button.large-gap` | `{space.unit.12}` |
+| `space.button.large-nudge` | `{space.unit.4}` |
+| `space.button.small-padding-y` | `{space.unit.6}` |
+| `space.button.small-padding-x` | `{space.unit.8}` |
+| `space.button.small-gap` | `{space.unit.4}` |
+| `space.button.small-nudge` | `{space.unit.4}` |
 </CxTable>
 
 ### Chip
@@ -197,20 +169,20 @@ Button spacing holds the padding, the gap, and the nudge for each button size.
 Chip spacing holds the padding, the gap, and the nudge for each chip size.
 
 <CxTable>
-| Token | Value |
+| Token | Reference |
 | --- | --- |
-| `space.chip.medium-padding-y` | `4px` |
-| `space.chip.medium-padding-x` | `4px` |
-| `space.chip.medium-gap` | `8px` |
-| `space.chip.medium-nudge` | `4px` |
-| `space.chip.large-padding-y` | `4px` |
-| `space.chip.large-padding-x` | `4px` |
-| `space.chip.large-gap` | `12px` |
-| `space.chip.large-nudge` | `4px` |
-| `space.chip.small-padding-y` | `2px` |
-| `space.chip.small-padding-x` | `2px` |
-| `space.chip.small-gap` | `8px` |
-| `space.chip.small-nudge` | `4px` |
+| `space.chip.medium-padding-y` | `{space.unit.4}` |
+| `space.chip.medium-padding-x` | `{space.unit.4}` |
+| `space.chip.medium-gap` | `{space.unit.8}` |
+| `space.chip.medium-nudge` | `{space.unit.4}` |
+| `space.chip.large-padding-y` | `{space.unit.4}` |
+| `space.chip.large-padding-x` | `{space.unit.4}` |
+| `space.chip.large-gap` | `{space.unit.12}` |
+| `space.chip.large-nudge` | `{space.unit.4}` |
+| `space.chip.small-padding-y` | `{space.unit.2}` |
+| `space.chip.small-padding-x` | `{space.unit.2}` |
+| `space.chip.small-gap` | `{space.unit.8}` |
+| `space.chip.small-nudge` | `{space.unit.4}` |
 </CxTable>
 
 ### Date picker
@@ -218,11 +190,11 @@ Chip spacing holds the padding, the gap, and the nudge for each chip size.
 Date picker spacing holds the padding and the gap of the date picker.
 
 <CxTable>
-| Token | Value |
+| Token | Reference |
 | --- | --- |
-| `space.datepicker.padding-y` | `8px` |
-| `space.datepicker.padding-x` | `8px` |
-| `space.datepicker.gap` | `4px` |
+| `space.datepicker.padding-y` | `{space.unit.8}` |
+| `space.datepicker.padding-x` | `{space.unit.8}` |
+| `space.datepicker.gap` | `{space.unit.4}` |
 </CxTable>
 
 ### Dropdown
@@ -230,11 +202,11 @@ Date picker spacing holds the padding and the gap of the date picker.
 Dropdown spacing holds the padding and the gap of a dropdown.
 
 <CxTable>
-| Token | Value |
+| Token | Reference |
 | --- | --- |
-| `space.dropdown.padding-y` | `6px` |
-| `space.dropdown.padding-x` | `12px` |
-| `space.dropdown.gap` | `12px` |
+| `space.dropdown.padding-y` | `{space.unit.6}` |
+| `space.dropdown.padding-x` | `{space.unit.12}` |
+| `space.dropdown.gap` | `{space.unit.12}` |
 </CxTable>
 
 ### Form input
@@ -242,20 +214,20 @@ Dropdown spacing holds the padding and the gap of a dropdown.
 Form input spacing holds the padding and the gap for each input size, and for a fourth group, `floating`.
 
 <CxTable>
-| Token | Value |
+| Token | Reference |
 | --- | --- |
-| `space.form-input.medium-padding-y` | `8px` |
-| `space.form-input.medium-padding-x` | `12px` |
-| `space.form-input.medium-gap` | `12px` |
-| `space.form-input.large-padding-y` | `10px` |
-| `space.form-input.large-padding-x` | `16px` |
-| `space.form-input.large-gap` | `16px` |
-| `space.form-input.small-padding-y` | `6px` |
-| `space.form-input.small-padding-x` | `8px` |
-| `space.form-input.small-gap` | `8px` |
-| `space.form-input.floating-padding-y` | `8px` |
-| `space.form-input.floating-padding-x` | `12px` |
-| `space.form-input.floating-gap` | `12px` |
+| `space.form-input.medium-padding-y` | `{space.unit.8}` |
+| `space.form-input.medium-padding-x` | `{space.unit.12}` |
+| `space.form-input.medium-gap` | `{space.unit.12}` |
+| `space.form-input.large-padding-y` | `{space.unit.10}` |
+| `space.form-input.large-padding-x` | `{space.unit.16}` |
+| `space.form-input.large-gap` | `{space.unit.16}` |
+| `space.form-input.small-padding-y` | `{space.unit.6}` |
+| `space.form-input.small-padding-x` | `{space.unit.8}` |
+| `space.form-input.small-gap` | `{space.unit.8}` |
+| `space.form-input.floating-padding-y` | `{space.unit.8}` |
+| `space.form-input.floating-padding-x` | `{space.unit.12}` |
+| `space.form-input.floating-gap` | `{space.unit.12}` |
 </CxTable>
 
 ### List
@@ -263,12 +235,12 @@ Form input spacing holds the padding and the gap for each input size, and for a 
 List spacing holds the padding, the gap, and the nudge of a list item.
 
 <CxTable>
-| Token | Value |
+| Token | Reference |
 | --- | --- |
-| `space.list.padding-y` | `12px` |
-| `space.list.padding-x` | `16px` |
-| `space.list.gap` | `16px` |
-| `space.list.nudge` | `8px` |
+| `space.list.padding-y` | `{space.unit.12}` |
+| `space.list.padding-x` | `{space.unit.16}` |
+| `space.list.gap` | `{space.unit.16}` |
+| `space.list.nudge` | `{space.unit.8}` |
 </CxTable>
 
 ### Notification
@@ -276,47 +248,47 @@ List spacing holds the padding, the gap, and the nudge of a list item.
 Notification spacing holds the padding and the gap of a notification.
 
 <CxTable>
-| Token | Value |
+| Token | Reference |
 | --- | --- |
-| `space.notification.padding-y` | `12px` |
-| `space.notification.padding-x` | `16px` |
-| `space.notification.gap` | `16px` |
+| `space.notification.padding-y` | `{space.unit.12}` |
+| `space.notification.padding-x` | `{space.unit.16}` |
+| `space.notification.gap` | `{space.unit.16}` |
 </CxTable>
 
 ### Modal
 
-Modal spacing holds the padding and the gap for each modal size. The medium and the small modal hold the same values.
+Modal spacing holds the padding and the gap for each modal size.
 
 <CxTable>
-| Token | Value |
+| Token | Reference |
 | --- | --- |
-| `space.modal.large-padding-y` | `24px` |
-| `space.modal.large-padding-x` | `24px` |
-| `space.modal.large-gap` | `24px` |
-| `space.modal.medium-padding-y` | `16px` |
-| `space.modal.medium-padding-x` | `16px` |
-| `space.modal.medium-gap` | `16px` |
-| `space.modal.small-padding-y` | `16px` |
-| `space.modal.small-padding-x` | `16px` |
-| `space.modal.small-gap` | `16px` |
+| `space.modal.large-padding-y` | `{space.unit.24}` |
+| `space.modal.large-padding-x` | `{space.unit.24}` |
+| `space.modal.large-gap` | `{space.unit.24}` |
+| `space.modal.medium-padding-y` | `{space.unit.16}` |
+| `space.modal.medium-padding-x` | `{space.unit.16}` |
+| `space.modal.medium-gap` | `{space.unit.16}` |
+| `space.modal.small-padding-y` | `{space.unit.16}` |
+| `space.modal.small-padding-x` | `{space.unit.16}` |
+| `space.modal.small-gap` | `{space.unit.16}` |
 </CxTable>
 
 ### Page
 
-Page spacing holds the padding and the gap of a page for each page size. The three gaps reference `{grid.gutter.medium}` of the [grid tokens]([[docsref:/design-tokens/size-tokens#grid-tokens]]), which holds `24` without a unit; the build reads it as pixels.
+Page spacing holds the padding and the gap of a page for each page size. The gaps reference the gutter of the [grid tokens]([[docsref:/design-tokens/size-tokens#grid-tokens]]), not a step of `space.unit.*`.
 
 <CxTable>
-| Token | Value |
+| Token | Reference |
 | --- | --- |
-| `space.page.large-padding-y` | `32px` |
-| `space.page.large-padding-x` | `32px` |
-| `space.page.large-gap` | `24` |
-| `space.page.medium-padding-y` | `24px` |
-| `space.page.medium-padding-x` | `24px` |
-| `space.page.medium-gap` | `24` |
-| `space.page.small-padding-y` | `16px` |
-| `space.page.small-padding-x` | `16px` |
-| `space.page.small-gap` | `24` |
+| `space.page.large-padding-y` | `{space.unit.32}` |
+| `space.page.large-padding-x` | `{space.unit.32}` |
+| `space.page.large-gap` | `{grid.gutter.medium}` |
+| `space.page.medium-padding-y` | `{space.unit.24}` |
+| `space.page.medium-padding-x` | `{space.unit.24}` |
+| `space.page.medium-gap` | `{grid.gutter.medium}` |
+| `space.page.small-padding-y` | `{space.unit.16}` |
+| `space.page.small-padding-x` | `{space.unit.16}` |
+| `space.page.small-gap` | `{grid.gutter.medium}` |
 </CxTable>
 
 ### Pagination
@@ -324,9 +296,9 @@ Page spacing holds the padding and the gap of a page for each page size. The thr
 Pagination spacing holds the gap between the dots.
 
 <CxTable>
-| Token | Value |
+| Token | Reference |
 | --- | --- |
-| `space.pagination.dot-gap` | `8px` |
+| `space.pagination.dot-gap` | `{space.unit.8}` |
 </CxTable>
 
 ### Table
@@ -334,11 +306,11 @@ Pagination spacing holds the gap between the dots.
 Table spacing holds the padding and the gap of a table cell.
 
 <CxTable>
-| Token | Value |
+| Token | Reference |
 | --- | --- |
-| `space.table.cell-padding-y` | `8px` |
-| `space.table.cell-padding-x` | `8px` |
-| `space.table.cell-gap` | `8px` |
+| `space.table.cell-padding-y` | `{space.unit.8}` |
+| `space.table.cell-padding-x` | `{space.unit.8}` |
+| `space.table.cell-gap` | `{space.unit.8}` |
 </CxTable>
 
 ### Segment
@@ -346,40 +318,40 @@ Table spacing holds the padding and the gap of a table cell.
 Segment spacing holds the padding of the bar, `bar-padding`, and the padding and the gap of a segment for each segment size.
 
 <CxTable>
-| Token | Value |
+| Token | Reference |
 | --- | --- |
-| `space.segment.medium-bar-padding` | `4px` |
-| `space.segment.medium-padding-y` | `6px` |
-| `space.segment.medium-padding-x` | `12px` |
-| `space.segment.medium-gap` | `8px` |
-| `space.segment.large-bar-padding` | `4px` |
-| `space.segment.large-padding-y` | `8px` |
-| `space.segment.large-padding-x` | `16px` |
-| `space.segment.large-gap` | `8px` |
-| `space.segment.small-bar-padding` | `4px` |
-| `space.segment.small-padding-y` | `3px` |
-| `space.segment.small-padding-x` | `8px` |
-| `space.segment.small-gap` | `8px` |
+| `space.segment.medium-bar-padding` | `{space.unit.4}` |
+| `space.segment.medium-padding-y` | `{space.unit.6}` |
+| `space.segment.medium-padding-x` | `{space.unit.12}` |
+| `space.segment.medium-gap` | `{space.unit.8}` |
+| `space.segment.large-bar-padding` | `{space.unit.4}` |
+| `space.segment.large-padding-y` | `{space.unit.8}` |
+| `space.segment.large-padding-x` | `{space.unit.16}` |
+| `space.segment.large-gap` | `{space.unit.8}` |
+| `space.segment.small-bar-padding` | `{space.unit.4}` |
+| `space.segment.small-padding-y` | `{space.unit.3}` |
+| `space.segment.small-padding-x` | `{space.unit.8}` |
+| `space.segment.small-gap` | `{space.unit.8}` |
 </CxTable>
 
 ### Website
 
-Website spacing holds the padding and the gaps of a section, a feature, and a module of a website, and two gaps of the content. They are the space tokens that change with the screen: each screen has its own token set, `screen-website/screen-<screen>.json`, with the same names.
+Website spacing holds the padding and the gaps of a section, a feature, and a module of a website, and the gaps of the content. They differ per screen: each option of the `screen` group has its own token set, `screen-website/screen-<screen>.json`, with the same names. The columns are the screens of the committed configuration.
 
 <CxTable>
 | Token | `large` | `medium` | `small` |
 | --- | --- | --- | --- |
-| `space.website.section-padding-y` | `48px` | `64px` | `32px` |
-| `space.website.section-padding-x` | `24px` | `24px` | `16px` |
-| `space.website.section-gap` | `48px` | `32px` | `32px` |
-| `space.website.content-header-gap` | `16px` | `12px` | `8px` |
-| `space.website.content-features-gap` | `24px` | `24px` | `16px` |
-| `space.website.feature-padding-y` | `24px` | `24px` | `16px` |
-| `space.website.feature-padding-x` | `24px` | `24px` | `16px` |
-| `space.website.feature-gap` | `24px` | `24px` | `16px` |
-| `space.website.module-padding-y` | `24px` | `16px` | `12px` |
-| `space.website.module-padding-x` | `24px` | `16px` | `16px` |
-| `space.website.module-gap` | `8px` | `8px` | `16px` |
+| `space.website.section-padding-y` | `{space.unit.48}` | `{space.unit.64}` | `{space.unit.32}` |
+| `space.website.section-padding-x` | `{space.unit.24}` | `{space.unit.24}` | `{space.unit.16}` |
+| `space.website.section-gap` | `{space.unit.48}` | `{space.unit.32}` | `{space.unit.32}` |
+| `space.website.content-header-gap` | `{space.unit.16}` | `{space.unit.12}` | `{space.unit.8}` |
+| `space.website.content-features-gap` | `{space.unit.24}` | `{space.unit.24}` | `{space.unit.16}` |
+| `space.website.feature-padding-y` | `{space.unit.24}` | `{space.unit.24}` | `{space.unit.16}` |
+| `space.website.feature-padding-x` | `{space.unit.24}` | `{space.unit.24}` | `{space.unit.16}` |
+| `space.website.feature-gap` | `{space.unit.24}` | `{space.unit.24}` | `{space.unit.16}` |
+| `space.website.module-padding-y` | `{space.unit.24}` | `{space.unit.16}` | `{space.unit.12}` |
+| `space.website.module-padding-x` | `{space.unit.24}` | `{space.unit.16}` | `{space.unit.16}` |
+| `space.website.module-gap` | `{space.unit.8}` | `{space.unit.8}` | `{space.unit.16}` |
 </CxTable>
 
 ## Usage
@@ -392,28 +364,28 @@ Use the most specific token that names the element, and go down a level only whe
 
 - Use a component token for the part that it names: `space.button.medium-gap` for the gap inside a medium button.
 - Use `space.context.*` in layouts and in components that have no component token.
-- Use `space.unit.*` when no context token holds the value: a step between two context steps like `space.unit.6`, a step above `48px`, or a negative step like `space.unit.n4`.
+- Use `space.unit.*` when no context token holds the space: a step between two context steps like `space.unit.6`, a step beyond the context scale, or a negative step like `space.unit.n4`.
 - Leave `dimension.base.*` to the token sets. It is in the output because the unit tokens reference it.
 
 ### Size and space
 
-A space token sets a padding or a gap; a size token sets a width or a height. `space.unit.16` and `size.unit.16` hold the same value, because both reference `dimension.base.16`. The context tokens of both categories reference `size.unit.*`, so a change to `space.unit.16` changes the component tokens that reference it and leaves `space.context.medium` as it is.
+A space token sets a padding or a gap; a size token sets a width or a height. `space.unit.16` and `size.unit.16` hold the same size, because both reference `dimension.base.16`. The context tokens of both categories reference `size.unit.*`, so a change to `space.unit.16` changes the component tokens that reference it and leaves `space.context.medium` as it is.
 
 ## Platform output
 
 Space tokens print in `rem` on the web, as `CGFloat` points on iOS, and as `dp` dimension resources on Android.
 
 <CxTable>
-| Platform | Name | Value |
+| Platform | Name | Format |
 | --- | --- | --- |
-| Web | `$cx-space-context-medium` | `1rem` |
-| iOS | `SpaceContextMedium` | `CGFloat(16)` |
-| Android | `@dimen/space_context_medium` | `16dp` |
+| Web | `$cx-space-context-medium` | A size in `rem` |
+| iOS | `SpaceContextMedium` | A `CGFloat` in points |
+| Android | `@dimen/space_context_medium` | A `<dimen>` in `dp` |
 </CxTable>
 
-The web platform divides the pixels by 16, so `16px` prints `1rem` and `0px` prints `0rem`. A negative step keeps its sign: `space.unit.n4` prints `-0.25rem`, `CGFloat(-4)`, and `-4dp`. A value without a unit prints like a pixel value: `space.page.large-gap` resolves to `24` and prints `1.5rem`, `CGFloat(24)`, and `24dp`.
+The web platform converts design pixels to `rem` at sixteen pixels per `rem`. iOS and Android keep the number of design pixels, as points and as `dp`. A negative step keeps its sign on every platform.
 
-The build writes every level with its resolved value. In `main.scss`:
+The build writes every level with its resolved size. The values in the examples are those of the `chassis` brand in the current version and differ in other brands. In `main.scss`:
 
 ```scss
 $cx-space-unit-16: 1rem !default;
@@ -421,10 +393,6 @@ $cx-space-context-medium: 1rem !default;
 $cx-space-button-large-padding-x: 1rem !default;
 ```
 
-The main file of each platform holds the values of the first configured screen, `large`. The values of `space.website.*` on another screen are in the number file of that screen. The build writes in `number-small.scss`:
-
-```scss
-$cx-space-website-section-padding-y: 2rem !default;
-```
+The main file of each platform holds `space.website.*` of the first configured screen. The number file of a screen, such as `number-small.scss`, holds them for that screen.
 
 See the [web]([[docsref:/use-in-project/web-applications]]), [iOS]([[docsref:/use-in-project/ios-applications]]), and [Android]([[docsref:/use-in-project/android-applications]]) docs for the files that hold these names.

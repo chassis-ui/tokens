@@ -8,7 +8,7 @@ toc: true
 
 ## Introduction
 
-This guide takes the shortest way from nothing to tokens in a project, and there are two of them. To use the tokens as they are published, with the brands `chassis` and `sinefil`, follow [Use the published tokens](#use-the-published-tokens). To own the tokens, with your brands, apps and platforms, follow [Build your own tokens](#build-your-own-tokens).
+This guide takes the shortest way from nothing to tokens in a project, and there are two of them. To use the tokens as they are published, with the brands of the committed configuration, follow [Use the published tokens](#use-the-published-tokens). To own the tokens, with your brands, themes, apps and platforms, follow [Build your own tokens](#build-your-own-tokens).
 
 ## Prerequisites
 
@@ -21,7 +21,7 @@ What you need depends on the way you take.
 
 ## Use the published tokens
 
-The published tokens are the files of `packages/tokens/dist/` in version [[config:current_version]]: the app `docs` for the web, and the app `demo` for iOS and Android, each for the brands `chassis` and `sinefil`. The examples use the brand `chassis`.
+The published tokens are the files of `packages/tokens/dist/` in version [[config:current_version]], built from the committed configuration: the app `docs` for the web, and the app `demo` for iOS and Android, each for the brands `chassis` and `sinefil`. The examples use the brand `chassis`.
 
 ### Web
 
@@ -51,7 +51,7 @@ The [web guide]([[docsref:/use-in-project/web-applications]]) covers the other f
 
 ### iOS
 
-The Swift package holds one library per brand, `ChassisTokensDemoChassis` and `ChassisTokensDemoSinefil`. Add the package `[[config:repo]].git` to your app with Swift Package Manager, and add the library of your brand to your target.
+The Swift package holds one library per app and brand, such as `ChassisTokensDemoChassis` for the app `demo` and the brand `chassis`. Add the package `[[config:repo]].git` to your app with Swift Package Manager, and add the library of your brand to your target.
 
 Use the constants of the types `ChassisTokens` and `ChassisTokensColor`:
 
@@ -95,7 +95,7 @@ The library holds the colors of the dark theme in `values-night`, so a color fol
 
 ## Build your own tokens
 
-Chassis Tokens is meant to be owned and customized: you fork the repository, change the token sets, name your brands and apps in `chassis.build`, and build. The repository is a pnpm workspace, and every command runs from its root.
+Chassis Tokens is meant to be owned and customized: you fork the repository, change the token sets, name your brands, themes and apps in `chassis.build`, and build. The token system is built on three core groups, `brand`, `theme` and `app`, and the optional group `screen`; the [introduction]([[docsref:/getting-started/introduction]]) describes them. The repository is a pnpm workspace, and every command runs from its root.
 
 ### Set up the repository
 
@@ -138,7 +138,7 @@ The lint names the token set and the token of each mistake that the build would 
 
 ### Configure the build
 
-The build writes only what `chassis.build` lists. In `chassis.build` of `packages/tokens/package.json`:
+The build writes only what `chassis.build` lists. The committed configuration, in `chassis.build` of `packages/tokens/package.json`:
 
 ```json
 "chassis": {
@@ -159,10 +159,12 @@ The build writes only what `chassis.build` lists. In `chassis.build` of `package
 | --- | --- |
 | `brands` | Options of the `brand` group of `source/$themes.json` |
 | `themes` | Options of the `theme` group; the first is the default |
-| `screens` | Options of the `screen` group; the first is the default |
 | `apps` | Options of the `app` group, each with its platforms |
+| `screens` | Optional: options of the `screen` group; the first is the default |
 | `options` | Optional: Style Dictionary options by platform name |
 </CxTable>
+
+Replace the names with the options of your groups. Without `screens`, or with `"screens": []`, the build writes one number file for all screens, and `source/$themes.json` must have no `screen` group.
 
 A platform is `web`, `ios`, `android` or a preset: `web-scss`, `web-px` and `web-vw` for a CSS framework other than Chassis CSS, `ios-swiftui` and `android-compose` for SwiftUI and Jetpack Compose. The [Style Dictionary guide]([[docsref:/getting-started/style-dictionary]]) describes every key, platform and preset.
 
@@ -196,19 +198,15 @@ Your apps take the files from the folders of `dist/`: the SCSS files of `dist/we
 
 ## Troubleshooting
 
-These are the failures of the first install and the first build.
-
 ### Stylesheet not found
 
 Sass stops with `Error: Can't find stylesheet to import.` at the `@use` rule of the tokens. Sass does not search `node_modules` by itself. Add `--load-path=node_modules` to the `sass` command. For a bundler, see the [web guide]([[docsref:/use-in-project/web-applications]]).
 
 ### No token sets
 
-The build stops with `No token sets for <brand>_<app>_<theme>_<screen> in source/$themes.json`, with the names of the list it looked for. `chassis.build` lists a brand, app, theme or screen that is not an option of its group in `packages/tokens/source/$themes.json`. Correct the name in `chassis.build`, or add the option to the group in Tokens Studio.
+The build stops with `No token sets for <brand>_<app>_<theme>_<screen> in source/$themes.json`, with the names of the list it looked for. `chassis.build` lists a brand, theme, app or screen that is not an option of its group in `packages/tokens/source/$themes.json`, or it lists no screens while `$themes.json` has a `screen` group. Correct the name in `chassis.build`, or add the option to the group in Tokens Studio.
 
 ## Next steps
-
-Continue with the guide of your platform, or with the references of the tokens and the build.
 
 - The [web]([[docsref:/use-in-project/web-applications]]), [iOS]([[docsref:/use-in-project/ios-applications]]) and [Android]([[docsref:/use-in-project/android-applications]]) guides cover the files, themes and screen sizes of each platform.
 - The [Tokens Studio guide]([[docsref:/getting-started/tokens-studio]]) and the [Figma Variables guide]([[docsref:/getting-started/figma-variables]]) cover the token sets and their sync with Figma.
