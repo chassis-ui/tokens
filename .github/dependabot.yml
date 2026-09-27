@@ -23,6 +23,19 @@ updates:
           - tinycolor2
           - '@chassis-ui/*'
 
+  # The Gradle project of the native compile checks: the Android Gradle plugin, Kotlin,
+  # Compose and the Gradle wrapper
+  - package-ecosystem: gradle
+    directory: /packages/tokens/test/native/android
+    schedule:
+      interval: weekly
+      day: monday
+    commit-message:
+      prefix: 'chore(deps)'
+    groups:
+      native-android:
+        patterns: ['*']
+
   - package-ecosystem: github-actions
     directory: /
     schedule:

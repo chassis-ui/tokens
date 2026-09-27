@@ -1,0 +1,91 @@
+{
+  "name": "@chassis-ui/tokens",
+  "version": "0.6.0",
+  "description": "Design tokens for the Chassis Design System, built from Tokens Studio into SCSS, Swift, SwiftUI, Android resources and Jetpack Compose",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chassis-ui/tokens.git",
+    "directory": "packages/tokens"
+  },
+  "bugs": {
+    "url": "https://github.com/chassis-ui/tokens/issues"
+  },
+  "homepage": "https://chassis-ui.com",
+  "author": "Ozgur Gunes <o.gunes@gmail.com>",
+  "license": "MIT",
+  "keywords": [
+    "chassis",
+    "design system",
+    "design tokens",
+    "design assets",
+    "figma variables",
+    "style dictionary",
+    "tokens studio",
+    "token transform"
+  ],
+  "files": [
+    "dist",
+    "CHANGELOG.md"
+  ],
+  "exports": {
+    "./dist/*": "./dist/*",
+    "./package.json": "./package.json"
+  },
+  "chassis": {
+    "build": {
+      "brands": [
+        "chassis",
+        "sinefil"
+      ],
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "screens": [
+        "large",
+        "medium",
+        "small"
+      ],
+      "apps": {
+        "docs": [
+          "web"
+        ],
+        "demo": [
+          "ios",
+          "android"
+        ]
+      }
+    }
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  },
+  "scripts": {
+    "aar": "test/native/android/gradlew --project-dir test/native/android :library:aars",
+    "build": "node build/build.js",
+    "build:site": "node build/build.js --brand chassis --app docs",
+    "clean": "rm -rf dist",
+    "diff": "node build/diff.js",
+    "lint:source": "node build/lint-tokens.js",
+    "native:android": "test/native/android/gradlew --project-dir test/native/android compileTokens",
+    "native:ios": "test/native/ios/check.sh",
+    "swift-package": "node build/swift-package.js",
+    "test": "vitest run --dir test",
+    "typecheck": "tsc -p tsconfig.json",
+    "verify": "node build/verify.js",
+    "verify:presets": "node build/verify.js --preset all"
+  },
+  "devDependencies": {
+    "@tokens-studio/sd-transforms": "^2.0.3",
+    "@types/node": "^22.20.4",
+    "style-dictionary": "^5.5.5",
+    "svg2vectordrawable": "^2.9.1",
+    "tinycolor2": "^1.6.0",
+    "vitest": "^4.1.11"
+  }
+}

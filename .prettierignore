@@ -1,7 +1,7 @@
 *.css
 *.scss
-site/config.yml
-site/src/assets
-/tokens
+packages/site/config.yml
+packages/site/src/assets
+/packages/tokens/source
 /vendor
 pnpm-lock.yaml
