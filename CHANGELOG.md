@@ -37,6 +37,7 @@ The presets for teams that do not use Chassis CSS are kept, in the new structure
 ### Fixed
 - Android opacity and letter spacing tokens are float resources (`<item type="dimen" format="float">`) instead of `<integer>`. Android rejects fractions such as `0.4` in integer resources, so `main.xml` and the number files did not compile. Read them with `ResourcesCompat.getFloat`; references to them are `@dimen/…`
 - Renamed `space.website.content.headers-gap` to `space.website.content.header-gap` in the small screen token set, so every screen declares the same name. On Android, the small screen had no value for `header-gap` in the default folder
+- The `sinefil` blockquote font weight is `Light Italic` instead of `Light Oblique`, the style name Figma and Google Fonts use for Source Serif 4. Its font style prints `italic` instead of `oblique` on web, iOS and Android
 - Android string resources are escaped. The SVG icon tokens held raw markup, which Android's resource compiler drops, so every icon compiled to an empty string; now each compiles to its SVG text
 - Rewrote the web, iOS and Android guides of the documentation site; their examples used token names and file setups that do not exist or do not compile
 

@@ -4,7 +4,7 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Fri, 25 Sep 2026 10:39:17 GMT
+// Generated on Sun, 27 Sep 2026 09:27:50 GMT
 // Chassis - Tokens v0.5.3
 // Copyright 2026 Ozgur Gunes
 // Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
@@ -2165,7 +2165,7 @@ public class ChassisTokens {
     @objc public static let TypographyFontWeightHtmlCodeWeight = "regular"
     @objc public static let TypographyFontWeightHtmlCodeStyle = "normal"
     @objc public static let TypographyFontWeightHtmlBlockquoteWeight = "light"
-    @objc public static let TypographyFontWeightHtmlBlockquoteStyle = "oblique"
+    @objc public static let TypographyFontWeightHtmlBlockquoteStyle = "italic"
     @objc public static let TypographyFontWeightHtmlBodyWeight = "regular"
     @objc public static let TypographyFontWeightHtmlBodyStyle = "normal"
     @objc public static let TypographyFontWeightHtmlParagraphWeight = "regular"
@@ -3399,7 +3399,7 @@ public class ChassisTokens {
     @objc public static let FontHtmlBlockquoteParagraphSpacing = CGFloat(0)
     @objc public static let FontHtmlBlockquoteTextCase = "none"
     @objc public static let FontHtmlBlockquoteTextDecoration = "none"
-    @objc public static let FontHtmlBlockquoteFontStyle = "oblique"
+    @objc public static let FontHtmlBlockquoteFontStyle = "italic"
     @objc public static let FontHtmlListFontFamily = "Source Serif 4"
     @objc public static let FontHtmlListFontWeight = "regular"
     @objc public static let FontHtmlListLineHeight = CGFloat(24)
