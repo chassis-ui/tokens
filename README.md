@@ -108,6 +108,8 @@ pnpm tokens --theme light dark --dry-run
 | `--help`, `-h`              | Show the help                                                                              |
 | `--version`, `-v`           | Show the version                                                                           |
 
+A filter value that the configuration does not have, such as `--brand chasis`, fails the build and names the configured values, and so do filters that together select nothing, such as `--app docs --platform ios`.
+
 Each brand and app is built once per list of token sets, writing the files of every platform of the app; a full build runs 16 builds. Set `DEBUG=1` for verbose output with stack traces:
 
 ```sh

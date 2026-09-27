@@ -4,8 +4,8 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Sun, 27 Sep 2026 07:17:13 GMT
-// Chassis - Tokens v0.5.3
+// Generated on Sun, 27 Sep 2026 20:31:54 GMT
+// Chassis - Tokens v0.6.0
 // Copyright 2026 Ozgur Gunes
 // Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
 
@@ -130,10 +130,10 @@ $cx-size-unit-256: 16vw !default;
 $cx-size-unit-320: 20vw !default;
 $cx-size-unit-512: 32vw !default;
 $cx-size-unit-1024: 64vw !default;
-$cx-size-unit-05: 0.0313vw !default;
-$cx-size-unit-d05: 0.0313vw !default;
-$cx-size-unit-d15: 0.0938vw !default;
-$cx-size-unit-d25: 0.1563vw !default;
+$cx-size-unit-05: 0.03125vw !default;
+$cx-size-unit-d05: 0.03125vw !default;
+$cx-size-unit-d15: 0.09375vw !default;
+$cx-size-unit-d25: 0.15625vw !default;
 $cx-size-unit-n1: -0.0625vw !default;
 $cx-size-unit-n2: -0.125vw !default;
 $cx-size-unit-n3: -0.1875vw !default;
@@ -150,9 +150,9 @@ $cx-size-unit-n16: -1vw !default;
 $cx-size-unit-n18: -1.125vw !default;
 $cx-size-unit-n20: -1.25vw !default;
 $cx-size-unit-n24: -1.5vw !default;
-$cx-size-unit-nd05: -0.0313vw !default;
-$cx-size-unit-nd15: -0.0938vw !default;
-$cx-size-unit-nd25: -0.1563vw !default;
+$cx-size-unit-nd05: -0.03125vw !default;
+$cx-size-unit-nd15: -0.09375vw !default;
+$cx-size-unit-nd25: -0.15625vw !default;
 $cx-size-asset-indicator: 0.25vw !default;
 $cx-size-asset-separator: 0.0625vw !default;
 $cx-size-context-2xlarge: 4vw !default;
@@ -225,11 +225,11 @@ $cx-size-modal-window-small-w: 22.5vw !default;
 $cx-size-modal-window-xlarge-h: 45vw !default;
 $cx-size-modal-window-large-h: 37.5vw !default;
 $cx-size-modal-window-medium-h: 30vw !default;
-$cx-size-modal-window-small-h: 40vw !default;
+$cx-size-modal-window-small-h: 22.5vw !default;
 $cx-size-notification-icon: 1.75vw !default;
 $cx-size-nav-left-width: 16vw !default;
 $cx-size-nav-left-width-expanded: 16vw !default;
-$cx-size-nav-left-wdith-collapsed: 4.5vw !default;
+$cx-size-nav-left-width-collapsed: 4.5vw !default;
 $cx-size-nav-top-height: 4vw !default;
 $cx-size-pagination-dot-idle-h: 0.5vw !default;
 $cx-size-pagination-dot-idle-w: 0.5vw !default;
@@ -282,11 +282,11 @@ $cx-space-unit-104: 6.5vw !default;
 $cx-space-unit-112: 7vw !default;
 $cx-space-unit-120: 7.5vw !default;
 $cx-space-unit-128: 8vw !default;
-$cx-space-unit-136: 8vw !default;
-$cx-space-unit-05: 0.0313vw !default;
-$cx-space-unit-d05: 0.0313vw !default;
-$cx-space-unit-d15: 0.0938vw !default;
-$cx-space-unit-d25: 0.1563vw !default;
+$cx-space-unit-136: 8.5vw !default;
+$cx-space-unit-05: 0.03125vw !default;
+$cx-space-unit-d05: 0.03125vw !default;
+$cx-space-unit-d15: 0.09375vw !default;
+$cx-space-unit-d25: 0.15625vw !default;
 $cx-space-unit-n1: -0.0625vw !default;
 $cx-space-unit-n2: -0.125vw !default;
 $cx-space-unit-n3: -0.1875vw !default;
@@ -294,9 +294,9 @@ $cx-space-unit-n4: -0.25vw !default;
 $cx-space-unit-n5: -0.3125vw !default;
 $cx-space-unit-n6: -0.375vw !default;
 $cx-space-unit-n8: -0.5vw !default;
-$cx-space-unit-nd25: -0.1563vw !default;
-$cx-space-unit-nd15: -0.0938vw !default;
-$cx-space-unit-nd05: -0.0313vw !default;
+$cx-space-unit-nd25: -0.15625vw !default;
+$cx-space-unit-nd15: -0.09375vw !default;
+$cx-space-unit-nd05: -0.03125vw !default;
 $cx-space-context-zero: 0vw !default;
 $cx-space-context-4xsmall: 0.0625vw !default;
 $cx-space-context-3xsmall: 0.125vw !default;
@@ -435,7 +435,7 @@ $cx-space-segment-small-bar-padding: 0.25vw !default;
 $cx-space-segment-small-padding-y: 0.1875vw !default;
 $cx-space-segment-small-padding-x: 0.5vw !default;
 $cx-space-segment-small-gap: 0.5vw !default;
-$cx-space-website-section-padding-y: 3vw !default;
+$cx-space-website-section-padding-y: 4vw !default;
 $cx-space-website-section-padding-x: 1.5vw !default;
 $cx-space-website-section-gap: 3vw !default;
 $cx-space-website-content-header-gap: 1vw !default;
@@ -470,9 +470,6 @@ $cx-opacity-context-dim-main: 0.7 !default;
 $cx-opacity-context-dim-subtle: 0.3 !default;
 $cx-opacity-context-dim-slight: 0.05 !default;
 $cx-opacity-context-transparent-color: 0 !default;
-$cx-figma-website-size-page-w: 94.5vw !default;
-$cx-figma-website-size-slide-min-w: 35vw !default;
-$cx-figma-website-size-card-min-w: 35vw !default;
 $cx-typography-font-size-text-5xlarge: 2.75vw !default;
 $cx-typography-font-size-text-4xlarge: 2.375vw !default;
 $cx-typography-font-size-text-3xlarge: 2vw !default;
@@ -644,13 +641,10 @@ $cx-border-radius-tab-medium: 0.375vw !default;
 $cx-border-radius-tab-large: 0.5vw !default;
 $cx-border-radius-tab-small: 0.375vw !default;
 $cx-border-radius-tooltip-main: 0.25vw !default;
-$cx-border-width-context-none: 0vw !default;
-$cx-border-width-context-thin: 0.0313vw !default;
-$cx-border-width-context-thick: 0.125vw !default;
 $cx-border-width-context-zero: 0vw !default;
-$cx-border-width-context-small: 0.0313vw !default;
+$cx-border-width-context-small: 0.03125vw !default;
 $cx-border-width-context-medium: 0.0625vw !default;
-$cx-border-width-context-large: 0.0938vw !default;
+$cx-border-width-context-large: 0.09375vw !default;
 $cx-border-width-context-xlarge: 0.125vw !default;
 $cx-border-width-context-2xlarge: 0.25vw !default;
 $cx-border-width-accordion-main: 0.0625vw !default;

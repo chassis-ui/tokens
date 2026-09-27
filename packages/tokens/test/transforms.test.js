@@ -7,8 +7,9 @@
  */
 
 import { readFileSync } from 'node:fs'
+import { checkAndEvaluateMath } from '@tokens-studio/sd-transforms'
 import { describe, expect, test } from 'vitest'
-import web from '../build/config/web.js'
+import web, { MATH_FRACTION_DIGITS } from '../build/config/web.js'
 import webPx from '../build/config/web-px.js'
 import webVw from '../build/config/web-vw.js'
 import registerTransforms, { transforms } from '../build/transforms.js'
@@ -61,6 +62,37 @@ describe('cx/shadow/web', () => {
 
   test.each(webTokens.cssShadow)('$case', ({ value, expected }) => {
     expect(transform('cx/shadow/web').transform({ $value: value }, platform)).toBe(expected)
+  })
+})
+
+describe('ts/resolveMath on the web', () => {
+  const resolveMath = (config, $value) =>
+    checkAndEvaluateMath({ $value, $type: 'dimension' }, config.mathFractionDigits)
+
+  test('keeps a size that references another size exact', () => {
+    // Without the option, sd-transforms rounds to four decimals
+    expect(resolveMath({}, '0.03125rem')).toBe('0.0313rem')
+    for (const config of [web, webPx, webVw]) {
+      const platform = config('chassis', 'docs', [])
+      expect(platform.mathFractionDigits).toBe(MATH_FRACTION_DIGITS)
+      expect(resolveMath(platform, '0.03125rem')).toBe('0.03125rem')
+      expect(resolveMath(platform, '-0.15625rem')).toBe('-0.15625rem')
+    }
+  })
+
+  test('drops the floating-point noise of the math', () => {
+    expect(resolveMath(platform, '0.1rem*3')).toBe('0.3rem')
+  })
+
+  test('prints a size and a size that references it alike in the committed main.scss', () => {
+    const main = readFileSync(
+      new URL('../dist/web/docs/chassis/main.scss', import.meta.url),
+      'utf8'
+    )
+    const value = (name) => main.match(new RegExp(`^\\$cx-${name}: (.+) !default;$`, 'm'))[1]
+    expect(value('dimension-base-05')).toBe('0.03125rem')
+    expect(value('size-unit-05')).toBe('0.03125rem')
+    expect(value('size-unit-nd25')).toBe(value('dimension-base-nd25'))
   })
 })
 

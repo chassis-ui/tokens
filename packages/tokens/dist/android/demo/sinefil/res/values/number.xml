@@ -2,7 +2,7 @@
 
 <!--
   Do not edit directly, this file was auto-generated.
-  Generated on Sun, 27 Sep 2026 13:50:08 GMT
+  Generated on Sun, 27 Sep 2026 20:28:14 GMT
   Chassis - Tokens v0.6.0
   Copyright 2026 Ozgur Gunes
   Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
@@ -222,11 +222,11 @@
   <dimen name="size_modal_window_xlarge_h">720dp</dimen>
   <dimen name="size_modal_window_large_h">600dp</dimen>
   <dimen name="size_modal_window_medium_h">480dp</dimen>
-  <dimen name="size_modal_window_small_h">640dp</dimen>
+  <dimen name="size_modal_window_small_h">360dp</dimen>
   <dimen name="size_notification_icon">28dp</dimen>
   <dimen name="size_nav_left_width">256dp</dimen>
   <dimen name="size_nav_left_width_expanded">256dp</dimen>
-  <dimen name="size_nav_left_wdith_collapsed">72dp</dimen>
+  <dimen name="size_nav_left_width_collapsed">72dp</dimen>
   <dimen name="size_nav_top_height">64dp</dimen>
   <dimen name="size_pagination_dot_idle_h">8dp</dimen>
   <dimen name="size_pagination_dot_idle_w">8dp</dimen>
@@ -279,7 +279,7 @@
   <dimen name="space_unit_112">112dp</dimen>
   <dimen name="space_unit_120">120dp</dimen>
   <dimen name="space_unit_128">128dp</dimen>
-  <dimen name="space_unit_136">128dp</dimen>
+  <dimen name="space_unit_136">136dp</dimen>
   <dimen name="space_unit_05">0.5dp</dimen>
   <dimen name="space_unit_d05">0.5dp</dimen>
   <dimen name="space_unit_d15">1.5dp</dimen>
@@ -467,9 +467,6 @@
   <item name="opacity_context_dim_subtle" type="dimen" format="float">0.3</item>
   <item name="opacity_context_dim_slight" type="dimen" format="float">0.05</item>
   <item name="opacity_context_transparent_color" type="dimen" format="float">0</item>
-  <dimen name="figma_website_size_page_w">400dp</dimen>
-  <dimen name="figma_website_size_slide_min_w">320dp</dimen>
-  <dimen name="figma_website_size_card_min_w">320dp</dimen>
   <dimen name="typography_font_size_text_5xlarge">44sp</dimen>
   <dimen name="typography_font_size_text_4xlarge">38sp</dimen>
   <dimen name="typography_font_size_text_3xlarge">32sp</dimen>
@@ -1409,9 +1406,6 @@
   <dimen name="font_website_module_title_font_size">16sp</dimen>
   <item name="font_website_module_title_letter_spacing" type="dimen" format="float">0</item>
   <dimen name="font_website_module_title_paragraph_spacing">0sp</dimen>
-  <dimen name="border_width_context_none">0dp</dimen>
-  <dimen name="border_width_context_thin">0.5dp</dimen>
-  <dimen name="border_width_context_thick">2dp</dimen>
   <dimen name="border_width_context_zero">0dp</dimen>
   <dimen name="border_width_context_small">0.5dp</dimen>
   <dimen name="border_width_context_medium">1dp</dimen>
@@ -3032,12 +3026,4 @@
   <dimen name="shadow_glow_info_spread">0dp</dimen>
   <dimen name="shadow_glow_info_offset_x">0dp</dimen>
   <dimen name="shadow_glow_info_offset_y">0dp</dimen>
-  <dimen name="bg_blur_default_blur">48dp</dimen>
-  <dimen name="bg_blur_default_spread">0dp</dimen>
-  <dimen name="bg_blur_default_offset_x">0dp</dimen>
-  <dimen name="bg_blur_default_offset_y">0dp</dimen>
-  <dimen name="bg_blur_alternate_blur">48dp</dimen>
-  <dimen name="bg_blur_alternate_spread">0dp</dimen>
-  <dimen name="bg_blur_alternate_offset_x">0dp</dimen>
-  <dimen name="bg_blur_alternate_offset_y">0dp</dimen>
 </resources>

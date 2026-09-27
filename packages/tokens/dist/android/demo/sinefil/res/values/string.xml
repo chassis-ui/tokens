@@ -2,15 +2,13 @@
 
 <!--
   Do not edit directly, this file was auto-generated.
-  Generated on Sun, 27 Sep 2026 13:50:07 GMT
+  Generated on Sun, 27 Sep 2026 20:28:12 GMT
   Chassis - Tokens v0.6.0
   Copyright 2026 Ozgur Gunes
   Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
 -->
 
 <resources>
-  <string name="figma_website_variant_nav">large</string>
-  <string name="figma_website_variant_section">large</string>
   <string name="typography_font_family_text">DM Sans</string>
   <string name="typography_font_family_display">Source Serif 4</string>
   <string name="typography_font_family_html">Source Serif 4</string>
@@ -1422,6 +1420,4 @@
   <string name="shadow_glow_success_type">dropShadow</string>
   <string name="shadow_glow_warning_type">dropShadow</string>
   <string name="shadow_glow_info_type">dropShadow</string>
-  <string name="bg_blur_default_type">dropShadow</string>
-  <string name="bg_blur_alternate_type">dropShadow</string>
 </resources>

@@ -165,8 +165,7 @@ describe('planBuilds with filters', () => {
     [{ apps: ['docs'] }, 14],
     [{ platforms: ['android'] }, 28],
     [{ themes: ['dark'] }, 48],
-    [{ screens: ['small'] }, 40],
-    [{ screens: ['xlarge'] }, 32]
+    [{ screens: ['small'] }, 40]
   ])('%o writes %i files of dist/', (filters, count) => {
     const files = destinations(plan(filters))
     expect(files).toHaveLength(count)
@@ -197,9 +196,32 @@ describe('planBuilds with filters', () => {
     expect(base.outputs).toEqual([{ kind: 'base' }, { kind: 'number', screen: 'large' }])
   })
 
-  test('plans nothing for an unknown brand or platform', () => {
-    expect(plan({ brands: ['acme'] })).toEqual([])
-    expect(plan({ platforms: ['windows'] })).toEqual([])
+  test.each([
+    [{ brands: ['chasis'] }, '--brand chasis (configured: chassis, sinefil)'],
+    [{ apps: ['doc'] }, '--app doc (configured: docs, demo)'],
+    [{ platforms: ['windows'] }, '--platform windows (configured: web, ios, android)'],
+    [{ themes: ['darkk'] }, '--theme darkk (configured: light, dark)'],
+    [{ screens: ['xl'] }, '--screen xl (configured: large, medium, small)']
+  ])('throws for an unknown filter value: %o', (filters, message) => {
+    expect(() => plan(filters)).toThrow(`Unknown filter values: ${message}`)
+  })
+
+  test('names every unknown value at once', () => {
+    expect(() => plan({ brands: ['chassis', 'acme'], themes: ['sepia'] })).toThrow(
+      'Unknown filter values: --brand acme (configured: chassis, sinefil); --theme sepia (configured: light, dark)'
+    )
+  })
+
+  test('throws when the filters together select no build', () => {
+    expect(() => plan({ apps: ['docs'], platforms: ['ios'] })).toThrow(
+      'The filters select no build'
+    )
+  })
+
+  test('throws for a screen filter when no screens are configured', () => {
+    expect(() =>
+      planBuilds(sets, { ...buildOptions, screens: [] }, { screens: ['large'] })
+    ).toThrow('--screen large (configured: none)')
   })
 })
 

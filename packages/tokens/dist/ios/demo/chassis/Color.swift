@@ -4,7 +4,7 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Sun, 27 Sep 2026 13:50:04 GMT
+// Generated on Sun, 27 Sep 2026 20:28:09 GMT
 // Chassis - Tokens v0.6.0
 // Copyright 2026 Ozgur Gunes
 // Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
@@ -1797,17 +1797,15 @@ public enum ChassisTokensColor {
     public static let ShadowElevationAccent051Color = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0.4) : UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0.1) }
     public static let ShadowElevationAccent052Color = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0.4) : UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0.1) }
     public static let ShadowElevationAccent053Color = UIColor(red: 0.961, green: 0.322, blue: 0.000, alpha: 0.2)
-    public static let ShadowGlowDefaultColor = UIColor(red: 0.086, green: 0.102, blue: 0.106, alpha: 1)
-    public static let ShadowGlowAlternateColor = UIColor(red: 0.914, green: 0.925, blue: 0.929, alpha: 1)
+    public static let ShadowGlowDefaultColor = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.914, green: 0.925, blue: 0.929, alpha: 1) : UIColor(red: 0.086, green: 0.102, blue: 0.106, alpha: 1) }
+    public static let ShadowGlowAlternateColor = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1) : UIColor(red: 0.914, green: 0.925, blue: 0.929, alpha: 1) }
     public static let ShadowGlowBlackColor = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1)
     public static let ShadowGlowWhiteColor = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1)
-    public static let ShadowGlowPrimaryColor = UIColor(red: 0.000, green: 0.643, blue: 0.800, alpha: 1)
-    public static let ShadowGlowSecondaryColor = UIColor(red: 0.961, green: 0.322, blue: 0.000, alpha: 1)
-    public static let ShadowGlowNeutralColor = UIColor(red: 0.435, green: 0.502, blue: 0.522, alpha: 1)
-    public static let ShadowGlowDangerColor = UIColor(red: 0.961, green: 0.137, blue: 0.078, alpha: 1)
-    public static let ShadowGlowSuccessColor = UIColor(red: 0.063, green: 0.761, blue: 0.388, alpha: 1)
-    public static let ShadowGlowWarningColor = UIColor(red: 0.961, green: 0.639, blue: 0.000, alpha: 1)
-    public static let ShadowGlowInfoColor = UIColor(red: 0.078, green: 0.078, blue: 0.961, alpha: 1)
-    public static let BgBlurDefaultColor = UIColor(red: 0.718, green: 0.753, blue: 0.761, alpha: 0.5)
-    public static let BgBlurAlternateColor = UIColor(red: 0.220, green: 0.251, blue: 0.263, alpha: 0.5)
+    public static let ShadowGlowPrimaryColor = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.251, green: 0.733, blue: 0.851, alpha: 1) : UIColor(red: 0.000, green: 0.643, blue: 0.800, alpha: 1) }
+    public static let ShadowGlowSecondaryColor = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.973, green: 0.490, blue: 0.251, alpha: 1) : UIColor(red: 0.961, green: 0.322, blue: 0.000, alpha: 1) }
+    public static let ShadowGlowNeutralColor = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.576, green: 0.627, blue: 0.643, alpha: 1) : UIColor(red: 0.435, green: 0.502, blue: 0.522, alpha: 1) }
+    public static let ShadowGlowDangerColor = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.973, green: 0.353, blue: 0.310, alpha: 1) : UIColor(red: 0.961, green: 0.137, blue: 0.078, alpha: 1) }
+    public static let ShadowGlowSuccessColor = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.298, green: 0.820, blue: 0.541, alpha: 1) : UIColor(red: 0.063, green: 0.761, blue: 0.388, alpha: 1) }
+    public static let ShadowGlowWarningColor = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.973, green: 0.729, blue: 0.251, alpha: 1) : UIColor(red: 0.961, green: 0.639, blue: 0.000, alpha: 1) }
+    public static let ShadowGlowInfoColor = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.310, green: 0.310, blue: 0.973, alpha: 1) : UIColor(red: 0.078, green: 0.078, blue: 0.961, alpha: 1) }
 }

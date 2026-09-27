@@ -3,8 +3,8 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Sun, 27 Sep 2026 11:29:41 GMT
-// Chassis - Tokens v0.5.3
+// Generated on Sun, 27 Sep 2026 20:31:46 GMT
+// Chassis - Tokens v0.6.0
 // Copyright 2026 Ozgur Gunes
 // Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
 
@@ -1802,17 +1802,15 @@ object ChassisTokensColorDark {
     val shadowElevationAccent051Color get() = Color(0x66000000)
     val shadowElevationAccent052Color get() = Color(0x66000000)
     val shadowElevationAccent053Color get() = Color(0x33F55200)
-    val shadowGlowDefaultColor get() = Color(0xFF161A1B)
-    val shadowGlowAlternateColor get() = Color(0xFFE9ECED)
+    val shadowGlowDefaultColor get() = Color(0xFFE9ECED)
+    val shadowGlowAlternateColor get() = Color(0xFFFFFFFF)
     val shadowGlowBlackColor get() = Color(0xFF000000)
     val shadowGlowWhiteColor get() = Color(0xFFFFFFFF)
-    val shadowGlowPrimaryColor get() = Color(0xFF00A4CC)
-    val shadowGlowSecondaryColor get() = Color(0xFFF55200)
-    val shadowGlowNeutralColor get() = Color(0xFF6F8085)
-    val shadowGlowDangerColor get() = Color(0xFFF52314)
-    val shadowGlowSuccessColor get() = Color(0xFF10C263)
-    val shadowGlowWarningColor get() = Color(0xFFF5A300)
-    val shadowGlowInfoColor get() = Color(0xFF1414F5)
-    val bgBlurDefaultColor get() = Color(0x80B7C0C2)
-    val bgBlurAlternateColor get() = Color(0x80384043)
+    val shadowGlowPrimaryColor get() = Color(0xFF40BBD9)
+    val shadowGlowSecondaryColor get() = Color(0xFFF87D40)
+    val shadowGlowNeutralColor get() = Color(0xFF93A0A4)
+    val shadowGlowDangerColor get() = Color(0xFFF85A4F)
+    val shadowGlowSuccessColor get() = Color(0xFF4CD18A)
+    val shadowGlowWarningColor get() = Color(0xFFF8BA40)
+    val shadowGlowInfoColor get() = Color(0xFF4F4FF8)
 }

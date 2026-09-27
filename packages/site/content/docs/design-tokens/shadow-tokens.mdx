@@ -230,7 +230,7 @@ For an element that changes its shadow with its state, use the state tokens: `sh
 
 ### Themes and brands
 
-Only the colors of a shadow change with the theme and the brand; the sizes reference the same `dimension.base.*` tokens in each of them. `color.shadow.*` references `color.base.shadow.light.*` or `color.base.shadow.dark.*`, and these reference the palettes of the brand. `shadow.context.focus` and `shadow.context.highlight` follow `color.context.default.cue-main`.
+Only the colors of a shadow change with the theme and the brand; the sizes reference the same `dimension.base.*` tokens in each of them. `color.shadow.*` references `color.base.shadow.light.*` or `color.base.shadow.dark.*`, and these reference the palettes of the brand. `shadow.context.focus` and `shadow.context.highlight` follow `color.context.default.cue-main`, and `shadow.glow.<context>` follows `color.context.<context>.base-color`, or `fg-main` for `default` and `alternate`.
 
 ## Platform output
 
@@ -253,6 +253,8 @@ $cx-shadow-context-medium: 0rem 0.25rem 1rem -0.25rem rgba(0, 0, 0, 0.1), 0rem 0
 $cx-shadow-context-inset: 0rem 0.125rem 0.25rem 0rem rgba(0, 0, 0, 0.1) inset !default;
 $cx-shadow-card-main: var(--box-shadow-md) !default;
 ```
+
+`main.scss` holds the shadows in the colors of the first theme. The color file of each theme, such as `color-dark.scss`, holds every shadow again in the colors of that theme.
 
 A token whose value is a reference to `shadow.context.<name>` prints `var(--box-shadow-<name>)`, a custom property of [Chassis CSS](https://github.com/chassis-ui/css), with `sm`, `md`, and `lg` for `small`, `medium`, and `large`. Tokens named after a state (`idle`, `hover`, `press`, `disabled`, `focus`, `highlight`) print their value instead, as `$cx-shadow-button-idle` does. The presets `web-scss`, `web-px`, and `web-vw` print the value of every shadow token, with sizes in `rem`, `px`, and `vw`.
 

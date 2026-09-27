@@ -40,7 +40,7 @@ This cannot be a Style Dictionary value transform. Style Dictionary transforms a
 
 So:
 
-- **Transforms do only what is safe before resolution**: names (`name/kebab`, `name/pascal`, `name/snake`, `name/camel`), `ts/resolveMath`, `ts/color/modifiers`, `ts/color/css/hexrgba`, and on the web `ts/typography/fontWeight`, `cx/shadow/web` and one of `cx/size/rem`, `cx/size/px` or `cx/size/vw`.
+- **Transforms do only what is safe before resolution**: names (`name/kebab`, `name/pascal`, `name/snake`, `name/camel`), `ts/resolveMath`, `ts/color/modifiers`, `ts/color/css/hexrgba`, and on the web `ts/typography/fontWeight`, `cx/shadow/web` and one of `cx/size/rem`, `cx/size/px` or `cx/size/vw`. Transforms are transitive, so `ts/resolveMath` also parses a size that references another, already in `rem`; the web platforms set its `mathFractionDigits` to 10, as sd-transforms would round that size to four decimals.
 - **`values/` encodes**: `ios.js`, `swiftui.js`, `android.js`, `compose.js` and `web.js`, with the rules they share in `shared.js`. Each exports pure functions that take a resolved token and return a string. They do not import Style Dictionary, and the tests call them directly.
 - **Templates only print**: a header, one line per token from the encoder or the reference policy, and a footer. `templates/constants.js` builds the constant list of the Swift, SwiftUI and Compose files once, for all three.
 
@@ -143,15 +143,17 @@ The repository root also has `Package.swift`, written by `build/swift-package.js
 
 ### Filters
 
-| Filter               | Files                               | Tokens                                                                                                          |
-| -------------------- | ----------------------------------- | --------------------------------------------------------------------------------------------------------------- |
-| `cx/allTokens`       | main                                | every emitted type, without colors whose `path[1]` is `primitive`, `context` or `utility`                       |
-| `cx/stringTokens`    | string                              | asset, content, fontFamily, fontStyle, fontWeight, string, text, textCase, textDecoration, type                 |
-| `cx/themeTokens`     | color files                         | colors, without `path[1]` `base` or `utility`                                                                   |
-| `cx/numberTokens`    | number files                        | duration, letterSpacing, number, opacity, and the size group: dimension, fontSize, lineHeight, paragraphSpacing |
-| `cx/baseColorTokens` | Android `res/values/color_base.xml` | colors whose `path[1]` is `base`                                                                                |
+| Filter               | Files                               | Tokens                                                                                                                    |
+| -------------------- | ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| `cx/allTokens`       | main                                | every emitted type, without the colors under `color.primitive`, `color.context`, `color.utility` and `gradient.primitive` |
+| `cx/stringTokens`    | string                              | asset, content, fontFamily, fontStyle, fontWeight, string, text, textCase, textDecoration, type                           |
+| `cx/themeTokens`     | color files                         | colors, without `path[1]` `base` or `utility`, and shadows                                                                |
+| `cx/numberTokens`    | number files                        | duration, letterSpacing, number, opacity, and the size group: dimension, fontSize, lineHeight, paragraphSpacing           |
+| `cx/baseColorTokens` | Android `res/values/color_base.xml` | colors whose `path[1]` is `base`                                                                                          |
 
-The type groups are in `utils.js`. Tokens typed `boolean` or `other` are never emitted. `dimension.base.*` is emitted in the main and number files on purpose: other sizes reference it, and with `outputReferences` they name it.
+The type groups are in `utils.js`. Tokens typed `boolean` or `other` are never emitted, and neither are the groups that exist for Figma only, `figma.*` (mode switches and the frame sizes of the Figma files) and `bg-blur.*` (background blur effects); every filter leaves them out (`figmaOnlyGroups` in `filters.js`). `dimension.base.*` is emitted in the main and number files on purpose: other sizes reference it, and with `outputReferences` they name it.
+
+Only the web keeps a shadow token whole, so only the web color files hold shadows. The mobile platforms expand a shadow into its parts; the color part of each layer is a color, in the main file and the color files, and the other parts are sizes and strings.
 
 So the main file holds every token except the theme colors, with the values of the first theme (its component colors) and the first screen. The string, color and number files share no names with each other, and together they hold everything in main except the base colors.
 
@@ -159,11 +161,11 @@ So the main file holds every token except the theme colors, with the values of t
 
 SCSS with the prefix `cx`: the header line `$prefix: cx- !default;`, then one `$cx-<name>: <value> !default;` per token between `// scss-docs-start design-tokens` and `// scss-docs-end design-tokens`.
 
-- **Sizes**: pixels divided by 16 with `rem`; zero is `0rem`. A size that holds its value is not rounded (`dimension.base.05` is `0.03125rem`); a size that references another is rounded to four decimals, as math on rem values is (`size.unit.05` is `0.0313rem`).
+- **Sizes**: pixels divided by 16 with `rem`, not rounded; zero is `0rem`. A size that references another prints the same value (`dimension.base.05` and `size.unit.05` are `0.03125rem`).
 - **Colors**: `#ffffff`, or `rgba(22, 26, 27, 0.5)` with alpha.
 - **Line height tokens**: divided by the font size token at the same step, `typography.fontSize.<path[2]>.<path[3]>`, three decimals with trailing zeros removed, `em` (`1.25em`).
 - **Letter spacing** (tokens under `letterSpacing` and the `letter-spacing` of typography maps): pixels divided by 16, four decimals, `em` (`-0.5px` is `-0.0313em`).
-- **Shadows**: `x y blur spread color`, with ` inset` for inner shadows, layers joined with `, `, sizes in rem.
+- **Shadows**: `x y blur spread color`, with ` inset` for inner shadows, layers joined with `, `, sizes in rem. `main.scss` has the shadows with the colors of the first theme, and `color-<theme>.scss` every shadow with the colors of its theme.
 - **Font weights**: numbers (`400`). Font families: the whole list, as written.
 - **Assets**: in double quotes.
 - **Typography**: a Sass map with the keys `font-family`, `font-weight`, `font-size`, `line-height`, `font-style`, `letter-spacing`, `margin-bottom`, `text-transform`, `text-decoration`, in this order.

@@ -4,7 +4,7 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Sun, 27 Sep 2026 13:50:07 GMT
+// Generated on Sun, 27 Sep 2026 20:28:13 GMT
 // Chassis - Tokens v0.6.0
 // Copyright 2026 Ozgur Gunes
 // Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
@@ -1797,17 +1797,15 @@ public enum ChassisTokensColorDark {
     public static let ShadowElevationAccent051Color = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0.4)
     public static let ShadowElevationAccent052Color = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0.4)
     public static let ShadowElevationAccent053Color = UIColor(red: 0.820, green: 0.082, blue: 0.773, alpha: 0.2)
-    public static let ShadowGlowDefaultColor = UIColor(red: 0.098, green: 0.090, blue: 0.086, alpha: 1)
-    public static let ShadowGlowAlternateColor = UIColor(red: 0.925, green: 0.918, blue: 0.914, alpha: 1)
+    public static let ShadowGlowDefaultColor = UIColor(red: 0.925, green: 0.918, blue: 0.914, alpha: 1)
+    public static let ShadowGlowAlternateColor = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1)
     public static let ShadowGlowBlackColor = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1)
     public static let ShadowGlowWhiteColor = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1)
-    public static let ShadowGlowPrimaryColor = UIColor(red: 0.478, green: 0.180, blue: 0.435, alpha: 1)
-    public static let ShadowGlowSecondaryColor = UIColor(red: 0.141, green: 0.118, blue: 0.110, alpha: 1)
-    public static let ShadowGlowNeutralColor = UIColor(red: 0.494, green: 0.459, blue: 0.431, alpha: 1)
-    public static let ShadowGlowDangerColor = UIColor(red: 0.702, green: 0.149, blue: 0.118, alpha: 1)
-    public static let ShadowGlowSuccessColor = UIColor(red: 0.133, green: 0.439, blue: 0.247, alpha: 1)
-    public static let ShadowGlowWarningColor = UIColor(red: 0.541, green: 0.337, blue: 0.000, alpha: 1)
-    public static let ShadowGlowInfoColor = UIColor(red: 0.180, green: 0.361, blue: 0.620, alpha: 1)
-    public static let BgBlurDefaultColor = UIColor(red: 0.749, green: 0.729, blue: 0.718, alpha: 0.5)
-    public static let BgBlurAlternateColor = UIColor(red: 0.247, green: 0.231, blue: 0.216, alpha: 0.5)
+    public static let ShadowGlowPrimaryColor = UIColor(red: 0.608, green: 0.384, blue: 0.576, alpha: 1)
+    public static let ShadowGlowSecondaryColor = UIColor(red: 0.357, green: 0.337, blue: 0.333, alpha: 1)
+    public static let ShadowGlowNeutralColor = UIColor(red: 0.620, green: 0.596, blue: 0.573, alpha: 1)
+    public static let ShadowGlowDangerColor = UIColor(red: 0.776, green: 0.361, blue: 0.337, alpha: 1)
+    public static let ShadowGlowSuccessColor = UIColor(red: 0.349, green: 0.580, blue: 0.435, alpha: 1)
+    public static let ShadowGlowWarningColor = UIColor(red: 0.655, green: 0.502, blue: 0.251, alpha: 1)
+    public static let ShadowGlowInfoColor = UIColor(red: 0.384, green: 0.522, blue: 0.714, alpha: 1)
 }

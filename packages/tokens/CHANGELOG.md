@@ -2,9 +2,15 @@
 
 ## [0.6.0] - 2026-09-27
 
-The token build was rewritten on Style Dictionary 5.5, and the iOS and Android output was fixed so that it compiles and holds values the platforms can use. The web SCSS output is the same apart from one renamed token and one font style. The npm package now holds the iOS and Android files too.
+The token build was rewritten on Style Dictionary 5.5, and the iOS and Android output was fixed so that it compiles and holds values the platforms can use. The web SCSS output keeps its format; the tokens it renames, removes and corrects are listed below. The npm package now holds the iOS and Android files too.
 
 ### Breaking changes
+
+All platforms:
+
+- `size.nav-left.wdith-collapsed` is now `size.nav-left.width-collapsed`: `$cx-size-nav-left-width-collapsed`, `SizeNavLeftWidthCollapsed`, `size_nav_left_width_collapsed`. Rename it where you use it
+- `borderWidth.context.none`, `thin` and `thick` are removed. They held the same widths as `zero`, `small` and `xlarge`; use those instead
+- The build no longer writes the groups that exist for Figma only: `figma.*` (`$cx-figma-website-size-page-w` and the other `figma.website.*` tokens) and `bg-blur.*` (`$cx-bg-blur-default`, `BgBlurDefaultColor` and their other parts). Nothing replaces them in the output; they stay in the token source for Figma
 
 Web:
 
@@ -60,6 +66,7 @@ The presets for teams that do not use Chassis CSS are kept, in the new structure
 
 ### Added
 
+- The web color files, `color-<theme>.scss`, hold every shadow token with the colors of their theme, so a dark theme has dark shadows: `$cx-shadow-glow-primary` is `#40bbd9` in `color-dark.scss`. `main.scss` keeps the shadows of the first theme. iOS and Android already had the color parts of the shadows in their color files
 - `pnpm tokens:verify`: builds into `dist-next/` and compares every file with `dist/`; the release workflow runs it before publishing. It also fails on a reference that names nothing the output declares
 - `--out <dir>` build option
 - `web-scss` platform: SCSS variables with resolved values in rem units, for CSS frameworks other than Chassis CSS
@@ -86,6 +93,16 @@ The presets for teams that do not use Chassis CSS are kept, in the new structure
 
 ### Fixed
 
+- Level `05` of `shadow.elevation.<context>` in the ten contexts other than `default` has a spread of `{dimension.base.nd05}` in its second layer. The spread was `-0.5` without a unit, so the web printed an invalid `box-shadow` (`0.125rem -0.5 rgba(…)`); it is now `-0.03125rem`. iOS and Android keep `-0.5`
+- `space.unit.136` is 136 (`8.5rem`), not 128: it referenced `dimension.base.128`
+- `size.modal.window-small-h` is 360 (`22.5rem`), not 640, which was taller than the medium (480) and large (600) windows
+- `space.website.section-padding-y` is 64 on the large screen and 48 on the medium screen; they were 48 and 64, so the medium screen had the largest padding
+- `shadow.glow.*` follows the theme: each glow references `color.context.<context>.base-color`, or `fg-main` for `default` and `alternate`. It referenced the light palette, so the glows of the dark theme had the light colors
+- The dark theme declares `color.context.primary.bg-solid`, `color.utility.container-prototype` and `color.utility.container-flow`, as the light theme does. `primary.bg-solid` referenced the light palette in the dark theme; the values of the current brands do not change
+- `font.html.list` references the list tokens, `typography.fontWeight.html.list`, `typography.fontSize.html.list` and `typography.lineHeight.html.list`, not those of `body`. The values do not change; on the web the map names `var(--font-weight-html-list)`, `var(--font-size-html-list)` and `var(--line-height-html-list)`, which Chassis CSS declares
+- The iOS and Android main files have the color of each layer of `shadow.context.*`, such as `ShadowContextSmall1Color` and `shadow_context_small_1_color`, next to its other parts. The filter of the main file left them out with the context colors
+- Web sizes that reference another size are not rounded: `size.unit.05` is `0.03125rem`, as `dimension.base.05` is, not `0.0313rem`. The steps of half a pixel and the shadows and radii that use them change in the fourth and fifth decimal
+- A filter value that the configuration does not have, such as `--brand chasis`, fails the build and names the configured values; so do filters that select no build together, and a filter without a value. The build ran nothing and succeeded
 - Android opacity and letter spacing tokens are float resources (`<item type="dimen" format="float">`) instead of `<integer>`. Android rejects fractions such as `0.4` in integer resources, so `main.xml` and the number files did not compile. Read them with `ResourcesCompat.getFloat`; references to them are `@dimen/…`
 - Renamed `space.website.content.headers-gap` to `space.website.content.header-gap` in the small screen token set, so every screen declares the same name. On Android, the small screen had no value for `header-gap` in the default folder
 - iOS and Android line heights that are a percentage in the design (`125%`, `150%`) are sizes of the typography token's font size: `FontContextJumboLineHeight` is `CGFloat(120)` and `font_context_jumbo_line_height` is `120sp`, not `125`. 9 typography tokens per file of `Main` and the number files

@@ -39,7 +39,7 @@
         "path": ["figma", "website", "variant", "nav"],
         "$type": "content"
       },
-      "files": ["cx/allTokens", "cx/stringTokens"]
+      "files": []
     },
     {
       "token": {
@@ -287,7 +287,15 @@
         "path": ["shadow", "context", "none"],
         "$type": "shadow"
       },
-      "files": ["cx/allTokens"]
+      "files": ["cx/allTokens", "cx/themeTokens"]
+    },
+    {
+      "token": {
+        "name": "cx-bg-blur-default",
+        "path": ["bg-blur", "default"],
+        "$type": "shadow"
+      },
+      "files": []
     }
   ]
 }

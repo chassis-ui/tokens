@@ -1595,9 +1595,9 @@
         "$type": "typography",
         "$value": {
           "fontFamily": "{typography.fontFamily.html}",
-          "fontWeight": "{typography.fontWeight.html.body}",
-          "lineHeight": "{typography.lineHeight.html.body}",
-          "fontSize": "{typography.fontSize.html.body}",
+          "fontWeight": "{typography.fontWeight.html.list}",
+          "lineHeight": "{typography.lineHeight.html.list}",
+          "fontSize": "{typography.fontSize.html.list}",
           "letterSpacing": "{typography.letterSpacing.base.zero}",
           "paragraphSpacing": "{typography.paragraphSpacing.base.zero}",
           "textCase": "{typography.textCase.base.none}",
@@ -3443,7 +3443,7 @@
       },
       "window-small-h": {
         "$type": "sizing",
-        "$value": "640"
+        "$value": "360"
       }
     },
     "notification": {
@@ -3461,7 +3461,7 @@
         "$type": "sizing",
         "$value": "{size.unit.256}"
       },
-      "wdith-collapsed": {
+      "width-collapsed": {
         "$type": "sizing",
         "$value": "{size.unit.72}"
       }
@@ -4349,18 +4349,6 @@
   },
   "borderWidth": {
     "context": {
-      "none": {
-        "$type": "borderWidth",
-        "$value": "{size.unit.0}"
-      },
-      "thin": {
-        "$type": "borderWidth",
-        "$value": "{size.unit.05}"
-      },
-      "thick": {
-        "$type": "borderWidth",
-        "$value": "{size.unit.2}"
-      },
       "zero": {
         "$type": "borderWidth",
         "$value": "{size.unit.0}"

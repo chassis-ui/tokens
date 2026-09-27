@@ -4,8 +4,8 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Sun, 27 Sep 2026 11:29:40 GMT
-// Chassis - Tokens v0.5.3
+// Generated on Sun, 27 Sep 2026 20:31:50 GMT
+// Chassis - Tokens v0.6.0
 // Copyright 2026 Ozgur Gunes
 // Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
 
@@ -1797,17 +1797,15 @@ public enum ChassisTokensColorDark {
     public static let ShadowElevationAccent051Color = Color(red: 0.000, green: 0.000, blue: 0.000, opacity: 0.4)
     public static let ShadowElevationAccent052Color = Color(red: 0.000, green: 0.000, blue: 0.000, opacity: 0.4)
     public static let ShadowElevationAccent053Color = Color(red: 0.961, green: 0.322, blue: 0.000, opacity: 0.2)
-    public static let ShadowGlowDefaultColor = Color(red: 0.086, green: 0.102, blue: 0.106, opacity: 1)
-    public static let ShadowGlowAlternateColor = Color(red: 0.914, green: 0.925, blue: 0.929, opacity: 1)
+    public static let ShadowGlowDefaultColor = Color(red: 0.914, green: 0.925, blue: 0.929, opacity: 1)
+    public static let ShadowGlowAlternateColor = Color(red: 1.000, green: 1.000, blue: 1.000, opacity: 1)
     public static let ShadowGlowBlackColor = Color(red: 0.000, green: 0.000, blue: 0.000, opacity: 1)
     public static let ShadowGlowWhiteColor = Color(red: 1.000, green: 1.000, blue: 1.000, opacity: 1)
-    public static let ShadowGlowPrimaryColor = Color(red: 0.000, green: 0.643, blue: 0.800, opacity: 1)
-    public static let ShadowGlowSecondaryColor = Color(red: 0.961, green: 0.322, blue: 0.000, opacity: 1)
-    public static let ShadowGlowNeutralColor = Color(red: 0.435, green: 0.502, blue: 0.522, opacity: 1)
-    public static let ShadowGlowDangerColor = Color(red: 0.961, green: 0.137, blue: 0.078, opacity: 1)
-    public static let ShadowGlowSuccessColor = Color(red: 0.063, green: 0.761, blue: 0.388, opacity: 1)
-    public static let ShadowGlowWarningColor = Color(red: 0.961, green: 0.639, blue: 0.000, opacity: 1)
-    public static let ShadowGlowInfoColor = Color(red: 0.078, green: 0.078, blue: 0.961, opacity: 1)
-    public static let BgBlurDefaultColor = Color(red: 0.718, green: 0.753, blue: 0.761, opacity: 0.5)
-    public static let BgBlurAlternateColor = Color(red: 0.220, green: 0.251, blue: 0.263, opacity: 0.5)
+    public static let ShadowGlowPrimaryColor = Color(red: 0.251, green: 0.733, blue: 0.851, opacity: 1)
+    public static let ShadowGlowSecondaryColor = Color(red: 0.973, green: 0.490, blue: 0.251, opacity: 1)
+    public static let ShadowGlowNeutralColor = Color(red: 0.576, green: 0.627, blue: 0.643, opacity: 1)
+    public static let ShadowGlowDangerColor = Color(red: 0.973, green: 0.353, blue: 0.310, opacity: 1)
+    public static let ShadowGlowSuccessColor = Color(red: 0.298, green: 0.820, blue: 0.541, opacity: 1)
+    public static let ShadowGlowWarningColor = Color(red: 0.973, green: 0.729, blue: 0.251, opacity: 1)
+    public static let ShadowGlowInfoColor = Color(red: 0.310, green: 0.310, blue: 0.973, opacity: 1)
 }

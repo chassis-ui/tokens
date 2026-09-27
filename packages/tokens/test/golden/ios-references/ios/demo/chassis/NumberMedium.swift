@@ -4,8 +4,8 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Sun, 27 Sep 2026 12:03:32 GMT
-// Chassis - Tokens v0.5.3
+// Generated on Sun, 27 Sep 2026 20:31:49 GMT
+// Chassis - Tokens v0.6.0
 // Copyright 2026 Ozgur Gunes
 // Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
 
@@ -226,11 +226,11 @@ public enum ChassisTokensNumberMedium {
     public static let SizeModalWindowXlargeH = CGFloat(720)
     public static let SizeModalWindowLargeH = CGFloat(600)
     public static let SizeModalWindowMediumH = CGFloat(480)
-    public static let SizeModalWindowSmallH = CGFloat(640)
+    public static let SizeModalWindowSmallH = CGFloat(360)
     public static let SizeNotificationIcon = SizeUnit28
     public static let SizeNavLeftWidth = SizeNavLeftWidthExpanded
     public static let SizeNavLeftWidthExpanded = SizeUnit256
-    public static let SizeNavLeftWdithCollapsed = SizeUnit72
+    public static let SizeNavLeftWidthCollapsed = SizeUnit72
     public static let SizeNavTopHeight = SizeUnit64
     public static let SizePaginationDotIdleH = SizeUnit8
     public static let SizePaginationDotIdleW = SizeUnit8
@@ -283,7 +283,7 @@ public enum ChassisTokensNumberMedium {
     public static let SpaceUnit112 = DimensionBase112
     public static let SpaceUnit120 = DimensionBase120
     public static let SpaceUnit128 = DimensionBase128
-    public static let SpaceUnit136 = DimensionBase128
+    public static let SpaceUnit136 = DimensionBase136
     public static let SpaceUnit05 = DimensionBase05
     public static let SpaceUnitD05 = DimensionBaseD05
     public static let SpaceUnitD15 = DimensionBaseD15
@@ -436,7 +436,7 @@ public enum ChassisTokensNumberMedium {
     public static let SpaceSegmentSmallPaddingY = SpaceUnit3
     public static let SpaceSegmentSmallPaddingX = SpaceUnit8
     public static let SpaceSegmentSmallGap = SpaceUnit8
-    public static let SpaceWebsiteSectionPaddingY = SpaceUnit64
+    public static let SpaceWebsiteSectionPaddingY = SpaceUnit48
     public static let SpaceWebsiteSectionPaddingX = SpaceUnit24
     public static let SpaceWebsiteSectionGap = SpaceUnit32
     public static let SpaceWebsiteContentHeaderGap = SpaceUnit12
@@ -471,9 +471,6 @@ public enum ChassisTokensNumberMedium {
     public static let OpacityContextDimSubtle = CGFloat(0.3)
     public static let OpacityContextDimSlight = CGFloat(0.05)
     public static let OpacityContextTransparentColor = CGFloat(0)
-    public static let FigmaWebsiteSizePageW = CGFloat(768)
-    public static let FigmaWebsiteSizeSlideMinW = CGFloat(560)
-    public static let FigmaWebsiteSizeCardMinW = CGFloat(320)
     public static let TypographyFontSizeText5xlarge = CGFloat(44)
     public static let TypographyFontSizeText4xlarge = CGFloat(38)
     public static let TypographyFontSizeText3xlarge = CGFloat(32)
@@ -1109,8 +1106,8 @@ public enum ChassisTokensNumberMedium {
     public static let FontHtmlBlockquoteFontSize = TypographyFontSizeHtmlBlockquote
     public static let FontHtmlBlockquoteLetterSpacing = TypographyLetterSpacingBaseZero
     public static let FontHtmlBlockquoteParagraphSpacing = TypographyParagraphSpacingBaseZero
-    public static let FontHtmlListLineHeight = TypographyLineHeightHtmlBody
-    public static let FontHtmlListFontSize = TypographyFontSizeHtmlBody
+    public static let FontHtmlListLineHeight = TypographyLineHeightHtmlList
+    public static let FontHtmlListFontSize = TypographyFontSizeHtmlList
     public static let FontHtmlListLetterSpacing = TypographyLetterSpacingBaseZero
     public static let FontHtmlListParagraphSpacing = TypographyParagraphSpacingBaseZero
     public static let FontHtmlCiteLineHeight = TypographyLineHeightHtmlCite
@@ -1413,9 +1410,6 @@ public enum ChassisTokensNumberMedium {
     public static let FontWebsiteModuleTitleFontSize = TypographyFontSizeWebsiteModuleTitle
     public static let FontWebsiteModuleTitleLetterSpacing = TypographyLetterSpacingBaseZero
     public static let FontWebsiteModuleTitleParagraphSpacing = TypographyParagraphSpacingBaseZero
-    public static let BorderWidthContextNone = SizeUnit0
-    public static let BorderWidthContextThin = SizeUnit05
-    public static let BorderWidthContextThick = SizeUnit2
     public static let BorderWidthContextZero = SizeUnit0
     public static let BorderWidthContextSmall = SizeUnit05
     public static let BorderWidthContextMedium = SizeUnit1
@@ -1887,7 +1881,7 @@ public enum ChassisTokensNumberMedium {
     public static let ShadowElevationAlternate051OffsetY = DimensionBase1
     public static let ShadowElevationAlternate052Blur = DimensionBase2
     public static let ShadowElevationAlternate052Radius = CGFloat(1)
-    public static let ShadowElevationAlternate052Spread = CGFloat(-0.5)
+    public static let ShadowElevationAlternate052Spread = DimensionBaseNd05
     public static let ShadowElevationAlternate052OffsetX = DimensionBase0
     public static let ShadowElevationAlternate052OffsetY = DimensionBaseD05
     public static let ShadowElevationPrimary101Blur = DimensionBase8
@@ -2047,7 +2041,7 @@ public enum ChassisTokensNumberMedium {
     public static let ShadowElevationPrimary051OffsetY = DimensionBase1
     public static let ShadowElevationPrimary052Blur = DimensionBase2
     public static let ShadowElevationPrimary052Radius = CGFloat(1)
-    public static let ShadowElevationPrimary052Spread = CGFloat(-0.5)
+    public static let ShadowElevationPrimary052Spread = DimensionBaseNd05
     public static let ShadowElevationPrimary052OffsetX = DimensionBase0
     public static let ShadowElevationPrimary052OffsetY = DimensionBaseD05
     public static let ShadowElevationPrimary053Blur = DimensionBase4
@@ -2212,7 +2206,7 @@ public enum ChassisTokensNumberMedium {
     public static let ShadowElevationSecondary051OffsetY = DimensionBase1
     public static let ShadowElevationSecondary052Blur = DimensionBase2
     public static let ShadowElevationSecondary052Radius = CGFloat(1)
-    public static let ShadowElevationSecondary052Spread = CGFloat(-0.5)
+    public static let ShadowElevationSecondary052Spread = DimensionBaseNd05
     public static let ShadowElevationSecondary052OffsetX = DimensionBase0
     public static let ShadowElevationSecondary052OffsetY = DimensionBaseD05
     public static let ShadowElevationSecondary053Blur = DimensionBase4
@@ -2377,7 +2371,7 @@ public enum ChassisTokensNumberMedium {
     public static let ShadowElevationNeutral051OffsetY = DimensionBase1
     public static let ShadowElevationNeutral052Blur = DimensionBase2
     public static let ShadowElevationNeutral052Radius = CGFloat(1)
-    public static let ShadowElevationNeutral052Spread = CGFloat(-0.5)
+    public static let ShadowElevationNeutral052Spread = DimensionBaseNd05
     public static let ShadowElevationNeutral052OffsetX = DimensionBase0
     public static let ShadowElevationNeutral052OffsetY = DimensionBaseD05
     public static let ShadowElevationNeutral053Blur = DimensionBase4
@@ -2542,7 +2536,7 @@ public enum ChassisTokensNumberMedium {
     public static let ShadowElevationDanger051OffsetY = DimensionBase1
     public static let ShadowElevationDanger052Blur = DimensionBase2
     public static let ShadowElevationDanger052Radius = CGFloat(1)
-    public static let ShadowElevationDanger052Spread = CGFloat(-0.5)
+    public static let ShadowElevationDanger052Spread = DimensionBaseNd05
     public static let ShadowElevationDanger052OffsetX = DimensionBase0
     public static let ShadowElevationDanger052OffsetY = DimensionBaseD05
     public static let ShadowElevationDanger053Blur = DimensionBase4
@@ -2707,7 +2701,7 @@ public enum ChassisTokensNumberMedium {
     public static let ShadowElevationSuccess051OffsetY = DimensionBase1
     public static let ShadowElevationSuccess052Blur = DimensionBase2
     public static let ShadowElevationSuccess052Radius = CGFloat(1)
-    public static let ShadowElevationSuccess052Spread = CGFloat(-0.5)
+    public static let ShadowElevationSuccess052Spread = DimensionBaseNd05
     public static let ShadowElevationSuccess052OffsetX = DimensionBase0
     public static let ShadowElevationSuccess052OffsetY = DimensionBaseD05
     public static let ShadowElevationSuccess053Blur = DimensionBase4
@@ -2872,7 +2866,7 @@ public enum ChassisTokensNumberMedium {
     public static let ShadowElevationWarning051OffsetY = DimensionBase1
     public static let ShadowElevationWarning052Blur = DimensionBase2
     public static let ShadowElevationWarning052Radius = CGFloat(1)
-    public static let ShadowElevationWarning052Spread = CGFloat(-0.5)
+    public static let ShadowElevationWarning052Spread = DimensionBaseNd05
     public static let ShadowElevationWarning052OffsetX = DimensionBase0
     public static let ShadowElevationWarning052OffsetY = DimensionBaseD05
     public static let ShadowElevationWarning053Blur = DimensionBase4
@@ -3037,7 +3031,7 @@ public enum ChassisTokensNumberMedium {
     public static let ShadowElevationInfo051OffsetY = DimensionBase1
     public static let ShadowElevationInfo052Blur = DimensionBase2
     public static let ShadowElevationInfo052Radius = CGFloat(1)
-    public static let ShadowElevationInfo052Spread = CGFloat(-0.5)
+    public static let ShadowElevationInfo052Spread = DimensionBaseNd05
     public static let ShadowElevationInfo052OffsetX = DimensionBase0
     public static let ShadowElevationInfo052OffsetY = DimensionBaseD05
     public static let ShadowElevationInfo053Blur = DimensionBase4
@@ -3202,7 +3196,7 @@ public enum ChassisTokensNumberMedium {
     public static let ShadowElevationBrand051OffsetY = DimensionBase1
     public static let ShadowElevationBrand052Blur = DimensionBase2
     public static let ShadowElevationBrand052Radius = CGFloat(1)
-    public static let ShadowElevationBrand052Spread = CGFloat(-0.5)
+    public static let ShadowElevationBrand052Spread = DimensionBaseNd05
     public static let ShadowElevationBrand052OffsetX = DimensionBase0
     public static let ShadowElevationBrand052OffsetY = DimensionBaseD05
     public static let ShadowElevationBrand053Blur = DimensionBase4
@@ -3367,7 +3361,7 @@ public enum ChassisTokensNumberMedium {
     public static let ShadowElevationAccent051OffsetY = DimensionBase1
     public static let ShadowElevationAccent052Blur = DimensionBase2
     public static let ShadowElevationAccent052Radius = CGFloat(1)
-    public static let ShadowElevationAccent052Spread = CGFloat(-0.5)
+    public static let ShadowElevationAccent052Spread = DimensionBaseNd05
     public static let ShadowElevationAccent052OffsetX = DimensionBase0
     public static let ShadowElevationAccent052OffsetY = DimensionBaseD05
     public static let ShadowElevationAccent053Blur = DimensionBase4
@@ -3430,14 +3424,4 @@ public enum ChassisTokensNumberMedium {
     public static let ShadowGlowInfoSpread = DimensionBase0
     public static let ShadowGlowInfoOffsetX = DimensionBase0
     public static let ShadowGlowInfoOffsetY = DimensionBase0
-    public static let BgBlurDefaultBlur = DimensionBase48
-    public static let BgBlurDefaultRadius = CGFloat(24)
-    public static let BgBlurDefaultSpread = DimensionBase0
-    public static let BgBlurDefaultOffsetX = DimensionBase0
-    public static let BgBlurDefaultOffsetY = DimensionBase0
-    public static let BgBlurAlternateBlur = DimensionBase48
-    public static let BgBlurAlternateRadius = CGFloat(24)
-    public static let BgBlurAlternateSpread = DimensionBase0
-    public static let BgBlurAlternateOffsetX = DimensionBase0
-    public static let BgBlurAlternateOffsetY = DimensionBase0
 }

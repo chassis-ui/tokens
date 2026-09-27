@@ -2,8 +2,8 @@
 
 <!--
   Do not edit directly, this file was auto-generated.
-  Generated on Sun, 27 Sep 2026 11:06:41 GMT
-  Chassis - Tokens v0.5.3
+  Generated on Sun, 27 Sep 2026 20:31:47 GMT
+  Chassis - Tokens v0.6.0
   Copyright 2026 Ozgur Gunes
   Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
 -->
@@ -222,11 +222,11 @@
   <dimen name="size_modal_window_xlarge_h">720dp</dimen>
   <dimen name="size_modal_window_large_h">600dp</dimen>
   <dimen name="size_modal_window_medium_h">480dp</dimen>
-  <dimen name="size_modal_window_small_h">640dp</dimen>
+  <dimen name="size_modal_window_small_h">360dp</dimen>
   <dimen name="size_notification_icon">@dimen/size_unit_28</dimen>
   <dimen name="size_nav_left_width">@dimen/size_nav_left_width_expanded</dimen>
   <dimen name="size_nav_left_width_expanded">@dimen/size_unit_256</dimen>
-  <dimen name="size_nav_left_wdith_collapsed">@dimen/size_unit_72</dimen>
+  <dimen name="size_nav_left_width_collapsed">@dimen/size_unit_72</dimen>
   <dimen name="size_nav_top_height">@dimen/size_unit_64</dimen>
   <dimen name="size_pagination_dot_idle_h">@dimen/size_unit_8</dimen>
   <dimen name="size_pagination_dot_idle_w">@dimen/size_unit_8</dimen>
@@ -279,7 +279,7 @@
   <dimen name="space_unit_112">@dimen/dimension_base_112</dimen>
   <dimen name="space_unit_120">@dimen/dimension_base_120</dimen>
   <dimen name="space_unit_128">@dimen/dimension_base_128</dimen>
-  <dimen name="space_unit_136">@dimen/dimension_base_128</dimen>
+  <dimen name="space_unit_136">@dimen/dimension_base_136</dimen>
   <dimen name="space_unit_05">@dimen/dimension_base_05</dimen>
   <dimen name="space_unit_d05">@dimen/dimension_base_d05</dimen>
   <dimen name="space_unit_d15">@dimen/dimension_base_d15</dimen>
@@ -432,7 +432,7 @@
   <dimen name="space_segment_small_padding_y">@dimen/space_unit_3</dimen>
   <dimen name="space_segment_small_padding_x">@dimen/space_unit_8</dimen>
   <dimen name="space_segment_small_gap">@dimen/space_unit_8</dimen>
-  <dimen name="space_website_section_padding_y">@dimen/space_unit_48</dimen>
+  <dimen name="space_website_section_padding_y">@dimen/space_unit_64</dimen>
   <dimen name="space_website_section_padding_x">@dimen/space_unit_24</dimen>
   <dimen name="space_website_section_gap">@dimen/space_unit_48</dimen>
   <dimen name="space_website_content_header_gap">@dimen/space_unit_16</dimen>
@@ -467,9 +467,6 @@
   <item name="opacity_context_dim_subtle" type="dimen" format="float">0.3</item>
   <item name="opacity_context_dim_slight" type="dimen" format="float">0.05</item>
   <item name="opacity_context_transparent_color" type="dimen" format="float">0</item>
-  <dimen name="figma_website_size_page_w">1512dp</dimen>
-  <dimen name="figma_website_size_slide_min_w">560dp</dimen>
-  <dimen name="figma_website_size_card_min_w">560dp</dimen>
   <dimen name="typography_font_size_text_5xlarge">44sp</dimen>
   <dimen name="typography_font_size_text_4xlarge">38sp</dimen>
   <dimen name="typography_font_size_text_3xlarge">32sp</dimen>
@@ -1105,8 +1102,8 @@
   <dimen name="font_html_blockquote_font_size">@dimen/typography_font_size_html_blockquote</dimen>
   <item name="font_html_blockquote_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_base_zero</item>
   <dimen name="font_html_blockquote_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_html_list_line_height">@dimen/typography_line_height_html_body</dimen>
-  <dimen name="font_html_list_font_size">@dimen/typography_font_size_html_body</dimen>
+  <dimen name="font_html_list_line_height">@dimen/typography_line_height_html_list</dimen>
+  <dimen name="font_html_list_font_size">@dimen/typography_font_size_html_list</dimen>
   <item name="font_html_list_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_base_zero</item>
   <dimen name="font_html_list_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
   <dimen name="font_html_cite_line_height">@dimen/typography_line_height_html_cite</dimen>
@@ -1409,9 +1406,6 @@
   <dimen name="font_website_module_title_font_size">@dimen/typography_font_size_website_module_title</dimen>
   <item name="font_website_module_title_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_base_zero</item>
   <dimen name="font_website_module_title_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="border_width_context_none">@dimen/size_unit_0</dimen>
-  <dimen name="border_width_context_thin">@dimen/size_unit_05</dimen>
-  <dimen name="border_width_context_thick">@dimen/size_unit_2</dimen>
   <dimen name="border_width_context_zero">@dimen/size_unit_0</dimen>
   <dimen name="border_width_context_small">@dimen/size_unit_05</dimen>
   <dimen name="border_width_context_medium">@dimen/size_unit_1</dimen>
@@ -1797,7 +1791,7 @@
   <dimen name="shadow_elevation_alternate_05_1_offset_x">@dimen/dimension_base_0</dimen>
   <dimen name="shadow_elevation_alternate_05_1_offset_y">@dimen/dimension_base_1</dimen>
   <dimen name="shadow_elevation_alternate_05_2_blur">@dimen/dimension_base_2</dimen>
-  <dimen name="shadow_elevation_alternate_05_2_spread">-0.5dp</dimen>
+  <dimen name="shadow_elevation_alternate_05_2_spread">@dimen/dimension_base_nd05</dimen>
   <dimen name="shadow_elevation_alternate_05_2_offset_x">@dimen/dimension_base_0</dimen>
   <dimen name="shadow_elevation_alternate_05_2_offset_y">@dimen/dimension_base_d05</dimen>
   <dimen name="shadow_elevation_primary_10_1_blur">@dimen/dimension_base_8</dimen>
@@ -1925,7 +1919,7 @@
   <dimen name="shadow_elevation_primary_05_1_offset_x">@dimen/dimension_base_0</dimen>
   <dimen name="shadow_elevation_primary_05_1_offset_y">@dimen/dimension_base_1</dimen>
   <dimen name="shadow_elevation_primary_05_2_blur">@dimen/dimension_base_2</dimen>
-  <dimen name="shadow_elevation_primary_05_2_spread">-0.5dp</dimen>
+  <dimen name="shadow_elevation_primary_05_2_spread">@dimen/dimension_base_nd05</dimen>
   <dimen name="shadow_elevation_primary_05_2_offset_x">@dimen/dimension_base_0</dimen>
   <dimen name="shadow_elevation_primary_05_2_offset_y">@dimen/dimension_base_d05</dimen>
   <dimen name="shadow_elevation_primary_05_3_blur">@dimen/dimension_base_4</dimen>
@@ -2057,7 +2051,7 @@
   <dimen name="shadow_elevation_secondary_05_1_offset_x">@dimen/dimension_base_0</dimen>
   <dimen name="shadow_elevation_secondary_05_1_offset_y">@dimen/dimension_base_1</dimen>
   <dimen name="shadow_elevation_secondary_05_2_blur">@dimen/dimension_base_2</dimen>
-  <dimen name="shadow_elevation_secondary_05_2_spread">-0.5dp</dimen>
+  <dimen name="shadow_elevation_secondary_05_2_spread">@dimen/dimension_base_nd05</dimen>
   <dimen name="shadow_elevation_secondary_05_2_offset_x">@dimen/dimension_base_0</dimen>
   <dimen name="shadow_elevation_secondary_05_2_offset_y">@dimen/dimension_base_d05</dimen>
   <dimen name="shadow_elevation_secondary_05_3_blur">@dimen/dimension_base_4</dimen>
@@ -2189,7 +2183,7 @@
   <dimen name="shadow_elevation_neutral_05_1_offset_x">@dimen/dimension_base_0</dimen>
   <dimen name="shadow_elevation_neutral_05_1_offset_y">@dimen/dimension_base_1</dimen>
   <dimen name="shadow_elevation_neutral_05_2_blur">@dimen/dimension_base_2</dimen>
-  <dimen name="shadow_elevation_neutral_05_2_spread">-0.5dp</dimen>
+  <dimen name="shadow_elevation_neutral_05_2_spread">@dimen/dimension_base_nd05</dimen>
   <dimen name="shadow_elevation_neutral_05_2_offset_x">@dimen/dimension_base_0</dimen>
   <dimen name="shadow_elevation_neutral_05_2_offset_y">@dimen/dimension_base_d05</dimen>
   <dimen name="shadow_elevation_neutral_05_3_blur">@dimen/dimension_base_4</dimen>
@@ -2321,7 +2315,7 @@
   <dimen name="shadow_elevation_danger_05_1_offset_x">@dimen/dimension_base_0</dimen>
   <dimen name="shadow_elevation_danger_05_1_offset_y">@dimen/dimension_base_1</dimen>
   <dimen name="shadow_elevation_danger_05_2_blur">@dimen/dimension_base_2</dimen>
-  <dimen name="shadow_elevation_danger_05_2_spread">-0.5dp</dimen>
+  <dimen name="shadow_elevation_danger_05_2_spread">@dimen/dimension_base_nd05</dimen>
   <dimen name="shadow_elevation_danger_05_2_offset_x">@dimen/dimension_base_0</dimen>
   <dimen name="shadow_elevation_danger_05_2_offset_y">@dimen/dimension_base_d05</dimen>
   <dimen name="shadow_elevation_danger_05_3_blur">@dimen/dimension_base_4</dimen>
@@ -2453,7 +2447,7 @@
   <dimen name="shadow_elevation_success_05_1_offset_x">@dimen/dimension_base_0</dimen>
   <dimen name="shadow_elevation_success_05_1_offset_y">@dimen/dimension_base_1</dimen>
   <dimen name="shadow_elevation_success_05_2_blur">@dimen/dimension_base_2</dimen>
-  <dimen name="shadow_elevation_success_05_2_spread">-0.5dp</dimen>
+  <dimen name="shadow_elevation_success_05_2_spread">@dimen/dimension_base_nd05</dimen>
   <dimen name="shadow_elevation_success_05_2_offset_x">@dimen/dimension_base_0</dimen>
   <dimen name="shadow_elevation_success_05_2_offset_y">@dimen/dimension_base_d05</dimen>
   <dimen name="shadow_elevation_success_05_3_blur">@dimen/dimension_base_4</dimen>
@@ -2585,7 +2579,7 @@
   <dimen name="shadow_elevation_warning_05_1_offset_x">@dimen/dimension_base_0</dimen>
   <dimen name="shadow_elevation_warning_05_1_offset_y">@dimen/dimension_base_1</dimen>
   <dimen name="shadow_elevation_warning_05_2_blur">@dimen/dimension_base_2</dimen>
-  <dimen name="shadow_elevation_warning_05_2_spread">-0.5dp</dimen>
+  <dimen name="shadow_elevation_warning_05_2_spread">@dimen/dimension_base_nd05</dimen>
   <dimen name="shadow_elevation_warning_05_2_offset_x">@dimen/dimension_base_0</dimen>
   <dimen name="shadow_elevation_warning_05_2_offset_y">@dimen/dimension_base_d05</dimen>
   <dimen name="shadow_elevation_warning_05_3_blur">@dimen/dimension_base_4</dimen>
@@ -2717,7 +2711,7 @@
   <dimen name="shadow_elevation_info_05_1_offset_x">@dimen/dimension_base_0</dimen>
   <dimen name="shadow_elevation_info_05_1_offset_y">@dimen/dimension_base_1</dimen>
   <dimen name="shadow_elevation_info_05_2_blur">@dimen/dimension_base_2</dimen>
-  <dimen name="shadow_elevation_info_05_2_spread">-0.5dp</dimen>
+  <dimen name="shadow_elevation_info_05_2_spread">@dimen/dimension_base_nd05</dimen>
   <dimen name="shadow_elevation_info_05_2_offset_x">@dimen/dimension_base_0</dimen>
   <dimen name="shadow_elevation_info_05_2_offset_y">@dimen/dimension_base_d05</dimen>
   <dimen name="shadow_elevation_info_05_3_blur">@dimen/dimension_base_4</dimen>
@@ -2849,7 +2843,7 @@
   <dimen name="shadow_elevation_brand_05_1_offset_x">@dimen/dimension_base_0</dimen>
   <dimen name="shadow_elevation_brand_05_1_offset_y">@dimen/dimension_base_1</dimen>
   <dimen name="shadow_elevation_brand_05_2_blur">@dimen/dimension_base_2</dimen>
-  <dimen name="shadow_elevation_brand_05_2_spread">-0.5dp</dimen>
+  <dimen name="shadow_elevation_brand_05_2_spread">@dimen/dimension_base_nd05</dimen>
   <dimen name="shadow_elevation_brand_05_2_offset_x">@dimen/dimension_base_0</dimen>
   <dimen name="shadow_elevation_brand_05_2_offset_y">@dimen/dimension_base_d05</dimen>
   <dimen name="shadow_elevation_brand_05_3_blur">@dimen/dimension_base_4</dimen>
@@ -2981,7 +2975,7 @@
   <dimen name="shadow_elevation_accent_05_1_offset_x">@dimen/dimension_base_0</dimen>
   <dimen name="shadow_elevation_accent_05_1_offset_y">@dimen/dimension_base_1</dimen>
   <dimen name="shadow_elevation_accent_05_2_blur">@dimen/dimension_base_2</dimen>
-  <dimen name="shadow_elevation_accent_05_2_spread">-0.5dp</dimen>
+  <dimen name="shadow_elevation_accent_05_2_spread">@dimen/dimension_base_nd05</dimen>
   <dimen name="shadow_elevation_accent_05_2_offset_x">@dimen/dimension_base_0</dimen>
   <dimen name="shadow_elevation_accent_05_2_offset_y">@dimen/dimension_base_d05</dimen>
   <dimen name="shadow_elevation_accent_05_3_blur">@dimen/dimension_base_4</dimen>
@@ -3032,12 +3026,4 @@
   <dimen name="shadow_glow_info_spread">@dimen/dimension_base_0</dimen>
   <dimen name="shadow_glow_info_offset_x">@dimen/dimension_base_0</dimen>
   <dimen name="shadow_glow_info_offset_y">@dimen/dimension_base_0</dimen>
-  <dimen name="bg_blur_default_blur">@dimen/dimension_base_48</dimen>
-  <dimen name="bg_blur_default_spread">@dimen/dimension_base_0</dimen>
-  <dimen name="bg_blur_default_offset_x">@dimen/dimension_base_0</dimen>
-  <dimen name="bg_blur_default_offset_y">@dimen/dimension_base_0</dimen>
-  <dimen name="bg_blur_alternate_blur">@dimen/dimension_base_48</dimen>
-  <dimen name="bg_blur_alternate_spread">@dimen/dimension_base_0</dimen>
-  <dimen name="bg_blur_alternate_offset_x">@dimen/dimension_base_0</dimen>
-  <dimen name="bg_blur_alternate_offset_y">@dimen/dimension_base_0</dimen>
 </resources>

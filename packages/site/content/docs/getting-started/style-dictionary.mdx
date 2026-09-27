@@ -420,10 +420,10 @@ Sizes are the tokens typed `dimension`, `fontSize`, `lineHeight`, or `paragraphS
 
 ```scss
 $cx-dimension-base-05: 0.03125rem !default;
-$cx-size-unit-05: 0.0313rem !default;
+$cx-size-unit-05: 0.03125rem !default;
 ```
 
-A size that holds its value is not rounded, and a size that references another size is rounded to four decimals.
+No size is rounded. The web platforms set `mathFractionDigits` to `10`, so `ts/resolveMath` keeps the value of a size that references another size.
 
 `cx/shadow/web` prints each layer of a shadow as its horizontal offset, vertical offset, blur, spread, and color, with `inset` after an inner shadow, and joins the layers with commas. The build writes in `main.scss`:
 
@@ -438,14 +438,14 @@ A filter selects the tokens of one kind of file by their type and path. Every pl
 <CxTable>
 | Filter | Files | Tokens | Example |
 | --- | --- | --- | --- |
-| `cx/allTokens` | Main | Every type that the build writes, without the colors whose second path segment is `primitive`, `context`, or `utility` | `color.accordion.item-fg-color` |
+| `cx/allTokens` | Main | Every type that the build writes, without the colors under `color.primitive`, `color.context`, `color.utility`, and `gradient.primitive` | `color.accordion.item-fg-color` |
 | `cx/stringTokens` | String | `asset`, `content`, `fontFamily`, `fontStyle`, `fontWeight`, `string`, `text`, `textCase`, `textDecoration`, `type` | `icon.accordion.indicator` |
-| `cx/themeTokens` | Color | Colors whose second path segment is not `base` or `utility` | `color.context.default.fg-main` |
+| `cx/themeTokens` | Color | Colors whose second path segment is not `base` or `utility`, and shadows | `color.context.default.fg-main` |
 | `cx/numberTokens` | Number | `duration`, `letterSpacing`, `number`, `opacity`, and the sizes | `space.context.medium` |
 | `cx/baseColorTokens` | `res/values/color_base.xml` of Android | Colors whose second path segment is `base` | `color.base.context.light.default.fg-main` |
 </CxTable>
 
-Gradients are typed `color`, so `gradient.primitive.*` is in the color files and not in the main file. No file holds the tokens typed `boolean` or `other`, or the colors under `color.utility`.
+Gradients are typed `color`, so `gradient.primitive.*` is in the color files and not in the main file. Only the web keeps a shadow whole, so only the web color files hold shadows; iOS and Android split a shadow into parts, and the color of each layer is in the main file and the color files. No file holds the tokens typed `boolean` or `other`, the colors under `color.utility`, or the groups that exist for Figma only, `figma.*` and `bg-blur.*`.
 
 ## Formats
 
@@ -573,6 +573,10 @@ The build prints the message of an error after `Build failed`, or after `Failed:
 ### Unknown platform
 
 The build stops with `Unknown platform: web-rem`. An app of `chassis.build.apps` lists a platform that the build does not have. Use one of the names of the [platforms](#platforms) table.
+
+### Unknown filter value
+
+The build stops with `Unknown filter values: --brand chasis (configured: chassis, sinefil)`. A filter of the command names a brand, app, platform, theme, or screen that `chassis.build` does not have. Use one of the configured values. The build also stops with `The filters select no build` when the filters together select nothing, such as `--app docs --platform ios` while the `docs` app has only the `web` platform.
 
 ### No token sets
 
