@@ -177,29 +177,40 @@ describe('Logger Module', () => {
   })
 
   describe('Dry Run Logging', () => {
-    test('should log dry run task list', () => {
-      const tasks = [
-        { platform: 'web', brand: 'chassis', app: 'docs', theme: 'light', screen: null },
-        { platform: 'ios', brand: 'test', app: 'mobile', theme: 'dark', screen: 'large' }
-      ]
+    const builds = [
+      {
+        key: 'chassis_demo_dark_large',
+        cfg: {
+          platforms: {
+            ios: {
+              buildPath: 'dist/ios/demo/chassis/',
+              files: [{ destination: 'ColorDark.swift' }]
+            },
+            android: {
+              buildPath: 'dist/android/demo/chassis/',
+              files: [{ destination: 'color_dark.xml' }]
+            }
+          }
+        }
+      }
+    ]
 
-      loggerModule.default.dryRun(tasks)
+    test('should log the number of builds', () => {
+      loggerModule.default.dryRun(builds)
 
-      expect(console.log).toHaveBeenCalledWith(expect.stringContaining('2 task(s)'))
-      expect(console.log).toHaveBeenCalledWith(expect.stringContaining('web/chassis-docs-light'))
-      expect(console.log).toHaveBeenCalledWith(
-        expect.stringContaining('ios/test-mobile-dark-large')
-      )
+      expect(console.log).toHaveBeenCalledWith(expect.stringContaining('1 build(s)'))
+      expect(console.log).toHaveBeenCalledWith(expect.stringContaining('chassis_demo_dark_large'))
     })
 
-    test('should format tasks without optional parameters', () => {
-      const tasks = [
-        { platform: 'web', brand: 'chassis', app: 'docs', theme: undefined, screen: undefined }
-      ]
+    test('should log the files of each platform', () => {
+      loggerModule.default.dryRun(builds)
 
-      loggerModule.default.dryRun(tasks)
-
-      expect(console.log).toHaveBeenCalledWith(expect.stringContaining('web/chassis-docs'))
+      expect(console.log).toHaveBeenCalledWith(
+        expect.stringContaining('dist/ios/demo/chassis/: ColorDark.swift')
+      )
+      expect(console.log).toHaveBeenCalledWith(
+        expect.stringContaining('dist/android/demo/chassis/: color_dark.xml')
+      )
     })
   })
 })

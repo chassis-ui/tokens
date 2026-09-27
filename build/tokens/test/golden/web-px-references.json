@@ -1,0 +1,7 @@
+{
+  "brands": ["chassis"],
+  "themes": ["light", "dark"],
+  "screens": ["large", "medium", "small"],
+  "apps": { "docs": ["web-px"] },
+  "options": { "web-px": { "outputReferences": true } }
+}

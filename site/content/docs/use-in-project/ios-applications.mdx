@@ -1,6 +1,6 @@
 ---
 title: iOS Applications
-description: Complete guide to integrating Chassis design tokens into iOS applications using Swift classes, CocoaPods, Swift Package Manager, and platform-specific best practices.
+description: Use Chassis design tokens in iOS applications as Swift constants, with one Swift type per generated file for themes and screen sizes.
 toc: true
 ---
 
@@ -8,103 +8,80 @@ toc: true
 
 ## Overview
 
-Chassis design tokens for iOS are generated as Swift classes containing static properties that provide type-safe access to design values. The tokens integrate seamlessly with UIKit and SwiftUI, offering native iOS data types like `UIColor`, `CGFloat`, and font properties.
-
-**Key Benefits:**
-
-- **Type Safety**: Swift classes with compile-time checks
-- **Native Types**: UIColor, CGFloat, and other iOS-native types
-- **UIKit & SwiftUI**: Compatible with both frameworks
-- **Consistency**: Shared design values across platforms
-- **Autocomplete**: IDE support for token discovery
-- **Theme Support**: Light and dark mode color tokens
-
-This guide covers integration using Git submodules, CocoaPods, Swift Package Manager, and manual file inclusion.
-
-## Token Output Format
-
-Tokens are generated as Swift classes with static properties:
+Chassis Tokens are built for iOS as Swift files. Each file declares its own type, a caseless enum with one constant per token:
 
 ```swift
-// DesignTokens.swift
 import UIKit
 
-public class DesignTokens {
-    @objc public static let cxColorContextDefaultBgMain = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1.0)
-    @objc public static let cxColorContextDefaultFgMain = UIColor(red: 0.110, green: 0.125, blue: 0.129, alpha: 1.0)
-    @objc public static let cxSpaceBase8 = CGFloat(8.0)
-    @objc public static let cxSpaceBase16 = CGFloat(16.0)
-    @objc public static let cxBorderRadiusBase8 = CGFloat(8.0)
-    @objc public static let cxTypographyFontFamilyText = "Inter"
-    @objc public static let cxTypographyFontWeightTextNormal = "regular"
+public enum ChassisTokensColorLight {
+    public static let ColorContextDefaultFgMain = UIColor(red: 0.086, green: 0.102, blue: 0.106, alpha: 1)
+}
+
+public enum ChassisTokens {
+    public static let SpaceContextMedium = CGFloat(16)
+    public static let TypographyFontFamilyText = "Inter"
 }
 ```
 
-**Generated Files:**
+Colours are `UIColor`, sizes and numbers are `CGFloat`, font weights are `UIFont.Weight`, and everything else is a `String`. The iOS files are in the npm package, under `node_modules/@chassis-ui/tokens/dist/ios/`, or build them from the repository.
 
-- `main.swift` - Base tokens (spacing, sizing, typography, borders)
-- `string.swift` - String tokens (font families, asset names)
-- `color-light.swift` - Light theme color tokens
-- `color-dark.swift` - Dark theme color tokens
-- `number-large.swift` - Large screen size tokens
-- `number-medium.swift` - Medium screen size tokens
-- `number-small.swift` - Small screen size tokens
+## Generated Files
 
-## Installation Methods
+The build writes eight files to `dist/ios/<app>/<brand>/`. The configured iOS app is `demo`:
 
-### Method 1: Git Submodule (Recommended)
+<CxTable>
+| File | Type | Contents |
+|------|------|----------|
+| `ChassisTokens.swift` | `ChassisTokens` | Every token except theme colours, with the values of the light theme and the large screen |
+| `String.swift` | `ChassisTokensString` | Font families, font weights, other strings and SVG icons |
+| `Color.swift` | `ChassisTokensColor` | Theme colours that follow the light and dark appearance |
+| `ColorLight.swift`, `ColorDark.swift` | `ChassisTokensColorLight`, `ChassisTokensColorDark` | Theme colours of one theme: context, primitive and component colours, and gradients |
+| `NumberLarge.swift`, `NumberMedium.swift`, `NumberSmall.swift` | `ChassisTokensNumberLarge`, `ChassisTokensNumberMedium`, `ChassisTokensNumberSmall` | Sizes, spacing, numbers and opacities with the values of one screen size |
+| `Icons.xcassets` | | The icons as vector image sets, next to their SVG text in `ChassisTokensString`; see [Icons](#icons) |
+</CxTable>
 
-Add the tokens repository as a Git submodule to your iOS project:
+Every file declares a different type, so all eight can be in one target. `ChassisTokens` repeats the tokens of `ChassisTokensString` and `ChassisTokensNumberLarge`, and the component colours of `ChassisTokensColorLight`. The string, colour and number types share no names with each other. Together they hold everything in `ChassisTokens` except the base colours (`ColorBase…`), which are the raw palette behind the context colours.
+
+## Build the Tokens
+
+Add the tokens repository to your project, for example as a Git submodule, and build the iOS files. The build needs Node.js 22 or later and pnpm:
 
 ```bash
-# Navigate to your iOS project directory
-cd YourApp
-
-# Add tokens as submodule
 git submodule add https://github.com/chassis-ui/tokens.git Submodules/ChassisTokens
-
-# Initialize and update submodule
-git submodule update --init --recursive
-```
-
-**Build tokens for iOS:**
-
-```bash
 cd Submodules/ChassisTokens
 pnpm install
-pnpm tokens --brand chassis --app yourapp --platform ios
+pnpm tokens --brand chassis --app demo --platform ios
 ```
 
-Generated token files will be in `Submodules/ChassisTokens/dist/ios/yourapp/chassis/`.
+The files are written to `Submodules/ChassisTokens/dist/ios/demo/chassis/`. To build them for your own app, add it to `chassis.build.apps` in `package.json` and give it token sets in `tokens/$themes.json`; see [Style Dictionary]([[docsref:/getting-started/style-dictionary#build-options]]).
 
-**Add to Xcode:**
+### Constant References
 
-1. Open your Xcode project
-2. Right-click your project in the navigator → Add Files to "YourApp"
-3. Navigate to `Submodules/ChassisTokens/dist/ios/yourapp/chassis/`
-4. Select all `.swift` files
-5. Choose "Create folder references" (not "Create groups")
-6. Ensure files are added to your app target
+By default every constant holds its value. With the `outputReferences` option in `chassis.build` of `package.json`, a constant names the constant of the token it references instead, which keeps the relationships of the design tokens visible in Swift:
 
-**Update submodule:**
-
-```bash
-cd Submodules/ChassisTokens
-git pull origin main
-pnpm tokens --brand chassis --app yourapp --platform ios
+```json
+"options": { "ios": { "outputReferences": true } }
 ```
 
-### Method 2: Swift Package Manager
-
-**Create a local Swift package:**
-
-```bash
-# In your tokens repository
-cd dist/ios/yourapp/chassis
-swift package init --type library --name ChassisTokens
+```swift
+public static let SizeUnit4 = DimensionBase4
+public static let ColorAccordionItemFgColor = ColorContextDefaultFgMain
 ```
 
-**Configure Package.swift:**
+The value of each constant is the same with and without the option. A constant names another only in the same file and only when both have the same Swift type and value; base colours, sizes computed with math and colours such as `rgba({colour}, {opacity})` print their values.
+
+## Add the Tokens to Your App
+
+Add the files you need to your app target, or all eight. Write the type before each token:
+
+```swift
+view.backgroundColor = ChassisTokensColor.ColorContextDefaultBgMain
+stack.spacing = ChassisTokens.SpaceContextMedium
+```
+
+If your app needs one theme and one screen size, `ChassisTokens.swift` alone holds every token except the theme colours of the colour files and the other screen sizes.
+
+To keep the files in the tokens repository, add a `Package.swift` to its root with one library for all files:
 
 ```swift
 // swift-tools-version:5.9
@@ -112,456 +89,205 @@ import PackageDescription
 
 let package = Package(
     name: "ChassisTokens",
-    platforms: [.iOS(.v14)],
-    products: [
-        .library(
-            name: "ChassisTokens",
-            targets: ["ChassisTokens"]
-        )
-    ],
+    platforms: [.iOS(.v13)],
+    products: [.library(name: "ChassisTokens", targets: ["ChassisTokens"])],
     targets: [
-        .target(
-            name: "ChassisTokens",
-            path: "Sources"
-        )
+        .target(name: "ChassisTokens", path: "dist/ios/demo/chassis", exclude: ["Icons.xcassets"])
     ]
 )
 ```
 
-**Add to your Xcode project:**
+In Xcode, choose **File → Add Package Dependencies… → Add Local…**, select the tokens repository and add the `ChassisTokens` library to your app target. Then `import ChassisTokens` in the files that use tokens. The package leaves out the icon catalog, which goes into the app target; see [Icons](#icons).
 
-1. File → Add Packages → Add Local...
-2. Select the package directory
-3. Import in your code:
+## Colours and Dark Mode
+
+`ChassisTokensColor` in `Color.swift` holds every theme colour once. A colour that differs between the light and dark theme follows the interface style:
 
 ```swift
-import ChassisTokens
+public static let ColorContextDefaultBgMain = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.067, green: 0.075, blue: 0.078, alpha: 1) : UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1) }
 ```
 
-### Method 3: CocoaPods
-
-Create a Podspec for your tokens:
-
-```ruby
-# ChassisTokens.podspec
-Pod::Spec.new do |s|
-  s.name             = 'ChassisTokens'
-  s.version          = '0.1.0'
-  s.summary          = 'Chassis Design Tokens for iOS'
-  s.homepage         = 'https://github.com/chassis-ui/tokens'
-  s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'Your Name' => 'your.email@example.com' }
-  s.source           = { :git => 'https://github.com/chassis-ui/tokens.git', :tag => s.version.to_s }
-  s.ios.deployment_target = '13.0'
-  s.swift_version = '5.0'
-  s.source_files = 'dist/ios/**/*.swift'
-end
-```
-
-**Add to Podfile:**
-
-```ruby
-target 'YourApp' do
-  use_frameworks!
-
-  # From local path
-  pod 'ChassisTokens', :path => '../ChassisTokens'
-
-  # Or from Git
-  # pod 'ChassisTokens', :git => 'https://github.com/chassis-ui/tokens.git'
-end
-```
-
-**Install:**
-
-```bash
-pod install
-```
-
-### Method 4: Manual File Copy
-
-For simple projects, manually copy the Swift files:
-
-1. Build tokens: `pnpm tokens --platform ios`
-2. Copy all `.swift` files from `dist/ios/yourapp/chassis/` to your Xcode project
-3. Add them to your target
-4. Rebuild when tokens change
-
-<Callout type="warning">
-Manual copying requires rebuilding your app whenever tokens change. Use submodules or SPM for better workflow.
-</Callout>
-
-## Using Tokens in UIKit
-
-### Colors
+Use these colours in views, and the appearance of each view picks the value:
 
 ```swift
 import UIKit
+import ChassisTokens
 
-class ViewController: UIViewController {
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Background colors
-        view.backgroundColor = DesignTokens.cxColorContextDefaultBgMain
-
-        // Create a card view
-        let cardView = UIView()
-        cardView.backgroundColor = DesignTokens.cxColorContextDefaultBgEvident
-        cardView.layer.cornerRadius = DesignTokens.cxBorderRadiusBase8
-
-        // Add shadow
-        cardView.layer.shadowColor = DesignTokens.cxColorShadowDefault.cgColor
-        cardView.layer.shadowOffset = CGSize(width: 0, height: 2)
-        cardView.layer.shadowRadius = 8
-        cardView.layer.shadowOpacity = 0.1
-    }
-}
+view.backgroundColor = ChassisTokensColor.ColorContextDefaultBgMain
+label.textColor = ChassisTokensColor.ColorContextDefaultFgMain
 ```
 
-### Spacing and Layout
+`ChassisTokensColorLight` and `ChassisTokensColorDark` hold the colours of one theme each, for code that needs a fixed theme. The build writes `Color.swift` when the build options have a `light` and a `dark` theme; other themes have only their own file.
 
-```swift
-class ButtonView: UIView {
-    private let button = UIButton()
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupLayout()
-    }
-
-    private func setupLayout() {
-        button.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(button)
-
-        NSLayoutConstraint.activate([
-            button.topAnchor.constraint(equalTo: topAnchor, constant: DesignTokens.cxSpaceBase16),
-            button.leadingAnchor.constraint(equalTo: leadingAnchor, constant: DesignTokens.cxSpaceBase16),
-            button.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -DesignTokens.cxSpaceBase16),
-            button.heightAnchor.constraint(equalToConstant: DesignTokens.cxSizeButtonMediumHeight)
-        ])
-
-        // Button styling
-        button.backgroundColor = DesignTokens.cxColorContextPrimaryBgSolid
-        button.setTitleColor(DesignTokens.cxColorContextPrimaryFgSolid, for: .normal)
-        button.layer.cornerRadius = DesignTokens.cxBorderRadiusButtonMain
-        button.contentEdgeInsets = UIEdgeInsets(
-            top: DesignTokens.cxSpaceButtonPaddingBlock,
-            left: DesignTokens.cxSpaceButtonPaddingInline,
-            bottom: DesignTokens.cxSpaceButtonPaddingBlock,
-            right: DesignTokens.cxSpaceButtonPaddingInline
-        )
-    }
-}
-```
-
-### Typography
-
-```swift
-class LabelView: UIView {
-    private let titleLabel = UILabel()
-    private let bodyLabel = UILabel()
-
-    private func setupLabels() {
-        // Title
-        titleLabel.font = UIFont(
-            name: DesignTokens.cxTypographyFontFamilyDisplay,
-            size: DesignTokens.cxTypographyFontSizeText3xlarge
-        )
-        titleLabel.textColor = DesignTokens.cxColorContextDefaultFgMain
-
-        // Body text
-        bodyLabel.font = UIFont(
-            name: DesignTokens.cxTypographyFontFamilyText,
-            size: DesignTokens.cxTypographyFontSizeTextMedium
-        )
-        bodyLabel.textColor = DesignTokens.cxColorContextDefaultFgSubtle
-        bodyLabel.numberOfLines = 0
-    }
-}
-```
-
-## Using Tokens in SwiftUI
-
-### Colors
+In SwiftUI, wrap a colour with `Color(uiColor:)` (iOS 15) or `Color(_:)`; the SwiftUI colour follows the appearance too:
 
 ```swift
 import SwiftUI
-
-struct ContentView: View {
-    var body: some View {
-        VStack(spacing: CGFloat(DesignTokens.cxSpaceBase16)) {
-            Text("Hello, World!")
-                .foregroundColor(Color(DesignTokens.cxColorContextDefaultFgMain))
-
-            RoundedRectangle(cornerRadius: DesignTokens.cxBorderRadiusBase8)
-                .fill(Color(DesignTokens.cxColorContextPrimaryBgSolid))
-                .frame(height: DesignTokens.cxSizeBase64)
-        }
-        .padding(DesignTokens.cxSpaceBase16)
-        .background(Color(DesignTokens.cxColorContextDefaultBgMain))
-    }
-}
-```
-
-### Custom Token Extensions
-
-Create extensions for better SwiftUI integration:
-
-```swift
-import SwiftUI
+import ChassisTokens
 
 extension Color {
-    static var bgMain: Color {
-        Color(DesignTokens.cxColorContextDefaultBgMain)
-    }
-
-    static var fgMain: Color {
-        Color(DesignTokens.cxColorContextDefaultFgMain)
-    }
-
-    static var primaryBg: Color {
-        Color(DesignTokens.cxColorContextPrimaryBgSolid)
-    }
-}
-
-extension CGFloat {
-    static var spacing8: CGFloat { DesignTokens.cxSpaceBase8 }
-    static var spacing16: CGFloat { DesignTokens.cxSpaceBase16 }
-    static var spacing24: CGFloat { DesignTokens.cxSpaceBase24 }
-    static var radius8: CGFloat { DesignTokens.cxBorderRadiusBase8 }
-}
-
-// Use in views
-struct CardView: View {
-    var body: some View {
-        VStack {
-            Text("Card Content")
-                .foregroundColor(.fgMain)
-        }
-        .padding(.spacing16)
-        .background(.bgMain)
-        .cornerRadius(.radius8)
-    }
+    static let bgMain = Color(uiColor: ChassisTokensColor.ColorContextDefaultBgMain)
+    static let fgMain = Color(uiColor: ChassisTokensColor.ColorContextDefaultFgMain)
 }
 ```
 
-## Theme Support
+### SwiftUI Values
 
-### Dynamic Color Switching
+For an app written in SwiftUI, the `ios-swiftui` platform writes the same files with SwiftUI values, `Color` and `Font.Weight`, to `dist/ios-swiftui/<app>/<brand>/`:
 
-Load different token files based on theme:
+```json
+"apps": { "demo": ["ios", "ios-swiftui"] }
+```
+
+```swift
+public static let ColorContextDefaultBgMain = Color(red: 1.000, green: 1.000, blue: 1.000, opacity: 1)
+public static let TypographyFontWeightTextStrongWeight = Font.Weight.semibold
+```
+
+These colours have one theme each; for colours that follow the appearance, use `ChassisTokensColor` of the UIKit files as above. See [SwiftUI and Compose Presets]([[docsref:/getting-started/style-dictionary#swiftui-and-compose-presets]]).
+
+### Gradients
+
+A gradient token is split into its parts: the angle, and the colour and position of each stop.
+
+```swift
+public static let GradientPrimitiveBlackL000Angle = CGFloat(0)
+public static let GradientPrimitiveBlackL000Stop1Color = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0)
+public static let GradientPrimitiveBlackL000Stop1Position = CGFloat(0)
+public static let GradientPrimitiveBlackL000Stop2Color = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1)
+public static let GradientPrimitiveBlackL000Stop2Position = CGFloat(1)
+```
+
+The angle is the CSS angle in degrees: `0` points up and angles turn clockwise, so `90` runs from left to right. Positions go from `0` to `1`. Turn the parts into a `CAGradientLayer`:
 
 ```swift
 import UIKit
+import ChassisTokens
 
-class ThemeManager {
-    static let shared = ThemeManager()
+typealias Tokens = ChassisTokensColor
 
-    enum Theme {
-        case light
-        case dark
-    }
-
-    private(set) var currentTheme: Theme = .light
-
-    func applyTheme(_ theme: Theme) {
-        currentTheme = theme
-
-        // Import appropriate color tokens
-        switch theme {
-        case .light:
-            // Use color-light.swift tokens (default)
-            break
-        case .dark:
-            // Use color-dark.swift tokens
-            break
-        }
-
-        // Post notification for UI updates
-        NotificationCenter.default.post(name: .themeDidChange, object: nil)
-    }
+func applyGradient(to layer: CAGradientLayer, angle: CGFloat, stops: [(UIColor, CGFloat)]) {
+    let radians = angle * .pi / 180
+    let dx = sin(radians) / 2
+    let dy = -cos(radians) / 2
+    layer.startPoint = CGPoint(x: 0.5 - dx, y: 0.5 - dy)
+    layer.endPoint = CGPoint(x: 0.5 + dx, y: 0.5 + dy)
+    layer.colors = stops.map { $0.0.cgColor }
+    layer.locations = stops.map { NSNumber(value: Double($0.1)) }
 }
 
-extension Notification.Name {
-    static let themeDidChange = Notification.Name("themeDidChange")
-}
+let fade = CAGradientLayer()
+applyGradient(to: fade, angle: Tokens.GradientPrimitiveBlackL000Angle, stops: [
+    (Tokens.GradientPrimitiveBlackL000Stop1Color, Tokens.GradientPrimitiveBlackL000Stop1Position),
+    (Tokens.GradientPrimitiveBlackL000Stop2Color, Tokens.GradientPrimitiveBlackL000Stop2Position),
+])
 ```
 
-### Trait Collection (iOS 13+)
+The start and end points follow the angle exactly in a square layer. In other shapes, CSS lengthens the gradient line so that the corners get the first and last colours, which these points do not.
 
-Use iOS native dark mode support:
+## Icons
+
+`Icons.xcassets` holds one image set per icon token, named like its constant, such as `IconChipRemove`. Each keeps its SVG as a vector and renders as a template, so it takes the tint colour, as `currentcolor` does on the web. Add the catalog to your app target, for example by dragging it into Xcode as a reference, and load an icon by name:
 
 ```swift
-class AdaptiveColorManager {
-    static func color(light: UIColor, dark: UIColor) -> UIColor {
-        if #available(iOS 13.0, *) {
-            return UIColor { traitCollection in
-                traitCollection.userInterfaceStyle == .dark ? dark : light
-            }
-        } else {
-            return light
-        }
-    }
-}
-
-// Usage
-let backgroundColor = AdaptiveColorManager.color(
-    light: DesignTokensLight.cxColorContextDefaultBgMain,
-    dark: DesignTokensDark.cxColorContextDefaultBgMain
-)
+let remove = UIImage(named: "IconChipRemove")
+button.setImage(remove, for: .normal)
+button.tintColor = ChassisTokensColor.ColorContextDefaultFgMain
 ```
 
-## Responsive Design
+In SwiftUI, `Image("IconChipRemove")` takes the foreground style. Xcode compiles the catalog with its asset compiler.
 
-### Screen Size Detection
+## Sizes and Screen Sizes
 
-Use appropriate token files based on device:
+Sizes are points, as `CGFloat`. Most sizes are the same on every screen; a few differ, such as `SizeWebsiteSectionIcon`: `80` on large, `64` on medium and `48` on small screens. Choose the number type for the current layout, for example by size class:
 
 ```swift
 import UIKit
+import ChassisTokens
 
-enum DeviceSize {
-    case small  // iPhone SE, iPhone 8
-    case medium // iPhone 12, iPhone 13
-    case large  // iPhone 14 Pro Max, iPad
-
-    static var current: DeviceSize {
-        let width = UIScreen.main.bounds.width
-        switch width {
-        case 0..<375:
-            return .small
-        case 375..<414:
-            return .medium
-        default:
-            return .large
-        }
-    }
-}
-
-class TokenManager {
-    static func spacing() -> CGFloat {
-        switch DeviceSize.current {
-        case .small:
-            return DesignTokensSmall.cxSpaceBase12
-        case .medium:
-            return DesignTokensMedium.cxSpaceBase16
-        case .large:
-            return DesignTokensLarge.cxSpaceBase24
-        }
-    }
+func sectionIconSize(for traits: UITraitCollection) -> CGFloat {
+    traits.horizontalSizeClass == .compact
+        ? ChassisTokensNumberSmall.SizeWebsiteSectionIcon
+        : ChassisTokensNumberLarge.SizeWebsiteSectionIcon
 }
 ```
+
+Which screen size matches which device is your choice.
+
+## Typography
+
+Typography tokens are split into one constant per property:
+
+```swift
+ChassisTokensString.FontContextLeadFontFamily         // "Inter"
+ChassisTokensString.FontContextLeadFontWeight         // UIFont.Weight.regular
+ChassisTokensNumberLarge.FontContextLeadFontSize      // 22
+ChassisTokensNumberLarge.FontContextLeadLineHeight    // 32
+ChassisTokensNumberLarge.FontContextLeadLetterSpacing // 0
+```
+
+- **Font family** is the first family of the stack. `UIFont(name:size:)` returns `nil` unless the app bundles and registers that font.
+- **Font weight** is a `UIFont.Weight`, such as `.regular` or `.semibold`, which `UIFont.systemFont(ofSize:weight:)` takes. For a custom font, map the weight to a font file name. The design's weight names map as on the web: `Semi Bold` and `SemiBold` are both `.semibold`.
+- **Line height** is in points. A design value in percent is converted with the font size of the same typography token: `FontContextJumboLineHeight` is `125%` of `96`, so `120`.
+- **Letter spacing** is in points.
+
+## Shadows and Opacity
+
+Shadow tokens are split into their parts, with the CSS meaning of each, and one part for Core Animation: `…Radius`, half the CSS blur, which is about the same shadow as `shadowRadius`.
+
+```swift
+public static let ShadowContextSmall1Blur = CGFloat(8)
+public static let ShadowContextSmall1Radius = CGFloat(4)
+```
+
+The colour carries the shadow's opacity. Core Animation multiplies it by `shadowOpacity`, so set that to `1`:
+
+```swift
+import UIKit
+import ChassisTokens
+
+func applySmallShadow(to layer: CALayer) {
+    layer.shadowColor = ChassisTokensColor.ShadowContextSmall1Color.cgColor
+    layer.shadowOpacity = 1
+    layer.shadowOffset = CGSize(
+        width: ChassisTokensNumberLarge.ShadowContextSmall1OffsetX,
+        height: ChassisTokensNumberLarge.ShadowContextSmall1OffsetY
+    )
+    layer.shadowRadius = ChassisTokensNumberLarge.ShadowContextSmall1Radius
+}
+```
+
+`cgColor` takes the value of the current appearance, and many shadow colours are darker in dark mode, so apply the shadow again when the trait collection changes. Core Animation shadows have no spread. Opacity tokens are fractions, such as `OpacityLevel40` (`0.4`).
 
 ## Best Practices
 
-### Do's
+✅ **Prefer context tokens**: Use `ColorContext…`, `SpaceContext…` and `BorderRadiusContext…` over base and primitive tokens.
 
-✅ **Use native types**: Leverage UIColor and CGFloat for type safety
+✅ **Name tokens in one place**: Wrap the tokens you use in extensions, such as `UIColor.bgMain = ChassisTokensColor.ColorContextDefaultBgMain`, so views do not depend on the token types.
 
-✅ **Create extensions**: Build SwiftUI and UIKit extensions for easier access
+✅ **Change tokens at the source**: Chassis Tokens is meant to be owned and customized. Change values in Tokens Studio and rebuild, instead of editing the generated files.
 
-✅ **Version control**: Use Git submodules or SPM for token versioning
+✅ **Test both appearances**: Check every screen in light and dark mode.
 
-✅ **Automate builds**: Set up CI/CD to rebuild tokens automatically
-
-✅ **Support dark mode**: Implement proper theme switching
-
-✅ **Use semantic tokens**: Prefer context tokens over base palette colors
-
-### Don'ts
-
-❌ **Don't hardcode values**: Always use tokens instead of magic numbers
-
-❌ **Don't modify generated files**: Changes will be overwritten on rebuild
-
-❌ **Don't mix token versions**: Keep tokens synchronized across platforms
-
-❌ **Don't ignore trait collections**: Support iOS dark mode properly
-
-❌ **Don't skip accessibility**: Use tokens that maintain proper contrast
+❌ **Don't mix screen sizes by accident**: `ChassisTokens` holds the values of the large screen. Use a `ChassisTokensNumber…` type where a size depends on the screen.
 
 ## Troubleshooting
 
-### Import Errors
+### Invalid Redeclaration of 'ChassisTokens'
 
-**Problem**: Cannot find 'DesignTokens' in scope
+The files come from a build before each file had its own type, when all of them declared `ChassisTokens`, or one file is in the target twice. Rebuild the tokens and add each file once.
 
-**Solution**: Ensure Swift files are added to your target:
+### Cannot Find 'ChassisTokensColorLight' in Scope
 
-1. Select file in Xcode navigator
-2. Open File Inspector
-3. Check Target Membership
+The file is not in the target, or the package module is not imported. Add the file, or `import ChassisTokens`.
 
-### Color Rendering Issues
+### Cannot Find a Token
 
-**Problem**: Colors appear incorrect
+Check the name in the generated file. Names are PascalCase without a prefix, such as `SpaceContextMedium`. Context colours are in the colour types only: `ChassisTokensColor`, `ChassisTokensColorLight` and `ChassisTokensColorDark`.
 
-**Solution**: Verify color space and alpha values:
+## Continuous Integration
 
-```swift
-// Check color components
-let color = DesignTokens.cxColorContextPrimaryBgSolid
-var r: CGFloat = 0, g: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 0
-color.getRed(&r, green: &g, blue: &b, alpha: &a)
-print("R: \(r), G: \(g), B: \(b), A: \(a)")
-```
-
-### Build Errors
-
-**Problem**: Duplicate symbol errors
-
-**Solution**: Ensure you're not importing multiple theme files simultaneously. Use conditional compilation:
-
-```swift
-#if DARK_MODE
-import DesignTokensDark
-#else
-import DesignTokensLight
-#endif
-```
-
-### Performance Issues
-
-**Problem**: Token access is slow
-
-**Solution**: Cache frequently used values:
-
-```swift
-struct TokenCache {
-    static let primaryColor = DesignTokens.cxColorContextPrimaryBgSolid
-    static let spacing = DesignTokens.cxSpaceBase16
-}
-```
-
-## Example Project Structure
-
-```
-YourApp/
-├── YourApp.xcodeproj
-├── YourApp/
-│   ├── AppDelegate.swift
-│   ├── Views/
-│   ├── ViewControllers/
-│   └── Extensions/
-│       └── TokenExtensions.swift
-├── Submodules/
-│   └── ChassisTokens/
-│       └── dist/
-│           └── ios/
-│               └── yourapp/
-│                   └── chassis/
-│                       ├── main.swift
-│                   ├── string.swift
-│                   ├── color-light.swift
-│                   ├── color-dark.swift
-│                   └── number-large.swift
-└── Podfile
-```
-
-## CI/CD Integration
-
-Automate token generation in your CI pipeline:
+Build the tokens before the app. The build needs Node.js 22 or later:
 
 ```yaml
 # .github/workflows/build.yml
@@ -573,26 +299,24 @@ jobs:
   build:
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v5
         with:
           submodules: recursive
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
+      - uses: pnpm/action-setup@v6
+
+      - uses: actions/setup-node@v5
         with:
-          node-version: '18'
+          node-version: '22'
 
-      - name: Install pnpm
-        run: npm install -g pnpm
-
-      - name: Generate Tokens
+      - name: Build tokens
+        working-directory: Submodules/ChassisTokens
         run: |
-          cd Submodules/ChassisTokens
           pnpm install
-          pnpm tokens --platform ios --brand chassis --app yourapp
+          pnpm tokens --brand chassis --app demo --platform ios
 
-      - name: Build iOS App
-        run: xcodebuild -project YourApp.xcodeproj -scheme YourApp
+      - name: Build app
+        run: xcodebuild -project YourApp.xcodeproj -scheme YourApp build
 ```
 
 ## Next Steps
@@ -600,4 +324,4 @@ jobs:
 - Learn about [token structure and naming]([[docsref:/getting-started/tokens-studio]])
 - Explore [design token categories]([[docsref:/design-tokens/color-tokens]])
 - Understand [token transformation and build process]([[docsref:/getting-started/style-dictionary]])
-- See [cross-platform consistency]([[docsref:/use-in-project/web-applications]])
+- Use the same tokens on the [web]([[docsref:/use-in-project/web-applications]]) and on [Android]([[docsref:/use-in-project/android-applications]])

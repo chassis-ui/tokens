@@ -1,0 +1,1526 @@
+{
+  "source": "Resolved chassis/demo tokens from the SD 4.4 build and the matching committed dist lines, extracted 2026-09-27. \"androidReferences\" holds tokens of the SD 5.5 build with outputReferences, the first token of the same file that each references, and the matching lines of build/tokens/test/golden/android-references/. \"iosReferences\" holds the same for the iOS build with outputReferences and build/tokens/test/golden/ios-references/. \"context\" holds the font size part that the templates pass for line height and letter spacing parts, and \"typographyParts\" holds such parts with the lines of dist/; both were captured from the build and the expected lines updated in Phase 13 (2026-09-27). Font weight cases were updated from dist/ in Phase 14. \"gradients\" holds two gradient tokens of color_light with the lines of dist/ and of the reference baselines, and the colours their stops reference, captured in Phase 15. \"themeColors\" holds constants of ColorLight.swift and ColorDark.swift (dist/ and the ios-references baseline) with their values and printed forms, copied in Phase 18. \"shadowParts\" holds expanded box shadow tokens of the iOS build with their Tokens Studio extensions, captured in Phase 22.",
+  "ios": [
+    {
+      "case": "dimension becomes CGFloat",
+      "token": {
+        "name": "DimensionBase0",
+        "path": ["dimension", "base", "0"],
+        "$type": "dimension",
+        "$value": "0px"
+      },
+      "expected": "CGFloat(0)"
+    },
+    {
+      "case": "fontSize becomes CGFloat",
+      "token": {
+        "name": "TypographyFontSizeText5xlarge",
+        "path": ["typography", "fontSize", "text", "5xlarge"],
+        "$type": "fontSize",
+        "$value": "44"
+      },
+      "expected": "CGFloat(44)"
+    },
+    {
+      "case": "lineHeight becomes CGFloat",
+      "token": {
+        "name": "TypographyLineHeightText5xlarge",
+        "path": ["typography", "lineHeight", "text", "5xlarge"],
+        "$type": "lineHeight",
+        "$value": "56"
+      },
+      "expected": "CGFloat(56)"
+    },
+    {
+      "case": "number becomes CGFloat",
+      "token": {
+        "name": "TypographyLetterSpacingBaseZero",
+        "path": ["typography", "letterSpacing", "base", "zero"],
+        "$type": "number",
+        "$value": "0px"
+      },
+      "expected": "CGFloat(0)"
+    },
+    {
+      "case": "opacity becomes CGFloat",
+      "token": {
+        "name": "OpacityLevel10",
+        "path": ["opacity", "level", "10"],
+        "$type": "opacity",
+        "$value": "0.1"
+      },
+      "expected": "CGFloat(0.1)"
+    },
+    {
+      "case": "color: hex",
+      "token": {
+        "name": "ColorBasePrimitiveLightBlackBase",
+        "path": ["color", "base", "primitive", "light", "black", "base"],
+        "$type": "color",
+        "$value": "#000000"
+      },
+      "expected": "UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1)"
+    },
+    {
+      "case": "color: rgba",
+      "token": {
+        "name": "ColorBasePrimitiveLightBlackTransparent",
+        "path": ["color", "base", "primitive", "light", "black", "transparent"],
+        "$type": "color",
+        "$value": "rgba(0, 0, 0, 0)"
+      },
+      "expected": "UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0)"
+    },
+    {
+      "case": "fontFamily: single family",
+      "token": {
+        "name": "TypographyFontFamilyIcon",
+        "path": ["typography", "fontFamily", "icon"],
+        "$type": "fontFamily",
+        "$value": "Chassis-Icons"
+      },
+      "expected": "\"Chassis-Icons\""
+    },
+    {
+      "case": "fontFamily: first of a stack",
+      "token": {
+        "name": "TypographyFontFamilyText",
+        "path": ["typography", "fontFamily", "text"],
+        "$type": "fontFamily",
+        "$value": "Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif"
+      },
+      "expected": "\"Inter\""
+    },
+    {
+      "case": "fontWeight: a name becomes a UIFont.Weight",
+      "token": {
+        "name": "TypographyFontWeightTextNormalWeight",
+        "path": ["typography", "fontWeight", "text", "normal", "weight"],
+        "$type": "fontWeight",
+        "$value": "Regular"
+      },
+      "expected": "UIFont.Weight.regular"
+    },
+    {
+      "case": "fontWeight: \"Semi Bold\" (Inter) is semibold",
+      "token": {
+        "name": "TypographyFontWeightTextStrongWeight",
+        "path": ["typography", "fontWeight", "text", "strong", "weight"],
+        "$type": "fontWeight",
+        "$value": "Semi Bold"
+      },
+      "expected": "UIFont.Weight.semibold"
+    },
+    {
+      "case": "asset is quoted",
+      "token": {
+        "name": "IconAccordionIndicator",
+        "path": ["icon", "accordion", "indicator"],
+        "$type": "asset",
+        "$value": "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='currentcolor' viewBox='0 0 24 24'><path d='m11.121 16.629-7.5-7.5a1.205 1.205 0 0 1 0-1.758 1.205 1.205 0 0 1 1.758 0l6.64 6.602 6.602-6.602a1.205 1.205 0 0 1 1.758 0c.508.469.508 1.29 0 1.758l-7.5 7.5a1.205 1.205 0 0 1-1.758 0Z'/></svg>"
+      },
+      "expected": "\"<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='currentcolor' viewBox='0 0 24 24'><path d='m11.121 16.629-7.5-7.5a1.205 1.205 0 0 1 0-1.758 1.205 1.205 0 0 1 1.758 0l6.64 6.602 6.602-6.602a1.205 1.205 0 0 1 1.758 0c.508.469.508 1.29 0 1.758l-7.5 7.5a1.205 1.205 0 0 1-1.758 0Z'/></svg>\""
+    },
+    {
+      "case": "content is quoted",
+      "token": {
+        "name": "FigmaWebsiteVariantNav",
+        "path": ["figma", "website", "variant", "nav"],
+        "$type": "content",
+        "$value": "large"
+      },
+      "expected": "\"large\""
+    },
+    {
+      "case": "fontStyle is quoted",
+      "token": {
+        "name": "TypographyFontWeightTextNormalStyle",
+        "path": ["typography", "fontWeight", "text", "normal", "style"],
+        "$type": "fontStyle",
+        "$value": "normal"
+      },
+      "expected": "\"normal\""
+    },
+    {
+      "case": "textCase is quoted",
+      "token": {
+        "name": "TypographyTextCaseBaseNone",
+        "path": ["typography", "textCase", "base", "none"],
+        "$type": "textCase",
+        "$value": "none"
+      },
+      "expected": "\"none\""
+    },
+    {
+      "case": "textDecoration is quoted",
+      "token": {
+        "name": "TypographyTextDecorationBaseNone",
+        "path": ["typography", "textDecoration", "base", "none"],
+        "$type": "textDecoration",
+        "$value": "none"
+      },
+      "expected": "\"none\""
+    },
+    {
+      "case": "type is quoted",
+      "token": {
+        "name": "ShadowContextNoneType",
+        "path": ["shadow", "context", "none", "type"],
+        "$type": "type",
+        "$value": "dropShadow"
+      },
+      "expected": "\"dropShadow\""
+    },
+    {
+      "case": "color: hex with fractional channels",
+      "token": {
+        "name": "ColorBasePrimitiveLightPrimary10",
+        "path": ["color", "base", "primitive", "light", "primary", "10"],
+        "$type": "color",
+        "$value": "#d9f1f7"
+      },
+      "expected": "UIColor(red: 0.851, green: 0.945, blue: 0.969, alpha: 1)"
+    },
+    {
+      "case": "color: rgba with fractional alpha",
+      "token": {
+        "name": "ColorBasePrimitiveLightBlackT05",
+        "path": ["color", "base", "primitive", "light", "black", "t-05"],
+        "$type": "color",
+        "$value": "rgba(0, 0, 0, 0.05)"
+      },
+      "expected": "UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0.05)"
+    },
+    {
+      "case": "fontFamily: quoted first family",
+      "token": {
+        "name": "TypographyFontFamilyDisplay",
+        "path": ["typography", "fontFamily", "display"],
+        "$type": "fontFamily",
+        "$value": "'Archivo Narrow', Georgia, 'Times New Roman', Times, serif"
+      },
+      "expected": "\"Archivo Narrow\""
+    },
+    {
+      "case": "fontWeight: \"SemiBold\" (Archivo Narrow) is semibold",
+      "token": {
+        "name": "TypographyFontWeightDisplayStrongWeight",
+        "path": ["typography", "fontWeight", "display", "strong", "weight"],
+        "$type": "fontWeight",
+        "$value": "SemiBold"
+      },
+      "expected": "UIFont.Weight.semibold"
+    },
+    {
+      "case": "dimension: percent line height becomes points of the font size",
+      "token": {
+        "name": "FontContextJumboLineHeight",
+        "path": ["font", "context", "jumbo", "lineHeight"],
+        "$type": "dimension",
+        "$value": "125%"
+      },
+      "expected": "CGFloat(120)",
+      "context": {
+        "fontSize": "96px"
+      }
+    },
+    {
+      "case": "dimension: fractional px",
+      "token": {
+        "name": "DimensionBase05",
+        "path": ["dimension", "base", "05"],
+        "$type": "dimension",
+        "$value": "0.5px"
+      },
+      "expected": "CGFloat(0.5)"
+    },
+    {
+      "case": "number: negative letter spacing",
+      "token": {
+        "name": "FontContextJumboLetterSpacing",
+        "path": ["font", "context", "jumbo", "letterSpacing"],
+        "$type": "number",
+        "$value": "-0.5px"
+      },
+      "expected": "CGFloat(-0.5)",
+      "context": {
+        "fontSize": "96px"
+      }
+    }
+  ],
+  "android": [
+    {
+      "case": "color: hex becomes ARGB",
+      "token": {
+        "name": "color_base_primitive_light_black_base",
+        "path": ["color", "base", "primitive", "light", "black", "base"],
+        "$type": "color",
+        "$value": "#000000"
+      },
+      "expected": {
+        "element": "color",
+        "value": "#ff000000"
+      }
+    },
+    {
+      "case": "dimen: dimension in dp",
+      "token": {
+        "name": "dimension_base_0",
+        "path": ["dimension", "base", "0"],
+        "$type": "dimension",
+        "$value": "0px"
+      },
+      "expected": {
+        "element": "dimen",
+        "value": "0dp"
+      }
+    },
+    {
+      "case": "dimen: sp for a fontSize sub-token",
+      "token": {
+        "name": "font_context_jumbo_font_size",
+        "path": ["font", "context", "jumbo", "fontSize"],
+        "$type": "dimension",
+        "$value": "96px"
+      },
+      "expected": {
+        "element": "dimen",
+        "value": "96sp"
+      }
+    },
+    {
+      "case": "dimen: a percent lineHeight sub-token becomes sp of the font size",
+      "token": {
+        "name": "font_context_jumbo_line_height",
+        "path": ["font", "context", "jumbo", "lineHeight"],
+        "$type": "dimension",
+        "$value": "125%"
+      },
+      "expected": {
+        "element": "dimen",
+        "value": "120sp"
+      },
+      "context": {
+        "fontSize": "96px"
+      }
+    },
+    {
+      "case": "dimen: sp for a paragraphSpacing sub-token",
+      "token": {
+        "name": "font_context_jumbo_paragraph_spacing",
+        "path": ["font", "context", "jumbo", "paragraphSpacing"],
+        "$type": "dimension",
+        "$value": "0"
+      },
+      "expected": {
+        "element": "dimen",
+        "value": "0sp"
+      }
+    },
+    {
+      "case": "dimen: sp under typography.paragraphSpacing",
+      "token": {
+        "name": "typography_paragraph_spacing_base_zero",
+        "path": ["typography", "paragraphSpacing", "base", "zero"],
+        "$type": "dimension",
+        "$value": "0"
+      },
+      "expected": {
+        "element": "dimen",
+        "value": "0sp"
+      }
+    },
+    {
+      "case": "dimen: sp for fontSize type",
+      "token": {
+        "name": "typography_font_size_text_5xlarge",
+        "path": ["typography", "fontSize", "text", "5xlarge"],
+        "$type": "fontSize",
+        "$value": "44"
+      },
+      "expected": {
+        "element": "dimen",
+        "value": "44sp"
+      }
+    },
+    {
+      "case": "dimen: sp for lineHeight type",
+      "token": {
+        "name": "typography_line_height_text_5xlarge",
+        "path": ["typography", "lineHeight", "text", "5xlarge"],
+        "$type": "lineHeight",
+        "$value": "56"
+      },
+      "expected": {
+        "element": "dimen",
+        "value": "56sp"
+      }
+    },
+    {
+      "case": "float: typography.letterSpacing is a bare number",
+      "token": {
+        "name": "typography_letter_spacing_base_zero",
+        "path": ["typography", "letterSpacing", "base", "zero"],
+        "$type": "number",
+        "$value": "0px"
+      },
+      "expected": {
+        "element": "item",
+        "value": "0"
+      }
+    },
+    {
+      "case": "float: a letterSpacing sub-token is in em of the font size",
+      "token": {
+        "name": "font_context_jumbo_letter_spacing",
+        "path": ["font", "context", "jumbo", "letterSpacing"],
+        "$type": "letterSpacing",
+        "$value": "-0.5px"
+      },
+      "expected": {
+        "element": "item",
+        "value": "-0.0052"
+      },
+      "context": {
+        "fontSize": "96px"
+      }
+    },
+    {
+      "case": "float: opacity as is",
+      "token": {
+        "name": "opacity_level_10",
+        "path": ["opacity", "level", "10"],
+        "$type": "opacity",
+        "$value": "0.1"
+      },
+      "expected": {
+        "element": "item",
+        "value": "0.1"
+      }
+    },
+    {
+      "case": "string: first family of a stack",
+      "token": {
+        "name": "typography_font_family_text",
+        "path": ["typography", "fontFamily", "text"],
+        "$type": "fontFamily",
+        "$value": "Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif"
+      },
+      "expected": {
+        "element": "string",
+        "value": "Inter"
+      }
+    },
+    {
+      "case": "integer: a fontWeight name becomes its number",
+      "token": {
+        "name": "typography_font_weight_text_normal_weight",
+        "path": ["typography", "fontWeight", "text", "normal", "weight"],
+        "$type": "fontWeight",
+        "$value": "Regular"
+      },
+      "expected": {
+        "element": "integer",
+        "value": "400"
+      }
+    },
+    {
+      "case": "string: asset is escaped",
+      "token": {
+        "name": "icon_accordion_indicator",
+        "path": ["icon", "accordion", "indicator"],
+        "$type": "asset",
+        "$value": "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='currentcolor' viewBox='0 0 24 24'><path d='m11.121 16.629-7.5-7.5a1.205 1.205 0 0 1 0-1.758 1.205 1.205 0 0 1 1.758 0l6.64 6.602 6.602-6.602a1.205 1.205 0 0 1 1.758 0c.508.469.508 1.29 0 1.758l-7.5 7.5a1.205 1.205 0 0 1-1.758 0Z'/></svg>"
+      },
+      "expected": {
+        "element": "string",
+        "value": "&lt;svg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'24\\' height=\\'24\\' fill=\\'currentcolor\\' viewBox=\\'0 0 24 24\\'&gt;&lt;path d=\\'m11.121 16.629-7.5-7.5a1.205 1.205 0 0 1 0-1.758 1.205 1.205 0 0 1 1.758 0l6.64 6.602 6.602-6.602a1.205 1.205 0 0 1 1.758 0c.508.469.508 1.29 0 1.758l-7.5 7.5a1.205 1.205 0 0 1-1.758 0Z\\'/&gt;&lt;/svg&gt;"
+      }
+    },
+    {
+      "case": "string: content as is",
+      "token": {
+        "name": "figma_website_variant_nav",
+        "path": ["figma", "website", "variant", "nav"],
+        "$type": "content",
+        "$value": "large"
+      },
+      "expected": {
+        "element": "string",
+        "value": "large"
+      }
+    },
+    {
+      "case": "string: fontStyle as is",
+      "token": {
+        "name": "typography_font_weight_text_normal_style",
+        "path": ["typography", "fontWeight", "text", "normal", "style"],
+        "$type": "fontStyle",
+        "$value": "normal"
+      },
+      "expected": {
+        "element": "string",
+        "value": "normal"
+      }
+    },
+    {
+      "case": "string: textCase as is",
+      "token": {
+        "name": "typography_text_case_base_none",
+        "path": ["typography", "textCase", "base", "none"],
+        "$type": "textCase",
+        "$value": "none"
+      },
+      "expected": {
+        "element": "string",
+        "value": "none"
+      }
+    },
+    {
+      "case": "string: textDecoration as is",
+      "token": {
+        "name": "typography_text_decoration_base_none",
+        "path": ["typography", "textDecoration", "base", "none"],
+        "$type": "textDecoration",
+        "$value": "none"
+      },
+      "expected": {
+        "element": "string",
+        "value": "none"
+      }
+    },
+    {
+      "case": "string: type as is",
+      "token": {
+        "name": "shadow_context_none_type",
+        "path": ["shadow", "context", "none", "type"],
+        "$type": "type",
+        "$value": "dropShadow"
+      },
+      "expected": {
+        "element": "string",
+        "value": "dropShadow"
+      }
+    },
+    {
+      "case": "color: translucent rgba becomes ARGB",
+      "token": {
+        "name": "color_base_primitive_light_black_t_05",
+        "path": ["color", "base", "primitive", "light", "black", "t-05"],
+        "$type": "color",
+        "$value": "rgba(0, 0, 0, 0.05)"
+      },
+      "expected": {
+        "element": "color",
+        "value": "#0d000000"
+      }
+    },
+    {
+      "case": "color: hex with brand colour",
+      "token": {
+        "name": "color_base_primitive_light_primary_10",
+        "path": ["color", "base", "primitive", "light", "primary", "10"],
+        "$type": "color",
+        "$value": "#d9f1f7"
+      },
+      "expected": {
+        "element": "color",
+        "value": "#ffd9f1f7"
+      }
+    },
+    {
+      "case": "fontFamily: quoted first family",
+      "token": {
+        "name": "typography_font_family_display",
+        "path": ["typography", "fontFamily", "display"],
+        "$type": "fontFamily",
+        "$value": "'Archivo Narrow', Georgia, 'Times New Roman', Times, serif"
+      },
+      "expected": {
+        "element": "string",
+        "value": "Archivo Narrow"
+      }
+    },
+    {
+      "case": "integer: \"Semi Bold\" (Inter) is 600",
+      "token": {
+        "name": "typography_font_weight_text_strong_weight",
+        "path": ["typography", "fontWeight", "text", "strong", "weight"],
+        "$type": "fontWeight",
+        "$value": "Semi Bold"
+      },
+      "expected": {
+        "element": "integer",
+        "value": "600"
+      }
+    },
+    {
+      "case": "dimen: fractional px",
+      "token": {
+        "name": "dimension_base_05",
+        "path": ["dimension", "base", "05"],
+        "$type": "dimension",
+        "$value": "0.5px"
+      },
+      "expected": {
+        "element": "dimen",
+        "value": "0.5dp"
+      }
+    }
+  ],
+  "androidReferences": [
+    {
+      "case": "dimen reference",
+      "file": "main.xml",
+      "token": {
+        "name": "size_unit_16",
+        "path": ["size", "unit", "16"],
+        "$type": "dimension",
+        "$value": "16px",
+        "original": {
+          "$value": "{dimension.base.16}"
+        }
+      },
+      "target": {
+        "name": "dimension_base_16",
+        "path": ["dimension", "base", "16"],
+        "$type": "dimension",
+        "$value": "16px",
+        "original": {
+          "$value": "16px"
+        }
+      },
+      "expected": {
+        "element": "dimen",
+        "value": "@dimen/dimension_base_16"
+      }
+    },
+    {
+      "case": "colour reference",
+      "file": "color_light.xml",
+      "token": {
+        "name": "color_accordion_item_fg_color",
+        "path": ["color", "accordion", "item-fg-color"],
+        "$type": "color",
+        "$value": "#161a1b",
+        "original": {
+          "$value": "{color.context.default.fg-main}"
+        }
+      },
+      "target": {
+        "name": "color_context_default_fg_main",
+        "path": ["color", "context", "default", "fg-main"],
+        "$type": "color",
+        "$value": "#161a1b",
+        "original": {
+          "$value": "{color.base.context.light.default.fg-main}"
+        }
+      },
+      "expected": {
+        "element": "color",
+        "value": "@color/color_context_default_fg_main"
+      }
+    },
+    {
+      "case": "string reference of an expanded typography token",
+      "file": "main.xml",
+      "token": {
+        "name": "font_context_jumbo_font_family",
+        "path": ["font", "context", "jumbo", "fontFamily"],
+        "$type": "fontFamily",
+        "$value": "Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif",
+        "original": {
+          "$value": "{typography.fontFamily.text}"
+        }
+      },
+      "target": {
+        "name": "typography_font_family_text",
+        "path": ["typography", "fontFamily", "text"],
+        "$type": "fontFamily",
+        "$value": "Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif",
+        "original": {
+          "$value": "Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif"
+        }
+      },
+      "expected": {
+        "element": "string",
+        "value": "@string/typography_font_family_text"
+      }
+    },
+    {
+      "case": "float reference",
+      "file": "main.xml",
+      "token": {
+        "name": "font_context_hero_letter_spacing",
+        "path": ["font", "context", "hero", "letterSpacing"],
+        "$type": "letterSpacing",
+        "$value": "0px",
+        "original": {
+          "$value": "{typography.letterSpacing.base.zero}"
+        }
+      },
+      "target": {
+        "name": "typography_letter_spacing_base_zero",
+        "path": ["typography", "letterSpacing", "base", "zero"],
+        "$type": "number",
+        "$value": "0px",
+        "original": {
+          "$value": "{size.unit.0}"
+        }
+      },
+      "expected": {
+        "element": "item",
+        "value": "@dimen/typography_letter_spacing_base_zero"
+      },
+      "context": {
+        "fontSize": "64px"
+      }
+    },
+    {
+      "case": "base colour with a reference",
+      "file": "main.xml",
+      "token": {
+        "name": "color_base_primitive_light_black_contrast",
+        "path": ["color", "base", "primitive", "light", "black", "contrast"],
+        "$type": "color",
+        "$value": "#ffffff",
+        "original": {
+          "$value": "{color.base.primitive.light.white.base}"
+        }
+      },
+      "target": {
+        "name": "color_base_primitive_light_white_base",
+        "path": ["color", "base", "primitive", "light", "white", "base"],
+        "$type": "color",
+        "$value": "#ffffff",
+        "original": {
+          "$value": "#ffffff"
+        }
+      },
+      "expected": {
+        "element": "color",
+        "value": "#ffffffff"
+      }
+    },
+    {
+      "case": "size computed with math",
+      "file": "main.xml",
+      "token": {
+        "name": "size_datepicker_week_width",
+        "path": ["size", "datepicker", "week-width"],
+        "$type": "dimension",
+        "$value": "224px",
+        "original": {
+          "$value": "{size.datepicker.day-width}*7"
+        }
+      },
+      "target": {
+        "name": "size_datepicker_day_width",
+        "path": ["size", "datepicker", "day-width"],
+        "$type": "dimension",
+        "$value": "32px",
+        "original": {
+          "$value": "{size.unit.32}"
+        }
+      },
+      "expected": {
+        "element": "dimen",
+        "value": "224dp"
+      }
+    },
+    {
+      "case": "reference to a token of another file",
+      "file": "main.xml",
+      "token": {
+        "name": "color_accordion_item_fg_color",
+        "path": ["color", "accordion", "item-fg-color"],
+        "$type": "color",
+        "$value": "#161a1b",
+        "original": {
+          "$value": "{color.context.default.fg-main}"
+        }
+      },
+      "expected": {
+        "element": "color",
+        "value": "#ff161a1b"
+      }
+    },
+    {
+      "case": "letter spacing referencing a size: other element",
+      "file": "main.xml",
+      "token": {
+        "name": "typography_letter_spacing_base_zero",
+        "path": ["typography", "letterSpacing", "base", "zero"],
+        "$type": "number",
+        "$value": "0px",
+        "original": {
+          "$value": "{size.unit.0}"
+        }
+      },
+      "target": {
+        "name": "size_unit_0",
+        "path": ["size", "unit", "0"],
+        "$type": "dimension",
+        "$value": "0px",
+        "original": {
+          "$value": "{dimension.base.0}"
+        }
+      },
+      "expected": {
+        "element": "item",
+        "value": "0"
+      }
+    },
+    {
+      "case": "expanded letter spacing referencing a size: other element",
+      "file": "main.xml",
+      "token": {
+        "name": "font_context_jumbo_letter_spacing",
+        "path": ["font", "context", "jumbo", "letterSpacing"],
+        "$type": "letterSpacing",
+        "$value": "-0.5px",
+        "original": {
+          "$value": "{size.unit.nd05}"
+        }
+      },
+      "target": {
+        "name": "size_unit_nd05",
+        "path": ["size", "unit", "nd05"],
+        "$type": "dimension",
+        "$value": "-0.5px",
+        "original": {
+          "$value": "{dimension.base.nd05}"
+        }
+      },
+      "expected": {
+        "element": "item",
+        "value": "-0.0052"
+      },
+      "context": {
+        "fontSize": "96px"
+      }
+    },
+    {
+      "case": "font size referencing a size: sp, not dp",
+      "file": "main.xml",
+      "token": {
+        "name": "font_context_jumbo_font_size",
+        "path": ["font", "context", "jumbo", "fontSize"],
+        "$type": "dimension",
+        "$value": "96px",
+        "original": {
+          "$value": "{size.unit.96}"
+        }
+      },
+      "target": {
+        "name": "size_unit_96",
+        "path": ["size", "unit", "96"],
+        "$type": "dimension",
+        "$value": "96px",
+        "original": {
+          "$value": "{dimension.base.96}"
+        }
+      },
+      "expected": {
+        "element": "dimen",
+        "value": "96sp"
+      }
+    },
+    {
+      "case": "rgba() colour whose first reference is an opacity: other element",
+      "file": "main.xml",
+      "token": {
+        "name": "bg_blur_default_color",
+        "path": ["bg-blur", "default", "color"],
+        "$type": "color",
+        "$value": "rgba(183, 192, 194, 0.5)",
+        "original": {
+          "$value": "rgba({color.primitive.neutral.30}, {opacity.context.fg-subtle})"
+        }
+      },
+      "target": {
+        "name": "opacity_context_fg_subtle",
+        "path": ["opacity", "context", "fg-subtle"],
+        "$type": "opacity",
+        "$value": "0.5",
+        "original": {
+          "$value": "0.5"
+        }
+      },
+      "expected": {
+        "element": "color",
+        "value": "#80b7c0c2"
+      }
+    },
+    {
+      "case": "rgba() colour whose first reference is a colour: alpha lost",
+      "file": "color_light.xml",
+      "token": {
+        "name": "bg_blur_default_color",
+        "path": ["bg-blur", "default", "color"],
+        "$type": "color",
+        "$value": "rgba(183, 192, 194, 0.5)",
+        "original": {
+          "$value": "rgba({color.primitive.neutral.30}, {opacity.context.fg-subtle})"
+        }
+      },
+      "target": {
+        "name": "color_primitive_neutral_30",
+        "path": ["color", "primitive", "neutral", "30"],
+        "$type": "color",
+        "$value": "#b7c0c2",
+        "original": {
+          "$value": "{color.base.primitive.light.neutral.30}"
+        }
+      },
+      "expected": {
+        "element": "color",
+        "value": "#80b7c0c2"
+      }
+    }
+  ],
+  "iosReferences": [
+    {
+      "case": "colour reference",
+      "file": "ColorLight.swift",
+      "token": {
+        "name": "ColorAccordionItemFgColor",
+        "path": ["color", "accordion", "item-fg-color"],
+        "$type": "color",
+        "$value": "#161a1b",
+        "original": {
+          "$value": "{color.context.default.fg-main}"
+        }
+      },
+      "target": {
+        "name": "ColorContextDefaultFgMain",
+        "path": ["color", "context", "default", "fg-main"],
+        "$type": "color",
+        "$value": "#161a1b",
+        "original": {
+          "$value": "{color.base.context.light.default.fg-main}"
+        }
+      },
+      "expected": {
+        "value": "ColorContextDefaultFgMain"
+      }
+    },
+    {
+      "case": "number reference",
+      "file": "NumberLarge.swift",
+      "token": {
+        "name": "SizeUnit4",
+        "path": ["size", "unit", "4"],
+        "$type": "dimension",
+        "$value": "4px",
+        "original": {
+          "$value": "{dimension.base.4}"
+        }
+      },
+      "target": {
+        "name": "DimensionBase4",
+        "path": ["dimension", "base", "4"],
+        "$type": "dimension",
+        "$value": "4px",
+        "original": {
+          "$value": "4px"
+        }
+      },
+      "expected": {
+        "value": "DimensionBase4"
+      }
+    },
+    {
+      "case": "string reference of an expanded typography token",
+      "file": "ChassisTokens.swift",
+      "token": {
+        "name": "FontContextJumboFontFamily",
+        "path": ["font", "context", "jumbo", "fontFamily"],
+        "$type": "fontFamily",
+        "$value": "Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif",
+        "original": {
+          "$value": "{typography.fontFamily.text}"
+        }
+      },
+      "target": {
+        "name": "TypographyFontFamilyText",
+        "path": ["typography", "fontFamily", "text"],
+        "$type": "fontFamily",
+        "$value": "Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif",
+        "original": {
+          "$value": "Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif"
+        }
+      },
+      "expected": {
+        "value": "TypographyFontFamilyText"
+      }
+    },
+    {
+      "case": "reference to a token of another file",
+      "file": "ColorLight.swift",
+      "token": {
+        "name": "ColorContextDefaultFgMain",
+        "path": ["color", "context", "default", "fg-main"],
+        "$type": "color",
+        "$value": "#161a1b",
+        "original": {
+          "$value": "{color.base.context.light.default.fg-main}"
+        }
+      },
+      "expected": {
+        "value": "UIColor(red: 0.086, green: 0.102, blue: 0.106, alpha: 1)"
+      }
+    },
+    {
+      "case": "base colour with a reference",
+      "file": "ChassisTokens.swift",
+      "token": {
+        "name": "ColorBasePrimitiveLightBlackContrast",
+        "path": ["color", "base", "primitive", "light", "black", "contrast"],
+        "$type": "color",
+        "$value": "#ffffff",
+        "original": {
+          "$value": "{color.base.primitive.light.white.base}"
+        }
+      },
+      "target": {
+        "name": "ColorBasePrimitiveLightWhiteBase",
+        "path": ["color", "base", "primitive", "light", "white", "base"],
+        "$type": "color",
+        "$value": "#ffffff",
+        "original": {
+          "$value": "#ffffff"
+        }
+      },
+      "expected": {
+        "value": "UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1)"
+      }
+    },
+    {
+      "case": "base colour with a modifier",
+      "file": "ChassisTokens.swift",
+      "token": {
+        "name": "ColorBasePrimitiveLightPrimary10",
+        "path": ["color", "base", "primitive", "light", "primary", "10"],
+        "$type": "color",
+        "$value": "#d9f1f7",
+        "original": {
+          "$value": "{color.base.primitive.light.primary.base}"
+        }
+      },
+      "target": {
+        "name": "ColorBasePrimitiveLightPrimaryBase",
+        "path": ["color", "base", "primitive", "light", "primary", "base"],
+        "$type": "color",
+        "$value": "#00A4CC",
+        "original": {
+          "$value": "#00A4CC"
+        }
+      },
+      "expected": {
+        "value": "UIColor(red: 0.851, green: 0.945, blue: 0.969, alpha: 1)"
+      }
+    },
+    {
+      "case": "size computed with math",
+      "file": "ChassisTokens.swift",
+      "token": {
+        "name": "SizeDatepickerWeekWidth",
+        "path": ["size", "datepicker", "week-width"],
+        "$type": "dimension",
+        "$value": "224px",
+        "original": {
+          "$value": "{size.datepicker.day-width}*7"
+        }
+      },
+      "target": {
+        "name": "SizeDatepickerDayWidth",
+        "path": ["size", "datepicker", "day-width"],
+        "$type": "dimension",
+        "$value": "32px",
+        "original": {
+          "$value": "{size.unit.32}"
+        }
+      },
+      "expected": {
+        "value": "CGFloat(224)"
+      }
+    },
+    {
+      "case": "rgba() colour whose first reference is a colour: alpha lost",
+      "file": "ColorLight.swift",
+      "token": {
+        "name": "BgBlurDefaultColor",
+        "path": ["bg-blur", "default", "color"],
+        "$type": "color",
+        "$value": "rgba(183, 192, 194, 0.5)",
+        "original": {
+          "$value": "rgba({color.primitive.neutral.30}, {opacity.context.fg-subtle})"
+        }
+      },
+      "target": {
+        "name": "ColorPrimitiveNeutral30",
+        "path": ["color", "primitive", "neutral", "30"],
+        "$type": "color",
+        "$value": "#b7c0c2",
+        "original": {
+          "$value": "{color.base.primitive.light.neutral.30}"
+        }
+      },
+      "expected": {
+        "value": "UIColor(red: 0.718, green: 0.753, blue: 0.761, alpha: 0.5)"
+      }
+    },
+    {
+      "case": "rgba() colour whose first reference is an opacity: another Swift type",
+      "file": "ChassisTokens.swift",
+      "token": {
+        "name": "BgBlurDefaultColor",
+        "path": ["bg-blur", "default", "color"],
+        "$type": "color",
+        "$value": "rgba(183, 192, 194, 0.5)",
+        "original": {
+          "$value": "rgba({color.primitive.neutral.30}, {opacity.context.fg-subtle})"
+        }
+      },
+      "target": {
+        "name": "OpacityContextFgSubtle",
+        "path": ["opacity", "context", "fg-subtle"],
+        "$type": "opacity",
+        "$value": "0.5",
+        "original": {
+          "$value": "0.5"
+        }
+      },
+      "expected": {
+        "value": "UIColor(red: 0.718, green: 0.753, blue: 0.761, alpha: 0.5)"
+      }
+    }
+  ],
+  "typographyParts": [
+    {
+      "case": "percent line height: points of the font size",
+      "platform": "ios",
+      "file": "ChassisTokens.swift",
+      "token": {
+        "name": "FontContextJumboLineHeight",
+        "path": ["font", "context", "jumbo", "lineHeight"],
+        "$type": "dimension",
+        "$value": "125%",
+        "original": {
+          "$value": "125%"
+        }
+      },
+      "context": {
+        "fontSize": "96px"
+      },
+      "expected": "CGFloat(120)"
+    },
+    {
+      "case": "percent line height of a unitless font size",
+      "platform": "ios",
+      "file": "ChassisTokens.swift",
+      "token": {
+        "name": "FontWebsiteHeroBodyLineHeight",
+        "path": ["font", "website", "hero-body", "lineHeight"],
+        "$type": "dimension",
+        "$value": "150%",
+        "original": {
+          "$value": "150%"
+        }
+      },
+      "context": {
+        "fontSize": "22"
+      },
+      "expected": "CGFloat(33)"
+    },
+    {
+      "case": "letter spacing stays in points",
+      "platform": "ios",
+      "file": "ChassisTokens.swift",
+      "token": {
+        "name": "FontContextJumboLetterSpacing",
+        "path": ["font", "context", "jumbo", "letterSpacing"],
+        "$type": "number",
+        "$value": "-0.5px",
+        "original": {
+          "$value": "{size.unit.nd05}"
+        }
+      },
+      "context": {
+        "fontSize": "96px"
+      },
+      "expected": "CGFloat(-0.5)"
+    },
+    {
+      "case": "percent line height: sp of the font size",
+      "platform": "android",
+      "file": "number_small.xml",
+      "token": {
+        "name": "font_website_hero_body_line_height",
+        "path": ["font", "website", "hero-body", "lineHeight"],
+        "$type": "dimension",
+        "$value": "150%",
+        "original": {
+          "$value": "150%"
+        }
+      },
+      "context": {
+        "fontSize": "19"
+      },
+      "expected": "28.5sp"
+    },
+    {
+      "case": "line height in points keeps its value",
+      "platform": "android",
+      "file": "main.xml",
+      "token": {
+        "name": "font_context_lead_line_height",
+        "path": ["font", "context", "lead", "lineHeight"],
+        "$type": "dimension",
+        "$value": "32",
+        "original": {
+          "$value": "{typography.lineHeight.text.xlarge}"
+        }
+      },
+      "context": {
+        "fontSize": "22"
+      },
+      "expected": "32sp"
+    },
+    {
+      "case": "letter spacing in em of the font size",
+      "platform": "android",
+      "file": "main.xml",
+      "token": {
+        "name": "font_context_jumbo_letter_spacing",
+        "path": ["font", "context", "jumbo", "letterSpacing"],
+        "$type": "letterSpacing",
+        "$value": "-0.5px",
+        "original": {
+          "$value": "{size.unit.nd05}"
+        }
+      },
+      "context": {
+        "fontSize": "96px"
+      },
+      "expected": "-0.0052"
+    },
+    {
+      "case": "letter spacing of -1px at 64",
+      "platform": "android",
+      "file": "main.xml",
+      "token": {
+        "name": "font_website_hero_title_letter_spacing",
+        "path": ["font", "website", "hero-title", "letterSpacing"],
+        "$type": "letterSpacing",
+        "$value": "-1px",
+        "original": {
+          "$value": "{size.unit.n1}"
+        }
+      },
+      "context": {
+        "fontSize": "64"
+      },
+      "expected": "-0.0156"
+    },
+    {
+      "case": "letter spacing rounded to four decimals",
+      "platform": "android",
+      "file": "number_small.xml",
+      "token": {
+        "name": "font_website_section_title_letter_spacing",
+        "path": ["font", "website", "section-title", "letterSpacing"],
+        "$type": "letterSpacing",
+        "$value": "-0.5px",
+        "original": {
+          "$value": "{size.unit.nd05}"
+        }
+      },
+      "context": {
+        "fontSize": "26"
+      },
+      "expected": "-0.0192"
+    },
+    {
+      "case": "zero letter spacing",
+      "platform": "android",
+      "file": "main.xml",
+      "token": {
+        "name": "font_context_hero_letter_spacing",
+        "path": ["font", "context", "hero", "letterSpacing"],
+        "$type": "letterSpacing",
+        "$value": "0px",
+        "original": {
+          "$value": "{typography.letterSpacing.base.zero}"
+        }
+      },
+      "context": {
+        "fontSize": "64px"
+      },
+      "expected": "0"
+    }
+  ],
+  "gradients": {
+    "cases": [
+      {
+        "case": "0deg, two stops",
+        "token": {
+          "path": ["gradient", "primitive", "black", "l-000"],
+          "$type": "color",
+          "$value": "linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, #000000 100%)",
+          "original": {
+            "$value": "linear-gradient(0deg, {color.primitive.black.transparent} 0%, {color.primitive.black.base} 100%)"
+          }
+        },
+        "names": {
+          "ios": "GradientPrimitiveBlackL000",
+          "android": "gradient_primitive_black_l_000"
+        },
+        "expected": {
+          "ios": [
+            ["GradientPrimitiveBlackL000Angle", "CGFloat(0)"],
+            [
+              "GradientPrimitiveBlackL000Stop1Color",
+              "UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0)"
+            ],
+            ["GradientPrimitiveBlackL000Stop1Position", "CGFloat(0)"],
+            [
+              "GradientPrimitiveBlackL000Stop2Color",
+              "UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1)"
+            ],
+            ["GradientPrimitiveBlackL000Stop2Position", "CGFloat(1)"]
+          ],
+          "android": [
+            ["gradient_primitive_black_l_000_angle", "0"],
+            ["gradient_primitive_black_l_000_stop_1_color", "#00000000"],
+            ["gradient_primitive_black_l_000_stop_1_position", "0"],
+            ["gradient_primitive_black_l_000_stop_2_color", "#ff000000"],
+            ["gradient_primitive_black_l_000_stop_2_position", "1"]
+          ]
+        },
+        "expectedWithReferences": {
+          "ios": [
+            ["GradientPrimitiveBlackL000Angle", "CGFloat(0)"],
+            ["GradientPrimitiveBlackL000Stop1Color", "ColorPrimitiveBlackTransparent"],
+            ["GradientPrimitiveBlackL000Stop1Position", "CGFloat(0)"],
+            ["GradientPrimitiveBlackL000Stop2Color", "ColorPrimitiveBlackBase"],
+            ["GradientPrimitiveBlackL000Stop2Position", "CGFloat(1)"]
+          ],
+          "android": [
+            ["gradient_primitive_black_l_000_angle", "0"],
+            [
+              "gradient_primitive_black_l_000_stop_1_color",
+              "@color/color_primitive_black_transparent"
+            ],
+            ["gradient_primitive_black_l_000_stop_1_position", "0"],
+            ["gradient_primitive_black_l_000_stop_2_color", "@color/color_primitive_black_base"],
+            ["gradient_primitive_black_l_000_stop_2_position", "1"]
+          ]
+        }
+      },
+      {
+        "case": "negative angle",
+        "token": {
+          "path": ["gradient", "primitive", "black", "l-315"],
+          "$type": "color",
+          "$value": "linear-gradient(-45deg, rgba(0, 0, 0, 0) 0%, #000000 100%)",
+          "original": {
+            "$value": "linear-gradient(-45deg, {color.primitive.black.transparent} 0%, {color.primitive.black.base} 100%)"
+          }
+        },
+        "names": {
+          "ios": "GradientPrimitiveBlackL315",
+          "android": "gradient_primitive_black_l_315"
+        },
+        "expected": {
+          "ios": [
+            ["GradientPrimitiveBlackL315Angle", "CGFloat(315)"],
+            [
+              "GradientPrimitiveBlackL315Stop1Color",
+              "UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0)"
+            ],
+            ["GradientPrimitiveBlackL315Stop1Position", "CGFloat(0)"],
+            [
+              "GradientPrimitiveBlackL315Stop2Color",
+              "UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1)"
+            ],
+            ["GradientPrimitiveBlackL315Stop2Position", "CGFloat(1)"]
+          ],
+          "android": [
+            ["gradient_primitive_black_l_315_angle", "315"],
+            ["gradient_primitive_black_l_315_stop_1_color", "#00000000"],
+            ["gradient_primitive_black_l_315_stop_1_position", "0"],
+            ["gradient_primitive_black_l_315_stop_2_color", "#ff000000"],
+            ["gradient_primitive_black_l_315_stop_2_position", "1"]
+          ]
+        },
+        "expectedWithReferences": {
+          "ios": [
+            ["GradientPrimitiveBlackL315Angle", "CGFloat(315)"],
+            ["GradientPrimitiveBlackL315Stop1Color", "ColorPrimitiveBlackTransparent"],
+            ["GradientPrimitiveBlackL315Stop1Position", "CGFloat(0)"],
+            ["GradientPrimitiveBlackL315Stop2Color", "ColorPrimitiveBlackBase"],
+            ["GradientPrimitiveBlackL315Stop2Position", "CGFloat(1)"]
+          ],
+          "android": [
+            ["gradient_primitive_black_l_315_angle", "315"],
+            [
+              "gradient_primitive_black_l_315_stop_1_color",
+              "@color/color_primitive_black_transparent"
+            ],
+            ["gradient_primitive_black_l_315_stop_1_position", "0"],
+            ["gradient_primitive_black_l_315_stop_2_color", "@color/color_primitive_black_base"],
+            ["gradient_primitive_black_l_315_stop_2_position", "1"]
+          ]
+        }
+      }
+    ],
+    "stopColors": [
+      {
+        "names": {
+          "ios": "ColorPrimitiveBlackTransparent",
+          "android": "color_primitive_black_transparent"
+        },
+        "token": {
+          "path": ["color", "primitive", "black", "transparent"],
+          "$type": "color",
+          "$value": "rgba(0, 0, 0, 0)",
+          "original": {
+            "$value": "{color.base.primitive.light.black.transparent}"
+          }
+        }
+      },
+      {
+        "names": {
+          "ios": "ColorPrimitiveBlackBase",
+          "android": "color_primitive_black_base"
+        },
+        "token": {
+          "path": ["color", "primitive", "black", "base"],
+          "$type": "color",
+          "$value": "#000000",
+          "original": {
+            "$value": "{color.base.primitive.light.black.base}"
+          }
+        }
+      }
+    ]
+  },
+  "themeColors": [
+    {
+      "case": "a colour that differs by theme",
+      "name": "ColorContextDefaultBgMain",
+      "type": "color",
+      "light": {
+        "value": "UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1)",
+        "printed": "UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1)"
+      },
+      "dark": {
+        "value": "UIColor(red: 0.067, green: 0.075, blue: 0.078, alpha: 1)",
+        "printed": "UIColor(red: 0.067, green: 0.075, blue: 0.078, alpha: 1)"
+      }
+    },
+    {
+      "case": "a colour that is the same in both themes",
+      "name": "GradientPrimitiveBlackL000Stop1Color",
+      "type": "color",
+      "light": {
+        "value": "UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0)",
+        "printed": "UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0)"
+      },
+      "dark": {
+        "value": "UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0)",
+        "printed": "UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0)"
+      }
+    },
+    {
+      "case": "a number part that is the same in both themes",
+      "name": "GradientPrimitiveBlackL000Angle",
+      "type": "number",
+      "light": {
+        "value": "CGFloat(0)",
+        "printed": "CGFloat(0)"
+      },
+      "dark": {
+        "value": "CGFloat(0)",
+        "printed": "CGFloat(0)"
+      }
+    },
+    {
+      "case": "both themes name the same constant",
+      "name": "ColorAccordionItemFgColor",
+      "type": "color",
+      "light": {
+        "value": "UIColor(red: 0.086, green: 0.102, blue: 0.106, alpha: 1)",
+        "printed": "ColorContextDefaultFgMain"
+      },
+      "dark": {
+        "value": "UIColor(red: 0.914, green: 0.925, blue: 0.929, alpha: 1)",
+        "printed": "ColorContextDefaultFgMain"
+      }
+    }
+  ],
+  "shadowParts": [
+    {
+      "case": "shadow blur",
+      "token": {
+        "name": "ShadowContextSmall1Blur",
+        "path": ["shadow", "context", "small", "1", "blur"],
+        "$type": "dimension",
+        "$value": "8px",
+        "$extensions": {
+          "studio.tokens": {
+            "originalType": "boxShadow"
+          },
+          "chassis": {
+            "sourceOrder": 3399
+          }
+        },
+        "original": {
+          "$value": "{dimension.base.8}"
+        }
+      }
+    },
+    {
+      "case": "shadow spread",
+      "token": {
+        "name": "ShadowContextSmall1Spread",
+        "path": ["shadow", "context", "small", "1", "spread"],
+        "$type": "dimension",
+        "$value": "-2px",
+        "$extensions": {
+          "studio.tokens": {
+            "originalType": "boxShadow"
+          },
+          "chassis": {
+            "sourceOrder": 3399
+          }
+        },
+        "original": {
+          "$value": "{dimension.base.n2}"
+        }
+      }
+    },
+    {
+      "case": "blur of the bg-blur box shadow",
+      "token": {
+        "name": "BgBlurDefaultBlur",
+        "path": ["bg-blur", "default", "blur"],
+        "$type": "dimension",
+        "$value": "48px",
+        "$extensions": {
+          "studio.tokens": {
+            "originalType": "boxShadow"
+          },
+          "chassis": {
+            "sourceOrder": 3557
+          }
+        },
+        "original": {
+          "$value": "{dimension.base.48}"
+        }
+      }
+    }
+  ]
+}

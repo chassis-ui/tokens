@@ -1,248 +1,233 @@
 /**
  * @file config.test.js
- * @description Test suite for the Style Dictionary configuration generator
- * @copyright Copyright (c) 2025 Ozgur Gunes
+ * @description Tests for the Style Dictionary configuration of a planned build.
+ * @copyright Copyright (c) 2026 Ozgur Gunes
  * @license MIT
  */
 
-import { describe, test, expect, beforeEach, vi } from 'vitest'
+import { describe, expect, test } from 'vitest'
+import config from '../config/index.js'
 
-// Mock all external dependencies
-vi.mock('../filters.js', () => ({ default: vi.fn() }))
-vi.mock('../transforms.js', () => ({ default: vi.fn() }))
-vi.mock('../formats.js', () => ({ default: vi.fn() }))
+const outputs = [
+  { kind: 'base' },
+  { kind: 'color', theme: 'light' },
+  { kind: 'number', screen: 'large' }
+]
+const build = {
+  brand: 'chassis',
+  app: 'demo',
+  platforms: ['ios', 'android'],
+  outputs,
+  themes: ['light', 'dark'],
+  screens: ['large', 'medium', 'small'],
+  source: ['tokens/base/metric-source.json', 'tokens/brand-chassis/brand-base.json']
+}
 
-describe('Style Dictionary Configuration Generator', () => {
-  let configModule
+const files = (platform, outputList = outputs) =>
+  config({ ...build, platforms: [platform], outputs: outputList }).platforms[platform].files
 
-  beforeEach(async () => {
-    vi.clearAllMocks()
-    configModule = await import('../config/index.js')
+describe('config', () => {
+  test('passes the token files through, in order, as source only', () => {
+    const result = config(build)
+    expect(result.source).toEqual(build.source)
+    expect(result).not.toHaveProperty('include')
   })
 
-  describe('File Generation Logic', () => {
-    test('should generate main.scss and string.scss for base configurations', () => {
-      const params = {
-        brand: 'chassis',
-        app: 'docs',
-        platform: 'web'
-      }
-
-      const config = configModule.default(params)
-      const files = config.platforms.web.files
-
-      // Should include main.scss and string.scss
-      expect(files.some((f) => f.destination.includes('main.scss'))).toBe(true)
-      expect(files.some((f) => f.destination.includes('string.scss'))).toBe(true)
-
-      // Should not include theme or screen specific files
-      expect(files.some((f) => f.destination.includes('color-'))).toBe(false)
-      expect(files.some((f) => f.destination.includes('number-'))).toBe(false)
-    })
-
-    test('should generate color-theme.scss for theme configurations', () => {
-      const params = {
-        brand: 'chassis',
-        app: 'docs',
-        platform: 'web',
-        theme: 'dark'
-      }
-
-      const config = configModule.default(params)
-      const files = config.platforms.web.files
-
-      // Should include color-dark.scss
-      expect(files.some((f) => f.destination.includes('color-dark.scss'))).toBe(true)
-
-      // Should not include main files or number files
-      expect(files.some((f) => f.destination.includes('main.scss'))).toBe(false)
-      expect(files.some((f) => f.destination.includes('string.scss'))).toBe(false)
-      expect(files.some((f) => f.destination.includes('number-'))).toBe(false)
-    })
-
-    test('should generate number-screen.scss for screen configurations', () => {
-      const params = {
-        brand: 'chassis',
-        app: 'docs',
-        platform: 'web',
-        screen: 'large'
-      }
-
-      const config = configModule.default(params)
-      const files = config.platforms.web.files
-
-      // Should include number-large.scss
-      expect(files.some((f) => f.destination.includes('number-large.scss'))).toBe(true)
-
-      // Should not include main files or color files
-      expect(files.some((f) => f.destination.includes('main.scss'))).toBe(false)
-      expect(files.some((f) => f.destination.includes('string.scss'))).toBe(false)
-      expect(files.some((f) => f.destination.includes('color-'))).toBe(false)
+  test('runs the chassis preprocessor and throws on broken references', () => {
+    expect(config(build)).toMatchObject({
+      preprocessors: ['cx/global'],
+      log: { errors: { brokenReferences: 'throw' } }
     })
   })
 
-  describe('Platform-specific Configurations', () => {
-    test('should generate web platform configuration correctly', () => {
-      const params = {
-        brand: 'chassis',
-        app: 'docs',
-        platform: 'web'
-      }
-
-      const config = configModule.default(params)
-
-      expect(config.platforms.web).toBeDefined()
-      expect(config.platforms.web.buildPath).toContain('dist/web/docs/chassis/')
-      expect(config.platforms.web.files).toBeInstanceOf(Array)
-    })
-
-    test('should generate ios platform configuration correctly', () => {
-      const params = {
-        brand: 'chassis',
-        app: 'test',
-        platform: 'ios'
-      }
-
-      const config = configModule.default(params)
-
-      expect(config.platforms.ios).toBeDefined()
-      expect(config.platforms.ios.buildPath).toContain('dist/ios/test/chassis/')
-      expect(config.platforms.ios.files).toBeInstanceOf(Array)
-    })
-
-    test('should generate android platform configuration correctly', () => {
-      const params = {
-        brand: 'chassis',
-        app: 'test',
-        platform: 'android'
-      }
-
-      const config = configModule.default(params)
-
-      expect(config.platforms.android).toBeDefined()
-      expect(config.platforms.android.buildPath).toContain('dist/android/test/chassis/')
-      expect(config.platforms.android.files).toBeInstanceOf(Array)
-    })
+  test('has one platform per target platform', () => {
+    expect(Object.keys(config(build).platforms)).toEqual(['ios', 'android'])
   })
 
-  describe('Build Path Generation', () => {
-    test('should create correct build path for different brand/app combinations', () => {
-      const testCases = [
-        {
-          brand: 'chassis',
-          app: 'docs',
-          platform: 'web',
-          expected: 'dist/web/docs/chassis/'
-        },
-        {
-          brand: 'test',
-          app: 'mobile',
-          platform: 'ios',
-          expected: 'dist/ios/mobile/test/'
-        },
-        {
-          brand: 'custom',
-          app: 'admin',
-          platform: 'android',
-          expected: 'dist/android/admin/custom/'
-        }
+  test('writes under the output directory, dist by default', () => {
+    expect(config(build).platforms.ios.buildPath).toBe('dist/ios/demo/chassis/')
+    expect(config({ ...build, outDir: 'dist-next' }).platforms.android.buildPath).toBe(
+      'dist-next/android/demo/chassis/'
+    )
+  })
+
+  // File names, filters and formats of the output contract
+  test.each([
+    [
+      'web',
+      'cx/scss-chassis-css',
+      ['main.scss', 'string.scss', 'color-light.scss', 'number-large.scss', 'number.scss']
+    ],
+    [
+      'ios',
+      'cx/ios-swift-class',
+      [
+        'ChassisTokens.swift',
+        'String.swift',
+        'ColorLight.swift',
+        'NumberLarge.swift',
+        'Number.swift'
       ]
+    ],
+    [
+      'android',
+      'cx/android-resources',
+      ['main.xml', 'string.xml', 'color_light.xml', 'number_large.xml', 'number.xml']
+    ]
+  ])('%s writes each output with its filter', (platform, format, names) => {
+    const written = files(platform, [...outputs, { kind: 'number' }]).filter(
+      (file) => !file.destination.startsWith('res/')
+    )
+    expect(
+      written.map(({ destination, filter, format }) => ({ destination, filter, format }))
+    ).toEqual([
+      { destination: names[0], filter: 'cx/allTokens', format },
+      { destination: names[1], filter: 'cx/stringTokens', format },
+      { destination: names[2], filter: 'cx/themeTokens', format },
+      { destination: names[3], filter: 'cx/numberTokens', format },
+      { destination: names[4], filter: 'cx/numberTokens', format }
+    ])
+  })
 
-      testCases.forEach(({ brand, app, platform, expected }) => {
-        const config = configModule.default({ brand, app, platform })
-        expect(config.platforms[platform].buildPath).toBe(expected)
-      })
+  test('Android writes a resource tree next to the flat files', () => {
+    const tree = files('android', [
+      ...outputs,
+      { kind: 'color', theme: 'dark' },
+      { kind: 'number', screen: 'medium' },
+      { kind: 'number', screen: 'small' }
+    ]).filter((file) => file.destination.startsWith('res/'))
+    expect(tree.map(({ destination, filter }) => [destination, filter])).toEqual([
+      ['res/values/string.xml', 'cx/stringTokens'],
+      ['res/values/color_base.xml', 'cx/baseColorTokens'],
+      ['res/values/color.xml', 'cx/themeTokens'],
+      ['res/values-sw840dp/number.xml', 'cx/numberTokens'],
+      ['res/values-night/color.xml', 'cx/themeTokens'],
+      ['res/values-sw600dp/number.xml', 'cx/numberTokens'],
+      ['res/values/number.xml', 'cx/numberTokens']
+    ])
+  })
+
+  test('Android puts the screens in the folders of options.android.screens', () => {
+    const platformOptions = {
+      android: { screens: { large: '', medium: 'w600dp', small: 'h480dp' } }
+    }
+    const tree = config({
+      ...build,
+      platforms: ['android'],
+      platformOptions
+    }).platforms.android.files.filter((file) => file.destination.endsWith('/number.xml'))
+    expect(tree.map((file) => file.destination)).toEqual(['res/values/number.xml'])
+    const small = config({
+      ...build,
+      platforms: ['android'],
+      outputs: [{ kind: 'number', screen: 'small' }],
+      platformOptions
+    }).platforms.android.files
+    expect(small.map((file) => file.destination)).toEqual([
+      'number_small.xml',
+      'res/values-h480dp/number.xml'
+    ])
+  })
+
+  test('Android puts no theme but the first and dark in the tree', () => {
+    const contrast = files('android', [{ kind: 'color', theme: 'contrast' }])
+    expect(contrast.map((file) => file.destination)).toEqual(['color_contrast.xml'])
+  })
+
+  test.each([
+    ['ios-swiftui', 'cx/swiftui', 'dist/ios-swiftui/demo/chassis/', 'ChassisTokens.swift'],
+    [
+      'android-compose',
+      'cx/compose-object',
+      'dist/android-compose/demo/chassis/',
+      'ChassisTokens.kt'
+    ]
+  ])('the %s preset writes its own folder', (platform, format, buildPath, main) => {
+    const { platforms } = config({ ...build, platforms: [platform] })
+    expect(platforms[platform].buildPath).toBe(buildPath)
+    expect(platforms[platform].files[0]).toMatchObject({
+      destination: main,
+      format,
+      options: { className: 'ChassisTokens' }
     })
   })
 
-  describe('File Filter Application', () => {
-    test('should apply correct filters to different file types', () => {
-      const params = {
-        brand: 'chassis',
-        app: 'docs',
-        platform: 'web'
-      }
-
-      const config = configModule.default(params)
-      const files = config.platforms.web.files
-
-      // Each file should have a filter property
-      files.forEach((file) => {
-        expect(file.filter).toBeDefined()
-      })
+  test('SwiftUI files import SwiftUI and make no Color.swift', () => {
+    const { options, files } = config({ ...build, platforms: ['ios-swiftui'] }).platforms[
+      'ios-swiftui'
+    ]
+    expect(options).toMatchObject({
+      import: ['SwiftUI'],
+      accessControl: 'public',
+      objectType: 'enum'
     })
+    expect(files.some((file) => file.options.theme)).toBe(false)
   })
 
-  describe('Format Application', () => {
-    test('should apply correct formats based on platform', () => {
-      const webConfig = configModule.default({
-        brand: 'chassis',
-        app: 'docs',
-        platform: 'web'
-      })
-
-      const iosConfig = configModule.default({
-        brand: 'chassis',
-        app: 'test',
-        platform: 'ios'
-      })
-
-      const androidConfig = configModule.default({
-        brand: 'chassis',
-        app: 'test',
-        platform: 'android'
-      })
-
-      // Web should have scss format
-      const webFiles = webConfig.platforms.web.files
-      expect(webFiles.some((f) => f.format === 'cx/scss-chassis-css')).toBe(true)
-
-      // iOS should have swift format
-      const iosFiles = iosConfig.platforms.ios.files
-      expect(iosFiles.some((f) => f.format === 'cx/ios-swift-class')).toBe(true)
-
-      // Android should have xml format
-      const androidFiles = androidConfig.platforms.android.files
-      expect(androidFiles.some((f) => f.format === 'cx/android-resources')).toBe(true)
-    })
+  test('Compose files are in the package chassis.tokens unless set', () => {
+    const { options } = config({ ...build, platforms: ['android-compose'] }).platforms[
+      'android-compose'
+    ]
+    expect(options.packageName).toBe('chassis.tokens')
+    const platformOptions = { 'android-compose': { packageName: 'com.example.tokens' } }
+    const set = config({ ...build, platforms: ['android-compose'], platformOptions })
+    expect(set.platforms['android-compose'].options.packageName).toBe('com.example.tokens')
   })
 
-  describe('Edge Cases', () => {
-    test('should handle missing optional parameters gracefully', () => {
-      const minimalParams = {
-        brand: 'chassis',
-        app: 'docs',
-        platform: 'web'
-      }
+  test('iOS files declare one type each, so they can share a target', () => {
+    const written = files('ios', [...outputs, { kind: 'number' }])
+    expect(written.map((file) => file.options.className)).toEqual([
+      'ChassisTokens',
+      'ChassisTokensString',
+      'ChassisTokensColorLight',
+      'ChassisTokensNumberLarge',
+      'ChassisTokensNumber'
+    ])
+    expect(config(build).platforms.ios.options.objectType).toBe('enum')
+  })
 
-      expect(() => configModule.default(minimalParams)).not.toThrow()
-      const config = configModule.default(minimalParams)
-      expect(config.platforms.web).toBeDefined()
+  // Presets for other CSS frameworks than Chassis CSS
+  test.each([
+    ['web', 'cx/scss-chassis-css', 'cx/size/rem'],
+    ['web-scss', 'cx/scss-variables', 'cx/size/rem'],
+    ['web-px', 'cx/scss-variables', 'cx/size/px'],
+    ['web-vw', 'cx/scss-variables', 'cx/size/vw']
+  ])('%s prints %s with %s', (platform, format, sizeTransform) => {
+    const result = config({ ...build, app: 'docs', platforms: [platform] }).platforms[platform]
+    expect(result.files.map((file) => file.format)).toEqual(Array(4).fill(format))
+    expect(result.transforms.filter((name) => name.startsWith('cx/size/'))).toEqual([sizeTransform])
+    expect(result).toMatchObject({ prefix: 'cx', basePxFontSize: 16 })
+  })
+
+  test('the web presets write the same files to the same directory', () => {
+    const web = config({ ...build, app: 'docs', platforms: ['web'] }).platforms.web
+    for (const platform of ['web-scss', 'web-px', 'web-vw']) {
+      const preset = config({ ...build, app: 'docs', platforms: [platform] }).platforms[platform]
+      expect(preset.buildPath).toBe('dist/web/docs/chassis/')
+      expect(preset.files.map((file) => [file.destination, file.filter])).toEqual(
+        web.files.map((file) => [file.destination, file.filter])
+      )
+      expect(preset.transforms.slice(0, -1)).toEqual(web.transforms.slice(0, -1))
+    }
+  })
+
+  test('merges the options of a platform into its Style Dictionary options', () => {
+    const platformOptions = { 'web-px': { outputReferences: true } }
+    const result = config({ ...build, app: 'docs', platforms: ['web-px', 'web'], platformOptions })
+    expect(result.platforms['web-px'].options).toEqual({
+      fileHeader: 'cxFileHeader',
+      commentStyle: 'short',
+      formatting: { fileHeaderTimestamp: true },
+      outputReferences: true
     })
+    expect(result.platforms.web.options).not.toHaveProperty('outputReferences')
+  })
 
-    test('should generate unique configurations for different parameter combinations', () => {
-      const config1 = configModule.default({
-        brand: 'chassis',
-        app: 'docs',
-        platform: 'web',
-        theme: 'light'
-      })
+  test('throws on an unknown platform', () => {
+    expect(() => config({ ...build, platforms: ['windows'] })).toThrow('Unknown platform: windows')
+  })
 
-      const config2 = configModule.default({
-        brand: 'chassis',
-        app: 'docs',
-        platform: 'web',
-        theme: 'dark'
-      })
-
-      // Should have different file outputs
-      const files1 = config1.platforms.web.files
-      const files2 = config2.platforms.web.files
-
-      const destinations1 = files1.map((f) => f.destination)
-      const destinations2 = files2.map((f) => f.destination)
-
-      expect(destinations1).not.toEqual(destinations2)
-    })
+  test('throws on an unknown output', () => {
+    expect(() => files('web', [{ kind: 'icons' }])).toThrow('Unknown output: icons')
   })
 })

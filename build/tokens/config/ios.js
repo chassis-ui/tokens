@@ -1,17 +1,18 @@
 /**
  * @file ios.js
- * @description iOS platform configuration
+ * @description iOS platform configuration, for UIKit (`ios`) and, through `swiftConfig`,
+ *              for SwiftUI (`ios-swiftui`)
  * @copyright Copyright (c) 2026 Ozgur Gunes
  * @license MIT
  */
-
-const format = 'cx/ios-swift-class'
 
 const options = {
   fileHeader: 'cxFileHeader',
   commentStyle: 'short',
   formatting: { fileHeaderTimestamp: true },
-  import: ['UIKit']
+  accessControl: 'public',
+  // A caseless enum groups constants without instances; Objective-C cannot see them
+  objectType: 'enum'
 }
 
 const transforms = ['name/pascal', 'ts/resolveMath', 'ts/color/modifiers', 'ts/color/css/hexrgba']
@@ -37,46 +38,80 @@ function toPascalCase(name) {
 }
 
 /**
- * Generates file configurations based on context
+ * Returns a Swift file: its destination and the type it declares. The main file declares
+ * `ChassisTokens`, and every other file `ChassisTokens<File>`, so all files can be in
+ * one target.
+ * @param {string} name - The file name without `.swift`, e.g. `ColorLight`.
+ * @param {string} filter - The file's filter.
+ * @param {string} format - The file's format.
+ * @param {Object} [options] - More file options; `theme` marks a colour file for the
+ *   colour file that follows the appearance (`theme-colors.js`).
  */
-function generateFiles(theme, screen) {
-  // Base files (no theme, no screen)
-  if (!theme && screen === undefined) {
-    return [
-      { destination: 'Main.swift', filter: 'cx/allTokens', format },
-      { destination: 'String.swift', filter: 'cx/stringTokens', format }
-    ]
-  }
-
-  // Color files (theme only)
-  if (theme && !screen) {
-    return [{ destination: `Color${toPascalCase(theme)}.swift`, filter: 'cx/themeTokens', format }]
-  }
-
-  // Number files (with screen suffix)
-  if (screen) {
-    return [
-      { destination: `Number${toPascalCase(screen)}.swift`, filter: 'cx/numberTokens', format }
-    ]
-  }
-
-  // Number files (without screen suffix when screens are optional)
-  if (screen === null) {
-    return [{ destination: 'Number.swift', filter: 'cx/numberTokens', format }]
-  }
-
-  return []
+function swiftFile(name, filter, format, options = {}) {
+  const className = name === 'ChassisTokens' ? name : `ChassisTokens${name}`
+  return { destination: `${name}.swift`, filter, format, options: { className, ...options } }
 }
 
 /**
- * iOS platform configuration
+ * Returns the files of one output.
+ * @param {Object} output - `{ kind: 'base' }`, `{ kind: 'color', theme }` or
+ *   `{ kind: 'number', screen }`; `screen` is undefined when no screens are configured.
  */
-export default function (brand, app, theme, screen) {
-  return {
-    transforms,
-    expand,
-    buildPath: `dist/ios/${app}/${brand}/`,
-    options,
-    files: generateFiles(theme, screen)
+function generateFiles({ kind, theme, screen }, { format, themeColors }) {
+  switch (kind) {
+    case 'base':
+      return [
+        swiftFile('ChassisTokens', 'cx/allTokens', format),
+        swiftFile('String', 'cx/stringTokens', format)
+      ]
+    case 'color':
+      return [
+        swiftFile(
+          `Color${toPascalCase(theme)}`,
+          'cx/themeTokens',
+          format,
+          themeColors ? { theme } : {}
+        )
+      ]
+    case 'number':
+      return [swiftFile(`Number${screen ? toPascalCase(screen) : ''}`, 'cx/numberTokens', format)]
+    default:
+      throw new Error(`Unknown output: ${kind}`)
   }
 }
+
+/**
+ * Returns a Swift platform configuration.
+ * @param {Object} settings
+ * @param {string} settings.format - The format of every file.
+ * @param {string} settings.folder - The folder under the output root, e.g. `ios`.
+ * @param {string[]} settings.imports - The modules every file imports.
+ * @param {boolean} [settings.themeColors] - Mark the colour files for `Color.swift`.
+ * @param {boolean} [settings.icons] - Write the icon asset catalog with the main file.
+ */
+export function swiftConfig({ format, folder, imports, themeColors, icons }) {
+  return function (brand, app, outputs, outDir = 'dist') {
+    return {
+      transforms,
+      expand,
+      buildPath: `${outDir}/${folder}/${app}/${brand}/`,
+      options: { ...options, import: imports },
+      files: outputs.flatMap((output) => generateFiles(output, { format, themeColors })),
+      // The icon tokens are in the build of the main file
+      actions: icons && outputs.some((output) => output.kind === 'base') ? ['cx/ios-icons'] : []
+    }
+  }
+}
+
+/**
+ * The UIKit output. Its colour files also make `Color.swift`, whose colours follow the
+ * appearance (`theme-colors.js`), and it writes the icons as an asset catalog
+ * (`icons.js`).
+ */
+export default swiftConfig({
+  format: 'cx/ios-swift-class',
+  folder: 'ios',
+  imports: ['UIKit'],
+  themeColors: true,
+  icons: true
+})

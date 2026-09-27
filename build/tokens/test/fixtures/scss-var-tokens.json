@@ -1,0 +1,2379 @@
+{
+  "source": "Resolved chassis/docs tokens of the web-px, web-vw and web-scss presets, and of web-px with outputReferences (web-px-references), from the SD 5.5 build, with the matching baseline lines of build/tokens/test/golden/, extracted 2026-09-27. \"tokens\" holds, per preset, every token under test and every token it looks up, keyed by path. \"variables\" holds the variable names that the web-px-references cases look up, by path.",
+  "cases": [
+    {
+      "preset": "web-px",
+      "group": "typography",
+      "case": "percent line height and letter spacing",
+      "token": "font.context.jumbo",
+      "expected": "(\"font-family\": \"Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif\", \"font-weight\": 700, \"font-size\": 96px, \"line-height\": 1.25em, \"font-style\": normal, \"letter-spacing\": -0.0313em, \"margin-bottom\": 0px, \"text-transform\": none, \"text-decoration\": none)"
+    },
+    {
+      "preset": "web-px",
+      "group": "typography",
+      "case": "line height relative to the font size",
+      "token": "font.context.lead",
+      "expected": "(\"font-family\": \"Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif\", \"font-weight\": 400, \"font-size\": 22px, \"line-height\": 1.455em, \"font-style\": normal, \"letter-spacing\": 0em, \"margin-bottom\": 0px, \"text-transform\": none, \"text-decoration\": none)"
+    },
+    {
+      "preset": "web-px",
+      "group": "typography",
+      "case": "reference to a typography token",
+      "token": "font.button.medium",
+      "expected": "(\"font-family\": \"Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif\", \"font-weight\": 600, \"font-size\": 16px, \"line-height\": 1.5em, \"font-style\": normal, \"letter-spacing\": 0em, \"margin-bottom\": 0px, \"text-transform\": none, \"text-decoration\": none)"
+    },
+    {
+      "preset": "web-px",
+      "group": "typography",
+      "case": "negative letter spacing",
+      "token": "font.website.hero-title",
+      "expected": "(\"font-family\": \"Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif\", \"font-weight\": 700, \"font-size\": 64px, \"line-height\": 1.25em, \"font-style\": normal, \"letter-spacing\": -0.0625em, \"margin-bottom\": 0px, \"text-transform\": none, \"text-decoration\": none)"
+    },
+    {
+      "preset": "web-px",
+      "group": "resolved",
+      "case": "colour that references a context colour",
+      "token": "color.accordion.item-fg-color",
+      "expected": "#161a1b"
+    },
+    {
+      "preset": "web-px",
+      "group": "resolved",
+      "case": "border radius that references a context radius",
+      "token": "borderRadius.accordion.main",
+      "expected": "6px"
+    },
+    {
+      "preset": "web-px",
+      "group": "resolved",
+      "case": "shadow that references a context shadow",
+      "token": "shadow.alert.main",
+      "expected": "0px 6px 24px -6px rgba(0, 0, 0, 0.1), 0px 3px 12px -3px rgba(0, 0, 0, 0.1)"
+    },
+    {
+      "preset": "web-px",
+      "group": "resolved",
+      "case": "size",
+      "token": "size.unit.16",
+      "expected": "16px"
+    },
+    {
+      "preset": "web-px",
+      "group": "resolved",
+      "case": "negative size",
+      "token": "size.unit.nd05",
+      "expected": "-0.5px"
+    },
+    {
+      "preset": "web-px",
+      "group": "encode",
+      "case": "line height token relative to its font size",
+      "token": "typography.lineHeight.text.medium",
+      "expected": "1.5em"
+    },
+    {
+      "preset": "web-px",
+      "group": "encode",
+      "case": "letter spacing token",
+      "token": "typography.letterSpacing.base.zero",
+      "expected": "0em"
+    },
+    {
+      "preset": "web-px",
+      "group": "encode",
+      "case": "asset is quoted",
+      "token": "icon.accordion.indicator",
+      "expected": "\"<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='currentcolor' viewBox='0 0 24 24'><path d='m11.121 16.629-7.5-7.5a1.205 1.205 0 0 1 0-1.758 1.205 1.205 0 0 1 1.758 0l6.64 6.602 6.602-6.602a1.205 1.205 0 0 1 1.758 0c.508.469.508 1.29 0 1.758l-7.5 7.5a1.205 1.205 0 0 1-1.758 0Z'/></svg>\""
+    },
+    {
+      "preset": "web-vw",
+      "group": "typography",
+      "case": "percent line height and letter spacing",
+      "token": "font.context.jumbo",
+      "expected": "(\"font-family\": \"Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif\", \"font-weight\": 700, \"font-size\": 6vw, \"line-height\": 1.25em, \"font-style\": normal, \"letter-spacing\": -0.0313em, \"margin-bottom\": 0vw, \"text-transform\": none, \"text-decoration\": none)"
+    },
+    {
+      "preset": "web-vw",
+      "group": "typography",
+      "case": "line height relative to the font size",
+      "token": "font.context.lead",
+      "expected": "(\"font-family\": \"Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif\", \"font-weight\": 400, \"font-size\": 1.375vw, \"line-height\": 1.455em, \"font-style\": normal, \"letter-spacing\": 0em, \"margin-bottom\": 0vw, \"text-transform\": none, \"text-decoration\": none)"
+    },
+    {
+      "preset": "web-vw",
+      "group": "typography",
+      "case": "reference to a typography token",
+      "token": "font.button.medium",
+      "expected": "(\"font-family\": \"Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif\", \"font-weight\": 600, \"font-size\": 1vw, \"line-height\": 1.5em, \"font-style\": normal, \"letter-spacing\": 0em, \"margin-bottom\": 0vw, \"text-transform\": none, \"text-decoration\": none)"
+    },
+    {
+      "preset": "web-vw",
+      "group": "typography",
+      "case": "negative letter spacing",
+      "token": "font.website.hero-title",
+      "expected": "(\"font-family\": \"Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif\", \"font-weight\": 700, \"font-size\": 4vw, \"line-height\": 1.25em, \"font-style\": normal, \"letter-spacing\": -0.0625em, \"margin-bottom\": 0vw, \"text-transform\": none, \"text-decoration\": none)"
+    },
+    {
+      "preset": "web-vw",
+      "group": "resolved",
+      "case": "colour that references a context colour",
+      "token": "color.accordion.item-fg-color",
+      "expected": "#161a1b"
+    },
+    {
+      "preset": "web-vw",
+      "group": "resolved",
+      "case": "border radius that references a context radius",
+      "token": "borderRadius.accordion.main",
+      "expected": "0.375vw"
+    },
+    {
+      "preset": "web-vw",
+      "group": "resolved",
+      "case": "shadow that references a context shadow",
+      "token": "shadow.alert.main",
+      "expected": "0vw 0.375vw 1.5vw -0.375vw rgba(0, 0, 0, 0.1), 0vw 0.1875vw 0.75vw -0.1875vw rgba(0, 0, 0, 0.1)"
+    },
+    {
+      "preset": "web-vw",
+      "group": "resolved",
+      "case": "size",
+      "token": "size.unit.16",
+      "expected": "1vw"
+    },
+    {
+      "preset": "web-vw",
+      "group": "resolved",
+      "case": "negative size",
+      "token": "size.unit.nd05",
+      "expected": "-0.0313vw"
+    },
+    {
+      "preset": "web-vw",
+      "group": "encode",
+      "case": "line height token relative to its font size",
+      "token": "typography.lineHeight.text.medium",
+      "expected": "1.5em"
+    },
+    {
+      "preset": "web-vw",
+      "group": "encode",
+      "case": "letter spacing token",
+      "token": "typography.letterSpacing.base.zero",
+      "expected": "0em"
+    },
+    {
+      "preset": "web-vw",
+      "group": "encode",
+      "case": "asset is quoted",
+      "token": "icon.accordion.indicator",
+      "expected": "\"<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='currentcolor' viewBox='0 0 24 24'><path d='m11.121 16.629-7.5-7.5a1.205 1.205 0 0 1 0-1.758 1.205 1.205 0 0 1 1.758 0l6.64 6.602 6.602-6.602a1.205 1.205 0 0 1 1.758 0c.508.469.508 1.29 0 1.758l-7.5 7.5a1.205 1.205 0 0 1-1.758 0Z'/></svg>\""
+    },
+    {
+      "preset": "web-scss",
+      "group": "typography",
+      "case": "percent line height and letter spacing",
+      "token": "font.context.jumbo",
+      "expected": "(\"font-family\": \"Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif\", \"font-weight\": 700, \"font-size\": 6rem, \"line-height\": 1.25em, \"font-style\": normal, \"letter-spacing\": -0.0313em, \"margin-bottom\": 0rem, \"text-transform\": none, \"text-decoration\": none)"
+    },
+    {
+      "preset": "web-scss",
+      "group": "typography",
+      "case": "line height relative to the font size",
+      "token": "font.context.lead",
+      "expected": "(\"font-family\": \"Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif\", \"font-weight\": 400, \"font-size\": 1.375rem, \"line-height\": 1.455em, \"font-style\": normal, \"letter-spacing\": 0em, \"margin-bottom\": 0rem, \"text-transform\": none, \"text-decoration\": none)"
+    },
+    {
+      "preset": "web-scss",
+      "group": "typography",
+      "case": "reference to a typography token",
+      "token": "font.button.medium",
+      "expected": "(\"font-family\": \"Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif\", \"font-weight\": 600, \"font-size\": 1rem, \"line-height\": 1.5em, \"font-style\": normal, \"letter-spacing\": 0em, \"margin-bottom\": 0rem, \"text-transform\": none, \"text-decoration\": none)"
+    },
+    {
+      "preset": "web-scss",
+      "group": "typography",
+      "case": "negative letter spacing",
+      "token": "font.website.hero-title",
+      "expected": "(\"font-family\": \"Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif\", \"font-weight\": 700, \"font-size\": 4rem, \"line-height\": 1.25em, \"font-style\": normal, \"letter-spacing\": -0.0625em, \"margin-bottom\": 0rem, \"text-transform\": none, \"text-decoration\": none)"
+    },
+    {
+      "preset": "web-scss",
+      "group": "resolved",
+      "case": "colour that references a context colour",
+      "token": "color.accordion.item-fg-color",
+      "expected": "#161a1b"
+    },
+    {
+      "preset": "web-scss",
+      "group": "resolved",
+      "case": "border radius that references a context radius",
+      "token": "borderRadius.accordion.main",
+      "expected": "0.375rem"
+    },
+    {
+      "preset": "web-scss",
+      "group": "resolved",
+      "case": "shadow that references a context shadow",
+      "token": "shadow.alert.main",
+      "expected": "0rem 0.375rem 1.5rem -0.375rem rgba(0, 0, 0, 0.1), 0rem 0.1875rem 0.75rem -0.1875rem rgba(0, 0, 0, 0.1)"
+    },
+    {
+      "preset": "web-scss",
+      "group": "resolved",
+      "case": "size",
+      "token": "size.unit.16",
+      "expected": "1rem"
+    },
+    {
+      "preset": "web-scss",
+      "group": "resolved",
+      "case": "negative size",
+      "token": "size.unit.nd05",
+      "expected": "-0.0313rem"
+    },
+    {
+      "preset": "web-scss",
+      "group": "encode",
+      "case": "line height token relative to its font size",
+      "token": "typography.lineHeight.text.medium",
+      "expected": "1.5em"
+    },
+    {
+      "preset": "web-scss",
+      "group": "encode",
+      "case": "letter spacing token",
+      "token": "typography.letterSpacing.base.zero",
+      "expected": "0em"
+    },
+    {
+      "preset": "web-scss",
+      "group": "encode",
+      "case": "asset is quoted",
+      "token": "icon.accordion.indicator",
+      "expected": "\"<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='currentcolor' viewBox='0 0 24 24'><path d='m11.121 16.629-7.5-7.5a1.205 1.205 0 0 1 0-1.758 1.205 1.205 0 0 1 1.758 0l6.64 6.602 6.602-6.602a1.205 1.205 0 0 1 1.758 0c.508.469.508 1.29 0 1.758l-7.5 7.5a1.205 1.205 0 0 1-1.758 0Z'/></svg>\""
+    },
+    {
+      "preset": "web-px-references",
+      "group": "table",
+      "case": "color.context",
+      "token": "color.accordion.item-fg-color",
+      "file": "main.scss",
+      "expected": "$cx-color-context-default-fg-main"
+    },
+    {
+      "preset": "web-px-references",
+      "group": "table",
+      "case": "shadow.context, abbreviated",
+      "token": "shadow.alert.main",
+      "file": "main.scss",
+      "expected": "0px 6px 24px -6px rgba(0, 0, 0, 0.1), 0px 3px 12px -3px rgba(0, 0, 0, 0.1)"
+    },
+    {
+      "preset": "web-px-references",
+      "group": "table",
+      "case": "shadow.context, name passes through",
+      "token": "shadow.form-input.main",
+      "file": "main.scss",
+      "expected": "0px 0px 0px 0px rgba(0, 0, 0, 0)"
+    },
+    {
+      "preset": "web-px-references",
+      "group": "table",
+      "case": "borderRadius.context, abbreviated",
+      "token": "borderRadius.accordion.main",
+      "file": "main.scss",
+      "expected": "$cx-border-radius-context-medium"
+    },
+    {
+      "preset": "web-px-references",
+      "group": "table",
+      "case": "borderRadius.context, name passes through",
+      "token": "borderRadius.pagination.dot-idle",
+      "file": "main.scss",
+      "expected": "$cx-border-radius-context-full"
+    },
+    {
+      "preset": "web-px-references",
+      "group": "table",
+      "case": "borderWidth.context, abbreviated",
+      "token": "borderWidth.accordion.main",
+      "file": "main.scss",
+      "expected": "$cx-border-width-context-medium"
+    },
+    {
+      "preset": "web-px-references",
+      "group": "follow",
+      "case": "borderRadius.base.<component> to base.context, abbreviated",
+      "token": "borderRadius.alert.main",
+      "file": "main.scss",
+      "expected": "$cx-border-radius-context-large"
+    },
+    {
+      "preset": "web-px-references",
+      "group": "follow",
+      "case": "borderRadius.base.<component> to base.context, name passes through",
+      "token": "borderRadius.badge.medium",
+      "file": "main.scss",
+      "expected": "$cx-border-radius-context-full"
+    },
+    {
+      "preset": "web-px-references",
+      "group": "exception",
+      "case": "borderRadius context token",
+      "token": "borderRadius.context.zero",
+      "file": "main.scss",
+      "expected": "0px"
+    },
+    {
+      "preset": "web-px-references",
+      "group": "exception",
+      "case": "borderRadius base context token",
+      "token": "borderRadius.base.context.medium",
+      "file": "main.scss",
+      "expected": "6px"
+    },
+    {
+      "preset": "web-px-references",
+      "group": "exception",
+      "case": "borderRadius base component token",
+      "token": "borderRadius.base.alert.main",
+      "file": "main.scss",
+      "expected": "8px"
+    },
+    {
+      "preset": "web-px-references",
+      "group": "exception",
+      "case": "borderWidth context token",
+      "token": "borderWidth.context.thin",
+      "file": "main.scss",
+      "expected": "0.5px"
+    },
+    {
+      "preset": "web-px-references",
+      "group": "exception",
+      "case": "shadow state under context",
+      "token": "shadow.context.idle",
+      "file": "main.scss",
+      "expected": "0px 0px 0px 0px rgba(0, 0, 0, 0)"
+    },
+    {
+      "preset": "web-px-references",
+      "group": "exception",
+      "case": "shadow state under a component",
+      "token": "shadow.button.hover",
+      "file": "main.scss",
+      "expected": "0px 0px 0px 0px rgba(0, 0, 0, 0)"
+    },
+    {
+      "preset": "web-px-references",
+      "group": "literal",
+      "case": "dimension.base reference",
+      "token": "space.unit.0",
+      "file": "main.scss",
+      "expected": "0px"
+    },
+    {
+      "preset": "web-px-references",
+      "group": "literal",
+      "case": "grid.gutter reference",
+      "token": "space.page.large-gap",
+      "file": "main.scss",
+      "expected": "24px"
+    },
+    {
+      "preset": "web-px-references",
+      "group": "literal",
+      "case": "shadow.elevation reference",
+      "token": "shadow.context.small",
+      "file": "main.scss",
+      "expected": "0px 2px 8px -2px rgba(0, 0, 0, 0.1), 0px 1px 4px -1px rgba(0, 0, 0, 0.1)"
+    },
+    {
+      "preset": "web-px-references",
+      "group": "literal",
+      "case": "size.asset reference",
+      "token": "borderWidth.asset.indicator",
+      "file": "main.scss",
+      "expected": "4px"
+    },
+    {
+      "preset": "web-px-references",
+      "group": "literal",
+      "case": "size.unit reference",
+      "token": "space.context.zero",
+      "file": "main.scss",
+      "expected": "0px"
+    },
+    {
+      "preset": "web-px-references",
+      "group": "literal",
+      "case": "space.unit reference",
+      "token": "space.accordion.medium-title-padding-y",
+      "file": "main.scss",
+      "expected": "12px"
+    },
+    {
+      "preset": "web-px-references",
+      "group": "typography",
+      "case": "object-valued, size from a dimension token, percent line height",
+      "token": "font.context.jumbo",
+      "file": "main.scss",
+      "expected": "(\"font-family\": $cx-typography-font-family-text, \"font-weight\": $cx-typography-font-weight-text-mass-weight, \"font-size\": 96px, \"line-height\": 1.25em, \"font-style\": $cx-typography-font-weight-text-mass-style, \"letter-spacing\": -0.0313em, \"margin-bottom\": 0px, \"text-transform\": none, \"text-decoration\": none)"
+    },
+    {
+      "preset": "web-px-references",
+      "group": "typography",
+      "case": "object-valued, named size and line height",
+      "token": "font.context.lead",
+      "file": "main.scss",
+      "expected": "(\"font-family\": $cx-typography-font-family-text, \"font-weight\": $cx-typography-font-weight-text-normal-weight, \"font-size\": $cx-typography-font-size-text-xlarge, \"line-height\": $cx-typography-line-height-text-xlarge, \"font-style\": $cx-typography-font-weight-text-normal-style, \"letter-spacing\": 0em, \"margin-bottom\": 0px, \"text-transform\": none, \"text-decoration\": none)"
+    },
+    {
+      "preset": "web-px-references",
+      "group": "typography",
+      "case": "reference-valued",
+      "token": "font.button.medium",
+      "file": "main.scss",
+      "expected": "(\"font-family\": $cx-typography-font-family-text, \"font-weight\": $cx-typography-font-weight-text-strong-weight, \"font-size\": $cx-typography-font-size-text-medium, \"line-height\": $cx-typography-line-height-text-medium, \"font-style\": $cx-typography-font-weight-text-strong-style, \"letter-spacing\": 0em, \"margin-bottom\": 0px, \"text-transform\": none, \"text-decoration\": none)"
+    },
+    {
+      "preset": "web-px-references",
+      "group": "typography",
+      "case": "object-valued, the target of font.button.medium",
+      "token": "font.text.medium.strong",
+      "file": "main.scss",
+      "expected": "(\"font-family\": $cx-typography-font-family-text, \"font-weight\": $cx-typography-font-weight-text-strong-weight, \"font-size\": $cx-typography-font-size-text-medium, \"line-height\": $cx-typography-line-height-text-medium, \"font-style\": $cx-typography-font-weight-text-strong-style, \"letter-spacing\": 0em, \"margin-bottom\": 0px, \"text-transform\": none, \"text-decoration\": none)"
+    },
+    {
+      "preset": "web-px-references",
+      "group": "typography",
+      "case": "object-valued, size name passes through, negative letter spacing",
+      "token": "font.website.hero-title",
+      "file": "main.scss",
+      "expected": "(\"font-family\": $cx-typography-font-family-text, \"font-weight\": $cx-typography-font-weight-text-mass-weight, \"font-size\": $cx-typography-font-size-website-hero-title, \"line-height\": 1.25em, \"font-style\": $cx-typography-font-weight-text-mass-style, \"letter-spacing\": -0.0625em, \"margin-bottom\": 0px, \"text-transform\": none, \"text-decoration\": none)"
+    },
+    {
+      "preset": "web-px-references",
+      "group": "typography",
+      "case": "object-valued, 150% line height",
+      "token": "font.website.hero-body",
+      "file": "main.scss",
+      "expected": "(\"font-family\": $cx-typography-font-family-text, \"font-weight\": $cx-typography-font-weight-text-normal-weight, \"font-size\": $cx-typography-font-size-website-hero-body, \"line-height\": 1.5em, \"font-style\": $cx-typography-font-weight-text-normal-style, \"letter-spacing\": 0em, \"margin-bottom\": 0px, \"text-transform\": none, \"text-decoration\": none)"
+    },
+    {
+      "preset": "web-px-references",
+      "group": "typography",
+      "case": "object-valued, italic",
+      "token": "font.html.blockquote",
+      "file": "main.scss",
+      "expected": "(\"font-family\": $cx-typography-font-family-html, \"font-weight\": $cx-typography-font-weight-html-blockquote-weight, \"font-size\": $cx-typography-font-size-html-blockquote, \"line-height\": $cx-typography-line-height-html-blockquote, \"font-style\": $cx-typography-font-weight-html-blockquote-style, \"letter-spacing\": 0em, \"margin-bottom\": 0px, \"text-transform\": none, \"text-decoration\": none)"
+    },
+    {
+      "preset": "web-px-references",
+      "group": "typography",
+      "case": "object-valued, underline",
+      "token": "font.context.link.medium",
+      "file": "main.scss",
+      "expected": "(\"font-family\": $cx-typography-font-family-text, \"font-weight\": $cx-typography-font-weight-text-normal-weight, \"font-size\": $cx-typography-font-size-text-medium, \"line-height\": $cx-typography-line-height-text-medium, \"font-style\": $cx-typography-font-weight-text-normal-style, \"letter-spacing\": 0em, \"margin-bottom\": 0px, \"text-transform\": none, \"text-decoration\": underline)"
+    },
+    {
+      "preset": "web-px-references",
+      "group": "typography",
+      "case": "object-valued, paragraph spacing",
+      "token": "font.context.heading",
+      "file": "main.scss",
+      "expected": "(\"font-family\": $cx-typography-font-family-text, \"font-weight\": $cx-typography-font-weight-text-strong-weight, \"font-size\": $cx-typography-font-size-text-3xlarge, \"line-height\": $cx-typography-line-height-text-3xlarge, \"font-style\": $cx-typography-font-weight-text-strong-style, \"letter-spacing\": 0em, \"margin-bottom\": 24px, \"text-transform\": none, \"text-decoration\": none)"
+    },
+    {
+      "preset": "web-px-references",
+      "group": "encode",
+      "case": "literal value in a referencing group",
+      "token": "opacity.level.10",
+      "file": "main.scss",
+      "expected": "0.1"
+    },
+    {
+      "preset": "web-px-references",
+      "group": "encode",
+      "case": "rgba() of two references is not a single reference",
+      "token": "color.base.primitive.light.black.transparent",
+      "file": "main.scss",
+      "expected": "rgba(0, 0, 0, 0)"
+    },
+    {
+      "preset": "web-px-references",
+      "group": "encode",
+      "case": "object-valued shadow is not a reference",
+      "token": "shadow.context.none",
+      "file": "main.scss",
+      "expected": "0px 0px 0px 0px rgba(0, 0, 0, 0)"
+    },
+    {
+      "preset": "web-px-references",
+      "group": "literal",
+      "case": "color.base reference",
+      "token": "color.context.default.base-color",
+      "file": "color-light.scss",
+      "expected": "#000000"
+    },
+    {
+      "preset": "web-px-references",
+      "group": "encode",
+      "case": "line height looks up its font size",
+      "token": "typography.lineHeight.text.5xlarge",
+      "file": "number-large.scss",
+      "expected": "1.273em"
+    }
+  ],
+  "tokens": {
+    "web-px": {
+      "font.context.jumbo": {
+        "name": "cx-font-context-jumbo",
+        "path": ["font", "context", "jumbo"],
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif",
+          "fontWeight": 700,
+          "lineHeight": "125%",
+          "fontSize": "96px",
+          "letterSpacing": "-0.5px",
+          "paragraphSpacing": "0px",
+          "textCase": "none",
+          "textDecoration": "none",
+          "fontStyle": "normal"
+        },
+        "original": {
+          "$value": {
+            "fontFamily": "{typography.fontFamily.text}",
+            "fontWeight": "Bold",
+            "lineHeight": "125%",
+            "fontSize": "{size.unit.96}",
+            "letterSpacing": "{size.unit.nd05}",
+            "paragraphSpacing": "{typography.paragraphSpacing.base.zero}",
+            "textCase": "{typography.textCase.base.none}",
+            "textDecoration": "{typography.textDecoration.base.none}",
+            "fontStyle": "normal"
+          },
+          "$extensions": {
+            "chassis": {
+              "fontWeightPath": ["typography", "fontWeight", "text", "mass"],
+              "sourceOrder": 3150
+            }
+          }
+        }
+      },
+      "font.context.lead": {
+        "name": "cx-font-context-lead",
+        "path": ["font", "context", "lead"],
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif",
+          "fontWeight": 400,
+          "lineHeight": "32px",
+          "fontSize": "22px",
+          "letterSpacing": "0px",
+          "paragraphSpacing": "0px",
+          "textCase": "none",
+          "textDecoration": "none",
+          "fontStyle": "normal"
+        },
+        "original": {
+          "$value": {
+            "fontFamily": "{typography.fontFamily.text}",
+            "fontWeight": "Regular",
+            "lineHeight": "{typography.lineHeight.text.xlarge}",
+            "fontSize": "{typography.fontSize.text.xlarge}",
+            "letterSpacing": "{typography.letterSpacing.base.zero}",
+            "paragraphSpacing": "{typography.paragraphSpacing.base.zero}",
+            "textCase": "{typography.textCase.base.none}",
+            "textDecoration": "{typography.textDecoration.base.none}",
+            "fontStyle": "normal"
+          },
+          "$extensions": {
+            "chassis": {
+              "fontWeightPath": ["typography", "fontWeight", "text", "normal"],
+              "sourceOrder": 3152
+            }
+          }
+        }
+      },
+      "font.button.medium": {
+        "name": "cx-font-button-medium",
+        "path": ["font", "button", "medium"],
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif",
+          "fontWeight": "600",
+          "lineHeight": "24px",
+          "fontSize": "16px",
+          "letterSpacing": "0px",
+          "paragraphSpacing": "0px",
+          "textCase": "none",
+          "textDecoration": "none",
+          "fontStyle": "normal"
+        },
+        "original": {
+          "$value": "{font.text.medium.strong}",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 3291
+            }
+          }
+        }
+      },
+      "font.website.hero-title": {
+        "name": "cx-font-website-hero-title",
+        "path": ["font", "website", "hero-title"],
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif",
+          "fontWeight": 700,
+          "lineHeight": "125%",
+          "fontSize": "64px",
+          "letterSpacing": "-1px",
+          "paragraphSpacing": "0px",
+          "textCase": "none",
+          "textDecoration": "none",
+          "fontStyle": "normal"
+        },
+        "original": {
+          "$value": {
+            "fontFamily": "{typography.fontFamily.text}",
+            "fontWeight": "Bold",
+            "lineHeight": "125%",
+            "fontSize": "{typography.fontSize.website.hero-title}",
+            "letterSpacing": "{size.unit.n1}",
+            "paragraphSpacing": "{typography.paragraphSpacing.base.zero}",
+            "textCase": "{typography.textCase.base.none}",
+            "textDecoration": "{typography.textDecoration.base.none}",
+            "fontStyle": "normal"
+          },
+          "$extensions": {
+            "chassis": {
+              "fontWeightPath": ["typography", "fontWeight", "text", "mass"],
+              "sourceOrder": 3335
+            }
+          }
+        }
+      },
+      "color.accordion.item-fg-color": {
+        "name": "cx-color-accordion-item-fg-color",
+        "path": ["color", "accordion", "item-fg-color"],
+        "$type": "color",
+        "$value": "#161a1b",
+        "original": {
+          "$value": "{color.context.default.fg-main}",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 2573
+            }
+          }
+        }
+      },
+      "borderRadius.accordion.main": {
+        "name": "cx-border-radius-accordion-main",
+        "path": ["borderRadius", "accordion", "main"],
+        "$type": "dimension",
+        "$value": "6px",
+        "original": {
+          "$value": "{borderRadius.context.medium}",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 3023
+            }
+          }
+        }
+      },
+      "shadow.alert.main": {
+        "name": "cx-shadow-alert-main",
+        "path": ["shadow", "alert", "main"],
+        "$type": "shadow",
+        "$value": "0px 6px 24px -6px rgba(0, 0, 0, 0.1), 0px 3px 12px -3px rgba(0, 0, 0, 0.1)",
+        "original": {
+          "$value": "{shadow.context.large}",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 3409
+            }
+          }
+        }
+      },
+      "size.unit.16": {
+        "name": "cx-size-unit-16",
+        "path": ["size", "unit", "16"],
+        "$type": "dimension",
+        "$value": "16px",
+        "original": {
+          "$value": "{dimension.base.16}",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 94
+            }
+          }
+        }
+      },
+      "size.unit.nd05": {
+        "name": "cx-size-unit-nd05",
+        "path": ["size", "unit", "nd05"],
+        "$type": "dimension",
+        "$value": "-0.5px",
+        "original": {
+          "$value": "{dimension.base.nd05}",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 148
+            }
+          }
+        }
+      },
+      "typography.lineHeight.text.medium": {
+        "name": "cx-typography-line-height-text-medium",
+        "path": ["typography", "lineHeight", "text", "medium"],
+        "$type": "lineHeight",
+        "$value": "24px",
+        "original": {
+          "$value": "24",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 2932
+            }
+          }
+        }
+      },
+      "typography.fontSize.text.medium": {
+        "name": "cx-typography-font-size-text-medium",
+        "path": ["typography", "fontSize", "text", "medium"],
+        "$type": "fontSize",
+        "$value": "16px",
+        "original": {
+          "$value": "16",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 2890
+            }
+          }
+        }
+      },
+      "typography.letterSpacing.base.zero": {
+        "name": "cx-typography-letter-spacing-base-zero",
+        "path": ["typography", "letterSpacing", "base", "zero"],
+        "$type": "number",
+        "$value": "0px",
+        "original": {
+          "$value": "{size.unit.0}",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 2961
+            }
+          }
+        }
+      },
+      "icon.accordion.indicator": {
+        "name": "cx-icon-accordion-indicator",
+        "path": ["icon", "accordion", "indicator"],
+        "$type": "asset",
+        "$value": "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='currentcolor' viewBox='0 0 24 24'><path d='m11.121 16.629-7.5-7.5a1.205 1.205 0 0 1 0-1.758 1.205 1.205 0 0 1 1.758 0l6.64 6.602 6.602-6.602a1.205 1.205 0 0 1 1.758 0c.508.469.508 1.29 0 1.758l-7.5 7.5a1.205 1.205 0 0 1-1.758 0Z'/></svg>",
+        "original": {
+          "$value": "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='currentcolor' viewBox='0 0 24 24'><path d='m11.121 16.629-7.5-7.5a1.205 1.205 0 0 1 0-1.758 1.205 1.205 0 0 1 1.758 0l6.64 6.602 6.602-6.602a1.205 1.205 0 0 1 1.758 0c.508.469.508 1.29 0 1.758l-7.5 7.5a1.205 1.205 0 0 1-1.758 0Z'/></svg>",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 3371
+            }
+          }
+        }
+      }
+    },
+    "web-vw": {
+      "font.context.jumbo": {
+        "name": "cx-font-context-jumbo",
+        "path": ["font", "context", "jumbo"],
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif",
+          "fontWeight": 700,
+          "lineHeight": "125%",
+          "fontSize": "6vw",
+          "letterSpacing": "-0.0313vw",
+          "paragraphSpacing": "0vw",
+          "textCase": "none",
+          "textDecoration": "none",
+          "fontStyle": "normal"
+        },
+        "original": {
+          "$value": {
+            "fontFamily": "{typography.fontFamily.text}",
+            "fontWeight": "Bold",
+            "lineHeight": "125%",
+            "fontSize": "{size.unit.96}",
+            "letterSpacing": "{size.unit.nd05}",
+            "paragraphSpacing": "{typography.paragraphSpacing.base.zero}",
+            "textCase": "{typography.textCase.base.none}",
+            "textDecoration": "{typography.textDecoration.base.none}",
+            "fontStyle": "normal"
+          },
+          "$extensions": {
+            "chassis": {
+              "fontWeightPath": ["typography", "fontWeight", "text", "mass"],
+              "sourceOrder": 3150
+            }
+          }
+        }
+      },
+      "font.context.lead": {
+        "name": "cx-font-context-lead",
+        "path": ["font", "context", "lead"],
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif",
+          "fontWeight": 400,
+          "lineHeight": "2vw",
+          "fontSize": "1.375vw",
+          "letterSpacing": "0vw",
+          "paragraphSpacing": "0vw",
+          "textCase": "none",
+          "textDecoration": "none",
+          "fontStyle": "normal"
+        },
+        "original": {
+          "$value": {
+            "fontFamily": "{typography.fontFamily.text}",
+            "fontWeight": "Regular",
+            "lineHeight": "{typography.lineHeight.text.xlarge}",
+            "fontSize": "{typography.fontSize.text.xlarge}",
+            "letterSpacing": "{typography.letterSpacing.base.zero}",
+            "paragraphSpacing": "{typography.paragraphSpacing.base.zero}",
+            "textCase": "{typography.textCase.base.none}",
+            "textDecoration": "{typography.textDecoration.base.none}",
+            "fontStyle": "normal"
+          },
+          "$extensions": {
+            "chassis": {
+              "fontWeightPath": ["typography", "fontWeight", "text", "normal"],
+              "sourceOrder": 3152
+            }
+          }
+        }
+      },
+      "font.button.medium": {
+        "name": "cx-font-button-medium",
+        "path": ["font", "button", "medium"],
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif",
+          "fontWeight": "600",
+          "lineHeight": "1.5vw",
+          "fontSize": "1vw",
+          "letterSpacing": "0vw",
+          "paragraphSpacing": "0vw",
+          "textCase": "none",
+          "textDecoration": "none",
+          "fontStyle": "normal"
+        },
+        "original": {
+          "$value": "{font.text.medium.strong}",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 3291
+            }
+          }
+        }
+      },
+      "font.website.hero-title": {
+        "name": "cx-font-website-hero-title",
+        "path": ["font", "website", "hero-title"],
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif",
+          "fontWeight": 700,
+          "lineHeight": "125%",
+          "fontSize": "4vw",
+          "letterSpacing": "-0.0625vw",
+          "paragraphSpacing": "0vw",
+          "textCase": "none",
+          "textDecoration": "none",
+          "fontStyle": "normal"
+        },
+        "original": {
+          "$value": {
+            "fontFamily": "{typography.fontFamily.text}",
+            "fontWeight": "Bold",
+            "lineHeight": "125%",
+            "fontSize": "{typography.fontSize.website.hero-title}",
+            "letterSpacing": "{size.unit.n1}",
+            "paragraphSpacing": "{typography.paragraphSpacing.base.zero}",
+            "textCase": "{typography.textCase.base.none}",
+            "textDecoration": "{typography.textDecoration.base.none}",
+            "fontStyle": "normal"
+          },
+          "$extensions": {
+            "chassis": {
+              "fontWeightPath": ["typography", "fontWeight", "text", "mass"],
+              "sourceOrder": 3335
+            }
+          }
+        }
+      },
+      "color.accordion.item-fg-color": {
+        "name": "cx-color-accordion-item-fg-color",
+        "path": ["color", "accordion", "item-fg-color"],
+        "$type": "color",
+        "$value": "#161a1b",
+        "original": {
+          "$value": "{color.context.default.fg-main}",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 2573
+            }
+          }
+        }
+      },
+      "borderRadius.accordion.main": {
+        "name": "cx-border-radius-accordion-main",
+        "path": ["borderRadius", "accordion", "main"],
+        "$type": "dimension",
+        "$value": "0.375vw",
+        "original": {
+          "$value": "{borderRadius.context.medium}",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 3023
+            }
+          }
+        }
+      },
+      "shadow.alert.main": {
+        "name": "cx-shadow-alert-main",
+        "path": ["shadow", "alert", "main"],
+        "$type": "shadow",
+        "$value": "0vw 0.375vw 1.5vw -0.375vw rgba(0, 0, 0, 0.1), 0vw 0.1875vw 0.75vw -0.1875vw rgba(0, 0, 0, 0.1)",
+        "original": {
+          "$value": "{shadow.context.large}",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 3409
+            }
+          }
+        }
+      },
+      "size.unit.16": {
+        "name": "cx-size-unit-16",
+        "path": ["size", "unit", "16"],
+        "$type": "dimension",
+        "$value": "1vw",
+        "original": {
+          "$value": "{dimension.base.16}",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 94
+            }
+          }
+        }
+      },
+      "size.unit.nd05": {
+        "name": "cx-size-unit-nd05",
+        "path": ["size", "unit", "nd05"],
+        "$type": "dimension",
+        "$value": "-0.0313vw",
+        "original": {
+          "$value": "{dimension.base.nd05}",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 148
+            }
+          }
+        }
+      },
+      "typography.lineHeight.text.medium": {
+        "name": "cx-typography-line-height-text-medium",
+        "path": ["typography", "lineHeight", "text", "medium"],
+        "$type": "lineHeight",
+        "$value": "1.5vw",
+        "original": {
+          "$value": "24",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 2932
+            }
+          }
+        }
+      },
+      "typography.fontSize.text.medium": {
+        "name": "cx-typography-font-size-text-medium",
+        "path": ["typography", "fontSize", "text", "medium"],
+        "$type": "fontSize",
+        "$value": "1vw",
+        "original": {
+          "$value": "16",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 2890
+            }
+          }
+        }
+      },
+      "typography.letterSpacing.base.zero": {
+        "name": "cx-typography-letter-spacing-base-zero",
+        "path": ["typography", "letterSpacing", "base", "zero"],
+        "$type": "number",
+        "$value": "0vw",
+        "original": {
+          "$value": "{size.unit.0}",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 2961
+            }
+          }
+        }
+      },
+      "icon.accordion.indicator": {
+        "name": "cx-icon-accordion-indicator",
+        "path": ["icon", "accordion", "indicator"],
+        "$type": "asset",
+        "$value": "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='currentcolor' viewBox='0 0 24 24'><path d='m11.121 16.629-7.5-7.5a1.205 1.205 0 0 1 0-1.758 1.205 1.205 0 0 1 1.758 0l6.64 6.602 6.602-6.602a1.205 1.205 0 0 1 1.758 0c.508.469.508 1.29 0 1.758l-7.5 7.5a1.205 1.205 0 0 1-1.758 0Z'/></svg>",
+        "original": {
+          "$value": "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='currentcolor' viewBox='0 0 24 24'><path d='m11.121 16.629-7.5-7.5a1.205 1.205 0 0 1 0-1.758 1.205 1.205 0 0 1 1.758 0l6.64 6.602 6.602-6.602a1.205 1.205 0 0 1 1.758 0c.508.469.508 1.29 0 1.758l-7.5 7.5a1.205 1.205 0 0 1-1.758 0Z'/></svg>",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 3371
+            }
+          }
+        }
+      }
+    },
+    "web-scss": {
+      "font.context.jumbo": {
+        "name": "cx-font-context-jumbo",
+        "path": ["font", "context", "jumbo"],
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif",
+          "fontWeight": 700,
+          "lineHeight": "125%",
+          "fontSize": "6rem",
+          "letterSpacing": "-0.0313rem",
+          "paragraphSpacing": "0rem",
+          "textCase": "none",
+          "textDecoration": "none",
+          "fontStyle": "normal"
+        },
+        "original": {
+          "$value": {
+            "fontFamily": "{typography.fontFamily.text}",
+            "fontWeight": "Bold",
+            "lineHeight": "125%",
+            "fontSize": "{size.unit.96}",
+            "letterSpacing": "{size.unit.nd05}",
+            "paragraphSpacing": "{typography.paragraphSpacing.base.zero}",
+            "textCase": "{typography.textCase.base.none}",
+            "textDecoration": "{typography.textDecoration.base.none}",
+            "fontStyle": "normal"
+          },
+          "$extensions": {
+            "chassis": {
+              "fontWeightPath": ["typography", "fontWeight", "text", "mass"],
+              "sourceOrder": 3150
+            }
+          }
+        }
+      },
+      "font.context.lead": {
+        "name": "cx-font-context-lead",
+        "path": ["font", "context", "lead"],
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif",
+          "fontWeight": 400,
+          "lineHeight": "2rem",
+          "fontSize": "1.375rem",
+          "letterSpacing": "0rem",
+          "paragraphSpacing": "0rem",
+          "textCase": "none",
+          "textDecoration": "none",
+          "fontStyle": "normal"
+        },
+        "original": {
+          "$value": {
+            "fontFamily": "{typography.fontFamily.text}",
+            "fontWeight": "Regular",
+            "lineHeight": "{typography.lineHeight.text.xlarge}",
+            "fontSize": "{typography.fontSize.text.xlarge}",
+            "letterSpacing": "{typography.letterSpacing.base.zero}",
+            "paragraphSpacing": "{typography.paragraphSpacing.base.zero}",
+            "textCase": "{typography.textCase.base.none}",
+            "textDecoration": "{typography.textDecoration.base.none}",
+            "fontStyle": "normal"
+          },
+          "$extensions": {
+            "chassis": {
+              "fontWeightPath": ["typography", "fontWeight", "text", "normal"],
+              "sourceOrder": 3152
+            }
+          }
+        }
+      },
+      "font.button.medium": {
+        "name": "cx-font-button-medium",
+        "path": ["font", "button", "medium"],
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif",
+          "fontWeight": "600",
+          "lineHeight": "1.5rem",
+          "fontSize": "1rem",
+          "letterSpacing": "0rem",
+          "paragraphSpacing": "0rem",
+          "textCase": "none",
+          "textDecoration": "none",
+          "fontStyle": "normal"
+        },
+        "original": {
+          "$value": "{font.text.medium.strong}",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 3291
+            }
+          }
+        }
+      },
+      "font.website.hero-title": {
+        "name": "cx-font-website-hero-title",
+        "path": ["font", "website", "hero-title"],
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif",
+          "fontWeight": 700,
+          "lineHeight": "125%",
+          "fontSize": "4rem",
+          "letterSpacing": "-0.0625rem",
+          "paragraphSpacing": "0rem",
+          "textCase": "none",
+          "textDecoration": "none",
+          "fontStyle": "normal"
+        },
+        "original": {
+          "$value": {
+            "fontFamily": "{typography.fontFamily.text}",
+            "fontWeight": "Bold",
+            "lineHeight": "125%",
+            "fontSize": "{typography.fontSize.website.hero-title}",
+            "letterSpacing": "{size.unit.n1}",
+            "paragraphSpacing": "{typography.paragraphSpacing.base.zero}",
+            "textCase": "{typography.textCase.base.none}",
+            "textDecoration": "{typography.textDecoration.base.none}",
+            "fontStyle": "normal"
+          },
+          "$extensions": {
+            "chassis": {
+              "fontWeightPath": ["typography", "fontWeight", "text", "mass"],
+              "sourceOrder": 3335
+            }
+          }
+        }
+      },
+      "color.accordion.item-fg-color": {
+        "name": "cx-color-accordion-item-fg-color",
+        "path": ["color", "accordion", "item-fg-color"],
+        "$type": "color",
+        "$value": "#161a1b",
+        "original": {
+          "$value": "{color.context.default.fg-main}",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 2573
+            }
+          }
+        }
+      },
+      "borderRadius.accordion.main": {
+        "name": "cx-border-radius-accordion-main",
+        "path": ["borderRadius", "accordion", "main"],
+        "$type": "dimension",
+        "$value": "0.375rem",
+        "original": {
+          "$value": "{borderRadius.context.medium}",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 3023
+            }
+          }
+        }
+      },
+      "shadow.alert.main": {
+        "name": "cx-shadow-alert-main",
+        "path": ["shadow", "alert", "main"],
+        "$type": "shadow",
+        "$value": "0rem 0.375rem 1.5rem -0.375rem rgba(0, 0, 0, 0.1), 0rem 0.1875rem 0.75rem -0.1875rem rgba(0, 0, 0, 0.1)",
+        "original": {
+          "$value": "{shadow.context.large}",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 3409
+            }
+          }
+        }
+      },
+      "size.unit.16": {
+        "name": "cx-size-unit-16",
+        "path": ["size", "unit", "16"],
+        "$type": "dimension",
+        "$value": "1rem",
+        "original": {
+          "$value": "{dimension.base.16}",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 94
+            }
+          }
+        }
+      },
+      "size.unit.nd05": {
+        "name": "cx-size-unit-nd05",
+        "path": ["size", "unit", "nd05"],
+        "$type": "dimension",
+        "$value": "-0.0313rem",
+        "original": {
+          "$value": "{dimension.base.nd05}",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 148
+            }
+          }
+        }
+      },
+      "typography.lineHeight.text.medium": {
+        "name": "cx-typography-line-height-text-medium",
+        "path": ["typography", "lineHeight", "text", "medium"],
+        "$type": "lineHeight",
+        "$value": "1.5rem",
+        "original": {
+          "$value": "24",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 2932
+            }
+          }
+        }
+      },
+      "typography.fontSize.text.medium": {
+        "name": "cx-typography-font-size-text-medium",
+        "path": ["typography", "fontSize", "text", "medium"],
+        "$type": "fontSize",
+        "$value": "1rem",
+        "original": {
+          "$value": "16",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 2890
+            }
+          }
+        }
+      },
+      "typography.letterSpacing.base.zero": {
+        "name": "cx-typography-letter-spacing-base-zero",
+        "path": ["typography", "letterSpacing", "base", "zero"],
+        "$type": "number",
+        "$value": "0rem",
+        "original": {
+          "$value": "{size.unit.0}",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 2961
+            }
+          }
+        }
+      },
+      "icon.accordion.indicator": {
+        "name": "cx-icon-accordion-indicator",
+        "path": ["icon", "accordion", "indicator"],
+        "$type": "asset",
+        "$value": "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='currentcolor' viewBox='0 0 24 24'><path d='m11.121 16.629-7.5-7.5a1.205 1.205 0 0 1 0-1.758 1.205 1.205 0 0 1 1.758 0l6.64 6.602 6.602-6.602a1.205 1.205 0 0 1 1.758 0c.508.469.508 1.29 0 1.758l-7.5 7.5a1.205 1.205 0 0 1-1.758 0Z'/></svg>",
+        "original": {
+          "$value": "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='currentcolor' viewBox='0 0 24 24'><path d='m11.121 16.629-7.5-7.5a1.205 1.205 0 0 1 0-1.758 1.205 1.205 0 0 1 1.758 0l6.64 6.602 6.602-6.602a1.205 1.205 0 0 1 1.758 0c.508.469.508 1.29 0 1.758l-7.5 7.5a1.205 1.205 0 0 1-1.758 0Z'/></svg>",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 3371
+            }
+          }
+        }
+      }
+    },
+    "web-px-references": {
+      "color.accordion.item-fg-color": {
+        "name": "cx-color-accordion-item-fg-color",
+        "path": ["color", "accordion", "item-fg-color"],
+        "$type": "color",
+        "$value": "#161a1b",
+        "original": {
+          "$value": "{color.context.default.fg-main}",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 2573
+            }
+          }
+        }
+      },
+      "shadow.alert.main": {
+        "name": "cx-shadow-alert-main",
+        "path": ["shadow", "alert", "main"],
+        "$type": "shadow",
+        "$value": "0px 6px 24px -6px rgba(0, 0, 0, 0.1), 0px 3px 12px -3px rgba(0, 0, 0, 0.1)",
+        "original": {
+          "$value": "{shadow.context.large}",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 3409
+            }
+          }
+        }
+      },
+      "shadow.form-input.main": {
+        "name": "cx-shadow-form-input-main",
+        "path": ["shadow", "form-input", "main"],
+        "$type": "shadow",
+        "$value": "0px 0px 0px 0px rgba(0, 0, 0, 0)",
+        "original": {
+          "$value": "{shadow.context.none}",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 3417
+            }
+          }
+        }
+      },
+      "borderRadius.accordion.main": {
+        "name": "cx-border-radius-accordion-main",
+        "path": ["borderRadius", "accordion", "main"],
+        "$type": "dimension",
+        "$value": "6px",
+        "original": {
+          "$value": "{borderRadius.context.medium}",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 3023
+            }
+          }
+        }
+      },
+      "borderRadius.pagination.dot-idle": {
+        "name": "cx-border-radius-pagination-dot-idle",
+        "path": ["borderRadius", "pagination", "dot-idle"],
+        "$type": "dimension",
+        "$value": "256px",
+        "original": {
+          "$value": "{borderRadius.context.full}",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 3049
+            }
+          }
+        }
+      },
+      "borderWidth.accordion.main": {
+        "name": "cx-border-width-accordion-main",
+        "path": ["borderWidth", "accordion", "main"],
+        "$type": "dimension",
+        "$value": "1px",
+        "original": {
+          "$value": "{borderWidth.context.medium}",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 3351
+            }
+          }
+        }
+      },
+      "borderRadius.alert.main": {
+        "name": "cx-border-radius-alert-main",
+        "path": ["borderRadius", "alert", "main"],
+        "$type": "dimension",
+        "$value": "8px",
+        "original": {
+          "$value": "{borderRadius.base.alert.main}",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 3024
+            }
+          }
+        }
+      },
+      "borderRadius.base.alert.main": {
+        "name": "cx-border-radius-base-alert-main",
+        "path": ["borderRadius", "base", "alert", "main"],
+        "$type": "dimension",
+        "$value": "8px",
+        "original": {
+          "$value": "{borderRadius.base.context.large}",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 2983
+            }
+          }
+        }
+      },
+      "borderRadius.badge.medium": {
+        "name": "cx-border-radius-badge-medium",
+        "path": ["borderRadius", "badge", "medium"],
+        "$type": "dimension",
+        "$value": "256px",
+        "original": {
+          "$value": "{borderRadius.base.badge.medium}",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 3025
+            }
+          }
+        }
+      },
+      "borderRadius.base.badge.medium": {
+        "name": "cx-border-radius-base-badge-medium",
+        "path": ["borderRadius", "base", "badge", "medium"],
+        "$type": "dimension",
+        "$value": "256px",
+        "original": {
+          "$value": "{borderRadius.base.context.full}",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 2984
+            }
+          }
+        }
+      },
+      "borderRadius.context.zero": {
+        "name": "cx-border-radius-context-zero",
+        "path": ["borderRadius", "context", "zero"],
+        "$type": "dimension",
+        "$value": "0px",
+        "original": {
+          "$value": "{borderRadius.base.context.zero}",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 3011
+            }
+          }
+        }
+      },
+      "borderRadius.base.context.medium": {
+        "name": "cx-border-radius-base-context-medium",
+        "path": ["borderRadius", "base", "context", "medium"],
+        "$type": "dimension",
+        "$value": "6px",
+        "original": {
+          "$value": "{dimension.base.6}",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 2976
+            }
+          }
+        }
+      },
+      "borderWidth.context.thin": {
+        "name": "cx-border-width-context-thin",
+        "path": ["borderWidth", "context", "thin"],
+        "$type": "dimension",
+        "$value": "0.5px",
+        "original": {
+          "$value": "{size.unit.05}",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 3343
+            }
+          }
+        }
+      },
+      "shadow.context.idle": {
+        "name": "cx-shadow-context-idle",
+        "path": ["shadow", "context", "idle"],
+        "$type": "shadow",
+        "$value": "0px 0px 0px 0px rgba(0, 0, 0, 0)",
+        "original": {
+          "$value": "{shadow.context.none}",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 3403
+            }
+          }
+        }
+      },
+      "shadow.button.hover": {
+        "name": "cx-shadow-button-hover",
+        "path": ["shadow", "button", "hover"],
+        "$type": "shadow",
+        "$value": "0px 0px 0px 0px rgba(0, 0, 0, 0)",
+        "original": {
+          "$value": "{shadow.context.none}",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 3411
+            }
+          }
+        }
+      },
+      "space.unit.0": {
+        "name": "cx-space-unit-0",
+        "path": ["space", "unit", "0"],
+        "$type": "dimension",
+        "$value": "0px",
+        "original": {
+          "$value": "{dimension.base.0}",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 245
+            }
+          }
+        }
+      },
+      "space.page.large-gap": {
+        "name": "cx-space-page-large-gap",
+        "path": ["space", "page", "large-gap"],
+        "$type": "dimension",
+        "$value": "24px",
+        "original": {
+          "$value": "{grid.gutter.medium}",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 410
+            }
+          }
+        }
+      },
+      "shadow.context.small": {
+        "name": "cx-shadow-context-small",
+        "path": ["shadow", "context", "small"],
+        "$type": "shadow",
+        "$value": "0px 2px 8px -2px rgba(0, 0, 0, 0.1), 0px 1px 4px -1px rgba(0, 0, 0, 0.1)",
+        "original": {
+          "$value": "{shadow.elevation.default.10}",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 3399
+            }
+          }
+        }
+      },
+      "borderWidth.asset.indicator": {
+        "name": "cx-border-width-asset-indicator",
+        "path": ["borderWidth", "asset", "indicator"],
+        "$type": "dimension",
+        "$value": "4px",
+        "original": {
+          "$value": "{size.asset.indicator}",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 3353
+            }
+          }
+        }
+      },
+      "space.context.zero": {
+        "name": "cx-space-context-zero",
+        "path": ["space", "context", "zero"],
+        "$type": "dimension",
+        "$value": "0px",
+        "original": {
+          "$value": "{size.unit.0}",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 295
+            }
+          }
+        }
+      },
+      "space.accordion.medium-title-padding-y": {
+        "name": "cx-space-accordion-medium-title-padding-y",
+        "path": ["space", "accordion", "medium-title-padding-y"],
+        "$type": "dimension",
+        "$value": "12px",
+        "original": {
+          "$value": "{space.unit.12}",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 309
+            }
+          }
+        }
+      },
+      "font.context.jumbo": {
+        "name": "cx-font-context-jumbo",
+        "path": ["font", "context", "jumbo"],
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif",
+          "fontWeight": 700,
+          "lineHeight": "125%",
+          "fontSize": "96px",
+          "letterSpacing": "-0.5px",
+          "paragraphSpacing": "0px",
+          "textCase": "none",
+          "textDecoration": "none",
+          "fontStyle": "normal"
+        },
+        "original": {
+          "$value": {
+            "fontFamily": "{typography.fontFamily.text}",
+            "fontWeight": "Bold",
+            "lineHeight": "125%",
+            "fontSize": "{size.unit.96}",
+            "letterSpacing": "{size.unit.nd05}",
+            "paragraphSpacing": "{typography.paragraphSpacing.base.zero}",
+            "textCase": "{typography.textCase.base.none}",
+            "textDecoration": "{typography.textDecoration.base.none}",
+            "fontStyle": "normal"
+          },
+          "$extensions": {
+            "chassis": {
+              "fontWeightPath": ["typography", "fontWeight", "text", "mass"],
+              "sourceOrder": 3150
+            }
+          }
+        }
+      },
+      "size.unit.96": {
+        "name": "cx-size-unit-96",
+        "path": ["size", "unit", "96"],
+        "$type": "dimension",
+        "$value": "96px",
+        "original": {
+          "$value": "{dimension.base.96}",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 116
+            }
+          }
+        }
+      },
+      "size.unit.nd05": {
+        "name": "cx-size-unit-nd05",
+        "path": ["size", "unit", "nd05"],
+        "$type": "dimension",
+        "$value": "-0.5px",
+        "original": {
+          "$value": "{dimension.base.nd05}",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 148
+            }
+          }
+        }
+      },
+      "typography.paragraphSpacing.base.zero": {
+        "name": "cx-typography-paragraph-spacing-base-zero",
+        "path": ["typography", "paragraphSpacing", "base", "zero"],
+        "$type": "dimension",
+        "$value": "0px",
+        "original": {
+          "$value": "0",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 2962
+            }
+          }
+        }
+      },
+      "typography.textCase.base.none": {
+        "name": "cx-typography-text-case-base-none",
+        "path": ["typography", "textCase", "base", "none"],
+        "$type": "textCase",
+        "$value": "none",
+        "original": {
+          "$value": "none",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 2966
+            }
+          }
+        }
+      },
+      "typography.textDecoration.base.none": {
+        "name": "cx-typography-text-decoration-base-none",
+        "path": ["typography", "textDecoration", "base", "none"],
+        "$type": "textDecoration",
+        "$value": "none",
+        "original": {
+          "$value": "none",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 2970
+            }
+          }
+        }
+      },
+      "font.context.lead": {
+        "name": "cx-font-context-lead",
+        "path": ["font", "context", "lead"],
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif",
+          "fontWeight": 400,
+          "lineHeight": "32px",
+          "fontSize": "22px",
+          "letterSpacing": "0px",
+          "paragraphSpacing": "0px",
+          "textCase": "none",
+          "textDecoration": "none",
+          "fontStyle": "normal"
+        },
+        "original": {
+          "$value": {
+            "fontFamily": "{typography.fontFamily.text}",
+            "fontWeight": "Regular",
+            "lineHeight": "{typography.lineHeight.text.xlarge}",
+            "fontSize": "{typography.fontSize.text.xlarge}",
+            "letterSpacing": "{typography.letterSpacing.base.zero}",
+            "paragraphSpacing": "{typography.paragraphSpacing.base.zero}",
+            "textCase": "{typography.textCase.base.none}",
+            "textDecoration": "{typography.textDecoration.base.none}",
+            "fontStyle": "normal"
+          },
+          "$extensions": {
+            "chassis": {
+              "fontWeightPath": ["typography", "fontWeight", "text", "normal"],
+              "sourceOrder": 3152
+            }
+          }
+        }
+      },
+      "typography.fontSize.text.xlarge": {
+        "name": "cx-typography-font-size-text-xlarge",
+        "path": ["typography", "fontSize", "text", "xlarge"],
+        "$type": "fontSize",
+        "$value": "22px",
+        "original": {
+          "$value": "22",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 2888
+            }
+          }
+        }
+      },
+      "typography.lineHeight.text.xlarge": {
+        "name": "cx-typography-line-height-text-xlarge",
+        "path": ["typography", "lineHeight", "text", "xlarge"],
+        "$type": "lineHeight",
+        "$value": "32px",
+        "original": {
+          "$value": "32",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 2930
+            }
+          }
+        }
+      },
+      "typography.letterSpacing.base.zero": {
+        "name": "cx-typography-letter-spacing-base-zero",
+        "path": ["typography", "letterSpacing", "base", "zero"],
+        "$type": "number",
+        "$value": "0px",
+        "original": {
+          "$value": "{size.unit.0}",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 2961
+            }
+          }
+        }
+      },
+      "font.button.medium": {
+        "name": "cx-font-button-medium",
+        "path": ["font", "button", "medium"],
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif",
+          "fontWeight": "600",
+          "lineHeight": "24px",
+          "fontSize": "16px",
+          "letterSpacing": "0px",
+          "paragraphSpacing": "0px",
+          "textCase": "none",
+          "textDecoration": "none",
+          "fontStyle": "normal"
+        },
+        "original": {
+          "$value": "{font.text.medium.strong}",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 3291
+            }
+          }
+        }
+      },
+      "font.text.medium.strong": {
+        "name": "cx-font-text-medium-strong",
+        "path": ["font", "text", "medium", "strong"],
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif",
+          "fontWeight": 600,
+          "lineHeight": "24px",
+          "fontSize": "16px",
+          "letterSpacing": "0px",
+          "paragraphSpacing": "0px",
+          "textCase": "none",
+          "textDecoration": "none",
+          "fontStyle": "normal"
+        },
+        "original": {
+          "$value": {
+            "fontFamily": "{typography.fontFamily.text}",
+            "fontWeight": "Semi Bold",
+            "lineHeight": "{typography.lineHeight.text.medium}",
+            "fontSize": "{typography.fontSize.text.medium}",
+            "letterSpacing": "{typography.letterSpacing.base.zero}",
+            "paragraphSpacing": "{typography.paragraphSpacing.base.zero}",
+            "textCase": "{typography.textCase.base.none}",
+            "textDecoration": "{typography.textDecoration.base.none}",
+            "fontStyle": "normal"
+          },
+          "$extensions": {
+            "chassis": {
+              "fontWeightPath": ["typography", "fontWeight", "text", "strong"],
+              "sourceOrder": 3201
+            }
+          }
+        }
+      },
+      "typography.fontSize.text.medium": {
+        "name": "cx-typography-font-size-text-medium",
+        "path": ["typography", "fontSize", "text", "medium"],
+        "$type": "fontSize",
+        "$value": "16px",
+        "original": {
+          "$value": "16",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 2890
+            }
+          }
+        }
+      },
+      "typography.lineHeight.text.medium": {
+        "name": "cx-typography-line-height-text-medium",
+        "path": ["typography", "lineHeight", "text", "medium"],
+        "$type": "lineHeight",
+        "$value": "24px",
+        "original": {
+          "$value": "24",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 2932
+            }
+          }
+        }
+      },
+      "font.website.hero-title": {
+        "name": "cx-font-website-hero-title",
+        "path": ["font", "website", "hero-title"],
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif",
+          "fontWeight": 700,
+          "lineHeight": "125%",
+          "fontSize": "64px",
+          "letterSpacing": "-1px",
+          "paragraphSpacing": "0px",
+          "textCase": "none",
+          "textDecoration": "none",
+          "fontStyle": "normal"
+        },
+        "original": {
+          "$value": {
+            "fontFamily": "{typography.fontFamily.text}",
+            "fontWeight": "Bold",
+            "lineHeight": "125%",
+            "fontSize": "{typography.fontSize.website.hero-title}",
+            "letterSpacing": "{size.unit.n1}",
+            "paragraphSpacing": "{typography.paragraphSpacing.base.zero}",
+            "textCase": "{typography.textCase.base.none}",
+            "textDecoration": "{typography.textDecoration.base.none}",
+            "fontStyle": "normal"
+          },
+          "$extensions": {
+            "chassis": {
+              "fontWeightPath": ["typography", "fontWeight", "text", "mass"],
+              "sourceOrder": 3335
+            }
+          }
+        }
+      },
+      "typography.fontSize.website.hero-title": {
+        "name": "cx-typography-font-size-website-hero-title",
+        "path": ["typography", "fontSize", "website", "hero-title"],
+        "$type": "fontSize",
+        "$value": "64px",
+        "original": {
+          "$value": "64",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 2919
+            }
+          }
+        }
+      },
+      "size.unit.n1": {
+        "name": "cx-size-unit-n1",
+        "path": ["size", "unit", "n1"],
+        "$type": "dimension",
+        "$value": "-1px",
+        "original": {
+          "$value": "{dimension.base.n1}",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 132
+            }
+          }
+        }
+      },
+      "font.website.hero-body": {
+        "name": "cx-font-website-hero-body",
+        "path": ["font", "website", "hero-body"],
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif",
+          "fontWeight": 400,
+          "lineHeight": "150%",
+          "fontSize": "22px",
+          "letterSpacing": "0px",
+          "paragraphSpacing": "0px",
+          "textCase": "none",
+          "textDecoration": "none",
+          "fontStyle": "normal"
+        },
+        "original": {
+          "$value": {
+            "fontFamily": "{typography.fontFamily.text}",
+            "fontWeight": "Regular",
+            "lineHeight": "150%",
+            "fontSize": "{typography.fontSize.website.hero-body}",
+            "letterSpacing": "{typography.letterSpacing.base.zero}",
+            "paragraphSpacing": "{typography.paragraphSpacing.base.zero}",
+            "textCase": "{typography.textCase.base.none}",
+            "textDecoration": "{typography.textDecoration.base.none}",
+            "fontStyle": "normal"
+          },
+          "$extensions": {
+            "chassis": {
+              "fontWeightPath": ["typography", "fontWeight", "text", "normal"],
+              "sourceOrder": 3336
+            }
+          }
+        }
+      },
+      "typography.fontSize.website.hero-body": {
+        "name": "cx-typography-font-size-website-hero-body",
+        "path": ["typography", "fontSize", "website", "hero-body"],
+        "$type": "fontSize",
+        "$value": "22px",
+        "original": {
+          "$value": "{typography.fontSize.text.xlarge}",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 2920
+            }
+          }
+        }
+      },
+      "font.html.blockquote": {
+        "name": "cx-font-html-blockquote",
+        "path": ["font", "html", "blockquote"],
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif",
+          "fontWeight": 300,
+          "lineHeight": "24px",
+          "fontSize": "16px",
+          "letterSpacing": "0px",
+          "paragraphSpacing": "0px",
+          "textCase": "none",
+          "textDecoration": "none",
+          "fontStyle": "italic"
+        },
+        "original": {
+          "$value": {
+            "fontFamily": "{typography.fontFamily.html}",
+            "fontWeight": "Light",
+            "lineHeight": "{typography.lineHeight.html.blockquote}",
+            "fontSize": "{typography.fontSize.html.blockquote}",
+            "letterSpacing": "{typography.letterSpacing.base.zero}",
+            "paragraphSpacing": "{typography.paragraphSpacing.base.zero}",
+            "textCase": "{typography.textCase.base.none}",
+            "textDecoration": "{typography.textDecoration.base.none}",
+            "fontStyle": "italic"
+          },
+          "$extensions": {
+            "chassis": {
+              "fontWeightPath": ["typography", "fontWeight", "html", "blockquote"],
+              "sourceOrder": 3265
+            }
+          }
+        }
+      },
+      "typography.fontSize.html.blockquote": {
+        "name": "cx-typography-font-size-html-blockquote",
+        "path": ["typography", "fontSize", "html", "blockquote"],
+        "$type": "fontSize",
+        "$value": "16px",
+        "original": {
+          "$value": "16",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 2914
+            }
+          }
+        }
+      },
+      "typography.lineHeight.html.blockquote": {
+        "name": "cx-typography-line-height-html-blockquote",
+        "path": ["typography", "lineHeight", "html", "blockquote"],
+        "$type": "lineHeight",
+        "$value": "24px",
+        "original": {
+          "$value": "24",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 2956
+            }
+          }
+        }
+      },
+      "font.context.link.medium": {
+        "name": "cx-font-context-link-medium",
+        "path": ["font", "context", "link", "medium"],
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif",
+          "fontWeight": 400,
+          "lineHeight": "24px",
+          "fontSize": "16px",
+          "letterSpacing": "0px",
+          "paragraphSpacing": "0px",
+          "textCase": "none",
+          "textDecoration": "underline",
+          "fontStyle": "normal"
+        },
+        "original": {
+          "$value": {
+            "fontFamily": "{typography.fontFamily.text}",
+            "fontWeight": "Regular",
+            "lineHeight": "{typography.lineHeight.text.medium}",
+            "fontSize": "{typography.fontSize.text.medium}",
+            "letterSpacing": "{typography.letterSpacing.base.zero}",
+            "paragraphSpacing": "{typography.paragraphSpacing.base.zero}",
+            "textCase": "{typography.textCase.base.none}",
+            "textDecoration": "{typography.textDecoration.base.underline}",
+            "fontStyle": "normal"
+          },
+          "$extensions": {
+            "chassis": {
+              "fontWeightPath": ["typography", "fontWeight", "text", "normal"],
+              "sourceOrder": 3167
+            }
+          }
+        }
+      },
+      "typography.textDecoration.base.underline": {
+        "name": "cx-typography-text-decoration-base-underline",
+        "path": ["typography", "textDecoration", "base", "underline"],
+        "$type": "textDecoration",
+        "$value": "underline",
+        "original": {
+          "$value": "underline",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 2971
+            }
+          }
+        }
+      },
+      "font.context.heading": {
+        "name": "cx-font-context-heading",
+        "path": ["font", "context", "heading"],
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif",
+          "fontWeight": 600,
+          "lineHeight": "40px",
+          "fontSize": "32px",
+          "letterSpacing": "0px",
+          "paragraphSpacing": "24px",
+          "textCase": "none",
+          "textDecoration": "none",
+          "fontStyle": "normal"
+        },
+        "original": {
+          "$value": {
+            "fontFamily": "{typography.fontFamily.text}",
+            "fontWeight": "Semi Bold",
+            "lineHeight": "{typography.lineHeight.text.3xlarge}",
+            "fontSize": "{typography.fontSize.text.3xlarge}",
+            "letterSpacing": "{typography.letterSpacing.base.zero}",
+            "paragraphSpacing": "{typography.paragraphSpacing.base.large}",
+            "textCase": "{typography.textCase.base.none}",
+            "textDecoration": "{typography.textDecoration.base.none}",
+            "fontStyle": "normal"
+          },
+          "$extensions": {
+            "chassis": {
+              "fontWeightPath": ["typography", "fontWeight", "text", "strong"],
+              "sourceOrder": 3153
+            }
+          }
+        }
+      },
+      "typography.fontSize.text.3xlarge": {
+        "name": "cx-typography-font-size-text-3xlarge",
+        "path": ["typography", "fontSize", "text", "3xlarge"],
+        "$type": "fontSize",
+        "$value": "32px",
+        "original": {
+          "$value": "32",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 2886
+            }
+          }
+        }
+      },
+      "typography.lineHeight.text.3xlarge": {
+        "name": "cx-typography-line-height-text-3xlarge",
+        "path": ["typography", "lineHeight", "text", "3xlarge"],
+        "$type": "lineHeight",
+        "$value": "40px",
+        "original": {
+          "$value": "40",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 2928
+            }
+          }
+        }
+      },
+      "typography.paragraphSpacing.base.large": {
+        "name": "cx-typography-paragraph-spacing-base-large",
+        "path": ["typography", "paragraphSpacing", "base", "large"],
+        "$type": "dimension",
+        "$value": "24px",
+        "original": {
+          "$value": "24px",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 2965
+            }
+          }
+        }
+      },
+      "opacity.level.10": {
+        "name": "cx-opacity-level-10",
+        "path": ["opacity", "level", "10"],
+        "$type": "opacity",
+        "$value": "0.1",
+        "original": {
+          "$value": "0.1",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 444
+            }
+          }
+        }
+      },
+      "color.base.primitive.light.black.transparent": {
+        "name": "cx-color-base-primitive-light-black-transparent",
+        "path": ["color", "base", "primitive", "light", "black", "transparent"],
+        "$type": "color",
+        "$value": "rgba(0, 0, 0, 0)",
+        "original": {
+          "$value": "rgba({color.base.primitive.light.black.base}, {opacity.level.zero})",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 489
+            }
+          }
+        }
+      },
+      "shadow.context.none": {
+        "name": "cx-shadow-context-none",
+        "path": ["shadow", "context", "none"],
+        "$type": "shadow",
+        "$value": "0px 0px 0px 0px rgba(0, 0, 0, 0)",
+        "original": {
+          "$value": [
+            {
+              "blur": "{dimension.base.0}",
+              "spread": "{dimension.base.0}",
+              "color": "{color.primitive.black.transparent}",
+              "type": "dropShadow",
+              "offsetX": "{dimension.base.0}",
+              "offsetY": "{dimension.base.0}"
+            }
+          ],
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 3398
+            }
+          }
+        }
+      },
+      "space.context.small": {
+        "name": "cx-space-context-small",
+        "path": ["space", "context", "small"],
+        "$type": "dimension",
+        "$value": "12px",
+        "original": {
+          "$value": "{size.unit.12}",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 300
+            }
+          }
+        }
+      },
+      "opacity.context.fg-subtle": {
+        "name": "cx-opacity-context-fg-subtle",
+        "path": ["opacity", "context", "fg-subtle"],
+        "$type": "opacity",
+        "$value": "0.5",
+        "original": {
+          "$value": "0.5",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 457
+            }
+          }
+        }
+      },
+      "opacity.level.40": {
+        "name": "cx-opacity-level-40",
+        "path": ["opacity", "level", "40"],
+        "$type": "opacity",
+        "$value": "0.4",
+        "original": {
+          "$value": "0.4",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 447
+            }
+          }
+        }
+      },
+      "color.primitive.primary.10": {
+        "name": "cx-color-primitive-primary-10",
+        "path": ["color", "primitive", "primary", "10"],
+        "$type": "color",
+        "$value": "#d9f1f7",
+        "original": {
+          "$value": "{color.base.primitive.light.primary.10}",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 2299
+            }
+          }
+        }
+      },
+      "borderRadius.context.large": {
+        "name": "cx-border-radius-context-large",
+        "path": ["borderRadius", "context", "large"],
+        "$type": "dimension",
+        "$value": "8px",
+        "original": {
+          "$value": "{borderRadius.base.context.large}",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 3015
+            }
+          }
+        }
+      },
+      "borderRadius.base.context.large": {
+        "name": "cx-border-radius-base-context-large",
+        "path": ["borderRadius", "base", "context", "large"],
+        "$type": "dimension",
+        "$value": "8px",
+        "original": {
+          "$value": "{dimension.base.8}",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 2977
+            }
+          }
+        }
+      },
+      "color.context.default.base-color": {
+        "name": "cx-color-context-default-base-color",
+        "path": ["color", "context", "default", "base-color"],
+        "$type": "color",
+        "$value": "#000000",
+        "original": {
+          "$value": "{color.base.context.light.default.base-color}",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 1870
+            }
+          }
+        }
+      },
+      "typography.lineHeight.text.5xlarge": {
+        "name": "cx-typography-line-height-text-5xlarge",
+        "path": ["typography", "lineHeight", "text", "5xlarge"],
+        "$type": "lineHeight",
+        "$value": "56px",
+        "original": {
+          "$value": "56",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 2926
+            }
+          }
+        }
+      },
+      "typography.fontSize.text.5xlarge": {
+        "name": "cx-typography-font-size-text-5xlarge",
+        "path": ["typography", "fontSize", "text", "5xlarge"],
+        "$type": "fontSize",
+        "$value": "44px",
+        "original": {
+          "$value": "44",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 2884
+            }
+          }
+        }
+      }
+    }
+  },
+  "variables": {
+    "web-px-references": {
+      "color.context.default.fg-main": "cx-color-context-default-fg-main",
+      "borderRadius.context.medium": "cx-border-radius-context-medium",
+      "borderRadius.context.full": "cx-border-radius-context-full",
+      "borderWidth.context.medium": "cx-border-width-context-medium",
+      "borderRadius.context.large": "cx-border-radius-context-large",
+      "typography.fontWeight.text.mass.style": "cx-typography-font-weight-text-mass-style",
+      "typography.fontFamily.text": "cx-typography-font-family-text",
+      "typography.fontWeight.text.mass.weight": "cx-typography-font-weight-text-mass-weight",
+      "typography.lineHeight.text.xlarge": "cx-typography-line-height-text-xlarge",
+      "typography.fontWeight.text.normal.style": "cx-typography-font-weight-text-normal-style",
+      "typography.fontWeight.text.normal.weight": "cx-typography-font-weight-text-normal-weight",
+      "typography.fontSize.text.xlarge": "cx-typography-font-size-text-xlarge",
+      "typography.fontWeight.text.strong.weight": "cx-typography-font-weight-text-strong-weight",
+      "typography.fontWeight.text.strong.style": "cx-typography-font-weight-text-strong-style",
+      "typography.fontSize.text.medium": "cx-typography-font-size-text-medium",
+      "typography.lineHeight.text.medium": "cx-typography-line-height-text-medium",
+      "typography.fontSize.website.hero-title": "cx-typography-font-size-website-hero-title",
+      "typography.fontSize.website.hero-body": "cx-typography-font-size-website-hero-body",
+      "typography.lineHeight.html.blockquote": "cx-typography-line-height-html-blockquote",
+      "typography.fontWeight.html.blockquote.style": "cx-typography-font-weight-html-blockquote-style",
+      "typography.fontFamily.html": "cx-typography-font-family-html",
+      "typography.fontWeight.html.blockquote.weight": "cx-typography-font-weight-html-blockquote-weight",
+      "typography.fontSize.html.blockquote": "cx-typography-font-size-html-blockquote",
+      "typography.lineHeight.text.3xlarge": "cx-typography-line-height-text-3xlarge",
+      "typography.fontSize.text.3xlarge": "cx-typography-font-size-text-3xlarge",
+      "space.context.small": "cx-space-context-small",
+      "opacity.context.fg-subtle": "cx-opacity-context-fg-subtle",
+      "opacity.level.40": "cx-opacity-level-40",
+      "color.primitive.primary.10": "cx-color-primitive-primary-10",
+      "borderRadius.base.context.large": "cx-border-radius-base-context-large"
+    }
+  }
+}

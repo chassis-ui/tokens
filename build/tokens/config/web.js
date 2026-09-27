@@ -1,11 +1,10 @@
 /**
  * @file web.js
- * @description Web platform configuration with rem units (default)
+ * @description Web platform configuration: SCSS variables for Chassis CSS in rem units
+ *              (default), and the factory of the other web presets
  * @copyright Copyright (c) 2026 Ozgur Gunes
  * @license MIT
  */
-
-const format = 'cx/scss-chassis-css'
 
 const options = {
   fileHeader: 'cxFileHeader',
@@ -19,51 +18,58 @@ const transforms = [
   'ts/color/modifiers',
   'ts/color/css/hexrgba',
   'ts/typography/fontWeight',
-  'cx/typography/web',
-  'cx/shadow/web',
-  'cx/size/rem'
+  'cx/shadow/web'
 ]
 
 /**
- * Generates file configurations based on context
+ * Returns the files of one output.
+ * @param {Object} output - `{ kind: 'base' }`, `{ kind: 'color', theme }` or
+ *   `{ kind: 'number', screen }`; `screen` is undefined when no screens are configured.
+ * @param {string} format - The format of the files.
  */
-function generateFiles(theme, screen) {
-  // Base files (no theme, no screen)
-  if (!theme && screen === undefined) {
-    return [
-      { destination: 'main.scss', filter: 'cx/allTokens', format },
-      { destination: 'string.scss', filter: 'cx/stringTokens', format }
-    ]
+function generateFiles({ kind, theme, screen }, format) {
+  switch (kind) {
+    case 'base':
+      return [
+        { destination: 'main.scss', filter: 'cx/allTokens', format },
+        { destination: 'string.scss', filter: 'cx/stringTokens', format }
+      ]
+    case 'color':
+      return [{ destination: `color-${theme}.scss`, filter: 'cx/themeTokens', format }]
+    case 'number':
+      return [
+        {
+          destination: screen ? `number-${screen}.scss` : 'number.scss',
+          filter: 'cx/numberTokens',
+          format
+        }
+      ]
+    default:
+      throw new Error(`Unknown output: ${kind}`)
   }
+}
 
-  // Color files (theme only)
-  if (theme && !screen) {
-    return [{ destination: `color-${theme}.scss`, filter: 'cx/themeTokens', format }]
+/**
+ * Returns a web platform configuration.
+ * @param {Object} [preset]
+ * @param {string} [preset.unit] - Unit of sizes: `rem`, `px` or `vw`.
+ * @param {string} [preset.format] - `cx/scss-chassis-css`, which prints `var(--…)`
+ *   references for Chassis CSS, or `cx/scss-variables`, which prints resolved values.
+ */
+export function webConfig({ unit = 'rem', format = 'cx/scss-chassis-css' } = {}) {
+  return function (brand, app, outputs, outDir = 'dist') {
+    return {
+      prefix: 'cx',
+      basePxFontSize: 16,
+      transforms: [...transforms, `cx/size/${unit}`],
+      buildPath: `${outDir}/web/${app}/${brand}/`,
+      options,
+      files: outputs.flatMap((output) => generateFiles(output, format))
+    }
   }
-
-  // Number files (with screen suffix)
-  if (screen) {
-    return [{ destination: `number-${screen}.scss`, filter: 'cx/numberTokens', format }]
-  }
-
-  // Number files (without screen suffix when screens are optional)
-  if (screen === null) {
-    return [{ destination: 'number.scss', filter: 'cx/numberTokens', format }]
-  }
-
-  return []
 }
 
 /**
  * Web platform configuration with rem units
  */
-export default function (brand, app, theme, screen) {
-  return {
-    prefix: 'cx',
-    basePxFontSize: 16,
-    transforms,
-    buildPath: `dist/web/${app}/${brand}/`,
-    options,
-    files: generateFiles(theme, screen)
-  }
-}
+export default webConfig()

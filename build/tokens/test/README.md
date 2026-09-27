@@ -1,136 +1,131 @@
-# Design Tokens Build System - Test Suite
+# Token build tests
 
-This directory contains comprehensive test suites for the design tokens build system, ensuring robust functionality across all components.
+Tests for the token build in `build/tokens/`. Run them from the repository root:
 
-## Test Structure
-
-```
-tests/
-├── README.md           # This documentation
-├── build.test.js       # Tests for main build orchestrator
-└── config.test.js      # Tests for configuration generator
+```sh
+pnpm tokens:test
 ```
 
-## Test Coverage
+The run takes about 10 seconds, most of it for the golden test, which builds every file and every preset.
 
-### Build System Tests (`build.test.js`)
+## Principles
 
-Tests the main build orchestration logic including:
+- **Real tokens, not mocks.** Tests use tokens from `tokens/`, resolved tokens captured from the real build, the real `package.json` configuration and `tokens/$themes.json`. No test mocks `style-dictionary`.
+- **`dist/` is the reference.** Expected values come from the committed `dist/`. The build must not change what it writes, so a test that disagrees with `dist/` is a bug in the build, not in `dist/`.
+- **Presets have baselines.** The presets for other CSS frameworks (`web-scss`, `web-px`, `web-vw`) write nothing into `dist/`. Their reference output, with and without `outputReferences`, is in `golden/`.
+- **Pure functions first.** Value encoding, the web reference policy, the build plan and argument parsing are pure functions, tested without running Style Dictionary.
 
-#### Task Generation
-- ✅ **Base Task Generation**: Verifies that base tasks are created for all brand/app/platform combinations
-- ✅ **Color Task Generation**: Ensures color tasks are generated for all themes
-- ✅ **Number Task Generation**: Confirms number tasks are created for all screen sizes
-- ✅ **Duplicate Prevention**: Validates that no duplicate tasks are created
+## Test files
 
-#### CLI Parameter Filtering
-- ✅ **Brand Filtering**: Tests filtering by `--brand` parameter
-- ✅ **Theme Filtering**: Tests filtering by `--theme` parameter
-- ✅ **Screen Filtering**: Tests filtering by `--screen` parameter
-- ✅ **App Filtering**: Tests filtering by `--app` parameter
-- ✅ **Multiple Filters**: Tests combined filtering with multiple parameters
+| File                                                                 | What it checks                                                                                                                                                                                                                                           |
+| -------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `golden.test.js`                                                     | A full build into a temporary directory matches `dist/` file by file, apart from the timestamp and version header lines. Same check as `pnpm tokens:verify`. Every preset matches its baseline in `golden/`. Same check as `pnpm tokens:verify:presets`. |
+| `verify.test.js`                                                     | The check that every `@type/name`, `$name` and Swift constant reference in the output names something the output declares.                                                                                                                               |
+| `build.test.js`                                                      | The build plan: one build per brand, app and token-set list, the files it writes (exactly those of `dist/`), CLI filters, and that `brand-chassis/brand-base` overrides `base/brand-base`.                                                               |
+| `cli.test.js`                                                        | Command line arguments of `build.js`, and reading the build configuration with its platform options.                                                                                                                                                     |
+| `config.test.js`                                                     | The Style Dictionary configuration of a build: source, preprocessor, error policy, output paths, and the file, filter and format of each output.                                                                                                         |
+| `preprocessor.test.js`                                               | Type alignment, the font weight and style split, the font weight path and the source order.                                                                                                                                                              |
+| `filters.test.js`                                                    | Which tokens go into `main`, `color-*`, `number-*` and `string`.                                                                                                                                                                                         |
+| `transforms.test.js`                                                 | The `cx/size/rem`, `cx/size/px`, `cx/size/vw` and `cx/shadow/web` transforms.                                                                                                                                                                            |
+| `formats.test.js`                                                    | Tokens are printed in source order, including tokens that Style Dictionary expands. The SCSS template names variables of other files and throws when no file declares one. The Android and iOS templates print references only with `outputReferences`.  |
+| `values-ios.test.js`, `values-android.test.js`, `values-web.test.js` | The value encoders in `values/`, and when an Android or iOS token prints a reference.                                                                                                                                                                    |
+| `theme-colors.test.js`                                               | The iOS `Color.swift`: how light and dark constants combine, the checks on them, and which output directories get the file.                                                                                                                              |
+| `values-swiftui.test.js`, `values-compose.test.js`                   | The SwiftUI and Compose encoders: every iOS and Android fixture case in SwiftUI and Kotlin form, strings, negative numbers, `em` and references.                                                                                                         |
+| `icons.test.js`                                                      | The icon assets: which tokens are icons, the Xcode image sets, the Android drawables, and which builds write them.                                                                                                                                       |
+| `values-shared.test.js`                                              | The gradient helpers both mobile encoders share: which tokens are gradients, reading a `linear-gradient(…)`, and the parts iOS and Android print for it.                                                                                                 |
+| `reference-policy.test.js`                                           | The rules both web reference policies share: which tokens print a reference and which token it names.                                                                                                                                                    |
+| `css-var-policy.test.js`                                             | Which web tokens print a `var(--…)` reference, the name of the custom property, and typography maps.                                                                                                                                                     |
+| `scss-var-policy.test.js`                                            | The values of the `cx/scss-variables` format: resolved values, resolved typography maps, the letter spacing of `web-px`, and SCSS variable references with `outputReferences`.                                                                           |
+| `utils.test.js`                                                      | The token type groups.                                                                                                                                                                                                                                   |
+| `logger.test.js`                                                     | Log output.                                                                                                                                                                                                                                              |
 
-#### Token Source Resolution
-- ✅ **Source Assignment**: Verifies correct token sources are assigned to tasks
-- ✅ **Missing Token Handling**: Tests graceful handling of missing token keys
-- ✅ **Source Format Validation**: Ensures source paths follow expected format
+## Fixtures
 
-#### Configuration Integration
-- ✅ **Config Function Calls**: Validates that configuration generator is called correctly
-- ✅ **Parameter Passing**: Tests that correct parameters are passed to config function
+The files in `fixtures/` are snapshots taken from the real build on 2026-09-27. Each has a `source` field that says where its data comes from.
 
-#### Edge Cases
-- ✅ **Empty Build Options**: Tests behavior with empty configuration
-- ✅ **Single Combinations**: Tests minimal brand/app/theme/screen combinations
+| Fixture                    | Used by                                                                    | Contents                                                                                                                                                                                                                                                                                                                                      |
+| -------------------------- | -------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `mobile-tokens.json`       | `values-ios`, `values-android`, `values-shared`, `theme-colors`, `formats` | Resolved iOS and Android tokens, with the lines `dist/` prints for them; Android and iOS tokens with outputReferences, their targets and the lines of their baselines; typography parts with the font size they are encoded with; gradient tokens with their parts in `dist/` and the baselines; light and dark constants of the colour files |
+| `web-tokens.json`          | `values-web`, `transforms`                                                 | Resolved web tokens and transform inputs, with the values `dist/` prints                                                                                                                                                                                                                                                                      |
+| `css-var-tokens.json`      | `css-var-policy`                                                           | Web tokens under test with the lines `dist/` prints, and every token they look up                                                                                                                                                                                                                                                             |
+| `filter-tokens.json`       | `filters`, `transforms`                                                    | One web token per type, colour group and result, with the files of `dist/` that declare it                                                                                                                                                                                                                                                    |
+| `preprocessor-tokens.json` | `preprocessor`                                                             | Token slices copied from `tokens/`, in source form                                                                                                                                                                                                                                                                                            |
+| `scss-var-tokens.json`     | `scss-var-policy`, `formats`                                               | Tokens of the `web-px`, `web-vw` and `web-scss` presets and of `web-px` with `outputReferences`, with the lines of their baselines and the variables they name                                                                                                                                                                                |
 
-### Configuration Tests (`config.test.js`)
+When tokens change, the fixtures stay valid: they hold their own copies. When the build is meant to change its output, which the rewrite plan does not allow, update the expected values from the new `dist/` in the same commit.
 
-Tests the Style Dictionary configuration generator including:
+## Preset baselines
 
-#### File Generation Logic
-- ✅ **Base Files**: Verifies generation of `main.scss` and `string.scss` for base configurations
-- ✅ **Theme Files**: Tests generation of `color-{theme}.scss` for theme configurations
-- ✅ **Screen Files**: Tests generation of `number-{screen}.scss` for screen configurations
+`golden/` holds the reference output of the presets, for the brand `chassis`:
 
-#### Platform-specific Configurations
-- ✅ **Web Platform**: Tests web platform configuration generation
-- ✅ **iOS Platform**: Tests iOS platform configuration generation
-- ✅ **Android Platform**: Tests Android platform configuration generation
+| Entry           | Contents                                                                                                                                                                         |
+| --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `<preset>.json` | The build configuration of the check, in the form of `chassis.build` in `package.json`. A preset with this file is checked by `golden.test.js` and `pnpm tokens:verify:presets`. |
+| `<preset>/`     | The files the preset must write.                                                                                                                                                 |
 
-#### Build Path Generation
-- ✅ **Path Structure**: Validates correct build path structure for different combinations
-- ✅ **Brand/App Combinations**: Tests various brand and app combinations
+`web-px-references`, `android-references` and `ios-references` are `web-px`, `android` and `ios` with `outputReferences`, set in their configuration files under `options`.
 
-#### File Filter Application
-- ✅ **Filter Assignment**: Ensures correct filters are applied to different file types
+Check one preset, or all:
 
-#### Format Application
-- ✅ **SCSS Format**: Tests SCSS format assignment for web platform
-- ✅ **Swift Format**: Tests Swift format assignment for iOS platform
-- ✅ **XML Format**: Tests XML format assignment for Android platform
-
-#### Edge Cases
-- ✅ **Missing Parameters**: Tests graceful handling of missing optional parameters
-- ✅ **Unique Configurations**: Validates that different parameters produce unique configurations
-
-## Test Framework
-
-- **Test Runner**: Vitest (chosen for better ES module support)
-- **Mocking**: Comprehensive mocking of external dependencies
-- **Assertions**: Extensive assertion coverage for all critical paths
-- **Edge Cases**: Thorough testing of error conditions and edge cases
-
-## Running Tests
-
-```bash
-# Run all tests
-pnpm test
-
-# Run tests in watch mode
-pnpm test:watch
-
-# Run tests with coverage report
-pnpm test:coverage
+```sh
+node build/tokens/verify.js --preset web-px
+pnpm tokens:verify:presets
 ```
 
-## Configuration
+### Where the baselines come from
 
-The test suite is configured via `vitest.config.js` in the project root with:
-- Test file pattern: `tests/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts}`
-- Node.js environment for testing build scripts
-- Coverage reporting for `build/` directory
-- 10-second test timeout
+They were built on 2026-09-27 from the build before the rewrite: commit `a072bf9` of `main`, `style-dictionary` 4.4.0, `@tokens-studio/sd-transforms` 1.3.0, `tinycolor2` 1.6.0, Node 24. In an empty directory outside the repository, with `REPO` set to the path of the repository:
 
-## Test Files
+```sh
+git -C "$REPO" archive a072bf9 build/tokens tokens package.json | tar -x
+# In package.json, keep name, version, type and chassis, and set devDependencies to the
+# three versions above. Then:
+pnpm install --ignore-workspace
+```
 
-- `build.test.js` - Tests for the main build orchestrator
-- `config.test.js` - Tests for the configuration generator
+For each baseline, restore `build/tokens/config/` from the archive, make the changes of the table, run the build and keep `dist/`:
 
-## Coverage Areas
+```sh
+node build/tokens/build.js --brand chassis
+```
 
-| Component | Test Coverage | Status |
-|-----------|---------------|--------|
-| Task Generation | 100% | ✅ Complete |
-| CLI Filtering | 100% | ✅ Complete |
-| Configuration Generation | 100% | ✅ Complete |
-| File Generation Logic | 100% | ✅ Complete |
-| Platform Support | 100% | ✅ Complete |
-| Error Handling | 100% | ✅ Complete |
+| Baseline             | `chassis.build.apps`      | Change in `build/tokens/config/`                    |
+| -------------------- | ------------------------- | --------------------------------------------------- |
+| `web-px`             | `{ "docs": ["web-px"] }`  | none                                                |
+| `web-vw`             | `{ "docs": ["web-vw"] }`  | none                                                |
+| `web-scss`           | `{ "docs": ["web"] }`     | `web.js`: `format` is `'cx/scss-variables'`         |
+| `web-px-references`  | `{ "docs": ["web-px"] }`  | `web-px.js`: `outputReferences: true` in `options`  |
+| `android-references` | `{ "demo": ["android"] }` | `android.js`: `outputReferences: true` in `options` |
 
-## Key Test Scenarios
+`ios-swiftui` and `android-compose` have no old output either. They were written on 2026-09-27 by the current build and accepted after every constant was compared with the same constant of `dist/ios` and `dist/android` (20589 each, none differ), and after compiling them: SwiftUI with `swiftc` against the macOS SwiftUI framework, Kotlin with `kotlinc` 2.4.20 against stand-ins with the signatures of `androidx.compose`.
 
-1. **Full Build Process**: Tests complete build with all brands, themes, apps, and screens
-2. **Selective Building**: Tests CLI parameter filtering for selective builds
-3. **File Generation**: Tests that correct files are generated based on parameters
-4. **Duplication Prevention**: Ensures no duplicate files are created
-5. **Platform Compatibility**: Tests multi-platform output generation
-6. **Error Resilience**: Tests graceful handling of missing or invalid configurations
+Three baselines differ from the old output on purpose. In `main.scss` of `web-px` and `web-px-references`, three typography maps hold the letter spacing that `web-scss` and `web-vw` print. The old build printed the pixel number with `em`:
 
-## Test Results Summary
+| Variable                         | Old build | Baseline    |
+| -------------------------------- | --------- | ----------- |
+| `$cx-font-context-jumbo`         | `-0.5em`  | `-0.0313em` |
+| `$cx-font-website-hero-title`    | `-1em`    | `-0.0625em` |
+| `$cx-font-website-section-title` | `-0.5em`  | `-0.0313em` |
 
-- **Total Tests**: 24
-- **Passing**: 24 ✅
-- **Failing**: 0 ❌
-- **Coverage**: 100% of critical paths
+In `android-references`, 30 lines print their value instead of the reference the old build printed, because the reference did not compile or changed the value. Each line is the line of `dist/android/demo/chassis/`:
 
-All tests pass successfully, providing confidence in the build system's reliability and correctness.
+| Tokens                                                                                                                                                            | Files              | Old build                          | Problem                                    |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------ | ---------------------------------- | ------------------------------------------ |
+| `typography_letter_spacing_base_zero`, `font_context_jumbo_letter_spacing`, `font_website_hero_title_letter_spacing`, `font_website_section_title_letter_spacing` | `main`, `number_*` | `@integer/size_unit_…`             | the target is a `<dimen>`: no such integer |
+| `font_context_jumbo_font_size`, `font_context_hero_font_size`                                                                                                     | `main`, `number_*` | `@dimen/size_unit_96`, `…_64`      | `96dp` instead of `96sp`                   |
+| `bg_blur_default_color`, `bg_blur_alternate_color`                                                                                                                | `main`             | `@color/opacity_context_fg_subtle` | the target is not a `<color>`              |
+| `bg_blur_default_color`, `bg_blur_alternate_color`                                                                                                                | `color_*`          | `@color/color_primitive_neutral_…` | the alpha of `rgba()` is lost              |
+
+`ios-references` has no old output: the build before the rewrite had no iOS references. It was written on 2026-09-27 by the current build and accepted after a line-by-line comparison with `dist/ios/demo/chassis/`. Every line that prints a value equals the `dist/` line, and each of the 14237 lines that name a constant has, in `dist/`, the same value as the line that declares that constant in the same file.
+
+### When tokens change
+
+A change in `tokens/` changes `dist/` and the baselines. After the new `dist/` is built and reviewed, write each baseline again with the current build, and review the difference as for `dist/`:
+
+```sh
+node build/tokens/build.js --config build/tokens/test/golden/web-px.json --out build/tokens/test/golden/web-px
+```
+
+## Checking that a test can fail
+
+A new test should fail when the code it covers is wrong. While writing one, break the code on purpose (for example, drop an exception from the reference policy), run the test, and restore the code.

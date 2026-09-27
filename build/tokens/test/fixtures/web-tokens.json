@@ -1,0 +1,227 @@
+{
+  "source": "Resolved chassis/docs web tokens from the SD 4.4 build and the matching committed dist lines, extracted 2026-09-27.",
+  "encode": [
+    {
+      "case": "line height relative to its font size",
+      "token": {
+        "name": "cx-typography-line-height-text-5xlarge",
+        "path": ["typography", "lineHeight", "text", "5xlarge"],
+        "$type": "lineHeight",
+        "$value": "3.5rem"
+      },
+      "expected": "1.273em",
+      "fontSize": "2.75rem"
+    },
+    {
+      "case": "line height rounded to three decimals",
+      "token": {
+        "name": "cx-typography-line-height-text-4xlarge",
+        "path": ["typography", "lineHeight", "text", "4xlarge"],
+        "$type": "lineHeight",
+        "$value": "3rem"
+      },
+      "expected": "1.263em",
+      "fontSize": "2.375rem"
+    },
+    {
+      "case": "letter spacing token in em",
+      "token": {
+        "name": "cx-typography-letter-spacing-base-zero",
+        "path": ["typography", "letterSpacing", "base", "zero"],
+        "$type": "number",
+        "$value": "0rem"
+      },
+      "expected": "0em"
+    },
+    {
+      "case": "asset is quoted",
+      "token": {
+        "name": "cx-icon-accordion-indicator",
+        "path": ["icon", "accordion", "indicator"],
+        "$type": "asset",
+        "$value": "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='currentcolor' viewBox='0 0 24 24'><path d='m11.121 16.629-7.5-7.5a1.205 1.205 0 0 1 0-1.758 1.205 1.205 0 0 1 1.758 0l6.64 6.602 6.602-6.602a1.205 1.205 0 0 1 1.758 0c.508.469.508 1.29 0 1.758l-7.5 7.5a1.205 1.205 0 0 1-1.758 0Z'/></svg>"
+      },
+      "expected": "\"<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='currentcolor' viewBox='0 0 24 24'><path d='m11.121 16.629-7.5-7.5a1.205 1.205 0 0 1 0-1.758 1.205 1.205 0 0 1 1.758 0l6.64 6.602 6.602-6.602a1.205 1.205 0 0 1 1.758 0c.508.469.508 1.29 0 1.758l-7.5 7.5a1.205 1.205 0 0 1-1.758 0Z'/></svg>\""
+    },
+    {
+      "case": "dimension as is",
+      "token": {
+        "name": "cx-dimension-base-05",
+        "path": ["dimension", "base", "05"],
+        "$type": "dimension",
+        "$value": "0.03125rem"
+      },
+      "expected": "0.03125rem"
+    },
+    {
+      "case": "shadow string as is",
+      "token": {
+        "name": "cx-shadow-context-inset",
+        "path": ["shadow", "context", "inset"],
+        "$type": "shadow",
+        "$value": "0rem 0.125rem 0.25rem 0rem rgba(0, 0, 0, 0.1) inset"
+      },
+      "expected": "0rem 0.125rem 0.25rem 0rem rgba(0, 0, 0, 0.1) inset"
+    },
+    {
+      "case": "font family stack as is",
+      "token": {
+        "name": "cx-typography-font-family-text",
+        "path": ["typography", "fontFamily", "text"],
+        "$type": "fontFamily",
+        "$value": "Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif"
+      },
+      "expected": "Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif"
+    },
+    {
+      "case": "font weight number as is",
+      "token": {
+        "name": "cx-typography-font-weight-text-normal-weight",
+        "path": ["typography", "fontWeight", "text", "normal", "weight"],
+        "$type": "fontWeight",
+        "$value": 400
+      },
+      "expected": "400"
+    }
+  ],
+  "remSize": [
+    {
+      "case": "zero",
+      "token": {
+        "name": "cx-dimension-base-0",
+        "$value": "0px"
+      },
+      "expected": "0rem"
+    },
+    {
+      "case": "fraction of a pixel, no rounding",
+      "token": {
+        "name": "cx-dimension-base-05",
+        "$value": "0.5px"
+      },
+      "expected": "0.03125rem"
+    },
+    {
+      "case": "one pixel",
+      "token": {
+        "name": "cx-dimension-base-1",
+        "$value": "1px"
+      },
+      "expected": "0.0625rem"
+    },
+    {
+      "case": "negative value",
+      "token": {
+        "name": "cx-dimension-base-nd05",
+        "$value": "-0.5px"
+      },
+      "expected": "-0.03125rem"
+    },
+    {
+      "case": "font size",
+      "token": {
+        "name": "cx-typography-font-size-text-5xlarge",
+        "$value": "44"
+      },
+      "expected": "2.75rem"
+    }
+  ],
+  "cssShadow": [
+    {
+      "case": "single inset layer",
+      "value": [
+        {
+          "color": "rgba(0, 0, 0, 0.1)",
+          "type": "innerShadow",
+          "blur": "0.25rem",
+          "spread": "0rem",
+          "offsetX": "0rem",
+          "offsetY": "0.125rem"
+        }
+      ],
+      "expected": "0rem 0.125rem 0.25rem 0rem rgba(0, 0, 0, 0.1) inset"
+    },
+    {
+      "case": "two drop-shadow layers",
+      "value": [
+        {
+          "color": "rgba(0, 0, 0, 0.1)",
+          "type": "dropShadow",
+          "blur": "0.5rem",
+          "spread": "-0.125rem",
+          "offsetX": "0rem",
+          "offsetY": "0.125rem"
+        },
+        {
+          "color": "rgba(0, 0, 0, 0.1)",
+          "type": "dropShadow",
+          "blur": "0.25rem",
+          "spread": "-0.0625rem",
+          "offsetX": "0rem",
+          "offsetY": "0.0625rem"
+        }
+      ],
+      "expected": "0rem 0.125rem 0.5rem -0.125rem rgba(0, 0, 0, 0.1), 0rem 0.0625rem 0.25rem -0.0625rem rgba(0, 0, 0, 0.1)"
+    },
+    {
+      "case": "transparent none",
+      "value": [
+        {
+          "blur": "0rem",
+          "spread": "0rem",
+          "color": "rgba(0, 0, 0, 0)",
+          "type": "dropShadow",
+          "offsetX": "0rem",
+          "offsetY": "0rem"
+        }
+      ],
+      "expected": "0rem 0rem 0rem 0rem rgba(0, 0, 0, 0)"
+    }
+  ],
+  "typographyMap": [
+    {
+      "case": "object-valued, literal size and percent line height",
+      "name": "cx-font-context-jumbo",
+      "parts": {
+        "fontFamily": "var(--font-family-text)",
+        "fontWeight": "var(--font-weight-text-mass)",
+        "fontSize": "6rem",
+        "lineHeight": "1.25em",
+        "fontStyle": "normal",
+        "letterSpacing": "-0.0313rem",
+        "paragraphSpacing": "0rem",
+        "textCase": "none",
+        "textDecoration": "none"
+      },
+      "expected": "(\"font-family\": var(--font-family-text), \"font-weight\": var(--font-weight-text-mass), \"font-size\": 6rem, \"line-height\": 1.25em, \"font-style\": normal, \"letter-spacing\": -0.0313em, \"margin-bottom\": 0rem, \"text-transform\": none, \"text-decoration\": none)"
+    },
+    {
+      "case": "reference-valued component typography",
+      "name": "cx-font-button-medium",
+      "parts": {
+        "fontFamily": "var(--font-family-text)",
+        "fontWeight": "var(--font-weight-strong)",
+        "fontSize": "var(--font-size-md)",
+        "lineHeight": "var(--line-height-md)",
+        "fontStyle": "normal",
+        "letterSpacing": "0rem",
+        "paragraphSpacing": "0rem",
+        "textCase": "none",
+        "textDecoration": "none"
+      },
+      "expected": "(\"font-family\": var(--font-family-text), \"font-weight\": var(--font-weight-strong), \"font-size\": var(--font-size-md), \"line-height\": var(--line-height-md), \"font-style\": normal, \"letter-spacing\": 0em, \"margin-bottom\": 0rem, \"text-transform\": none, \"text-decoration\": none)"
+    }
+  ],
+  "percentToEm": [
+    {
+      "case": "percent becomes em",
+      "value": "125%",
+      "expected": "1.25em"
+    },
+    {
+      "case": "non-percent passes through",
+      "value": "1.5",
+      "expected": "1.5"
+    }
+  ]
+}

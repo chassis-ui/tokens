@@ -1,6 +1,6 @@
 ---
 title: Web Applications
-description: Complete guide to integrating Chassis design tokens into web applications using SCSS variables, CSS custom properties, and various bundler configurations.
+description: Use Chassis design tokens in web applications as SCSS variables, with or without Chassis CSS, including themes, screen sizes, typography maps and bundler setup.
 toc: true
 ---
 
@@ -8,17 +8,14 @@ toc: true
 
 ## Overview
 
-Chassis design tokens provide platform-agnostic design values that can be integrated into web applications in multiple ways. Tokens are transformed into SCSS variables with support for rem, px, and vw units, making them compatible with any modern web build pipeline.
+Chassis Tokens are built for the web as SCSS variables. Each token is one `!default` variable, such as `$cx-space-context-medium: 1rem !default;`. The files hold variables only, so loading them adds nothing to your CSS until you use a variable.
 
-**Key Benefits:**
+There are two kinds of web output:
 
-- **Consistency**: Single source of truth for design values across all web projects
-- **Flexibility**: Use SCSS variables directly or convert to CSS custom properties
-- **Responsive**: Built-in support for multiple screen sizes and breakpoints
-- **Themeable**: Light/dark mode support with automatic theme switching
-- **Type-safe**: Generated with TypeScript definitions (optional)
+- **For Chassis CSS** (the default `web` platform): many values are CSS custom properties that [Chassis CSS](https://github.com/chassis-ui/css) defines, such as `var(--default-fg-main)`. Use this output together with Chassis CSS.
+- **For other CSS frameworks** (the `web-scss`, `web-px` and `web-vw` presets): every value is resolved, such as `#161a1b`. Use this output when your project does not load Chassis CSS. See [presets for other CSS frameworks]([[docsref:/getting-started/style-dictionary#presets-for-other-css-frameworks]]).
 
-This guide covers integration patterns for different project structures and popular bundlers including Webpack, Vite, Parcel, and Rollup.
+The npm package contains the default output. To use a preset, build the tokens yourself from the repository.
 
 ## Installation
 
@@ -41,250 +38,308 @@ yarn add @chassis-ui/tokens
 bun add @chassis-ui/tokens
 ```
 
-The package includes pre-built token files for web platforms in the `dist/web/` directory.
+Your build also needs a Sass compiler, such as `sass` or `sass-embedded`:
 
-## Package Structure
+```bash
+npm install --save-dev sass
+```
 
-After installation, the tokens package contains the following structure:
+## Package Contents
+
+The package contains the web output of the `docs` app for the `chassis` and `sinefil` brands:
 
 ```
 node_modules/@chassis-ui/tokens/
 └── dist/
     └── web/
-        └── [app]/
-            └── [brand]/
-            ├── main.scss          # All non-theme, non-number tokens
-            ├── string.scss        # String tokens only
-            ├── color-light.scss   # Light mode color tokens
-            ├── color-dark.scss    # Dark mode color tokens
-            ├── number-large.scss  # Large screen tokens (if screens configured)
-            ├── number-medium.scss # Medium screen tokens (if screens configured)
-            ├── number-small.scss  # Small screen tokens (if screens configured)
-            └── number.scss        # All number tokens (if screens omitted)
+        └── docs/
+            ├── chassis/
+            │   ├── main.scss
+            │   ├── string.scss
+            │   ├── color-light.scss
+            │   ├── color-dark.scss
+            │   ├── number-large.scss
+            │   ├── number-medium.scss
+            │   └── number-small.scss
+            └── sinefil/
+                └── ...
 ```
 
-**File Types:**
+<CxTable>
+| File | Contents |
+|------|----------|
+| `main.scss` | Every token except theme colours: base and component colours, sizes, spacing, border radii and widths, opacities, typography, shadows and strings. Sizes have the values of the large screen |
+| `string.scss` | Font families, font weights and other strings, and SVG icons |
+| `color-light.scss`, `color-dark.scss` | Theme colours: context, primitive and component colours, and gradients |
+| `number-large.scss`, `number-medium.scss`, `number-small.scss` | Sizes, spacing, numbers and opacities with the values of one screen size |
+</CxTable>
 
-- **main.scss**: Base tokens (dimensions, typography, borders, shadows, etc.)
-- **string.scss**: String tokens (SVG icons, asset URLs)
-- **color-[theme].scss**: Theme-specific color tokens
-- **number-[screen].scss**: Screen-size-specific numeric tokens (when screens are configured)
-- **number.scss**: All numeric tokens in one file (when screens are not configured)
+Where a token is declared matters when you use it:
+
+- **Context colours** (`$cx-color-context-*`) are in the colour files only.
+- **Sizes and spacing** are in `main.scss` and in each number file.
+- **Component colours** are in `main.scss` and in each colour file.
+- **`$prefix`** (`cx-`) is declared in every file. It holds the prefix of the variable names; changing it does not rename the variables.
+- **Typography maps** (`$cx-font-*`) are in `main.scss`.
+
+## Load Tokens with @use
+
+Load each file as a Sass module with `@use` and give it a namespace:
+
+```scss
+@use "@chassis-ui/tokens/dist/web/docs/chassis/main" as tokens;
+@use "@chassis-ui/tokens/dist/web/docs/chassis/color-light" as color;
+
+.card {
+  padding: tokens.$cx-space-context-medium;
+  border-radius: tokens.$cx-border-radius-context-medium;
+  background: color.$cx-color-context-default-bg-main;
+  color: color.$cx-color-context-default-fg-main;
+}
+```
+
+Compiled CSS:
+
+```css
+.card {
+  padding: 1rem;
+  border-radius: 0.375rem;
+  background: #ffffff;
+  color: #161a1b;
+}
+```
+
+Namespaces keep files with the same variable names apart, which is what [themes](#themes) and [screen sizes](#screen-sizes) need.
 
 <Callout type="info">
-By default, the package includes `chassis-docs` tokens. You can build custom combinations using the [token build process]([[docsref:/getting-started/style-dictionary]]) if you're working with the repository directly.
+`@import` also loads the files, but it is deprecated and will be removed in Dart Sass 3. It puts every variable in one global scope, and because each variable is declared with `!default`, the first file that declares a name wins. Importing `color-dark.scss` after `color-light.scss`, even inside a selector or media query, keeps the light values.
 </Callout>
 
-## Basic Integration
+### Values for Chassis CSS
 
-### Import All Tokens (SCSS)
-
-The simplest approach is to import all tokens into your SCSS:
+In the default output, tokens that reference a Chassis CSS value print its custom property:
 
 ```scss
-// Import base tokens
-@import "@chassis-ui/tokens/dist/web/docs/chassis/main";
+@use "@chassis-ui/tokens/dist/web/docs/chassis/main" as tokens;
 
-// Import theme tokens
-@import "@chassis-ui/tokens/dist/web/docs/chassis/color-light";
-
-// Import screen tokens
-@import "@chassis-ui/tokens/dist/web/docs/chassis/number-large";
-
-// Now use tokens in your styles
-.button {
-  padding: $cx-space-button-padding-block $cx-space-button-padding-inline;
-  background-color: $cx-color-context-primary-bg-solid;
-  color: $cx-color-context-primary-fg-solid;
-  border-radius: $cx-border-radius-button-main;
-  font: $cx-font-button-medium;
+.accordion-item {
+  color: tokens.$cx-color-accordion-item-fg-color;
+  border-radius: tokens.$cx-border-radius-accordion-main;
 }
 ```
 
-### Import Selectively (SCSS)
-
-Import only what you need for smaller bundle sizes:
-
-```scss
-// settings.scss
-@import "@chassis-ui/tokens/dist/web/docs/chassis/main";
-@import "@chassis-ui/tokens/dist/web/docs/chassis/color-light";
-
-// component.scss
-.card {
-  background: $cx-color-context-default-bg-main;
-  padding: $cx-space-base-16;
-  border-radius: $cx-border-radius-base-8;
+```css
+.accordion-item {
+  color: var(--default-fg-main);
+  border-radius: var(--border-radius-md);
 }
 ```
 
-### With Custom Prefix
+These values work on a page that loads Chassis CSS, which defines the custom properties. Without Chassis CSS, use a preset for other CSS frameworks, or use context tokens, which print resolved values in the default output too.
 
-Change the token prefix by overriding the `$prefix` variable:
+## Typography
 
-```scss
-// Override default prefix before import
-$prefix: my- !default;
-
-@import "@chassis-ui/tokens/dist/web/docs/chassis/main";
-
-// Now tokens use your prefix
-.element {
-  margin: $my-space-base-16;
-}
-```
-
-## Theme Switching
-
-Chassis supports light and dark modes through separate token files.
-
-### Data Attribute Method
-
-Use data attributes to switch themes (recommended):
+Typography tokens are Sass maps whose keys are CSS property names. A map is not a valid CSS value, so `font: tokens.$cx-font-context-lead` fails. Read one property with `map.get`, or write all of them with `@each`:
 
 ```scss
-// Import both themes
-@import "@chassis-ui/tokens/dist/web/docs/chassis/main";
+@use "sass:map";
+@use "@chassis-ui/tokens/dist/web/docs/chassis/main" as tokens;
 
-// Default to light mode
-@import "@chassis-ui/tokens/dist/web/docs/chassis/color-light";
-
-.component {
-  background: $cx-color-context-default-bg-main;
-  color: $cx-color-context-default-fg-main;
-}
-
-// Override for dark mode
-[data-cx-theme="dark"] {
-  @import "@chassis-ui/tokens/dist/web/docs/chassis/color-dark";
-
-  .component {
-    background: $cx-color-context-default-bg-main;
-    color: $cx-color-context-default-fg-main;
+@mixin text-style($style) {
+  @each $property, $value in $style {
+    #{$property}: $value;
   }
 }
+
+.lead {
+  @include text-style(tokens.$cx-font-context-lead);
+}
+
+.caption {
+  font-size: map.get(tokens.$cx-font-context-lead, "font-size");
+}
 ```
 
-### CSS Custom Properties Method
+Each map has the keys `font-family`, `font-weight`, `font-size`, `line-height`, `font-style`, `letter-spacing`, `margin-bottom`, `text-transform` and `text-decoration`. In the default output, family and weight are Chassis CSS custom properties, and so are size and line height when they reference a font size or line height token, such as `var(--font-size-text-xl)`. In the presets every part is a resolved value.
 
-Convert SCSS variables to CSS custom properties for runtime theme switching:
+## Themes
+
+`color-light.scss` and `color-dark.scss` declare the same variable names with different values. Load both with their own namespace and write the colours as CSS custom properties under your own theme selectors. This example uses a `data-theme` attribute on the root element; choose any selector your app uses:
 
 ```scss
-// theme.scss
-@import "@chassis-ui/tokens/dist/web/docs/chassis/main";
-@import "@chassis-ui/tokens/dist/web/docs/chassis/color-light";
+@use "@chassis-ui/tokens/dist/web/docs/chassis/color-light" as light;
+@use "@chassis-ui/tokens/dist/web/docs/chassis/color-dark" as dark;
 
 :root {
-  --bg-main: #{$cx-color-context-default-bg-main};
-  --fg-main: #{$cx-color-context-default-fg-main};
-  --primary-bg: #{$cx-color-context-primary-bg-solid};
-  // ... map other tokens
+  --app-bg: #{light.$cx-color-context-default-bg-main};
+  --app-fg: #{light.$cx-color-context-default-fg-main};
 }
 
-[data-cx-theme="dark"] {
-  @import "@chassis-ui/tokens/dist/web/docs/chassis/color-dark";
-
-  --bg-main: #{$cx-color-context-default-bg-main};
-  --fg-main: #{$cx-color-context-default-fg-main};
-  --primary-bg: #{$cx-color-context-primary-bg-solid};
-  // ... map other tokens
+[data-theme="dark"] {
+  --app-bg: #{dark.$cx-color-context-default-bg-main};
+  --app-fg: #{dark.$cx-color-context-default-fg-main};
 }
 
-// Use in components
-.component {
-  background: var(--bg-main);
-  color: var(--fg-main);
+body {
+  background: var(--app-bg);
+  color: var(--app-fg);
 }
 ```
 
-### JavaScript Theme Switcher
+Compiled CSS:
 
-Toggle theme with JavaScript:
+```css
+:root {
+  --app-bg: #ffffff;
+  --app-fg: #161a1b;
+}
+
+[data-theme=dark] {
+  --app-bg: #111314;
+  --app-fg: #e9eced;
+}
+
+body {
+  background: var(--app-bg);
+  color: var(--app-fg);
+}
+```
+
+To write a whole group of tokens at once, loop over the variables of a module with `meta.module-variables`. This writes every context colour of each theme as a custom property named after its token, such as `--cx-color-context-default-bg-main`:
+
+```scss
+@use "sass:meta";
+@use "sass:string";
+@use "@chassis-ui/tokens/dist/web/docs/chassis/color-light" as light;
+@use "@chassis-ui/tokens/dist/web/docs/chassis/color-dark" as dark;
+
+@mixin context-colors($module) {
+  @each $name, $value in meta.module-variables($module) {
+    @if string.index($name, "cx-color-context-") == 1 {
+      --#{$name}: #{$value};
+    }
+  }
+}
+
+:root {
+  @include context-colors("light");
+}
+
+[data-theme="dark"] {
+  @include context-colors("dark");
+}
+```
+
+Switch the theme by setting the attribute:
 
 ```javascript
-// Set theme
-document.documentElement.setAttribute('data-cx-theme', 'dark');
+const root = document.documentElement;
+const query = window.matchMedia('(prefers-color-scheme: dark)');
 
-// Toggle theme
-const currentTheme = document.documentElement.getAttribute('data-cx-theme');
-const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-document.documentElement.setAttribute('data-cx-theme', newTheme);
+function setTheme(theme) {
+  root.setAttribute('data-theme', theme);
+  localStorage.setItem('theme', theme);
+}
 
-// Save preference
-localStorage.setItem('cx-theme', newTheme);
+// Restore the saved theme, or follow the system setting
+setTheme(localStorage.getItem('theme') || (query.matches ? 'dark' : 'light'));
 
-// Restore on load
-const savedTheme = localStorage.getItem('cx-theme') || 'light';
-document.documentElement.setAttribute('data-cx-theme', savedTheme);
+// Toggle
+function toggleTheme() {
+  setTheme(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+}
 ```
 
-## Responsive Design
+## Screen Sizes
 
-Chassis provides screen-specific tokens for responsive layouts.
+The number files declare the same variable names with the values of one screen size. `main.scss` has the values of the large screen. Most sizes are the same on every screen. A few differ, such as `$cx-size-website-section-icon`: `5rem` on large, `4rem` on medium and `3rem` on small screens.
 
-### Breakpoint Tokens
-
-Import different screen sizes based on your responsive strategy:
+Load the number files with their own namespaces and use them in media queries. The breakpoints are yours to choose:
 
 ```scss
-// Base and large screen (desktop-first)
-@import "@chassis-ui/tokens/dist/web/docs/chassis/main";
-@import "@chassis-ui/tokens/dist/web/docs/chassis/number-large";
+@use "@chassis-ui/tokens/dist/web/docs/chassis/number-large" as large;
+@use "@chassis-ui/tokens/dist/web/docs/chassis/number-medium" as medium;
+@use "@chassis-ui/tokens/dist/web/docs/chassis/number-small" as small;
 
-// Medium screens (tablets)
+.section-icon {
+  width: large.$cx-size-website-section-icon;
+}
+
 @media (max-width: 992px) {
-  @import "@chassis-ui/tokens/dist/web/docs/chassis/number-medium";
-
-  .container {
-    padding: $cx-space-container-padding-block $cx-space-container-padding-inline;
+  .section-icon {
+    width: medium.$cx-size-website-section-icon;
   }
 }
 
-// Small screens (mobile)
 @media (max-width: 768px) {
-  @import "@chassis-ui/tokens/dist/web/docs/chassis/number-small";
-
-  .container {
-    padding: $cx-space-container-padding-block $cx-space-container-padding-inline;
+  .section-icon {
+    width: small.$cx-size-website-section-icon;
   }
 }
 ```
 
-### Mobile-First Approach
+Compiled CSS:
+
+```css
+.section-icon {
+  width: 5rem;
+}
+
+@media (max-width: 992px) {
+  .section-icon {
+    width: 4rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .section-icon {
+    width: 3rem;
+  }
+}
+```
+
+## A Token Layer
+
+Collect the modules you use in one partial and forward them, so that components load a single file. Every token file declares `$prefix`, and `main.scss` shares the component colours with the colour files and the sizes with the number files. Forward one file as it is and give the others a prefix:
 
 ```scss
-// Base and small screen (mobile-first)
-@import "@chassis-ui/tokens/dist/web/docs/chassis/main";
-@import "@chassis-ui/tokens/dist/web/docs/chassis/number-small";
+// styles/_tokens.scss
+@forward "@chassis-ui/tokens/dist/web/docs/chassis/main";
+@forward "@chassis-ui/tokens/dist/web/docs/chassis/color-light" as light-*;
+@forward "@chassis-ui/tokens/dist/web/docs/chassis/color-dark" as dark-*;
+```
 
-.heading {
-  font-size: $cx-typography-fontSize-text-xlarge;
-}
+```scss
+// components/card.scss
+@use "../styles/tokens";
 
-// Medium screens and up
-@media (min-width: 768px) {
-  @import "@chassis-ui/tokens/dist/web/docs/chassis/number-medium";
-
-  .heading {
-    font-size: $cx-typography-fontSize-text-2xlarge;
-  }
-}
-
-// Large screens and up
-@media (min-width: 992px) {
-  @import "@chassis-ui/tokens/dist/web/docs/chassis/number-large";
-
-  .heading {
-    font-size: $cx-typography-fontSize-text-3xlarge;
-  }
+.card {
+  padding: tokens.$cx-space-context-large;
+  border-radius: tokens.$cx-border-radius-context-large;
+  background: tokens.$light-cx-color-context-default-bg-main;
 }
 ```
 
-## Bundler Configuration
+## Bundler Setup
+
+The token files are plain SCSS and need no bundler plugin beyond Sass support. The package paths in the examples resolve through `node_modules`.
 
 ### Vite
 
-Vite works seamlessly with SCSS imports:
+Vite compiles SCSS once `sass` is installed. Use the tokens in any stylesheet or component style block:
+
+```html
+<!-- Card.vue -->
+<style lang="scss">
+@use "@chassis-ui/tokens/dist/web/docs/chassis/main" as tokens;
+
+.card {
+  padding: tokens.$cx-space-context-medium;
+}
+</style>
+```
+
+To make a module available in every stylesheet, add it with `additionalData`. Stylesheets then use `tokens.` without loading the module, and must not load it again under the same namespace:
 
 ```javascript
 // vite.config.js
@@ -294,32 +349,54 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
-        // Additional SCSS options
-        additionalData: `$prefix: cx- !default;`
+        additionalData: `@use "@chassis-ui/tokens/dist/web/docs/chassis/main" as tokens;\n`
       }
     }
   }
 });
 ```
 
-Import tokens in your components:
+### Astro
 
-```jsx
-<!-- Vue SFC -->
+Astro uses Vite, so the Vite setup applies. With `sass` installed, component styles can use the tokens:
+
+```astro
+---
+// Card.astro
+---
+
+<div class="card">
+  <slot />
+</div>
+
 <style lang="scss">
-@import "@chassis-ui/tokens/dist/web/docs/chassis/main";
-@import "@chassis-ui/tokens/dist/web/docs/chassis/color-light";
+  @use "@chassis-ui/tokens/dist/web/docs/chassis/main" as tokens;
+
+  .card {
+    padding: tokens.$cx-space-context-medium;
+  }
+</style>
+```
+
+### Next.js
+
+Next.js compiles SCSS and CSS Modules once `sass` is installed. Each module loads the token files it uses:
+
+```scss
+// components/Button.module.scss
+@use "@chassis-ui/tokens/dist/web/docs/chassis/main" as tokens;
+@use "@chassis-ui/tokens/dist/web/docs/chassis/color-light" as color;
 
 .button {
-  background: $cx-color-context-primary-bg-solid;
-  padding: $cx-space-button-padding-block;
+  padding: tokens.$cx-space-button-medium-padding-y tokens.$cx-space-button-medium-padding-x;
+  background: color.$cx-color-context-primary-bg-solid;
+  color: color.$cx-color-context-primary-fg-solid;
 }
-</style>
 ```
 
 ### Webpack
 
-Configure Webpack to handle SCSS imports:
+Use `sass-loader` as usual:
 
 ```javascript
 // webpack.config.js
@@ -328,525 +405,70 @@ module.exports = {
     rules: [
       {
         test: /\.scss$/,
-        use: [
-          'style-loader',
-          'css-loader',
-          {
-            loader: 'sass-loader',
-            options: {
-              sassOptions: {
-                includePaths: ['node_modules']
-              }
-            }
-          }
-        ]
+        use: ['style-loader', 'css-loader', 'sass-loader']
       }
     ]
   }
 };
 ```
 
-Import in your entry file:
+### Other Tools
 
-```javascript
-// index.js
-import './styles/main.scss';
-```
-
-```scss
-// styles/main.scss
-@import "@chassis-ui/tokens/dist/web/docs/chassis/main";
-@import "@chassis-ui/tokens/dist/web/docs/chassis/color-light";
-```
-
-### Next.js
-
-Next.js supports SCSS out of the box:
-
-```bash
-npm install sass
-```
-
-Import tokens globally:
-
-```javascript
-// pages/_app.js
-import '../styles/tokens.scss';
-import '../styles/globals.scss';
-
-export default function App({ Component, pageProps }) {
-  return <Component {...pageProps} />;
-}
-```
-
-```scss
-// styles/tokens.scss
-@import "@chassis-ui/tokens/dist/web/docs/chassis/main";
-@import "@chassis-ui/tokens/dist/web/docs/chassis/color-light";
-@import "@chassis-ui/tokens/dist/web/docs/chassis/number-large";
-```
-
-Use in CSS Modules:
-
-```scss
-// components/Button.module.scss
-@import "@chassis-ui/tokens/dist/web/docs/chassis/main";
-
-.button {
-  padding: $cx-space-button-padding-block $cx-space-button-padding-inline;
-  background: $cx-color-context-primary-bg-solid;
-}
-```
-
-### Astro
-
-Astro has built-in SCSS support:
-
-```astro
----
-// Component.astro
----
-
-<div class="card">
-  <slot />
-</div>
-
-<style lang="scss">
-  @import "@chassis-ui/tokens/dist/web/docs/chassis/main";
-  @import "@chassis-ui/tokens/dist/web/docs/chassis/color-light";
-
-  .card {
-    background: $cx-color-context-default-bg-main;
-    padding: $cx-space-base-16;
-    border-radius: $cx-border-radius-base-8;
-  }
-</style>
-```
-
-Global styles:
-
-```javascript
-// astro.config.mjs
-export default {
-  vite: {
-    css: {
-      preprocessorOptions: {
-        scss: {
-          additionalData: `
-            @import "@chassis-ui/tokens/dist/web/docs/chassis/main";
-            @import "@chassis-ui/tokens/dist/web/docs/chassis/color-light";
-          `
-        }
-      }
-    }
-  }
-};
-```
-
-### Parcel
-
-Parcel automatically handles SCSS:
-
-```scss
-// src/styles/main.scss
-@import "@chassis-ui/tokens/dist/web/docs/chassis/main";
-@import "@chassis-ui/tokens/dist/web/docs/chassis/color-light";
-
-body {
-  background: $cx-color-context-default-bg-main;
-  color: $cx-color-context-default-fg-main;
-}
-```
-
-```html
-<!-- index.html -->
-<link rel="stylesheet" href="./src/styles/main.scss">
-```
-
-### Rollup
-
-Configure Rollup with SCSS plugin:
-
-```bash
-npm install rollup-plugin-scss sass --save-dev
-```
-
-```javascript
-// rollup.config.js
-import scss from 'rollup-plugin-scss';
-
-export default {
-  plugins: [
-    scss({
-      outputStyle: 'compressed',
-      includePaths: ['node_modules']
-    })
-  ]
-};
-```
-
-## Advanced Patterns
-
-### Create a Token Layer
-
-Create an abstraction layer for easier token management:
-
-```scss
-// _tokens.scss
-@import "@chassis-ui/tokens/dist/web/docs/chassis/main";
-@import "@chassis-ui/tokens/dist/web/docs/chassis/color-light";
-@import "@chassis-ui/tokens/dist/web/docs/chassis/number-large";
-
-// Create semantic aliases
-$color-background: $cx-color-context-default-bg-main;
-$color-text: $cx-color-context-default-fg-main;
-$color-primary: $cx-color-context-primary-bg-solid;
-$spacing-unit: $cx-space-base-8;
-$border-radius: $cx-border-radius-base-8;
-
-// Export for use in components
-```
-
-```scss
-// component.scss
-@import "tokens";
-
-.button {
-  background: $color-primary;
-  padding: calc($spacing-unit * 2);
-  border-radius: $border-radius;
-}
-```
-
-### CSS-in-JS Integration
-
-Convert tokens to JavaScript objects for CSS-in-JS libraries:
-
-```javascript
-// tokens.js
-import tokens from '@chassis-ui/tokens/dist/web/docs/chassis/main.scss';
-
-export const theme = {
-  colors: {
-    primary: 'var(--cx-color-context-primary-bg-solid)',
-    background: 'var(--cx-color-context-default-bg-main)',
-  },
-  spacing: {
-    small: 'var(--cx-space-base-8)',
-    medium: 'var(--cx-space-base-16)',
-    large: 'var(--cx-space-base-24)',
-  }
-};
-```
-
-Use with styled-components:
-
-```javascript
-import styled from 'styled-components';
-import { theme } from './tokens';
-
-const Button = styled.button`
-  background: ${theme.colors.primary};
-  padding: ${theme.spacing.medium};
-`;
-```
-
-### Dynamic Theme Switching
-
-Build a complete theme system:
-
-```typescript
-// theme.ts
-type Theme = 'light' | 'dark';
-
-class ThemeManager {
-  private current: Theme = 'light';
-
-  constructor() {
-    this.load();
-    this.applyMediaQuery();
-  }
-
-  set(theme: Theme) {
-    this.current = theme;
-    document.documentElement.setAttribute('data-cx-theme', theme);
-    localStorage.setItem('cx-theme', theme);
-  }
-
-  toggle() {
-    this.set(this.current === 'light' ? 'dark' : 'light');
-  }
-
-  private load() {
-    const saved = localStorage.getItem('cx-theme') as Theme;
-    if (saved) {
-      this.set(saved);
-    }
-  }
-
-  private applyMediaQuery() {
-    const query = window.matchMedia('(prefers-color-scheme: dark)');
-    if (!localStorage.getItem('cx-theme')) {
-      this.set(query.matches ? 'dark' : 'light');
-    }
-    query.addEventListener('change', (e) => {
-      if (!localStorage.getItem('cx-theme')) {
-        this.set(e.matches ? 'dark' : 'light');
-      }
-    });
-  }
-}
-
-export const themeManager = new ThemeManager();
-```
-
-## Build Optimization
-
-### Tree Shaking
-
-Import only needed tokens to reduce bundle size:
-
-```scss
-// Instead of importing entire files
-// @import "@chassis-ui/tokens/dist/web/docs/chassis/main";
-
-// Import specific token categories
-@use "@chassis-ui/tokens/dist/web/docs/chassis/main" with (
-  $cx-color-context-default-bg-main: true,
-  $cx-space-base-16: true
-);
-```
-
-### Purge Unused Tokens
-
-Use PurgeCSS to remove unused tokens:
-
-```javascript
-// postcss.config.js
-module.exports = {
-  plugins: [
-    require('@fullhuman/postcss-purgecss')({
-      content: ['./src/**/*.{js,jsx,ts,tsx,vue,html}'],
-      defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || []
-    })
-  ]
-};
-```
-
-### Code Splitting
-
-Split tokens by route or component:
-
-```javascript
-// webpack.config.js
-module.exports = {
-  optimization: {
-    splitChunks: {
-      cacheGroups: {
-        tokens: {
-          test: /@chassis-ui\/tokens/,
-          name: 'tokens',
-          chunks: 'all'
-        }
-      }
-    }
-  }
-};
-```
+If a tool does not resolve package paths in Sass, add `node_modules` to the Sass load paths, for example `loadPaths: ['node_modules']` in the Sass options.
 
 ## Best Practices
 
-### Do's
+✅ **Prefer context tokens**: Use `color.context.*`, `space.context.*` and `borderRadius.context.*` over primitive and base tokens. Context tokens carry the meaning; base tokens are the raw scale.
 
-✅ **Import tokens once**: Import at the root level and reuse throughout your app
+✅ **Load with @use and namespaces**: This keeps themes and screen sizes apart and prepares for Dart Sass 3.
 
-✅ **Use semantic tokens**: Prefer context tokens (`color.context.primary.*`) over base tokens (`color.palette.primary.*`)
+✅ **Map tokens in one place**: Turn tokens into your own custom properties or aliases in one partial, and use those in components.
 
-✅ **Create abstractions**: Build a token layer for your specific use cases
+✅ **Change tokens at the source**: Chassis Tokens is meant to be owned and customized. Change values in Tokens Studio and rebuild, instead of editing the files in `dist/`.
 
-✅ **Respect theme modes**: Always test in both light and dark modes
+✅ **Test both themes**: Check every component in light and dark mode.
 
-✅ **Use responsive tokens**: Import screen-specific tokens for better responsive design
+❌ **Don't use Chassis CSS values without Chassis CSS**: `var(--…)` values in the default output do nothing unless Chassis CSS defines them.
 
-### Don'ts
+❌ **Don't mix unit systems**: Stick to one unit system (rem, px, or vw) per project, and avoid mixing token sizes with hard-coded values in another unit.
 
-❌ **Don't hardcode values**: Always use tokens instead of magic numbers
-
-❌ **Don't import everywhere**: Avoid importing token files in every component
-
-❌ **Don't override tokens directly**: Create custom variables that reference tokens
-
-❌ **Don't mix unit systems**: Stick to one unit system (rem, px, or vw) per project
-
-❌ **Don't ignore accessibility**: Use tokens that maintain proper contrast ratios
+❌ **Don't hardcode values**: Use tokens instead of magic numbers.
 
 ## Troubleshooting
 
-### Import Errors
+### Undefined Variable
 
-**Problem**: Cannot resolve '@chassis-ui/tokens'
+The variable is not declared in the modules you loaded, or it is used without its namespace. Context colours are in the colour files only, so loading `main.scss` is not enough for `$cx-color-context-*`. Check the name in the file in `dist/web/`: names are kebab-case, such as `$cx-typography-font-size-text-xlarge`.
 
-**Solution**: Ensure the package is installed and your bundler is configured to resolve node_modules:
+### "Isn't a Valid CSS Value"
 
-```javascript
-// vite.config.js
-export default {
-  resolve: {
-    alias: {
-      '@chassis-ui/tokens': path.resolve(__dirname, 'node_modules/@chassis-ui/tokens')
-    }
-  }
-};
-```
+A typography map was used as a value. See [Typography](#typography).
 
-### SCSS Compilation Errors
+### The Dark Theme Shows Light Colours
 
-**Problem**: Undefined variable errors
+Both colour files were loaded with `@import`. Each variable is declared with `!default`, so the first file wins. Load them with `@use` and namespaces, as in [Themes](#themes). The same applies to the number files.
 
-**Solution**: Ensure imports are in the correct order (main → color → number):
+### Values Print as var(--…) and Do Nothing
 
-```scss
-// Correct order
-@import "@chassis-ui/tokens/dist/web/docs/chassis/main";
-@import "@chassis-ui/tokens/dist/web/docs/chassis/color-light";
-@import "@chassis-ui/tokens/dist/web/docs/chassis/number-large";
-```
+The default output is made for Chassis CSS. Load Chassis CSS, or build the tokens with a preset for other CSS frameworks.
 
-### Theme Not Switching
+### Deprecation Warning for @import
 
-**Problem**: Theme changes don't apply
+Dart Sass warns that `@import` will be removed. Load the token files with `@use`.
 
-**Solution**: Ensure data attribute is on the root element and selectors have proper specificity:
+### Output Built with outputReferences
+
+With the `outputReferences` option, the colour tokens of `main.scss` reference variables of the colour files. Such a `main.scss` cannot be loaded with `@use`, because a module does not see the variables of another module. Load it with `@import` after one colour file:
 
 ```scss
-:root[data-cx-theme="dark"] {
-  // Dark theme overrides
-}
-```
-
-### Large Bundle Size
-
-**Problem**: Token imports bloat bundle size
-
-**Solution**: Use code splitting, tree shaking, and import only needed tokens
-
-## Example Projects
-
-### Simple Static Site
-
-```scss
-// styles/main.scss
-@import "@chassis-ui/tokens/dist/web/docs/chassis/main";
-@import "@chassis-ui/tokens/dist/web/docs/chassis/color-light";
-
-body {
-  font-family: $cx-typography-fontFamily-text;
-  background: $cx-color-context-default-bg-main;
-  color: $cx-color-context-default-fg-main;
-  padding: $cx-space-base-16;
-}
-
-.button {
-  padding: $cx-space-button-padding-block $cx-space-button-padding-inline;
-  background: $cx-color-context-primary-bg-solid;
-  color: $cx-color-context-primary-fg-solid;
-  border-radius: $cx-border-radius-button-main;
-  border: $cx-border-width-button-main solid transparent;
-  font: $cx-font-button-medium;
-  cursor: pointer;
-
-  &:hover {
-    background: $cx-color-context-primary-bg-hover;
-  }
-}
-```
-
-### React Application
-
-```scss
-// src/styles/tokens.scss
-@import "@chassis-ui/tokens/dist/web/docs/chassis/main";
-@import "@chassis-ui/tokens/dist/web/docs/chassis/color-light";
-
-:root {
-  --bg: #{$cx-color-context-default-bg-main};
-  --fg: #{$cx-color-context-default-fg-main};
-  --primary: #{$cx-color-context-primary-bg-solid};
-  --radius: #{$cx-border-radius-base-8};
-}
-
-[data-cx-theme="dark"] {
-  @import "@chassis-ui/tokens/dist/web/docs/chassis/color-dark";
-  --bg: #{$cx-color-context-default-bg-main};
-  --fg: #{$cx-color-context-default-fg-main};
-  --primary: #{$cx-color-context-primary-bg-solid};
-}
-```
-
-```jsx
-// src/App.jsx
-import './styles/tokens.scss';
-import { useState } from 'react';
-
-function App() {
-  const [theme, setTheme] = useState('light');
-
-  const toggleTheme = () => {
-    const newTheme = theme === 'light' ? 'dark' : 'light';
-    setTheme(newTheme);
-    document.documentElement.setAttribute('data-cx-theme', newTheme);
-  };
-
-  return (
-    <div className="app">
-      <button onClick={toggleTheme}>
-        Toggle {theme === 'light' ? 'Dark' : 'Light'} Mode
-      </button>
-    </div>
-  );
-}
-```
-
-### Vue Application
-
-```html
-<!-- App.vue -->
-<template>
-  <div :data-cx-theme="theme">
-    <button @click="toggleTheme">Toggle Theme</button>
-    <slot />
-  </div>
-</template>
-
-<script setup>
-import { ref } from 'vue';
-
-const theme = ref('light');
-
-const toggleTheme = () => {
-  theme.value = theme.value === 'light' ? 'dark' : 'light';
-};
-</script>
-
-<style lang="scss">
-@import "@chassis-ui/tokens/dist/web/docs/chassis/main";
-@import "@chassis-ui/tokens/dist/web/docs/chassis/color-light";
-
-:root {
-  background: $cx-color-context-default-bg-main;
-  color: $cx-color-context-default-fg-main;
-}
-
-[data-cx-theme="dark"] {
-  @import "@chassis-ui/tokens/dist/web/docs/chassis/color-dark";
-  background: $cx-color-context-default-bg-main;
-  color: $cx-color-context-default-fg-main;
-}
-</style>
+// Your build output, for example dist/web/docs/chassis/
+@import "path/to/tokens/color-light";
+@import "path/to/tokens/main";
 ```
 
 ## Next Steps
 
 - Learn about [token structure and naming]([[docsref:/getting-started/tokens-studio]])
 - Understand [token transformation and build process]([[docsref:/getting-started/style-dictionary]])
+- Build the tokens for a framework other than Chassis CSS with a [preset]([[docsref:/getting-started/style-dictionary#presets-for-other-css-frameworks]])
 - Explore [design token categories]([[docsref:/design-tokens/color-tokens]])

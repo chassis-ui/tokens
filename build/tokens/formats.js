@@ -8,11 +8,46 @@
  * @license MIT
  */
 
-import { fileHeader, sortByName, setSwiftFileProperties } from 'style-dictionary/utils'
+import { fileHeader, setSwiftFileProperties } from 'style-dictionary/utils'
 import androidResourcesTemplate from './templates/android-resources.template.js'
-import iosSwiftClassTemplate from './templates/ios-swift-class.template.js'
-import scssVariablesTemplate from './templates/scss-variables.template.js'
-import scssChassisCSSTemplate from './templates/scss-chassis-css.template.js'
+import { swiftConstants, swiftFile } from './templates/ios-swift-class.template.js'
+import composeTemplate from './templates/compose-object.template.js'
+import { tokenConstants } from './templates/constants.js'
+import * as swiftuiValues from './values/swiftui.js'
+import * as composeValues from './values/compose.js'
+import { collectThemeColors } from './theme-colors.js'
+import scssTemplate from './templates/scss.template.js'
+import { webValue } from './css-var-policy.js'
+import { scssValue } from './scss-var-policy.js'
+
+/**
+ * Returns the tokens in source order, by the number the preprocessor gave them. Expanded
+ * tokens share the number of their source token and keep their order.
+ * @param {Object[]} tokens - The tokens of a file.
+ * @returns {Object[]} - A sorted copy.
+ */
+export function inSourceOrder(tokens) {
+  const order = (token) => token.$extensions['chassis'].sourceOrder
+  return [...tokens].sort((a, b) => order(a) - order(b))
+}
+
+/**
+ * Returns a format that generates SCSS variables.
+ * @param {Function} value - Returns the SCSS value of a token.
+ * @returns {Function} - The format function.
+ */
+function scssFormat(value) {
+  return async function ({ dictionary, options, file, platform }) {
+    const { formatting, commentStyle } = options
+    const header = await fileHeader({ file, formatting, commentStyle })
+    dictionary.allTokens = inSourceOrder(dictionary.allTokens)
+    const settings = {
+      basePxFontSize: platform.basePxFontSize,
+      outputReferences: options.outputReferences === true
+    }
+    return scssTemplate({ dictionary, options, file, header, platform, value, settings })
+  }
+}
 
 /**
  * Registers custom formats with Style Dictionary.
@@ -20,48 +55,19 @@ import scssChassisCSSTemplate from './templates/scss-chassis-css.template.js'
  */
 export default function (StyleDictionary) {
   /**
-   * A test format for debugging purposes.
-   */
-  StyleDictionary.registerFormat({
-    name: 'cx/test',
-    format: ({ dictionary }) => {
-      const allTokens = dictionary.allTokens.sort(sortByName)
-      return (
-        allTokens
-          // .map(token => `${JSON.stringify(token, null, 2)}`)
-          .map((token) => `  ${token.name}: ${token.$type}`)
-          // .map(token => `  ${token.name}: ${token.$value}`)
-          .join('\n')
-      )
-    }
-  })
-
-  /**
    * A format to generate SCSS variables for Chassis CSS.
    */
   StyleDictionary.registerFormat({
     name: 'cx/scss-chassis-css',
-    format: async function ({ dictionary, options, file, platform }) {
-      const { formatting, commentStyle } = options
-      const header = await fileHeader({ file, formatting, commentStyle })
-      dictionary.allTokens = [...dictionary.allTokens]
-      // .sort(sortByName)
-      return scssChassisCSSTemplate({ dictionary, options, file, header, platform })
-    }
+    format: scssFormat(webValue)
   })
 
   /**
-   * A format to generate SCSS variables.
+   * A format to generate SCSS variables for other CSS frameworks.
    */
   StyleDictionary.registerFormat({
     name: 'cx/scss-variables',
-    format: async function ({ dictionary, options, file, platform }) {
-      const { formatting, commentStyle } = options
-      const header = await fileHeader({ file, formatting, commentStyle })
-      dictionary.allTokens = [...dictionary.allTokens]
-      // .sort(sortByName)
-      return scssVariablesTemplate({ dictionary, options, file, header, platform })
-    }
+    format: scssFormat(scssValue)
   })
 
   /**
@@ -73,9 +79,44 @@ export default function (StyleDictionary) {
       const { formatting, commentStyle } = options
       const header = await fileHeader({ file, formatting, commentStyle })
       options = setSwiftFileProperties(options, 'class', platform.transformGroup)
-      dictionary.allTokens = [...dictionary.allTokens]
-      // .sort(sortByName)
-      return iosSwiftClassTemplate({ dictionary, options, file, header, platform })
+      dictionary.allTokens = inSourceOrder(dictionary.allTokens)
+      const settings = { outputReferences: options.outputReferences === true }
+      const constants = swiftConstants(dictionary, settings)
+      if (options.theme) {
+        const { buildPath } = platform
+        collectThemeColors({ buildPath, theme: options.theme, header, options, constants })
+      }
+      return swiftFile({ file, header, options, constants })
+    }
+  })
+
+  /**
+   * A format to generate a Swift file with SwiftUI values.
+   */
+  StyleDictionary.registerFormat({
+    name: 'cx/swiftui',
+    format: async function ({ dictionary, options, file }) {
+      const { formatting, commentStyle } = options
+      const header = await fileHeader({ file, formatting, commentStyle })
+      dictionary.allTokens = inSourceOrder(dictionary.allTokens)
+      const settings = { outputReferences: options.outputReferences === true }
+      const constants = swiftConstants(dictionary, settings, swiftuiValues)
+      return swiftFile({ file, header, options, constants })
+    }
+  })
+
+  /**
+   * A format to generate a Kotlin object for Jetpack Compose.
+   */
+  StyleDictionary.registerFormat({
+    name: 'cx/compose-object',
+    format: async function ({ dictionary, options, file }) {
+      const { formatting, commentStyle } = options
+      const header = await fileHeader({ file, formatting, commentStyle })
+      dictionary.allTokens = inSourceOrder(dictionary.allTokens)
+      const settings = { outputReferences: options.outputReferences === true }
+      const constants = tokenConstants(dictionary, settings, composeValues)
+      return composeTemplate({ file, header, options, constants })
     }
   })
 
@@ -87,9 +128,9 @@ export default function (StyleDictionary) {
     format: async function ({ dictionary, options, file, platform }) {
       const { formatting, commentStyle } = options
       const header = await fileHeader({ file, formatting, commentStyle })
-      dictionary.allTokens = [...dictionary.allTokens]
-      // .sort(sortByName)
-      return androidResourcesTemplate({ dictionary, options, file, header, platform })
+      dictionary.allTokens = inSourceOrder(dictionary.allTokens)
+      const settings = { outputReferences: options.outputReferences === true }
+      return androidResourcesTemplate({ dictionary, options, file, header, platform, settings })
     }
   })
 }
