@@ -23,7 +23,9 @@ Before working with Style Dictionary in Chassis Tokens, ensure we have the follo
 - **Node.js**: Version 22 or higher required for running the build scripts.
 - **pnpm**: Package manager used by Chassis Tokens. Install with `npm install -g pnpm`.
 - **Git Repository Access**: Clone or fork the Chassis Tokens repository to access the build configuration.
-- **Token Files**: Design tokens must be present in the `tokens/` directory (managed by Tokens Studio).
+- **Token Files**: Design tokens must be present in the `packages/tokens/tokens/` directory (managed by Tokens Studio).
+
+The repository is a pnpm workspace. The token build, its configuration and its output are in `packages/tokens/`, the folder of the published package, and paths on this page are relative to it. Run the `pnpm tokens…` commands from the repository root.
 
 ### How it Works
 
@@ -47,7 +49,7 @@ Refer to the [Getting Started]([[docsref:/getting-started/quick-start]]) guide f
 
 ### Build Files
 
-The build system is defined in `build/tokens/` directory with the following structure:
+The build system is defined in the `packages/tokens/build/tokens/` directory with the following structure:
 
 - **build.js**: Plans one build per brand, app and token-set list, registers the extensions and runs the builds
 - **config/**: Platform-specific settings and file generation logic
@@ -64,7 +66,7 @@ The build system is defined in `build/tokens/` directory with the following stru
 
 ### Build Options
 
-Build options are defined in `package.json` under the `chassis` key:
+Build options are defined in `packages/tokens/package.json` under the `chassis` key:
 
 ```json
 {

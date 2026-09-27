@@ -43,7 +43,7 @@ After cloning or forking the Chassis Tokens repository, follow these steps to co
    - Name: Give a name to this sync configuration (e.g., "Chassis Tokens")
    - Repository: `[organization]/[repository-name]` (e.g., `chassis-ui/tokens`)
    - Branch: `main` (or your designated branch)
-   - File Path: `tokens/`
+   - File Path: `packages/tokens/tokens/`
 7. **Pull Tokens**: Return to Tokens tab and click the "Pull from Github" button at the bottom of the plugin.
 8. **Apply Theme**: Select the appropriate theme options from each theme group (Brand, Theme, App).
 
@@ -353,7 +353,7 @@ While these examples demonstrate editing JSON files directly, we highly recommen
 
 Suppose we're adding "Brand C" to our design system.
 
-**Step 1**: Create a new token set file `tokens/brand-c.json`:
+**Step 1**: Create a new token set file `packages/tokens/tokens/brand-c.json`:
 
 ```json
 {
@@ -414,7 +414,7 @@ Suppose we're adding "Brand C" to our design system.
 }
 ```
 
-**Step 2**: Update `tokens/$metadata.json` to register the new token set:
+**Step 2**: Update `packages/tokens/tokens/$metadata.json` to register the new token set:
 
 ```json
 {
@@ -426,7 +426,7 @@ Suppose we're adding "Brand C" to our design system.
 }
 ```
 
-**Step 3**: Update `tokens/$themes.json` to add Brand C as a new theme option in the Brand group:
+**Step 3**: Update `packages/tokens/tokens/$themes.json` to add Brand C as a new theme option in the Brand group:
 
 ```json
 [
@@ -457,7 +457,7 @@ Suppose we're adding "Brand C" to our design system.
 
 Let's create a "Holiday" theme variation that adds festive colors for primary buttons and solid surfaces.
 
-**Step 1**: Create `tokens/theme-holiday.json`:
+**Step 1**: Create `packages/tokens/tokens/theme-holiday.json`:
 
 ```json
 {
@@ -530,7 +530,7 @@ This example demonstrates the simplest approach to adding a new theme. In produc
 
 We need to add tokens for a new "Toast" component that should work across all brands and themes.
 
-**Step 1**: Add component-specific tokens to `tokens/app-base.json`:
+**Step 1**: Add component-specific tokens to `packages/tokens/tokens/app-base.json`:
 
 ```json
 {
@@ -619,7 +619,7 @@ We need to add tokens for a new "Toast" component that should work across all br
 
 Suppose our tablet app needs slightly different spacing and font size than the mobile application for toast component.
 
-**Step 1**: Create `tokens/base/app-tablet.json`:
+**Step 1**: Create `packages/tokens/tokens/base/app-tablet.json`:
 
 ```json
 {
@@ -989,7 +989,7 @@ Common issues and their solutions when working with Chassis Tokens and Tokens St
 
 - Verify Git credentials are still valid (re-authenticate if needed)
 - Check repository and branch names are correct
-- Ensure file path points to `tokens/` directory
+- Ensure file path points to `packages/tokens/tokens/` directory
 - Look for JSON syntax errors in token files (missing commas, brackets)
 - Try "Force Sync" option in Tokens Studio settings
 

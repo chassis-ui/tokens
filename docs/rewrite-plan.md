@@ -44,46 +44,46 @@ If a phase is too large, split it into `Na`, `Nb` rows. If a fact in this file i
 
 ## Status board
 
-| Phase | Scope                                                                       | Model  | Status                                   | Commit              | Date       |
-| ----- | --------------------------------------------------------------------------- | ------ | ---------------------------------------- | ------------------- | ---------- |
-| 0     | Golden harness                                                              | Sonnet | Done                                     | `rewrite(phase 0)`  | 2026-09-27 |
-| 1     | iOS and Android value encoders                                              | Opus   | Done                                     | `rewrite(phase 1)`  | 2026-09-27 |
-| 2     | Web value encoder                                                           | Opus   | Done                                     | `rewrite(phase 2)`  | 2026-09-27 |
-| 3     | Web `var(--…)` policy                                                       | Fable  | Done                                     | `rewrite(phase 3)`  | 2026-09-27 |
-| 4     | Upgrade to SD 5.5 and sd-transforms 2.0                                     | Fable  | Done                                     | `rewrite(phase 4)`  | 2026-09-27 |
-| 5     | Replace forked preprocessor (optional)                                      | Opus   | Done                                     | `rewrite(phase 5)`  | 2026-09-27 |
-| 6a    | Cleanup, version header, CI guard                                           | Opus   | Done                                     | `rewrite(phase 6a)` | 2026-09-27 |
-| 6b    | Build loop                                                                  | Opus   | Done                                     | `rewrite(phase 6b)` | 2026-09-27 |
-| 6c    | Tests README, docs, final acceptance                                        | Opus   | Done                                     | `rewrite(phase 6c)` | 2026-09-27 |
-| 7     | Site docs                                                                   | Opus   | Done                                     | `rewrite(phase 7)`  | 2026-09-27 |
-| 8     | Preset baselines, SCSS variable presets (resolved)                          | Fable  | Done                                     | `rewrite(phase 8)`  | 2026-09-27 |
-| 9     | SCSS variable references (`outputReferences`)                               | Opus   | Done                                     | `rewrite(phase 9)`  | 2026-09-27 |
-| 10    | Android references (`outputReferences`)                                     | Opus   | Done                                     | `rewrite(phase 10)` | 2026-09-27 |
-| 11    | Preset docs                                                                 | Opus   | Done                                     | `rewrite(phase 11)` | 2026-09-27 |
-| 12    | iOS references (`outputReferences`), new                                    | Opus   | Done                                     | `rewrite(phase 12)` | 2026-09-27 |
-| 13    | Mobile typography values: percent line height, Android letter spacing in em | Opus   | Done                                     | `rewrite(phase 13)` | 2026-09-27 |
-| 14    | Font weights as numbers                                                     | Opus   | Done                                     | `rewrite(phase 14)` | 2026-09-27 |
-| 15    | Gradients on mobile as parts                                                | Opus   | Done                                     | `rewrite(phase 15)` | 2026-09-27 |
-| 16    | Dead `dimension` filter condition                                           | Sonnet | Done                                     | `rewrite(phase 16)` | 2026-09-27 |
-| 17    | iOS type and file names                                                     | Opus   | Done                                     | `rewrite(phase 17)` | 2026-09-27 |
-| 18    | iOS colours that follow dark mode                                           | Fable  | Done                                     | `rewrite(phase 18)` | 2026-09-27 |
-| 19    | Android resource tree                                                       | Fable  | Done                                     | `rewrite(phase 19)` | 2026-09-27 |
-| 20    | SwiftUI and Compose outputs (optional)                                      | Opus   | Done                                     | `rewrite(phase 20)` | 2026-09-27 |
-| 21    | Icon assets (optional)                                                      | Opus   | Done                                     | `rewrite(phase 21)` | 2026-09-27 |
-| 22    | Platform shadow values (optional)                                           | Opus   | Done                                     | `rewrite(phase 22)` | 2026-09-27 |
-| 23    | Package contents and scripts                                                | Opus   | Done                                     | `rewrite(phase 23)` | 2026-09-27 |
-| 24    | Lint and audit clean                                                        | Sonnet | Done                                     | `rewrite(phase 24)` | 2026-09-27 |
-| 25    | CI for pull requests                                                        | Opus   | Done                                     | `rewrite(phase 25)` | 2026-09-27 |
-| 26    | Merge preparation and 0.6.0                                                 | Opus   | Waiting for Ozgur (push, merge, release) | `rewrite(phase 26)` | 2026-09-27 |
-| 27    | Workspace split: tokens and site (optional)                                 | Opus   | Not started                              |                     |            |
-| 28    | Contributor docs and README                                                 | Opus   | Not started                              |                     |            |
-| 29    | Release automation                                                          | Opus   | Not started                              |                     |            |
-| 30    | Token diff report on pull requests                                          | Opus   | Not started                              |                     |            |
-| 31    | Token source lint                                                           | Opus   | Not started                              |                     |            |
-| 32    | Type checking of the build code                                             | Opus   | Not started                              |                     |            |
-| 33    | Native compile checks in CI                                                 | Fable  | Not started                              |                     |            |
-| 34    | Swift package and Android library (optional)                                | Fable  | Not started                              |                     |            |
-| 35    | Retire the plan                                                             | Sonnet | Not started                              |                     |            |
+| Phase | Scope                                                                       | Model  | Status                            | Commit                               | Date       |
+| ----- | --------------------------------------------------------------------------- | ------ | --------------------------------- | ------------------------------------ | ---------- |
+| 0     | Golden harness                                                              | Sonnet | Done                              | `rewrite(phase 0)`                   | 2026-09-27 |
+| 1     | iOS and Android value encoders                                              | Opus   | Done                              | `rewrite(phase 1)`                   | 2026-09-27 |
+| 2     | Web value encoder                                                           | Opus   | Done                              | `rewrite(phase 2)`                   | 2026-09-27 |
+| 3     | Web `var(--…)` policy                                                       | Fable  | Done                              | `rewrite(phase 3)`                   | 2026-09-27 |
+| 4     | Upgrade to SD 5.5 and sd-transforms 2.0                                     | Fable  | Done                              | `rewrite(phase 4)`                   | 2026-09-27 |
+| 5     | Replace forked preprocessor (optional)                                      | Opus   | Done                              | `rewrite(phase 5)`                   | 2026-09-27 |
+| 6a    | Cleanup, version header, CI guard                                           | Opus   | Done                              | `rewrite(phase 6a)`                  | 2026-09-27 |
+| 6b    | Build loop                                                                  | Opus   | Done                              | `rewrite(phase 6b)`                  | 2026-09-27 |
+| 6c    | Tests README, docs, final acceptance                                        | Opus   | Done                              | `rewrite(phase 6c)`                  | 2026-09-27 |
+| 7     | Site docs                                                                   | Opus   | Done                              | `rewrite(phase 7)`                   | 2026-09-27 |
+| 8     | Preset baselines, SCSS variable presets (resolved)                          | Fable  | Done                              | `rewrite(phase 8)`                   | 2026-09-27 |
+| 9     | SCSS variable references (`outputReferences`)                               | Opus   | Done                              | `rewrite(phase 9)`                   | 2026-09-27 |
+| 10    | Android references (`outputReferences`)                                     | Opus   | Done                              | `rewrite(phase 10)`                  | 2026-09-27 |
+| 11    | Preset docs                                                                 | Opus   | Done                              | `rewrite(phase 11)`                  | 2026-09-27 |
+| 12    | iOS references (`outputReferences`), new                                    | Opus   | Done                              | `rewrite(phase 12)`                  | 2026-09-27 |
+| 13    | Mobile typography values: percent line height, Android letter spacing in em | Opus   | Done                              | `rewrite(phase 13)`                  | 2026-09-27 |
+| 14    | Font weights as numbers                                                     | Opus   | Done                              | `rewrite(phase 14)`                  | 2026-09-27 |
+| 15    | Gradients on mobile as parts                                                | Opus   | Done                              | `rewrite(phase 15)`                  | 2026-09-27 |
+| 16    | Dead `dimension` filter condition                                           | Sonnet | Done                              | `rewrite(phase 16)`                  | 2026-09-27 |
+| 17    | iOS type and file names                                                     | Opus   | Done                              | `rewrite(phase 17)`                  | 2026-09-27 |
+| 18    | iOS colours that follow dark mode                                           | Fable  | Done                              | `rewrite(phase 18)`                  | 2026-09-27 |
+| 19    | Android resource tree                                                       | Fable  | Done                              | `rewrite(phase 19)`                  | 2026-09-27 |
+| 20    | SwiftUI and Compose outputs (optional)                                      | Opus   | Done                              | `rewrite(phase 20)`                  | 2026-09-27 |
+| 21    | Icon assets (optional)                                                      | Opus   | Done                              | `rewrite(phase 21)`                  | 2026-09-27 |
+| 22    | Platform shadow values (optional)                                           | Opus   | Done                              | `rewrite(phase 22)`                  | 2026-09-27 |
+| 23    | Package contents and scripts                                                | Opus   | Done                              | `rewrite(phase 23)`                  | 2026-09-27 |
+| 24    | Lint and audit clean                                                        | Sonnet | Done                              | `rewrite(phase 24)`                  | 2026-09-27 |
+| 25    | CI for pull requests                                                        | Opus   | Done                              | `rewrite(phase 25)`                  | 2026-09-27 |
+| 26    | Merge preparation and 0.6.0                                                 | Opus   | Done (merged locally, not pushed) | `rewrite(phase 26)`, merge `588874e` | 2026-09-27 |
+| 27    | Workspace split: tokens and site (optional)                                 | Opus   | Done                              | `rewrite(phase 27)`                  | 2026-09-27 |
+| 28    | Contributor docs and README                                                 | Opus   | Not started                       |                                      |            |
+| 29    | Release automation                                                          | Opus   | Not started                       |                                      |            |
+| 30    | Token diff report on pull requests                                          | Opus   | Not started                       |                                      |            |
+| 31    | Token source lint                                                           | Opus   | Not started                       |                                      |            |
+| 32    | Type checking of the build code                                             | Opus   | Not started                       |                                      |            |
+| 33    | Native compile checks in CI                                                 | Fable  | Not started                       |                                      |            |
+| 34    | Swift package and Android library (optional)                                | Fable  | Not started                       |                                      |            |
+| 35    | Retire the plan                                                             | Sonnet | Not started                       |                                      |            |
 
 ## Ground rules
 
@@ -1051,7 +1051,7 @@ Checked:
 
 Settings for Ozgur on GitHub, after the first CI run (the check names appear only once they have run):
 
-1. Settings → Branches → add a rule (or ruleset) for `main`: require a pull request before merging; require status checks `Tokens (Node 22)`, `Tokens (Node 24)` and `Site`; require branches to be up to date.
+1. Settings → Branches → add a rule (or ruleset) for `main`: require a pull request before merging; require status checks `Tokens (Node 22)`, `Tokens (Node 24)` and `Site`; require branches to be up to date. (Changed on 2026-09-27: Ozgur merges locally and pushes `main` directly, without pull requests, so do not require a pull request; a required status check would also reject direct pushes, so leave branch protection off, or allow Ozgur to bypass it.)
 2. Leave `Audit` out of the required checks (recommended): a new advisory in any dev dependency fails it on every pull request, whatever the pull request changes. It still shows as a failed check.
 3. Settings → Code security: turn on Dependabot alerts and security updates. `dependabot.yml` covers version updates only.
 
@@ -1062,7 +1062,7 @@ Goal: `dev/rewrite` merges into `main` and is released as one version.
 - [x] Move the `[Unreleased]` CHANGELOG entry to the version decided below. Add a "Breaking changes" section first: Node 22, the iOS type and file names (Phase 17), font weights (Phase 14), line heights and letter spacing (Phase 13), gradients (Phase 15), Android float resources, and the files added to the npm package (Phase 23). Each with the change an app must make.
 - [x] Bump the version with `pnpm change-version`. Rebuild `dist/` for the new header, if approved: only the version and timestamp lines may change, which `pnpm tokens:verify` shows.
 - [x] Write the pull request description into the Result: what changed, how it was checked, and the breaking changes, taken from the CHANGELOG.
-- [ ] Ozgur pushes `dev/rewrite`, opens the pull request, waits for the CI of Phase 25, merges and lets the release workflow publish. Claude does not push.
+- [x] Ozgur pushes `dev/rewrite`, opens the pull request, waits for the CI of Phase 25, merges and lets the release workflow publish. Claude does not push. (Changed: Ozgur chose to merge locally without a pull request; see the note below.)
 - [ ] Acceptance: before the push, every local check of Phase 25 passes in a clean clone; `npm pack --dry-run` shows the new version. After the release, the next session records the CI run, the npm version and the GitHub release in the log.
 
 Result: `dev/rewrite` is ready to merge as 0.6.0. Waiting for Ozgur to push, open the pull request, merge and release.
@@ -1131,15 +1131,54 @@ The web SCSS output is the same apart from one renamed token and one font style.
 🤖 Generated with [Claude Code](https://claude.com/claude-code)
 ```
 
+Merged on 2026-09-27, differently from the steps above: Ozgur asked whether a pull request was needed and chose to merge locally and continue in the same session. `main` was equal to `origin/main` (`a072bf9`, checked with `git fetch`), and `git merge --no-ff dev/rewrite` made the merge commit `588874e`, whose tree equals `dev/rewrite`. Nothing was pushed: pushing `main` runs the release (CI, then npm 0.6.0 and the GitHub release), which Ozgur starts when ready. Until then no CI run has happened on GitHub, and every later phase merged before that push ships in 0.6.0. The pull request description above is unused.
+
 ## Phase 27: workspace split, tokens and site (optional)
 
 Goal: a contributor who changes tokens installs and runs only the token build; the site keeps its own dependencies.
 
-- [ ] A pnpm workspace with a private root: `packages/tokens/` holds `tokens/`, `build/`, `dist/`, its tests and the published `package.json`; `site/` becomes a workspace package with its own `package.json` and the site-only dependencies. The `vendor/assets` submodule moves with the site, if it is only the site's.
-- [ ] Inside the published tarball, paths do not change: `dist/` stays at the package root, so consumers see no difference.
-- [ ] Root scripts call the packages (`pnpm --filter`), so `pnpm tokens`, `pnpm test` and `pnpm dev` still work from the root.
-- [ ] Update the CI and release workflows, `vercel.json`, the lint configs, `.gitignore`, the README and the site pages that name repository paths.
-- [ ] Acceptance: `npm pack --dry-run` in `packages/tokens/` lists the same file names as before the split; `pnpm install` in the tokens package alone installs no site dependency; every check of Phase 25 passes; `pnpm astro:build` builds 22 pages; the Result lists the Vercel setting to change, if any.
+- [x] A pnpm workspace with a private root: `packages/tokens/` holds `tokens/`, `build/`, `dist/`, its tests and the published `package.json`; `site/` becomes a workspace package with its own `package.json` and the site-only dependencies. The `vendor/assets` submodule moves with the site, if it is only the site's.
+- [x] Inside the published tarball, paths do not change: `dist/` stays at the package root, so consumers see no difference.
+- [x] Root scripts call the packages (`pnpm --filter`), so `pnpm tokens`, `pnpm test` and `pnpm dev` still work from the root.
+- [x] Update the CI and release workflows, `vercel.json`, the lint configs, `.gitignore`, the README and the site pages that name repository paths.
+- [x] Acceptance: `npm pack --dry-run` in `packages/tokens/` lists the same file names as before the split; `pnpm install` in the tokens package alone installs no site dependency; every check of Phase 25 passes; `pnpm astro:build` builds 22 pages; the Result lists the Vercel setting to change, if any.
+
+Result: the repository is a pnpm workspace. `packages/tokens/` is the published `@chassis-ui/tokens` with only the build's dependencies; `site/` is a private package with its own; the root is private. The npm file names, `dist/` and the site output did not change.
+
+Before the phase, Ozgur was asked to choose between this full split and a smaller one that kept the site at the root, because all five Chassis repositories (assets, css, figma, icons, tokens) run `astro build --root site` from the root, and `@chassis-ui/docs` and the site code assume it. Ozgur chose the full split; this repository's site layout now differs from the others.
+
+| Folder             | Package                              | Holds                                                                                                                                                                                    | Dev dependencies                                           |
+| ------------------ | ------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------- |
+| root               | `chassis-tokens-workspace` (private) | `pnpm-workspace.yaml`, `.prettierrc.json`, `.prettierignore`, `build/change-version.js`, `.github/`, `docs/`, `vercel.json`, `README.md`, `LICENSE`                                      | `prettier`, `prettier-plugin-astro`                        |
+| `packages/tokens/` | `@chassis-ui/tokens`                 | `tokens/`, `build/tokens/`, `dist/`, `package.json` with `chassis.build`, `CHANGELOG.md`, a new `README.md` for npm, `LICENSE`, `eslint.config.js`                                       | 11: the four build packages, `vitest`, ESLint and Prettier |
+| `site/`            | `chassis-tokens-site` (private)      | the site, `vendor/assets` (the submodule, moved), `scripts/sync-submodules.js` and `scripts/html-validate.js` (from `build/`), `eslint.config.js`, `stylelint.config.js`, `pagefind.yml` | 47, including `@chassis-ui/tokens` as `workspace:*`        |
+
+- Moves use `git mv`: 309 files are exact renames; 4 are renames with edits (`CHANGELOG.md`, the tests README, the two lint configs). `git mv` of the submodule updated `.gitmodules` and its gitdir link; it stays at commit `04fd3a7`.
+- The token build needed no change: it reads `package.json`, `tokens/` and `dist/` from its package folder. Its package scripts are `build`, `build:site`, `clean`, `lint`, `test`, `verify`, `verify:presets`; `repository.directory` is `packages/tokens`.
+- The site runs Astro from `site/` now. Changed: `src/libs/config.ts` and `src/libs/data.ts` read `./config.yml` and `./data/` (were `./site/…`); `config.yml` has `docsDir: "."`; `src/libs/path.ts` reads the tokens from `node_modules/@chassis-ui/tokens/dist/web/docs` (the workspace link); `astro.config.ts` writes to `_site` inside `site/`, loads Chassis CSS from `site/node_modules`, and its `@chassis-ui/tokens` importer points at the workspace package; `tsconfig.json` excludes `_site` and `vendor`, since the submodule's own site now sits under `site/`.
+- Root scripts keep the names CI and the docs use (`tokens*`, `site:build`, `site:lint`, `check*`, `lint:prettier`, `dev`, `build`, `change-version`) and call the packages with `pnpm --filter`. Removed from the root: `astro:dev`, `astro:build`, `astro:preview` (now `site:preview`), `site:pagefind`, `site:lint:eslint`, `site:lint:fusv`, `site:lint:prettier`, `site:lint:stylelint`, `sync-submodules`; they are scripts of the site package.
+- ESLint: one config per package; ESLint 10 uses the nearest config to each file. The token build's config has the core recommended rules, Prettier and Node globals: of the old config's rules for its files, only Astro and JSX accessibility rules (which apply to Astro templates and JSX, not plain JavaScript) and two `unicorn` rules that were off are gone. The site's config is the old one with site-relative ignores; its effective config for a `.ts`, `.astro`, `.js` and the Astro config file is identical to before. Its Prettier rule reads the root `.prettierignore` (`fileInfoOptions.ignorePath`), which excludes `site/src/assets`.
+- Prettier: `prettier-plugin-astro` moved into the `*.astro` override, so formatting JavaScript does not need it; `.prettierignore` names `packages/tokens/tokens` and `site/vendor`. The site's `lint:prettier` reads the root ignore files.
+- `change-version.js` reads and bumps `packages/tokens/package.json` (`npm version` in that folder) and still rewrites `README.md` and `site/config.yml`.
+- CI: the Tokens job installs only the tokens package (`--filter @chassis-ui/tokens`), so a build that needs a site package fails there. The release reads the version from `packages/tokens/package.json`, installs the tokens package only and runs `npm publish` in `packages/tokens/`. `vercel.json` writes to `site/_site`.
+- Docs: a layout section in `README.md` and the new paths; the quick start's directory table and paths; a note on the Style Dictionary page that its paths are relative to `packages/tokens/`; the Tokens Studio sync path `packages/tokens/tokens/` and every token file path on that page; the submodule paths in the iOS and Android guides, and the iOS guide's root `Package.swift` target path; the tests README. Also fixed a Phase 23 miss: the web guide's "Package Contents" said the package holds the web output only.
+- `pnpm install` re-resolved two transitive packages: `sax` 1.6.0 → 1.6.1 (under `svgo` 2.8.4 of `svg2vectordrawable`, within its range) and `which-typed-array` 1.1.22 → 1.1.24 (under the lint plugins). Every other resolved package is the same (1046 before, 1044 after, the two old versions gone).
+
+Checked:
+
+- `npm pack --dry-run` in `packages/tokens/` lists the same 118 file names as before the split (687.4 kB instead of 691.6 kB: the new README is shorter).
+- In a clean clone: `pnpm install --frozen-lockfile --filter @chassis-ui/tokens` installs 294 packages and nothing into `site/`: no Astro, Pagefind, stylelint or Chassis package. Two packages that are not the build's arrive anyway: the root's `prettier-plugin-astro` (with `@astrojs/compiler` and `sass-formatter`) and `sass`, an optional peer of `vite` that the lockfile resolves once for the workspace. With it, the Tokens job passes on Node.js 22.19.0 and 24.18.0 (745 tests, 114 files, 8 presets). With a full install, the Site and Audit jobs pass on 22.19.0: `lint:prettier`, `site:lint`, `check:astro` (36 files, 0 errors; the 4 new files are the two moved scripts and two configs; the one hint, a deprecated Zod type in `data.ts`, was there before), `site:build` (submodule, 22 pages, Pagefind) and `check:pnpm`.
+- The site built before and after: all 3911 files (Pagefind aside) exist in both; every file is identical once hashed asset names are normalised, including the 7 bundled assets by content; Pagefind wrote 33 files each time.
+- `astro dev` from the site package: the colour tokens page renders with its sidebar and styles, and the console has no errors.
+- `pnpm tokens:verify`, 8 preset checks, 745 tests and lint pass in the working copy; `change-version --dry-run` finds the version in `packages/tokens/package.json`, `README.md` and `site/config.yml`; `actionlint` passes.
+
+Found and not fixed: the "View on GitHub" link of every docs page is `https://github.com/chassis-ui/tokens/blob/<id>.mdx`, without a branch or the content folder, so it leads nowhere, before and after the split. It is built in `DocsLayout.astro` of `@chassis-ui/docs`, which the other Chassis sites share, so the fix belongs there.
+
+Settings for Ozgur, outside the repository:
+
+1. Tokens Studio: change the sync file path from `tokens` to `packages/tokens/tokens` before the next pull or push from Figma, or the plugin reads nothing and writes to the old folder.
+2. Vercel: `vercel.json` sets the output to `site/_site`. If the project's settings override the output directory or the root directory, update them; the install runs at the root and the build command is still `pnpm site:build`.
+3. npm: the package's page on npmjs.com shows `packages/tokens/README.md` from the next release on.
 
 ## Phase 28: contributor docs and README
 
@@ -1354,3 +1393,5 @@ Append-only.
 - 2026-09-27 (Phase 24, Opus 5.5 per session; the Model column says Sonnet): Formatted six files with Prettier and ignored `pnpm-lock.yaml`; updated the dev dependencies within their ranges except the four build packages, then `qs` alone; pinned `@chassis-ui/css` and `@chassis-ui/docs` back to 0.5.0-0. Verified: `pnpm audit` clean, `pnpm check`, `site:lint`, `prettier -c .`, `pnpm tokens:verify`, 8 preset checks, 745 tests and lint pass; the site built with old and new dependencies differs only as listed in the Result; `dist/` untouched. Surprises: (1) a broad update also upgrades `@chassis-ui/css`, which changes the Chassis CSS files the site serves; it was reverted. (2) Astro 7.3 prints 17 harmless Vite warnings about `use astro:head-inject`. (3) Every advisory had a fixed version, so no ignore list was needed. Next: Phase 25.
 - 2026-09-27 (Phase 25, Opus 5.5): Added `.github/workflows/ci.yml` (Tokens on Node 22 and 24, Site, Audit), `.github/dependabot.yml` and `pnpm lint:prettier`; the release calls CI first, installs with `--frozen-lockfile` and pins its actions. Downloaded `actionlint` 1.7.12 and `ajv` to the scratchpad. Verified: `actionlint` clean with shellcheck, and it fails on two injected errors; `dependabot.yml` matches the SchemaStore schema; every job's commands pass in a clean clone (Tokens on Node 22.19.0 and 24.18.0, Site with the submodule build, Audit without `node_modules`); the usual checks pass; `dist/` untouched. Surprises: (1) the planned `push` trigger on every branch would run CI twice per pull request push, so CI runs on pull requests and inside the release instead. (2) The site cannot build from a clean clone with `astro:build` alone: it needs the assets submodule built, so the Site job runs `site:build`, as Vercel does. (3) Newer majors of `checkout` and `setup-node` (v7) exist; the pins keep the majors in use. Next: Phase 26, which ends with Ozgur pushing, opening the pull request and merging.
 - 2026-09-27 (Phase 26, Opus 5.5): Moved the CHANGELOG entry to 0.6.0 with a Breaking changes section, bumped the version to 0.6.0 with `change-version`, rebuilt `dist/` (header lines only, 58 files) and wrote the pull request description into the Result. Verified: every CI command passes in a clean clone on Node.js 22 and the Tokens job on 24; `npm pack` shows 0.6.0; every changed `dist/` line is a header line. Surprise: the first draft of the breaking changes used `semi-bold` weights as the example, but the example tokens printed `regular`; corrected after checking `main`. Next: Ozgur pushes, opens the pull request, merges and releases; then Phase 27 on `dev/production`.
+- 2026-09-27 (after Phase 26): Ozgur asked why a pull request was needed and chose to merge locally. Merged `dev/rewrite` into `main` with `git merge --no-ff` (`588874e`, tree equal to `dev/rewrite`) after checking with `git fetch` that `main` equalled `origin/main`. Not pushed; pushing `main` is the 0.6.0 release. Created `dev/production` from `main`. The Phase 25 branch protection advice was corrected: no required pull request.
+- 2026-09-27 (Phase 27, Opus 5.5): Asked Ozgur first, because the full split makes this site's layout differ from the other four Chassis repositories; Ozgur chose the full split. Moved the tokens package to `packages/tokens/` and the site's submodule, scripts and configs into `site/` with `git mv`, wrote three `package.json` files and `pnpm-workspace.yaml`, split the ESLint config, moved the Prettier Astro plugin into its override, made the site's paths relative to `site/`, pointed `change-version.js`, CI, the release and Vercel at the new folders, wrote a README for the npm package and updated the docs. Verified: the npm file names, `dist/` (309 exact renames) and the site output (3911 files) are unchanged; every CI job passes in a clean clone, the Tokens job with a tokens-only install; the dev server renders a page without errors. Surprises: (1) the site's data loader also read `./site/…`, found by the first build. (2) `astro check` type-checked the submodule's own site once it sat under `site/`, with 4 errors; `tsconfig.json` excludes `vendor`. (3) ESLint's Prettier rule looked for `.prettierignore` in `site/`, so `src/assets` was no longer ignored. (4) The root's Prettier plugin and `sass` still arrive with a tokens-only install. (5) The "View on GitHub" links were broken before the split; not fixed here. Next: Phase 28.

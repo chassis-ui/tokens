@@ -63,7 +63,7 @@ When adopting Chassis Tokens for your organization, customize the package metada
 
 ### Change Metadata
 
-Modify the package metadata in `package.json` to reflect your organization's details:
+Modify the package metadata in `packages/tokens/package.json`, the published package, to reflect your organization's details:
 
 ```json
 {
@@ -86,7 +86,7 @@ git remote set-url origin https://github.com/your-org/chassis-tokens.git
 
 ### Configure Build Options
 
-Define your specific brands, themes, and applications in the `chassis` configuration object within `package.json`. This determines which outputs the build system generates:
+Define your specific brands, themes, and applications in the `chassis` configuration object within `packages/tokens/package.json`. This determines which outputs the build system generates:
 
 ```json
 {
@@ -112,7 +112,7 @@ Customize and manage your design tokens to fit your brand and project needs. Cha
 
 ### Token Definitions
 
-Tokens are defined in JSON files within the `tokens/` directory. You can edit these files directly or use the Tokens Studio plugin in Figma to manage them visually. See [Tokens Studio]([[docsref:/getting-started/tokens-studio]]) documentation for instructions on how to create and manage tokens.
+Tokens are defined in JSON files within the `packages/tokens/tokens/` directory. You can edit these files directly or use the Tokens Studio plugin in Figma to manage them visually. See [Tokens Studio]([[docsref:/getting-started/tokens-studio]]) documentation for instructions on how to create and manage tokens.
 
 ### Sync with Figma
 
@@ -213,7 +213,7 @@ Import tokens directly into your project, or install the package from npm:
 npm install @chassis-ui/tokens
 
 # Or copy the built SCSS of one app and brand to your project
-cp -r dist/web/docs/chassis/* /path/to/project/src/styles/tokens/
+cp -r packages/tokens/dist/web/docs/chassis/* /path/to/project/src/styles/tokens/
 
 # Create a sync script in your project's package.json
 {
@@ -244,10 +244,11 @@ Key directories in the Chassis Tokens repository:
 <CxTable>
 | Directory | Purpose |
 |-----------|---------|
-| `tokens/` | Source token JSON files managed by Tokens Studio |
-| `build/tokens/` | Build scripts, transforms, and formatters for Style Dictionary |
-| `dist/` | Built tokens for each platform (SCSS, Swift, Android XML) |
-| `site/` | Documentation website |
+| `packages/tokens/` | The published `@chassis-ui/tokens` package and its build configuration (`package.json`) |
+| `packages/tokens/tokens/` | Source token JSON files managed by Tokens Studio |
+| `packages/tokens/build/tokens/` | Build scripts, transforms, and formatters for Style Dictionary |
+| `packages/tokens/dist/` | Built tokens for each platform (SCSS, Swift, Android XML) |
+| `site/` | Documentation website, a separate package of the workspace |
 </CxTable>
 
 ### Common Commands

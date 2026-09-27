@@ -53,11 +53,11 @@ pnpm install
 pnpm tokens --brand chassis --app demo --platform ios
 ```
 
-The files are written to `Submodules/ChassisTokens/dist/ios/demo/chassis/`. To build them for your own app, add it to `chassis.build.apps` in `package.json` and give it token sets in `tokens/$themes.json`; see [Style Dictionary]([[docsref:/getting-started/style-dictionary#build-options]]).
+The files are written to `Submodules/ChassisTokens/packages/tokens/dist/ios/demo/chassis/`. To build them for your own app, add it to `chassis.build.apps` in `packages/tokens/package.json` and give it token sets in `packages/tokens/tokens/$themes.json`; see [Style Dictionary]([[docsref:/getting-started/style-dictionary#build-options]]).
 
 ### Constant References
 
-By default every constant holds its value. With the `outputReferences` option in `chassis.build` of `package.json`, a constant names the constant of the token it references instead, which keeps the relationships of the design tokens visible in Swift:
+By default every constant holds its value. With the `outputReferences` option in `chassis.build` of `packages/tokens/package.json`, a constant names the constant of the token it references instead, which keeps the relationships of the design tokens visible in Swift:
 
 ```json
 "options": { "ios": { "outputReferences": true } }
@@ -92,7 +92,7 @@ let package = Package(
     platforms: [.iOS(.v13)],
     products: [.library(name: "ChassisTokens", targets: ["ChassisTokens"])],
     targets: [
-        .target(name: "ChassisTokens", path: "dist/ios/demo/chassis", exclude: ["Icons.xcassets"])
+        .target(name: "ChassisTokens", path: "packages/tokens/dist/ios/demo/chassis", exclude: ["Icons.xcassets"])
     ]
 )
 ```

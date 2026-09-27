@@ -34,7 +34,7 @@ jobs:
       - name: Get current version
         id: version
         run: |
-          VERSION=$(node -p "require('./package.json').version")
+          VERSION=$(node -p "require('./packages/tokens/package.json').version")
           echo "tokens-version=$VERSION" >> "$GITHUB_OUTPUT"
 
       - name: Check if version already published on npm
@@ -74,13 +74,14 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: pnpm install --frozen-lockfile --filter @chassis-ui/tokens
 
       # Fails when the committed dist/ differs from a fresh build of tokens/
       - name: Verify dist/
         run: pnpm tokens:verify
 
       - name: Publish @chassis-ui/tokens
+        working-directory: packages/tokens
         run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_CHASSIS_UI }}

@@ -13,5 +13,5 @@
       "@shortcodes/*": ["src/components/shortcodes/*"]
     }
   },
-  "exclude": ["public"]
+  "exclude": ["public", "_site", "vendor"]
 }

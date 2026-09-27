@@ -10,7 +10,7 @@ import astroPlugin from 'eslint-plugin-astro'
 export default defineConfig([
   // Global ignores
   {
-    ignores: ['**/*.min.js', '**/dist/', '_site/', 'site/.astro/', 'site/public/', 'vendor/']
+    ignores: ['**/*.min.js', '**/dist/', '_site/', '.astro/', 'public/', 'vendor/']
   },
   eslint.configs.recommended,
   tseslint.configs.eslintRecommended,
@@ -22,7 +22,8 @@ export default defineConfig([
     rules: {
       'no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
       'no-useless-escape': 'warn',
-      'prettier/prettier': 'warn'
+      // The repository's ignore file lists the site files Prettier leaves alone
+      'prettier/prettier': ['warn', {}, { fileInfoOptions: { ignorePath: '../.prettierignore' } }]
     }
   },
   {
@@ -50,7 +51,7 @@ export default defineConfig([
     }
   },
   {
-    files: ['site/**/*.js', 'site/**/*.mjs'],
+    files: ['**/*.js', '**/*.mjs'],
     languageOptions: {
       globals: { ...globals.browser }
     }

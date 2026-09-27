@@ -9,9 +9,9 @@ export default {
     '**/tests/**',
     '**/coverage/**',
     '_site/**',
-    'site/.astro/**',
-    'site/public/**',
-    'site/static/**',
+    '.astro/**',
+    'public/**',
+    'static/**',
     'vendor/**'
   ],
   reportInvalidScopeDisables: true,

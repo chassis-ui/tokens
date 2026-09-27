@@ -55,6 +55,7 @@ The presets for teams that do not use Chassis CSS are kept, in the new structure
 - `pnpm check` fails when one of its steps fails; it ran them in the background and always passed
 - Updated the dev dependencies within their ranges, among them Astro 7.3, so `pnpm audit` reports no advisory (it reported 39, one critical). The token build packages (Style Dictionary, sd-transforms, svg2vectordrawable, tinycolor2) and the Chassis CSS and docs packages the site uses kept their versions
 - The release workflow publishes only after the CI checks pass on the same commit, installs with `--frozen-lockfile`, and pins its actions to commit SHAs
+- The repository is a pnpm workspace: this package is built and published from `packages/tokens/`, with only the build's dependencies, and the documentation site is a separate private package in `site/`. The npm page shows a README for the package instead of the repository's. The package contents did not change
 
 ### Added
 

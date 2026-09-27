@@ -2,6 +2,6 @@
 *.scss
 site/config.yml
 site/src/assets
-/tokens
-/vendor
+/packages/tokens/tokens
+/site/vendor
 pnpm-lock.yaml

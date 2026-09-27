@@ -30,6 +30,9 @@ import { promisify } from 'node:util'
 // These files contain hardcoded version numbers that need to be kept in sync
 const FILES = ['README.md', 'site/config.yml']
 
+// The published package, whose package.json holds the version
+const PACKAGE_DIR = 'packages/tokens'
+
 const SEMVER_RE = /^\d+\.\d+\.\d+$/
 const KNOWN_FLAGS = new Set(['--dry', '--dry-run', '--patch', '--minor', '--major', '--help', '-h'])
 
@@ -54,7 +57,7 @@ function regExpQuoteReplacement(string) {
  * @returns {Promise<string>} The current version string
  */
 async function readCurrentVersion() {
-  const pkgPath = path.resolve('package.json')
+  const pkgPath = path.resolve(PACKAGE_DIR, 'package.json')
   const pkg = JSON.parse(await fs.readFile(pkgPath, 'utf8'))
 
   if (!pkg.version || !SEMVER_RE.test(pkg.version)) {
@@ -136,7 +139,9 @@ async function bumpNpmVersion(newVersion) {
   }
 
   try {
-    await execFileAsync('npm', ['version', newVersion, '--no-git-tag-version'])
+    await execFileAsync('npm', ['version', newVersion, '--no-git-tag-version'], {
+      cwd: PACKAGE_DIR
+    })
     console.log(`📄 Package.json updated to v${newVersion}`)
   } catch (error) {
     console.error(`❌ Failed to update package.json: ${error.message}`)

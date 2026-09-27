@@ -1,6 +1,6 @@
 # Token build tests
 
-Tests for the token build in `build/tokens/`. Run them from the repository root:
+Tests for the token build in `build/tokens/` of the `@chassis-ui/tokens` package (`packages/tokens/` in the repository). Run them from the repository root:
 
 ```sh
 pnpm tokens:test
@@ -65,7 +65,7 @@ When tokens change, the fixtures stay valid: they hold their own copies. When th
 
 `web-px-references`, `android-references` and `ios-references` are `web-px`, `android` and `ios` with `outputReferences`, set in their configuration files under `options`.
 
-Check one preset, or all:
+Check one preset (from `packages/tokens/`), or all (from the repository root):
 
 ```sh
 node build/tokens/verify.js --preset web-px
@@ -120,7 +120,7 @@ In `android-references`, 30 lines print their value instead of the reference the
 
 ### When tokens change
 
-A change in `tokens/` changes `dist/` and the baselines. After the new `dist/` is built and reviewed, write each baseline again with the current build, and review the difference as for `dist/`:
+A change in `tokens/` changes `dist/` and the baselines. After the new `dist/` is built and reviewed, write each baseline again with the current build, from `packages/tokens/`, and review the difference as for `dist/`:
 
 ```sh
 node build/tokens/build.js --config build/tokens/test/golden/web-px.json --out build/tokens/test/golden/web-px

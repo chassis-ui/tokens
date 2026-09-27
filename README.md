@@ -9,11 +9,28 @@
 
 **This repository contains:**
 
-- Design tokens in [Tokens Studio](https://tokens.studio) format (`tokens/`)
-- Style Dictionary 5 build scripts with custom extensions (`build/tokens/`)
-- Platform-specific output for Web (SCSS), iOS (Swift), and Android (XML), committed in `dist/` and published to npm as `@chassis-ui/tokens`
+- Design tokens in [Tokens Studio](https://tokens.studio) format (`packages/tokens/tokens/`)
+- Style Dictionary 5 build scripts with custom extensions (`packages/tokens/build/tokens/`)
+- Platform-specific output for Web (SCSS), iOS (Swift), and Android (XML), committed in `packages/tokens/dist/` and published to npm as `@chassis-ui/tokens`
 - A test suite on real tokens, and a golden check that compares a fresh build with `dist/`
 - Documentation website (`site/`)
+
+### Repository Layout
+
+The repository is a [pnpm workspace](https://pnpm.io/workspaces) with two packages:
+
+| Folder             | Package                          | Contents                                                                                       |
+| ------------------ | -------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `packages/tokens/` | `@chassis-ui/tokens` (published) | `tokens/`, `build/tokens/`, `dist/`, the build configuration in `package.json`, `CHANGELOG.md` |
+| `site/`            | `chassis-tokens-site` (private)  | The documentation site, its assets submodule (`site/vendor/assets`) and its own dependencies   |
+
+The root holds the workspace configuration, the shared Prettier configuration, the CI workflows and `build/change-version.js`. Run the commands in this README from the root; they call the packages. To work on the tokens without the site's dependencies, install only the tokens package:
+
+```sh
+pnpm install --filter @chassis-ui/tokens
+```
+
+Paths in the build sections below (`tokens/`, `build/tokens/`, `dist/`, `package.json`) are relative to `packages/tokens/`.
 
 **Key features:**
 
@@ -102,7 +119,7 @@ The check builds into `dist-next/` and compares every file with `dist/`, ignorin
 # Build and check one platform only
 pnpm tokens:verify --platform ios
 
-# Compare an existing dist-next/ without building
+# Compare an existing dist-next/ without building (from packages/tokens/)
 node build/tokens/verify.js --skip-build
 ```
 
@@ -330,7 +347,7 @@ To build the static documentation site for deployment:
 pnpm site:build
 ```
 
-The output will be generated in the `_site/` directory.
+The output will be generated in the `site/_site/` directory.
 
 ### Keeping Documentation Up to Date
 
@@ -366,7 +383,7 @@ pnpm tokens:test
 - The preprocessor, filters, transforms and token order
 - Logger output
 
-See [build/tokens/test/README.md](build/tokens/test/README.md) for the test files and fixtures.
+See [packages/tokens/build/tokens/test/README.md](packages/tokens/build/tokens/test/README.md) for the test files and fixtures.
 
 ### Debugging
 

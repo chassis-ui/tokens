@@ -1,0 +1,90 @@
+{
+  "name": "@chassis-ui/tokens",
+  "version": "0.6.0",
+  "description": "Design tokens for the Chassis Design System, built from Tokens Studio into SCSS, Swift, SwiftUI, Android resources and Jetpack Compose",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chassis-ui/tokens.git",
+    "directory": "packages/tokens"
+  },
+  "bugs": {
+    "url": "https://github.com/chassis-ui/tokens/issues"
+  },
+  "homepage": "https://chassis-ui.com",
+  "author": "Ozgur Gunes <o.gunes@gmail.com>",
+  "license": "MIT",
+  "keywords": [
+    "chassis",
+    "design system",
+    "design tokens",
+    "design assets",
+    "figma variables",
+    "style dictionary",
+    "tokens studio",
+    "token transform"
+  ],
+  "files": [
+    "dist",
+    "CHANGELOG.md"
+  ],
+  "exports": {
+    "./dist/*": "./dist/*",
+    "./package.json": "./package.json"
+  },
+  "chassis": {
+    "build": {
+      "brands": [
+        "chassis",
+        "sinefil"
+      ],
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "screens": [
+        "large",
+        "medium",
+        "small"
+      ],
+      "apps": {
+        "docs": [
+          "web"
+        ],
+        "demo": [
+          "ios",
+          "android"
+        ]
+      }
+    }
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  },
+  "scripts": {
+    "build": "node build/tokens/build.js",
+    "build:site": "node build/tokens/build.js --brand chassis --app docs",
+    "clean": "rm -rf dist",
+    "lint": "eslint --cache --cache-location .cache/.eslintcache build/tokens",
+    "test": "vitest run --dir build/tokens/test",
+    "verify": "node build/tokens/verify.js",
+    "verify:presets": "node build/tokens/verify.js --preset all"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@tokens-studio/sd-transforms": "^2.0.3",
+    "eslint": "^10.11.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.6",
+    "globals": "^17.12.0",
+    "prettier": "^3.9.9",
+    "style-dictionary": "^5.5.5",
+    "svg2vectordrawable": "^2.9.1",
+    "tinycolor2": "^1.6.0",
+    "vitest": "^4.1.11"
+  }
+}

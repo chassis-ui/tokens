@@ -9,7 +9,7 @@ import { getSiteUrl, getDocsMarkdownConfig } from '@chassis-ui/docs'
 // https://astro.build/config
 export default defineConfig({
   site: getSiteUrl(getConfig()),
-  outDir: '../_site',
+  outDir: '_site',
   build: {
     assets: `static/astro`
   },
@@ -47,18 +47,18 @@ export default defineConfig({
             // Custom override `_chassis-tokens.scss` if present in `src/scss`
             // path.resolve(import.meta.dirname, 'src/scss'),
             // Framework fallback `_chassis-tokens.scss` if no override above.
-            path.resolve(import.meta.dirname, '../node_modules/@chassis-ui/css/scss/vendor')
+            path.resolve(import.meta.dirname, 'node_modules/@chassis-ui/css/scss/vendor')
           ],
-          // Resolve `@chassis-ui/tokens/...` imports to the local `dist/` output.
-          // The framework fallback `_chassis-tokens.scss` in `@chassis-ui/css` forwards
-          // `@chassis-ui/tokens/dist/...`, but this repo IS `@chassis-ui/tokens` and won't
-          // install itself in node_modules.
+          // Resolve `@chassis-ui/tokens/...` imports to the workspace package in
+          // `packages/tokens/`. The framework fallback `_chassis-tokens.scss` in
+          // `@chassis-ui/css` forwards `@chassis-ui/tokens/dist/...`, which would otherwise
+          // resolve to the published version that `@chassis-ui/css` depends on.
           importers: [
             {
               findFileUrl(url: string) {
                 if (!url.startsWith('@chassis-ui/tokens/')) return null
                 const subPath = url.slice('@chassis-ui/tokens/'.length)
-                const rootDir = path.resolve(import.meta.dirname, '..')
+                const rootDir = path.resolve(import.meta.dirname, 'node_modules/@chassis-ui/tokens')
                 return new URL('file://' + rootDir + '/' + subPath)
               }
             }

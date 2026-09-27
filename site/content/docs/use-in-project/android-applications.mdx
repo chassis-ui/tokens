@@ -82,7 +82,7 @@ pnpm install
 pnpm tokens --brand chassis --app demo --platform android
 ```
 
-The files are written to `submodules/chassis-tokens/dist/android/demo/chassis/`. To build them for your own app, add it to `chassis.build.apps` in `package.json` and give it token sets in `tokens/$themes.json`; see [Style Dictionary]([[docsref:/getting-started/style-dictionary#build-options]]).
+The files are written to `submodules/chassis-tokens/packages/tokens/dist/android/demo/chassis/`. To build them for your own app, add it to `chassis.build.apps` in `packages/tokens/package.json` and give it token sets in `packages/tokens/tokens/$themes.json`; see [Style Dictionary]([[docsref:/getting-started/style-dictionary#build-options]]).
 
 ## Add the Tokens to Your App
 
@@ -93,14 +93,14 @@ Add the built `res/` folder to the resources of your app module. Gradle merges i
 ```kotlin
 // app/build.gradle.kts
 android {
-    sourceSets["main"].res.srcDir("../submodules/chassis-tokens/dist/android/demo/chassis/res")
+    sourceSets["main"].res.srcDir("../submodules/chassis-tokens/packages/tokens/dist/android/demo/chassis/res")
 }
 ```
 
 To keep the tokens inside the app, copy the folder instead:
 
 ```bash
-cp -R submodules/chassis-tokens/dist/android/demo/chassis/res/. app/src/main/res/
+cp -R submodules/chassis-tokens/packages/tokens/dist/android/demo/chassis/res/. app/src/main/res/
 ```
 
 ### Screen Folders
