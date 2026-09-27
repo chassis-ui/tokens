@@ -44,7 +44,7 @@ describe('Golden output', () => {
   })
 
   test('the presets with a baseline are the SCSS variable presets', () => {
-    expect(presets).toEqual(['web-px', 'web-scss', 'web-vw'])
+    expect(presets).toEqual(['web-px', 'web-px-references', 'web-scss', 'web-vw'])
   })
 
   test.each(presets)('preset %s reproduces its baseline', { timeout: 60_000 }, async (preset) => {

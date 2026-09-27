@@ -101,6 +101,18 @@ describe('config', () => {
     }
   })
 
+  test('merges the options of a platform into its Style Dictionary options', () => {
+    const platformOptions = { 'web-px': { outputReferences: true } }
+    const result = config({ ...build, app: 'docs', platforms: ['web-px', 'web'], platformOptions })
+    expect(result.platforms['web-px'].options).toEqual({
+      fileHeader: 'cxFileHeader',
+      commentStyle: 'short',
+      formatting: { fileHeaderTimestamp: true },
+      outputReferences: true
+    })
+    expect(result.platforms.web.options).not.toHaveProperty('outputReferences')
+  })
+
   test('throws on an unknown platform', () => {
     expect(() => config({ ...build, platforms: ['windows'] })).toThrow('Unknown platform: windows')
   })

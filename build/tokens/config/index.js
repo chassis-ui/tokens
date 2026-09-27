@@ -32,9 +32,12 @@ const platformConfigs = {
  * @param {Object[]} build.outputs - The outputs built from this token-set list.
  * @param {string[]} build.source - Token files, in override order.
  * @param {string} [build.outDir] - Output root directory.
+ * @param {Object} [build.platformOptions] - Style Dictionary options by platform name,
+ *   from `chassis.build.options`; merged into the options of that platform, e.g.
+ *   `{ "web-px": { "outputReferences": true } }`.
  * @returns {Object} The Style Dictionary configuration.
  */
-export default function ({ brand, app, platforms, outputs, source, outDir }) {
+export default function ({ brand, app, platforms, outputs, source, outDir, platformOptions }) {
   return {
     source,
     preprocessors: ['cx/global'],
@@ -46,7 +49,12 @@ export default function ({ brand, app, platforms, outputs, source, outDir }) {
         if (!platformConfig) {
           throw new Error(`Unknown platform: ${platform}`)
         }
-        return [platform, platformConfig(brand, app, outputs, outDir)]
+        const result = platformConfig(brand, app, outputs, outDir)
+        const options = platformOptions?.[platform]
+        return [
+          platform,
+          options ? { ...result, options: { ...result.options, ...options } } : result
+        ]
       })
     )
   }

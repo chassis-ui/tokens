@@ -12,7 +12,7 @@
 
 import { resolveReferences } from 'style-dictionary/utils'
 import { alignTypes } from '@tokens-studio/sd-transforms'
-import { isReference, referencePath } from './css-var-policy.js'
+import { isReference, referencePath } from './reference-policy.js'
 
 const fontStyles = ['italic', 'oblique', 'normal']
 const weightAndStyle = new RegExp(`(?<weight>.+?)\\s?(?<style>${fontStyles.join('|')})?$`, 'i')

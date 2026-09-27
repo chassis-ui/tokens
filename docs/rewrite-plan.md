@@ -45,7 +45,7 @@ If a phase is too large, split it into `Na`, `Nb` rows. If a fact in this file i
 | 6c | Tests README, docs, final acceptance | Opus | Done | `rewrite(phase 6c)` | 2026-09-27 |
 | 7 | Site docs | Opus | Done | `rewrite(phase 7)` | 2026-09-27 |
 | 8 | Preset baselines, SCSS variable presets (resolved) | Fable | Done | `rewrite(phase 8)` | 2026-09-27 |
-| 9 | SCSS variable references (`outputReferences`) | Opus | Not started | | |
+| 9 | SCSS variable references (`outputReferences`) | Opus | Done | `rewrite(phase 9)` | 2026-09-27 |
 | 10 | Android references (`outputReferences`) | Opus | Not started | | |
 | 11 | Preset docs | Opus | Not started | | |
 
@@ -127,7 +127,7 @@ Added 2026-09-27 for Phases 8 to 10. The presets come back inside the structure 
 
 - **Selection stays as it was:** a platform name in `chassis.build.apps` (`web`, `web-px`, `web-vw`, and the new `web-scss`: rem with SCSS variables). `config/web.js` becomes a factory with two settings, `unit` (`rem`, `px`, `vw`) and `format` (`cx/scss-chassis-css`, `cx/scss-variables`). `web-px.js`, `web-vw.js` and `web-scss.js` are a few lines each that call it. Both format names, `cx/scss-chassis-css` and `cx/scss-variables`, stay registered, because adopters' own configs name them.
 - **Units** are Style Dictionary transforms again (`cx/size/px`, `cx/size/vw`), backed by pure functions in `values/web.js`, like `cx/size/rem`. They are safe before resolution.
-- **SCSS references** are a second policy module beside `css-var-policy.js`. It shares the eligibility rule and the typography logic and differs in the name it prints: `$<name of the referenced token>`. The format `cx/scss-variables` prints references when `options.outputReferences` is `true`, as in the old build; without it the preset prints resolved values.
+- **SCSS references** are a second policy module beside `css-var-policy.js`. The rules both share are in `reference-policy.js`: eligibility, which token a reference names, the chain follow and the typography maps. They differ in the name they print: `$<name of the named token>`. The format `cx/scss-variables` prints references when `options.outputReferences` is `true`, as in the old build; without it the preset prints resolved values. `chassis.build.options.<platform>` is merged into the Style Dictionary options of that platform, so `outputReferences` can be set without editing a config file.
 - **Android references** are one pure function in `values/android.js` that takes the token and the token it references and returns `@type/name` or nothing. The template passes the lookup in, as the SCSS template does.
 - **A reference is printed only when it is safe:** the target is emitted, the resource type of the target is used, and the encoded target equals the encoded token. This changes 48 Android lines of the old output. Ozgur confirmed it on 2026-09-27.
 
@@ -461,11 +461,42 @@ Behaviour in a case that no current token reaches: a typography token with a lit
 
 Goal: `outputReferences: true` on a SCSS variable preset prints `$cx-…` references as the old build did.
 
-- [ ] `build/tokens/scss-var-policy.js`: the `scss-var` naming. Move what both policies share (eligibility, exceptions, the chain follow, the typography parts) into functions both modules call; do not copy it.
-- [ ] Read `options.outputReferences` in the web config factory, not in the template.
-- [ ] Throw when a reference names a variable that no file of the build emits.
-- [ ] Unit tests on real tokens: one per referencing group, each exception, `font.context.jumbo`, `font.button.medium`.
-- [ ] Acceptance: `verify.js --preset web-px-references` green; `pnpm tokens:verify` green; all tests green.
+- [x] `build/tokens/scss-var-policy.js`: the `scss-var` naming. Move what both policies share (eligibility, exceptions, the chain follow, the typography parts) into functions both modules call; do not copy it.
+- [x] Read `options.outputReferences` outside the template. (Changed while doing it: the format reads it from the platform options, and `chassis.build.options` sets it; see the result.)
+- [x] Throw when a reference names a variable that no file of the build emits.
+- [x] Unit tests on real tokens: one per referencing group, each exception, `font.context.jumbo`, `font.button.medium`.
+- [x] Acceptance: `verify.js --preset web-px-references` green; `pnpm tokens:verify` green; all tests green.
+
+Result: `outputReferences` on a SCSS variables preset prints `$cx-…` variables. The `web-px-references` baseline matches apart from the 3 approved letter spacing lines of `main.scss`, the same lines and rule as in `web-px`. All 1238 reference lines of the old build are reproduced. `outputReferences` on `web-scss` and `web-vw` builds too, with the same number of variable lines per file.
+
+How it is set: `chassis.build.options` holds Style Dictionary options by platform name, and `config/index.js` merges them into the options of that platform. The build throws when `options` names a platform that no app uses.
+
+```json
+"apps": { "docs": ["web-px"] },
+"options": { "web-px": { "outputReferences": true } }
+```
+
+The old way, adding `outputReferences: true` to the `options` of a platform config file, also works.
+
+Modules:
+
+| Module | Lines | Contents |
+| --- | --- | --- |
+| `reference-policy.js` (new) | 278 | `isReference`, `referencePath`, `startsWith`, `printsReference(token, groups)`, `referenceTarget`, the chain follow, `typographyObject`, `typographyReference`, and the data `literalTokens`, `referenceTargets`, `followedGroups`, `MAX_HOPS` |
+| `css-var-policy.js` | 330 → 141 | the Chassis CSS groups, custom property names, scale abbreviations |
+| `scss-var-policy.js` | 31 → 99 | the SCSS variables groups (without `shadow`) and variable names |
+| `templates/scss.template.js` | 43 → 59 | adds `references.variable(path)`, which looks the token up in `dictionary.unfilteredTokens` and throws when no file filter selects it |
+
+`referenceTarget` returns the path of the token that a reference names. A reference to `<group>.base.context.<step>` and a followed `base.<component>` alias both name `<group>.context.<step>`. The two policies name that path: `var(--border-radius-lg)` and `$cx-border-radius-context-large`. `customProperties` lost its two `base.context` rows, which this rule covers.
+
+Behaviour of the SCSS variables format in cases that no current token reaches, compared with the old template:
+
+| Case | Old template | Now |
+| --- | --- | --- |
+| Reference to `opacity.context.X` or `opacity.level.X` | `$cx-opacity-X`, which no file declares | `$cx-opacity-context-X`, `$cx-opacity-level-X` |
+| Reference to `borderWidth.base.context.X`, or to a `borderWidth.base.<component>` alias | the value | `$cx-border-width-context-X` |
+| Reference to a variable that no file declares | printed | throws, naming the token and the path |
+| Reference with more segments than the old name pattern | segments dropped | the full name of the token |
 
 ## Phase 10: Android references
 
@@ -540,3 +571,4 @@ Append-only.
 - 2026-09-27 (preset planning, Fable 5.1): Ozgur pointed out that the rewrite dropped the adopter presets: `web-px`, `web-vw`, the `cx/scss-variables` format and `outputReferences` for SCSS and Android. Built the old code from `main` in a scratch directory with each preset and measured the output (see Facts about the presets). The SCSS presets work, resolved and with references. The Android reference output has 18 lines that name missing resources and 30 that change the value. Added Phases 8 to 11, a design decision and six open decisions. Nothing in `build/` changed. Not committed. Next: Ozgur's answers to the open decisions, then Phase 8.
 - 2026-09-27 (preset decisions): Ozgur confirmed all six open decisions. The plan was committed as `rewrite(plan): add phases 8 to 11 for the adopter presets`.
 - 2026-09-27 (Phase 8, Fable 5.1): Built five baselines from `main` (`a072bf9`) with a script and committed them under `build/tokens/test/golden/`. Added the presets `web-scss`, `web-px` and `web-vw`, the transforms `cx/size/px` and `cx/size/vw`, the format `cx/scss-variables` with resolved values, `--config` on the build and `--preset` on the verifier. Renamed the SCSS template to `scss.template.js`. Added `scss-var-policy.test.js` (43 tests) with a fixture of real tokens of the three presets, and tests for the size functions, the transforms, the configurations, `--config` and the preset baselines. Verified: `pnpm tokens:verify:presets` passes, 7 of 7 files for each of the three presets; `pnpm tokens:verify` passes, 42 of 42 files; `pnpm tokens:test` passes, 445 tests; lint reports no warnings; `dist/` untouched. Injected five regressions (px letter spacing not divided, family list not quoted, vw not divided, preset format ignored, line height not relative); each failed the intended tests. Surprises: (1) only 3 lines of `web-px` have a letter spacing other than zero. (2) The plan named a `references` setting for the factory; the code uses `format`, because the old interface selects references with `options.outputReferences`, and the plan was corrected. (3) The baselines depend on `tokens/`, so a token change needs new baselines; the tests README says how. Next: Phase 9.
+- 2026-09-27 (Phase 9, Opus 5.5): Moved the rules both web reference policies share into `build/tokens/reference-policy.js`; `css-var-policy.js` keeps only the Chassis CSS names (330 to 141 lines). Added `outputReferences` to `scss-var-policy.js` with SCSS variable names, `references.variable` in the SCSS template, `chassis.build.options` for Style Dictionary options by platform, and the `web-px-references` check. Added `reference-policy.test.js`, reference cases in `scss-var-policy.test.js` (34 captured from the real build, 5 constructed), template tests in `formats.test.js`, `loadConfig` tests and a config test; moved the `isReference` and `referencePath` tests. Verified: `pnpm tokens:verify:presets` passes, 7 of 7 files for each of the four presets; `pnpm tokens:verify` passes, 42 of 42 files; `pnpm tokens:test` passes, 517 tests; lint reports no warnings; `dist/` untouched. Injected seven regressions (shadow in the SCSS groups, no `base.context` rule, follow naming `base.context`, font style as a value, no declared-variable check, `outputReferences` ignored, platform options not merged); each failed the intended tests. Surprises: (1) the old SCSS format named followed border radii `<group>.context.<step>`, not the `base.context` token the chain ends at, which is also what the Chassis CSS names mean; this became the shared `referenceTarget`. (2) The target of a SCSS reference is usually in another file (`color-<theme>.scss`, `number-<screen>.scss`), which the file's own dictionary does not hold, so the variable lookup uses `dictionary.unfilteredTokens`. (3) The plan asked to read `outputReferences` in the web config factory; it is read from the platform options instead, which the old interface used and `chassis.build.options` can set. Next: Phase 10.

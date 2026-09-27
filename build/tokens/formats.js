@@ -36,7 +36,11 @@ function scssFormat(value) {
     const { formatting, commentStyle } = options
     const header = await fileHeader({ file, formatting, commentStyle })
     dictionary.allTokens = inSourceOrder(dictionary.allTokens)
-    return scssTemplate({ dictionary, options, file, header, platform, value })
+    const settings = {
+      basePxFontSize: platform.basePxFontSize,
+      outputReferences: options.outputReferences === true
+    }
+    return scssTemplate({ dictionary, options, file, header, platform, value, settings })
   }
 }
 

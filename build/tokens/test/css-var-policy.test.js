@@ -9,15 +9,17 @@
 import { readFileSync } from 'node:fs'
 import { describe, expect, test } from 'vitest'
 import {
-  MAX_HOPS,
   abbreviateScale,
   customProperties,
   customProperty,
-  isReference,
-  printsReference,
-  referencePath,
+  referencingGroups,
   webValue
 } from '../css-var-policy.js'
+import {
+  MAX_HOPS,
+  printsReference as printsReferenceIn,
+  referenceTargets
+} from '../reference-policy.js'
 
 const fixture = JSON.parse(
   readFileSync(new URL('./fixtures/css-var-tokens.json', import.meta.url), 'utf8')
@@ -43,6 +45,7 @@ function lookupsIn(tokens) {
 }
 
 const references = lookupsIn(fixture.tokens)
+const printsReference = (token) => printsReferenceIn(token, referencingGroups)
 const casesIn = (group) => fixture.cases.filter((item) => item.group === group)
 
 /**
@@ -106,14 +109,14 @@ describe('customProperty', () => {
     expect(customProperty(fixture.tokens[token], references)).toBeUndefined()
   })
 
-  // No emitted token reaches these rows today. The referenced tokens are real.
+  // No emitted token reaches these references today. The referenced tokens are real.
   test.each([
     ['color.primitive', '{color.primitive.primary.10}', 'var(--primary-10)'],
     ['space.context', '{space.context.small}', 'var(--space-small)'],
     ['opacity.context', '{opacity.context.fg-subtle}', 'var(--opacity-fg-subtle)'],
     ['opacity.level', '{opacity.level.40}', 'var(--opacity-40)'],
-    ['borderRadius.base.context', '{borderRadius.base.context.large}', 'var(--border-radius-lg)'],
-    ['borderRadius.base.context', '{borderRadius.base.context.full}', 'var(--border-radius-full)']
+    ['borderRadius.context', '{borderRadius.base.context.large}', 'var(--border-radius-lg)'],
+    ['borderRadius.context', '{borderRadius.base.context.full}', 'var(--border-radius-full)']
   ])('%s: %s', (row, reference, expected) => {
     expect(fixture.tokens[reference.slice(1, -1)]).toBeDefined()
     expect(customProperties.map((item) => item.reference)).toContain(row)
@@ -124,19 +127,8 @@ describe('customProperty', () => {
     expect(customProperty(token, references)).toBe(expected)
   })
 
-  test('has the rows of the output contract', () => {
-    expect(customProperties.map((item) => item.reference)).toEqual([
-      'color.context',
-      'color.primitive',
-      'space.context',
-      'opacity.context',
-      'opacity.level',
-      'shadow.context',
-      'borderRadius.context',
-      'borderRadius.base.context',
-      'borderWidth.context',
-      'borderWidth.base.context'
-    ])
+  test('has one row per reference target', () => {
+    expect(customProperties.map((item) => item.reference)).toEqual(referenceTargets)
   })
 
   // The current token sets have no borderWidth.base tokens.
@@ -273,27 +265,6 @@ describe('typography', () => {
     const token = variant('font.button.medium', { original: { $value: '{font.context.lead}' } })
     expect(() => webValue(token, references)).toThrow(
       'font.button.medium: Not a font.<family>.<size>.<weight> reference: {font.context.lead}'
-    )
-  })
-})
-
-describe('references', () => {
-  test('isReference accepts a single reference only', () => {
-    expect(isReference('{space.context.small}')).toBe(true)
-    expect(isReference('rgba({color.base.black}, {opacity.level.10})')).toBe(false)
-    expect(isReference('{size.unit.4} * 2')).toBe(false)
-    expect(isReference('16')).toBe(false)
-    expect(isReference({ fontSize: '{size.unit.96}' })).toBe(false)
-    expect(isReference(undefined)).toBe(false)
-  })
-
-  test('referencePath splits a reference', () => {
-    expect(referencePath('{font.text.medium.strong}')).toEqual(['font', 'text', 'medium', 'strong'])
-  })
-
-  test('referencePath throws on anything else', () => {
-    expect(() => referencePath('{size.unit.4} * 2')).toThrow(
-      'Not a single reference: "{size.unit.4} * 2"'
     )
   })
 })

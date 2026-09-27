@@ -1,12 +1,16 @@
 /**
  * @file formats.test.js
- * @description Tests for the token order of the formats.
+ * @description Tests for the token order of the formats and the lookups of the SCSS
+ *              template, using real tokens.
  * @copyright Copyright (c) 2026 Ozgur Gunes
  * @license MIT
  */
 
+import { readFileSync } from 'node:fs'
 import { describe, expect, test } from 'vitest'
 import { inSourceOrder } from '../formats.js'
+import { scssValue } from '../scss-var-policy.js'
+import scssTemplate from '../templates/scss.template.js'
 
 /**
  * A token as the formats see it, reduced to what the order needs.
@@ -45,5 +49,66 @@ describe('inSourceOrder', () => {
     const before = [...tokens]
     expect(inSourceOrder(tokens)).not.toBe(tokens)
     expect(tokens).toEqual(before)
+  })
+})
+
+describe('SCSS template', () => {
+  const fixture = JSON.parse(
+    readFileSync(new URL('./fixtures/scss-var-tokens.json', import.meta.url), 'utf8')
+  )
+  const tokens = fixture.tokens['web-px-references']
+
+  /**
+   * Nests tokens keyed by path, as Style Dictionary passes them to a format.
+   */
+  function nest(list) {
+    const tree = {}
+    for (const token of list) {
+      const parent = token.path.slice(0, -1).reduce((group, key) => (group[key] ??= {}), tree)
+      parent[token.path.at(-1)] = token
+    }
+    return tree
+  }
+
+  /**
+   * Prints one token of main.scss with references; `unfiltered` holds every token of the
+   * build.
+   */
+  function print(token, unfiltered) {
+    const file = [token, ...Object.values(tokens).filter((item) => item !== token)]
+    return scssTemplate({
+      dictionary: { tokens: nest(file), allTokens: [token], unfilteredTokens: nest(unfiltered) },
+      file: { destination: 'main.scss' },
+      header: '',
+      platform: { prefix: 'cx' },
+      value: scssValue,
+      settings: { basePxFontSize: 16, outputReferences: true }
+    })
+  }
+
+  const colour = tokens['color.accordion.item-fg-color']
+  const target = tokens['color.context.default.base-color']
+
+  test('names a variable of another file', () => {
+    const token = { ...colour, original: { $value: '{color.context.default.base-color}' } }
+    expect(print(token, [token, target])).toContain(
+      '$cx-color-accordion-item-fg-color: $cx-color-context-default-base-color !default;'
+    )
+  })
+
+  test('throws when the referenced token does not exist', () => {
+    const token = { ...colour, original: { $value: '{color.context.default.missing}' } }
+    expect(() => print(token, [token, target])).toThrow(
+      'No file declares a variable for color.context.default.missing'
+    )
+  })
+
+  test('throws when every file filters the referenced token out', () => {
+    // Tokens typed boolean are in no file
+    const flag = { ...target, $type: 'boolean', path: ['color', 'context', 'default', 'flag'] }
+    const token = { ...colour, original: { $value: '{color.context.default.flag}' } }
+    expect(() => print(token, [token, flag])).toThrow(
+      'No file declares a variable for color.context.default.flag'
+    )
   })
 })

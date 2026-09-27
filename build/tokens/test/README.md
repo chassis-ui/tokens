@@ -12,7 +12,7 @@ The run takes about 10 seconds, most of it for the golden test, which builds eve
 
 - **Real tokens, not mocks.** Tests use tokens from `tokens/`, resolved tokens captured from the real build, the real `package.json` configuration and `tokens/$themes.json`. No test mocks `style-dictionary`.
 - **`dist/` is the reference.** Expected values come from the committed `dist/`. The build must not change what it writes, so a test that disagrees with `dist/` is a bug in the build, not in `dist/`.
-- **Presets have baselines.** The presets for other CSS frameworks (`web-scss`, `web-px`, `web-vw`) write nothing into `dist/`. Their reference output is in `golden/`.
+- **Presets have baselines.** The presets for other CSS frameworks (`web-scss`, `web-px`, `web-vw`) write nothing into `dist/`. Their reference output, with and without `outputReferences`, is in `golden/`.
 - **Pure functions first.** Value encoding, the web reference policy, the build plan and argument parsing are pure functions, tested without running Style Dictionary.
 
 ## Test files
@@ -21,15 +21,16 @@ The run takes about 10 seconds, most of it for the golden test, which builds eve
 | -------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `golden.test.js`                                                     | A full build into a temporary directory matches `dist/` file by file, apart from the timestamp and version header lines. Same check as `pnpm tokens:verify`. Every preset matches its baseline in `golden/`. Same check as `pnpm tokens:verify:presets`. |
 | `build.test.js`                                                      | The build plan: one build per brand, app and token-set list, the files it writes (exactly those of `dist/`), CLI filters, and that `brand-chassis/brand-base` overrides `base/brand-base`.                                                               |
-| `cli.test.js`                                                        | Command line arguments of `build.js`.                                                                                                                                                                                                                    |
+| `cli.test.js`                                                        | Command line arguments of `build.js`, and reading the build configuration with its platform options.                                                                                                                                                     |
 | `config.test.js`                                                     | The Style Dictionary configuration of a build: source, preprocessor, error policy, output paths, and the file, filter and format of each output.                                                                                                         |
 | `preprocessor.test.js`                                               | Type alignment, the font weight and style split, the font weight path and the source order.                                                                                                                                                              |
 | `filters.test.js`                                                    | Which tokens go into `main`, `color-*`, `number-*` and `string`.                                                                                                                                                                                         |
 | `transforms.test.js`                                                 | The `cx/size/rem`, `cx/size/px`, `cx/size/vw` and `cx/shadow/web` transforms.                                                                                                                                                                            |
-| `formats.test.js`                                                    | Tokens are printed in source order, including tokens that Style Dictionary expands.                                                                                                                                                                      |
+| `formats.test.js`                                                    | Tokens are printed in source order, including tokens that Style Dictionary expands. The SCSS template names variables of other files and throws when no file declares one.                                                                               |
 | `values-ios.test.js`, `values-android.test.js`, `values-web.test.js` | The value encoders in `values/`.                                                                                                                                                                                                                         |
+| `reference-policy.test.js`                                           | The rules both web reference policies share: which tokens print a reference and which token it names.                                                                                                                                                    |
 | `css-var-policy.test.js`                                             | Which web tokens print a `var(--…)` reference, the name of the custom property, and typography maps.                                                                                                                                                     |
-| `scss-var-policy.test.js`                                            | The values of the `cx/scss-variables` format: resolved values, resolved typography maps and the letter spacing of `web-px`.                                                                                                                              |
+| `scss-var-policy.test.js`                                            | The values of the `cx/scss-variables` format: resolved values, resolved typography maps, the letter spacing of `web-px`, and SCSS variable references with `outputReferences`.                                                                           |
 | `utils.test.js`                                                      | The token type groups.                                                                                                                                                                                                                                   |
 | `logger.test.js`                                                     | Log output.                                                                                                                                                                                                                                              |
 
@@ -37,14 +38,14 @@ The run takes about 10 seconds, most of it for the golden test, which builds eve
 
 The files in `fixtures/` are snapshots taken from the real build on 2026-09-27. Each has a `source` field that says where its data comes from.
 
-| Fixture                    | Used by                        | Contents                                                                                   |
-| -------------------------- | ------------------------------ | ------------------------------------------------------------------------------------------ |
-| `mobile-tokens.json`       | `values-ios`, `values-android` | Resolved iOS and Android tokens, with the lines `dist/` prints for them                    |
-| `web-tokens.json`          | `values-web`, `transforms`     | Resolved web tokens and transform inputs, with the values `dist/` prints                   |
-| `css-var-tokens.json`      | `css-var-policy`               | Web tokens under test with the lines `dist/` prints, and every token they look up          |
-| `filter-tokens.json`       | `filters`, `transforms`        | One web token per type, colour group and result, with the files of `dist/` that declare it |
-| `preprocessor-tokens.json` | `preprocessor`                 | Token slices copied from `tokens/`, in source form                                         |
-| `scss-var-tokens.json`     | `scss-var-policy`              | Tokens of the `web-px`, `web-vw` and `web-scss` presets, with the lines of their baselines |
+| Fixture                    | Used by                        | Contents                                                                                                                                                       |
+| -------------------------- | ------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `mobile-tokens.json`       | `values-ios`, `values-android` | Resolved iOS and Android tokens, with the lines `dist/` prints for them                                                                                        |
+| `web-tokens.json`          | `values-web`, `transforms`     | Resolved web tokens and transform inputs, with the values `dist/` prints                                                                                       |
+| `css-var-tokens.json`      | `css-var-policy`               | Web tokens under test with the lines `dist/` prints, and every token they look up                                                                              |
+| `filter-tokens.json`       | `filters`, `transforms`        | One web token per type, colour group and result, with the files of `dist/` that declare it                                                                     |
+| `preprocessor-tokens.json` | `preprocessor`                 | Token slices copied from `tokens/`, in source form                                                                                                             |
+| `scss-var-tokens.json`     | `scss-var-policy`, `formats`   | Tokens of the `web-px`, `web-vw` and `web-scss` presets and of `web-px` with `outputReferences`, with the lines of their baselines and the variables they name |
 
 When tokens change, the fixtures stay valid: they hold their own copies. When the build is meant to change its output, which the rewrite plan does not allow, update the expected values from the new `dist/` in the same commit.
 
@@ -57,7 +58,7 @@ When tokens change, the fixtures stay valid: they hold their own copies. When th
 | `<preset>.json` | The build configuration of the check, in the form of `chassis.build` in `package.json`. A preset with this file is checked by `golden.test.js` and `pnpm tokens:verify:presets`. |
 | `<preset>/`     | The files the preset must write.                                                                                                                                                 |
 
-`web-px-references` and `android-references` have no configuration file yet. They are the output of the old build with `outputReferences: true`, kept for Phases 9 and 10 of the rewrite plan.
+`web-px-references` is `web-px` with `outputReferences`, set in its configuration file under `options`. `android-references` has no configuration file yet. It is the output of the old build with `outputReferences: true`, kept for Phase 10 of the rewrite plan.
 
 Check one preset, or all:
 
@@ -91,7 +92,7 @@ node build/tokens/build.js --brand chassis
 | `web-px-references`  | `{ "docs": ["web-px"] }`  | `web-px.js`: `outputReferences: true` in `options`  |
 | `android-references` | `{ "demo": ["android"] }` | `android.js`: `outputReferences: true` in `options` |
 
-One baseline differs from the old output on purpose. In `web-px/web/docs/chassis/main.scss`, three typography maps hold the letter spacing that `web-scss` and `web-vw` print. The old build printed the pixel number with `em`:
+Two baselines differ from the old output on purpose. In `main.scss` of `web-px` and `web-px-references`, three typography maps hold the letter spacing that `web-scss` and `web-vw` print. The old build printed the pixel number with `em`:
 
 | Variable                         | Old build | Baseline    |
 | -------------------------------- | --------- | ----------- |

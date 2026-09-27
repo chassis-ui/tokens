@@ -44,20 +44,30 @@ Examples:
 /**
  * Loads the package version and the build configuration: `chassis.build` of
  * `package.json`, or the content of `configFile`.
- * @param {string} [configFile] - A JSON file with `brands`, `themes`, `screens` and `apps`.
+ * The optional `options` of the configuration hold Style Dictionary options by platform
+ * name, e.g. `{ "web-px": { "outputReferences": true } }`.
+ * @param {string} [configFile] - A JSON file with `brands`, `themes`, `screens`, `apps`
+ *   and optionally `options`.
  * @returns {Promise<Object>} The `version` and the `buildOptions`.
+ * @throws {Error} When a setting is missing, or `options` names a platform no app uses.
  */
 async function loadConfig(configFile) {
   const readJson = async (file) => JSON.parse(await promises.readFile(file, 'utf-8'))
   const packageJson = await readJson('package.json')
   const buildOptions = configFile ? await readJson(configFile) : packageJson.chassis?.build
 
+  const source = configFile ?? 'package.json'
   if (!buildOptions?.brands || !buildOptions?.themes || !buildOptions?.apps) {
     throw new Error(
       configFile
         ? `Invalid ${configFile}: missing brands, themes or apps`
         : 'Invalid package.json: missing required chassis.build configuration'
     )
+  }
+  const platforms = Object.values(buildOptions.apps).flat()
+  const unknown = Object.keys(buildOptions.options ?? {}).filter((key) => !platforms.includes(key))
+  if (unknown.length > 0) {
+    throw new Error(`Invalid ${source}: options for platforms no app uses: ${unknown.join(', ')}`)
   }
   return { version: packageJson.version, buildOptions }
 }
@@ -253,7 +263,7 @@ async function run() {
     const sets = permutateThemes($themes, { separator: '_' })
     const builds = planBuilds(sets, buildOptions, filters).map((build) => ({
       ...build,
-      cfg: config({ ...build, outDir: filters.out })
+      cfg: config({ ...build, outDir: filters.out, platformOptions: buildOptions.options })
     }))
 
     if (filters.dryRun) {
@@ -286,7 +296,7 @@ async function run() {
 }
 
 // Export for testing
-export { planBuilds, parseArgs }
+export { loadConfig, planBuilds, parseArgs }
 
 // Only run if this is the main module (not imported)
 if (import.meta.url === `file://${process.argv[1]}`) {
