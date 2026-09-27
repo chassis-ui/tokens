@@ -12,6 +12,7 @@ import { afterEach, describe, expect, test, vi } from 'vitest'
 import {
   encode,
   escapeString,
+  partName,
   reference,
   resourceKind,
   resourceTag,
@@ -259,6 +260,14 @@ describe('Android font weights', () => {
   test('an unknown name fails with the token path', () => {
     expect(() => encode(weight('Chunky'))).toThrow(
       'Unknown font weight "Chunky" in typography.fontWeight.text.strong.weight'
+    )
+  })
+})
+
+describe('Android part names', () => {
+  test('add the segments of the part to the token name', () => {
+    expect(partName({ name: 'gradient_primitive_black_l_000' }, ['stop1', 'color'])).toBe(
+      'gradient_primitive_black_l_000_stop_1_color'
     )
   })
 })

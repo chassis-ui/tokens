@@ -159,7 +159,44 @@ extension Color {
 }
 ```
 
-Gradient tokens (`GradientPrimitive…`) hold only the first colour stop of the gradient.
+### Gradients
+
+A gradient token is split into its parts: the angle, and the colour and position of each stop.
+
+```swift
+@objc public static let GradientPrimitiveBlackL000Angle = CGFloat(0)
+@objc public static let GradientPrimitiveBlackL000Stop1Color = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0)
+@objc public static let GradientPrimitiveBlackL000Stop1Position = CGFloat(0)
+@objc public static let GradientPrimitiveBlackL000Stop2Color = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1)
+@objc public static let GradientPrimitiveBlackL000Stop2Position = CGFloat(1)
+```
+
+The angle is the CSS angle in degrees: `0` points up and angles turn clockwise, so `90` runs from left to right. Positions go from `0` to `1`. Turn the parts into a `CAGradientLayer`:
+
+```swift
+import UIKit
+import ChassisTokensLight
+
+typealias Tokens = ChassisTokensLight.ChassisTokens
+
+func applyGradient(to layer: CAGradientLayer, angle: CGFloat, stops: [(UIColor, CGFloat)]) {
+    let radians = angle * .pi / 180
+    let dx = sin(radians) / 2
+    let dy = -cos(radians) / 2
+    layer.startPoint = CGPoint(x: 0.5 - dx, y: 0.5 - dy)
+    layer.endPoint = CGPoint(x: 0.5 + dx, y: 0.5 + dy)
+    layer.colors = stops.map { $0.0.cgColor }
+    layer.locations = stops.map { NSNumber(value: Double($0.1)) }
+}
+
+let fade = CAGradientLayer()
+applyGradient(to: fade, angle: Tokens.GradientPrimitiveBlackL000Angle, stops: [
+    (Tokens.GradientPrimitiveBlackL000Stop1Color, Tokens.GradientPrimitiveBlackL000Stop1Position),
+    (Tokens.GradientPrimitiveBlackL000Stop2Color, Tokens.GradientPrimitiveBlackL000Stop2Position),
+])
+```
+
+The start and end points follow the angle exactly in a square layer. In other shapes, CSS lengthens the gradient line so that the corners get the first and last colours, which these points do not.
 
 ## Sizes and Screen Sizes
 

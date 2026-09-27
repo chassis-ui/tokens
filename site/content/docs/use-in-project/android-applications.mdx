@@ -202,10 +202,34 @@ Typography tokens are split into one resource per property:
 
 Shadow tokens are split into their parts, such as `shadow_context_small_1_offset_y` (`2dp`), `shadow_context_small_1_blur` (`8dp`), `shadow_context_small_1_spread` (`-2dp`) and `shadow_context_small_1_color` (`#1a000000`). Android elevation shadows do not take these parts; use them for custom drawing, or choose an elevation that looks close.
 
+## Gradients
+
+A gradient token is split into its parts: the angle and the colour and position of each stop.
+
+```xml
+<item name="gradient_primitive_black_l_000_angle" type="dimen" format="float">0</item>
+<color name="gradient_primitive_black_l_000_stop_1_color">#00000000</color>
+<item name="gradient_primitive_black_l_000_stop_1_position" type="dimen" format="float">0</item>
+<color name="gradient_primitive_black_l_000_stop_2_color">#ff000000</color>
+<item name="gradient_primitive_black_l_000_stop_2_position" type="dimen" format="float">1</item>
+```
+
+The angle is the CSS angle in degrees: `0` points up and angles turn clockwise, so `90` runs from left to right. Positions go from `0` to `1`. In Compose, build a brush from the parts once the size is known:
+
+```kotlin
+fun gradientBrush(angle: Float, stops: Array<Pair<Float, Color>>, size: Size): Brush {
+    val radians = Math.toRadians(angle.toDouble())
+    val half = Offset((sin(radians) * size.width / 2).toFloat(), (-cos(radians) * size.height / 2).toFloat())
+    val center = Offset(size.width / 2, size.height / 2)
+    return Brush.linearGradient(*stops, start = center - half, end = center + half)
+}
+```
+
+Read the angle and positions with `ResourcesCompat.getFloat` and the colours with `colorResource`. The token angles are multiples of 45°, so a `GradientDrawable` with the matching `Orientation` works in views: `0` is `BOTTOM_TOP`, `90` is `LEFT_RIGHT`, `180` is `TOP_BOTTOM` and `270` is `RIGHT_LEFT`.
+
 ## Known Limitations
 
 - **Icons**: SVG icon tokens (`icon_*`) are strings that hold SVG markup, such as `getString(R.string.icon_accordion_indicator)`. Android cannot draw an SVG string directly: render it with an SVG library, or use vector drawables for icons.
-- **Gradients**: gradient tokens (`gradient_primitive_*`) hold only the first colour stop of the gradient.
 
 ## Best Practices
 

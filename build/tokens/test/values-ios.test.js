@@ -9,7 +9,7 @@
 
 import { readFileSync } from 'node:fs'
 import { afterEach, describe, expect, test, vi } from 'vitest'
-import { encode, reference } from '../values/ios.js'
+import { encode, partName, reference } from '../values/ios.js'
 
 const fixture = JSON.parse(
   readFileSync(new URL('./fixtures/mobile-tokens.json', import.meta.url), 'utf8')
@@ -178,6 +178,14 @@ describe('iOS font weights', () => {
   test('an unknown name fails with the token path', () => {
     expect(() => encode(weight('Chunky'))).toThrow(
       'Unknown font weight "Chunky" in typography.fontWeight.text.strong.weight'
+    )
+  })
+})
+
+describe('iOS part names', () => {
+  test('add the segments of the part to the token name', () => {
+    expect(partName({ name: 'GradientPrimitiveBlackL000' }, ['stop1', 'color'])).toBe(
+      'GradientPrimitiveBlackL000Stop1Color'
     )
   })
 })

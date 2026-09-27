@@ -59,7 +59,7 @@ If a phase is too large, split it into `Na`, `Nb` rows. If a fact in this file i
 | 12 | iOS references (`outputReferences`), new | Opus | Done | `rewrite(phase 12)` | 2026-09-27 |
 | 13 | Mobile typography values: percent line height, Android letter spacing in em | Opus | Done | `rewrite(phase 13)` | 2026-09-27 |
 | 14 | Font weights as numbers | Opus | Done | `rewrite(phase 14)` | 2026-09-27 |
-| 15 | Gradients on mobile as parts | Opus | Not started | | |
+| 15 | Gradients on mobile as parts | Opus | Done | `rewrite(phase 15)` | 2026-09-27 |
 | 16 | Dead `dimension` filter condition | Sonnet | Not started | | |
 | 17 | iOS type and file names | Opus | Not started | | |
 | 18 | iOS colours that follow dark mode | Fable | Not started | | |
@@ -268,6 +268,7 @@ Scale abbreviations: 4xsmall→4xs, 3xsmall→3xs, 2xsmall→2xs, xsmall→xs, s
 - fontFamily: first family only, quotes stripped, then double-quoted.
 - fontWeight: since Phase 14, a `UIFont.Weight` constant (`UIFont.Weight.semibold`), from the weight number of the web's name map, rounded to the nearest hundred from 100 to 900. It was the lowercase name, first space replaced by a hyphen, double-quoted.
 - Other string-group types: double-quoted.
+- Gradients (since Phase 15): a colour token with a `linear-gradient(…)` value prints as parts instead of one constant: `<Name>Angle` (CSS degrees from 0 to less than 360), and `<Name>Stop<N>Color` and `<Name>Stop<N>Position` (0 to 1) per stop.
 
 ### Android
 
@@ -275,6 +276,7 @@ Scale abbreviations: 4xsmall→4xs, 3xsmall→3xs, 2xsmall→2xs, xsmall→xs, s
 
 - Element by type: size group → `dimen`, color → `color`, string group and content → `string`, number group → `integer`, anything else → `string`. Changed 2026-09-27 with Ozgur's approval: opacity and letter spacing (type `opacity` or `letterSpacing`, or `path[1] == letterSpacing`) → `<item type="dimen" format="float">`, because aapt2 rejects fractions in `<integer>`. References to them are `@dimen/…`. Since Phase 14, font weights → `<integer>` with the weight number of the web's name map (`600`); they were lowercase name strings.
 - Colours: ARGB hex8 (`#80b7c0c2`).
+- Gradients (since Phase 15): as on iOS, `<name>_angle`, `<name>_stop_<n>_color` and `<name>_stop_<n>_position`; the angle and positions are float items.
 - `sp` when the last path segment is fontSize, lineHeight or paragraphSpacing, or the type is fontSize or lineHeight, or `path[1]` is `paragraphSpacing`. Since Phase 13, a percentage line height is the percentage of the font size part of the same typography token (`120sp`).
 - Bare number when `path[1]` is `letterSpacing` or the type is `letterSpacing`. Since Phase 13, the letter spacing part of a typography token is in ems of its font size, to four decimals (`-0.0052`); the standalone scale keeps its px number.
 - `dp` for the remaining size-group types.
@@ -698,10 +700,28 @@ Goal: no gradient token prints a wrong colour on iOS or Android.
 
 Facts: the 88 `gradient.primitive.*` tokens per colour file are typed `color` with `linear-gradient(<angle>deg, <colour> 0%, <colour> 100%)` values: two stops each, angles in steps of 45°. iOS and Android print the first stop only, because tinycolor parses the string leniently: `GradientPrimitiveBlackL000` is transparent black (`alpha: 0`, `#00000000`).
 
-- [ ] `values/shared.js`: parse a `linear-gradient(…)` value into an angle and a list of stops (colour, position). Fail the build on any other gradient form, with the token path.
-- [ ] Expand each gradient token on iOS and Android into parts, as shadows are expanded: `…Angle`, and `…Stop<N>Color` and `…Stop<N>Position` per stop (`GradientPrimitiveBlackL000Stop1Color`). Colours encode as colours; the angle and positions as numbers (Android: float items). Web output does not change.
-- [ ] Unit tests: a two-stop gradient, a stop colour with alpha, each angle, a value that is not a linear gradient.
-- [ ] Acceptance: in each colour file, 88 lines become the parts and nothing else changes; compile checks pass; the guides show how to build a `CAGradientLayer` and an Android `GradientDrawable` or Compose `Brush.linearGradient` from the parts.
+- [x] `values/shared.js`: parse a `linear-gradient(…)` value into an angle and a list of stops (colour, position). Fail the build on any other gradient form, with the token path.
+- [x] Expand each gradient token on iOS and Android into parts, as shadows are expanded: `…Angle`, and `…Stop<N>Color` and `…Stop<N>Position` per stop (`GradientPrimitiveBlackL000Stop1Color`). Colours encode as colours; the angle and positions as numbers (Android: float items). Web output does not change.
+- [x] Unit tests: a two-stop gradient, a stop colour with alpha, each angle, a value that is not a linear gradient.
+- [x] Acceptance: in each colour file, 88 lines become the parts and nothing else changes; compile checks pass; the guides show how to build a `CAGradientLayer` and an Android `GradientDrawable` or Compose `Brush.linearGradient` from the parts.
+
+Result: each gradient prints five parts on iOS and Android instead of one wrong colour. In each colour file of both brands, the 88 gradient lines became 440 part lines, and nothing else changed (8 files, 704 lines out, 3520 in). Web output did not change.
+
+| Part | iOS | Android |
+| --- | --- | --- |
+| Angle | `GradientPrimitiveBlackL000Angle = CGFloat(0)` | `<item name="gradient_primitive_black_l_000_angle" type="dimen" format="float">0</item>` |
+| Stop colour | `…Stop1Color = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0)` | `<color name="…_stop_1_color">#00000000</color>` |
+| Stop position | `…Stop1Position = CGFloat(0)` | float item `0` |
+
+- The 12 gradients with a negative angle (`-45deg`, `-90deg`) print it from 0 to 360: `GradientPrimitiveBlackL315Angle` is `315`, which matches its name.
+- All 3520 parts equal the gradient that the web prints for the same token, compared stop by stop (angle, colour through tinycolor, position).
+- The stop colours keep the stops of the original value, so with `outputReferences` they name the colours they reference: `GradientPrimitiveBlackL000Stop1Color = ColorPrimitiveBlackTransparent`, `@color/color_primitive_black_transparent`. In the baselines, the 88 gradient lines per colour file named the first-stop colour; now 176 stop colours per file name a colour, and every name has the value of its line in the new `dist/` (14413 iOS and 14389 Android references checked).
+- `parseColor` fails on a gradient, so no gradient can print as one colour again.
+
+The parser reads `linear-gradient` with an angle in degrees, a side keyword (`to right`) or no direction (180), and stops with or without a percentage; stops without one get the positions CSS gives them. Corner keywords, `turn`, `rad`, other gradients and a single stop fail the build with the token path. The parts are built in the template, from `gradientParts` in `values/shared.js`, because one Style Dictionary instance serves the web and mobile platforms, so the preprocessor cannot expand gradients for mobile only.
+
+Checked: the 21 Swift files of `dist/` and the baseline type-check; the iOS guide's `CAGradientLayer` example compiles against the new `ColorLight.swift` and gives the CSS directions for 0, 90, 180 and 315; aapt2 compiles and links both brands and the reference baseline. The guide's Kotlin example is not compiled (no Kotlin compiler here; Phase 20 downloads one).
+
 
 ## Phase 16: dead `dimension` filter condition
 
@@ -791,7 +811,7 @@ These are part of the frozen contract. They are listed so nobody "fixes" them by
 - Fixed in Phase 13: Android letter spacing printed its number in design pixels (`-0.5`), and a `125%` line height printed as `CGFloat(125)` on iOS and `125sp` on Android.
 - Fixed in Phase 14: font weight on iOS and Android was a name string such as `"bold"`.
 - Android asset tokens hold SVG markup inside `<string>`. It was raw markup, which aapt2 dropped, so the icons compiled to empty strings; since 2026-09-27 it is escaped and compiles to the SVG text.
-- The 88 `gradient.primitive.*` tokens are typed `color` with `linear-gradient(…)` values. Web prints the gradient. iOS and Android print only its first colour stop, because tinycolor parses the gradient string leniently: `linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, #000000 100%)` becomes `UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0)` and `#00000000`.
+- Fixed in Phase 15: the 88 `gradient.primitive.*` tokens are typed `color` with `linear-gradient(…)` values. Web prints the gradient. iOS and Android printed only its first colour stop, because tinycolor parses the gradient string leniently: `linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, #000000 100%)` becomes `UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0)` and `#00000000`.
 - The `path[1] == dimension` filter matches nothing, so `dimension.base.*` is emitted.
 
 ## Risks
@@ -878,3 +898,4 @@ Append-only.
 - 2026-09-27 (Phases 13 to 22 decisions, Opus 5.5): Ozgur confirmed all recommendations except making the semi bold spelling consistent in Tokens Studio: each spelling is the style name of its font in Figma, and the Phase 14 map accepts both. The check of the style names found `Light Oblique` for the `sinefil` blockquote weight, where the other brands use `Light Italic`; Source Serif 4 names its italic styles `Italic`. At Ozgur's request it was changed in `tokens/brand-sinefil/brand-base.json` and committed as `fix(tokens): use Light Italic for the sinefil blockquote weight`: 11 lines in 6 `sinefil` files of `dist/` changed from `oblique` to `italic`, nothing else; `pnpm tokens:verify`, the six preset checks and 582 tests pass. Not checked against Figma's own font list, because no Figma file was given. The plan was committed as `rewrite(plan): add phases 13 to 22 for the iOS and Android output`. Next: Phase 13.
 - 2026-09-27 (Phase 13, Opus 5.5): Added `percentLineHeight` and `letterSpacingEm` to `values/shared.js`, a font size context to `encode` and `reference` of both mobile encoders, and `encodingContext` to `templates/references.js`, which the iOS and Android templates call. Rebuilt both brands into the scratchpad and copied the 16 changed files into `dist/` and the 8 changed baseline files into `golden/`; every changed line is a line height or letter spacing part (168 lines in `dist/`). Added contexts to 6 fixture cases, 9 `typographyParts` cases captured from the build, 16 tests in `values-ios.test.js` and `values-android.test.js`, and 2 template tests in `formats.test.js`. Updated the iOS and Android guides, the Style Dictionary page, the CHANGELOG and the tests README. Verified: `pnpm tokens:verify` passes, 42 of 42 files; the six preset checks pass; `pnpm tokens:test` passes, 601 tests; lint and Prettier report nothing; `swiftc` and aapt2 pass for both brands; `pnpm astro:build` built 22 pages. Injected six regressions (template drops the context, Android letter spacing in px, iOS percentage kept, three-decimal rounding, reference without context, context lookup finds nothing); each failed 1 to 7 unit tests. Surprises: (1) font size parts are `96px` in some files and `22` without a unit in others; `parseFloat` reads both. (2) A bare `> file` in zsh waits for input, which stalled a diff command; the harness moved it to the background and it was stopped. Next: Phase 14.
 - 2026-09-27 (Phase 14, Opus 5.5): Replaced `fontWeightName` with `fontWeightNumber` in `values/shared.js`, which uses the web's map through `transformFontWeight` and fails on an unknown name. iOS prints `UIFont.Weight.<name>` at the nearest hundred; Android prints `<integer>` weights. Copied the 8 changed files into `dist/` and the 4 changed baseline files into `golden/`; every changed line is a weight line (1680 in `dist/`), and both spellings of semi bold give 600. Updated 5 fixture cases from `dist/`, added 19 weight tests, and updated the iOS and Android guides, the Style Dictionary page and the CHANGELOG. Verified: `pnpm tokens:verify` passes, 42 of 42 files; the six preset checks pass; `pnpm tokens:test` passes, 619 tests; lint and Prettier report nothing; `swiftc` (type check and a run-time weight check) and aapt2 pass for both brands; `pnpm astro:build` built 22 pages. Injected five regressions (Android weight as a string element, hyphen spelling not read, no unknown-name check, iOS rounding down, `thin` and `ultraLight` swapped); each failed 1 to 3 tests. Surprises: (1) no weight prints a reference, because typography parts hold the resolved weight. (2) The sd-transforms map gives `ultra black` 950, which iOS rounds to `.black`. Next: Phase 15.
+- 2026-09-27 (Phase 15, Opus 5.5): Added `isGradient`, `parseLinearGradient` and `gradientParts` to `values/shared.js`, `partName` to both mobile encoders, float items for the number parts on Android, and a gradient guard in `parseColor`. The iOS and Android templates print a gradient as its parts. Copied the 8 changed colour files into `dist/` and the 4 changed baseline files into `golden/`; only gradient lines changed, and all 3520 parts equal the web gradients. Replaced the two first-stop fixture cases with a `gradients` section (two real tokens, their stop colours and the expected lines), added `values-shared.test.js` and template and part name tests (24 tests). Updated both guides with gradient examples, the Style Dictionary page, the CHANGELOG and the tests README. Verified: `pnpm tokens:verify` passes, 42 of 42 files; the six preset checks pass; `pnpm tokens:test` passes, 643 tests; lint and Prettier report nothing; `swiftc` and aapt2 pass; the iOS guide example runs; `pnpm astro:build` built 22 pages. Injected six regressions (template does not expand, angle not normalised, positions in percent, stop colours without references, Android parts as integers, no gradient guard); each failed 1 to 11 tests. Surprises: (1) the gradient sources reference colours, so the stop colours can print references, and in the old reference baselines each gradient named its first-stop colour. (2) 12 gradients have negative angles. (3) My first cross-check script dropped the angle when splitting the list, reporting every part as different; the output was right. Next: Phase 16.

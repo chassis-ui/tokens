@@ -8,7 +8,8 @@
  * @license MIT
  */
 
-import { encode, reference, resourceTag } from '../values/android.js'
+import { encode, partName, reference, resourceTag } from '../values/android.js'
+import { gradientParts, isGradient } from '../values/shared.js'
 import { encodingContext, firstReferencedToken } from './references.js'
 
 /**
@@ -30,6 +31,12 @@ export default (opts) => {
     return reference(token, target, context, target && encodingContext(target, dictionary.tokens))
   }
 
+  // A gradient prints as its parts; other tokens print as they are
+  const printedTokens = (token) =>
+    isGradient(token)
+      ? gradientParts(token).map((part) => ({ ...part, name: partName(token, part.segments) }))
+      : [token]
+
   const tokenToLine = (token) => {
     const { tag, attributes } = resourceTag(token)
     const context = encodingContext(token, dictionary.tokens)
@@ -44,7 +51,7 @@ export default (opts) => {
 ${header}
 
 <resources>
-  ${dictionary.allTokens.map(tokenToLine).join(`\n  `)}
+  ${dictionary.allTokens.flatMap(printedTokens).map(tokenToLine).join(`\n  `)}
 </resources>
 `
 }

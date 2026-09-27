@@ -212,3 +212,71 @@ describe('Typography parts in the mobile templates', () => {
     expect(xml).toContain('<dimen name="font_context_jumbo_line_height">120sp</dimen>')
   })
 })
+
+describe('Gradients in the mobile templates', () => {
+  const fixture = JSON.parse(
+    readFileSync(new URL('./fixtures/mobile-tokens.json', import.meta.url), 'utf8')
+  )
+  const { cases, stopColors } = fixture.gradients
+
+  // The file's tokens as a tree, with each token named for the platform
+  const dictionaryFor = (platform, gradient) => {
+    const tokens = [gradient, ...stopColors].map(({ token, names }) => ({
+      ...token,
+      name: names[platform]
+    }))
+    const tree = {}
+    for (const token of tokens) {
+      const parent = token.path.slice(0, -1).reduce((node, key) => (node[key] ??= {}), tree)
+      parent[token.path[token.path.length - 1]] = token
+    }
+    return { tokens: tree, allTokens: [tokens[0]] }
+  }
+
+  const printIos = (gradient, outputReferences) =>
+    iosTemplate({
+      dictionary: dictionaryFor('ios', gradient),
+      file: { destination: 'ColorLight.swift' },
+      header: '',
+      options: { import: ['UIKit'], accessControl: 'public', objectType: 'class' },
+      settings: { outputReferences }
+    })
+  const printAndroid = (gradient, outputReferences) =>
+    androidTemplate({
+      dictionary: dictionaryFor('android', gradient),
+      header: '',
+      settings: { outputReferences }
+    })
+
+  const iosLines = (lines) => lines.map(([name, value]) => `static let ${name} = ${value}`)
+  // An Android element with this name and this text, whatever its tag and attributes
+  const androidLine = ([name, value]) =>
+    new RegExp(`name="${name}"[^>]*>${value.replace(/[.#()]/g, '\\$&')}<`)
+
+  test.each(cases)('iOS prints the parts of $case', (gradient) => {
+    const swift = printIos(gradient, false)
+    for (const line of iosLines(gradient.expected.ios)) expect(swift).toContain(line)
+    expect(swift).not.toContain(`static let ${gradient.names.ios} =`)
+  })
+
+  test.each(cases)('iOS names the stop colours with outputReferences, $case', (gradient) => {
+    const swift = printIos(gradient, true)
+    for (const line of iosLines(gradient.expectedWithReferences.ios)) expect(swift).toContain(line)
+  })
+
+  test.each(cases)('Android prints the parts of $case', (gradient) => {
+    const xml = printAndroid(gradient, false)
+    for (const line of gradient.expected.android) expect(xml).toMatch(androidLine(line))
+    expect(xml).toContain(
+      `<item name="${gradient.names.android}_angle" type="dimen" format="float">`
+    )
+    expect(xml).not.toContain(`name="${gradient.names.android}">`)
+  })
+
+  test.each(cases)('Android names the stop colours with outputReferences, $case', (gradient) => {
+    const xml = printAndroid(gradient, true)
+    for (const line of gradient.expectedWithReferences.android) {
+      expect(xml).toMatch(androidLine(line))
+    }
+  })
+})

@@ -110,3 +110,17 @@ export function reference(token, target, context = {}, targetContext = {}) {
   if (!target || isBaseColor(token) || isSizeWithMath(token)) return undefined
   return encode(target, targetContext) === encode(token, context) ? target.name : undefined
 }
+
+/**
+ * Returns the constant name of a part of a token, such as a gradient stop: the token's
+ * name with the part's segments in PascalCase.
+ *
+ * @param {Object} token - The token the part belongs to, with `name`.
+ * @param {string[]} segments - e.g. `['stop1', 'color']`
+ * @returns {string} e.g. `GradientPrimitiveBlackL000Stop1Color`
+ */
+export function partName(token, segments) {
+  return (
+    token.name + segments.map((segment) => segment[0].toUpperCase() + segment.slice(1)).join('')
+  )
+}

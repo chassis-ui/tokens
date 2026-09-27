@@ -2,7 +2,7 @@
 
 <!--
   Do not edit directly, this file was auto-generated.
-  Generated on Fri, 25 Sep 2026 10:39:22 GMT
+  Generated on Sun, 27 Sep 2026 10:05:25 GMT
   Chassis - Tokens v0.5.3
   Copyright 2026 Ozgur Gunes
   Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
@@ -970,94 +970,446 @@
   <color name="color_table_cue_active">#ff40bbd9</color>
   <color name="color_table_border_main">#26e9eced</color>
   <color name="color_table_icon_sort">#80e9eced</color>
-  <color name="gradient_primitive_black_l_000">#00000000</color>
-  <color name="gradient_primitive_black_l_045">#00000000</color>
-  <color name="gradient_primitive_black_l_090">#00000000</color>
-  <color name="gradient_primitive_black_l_135">#00000000</color>
-  <color name="gradient_primitive_black_l_180">#00000000</color>
-  <color name="gradient_primitive_black_l_225">#00000000</color>
-  <color name="gradient_primitive_black_l_270">#00000000</color>
-  <color name="gradient_primitive_black_l_315">#00000000</color>
-  <color name="gradient_primitive_white_l_000">#00ffffff</color>
-  <color name="gradient_primitive_white_l_045">#00ffffff</color>
-  <color name="gradient_primitive_white_l_090">#00ffffff</color>
-  <color name="gradient_primitive_white_l_135">#00ffffff</color>
-  <color name="gradient_primitive_white_l_180">#00ffffff</color>
-  <color name="gradient_primitive_white_l_225">#00ffffff</color>
-  <color name="gradient_primitive_white_l_270">#00ffffff</color>
-  <color name="gradient_primitive_white_l_315">#00ffffff</color>
-  <color name="gradient_primitive_primary_l_50_000">#0000a4cc</color>
-  <color name="gradient_primitive_primary_l_50_045">#0000a4cc</color>
-  <color name="gradient_primitive_primary_l_50_090">#0000a4cc</color>
-  <color name="gradient_primitive_primary_l_50_135">#0000a4cc</color>
-  <color name="gradient_primitive_primary_l_50_180">#0000a4cc</color>
-  <color name="gradient_primitive_primary_l_50_225">#0000a4cc</color>
-  <color name="gradient_primitive_primary_l_50_270">#0000a4cc</color>
-  <color name="gradient_primitive_primary_l_50_315">#0000a4cc</color>
-  <color name="gradient_primitive_secondary_l_50_000">#00f55200</color>
-  <color name="gradient_primitive_secondary_l_50_045">#00f55200</color>
-  <color name="gradient_primitive_secondary_l_50_090">#00f55200</color>
-  <color name="gradient_primitive_secondary_l_50_135">#00f55200</color>
-  <color name="gradient_primitive_secondary_l_50_180">#00f55200</color>
-  <color name="gradient_primitive_secondary_l_50_225">#00f55200</color>
-  <color name="gradient_primitive_secondary_l_50_270">#00f55200</color>
-  <color name="gradient_primitive_secondary_l_50_315">#00f55200</color>
-  <color name="gradient_primitive_neutral_l_50_000">#006f8085</color>
-  <color name="gradient_primitive_neutral_l_50_045">#006f8085</color>
-  <color name="gradient_primitive_neutral_l_50_090">#006f8085</color>
-  <color name="gradient_primitive_neutral_l_50_135">#006f8085</color>
-  <color name="gradient_primitive_neutral_l_50_180">#006f8085</color>
-  <color name="gradient_primitive_neutral_l_50_225">#006f8085</color>
-  <color name="gradient_primitive_neutral_l_50_270">#006f8085</color>
-  <color name="gradient_primitive_neutral_l_50_315">#006f8085</color>
-  <color name="gradient_primitive_danger_l_50_000">#00f52314</color>
-  <color name="gradient_primitive_danger_l_50_045">#00f52314</color>
-  <color name="gradient_primitive_danger_l_50_090">#00f52314</color>
-  <color name="gradient_primitive_danger_l_50_135">#00f52314</color>
-  <color name="gradient_primitive_danger_l_50_180">#00f52314</color>
-  <color name="gradient_primitive_danger_l_50_225">#00f52314</color>
-  <color name="gradient_primitive_danger_l_50_270">#00f52314</color>
-  <color name="gradient_primitive_danger_l_50_315">#00f52314</color>
-  <color name="gradient_primitive_success_l_50_000">#0010c263</color>
-  <color name="gradient_primitive_success_l_50_045">#0010c263</color>
-  <color name="gradient_primitive_success_l_50_090">#0010c263</color>
-  <color name="gradient_primitive_success_l_50_135">#0010c263</color>
-  <color name="gradient_primitive_success_l_50_180">#0010c263</color>
-  <color name="gradient_primitive_success_l_50_225">#0010c263</color>
-  <color name="gradient_primitive_success_l_50_270">#0010c263</color>
-  <color name="gradient_primitive_success_l_50_315">#0010c263</color>
-  <color name="gradient_primitive_warning_l_50_000">#00f5a300</color>
-  <color name="gradient_primitive_warning_l_50_045">#00f5a300</color>
-  <color name="gradient_primitive_warning_l_50_090">#00f5a300</color>
-  <color name="gradient_primitive_warning_l_50_135">#00f5a300</color>
-  <color name="gradient_primitive_warning_l_50_180">#00f5a300</color>
-  <color name="gradient_primitive_warning_l_50_225">#00f5a300</color>
-  <color name="gradient_primitive_warning_l_50_270">#00f5a300</color>
-  <color name="gradient_primitive_warning_l_50_315">#00f5a300</color>
-  <color name="gradient_primitive_info_l_50_000">#001414f5</color>
-  <color name="gradient_primitive_info_l_50_045">#001414f5</color>
-  <color name="gradient_primitive_info_l_50_090">#001414f5</color>
-  <color name="gradient_primitive_info_l_50_135">#001414f5</color>
-  <color name="gradient_primitive_info_l_50_180">#001414f5</color>
-  <color name="gradient_primitive_info_l_50_225">#001414f5</color>
-  <color name="gradient_primitive_info_l_50_270">#001414f5</color>
-  <color name="gradient_primitive_info_l_50_315">#001414f5</color>
-  <color name="gradient_primitive_brand_l_50_000">#0000a4cc</color>
-  <color name="gradient_primitive_brand_l_50_045">#0000a4cc</color>
-  <color name="gradient_primitive_brand_l_50_090">#0000a4cc</color>
-  <color name="gradient_primitive_brand_l_50_135">#0000a4cc</color>
-  <color name="gradient_primitive_brand_l_50_180">#0000a4cc</color>
-  <color name="gradient_primitive_brand_l_50_225">#0000a4cc</color>
-  <color name="gradient_primitive_brand_l_50_270">#0000a4cc</color>
-  <color name="gradient_primitive_brand_l_50_315">#0000a4cc</color>
-  <color name="gradient_primitive_accent_l_50_000">#00f55200</color>
-  <color name="gradient_primitive_accent_l_50_045">#00f55200</color>
-  <color name="gradient_primitive_accent_l_50_090">#00f55200</color>
-  <color name="gradient_primitive_accent_l_50_135">#00f55200</color>
-  <color name="gradient_primitive_accent_l_50_180">#00f55200</color>
-  <color name="gradient_primitive_accent_l_50_225">#00f55200</color>
-  <color name="gradient_primitive_accent_l_50_270">#00f55200</color>
-  <color name="gradient_primitive_accent_l_50_315">#00f55200</color>
+  <item name="gradient_primitive_black_l_000_angle" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_black_l_000_stop_1_color">#00000000</color>
+  <item name="gradient_primitive_black_l_000_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_black_l_000_stop_2_color">#ff000000</color>
+  <item name="gradient_primitive_black_l_000_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_black_l_045_angle" type="dimen" format="float">45</item>
+  <color name="gradient_primitive_black_l_045_stop_1_color">#00000000</color>
+  <item name="gradient_primitive_black_l_045_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_black_l_045_stop_2_color">#ff000000</color>
+  <item name="gradient_primitive_black_l_045_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_black_l_090_angle" type="dimen" format="float">90</item>
+  <color name="gradient_primitive_black_l_090_stop_1_color">#00000000</color>
+  <item name="gradient_primitive_black_l_090_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_black_l_090_stop_2_color">#ff000000</color>
+  <item name="gradient_primitive_black_l_090_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_black_l_135_angle" type="dimen" format="float">135</item>
+  <color name="gradient_primitive_black_l_135_stop_1_color">#00000000</color>
+  <item name="gradient_primitive_black_l_135_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_black_l_135_stop_2_color">#ff000000</color>
+  <item name="gradient_primitive_black_l_135_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_black_l_180_angle" type="dimen" format="float">180</item>
+  <color name="gradient_primitive_black_l_180_stop_1_color">#00000000</color>
+  <item name="gradient_primitive_black_l_180_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_black_l_180_stop_2_color">#ff000000</color>
+  <item name="gradient_primitive_black_l_180_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_black_l_225_angle" type="dimen" format="float">225</item>
+  <color name="gradient_primitive_black_l_225_stop_1_color">#00000000</color>
+  <item name="gradient_primitive_black_l_225_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_black_l_225_stop_2_color">#ff000000</color>
+  <item name="gradient_primitive_black_l_225_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_black_l_270_angle" type="dimen" format="float">270</item>
+  <color name="gradient_primitive_black_l_270_stop_1_color">#00000000</color>
+  <item name="gradient_primitive_black_l_270_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_black_l_270_stop_2_color">#ff000000</color>
+  <item name="gradient_primitive_black_l_270_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_black_l_315_angle" type="dimen" format="float">315</item>
+  <color name="gradient_primitive_black_l_315_stop_1_color">#00000000</color>
+  <item name="gradient_primitive_black_l_315_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_black_l_315_stop_2_color">#ff000000</color>
+  <item name="gradient_primitive_black_l_315_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_white_l_000_angle" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_white_l_000_stop_1_color">#00ffffff</color>
+  <item name="gradient_primitive_white_l_000_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_white_l_000_stop_2_color">#ffffffff</color>
+  <item name="gradient_primitive_white_l_000_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_white_l_045_angle" type="dimen" format="float">45</item>
+  <color name="gradient_primitive_white_l_045_stop_1_color">#00ffffff</color>
+  <item name="gradient_primitive_white_l_045_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_white_l_045_stop_2_color">#ffffffff</color>
+  <item name="gradient_primitive_white_l_045_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_white_l_090_angle" type="dimen" format="float">90</item>
+  <color name="gradient_primitive_white_l_090_stop_1_color">#00ffffff</color>
+  <item name="gradient_primitive_white_l_090_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_white_l_090_stop_2_color">#ffffffff</color>
+  <item name="gradient_primitive_white_l_090_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_white_l_135_angle" type="dimen" format="float">135</item>
+  <color name="gradient_primitive_white_l_135_stop_1_color">#00ffffff</color>
+  <item name="gradient_primitive_white_l_135_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_white_l_135_stop_2_color">#ffffffff</color>
+  <item name="gradient_primitive_white_l_135_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_white_l_180_angle" type="dimen" format="float">180</item>
+  <color name="gradient_primitive_white_l_180_stop_1_color">#00ffffff</color>
+  <item name="gradient_primitive_white_l_180_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_white_l_180_stop_2_color">#ffffffff</color>
+  <item name="gradient_primitive_white_l_180_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_white_l_225_angle" type="dimen" format="float">225</item>
+  <color name="gradient_primitive_white_l_225_stop_1_color">#00ffffff</color>
+  <item name="gradient_primitive_white_l_225_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_white_l_225_stop_2_color">#ffffffff</color>
+  <item name="gradient_primitive_white_l_225_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_white_l_270_angle" type="dimen" format="float">270</item>
+  <color name="gradient_primitive_white_l_270_stop_1_color">#00ffffff</color>
+  <item name="gradient_primitive_white_l_270_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_white_l_270_stop_2_color">#ffffffff</color>
+  <item name="gradient_primitive_white_l_270_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_white_l_315_angle" type="dimen" format="float">315</item>
+  <color name="gradient_primitive_white_l_315_stop_1_color">#00ffffff</color>
+  <item name="gradient_primitive_white_l_315_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_white_l_315_stop_2_color">#ffffffff</color>
+  <item name="gradient_primitive_white_l_315_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_primary_l_50_000_angle" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_primary_l_50_000_stop_1_color">#0000a4cc</color>
+  <item name="gradient_primitive_primary_l_50_000_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_primary_l_50_000_stop_2_color">#ff00a4cc</color>
+  <item name="gradient_primitive_primary_l_50_000_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_primary_l_50_045_angle" type="dimen" format="float">45</item>
+  <color name="gradient_primitive_primary_l_50_045_stop_1_color">#0000a4cc</color>
+  <item name="gradient_primitive_primary_l_50_045_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_primary_l_50_045_stop_2_color">#ff00a4cc</color>
+  <item name="gradient_primitive_primary_l_50_045_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_primary_l_50_090_angle" type="dimen" format="float">90</item>
+  <color name="gradient_primitive_primary_l_50_090_stop_1_color">#0000a4cc</color>
+  <item name="gradient_primitive_primary_l_50_090_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_primary_l_50_090_stop_2_color">#ff00a4cc</color>
+  <item name="gradient_primitive_primary_l_50_090_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_primary_l_50_135_angle" type="dimen" format="float">135</item>
+  <color name="gradient_primitive_primary_l_50_135_stop_1_color">#0000a4cc</color>
+  <item name="gradient_primitive_primary_l_50_135_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_primary_l_50_135_stop_2_color">#ff00a4cc</color>
+  <item name="gradient_primitive_primary_l_50_135_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_primary_l_50_180_angle" type="dimen" format="float">180</item>
+  <color name="gradient_primitive_primary_l_50_180_stop_1_color">#0000a4cc</color>
+  <item name="gradient_primitive_primary_l_50_180_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_primary_l_50_180_stop_2_color">#ff00a4cc</color>
+  <item name="gradient_primitive_primary_l_50_180_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_primary_l_50_225_angle" type="dimen" format="float">225</item>
+  <color name="gradient_primitive_primary_l_50_225_stop_1_color">#0000a4cc</color>
+  <item name="gradient_primitive_primary_l_50_225_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_primary_l_50_225_stop_2_color">#ff00a4cc</color>
+  <item name="gradient_primitive_primary_l_50_225_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_primary_l_50_270_angle" type="dimen" format="float">270</item>
+  <color name="gradient_primitive_primary_l_50_270_stop_1_color">#0000a4cc</color>
+  <item name="gradient_primitive_primary_l_50_270_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_primary_l_50_270_stop_2_color">#ff00a4cc</color>
+  <item name="gradient_primitive_primary_l_50_270_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_primary_l_50_315_angle" type="dimen" format="float">315</item>
+  <color name="gradient_primitive_primary_l_50_315_stop_1_color">#0000a4cc</color>
+  <item name="gradient_primitive_primary_l_50_315_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_primary_l_50_315_stop_2_color">#ff00a4cc</color>
+  <item name="gradient_primitive_primary_l_50_315_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_secondary_l_50_000_angle" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_secondary_l_50_000_stop_1_color">#00f55200</color>
+  <item name="gradient_primitive_secondary_l_50_000_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_secondary_l_50_000_stop_2_color">#fff55200</color>
+  <item name="gradient_primitive_secondary_l_50_000_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_secondary_l_50_045_angle" type="dimen" format="float">45</item>
+  <color name="gradient_primitive_secondary_l_50_045_stop_1_color">#00f55200</color>
+  <item name="gradient_primitive_secondary_l_50_045_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_secondary_l_50_045_stop_2_color">#fff55200</color>
+  <item name="gradient_primitive_secondary_l_50_045_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_secondary_l_50_090_angle" type="dimen" format="float">90</item>
+  <color name="gradient_primitive_secondary_l_50_090_stop_1_color">#00f55200</color>
+  <item name="gradient_primitive_secondary_l_50_090_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_secondary_l_50_090_stop_2_color">#fff55200</color>
+  <item name="gradient_primitive_secondary_l_50_090_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_secondary_l_50_135_angle" type="dimen" format="float">135</item>
+  <color name="gradient_primitive_secondary_l_50_135_stop_1_color">#00f55200</color>
+  <item name="gradient_primitive_secondary_l_50_135_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_secondary_l_50_135_stop_2_color">#fff55200</color>
+  <item name="gradient_primitive_secondary_l_50_135_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_secondary_l_50_180_angle" type="dimen" format="float">180</item>
+  <color name="gradient_primitive_secondary_l_50_180_stop_1_color">#00f55200</color>
+  <item name="gradient_primitive_secondary_l_50_180_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_secondary_l_50_180_stop_2_color">#fff55200</color>
+  <item name="gradient_primitive_secondary_l_50_180_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_secondary_l_50_225_angle" type="dimen" format="float">225</item>
+  <color name="gradient_primitive_secondary_l_50_225_stop_1_color">#00f55200</color>
+  <item name="gradient_primitive_secondary_l_50_225_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_secondary_l_50_225_stop_2_color">#fff55200</color>
+  <item name="gradient_primitive_secondary_l_50_225_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_secondary_l_50_270_angle" type="dimen" format="float">270</item>
+  <color name="gradient_primitive_secondary_l_50_270_stop_1_color">#00f55200</color>
+  <item name="gradient_primitive_secondary_l_50_270_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_secondary_l_50_270_stop_2_color">#fff55200</color>
+  <item name="gradient_primitive_secondary_l_50_270_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_secondary_l_50_315_angle" type="dimen" format="float">315</item>
+  <color name="gradient_primitive_secondary_l_50_315_stop_1_color">#00f55200</color>
+  <item name="gradient_primitive_secondary_l_50_315_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_secondary_l_50_315_stop_2_color">#fff55200</color>
+  <item name="gradient_primitive_secondary_l_50_315_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_neutral_l_50_000_angle" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_neutral_l_50_000_stop_1_color">#006f8085</color>
+  <item name="gradient_primitive_neutral_l_50_000_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_neutral_l_50_000_stop_2_color">#ff6f8085</color>
+  <item name="gradient_primitive_neutral_l_50_000_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_neutral_l_50_045_angle" type="dimen" format="float">45</item>
+  <color name="gradient_primitive_neutral_l_50_045_stop_1_color">#006f8085</color>
+  <item name="gradient_primitive_neutral_l_50_045_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_neutral_l_50_045_stop_2_color">#ff6f8085</color>
+  <item name="gradient_primitive_neutral_l_50_045_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_neutral_l_50_090_angle" type="dimen" format="float">90</item>
+  <color name="gradient_primitive_neutral_l_50_090_stop_1_color">#006f8085</color>
+  <item name="gradient_primitive_neutral_l_50_090_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_neutral_l_50_090_stop_2_color">#ff6f8085</color>
+  <item name="gradient_primitive_neutral_l_50_090_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_neutral_l_50_135_angle" type="dimen" format="float">135</item>
+  <color name="gradient_primitive_neutral_l_50_135_stop_1_color">#006f8085</color>
+  <item name="gradient_primitive_neutral_l_50_135_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_neutral_l_50_135_stop_2_color">#ff6f8085</color>
+  <item name="gradient_primitive_neutral_l_50_135_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_neutral_l_50_180_angle" type="dimen" format="float">180</item>
+  <color name="gradient_primitive_neutral_l_50_180_stop_1_color">#006f8085</color>
+  <item name="gradient_primitive_neutral_l_50_180_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_neutral_l_50_180_stop_2_color">#ff6f8085</color>
+  <item name="gradient_primitive_neutral_l_50_180_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_neutral_l_50_225_angle" type="dimen" format="float">225</item>
+  <color name="gradient_primitive_neutral_l_50_225_stop_1_color">#006f8085</color>
+  <item name="gradient_primitive_neutral_l_50_225_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_neutral_l_50_225_stop_2_color">#ff6f8085</color>
+  <item name="gradient_primitive_neutral_l_50_225_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_neutral_l_50_270_angle" type="dimen" format="float">270</item>
+  <color name="gradient_primitive_neutral_l_50_270_stop_1_color">#006f8085</color>
+  <item name="gradient_primitive_neutral_l_50_270_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_neutral_l_50_270_stop_2_color">#ff6f8085</color>
+  <item name="gradient_primitive_neutral_l_50_270_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_neutral_l_50_315_angle" type="dimen" format="float">315</item>
+  <color name="gradient_primitive_neutral_l_50_315_stop_1_color">#006f8085</color>
+  <item name="gradient_primitive_neutral_l_50_315_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_neutral_l_50_315_stop_2_color">#ff6f8085</color>
+  <item name="gradient_primitive_neutral_l_50_315_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_danger_l_50_000_angle" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_danger_l_50_000_stop_1_color">#00f52314</color>
+  <item name="gradient_primitive_danger_l_50_000_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_danger_l_50_000_stop_2_color">#fff52314</color>
+  <item name="gradient_primitive_danger_l_50_000_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_danger_l_50_045_angle" type="dimen" format="float">45</item>
+  <color name="gradient_primitive_danger_l_50_045_stop_1_color">#00f52314</color>
+  <item name="gradient_primitive_danger_l_50_045_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_danger_l_50_045_stop_2_color">#fff52314</color>
+  <item name="gradient_primitive_danger_l_50_045_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_danger_l_50_090_angle" type="dimen" format="float">90</item>
+  <color name="gradient_primitive_danger_l_50_090_stop_1_color">#00f52314</color>
+  <item name="gradient_primitive_danger_l_50_090_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_danger_l_50_090_stop_2_color">#fff52314</color>
+  <item name="gradient_primitive_danger_l_50_090_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_danger_l_50_135_angle" type="dimen" format="float">135</item>
+  <color name="gradient_primitive_danger_l_50_135_stop_1_color">#00f52314</color>
+  <item name="gradient_primitive_danger_l_50_135_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_danger_l_50_135_stop_2_color">#fff52314</color>
+  <item name="gradient_primitive_danger_l_50_135_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_danger_l_50_180_angle" type="dimen" format="float">180</item>
+  <color name="gradient_primitive_danger_l_50_180_stop_1_color">#00f52314</color>
+  <item name="gradient_primitive_danger_l_50_180_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_danger_l_50_180_stop_2_color">#fff52314</color>
+  <item name="gradient_primitive_danger_l_50_180_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_danger_l_50_225_angle" type="dimen" format="float">225</item>
+  <color name="gradient_primitive_danger_l_50_225_stop_1_color">#00f52314</color>
+  <item name="gradient_primitive_danger_l_50_225_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_danger_l_50_225_stop_2_color">#fff52314</color>
+  <item name="gradient_primitive_danger_l_50_225_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_danger_l_50_270_angle" type="dimen" format="float">270</item>
+  <color name="gradient_primitive_danger_l_50_270_stop_1_color">#00f52314</color>
+  <item name="gradient_primitive_danger_l_50_270_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_danger_l_50_270_stop_2_color">#fff52314</color>
+  <item name="gradient_primitive_danger_l_50_270_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_danger_l_50_315_angle" type="dimen" format="float">315</item>
+  <color name="gradient_primitive_danger_l_50_315_stop_1_color">#00f52314</color>
+  <item name="gradient_primitive_danger_l_50_315_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_danger_l_50_315_stop_2_color">#fff52314</color>
+  <item name="gradient_primitive_danger_l_50_315_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_success_l_50_000_angle" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_success_l_50_000_stop_1_color">#0010c263</color>
+  <item name="gradient_primitive_success_l_50_000_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_success_l_50_000_stop_2_color">#ff10c263</color>
+  <item name="gradient_primitive_success_l_50_000_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_success_l_50_045_angle" type="dimen" format="float">45</item>
+  <color name="gradient_primitive_success_l_50_045_stop_1_color">#0010c263</color>
+  <item name="gradient_primitive_success_l_50_045_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_success_l_50_045_stop_2_color">#ff10c263</color>
+  <item name="gradient_primitive_success_l_50_045_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_success_l_50_090_angle" type="dimen" format="float">90</item>
+  <color name="gradient_primitive_success_l_50_090_stop_1_color">#0010c263</color>
+  <item name="gradient_primitive_success_l_50_090_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_success_l_50_090_stop_2_color">#ff10c263</color>
+  <item name="gradient_primitive_success_l_50_090_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_success_l_50_135_angle" type="dimen" format="float">135</item>
+  <color name="gradient_primitive_success_l_50_135_stop_1_color">#0010c263</color>
+  <item name="gradient_primitive_success_l_50_135_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_success_l_50_135_stop_2_color">#ff10c263</color>
+  <item name="gradient_primitive_success_l_50_135_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_success_l_50_180_angle" type="dimen" format="float">180</item>
+  <color name="gradient_primitive_success_l_50_180_stop_1_color">#0010c263</color>
+  <item name="gradient_primitive_success_l_50_180_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_success_l_50_180_stop_2_color">#ff10c263</color>
+  <item name="gradient_primitive_success_l_50_180_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_success_l_50_225_angle" type="dimen" format="float">225</item>
+  <color name="gradient_primitive_success_l_50_225_stop_1_color">#0010c263</color>
+  <item name="gradient_primitive_success_l_50_225_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_success_l_50_225_stop_2_color">#ff10c263</color>
+  <item name="gradient_primitive_success_l_50_225_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_success_l_50_270_angle" type="dimen" format="float">270</item>
+  <color name="gradient_primitive_success_l_50_270_stop_1_color">#0010c263</color>
+  <item name="gradient_primitive_success_l_50_270_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_success_l_50_270_stop_2_color">#ff10c263</color>
+  <item name="gradient_primitive_success_l_50_270_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_success_l_50_315_angle" type="dimen" format="float">315</item>
+  <color name="gradient_primitive_success_l_50_315_stop_1_color">#0010c263</color>
+  <item name="gradient_primitive_success_l_50_315_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_success_l_50_315_stop_2_color">#ff10c263</color>
+  <item name="gradient_primitive_success_l_50_315_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_warning_l_50_000_angle" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_warning_l_50_000_stop_1_color">#00f5a300</color>
+  <item name="gradient_primitive_warning_l_50_000_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_warning_l_50_000_stop_2_color">#fff5a300</color>
+  <item name="gradient_primitive_warning_l_50_000_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_warning_l_50_045_angle" type="dimen" format="float">45</item>
+  <color name="gradient_primitive_warning_l_50_045_stop_1_color">#00f5a300</color>
+  <item name="gradient_primitive_warning_l_50_045_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_warning_l_50_045_stop_2_color">#fff5a300</color>
+  <item name="gradient_primitive_warning_l_50_045_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_warning_l_50_090_angle" type="dimen" format="float">90</item>
+  <color name="gradient_primitive_warning_l_50_090_stop_1_color">#00f5a300</color>
+  <item name="gradient_primitive_warning_l_50_090_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_warning_l_50_090_stop_2_color">#fff5a300</color>
+  <item name="gradient_primitive_warning_l_50_090_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_warning_l_50_135_angle" type="dimen" format="float">135</item>
+  <color name="gradient_primitive_warning_l_50_135_stop_1_color">#00f5a300</color>
+  <item name="gradient_primitive_warning_l_50_135_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_warning_l_50_135_stop_2_color">#fff5a300</color>
+  <item name="gradient_primitive_warning_l_50_135_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_warning_l_50_180_angle" type="dimen" format="float">180</item>
+  <color name="gradient_primitive_warning_l_50_180_stop_1_color">#00f5a300</color>
+  <item name="gradient_primitive_warning_l_50_180_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_warning_l_50_180_stop_2_color">#fff5a300</color>
+  <item name="gradient_primitive_warning_l_50_180_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_warning_l_50_225_angle" type="dimen" format="float">225</item>
+  <color name="gradient_primitive_warning_l_50_225_stop_1_color">#00f5a300</color>
+  <item name="gradient_primitive_warning_l_50_225_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_warning_l_50_225_stop_2_color">#fff5a300</color>
+  <item name="gradient_primitive_warning_l_50_225_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_warning_l_50_270_angle" type="dimen" format="float">270</item>
+  <color name="gradient_primitive_warning_l_50_270_stop_1_color">#00f5a300</color>
+  <item name="gradient_primitive_warning_l_50_270_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_warning_l_50_270_stop_2_color">#fff5a300</color>
+  <item name="gradient_primitive_warning_l_50_270_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_warning_l_50_315_angle" type="dimen" format="float">315</item>
+  <color name="gradient_primitive_warning_l_50_315_stop_1_color">#00f5a300</color>
+  <item name="gradient_primitive_warning_l_50_315_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_warning_l_50_315_stop_2_color">#fff5a300</color>
+  <item name="gradient_primitive_warning_l_50_315_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_info_l_50_000_angle" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_info_l_50_000_stop_1_color">#001414f5</color>
+  <item name="gradient_primitive_info_l_50_000_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_info_l_50_000_stop_2_color">#ff1414f5</color>
+  <item name="gradient_primitive_info_l_50_000_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_info_l_50_045_angle" type="dimen" format="float">45</item>
+  <color name="gradient_primitive_info_l_50_045_stop_1_color">#001414f5</color>
+  <item name="gradient_primitive_info_l_50_045_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_info_l_50_045_stop_2_color">#ff1414f5</color>
+  <item name="gradient_primitive_info_l_50_045_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_info_l_50_090_angle" type="dimen" format="float">90</item>
+  <color name="gradient_primitive_info_l_50_090_stop_1_color">#001414f5</color>
+  <item name="gradient_primitive_info_l_50_090_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_info_l_50_090_stop_2_color">#ff1414f5</color>
+  <item name="gradient_primitive_info_l_50_090_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_info_l_50_135_angle" type="dimen" format="float">135</item>
+  <color name="gradient_primitive_info_l_50_135_stop_1_color">#001414f5</color>
+  <item name="gradient_primitive_info_l_50_135_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_info_l_50_135_stop_2_color">#ff1414f5</color>
+  <item name="gradient_primitive_info_l_50_135_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_info_l_50_180_angle" type="dimen" format="float">180</item>
+  <color name="gradient_primitive_info_l_50_180_stop_1_color">#001414f5</color>
+  <item name="gradient_primitive_info_l_50_180_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_info_l_50_180_stop_2_color">#ff1414f5</color>
+  <item name="gradient_primitive_info_l_50_180_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_info_l_50_225_angle" type="dimen" format="float">225</item>
+  <color name="gradient_primitive_info_l_50_225_stop_1_color">#001414f5</color>
+  <item name="gradient_primitive_info_l_50_225_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_info_l_50_225_stop_2_color">#ff1414f5</color>
+  <item name="gradient_primitive_info_l_50_225_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_info_l_50_270_angle" type="dimen" format="float">270</item>
+  <color name="gradient_primitive_info_l_50_270_stop_1_color">#001414f5</color>
+  <item name="gradient_primitive_info_l_50_270_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_info_l_50_270_stop_2_color">#ff1414f5</color>
+  <item name="gradient_primitive_info_l_50_270_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_info_l_50_315_angle" type="dimen" format="float">315</item>
+  <color name="gradient_primitive_info_l_50_315_stop_1_color">#001414f5</color>
+  <item name="gradient_primitive_info_l_50_315_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_info_l_50_315_stop_2_color">#ff1414f5</color>
+  <item name="gradient_primitive_info_l_50_315_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_brand_l_50_000_angle" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_brand_l_50_000_stop_1_color">#0000a4cc</color>
+  <item name="gradient_primitive_brand_l_50_000_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_brand_l_50_000_stop_2_color">#ff00a4cc</color>
+  <item name="gradient_primitive_brand_l_50_000_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_brand_l_50_045_angle" type="dimen" format="float">45</item>
+  <color name="gradient_primitive_brand_l_50_045_stop_1_color">#0000a4cc</color>
+  <item name="gradient_primitive_brand_l_50_045_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_brand_l_50_045_stop_2_color">#ff00a4cc</color>
+  <item name="gradient_primitive_brand_l_50_045_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_brand_l_50_090_angle" type="dimen" format="float">90</item>
+  <color name="gradient_primitive_brand_l_50_090_stop_1_color">#0000a4cc</color>
+  <item name="gradient_primitive_brand_l_50_090_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_brand_l_50_090_stop_2_color">#ff00a4cc</color>
+  <item name="gradient_primitive_brand_l_50_090_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_brand_l_50_135_angle" type="dimen" format="float">135</item>
+  <color name="gradient_primitive_brand_l_50_135_stop_1_color">#0000a4cc</color>
+  <item name="gradient_primitive_brand_l_50_135_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_brand_l_50_135_stop_2_color">#ff00a4cc</color>
+  <item name="gradient_primitive_brand_l_50_135_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_brand_l_50_180_angle" type="dimen" format="float">180</item>
+  <color name="gradient_primitive_brand_l_50_180_stop_1_color">#0000a4cc</color>
+  <item name="gradient_primitive_brand_l_50_180_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_brand_l_50_180_stop_2_color">#ff00a4cc</color>
+  <item name="gradient_primitive_brand_l_50_180_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_brand_l_50_225_angle" type="dimen" format="float">225</item>
+  <color name="gradient_primitive_brand_l_50_225_stop_1_color">#0000a4cc</color>
+  <item name="gradient_primitive_brand_l_50_225_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_brand_l_50_225_stop_2_color">#ff00a4cc</color>
+  <item name="gradient_primitive_brand_l_50_225_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_brand_l_50_270_angle" type="dimen" format="float">270</item>
+  <color name="gradient_primitive_brand_l_50_270_stop_1_color">#0000a4cc</color>
+  <item name="gradient_primitive_brand_l_50_270_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_brand_l_50_270_stop_2_color">#ff00a4cc</color>
+  <item name="gradient_primitive_brand_l_50_270_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_brand_l_50_315_angle" type="dimen" format="float">315</item>
+  <color name="gradient_primitive_brand_l_50_315_stop_1_color">#0000a4cc</color>
+  <item name="gradient_primitive_brand_l_50_315_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_brand_l_50_315_stop_2_color">#ff00a4cc</color>
+  <item name="gradient_primitive_brand_l_50_315_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_accent_l_50_000_angle" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_accent_l_50_000_stop_1_color">#00f55200</color>
+  <item name="gradient_primitive_accent_l_50_000_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_accent_l_50_000_stop_2_color">#fff55200</color>
+  <item name="gradient_primitive_accent_l_50_000_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_accent_l_50_045_angle" type="dimen" format="float">45</item>
+  <color name="gradient_primitive_accent_l_50_045_stop_1_color">#00f55200</color>
+  <item name="gradient_primitive_accent_l_50_045_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_accent_l_50_045_stop_2_color">#fff55200</color>
+  <item name="gradient_primitive_accent_l_50_045_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_accent_l_50_090_angle" type="dimen" format="float">90</item>
+  <color name="gradient_primitive_accent_l_50_090_stop_1_color">#00f55200</color>
+  <item name="gradient_primitive_accent_l_50_090_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_accent_l_50_090_stop_2_color">#fff55200</color>
+  <item name="gradient_primitive_accent_l_50_090_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_accent_l_50_135_angle" type="dimen" format="float">135</item>
+  <color name="gradient_primitive_accent_l_50_135_stop_1_color">#00f55200</color>
+  <item name="gradient_primitive_accent_l_50_135_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_accent_l_50_135_stop_2_color">#fff55200</color>
+  <item name="gradient_primitive_accent_l_50_135_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_accent_l_50_180_angle" type="dimen" format="float">180</item>
+  <color name="gradient_primitive_accent_l_50_180_stop_1_color">#00f55200</color>
+  <item name="gradient_primitive_accent_l_50_180_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_accent_l_50_180_stop_2_color">#fff55200</color>
+  <item name="gradient_primitive_accent_l_50_180_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_accent_l_50_225_angle" type="dimen" format="float">225</item>
+  <color name="gradient_primitive_accent_l_50_225_stop_1_color">#00f55200</color>
+  <item name="gradient_primitive_accent_l_50_225_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_accent_l_50_225_stop_2_color">#fff55200</color>
+  <item name="gradient_primitive_accent_l_50_225_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_accent_l_50_270_angle" type="dimen" format="float">270</item>
+  <color name="gradient_primitive_accent_l_50_270_stop_1_color">#00f55200</color>
+  <item name="gradient_primitive_accent_l_50_270_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_accent_l_50_270_stop_2_color">#fff55200</color>
+  <item name="gradient_primitive_accent_l_50_270_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_accent_l_50_315_angle" type="dimen" format="float">315</item>
+  <color name="gradient_primitive_accent_l_50_315_stop_1_color">#00f55200</color>
+  <item name="gradient_primitive_accent_l_50_315_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_accent_l_50_315_stop_2_color">#fff55200</color>
+  <item name="gradient_primitive_accent_l_50_315_stop_2_position" type="dimen" format="float">1</item>
   <color name="shadow_context_none_color">#00000000</color>
   <color name="shadow_context_small_1_color">#66000000</color>
   <color name="shadow_context_small_2_color">#66000000</color>

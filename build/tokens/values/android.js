@@ -39,6 +39,12 @@ const RESOURCE_KINDS = {
 const FLOAT_TYPES = ['opacity', 'letterSpacing']
 
 /**
+ * Number parts of a gradient (`gradientParts`), which are floats: an angle in degrees and
+ * stop positions from 0 to 1.
+ */
+const FLOAT_PARTS = ['angle', 'position']
+
+/**
  * Size keys and types that use scale-independent pixels.
  */
 const SP_KEYS = ['fontSize', 'lineHeight', 'paragraphSpacing']
@@ -53,7 +59,11 @@ const SP_TYPES = ['fontSize', 'lineHeight']
  * @returns {string} `color`, `float`, `integer`, `dimen` or `string`.
  */
 export function resourceKind(token) {
-  if (FLOAT_TYPES.includes(token.$type) || token.path[1] === 'letterSpacing') {
+  if (
+    FLOAT_TYPES.includes(token.$type) ||
+    token.path[1] === 'letterSpacing' ||
+    (token.$type === 'number' && FLOAT_PARTS.includes(token.path[token.path.length - 1]))
+  ) {
     return 'float'
   }
   if (token.$type === 'fontWeight') return 'integer'
@@ -197,4 +207,16 @@ export function reference(token, target, context = {}, targetContext = {}) {
     return undefined
   }
   return `@${resourceType(token)}/${target.name}`
+}
+
+/**
+ * Returns the resource name of a part of a token, such as a gradient stop: the token's
+ * name with the part's segments in snake_case, digits split off as in the other names.
+ *
+ * @param {Object} token - The token the part belongs to, with `name`.
+ * @param {string[]} segments - e.g. `['stop1', 'color']`
+ * @returns {string} e.g. `gradient_primitive_black_l_000_stop_1_color`
+ */
+export function partName(token, segments) {
+  return [token.name, ...segments.map((segment) => segment.replace(/(\D)(\d)/g, '$1_$2'))].join('_')
 }

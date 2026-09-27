@@ -1,5 +1,5 @@
 {
-  "source": "Resolved chassis/demo tokens from the SD 4.4 build and the matching committed dist lines, extracted 2026-09-27. \"androidReferences\" holds tokens of the SD 5.5 build with outputReferences, the first token of the same file that each references, and the matching lines of build/tokens/test/golden/android-references/. \"iosReferences\" holds the same for the iOS build with outputReferences and build/tokens/test/golden/ios-references/. \"context\" holds the font size part that the templates pass for line height and letter spacing parts, and \"typographyParts\" holds such parts with the lines of dist/; both were captured from the build and the expected lines updated in Phase 13 (2026-09-27). Font weight cases were updated from dist/ in Phase 14.",
+  "source": "Resolved chassis/demo tokens from the SD 4.4 build and the matching committed dist lines, extracted 2026-09-27. \"androidReferences\" holds tokens of the SD 5.5 build with outputReferences, the first token of the same file that each references, and the matching lines of build/tokens/test/golden/android-references/. \"iosReferences\" holds the same for the iOS build with outputReferences and build/tokens/test/golden/ios-references/. \"context\" holds the font size part that the templates pass for line height and letter spacing parts, and \"typographyParts\" holds such parts with the lines of dist/; both were captured from the build and the expected lines updated in Phase 13 (2026-09-27). Font weight cases were updated from dist/ in Phase 14. \"gradients\" holds two gradient tokens of color_light with the lines of dist/ and of the reference baselines, and the colours their stops reference, captured in Phase 15.",
   "ios": [
     {
       "case": "dimension becomes CGFloat",
@@ -190,16 +190,6 @@
         "$value": "rgba(0, 0, 0, 0.05)"
       },
       "expected": "UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0.05)"
-    },
-    {
-      "case": "color: gradient uses its first stop",
-      "token": {
-        "name": "GradientPrimitiveBlackL000",
-        "path": ["gradient", "primitive", "black", "l-000"],
-        "$type": "color",
-        "$value": "linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, #000000 100%)"
-      },
-      "expected": "UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0)"
     },
     {
       "case": "fontFamily: quoted first family",
@@ -536,19 +526,6 @@
       "expected": {
         "element": "color",
         "value": "#ffd9f1f7"
-      }
-    },
-    {
-      "case": "color: gradient uses its first stop",
-      "token": {
-        "name": "gradient_primitive_black_l_000",
-        "path": ["gradient", "primitive", "black", "l-000"],
-        "$type": "color",
-        "$value": "linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, #000000 100%)"
-      },
-      "expected": {
-        "element": "color",
-        "value": "#00000000"
       }
     },
     {
@@ -1283,5 +1260,151 @@
       },
       "expected": "0"
     }
-  ]
+  ],
+  "gradients": {
+    "cases": [
+      {
+        "case": "0deg, two stops",
+        "token": {
+          "path": ["gradient", "primitive", "black", "l-000"],
+          "$type": "color",
+          "$value": "linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, #000000 100%)",
+          "original": {
+            "$value": "linear-gradient(0deg, {color.primitive.black.transparent} 0%, {color.primitive.black.base} 100%)"
+          }
+        },
+        "names": {
+          "ios": "GradientPrimitiveBlackL000",
+          "android": "gradient_primitive_black_l_000"
+        },
+        "expected": {
+          "ios": [
+            ["GradientPrimitiveBlackL000Angle", "CGFloat(0)"],
+            [
+              "GradientPrimitiveBlackL000Stop1Color",
+              "UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0)"
+            ],
+            ["GradientPrimitiveBlackL000Stop1Position", "CGFloat(0)"],
+            [
+              "GradientPrimitiveBlackL000Stop2Color",
+              "UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1)"
+            ],
+            ["GradientPrimitiveBlackL000Stop2Position", "CGFloat(1)"]
+          ],
+          "android": [
+            ["gradient_primitive_black_l_000_angle", "0"],
+            ["gradient_primitive_black_l_000_stop_1_color", "#00000000"],
+            ["gradient_primitive_black_l_000_stop_1_position", "0"],
+            ["gradient_primitive_black_l_000_stop_2_color", "#ff000000"],
+            ["gradient_primitive_black_l_000_stop_2_position", "1"]
+          ]
+        },
+        "expectedWithReferences": {
+          "ios": [
+            ["GradientPrimitiveBlackL000Angle", "CGFloat(0)"],
+            ["GradientPrimitiveBlackL000Stop1Color", "ColorPrimitiveBlackTransparent"],
+            ["GradientPrimitiveBlackL000Stop1Position", "CGFloat(0)"],
+            ["GradientPrimitiveBlackL000Stop2Color", "ColorPrimitiveBlackBase"],
+            ["GradientPrimitiveBlackL000Stop2Position", "CGFloat(1)"]
+          ],
+          "android": [
+            ["gradient_primitive_black_l_000_angle", "0"],
+            [
+              "gradient_primitive_black_l_000_stop_1_color",
+              "@color/color_primitive_black_transparent"
+            ],
+            ["gradient_primitive_black_l_000_stop_1_position", "0"],
+            ["gradient_primitive_black_l_000_stop_2_color", "@color/color_primitive_black_base"],
+            ["gradient_primitive_black_l_000_stop_2_position", "1"]
+          ]
+        }
+      },
+      {
+        "case": "negative angle",
+        "token": {
+          "path": ["gradient", "primitive", "black", "l-315"],
+          "$type": "color",
+          "$value": "linear-gradient(-45deg, rgba(0, 0, 0, 0) 0%, #000000 100%)",
+          "original": {
+            "$value": "linear-gradient(-45deg, {color.primitive.black.transparent} 0%, {color.primitive.black.base} 100%)"
+          }
+        },
+        "names": {
+          "ios": "GradientPrimitiveBlackL315",
+          "android": "gradient_primitive_black_l_315"
+        },
+        "expected": {
+          "ios": [
+            ["GradientPrimitiveBlackL315Angle", "CGFloat(315)"],
+            [
+              "GradientPrimitiveBlackL315Stop1Color",
+              "UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0)"
+            ],
+            ["GradientPrimitiveBlackL315Stop1Position", "CGFloat(0)"],
+            [
+              "GradientPrimitiveBlackL315Stop2Color",
+              "UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1)"
+            ],
+            ["GradientPrimitiveBlackL315Stop2Position", "CGFloat(1)"]
+          ],
+          "android": [
+            ["gradient_primitive_black_l_315_angle", "315"],
+            ["gradient_primitive_black_l_315_stop_1_color", "#00000000"],
+            ["gradient_primitive_black_l_315_stop_1_position", "0"],
+            ["gradient_primitive_black_l_315_stop_2_color", "#ff000000"],
+            ["gradient_primitive_black_l_315_stop_2_position", "1"]
+          ]
+        },
+        "expectedWithReferences": {
+          "ios": [
+            ["GradientPrimitiveBlackL315Angle", "CGFloat(315)"],
+            ["GradientPrimitiveBlackL315Stop1Color", "ColorPrimitiveBlackTransparent"],
+            ["GradientPrimitiveBlackL315Stop1Position", "CGFloat(0)"],
+            ["GradientPrimitiveBlackL315Stop2Color", "ColorPrimitiveBlackBase"],
+            ["GradientPrimitiveBlackL315Stop2Position", "CGFloat(1)"]
+          ],
+          "android": [
+            ["gradient_primitive_black_l_315_angle", "315"],
+            [
+              "gradient_primitive_black_l_315_stop_1_color",
+              "@color/color_primitive_black_transparent"
+            ],
+            ["gradient_primitive_black_l_315_stop_1_position", "0"],
+            ["gradient_primitive_black_l_315_stop_2_color", "@color/color_primitive_black_base"],
+            ["gradient_primitive_black_l_315_stop_2_position", "1"]
+          ]
+        }
+      }
+    ],
+    "stopColors": [
+      {
+        "names": {
+          "ios": "ColorPrimitiveBlackTransparent",
+          "android": "color_primitive_black_transparent"
+        },
+        "token": {
+          "path": ["color", "primitive", "black", "transparent"],
+          "$type": "color",
+          "$value": "rgba(0, 0, 0, 0)",
+          "original": {
+            "$value": "{color.base.primitive.light.black.transparent}"
+          }
+        }
+      },
+      {
+        "names": {
+          "ios": "ColorPrimitiveBlackBase",
+          "android": "color_primitive_black_base"
+        },
+        "token": {
+          "path": ["color", "primitive", "black", "base"],
+          "$type": "color",
+          "$value": "#000000",
+          "original": {
+            "$value": "{color.base.primitive.light.black.base}"
+          }
+        }
+      }
+    ]
+  }
 }
