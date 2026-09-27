@@ -11,8 +11,9 @@
 import { tokenTypes } from './utils.js'
 
 /**
- * The custom filters by name. The `path[1] !== 'dimension'` exclusion matches no current
- * token; it is kept because the output contract includes it.
+ * The custom filters by name. The `dimension.base.*` scale is emitted in the main and
+ * number files on purpose: other sizes reference it, and with `outputReferences` they
+ * name it (`SizeUnit4 = DimensionBase4`).
  */
 export const filters = {
   // Everything that goes into main: all emitted types, without base and theme colours.
@@ -23,7 +24,7 @@ export const filters = {
     tokenTypes.gradient.includes(token.$type) ||
     tokenTypes.number.includes(token.$type) ||
     tokenTypes.shadow.includes(token.$type) ||
-    (tokenTypes.size.includes(token.$type) && token.path[1] !== 'dimension') ||
+    tokenTypes.size.includes(token.$type) ||
     tokenTypes.string.includes(token.$type),
 
   // Theme colours, without base and utility colours.
@@ -32,8 +33,7 @@ export const filters = {
 
   // Numbers and sizes, which change with the screen.
   'cx/numberTokens': (token) =>
-    tokenTypes.number.includes(token.$type) ||
-    (tokenTypes.size.includes(token.$type) && token.path[1] !== 'dimension'),
+    tokenTypes.number.includes(token.$type) || tokenTypes.size.includes(token.$type),
 
   // Strings, font names and assets.
   'cx/stringTokens': (token) => tokenTypes.string.includes(token.$type)

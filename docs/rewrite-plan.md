@@ -60,7 +60,7 @@ If a phase is too large, split it into `Na`, `Nb` rows. If a fact in this file i
 | 13 | Mobile typography values: percent line height, Android letter spacing in em | Opus | Done | `rewrite(phase 13)` | 2026-09-27 |
 | 14 | Font weights as numbers | Opus | Done | `rewrite(phase 14)` | 2026-09-27 |
 | 15 | Gradients on mobile as parts | Opus | Done | `rewrite(phase 15)` | 2026-09-27 |
-| 16 | Dead `dimension` filter condition | Sonnet | Not started | | |
+| 16 | Dead `dimension` filter condition | Sonnet | Done | `rewrite(phase 16)` | 2026-09-27 |
 | 17 | iOS type and file names | Opus | Not started | | |
 | 18 | iOS colours that follow dark mode | Fable | Not started | | |
 | 19 | Android resource tree | Fable | Not started | | |
@@ -208,15 +208,15 @@ Every instance lists its sets in `source`, in the order `permutateThemes` return
 
 | File | Included types | Exclusions |
 | --- | --- | --- |
-| main | color, font group, gradient, number group, shadow, size group, string group | colours with `path[1]` in primitive, context, utility; size types with `path[1] == dimension` |
+| main | color, font group, gradient, number group, shadow, size group, string group | colours with `path[1]` in primitive, context, utility |
 | color-* | color | `path[1]` in base, utility |
-| number-* | duration, letterSpacing, number, opacity, size group | size types with `path[1] == dimension` |
+| number-* | duration, letterSpacing, number, opacity, size group | none |
 | string | asset, content, fontFamily, fontStyle, fontWeight, string, text, textCase, textDecoration, type | none |
 
 - font group: fontFamily, fontSize, fontStyle, fontWeight, letterSpacing, lineHeight, paragraphSpacing, textCase, textDecoration, typography
 - size group: dimension, fontSize, lineHeight, paragraphSpacing
 - Tokens typed `boolean` and `other` are never emitted.
-- The `path[1] == dimension` exclusion matches nothing today: `dimension.base.*` tokens have `dimension` at `path[0]`, and all 71 are emitted. Keep this behaviour.
+- `dimension.base.*` (71 tokens) is emitted in the main and number files on purpose: other sizes reference it, and with `outputReferences` they name it. Until Phase 16 both filters also excluded size types with `path[1] == dimension`, which matched no token.
 
 ### Type alignment
 
@@ -729,8 +729,11 @@ Goal: the filters say what they do. No output change.
 
 Facts: the `path[1] == dimension` exclusion in the main and number filters matches nothing, because `dimension.base.*` tokens have `dimension` at `path[0]`. All 71 are emitted, and with `outputReferences` `SizeUnit…` names `DimensionBase…`, so removing them would break references.
 
-- [ ] Delete the condition from `filters.js` and the Filters table, keep the emitted tokens, and record in the Filters section that `dimension.base.*` is emitted on purpose.
-- [ ] Acceptance: `pnpm tokens:verify` and all preset checks green with no change; tests green.
+- [x] Delete the condition from `filters.js` and the Filters table, keep the emitted tokens, and record in the Filters section that `dimension.base.*` is emitted on purpose.
+- [x] Acceptance: `pnpm tokens:verify` and all preset checks green with no change; tests green.
+
+Result: `cx/allTokens` and `cx/numberTokens` include every size-group token; the dead condition is gone from `filters.js`, the Filters table and Known oddities. No token set in `tokens/` has a `dimension` group at `path[1]`, so the output of both brands is unchanged. The test that kept the exclusion now requires the opposite: `dimension.base.0`, and a size token with `dimension` at `path[1]`, are in the main and number files. Putting the condition back fails it.
+
 
 ## Phase 17: iOS type and file names
 
@@ -812,7 +815,7 @@ These are part of the frozen contract. They are listed so nobody "fixes" them by
 - Fixed in Phase 14: font weight on iOS and Android was a name string such as `"bold"`.
 - Android asset tokens hold SVG markup inside `<string>`. It was raw markup, which aapt2 dropped, so the icons compiled to empty strings; since 2026-09-27 it is escaped and compiles to the SVG text.
 - Fixed in Phase 15: the 88 `gradient.primitive.*` tokens are typed `color` with `linear-gradient(…)` values. Web prints the gradient. iOS and Android printed only its first colour stop, because tinycolor parses the gradient string leniently: `linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, #000000 100%)` becomes `UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0)` and `#00000000`.
-- The `path[1] == dimension` filter matches nothing, so `dimension.base.*` is emitted.
+- Removed in Phase 16: the `path[1] == dimension` filter condition, which matched nothing. `dimension.base.*` is emitted, as before.
 
 ## Risks
 
@@ -899,3 +902,4 @@ Append-only.
 - 2026-09-27 (Phase 13, Opus 5.5): Added `percentLineHeight` and `letterSpacingEm` to `values/shared.js`, a font size context to `encode` and `reference` of both mobile encoders, and `encodingContext` to `templates/references.js`, which the iOS and Android templates call. Rebuilt both brands into the scratchpad and copied the 16 changed files into `dist/` and the 8 changed baseline files into `golden/`; every changed line is a line height or letter spacing part (168 lines in `dist/`). Added contexts to 6 fixture cases, 9 `typographyParts` cases captured from the build, 16 tests in `values-ios.test.js` and `values-android.test.js`, and 2 template tests in `formats.test.js`. Updated the iOS and Android guides, the Style Dictionary page, the CHANGELOG and the tests README. Verified: `pnpm tokens:verify` passes, 42 of 42 files; the six preset checks pass; `pnpm tokens:test` passes, 601 tests; lint and Prettier report nothing; `swiftc` and aapt2 pass for both brands; `pnpm astro:build` built 22 pages. Injected six regressions (template drops the context, Android letter spacing in px, iOS percentage kept, three-decimal rounding, reference without context, context lookup finds nothing); each failed 1 to 7 unit tests. Surprises: (1) font size parts are `96px` in some files and `22` without a unit in others; `parseFloat` reads both. (2) A bare `> file` in zsh waits for input, which stalled a diff command; the harness moved it to the background and it was stopped. Next: Phase 14.
 - 2026-09-27 (Phase 14, Opus 5.5): Replaced `fontWeightName` with `fontWeightNumber` in `values/shared.js`, which uses the web's map through `transformFontWeight` and fails on an unknown name. iOS prints `UIFont.Weight.<name>` at the nearest hundred; Android prints `<integer>` weights. Copied the 8 changed files into `dist/` and the 4 changed baseline files into `golden/`; every changed line is a weight line (1680 in `dist/`), and both spellings of semi bold give 600. Updated 5 fixture cases from `dist/`, added 19 weight tests, and updated the iOS and Android guides, the Style Dictionary page and the CHANGELOG. Verified: `pnpm tokens:verify` passes, 42 of 42 files; the six preset checks pass; `pnpm tokens:test` passes, 619 tests; lint and Prettier report nothing; `swiftc` (type check and a run-time weight check) and aapt2 pass for both brands; `pnpm astro:build` built 22 pages. Injected five regressions (Android weight as a string element, hyphen spelling not read, no unknown-name check, iOS rounding down, `thin` and `ultraLight` swapped); each failed 1 to 3 tests. Surprises: (1) no weight prints a reference, because typography parts hold the resolved weight. (2) The sd-transforms map gives `ultra black` 950, which iOS rounds to `.black`. Next: Phase 15.
 - 2026-09-27 (Phase 15, Opus 5.5): Added `isGradient`, `parseLinearGradient` and `gradientParts` to `values/shared.js`, `partName` to both mobile encoders, float items for the number parts on Android, and a gradient guard in `parseColor`. The iOS and Android templates print a gradient as its parts. Copied the 8 changed colour files into `dist/` and the 4 changed baseline files into `golden/`; only gradient lines changed, and all 3520 parts equal the web gradients. Replaced the two first-stop fixture cases with a `gradients` section (two real tokens, their stop colours and the expected lines), added `values-shared.test.js` and template and part name tests (24 tests). Updated both guides with gradient examples, the Style Dictionary page, the CHANGELOG and the tests README. Verified: `pnpm tokens:verify` passes, 42 of 42 files; the six preset checks pass; `pnpm tokens:test` passes, 643 tests; lint and Prettier report nothing; `swiftc` and aapt2 pass; the iOS guide example runs; `pnpm astro:build` built 22 pages. Injected six regressions (template does not expand, angle not normalised, positions in percent, stop colours without references, Android parts as integers, no gradient guard); each failed 1 to 11 tests. Surprises: (1) the gradient sources reference colours, so the stop colours can print references, and in the old reference baselines each gradient named its first-stop colour. (2) 12 gradients have negative angles. (3) My first cross-check script dropped the angle when splitting the list, reporting every part as different; the output was right. Next: Phase 16.
+- 2026-09-27 (Phase 16, Opus 5.5): Removed the `path[1] !== 'dimension'` condition from the main and number filters, after checking that no token set has a `dimension` group at `path[1]`; the filter comment now says why `dimension.base.*` is emitted. Replaced the test that kept the exclusion. Verified: `pnpm tokens:verify` passes, 42 of 42 files, with no change; the six preset checks pass; `pnpm tokens:test` passes, 643 tests; lint and Prettier report nothing; putting the condition back failed the new test. The site docs do not mention the condition, so they did not change. Next: Phase 17.

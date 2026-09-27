@@ -20,10 +20,12 @@ describe('filters', () => {
     expect(matching).toEqual(files)
   })
 
-  test('keep the path[1] == dimension exclusion of the output contract', () => {
-    const token = { $type: 'dimension', path: ['size', 'dimension', 'large'] }
-    expect(filters['cx/allTokens'](token)).toBe(false)
-    expect(filters['cx/numberTokens'](token)).toBe(false)
+  test('emit every size in the main and number files, whatever its path', () => {
+    const { token } = fixture.cases.find((c) => c.token.path.join('.') === 'dimension.base.0')
+    for (const path of [token.path, ['size', 'dimension', 'large']]) {
+      expect(filters['cx/allTokens']({ ...token, path })).toBe(true)
+      expect(filters['cx/numberTokens']({ ...token, path })).toBe(true)
+    }
   })
 
   test('are the four filters the configs use', () => {
