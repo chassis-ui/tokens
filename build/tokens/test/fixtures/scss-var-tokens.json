@@ -1,0 +1,1240 @@
+{
+  "source": "Resolved chassis/docs tokens of the web-px, web-vw and web-scss presets from the SD 5.5 build and the matching baseline lines of build/tokens/test/golden/, extracted 2026-09-27. \"tokens\" holds, per preset, every token under test and every token it looks up, keyed by path.",
+  "cases": [
+    {
+      "preset": "web-px",
+      "group": "typography",
+      "case": "percent line height and letter spacing",
+      "token": "font.context.jumbo",
+      "expected": "(\"font-family\": \"Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif\", \"font-weight\": 700, \"font-size\": 96px, \"line-height\": 1.25em, \"font-style\": normal, \"letter-spacing\": -0.0313em, \"margin-bottom\": 0px, \"text-transform\": none, \"text-decoration\": none)"
+    },
+    {
+      "preset": "web-px",
+      "group": "typography",
+      "case": "line height relative to the font size",
+      "token": "font.context.lead",
+      "expected": "(\"font-family\": \"Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif\", \"font-weight\": 400, \"font-size\": 22px, \"line-height\": 1.455em, \"font-style\": normal, \"letter-spacing\": 0em, \"margin-bottom\": 0px, \"text-transform\": none, \"text-decoration\": none)"
+    },
+    {
+      "preset": "web-px",
+      "group": "typography",
+      "case": "reference to a typography token",
+      "token": "font.button.medium",
+      "expected": "(\"font-family\": \"Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif\", \"font-weight\": 600, \"font-size\": 16px, \"line-height\": 1.5em, \"font-style\": normal, \"letter-spacing\": 0em, \"margin-bottom\": 0px, \"text-transform\": none, \"text-decoration\": none)"
+    },
+    {
+      "preset": "web-px",
+      "group": "typography",
+      "case": "negative letter spacing",
+      "token": "font.website.hero-title",
+      "expected": "(\"font-family\": \"Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif\", \"font-weight\": 700, \"font-size\": 64px, \"line-height\": 1.25em, \"font-style\": normal, \"letter-spacing\": -0.0625em, \"margin-bottom\": 0px, \"text-transform\": none, \"text-decoration\": none)"
+    },
+    {
+      "preset": "web-px",
+      "group": "resolved",
+      "case": "colour that references a context colour",
+      "token": "color.accordion.item-fg-color",
+      "expected": "#161a1b"
+    },
+    {
+      "preset": "web-px",
+      "group": "resolved",
+      "case": "border radius that references a context radius",
+      "token": "borderRadius.accordion.main",
+      "expected": "6px"
+    },
+    {
+      "preset": "web-px",
+      "group": "resolved",
+      "case": "shadow that references a context shadow",
+      "token": "shadow.alert.main",
+      "expected": "0px 6px 24px -6px rgba(0, 0, 0, 0.1), 0px 3px 12px -3px rgba(0, 0, 0, 0.1)"
+    },
+    {
+      "preset": "web-px",
+      "group": "resolved",
+      "case": "size",
+      "token": "size.unit.16",
+      "expected": "16px"
+    },
+    {
+      "preset": "web-px",
+      "group": "resolved",
+      "case": "negative size",
+      "token": "size.unit.nd05",
+      "expected": "-0.5px"
+    },
+    {
+      "preset": "web-px",
+      "group": "encode",
+      "case": "line height token relative to its font size",
+      "token": "typography.lineHeight.text.medium",
+      "expected": "1.5em"
+    },
+    {
+      "preset": "web-px",
+      "group": "encode",
+      "case": "letter spacing token",
+      "token": "typography.letterSpacing.base.zero",
+      "expected": "0em"
+    },
+    {
+      "preset": "web-px",
+      "group": "encode",
+      "case": "asset is quoted",
+      "token": "icon.accordion.indicator",
+      "expected": "\"<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='currentcolor' viewBox='0 0 24 24'><path d='m11.121 16.629-7.5-7.5a1.205 1.205 0 0 1 0-1.758 1.205 1.205 0 0 1 1.758 0l6.64 6.602 6.602-6.602a1.205 1.205 0 0 1 1.758 0c.508.469.508 1.29 0 1.758l-7.5 7.5a1.205 1.205 0 0 1-1.758 0Z'/></svg>\""
+    },
+    {
+      "preset": "web-vw",
+      "group": "typography",
+      "case": "percent line height and letter spacing",
+      "token": "font.context.jumbo",
+      "expected": "(\"font-family\": \"Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif\", \"font-weight\": 700, \"font-size\": 6vw, \"line-height\": 1.25em, \"font-style\": normal, \"letter-spacing\": -0.0313em, \"margin-bottom\": 0vw, \"text-transform\": none, \"text-decoration\": none)"
+    },
+    {
+      "preset": "web-vw",
+      "group": "typography",
+      "case": "line height relative to the font size",
+      "token": "font.context.lead",
+      "expected": "(\"font-family\": \"Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif\", \"font-weight\": 400, \"font-size\": 1.375vw, \"line-height\": 1.455em, \"font-style\": normal, \"letter-spacing\": 0em, \"margin-bottom\": 0vw, \"text-transform\": none, \"text-decoration\": none)"
+    },
+    {
+      "preset": "web-vw",
+      "group": "typography",
+      "case": "reference to a typography token",
+      "token": "font.button.medium",
+      "expected": "(\"font-family\": \"Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif\", \"font-weight\": 600, \"font-size\": 1vw, \"line-height\": 1.5em, \"font-style\": normal, \"letter-spacing\": 0em, \"margin-bottom\": 0vw, \"text-transform\": none, \"text-decoration\": none)"
+    },
+    {
+      "preset": "web-vw",
+      "group": "typography",
+      "case": "negative letter spacing",
+      "token": "font.website.hero-title",
+      "expected": "(\"font-family\": \"Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif\", \"font-weight\": 700, \"font-size\": 4vw, \"line-height\": 1.25em, \"font-style\": normal, \"letter-spacing\": -0.0625em, \"margin-bottom\": 0vw, \"text-transform\": none, \"text-decoration\": none)"
+    },
+    {
+      "preset": "web-vw",
+      "group": "resolved",
+      "case": "colour that references a context colour",
+      "token": "color.accordion.item-fg-color",
+      "expected": "#161a1b"
+    },
+    {
+      "preset": "web-vw",
+      "group": "resolved",
+      "case": "border radius that references a context radius",
+      "token": "borderRadius.accordion.main",
+      "expected": "0.375vw"
+    },
+    {
+      "preset": "web-vw",
+      "group": "resolved",
+      "case": "shadow that references a context shadow",
+      "token": "shadow.alert.main",
+      "expected": "0vw 0.375vw 1.5vw -0.375vw rgba(0, 0, 0, 0.1), 0vw 0.1875vw 0.75vw -0.1875vw rgba(0, 0, 0, 0.1)"
+    },
+    {
+      "preset": "web-vw",
+      "group": "resolved",
+      "case": "size",
+      "token": "size.unit.16",
+      "expected": "1vw"
+    },
+    {
+      "preset": "web-vw",
+      "group": "resolved",
+      "case": "negative size",
+      "token": "size.unit.nd05",
+      "expected": "-0.0313vw"
+    },
+    {
+      "preset": "web-vw",
+      "group": "encode",
+      "case": "line height token relative to its font size",
+      "token": "typography.lineHeight.text.medium",
+      "expected": "1.5em"
+    },
+    {
+      "preset": "web-vw",
+      "group": "encode",
+      "case": "letter spacing token",
+      "token": "typography.letterSpacing.base.zero",
+      "expected": "0em"
+    },
+    {
+      "preset": "web-vw",
+      "group": "encode",
+      "case": "asset is quoted",
+      "token": "icon.accordion.indicator",
+      "expected": "\"<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='currentcolor' viewBox='0 0 24 24'><path d='m11.121 16.629-7.5-7.5a1.205 1.205 0 0 1 0-1.758 1.205 1.205 0 0 1 1.758 0l6.64 6.602 6.602-6.602a1.205 1.205 0 0 1 1.758 0c.508.469.508 1.29 0 1.758l-7.5 7.5a1.205 1.205 0 0 1-1.758 0Z'/></svg>\""
+    },
+    {
+      "preset": "web-scss",
+      "group": "typography",
+      "case": "percent line height and letter spacing",
+      "token": "font.context.jumbo",
+      "expected": "(\"font-family\": \"Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif\", \"font-weight\": 700, \"font-size\": 6rem, \"line-height\": 1.25em, \"font-style\": normal, \"letter-spacing\": -0.0313em, \"margin-bottom\": 0rem, \"text-transform\": none, \"text-decoration\": none)"
+    },
+    {
+      "preset": "web-scss",
+      "group": "typography",
+      "case": "line height relative to the font size",
+      "token": "font.context.lead",
+      "expected": "(\"font-family\": \"Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif\", \"font-weight\": 400, \"font-size\": 1.375rem, \"line-height\": 1.455em, \"font-style\": normal, \"letter-spacing\": 0em, \"margin-bottom\": 0rem, \"text-transform\": none, \"text-decoration\": none)"
+    },
+    {
+      "preset": "web-scss",
+      "group": "typography",
+      "case": "reference to a typography token",
+      "token": "font.button.medium",
+      "expected": "(\"font-family\": \"Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif\", \"font-weight\": 600, \"font-size\": 1rem, \"line-height\": 1.5em, \"font-style\": normal, \"letter-spacing\": 0em, \"margin-bottom\": 0rem, \"text-transform\": none, \"text-decoration\": none)"
+    },
+    {
+      "preset": "web-scss",
+      "group": "typography",
+      "case": "negative letter spacing",
+      "token": "font.website.hero-title",
+      "expected": "(\"font-family\": \"Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif\", \"font-weight\": 700, \"font-size\": 4rem, \"line-height\": 1.25em, \"font-style\": normal, \"letter-spacing\": -0.0625em, \"margin-bottom\": 0rem, \"text-transform\": none, \"text-decoration\": none)"
+    },
+    {
+      "preset": "web-scss",
+      "group": "resolved",
+      "case": "colour that references a context colour",
+      "token": "color.accordion.item-fg-color",
+      "expected": "#161a1b"
+    },
+    {
+      "preset": "web-scss",
+      "group": "resolved",
+      "case": "border radius that references a context radius",
+      "token": "borderRadius.accordion.main",
+      "expected": "0.375rem"
+    },
+    {
+      "preset": "web-scss",
+      "group": "resolved",
+      "case": "shadow that references a context shadow",
+      "token": "shadow.alert.main",
+      "expected": "0rem 0.375rem 1.5rem -0.375rem rgba(0, 0, 0, 0.1), 0rem 0.1875rem 0.75rem -0.1875rem rgba(0, 0, 0, 0.1)"
+    },
+    {
+      "preset": "web-scss",
+      "group": "resolved",
+      "case": "size",
+      "token": "size.unit.16",
+      "expected": "1rem"
+    },
+    {
+      "preset": "web-scss",
+      "group": "resolved",
+      "case": "negative size",
+      "token": "size.unit.nd05",
+      "expected": "-0.0313rem"
+    },
+    {
+      "preset": "web-scss",
+      "group": "encode",
+      "case": "line height token relative to its font size",
+      "token": "typography.lineHeight.text.medium",
+      "expected": "1.5em"
+    },
+    {
+      "preset": "web-scss",
+      "group": "encode",
+      "case": "letter spacing token",
+      "token": "typography.letterSpacing.base.zero",
+      "expected": "0em"
+    },
+    {
+      "preset": "web-scss",
+      "group": "encode",
+      "case": "asset is quoted",
+      "token": "icon.accordion.indicator",
+      "expected": "\"<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='currentcolor' viewBox='0 0 24 24'><path d='m11.121 16.629-7.5-7.5a1.205 1.205 0 0 1 0-1.758 1.205 1.205 0 0 1 1.758 0l6.64 6.602 6.602-6.602a1.205 1.205 0 0 1 1.758 0c.508.469.508 1.29 0 1.758l-7.5 7.5a1.205 1.205 0 0 1-1.758 0Z'/></svg>\""
+    }
+  ],
+  "tokens": {
+    "web-px": {
+      "font.context.jumbo": {
+        "name": "cx-font-context-jumbo",
+        "path": [
+          "font",
+          "context",
+          "jumbo"
+        ],
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif",
+          "fontWeight": 700,
+          "lineHeight": "125%",
+          "fontSize": "96px",
+          "letterSpacing": "-0.5px",
+          "paragraphSpacing": "0px",
+          "textCase": "none",
+          "textDecoration": "none",
+          "fontStyle": "normal"
+        },
+        "original": {
+          "$value": {
+            "fontFamily": "{typography.fontFamily.text}",
+            "fontWeight": "Bold",
+            "lineHeight": "125%",
+            "fontSize": "{size.unit.96}",
+            "letterSpacing": "{size.unit.nd05}",
+            "paragraphSpacing": "{typography.paragraphSpacing.base.zero}",
+            "textCase": "{typography.textCase.base.none}",
+            "textDecoration": "{typography.textDecoration.base.none}",
+            "fontStyle": "normal"
+          },
+          "$extensions": {
+            "chassis": {
+              "fontWeightPath": [
+                "typography",
+                "fontWeight",
+                "text",
+                "mass"
+              ],
+              "sourceOrder": 3150
+            }
+          }
+        }
+      },
+      "font.context.lead": {
+        "name": "cx-font-context-lead",
+        "path": [
+          "font",
+          "context",
+          "lead"
+        ],
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif",
+          "fontWeight": 400,
+          "lineHeight": "32px",
+          "fontSize": "22px",
+          "letterSpacing": "0px",
+          "paragraphSpacing": "0px",
+          "textCase": "none",
+          "textDecoration": "none",
+          "fontStyle": "normal"
+        },
+        "original": {
+          "$value": {
+            "fontFamily": "{typography.fontFamily.text}",
+            "fontWeight": "Regular",
+            "lineHeight": "{typography.lineHeight.text.xlarge}",
+            "fontSize": "{typography.fontSize.text.xlarge}",
+            "letterSpacing": "{typography.letterSpacing.base.zero}",
+            "paragraphSpacing": "{typography.paragraphSpacing.base.zero}",
+            "textCase": "{typography.textCase.base.none}",
+            "textDecoration": "{typography.textDecoration.base.none}",
+            "fontStyle": "normal"
+          },
+          "$extensions": {
+            "chassis": {
+              "fontWeightPath": [
+                "typography",
+                "fontWeight",
+                "text",
+                "normal"
+              ],
+              "sourceOrder": 3152
+            }
+          }
+        }
+      },
+      "font.button.medium": {
+        "name": "cx-font-button-medium",
+        "path": [
+          "font",
+          "button",
+          "medium"
+        ],
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif",
+          "fontWeight": "600",
+          "lineHeight": "24px",
+          "fontSize": "16px",
+          "letterSpacing": "0px",
+          "paragraphSpacing": "0px",
+          "textCase": "none",
+          "textDecoration": "none",
+          "fontStyle": "normal"
+        },
+        "original": {
+          "$value": "{font.text.medium.strong}",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 3291
+            }
+          }
+        }
+      },
+      "font.website.hero-title": {
+        "name": "cx-font-website-hero-title",
+        "path": [
+          "font",
+          "website",
+          "hero-title"
+        ],
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif",
+          "fontWeight": 700,
+          "lineHeight": "125%",
+          "fontSize": "64px",
+          "letterSpacing": "-1px",
+          "paragraphSpacing": "0px",
+          "textCase": "none",
+          "textDecoration": "none",
+          "fontStyle": "normal"
+        },
+        "original": {
+          "$value": {
+            "fontFamily": "{typography.fontFamily.text}",
+            "fontWeight": "Bold",
+            "lineHeight": "125%",
+            "fontSize": "{typography.fontSize.website.hero-title}",
+            "letterSpacing": "{size.unit.n1}",
+            "paragraphSpacing": "{typography.paragraphSpacing.base.zero}",
+            "textCase": "{typography.textCase.base.none}",
+            "textDecoration": "{typography.textDecoration.base.none}",
+            "fontStyle": "normal"
+          },
+          "$extensions": {
+            "chassis": {
+              "fontWeightPath": [
+                "typography",
+                "fontWeight",
+                "text",
+                "mass"
+              ],
+              "sourceOrder": 3335
+            }
+          }
+        }
+      },
+      "color.accordion.item-fg-color": {
+        "name": "cx-color-accordion-item-fg-color",
+        "path": [
+          "color",
+          "accordion",
+          "item-fg-color"
+        ],
+        "$type": "color",
+        "$value": "#161a1b",
+        "original": {
+          "$value": "{color.context.default.fg-main}",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 2573
+            }
+          }
+        }
+      },
+      "borderRadius.accordion.main": {
+        "name": "cx-border-radius-accordion-main",
+        "path": [
+          "borderRadius",
+          "accordion",
+          "main"
+        ],
+        "$type": "dimension",
+        "$value": "6px",
+        "original": {
+          "$value": "{borderRadius.context.medium}",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 3023
+            }
+          }
+        }
+      },
+      "shadow.alert.main": {
+        "name": "cx-shadow-alert-main",
+        "path": [
+          "shadow",
+          "alert",
+          "main"
+        ],
+        "$type": "shadow",
+        "$value": "0px 6px 24px -6px rgba(0, 0, 0, 0.1), 0px 3px 12px -3px rgba(0, 0, 0, 0.1)",
+        "original": {
+          "$value": "{shadow.context.large}",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 3409
+            }
+          }
+        }
+      },
+      "size.unit.16": {
+        "name": "cx-size-unit-16",
+        "path": [
+          "size",
+          "unit",
+          "16"
+        ],
+        "$type": "dimension",
+        "$value": "16px",
+        "original": {
+          "$value": "{dimension.base.16}",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 94
+            }
+          }
+        }
+      },
+      "size.unit.nd05": {
+        "name": "cx-size-unit-nd05",
+        "path": [
+          "size",
+          "unit",
+          "nd05"
+        ],
+        "$type": "dimension",
+        "$value": "-0.5px",
+        "original": {
+          "$value": "{dimension.base.nd05}",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 148
+            }
+          }
+        }
+      },
+      "typography.lineHeight.text.medium": {
+        "name": "cx-typography-line-height-text-medium",
+        "path": [
+          "typography",
+          "lineHeight",
+          "text",
+          "medium"
+        ],
+        "$type": "lineHeight",
+        "$value": "24px",
+        "original": {
+          "$value": "24",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 2932
+            }
+          }
+        }
+      },
+      "typography.fontSize.text.medium": {
+        "name": "cx-typography-font-size-text-medium",
+        "path": [
+          "typography",
+          "fontSize",
+          "text",
+          "medium"
+        ],
+        "$type": "fontSize",
+        "$value": "16px",
+        "original": {
+          "$value": "16",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 2890
+            }
+          }
+        }
+      },
+      "typography.letterSpacing.base.zero": {
+        "name": "cx-typography-letter-spacing-base-zero",
+        "path": [
+          "typography",
+          "letterSpacing",
+          "base",
+          "zero"
+        ],
+        "$type": "number",
+        "$value": "0px",
+        "original": {
+          "$value": "{size.unit.0}",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 2961
+            }
+          }
+        }
+      },
+      "icon.accordion.indicator": {
+        "name": "cx-icon-accordion-indicator",
+        "path": [
+          "icon",
+          "accordion",
+          "indicator"
+        ],
+        "$type": "asset",
+        "$value": "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='currentcolor' viewBox='0 0 24 24'><path d='m11.121 16.629-7.5-7.5a1.205 1.205 0 0 1 0-1.758 1.205 1.205 0 0 1 1.758 0l6.64 6.602 6.602-6.602a1.205 1.205 0 0 1 1.758 0c.508.469.508 1.29 0 1.758l-7.5 7.5a1.205 1.205 0 0 1-1.758 0Z'/></svg>",
+        "original": {
+          "$value": "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='currentcolor' viewBox='0 0 24 24'><path d='m11.121 16.629-7.5-7.5a1.205 1.205 0 0 1 0-1.758 1.205 1.205 0 0 1 1.758 0l6.64 6.602 6.602-6.602a1.205 1.205 0 0 1 1.758 0c.508.469.508 1.29 0 1.758l-7.5 7.5a1.205 1.205 0 0 1-1.758 0Z'/></svg>",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 3371
+            }
+          }
+        }
+      }
+    },
+    "web-vw": {
+      "font.context.jumbo": {
+        "name": "cx-font-context-jumbo",
+        "path": [
+          "font",
+          "context",
+          "jumbo"
+        ],
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif",
+          "fontWeight": 700,
+          "lineHeight": "125%",
+          "fontSize": "6vw",
+          "letterSpacing": "-0.0313vw",
+          "paragraphSpacing": "0vw",
+          "textCase": "none",
+          "textDecoration": "none",
+          "fontStyle": "normal"
+        },
+        "original": {
+          "$value": {
+            "fontFamily": "{typography.fontFamily.text}",
+            "fontWeight": "Bold",
+            "lineHeight": "125%",
+            "fontSize": "{size.unit.96}",
+            "letterSpacing": "{size.unit.nd05}",
+            "paragraphSpacing": "{typography.paragraphSpacing.base.zero}",
+            "textCase": "{typography.textCase.base.none}",
+            "textDecoration": "{typography.textDecoration.base.none}",
+            "fontStyle": "normal"
+          },
+          "$extensions": {
+            "chassis": {
+              "fontWeightPath": [
+                "typography",
+                "fontWeight",
+                "text",
+                "mass"
+              ],
+              "sourceOrder": 3150
+            }
+          }
+        }
+      },
+      "font.context.lead": {
+        "name": "cx-font-context-lead",
+        "path": [
+          "font",
+          "context",
+          "lead"
+        ],
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif",
+          "fontWeight": 400,
+          "lineHeight": "2vw",
+          "fontSize": "1.375vw",
+          "letterSpacing": "0vw",
+          "paragraphSpacing": "0vw",
+          "textCase": "none",
+          "textDecoration": "none",
+          "fontStyle": "normal"
+        },
+        "original": {
+          "$value": {
+            "fontFamily": "{typography.fontFamily.text}",
+            "fontWeight": "Regular",
+            "lineHeight": "{typography.lineHeight.text.xlarge}",
+            "fontSize": "{typography.fontSize.text.xlarge}",
+            "letterSpacing": "{typography.letterSpacing.base.zero}",
+            "paragraphSpacing": "{typography.paragraphSpacing.base.zero}",
+            "textCase": "{typography.textCase.base.none}",
+            "textDecoration": "{typography.textDecoration.base.none}",
+            "fontStyle": "normal"
+          },
+          "$extensions": {
+            "chassis": {
+              "fontWeightPath": [
+                "typography",
+                "fontWeight",
+                "text",
+                "normal"
+              ],
+              "sourceOrder": 3152
+            }
+          }
+        }
+      },
+      "font.button.medium": {
+        "name": "cx-font-button-medium",
+        "path": [
+          "font",
+          "button",
+          "medium"
+        ],
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif",
+          "fontWeight": "600",
+          "lineHeight": "1.5vw",
+          "fontSize": "1vw",
+          "letterSpacing": "0vw",
+          "paragraphSpacing": "0vw",
+          "textCase": "none",
+          "textDecoration": "none",
+          "fontStyle": "normal"
+        },
+        "original": {
+          "$value": "{font.text.medium.strong}",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 3291
+            }
+          }
+        }
+      },
+      "font.website.hero-title": {
+        "name": "cx-font-website-hero-title",
+        "path": [
+          "font",
+          "website",
+          "hero-title"
+        ],
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif",
+          "fontWeight": 700,
+          "lineHeight": "125%",
+          "fontSize": "4vw",
+          "letterSpacing": "-0.0625vw",
+          "paragraphSpacing": "0vw",
+          "textCase": "none",
+          "textDecoration": "none",
+          "fontStyle": "normal"
+        },
+        "original": {
+          "$value": {
+            "fontFamily": "{typography.fontFamily.text}",
+            "fontWeight": "Bold",
+            "lineHeight": "125%",
+            "fontSize": "{typography.fontSize.website.hero-title}",
+            "letterSpacing": "{size.unit.n1}",
+            "paragraphSpacing": "{typography.paragraphSpacing.base.zero}",
+            "textCase": "{typography.textCase.base.none}",
+            "textDecoration": "{typography.textDecoration.base.none}",
+            "fontStyle": "normal"
+          },
+          "$extensions": {
+            "chassis": {
+              "fontWeightPath": [
+                "typography",
+                "fontWeight",
+                "text",
+                "mass"
+              ],
+              "sourceOrder": 3335
+            }
+          }
+        }
+      },
+      "color.accordion.item-fg-color": {
+        "name": "cx-color-accordion-item-fg-color",
+        "path": [
+          "color",
+          "accordion",
+          "item-fg-color"
+        ],
+        "$type": "color",
+        "$value": "#161a1b",
+        "original": {
+          "$value": "{color.context.default.fg-main}",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 2573
+            }
+          }
+        }
+      },
+      "borderRadius.accordion.main": {
+        "name": "cx-border-radius-accordion-main",
+        "path": [
+          "borderRadius",
+          "accordion",
+          "main"
+        ],
+        "$type": "dimension",
+        "$value": "0.375vw",
+        "original": {
+          "$value": "{borderRadius.context.medium}",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 3023
+            }
+          }
+        }
+      },
+      "shadow.alert.main": {
+        "name": "cx-shadow-alert-main",
+        "path": [
+          "shadow",
+          "alert",
+          "main"
+        ],
+        "$type": "shadow",
+        "$value": "0vw 0.375vw 1.5vw -0.375vw rgba(0, 0, 0, 0.1), 0vw 0.1875vw 0.75vw -0.1875vw rgba(0, 0, 0, 0.1)",
+        "original": {
+          "$value": "{shadow.context.large}",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 3409
+            }
+          }
+        }
+      },
+      "size.unit.16": {
+        "name": "cx-size-unit-16",
+        "path": [
+          "size",
+          "unit",
+          "16"
+        ],
+        "$type": "dimension",
+        "$value": "1vw",
+        "original": {
+          "$value": "{dimension.base.16}",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 94
+            }
+          }
+        }
+      },
+      "size.unit.nd05": {
+        "name": "cx-size-unit-nd05",
+        "path": [
+          "size",
+          "unit",
+          "nd05"
+        ],
+        "$type": "dimension",
+        "$value": "-0.0313vw",
+        "original": {
+          "$value": "{dimension.base.nd05}",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 148
+            }
+          }
+        }
+      },
+      "typography.lineHeight.text.medium": {
+        "name": "cx-typography-line-height-text-medium",
+        "path": [
+          "typography",
+          "lineHeight",
+          "text",
+          "medium"
+        ],
+        "$type": "lineHeight",
+        "$value": "1.5vw",
+        "original": {
+          "$value": "24",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 2932
+            }
+          }
+        }
+      },
+      "typography.fontSize.text.medium": {
+        "name": "cx-typography-font-size-text-medium",
+        "path": [
+          "typography",
+          "fontSize",
+          "text",
+          "medium"
+        ],
+        "$type": "fontSize",
+        "$value": "1vw",
+        "original": {
+          "$value": "16",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 2890
+            }
+          }
+        }
+      },
+      "typography.letterSpacing.base.zero": {
+        "name": "cx-typography-letter-spacing-base-zero",
+        "path": [
+          "typography",
+          "letterSpacing",
+          "base",
+          "zero"
+        ],
+        "$type": "number",
+        "$value": "0vw",
+        "original": {
+          "$value": "{size.unit.0}",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 2961
+            }
+          }
+        }
+      },
+      "icon.accordion.indicator": {
+        "name": "cx-icon-accordion-indicator",
+        "path": [
+          "icon",
+          "accordion",
+          "indicator"
+        ],
+        "$type": "asset",
+        "$value": "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='currentcolor' viewBox='0 0 24 24'><path d='m11.121 16.629-7.5-7.5a1.205 1.205 0 0 1 0-1.758 1.205 1.205 0 0 1 1.758 0l6.64 6.602 6.602-6.602a1.205 1.205 0 0 1 1.758 0c.508.469.508 1.29 0 1.758l-7.5 7.5a1.205 1.205 0 0 1-1.758 0Z'/></svg>",
+        "original": {
+          "$value": "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='currentcolor' viewBox='0 0 24 24'><path d='m11.121 16.629-7.5-7.5a1.205 1.205 0 0 1 0-1.758 1.205 1.205 0 0 1 1.758 0l6.64 6.602 6.602-6.602a1.205 1.205 0 0 1 1.758 0c.508.469.508 1.29 0 1.758l-7.5 7.5a1.205 1.205 0 0 1-1.758 0Z'/></svg>",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 3371
+            }
+          }
+        }
+      }
+    },
+    "web-scss": {
+      "font.context.jumbo": {
+        "name": "cx-font-context-jumbo",
+        "path": [
+          "font",
+          "context",
+          "jumbo"
+        ],
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif",
+          "fontWeight": 700,
+          "lineHeight": "125%",
+          "fontSize": "6rem",
+          "letterSpacing": "-0.0313rem",
+          "paragraphSpacing": "0rem",
+          "textCase": "none",
+          "textDecoration": "none",
+          "fontStyle": "normal"
+        },
+        "original": {
+          "$value": {
+            "fontFamily": "{typography.fontFamily.text}",
+            "fontWeight": "Bold",
+            "lineHeight": "125%",
+            "fontSize": "{size.unit.96}",
+            "letterSpacing": "{size.unit.nd05}",
+            "paragraphSpacing": "{typography.paragraphSpacing.base.zero}",
+            "textCase": "{typography.textCase.base.none}",
+            "textDecoration": "{typography.textDecoration.base.none}",
+            "fontStyle": "normal"
+          },
+          "$extensions": {
+            "chassis": {
+              "fontWeightPath": [
+                "typography",
+                "fontWeight",
+                "text",
+                "mass"
+              ],
+              "sourceOrder": 3150
+            }
+          }
+        }
+      },
+      "font.context.lead": {
+        "name": "cx-font-context-lead",
+        "path": [
+          "font",
+          "context",
+          "lead"
+        ],
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif",
+          "fontWeight": 400,
+          "lineHeight": "2rem",
+          "fontSize": "1.375rem",
+          "letterSpacing": "0rem",
+          "paragraphSpacing": "0rem",
+          "textCase": "none",
+          "textDecoration": "none",
+          "fontStyle": "normal"
+        },
+        "original": {
+          "$value": {
+            "fontFamily": "{typography.fontFamily.text}",
+            "fontWeight": "Regular",
+            "lineHeight": "{typography.lineHeight.text.xlarge}",
+            "fontSize": "{typography.fontSize.text.xlarge}",
+            "letterSpacing": "{typography.letterSpacing.base.zero}",
+            "paragraphSpacing": "{typography.paragraphSpacing.base.zero}",
+            "textCase": "{typography.textCase.base.none}",
+            "textDecoration": "{typography.textDecoration.base.none}",
+            "fontStyle": "normal"
+          },
+          "$extensions": {
+            "chassis": {
+              "fontWeightPath": [
+                "typography",
+                "fontWeight",
+                "text",
+                "normal"
+              ],
+              "sourceOrder": 3152
+            }
+          }
+        }
+      },
+      "font.button.medium": {
+        "name": "cx-font-button-medium",
+        "path": [
+          "font",
+          "button",
+          "medium"
+        ],
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif",
+          "fontWeight": "600",
+          "lineHeight": "1.5rem",
+          "fontSize": "1rem",
+          "letterSpacing": "0rem",
+          "paragraphSpacing": "0rem",
+          "textCase": "none",
+          "textDecoration": "none",
+          "fontStyle": "normal"
+        },
+        "original": {
+          "$value": "{font.text.medium.strong}",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 3291
+            }
+          }
+        }
+      },
+      "font.website.hero-title": {
+        "name": "cx-font-website-hero-title",
+        "path": [
+          "font",
+          "website",
+          "hero-title"
+        ],
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif",
+          "fontWeight": 700,
+          "lineHeight": "125%",
+          "fontSize": "4rem",
+          "letterSpacing": "-0.0625rem",
+          "paragraphSpacing": "0rem",
+          "textCase": "none",
+          "textDecoration": "none",
+          "fontStyle": "normal"
+        },
+        "original": {
+          "$value": {
+            "fontFamily": "{typography.fontFamily.text}",
+            "fontWeight": "Bold",
+            "lineHeight": "125%",
+            "fontSize": "{typography.fontSize.website.hero-title}",
+            "letterSpacing": "{size.unit.n1}",
+            "paragraphSpacing": "{typography.paragraphSpacing.base.zero}",
+            "textCase": "{typography.textCase.base.none}",
+            "textDecoration": "{typography.textDecoration.base.none}",
+            "fontStyle": "normal"
+          },
+          "$extensions": {
+            "chassis": {
+              "fontWeightPath": [
+                "typography",
+                "fontWeight",
+                "text",
+                "mass"
+              ],
+              "sourceOrder": 3335
+            }
+          }
+        }
+      },
+      "color.accordion.item-fg-color": {
+        "name": "cx-color-accordion-item-fg-color",
+        "path": [
+          "color",
+          "accordion",
+          "item-fg-color"
+        ],
+        "$type": "color",
+        "$value": "#161a1b",
+        "original": {
+          "$value": "{color.context.default.fg-main}",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 2573
+            }
+          }
+        }
+      },
+      "borderRadius.accordion.main": {
+        "name": "cx-border-radius-accordion-main",
+        "path": [
+          "borderRadius",
+          "accordion",
+          "main"
+        ],
+        "$type": "dimension",
+        "$value": "0.375rem",
+        "original": {
+          "$value": "{borderRadius.context.medium}",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 3023
+            }
+          }
+        }
+      },
+      "shadow.alert.main": {
+        "name": "cx-shadow-alert-main",
+        "path": [
+          "shadow",
+          "alert",
+          "main"
+        ],
+        "$type": "shadow",
+        "$value": "0rem 0.375rem 1.5rem -0.375rem rgba(0, 0, 0, 0.1), 0rem 0.1875rem 0.75rem -0.1875rem rgba(0, 0, 0, 0.1)",
+        "original": {
+          "$value": "{shadow.context.large}",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 3409
+            }
+          }
+        }
+      },
+      "size.unit.16": {
+        "name": "cx-size-unit-16",
+        "path": [
+          "size",
+          "unit",
+          "16"
+        ],
+        "$type": "dimension",
+        "$value": "1rem",
+        "original": {
+          "$value": "{dimension.base.16}",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 94
+            }
+          }
+        }
+      },
+      "size.unit.nd05": {
+        "name": "cx-size-unit-nd05",
+        "path": [
+          "size",
+          "unit",
+          "nd05"
+        ],
+        "$type": "dimension",
+        "$value": "-0.0313rem",
+        "original": {
+          "$value": "{dimension.base.nd05}",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 148
+            }
+          }
+        }
+      },
+      "typography.lineHeight.text.medium": {
+        "name": "cx-typography-line-height-text-medium",
+        "path": [
+          "typography",
+          "lineHeight",
+          "text",
+          "medium"
+        ],
+        "$type": "lineHeight",
+        "$value": "1.5rem",
+        "original": {
+          "$value": "24",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 2932
+            }
+          }
+        }
+      },
+      "typography.fontSize.text.medium": {
+        "name": "cx-typography-font-size-text-medium",
+        "path": [
+          "typography",
+          "fontSize",
+          "text",
+          "medium"
+        ],
+        "$type": "fontSize",
+        "$value": "1rem",
+        "original": {
+          "$value": "16",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 2890
+            }
+          }
+        }
+      },
+      "typography.letterSpacing.base.zero": {
+        "name": "cx-typography-letter-spacing-base-zero",
+        "path": [
+          "typography",
+          "letterSpacing",
+          "base",
+          "zero"
+        ],
+        "$type": "number",
+        "$value": "0rem",
+        "original": {
+          "$value": "{size.unit.0}",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 2961
+            }
+          }
+        }
+      },
+      "icon.accordion.indicator": {
+        "name": "cx-icon-accordion-indicator",
+        "path": [
+          "icon",
+          "accordion",
+          "indicator"
+        ],
+        "$type": "asset",
+        "$value": "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='currentcolor' viewBox='0 0 24 24'><path d='m11.121 16.629-7.5-7.5a1.205 1.205 0 0 1 0-1.758 1.205 1.205 0 0 1 1.758 0l6.64 6.602 6.602-6.602a1.205 1.205 0 0 1 1.758 0c.508.469.508 1.29 0 1.758l-7.5 7.5a1.205 1.205 0 0 1-1.758 0Z'/></svg>",
+        "original": {
+          "$value": "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='currentcolor' viewBox='0 0 24 24'><path d='m11.121 16.629-7.5-7.5a1.205 1.205 0 0 1 0-1.758 1.205 1.205 0 0 1 1.758 0l6.64 6.602 6.602-6.602a1.205 1.205 0 0 1 1.758 0c.508.469.508 1.29 0 1.758l-7.5 7.5a1.205 1.205 0 0 1-1.758 0Z'/></svg>",
+          "$extensions": {
+            "chassis": {
+              "sourceOrder": 3371
+            }
+          }
+        }
+      }
+    }
+  }
+}

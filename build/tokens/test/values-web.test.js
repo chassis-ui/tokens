@@ -14,8 +14,11 @@ import {
   letterSpacingEm,
   lineHeightEm,
   percentToEm,
+  pxSize,
   remSize,
-  typographyMap
+  resolvedTypographyMap,
+  typographyMap,
+  vwSize
 } from '../values/web.js'
 
 const fixture = JSON.parse(
@@ -55,6 +58,39 @@ describe('remSize', () => {
   })
 })
 
+describe('pxSize', () => {
+  test.each(fixture.remSize)('$case ($token.name)', ({ token }) => {
+    expect(pxSize(token)).toBe(`${parseFloat(token.$value)}px`)
+  })
+
+  test('keeps px values and converts each space-separated value', () => {
+    expect(pxSize({ name: 'x', $value: '8px 4 -0.5' })).toBe('8px 4px -0.5px')
+  })
+
+  test('throws on a value that is not a number', () => {
+    expect(() => pxSize({ name: 'cx-size-bad', $value: 'auto' })).toThrow(
+      "Invalid Number: 'cx-size-bad: auto' is not a valid number, cannot transform to 'px'."
+    )
+  })
+})
+
+describe('vwSize', () => {
+  // The base font size in pixels is 1vw, so the numbers are those of rem
+  test.each(fixture.remSize)('$case ($token.name)', ({ token, expected }) => {
+    expect(vwSize(token, 16)).toBe(expected.replaceAll('rem', 'vw'))
+  })
+
+  test('keeps vw values and converts each space-separated value', () => {
+    expect(vwSize({ name: 'x', $value: '0.5vw 8px' }, 16)).toBe('0.5vw 0.5vw')
+  })
+
+  test('throws on a value that is not a number', () => {
+    expect(() => vwSize({ name: 'cx-size-bad', $value: 'auto' }, 16)).toThrow(
+      "Invalid Number: 'cx-size-bad: auto' is not a valid number, cannot transform to 'vw'."
+    )
+  })
+})
+
 describe('cssShadow', () => {
   test.each(fixture.cssShadow)('$case', ({ value, expected }) => {
     expect(cssShadow(value)).toBe(expected)
@@ -76,6 +112,33 @@ describe('typographyMap', () => {
   })
 })
 
+describe('resolvedTypographyMap', () => {
+  const value = {
+    fontFamily: 'Inter, system-ui, sans-serif',
+    fontWeight: 700,
+    lineHeight: '125%',
+    fontSize: '96px',
+    letterSpacing: '-0.5px',
+    paragraphSpacing: '0px',
+    textCase: 'none',
+    textDecoration: 'none',
+    fontStyle: 'normal'
+  }
+
+  test('quotes the family list and converts a percent line height', () => {
+    expect(resolvedTypographyMap(value, 16)).toBe(
+      '("font-family": "Inter, system-ui, sans-serif", "font-weight": 700, "font-size": 96px, ' +
+        '"line-height": 1.25em, "font-style": normal, "letter-spacing": -0.0313em, ' +
+        '"margin-bottom": 0px, "text-transform": none, "text-decoration": none)'
+    )
+  })
+
+  test('prints a line height relative to the font size', () => {
+    const map = resolvedTypographyMap({ ...value, fontSize: '22px', lineHeight: '32px' }, 16)
+    expect(map).toContain('"line-height": 1.455em')
+  })
+})
+
 describe('unit helpers', () => {
   test('letterSpacingEm keeps the math-rounded number', () => {
     expect(letterSpacingEm('-0.0313rem')).toBe('-0.0313em')
@@ -83,6 +146,17 @@ describe('unit helpers', () => {
 
   test('letterSpacingEm prints zero as 0em', () => {
     expect(letterSpacingEm('0rem')).toBe('0em')
+    expect(letterSpacingEm('0px')).toBe('0em')
+  })
+
+  test('letterSpacingEm divides a px value by the base font size, to four decimals', () => {
+    expect(letterSpacingEm('-0.5px', 16)).toBe('-0.0313em')
+    expect(letterSpacingEm('-1px', 16)).toBe('-0.0625em')
+    expect(letterSpacingEm('2px')).toBe('0.125em')
+  })
+
+  test('letterSpacingEm does not divide rem and vw values', () => {
+    expect(letterSpacingEm('-0.0313vw', 16)).toBe('-0.0313em')
   })
 
   test('lineHeightEm trims trailing zeros', () => {

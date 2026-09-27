@@ -11,7 +11,9 @@
 import { fileHeader, setSwiftFileProperties } from 'style-dictionary/utils'
 import androidResourcesTemplate from './templates/android-resources.template.js'
 import iosSwiftClassTemplate from './templates/ios-swift-class.template.js'
-import scssChassisCSSTemplate from './templates/scss-chassis-css.template.js'
+import scssTemplate from './templates/scss.template.js'
+import { webValue } from './css-var-policy.js'
+import { scssValue } from './scss-var-policy.js'
 
 /**
  * Returns the tokens in source order, by the number the preprocessor gave them. Expanded
@@ -25,6 +27,20 @@ export function inSourceOrder(tokens) {
 }
 
 /**
+ * Returns a format that generates SCSS variables.
+ * @param {Function} value - Returns the SCSS value of a token.
+ * @returns {Function} - The format function.
+ */
+function scssFormat(value) {
+  return async function ({ dictionary, options, file, platform }) {
+    const { formatting, commentStyle } = options
+    const header = await fileHeader({ file, formatting, commentStyle })
+    dictionary.allTokens = inSourceOrder(dictionary.allTokens)
+    return scssTemplate({ dictionary, options, file, header, platform, value })
+  }
+}
+
+/**
  * Registers custom formats with Style Dictionary.
  * @param {Object} StyleDictionary - The Style Dictionary instance.
  */
@@ -34,12 +50,15 @@ export default function (StyleDictionary) {
    */
   StyleDictionary.registerFormat({
     name: 'cx/scss-chassis-css',
-    format: async function ({ dictionary, options, file, platform }) {
-      const { formatting, commentStyle } = options
-      const header = await fileHeader({ file, formatting, commentStyle })
-      dictionary.allTokens = inSourceOrder(dictionary.allTokens)
-      return scssChassisCSSTemplate({ dictionary, options, file, header, platform })
-    }
+    format: scssFormat(webValue)
+  })
+
+  /**
+   * A format to generate SCSS variables for other CSS frameworks.
+   */
+  StyleDictionary.registerFormat({
+    name: 'cx/scss-variables',
+    format: scssFormat(scssValue)
   })
 
   /**

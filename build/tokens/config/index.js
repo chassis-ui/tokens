@@ -6,11 +6,17 @@
  */
 
 import web from './web.js'
+import webPx from './web-px.js'
+import webScss from './web-scss.js'
+import webVw from './web-vw.js'
 import ios from './ios.js'
 import android from './android.js'
 
 const platformConfigs = {
   web,
+  'web-px': webPx,
+  'web-scss': webScss,
+  'web-vw': webVw,
   ios,
   android
 }

@@ -1,11 +1,10 @@
 /**
  * @file web.js
- * @description Web platform configuration with rem units (default)
+ * @description Web platform configuration: SCSS variables for Chassis CSS in rem units
+ *              (default), and the factory of the other web presets
  * @copyright Copyright (c) 2026 Ozgur Gunes
  * @license MIT
  */
-
-const format = 'cx/scss-chassis-css'
 
 const options = {
   fileHeader: 'cxFileHeader',
@@ -19,16 +18,16 @@ const transforms = [
   'ts/color/modifiers',
   'ts/color/css/hexrgba',
   'ts/typography/fontWeight',
-  'cx/shadow/web',
-  'cx/size/rem'
+  'cx/shadow/web'
 ]
 
 /**
  * Returns the files of one output.
  * @param {Object} output - `{ kind: 'base' }`, `{ kind: 'color', theme }` or
  *   `{ kind: 'number', screen }`; `screen` is undefined when no screens are configured.
+ * @param {string} format - The format of the files.
  */
-function generateFiles({ kind, theme, screen }) {
+function generateFiles({ kind, theme, screen }, format) {
   switch (kind) {
     case 'base':
       return [
@@ -51,15 +50,26 @@ function generateFiles({ kind, theme, screen }) {
 }
 
 /**
- * Web platform configuration with rem units
+ * Returns a web platform configuration.
+ * @param {Object} [preset]
+ * @param {string} [preset.unit] - Unit of sizes: `rem`, `px` or `vw`.
+ * @param {string} [preset.format] - `cx/scss-chassis-css`, which prints `var(--…)`
+ *   references for Chassis CSS, or `cx/scss-variables`, which prints resolved values.
  */
-export default function (brand, app, outputs, outDir = 'dist') {
-  return {
-    prefix: 'cx',
-    basePxFontSize: 16,
-    transforms,
-    buildPath: `${outDir}/web/${app}/${brand}/`,
-    options,
-    files: outputs.flatMap(generateFiles)
+export function webConfig({ unit = 'rem', format = 'cx/scss-chassis-css' } = {}) {
+  return function (brand, app, outputs, outDir = 'dist') {
+    return {
+      prefix: 'cx',
+      basePxFontSize: 16,
+      transforms: [...transforms, `cx/size/${unit}`],
+      buildPath: `${outDir}/web/${app}/${brand}/`,
+      options,
+      files: outputs.flatMap((output) => generateFiles(output, format))
+    }
   }
 }
+
+/**
+ * Web platform configuration with rem units
+ */
+export default webConfig()

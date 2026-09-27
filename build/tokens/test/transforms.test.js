@@ -9,6 +9,8 @@
 import { readFileSync } from 'node:fs'
 import { describe, expect, test } from 'vitest'
 import web from '../config/web.js'
+import webPx from '../config/web-px.js'
+import webVw from '../config/web-vw.js'
 import registerTransforms, { transforms } from '../transforms.js'
 
 const read = (file) => JSON.parse(readFileSync(new URL(file, import.meta.url), 'utf8'))
@@ -32,6 +34,26 @@ describe('cx/size/rem', () => {
   })
 })
 
+describe.each(['cx/size/px', 'cx/size/vw'])('%s', (name) => {
+  test('applies to the size types', () => {
+    expect(typesMatching(name)).toEqual(['dimension', 'fontSize', 'lineHeight'])
+  })
+})
+
+describe('cx/size/px', () => {
+  test.each(webTokens.remSize)('$case ($token.name)', ({ token }) => {
+    const px = transform('cx/size/px').transform(token, webPx('chassis', 'docs', []))
+    expect(px).toBe(`${parseFloat(token.$value)}px`)
+  })
+})
+
+describe('cx/size/vw', () => {
+  test.each(webTokens.remSize)('$case ($token.name)', ({ token, expected }) => {
+    const vw = transform('cx/size/vw').transform(token, webVw('chassis', 'docs', []))
+    expect(vw).toBe(expected.replaceAll('rem', 'vw'))
+  })
+})
+
 describe('cx/shadow/web', () => {
   test('applies to shadow tokens', () => {
     expect(typesMatching('cx/shadow/web')).toEqual(['shadow'])
@@ -43,9 +65,11 @@ describe('cx/shadow/web', () => {
 })
 
 describe('transforms', () => {
-  test('are the custom transforms the web config uses', () => {
-    const custom = platform.transforms.filter((name) => name.startsWith('cx/'))
-    expect(transforms.map((item) => item.name).sort()).toEqual(custom.sort())
+  test('are the custom transforms the web configs use', () => {
+    const custom = [web, webPx, webVw]
+      .flatMap((config) => config('chassis', 'docs', []).transforms)
+      .filter((name) => name.startsWith('cx/'))
+    expect(transforms.map((item) => item.name).sort()).toEqual([...new Set(custom)].sort())
   })
 
   test('also apply to tokens whose value is a reference', () => {

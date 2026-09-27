@@ -70,6 +70,7 @@
     "tokens:site": "pnpm tokens:build --brand chassis --app docs",
     "tokens:test": "vitest run --dir build/tokens/test",
     "tokens:verify": "node build/tokens/verify.js",
+    "tokens:verify:presets": "node build/tokens/verify.js --preset all",
     "tokens:zip": "node build/zip-tokens.js",
     "site": "pnpm site:build && pnpm site:lint",
     "site:build": "pnpm sync-submodules && pnpm astro:build && pnpm site:pagefind",

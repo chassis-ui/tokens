@@ -57,6 +57,20 @@ describe('parseArgs', () => {
     })
   })
 
+  test('--config takes one file', () => {
+    expect(
+      parseArgs(['--config', 'build/tokens/test/golden/web-px.json', '--dry-run'])
+    ).toMatchObject({ config: 'build/tokens/test/golden/web-px.json', dryRun: true })
+    expect(parseArgs([])).not.toHaveProperty('config')
+  })
+
+  test.each([[['--config']], [['--config', '--brand', 'chassis']]])(
+    '--config without a file throws (%j)',
+    (args) => {
+      expect(() => parseArgs(args)).toThrow('--config requires a file')
+    }
+  )
+
   test.each([[['--out']], [['--out', '--brand', 'chassis']]])(
     '--out without a directory throws (%j)',
     (args) => {

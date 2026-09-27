@@ -30,6 +30,8 @@ Options:
   --theme <themes...>       Filter by theme(s)
   --screen <screens...>     Filter by screen(s)
   --out <dir>               Output root directory (default: dist)
+  --config <file>           JSON file to read the build configuration from, instead of
+                            chassis.build in package.json
   --dry-run                 Show builds without executing
   --help, -h                Show this help
   --version, -v             Show version
@@ -40,17 +42,24 @@ Examples:
 `
 
 /**
- * Loads `package.json` and checks its `chassis.build` configuration.
- * @returns {Promise<Object>} The parsed `package.json`.
+ * Loads the package version and the build configuration: `chassis.build` of
+ * `package.json`, or the content of `configFile`.
+ * @param {string} [configFile] - A JSON file with `brands`, `themes`, `screens` and `apps`.
+ * @returns {Promise<Object>} The `version` and the `buildOptions`.
  */
-async function loadPackage() {
-  const packageJson = JSON.parse(await promises.readFile('package.json', 'utf-8'))
-  const buildOptions = packageJson.chassis?.build
+async function loadConfig(configFile) {
+  const readJson = async (file) => JSON.parse(await promises.readFile(file, 'utf-8'))
+  const packageJson = await readJson('package.json')
+  const buildOptions = configFile ? await readJson(configFile) : packageJson.chassis?.build
 
   if (!buildOptions?.brands || !buildOptions?.themes || !buildOptions?.apps) {
-    throw new Error('Invalid package.json: missing required chassis.build configuration')
+    throw new Error(
+      configFile
+        ? `Invalid ${configFile}: missing brands, themes or apps`
+        : 'Invalid package.json: missing required chassis.build configuration'
+    )
   }
-  return packageJson
+  return { version: packageJson.version, buildOptions }
 }
 
 /**
@@ -87,7 +96,8 @@ function registerDictionary(version) {
  * Parses command line arguments for selective builds. Unknown arguments are ignored.
  * @param {string[]} [args] - The arguments after the script name.
  * @returns {Object} Filters (`brands`, `apps`, `platforms`, `themes`, `screens`), the
- *   output directory (`out`) and the flags `dryRun`, `help` and `version`.
+ *   output directory (`out`), the configuration file (`config`, when given) and the
+ *   flags `dryRun`, `help` and `version`.
  */
 function parseArgs(args = process.argv.slice(2)) {
   const options = {
@@ -112,6 +122,15 @@ function parseArgs(args = process.argv.slice(2)) {
         throw new Error('--out requires a directory')
       }
       options.out = dir.replace(/[/\\]+$/, '')
+      i++
+      continue
+    }
+    if (args[i] === '--config') {
+      const file = args[i + 1]
+      if (!file || file.startsWith('--')) {
+        throw new Error('--config requires a file')
+      }
+      options.config = file
       i++
       continue
     }
@@ -218,9 +237,9 @@ async function run() {
       return
     }
 
-    const packageJson = await loadPackage()
+    const { version, buildOptions } = await loadConfig(filters.config)
     if (filters.version) {
-      logger.info(`v${packageJson.version}`)
+      logger.info(`v${version}`)
       return
     }
 
@@ -228,11 +247,11 @@ async function run() {
     let successCount = 0
     let errorCount = 0
 
-    registerDictionary(packageJson.version)
+    registerDictionary(version)
 
     const $themes = JSON.parse(await promises.readFile('tokens/$themes.json', 'utf-8'))
     const sets = permutateThemes($themes, { separator: '_' })
-    const builds = planBuilds(sets, packageJson.chassis.build, filters).map((build) => ({
+    const builds = planBuilds(sets, buildOptions, filters).map((build) => ({
       ...build,
       cfg: config({ ...build, outDir: filters.out })
     }))

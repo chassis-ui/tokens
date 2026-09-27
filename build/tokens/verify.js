@@ -3,13 +3,18 @@
  * @description Golden check. Builds the tokens into a scratch directory and compares
  *              every file with the committed `dist/`, ignoring the timestamp and
  *              version header lines. Also fails when a token name appears twice in
- *              one file, because Sass rejects duplicate `$cx-*` variables.
+ *              one file, because Sass rejects duplicate `$cx-*` variables. With
+ *              `--preset`, builds a preset that writes nothing into `dist/` and
+ *              compares it with its baseline in `build/tokens/test/golden/`.
  *
  * Usage:
  *   node build/tokens/verify.js [--out <dir>] [--platform <name>] [--skip-build]
+ *   node build/tokens/verify.js --preset <name> [--out <dir>] [--skip-build]
  *
  *   --out <dir>        Scratch output directory (default: dist-next). Deleted before the build.
  *   --platform <name>  Build and compare one platform only; repeat or comma-separate for more.
+ *   --preset <name>    Check a preset against its baseline; repeat or comma-separate for
+ *                      more, or `all` for every preset.
  *   --skip-build       Compare an existing output directory without building.
  *
  * @copyright Copyright (c) 2026 Ozgur Gunes
@@ -18,12 +23,13 @@
 
 import { spawn } from 'node:child_process'
 import { readdir, readFile, rm } from 'node:fs/promises'
-import { extname, isAbsolute, join, relative, resolve, sep } from 'node:path'
+import { basename, extname, isAbsolute, join, relative, resolve, sep } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { parseArgs } from 'node:util'
 
 export const ROOT_DIR = fileURLToPath(new URL('../../', import.meta.url))
 export const DIST_DIR = join(ROOT_DIR, 'dist')
+export const GOLDEN_DIR = fileURLToPath(new URL('./test/golden', import.meta.url))
 const BUILD_SCRIPT = fileURLToPath(new URL('./build.js', import.meta.url))
 
 /**
@@ -159,12 +165,15 @@ export async function compareOutput(expectedDir, actualDir, { platforms = [] } =
 
 /**
  * Formats a comparison result as a readable report.
+ *
+ * @param {Object} result - A result of `compareOutput`.
+ * @param {string} [reference] - Name of the reference output.
  */
-export function formatReport(result) {
+export function formatReport(result, reference = 'dist/') {
   if (result.ok) {
-    return `✅ Golden check passed: ${result.compared} files match dist/`
+    return `✅ Golden check passed: ${result.compared} files match ${reference}`
   }
-  const out = ['❌ Golden check failed']
+  const out = [`❌ Golden check failed against ${reference}`]
   for (const file of result.missing) out.push(`  missing    ${file}`)
   for (const file of result.extra) out.push(`  extra      ${file}`)
   for (const { file, count, lines } of result.differing) {
@@ -186,13 +195,36 @@ export function formatReport(result) {
 }
 
 /**
- * Throws when deleting `outDir` would delete the reference output or the repo.
+ * Lists the presets that have a baseline: every `<name>.json` in the golden directory.
+ */
+export async function listPresets() {
+  const entries = await readdir(GOLDEN_DIR)
+  return entries
+    .filter((entry) => extname(entry) === '.json')
+    .map((entry) => basename(entry, '.json'))
+    .sort()
+}
+
+/**
+ * Returns the build configuration file and the baseline directory of a preset.
+ */
+export function presetPaths(preset) {
+  return { config: join(GOLDEN_DIR, `${preset}.json`), expectedDir: join(GOLDEN_DIR, preset) }
+}
+
+/**
+ * Throws when deleting `outDir` would delete a reference output or the repo.
  */
 function assertSafeOutDir(outDir) {
-  const toDist = relative(outDir, DIST_DIR)
-  const containsDist = toDist === '' || (!toDist.startsWith('..') && !isAbsolute(toDist))
-  if (containsDist) {
-    throw new Error(`Refusing to use ${outDir}: it is or contains the reference dist/`)
+  for (const reference of [DIST_DIR, GOLDEN_DIR]) {
+    const toReference = relative(outDir, reference)
+    const contains =
+      toReference === '' || (!toReference.startsWith('..') && !isAbsolute(toReference))
+    if (contains) {
+      throw new Error(
+        `Refusing to use ${outDir}: it is or contains the reference ${relative(ROOT_DIR, reference)}/`
+      )
+    }
   }
 }
 
@@ -202,14 +234,16 @@ function assertSafeOutDir(outDir) {
  * @param {string} outDir - Absolute output directory.
  * @param {Object} [options]
  * @param {string[]} [options.platforms] - Passed to the build as `--platform`.
+ * @param {string} [options.config] - Passed to the build as `--config`.
  * @returns {Promise<{ code: number, output: string }>} Exit code and combined build output.
  */
-export async function runBuild(outDir, { platforms = [] } = {}) {
+export async function runBuild(outDir, { platforms = [], config } = {}) {
   assertSafeOutDir(outDir)
   await rm(outDir, { recursive: true, force: true })
 
   const args = [BUILD_SCRIPT, '--out', outDir]
   if (platforms.length > 0) args.push('--platform', ...platforms)
+  if (config) args.push('--config', config)
 
   return new Promise((resolvePromise, reject) => {
     const child = spawn(process.execPath, args, { cwd: ROOT_DIR })
@@ -221,33 +255,66 @@ export async function runBuild(outDir, { platforms = [] } = {}) {
   })
 }
 
-async function main() {
-  const { values } = parseArgs({
-    options: {
-      out: { type: 'string', default: 'dist-next' },
-      platform: { type: 'string', multiple: true, default: [] },
-      'skip-build': { type: 'boolean', default: false }
-    }
-  })
-  const outDir = resolve(ROOT_DIR, values.out)
-  const platforms = values.platform.flatMap((value) => value.split(',')).filter(Boolean)
-
-  if (!values['skip-build']) {
+/**
+ * Builds into `outDir` unless `skipBuild` is set, then compares it with `expectedDir`.
+ *
+ * @returns {Promise<boolean>} Whether the output matches.
+ */
+async function check({ expectedDir, outDir, platforms, config, skipBuild }) {
+  if (!skipBuild) {
     const started = Date.now()
-    const build = await runBuild(outDir, { platforms })
+    const build = await runBuild(outDir, { platforms, config })
     if (build.code !== 0) {
       console.error(build.output.split('\n').slice(-40).join('\n'))
       console.error(`❌ Build failed with exit code ${build.code}`)
-      process.exit(1)
+      return false
     }
     console.log(
       `Built into ${relative(ROOT_DIR, outDir)}/ in ${((Date.now() - started) / 1000).toFixed(1)}s`
     )
   }
 
-  const result = await compareOutput(DIST_DIR, outDir, { platforms })
-  console.log(formatReport(result))
-  process.exit(result.ok ? 0 : 1)
+  const result = await compareOutput(expectedDir, outDir, { platforms })
+  console.log(formatReport(result, `${relative(ROOT_DIR, expectedDir)}/`))
+  return result.ok
+}
+
+async function main() {
+  const { values } = parseArgs({
+    options: {
+      out: { type: 'string', default: 'dist-next' },
+      platform: { type: 'string', multiple: true, default: [] },
+      preset: { type: 'string', multiple: true, default: [] },
+      'skip-build': { type: 'boolean', default: false }
+    }
+  })
+  const list = (items) => items.flatMap((value) => value.split(',')).filter(Boolean)
+  const outDir = resolve(ROOT_DIR, values.out)
+  const skipBuild = values['skip-build']
+  const platforms = list(values.platform)
+  let presets = list(values.preset)
+
+  if (presets.length === 0) {
+    const ok = await check({ expectedDir: DIST_DIR, outDir, platforms, skipBuild })
+    process.exit(ok ? 0 : 1)
+  }
+
+  const known = await listPresets()
+  if (presets.includes('all')) presets = known
+  const unknown = presets.filter((preset) => !known.includes(preset))
+  if (unknown.length > 0) {
+    throw new Error(`Unknown preset: ${unknown.join(', ')}. Presets: ${known.join(', ')}`)
+  }
+  if (skipBuild && presets.length > 1) {
+    throw new Error('--skip-build takes one preset')
+  }
+
+  let ok = true
+  for (const preset of presets) {
+    const passed = await check({ ...presetPaths(preset), outDir, platforms, skipBuild })
+    ok = ok && passed
+  }
+  process.exit(ok ? 0 : 1)
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
