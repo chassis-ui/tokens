@@ -9,38 +9,20 @@
  * @license MIT
  */
 
-import { encode, partName, reference } from '../values/ios.js'
-import { gradientParts, isGradient } from '../values/shared.js'
-import { encodingContext, firstReferencedToken } from './references.js'
+import * as iosValues from '../values/ios.js'
+import { tokenConstants } from './constants.js'
 
 /**
- * Returns the constants a dictionary prints, in order: gradients as their parts, other
- * tokens as they are.
+ * Returns the constants a dictionary prints as Swift, with `values/ios.js` unless another
+ * value module is given.
  *
  * @param {Object} dictionary - Token dictionary with `tokens` and `allTokens`.
- * @param {Object} [settings] - `outputReferences`: name other constants of the type
- *   where `reference` allows it.
- * @returns {Object[]} `{ name, type, value, printed }`: the Swift value, and what the
- *   constant prints, which is the value or the name of another constant.
+ * @param {Object} [settings] - `outputReferences`.
+ * @param {Object} [values] - A value module, e.g. `values/swiftui.js`.
+ * @returns {Object[]} As `tokenConstants` returns them.
  */
-export function swiftConstants(dictionary, settings = {}) {
-  // The reference a token prints with `outputReferences`, if any
-  const referenceOf = (token, context) => {
-    const target = firstReferencedToken(token, dictionary.tokens)
-    return reference(token, target, context, target && encodingContext(target, dictionary.tokens))
-  }
-
-  const printedTokens = (token) =>
-    isGradient(token)
-      ? gradientParts(token).map((part) => ({ ...part, name: partName(token, part.segments) }))
-      : [token]
-
-  return dictionary.allTokens.flatMap(printedTokens).map((token) => {
-    const context = encodingContext(token, dictionary.tokens)
-    const value = encode(token, context)
-    const printed = (settings.outputReferences && referenceOf(token, context)) || value
-    return { name: token.name, type: token.$type, value, printed }
-  })
+export function swiftConstants(dictionary, settings, values = iosValues) {
+  return tokenConstants(dictionary, settings, values)
 }
 
 /**

@@ -11,6 +11,10 @@
 import { fileHeader, setSwiftFileProperties } from 'style-dictionary/utils'
 import androidResourcesTemplate from './templates/android-resources.template.js'
 import { swiftConstants, swiftFile } from './templates/ios-swift-class.template.js'
+import composeTemplate from './templates/compose-object.template.js'
+import { tokenConstants } from './templates/constants.js'
+import * as swiftuiValues from './values/swiftui.js'
+import * as composeValues from './values/compose.js'
 import { collectThemeColors } from './theme-colors.js'
 import scssTemplate from './templates/scss.template.js'
 import { webValue } from './css-var-policy.js'
@@ -83,6 +87,36 @@ export default function (StyleDictionary) {
         collectThemeColors({ buildPath, theme: options.theme, header, options, constants })
       }
       return swiftFile({ file, header, options, constants })
+    }
+  })
+
+  /**
+   * A format to generate a Swift file with SwiftUI values.
+   */
+  StyleDictionary.registerFormat({
+    name: 'cx/swiftui',
+    format: async function ({ dictionary, options, file }) {
+      const { formatting, commentStyle } = options
+      const header = await fileHeader({ file, formatting, commentStyle })
+      dictionary.allTokens = inSourceOrder(dictionary.allTokens)
+      const settings = { outputReferences: options.outputReferences === true }
+      const constants = swiftConstants(dictionary, settings, swiftuiValues)
+      return swiftFile({ file, header, options, constants })
+    }
+  })
+
+  /**
+   * A format to generate a Kotlin object for Jetpack Compose.
+   */
+  StyleDictionary.registerFormat({
+    name: 'cx/compose-object',
+    format: async function ({ dictionary, options, file }) {
+      const { formatting, commentStyle } = options
+      const header = await fileHeader({ file, formatting, commentStyle })
+      dictionary.allTokens = inSourceOrder(dictionary.allTokens)
+      const settings = { outputReferences: options.outputReferences === true }
+      const constants = tokenConstants(dictionary, settings, composeValues)
+      return composeTemplate({ file, header, options, constants })
     }
   })
 

@@ -226,6 +226,8 @@ The token sets of each file come from `tokens/$themes.json`. Colour files use th
 - `web-scss`, `web-px`, `web-vw`: SCSS variables for other CSS frameworks (see [below](#presets-for-other-css-frameworks))
 - `ios`: Swift types, one caseless enum per file (PascalCase naming)
 - `android`: XML resources (snake_case naming)
+- `ios-swiftui`: Swift types with SwiftUI values (`Color`, `Font.Weight`), written to `dist/ios-swiftui/<app>/<brand>/`
+- `android-compose`: Kotlin objects for Jetpack Compose (`Color`, `.dp`, `.sp`, `.em`, `FontWeight`), written to `dist/android-compose/<app>/<brand>/`, in the package `chassis.tokens` or `options["android-compose"].packageName`
 
 **File naming conventions:**
 - Web: `main.scss`, `color-light.scss`, `number-large.scss`

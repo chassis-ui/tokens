@@ -128,6 +128,21 @@ extension Color {
 }
 ```
 
+### SwiftUI Values
+
+For an app written in SwiftUI, the `ios-swiftui` platform writes the same files with SwiftUI values, `Color` and `Font.Weight`, to `dist/ios-swiftui/<app>/<brand>/`:
+
+```json
+"apps": { "demo": ["ios", "ios-swiftui"] }
+```
+
+```swift
+public static let ColorContextDefaultBgMain = Color(red: 1.000, green: 1.000, blue: 1.000, opacity: 1)
+public static let TypographyFontWeightTextStrongWeight = Font.Weight.semibold
+```
+
+These colours have one theme each; for colours that follow the appearance, use `ChassisTokensColor` of the UIKit files as above. See [SwiftUI and Compose Presets]([[docsref:/getting-started/style-dictionary#swiftui-and-compose-presets]]).
+
 ### Gradients
 
 A gradient token is split into its parts: the angle, and the colour and position of each stop.

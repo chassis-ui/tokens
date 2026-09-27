@@ -10,7 +10,9 @@ import webPx from './web-px.js'
 import webScss from './web-scss.js'
 import webVw from './web-vw.js'
 import ios from './ios.js'
+import iosSwiftui from './ios-swiftui.js'
 import android from './android.js'
+import androidCompose from './android-compose.js'
 
 const platformConfigs = {
   web,
@@ -18,7 +20,9 @@ const platformConfigs = {
   'web-scss': webScss,
   'web-vw': webVw,
   ios,
-  android
+  'ios-swiftui': iosSwiftui,
+  android,
+  'android-compose': androidCompose
 }
 
 /**

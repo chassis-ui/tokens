@@ -20,17 +20,32 @@ import {
 } from './shared.js'
 
 /**
+ * Returns the channels of a colour as Swift numbers: red, green and blue from 0 to 1 with
+ * three decimals, and the alpha as parsed. UIKit and SwiftUI print the same channels.
+ *
+ * @param {Object} token - A resolved token of type `color`.
+ * @returns {Object|null} e.g. `{ red: '0.000', green: '0.643', blue: '0.800', alpha: 1 }`,
+ *   or null when the colour does not parse.
+ */
+export function colorChannels(token) {
+  const color = parseColor(token)
+  if (!color) return null
+  const { r, g, b, a } = color.toRgb()
+  const channel = (value) => (value / 255).toFixed(3)
+  return { red: channel(r), green: channel(g), blue: channel(b), alpha: a }
+}
+
+/**
  * Formats a colour as a `UIColor` with three-decimal channels.
  *
  * @param {Object} token - A resolved token of type `color`.
  * @returns {string} e.g. `UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0.1)`
  */
 function encodeColor(token) {
-  const color = parseColor(token)
-  if (!color) return String(token.$value)
-  const { r, g, b, a } = color.toRgb()
-  const channel = (value) => (value / 255).toFixed(3)
-  return `UIColor(red: ${channel(r)}, green: ${channel(g)}, blue: ${channel(b)}, alpha: ${a})`
+  const channels = colorChannels(token)
+  if (!channels) return String(token.$value)
+  const { red, green, blue, alpha } = channels
+  return `UIColor(red: ${red}, green: ${green}, blue: ${blue}, alpha: ${alpha})`
 }
 
 /**
@@ -56,8 +71,19 @@ const FONT_WEIGHTS = {
  * @returns {string} e.g. `UIFont.Weight.semibold`
  */
 function encodeFontWeight(token) {
+  return `UIFont.Weight.${fontWeightConstant(token)}`
+}
+
+/**
+ * Returns the Apple name of a font weight, which `UIFont.Weight` and SwiftUI's
+ * `Font.Weight` share: the weight number rounded to the nearest hundred, from 100 to 900.
+ *
+ * @param {Object} token - A resolved token of type `fontWeight`.
+ * @returns {string} e.g. `semibold`
+ */
+export function fontWeightConstant(token) {
   const hundred = Math.min(900, Math.max(100, Math.round(fontWeightNumber(token) / 100) * 100))
-  return `UIFont.Weight.${FONT_WEIGHTS[hundred]}`
+  return FONT_WEIGHTS[hundred]
 }
 
 /**

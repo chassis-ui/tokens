@@ -191,6 +191,26 @@ fun Card(text: String) {
 
 Compose has no float resource function, so read float resources through `ResourcesCompat.getFloat`.
 
+### Compose Values
+
+Instead of resources, the `android-compose` platform writes Kotlin objects with Compose values to `dist/android-compose/<app>/<brand>/`, in the package `chassis.tokens` or the one you set:
+
+```json
+"apps": { "demo": ["android", "android-compose"] },
+"options": { "android-compose": { "packageName": "com.example.tokens" } }
+```
+
+```kotlin
+object ChassisTokensNumberLarge {
+    val spaceContextMedium get() = 16.dp
+    val fontContextLeadFontSize get() = 22.sp
+    val fontContextJumboLetterSpacing get() = (-0.0052).em
+    val opacityLevel40 get() = 0.4f
+}
+```
+
+Add the folder to the Kotlin sources of the app module, and use the values directly: `Modifier.padding(ChassisTokensNumberLarge.spaceContextMedium)`. The objects have one theme and one screen each (`ChassisTokensColorLight`, `ChassisTokensColorDark`, `ChassisTokensNumberSmall`, …); pick one with `isSystemInDarkTheme()` or the window size. See [SwiftUI and Compose Presets]([[docsref:/getting-started/style-dictionary#swiftui-and-compose-presets]]).
+
 ## Typography
 
 Typography tokens are split into one resource per property:

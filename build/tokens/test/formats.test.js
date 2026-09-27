@@ -12,7 +12,11 @@ import { inSourceOrder } from '../formats.js'
 import { scssValue } from '../scss-var-policy.js'
 import scssTemplate from '../templates/scss.template.js'
 import androidTemplate from '../templates/android-resources.template.js'
-import iosTemplate from '../templates/ios-swift-class.template.js'
+import iosTemplate, { swiftConstants } from '../templates/ios-swift-class.template.js'
+import composeTemplate from '../templates/compose-object.template.js'
+import { tokenConstants } from '../templates/constants.js'
+import * as swiftuiValues from '../values/swiftui.js'
+import * as composeValues from '../values/compose.js'
 
 /**
  * A token as the formats see it, reduced to what the order needs.
@@ -323,5 +327,53 @@ describe('Gradients in the mobile templates', () => {
     for (const line of gradient.expectedWithReferences.android) {
       expect(xml).toMatch(androidLine(line))
     }
+  })
+})
+
+describe('SwiftUI and Compose templates', () => {
+  const fixture = JSON.parse(
+    readFileSync(new URL('./fixtures/mobile-tokens.json', import.meta.url), 'utf8')
+  )
+  const { token, target } = fixture.iosReferences.find((c) => c.case === 'number reference')
+  const tree = { [target.path[0]]: { base: { [target.path[2]]: target } } }
+
+  test('SwiftUI constants use the SwiftUI values', () => {
+    const colour = fixture.ios.find((c) => c.token.$type === 'color').token
+    const [constant] = swiftConstants({ tokens: {}, allTokens: [colour] }, {}, swiftuiValues)
+    expect(constant.printed).toMatch(/^Color\(red: /)
+  })
+
+  test('SwiftUI constants name others with outputReferences', () => {
+    const [constant] = swiftConstants(
+      { tokens: tree, allTokens: [token] },
+      { outputReferences: true },
+      swiftuiValues
+    )
+    expect(constant.printed).toBe('DimensionBase4')
+  })
+
+  test('Compose prints one object of getters in the package', () => {
+    const android = fixture.androidReferences.find((c) => c.case === 'dimen reference')
+    const named = (t, name) => ({ ...t, name })
+    const size = named(android.token, 'sizeUnit16')
+    const base = named(android.target, 'dimensionBase16')
+    const dictionary = {
+      tokens: { dimension: { base: { 16: base } } },
+      allTokens: [size, base]
+    }
+    const print = (outputReferences) =>
+      composeTemplate({
+        file: { destination: 'NumberLarge.kt' },
+        header: '// header',
+        options: { packageName: 'com.example.tokens', className: 'ChassisTokensNumberLarge' },
+        constants: tokenConstants(dictionary, { outputReferences }, composeValues)
+      })
+    const kotlin = print(false)
+    expect(kotlin).toContain('package com.example.tokens\n')
+    expect(kotlin).toContain('import androidx.compose.ui.unit.dp\n')
+    expect(kotlin).toContain('object ChassisTokensNumberLarge {\n')
+    expect(kotlin).toContain('val sizeUnit16 get() = 16.dp\n')
+    // A getter may name a property declared after it
+    expect(print(true)).toContain('val sizeUnit16 get() = dimensionBase16\n')
   })
 })

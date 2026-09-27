@@ -134,6 +134,46 @@ describe('config', () => {
     expect(contrast.map((file) => file.destination)).toEqual(['color_contrast.xml'])
   })
 
+  test.each([
+    ['ios-swiftui', 'cx/swiftui', 'dist/ios-swiftui/demo/chassis/', 'ChassisTokens.swift'],
+    [
+      'android-compose',
+      'cx/compose-object',
+      'dist/android-compose/demo/chassis/',
+      'ChassisTokens.kt'
+    ]
+  ])('the %s preset writes its own folder', (platform, format, buildPath, main) => {
+    const { platforms } = config({ ...build, platforms: [platform] })
+    expect(platforms[platform].buildPath).toBe(buildPath)
+    expect(platforms[platform].files[0]).toMatchObject({
+      destination: main,
+      format,
+      options: { className: 'ChassisTokens' }
+    })
+  })
+
+  test('SwiftUI files import SwiftUI and make no Color.swift', () => {
+    const { options, files } = config({ ...build, platforms: ['ios-swiftui'] }).platforms[
+      'ios-swiftui'
+    ]
+    expect(options).toMatchObject({
+      import: ['SwiftUI'],
+      accessControl: 'public',
+      objectType: 'enum'
+    })
+    expect(files.some((file) => file.options.theme)).toBe(false)
+  })
+
+  test('Compose files are in the package chassis.tokens unless set', () => {
+    const { options } = config({ ...build, platforms: ['android-compose'] }).platforms[
+      'android-compose'
+    ]
+    expect(options.packageName).toBe('chassis.tokens')
+    const platformOptions = { 'android-compose': { packageName: 'com.example.tokens' } }
+    const set = config({ ...build, platforms: ['android-compose'], platformOptions })
+    expect(set.platforms['android-compose'].options.packageName).toBe('com.example.tokens')
+  })
+
   test('iOS files declare one type each, so they can share a target', () => {
     const written = files('ios', [...outputs, { kind: 'number' }])
     expect(written.map((file) => file.options.className)).toEqual([

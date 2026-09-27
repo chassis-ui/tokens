@@ -251,6 +251,22 @@ public enum ChassisTokensColorLight {
 - Imports: UIKit
 - References: optional, with `outputReferences` (see [cx/ios-swift-class](#cxios-swift-class))
 
+### SwiftUI and Compose Presets
+
+Two more platforms write native code for apps that do not use UIKit or Android resources. Select them in `chassis.build.apps`, next to or instead of `ios` and `android`:
+
+```json
+"apps": { "demo": ["ios-swiftui", "android-compose"] },
+"options": { "android-compose": { "packageName": "com.example.tokens" } }
+```
+
+<CxTable>
+| Platform | Format | Output |
+|----------|--------|--------|
+| `ios-swiftui` | [cx/swiftui](#cxswiftui) | `dist/ios-swiftui/<app>/<brand>/`, the Swift files of `ios` with `Color` and `Font.Weight` |
+| `android-compose` | [cx/compose-object](#cxcompose-object) | `dist/android-compose/<app>/<brand>/`, one Kotlin object per file: `ChassisTokens.kt`, `String.kt`, `ColorLight.kt`, `NumberLarge.kt`, … |
+</CxTable>
+
 ### Android Platform
 
 Generates Android XML resource files:
@@ -582,6 +598,37 @@ public static let BgBlurDefaultColor = UIColor(red: 0.718, green: 0.753, blue: 0
 ```
 
 The rule is the one of [cx/android-resources](#cxandroid-resources): a token names a constant only when that constant has the same Swift type and value. `BgBlurDefaultColor` is `rgba({color.primitive.neutral.30}, {opacity.context.fg-subtle})`, so it prints its value, because `ColorPrimitiveNeutral30` has no alpha. Base colours and sizes computed with math also print their values. A constant never names one of another file, so a component colour of `ChassisTokens.swift` prints its value where the colour file names a context colour.
+
+### cx/swiftui
+
+Generates the files of the iOS platform with SwiftUI values, for the `ios-swiftui` preset. Colours are `Color`, font weights `Font.Weight`, and every other value is the one of `cx/ios-swift-class`:
+
+```swift
+import SwiftUI
+
+public enum ChassisTokensColorLight {
+    public static let ColorContextDefaultBgMain = Color(red: 1.000, green: 1.000, blue: 1.000, opacity: 1)
+}
+```
+
+It supports `outputReferences` with the rule of `cx/ios-swift-class`. The preset writes no `Color.swift`; for colours that follow the appearance, use the UIKit `ChassisTokensColor` through `Color(uiColor:)`.
+
+### cx/compose-object
+
+Generates one Kotlin object per file for Jetpack Compose, for the `android-compose` preset. The values are the ones of `cx/android-resources`, in Kotlin:
+
+```kotlin
+package chassis.tokens
+
+object ChassisTokensNumberLarge {
+    val spaceContextMedium get() = 16.dp
+    val fontContextLeadFontSize get() = 22.sp
+    val fontContextJumboLetterSpacing get() = (-0.0052).em
+    val opacityLevel40 get() = 0.4f
+}
+```
+
+Colours are `Color(0xAARRGGBB)`, font weights `FontWeight(600)`, and strings Kotlin literals. Every property is a getter: with `outputReferences` a property may name one declared later in the file, which a stored property cannot. The package is `chassis.tokens`, or `packageName` in `options["android-compose"]`.
 
 ### cx/android-resources
 

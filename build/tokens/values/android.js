@@ -149,13 +149,14 @@ export function encode(token, context = {}) {
 
 /**
  * Encodes a resolved token's value before string escaping. The order of the checks
- * matters and matches the frozen output contract.
+ * matters and matches the frozen output contract. Compose prints the same values in
+ * Kotlin (`values/compose.js`).
  *
  * @param {Object} token - A resolved token with `$type`, `$value` and `path`.
  * @param {Object} context - As for `encode`.
  * @returns {string} The value.
  */
-function encodeValue(token, context) {
+export function encodeValue(token, context = {}) {
   const { $type: type, $value: value, path } = token
 
   if (type === 'color') {

@@ -29,6 +29,7 @@ The presets for teams that do not use Chassis CSS are kept, in the new structure
 - `chassis.build.options`: Style Dictionary options by platform, such as `outputReferences`
 - `--config <file>` build option, to read the build configuration from a JSON file
 - `pnpm tokens:verify:presets`: checks each preset against its baseline in `build/tokens/test/golden/`
+- `ios-swiftui` and `android-compose` platforms: Swift files with SwiftUI values and Kotlin objects for Jetpack Compose, with the same tokens and values as `ios` and `android`, written to `dist/ios-swiftui/` and `dist/android-compose/`
 - `outputReferences` for the iOS format: a constant names another constant of the same class when it has the same type and value; base colours and sizes computed with math print their values
 
 ### Removed
