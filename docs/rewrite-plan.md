@@ -20,6 +20,10 @@ Added 2026-09-27, after Phase 11:
 
 5. **iOS references.** A new adopter option: `outputReferences` on `ios` prints the name of another constant of the same Swift class, with the safe rule of the Android references. The old build never had it, so there is no old output to match. Phase 12 adds it.
 
+Added 2026-09-27, after Phase 12:
+
+6. **Fix the iOS and Android output.** Unlike Phases 0 to 12, these phases change `dist/` on purpose: values that are wrong on the platform (Phases 13 to 15), the file layout that stops the files from being used together (Phases 17 to 19), and native outputs the platforms lack (Phases 20 to 22). Phase 16 is housekeeping. Each change needs Ozgur's approval in Open decisions before its phase starts.
+
 ## Session protocol
 
 When Ozgur says "continue", Claude does this:
@@ -53,16 +57,27 @@ If a phase is too large, split it into `Na`, `Nb` rows. If a fact in this file i
 | 10 | Android references (`outputReferences`) | Opus | Done | `rewrite(phase 10)` | 2026-09-27 |
 | 11 | Preset docs | Opus | Done | `rewrite(phase 11)` | 2026-09-27 |
 | 12 | iOS references (`outputReferences`), new | Opus | Done | `rewrite(phase 12)` | 2026-09-27 |
+| 13 | Mobile typography values: percent line height, Android letter spacing in em | Opus | Not started | | |
+| 14 | Font weights as numbers | Opus | Not started | | |
+| 15 | Gradients on mobile as parts | Opus | Not started | | |
+| 16 | Dead `dimension` filter condition | Sonnet | Not started | | |
+| 17 | iOS type and file names | Opus | Not started | | |
+| 18 | iOS colours that follow dark mode | Fable | Not started | | |
+| 19 | Android resource tree | Fable | Not started | | |
+| 20 | SwiftUI and Compose outputs (optional) | Opus | Not started | | |
+| 21 | Icon assets (optional) | Opus | Not started | | |
+| 22 | Platform shadow values (optional) | Opus | Not started | | |
 
 ## Ground rules
 
 - **Branch:** `dev/rewrite`. One commit per phase. No pushes, no version bumps.
-- **Frozen folders:** `tokens/`, `site/`, `dist/`. No phase changes them, except Phase 7, which Ozgur approved for the build pages of `site/content/docs/`. If a phase cannot pass the golden diff without changing output, stop and ask Ozgur.
+- **Frozen folders:** `tokens/`, `site/`, `dist/`. No phase changes them, except Phase 7, which Ozgur approved for the build pages of `site/content/docs/`, and Phases 13 to 22, which change `dist/` under the Output changes rule below and update the iOS, Android and Style Dictionary pages of `site/content/docs/` to match. If a phase cannot pass the golden diff without changing output, stop and ask Ozgur.
 - **Never run the build into `dist/` during the rewrite.** Use `pnpm tokens:verify`, or pass `--out <dir>` when running `build/tokens/build.js` directly. Before committing, `git status --short dist` must be empty.
 - **Golden diff:** every phase ends with `pnpm tokens:verify` green in strict mode. The check builds into `dist-next/` and compares against committed `dist/`, ignoring lines that contain `Generated on` or `Chassis - Tokens v`.
 - **No legacy copy of the build.** Committed `dist/` is the reference output and git holds the old code.
 - **Preset baselines (Phases 8 to 10):** the presets write nothing into `dist/`, so their reference output is built once from the old code on `main` and committed under `build/tokens/test/golden/<preset>/`. A preset phase ends with its preset check green and `pnpm tokens:verify` green. Lines that differ from the old output on purpose are listed in the phase result, one row per rule, and need Ozgur's approval first.
 - **iOS reference baseline (Phase 12):** the old build has no iOS references, so the `ios-references` baseline is written by the new code. It is accepted only after a line-by-line comparison with committed `dist/ios/demo/chassis/`: every line that prints a value equals the `dist/` line, and every line that prints a name has, in `dist/`, the same value as the line that declares that name in the same file.
+- **Output changes (Phases 13 to 22):** these phases change `dist/` on purpose, and only as Open decisions approved. The phase builds both brands into `dist-next/`, reviews the difference against `dist/`, and copies the changed files into `dist/`; every line outside the approved change must stay equal, which the header-insensitive diff shows. The iOS and Android preset baselines (`ios-references`, `android-references`) are rewritten the same way. The phase result lists each changed group of lines with a count and one example, and the CHANGELOG entry marks what breaks app code. `dist/` must compile: `swiftc` with the stand-in UIKit for every Swift file, and aapt2 for every Android file (aapt2 is downloaded to the session scratchpad, as on 2026-09-27; it is not in the repo). The Output contract section is updated in the same phase.
 - **Tests:** new unit tests use real tokens copied from `tokens/` as fixtures, never mocks of `style-dictionary`. The 99 existing mock-based tests stay green while the code they cover exists; when a phase removes that code, it removes the test.
 - **Build config stays in `package.json` `chassis.build`:** brands `chassis` and `sinefil`; themes `light`, `dark`; screens `large`, `medium`, `small`; apps `docs` (web) and `demo` (ios, android).
 
@@ -613,9 +628,130 @@ Real cases in the fixture cover a case the plan expected to construct: `BgBlurDe
 The docs describe the option in the README, the Style Dictionary page (iOS platform and `cx/ios-swift-class`), the iOS guide (a section "Constant References") and the CHANGELOG. Every Swift example is a line of the baseline.
 
 
+## Phase 13: mobile typography values
+
+Goal: typography parts on iOS and Android hold values the platform reads correctly.
+
+Facts, measured on `dist/` of 2026-09-27 (both brands are the same):
+
+- 9 typography tokens have a literal percentage line height: `font.context.jumbo` and `font.context.hero` (`125%`), and seven `font.website.*` tokens (`125%` or `150%`). Their line height part prints the percentage as a number: `FontContextJumboLineHeight = CGFloat(125)`, `font_context_jumbo_line_height` = `125sp`, in `Main` and in each number file (9 lines per file, 36 per brand and platform). Every other line height is in points.
+- Android letter spacing is in design pixels. `TextView.setLetterSpacing` and `android:letterSpacing` take ems. 3 typography parts are not zero: `font_context_jumbo_letter_spacing` (`-0.5`), `font_website_hero_title_letter_spacing` (`-1`), `font_website_section_title_letter_spacing` (`-0.5`); 190 are `0`. The standalone scale token `typography.letterSpacing.base.zero` is `0`. iOS letter spacing is in points, which `NSAttributedString.Key.kern` takes, so iOS stays as it is.
+- The parts of one typography token are expanded into the same file, so the font size part is available when the line height and letter spacing parts are printed.
+
+- [ ] `values/shared.js`: `lineHeightPoints(percent, fontSize)` and `letterSpacingEm(px, fontSize)`, pure, with the rounding decided below.
+- [ ] The iOS and Android templates pass the font size part of the same typography token to the encoders (look it up by path: the parent path plus `fontSize`), the same way the reference lookup is passed in.
+- [ ] Line height: a percentage becomes points on iOS and `sp` on Android (`125%` of `96` is `120`).
+- [ ] Android letter spacing of a typography part: px divided by the font size of the part, in em. The standalone letter spacing scale keeps its value.
+- [ ] Unit tests on real tokens: jumbo, `font.website.hero-body` (`150%`), a line height in points (unchanged), the three letter spacing parts, a zero letter spacing, the standalone scale token.
+- [ ] Acceptance: the changed lines are exactly the ones listed above, both brands; all other lines equal `dist/`; `swiftc` and aapt2 pass; the Android and iOS guides describe the new units.
+
+## Phase 14: font weights as numbers
+
+Goal: font weights that the platforms take without a name map.
+
+Facts: font weights print as names from the token source, lowercased with the first space replaced by a hyphen. The sources spell the same weight two ways, on purpose, because each is the style name of its font in Figma (confirmed by Ozgur, 2026-09-27); `tokens/` keeps them: `Semi Bold` becomes `semi-bold` and `SemiBold` becomes `semibold`. In `chassis`, the text font and the HTML cite weight are `semi-bold` and the display strong weight is `semibold`; in `sinefil`, all three are `semibold`. The 18 weight tokens per brand use `light`, `regular`, `medium`, `semi-bold`/`semibold` and `bold`. The weight is also a part of every typography token (`…FontWeight`). Font style parts (`normal`, `italic`) are separate and do not change.
+
+- [ ] One map in `values/shared.js` from every spelling to a number (the web output already turns the names into numbers; reuse its map if it fits): thin 100, extra light 200, light 300, regular and normal 400, medium 500, semi bold 600, bold 700, extra bold 800, black 900. Spaces, hyphens and case do not matter. An unknown name fails the build with the token path.
+- [ ] Android: weights print as `<integer>` (`600`), for Compose `FontWeight(600)` and `Typeface.create(family, 600, italic)` (API 28).
+- [ ] iOS: the type decided below.
+- [ ] Unit tests: every spelling in the current tokens, an unknown name.
+- [ ] Acceptance: only weight lines change, both brands; compile checks pass; the guides show the new use.
+
+## Phase 15: gradients on mobile as parts
+
+Goal: no gradient token prints a wrong colour on iOS or Android.
+
+Facts: the 88 `gradient.primitive.*` tokens per colour file are typed `color` with `linear-gradient(<angle>deg, <colour> 0%, <colour> 100%)` values: two stops each, angles in steps of 45°. iOS and Android print the first stop only, because tinycolor parses the string leniently: `GradientPrimitiveBlackL000` is transparent black (`alpha: 0`, `#00000000`).
+
+- [ ] `values/shared.js`: parse a `linear-gradient(…)` value into an angle and a list of stops (colour, position). Fail the build on any other gradient form, with the token path.
+- [ ] Expand each gradient token on iOS and Android into parts, as shadows are expanded: `…Angle`, and `…Stop<N>Color` and `…Stop<N>Position` per stop (`GradientPrimitiveBlackL000Stop1Color`). Colours encode as colours; the angle and positions as numbers (Android: float items). Web output does not change.
+- [ ] Unit tests: a two-stop gradient, a stop colour with alpha, each angle, a value that is not a linear gradient.
+- [ ] Acceptance: in each colour file, 88 lines become the parts and nothing else changes; compile checks pass; the guides show how to build a `CAGradientLayer` and an Android `GradientDrawable` or Compose `Brush.linearGradient` from the parts.
+
+## Phase 16: dead `dimension` filter condition
+
+Goal: the filters say what they do. No output change.
+
+Facts: the `path[1] == dimension` exclusion in the main and number filters matches nothing, because `dimension.base.*` tokens have `dimension` at `path[0]`. All 71 are emitted, and with `outputReferences` `SizeUnit…` names `DimensionBase…`, so removing them would break references.
+
+- [ ] Delete the condition from `filters.js` and the Filters table, keep the emitted tokens, and record in the Filters section that `dimension.base.*` is emitted on purpose.
+- [ ] Acceptance: `pnpm tokens:verify` and all preset checks green with no change; tests green.
+
+## Phase 17: iOS type and file names
+
+Goal: the iOS files can be added to one target, and Swift Package Manager accepts every file.
+
+Facts:
+
+- Every file declares `public class ChassisTokens`, so two files in one module fail with `invalid redeclaration of 'ChassisTokens'`. The iOS guide works around it with one module per file.
+- Swift Package Manager treats `Main.swift` as an executable entry point, so it cannot be in a library target.
+- `@objc` has no effect: checked on 2026-09-27 with `-emit-objc-header-path`, the generated Objective-C header contains no constant, because `ChassisTokens` is not an `NSObject` subclass.
+- The template already reads `options.className`, `objectType` and `accessControl`.
+
+- [ ] One type per file, named as decided below, set by the iOS config per file.
+- [ ] Rename `Main.swift` as decided below.
+- [ ] `objectType` and `@objc` as decided below.
+- [ ] `outputReferences` still names constants of the same type; the reference check of `verify.js` still passes.
+- [ ] Acceptance: all 7 files of each brand compile together in one module (stand-in UIKit), and as a Swift package library target; the iOS guide drops the one-module-per-file setup; all other lines equal `dist/` apart from the type line and `@objc`.
+
+## Phase 18: iOS colours that follow dark mode
+
+Goal: one iOS colour type whose colours switch with the appearance, instead of a module per theme.
+
+Facts: the light and dark colour files are written by two Style Dictionary instances (light + large, dark + large), so no single format call sees both themes. They declare the same names in the same order (1445 each for `chassis`).
+
+- [ ] A combine step in `build.js` after the instances of one brand and app: it reads the resolved colour tokens of the `light` and `dark` themes and writes one file where each colour is `UIColor { $0.userInterfaceStyle == .dark ? <dark> : <light> }`, with the values of `values/ios.js`. It runs only when the configured themes include `light` and `dark`.
+- [ ] Fail the build when the two themes do not declare the same names.
+- [ ] Keep or drop the per-theme files, as decided below.
+- [ ] Unit tests: a colour that differs by theme, one that does not, a name missing in one theme.
+- [ ] Acceptance: every colour of the new file equals the light file's value in light mode and the dark file's in dark mode, checked at run time with the stand-in UIKit (`NSAppearance` stands in for the trait collection) or by comparing the printed values; compile checks pass; the iOS guide's dark mode section uses the new file.
+
+## Phase 19: Android resource tree
+
+Goal: the build writes a `res/` tree an app can use as it is.
+
+Facts, `chassis` on 2026-09-27:
+
+- `main.xml` repeats the resources of `string.xml`, the large number file and the component colours of the light colour file. 409 dark colours, 27 medium-screen and 34 small-screen resources have another value in `main.xml`, so it cannot share a resource folder with those files (aapt2: `has a conflicting value`).
+- Only the 1382 base colours (`color_base_*`) are in `main.xml` alone.
+- Android picks a qualified folder (`values-sw600dp`) over `values`, so the default folder must hold the smallest screen.
+- The Android guide copies files into `values`, `values-night` and `values-sw…dp` with a script.
+
+- [ ] Write `res/values/`, `res/values-night/` and one `res/values-<qualifier>/` per other screen under `dist/android/<app>/<brand>/`, with the qualifiers set in `chassis.build` as decided below.
+- [ ] Decide where the base colours go (see below).
+- [ ] Keep or drop the flat files, as decided below.
+- [ ] Acceptance: aapt2 compiles and links the tree for both brands; every resource of the flat files is in the tree with the value of its theme and screen; the Android guide drops the sync script.
+
+## Phase 20: SwiftUI and Compose outputs (optional)
+
+Goal: native code outputs for apps that use SwiftUI or Jetpack Compose.
+
+- [ ] New opt-in platforms, selected in `chassis.build.apps` like the web presets: `ios-swiftui` (`Color(red:green:blue:opacity:)`, `CGFloat`, `Font.Weight`) and `android-compose` (a Kotlin `object` with `Color(0xAARRGGBB)`, `.dp`, `.sp`, `Float`, `FontWeight`). Values come from `values/ios.js` and `values/android.js` or siblings of them; no value logic in templates.
+- [ ] Baselines under `build/tokens/test/golden/`, as for the other presets.
+- [ ] Acceptance: the SwiftUI files compile (`swiftc`; SwiftUI is available on macOS); the Kotlin file compiles with `kotlinc`, which is not installed here and needs Ozgur's approval to download.
+
+## Phase 21: icon assets (optional)
+
+Goal: icons that iOS and Android can draw. Today the 9 icon tokens per brand are SVG text in strings.
+
+- [ ] iOS: write an asset catalog (`Icons.xcassets`) with one image set per icon, the SVG and a `Contents.json` with `preserves-vector-representation`.
+- [ ] Android: write one vector drawable per icon under `res/drawable/`, with the converter decided below.
+- [ ] Keep the string tokens.
+- [ ] Acceptance: `actool` is not available without Xcode, so the catalog is checked for structure and valid SVG; the drawables compile with aapt2.
+
+## Phase 22: platform shadow values (optional)
+
+Goal: shadow parts an app can apply directly.
+
+Facts: shadow tokens are expanded into `OffsetX`, `OffsetY`, `Blur`, `Spread` and `Color` parts with CSS meanings. Core Animation takes a radius of about half the CSS blur and an opacity separate from the colour, and has no spread; Android elevation takes none of these parts.
+
+- [ ] iOS: add `…Radius` (blur divided by 2), `…Opacity` (the colour's alpha) and `…OpaqueColor` parts.
+- [ ] Keep the existing parts on both platforms.
+- [ ] Acceptance: only added lines; compile checks pass; the iOS guide's shadow example uses the new parts.
+
 ## Known oddities in the output (kept as they are)
 
-These are part of the frozen contract. They are listed so nobody "fixes" them by accident.
+These are part of the frozen contract. They are listed so nobody "fixes" them by accident. Added 2026-09-27: Phases 13 to 16 change the letter spacing, line height, font weight and gradient items and remove the dead filter condition, each only after Ozgur approves it in Open decisions.
 
 - Android letter spacing prints its number in design pixels (`-0.5`), as a float item since 2026-09-27; it was an `<integer>`, which did not compile.
 - A `125%` line height prints as `CGFloat(125)` on iOS and `125sp` on Android.
@@ -655,6 +791,23 @@ Added 2026-09-27 for Phase 12, iOS references. Ozgur confirmed all three on 2026
 - [x] Reference form: the bare name (`= DimensionBase4`), which works with any `className`, or qualified (`= ChassisTokens.DimensionBase4`)? The bare name.
 - [x] Update `README.md`, `CHANGELOG.md` and the two site pages in Phase 12, with the same exception to the frozen `site/` folder as Phases 7 and 11? Yes.
 
+Added 2026-09-27 for Phases 13 to 22. Ozgur confirmed all recommendations on 2026-09-27, except the Tokens Studio spelling in Phase 14.
+
+- [x] Phase 13, line height: a percentage becomes points and `sp` (the font size times the percentage; recommended), or a separate multiplier part (`…LineHeightMultiple = 1.25`) next to the absolute ones? Points and `sp`.
+- [x] Phase 13, Android letter spacing: ems for typography parts, rounded to four decimals as the web rounds (recommended), and the standalone scale stays in px? Yes.
+- [x] Phase 14, iOS weight type: `UIFont.Weight.semibold` (recommended; the constant's type changes from `String`), or a `CGFloat` weight (`600`)? `UIFont.Weight`. The source spelling stays as it is: Ozgur pointed out that it is the style name of each font in Figma (Inter `Semi Bold`, Archivo Narrow, Raleway, DM Sans and Source Serif 4 `SemiBold`), and a name that does not match breaks the font in Figma. The map ignores spaces, hyphens and case, so both spellings become `600`.
+- [x] Phase 15, gradients: expand into parts (recommended), or leave gradient tokens out of the iOS and Android files? Parts.
+- [x] Phase 17, type names: `ChassisTokens` for the main file and `ChassisTokens<File>` for the others (`ChassisTokensColorLight`, `ChassisTokensNumberLarge`, `ChassisTokensString`; recommended), or one `ChassisTokens` type split with `extension` across files, which only works when a target holds one theme and one screen? `ChassisTokens<File>`.
+- [x] Phase 17, main file name: `ChassisTokens.swift` (recommended), or another name? `ChassisTokens.swift`.
+- [x] Phase 17, type kind: a caseless `public enum` without `@objc` (recommended, the Swift way to group constants), or `public final class …: NSObject` with `@objc`, which makes the constants visible to Objective-C? The enum.
+- [x] Phase 18: keep `ColorLight.swift` and `ColorDark.swift` next to the new dynamic file (recommended for one release, so apps can move over), or replace them? Keep them for one release.
+- [x] Phase 19, qualifiers: a map in `chassis.build`, such as `"android": { "screens": { "small": "", "medium": "sw600dp", "large": "sw840dp" } }`, with the smallest screen in the default folder (recommended)? Yes.
+- [x] Phase 19, base colours: in `res/values/color_base.xml` (recommended), or left out of the tree, since context colours hold resolved values? `color_base.xml`.
+- [x] Phase 19: keep the flat files next to `res/` for one release (recommended), or replace them? Keep them for one release.
+- [x] Phases 20 to 22: do them, or drop them? Do them.
+- [x] Phase 20: download `kotlinc` into the session scratchpad to compile the Compose output? Yes.
+- [x] Phase 21, Android converter: add the `svg2vectordrawable` npm package as a dev dependency (recommended), or write a converter for the subset of SVG the icons use? `svg2vectordrawable`.
+
 ## Session log
 
 Append-only.
@@ -687,3 +840,5 @@ Append-only.
 - 2026-09-27 (Phase 12 planning, Opus 5.5): Ozgur asked whether iOS could have `outputReferences` like Android. Built a prototype template in a scratch copy and measured it (see Facts about iOS references): 4460 of 6487 lines of `Main.swift` print a name, and all 7 files type-check with a stand-in UIKit. The value check keeps 660 lines as values that would otherwise lose an alpha or a colour modifier. Added Phase 12, a design decision, a ground rule for its baseline and three open decisions. Nothing in `build/` changed. Next: Ozgur's answers to the open decisions, then Phase 12.
 - 2026-09-27 (Phase 12 decisions): Ozgur confirmed all three open decisions: the Android base colour rule, bare constant names, and the docs update with an exception to the frozen `site/` folder. The plan was committed as `rewrite(plan): add phase 12 for iOS references`. Next: Phase 12.
 - 2026-09-27 (Phase 12, Opus 5.5): Added `reference(token, target)` to `values/ios.js`, with the Android rule: same file, no base colours, no math on sizes, same encoded Swift text. Moved the shared conditions into `values/shared.js` and the target lookup into `templates/references.js`; the Android output did not change. The iOS format reads `outputReferences` from the platform options. Extended the undeclared-reference check of `verify.js` to Swift. Wrote the `ios-references` baseline with the new code and accepted it after a line-by-line comparison with `dist/ios/demo/chassis/`, a type check of all 7 files and a run-time comparison of 12378 constants. Added 9 real cases to `mobile-tokens.json` (`iosReferences`), 17 tests in `values-ios.test.js`, 2 template tests in `formats.test.js` and 2 Swift cases in `verify.test.js`. Updated `README.md`, `CHANGELOG.md`, the tests README and the two site pages. Verified: `node build/tokens/verify.js --preset ios-references` passes; `pnpm tokens:verify:presets` passes for all six presets; `pnpm tokens:verify` passes, 42 of 42 files; `pnpm tokens:test` passes, 582 tests; lint reports no warnings; `build/tokens` passes Prettier; the two site pages pass Prettier and `pnpm astro:build` built 22 pages; `dist/` untouched. Injected five regressions (no value check, no math rule, no base colour rule, `outputReferences` ignored, Swift undeclared check off); each failed 1 to 7 tests. Surprises: (1) a real token references a target of another Swift type (`BgBlurDefaultColor` on an opacity), so that case needs no construction. (2) All modifier colours are base colours, and the math token also fails the value check, so neither rule changes a current line on its own; unit tests cover both. (3) The number files grow (`DimensionBase16` is longer than `CGFloat(16)`) while the colour files shrink. All phases are done.
+- 2026-09-27 (Phases 13 to 22 planning, Opus 5.5): Ozgur asked how to fix the iOS and Android issues and oddities, then asked for them as phases. Measured the facts on `dist/` for both brands: 9 percent line heights per file, 3 Android letter spacing parts other than zero, two spellings of semi bold, 88 gradients per colour file printing their first stop, `main.xml` conflicting with 409 dark colours and 61 screen values, 1382 base colours only in `main.xml`, and no constant in the Objective-C header despite `@objc`. Added Phases 13 to 22, a ground rule for approved output changes and 14 open decisions. Nothing in `build/` or `dist/` changed. Next: Ozgur's answers, then Phase 13.
+- 2026-09-27 (Phases 13 to 22 decisions, Opus 5.5): Ozgur confirmed all recommendations except making the semi bold spelling consistent in Tokens Studio: each spelling is the style name of its font in Figma, and the Phase 14 map accepts both. The check of the style names found `Light Oblique` for the `sinefil` blockquote weight, where the other brands use `Light Italic`; Source Serif 4 names its italic styles `Italic`. At Ozgur's request it was changed in `tokens/brand-sinefil/brand-base.json` and committed as `fix(tokens): use Light Italic for the sinefil blockquote weight`: 11 lines in 6 `sinefil` files of `dist/` changed from `oblique` to `italic`, nothing else; `pnpm tokens:verify`, the six preset checks and 582 tests pass. Not checked against Figma's own font list, because no Figma file was given. The plan was committed as `rewrite(plan): add phases 13 to 22 for the iOS and Android output`. Next: Phase 13.
