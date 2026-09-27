@@ -1,5 +1,5 @@
 {
-  "source": "Token slices copied from tokens/base/brand-base.json and tokens/base/app-base.json on 2026-09-27, in source form.",
+  "source": "Token slices copied from tokens/base/brand-base.json, tokens/base/app-base.json and tokens/screen-website/screen-large.json on 2026-09-27, in source form.",
   "tokens": {
     "typography": {
       "fontWeight": {
@@ -29,6 +29,14 @@
           "blockquote": {
             "$type": "fontWeights",
             "$value": "Light Italic"
+          }
+        }
+      },
+      "letterSpacing": {
+        "base": {
+          "zero": {
+            "$type": "letterSpacing",
+            "$value": "{size.unit.0}"
           }
         }
       }
@@ -68,6 +76,27 @@
         "small": {
           "$type": "boxShadow",
           "$value": "{shadow.elevation.default.10}"
+        },
+        "focus": {
+          "$type": "boxShadow",
+          "$value": {
+            "color": "{color.context.default.cue-main}",
+            "type": "dropShadow",
+            "x": "{dimension.base.0}",
+            "y": "{dimension.base.0}",
+            "blur": "{dimension.base.4}",
+            "spread": "{dimension.base.0}"
+          }
+        }
+      }
+    },
+    "figma": {
+      "website": {
+        "variant": {
+          "nav": {
+            "$type": "text",
+            "$value": "large"
+          }
         }
       }
     }

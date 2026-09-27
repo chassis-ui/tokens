@@ -1,224 +1,107 @@
 /**
  * @file preprocessor.js
- * @description This file processes design tokens by aligning types, adding
- *              metadata and resolving font styles. Some code in this file is
- *              adapted from '@tokens-studio/sd-transforms'.
+ * @description Prepares the token dictionary. Types are aligned by
+ *              '@tokens-studio/sd-transforms'. On top of that Chassis types letter
+ *              spacing as a number, splits every font weight into weight and style,
+ *              stores the font weight path of typography tokens, and numbers the tokens
+ *              in source order.
  *
  * @copyright Copyright (c) 2025 Ozgur Gunes
  * @license MIT
  */
 
-import { typeDtcgDelegate, usesReferences, resolveReferences } from 'style-dictionary/utils'
+import { resolveReferences } from 'style-dictionary/utils'
+import { alignTypes } from '@tokens-studio/sd-transforms'
 import { isReference, referencePath } from './css-var-policy.js'
 
+const fontStyles = ['italic', 'oblique', 'normal']
+const weightAndStyle = new RegExp(`(?<weight>.+?)\\s?(?<style>${fontStyles.join('|')})?$`, 'i')
+
 /**
- * Aligns token types and updates metadata.
- * @param {Object} slice - The token or token group to process.
+ * Calls `visit(token, key, group)` for every token, in source order.
+ * @param {Object} group - The token group to walk.
+ * @param {Function} visit - Receives the token, its key and the group that holds it.
  */
-function alignTypes(slice) {
-  /**
-   * Maps token types to their aligned types.
-   */
-  const typesMap = {
-    fontFamilies: 'fontFamily',
-    fontWeights: 'fontWeight',
-    fontSizes: 'fontSize',
-    lineHeights: 'lineHeight',
-    boxShadow: 'shadow',
-    spacing: 'dimension',
-    sizing: 'dimension',
-    borderRadius: 'dimension',
-    borderWidth: 'dimension',
-    letterSpacing: 'number',
-    paragraphSpacing: 'dimension',
-    paragraphIndent: 'dimension',
-    text: 'content'
-  }
-
-  /**
-   * Maps properties for specific token types.
-   */
-  const propsMap = {
-    shadow: {
-      x: 'offsetX',
-      y: 'offsetY'
+function eachToken(group, visit) {
+  Object.entries(group).forEach(([key, value]) => {
+    if (typeof value !== 'object' || value === null) return
+    if (Object.hasOwn(value, '$type') && Object.hasOwn(value, '$value')) {
+      visit(value, key, group)
+    } else {
+      eachToken(value, visit)
     }
-  }
+  })
+}
 
-  const isToken = Object.hasOwn(slice, '$type') && Object.hasOwn(slice, '$value')
-  if (isToken) {
-    const t = slice.$type
-    const v = slice.$value
-    const newT = typesMap[t] || t
-
-    if (newT !== t) {
-      // Replace the type with the new type
-      slice['$type'] = newT
-      // Store the original type as metadata
-      slice.$extensions = {
-        ...slice.$extensions,
-        ['chassis']: {
-          ...(slice.$extensions?.['chassis'] ?? {}),
-          originalType: t
-        }
-      }
-    }
-
-    // Map properties if applicable
-    if (typeof v === 'object') {
-      const pMap = propsMap[newT]
-      if (pMap) {
-        const convertProps = (obj) => {
-          Object.entries(pMap).forEach(([key, propValue]) => {
-            if (obj[key] !== undefined) {
-              obj[propValue] = obj[key]
-              delete obj[key]
-            }
-          })
-        }
-
-        if (Array.isArray(v)) {
-          v.forEach(convertProps)
-        } else {
-          convertProps(v)
-        }
-        slice['$value'] = v
-      }
-    }
-  } else {
-    Object.values(slice).forEach((val) => {
-      if (typeof val === 'object') {
-        alignTypes(val)
-      }
-    })
+/**
+ * Adds properties to the Chassis extension of a token.
+ * @param {Object} token - The token to extend.
+ * @param {Object} properties - The properties to add.
+ */
+function extend(token, properties) {
+  token.$extensions = {
+    ...token.$extensions,
+    ['chassis']: { ...token.$extensions?.['chassis'], ...properties }
   }
 }
 
 /**
- * Adds the path of the referenced font weight to typography tokens. It is stored as
- * path segments, not as a reference: after the weight and style split the path is a
- * group, and Style Dictionary 5 rejects references to groups.
- * @param {Object} slice - The token or token group to process.
+ * Types letter spacing as a number, and stores the path of the font weight that a
+ * typography token references. The path is stored as segments, not as a reference: after
+ * the weight and style split it is a group, and Style Dictionary 5 rejects references
+ * to groups.
+ * @param {Object} dictionary - The dictionary with aligned types.
  */
-function addFontWeightExtension(slice) {
-  const isTypographyObj =
-    Object.hasOwn(slice, '$type') &&
-    slice.$type === 'typography' &&
-    typeof slice.$value === 'object'
-  if (isTypographyObj) {
-    const fontWeight = slice.$value.fontWeight
-    if (isReference(fontWeight)) {
-      slice.$extensions = {
-        ...slice.$extensions,
-        ['chassis']: {
-          ...(slice.$extensions?.['chassis'] ?? {}),
-          fontWeightPath: referencePath(fontWeight)
-        }
-      }
+function addTypes(dictionary) {
+  eachToken(dictionary, (token) => {
+    if (token.$extensions?.['studio.tokens']?.originalType === 'letterSpacing') {
+      token.$type = 'number'
     }
-  } else {
-    Object.values(slice).forEach((val) => {
-      if (typeof val === 'object') {
-        addFontWeightExtension(val)
-      }
-    })
-  }
+    if (token.$type === 'typography' && isReference(token.$value.fontWeight)) {
+      extend(token, { fontWeightPath: referencePath(token.$value.fontWeight) })
+    }
+  })
 }
 
 /**
- * Adds font styles (e.g., italic, oblique) to typography tokens.
- * @param {Object} slice - The token or token group to process.
- * @param {Object} refCopy - A copy of the token dictionary for reference resolution.
+ * Splits a font weight such as `Light Italic` into weight and style.
+ * @param {string} fontWeight - The resolved font weight.
+ * @returns {Object} - e.g. `{ weight: 'Light', style: 'italic' }`; the style is `normal`
+ *   when the font weight names none.
  */
-function addFontStyles(slice, refCopy) {
-  /**
-   * Regular expression to extract font weight and style.
-   */
-  const fontStyles = ['italic', 'oblique', 'normal']
-  const fontWeightReg = new RegExp(`(?<weight>.+?)\\s?(?<style>${fontStyles.join('|')})?$`, 'i')
-
-  /**
-   * Resolves font weight references.
-   * @param {string} fontWeight - The font weight to resolve.
-   * @param {Object} refCopy - A copy of the token dictionary for reference resolution.
-   * @returns {string} - Resolved font weight.
-   */
-  function resolveFontWeight(fontWeight, refCopy) {
-    let resolved = fontWeight
-    if (usesReferences(fontWeight)) {
-      try {
-        resolved = `${resolveReferences(fontWeight, refCopy, { usesDtcg: true })}`
-      } catch (e) {
-        console.error(e)
-      }
-    }
-    return resolved
+function splitWeightStyle(fontWeight) {
+  // `Italic` alone means the regular weight in italic
+  if (fontStyles.includes(fontWeight.toLowerCase())) {
+    return { weight: 'Regular', style: fontWeight.toLowerCase() }
   }
+  const { weight, style } = fontWeight.match(weightAndStyle)?.groups ?? {}
+  return weight && style
+    ? { weight, style: style.toLowerCase() }
+    : { weight: fontWeight, style: 'normal' }
+}
 
-  /**
-   * Splits font weight and style from a combined string.
-   * @param {string} fontWeight - The font weight string to split.
-   * @returns {Object} - An object containing weight and style.
-   */
-  function splitWeightStyle(fontWeight) {
-    let weight = fontWeight
-    let style = 'normal'
-    if (fontWeight) {
-      const fontStyleMatch = fontWeight.match(fontWeightReg)
-      if (fontStyleMatch?.groups?.weight && fontStyleMatch.groups.style) {
-        style = fontStyleMatch.groups.style.toLowerCase()
-        weight = fontStyleMatch.groups.weight
+/**
+ * Adds the font style to typography tokens and splits every font weight token into a
+ * `weight` and a `style` token. '@tokens-studio/sd-transforms' splits only the font
+ * weight tokens that name a style.
+ * @param {Object} dictionary - The dictionary with aligned types.
+ */
+function addFontStyles(dictionary) {
+  const references = structuredClone(dictionary)
+  const resolve = (fontWeight) =>
+    splitWeightStyle(`${resolveReferences(`${fontWeight}`, references, { usesDtcg: true })}`)
+
+  eachToken(dictionary, (token, key, group) => {
+    if (token.$type === 'typography' && token.$value.fontWeight !== undefined) {
+      const { weight, style } = resolve(token.$value.fontWeight)
+      token.$value.fontWeight = weight
+      token.$value.fontStyle = style
+    } else if (token.$type === 'fontWeight') {
+      const { weight, style } = resolve(token.$value)
+      group[key] = {
+        weight: { ...token, $value: weight },
+        style: { ...token, $type: 'fontStyle', $value: style }
       }
-
-      if (fontStyles.includes(fontWeight.toLowerCase())) {
-        style = fontWeight.toLowerCase()
-        weight = 'Regular'
-      }
-    }
-    return { weight, style }
-  }
-
-  Object.keys(slice).forEach((key) => {
-    const potentiallyToken = slice[key]
-    const isToken =
-      typeof potentiallyToken === 'object' && potentiallyToken.$type && potentiallyToken.$value
-
-    if (isToken) {
-      const token = potentiallyToken
-      const { $value, $type } = token
-      const tokenType = $type
-      const tokenValue = $value
-
-      if (tokenType === 'typography') {
-        if (tokenValue.fontWeight === undefined) return
-
-        const fontWeight = resolveFontWeight(`${tokenValue.fontWeight}`, refCopy)
-        const { weight, style } = splitWeightStyle(fontWeight)
-        if (style) {
-          tokenValue.fontWeight = weight
-          tokenValue.fontStyle = style
-        }
-      } else if (tokenType === 'fontWeight') {
-        const fontWeight = resolveFontWeight(`${tokenValue}`, refCopy)
-        const { weight, style } = splitWeightStyle(fontWeight)
-
-        if (style) {
-          slice[key] = {
-            weight: {
-              ...token,
-              [`$type`]: 'fontWeight',
-              [`$value`]: weight
-            },
-            style: {
-              ...token,
-              [`$type`]: 'fontStyle',
-              [`$value`]: style
-            }
-          }
-        }
-      }
-    } else if (typeof potentiallyToken === 'object') {
-      addFontStyles(potentiallyToken, refCopy)
     }
   })
 }
@@ -227,38 +110,22 @@ function addFontStyles(slice, refCopy) {
  * Numbers the tokens in source order. Style Dictionary 5 moves expanded typography and
  * shadow tokens to the end of the dictionary; the formats sort by this number to print
  * them where their source token is.
- * @param {Object} slice - The token or token group to process.
- * @param {Object} counter - The next number to give out.
+ * @param {Object} dictionary - The dictionary after the weight and style split.
  */
-function addSourceOrder(slice, counter = { next: 0 }) {
-  const isToken = Object.hasOwn(slice, '$type') && Object.hasOwn(slice, '$value')
-  if (isToken) {
-    slice.$extensions = {
-      ...slice.$extensions,
-      ['chassis']: {
-        ...(slice.$extensions?.['chassis'] ?? {}),
-        sourceOrder: counter.next++
-      }
-    }
-  } else {
-    Object.values(slice).forEach((val) => {
-      if (typeof val === 'object' && val !== null) {
-        addSourceOrder(val, counter)
-      }
-    })
-  }
+function addSourceOrder(dictionary) {
+  let sourceOrder = 0
+  eachToken(dictionary, (token) => extend(token, { sourceOrder: sourceOrder++ }))
 }
 
 /**
- * Prepares the global token dictionary by aligning types and adding extensions.
+ * Prepares the global token dictionary.
  * @param {Object} dictionary - The token dictionary to process.
  * @returns {Object} - The processed token dictionary.
  */
 export default function (dictionary) {
-  const dict = typeDtcgDelegate(structuredClone(dictionary))
-  alignTypes(dict)
-  addFontWeightExtension(dict)
-  addFontStyles(dict, structuredClone(dict))
+  const dict = alignTypes(dictionary)
+  addTypes(dict)
+  addFontStyles(dict)
   addSourceOrder(dict)
   return dict
 }

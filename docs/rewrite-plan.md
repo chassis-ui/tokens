@@ -35,7 +35,7 @@ If a phase is too large, split it into `Na`, `Nb` rows. If a fact in this file i
 | 2 | Web value encoder | Opus | Done | `rewrite(phase 2)` | 2026-09-27 |
 | 3 | Web `var(--…)` policy | Fable | Done | `rewrite(phase 3)` | 2026-09-27 |
 | 4 | Upgrade to SD 5.5 and sd-transforms 2.0 | Fable | Done | `rewrite(phase 4)` | 2026-09-27 |
-| 5 | Replace forked preprocessor (optional) | Opus | Not started | | |
+| 5 | Replace forked preprocessor (optional) | Opus | Done | `rewrite(phase 5)` | 2026-09-27 |
 | 6 | Build loop, cleanup, CI, docs | Sonnet | Not started | | |
 
 ## Ground rules
@@ -65,7 +65,8 @@ If a phase is too large, split it into `Na`, `Nb` rows. If a fact in this file i
 | light + small | number-small |
 
 - 564 colour tokens have the form `rgba({colour reference}, {opacity reference})`, and 180 colour tokens apply a lighten or darken modifier to a reference.
-- In sd-transforms 1.3.0, `alwaysAddFontStyle` applies to typography tokens only. Plain `fontWeight` tokens without a style word are not split into `weight` and `style` by the official preprocessor. Recheck in 2.0.
+- In sd-transforms 1.3.0 and 2.0.3, `alwaysAddFontStyle` applies to typography tokens only. Plain `fontWeight` tokens without a style word are not split into `weight` and `style` by the official preprocessor.
+- In sd-transforms 2.0.3 the official `addFontStyles` takes about 210 ms per run on the real token sets, against about 10 ms for the Chassis code, because it converts the whole dictionary to a map for every font weight it resolves. Over 36 runs that is about 8 s. The official `alignTypes` takes about 5 ms.
 - `web-px`, `web-vw`, the `scss-variables` template and the `cx/test` transform and format are not used by any configured app.
 - The Android template's `@type/name` reference branch never runs, because `outputReferences` is never set.
 - No token in the built sets has a description, and `dist/` contains no per-token comments.
@@ -128,7 +129,7 @@ Every instance lists its sets in `source`, in the order `permutateThemes` return
 
 ### Type alignment
 
-Differences from stock sd-transforms: `letterSpacing` becomes `number`; `text` becomes `content`; every `fontWeight` token is split into `<name>.weight` and `<name>.style`; shadow `x`/`y` become `offsetX`/`offsetY`.
+Types are aligned by `alignTypes` from sd-transforms, which also turns `text` into `content` and shadow `x`/`y` into `offsetX`/`offsetY`. Differences from stock sd-transforms 2.0: `letterSpacing` becomes `number` (stock: `dimension`), and every `fontWeight` token is split into `<name>.weight` and `<name>.style` (stock: only the ones that name a style).
 
 ### Web values
 
@@ -274,12 +275,30 @@ The dead `scss-variables.template.js` and `cx/test` transform still read `origin
 
 ## Phase 5: replace the forked preprocessor (optional)
 
-Goal: use the official `tokens-studio` preprocessor plus a small `chassis/types` preprocessor for the documented differences.
+Goal: no copied sd-transforms code in the build; use the official code plus the documented differences.
 
-- [ ] First check whether the official preprocessor in 2.0 splits plain `fontWeight` tokens. In 1.3.0 it does not. If it still does not, `chassis/types` must do the split itself.
-- [ ] Do this phase only if the result is clearly smaller than the 236-line fork. If not, keep the fork, mark this phase `Done` with the reason, and move on.
-- [ ] `chassis/types`: `letterSpacing` to `number`, `text` to `content`, the fontWeight split, and the two extensions the build relies on: `fontWeightPath` for the policy module and `sourceOrder` for the formats. `sourceOrder` must be given after the fontWeight split.
-- [ ] Acceptance: `pnpm tokens:verify` green; all tests green.
+- [x] First check whether the official preprocessor in 2.0 splits plain `fontWeight` tokens. In 1.3.0 it does not. If it still does not, the Chassis code must do the split itself.
+- [x] Do this phase only if the result is clearly smaller than the fork (236 lines at planning time, 264 after Phase 4). If not, keep the fork, mark this phase `Done` with the reason, and move on.
+- [x] Chassis additions: `letterSpacing` to `number`, the fontWeight split, and the two extensions the build relies on: `fontWeightPath` for the policy module and `sourceOrder` for the formats. `sourceOrder` must be given after the fontWeight split.
+- [x] Acceptance: `pnpm tokens:verify` green; all tests green.
+
+Result: `build/tokens/preprocessor.js` went from 264 to 131 lines and is still the single `cx/global` preprocessor, so `build.js` and the configs did not change. It calls the official `alignTypes` and then runs four small steps of its own: `addTypes`, `addFontStyles`, `addSourceOrder`, over one shared token walker.
+
+Two variants were built and measured. Both pass the golden check and produce the same dictionary as the fork.
+
+| Variant | Lines | Build time, 36 runs |
+| --- | --- | --- |
+| Fork | 264 | 9.5 s |
+| Official `alignTypes` and official `addFontStyles`, plus a split of the remaining font weights | 107 | 17.9 s |
+| Official `alignTypes`, own `addFontStyles` (chosen) | 131 | 9.5 s |
+
+The official `addFontStyles` was not used because it is slow (see Facts) and because it does not split plain font weights, so Chassis code for the split is needed either way. To switch later, replace the own `addFontStyles` with the official one called with `alwaysAddFontStyle: true`, then split the `fontWeight` tokens it left whole.
+
+Differences from the fork:
+
+- The original type is stored where sd-transforms puts it, `$extensions['studio.tokens'].originalType`, not in `$extensions.chassis.originalType`. Nothing in the build reads it.
+- A font weight reference that cannot be resolved throws in the preprocessor. The fork logged the error and went on; Style Dictionary then failed on the broken reference.
+- A `fontWeight` token with an empty value is split like any other. The fork skipped it. No token has an empty font weight.
 
 ## Phase 6: build loop, cleanup, CI, docs
 
@@ -320,7 +339,7 @@ These are part of the frozen contract. They are listed so nobody "fixes" them by
 
 - [x] Branch is `dev/rewrite` (confirmed 2026-09-27).
 - [x] Token JSON and output do not change (confirmed 2026-09-27).
-- [ ] Phase 5: do it, or keep the forked preprocessor.
+- [x] Phase 5: do it (confirmed 2026-09-27).
 
 ## Session log
 
@@ -332,3 +351,4 @@ Append-only.
 - 2026-09-27 (Phase 2, Opus 5.5): Added `build/tokens/values/web.js`. The SCSS template now calls `encode` for line height, letter spacing, assets and pass-through values, and `typographyMap` / `percentToEm` for typography maps; it keeps only the `var(--…)` policy and its reference resolution (250 to 211 lines). `cx/size/rem` and `cx/shadow/web` now call `remSize` / `cssShadow`. Removed `cx/typography/web` from the web config after the golden diff showed its output is never read. Added `values-web.test.js` (27 tests) with a fixture of real resolved tokens; shadow and rem inputs were captured from builds without those transforms, and every expected value matches `dist/`. Verified: `pnpm tokens:verify` passes, 42 of 42 files; `pnpm tokens:test` passes, 183 tests; no new lint warnings; `dist/` untouched. Injected five regressions (line-height rounding, typography key order, dropped `inset`, rem rounding, wrong font-size path); each failed the intended tests. Surprise: jumbo's `-0.0313em` letter spacing comes from `size.unit.nd05`, rounded by `ts/resolveMath`, while `dimension.base.nd05` prints `-0.03125rem`; both are covered. Next: Phase 3.
 - 2026-09-27 (Phase 3, Fable 5.1): Added `build/tokens/css-var-policy.js`; the SCSS template now prints one line per token through `webValue` and holds no policy (211 to 43 lines). The chain follow is a loop bounded by `MAX_HOPS = 1` that throws on a cycle. Removed `getFontWeight`, `getFontStyle` and `fontWeightMap` from `utils.js` with their 11 tests, and moved `abbreviateScale` and `scaleAbbreviations` from `utils.js` to the policy module with their tests. Added `css-var-policy.test.js` (129 tests) and a fixture of real tokens. Verified: `pnpm tokens:verify` passes, 42 of 42 files; `pnpm tokens:test` passes, 299 tests; no new lint warnings; `dist/` untouched. Injected twelve regressions (missing abbreviation, four dropped exceptions, two hops, follow across groups, typography naming, percent line height, dropped literal fallback, no cycle check); each failed the intended tests. Surprises: (1) six of the ten table rows and the whole `borderWidth` follow are not reached by any current token, so their tests use constructed references. (2) The plan expected `splitReference` and `isReference` to become unused, but the dead `scss-variables.template.js` imports them; they stay until Phase 6. (3) Four unreachable cases that printed broken text now throw (see the Phase 3 result); this does not change any output. Next: Phase 4.
 - 2026-09-27 (Phase 4, Fable 5.1): Upgraded in place to `style-dictionary` 5.5.5 and `@tokens-studio/sd-transforms` 2.0.3; added `engines.node >= 22` and an explicit `log.errors.brokenReferences: 'throw'`. Fixed the two breaks described in the Phase 4 result: the font weight path is stored as segments (`fontWeightPath`), and tokens are numbered in source order (`sourceOrder`) and sorted in the formats. Added 7 tests (`formats.test.js`, a block in `preprocessor.test.js` with source tokens copied from `tokens/`) and regenerated `css-var-tokens.json` from the SD 5.5 build; only the extension key changed in it. Build time for 36 runs: 19.7 s before, 9.5 s after (two runs each). Verified: `pnpm tokens:verify` passes, 42 of 42 files; `pnpm tokens:test` passes, 306 tests; no new lint warnings; `dist/` untouched; a scratch token with a missing reference fails the build. Compared a dump of all web tokens between SD 4.4 and SD 5.5: resolved values, printed values and lookups are identical, so math and rounding did not change. Injected three regressions (no sort, numbering before the weight split, font weight kept as a reference); each failed the intended tests, and the first and third also failed the golden check. Surprises: (1) SD 5 moves expanded tokens to the end, which the plan did not foresee. (2) The collision counts in the facts were wrong for dark runs and are corrected. (3) `pnpm add` reported two peer warnings for ESLint plugins that want ESLint 9 or lower; they exist without this change. Not checked: whether sd-transforms 2.0 splits plain `fontWeight` tokens, which is the first item of Phase 5. Next: Phase 5, which needs Ozgur's decision.
+- 2026-09-27 (Phase 5, Fable 5.1): Checked sd-transforms 2.0.3: it still does not split plain `fontWeight` tokens. Rewrote `build/tokens/preprocessor.js` on the official `alignTypes` with own steps for letter spacing, font styles, `fontWeightPath` and `sourceOrder` (264 to 131 lines). Built the variant with the official `addFontStyles` as well (107 lines) and rejected it: it raised the build time from 9.5 s to 17.9 s. Extended `preprocessor-tokens.json` with real letter spacing, text and shadow tokens and added 15 tests; regenerated `css-var-tokens.json`, in which only the place of `originalType` changed. Verified: `pnpm tokens:verify` passes, 42 of 42 files, in 9.5 s; `pnpm tokens:test` passes, 321 tests; no new lint warnings; `dist/` untouched. Compared the fork and the new preprocessor on the real merged dictionaries of two token-set lists: equal, in the same key order, apart from where `originalType` is stored. Compared both on 15 font weight spellings: equal except for the empty string. Compared a dump of all web tokens before and after: identical. Injected four regressions (letter spacing as dimension, plain weights not split, style not lowercased, weight not resolved); each failed the intended tests and the golden check. Surprise: the official `addFontStyles` is about 20 times slower than the fork. The Model column says Opus for this phase; it was done with Fable because the session continued. Next: Phase 6.

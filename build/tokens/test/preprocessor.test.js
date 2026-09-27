@@ -64,16 +64,19 @@ describe('Chassis extensions on real tokens', () => {
       ['typography.fontWeight.html.body.style', 9],
       ['typography.fontWeight.html.blockquote.weight', 10],
       ['typography.fontWeight.html.blockquote.style', 11],
-      ['font.context.jumbo', 12],
-      ['font.context.lead', 13],
-      ['shadow.context.small', 14]
+      ['typography.letterSpacing.base.zero', 12],
+      ['font.context.jumbo', 13],
+      ['font.context.lead', 14],
+      ['shadow.context.small', 15],
+      ['shadow.context.focus', 16],
+      ['figma.website.variant.nav', 17]
     ])
   })
 
-  test('keeps the other chassis extensions', () => {
-    expect(find('shadow.context.small').$extensions.chassis).toEqual({
-      originalType: 'boxShadow',
-      sourceOrder: 14
+  test('keeps the original type that the type alignment stores', () => {
+    expect(find('shadow.context.small').$extensions).toEqual({
+      'studio.tokens': { originalType: 'boxShadow' },
+      chassis: { sourceOrder: 15 }
     })
   })
 
@@ -81,6 +84,71 @@ describe('Chassis extensions on real tokens', () => {
     const before = structuredClone(fixture.tokens)
     preprocess(fixture.tokens)
     expect(fixture.tokens).toEqual(before)
+  })
+})
+
+describe('Types on real tokens', () => {
+  const tokens = flatten(preprocess(fixture.tokens))
+  const find = (path) => tokens.find((token) => token.path.join('.') === path)
+
+  test.each([
+    ['typography.letterSpacing.base.zero', 'number'],
+    ['figma.website.variant.nav', 'content'],
+    ['shadow.context.small', 'shadow'],
+    ['font.context.jumbo', 'typography'],
+    ['typography.fontWeight.text.mass.weight', 'fontWeight'],
+    ['typography.fontWeight.text.mass.style', 'fontStyle']
+  ])('%s is typed %s', (path, type) => {
+    expect(find(path).$type).toBe(type)
+  })
+
+  test('renames the shadow offsets', () => {
+    expect(Object.keys(find('shadow.context.focus').$value).sort()).toEqual([
+      'blur',
+      'color',
+      'offsetX',
+      'offsetY',
+      'spread',
+      'type'
+    ])
+  })
+})
+
+describe('Font styles on real tokens', () => {
+  const tokens = flatten(preprocess(fixture.tokens))
+  const value = (path) => tokens.find((token) => token.path.join('.') === path).$value
+
+  test('splits a font weight that names no style', () => {
+    expect(value('typography.fontWeight.text.strong.weight')).toBe('SemiBold')
+    expect(value('typography.fontWeight.text.strong.style')).toBe('normal')
+  })
+
+  test('splits a font weight that names a style', () => {
+    expect(value('typography.fontWeight.html.blockquote.weight')).toBe('Light')
+    expect(value('typography.fontWeight.html.blockquote.style')).toBe('italic')
+  })
+
+  test('resolves a font weight that references another', () => {
+    expect(value('typography.fontWeight.html.body.weight')).toBe('Regular')
+    expect(value('typography.fontWeight.html.body.style')).toBe('normal')
+  })
+
+  test('adds the resolved weight and the style to typography tokens', () => {
+    expect(value('font.context.jumbo')).toMatchObject({ fontWeight: 'Bold', fontStyle: 'normal' })
+    expect(value('font.context.lead')).toMatchObject({ fontWeight: 'Regular', fontStyle: 'normal' })
+  })
+
+  test.each([
+    ['Italic', 'Regular', 'italic'],
+    ['Bold Oblique', 'Bold', 'oblique'],
+    ['Semi Bold', 'Semi Bold', 'normal'],
+    ['Normal', 'Regular', 'normal']
+  ])('splits %s into %s and %s', (fontWeight, weight, style) => {
+    const result = preprocess({
+      typography: { fontWeight: { text: { mass: { $type: 'fontWeights', $value: fontWeight } } } }
+    })
+    expect(result.typography.fontWeight.text.mass.weight.$value).toBe(weight)
+    expect(result.typography.fontWeight.text.mass.style.$value).toBe(style)
   })
 })
 
