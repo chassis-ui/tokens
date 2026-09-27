@@ -1,281 +1,430 @@
 ---
 title: Space Tokens
-description: Comprehensive guide to spacing tokens defining consistent margins, padding, and gaps throughout the design system.
+description: Space tokens hold the padding and the gaps of components, pages, and layouts, from the pixel scale to the spacing of each component.
 toc: true
 ---
 
 <Callout type="warning" name="work-in-progress" />
 
-## Overview
+## Introduction
 
-Space tokens define consistent spacing values for margins, padding, gaps, and other whitespace throughout the design system. They create visual rhythm, improve readability, and ensure harmonious relationships between interface elements.
+Space tokens hold the whitespace inside and between elements: the padding of a button, the gap between an icon and its label, the padding of a page. The dimensions of the elements belong to the [size tokens]([[docsref:/design-tokens/size-tokens]]), whose page has the same sections as this one.
 
-### Architecture
+The values are design pixels, and the build converts them to the unit of each platform, as [Platform output](#platform-output) shows. A space token holds the same value for every brand, app, and theme of the configuration. Only the tokens of `space.website.*` change with the screen.
 
-Space tokens follow a two-layer architecture where foundational spacing values are defined in the **metric-base** token set and then applied through contextual and component-specific tokens in the **App group**.
+### Token levels
 
-**How it works:**
+Each level references the level below it, so a pixel value is written once, in `dimension.base.*`. The chain of `16px` shows the three levels:
 
-The system provides progressive specificity:
+```text
+dimension.base.16                       16px
+├── space.unit.16                       {dimension.base.16}
+│   └── space.button.large-padding-x    {space.unit.16}
+└── size.unit.16                        {dimension.base.16}
+    └── space.context.medium            {size.unit.16}
+```
 
-1. **Base spacing** (`space.unit.*`) defines raw spacing values using an 8-point grid
-2. **Contextual spacing** (`space.context.*`) provides semantic spacing scales (xsmall, small, medium, large)
-3. **Component spacing** (`space.[component].*`) assigns specific spacing to component parts (padding-x, padding-y, gap)
+The two upper levels reference different scales. Component tokens reference `space.unit.*`, and context tokens reference `size.unit.*` of the size tokens. No component token references `space.context.*`, so a change to `space.context.medium` leaves `space.button.large-padding-x` as it is. The token sets of each level are files of `packages/tokens/source/`:
 
-**Benefits:**
+<CxTable>
+| Level | Tokens | References | Token set |
+| --- | --- | --- | --- |
+| Base | `dimension.base.*` | None | `base/metric-source.json` |
+| Base | `space.unit.*` | `dimension.base.*` | `base/metric-base.json` |
+| Context | `space.context.*` | `size.unit.*` | `base/app-base.json` |
+| Component | `space.<component>.*` | `space.unit.*` | `base/app-base.json` |
+| Component | `space.website.*` | `space.unit.*` | `screen-website/screen-<screen>.json` |
+</CxTable>
 
-- Consistent spacing scale across all components
-- Predictable visual rhythm through systematic increments
-- Easy to adjust component spacing globally
-- Semantic naming clarifies spacing intent
+## Base tokens
 
-<Callout type="info">
-Spacing tokens share the same underlying dimensional values as size tokens but are semantically distinct—size tokens define element dimensions while space tokens define the whitespace between and around elements.
+The base level has two groups. `dimension.base.*` holds the pixel values, and `space.unit.*` references them under the name of the category.
+
+### Dimension scale
+
+`dimension.base.*` names a step by its pixel value: `dimension.base.16` holds `16px`. The size and the space tokens share this scale, and the [size tokens]([[docsref:/design-tokens/size-tokens#dimension-scale]]) page lists its steps and its prefixes for fractions and negative values.
+
+### Space units
+
+`space.unit.*` has a token for a part of the dimension scale, with the name of the step: `space.unit.16` is `{dimension.base.16}`. The positive steps end at `136`, the steps `14`, `18`, `22`, `26`, and `30` are left out, and the negative steps are `n1` to `n6`, `n8`, `nd05`, `nd15`, and `nd25`. The table lists the steps that other tokens reference.
+
+<CxTable>
+| Token | Value |
+| --- | --- |
+| `space.unit.0` | `0px` |
+| `space.unit.1` | `1px` |
+| `space.unit.2` | `2px` |
+| `space.unit.3` | `3px` |
+| `space.unit.4` | `4px` |
+| `space.unit.6` | `6px` |
+| `space.unit.8` | `8px` |
+| `space.unit.10` | `10px` |
+| `space.unit.12` | `12px` |
+| `space.unit.16` | `16px` |
+| `space.unit.20` | `20px` |
+| `space.unit.24` | `24px` |
+| `space.unit.28` | `28px` |
+| `space.unit.32` | `32px` |
+| `space.unit.44` | `44px` |
+| `space.unit.48` | `48px` |
+| `space.unit.56` | `56px` |
+| `space.unit.64` | `64px` |
+| `space.unit.68` | `68px` |
+</CxTable>
+
+<Callout type="warning">
+`space.unit.136` holds `128px`, not `136px`: the source references `{dimension.base.128}` in it.
 </Callout>
 
-### Organization
+## Context tokens
 
-Space tokens are organized into three categories:
-
-**Base Spacing**: Raw spacing values in pixels, primarily using an 8-point grid system.
-
-**Contextual Spacing**: Semantic spacing scales from zero through 6xlarge for flexible application.
-
-**Component Spacing**: Specific padding, gap, and margin values for individual UI components.
-
-This organization balances precision with usability.
-
-## Base Spacing
-
-Base spacing tokens provide foundational whitespace values following an 8-point grid system.
-
-### Standard Spacing Scale
+`space.context.*` names steps of the scale by role, from `zero` with `0px` to `6xlarge` with `48px`. Reach for them in layouts and in components that have no component token.
 
 <CxTable>
-| Token Name | Value (px) | Visual Scale | Use Cases |
-|------------|-----------|--------------|----------|
-| `space.unit.0` | 0 | None | No spacing, zero margin |
-| `space.unit.1` | 1 | Minimal | Separator lines |
-| `space.unit.2` | 2 | Tiny | Very tight spacing |
-| `space.unit.4` | 4 | Extra small | Compact layouts |
-| `space.unit.8` | 8 | Small | Base grid unit |
-| `space.unit.12` | 12 | Small-medium | Tight padding |
-| `space.unit.16` | 16 | Medium | Standard spacing |
-| `space.unit.20` | 20 | Medium-large | Comfortable spacing |
-| `space.unit.24` | 24 | Large | Generous padding |
-| `space.unit.28` | 28 | Large+ | Extra padding |
-| `space.unit.32` | 32 | Extra large | Section spacing |
-| `space.unit.36` | 36 | Extra large+ | Large gaps |
-| `space.unit.40` | 40 | 2x large | Generous sections |
-| `space.unit.48` | 48 | 3x large | Major spacing |
-| `space.unit.56` | 56 | 4x large | Large sections |
-| `space.unit.64` | 64 | 5x large | Hero spacing |
-| `space.unit.72` | 72 | 6x large | Extra large sections |
-| `space.unit.80` | 80 | 7x large | Maximum spacing |
-| `space.unit.96` | 96 | 8x large | Extreme spacing |
-| `space.unit.120` | 120 | 10x large | Page-level spacing |
+| Token | Value | Reference |
+| --- | --- | --- |
+| `space.context.zero` | `0px` | `{size.unit.0}` |
+| `space.context.4xsmall` | `1px` | `{size.unit.1}` |
+| `space.context.3xsmall` | `2px` | `{size.unit.2}` |
+| `space.context.2xsmall` | `4px` | `{size.unit.4}` |
+| `space.context.xsmall` | `8px` | `{size.unit.8}` |
+| `space.context.small` | `12px` | `{size.unit.12}` |
+| `space.context.medium` | `16px` | `{size.unit.16}` |
+| `space.context.large` | `20px` | `{size.unit.20}` |
+| `space.context.xlarge` | `24px` | `{size.unit.24}` |
+| `space.context.2xlarge` | `28px` | `{size.unit.28}` |
+| `space.context.3xlarge` | `32px` | `{size.unit.32}` |
+| `space.context.4xlarge` | `36px` | `{size.unit.36}` |
+| `space.context.5xlarge` | `40px` | `{size.unit.40}` |
+| `space.context.6xlarge` | `48px` | `{size.unit.48}` |
 </CxTable>
 
-### Special Spacing Values
+## Component tokens
+
+Component tokens hold the spacing of the parts of one component. A component with sizes has a token per size and part, `space.<component>.<size>-<part>`, in the source order `medium`, `large`, `small`. The parts are `padding-y` and `padding-x` for the vertical and the horizontal padding, `gap`, and `nudge`. A component token references a step of `space.unit.*` unless its section names another reference.
+
+### Accordion
+
+Accordion spacing holds the padding of the title, the padding of the body, and the gap for each accordion size. The body has a token per side: `-t`, `-b`, `-s`, and `-e` for top, bottom, start, and end.
 
 <CxTable>
-| Token Name | Value | Purpose |
-|------------|-------|--------|
-| `space.unit.05` | 0.5px | Half-pixel adjustments |
-| `space.unit.d05` | 0.05em | Relative fractional spacing |
-| `space.unit.d15` | 1.5px | 1.5-pixel spacing |
-| `space.unit.d25` | 2.5px | 2.5-pixel spacing |
-| `space.unit.n1` through `space.unit.n8` | Negative values | Negative margins, overlaps |
+| Token | Value |
+| --- | --- |
+| `space.accordion.medium-title-padding-y` | `12px` |
+| `space.accordion.medium-title-padding-x` | `16px` |
+| `space.accordion.medium-body-padding-t` | `4px` |
+| `space.accordion.medium-body-padding-b` | `28px` |
+| `space.accordion.medium-body-padding-s` | `56px` |
+| `space.accordion.medium-body-padding-e` | `16px` |
+| `space.accordion.medium-gap` | `16px` |
+| `space.accordion.large-title-padding-y` | `16px` |
+| `space.accordion.large-title-padding-x` | `20px` |
+| `space.accordion.large-body-padding-t` | `12px` |
+| `space.accordion.large-body-padding-b` | `32px` |
+| `space.accordion.large-body-padding-s` | `68px` |
+| `space.accordion.large-body-padding-e` | `20px` |
+| `space.accordion.large-gap` | `20px` |
+| `space.accordion.small-title-padding-y` | `12px` |
+| `space.accordion.small-title-padding-x` | `12px` |
+| `space.accordion.small-body-padding-t` | `2px` |
+| `space.accordion.small-body-padding-b` | `16px` |
+| `space.accordion.small-body-padding-s` | `44px` |
+| `space.accordion.small-body-padding-e` | `12px` |
+| `space.accordion.small-gap` | `12px` |
 </CxTable>
 
-## Contextual Spacing
+### Alert
 
-Contextual spacing tokens provide semantic spacing values with clear sizing hierarchy.
+Alert spacing holds the padding and two gaps, `gap-main` and `gap-body`, of the large and the small alert.
 
 <CxTable>
-| Token Name | Value (px) | Purpose |
-|------------|-----------|--------|
-| `space.context.zero` | 0 | No spacing |
-| `space.context.4xsmall` | 1 | Minimal separation |
-| `space.context.3xsmall` | 2 | Very tight spacing |
-| `space.context.2xsmall` | 4 | Extra tight spacing |
-| `space.context.xsmall` | 8 | Tight spacing, compact layouts |
-| `space.context.small` | 12 | Small spacing, close elements |
-| `space.context.medium` | 16 | Standard spacing, default gaps |
-| `space.context.large` | 20 | Comfortable spacing |
-| `space.context.xlarge` | 24 | Generous spacing |
-| `space.context.2xlarge` | 28 | Extra generous spacing |
-| `space.context.3xlarge` | 32 | Large spacing between sections |
-| `space.context.4xlarge` | 36 | Extra large section spacing |
-| `space.context.5xlarge` | 40 | Maximum regular spacing |
-| `space.context.6xlarge` | 48 | Hero-level spacing |
+| Token | Value |
+| --- | --- |
+| `space.alert.large-padding-y` | `32px` |
+| `space.alert.large-padding-x` | `32px` |
+| `space.alert.large-gap-main` | `24px` |
+| `space.alert.large-gap-body` | `8px` |
+| `space.alert.small-padding-y` | `16px` |
+| `space.alert.small-padding-x` | `16px` |
+| `space.alert.small-gap-main` | `16px` |
+| `space.alert.small-gap-body` | `8px` |
 </CxTable>
 
-### Spacing Hierarchy
+### Badge
 
-The contextual spacing scale follows a logical progression:
-
-- **Micro spacing** (4xsmall - 2xsmall): 1-4px for tight, compact layouts
-- **Component spacing** (xsmall - medium): 8-16px for within-component spacing
-- **Group spacing** (large - xlarge): 20-24px for related element groups
-- **Section spacing** (2xlarge - 4xlarge): 28-36px for distinct sections
-- **Page spacing** (5xlarge - 6xlarge): 40-48px for major page divisions
-
-## Component Spacing
-
-Component-specific spacing tokens define padding, gaps, and margins for individual UI elements.
-
-### Button Spacing
+Badge spacing holds the padding, the gap, and the nudge for each badge size. The gap is `0px` in every size.
 
 <CxTable>
-| Token Name | Value | Applied To |
-|------------|-------|------------|
-| `space.button.small-padding-y` | 6px | Small button vertical padding |
-| `space.button.small-padding-x` | 8px | Small button horizontal padding |
-| `space.button.small-gap` | 4px | Gap between icon and text (small) |
-| `space.button.medium-padding-y` | 8px | Medium button vertical padding |
-| `space.button.medium-padding-x` | 12px | Medium button horizontal padding |
-| `space.button.medium-gap` | 8px | Gap between icon and text (medium) |
-| `space.button.large-padding-y` | 10px | Large button vertical padding |
-| `space.button.large-padding-x` | 16px | Large button horizontal padding |
-| `space.button.large-gap` | 12px | Gap between icon and text (large) |
+| Token | Value |
+| --- | --- |
+| `space.badge.medium-padding-y` | `2px` |
+| `space.badge.medium-padding-x` | `4px` |
+| `space.badge.medium-gap` | `0px` |
+| `space.badge.medium-nudge` | `4px` |
+| `space.badge.large-padding-y` | `2px` |
+| `space.badge.large-padding-x` | `4px` |
+| `space.badge.large-gap` | `0px` |
+| `space.badge.large-nudge` | `6px` |
+| `space.badge.small-padding-y` | `1px` |
+| `space.badge.small-padding-x` | `4px` |
+| `space.badge.small-gap` | `0px` |
+| `space.badge.small-nudge` | `4px` |
 </CxTable>
 
-### Form Input Spacing
+### Button
+
+Button spacing holds the padding, the gap, and the nudge for each button size.
 
 <CxTable>
-| Token Name | Value | Applied To |
-|------------|-------|------------|
-| `space.form-input.small-padding-y` | 6px | Small input vertical padding |
-| `space.form-input.small-padding-x` | 8px | Small input horizontal padding |
-| `space.form-input.small-gap` | 8px | Gap in small inputs |
-| `space.form-input.medium-padding-y` | 8px | Medium input vertical padding |
-| `space.form-input.medium-padding-x` | 12px | Medium input horizontal padding |
-| `space.form-input.medium-gap` | 12px | Gap in medium inputs |
-| `space.form-input.large-padding-y` | 10px | Large input vertical padding |
-| `space.form-input.large-padding-x` | 16px | Large input horizontal padding |
-| `space.form-input.large-gap` | 16px | Gap in large inputs |
+| Token | Value |
+| --- | --- |
+| `space.button.medium-padding-y` | `8px` |
+| `space.button.medium-padding-x` | `12px` |
+| `space.button.medium-gap` | `8px` |
+| `space.button.medium-nudge` | `4px` |
+| `space.button.large-padding-y` | `10px` |
+| `space.button.large-padding-x` | `16px` |
+| `space.button.large-gap` | `12px` |
+| `space.button.large-nudge` | `4px` |
+| `space.button.small-padding-y` | `6px` |
+| `space.button.small-padding-x` | `8px` |
+| `space.button.small-gap` | `4px` |
+| `space.button.small-nudge` | `4px` |
 </CxTable>
 
-### Badge & Chip Spacing
+### Chip
+
+Chip spacing holds the padding, the gap, and the nudge for each chip size.
 
 <CxTable>
-| Token Name | Value | Applied To |
-|------------|-------|------------|
-| `space.badge.small-padding-y` | 1px | Small badge vertical padding |
-| `space.badge.small-padding-x` | 4px | Small badge horizontal padding |
-| `space.badge.medium-padding-y` | 2px | Medium badge vertical padding |
-| `space.badge.medium-padding-x` | 4px | Medium badge horizontal padding |
-| `space.chip.medium-padding-y` | 4px | Medium chip vertical padding |
-| `space.chip.medium-padding-x` | 4px | Medium chip horizontal padding |
-| `space.chip.medium-gap` | 8px | Gap in medium chips |
+| Token | Value |
+| --- | --- |
+| `space.chip.medium-padding-y` | `4px` |
+| `space.chip.medium-padding-x` | `4px` |
+| `space.chip.medium-gap` | `8px` |
+| `space.chip.medium-nudge` | `4px` |
+| `space.chip.large-padding-y` | `4px` |
+| `space.chip.large-padding-x` | `4px` |
+| `space.chip.large-gap` | `12px` |
+| `space.chip.large-nudge` | `4px` |
+| `space.chip.small-padding-y` | `2px` |
+| `space.chip.small-padding-x` | `2px` |
+| `space.chip.small-gap` | `8px` |
+| `space.chip.small-nudge` | `4px` |
 </CxTable>
 
-### Card & Modal Spacing
+### Date picker
+
+Date picker spacing holds the padding and the gap of the date picker.
 
 <CxTable>
-| Token Name | Value | Applied To |
-|------------|-------|------------|
-| `space.modal.small-padding-y` | 16px | Small modal vertical padding |
-| `space.modal.small-padding-x` | 16px | Small modal horizontal padding |
-| `space.modal.small-gap` | 16px | Gap in small modals |
-| `space.modal.medium-padding-y` | 24px | Medium modal vertical padding |
-| `space.modal.medium-padding-x` | 24px | Medium modal horizontal padding |
-| `space.modal.medium-gap` | 24px | Gap in medium modals |
-| `space.modal.large-padding-y` | 32px | Large modal vertical padding |
-| `space.modal.large-padding-x` | 32px | Large modal horizontal padding |
-| `space.modal.large-gap` | 32px | Gap in large modals |
+| Token | Value |
+| --- | --- |
+| `space.datepicker.padding-y` | `8px` |
+| `space.datepicker.padding-x` | `8px` |
+| `space.datepicker.gap` | `4px` |
 </CxTable>
 
-### Page Spacing
+### Dropdown
+
+Dropdown spacing holds the padding and the gap of a dropdown.
 
 <CxTable>
-| Token Name | Value | Applied To |
-|------------|-------|------------|
-| `space.page.small-padding-y` | 16px | Small page vertical padding |
-| `space.page.small-padding-x` | 16px | Small page horizontal padding |
-| `space.page.medium-padding-y` | 24px | Medium page vertical padding |
-| `space.page.medium-padding-x` | 24px | Medium page horizontal padding |
-| `space.page.large-padding-y` | 32px | Large page vertical padding |
-| `space.page.large-padding-x` | 32px | Large page horizontal padding |
+| Token | Value |
+| --- | --- |
+| `space.dropdown.padding-y` | `6px` |
+| `space.dropdown.padding-x` | `12px` |
+| `space.dropdown.gap` | `12px` |
 </CxTable>
 
-### List & Table Spacing
+### Form input
+
+Form input spacing holds the padding and the gap for each input size, and for a fourth group, `floating`.
 
 <CxTable>
-| Token Name | Value | Applied To |
-|------------|-------|------------|
-| `space.list.padding-y` | 12px | List item vertical padding |
-| `space.list.padding-x` | 16px | List item horizontal padding |
-| `space.list.gap` | 16px | Gap between list elements |
-| `space.table.cell-padding-y` | 8px | Table cell vertical padding |
-| `space.table.cell-padding-x` | 8px | Table cell horizontal padding |
-| `space.table.cell-gap` | 8px | Gap in table cells |
+| Token | Value |
+| --- | --- |
+| `space.form-input.medium-padding-y` | `8px` |
+| `space.form-input.medium-padding-x` | `12px` |
+| `space.form-input.medium-gap` | `12px` |
+| `space.form-input.large-padding-y` | `10px` |
+| `space.form-input.large-padding-x` | `16px` |
+| `space.form-input.large-gap` | `16px` |
+| `space.form-input.small-padding-y` | `6px` |
+| `space.form-input.small-padding-x` | `8px` |
+| `space.form-input.small-gap` | `8px` |
+| `space.form-input.floating-padding-y` | `8px` |
+| `space.form-input.floating-padding-x` | `12px` |
+| `space.form-input.floating-gap` | `12px` |
 </CxTable>
 
-## Usage Guidelines
+### List
 
-### Choosing the Right Token
+List spacing holds the padding, the gap, and the nudge of a list item.
 
-**For components**: Use component-specific tokens (`space.button.*`, `space.form-input.*`)
+<CxTable>
+| Token | Value |
+| --- | --- |
+| `space.list.padding-y` | `12px` |
+| `space.list.padding-x` | `16px` |
+| `space.list.gap` | `16px` |
+| `space.list.nudge` | `8px` |
+</CxTable>
 
-**For flexible spacing**: Use contextual tokens (`space.context.*`)
+### Notification
 
-**For custom spacing**: Use base tokens (`space.unit.*`)
+Notification spacing holds the padding and the gap of a notification.
 
-### Design Principles
+<CxTable>
+| Token | Value |
+| --- | --- |
+| `space.notification.padding-y` | `12px` |
+| `space.notification.padding-x` | `16px` |
+| `space.notification.gap` | `16px` |
+</CxTable>
 
-**8-Point Grid**: Base all spacing on multiples of 8px for visual consistency
+### Modal
 
-**Progressive Spacing**: Larger elements should have proportionally more spacing
+Modal spacing holds the padding and the gap for each modal size. The medium and the small modal hold the same values.
 
-**Breathing Room**: Ensure sufficient whitespace around interactive elements
+<CxTable>
+| Token | Value |
+| --- | --- |
+| `space.modal.large-padding-y` | `24px` |
+| `space.modal.large-padding-x` | `24px` |
+| `space.modal.large-gap` | `24px` |
+| `space.modal.medium-padding-y` | `16px` |
+| `space.modal.medium-padding-x` | `16px` |
+| `space.modal.medium-gap` | `16px` |
+| `space.modal.small-padding-y` | `16px` |
+| `space.modal.small-padding-x` | `16px` |
+| `space.modal.small-gap` | `16px` |
+</CxTable>
 
-**Visual Grouping**: Use consistent spacing to indicate related elements
+### Page
 
-### Spacing Scale Selection
+Page spacing holds the padding and the gap of a page for each page size. The three gaps reference `{grid.gutter.medium}` of the [grid tokens]([[docsref:/design-tokens/size-tokens#grid-tokens]]), which holds `24` without a unit; the build reads it as pixels.
 
-**Micro content** (labels, badges): 4-8px (xsmall)
+<CxTable>
+| Token | Value |
+| --- | --- |
+| `space.page.large-padding-y` | `32px` |
+| `space.page.large-padding-x` | `32px` |
+| `space.page.large-gap` | `24` |
+| `space.page.medium-padding-y` | `24px` |
+| `space.page.medium-padding-x` | `24px` |
+| `space.page.medium-gap` | `24` |
+| `space.page.small-padding-y` | `16px` |
+| `space.page.small-padding-x` | `16px` |
+| `space.page.small-gap` | `24` |
+</CxTable>
 
-**Component internals** (button padding): 8-16px (small-medium)
+### Pagination
 
-**Element groups** (form fields): 16-24px (medium-large)
+Pagination spacing holds the gap between the dots.
 
-**Sections**: 24-40px (xlarge-5xlarge)
+<CxTable>
+| Token | Value |
+| --- | --- |
+| `space.pagination.dot-gap` | `8px` |
+</CxTable>
 
-**Page divisions**: 40-64px (5xlarge-6xlarge)
+### Table
 
-### Accessibility
+Table spacing holds the padding and the gap of a table cell.
 
-- Ensure sufficient spacing between interactive elements (minimum 8px)
-- Provide adequate padding for touch targets (minimum 8px around 32px target)
-- Use consistent spacing to indicate relationships and hierarchy
-- Test spacing with actual content to avoid cramped layouts
+<CxTable>
+| Token | Value |
+| --- | --- |
+| `space.table.cell-padding-y` | `8px` |
+| `space.table.cell-padding-x` | `8px` |
+| `space.table.cell-gap` | `8px` |
+</CxTable>
 
-### Best Practices
+### Segment
 
-**Do:**
+Segment spacing holds the padding of the bar, `bar-padding`, and the padding and the gap of a segment for each segment size.
 
-- Use contextual spacing tokens for semantic, flexible layouts
-- Maintain consistent spacing for similar elements
-- Stick to the 8-point grid whenever possible
-- Use component tokens for specific UI elements
-- Increase spacing proportionally with element size
+<CxTable>
+| Token | Value |
+| --- | --- |
+| `space.segment.medium-bar-padding` | `4px` |
+| `space.segment.medium-padding-y` | `6px` |
+| `space.segment.medium-padding-x` | `12px` |
+| `space.segment.medium-gap` | `8px` |
+| `space.segment.large-bar-padding` | `4px` |
+| `space.segment.large-padding-y` | `8px` |
+| `space.segment.large-padding-x` | `16px` |
+| `space.segment.large-gap` | `8px` |
+| `space.segment.small-bar-padding` | `4px` |
+| `space.segment.small-padding-y` | `3px` |
+| `space.segment.small-padding-x` | `8px` |
+| `space.segment.small-gap` | `8px` |
+</CxTable>
 
-**Don't:**
+### Website
 
-- Use arbitrary spacing values—always reference tokens
-- Mix different spacing systems inconsistently
-- Use spacing smaller than 4px for visible gaps
-- Ignore the 8-point grid without good reason
-- Use negative spacing except for intentional overlaps
+Website spacing holds the padding and the gaps of a section, a feature, and a module of a website, and two gaps of the content. They are the space tokens that change with the screen: each screen has its own token set, `screen-website/screen-<screen>.json`, with the same names.
 
-### Common Patterns
+<CxTable>
+| Token | `large` | `medium` | `small` |
+| --- | --- | --- | --- |
+| `space.website.section-padding-y` | `48px` | `64px` | `32px` |
+| `space.website.section-padding-x` | `24px` | `24px` | `16px` |
+| `space.website.section-gap` | `48px` | `32px` | `32px` |
+| `space.website.content-header-gap` | `16px` | `12px` | `8px` |
+| `space.website.content-features-gap` | `24px` | `24px` | `16px` |
+| `space.website.feature-padding-y` | `24px` | `24px` | `16px` |
+| `space.website.feature-padding-x` | `24px` | `24px` | `16px` |
+| `space.website.feature-gap` | `24px` | `24px` | `16px` |
+| `space.website.module-padding-y` | `24px` | `16px` | `12px` |
+| `space.website.module-padding-x` | `24px` | `16px` | `16px` |
+| `space.website.module-gap` | `8px` | `8px` | `16px` |
+</CxTable>
 
-**Stack Spacing**: Use `space.context.medium` (16px) between stacked elements
+## Usage
 
-**Inline Spacing**: Use `space.context.small` (12px) or `space.context.xsmall` (8px) for inline gaps
+Space tokens apply to the padding of an element and to the gaps between elements. The level to use depends on how specific the element is.
 
-**Section Spacing**: Use `space.context.3xlarge` (32px) or larger for distinct sections
+### Choosing a level
 
-**Component Padding**: Use component-specific tokens for consistent internal spacing
+Use the most specific token that names the element, and go down a level only when none does:
+
+- Use a component token for the part that it names: `space.button.medium-gap` for the gap inside a medium button.
+- Use `space.context.*` in layouts and in components that have no component token.
+- Use `space.unit.*` when no context token holds the value: a step between two context steps like `space.unit.6`, a step above `48px`, or a negative step like `space.unit.n4`.
+- Leave `dimension.base.*` to the token sets. It is in the output because the unit tokens reference it.
+
+### Size and space
+
+A space token sets a padding or a gap; a size token sets a width or a height. `space.unit.16` and `size.unit.16` hold the same value, because both reference `dimension.base.16`. The context tokens of both categories reference `size.unit.*`, so a change to `space.unit.16` changes the component tokens that reference it and leaves `space.context.medium` as it is.
+
+## Platform output
+
+Space tokens print in `rem` on the web, as `CGFloat` points on iOS, and as `dp` dimension resources on Android.
+
+<CxTable>
+| Platform | Name | Value |
+| --- | --- | --- |
+| Web | `$cx-space-context-medium` | `1rem` |
+| iOS | `SpaceContextMedium` | `CGFloat(16)` |
+| Android | `@dimen/space_context_medium` | `16dp` |
+</CxTable>
+
+The web platform divides the pixels by 16, so `16px` prints `1rem` and `0px` prints `0rem`. A negative step keeps its sign: `space.unit.n4` prints `-0.25rem`, `CGFloat(-4)`, and `-4dp`. A value without a unit prints like a pixel value: `space.page.large-gap` resolves to `24` and prints `1.5rem`, `CGFloat(24)`, and `24dp`.
+
+The build writes every level with its resolved value. In `main.scss`:
+
+```scss
+$cx-space-unit-16: 1rem !default;
+$cx-space-context-medium: 1rem !default;
+$cx-space-button-large-padding-x: 1rem !default;
+```
+
+The main file of each platform holds the values of the first configured screen, `large`. The values of `space.website.*` on another screen are in the number file of that screen. The build writes in `number-small.scss`:
+
+```scss
+$cx-space-website-section-padding-y: 2rem !default;
+```
+
+See the [web]([[docsref:/use-in-project/web-applications]]), [iOS]([[docsref:/use-in-project/ios-applications]]), and [Android]([[docsref:/use-in-project/android-applications]]) docs for the files that hold these names.
