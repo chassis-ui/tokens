@@ -149,7 +149,8 @@ pnpm tokens:native:android
 
 ## Changing the site
 
-The pages are in `packages/site/content/`. Run the site locally at
+The pages are in `packages/site/content/`. [WRITING.md](../WRITING.md) is their style guide:
+voice, section order, headings, token names and code blocks. Run the site locally at
 `http://localhost:4322/tokens/` with:
 
 ```sh

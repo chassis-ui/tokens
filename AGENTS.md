@@ -74,6 +74,21 @@ Run the checks of the area you changed, and report the ones that fail.
   CI compiles the native output. Run `pnpm tokens:native:ios` and `pnpm tokens:native:android`
   only where the tools are already installed.
 
+## Documentation
+
+- The pages of the site are in `packages/site/content/docs/`, in the sections
+  `getting-started/`, `use-in-project/` and `design-tokens/`. Shared callouts are in
+  `packages/site/content/callouts/`.
+- Style guide: [WRITING.md](WRITING.md). Instructive voice (no `you`, `your`, `we`, `our`) for
+  the token reference pages, tutorial voice (`you` and `your` allowed) for the getting-started
+  and use-in-project pages. Headings are in sentence case, under about 25 characters, each
+  followed by a sentence.
+- **The guide is the reference, not the existing pages.** Most pages are older than the guide
+  and break its rules. Do not copy a convention from a page.
+- Every token name and value in a page must exist in `packages/tokens/source/` or
+  `packages/tokens/dist/` as written. Copy generated code from `dist/`; do not retype it.
+- Run `pnpm site:lint` and `pnpm site:build` after editing `packages/site/`.
+
 ## Cautions
 
 - Never commit, merge or push without being asked. Pushing `main` starts the release workflow,
@@ -98,3 +113,4 @@ Read the doc of an area before working in it, rather than deriving it from the c
   every platform and the known oddities
 - [packages/tokens/test/README.md](packages/tokens/test/README.md): the tests, fixtures, preset
   baselines and native compile checks
+- [WRITING.md](WRITING.md): the style guide of the documentation
