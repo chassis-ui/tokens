@@ -1,1 +1,1 @@
-This documentation is a work in progress. Some information may be incomplete, outdated, or differ from the current product behavior.
+This page is a work in progress. Parts of it may be incomplete or differ from the current version of Chassis Tokens.
