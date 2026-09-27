@@ -105,7 +105,9 @@ libraries need no such step: the release builds one for every `res/` tree in `di
 
 ## Changing the build
 
-The build in `packages/tokens/build/` follows three rules; please keep them:
+The build in `packages/tokens/build/` follows three rules; please keep them. The reasons, the
+output contract and the known oddities of the output are in
+[docs/architecture.md](../docs/architecture.md).
 
 - **Templates only print.** Platform values (`UIColor(…)`, ARGB colours, `sp` and `dp`, quoting,
   references) come from pure functions in `build/values/` and the web reference policies, which

@@ -213,6 +213,8 @@ Key modules in `build/`:
 - `logger.js`: Logging
 - `utils.js`: Token type groups and number formatting
 
+[docs/architecture.md](docs/architecture.md) explains why the build works this way, and lists the output contract, the rules of every platform and the known oddities of the output.
+
 ## Configuration
 
 ### Token Sets
