@@ -99,9 +99,9 @@ export function cssShadow(value) {
  */
 export function letterSpacingEm(value, basePxFontSize = 16) {
   if (String(value).endsWith('px')) {
-    return `${removeTrailingZeros((parseFloat(value) / basePxFontSize).toFixed(4))}em`
+    return `${removeTrailingZeros((parseFloat(String(value)) / basePxFontSize).toFixed(4))}em`
   }
-  return `${parseFloat(value)}em`
+  return `${parseFloat(String(value))}em`
 }
 
 /**
@@ -113,7 +113,7 @@ export function letterSpacingEm(value, basePxFontSize = 16) {
  * @returns {string} e.g. `1.273em`
  */
 export function lineHeightEm(lineHeight, fontSize) {
-  return `${removeTrailingZeros((parseFloat(lineHeight) / parseFloat(fontSize)).toFixed(3))}em`
+  return `${removeTrailingZeros((parseFloat(String(lineHeight)) / parseFloat(String(fontSize))).toFixed(3))}em`
 }
 
 /**

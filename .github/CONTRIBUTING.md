@@ -93,7 +93,7 @@ Token names are the public API: renaming or removing a token breaks every app th
 
 ## Changing the build
 
-The build in `packages/tokens/build/` follows two rules; please keep them:
+The build in `packages/tokens/build/` follows three rules; please keep them:
 
 - **Templates only print.** Platform values (`UIColor(…)`, ARGB colours, `sp` and `dp`, quoting,
   references) come from pure functions in `build/values/` and the web reference policies, which
@@ -102,12 +102,17 @@ The build in `packages/tokens/build/` follows two rules; please keep them:
 - **Tests use real tokens.** Fixtures are copied from `source/` and `dist/`; no test mocks
   Style Dictionary. See [`packages/tokens/test/README.md`](../packages/tokens/test/README.md) for
   the test files, the fixtures and the preset baselines.
+- **Types in JSDoc.** `pnpm tokens:typecheck` runs TypeScript's `checkJs` on `build/` (not yet
+  `strict`), with the types Style Dictionary ships and those of Node.js 22, the oldest version
+  the package supports. Describe parameters and return values with JSDoc, as the existing code
+  does.
 
 After a change, run:
 
 ```sh
 pnpm tokens:lint
 pnpm tokens:lint:source
+pnpm tokens:typecheck
 pnpm tokens:test
 pnpm tokens:verify
 pnpm tokens:verify:presets

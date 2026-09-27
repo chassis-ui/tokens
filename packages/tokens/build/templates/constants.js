@@ -15,7 +15,7 @@ import { encodingContext, firstReferencedToken } from './references.js'
  * Returns the constants a dictionary prints, in order.
  *
  * @param {Object} dictionary - Token dictionary with `tokens` and `allTokens`.
- * @param {Object} [settings] - `outputReferences`: name other constants where the
+ * @param {Object} settings - `outputReferences`: name other constants where the
  *   platform's `reference` allows it.
  * @param {Object} values - The platform's value module: `encode`, `reference`,
  *   `partName`, and optionally `derivedConstants`, which returns constants printed after

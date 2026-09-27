@@ -55,6 +55,7 @@ export const referencingGroups = [
  * Custom property by referenced path, one row per entry of `referenceTargets`.
  * `reference` is the start of the referenced path; `name` receives the segments after it.
  */
+/** @type {{ reference: string, name: (segments: string[]) => string }[]} */
 export const customProperties = [
   { reference: 'color.context', name: ([group, step]) => `${group}-${step}` },
   { reference: 'color.primitive', name: ([group, step]) => `${group}-${step}` },

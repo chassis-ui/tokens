@@ -326,6 +326,12 @@ export async function runBuild(outDir, { platforms = [], config } = {}) {
 /**
  * Builds into `outDir` unless `skipBuild` is set, then compares it with `expectedDir`.
  *
+ * @param {Object} options
+ * @param {string} options.expectedDir - The reference output.
+ * @param {string} options.outDir - The scratch output directory.
+ * @param {string[]} options.platforms - Platforms to build and compare; empty for all.
+ * @param {string} [options.config] - A preset's build configuration file.
+ * @param {boolean} options.skipBuild - Compare `outDir` without building.
  * @returns {Promise<boolean>} Whether the output matches.
  */
 async function check({ expectedDir, outDir, platforms, config, skipBuild }) {

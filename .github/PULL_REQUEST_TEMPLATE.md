@@ -18,7 +18,7 @@ page, or the test that fails without the change.
 See [CONTRIBUTING.md](CONTRIBUTING.md#what-a-pull-request-needs-before-merge) for the details
 behind each of these.
 
-- [ ] `pnpm tokens:lint`, `pnpm tokens:lint:source`, `pnpm tokens:test`, `pnpm tokens:verify` and `pnpm tokens:verify:presets`
+- [ ] `pnpm tokens:lint`, `pnpm tokens:lint:source`, `pnpm tokens:typecheck`, `pnpm tokens:test`, `pnpm tokens:verify` and `pnpm tokens:verify:presets`
       pass locally
 - [ ] **`dist/` rebuilt** with `pnpm tokens` and committed, and the preset baselines written again,
       if tokens or the build changed the output

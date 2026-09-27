@@ -172,6 +172,7 @@ export function lintTokens({ themes, sets }) {
   }
 
   // name-format: platform names, and type-conflict, per token-set list
+  /** @type {[string, Omit<import('style-dictionary/types').Transform, 'name'>][]} */
   const transforms = NAME_TRANSFORMS.map((id) => [id, StyleDictionary.hooks.transforms[id]])
   const reported = new Set()
   const once = (key) => !reported.has(key) && reported.add(key)
@@ -187,7 +188,11 @@ export function lintTokens({ themes, sets }) {
           if (badNames.has(name)) continue
           const collisions = new Map()
           for (const [id, { transform }] of transforms) {
-            const platformName = transform({ path: name.split('.') }, {}, {})
+            // The name transforms read the path only
+            const pathOnly = /** @type {import('style-dictionary/types').TransformedToken} */ ({
+              path: name.split('.')
+            })
+            const platformName = transform(pathOnly, {}, {})
             const other = platformNames.get(id).get(platformName)
             if (other) {
               if (!collisions.has(other.name)) collisions.set(other.name, { ...other, names: [] })

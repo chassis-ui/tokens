@@ -72,11 +72,13 @@
     "diff": "node build/diff.js",
     "lint:source": "node build/lint-tokens.js",
     "test": "vitest run --dir test",
+    "typecheck": "tsc -p tsconfig.json",
     "verify": "node build/verify.js",
     "verify:presets": "node build/verify.js --preset all"
   },
   "devDependencies": {
     "@tokens-studio/sd-transforms": "^2.0.3",
+    "@types/node": "^22.20.4",
     "style-dictionary": "^5.5.5",
     "svg2vectordrawable": "^2.9.1",
     "tinycolor2": "^1.6.0",

@@ -179,6 +179,12 @@ pnpm tokens:test
 
 See [packages/tokens/test/README.md](packages/tokens/test/README.md) for the test files, fixtures and preset baselines.
 
+The build code is JavaScript with JSDoc types. TypeScript checks it (`checkJs`, not yet `strict`) against the types of Style Dictionary and Node.js 22:
+
+```sh
+pnpm tokens:typecheck
+```
+
 ### Build Architecture
 
 The build uses [Style Dictionary](https://styledictionary.com) 5.5 and [`@tokens-studio/sd-transforms`](https://github.com/tokens-studio/sd-transforms) 2.0 (type alignment, math, colour modifiers and theme permutations). A build runs in three steps:
@@ -335,7 +341,7 @@ pnpm site:build
 
 Every pull request runs `.github/workflows/ci.yml`:
 
-- **Tokens** (Node.js 22 and 24): `tokens:lint`, `tokens:lint:source`, `tokens:test`, `tokens:verify`, `tokens:verify:presets`
+- **Tokens** (Node.js 22 and 24): `tokens:lint`, `tokens:lint:source`, `tokens:typecheck`, `tokens:test`, `tokens:verify`, `tokens:verify:presets`
 - **Site**: `lint:prettier` (the whole repository), `site:lint`, `check:astro`, `site:build`
 - **Audit**: `pnpm audit` for moderate advisories and above
 - **Token diff**: the [token diff report](#token-diff-report) of the pull request against its base branch, in the job summary

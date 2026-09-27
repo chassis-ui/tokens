@@ -50,6 +50,10 @@ jobs:
       - name: Lint token source
         run: pnpm tokens:lint:source
 
+      # checkJs on build/ with the types of Style Dictionary and Node.js 22
+      - name: Type check
+        run: pnpm tokens:typecheck
+
       - name: Test
         run: pnpm tokens:test
 

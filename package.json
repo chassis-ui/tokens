@@ -24,6 +24,7 @@
     "tokens:lint:source": "pnpm --filter @chassis-ui/tokens lint:source",
     "tokens:site": "pnpm --filter @chassis-ui/tokens build:site",
     "tokens:test": "pnpm --filter @chassis-ui/tokens test",
+    "tokens:typecheck": "pnpm --filter @chassis-ui/tokens typecheck",
     "tokens:verify": "pnpm --filter @chassis-ui/tokens verify",
     "tokens:verify:presets": "pnpm --filter @chassis-ui/tokens verify:presets",
     "site": "pnpm site:build && pnpm site:lint",

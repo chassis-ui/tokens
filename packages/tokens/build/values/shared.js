@@ -116,7 +116,7 @@ export function percentLineHeight(token, fontSize) {
   if (fontSize === undefined) {
     throw new Error(`No font size for the percentage line height of ${token.path.join('.')}`)
   }
-  return Number(((parseFloat(token.$value) / 100) * parseFloat(fontSize)).toFixed(3))
+  return Number(((parseFloat(token.$value) / 100) * parseFloat(String(fontSize))).toFixed(3))
 }
 
 /**
@@ -141,7 +141,7 @@ export function letterSpacingEm(token, fontSize) {
     ? parseFloat(value) / 100
     : value.endsWith('em')
       ? parseFloat(value)
-      : parseFloat(value) / parseFloat(fontSize)
+      : parseFloat(value) / parseFloat(String(fontSize))
   return Number(em.toFixed(4)) || 0
 }
 

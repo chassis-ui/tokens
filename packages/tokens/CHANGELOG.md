@@ -69,6 +69,7 @@ The presets for teams that do not use Chassis CSS are kept, in the new structure
 - `ios-swiftui` and `android-compose` platforms: Swift files with SwiftUI values and Kotlin objects for Jetpack Compose, with the same tokens and values as `ios` and `android`, written to `dist/ios-swiftui/` and `dist/android-compose/`
 - `outputReferences` for the iOS format: a constant names another constant of the same class when it has the same type and value; base colours and sizes computed with math print their values
 - CI for pull requests (`.github/workflows/ci.yml`): token lint, tests and golden checks on Node.js 22 and 24, the site lint and build, and `pnpm audit`
+- Type checking of the build code (`pnpm tokens:typecheck`, TypeScript `checkJs` on `build/`), run in CI
 - A token source lint (`pnpm tokens:lint:source`, `build/lint-tokens.js`), run in CI: it names the token set and token when the themes or screens declare different names, a name is unusable on a platform or collides with another, a font weight is unknown, a token has no type, or one name has two types
 - A token diff report (`pnpm tokens:diff`, `build/diff.js`): the names added, removed, renamed and changed in value in each `dist/` file against another branch or commit. CI writes it to the job summary of every pull request
 - Dependabot for npm packages and GitHub Actions, weekly
