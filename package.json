@@ -69,6 +69,7 @@
     "clean": "pnpm site:clean && rm -rf dist",
     "dev": "pnpm sync-submodules && pnpm tokens:site && pnpm astro:dev",
     "test": "pnpm tokens:test",
+    "lint:prettier": "prettier -c --cache .",
     "tokens": "pnpm tokens:build",
     "tokens:build": "node build/tokens/build.js",
     "tokens:lint": "eslint --cache --cache-location .cache/.eslintcache build/tokens",

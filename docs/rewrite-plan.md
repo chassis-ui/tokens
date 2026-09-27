@@ -73,7 +73,7 @@ If a phase is too large, split it into `Na`, `Nb` rows. If a fact in this file i
 | 22    | Platform shadow values (optional)                                           | Opus   | Done        | `rewrite(phase 22)` | 2026-09-27 |
 | 23    | Package contents and scripts                                                | Opus   | Done        | `rewrite(phase 23)` | 2026-09-27 |
 | 24    | Lint and audit clean                                                        | Sonnet | Done        | `rewrite(phase 24)` | 2026-09-27 |
-| 25    | CI for pull requests                                                        | Opus   | Not started |                     |            |
+| 25    | CI for pull requests                                                        | Opus   | Done        | `rewrite(phase 25)` | 2026-09-27 |
 | 26    | Merge preparation and 0.6.0                                                 | Opus   | Not started |                     |            |
 | 27    | Workspace split: tokens and site (optional)                                 | Opus   | Not started |                     |            |
 | 28    | Contributor docs and README                                                 | Opus   | Not started |                     |            |
@@ -1014,15 +1014,46 @@ Checked:
 
 Goal: every pull request and every push runs the checks, and the release cannot publish without them.
 
-- [ ] `.github/workflows/ci.yml`, on `pull_request` and on `push` to any branch:
+- [x] `.github/workflows/ci.yml`, on `pull_request` and on `push` to any branch (changed while doing it: on `pull_request`, `workflow_dispatch` and `workflow_call`; see the result):
   - `tokens` job, on the Node versions decided below: `pnpm install --frozen-lockfile`, `tokens:lint`, `tokens:test`, `tokens:verify`, `tokens:verify:presets`.
   - `site` job: `site:lint`, `check:astro`, `astro:build`.
   - `audit` job: `check:pnpm`.
   - Concurrency group per branch, cancelling older runs; `permissions: contents: read`.
-- [ ] `publish-release.yml`: `--frozen-lockfile`, and it publishes only after the CI jobs pass on the same commit (a reusable workflow call or `needs`).
-- [ ] `.github/dependabot.yml` for npm and GitHub Actions, as decided below.
-- [ ] Pin actions as decided below.
-- [ ] Acceptance: `actionlint` passes on both workflows; each job's commands run green locally in a clean clone with `pnpm install --frozen-lockfile`; the Result lists the branch protection settings for Ozgur to set on `main` (required checks: the job names).
+- [x] `publish-release.yml`: `--frozen-lockfile`, and it publishes only after the CI jobs pass on the same commit (a reusable workflow call or `needs`).
+- [x] `.github/dependabot.yml` for npm and GitHub Actions, as decided below.
+- [x] Pin actions as decided below.
+- [x] Acceptance: `actionlint` passes on both workflows; each job's commands run green locally in a clean clone with `pnpm install --frozen-lockfile`; the Result lists the branch protection settings for Ozgur to set on `main` (required checks: the job names).
+
+Result: every pull request runs three jobs, and a push to `main` publishes only after the same jobs pass on that commit.
+
+| Job                                    | Node.js | Steps                                                                                                    |
+| -------------------------------------- | ------- | -------------------------------------------------------------------------------------------------------- |
+| `Tokens (Node 22)`, `Tokens (Node 24)` | 22, 24  | `pnpm install --frozen-lockfile`, `tokens:lint`, `tokens:test`, `tokens:verify`, `tokens:verify:presets` |
+| `Site`                                 | 22      | install, `lint:prettier`, `site:lint`, `check:astro`, `site:build`                                       |
+| `Audit`                                | 22      | `check:pnpm`, without installing                                                                         |
+
+- Triggers: `ci.yml` runs on `pull_request`, `workflow_dispatch` and `workflow_call`, not on every push. With `push` to any branch as planned, every push to a pull request branch ran CI twice (the `push` and `pull_request` events have different refs, so one concurrency group cannot merge them), and a push to `main` ran it twice as well, once directly and once inside the release. `publish-release.yml` calls `ci.yml` as its first job (`needs: ci`), so every push to `main` runs CI exactly once and nothing publishes without it. A branch without a pull request can run CI by hand (`workflow_dispatch`).
+- The Site job runs `site:build` instead of `astro:build`: the site needs `vendor/assets/dist/`, which the assets submodule does not commit; `site:build` initialises the submodule, pulls its `app/docs` branch, builds it, and then runs Astro and Pagefind, the same command as Vercel.
+- Added `pnpm lint:prettier` (`prettier -c --cache .`), so the repository-wide Prettier check of Phase 24 stays green; the Site job runs it.
+- Concurrency: `ci-<workflow>-<branch>`, cancelling older runs only for pull requests; when the release calls CI, `github.workflow` is the release's name, so the two groups never meet. The release has its own group, `publish-release`, which never cancels.
+- Permissions: `contents: read` for every job; only `publish-tokens` has `contents: write`, for the GitHub release. Every checkout sets `persist-credentials: false`. The release passes the version to its shell step through `env` instead of an inline expression.
+- Actions are pinned to the latest release of the major version already in use, with the version in a comment: `actions/checkout` v5.1.0, `pnpm/action-setup` v6.1.0, `actions/setup-node` v5.0.0, `softprops/action-gh-release` v3.0.3. Newer majors exist (`checkout` and `setup-node` v7); Dependabot will propose them.
+- `.github/dependabot.yml`: npm and GitHub Actions, weekly on Monday. Minor and patch updates of dev dependencies come as one grouped pull request, except the packages that produce `dist/` (`style-dictionary`, `@tokens-studio/sd-transforms`, `svg2vectordrawable`, `tinycolor2`) and `@chassis-ui/*`, which get one pull request each, so a golden check that fails names its cause. Major updates come one by one. Actions come as one grouped pull request.
+- README (release and a new CI section) and CHANGELOG updated.
+
+Checked:
+
+- `actionlint` 1.7.12 (downloaded to the scratchpad from its GitHub release, checksum verified; `shellcheck` checks the `run` scripts): 0 errors in both workflows. A copy with a wrong `needs` and an undefined matrix key fails with `job-needs` and `expression` errors.
+- `dependabot.yml` validates against the SchemaStore Dependabot schema (with `ajv` in the scratchpad); a copy with an unknown update type fails.
+- In a clean clone with this phase's changes: the Tokens job's commands pass on Node.js 22.19.0 and on 24.18.0 (745 tests, 114 files, 8 presets); the Site job's commands pass on 22.19.0, including `site:build`, which initialised the submodule from GitHub, built 3834 asset files and 22 pages and indexed them with Pagefind; `pnpm check:pnpm` passes without `node_modules`.
+- In the working repository: `pnpm tokens:verify`, the 8 preset checks, 745 tests, lint, `lint:prettier` and `pnpm check` pass; `dist/` untouched.
+- Not checked: a real GitHub Actions run, which needs a push. The first run is recorded in the next session log.
+
+Settings for Ozgur on GitHub, after the first CI run (the check names appear only once they have run):
+
+1. Settings → Branches → add a rule (or ruleset) for `main`: require a pull request before merging; require status checks `Tokens (Node 22)`, `Tokens (Node 24)` and `Site`; require branches to be up to date.
+2. Leave `Audit` out of the required checks (recommended): a new advisory in any dev dependency fails it on every pull request, whatever the pull request changes. It still shows as a failed check.
+3. Settings → Code security: turn on Dependabot alerts and security updates. `dependabot.yml` covers version updates only.
 
 ## Phase 26: merge preparation and 0.6.0
 
@@ -1255,3 +1286,4 @@ Append-only.
 - 2026-09-27 (Phases 23 to 35 decisions): Ozgur confirmed all recommendations. `CODEOWNERS` had no recommendation; the plan assumes Ozgur for everything and Phase 28 confirms it. Phase 34's AAR destination had no recommendation; Phase 34 asks before publishing. Ozgur formatted the 6 homepage components with Prettier (class attributes joined onto one line, nothing else); `pnpm site:lint` passes, and that item of Phase 24 is ticked. The plan was committed as `rewrite(plan): add phases 23 to 35 for production readiness`. Next: Phase 23.
 - 2026-09-27 (Phase 23, Opus 5.5): Set `files` to all of `dist/` plus `CHANGELOG.md`, added the `exports` map and the new description, made `check` sequential with `&&`, and removed the vnu, zip and lockfile-lint scripts, files and dependencies. Updated the quick start, the iOS and Android guides, the README overview and the CHANGELOG. Verified: the packed file list equals `git ls-files dist` plus four files; the consumer check above (Sass `pkg:` importer, load path, Node resolution, blocked path); `pnpm check` fails and passes as it should; `pnpm tokens:verify`, the 8 preset checks, 745 tests, lint, `site:lint` and `astro:build` (22 pages) pass; `dist/` untouched. Surprises: (1) the tarball grows to 691.6 kB packed, below the plan's estimate of about 750 kB. (2) Removing `lockfile-lint` also removed 2 of the 39 audit advisories. (3) `pnpm check` now fails on the audit until Phase 24. Next: Phase 24.
 - 2026-09-27 (Phase 24, Opus 5.5 per session; the Model column says Sonnet): Formatted six files with Prettier and ignored `pnpm-lock.yaml`; updated the dev dependencies within their ranges except the four build packages, then `qs` alone; pinned `@chassis-ui/css` and `@chassis-ui/docs` back to 0.5.0-0. Verified: `pnpm audit` clean, `pnpm check`, `site:lint`, `prettier -c .`, `pnpm tokens:verify`, 8 preset checks, 745 tests and lint pass; the site built with old and new dependencies differs only as listed in the Result; `dist/` untouched. Surprises: (1) a broad update also upgrades `@chassis-ui/css`, which changes the Chassis CSS files the site serves; it was reverted. (2) Astro 7.3 prints 17 harmless Vite warnings about `use astro:head-inject`. (3) Every advisory had a fixed version, so no ignore list was needed. Next: Phase 25.
+- 2026-09-27 (Phase 25, Opus 5.5): Added `.github/workflows/ci.yml` (Tokens on Node 22 and 24, Site, Audit), `.github/dependabot.yml` and `pnpm lint:prettier`; the release calls CI first, installs with `--frozen-lockfile` and pins its actions. Downloaded `actionlint` 1.7.12 and `ajv` to the scratchpad. Verified: `actionlint` clean with shellcheck, and it fails on two injected errors; `dependabot.yml` matches the SchemaStore schema; every job's commands pass in a clean clone (Tokens on Node 22.19.0 and 24.18.0, Site with the submodule build, Audit without `node_modules`); the usual checks pass; `dist/` untouched. Surprises: (1) the planned `push` trigger on every branch would run CI twice per pull request push, so CI runs on pull requests and inside the release instead. (2) The site cannot build from a clean clone with `astro:build` alone: it needs the assets submodule built, so the Site job runs `site:build`, as Vercel does. (3) Newer majors of `checkout` and `setup-node` (v7) exist; the pins keep the majors in use. Next: Phase 26, which ends with Ozgur pushing, opening the pull request and merging.

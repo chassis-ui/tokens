@@ -176,7 +176,17 @@ pnpm tokens:verify
 pnpm site:build
 ```
 
-Pushing to `main` publishes the version in `package.json` if it is not on npm yet. The workflow runs `pnpm tokens:verify` first and stops if `dist/` is out of date.
+Pushing to `main` publishes the version in `package.json` if it is not on npm yet. The release workflow first runs the CI checks below on the same commit, then `pnpm tokens:verify`, and stops if either fails.
+
+### Continuous Integration
+
+Every pull request runs `.github/workflows/ci.yml`:
+
+- **Tokens** (Node.js 22 and 24): `tokens:lint`, `tokens:test`, `tokens:verify`, `tokens:verify:presets`
+- **Site**: `lint:prettier` (the whole repository), `site:lint`, `check:astro`, `site:build`
+- **Audit**: `pnpm audit` for moderate advisories and above
+
+Run the same commands locally before opening a pull request. Dependabot opens weekly pull requests for npm packages and GitHub Actions; the actions are pinned to commit SHAs.
 
 See package scripts for more commands and options.
 

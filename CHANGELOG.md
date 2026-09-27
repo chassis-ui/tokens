@@ -26,6 +26,7 @@ The presets for teams that do not use Chassis CSS are kept, in the new structure
 - `package.json` has an `exports` map: `@chassis-ui/tokens/dist/*` and `@chassis-ui/tokens/package.json`. Every `dist/` path resolves as before; other paths in the package no longer resolve through Node
 - `pnpm check` fails when one of its steps fails; it ran them in the background and always passed
 - Updated the dev dependencies within their ranges, among them Astro 7.3, so `pnpm audit` reports no advisory (it reported 39, one critical). The token build packages (Style Dictionary, sd-transforms, svg2vectordrawable, tinycolor2) and the Chassis CSS and docs packages the site uses kept their versions
+- The release workflow publishes only after the CI checks pass on the same commit, installs with `--frozen-lockfile`, and pins its actions to commit SHAs
 
 ### Added
 
@@ -37,6 +38,9 @@ The presets for teams that do not use Chassis CSS are kept, in the new structure
 - `pnpm tokens:verify:presets`: checks each preset against its baseline in `build/tokens/test/golden/`
 - `ios-swiftui` and `android-compose` platforms: Swift files with SwiftUI values and Kotlin objects for Jetpack Compose, with the same tokens and values as `ios` and `android`, written to `dist/ios-swiftui/` and `dist/android-compose/`
 - `outputReferences` for the iOS format: a constant names another constant of the same class when it has the same type and value; base colours and sizes computed with math print their values
+- CI for pull requests (`.github/workflows/ci.yml`): token lint, tests and golden checks on Node.js 22 and 24, the site lint and build, and `pnpm audit`
+- Dependabot for npm packages and GitHub Actions, weekly
+- `pnpm lint:prettier`: Prettier on the whole repository
 
 ### Removed
 
