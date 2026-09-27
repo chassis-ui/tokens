@@ -39,10 +39,12 @@
     "check": "pnpm check:astro && pnpm check:pnpm",
     "check:astro": "pnpm --filter chassis-tokens-site check",
     "check:pnpm": "pnpm audit --audit-level moderate",
-    "change-version": "node build/change-version.js",
+    "changeset": "changeset",
+    "changeset:version": "changeset version && node build/sync-version-refs.js",
     "sync-submodules": "node build/sync-submodules.js"
   },
   "devDependencies": {
+    "@changesets/cli": "^3.0.3",
     "@eslint/js": "^10.0.1",
     "eslint": "^10.11.0",
     "eslint-config-prettier": "^10.1.8",

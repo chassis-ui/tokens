@@ -77,9 +77,8 @@ format. Edit them in Figma with Tokens Studio, synced to this repository with th
    pnpm tokens:verify:presets
    ```
 
-4. Add a line to [`packages/tokens/CHANGELOG.md`](../packages/tokens/CHANGELOG.md) under
-   `## [Unreleased]` (add the heading at the top if it isn't there), saying what changed and what
-   an app has to change, if anything.
+4. Add a changeset (see [Changesets](#changesets)) that says what changed and what an app has to
+   change, if anything.
 
 Token names are the public API: renaming or removing a token breaks every app that uses it.
 
@@ -105,7 +104,7 @@ pnpm tokens:verify:presets
 ```
 
 A change that is meant to change the output also updates `dist/` (`pnpm tokens`), the preset
-baselines (see [Changing tokens](#changing-tokens)) and the CHANGELOG. For iOS and Android output,
+baselines (see [Changing tokens](#changing-tokens)) and adds a changeset. For iOS and Android output,
 CI does not compile the files yet: check that the Swift files build in an app target and that the
 Android `res/` tree builds in an app module before opening the pull request.
 
@@ -131,23 +130,56 @@ pnpm site:build
 - **Passing CI**: `.github/workflows/ci.yml` runs the token lint, tests and golden checks on
   Node.js 22 and 24, the site lint, `astro check` and site build, Prettier on the whole repository
   (`pnpm lint:prettier`) and `pnpm audit`. The commands above run the same checks locally.
-- **A CHANGELOG line** in `packages/tokens/CHANGELOG.md` for anything that changes the published
-  package: token names or values, file names, formats or the package contents. A pull request
-  that only touches the site, the docs or the tooling doesn't need one.
+- **A changeset** for anything that changes the published package: token names or values, file
+  names, formats or the package contents. CI fails a pull request that changes
+  `packages/tokens/source/`, `build/` or `dist/` without one; for such a change that releases
+  nothing, such as a build refactor with the same output, add an empty changeset. A pull request
+  that only touches the site, the docs, the tests or the tooling doesn't need one.
 - **The rebuilt `dist/`** committed with any change to tokens or the build that changes the
   output.
 
-## Releases
+## Changesets
 
-A maintainer releases by setting the version and moving the `## [Unreleased]` entries of the
-CHANGELOG under it:
+A changeset is a Markdown file in [`.changeset/`](../.changeset/) that names the version bump and
+the text of the CHANGELOG entry. Write one with:
 
 ```sh
-pnpm change-version <old_version> <new_version>
+pnpm changeset
 ```
 
-Pushing `main` then runs the release workflow: the CI checks, `pnpm tokens:verify`, `npm publish`
-of `@chassis-ui/tokens` if that version is not on npm yet, and a GitHub release.
+Pick `@chassis-ui/tokens` and the bump, then write the entry: what changed and what an app has to
+change, if anything. Commit the file with your change. The bump follows semver, with token names
+as the public API:
+
+- **major**: a token, file or format is renamed or removed, or a value changes type (for example
+  a `String` becomes a `UIFont.Weight`). While the version is `0.x`, use **minor** for these and
+  say in the entry that it breaks.
+- **minor**: new tokens, files, platforms or options.
+- **patch**: a fixed value, or a change that apps don't have to act on.
+
+For a change that releases nothing, add an empty changeset instead:
+
+```sh
+pnpm changeset --empty
+```
+
+## Releases
+
+Releases are made from `main` by `.github/workflows/publish-release.yml`, after the CI checks pass
+on the pushed commit:
+
+1. When `main` has changesets, the workflow opens or updates a "Version Packages" pull request. It
+   runs `pnpm changeset:version`, which removes the changesets, bumps the version in
+   `packages/tokens/package.json`, writes the CHANGELOG entry, updates `current_version` in
+   `packages/site/config.yml` and rebuilds `dist/`, so its headers name the new version.
+2. Merging that pull request pushes `main` again. The version is not on npm yet, so the workflow
+   runs `pnpm tokens:verify`, publishes `@chassis-ui/tokens` with npm trusted publishing and
+   provenance (no npm token), and creates the GitHub release `v<version>` with the CHANGELOG entry
+   as its body.
+
+A maintainer can also run `pnpm changeset:version` locally, review and commit the result and push
+`main`; the workflow then publishes without a pull request. A version without a CHANGELOG entry
+is not published.
 
 ## Using the issue tracker
 

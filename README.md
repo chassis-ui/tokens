@@ -58,7 +58,7 @@ The repository is a [pnpm workspace](https://pnpm.io/workspaces) with two packag
 | `packages/tokens/` | `@chassis-ui/tokens` (published) | `source/` (the Tokens Studio token files), `build/` (the Style Dictionary build), `test/`, `dist/`, the build configuration in `package.json`, `CHANGELOG.md` |
 | `packages/site/`   | `chassis-tokens-site` (private)  | The documentation site and its dependencies                                                                                                                   |
 
-The root holds the workspace configuration, the lint and format configurations with their dependencies, the CI workflows, the repository scripts in `build/` (`change-version.js`, `sync-submodules.js`, `html-validate.js`), the assets submodule in `vendor/assets` and the site output in `_site/`. Paths in the sections below (`source/`, `build/`, `test/`, `dist/`, `package.json`) are relative to `packages/tokens/`.
+The root holds the workspace configuration, the lint and format configurations with their dependencies, the CI workflows, the Changesets configuration in `.changeset/`, the repository scripts in `build/` (`sync-version-refs.js`, `release-notes.js`, `sync-submodules.js`, `html-validate.js`), the assets submodule in `vendor/assets` and the site output in `_site/`. Paths in the sections below (`source/`, `build/`, `test/`, `dist/`, `package.json`) are relative to `packages/tokens/`.
 
 ## Development
 
@@ -308,8 +308,9 @@ Every pull request runs `.github/workflows/ci.yml`:
 - **Tokens** (Node.js 22 and 24): `tokens:lint`, `tokens:test`, `tokens:verify`, `tokens:verify:presets`
 - **Site**: `lint:prettier` (the whole repository), `site:lint`, `check:astro`, `site:build`
 - **Audit**: `pnpm audit` for moderate advisories and above
+- **Changeset**: a pull request that changes `source/`, `build/` or `dist/` must add a changeset (`pnpm changeset`)
 
-Pushing `main` runs the release workflow: the same CI checks on that commit, then `pnpm tokens:verify`, `npm publish` of `@chassis-ui/tokens` if its version is not on npm yet, and a GitHub release. Dependabot opens weekly pull requests for npm packages and GitHub Actions; the actions are pinned to commit SHAs.
+Releases use [Changesets](https://changesets.dev). Pushing `main` runs the release workflow, after the same CI checks on that commit: pending changesets open or update a "Version Packages" pull request, which bumps the version and writes the CHANGELOG. Merging it publishes `@chassis-ui/tokens` to npm with trusted publishing and provenance, and creates a GitHub release from the CHANGELOG entry. See [Releases](.github/CONTRIBUTING.md#releases). Dependabot opens weekly pull requests for npm packages and GitHub Actions; the actions are pinned to commit SHAs.
 
 ## Chassis Ecosystem
 

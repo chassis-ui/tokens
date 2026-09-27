@@ -22,8 +22,9 @@ behind each of these.
       pass locally
 - [ ] **`dist/` rebuilt** with `pnpm tokens` and committed, and the preset baselines written again,
       if tokens or the build changed the output
-- [ ] **CHANGELOG line** in `packages/tokens/CHANGELOG.md` if the published package changed, saying
-      what an app has to change
+- [ ] **Changeset** (`pnpm changeset`) if the published package changed, saying what an app has
+      to change; an empty one (`pnpm changeset --empty`) if `source/`, `build/` or `dist/` changed
+      but nothing is released
 - [ ] Swift files and the Android `res/` tree checked in an app, if the iOS or Android output
       changed
 - [ ] `pnpm site:lint` and `pnpm check:astro` pass, if the site changed
