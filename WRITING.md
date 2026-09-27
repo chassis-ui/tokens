@@ -188,7 +188,7 @@ What a doc may say about values:
 
 - Keep it to the few lines that show the format, and shorten it by leaving lines out, never by editing a line.
 - Prefer a token whose value does not belong to a brand: a size over a color, a color over a font family. Don't pick a font family token when the format can be described in prose.
-- Say once per page, before the first such block, that the values in the examples are those of the `chassis` brand in the current version and differ in other brands.
+- Say once per page, before the first such block, that the values in the examples are those of the `chassis` brand in the current version and can differ in other brands.
 
 **Accessibility depends on the brand.** Don't state contrast ratios or claim a conformance level. Say which roles are meant to be used together (`fg-main` on `bg-main`), and tell the reader to measure the pairs of their brand and theme.
 
@@ -249,7 +249,7 @@ Each doc type has a section order. Skip sections that don't apply; don't reorder
 ## Platform output           (always last)
 ```
 
-**The three levels.** _Base tokens_ hold the values (`size.unit.16`, `color.base.*`). _Context tokens_ name a value by its role (`space.context.medium`, `color.context.default.fg-main`). _Component tokens_ assign a value to a part of a component (`space.button.medium-gap`). Use these three names in headings and prose; a category that lacks a level skips its section. A category without levels, such as `typography.*`, names its sections after what the tokens hold ("Font sizes", "Line heights"), between `## Introduction` and `## Usage`.
+**The three levels.** _Base tokens_ hold the scales and the palettes (`size.unit.16`, `color.base.*`); a base token may reference a more basic scale, as `size.unit.16` references `{dimension.base.16}`. _Context tokens_ name a value by its role (`space.context.medium`, `color.context.default.fg-main`). _Component tokens_ assign a value to a part of a component (`space.button.medium-gap`). Use these three names in headings and prose; a category that lacks a level skips its section. A category without levels, such as `typography.*`, names its sections after what the tokens hold ("Font sizes", "Line heights"), between `## Introduction` and `## Usage`.
 
 **Color has a fourth group.** `color.base.*` holds the palettes and the context colors of every theme. `color.primitive.*` holds the palette of the current theme, next to the context tokens: both reference `color.base.*`, and gradients and shadows use the primitive colors. "Primitive" is the name of that group only; it gets a `## Primitive colors` section after `## Base tokens`, and no other category uses the word.
 
@@ -327,7 +327,13 @@ Tokens are listed in Markdown tables wrapped in `<CxTable>`, which makes them sc
 
 **No `Value` column.** A table does not show the value of a token ([§7](#7-names-are-facts-values-are-examples)). A token that holds a value of its own, such as a step of a base scale, has no reference: list such tokens by name with their purpose, or describe the pattern of their names in a sentence and leave the table out.
 
-When the reference of a token differs between themes, screens, or brands, the table has one reference column per variant, named after the option: `light` and `dark`, or `large`, `medium`, and `small`. A composite token, such as a font, gets one reference column per property.
+When the reference of a token differs between themes or screens only by the name of the option, the table keeps one `Reference` column with a placeholder: `` `{color.base.context.<theme>.default.fg-main}` ``. When the references differ in more than that, the table has one reference column per option, named after it in code: `` `large` ``, `` `medium` ``, and `` `small` ``.
+
+**No column per brand.** Which token a brand references is a choice of that brand, and it changes. Name the tokens that a brand can override, and say that the reference is the choice of the brand.
+
+**Columns that say the same in every row** move into the intro sentence of the table. A composite token, such as a font, gets one reference column per property, and a shadow one row per layer.
+
+These columns are for token tables. A table that maps one thing to another, such as groups to Figma Collections or platforms to files, names its columns after what it maps.
 
 List tokens in source order, which is the order of the generated files. A scale of more than ~20 steps shows the steps in use and names the pattern of the rest in the intro sentence.
 
