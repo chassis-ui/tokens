@@ -17,6 +17,7 @@ import registerTransforms from './transforms.js'
 import registerFormats from './formats.js'
 import cxPrep from './preprocessor.js'
 import logger from './logger.js'
+import { THEMES, THEME_COLORS_FILE, writeThemeColors } from './theme-colors.js'
 
 const HELP = `
 Chassis Tokens Build System
@@ -219,6 +220,30 @@ function planBuilds(sets, buildOptions, filters = {}) {
 }
 
 /**
+ * Plans the iOS colour files that follow the appearance: one per output directory whose
+ * builds write both a light and a dark colour file. `writeThemeColors` writes them after
+ * all builds.
+ *
+ * @param {Object[]} builds - Builds from `planBuilds`.
+ * @param {string} [outDir] - Output root directory.
+ * @returns {string[]} The paths of the files, e.g. `dist/ios/demo/chassis/Color.swift`.
+ */
+function planThemeColors(builds, outDir) {
+  const themesByPath = new Map()
+  for (const build of builds) {
+    if (!build.platforms.includes('ios')) continue
+    const { buildPath } = config({ ...build, platforms: ['ios'], outDir }).platforms.ios
+    if (!themesByPath.has(buildPath)) themesByPath.set(buildPath, new Set())
+    for (const { kind, theme } of build.outputs) {
+      if (kind === 'color') themesByPath.get(buildPath).add(theme)
+    }
+  }
+  return [...themesByPath]
+    .filter(([, themes]) => THEMES.every((theme) => themes.has(theme)))
+    .map(([buildPath]) => `${buildPath}${THEME_COLORS_FILE}`)
+}
+
+/**
  * Builds all platforms of one planned build.
  * @param {Object} build - A build from `planBuilds`, with its Style Dictionary `cfg`.
  */
@@ -267,7 +292,7 @@ async function run() {
     }))
 
     if (filters.dryRun) {
-      logger.dryRun(builds)
+      logger.dryRun(builds, planThemeColors(builds, filters.out))
       return
     }
 
@@ -284,6 +309,14 @@ async function run() {
       }
     }
 
+    // Written after every build, because the light and dark colours come from two builds
+    try {
+      for (const path of await writeThemeColors()) logger.info(`✔︎ ${path}`)
+    } catch (error) {
+      errorCount++
+      logger.error('Failed: iOS colours that follow the appearance', error)
+    }
+
     logger.summary(successCount, errorCount, startTime)
 
     if (errorCount > 0) {
@@ -296,7 +329,7 @@ async function run() {
 }
 
 // Export for testing
-export { loadConfig, planBuilds, parseArgs }
+export { loadConfig, planBuilds, planThemeColors, parseArgs }
 
 // Only run if this is the main module (not imported)
 if (import.meta.url === `file://${process.argv[1]}`) {

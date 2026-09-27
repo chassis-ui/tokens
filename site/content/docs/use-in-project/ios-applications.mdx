@@ -27,18 +27,19 @@ Colours are `UIColor`, sizes and numbers are `CGFloat`, font weights are `UIFont
 
 ## Generated Files
 
-The build writes seven files to `dist/ios/<app>/<brand>/`. The configured iOS app is `demo`:
+The build writes eight files to `dist/ios/<app>/<brand>/`. The configured iOS app is `demo`:
 
 <CxTable>
 | File | Type | Contents |
 |------|------|----------|
 | `ChassisTokens.swift` | `ChassisTokens` | Every token except theme colours, with the values of the light theme and the large screen |
 | `String.swift` | `ChassisTokensString` | Font families, font weights, other strings and SVG icons |
-| `ColorLight.swift`, `ColorDark.swift` | `ChassisTokensColorLight`, `ChassisTokensColorDark` | Theme colours: context, primitive and component colours, and gradients |
+| `Color.swift` | `ChassisTokensColor` | Theme colours that follow the light and dark appearance |
+| `ColorLight.swift`, `ColorDark.swift` | `ChassisTokensColorLight`, `ChassisTokensColorDark` | Theme colours of one theme: context, primitive and component colours, and gradients |
 | `NumberLarge.swift`, `NumberMedium.swift`, `NumberSmall.swift` | `ChassisTokensNumberLarge`, `ChassisTokensNumberMedium`, `ChassisTokensNumberSmall` | Sizes, spacing, numbers and opacities with the values of one screen size |
 </CxTable>
 
-Every file declares a different type, so all seven can be in one target. `ChassisTokens` repeats the tokens of `ChassisTokensString` and `ChassisTokensNumberLarge`, and the component colours of `ChassisTokensColorLight`. The string, colour and number types share no names with each other. Together they hold everything in `ChassisTokens` except the base colours (`ColorBase…`), which are the raw palette behind the context colours.
+Every file declares a different type, so all eight can be in one target. `ChassisTokens` repeats the tokens of `ChassisTokensString` and `ChassisTokensNumberLarge`, and the component colours of `ChassisTokensColorLight`. The string, colour and number types share no names with each other. Together they hold everything in `ChassisTokens` except the base colours (`ColorBase…`), which are the raw palette behind the context colours.
 
 ## Build the Tokens
 
@@ -70,10 +71,10 @@ The value of each constant is the same with and without the option. A constant n
 
 ## Add the Tokens to Your App
 
-Add the files you need to your app target, or all seven. Write the type before each token:
+Add the files you need to your app target, or all eight. Write the type before each token:
 
 ```swift
-view.backgroundColor = ChassisTokensColorLight.ColorContextDefaultBgMain
+view.backgroundColor = ChassisTokensColor.ColorContextDefaultBgMain
 stack.spacing = ChassisTokens.SpaceContextMedium
 ```
 
@@ -97,35 +98,33 @@ In Xcode, choose **File → Add Package Dependencies… → Add Local…**, sele
 
 ## Colours and Dark Mode
 
-The light and dark colour files declare the same names with different values. Combine them into dynamic colours that follow the interface style:
+`ChassisTokensColor` in `Color.swift` holds every theme colour once. A colour that differs between the light and dark theme follows the interface style:
+
+```swift
+public static let ColorContextDefaultBgMain = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.067, green: 0.075, blue: 0.078, alpha: 1) : UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1) }
+```
+
+Use these colours in views, and the appearance of each view picks the value:
 
 ```swift
 import UIKit
 import ChassisTokens
 
-typealias Light = ChassisTokensColorLight
-typealias Dark = ChassisTokensColorDark
-
-extension UIColor {
-    static func token(light: UIColor, dark: UIColor) -> UIColor {
-        UIColor { traits in traits.userInterfaceStyle == .dark ? dark : light }
-    }
-
-    static let bgMain = token(light: Light.ColorContextDefaultBgMain, dark: Dark.ColorContextDefaultBgMain)
-    static let fgMain = token(light: Light.ColorContextDefaultFgMain, dark: Dark.ColorContextDefaultFgMain)
-    static let primaryBg = token(light: Light.ColorContextPrimaryBgSolid, dark: Dark.ColorContextPrimaryBgSolid)
-    static let primaryFg = token(light: Light.ColorContextPrimaryFgSolid, dark: Dark.ColorContextPrimaryFgSolid)
-}
+view.backgroundColor = ChassisTokensColor.ColorContextDefaultBgMain
+label.textColor = ChassisTokensColor.ColorContextDefaultFgMain
 ```
 
-Use them in UIKit, or in SwiftUI through `Color(uiColor:)` (iOS 15) or `Color(_:)`:
+`ChassisTokensColorLight` and `ChassisTokensColorDark` hold the colours of one theme each, for code that needs a fixed theme. The build writes `Color.swift` when the build options have a `light` and a `dark` theme; other themes have only their own file.
+
+In SwiftUI, wrap a colour with `Color(uiColor:)` (iOS 15) or `Color(_:)`; the SwiftUI colour follows the appearance too:
 
 ```swift
 import SwiftUI
+import ChassisTokens
 
 extension Color {
-    static let bgMain = Color(uiColor: .bgMain)
-    static let fgMain = Color(uiColor: .fgMain)
+    static let bgMain = Color(uiColor: ChassisTokensColor.ColorContextDefaultBgMain)
+    static let fgMain = Color(uiColor: ChassisTokensColor.ColorContextDefaultFgMain)
 }
 ```
 
@@ -147,7 +146,7 @@ The angle is the CSS angle in degrees: `0` points up and angles turn clockwise, 
 import UIKit
 import ChassisTokens
 
-typealias Tokens = ChassisTokensColorLight
+typealias Tokens = ChassisTokensColor
 
 func applyGradient(to layer: CAGradientLayer, angle: CGFloat, stops: [(UIColor, CGFloat)]) {
     let radians = angle * .pi / 180
@@ -228,7 +227,7 @@ Core Animation shadows have no spread, and their radius is about half of a CSS b
 
 ✅ **Prefer context tokens**: Use `ColorContext…`, `SpaceContext…` and `BorderRadiusContext…` over base and primitive tokens.
 
-✅ **Name tokens in one place**: Wrap the tokens you use in extensions, such as `UIColor.bgMain`, so views do not depend on the token types.
+✅ **Name tokens in one place**: Wrap the tokens you use in extensions, such as `UIColor.bgMain = ChassisTokensColor.ColorContextDefaultBgMain`, so views do not depend on the token types.
 
 ✅ **Change tokens at the source**: Chassis Tokens is meant to be owned and customized. Change values in Tokens Studio and rebuild, instead of editing the generated files.
 
@@ -248,7 +247,7 @@ The file is not in the target, or the package module is not imported. Add the fi
 
 ### Cannot Find a Token
 
-Check the name in the generated file. Names are PascalCase without a prefix, such as `SpaceContextMedium`. Context colours are in the colour types only.
+Check the name in the generated file. Names are PascalCase without a prefix, such as `SpaceContextMedium`. Context colours are in the colour types only: `ChassisTokensColor`, `ChassisTokensColorLight` and `ChassisTokensColorDark`.
 
 ## Continuous Integration
 

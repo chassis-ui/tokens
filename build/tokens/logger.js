@@ -111,9 +111,10 @@ export default {
   },
 
   /**
-   * Log dry-run results: each planned build with the files it would write
+   * Log dry-run results: each planned build with the files it would write, and the files
+   * written after the builds
    */
-  dryRun(builds) {
+  dryRun(builds, afterBuilds = []) {
     if (currentLevel >= LogLevel.INFO) {
       console.log(`\n🔍 Dry run - showing ${builds.length} build(s) that would run:\n`)
       builds.forEach(({ key, cfg }) => {
@@ -123,6 +124,10 @@ export default {
           console.log(`      ${buildPath}: ${destinations}`)
         })
       })
+      if (afterBuilds.length > 0) {
+        console.log(`  • after the builds`)
+        afterBuilds.forEach((path) => console.log(`      ${path}`))
+      }
       console.log()
     }
   }

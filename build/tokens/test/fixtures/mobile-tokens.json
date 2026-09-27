@@ -1,5 +1,5 @@
 {
-  "source": "Resolved chassis/demo tokens from the SD 4.4 build and the matching committed dist lines, extracted 2026-09-27. \"androidReferences\" holds tokens of the SD 5.5 build with outputReferences, the first token of the same file that each references, and the matching lines of build/tokens/test/golden/android-references/. \"iosReferences\" holds the same for the iOS build with outputReferences and build/tokens/test/golden/ios-references/. \"context\" holds the font size part that the templates pass for line height and letter spacing parts, and \"typographyParts\" holds such parts with the lines of dist/; both were captured from the build and the expected lines updated in Phase 13 (2026-09-27). Font weight cases were updated from dist/ in Phase 14. \"gradients\" holds two gradient tokens of color_light with the lines of dist/ and of the reference baselines, and the colours their stops reference, captured in Phase 15.",
+  "source": "Resolved chassis/demo tokens from the SD 4.4 build and the matching committed dist lines, extracted 2026-09-27. \"androidReferences\" holds tokens of the SD 5.5 build with outputReferences, the first token of the same file that each references, and the matching lines of build/tokens/test/golden/android-references/. \"iosReferences\" holds the same for the iOS build with outputReferences and build/tokens/test/golden/ios-references/. \"context\" holds the font size part that the templates pass for line height and letter spacing parts, and \"typographyParts\" holds such parts with the lines of dist/; both were captured from the build and the expected lines updated in Phase 13 (2026-09-27). Font weight cases were updated from dist/ in Phase 14. \"gradients\" holds two gradient tokens of color_light with the lines of dist/ and of the reference baselines, and the colours their stops reference, captured in Phase 15. \"themeColors\" holds constants of ColorLight.swift and ColorDark.swift (dist/ and the ios-references baseline) with their values and printed forms, copied in Phase 18.",
   "ios": [
     {
       "case": "dimension becomes CGFloat",
@@ -1406,5 +1406,59 @@
         }
       }
     ]
-  }
+  },
+  "themeColors": [
+    {
+      "case": "a colour that differs by theme",
+      "name": "ColorContextDefaultBgMain",
+      "type": "color",
+      "light": {
+        "value": "UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1)",
+        "printed": "UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1)"
+      },
+      "dark": {
+        "value": "UIColor(red: 0.067, green: 0.075, blue: 0.078, alpha: 1)",
+        "printed": "UIColor(red: 0.067, green: 0.075, blue: 0.078, alpha: 1)"
+      }
+    },
+    {
+      "case": "a colour that is the same in both themes",
+      "name": "GradientPrimitiveBlackL000Stop1Color",
+      "type": "color",
+      "light": {
+        "value": "UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0)",
+        "printed": "UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0)"
+      },
+      "dark": {
+        "value": "UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0)",
+        "printed": "UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0)"
+      }
+    },
+    {
+      "case": "a number part that is the same in both themes",
+      "name": "GradientPrimitiveBlackL000Angle",
+      "type": "number",
+      "light": {
+        "value": "CGFloat(0)",
+        "printed": "CGFloat(0)"
+      },
+      "dark": {
+        "value": "CGFloat(0)",
+        "printed": "CGFloat(0)"
+      }
+    },
+    {
+      "case": "both themes name the same constant",
+      "name": "ColorAccordionItemFgColor",
+      "type": "color",
+      "light": {
+        "value": "UIColor(red: 0.086, green: 0.102, blue: 0.106, alpha: 1)",
+        "printed": "ColorContextDefaultFgMain"
+      },
+      "dark": {
+        "value": "UIColor(red: 0.914, green: 0.925, blue: 0.929, alpha: 1)",
+        "printed": "ColorContextDefaultFgMain"
+      }
+    }
+  ]
 }

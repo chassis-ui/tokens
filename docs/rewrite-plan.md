@@ -62,7 +62,7 @@ If a phase is too large, split it into `Na`, `Nb` rows. If a fact in this file i
 | 15 | Gradients on mobile as parts | Opus | Done | `rewrite(phase 15)` | 2026-09-27 |
 | 16 | Dead `dimension` filter condition | Sonnet | Done | `rewrite(phase 16)` | 2026-09-27 |
 | 17 | iOS type and file names | Opus | Done | `rewrite(phase 17)` | 2026-09-27 |
-| 18 | iOS colours that follow dark mode | Fable | Not started | | |
+| 18 | iOS colours that follow dark mode | Fable | Done | `rewrite(phase 18)` | 2026-09-27 |
 | 19 | Android resource tree | Fable | Not started | | |
 | 20 | SwiftUI and Compose outputs (optional) | Opus | Not started | | |
 | 21 | Icon assets (optional) | Opus | Not started | | |
@@ -196,12 +196,12 @@ Every instance lists its sets in `source`, in the order `permutateThemes` return
 
 ### Files
 
-`dist/<platform>/<app>/<brand>/`, seven files each, 42 in total.
+`dist/<platform>/<app>/<brand>/`, seven files each, 42 in total; since Phase 18 iOS has an eighth, `Color.swift`, so 44.
 
 | Platform | Files |
 | --- | --- |
 | web | `main.scss`, `string.scss`, `color-<theme>.scss`, `number-<screen>.scss` |
-| iOS | `ChassisTokens.swift` (`Main.swift` until Phase 17), `String.swift`, `Color<Theme>.swift`, `Number<Screen>.swift` |
+| iOS | `ChassisTokens.swift` (`Main.swift` until Phase 17), `String.swift`, `Color<Theme>.swift`, `Number<Screen>.swift`, and `Color.swift` when the themes include `light` and `dark` (since Phase 18) |
 | Android | `main.xml`, `string.xml`, `color_<theme>.xml`, `number_<screen>.xml` |
 
 ### Filters
@@ -780,11 +780,34 @@ Goal: one iOS colour type whose colours switch with the appearance, instead of a
 
 Facts: the light and dark colour files are written by two Style Dictionary instances (light + large, dark + large), so no single format call sees both themes. They declare the same names in the same order (1445 each for `chassis`).
 
-- [ ] A combine step in `build.js` after the instances of one brand and app: it reads the resolved colour tokens of the `light` and `dark` themes and writes one file where each colour is `UIColor { $0.userInterfaceStyle == .dark ? <dark> : <light> }`, with the values of `values/ios.js`. It runs only when the configured themes include `light` and `dark`.
-- [ ] Fail the build when the two themes do not declare the same names.
-- [ ] Keep or drop the per-theme files, as decided below.
-- [ ] Unit tests: a colour that differs by theme, one that does not, a name missing in one theme.
-- [ ] Acceptance: every colour of the new file equals the light file's value in light mode and the dark file's in dark mode, checked at run time with the stand-in UIKit (`NSAppearance` stands in for the trait collection) or by comparing the printed values; compile checks pass; the iOS guide's dark mode section uses the new file.
+- [x] A combine step in `build.js` after the instances of one brand and app: it reads the resolved colour tokens of the `light` and `dark` themes and writes one file where each colour is `UIColor { $0.userInterfaceStyle == .dark ? <dark> : <light> }`, with the values of `values/ios.js`. It runs only when the configured themes include `light` and `dark`.
+- [x] Fail the build when the two themes do not declare the same names.
+- [x] Keep or drop the per-theme files, as decided below. (Kept for one release.)
+- [x] Unit tests: a colour that differs by theme, one that does not, a name missing in one theme.
+- [x] Acceptance: every colour of the new file equals the light file's value in light mode and the dark file's in dark mode, checked at run time with the stand-in UIKit (`NSAppearance` stands in for the trait collection) or by comparing the printed values; compile checks pass; the iOS guide's dark mode section uses the new file.
+
+Result: the build writes `dist/ios/<app>/<brand>/Color.swift` with `public enum ChassisTokensColor`, after all Style Dictionary instances have run. No other file changed; `dist/` has 44 files.
+
+| Constant | Printed | `chassis` |
+| --- | --- | --- |
+| differs between light and dark | `UIColor { $0.userInterfaceStyle == .dark ? <dark> : <light> }` | 657 |
+| the same in both themes | as in the colour files | 1140 |
+
+How it works:
+
+- The iOS config marks the colour files with `options.theme`. The format computes the constants once (`swiftConstants`, split out of the iOS template together with `swiftFile`) and, for a marked file, records them in `theme-colors.js` by output directory. After the loop, `build.js` calls `writeThemeColors`, which writes the file into every directory that received a `light` and a `dark` colour file. `planThemeColors` lists these files for the dry run and the tests.
+- A constant compares by what it prints. With `outputReferences`, a constant that names the same constant in both themes prints that name, which is itself a constant of `ChassisTokensColor` and follows the appearance; a constant that prints differently uses the two values. In the `ios-references` baseline, 829 constants of `Color.swift` name another constant and 237 switch.
+- The build fails when the two themes declare other constants, or when a constant that is not a colour differs (the gradient angles and positions do not).
+- A build with one theme (`--theme light`) or without iOS writes no `Color.swift`.
+
+Checked:
+
+- Every constant of `Color.swift` equals the light and dark files as text (both brands: 657 switch, 1140 the same, 0 wrong).
+- At run time, with a stand-in UIKit whose `UIColor(dynamicProvider:)` is AppKit's dynamic `NSColor` (the dark `NSAppearance` stands for `.dark`), all 1533 colours of `ChassisTokensColor` resolve to the `ChassisTokensColorLight` value in the light appearance and the `ChassisTokensColorDark` value in the dark one, for both brands and for the `ios-references` build.
+- The 8 files compile as one package library, and the iOS guide's examples compile against it.
+
+The guide's dark mode section now uses `ChassisTokensColor` instead of a hand-written `UIColor.token(light:dark:)` helper.
+
 
 ## Phase 19: Android resource tree
 
@@ -926,3 +949,4 @@ Append-only.
 - 2026-09-27 (Phase 15, Opus 5.5): Added `isGradient`, `parseLinearGradient` and `gradientParts` to `values/shared.js`, `partName` to both mobile encoders, float items for the number parts on Android, and a gradient guard in `parseColor`. The iOS and Android templates print a gradient as its parts. Copied the 8 changed colour files into `dist/` and the 4 changed baseline files into `golden/`; only gradient lines changed, and all 3520 parts equal the web gradients. Replaced the two first-stop fixture cases with a `gradients` section (two real tokens, their stop colours and the expected lines), added `values-shared.test.js` and template and part name tests (24 tests). Updated both guides with gradient examples, the Style Dictionary page, the CHANGELOG and the tests README. Verified: `pnpm tokens:verify` passes, 42 of 42 files; the six preset checks pass; `pnpm tokens:test` passes, 643 tests; lint and Prettier report nothing; `swiftc` and aapt2 pass; the iOS guide example runs; `pnpm astro:build` built 22 pages. Injected six regressions (template does not expand, angle not normalised, positions in percent, stop colours without references, Android parts as integers, no gradient guard); each failed 1 to 11 tests. Surprises: (1) the gradient sources reference colours, so the stop colours can print references, and in the old reference baselines each gradient named its first-stop colour. (2) 12 gradients have negative angles. (3) My first cross-check script dropped the angle when splitting the list, reporting every part as different; the output was right. Next: Phase 16.
 - 2026-09-27 (Phase 16, Opus 5.5): Removed the `path[1] !== 'dimension'` condition from the main and number filters, after checking that no token set has a `dimension` group at `path[1]`; the filter comment now says why `dimension.base.*` is emitted. Replaced the test that kept the exclusion. Verified: `pnpm tokens:verify` passes, 42 of 42 files, with no change; the six preset checks pass; `pnpm tokens:test` passes, 643 tests; lint and Prettier report nothing; putting the condition back failed the new test. The site docs do not mention the condition, so they did not change. Next: Phase 17.
 - 2026-09-27 (Phase 17, Opus 5.5): The iOS config names each file's type (`swiftFile` in `config/ios.js`) and makes the types enums; the template prints `@objc` only for classes. `Main.swift` became `ChassisTokens.swift` in `dist/` and the `ios-references` baseline, with `git mv`. Every changed line is an `@objc` prefix, a type line or the main file's name comment (41194 lines). Updated the config, build, format and verify tests and the fixture labels, and added config and template tests (638 unit tests, 646 with the golden ones). Rewrote the setup parts of the iOS guide and updated the Style Dictionary page, the introduction, the quick start, the README and the CHANGELOG. Verified: `pnpm tokens:verify` passes, 42 of 42 files; the six preset checks pass; all tests pass; lint and Prettier report nothing; all files compile in one module and as one package library, and the guide's examples compile; `pnpm astro:build` built 22 pages. Injected four regressions (always `@objc`, one type name for every file, classes again, the old main file name); each failed 1 to 8 tests. Surprises: (1) the template's default class name had no trailing space but a custom one did, so a custom `className` printed `X  {`; fixed. (2) Swift allows a module and a type both named `ChassisTokens`; `ChassisTokens.SpaceContextMedium` resolves to the type, which the package check confirmed. Next: Phase 18.
+- 2026-09-27 (Phase 18, Opus 5.5): Split the iOS template into `swiftConstants` and `swiftFile`, added `theme-colors.js` (collect, combine, write), the `theme` mark on the iOS colour files, the collection in the iOS format, `planThemeColors` and the write step in `build.js`, and the extra files in the dry run. Added `Color.swift` to `dist/` for both brands and to the `ios-references` baseline; nothing else changed. Added a `themeColors` fixture (real light and dark constants), `theme-colors.test.js` and plan tests; `golden.test.js` expects 8 files for `ios-references`. Updated the iOS guide, the Style Dictionary page, the README, the CHANGELOG and the tests README. Verified: `pnpm tokens:verify` passes, 44 of 44 files; the six preset checks pass; `pnpm tokens:test` passes, 658 tests; lint and Prettier report nothing; the run-time check above passes for 1533 colours per build; the package and the guide's examples compile; `pnpm astro:build` built 22 pages. Injected five regressions (same constants printed as values, no name check, light and dark swapped, the plan ignoring the themes, the format not collecting); each failed 1 to 3 tests, the last one only in the golden test. Surprises: (1) no current token names a constant in one theme but a value in the other, so that rule is tested on a constructed variant of a real pair. (2) The first run-time check of the references build covered only the 704 constants that print a `UIColor` directly; it was repeated with all 1533 colour names. Next: Phase 19.

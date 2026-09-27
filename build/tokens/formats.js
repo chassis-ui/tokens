@@ -10,7 +10,8 @@
 
 import { fileHeader, setSwiftFileProperties } from 'style-dictionary/utils'
 import androidResourcesTemplate from './templates/android-resources.template.js'
-import iosSwiftClassTemplate from './templates/ios-swift-class.template.js'
+import { swiftConstants, swiftFile } from './templates/ios-swift-class.template.js'
+import { collectThemeColors } from './theme-colors.js'
 import scssTemplate from './templates/scss.template.js'
 import { webValue } from './css-var-policy.js'
 import { scssValue } from './scss-var-policy.js'
@@ -76,7 +77,12 @@ export default function (StyleDictionary) {
       options = setSwiftFileProperties(options, 'class', platform.transformGroup)
       dictionary.allTokens = inSourceOrder(dictionary.allTokens)
       const settings = { outputReferences: options.outputReferences === true }
-      return iosSwiftClassTemplate({ dictionary, options, file, header, platform, settings })
+      const constants = swiftConstants(dictionary, settings)
+      if (options.theme) {
+        const { buildPath } = platform
+        collectThemeColors({ buildPath, theme: options.theme, header, options, constants })
+      }
+      return swiftFile({ file, header, options, constants })
     }
   })
 

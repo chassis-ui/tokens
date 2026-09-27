@@ -229,7 +229,7 @@ The token sets of each file come from `tokens/$themes.json`. Colour files use th
 
 **File naming conventions:**
 - Web: `main.scss`, `color-light.scss`, `number-large.scss`
-- iOS: `ChassisTokens.swift`, `ColorLight.swift`, `NumberLarge.swift` (types `ChassisTokens`, `ChassisTokensColorLight`, `ChassisTokensNumberLarge`)
+- iOS: `ChassisTokens.swift`, `ColorLight.swift`, `NumberLarge.swift` (types `ChassisTokens`, `ChassisTokensColorLight`, `ChassisTokensNumberLarge`), and `Color.swift` (`ChassisTokensColor`), whose colours follow the light and dark appearance
 - Android: `main.xml`, `color_light.xml`, `number_large.xml`
 
 Only the collections and sets defined under `build` are processed.
@@ -388,6 +388,7 @@ A build runs in three steps:
 - `build/tokens/reference-policy.js`: Which web tokens print a reference and which token it names, shared by both web formats
 - `build/tokens/css-var-policy.js`: The `var(--…)` names of the Chassis CSS format
 - `build/tokens/scss-var-policy.js`: The values and `$…` names of the SCSS variables format
+- `build/tokens/theme-colors.js`: The iOS `Color.swift` whose colours follow the appearance, written after the builds from the light and dark colour files
 - `build/tokens/verify.js`: Golden check against `dist/` and the preset baselines
 - `build/tokens/logger.js`: Centralized logging utilities
 - `build/tokens/utils.js`: Token type groups and number formatting

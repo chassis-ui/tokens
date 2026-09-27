@@ -241,6 +241,7 @@ public enum ChassisTokensColorLight {
 
 - Naming convention: PascalCase
 - Types: `ChassisTokens` in `ChassisTokens.swift`, and `ChassisTokens<File>` in the other files (`ChassisTokensColorLight`, `ChassisTokensNumberLarge`, `ChassisTokensString`)
+- Dark mode: with a `light` and a `dark` theme, the build also writes `Color.swift` (`ChassisTokensColor`) after the other builds, where each colour that differs by theme is a `UIColor { $0.userInterfaceStyle == .dark ? … : … }`
 - Color output: UIColor with three decimals per channel
 - Sizes and numbers: `CGFloat`
 - Font families: the first family of the stack only
@@ -297,6 +298,7 @@ dist/
 │   └── demo/
 │       └── chassis/
 │           ├── ChassisTokens.swift
+│           ├── Color.swift            (light and dark colours in one)
 │           ├── String.swift
 │           └── ...
 └── android/

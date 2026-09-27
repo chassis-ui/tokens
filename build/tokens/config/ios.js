@@ -44,10 +44,12 @@ function toPascalCase(name) {
  * one target.
  * @param {string} name - The file name without `.swift`, e.g. `ColorLight`.
  * @param {string} filter - The file's filter.
+ * @param {Object} [options] - More file options; `theme` marks a colour file for the
+ *   colour file that follows the appearance (`theme-colors.js`).
  */
-function swiftFile(name, filter) {
+function swiftFile(name, filter, options = {}) {
   const className = name === 'ChassisTokens' ? name : `ChassisTokens${name}`
-  return { destination: `${name}.swift`, filter, format, options: { className } }
+  return { destination: `${name}.swift`, filter, format, options: { className, ...options } }
 }
 
 /**
@@ -60,7 +62,7 @@ function generateFiles({ kind, theme, screen }) {
     case 'base':
       return [swiftFile('ChassisTokens', 'cx/allTokens'), swiftFile('String', 'cx/stringTokens')]
     case 'color':
-      return [swiftFile(`Color${toPascalCase(theme)}`, 'cx/themeTokens')]
+      return [swiftFile(`Color${toPascalCase(theme)}`, 'cx/themeTokens', { theme })]
     case 'number':
       return [swiftFile(`Number${screen ? toPascalCase(screen) : ''}`, 'cx/numberTokens')]
     default:

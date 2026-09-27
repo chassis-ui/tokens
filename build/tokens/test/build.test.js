@@ -12,7 +12,7 @@ import { fileURLToPath } from 'node:url'
 import StyleDictionary from 'style-dictionary'
 import { permutateThemes } from '@tokens-studio/sd-transforms'
 import { describe, expect, test } from 'vitest'
-import { planBuilds } from '../build.js'
+import { planBuilds, planThemeColors } from '../build.js'
 import config from '../config/index.js'
 
 const ROOT = fileURLToPath(new URL('../../../', import.meta.url))
@@ -43,8 +43,22 @@ describe('planBuilds', () => {
   const builds = planBuilds(sets, buildOptions)
 
   test('writes exactly the files of dist/', () => {
-    expect(distFiles).toHaveLength(42)
-    expect(destinations(builds)).toEqual(distFiles)
+    expect(distFiles).toHaveLength(44)
+    expect([...destinations(builds), ...planThemeColors(builds, 'dist')].sort()).toEqual(distFiles)
+  })
+
+  test('writes an iOS colour file that follows the appearance for each brand', () => {
+    expect(planThemeColors(builds, 'dist')).toEqual([
+      'dist/ios/demo/chassis/Color.swift',
+      'dist/ios/demo/sinefil/Color.swift'
+    ])
+  })
+
+  test('writes no such file when a build has only one of light and dark', () => {
+    expect(planThemeColors(planBuilds(sets, buildOptions, { themes: ['light'] }), 'dist')).toEqual(
+      []
+    )
+    expect(planThemeColors(planBuilds(sets, buildOptions, { platforms: ['android'] }))).toEqual([])
   })
 
   test('plans one build per brand, app and token-set list', () => {
