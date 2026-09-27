@@ -19,6 +19,6 @@ plugins {
 // Every check of both modules
 tasks.register("compileTokens") {
   group = "verification"
-  description = "Compiles and links the Android resources and compiles the Compose objects."
-  dependsOn(":resources:compileTokens", ":compose:compileTokens")
+  description = "Compiles and links the Android resources, the Compose objects and the sample app."
+  dependsOn(":resources:compileTokens", ":compose:compileTokens", ":sample:compileTokens")
 }

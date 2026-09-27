@@ -23,7 +23,7 @@ public enum ChassisTokens {
 }
 ```
 
-Colours are `UIColor`, sizes and numbers are `CGFloat`, font weights are `UIFont.Weight`, and everything else is a `String`. The iOS files are in the npm package, under `node_modules/@chassis-ui/tokens/dist/ios/`, or build them from the repository.
+Colours are `UIColor`, sizes and numbers are `CGFloat`, font weights are `UIFont.Weight`, and everything else is a `String`. Install the files as a [Swift package](#swift-package-manager). They are also in the npm package, under `node_modules/@chassis-ui/tokens/dist/ios/`, or build them from the repository.
 
 ## Generated Files
 
@@ -72,7 +72,40 @@ The value of each constant is the same with and without the option. A constant n
 
 ## Add the Tokens to Your App
 
-Add the files you need to your app target, or all eight. Write the type before each token:
+### Swift Package Manager
+
+The tokens repository is a Swift package with one library for every app and brand, named `ChassisTokens<App><Brand>`. The configured app `demo` has `ChassisTokensDemoChassis` and `ChassisTokensDemoSinefil`. Each library holds the eight files of its folder in `dist/ios/`, with the icon catalog as a resource, and needs iOS 13 or later.
+
+In Xcode, choose **File → Add Package Dependencies…**, enter `https://github.com/chassis-ui/tokens.git`, choose a version and add the library of your brand to your app target. In a `Package.swift`:
+
+```swift
+dependencies: [
+    .package(url: "https://github.com/chassis-ui/tokens.git", from: "0.6.0")
+],
+targets: [
+    .target(
+        name: "YourApp",
+        dependencies: [.product(name: "ChassisTokensDemoChassis", package: "tokens")]
+    )
+]
+```
+
+Import the library and write the type before each token:
+
+```swift
+import ChassisTokensDemoChassis
+
+view.backgroundColor = ChassisTokensColor.ColorContextDefaultBgMain
+stack.spacing = ChassisTokens.SpaceContextMedium
+```
+
+Every library declares the same types. A file that imports two libraries names the library before the type, such as `ChassisTokensDemoSinefil.ChassisTokensColor.ColorContextDefaultBgMain`.
+
+The package holds the files that are committed in `dist/ios/` at the tag of the version. With your own tokens, use the URL of your repository: after a change to the apps or brands of `chassis.build`, build the tokens and write `Package.swift` again with `pnpm tokens:swift-package`, then commit both and tag a version.
+
+### Files
+
+Without the package, add the files you need to your app target, or all eight, and the icon catalog. No import is needed:
 
 ```swift
 view.backgroundColor = ChassisTokensColor.ColorContextDefaultBgMain
@@ -80,24 +113,6 @@ stack.spacing = ChassisTokens.SpaceContextMedium
 ```
 
 If your app needs one theme and one screen size, `ChassisTokens.swift` alone holds every token except the theme colours of the colour files and the other screen sizes.
-
-To keep the files in the tokens repository, add a `Package.swift` to its root with one library for all files:
-
-```swift
-// swift-tools-version:5.9
-import PackageDescription
-
-let package = Package(
-    name: "ChassisTokens",
-    platforms: [.iOS(.v13)],
-    products: [.library(name: "ChassisTokens", targets: ["ChassisTokens"])],
-    targets: [
-        .target(name: "ChassisTokens", path: "packages/tokens/dist/ios/demo/chassis", exclude: ["Icons.xcassets"])
-    ]
-)
-```
-
-In Xcode, choose **File → Add Package Dependencies… → Add Local…**, select the tokens repository and add the `ChassisTokens` library to your app target. Then `import ChassisTokens` in the files that use tokens. The package leaves out the icon catalog, which goes into the app target; see [Icons](#icons).
 
 ## Colours and Dark Mode
 
@@ -111,7 +126,7 @@ Use these colours in views, and the appearance of each view picks the value:
 
 ```swift
 import UIKit
-import ChassisTokens
+import ChassisTokensDemoChassis
 
 view.backgroundColor = ChassisTokensColor.ColorContextDefaultBgMain
 label.textColor = ChassisTokensColor.ColorContextDefaultFgMain
@@ -123,7 +138,7 @@ In SwiftUI, wrap a colour with `Color(uiColor:)` (iOS 15) or `Color(_:)`; the Sw
 
 ```swift
 import SwiftUI
-import ChassisTokens
+import ChassisTokensDemoChassis
 
 extension Color {
     static let bgMain = Color(uiColor: ChassisTokensColor.ColorContextDefaultBgMain)
@@ -162,7 +177,7 @@ The angle is the CSS angle in degrees: `0` points up and angles turn clockwise, 
 
 ```swift
 import UIKit
-import ChassisTokens
+import ChassisTokensDemoChassis
 
 typealias Tokens = ChassisTokensColor
 
@@ -187,15 +202,26 @@ The start and end points follow the angle exactly in a square layer. In other sh
 
 ## Icons
 
-`Icons.xcassets` holds one image set per icon token, named like its constant, such as `IconChipRemove`. Each keeps its SVG as a vector and renders as a template, so it takes the tint colour, as `currentcolor` does on the web. Add the catalog to your app target, for example by dragging it into Xcode as a reference, and load an icon by name:
+`Icons.xcassets` holds one image set per icon token, named like its constant, such as `IconChipRemove`. Each keeps its SVG as a vector and renders as a template, so it takes the tint colour, as `currentcolor` does on the web. Xcode compiles the catalog with its asset compiler.
+
+With the [Swift package](#swift-package-manager), the catalog is in the resource bundle of the library, which Xcode copies into the app. The bundle is named after the package and the library:
 
 ```swift
-let remove = UIImage(named: "IconChipRemove")
+import ChassisTokensDemoChassis
+import UIKit
+
+let tokenBundle = Bundle.main
+    .url(forResource: "ChassisTokens_ChassisTokensDemoChassis", withExtension: "bundle")
+    .flatMap(Bundle.init(url:))
+
+let remove = UIImage(named: "IconChipRemove", in: tokenBundle, compatibleWith: nil)
 button.setImage(remove, for: .normal)
 button.tintColor = ChassisTokensColor.ColorContextDefaultFgMain
 ```
 
-In SwiftUI, `Image("IconChipRemove")` takes the foreground style. Xcode compiles the catalog with its asset compiler.
+In SwiftUI, `Image("IconChipRemove", bundle: tokenBundle)` takes the foreground style.
+
+With the files in your app target, add the catalog to the target too, for example by dragging it into Xcode as a reference. The icons are then in the app's own bundle: `UIImage(named: "IconChipRemove")` and `Image("IconChipRemove")`.
 
 ## Sizes and Screen Sizes
 
@@ -203,7 +229,7 @@ Sizes are points, as `CGFloat`. Most sizes are the same on every screen; a few d
 
 ```swift
 import UIKit
-import ChassisTokens
+import ChassisTokensDemoChassis
 
 func sectionIconSize(for traits: UITraitCollection) -> CGFloat {
     traits.horizontalSizeClass == .compact
@@ -244,7 +270,7 @@ The colour carries the shadow's opacity. Core Animation multiplies it by `shadow
 
 ```swift
 import UIKit
-import ChassisTokens
+import ChassisTokensDemoChassis
 
 func applySmallShadow(to layer: CALayer) {
     layer.shadowColor = ChassisTokensColor.ShadowContextSmall1Color.cgColor
@@ -279,7 +305,11 @@ The files come from a build before each file had its own type, when all of them 
 
 ### Cannot Find 'ChassisTokensColorLight' in Scope
 
-The file is not in the target, or the package module is not imported. Add the file, or `import ChassisTokens`.
+The file is not in the target, or the library of the package is not imported. Add the file, or `import ChassisTokensDemoChassis`.
+
+### Ambiguous Use of 'ChassisTokensColor'
+
+The file imports two libraries of the package, which declare the same types. Name the library before the type, such as `ChassisTokensDemoChassis.ChassisTokensColor`, or import one library per file.
 
 ### Cannot Find a Token
 
@@ -287,7 +317,7 @@ Check the name in the generated file. Names are PascalCase without a prefix, suc
 
 ## Continuous Integration
 
-Build the tokens before the app. The build needs Node.js 22 or later:
+With the Swift package, Xcode resolves the tokens and the app's workflow needs no extra step. With the repository as a submodule, build the tokens before the app. The build needs Node.js 22 or later:
 
 ```yaml
 # .github/workflows/build.yml

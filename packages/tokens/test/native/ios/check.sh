@@ -11,7 +11,9 @@
 #            language mode.
 #   assets   Compiles every asset catalog with actool and checks that the compiled catalog
 #            holds every image set.
-#   package  Builds the Package.swift of the iOS guide for the iOS simulator.
+#   package  Reads the Package.swift at the root of the repository and builds the sample
+#            in test/native/ios/sample/, which depends on its libraries and reads their
+#            tokens, for the iOS simulator.
 #
 # Without arguments it runs all three. It writes to a temporary folder only.
 
@@ -19,10 +21,10 @@ set -euo pipefail
 
 package_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/../../.." && pwd)"
 repository_root="$(cd "$package_root/../.." && pwd)"
-guide="$repository_root/packages/site/content/docs/use-in-project/ios-applications.mdx"
+sample="$package_root/test/native/ios/sample"
 
 sdk_name=iphonesimulator
-# The deployment target of the guide's Package.swift
+# The deployment target of Package.swift
 deployment_target=13.0
 target="arm64-apple-ios$deployment_target-simulator"
 language_modes=(5 6)
@@ -87,34 +89,23 @@ check_assets() {
 }
 
 check_package() {
-  local package="$work/package" path product
+  local copy="$work/sample"
 
-  mkdir -p "$package"
-  # The Swift block of the guide that starts with the tools version
-  awk '
-    /^```swift$/ { inside = 1; block = ""; next }
-    /^```$/ {
-      if (inside && block ~ /^\/\/ swift-tools-version/) { printf "%s", block; exit }
-      inside = 0
-      next
-    }
-    inside { block = block $0 "\n" }
-  ' "$guide" >"$package/Package.swift"
-  [ -s "$package/Package.swift" ] || fail "no Package.swift in $guide"
+  echo "package: $repository_root/Package.swift"
+  xcrun swift package --package-path "$repository_root" --scratch-path "$work/describe" \
+    describe >/dev/null
 
-  path="$(sed -n 's/.*path: "\([^"]*\)".*/\1/p' "$package/Package.swift")"
-  product="$(sed -n 's/.*\.library(name: "\([^"]*\)".*/\1/p' "$package/Package.swift")"
-  [ -d "$repository_root/$path" ] || fail "the guide's target path is not a folder: $path"
-  [ -n "$product" ] || fail "no library in the guide's Package.swift"
+  # A copy of the sample that names the repository by its full path, so that the build
+  # writes nothing into the repository
+  cp -R "$sample" "$copy"
+  sed -i '' "s|path: \"[^\"]*\"|path: \"$repository_root\"|" "$copy/Package.swift"
+  grep -q "path: \"$repository_root\"" "$copy/Package.swift" ||
+    fail 'the sample does not depend on a package by path'
 
-  # The package at the root of a copy, as the guide places it at the root of the repository
-  mkdir -p "$package/$(dirname "$path")"
-  cp -R "$repository_root/$path" "$package/$path"
-
-  echo "package: $product, $path"
+  echo "package: $sample"
   (
-    cd "$package"
-    xcodebuild build -quiet -scheme "$product" \
+    cd "$copy"
+    xcodebuild build -quiet -scheme Sample \
       -destination 'generic/platform=iOS Simulator' -derivedDataPath "$work/derived"
   )
 }

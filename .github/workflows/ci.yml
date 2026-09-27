@@ -219,7 +219,7 @@ jobs:
             packages/tokens/test/golden \
             packages/tokens/test/native \
             packages/tokens/package.json \
-            packages/site/content/docs/use-in-project/ios-applications.mdx \
+            Package.swift \
             .github/workflows/ci.yml)
 
           if [ -n "$changed" ]; then
@@ -231,7 +231,8 @@ jobs:
           fi
 
   # The Swift files against the iOS simulator SDK (UIKit and SwiftUI), the asset catalogs
-  # with actool, and the Package.swift of the iOS guide. Needs no install: a shell script
+  # with actool, and a sample that depends on the libraries of Package.swift and reads
+  # their tokens. Needs no install: a shell script
   native-ios:
     name: Native iOS
     needs: native-changes
@@ -247,9 +248,10 @@ jobs:
       - name: Compile the iOS output
         run: packages/tokens/test/native/ios/check.sh
 
-  # The Android resources, compiled and linked against android.jar, and the Compose objects
-  # against Jetpack Compose, with the Gradle project of test/native/android. The runner has
-  # the Android SDK
+  # The Android resources, compiled and linked against android.jar, the Compose objects
+  # against Jetpack Compose, and a sample app that depends on the Android libraries of the
+  # release and reads their resources, with the Gradle project of test/native/android. The
+  # runner has the Android SDK
   native-android:
     name: Native Android
     needs: native-changes

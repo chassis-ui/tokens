@@ -91,6 +91,18 @@ format. Edit them in Figma with Tokens Studio, synced to this repository with th
 
 Token names are the public API: renaming or removing a token breaks every app that uses it.
 
+After a change to the brands or apps of `chassis.build` in `packages/tokens/package.json`, build
+the tokens and write the Swift package manifest at the root of the repository again, which has
+one library for every app and brand with an iOS platform:
+
+```sh
+pnpm tokens
+pnpm tokens:swift-package
+```
+
+`pnpm tokens:test` fails while `Package.swift` differs from the configuration. The Android
+libraries need no such step: the release builds one for every `res/` tree in `dist/android/`.
+
 ## Changing the build
 
 The build in `packages/tokens/build/` follows three rules; please keep them:
@@ -122,8 +134,9 @@ A change that is meant to change the output also updates `dist/` (`pnpm tokens`)
 baselines (see [Changing tokens](#changing-tokens)) and adds a changeset.
 
 CI compiles the iOS and Android output of your pull request against the real SDKs: the Swift
-files, the asset catalogs and the iOS guide's Swift package with Xcode, and the Android resources
-and Compose objects with Gradle. You don't have to install anything for this. To run the checks
+files, the asset catalogs and a sample that uses the Swift package with Xcode, and the Android
+resources, the Compose objects and a sample app that uses the Android library with Gradle. You
+don't have to install anything for this. To run the checks
 yourself, with Xcode or with a JDK and the Android SDK installed, see
 [Native compile checks](../packages/tokens/test/README.md#native-compile-checks):
 
@@ -199,7 +212,9 @@ on the pushed commit:
 2. Merging that pull request pushes `main` again. The version is not on npm yet, so the workflow
    runs `pnpm tokens:verify`, publishes `@chassis-ui/tokens` with npm trusted publishing and
    provenance (no npm token), and creates the GitHub release `v<version>` with the CHANGELOG entry
-   as its body.
+   as its body and the Android library of every app and brand attached
+   (`chassis-tokens-<app>-<brand>-<version>.aar`). Swift Package Manager resolves the tag of the
+   release, so the Swift package needs no publishing step.
 
 A maintainer can also run `pnpm changeset:version` locally, review and commit the result and push
 `main`; the workflow then publishes without a pull request. A version without a CHANGELOG entry

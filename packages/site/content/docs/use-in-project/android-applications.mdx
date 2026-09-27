@@ -32,7 +32,7 @@ Chassis Tokens are built for Android as XML resource files, one resource per tok
 | Font families, other strings and SVG icons | `string`, escaped | `Inter` |
 </CxTable>
 
-Names are snake_case without a prefix, such as `space_context_medium`. The Android files are in the npm package, under `node_modules/@chassis-ui/tokens/dist/android/`, or build them from the repository.
+Names are snake_case without a prefix, such as `space_context_medium`. Install the resources as an [Android library](#android-library). The files are also in the npm package, under `node_modules/@chassis-ui/tokens/dist/android/`, or build them from the repository.
 
 ## Generated Files
 
@@ -85,6 +85,29 @@ pnpm tokens --brand chassis --app demo --platform android
 The files are written to `submodules/chassis-tokens/packages/tokens/dist/android/demo/chassis/`. To build them for your own app, add it to `chassis.build.apps` in `packages/tokens/package.json` and give it token sets in `packages/tokens/source/$themes.json`; see [Style Dictionary]([[docsref:/getting-started/style-dictionary#build-options]]).
 
 ## Add the Tokens to Your App
+
+### Android Library
+
+Every [release](https://github.com/chassis-ui/tokens/releases) has the resource tree of each app and brand as an Android library, named `chassis-tokens-<app>-<brand>-<version>.aar`. The configured app `demo` has `chassis-tokens-demo-chassis-0.6.0.aar` and `chassis-tokens-demo-sinefil-0.6.0.aar`. Download the library of your brand into `app/libs/` and add it to the app module:
+
+```kotlin
+// app/build.gradle.kts
+dependencies {
+    implementation(files("libs/chassis-tokens-demo-chassis-0.6.0.aar"))
+}
+```
+
+The library needs Android 5.0 (API 21) or later and has no dependencies. Layouts use its resources like the app's own, such as `@color/color_context_default_bg_main`. In Kotlin, the resources are in the `R` class of the library, `chassis.tokens.R`:
+
+```kotlin
+import chassis.tokens.R as Tokens
+
+val padding = context.resources.getDimensionPixelSize(Tokens.dimen.space_context_medium)
+```
+
+The examples below write `R` for the class that holds the tokens: `chassis.tokens.R` with the library, and the `R` class of your app with the resource tree.
+
+With your own tokens, build the libraries with `pnpm tokens:aar`, which needs a JDK and the Android SDK. It writes them to `packages/tokens/test/native/android/library/build/aars/`.
 
 ### Resource Tree
 
@@ -304,7 +327,7 @@ A resource exists only in a qualified folder, such as `values-sw600dp`, and the 
 
 ## Continuous Integration
 
-Build the tokens before the app. With the resource tree added as a source folder, as in [Resource Tree](#resource-tree), Gradle reads the built files directly. The build needs Node.js 22 or later:
+With the Android library in `app/libs/`, the app's workflow needs no extra step. With the repository as a submodule, build the tokens before the app. With the resource tree added as a source folder, as in [Resource Tree](#resource-tree), Gradle reads the built files directly. The build needs Node.js 22 or later:
 
 ```yaml
 # .github/workflows/android.yml

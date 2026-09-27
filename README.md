@@ -16,8 +16,8 @@ Chassis Tokens is meant to be owned and customized: a team can clone it, change 
 
 - **Brands, themes, apps and screen sizes**: each combination of token sets in Tokens Studio becomes its own set of files; the configured build writes two brands, light and dark themes and three screen sizes.
 - **Web**: SCSS variables for Chassis CSS, and presets with plain SCSS variables in `rem`, `px` or `vw` for other CSS frameworks.
-- **iOS**: Swift constants with `UIColor` values that follow dark mode, an icon asset catalog, and SwiftUI output.
-- **Android**: a resource tree with night and screen-size qualifiers, vector drawables for the icons, and Jetpack Compose output.
+- **iOS**: Swift constants with `UIColor` values that follow dark mode, an icon asset catalog, and SwiftUI output, installed as a Swift package.
+- **Android**: a resource tree with night and screen-size qualifiers, vector drawables for the icons, and Jetpack Compose output, installed as an Android library from the GitHub release.
 - **References**: with `outputReferences`, a token names the token it references (a SCSS variable, a Swift constant or an Android resource) wherever that compiles and keeps the value.
 - **Checked output**: a fresh build must equal the committed `dist/`, checked in CI and before every release, and the tests run on real tokens.
 
@@ -31,6 +31,8 @@ npm install @chassis-ui/tokens
 
 The package holds the files of `packages/tokens/dist/`: `dist/web/docs/<brand>/` (SCSS), `dist/ios/demo/<brand>/` (Swift and `Icons.xcassets`) and `dist/android/demo/<brand>/` (the `res/` tree), for the brands `chassis` and `sinefil`.
 
+iOS apps install the same Swift files with Swift Package Manager, from `https://github.com/chassis-ui/tokens.git`: the libraries `ChassisTokensDemoChassis` and `ChassisTokensDemoSinefil`. Android apps download the resource tree as an Android library from the [GitHub release](https://github.com/chassis-ui/tokens/releases): `chassis-tokens-demo-<brand>-<version>.aar`.
+
 ### Usage
 
 Web, with Sass modules:
@@ -43,9 +45,9 @@ Web, with Sass modules:
 }
 ```
 
-iOS: add the Swift files and `Icons.xcassets` of one app and brand to your target, then read `ChassisTokens.SpaceContextMedium` or `ChassisTokensColor.ColorContextDefaultBgMain`.
+iOS: add the library of your brand to your target and `import ChassisTokensDemoChassis`, or add the Swift files and `Icons.xcassets` of one app and brand, then read `ChassisTokens.SpaceContextMedium` or `ChassisTokensColor.ColorContextDefaultBgMain`.
 
-Android: add `dist/android/<app>/<brand>/res` as a resource folder of your module, then read `R.dimen.space_context_medium` or `R.color.color_context_default_bg_main`.
+Android: add the Android library of your brand to your module, or `dist/android/<app>/<brand>/res` as a resource folder, then read `R.dimen.space_context_medium` or `R.color.color_context_default_bg_main`.
 
 The guides for [web](https://chassis-ui.com/tokens/docs/use-in-project/web-applications/), [iOS](https://chassis-ui.com/tokens/docs/use-in-project/ios-applications/) and [Android](https://chassis-ui.com/tokens/docs/use-in-project/android-applications/) cover themes, screen sizes and setup in detail.
 
@@ -346,12 +348,12 @@ Every pull request runs `.github/workflows/ci.yml`:
 - **Audit**: `pnpm audit` for moderate advisories and above
 - **Token diff**: the [token diff report](#token-diff-report) of the pull request against its base branch, in the job summary
 - **Changeset**: a pull request that changes `source/`, `build/` or `dist/` must add a changeset (`pnpm changeset`)
-- **Native iOS** (macOS, Xcode): every Swift file of `dist/` and of the preset baselines type-checked against the iOS simulator SDK, the asset catalogs compiled with `actool`, and the iOS guide's `Package.swift` built
-- **Native Android**: the resources of `dist/` and of the preset baselines compiled and linked against the Android SDK, and the Compose objects compiled against Jetpack Compose, with the Gradle project in `test/native/android/`
+- **Native iOS** (macOS, Xcode): every Swift file of `dist/` and of the preset baselines type-checked against the iOS simulator SDK, the asset catalogs compiled with `actool`, and a sample built that depends on the libraries of `Package.swift` and reads their tokens
+- **Native Android**: the resources of `dist/` and of the preset baselines compiled and linked against the Android SDK, the Compose objects compiled against Jetpack Compose, and a sample app built that depends on the Android libraries and reads their resources, with the Gradle project in `test/native/android/`
 
 The two native jobs run on a pull request only when it changes `source/`, `build/`, `dist/`, the preset baselines or the checks themselves, and on every push to `main`. See [Native compile checks](packages/tokens/test/README.md#native-compile-checks).
 
-Releases use [Changesets](https://changesets.dev). Pushing `main` runs the release workflow, after the same CI checks on that commit: pending changesets open or update a "Version Packages" pull request, which bumps the version and writes the CHANGELOG. Merging it publishes `@chassis-ui/tokens` to npm with trusted publishing and provenance, and creates a GitHub release from the CHANGELOG entry. See [Releases](.github/CONTRIBUTING.md#releases). Dependabot opens weekly pull requests for npm packages, GitHub Actions and the Gradle project of the native checks; the actions are pinned to commit SHAs.
+Releases use [Changesets](https://changesets.dev). Pushing `main` runs the release workflow, after the same CI checks on that commit: pending changesets open or update a "Version Packages" pull request, which bumps the version and writes the CHANGELOG. Merging it publishes `@chassis-ui/tokens` to npm with trusted publishing and provenance, and creates a GitHub release from the CHANGELOG entry, with the Android libraries attached; its tag is the version of the Swift package. See [Releases](.github/CONTRIBUTING.md#releases). Dependabot opens weekly pull requests for npm packages, GitHub Actions and the Gradle project of the native checks; the actions are pinned to commit SHAs.
 
 ## Chassis Ecosystem
 

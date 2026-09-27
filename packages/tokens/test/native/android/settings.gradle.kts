@@ -19,4 +19,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "chassis-tokens-native"
 
-include(":resources", ":compose")
+include(":resources", ":compose", ":library", ":sample")
