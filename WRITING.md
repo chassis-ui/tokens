@@ -7,7 +7,7 @@ How to write token reference, guide, and platform docs for chassis-tokens. This 
 ## How this guide is organized
 
 - **Language (§1–6)** — voice, tone, vocabulary, token names and code references in prose.
-- **Accuracy (§7–8)** — where names, values, and counts come from.
+- **Accuracy (§7–8)** — names that must exist, values that must stay out, counts, versions, and the roadmap.
 - **Structure (§9–13)** — frontmatter, section order per doc type, headings, the closing platform section.
 - **Components and conventions (§14–17)** — token tables, callouts, troubleshooting entries, cross-references.
 - **Code blocks and doc length (§18–21)** — language tags, generated vs hand-written code, when to split a doc.
@@ -68,9 +68,9 @@ Every `##`, `###`, and `####` heading must be followed by at least one explanato
 Context tokens name a step of the spacing scale by its role, from `zero` to `6xlarge`. Reach for them in layouts and in components that have no token of their own.
 
 <CxTable>
-| Token | Value | Purpose |
+| Token | Reference | Purpose |
 | --- | --- | --- |
-| `space.context.medium` | `16px` | Default gap between elements |
+| `space.context.medium` | `{size.unit.16}` | Default gap between elements |
 </CxTable>
 ```
 
@@ -80,9 +80,9 @@ Context tokens name a step of the spacing scale by its role, from `zero` to `6xl
 ## Context tokens
 
 <CxTable>
-| Token | Value | Purpose |
+| Token | Reference | Purpose |
 | --- | --- | --- |
-| `space.context.medium` | `16px` | Default gap between elements |
+| `space.context.medium` | `{size.unit.16}` | Default gap between elements |
 </CxTable>
 ```
 
@@ -114,18 +114,20 @@ Prefer active voice, with the actor named: the build, the format, the token, the
 
 The project has one word for each concept. Using a synonym makes the reader wonder whether it's a second concept.
 
-| Use                             | For                                                                                       | Not                                          |
-| ------------------------------- | ----------------------------------------------------------------------------------------- | -------------------------------------------- |
-| brand                           | An option of the `brand` group; the build writes `chassis` and `sinefil`                  | product, tenant                              |
-| group, option                   | A group of `$themes.json` (`brand`, `app`, `theme`, `screen`) and one choice of it        | theme group, theme (Tokens Studio's words)   |
-| app                             | An option of the `app` group: `docs`, `demo`                                              | project, application (except in page titles) |
-| theme                           | `light`, `dark`                                                                           | mode, color scheme                           |
-| screen                          | `large`, `medium`, `small`                                                                | breakpoint, viewport, device                 |
-| platform                        | A build target: `web`, `ios`, `android`, and the presets                                  | target, output format                        |
-| preset                          | A platform for adopters: `web-scss`, `web-px`, `web-vw`, `ios-swiftui`, `android-compose` | variant, flavor                              |
-| token set                       | One JSON file of `source/`                                                                | token file, collection                       |
-| base, context, component tokens | The three token levels (see [§10](#10-standard-section-order))                            | semantic, alias, global tokens               |
-| the build                       | The Style Dictionary build in `packages/tokens/build/`                                    | the pipeline, the generator, the script      |
+| Use                             | For                                                                                                                      | Not                                                          |
+| ------------------------------- | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------ |
+| brand                           | An option of the `brand` group                                                                                           | product, tenant                                              |
+| group, option                   | A group of `$themes.json` and one choice of it: the core groups `brand`, `theme`, `app`, and the optional group `screen` | theme group, theme (Tokens Studio's words), layer, dimension |
+| app                             | An option of the `app` group                                                                                             | project, application (except in page titles)                 |
+| theme                           | An option of the `theme` group                                                                                           | mode, color scheme                                           |
+| screen                          | An option of the `screen` group                                                                                          | breakpoint, viewport, device                                 |
+| platform                        | A build target: `web`, `ios`, `android`, and the presets                                                                 | target, output format                                        |
+| preset                          | A platform for adopters: `web-scss`, `web-px`, `web-vw`, `ios-swiftui`, `android-compose`                                | variant, flavor                                              |
+| token set                       | One JSON file of `source/`                                                                                               | token file, collection                                       |
+| base, context, component tokens | The three token levels (see [§10](#10-standard-section-order))                                                           | semantic, alias, global tokens                               |
+| the build                       | The Style Dictionary build in `packages/tokens/build/`                                                                   | the pipeline, the generator, the script                      |
+
+**Three core groups and an optional one.** The token system is built on three groups: `brand`, `theme`, and `app`. `screen` is an optional fourth group. Chassis Tokens is meant to be owned and customized, so an adopter can remove the `screen` group or add a group of their own. Write about the groups in this way: name the three core groups first, call `screen` optional, and don't present the committed options (`chassis`, `light`, `docs`, `large`) as the only ones.
 
 Figma has its own terms: a **Variable**, a **Collection**, a **Mode**. Use them capitalized, and only for Figma; a Figma Mode that holds the dark theme is still "the dark theme" outside Figma.
 
@@ -153,35 +155,52 @@ Token reference docs use dot paths; platform docs use the names of their platfor
 
 **Placeholders** go in angle brackets, lowercase: `` `dist/<platform>/<app>/<brand>/` ``, `` `space.<component>.*` ``. Don't use square brackets or braces for placeholders; braces are token references.
 
-**Other references:** file paths relative to the repository root (`` `packages/tokens/package.json` ``), or to the installed package when the reader has only that (`` `node_modules/@chassis-ui/tokens/dist/web/` ``); commands in full (`` `pnpm tokens --platform ios` ``); configuration keys as a path (`` `chassis.build.apps` ``); values with their unit (`` `16px` ``, `` `1rem` ``, `` `16dp` ``). Interface labels of Figma, Tokens Studio, and Xcode are bold, not code: **File → Add Package Dependencies…**.
+**Other references:** file paths relative to the repository root (`` `packages/tokens/package.json` ``), or to the installed package when the reader has only that (`` `node_modules/@chassis-ui/tokens/dist/web/` ``); commands in full (`` `pnpm tokens --platform ios` ``); configuration keys as a path (`` `chassis.build.apps` ``); units in code (`` `rem` ``, `` `dp` ``). Interface labels of Figma, Tokens Studio, and Xcode are bold, not code: **File → Add Package Dependencies…**.
 
 ---
 
 ## Accuracy
 
-### 7. Names and values come from the source
+### 7. Names are facts, values are examples
 
-Every token name and value in a doc must exist in `packages/tokens/source/` or `packages/tokens/dist/` as written. Don't write a token from memory, don't extend a scale by analogy, and don't invent an example token — a reader will search for it.
+Chassis Tokens is a multi-brand, multi-platform system that its adopters own and customize. The names of the tokens and the references between them are its structure. The values are not: a color, a font family, a radius, or a contrast ratio belongs to one brand, changes with the next release, and is different in the fork of an adopter. Document the structure, and keep the values out.
 
-Before adding a name, find it:
+**Names must exist.** Every token name, reference, file name, command, and option in a doc must exist in `packages/tokens/source/`, `packages/tokens/dist/`, or the build as written. Don't write a token from memory, don't extend a scale by analogy, and don't invent an example token — a reader will search for it. Before adding a name, find it:
 
 ```bash
 grep -rn "space-context-medium" packages/tokens/dist/web/docs/chassis/
 ```
 
-**Generated code is copied, not retyped.** A code block that shows what the build writes holds lines of `dist/` exactly as they are, including their order and spacing. Shorten a block by leaving lines out, never by editing a line.
+**Values stay out of prose and tables.** Don't write the value of a token: no hex or `rgba()` colors, no font family or weight names, no sizes in pixels, no opacity numbers, no contrast ratios. Describe a token by what it references and what it is for.
 
-**Values belong to a brand, a theme, and a screen.** A value in a doc is the value of the `chassis` brand, the `light` theme, and the `large` screen unless the doc says otherwise. Say so when the value differs elsewhere: "`#161a1b` in the light theme, `#e9eced` in the dark theme."
+**Good:** "`space.context.medium` references `{size.unit.16}`. `color.context.default.fg-subtle` is `fg-main` with the alpha of `opacity.context.fg-subtle`. `typography.fontFamily.text` holds the font family of the brand for running text."
 
-**Sizes are design pixels.** Write a size as `16px`, also when the source holds `16` without a unit and the build treats it as a size. A value that the build prints without a unit, such as an opacity or a column count, is written without one.
+**Bad:** "`space.context.medium` is `16px`. `color.context.default.fg-subtle` is `rgba(22, 26, 27, 0.5)`. `typography.fontFamily.text` is Inter."
+
+What a doc may say about values:
+
+- **The kind of value and its unit:** "a size in design pixels", "a number from `0` to `1`", "a list of font families".
+- **A value that the name states:** the naming pattern of a scale ("the name of a `size.unit.*` token is its size in design pixels; `d15` is one and a half, `n4` is minus four"). Explain the pattern once; don't list the values.
+- **Which tokens differ**, by name, between brands, themes, or screens: "a brand overrides `borderRadius.base.context.*`", "`size.website.*` differs per screen". Not what they differ to.
+- **Relations between values:** "each step of the scale is larger than the one before", "a shade is the base color mixed with white or black by the share of a `modify.*` token".
+
+**Generated code is the exception, and it is copied, not retyped.** A code block that shows the format of a platform holds lines of `dist/` or of the preset baselines exactly as they are. Such a block shows a format, not a value, so:
+
+- Keep it to the few lines that show the format, and shorten it by leaving lines out, never by editing a line.
+- Prefer a token whose value does not belong to a brand: a size over a color, a color over a font family. Don't pick a font family token when the format can be described in prose.
+- Say once per page, before the first such block, that the values in the examples are those of the `chassis` brand in the current version and differ in other brands.
+
+**Accessibility depends on the brand.** Don't state contrast ratios or claim a conformance level. Say which roles are meant to be used together (`fg-main` on `bg-main`), and tell the reader to measure the pairs of their brand and theme.
 
 ### 8. Counts, versions, and configuration
 
-A doc that states a number makes a promise the next release can break. State a count ("eight files", "16 builds") only when the reader needs it, and verify it with `pnpm tokens --dry-run`. Prefer naming the things over counting them.
+A doc that states a number makes a promise the next release can break. Don't count tokens, token sets, files, or builds ("eleven palettes", "eight files", "16 builds"); name the things or their pattern instead.
 
 **Versions.** Write "Node.js 22 or later", not "the latest Node.js". For the version of Chassis Tokens, use the `[[config:current_version]]` token ([§17](#17-cross-references)) instead of a number typed by hand.
 
-**Configuration.** The docs describe the configuration committed in `chassis.build` of `packages/tokens/package.json`. Name it as such ("the configured iOS app is `demo`") so an adopter with another configuration can follow.
+**Configuration.** The brands, themes, screens, and apps in `chassis.build` of `packages/tokens/package.json` are the committed configuration, not the system. Name them as such ("the configured iOS app is `demo`"), and use them in examples, not in definitions, so an adopter with another configuration can follow.
+
+**Roadmap.** A planned feature is named as planned, in the `## Roadmap` section of `getting-started/introduction.mdx` and nowhere else. No doc describes a planned feature as if the build had it. Planned today: seasonal and high-contrast themes, and output in other formats such as JavaScript and JSON.
 
 **The output contract is in [docs/architecture.md](docs/architecture.md#output-contract).** A site page that describes what the build writes must agree with it. When they disagree, check `dist/`, then fix the one that is wrong.
 
@@ -226,11 +245,11 @@ Each doc type has a section order. Skip sections that don't apply; don't reorder
 ## Context tokens            (the scale named by role)
 ## Component tokens          (one ### per component or component family)
 ## Usage                     (choosing a level; patterns that name tokens)
-## Accessibility             (when the category has a nontrivial a11y concern)
+## Accessibility             (which roles go together; no ratios, see §7)
 ## Platform output           (always last)
 ```
 
-**The three levels.** _Base tokens_ hold raw values (`space.unit.16`, `color.base.*`). _Context tokens_ name a value by its role (`space.context.medium`, `color.context.default.fg-main`). _Component tokens_ assign a value to a part of a component (`space.button.medium-gap`). Use these three names in headings and prose; a category that lacks a level skips its section. A category without levels, such as `typography.*`, names its sections after what the tokens hold ("Font sizes", "Line heights"), between `## Introduction` and `## Usage`.
+**The three levels.** _Base tokens_ hold the values (`size.unit.16`, `color.base.*`). _Context tokens_ name a value by its role (`space.context.medium`, `color.context.default.fg-main`). _Component tokens_ assign a value to a part of a component (`space.button.medium-gap`). Use these three names in headings and prose; a category that lacks a level skips its section. A category without levels, such as `typography.*`, names its sections after what the tokens hold ("Font sizes", "Line heights"), between `## Introduction` and `## Usage`.
 
 **Color has a fourth group.** `color.base.*` holds the palettes and the context colors of every theme. `color.primitive.*` holds the palette of the current theme, next to the context tokens: both reference `color.base.*`, and gradients and shadows use the primitive colors. "Primitive" is the name of that group only; it gets a `## Primitive colors` section after `## Base tokens`, and no other category uses the word.
 
@@ -278,17 +297,17 @@ A token reference doc closes with a section that shows how the category prints o
 One sentence naming the unit or type of the category on each platform.
 
 <CxTable>
-| Platform | Name | Value |
+| Platform | Name | Format |
 | --- | --- | --- |
-| Web | `$cx-space-context-medium` | `1rem` |
-| iOS | `SpaceContextMedium` | `CGFloat(16)` |
-| Android | `@dimen/space_context_medium` | `16dp` |
+| Web | `$cx-space-context-medium` | A size in `rem` |
+| iOS | `SpaceContextMedium` | A `CGFloat` in points |
+| Android | `@dimen/space_context_medium` | A `<dimen>` in `dp` |
 </CxTable>
 
 See the [web]([[docsref:/use-in-project/web-applications]]), [iOS]([[docsref:/use-in-project/ios-applications]]), and [Android]([[docsref:/use-in-project/android-applications]]) docs for the files that hold these names.
 ```
 
-Use one token of the page as the example, the same on every platform, with the values of `dist/`. Add a sentence for each platform rule the reader would not guess: a line height in percent that prints in points, letter spacing with a different unit per platform, a shadow split into parts. Rules that apply to every category belong in the platform docs, not here.
+Use one token of the page as the example, the same on every platform. The last column names the format, not the value ([§7](#7-names-are-facts-values-are-examples)); an excerpt of `dist/` may follow the table when the format needs one. Add a sentence for each platform rule the reader would not guess: a line height in percent that prints in points, letter spacing with a different unit per platform, a shadow split into parts. Rules that apply to every category belong in the platform docs, not here.
 
 A composite token, such as a font or a shadow, prints as one value on the web and as one constant per part on iOS and Android. Show one part in the template table, say which, and add a second table or an excerpt of `dist/` for the other parts.
 
@@ -300,13 +319,15 @@ A composite token, such as a font or a shadow, prints as one value on the web an
 
 Tokens are listed in Markdown tables wrapped in `<CxTable>`, which makes them scroll on narrow viewports. One table per level or per component; don't merge levels into one table.
 
-| Column | Header    | Content                                                                                                                                                                       |
-| ------ | --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| First  | `Token`   | The dot path, in backticks                                                                                                                                                    |
-| Second | `Value`   | The resolved value in backticks, with its unit (`` `16px` ``); for a token that references another, the reference (`` `{size.unit.16}` ``) may follow in a `Reference` column |
-| Last   | `Purpose` | A phrase, no trailing period: what the token is applied to                                                                                                                    |
+| Column | Header      | Content                                                                                                                                                                                              |
+| ------ | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| First  | `Token`     | The dot path, in backticks                                                                                                                                                                           |
+| Second | `Reference` | The token it references, in braces and backticks (`` `{size.unit.16}` ``), as the source holds it. For a value built from several references, the expression (`` `rgba({…}, {opacity.level.30})` ``) |
+| Last   | `Purpose`   | A phrase, no trailing period: what the token is applied to                                                                                                                                           |
 
-A table may replace `Value` with one column per variant when the values differ: `Light` and `Dark`, `large`, `medium`, and `small`, or `chassis` and `sinefil`. A composite token gets one column per property in place of `Value`.
+**No `Value` column.** A table does not show the value of a token ([§7](#7-names-are-facts-values-are-examples)). A token that holds a value of its own, such as a step of a base scale, has no reference: list such tokens by name with their purpose, or describe the pattern of their names in a sentence and leave the table out.
+
+When the reference of a token differs between themes, screens, or brands, the table has one reference column per variant, named after the option: `light` and `dark`, or `large`, `medium`, and `small`. A composite token, such as a font, gets one reference column per property.
 
 List tokens in source order, which is the order of the generated files. A scale of more than ~20 steps shows the steps in use and names the pattern of the rest in the intro sentence.
 
@@ -324,7 +345,7 @@ Use `<Callout>` for asides that interrupt the reading flow but are important eno
 
 **Bad warning (this should be prose, not a callout):** "Note that tokens can be customized per brand."
 
-**Status callouts are a claim.** Removing `work-in-progress` from a page says that the page was checked against the current `source/` and `dist/` ([§7](#7-names-and-values-come-from-the-source)). Remove it in the PR that does the check, not before.
+**Status callouts are a claim.** Removing `work-in-progress` from a page says that the page was checked against the current `source/` and `dist/` ([§7](#7-names-are-facts-values-are-examples)). Remove it in the PR that does the check, not before.
 
 **No `title` attribute.** `<Callout>` has no `title` prop and ignores one. Titles like "Note", "Important", and "Key Concept" add nothing; when a callout needs a lead-in, start its body with a bold phrase.
 
@@ -396,7 +417,7 @@ Always tag fenced code blocks with the source language — untagged blocks displ
 
 A doc shows two kinds of code, and the reader must be able to tell them apart. Introduce each block with a sentence that says which it is: "The build writes…" for generated code, "Use…" or "Add…" for code the reader writes.
 
-- **Generated code** is an excerpt of `dist/`, copied as it is ([§7](#7-names-and-values-come-from-the-source)). It can be partial: show the lines under discussion.
+- **Generated code** is an excerpt of `dist/`, copied as it is ([§7](#7-names-are-facts-values-are-examples)). It can be partial: show the lines under discussion.
 - **Usage code** is standalone: a reader copying it into a project with the tokens installed should see it compile. Start with the imports (`import ChassisTokensDemoChassis`, `@use`), and use real token names.
 - **Configuration** shows the key inside its parent, and the intro sentence names the file: "In `chassis.build` of `packages/tokens/package.json`:".
 
@@ -427,8 +448,11 @@ Before opening a PR with a doc change, verify:
 - [ ] No marketing adjectives and no generic advice in prose ([§3](#3-describe-behavior-not-benefits)).
 - [ ] Project vocabulary: brand, app, theme, screen, platform, preset, token set ([§5](#5-vocabulary)).
 - [ ] Token names use the form of their context, and placeholders use angle brackets ([§6](#6-token-names-and-code-references-in-prose)).
-- [ ] Every token name and value exists in `source/` or `dist/` as written ([§7](#7-names-and-values-come-from-the-source)).
-- [ ] Counts are verified, and versions are not typed by hand ([§8](#8-counts-versions-and-configuration)).
+- [ ] Every token name and reference exists in `source/` or `dist/` as written ([§7](#7-names-are-facts-values-are-examples)).
+- [ ] No token values in prose or tables: no colors, font names, pixel sizes, opacity numbers, or contrast ratios ([§7](#7-names-are-facts-values-are-examples)).
+- [ ] A page with generated code says once that the values are those of the `chassis` brand ([§7](#7-names-are-facts-values-are-examples)).
+- [ ] The groups are three core groups and an optional `screen` group ([§5](#5-vocabulary)).
+- [ ] No counts, no version typed by hand, and no planned feature outside the roadmap ([§8](#8-counts-versions-and-configuration)).
 - [ ] Frontmatter `description` is under 160 characters and describes the page ([§9](#9-frontmatter)).
 - [ ] A new page has an entry in `packages/site/data/sidebar.yml` whose slug is its file name ([§9](#9-frontmatter)).
 - [ ] Section order matches the doc type ([§10](#10-standard-section-order)). For **token reference** docs: Introduction → Base tokens → Context tokens → Component tokens → Usage → Accessibility → Platform output.
@@ -451,9 +475,7 @@ These conventions haven't been formalized here. To propose one: write the sectio
 
 Currently unwritten:
 
-- Generating token tables from `source/` instead of writing them by hand, so that values cannot go stale.
-- Documenting the values of brands other than `chassis`, and of the dark theme, in token reference docs.
-- Color swatches and other visual previews of token values.
+- Showing the values of a brand from `source/` at build time, in tables or swatches that a reader switches between brands, so that a doc can show values without holding them.
 - Screenshot conventions for Figma and Tokens Studio — when to embed images, alt text rules, where to store source files.
 - A doc type for the build reference (transforms, filters, formats), which is reference material inside a getting-started guide today.
 - Conventions for changeset entries beyond what [CONTRIBUTING.md](.github/CONTRIBUTING.md#changesets) says.
