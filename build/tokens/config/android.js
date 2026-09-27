@@ -121,6 +121,8 @@ export default function (brand, app, outputs, outDir = 'dist', settings = {}) {
     options,
     files: outputs.flatMap((output) =>
       generateFiles(output, { themes: settings.themes, qualifiers })
-    )
+    ),
+    // The icon tokens are in the build of the main file; they become vector drawables
+    actions: outputs.some((output) => output.kind === 'base') ? ['cx/android-icons'] : []
   }
 }

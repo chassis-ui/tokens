@@ -65,7 +65,7 @@ If a phase is too large, split it into `Na`, `Nb` rows. If a fact in this file i
 | 18 | iOS colours that follow dark mode | Fable | Done | `rewrite(phase 18)` | 2026-09-27 |
 | 19 | Android resource tree | Fable | Done | `rewrite(phase 19)` | 2026-09-27 |
 | 20 | SwiftUI and Compose outputs (optional) | Opus | Done | `rewrite(phase 20)` | 2026-09-27 |
-| 21 | Icon assets (optional) | Opus | Not started | | |
+| 21 | Icon assets (optional) | Opus | Done | `rewrite(phase 21)` | 2026-09-27 |
 | 22 | Platform shadow values (optional) | Opus | Not started | | |
 
 ## Ground rules
@@ -196,7 +196,7 @@ Every instance lists its sets in `source`, in the order `permutateThemes` return
 
 ### Files
 
-`dist/<platform>/<app>/<brand>/`, seven files each, 42 in total; since Phase 18 iOS has an eighth, `Color.swift`, so 44; since Phase 19 Android also has a resource tree of 7 files under `res/`, so 58.
+`dist/<platform>/<app>/<brand>/`, seven files each, 42 in total; since Phase 18 iOS has an eighth, `Color.swift`, so 44; since Phase 19 Android also has a resource tree of 7 files under `res/`, so 58; since Phase 21 the icons add `Icons.xcassets` (19 files) and 9 drawables per brand, so 114.
 
 | Platform | Files |
 | --- | --- |
@@ -879,10 +879,28 @@ Checked:
 
 Goal: icons that iOS and Android can draw. Today the 9 icon tokens per brand are SVG text in strings.
 
-- [ ] iOS: write an asset catalog (`Icons.xcassets`) with one image set per icon, the SVG and a `Contents.json` with `preserves-vector-representation`.
-- [ ] Android: write one vector drawable per icon under `res/drawable/`, with the converter decided below.
-- [ ] Keep the string tokens.
-- [ ] Acceptance: `actool` is not available without Xcode, so the catalog is checked for structure and valid SVG; the drawables compile with aapt2.
+- [x] iOS: write an asset catalog (`Icons.xcassets`) with one image set per icon, the SVG and a `Contents.json` with `preserves-vector-representation`.
+- [x] Android: write one vector drawable per icon under `res/drawable/`, with the converter decided below.
+- [x] Keep the string tokens.
+- [x] Acceptance: `actool` is not available without Xcode, so the catalog is checked for structure and valid SVG; the drawables compile with aapt2.
+
+Result: the 9 SVG icon tokens of each brand are also icon assets. The string tokens did not change; `dist/` gained 56 files (114 in all) and nothing else changed.
+
+| Platform | Files | Content |
+| --- | --- | --- |
+| iOS | `Icons.xcassets/Contents.json` and `Icons.xcassets/<Name>.imageset/{<Name>.svg, Contents.json}` | the SVG of the token; `preserves-vector-representation` and `template-rendering-intent: template`, so the icon scales and takes the tint colour |
+| Android | `res/drawable/<name>.xml` | a vector drawable from `svg2vectordrawable` 2.9.1 (MIT, new dev dependency) with `fillBlack` and three decimals |
+
+- `build/tokens/icons.js` holds the pure parts (`iconTokens`, `iosImageSet`, `iosCatalog`, `androidDrawable`) and registers two Style Dictionary actions, `cx/ios-icons` and `cx/android-icons`. The iOS and Android configs run them only in the build of the main file, where the icon tokens are; the SwiftUI and Compose presets do not.
+- The converter drops the `currentcolor` fill of the root `svg`, and a vector path without a fill colour draws nothing, so `fillBlack` fills every path black for a tint to replace. Its default of two decimals rounded the tokens' three (`1.205` became `1.2`); `floatPrecision: 3` keeps them.
+- The converter also rewrites paths (absolute to relative coordinates, shorter commands), so 6 of 9 drawables have other numbers than their SVG. Rendered at 480 px (20x) with AppKit, each drawable path and its SVG differ by at most 5 of 255 in alpha, on anti-aliased edges only, for all 9 icons.
+
+Checked:
+
+- Every image set's SVG equals the icon token's text, every `Contents.json` is valid JSON with the expected keys, and the catalog has one image set per icon constant of `String.swift` (both brands). `actool` needs Xcode, so the catalog is not compiled here.
+- aapt2 compiles every drawable of both brands. Linking drawables needs the framework attributes of `android.jar` (`android:height`, `android:viewportWidth`), which are not here; the values folders still link.
+- A Swift package whose target folder holds `Icons.xcassets` makes `swift build` run `actool`, even without a `resources` entry, so it fails without Xcode. The iOS guide's `Package.swift` therefore excludes the catalog, which then goes into the app target; that package builds without Xcode.
+
 
 ## Phase 22: platform shadow values (optional)
 
@@ -994,3 +1012,4 @@ Append-only.
 - 2026-09-27 (Phase 18, Opus 5.5): Split the iOS template into `swiftConstants` and `swiftFile`, added `theme-colors.js` (collect, combine, write), the `theme` mark on the iOS colour files, the collection in the iOS format, `planThemeColors` and the write step in `build.js`, and the extra files in the dry run. Added `Color.swift` to `dist/` for both brands and to the `ios-references` baseline; nothing else changed. Added a `themeColors` fixture (real light and dark constants), `theme-colors.test.js` and plan tests; `golden.test.js` expects 8 files for `ios-references`. Updated the iOS guide, the Style Dictionary page, the README, the CHANGELOG and the tests README. Verified: `pnpm tokens:verify` passes, 44 of 44 files; the six preset checks pass; `pnpm tokens:test` passes, 658 tests; lint and Prettier report nothing; the run-time check above passes for 1533 colours per build; the package and the guide's examples compile; `pnpm astro:build` built 22 pages. Injected five regressions (same constants printed as values, no name check, light and dark swapped, the plan ignoring the themes, the format not collecting); each failed 1 to 3 tests, the last one only in the golden test. Surprises: (1) no current token names a constant in one theme but a value in the other, so that rule is tested on a constructed variant of a real pair. (2) The first run-time check of the references build covered only the 704 constants that print a `UIColor` directly; it was repeated with all 1533 colour names. Next: Phase 19.
 - 2026-09-27 (Phase 19, Fable 5.1 per the Model column; done with Opus 5.5): Added the resource tree to `config/android.js` (`screenQualifiers`, `DEFAULT_SCREEN_QUALIFIERS`, `resourceFile`), the `cx/baseColorTokens` filter, the screen folder check in `loadConfig`, and `themes` and `screens` on each planned build. Copied the 14 new files into `dist/` and 7 into the `android-references` baseline; no existing file changed. Updated the config, build, filter and golden tests, and added tree, qualifier and `loadConfig` tests (666 tests). Rewrote the setup of the Android guide and updated the Style Dictionary page, the README and the CHANGELOG. Verified: `pnpm tokens:verify` passes, 58 of 58 files; the six preset checks pass; all tests pass; lint and Prettier report nothing; aapt2 links both trees as built and the references tree; `pnpm astro:build` built 22 pages. Injected six regressions (dark colours in the default folder, numbers ignoring the qualifiers, no base colours, no default folder check, `options.android.screens` ignored, the base colour filter taking all colours); each failed 1 to 19 tests. Surprise: the tree files equal the flat files byte for byte apart from the timestamp, because the Android format prints no file name. Next: Phase 20, which needs `kotlinc` downloaded to the scratchpad (approved in Open decisions).
 - 2026-09-27 (Phase 20, Opus 5.5): Added `values/swiftui.js`, `values/compose.js`, `templates/constants.js`, `templates/compose-object.template.js`, the formats `cx/swiftui` and `cx/compose-object`, the configs `ios-swiftui.js` and `android-compose.js`, and `swiftConfig` in `config/ios.js`; exported `colorChannels` and `fontWeightConstant` from `values/ios.js` and `encodeValue` from `values/android.js`. Downloaded `kotlinc` 2.4.20 to the scratchpad. Added two baselines and 65 tests (`values-swiftui.test.js`, `values-compose.test.js`, template, config and golden tests). Documented the presets in the README, the Style Dictionary page, both guides and the CHANGELOG. Verified: `pnpm tokens:verify` passes, 58 of 58 files, unchanged; 8 preset checks pass; `pnpm tokens:test` passes, 731 tests; lint and Prettier report nothing; the value comparison and compile checks above pass; `pnpm astro:build` built 22 pages and the new anchors resolve. Injected six regressions (SwiftUI `alpha:`, `UIFont.Weight` in SwiftUI, stored Compose properties, negatives without parentheses, letter spacing as `Float`, no `$` escape); each failed 1 to 5 tests. Surprises: (1) the SwiftUI files first lacked `public`, because only the UIKit format called `setSwiftFileProperties`; the config now sets it. (2) The 64 KB reason for getters did not hold (51411 bytes); the forward references are the reason that does. (3) A stored-property check first compiled unchanged code, because macOS `sed` has no `\w`; it was redone with `perl`. Next: Phase 21, which adds `svg2vectordrawable` as a dev dependency (approved in Open decisions).
+- 2026-09-27 (Phase 21, Opus 5.5): Added `svg2vectordrawable` 2.9.1 as a dev dependency, `build/tokens/icons.js` with the actions `cx/ios-icons` and `cx/android-icons`, and the actions in the iOS and Android configs for the main file's build. Copied the 56 new files into `dist/` and the icons into the two reference baselines. Added `icons.test.js` and icon checks in `build.test.js`; `golden.test.js` expects 27 and 23 files for the reference presets. Documented the icons in both guides, the Style Dictionary page, the README, the CHANGELOG and the tests README, and changed the guide's `Package.swift` to exclude the catalog. Verified: `pnpm tokens:verify` passes, 114 of 114 files; 8 preset checks pass; `pnpm tokens:test` passes, 739 tests; lint and Prettier report nothing; the image set, drawable, rendering and aapt2 checks above; `pnpm astro:build` built 22 pages. Injected five regressions (no black fill, two decimals, no template rendering, icons in every iOS build, every asset taken as an icon); each failed a test. Surprises: (1) the converter's defaults drop the fill and round to two decimals; (2) linking drawables needs `android.jar`, unlike values; (3) an asset catalog in a SwiftPM target folder needs Xcode even when not declared. Next: Phase 22.

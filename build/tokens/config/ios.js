@@ -87,26 +87,31 @@ function generateFiles({ kind, theme, screen }, { format, themeColors }) {
  * @param {string} settings.folder - The folder under the output root, e.g. `ios`.
  * @param {string[]} settings.imports - The modules every file imports.
  * @param {boolean} [settings.themeColors] - Mark the colour files for `Color.swift`.
+ * @param {boolean} [settings.icons] - Write the icon asset catalog with the main file.
  */
-export function swiftConfig({ format, folder, imports, themeColors }) {
+export function swiftConfig({ format, folder, imports, themeColors, icons }) {
   return function (brand, app, outputs, outDir = 'dist') {
     return {
       transforms,
       expand,
       buildPath: `${outDir}/${folder}/${app}/${brand}/`,
       options: { ...options, import: imports },
-      files: outputs.flatMap((output) => generateFiles(output, { format, themeColors }))
+      files: outputs.flatMap((output) => generateFiles(output, { format, themeColors })),
+      // The icon tokens are in the build of the main file
+      actions: icons && outputs.some((output) => output.kind === 'base') ? ['cx/ios-icons'] : []
     }
   }
 }
 
 /**
  * The UIKit output. Its colour files also make `Color.swift`, whose colours follow the
- * appearance (`theme-colors.js`).
+ * appearance (`theme-colors.js`), and it writes the icons as an asset catalog
+ * (`icons.js`).
  */
 export default swiftConfig({
   format: 'cx/ios-swift-class',
   folder: 'ios',
   imports: ['UIKit'],
-  themeColors: true
+  themeColors: true,
+  icons: true
 })

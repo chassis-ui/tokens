@@ -45,6 +45,7 @@ res/
 │   ├── color_base.xml     base colours, the palette behind the context colours
 │   ├── number.xml         sizes and numbers of the small screen
 │   └── string.xml         font families, font weights, strings and SVG icons
+├── drawable/              one vector drawable per icon
 ├── values-night/
 │   └── color.xml          dark colours
 ├── values-sw600dp/
@@ -257,9 +258,19 @@ fun gradientBrush(angle: Float, stops: Array<Pair<Float, Color>>, size: Size): B
 
 Read the angle and positions with `ResourcesCompat.getFloat` and the colours with `colorResource`. The token angles are multiples of 45°, so a `GradientDrawable` with the matching `Orientation` works in views: `0` is `BOTTOM_TOP`, `90` is `LEFT_RIGHT`, `180` is `TOP_BOTTOM` and `270` is `RIGHT_LEFT`.
 
-## Known Limitations
+## Icons
 
-- **Icons**: SVG icon tokens (`icon_*`) are strings that hold SVG markup, such as `getString(R.string.icon_accordion_indicator)`. Android cannot draw an SVG string directly: render it with an SVG library, or use vector drawables for icons.
+The resource tree has one vector drawable per icon token in `res/drawable/`, named like its string, such as `icon_chip_remove`. The paths are filled black; a tint gives them the colour, as `currentcolor` does on the web:
+
+```kotlin
+Icon(
+    painter = painterResource(R.drawable.icon_chip_remove),
+    contentDescription = "Remove",
+    tint = colorResource(R.color.color_context_default_fg_main)
+)
+```
+
+In views, set `app:srcCompat="@drawable/icon_chip_remove"` and `app:tint` on an `ImageView`. The SVG text stays in the string resources.
 
 ## Best Practices
 

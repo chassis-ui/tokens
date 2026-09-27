@@ -42,9 +42,30 @@ const distFiles = readdirSync(join(ROOT, 'dist'), { recursive: true, withFileTyp
 describe('planBuilds', () => {
   const builds = planBuilds(sets, buildOptions)
 
+  // The icon actions write files whose names come from the icon tokens
+  const isIconFile = (file) => file.includes('/Icons.xcassets/') || file.includes('/res/drawable/')
+
   test('writes exactly the files of dist/', () => {
-    expect(distFiles).toHaveLength(58)
-    expect([...destinations(builds), ...planThemeColors(builds, 'dist')].sort()).toEqual(distFiles)
+    expect(distFiles).toHaveLength(114)
+    expect([...destinations(builds), ...planThemeColors(builds, 'dist')].sort()).toEqual(
+      distFiles.filter((file) => !isIconFile(file))
+    )
+  })
+
+  test('writes the icons of each brand as iOS image sets and Android drawables', () => {
+    for (const brand of ['chassis', 'sinefil']) {
+      const swift = readFileSync(join(ROOT, `dist/ios/demo/${brand}/String.swift`), 'utf8')
+      const icons = [...swift.matchAll(/static let (Icon\w+) = "<svg/g)].map(([, name]) => name)
+      expect(icons).toHaveLength(9)
+      const sets = distFiles.filter((file) =>
+        file.startsWith(`dist/ios/demo/${brand}/Icons.xcassets/`)
+      )
+      expect(sets).toHaveLength(1 + icons.length * 2)
+      const drawables = distFiles.filter((file) =>
+        file.startsWith(`dist/android/demo/${brand}/res/drawable/`)
+      )
+      expect(drawables).toHaveLength(icons.length)
+    }
   })
 
   test('writes an iOS colour file that follows the appearance for each brand', () => {

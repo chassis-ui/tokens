@@ -16,6 +16,7 @@ import { screenQualifiers } from './config/android.js'
 import registerFilters from './filters.js'
 import registerTransforms from './transforms.js'
 import registerFormats from './formats.js'
+import registerIconActions from './icons.js'
 import cxPrep from './preprocessor.js'
 import logger from './logger.js'
 import { THEMES, THEME_COLORS_FILE, writeThemeColors } from './theme-colors.js'
@@ -99,6 +100,7 @@ function registerDictionary(version) {
   registerFilters(StyleDictionary)
   registerTransforms(StyleDictionary)
   registerFormats(StyleDictionary)
+  registerIconActions(StyleDictionary)
 
   StyleDictionary.registerFileHeader({
     name: 'cxFileHeader',

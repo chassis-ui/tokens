@@ -390,6 +390,7 @@ A build runs in three steps:
 - `build/tokens/reference-policy.js`: Which web tokens print a reference and which token it names, shared by both web formats
 - `build/tokens/css-var-policy.js`: The `var(--…)` names of the Chassis CSS format
 - `build/tokens/scss-var-policy.js`: The values and `$…` names of the SCSS variables format
+- `build/tokens/icons.js`: The icon assets, an Xcode asset catalog and Android vector drawables, written by Style Dictionary actions from the SVG icon tokens
 - `build/tokens/theme-colors.js`: The iOS `Color.swift` whose colours follow the appearance, written after the builds from the light and dark colour files
 - `build/tokens/verify.js`: Golden check against `dist/` and the preset baselines
 - `build/tokens/logger.js`: Centralized logging utilities

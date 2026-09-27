@@ -37,6 +37,7 @@ The build writes eight files to `dist/ios/<app>/<brand>/`. The configured iOS ap
 | `Color.swift` | `ChassisTokensColor` | Theme colours that follow the light and dark appearance |
 | `ColorLight.swift`, `ColorDark.swift` | `ChassisTokensColorLight`, `ChassisTokensColorDark` | Theme colours of one theme: context, primitive and component colours, and gradients |
 | `NumberLarge.swift`, `NumberMedium.swift`, `NumberSmall.swift` | `ChassisTokensNumberLarge`, `ChassisTokensNumberMedium`, `ChassisTokensNumberSmall` | Sizes, spacing, numbers and opacities with the values of one screen size |
+| `Icons.xcassets` | | The icons as vector image sets, next to their SVG text in `ChassisTokensString`; see [Icons](#icons) |
 </CxTable>
 
 Every file declares a different type, so all eight can be in one target. `ChassisTokens` repeats the tokens of `ChassisTokensString` and `ChassisTokensNumberLarge`, and the component colours of `ChassisTokensColorLight`. The string, colour and number types share no names with each other. Together they hold everything in `ChassisTokens` except the base colours (`ColorBase…`), which are the raw palette behind the context colours.
@@ -90,11 +91,13 @@ let package = Package(
     name: "ChassisTokens",
     platforms: [.iOS(.v13)],
     products: [.library(name: "ChassisTokens", targets: ["ChassisTokens"])],
-    targets: [.target(name: "ChassisTokens", path: "dist/ios/demo/chassis")]
+    targets: [
+        .target(name: "ChassisTokens", path: "dist/ios/demo/chassis", exclude: ["Icons.xcassets"])
+    ]
 )
 ```
 
-In Xcode, choose **File → Add Package Dependencies… → Add Local…**, select the tokens repository and add the `ChassisTokens` library to your app target. Then `import ChassisTokens` in the files that use tokens.
+In Xcode, choose **File → Add Package Dependencies… → Add Local…**, select the tokens repository and add the `ChassisTokens` library to your app target. Then `import ChassisTokens` in the files that use tokens. The package leaves out the icon catalog, which goes into the app target; see [Icons](#icons).
 
 ## Colours and Dark Mode
 
@@ -181,6 +184,18 @@ applyGradient(to: fade, angle: Tokens.GradientPrimitiveBlackL000Angle, stops: [
 ```
 
 The start and end points follow the angle exactly in a square layer. In other shapes, CSS lengthens the gradient line so that the corners get the first and last colours, which these points do not.
+
+## Icons
+
+`Icons.xcassets` holds one image set per icon token, named like its constant, such as `IconChipRemove`. Each keeps its SVG as a vector and renders as a template, so it takes the tint colour, as `currentcolor` does on the web. Add the catalog to your app target, for example by dragging it into Xcode as a reference, and load an icon by name:
+
+```swift
+let remove = UIImage(named: "IconChipRemove")
+button.setImage(remove, for: .normal)
+button.tintColor = ChassisTokensColor.ColorContextDefaultFgMain
+```
+
+In SwiftUI, `Image("IconChipRemove")` takes the foreground style. Xcode compiles the catalog with its asset compiler.
 
 ## Sizes and Screen Sizes
 

@@ -246,6 +246,7 @@ public enum ChassisTokensColorLight {
 - Sizes and numbers: `CGFloat`
 - Font families: the first family of the stack only
 - Font weights: `UIFont.Weight` constants (`UIFont.Weight.semibold`)
+- Icons: the SVG icon tokens also become `Icons.xcassets`, one vector image set per icon, written by the action `cx/ios-icons` in the build of the main file
 - Gradients: split into an angle and the colour and position of each stop (`GradientPrimitiveBlackL000Angle`, `…Stop1Color`, `…Stop1Position`)
 - Typography parts: a percentage line height becomes points of the token's font size (`125%` of `96` is `120`)
 - Imports: UIKit
@@ -290,6 +291,7 @@ Generates Android XML resource files:
 - Typography parts: a percentage line height becomes `sp` of the token's font size (`125%` of `96` is `120sp`), and letter spacing is in ems of the font size (`-0.5px` at `96` is `-0.0052`)
 - Strings: escaped for Android, so SVG icons and quotes stay text
 - Font weights: `integer` resources from 100 to 900 (`600`)
+- Icons: the SVG icon tokens also become vector drawables in `res/drawable/`, converted with `svg2vectordrawable` by the action `cx/android-icons`
 - Resource tree: `res/values` (strings, base colours, the first theme's colours, the default screen's numbers), `res/values-night` (dark colours) and a `res/values-<qualifier>` per other screen, next to the flat files. The folders of the screens are set with `options.android.screens`, by default `{ "small": "", "medium": "sw600dp", "large": "sw840dp" }`
 - Gradients: split into an angle and the colour and position of each stop (`gradient_primitive_black_l_000_angle`, `…_stop_1_color`, `…_stop_1_position`)
 - References: optional, with `outputReferences` (see [cx/android-resources](#cxandroid-resources))
