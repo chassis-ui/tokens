@@ -167,10 +167,10 @@ function parseArgs(args = process.argv.slice(2)) {
 }
 
 /**
- * Plans the builds: one per brand, app and token-set list. Every theme adds a colour
+ * Plans the builds: one per brand, app and token-set list. Every theme adds a color
  * output and every screen a number output. Outputs are built from the token sets of
  * their own theme or screen and the first configured theme or screen otherwise, so the
- * base output (main, string) shares its token sets with the first colour and the first
+ * base output (main, string) shares its token sets with the first color and the first
  * number output.
  *
  * @param {Object} sets - Token-set lists by `<brand>_<app>_<theme>[_<screen>]`, as
@@ -232,8 +232,8 @@ function planBuilds(sets, buildOptions, filters = {}) {
 }
 
 /**
- * Plans the iOS colour files that follow the appearance: one per output directory whose
- * builds write both a light and a dark colour file. `writeThemeColors` writes them after
+ * Plans the iOS color files that follow the appearance: one per output directory whose
+ * builds write both a light and a dark color file. `writeThemeColors` writes them after
  * all builds.
  *
  * @param {Object[]} builds - Builds from `planBuilds`.
@@ -321,12 +321,12 @@ async function run() {
       }
     }
 
-    // Written after every build, because the light and dark colours come from two builds
+    // Written after every build, because the light and dark colors come from two builds
     try {
       for (const path of await writeThemeColors()) logger.info(`✔︎ ${path}`)
     } catch (error) {
       errorCount++
-      logger.error('Failed: iOS colours that follow the appearance', error)
+      logger.error('Failed: iOS colors that follow the appearance', error)
     }
 
     logger.summary(successCount, errorCount, startTime)

@@ -1,6 +1,6 @@
 /**
  * @file swiftui.js
- * @description Encodes resolved tokens as SwiftUI values. Colours are `Color` and font
+ * @description Encodes resolved tokens as SwiftUI values. Colors are `Color` and font
  *              weights `Font.Weight`; every other value is the one of `values/ios.js`.
  *              Two tokens encode to the same SwiftUI text exactly when they encode to the
  *              same UIKit text, so references follow the iOS rule.

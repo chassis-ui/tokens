@@ -1,7 +1,7 @@
 /**
  * @file theme-colors.test.js
- * @description Tests for the iOS colour file that follows the appearance: how the light and
- *              dark constants combine, using constants of the real colour files, and which
+ * @description Tests for the iOS color file that follows the appearance: how the light and
+ *              dark constants combine, using constants of the real color files, and which
  *              output directories get the file.
  * @copyright Copyright (c) 2026 Ozgur Gunes
  * @license MIT
@@ -27,8 +27,8 @@ const constant = ({ name, type }, theme) => ({ name, type, ...theme })
 const themesOf = (pair) => [[constant(pair, pair.light)], [constant(pair, pair.dark)]]
 
 describe('combineThemeColors', () => {
-  test('a colour that differs picks the dark or the light value by userInterfaceStyle', () => {
-    const pair = caseNamed('a colour that differs by theme')
+  test('a color that differs picks the dark or the light value by userInterfaceStyle', () => {
+    const pair = caseNamed('a color that differs by theme')
     expect(combineThemeColors(...themesOf(pair))).toEqual([
       {
         name: pair.name,
@@ -38,7 +38,7 @@ describe('combineThemeColors', () => {
   })
 
   test.each([
-    'a colour that is the same in both themes',
+    'a color that is the same in both themes',
     'a number part that is the same in both themes',
     'both themes name the same constant'
   ])('%s prints as it is', (label) => {
@@ -60,8 +60,8 @@ describe('combineThemeColors', () => {
 
   test('keeps the order of the light file', () => {
     const [differs, same] = [
-      caseNamed('a colour that differs by theme'),
-      caseNamed('a colour that is the same in both themes')
+      caseNamed('a color that differs by theme'),
+      caseNamed('a color that is the same in both themes')
     ]
     const light = [constant(same, same.light), constant(differs, differs.light)]
     const dark = [constant(differs, differs.dark), constant(same, same.dark)]
@@ -69,18 +69,18 @@ describe('combineThemeColors', () => {
   })
 
   test('fails when the themes declare other constants', () => {
-    const [light, dark] = themesOf(caseNamed('a colour that differs by theme'))
+    const [light, dark] = themesOf(caseNamed('a color that differs by theme'))
     dark[0] = { ...dark[0], name: 'ColorContextDefaultBgOther' }
     expect(() => combineThemeColors(light, dark)).toThrow(
-      'The light and dark colour files declare different constants: ColorContextDefaultBgMain, ColorContextDefaultBgOther'
+      'The light and dark color files declare different constants: ColorContextDefaultBgMain, ColorContextDefaultBgOther'
     )
   })
 
-  test('fails when a constant that is not a colour differs', () => {
+  test('fails when a constant that is not a color differs', () => {
     const pair = caseNamed('a number part that is the same in both themes')
     pair.dark.value = pair.dark.printed = 'CGFloat(90)'
     expect(() => combineThemeColors(...themesOf(pair))).toThrow(
-      'GradientPrimitiveBlackL000Angle differs between light and dark, but only colours follow the appearance'
+      'GradientPrimitiveBlackL000Angle differs between light and dark, but only colors follow the appearance'
     )
   })
 })
@@ -104,7 +104,7 @@ describe('writeThemeColors', () => {
     dirs.push(dir)
     const both = join(dir, 'both/')
     const lightOnly = join(dir, 'light-only/')
-    const pair = caseNamed('a colour that differs by theme')
+    const pair = caseNamed('a color that differs by theme')
     collect(both, 'light', pair)
     collect(both, 'dark', pair)
     collect(lightOnly, 'light', pair)

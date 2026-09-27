@@ -72,7 +72,7 @@ function resourceFile(qualifier, name) {
 /**
  * Returns the files of one output: the flat files (`main.xml`, `color_light.xml`, …) and
  * their place in the resource tree under `res/`. The tree has the strings and base
- * colours, the colours of the first theme in `values` and of `dark` in `values-night`,
+ * colors, the colors of the first theme in `values` and of `dark` in `values-night`,
  * and the numbers of each screen in the folder of its qualifier.
  *
  * @param {Object} output - `{ kind: 'base' }`, `{ kind: 'color', theme }` or

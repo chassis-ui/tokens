@@ -13,10 +13,10 @@ Web:
 
 iOS:
 
-- Each file declares its own type, and `Main.swift` is now `ChassisTokens.swift`. The types are `ChassisTokens` (main file), `ChassisTokensString`, `ChassisTokensColorLight`, `ChassisTokensColorDark`, `ChassisTokensNumber<Screen>` and the new `ChassisTokensColor`. They are caseless `enum`s without `@objc`, not classes. Replace `ChassisTokens.X` from a colour, number or string file with that file's type, such as `ChassisTokensColorLight.ColorContextDefaultBgMain`, or use `ChassisTokensColor` for colours that follow dark mode
+- Each file declares its own type, and `Main.swift` is now `ChassisTokens.swift`. The types are `ChassisTokens` (main file), `ChassisTokensString`, `ChassisTokensColorLight`, `ChassisTokensColorDark`, `ChassisTokensNumber<Screen>` and the new `ChassisTokensColor`. They are caseless `enum`s without `@objc`, not classes. Replace `ChassisTokens.X` from a color, number or string file with that file's type, such as `ChassisTokensColorLight.ColorContextDefaultBgMain`, or use `ChassisTokensColor` for colors that follow dark mode
 - Font weights are `UIFont.Weight` (`UIFont.Weight.regular`), not `String` (`"regular"`). Pass them to `UIFont.systemFont(ofSize:weight:)` directly and remove any name-to-weight mapping
 - Line heights that are a percentage in the design are points (`CGFloat(120)` for a 96 pt font at 125%), not the percentage (`CGFloat(125)`). Use the value as the line height
-- Gradient tokens are an `…Angle`, and a `…Stop<N>Color` and `…Stop<N>Position` per stop. The single gradient constant, which held the first stop colour only, is gone
+- Gradient tokens are an `…Angle`, and a `…Stop<N>Color` and `…Stop<N>Position` per stop. The single gradient constant, which held the first stop color only, is gone
 
 Android:
 
@@ -24,7 +24,7 @@ Android:
 - Font weights are `<integer>` from 100 to 900 (`400`), not `<string>` (`regular`). Read them with `resources.getInteger(R.integer.…)`
 - Letter spacing of typography tokens is in ems of the font size (`-0.0052`), not design pixels (`-0.5`). Pass it to `TextView.setLetterSpacing` or `android:letterSpacing` as it is. The standalone letter spacing scale stays in pixels
 - Line heights that are a percentage in the design are `sp` (`120sp`), not the percentage (`125sp`)
-- Gradient tokens are an `…_angle`, and a `…_stop_<n>_color` and `…_stop_<n>_position` per stop, instead of one colour resource
+- Gradient tokens are an `…_angle`, and a `…_stop_<n>_color` and `…_stop_<n>_position` per stop, instead of one color resource
 
 Build:
 
@@ -35,7 +35,7 @@ Build:
 The presets for teams that do not use Chassis CSS are kept, in the new structure: `web-px`, `web-vw`, the `cx/scss-variables` format, and `outputReferences` for SCSS and Android. Their output is the same as before, with these fixes:
 
 - `web-px` typography maps divide the letter spacing by the base font size, as `web-vw` does: `-0.5px` prints `-0.0313em`, not `-0.5em`
-- Android references are printed only when they compile and keep the value. 30 lines now print their value: 16 letter spacing references to a `<dimen>` as `@integer/…`, 8 font sizes in `sp` that referenced a size in `dp`, and 6 `rgba()` colours that referenced another element or lost their alpha
+- Android references are printed only when they compile and keep the value. 30 lines now print their value: 16 letter spacing references to a `<dimen>` as `@integer/…`, 8 font sizes in `sp` that referenced a size in `dp`, and 6 `rgba()` colors that referenced another element or lost their alpha
 - A SCSS variables reference to a variable that no file declares fails the build
 
 `outputReferences` now also works on iOS (new): a Swift constant names another constant of the same class, such as `SizeUnit4 = DimensionBase4`, with the same rule as Android.
@@ -43,7 +43,7 @@ The presets for teams that do not use Chassis CSS are kept, in the new structure
 ### Changed
 
 - Upgraded to Style Dictionary 5.5 and `@tokens-studio/sd-transforms` 2.0; the build now needs Node.js 22 or later
-- Moved platform value encoding (`UIColor(…)`, ARGB colours, `sp`/`dp`, quoting, `em` units, `var(--…)` references) out of the output templates into tested modules (`build/values/` and the web reference policies), which run on fully resolved tokens
+- Moved platform value encoding (`UIColor(…)`, ARGB colors, `sp`/`dp`, quoting, `em` units, `var(--…)` references) out of the output templates into tested modules (`build/values/` and the web reference policies), which run on fully resolved tokens
 - Build one Style Dictionary instance per token-set list instead of one run per file group: a full build runs 16 builds instead of 36 and takes about 6 s instead of 20 s
 - Replaced the copy of the sd-transforms preprocessor with the official type alignment plus the Chassis steps (letter spacing as a number, splitting every font weight into weight and style)
 - The file header reads the version from `package.json`
@@ -67,7 +67,7 @@ The presets for teams that do not use Chassis CSS are kept, in the new structure
 - `--config <file>` build option, to read the build configuration from a JSON file
 - `pnpm tokens:verify:presets`: checks each preset against its baseline in `test/golden/`
 - `ios-swiftui` and `android-compose` platforms: Swift files with SwiftUI values and Kotlin objects for Jetpack Compose, with the same tokens and values as `ios` and `android`, written to `dist/ios-swiftui/` and `dist/android-compose/`
-- `outputReferences` for the iOS format: a constant names another constant of the same class when it has the same type and value; base colours and sizes computed with math print their values
+- `outputReferences` for the iOS format: a constant names another constant of the same class when it has the same type and value; base colors and sizes computed with math print their values
 - CI for pull requests (`.github/workflows/ci.yml`): token lint, tests and golden checks on Node.js 22 and 24, the site lint and build, and `pnpm audit`
 - A Swift package: `Package.swift` at the root of the repository has one library for every app and brand with an iOS platform, `ChassisTokensDemoChassis` and `ChassisTokensDemoSinefil`, on the files of `dist/ios/` with the icon catalog as a resource. iOS apps install the tokens with Swift Package Manager from the repository's URL and the version's tag. `pnpm tokens:swift-package` writes the manifest from `chassis.build`
 - An Android library: every GitHub release has the `res/` tree of each app and brand as `chassis-tokens-<app>-<brand>-<version>.aar`, with the resources in `chassis.tokens.R`. `pnpm tokens:aar` builds them
@@ -91,12 +91,12 @@ The presets for teams that do not use Chassis CSS are kept, in the new structure
 - iOS and Android line heights that are a percentage in the design (`125%`, `150%`) are sizes of the typography token's font size: `FontContextJumboLineHeight` is `CGFloat(120)` and `font_context_jumbo_line_height` is `120sp`, not `125`. 9 typography tokens per file of `Main` and the number files
 - Android letter spacing of typography tokens is in ems of their font size, which `TextView.setLetterSpacing`, `android:letterSpacing` and Compose's `em` take: `font_context_jumbo_letter_spacing` is `-0.0052`, not `-0.5`. The standalone letter spacing scale stays in design pixels
 - iOS and Android font weights are weights instead of names: `UIFont.Weight.semibold` on iOS and `<integer>600</integer>` on Android, not `"semi-bold"`. They use the web's name map, so `Semi Bold` and `SemiBold`, which the tokens keep as each font's style name in Figma, are both 600. An unknown weight name fails the build
-- iOS and Android gradient tokens are split into an angle and the colour and position of each stop (`GradientPrimitiveBlackL000Angle`, `…Stop1Color`, `…Stop1Position`; `gradient_primitive_black_l_000_angle` and so on). They held only the first colour stop, which is transparent for most gradients. The single gradient constant and resource are gone. With `outputReferences`, the stop colours name the colours they reference. A gradient that is not a `linear-gradient` with degrees or a side keyword fails the build
+- iOS and Android gradient tokens are split into an angle and the color and position of each stop (`GradientPrimitiveBlackL000Angle`, `…Stop1Color`, `…Stop1Position`; `gradient_primitive_black_l_000_angle` and so on). They held only the first color stop, which is transparent for most gradients. The single gradient constant and resource are gone. With `outputReferences`, the stop colors name the colors they reference. A gradient that is not a `linear-gradient` with degrees or a side keyword fails the build
 - Each iOS file declares its own type, so all seven files can be in one target: `ChassisTokens` in `ChassisTokens.swift` (was `Main.swift`, which Swift Package Manager took for an executable's entry point), and `ChassisTokensString`, `ChassisTokensColorLight`, `ChassisTokensColorDark` and `ChassisTokensNumber<Screen>` in the other files. Every file declared `class ChassisTokens`, so two files in one module did not compile. The types are caseless enums without `@objc`, which had no effect: the class was not visible to Objective-C. Write `ChassisTokensColorLight.ColorContextDefaultBgMain` instead of `ChassisTokensLight.ChassisTokens.ColorContextDefaultBgMain`
-- New iOS file `Color.swift` with the type `ChassisTokensColor`: every theme colour once, and a colour that differs between the light and dark theme follows `userInterfaceStyle`. Apps no longer combine `ChassisTokensColorLight` and `ChassisTokensColorDark` themselves; both files stay. The build writes it after the other builds when the themes include `light` and `dark`, and fails when the two themes declare different colour constants
-- The Android build also writes a resource tree under `res/`: `values` (strings, base colours in `color_base.xml`, light colours, small screen numbers), `values-night` (dark colours), `values-sw600dp` (medium) and `values-sw840dp` (large). Apps add it as a Gradle resource folder instead of copying files with a script. The screen folders are set with `chassis.build.options.android.screens`; the build fails when a screen has no folder or not exactly one screen is in the default folder. The flat files stay
+- New iOS file `Color.swift` with the type `ChassisTokensColor`: every theme color once, and a color that differs between the light and dark theme follows `userInterfaceStyle`. Apps no longer combine `ChassisTokensColorLight` and `ChassisTokensColorDark` themselves; both files stay. The build writes it after the other builds when the themes include `light` and `dark`, and fails when the two themes declare different color constants
+- The Android build also writes a resource tree under `res/`: `values` (strings, base colors in `color_base.xml`, light colors, small screen numbers), `values-night` (dark colors), `values-sw600dp` (medium) and `values-sw840dp` (large). Apps add it as a Gradle resource folder instead of copying files with a script. The screen folders are set with `chassis.build.options.android.screens`; the build fails when a screen has no folder or not exactly one screen is in the default folder. The flat files stay
 - The icon tokens are also icon assets: `Icons.xcassets` for iOS, with one vector image set per icon rendered as a template, and one vector drawable per icon in `res/drawable/` for Android, converted with `svg2vectordrawable` (new dev dependency). The string tokens stay
-- iOS box shadows have a `…Radius` constant after their blur, half the CSS blur, for `CALayer.shadowRadius` (`ShadowContextSmall1Radius = CGFloat(4)`). The shadow colour already carries the opacity: use it with `shadowOpacity = 1`
+- iOS box shadows have a `…Radius` constant after their blur, half the CSS blur, for `CALayer.shadowRadius` (`ShadowContextSmall1Radius = CGFloat(4)`). The shadow color already carries the opacity: use it with `shadowOpacity = 1`
 - The `sinefil` blockquote font weight is `Light Italic` instead of `Light Oblique`, the style name Figma and Google Fonts use for Source Serif 4. Its font style prints `italic` instead of `oblique` on web, iOS and Android
 - Android string resources are escaped. The SVG icon tokens held raw markup, which Android's resource compiler drops, so every icon compiled to an empty string; now each compiles to its SVG text
 - Rewrote the web, iOS and Android guides of the documentation site; their examples used token names and file setups that do not exist or do not compile

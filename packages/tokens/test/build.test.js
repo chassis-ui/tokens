@@ -68,7 +68,7 @@ describe('planBuilds', () => {
     }
   })
 
-  test('writes an iOS colour file that follows the appearance for each brand', () => {
+  test('writes an iOS color file that follows the appearance for each brand', () => {
     expect(planThemeColors(builds, 'dist')).toEqual([
       'dist/ios/demo/chassis/Color.swift',
       'dist/ios/demo/sinefil/Color.swift'

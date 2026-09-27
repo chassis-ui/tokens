@@ -13,7 +13,7 @@ Every file is in `dist/<platform>/<app>/<brand>/`. This release builds the `docs
 | Platform | Folder                       | Files                                                                                                                                                                                                  |
 | -------- | ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Web      | `dist/web/docs/<brand>/`     | `main.scss`, `color-light.scss`, `color-dark.scss`, `number-large.scss`, `number-medium.scss`, `number-small.scss`, `string.scss`: SCSS variables for [Chassis CSS](https://github.com/chassis-ui/css) |
-| iOS      | `dist/ios/demo/<brand>/`     | `ChassisTokens.swift`, `Color.swift` (colours that follow dark mode), `ColorLight.swift`, `ColorDark.swift`, `Number<Screen>.swift`, `String.swift`, and the `Icons.xcassets` catalog                  |
+| iOS      | `dist/ios/demo/<brand>/`     | `ChassisTokens.swift`, `Color.swift` (colors that follow dark mode), `ColorLight.swift`, `ColorDark.swift`, `Number<Screen>.swift`, `String.swift`, and the `Icons.xcassets` catalog                   |
 | Android  | `dist/android/demo/<brand>/` | `res/` (`values`, `values-night`, `values-sw600dp`, `values-sw840dp`, `drawable`), and the same resources as flat files                                                                                |
 
 ## Use

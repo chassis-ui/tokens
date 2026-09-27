@@ -66,7 +66,7 @@ async function validateHTML() {
     for (const { file, report } of results) {
       // report.results[0] holds all messages for the file; absent means no issues
       const messages = report.results[0]?.messages ?? []
-      // Severity.WARN === 1; this excludes only DISABLED (0), matching --Werror behaviour
+      // Severity.WARN === 1; this excludes only DISABLED (0), matching --Werror behavior
       const issues = messages.filter((msg) => msg.severity >= Severity.WARN)
 
       if (issues.length > 0) {

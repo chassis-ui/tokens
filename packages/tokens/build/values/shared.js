@@ -17,9 +17,9 @@ import { tokenTypes } from '../utils.js'
 const WITHOUT_MATH = /^[+\-*/]?[^+*/]*$/
 
 /**
- * Parses a resolved colour value.
+ * Parses a resolved color value.
  *
- * tinycolor parses leniently: a `linear-gradient(…)` value would yield its first colour
+ * tinycolor parses leniently: a `linear-gradient(…)` value would yield its first color
  * stop. Gradient tokens are printed as parts (`gradientParts`), so a gradient here is an
  * error.
  *
@@ -29,7 +29,7 @@ const WITHOUT_MATH = /^[+\-*/]?[^+*/]*$/
  */
 export function parseColor(token) {
   if (isGradient(token)) {
-    throw new Error(`Gradient ${token.path.join('.')} is printed as parts, not as a colour`)
+    throw new Error(`Gradient ${token.path.join('.')} is printed as parts, not as a color`)
   }
   const color = Color(token.$value)
   if (color.isValid()) return color
@@ -79,8 +79,8 @@ export function isSizeWithMath(token) {
 }
 
 /**
- * Checks whether a token is a base colour, the raw palette behind the context colours.
- * Base colours print their value on iOS and Android, also with `outputReferences`.
+ * Checks whether a token is a base color, the raw palette behind the context colors.
+ * Base colors print their value on iOS and Android, also with `outputReferences`.
  *
  * @param {Object} token - A resolved token with `$type` and `path`.
  * @returns {boolean}
@@ -179,7 +179,7 @@ function splitList(text) {
 const SIDE_ANGLES = { 'to top': 0, 'to right': 90, 'to bottom': 180, 'to left': 270 }
 
 /**
- * Parses a CSS `linear-gradient(…)` value into its angle and colour stops. The angle is
+ * Parses a CSS `linear-gradient(…)` value into its angle and color stops. The angle is
  * in degrees clockwise from the top, as in CSS, from 0 to less than 360; without one it
  * is 180 (top to bottom). A stop position is a fraction from 0 to 1. A stop without a
  * position gets one as CSS gives it: the first 0, the last 1, and the others spread
@@ -208,7 +208,7 @@ export function parseLinearGradient(value) {
   } else if (/^to /.test(direction) || /^-?[\d.]+(turn|rad|grad)$/.test(direction)) {
     throw new Error(`Unsupported gradient direction "${items[0]}": ${value}`)
   }
-  if (items.length < 2) throw new Error(`A gradient needs two colour stops: ${value}`)
+  if (items.length < 2) throw new Error(`A gradient needs two color stops: ${value}`)
 
   const stops = items.map((item) => {
     const parts = item.match(/^(.*?)(?:\s+(-?\d+(?:\.\d+)?)%)?$/s)
@@ -235,10 +235,10 @@ export function parseLinearGradient(value) {
 
 /**
  * Expands a gradient token into the tokens iOS and Android print for it: the angle, and
- * the colour and position of each stop. Each part has `segments` for its name
- * (`['stop1', 'color']`) and a path below the token's. The colour of a stop keeps the
+ * the color and position of each stop. Each part has `segments` for its name
+ * (`['stop1', 'color']`) and a path below the token's. The color of a stop keeps the
  * stop of the original value as its `original`, so with `outputReferences` it can name
- * the colour it references.
+ * the color it references.
  *
  * @param {Object} token - A resolved gradient token.
  * @returns {Object[]} Part tokens with `segments`, `path`, `$type`, `$value` and `original`.

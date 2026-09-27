@@ -16,7 +16,7 @@ import { tokenTypes } from './utils.js'
  * name it (`SizeUnit4 = DimensionBase4`).
  */
 export const filters = {
-  // Everything that goes into main: all emitted types, without base and theme colours.
+  // Everything that goes into main: all emitted types, without base and theme colors.
   'cx/allTokens': (token) =>
     (tokenTypes.color.includes(token.$type) &&
       !['primitive', 'context', 'utility'].includes(token.path[1])) ||
@@ -27,11 +27,11 @@ export const filters = {
     tokenTypes.size.includes(token.$type) ||
     tokenTypes.string.includes(token.$type),
 
-  // Base colours, the raw palette behind the context colours; only main has them otherwise.
+  // Base colors, the raw palette behind the context colors; only main has them otherwise.
   'cx/baseColorTokens': (token) =>
     tokenTypes.color.includes(token.$type) && token.path[1] === 'base',
 
-  // Theme colours, without base and utility colours.
+  // Theme colors, without base and utility colors.
   'cx/themeTokens': (token) =>
     tokenTypes.color.includes(token.$type) && !['base', 'utility'].includes(token.path[1]),
 

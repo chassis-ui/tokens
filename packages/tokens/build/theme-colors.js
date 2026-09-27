@@ -1,9 +1,9 @@
 /**
  * @file theme-colors.js
- * @description The iOS colour file whose colours follow the appearance. The light and dark
- *              colour files are written by two Style Dictionary instances, so no format
+ * @description The iOS color file whose colors follow the appearance. The light and dark
+ *              color files are written by two Style Dictionary instances, so no format
  *              sees both themes. The iOS format collects the constants of each theme's
- *              colour file here, and the build writes the combined file after all
+ *              color file here, and the build writes the combined file after all
  *              instances have run.
  *
  * @copyright Copyright (c) 2026 Ozgur Gunes
@@ -26,19 +26,19 @@ export const THEME_COLORS_FILE = 'Color.swift'
 export const THEME_COLORS_TYPE = 'ChassisTokensColor'
 
 /**
- * Colour files collected in this build, by output directory, then by theme.
+ * Color files collected in this build, by output directory, then by theme.
  */
 const collected = new Map()
 
 /**
- * Records the constants of one theme's colour file.
+ * Records the constants of one theme's color file.
  *
- * @param {Object} colours
- * @param {string} colours.buildPath - The output directory of the file.
- * @param {string} colours.theme - The theme; other themes than `THEMES` are ignored.
- * @param {string} colours.header - The file header.
- * @param {Object} colours.options - The Swift file properties of the file.
- * @param {Object[]} colours.constants - From `swiftConstants`.
+ * @param {Object} colors
+ * @param {string} colors.buildPath - The output directory of the file.
+ * @param {string} colors.theme - The theme; other themes than `THEMES` are ignored.
+ * @param {string} colors.header - The file header.
+ * @param {Object} colors.options - The Swift file properties of the file.
+ * @param {Object[]} colors.constants - From `swiftConstants`.
  */
 export function collectThemeColors({ buildPath, theme, header, options, constants }) {
   if (!THEMES.includes(theme)) return
@@ -47,16 +47,16 @@ export function collectThemeColors({ buildPath, theme, header, options, constant
 }
 
 /**
- * Combines the constants of the light and dark colour files. A constant that prints the
+ * Combines the constants of the light and dark color files. A constant that prints the
  * same in both themes prints as it is: a value, or the name of another constant of the
- * combined type, which follows the appearance itself. A colour that differs becomes a
+ * combined type, which follows the appearance itself. A color that differs becomes a
  * `UIColor` that picks the dark or the light value by `userInterfaceStyle`.
  *
  * @param {Object[]} light - Constants of the light file, in order.
  * @param {Object[]} dark - Constants of the dark file.
  * @returns {Object[]} `{ name, printed }` in the order of the light file.
  * @throws {Error} When the themes declare other constants, or a constant that is not a
- *   colour differs.
+ *   color differs.
  */
 export function combineThemeColors(light, dark) {
   const darkByName = new Map(dark.map((constant) => [constant.name, constant]))
@@ -67,7 +67,7 @@ export function combineThemeColors(light, dark) {
   ].map((constant) => constant.name)
   if (unmatched.length > 0) {
     throw new Error(
-      `The light and dark colour files declare different constants: ${unmatched.slice(0, 5).join(', ')}`
+      `The light and dark color files declare different constants: ${unmatched.slice(0, 5).join(', ')}`
     )
   }
 
@@ -77,7 +77,7 @@ export function combineThemeColors(light, dark) {
     if (printed === darkConstant.printed) return { name, printed }
     if (type !== 'color') {
       throw new Error(
-        `${name} differs between light and dark, but only colours follow the appearance`
+        `${name} differs between light and dark, but only colors follow the appearance`
       )
     }
     return {
@@ -88,8 +88,8 @@ export function combineThemeColors(light, dark) {
 }
 
 /**
- * Writes the combined colour file into every output directory that received a light and
- * a dark colour file, and forgets what was collected.
+ * Writes the combined color file into every output directory that received a light and
+ * a dark color file, and forgets what was collected.
  *
  * @returns {Promise<string[]>} The paths written.
  */

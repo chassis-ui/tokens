@@ -1,241 +1,445 @@
 ---
 title: Font Tokens
-description: Comprehensive guide to font tokens and their relationship to the complete typography system in Chassis Tokens.
+description: Composite tokens that combine the typography properties into text styles, with the references of each level and their format on each platform.
 toc: true
 ---
 
 <Callout type="warning" name="work-in-progress" />
 
-## Overview
+## Introduction
 
-Font tokens in Chassis refer to composite typography tokens that combine multiple typographic properties (font family, weight, size, line height, spacing, etc.) into complete, ready-to-use text styles. These tokens are defined in the **App group** and are the primary typography tokens used when designing interfaces.
+Font tokens are composite tokens: each holds a whole text style, where a [typography token]([[docsref:/design-tokens/typography-tokens]]) holds one property. A font token has the type `typography`, and its value is an object with a font family, a font weight, a font size, a line height, a letter spacing, a paragraph spacing, a text case, and a text decoration.
 
-<Callout type="info" title="Important">
-Font tokens are actually **composite typography tokens** documented comprehensively in the [Typography Tokens]([[docsref:/design-tokens/typography-tokens]]) page. This page provides a brief overview and directs you to the complete documentation.
-</Callout>
-
-## Relationship to Typography System
-
-Chassis Tokens uses a comprehensive typography system with multiple layers:
-
-### Foundational Layer (Brand Group)
-
-**Font Families**: Brand-specific typeface definitions
-
-- `typography.fontFamily.text` - Body text font
-- `typography.fontFamily.display` - Heading font
-- `typography.fontFamily.code` - Monospace font
-
-**Font Weights**: Semantic weight definitions
-
-- `typography.fontWeight.[family].normal` - Default weight
-- `typography.fontWeight.[family].strong` - Bold weight
-- `typography.fontWeight.[family].mass` - Extra bold weight
-- `typography.fontWeight.[family].elegant` - Light weight
-
-### Modular Layer (App Group)
-
-**Individual Properties**:
-
-- `typography.fontSize.*` - Size scales
-- `typography.lineHeight.*` - Line height scales
-- `typography.letterSpacing.*` - Letter spacing values
-- `typography.paragraphSpacing.*` - Paragraph spacing values
-- `typography.textCase.*` - Text transformation
-- `typography.textDecoration.*` - Text decoration styles
-
-### Composite Layer (App Group)
-
-**Complete Text Styles** (`font.*`):
-
-These are the "font tokens" that combine all properties:
+Each property references a typography token, as `font.text.medium.strong` shows in `packages/tokens/source/base/app-base.json`:
 
 ```json
 {
-  "font.text.medium.normal": {
-    "$type": "typography",
-    "$value": {
-      "fontFamily": "{typography.fontFamily.text}",
-      "fontWeight": "{typography.fontWeight.text.normal}",
-      "fontSize": "{typography.fontSize.text.medium}",
-      "lineHeight": "{typography.lineHeight.text.medium}",
-      "letterSpacing": "{typography.letterSpacing.base.zero}",
-      "paragraphSpacing": "{typography.paragraphSpacing.base.zero}",
-      "textCase": "{typography.textCase.base.none}",
-      "textDecoration": "{typography.textDecoration.base.none}"
+  "font": {
+    "text": {
+      "medium": {
+        "strong": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "{typography.fontFamily.text}",
+            "fontWeight": "{typography.fontWeight.text.strong}",
+            "lineHeight": "{typography.lineHeight.text.medium}",
+            "fontSize": "{typography.fontSize.text.medium}",
+            "letterSpacing": "{typography.letterSpacing.base.zero}",
+            "paragraphSpacing": "{typography.paragraphSpacing.base.zero}",
+            "textCase": "{typography.textCase.base.none}",
+            "textDecoration": "{typography.textDecoration.base.none}"
+          }
+        }
+      }
     }
   }
 }
 ```
 
-## Font Token Categories
+The build adds one more property, the font style, which it takes from the font weight: `normal`, or the style that the weight names, such as `italic`.
 
-### Text Family Styles
+Font tokens hold references, so their values follow the typography tokens. A brand changes the text styles by overriding the font families and the font weights, and no font token has to change. Where the token system has the optional `screen` group, `font.website.*` differs per screen, because its font sizes do.
 
-Composite typography tokens using the text font family:
+### Token levels
 
-- `font.text.[size].normal` - Regular weight text
-- `font.text.[size].strong` - Bold text
-- `font.text.[size].mass` - Extra bold text
-- `font.text.[size].elegant` - Light weight text
+Font tokens have three levels, and a group for HTML elements next to them. Base tokens combine the typography tokens of one family, one size, and one weight. Context tokens and the fonts of HTML elements combine typography tokens too, by role. Component tokens hold a reference to a base token.
 
-Where `[size]` can be: 2xsmall, xsmall, small, medium, large, xlarge, 2xlarge, 3xlarge, 4xlarge, 5xlarge
+```text
+typography.fontFamily.text
+typography.fontWeight.text.strong
+typography.fontSize.text.medium
+typography.lineHeight.text.medium
+  font.text.medium.strong             references them
+    font.button.medium                {font.text.medium.strong}
+```
 
-### Display Family Styles
+## Base tokens
 
-Composite typography tokens using the display font family:
-
-- `font.display.[size].normal` - Display headings
-- `font.display.[size].strong` - Bold display text
-- `font.display.[size].mass` - Extra bold display text
-- `font.display.[size].elegant` - Refined display text
-
-### Code Family Styles
-
-Composite typography tokens using the code font family:
-
-- `font.code.small.normal` - Small code text
-- `font.code.medium.normal` - Medium code text
-- `font.code.large.normal` - Large code text
-- `font.code.[size].strong` - Bold code text
-
-### Contextual Font Styles
-
-Semantic typography tokens for specific content types:
-
-- `font.context.jumbo` - Largest heading (96px)
-- `font.context.hero` - Hero heading (64px)
-- `font.context.lead` - Lead paragraph
-- `font.context.heading` - Main page heading
-- `font.context.title.[size]` - Section titles
-- `font.context.body.[size]` - Body text
-- `font.context.highlight.[size]` - Highlighted content
-
-### Component Font Styles
-
-Component-specific typography tokens:
-
-- `font.button.[size]` - Button labels
-- `font.form-input.*` - Input field text
-- `font.badge.[size]` - Badge text
-- `font.alert.*` - Alert text
-- `font.list.*` - List text
-- And many more...
-
-## When to Use Font Tokens
-
-### Use Font Tokens When:
-
-✅ Designing UI components and layouts
-
-✅ You need a complete, ready-to-use text style
-
-✅ Working with component-specific text (buttons, inputs, badges)
-
-✅ Applying semantic text styles (headings, body, titles)
-
-✅ You want consistent typography with minimal configuration
-
-### Use Individual Typography Tokens When:
-
-❌ You need to override a single property (e.g., just font size)
-
-❌ Creating custom text styles not covered by font tokens
-
-❌ Building new component typography tokens
-
-❌ Working with brand-level font definitions
-
-## Complete Documentation
-
-For comprehensive information about the typography system including:
-
-- Complete font token listings
-- Typography architecture and token layers
-- Font family and weight definitions
-- Modular typography properties
-- Contextual and component typography
-- HTML element typography
-- Usage guidelines and best practices
-- Accessibility considerations
-- Brand customization examples
-
-**Please refer to**: [Typography Tokens]([[docsref:/design-tokens/typography-tokens]])
-
-## Quick Reference
-
-### Most Common Font Tokens
+Base tokens are named `font.<family>.<size>.<weight>`. Each combines the family, the weight, the font size, and the line height that the typography tokens hold under the same names: `font.display.large.mass` references `{typography.fontFamily.display}`, `{typography.fontWeight.display.mass}`, `{typography.fontSize.display.large}`, and `{typography.lineHeight.display.large}`.
 
 <CxTable>
-| Token Name | Use Case |
-|------------|--------|
-| `font.text.medium.normal` | Standard body text (16px) |
-| `font.text.small.normal` | Small body text (14px) |
-| `font.text.large.normal` | Large body text (19px) |
-| `font.text.medium.strong` | Bold labels, emphasized text |
-| `font.context.heading` | Main page headings |
-| `font.context.title.large` | Section titles |
-| `font.context.body.medium` | Standard paragraph text |
-| `font.button.medium` | Button labels |
-| `font.form-input.medium-value` | Input field values |
+| Token | Sizes | Weights |
+| --- | --- | --- |
+| `font.text.<size>.<weight>` | `5xlarge`, `4xlarge`, `3xlarge`, `2xlarge`, `xlarge`, `large`, `medium`, `small`, `xsmall`, `2xsmall` | `normal`, `strong`, `mass`, `elegant` |
+| `font.display.<size>.<weight>` | `5xlarge`, `4xlarge`, `3xlarge`, `2xlarge`, `xlarge`, `large`, `medium`, `small`, `xsmall`, `2xsmall` | `normal`, `strong`, `mass`, `elegant` |
+| `font.code.<size>.<weight>` | `large`, `medium`, `small` | `normal`, `strong` |
 </CxTable>
 
-### Font Token Naming Pattern
+The other properties are the same in every base token: `{typography.letterSpacing.base.zero}`, `{typography.paragraphSpacing.base.zero}`, `{typography.textCase.base.none}`, and `{typography.textDecoration.base.none}`.
 
-**Composite tokens**: `font.[family].[size].[weight]`
+## Context tokens
 
-- Example: `font.text.medium.strong`
+Context tokens name a text style by its role in the content. The table shows the properties that change with the role. The font family is `{typography.fontFamily.text}`, except in `font.context.code.*`, which references `{typography.fontFamily.code}`.
 
-**Contextual tokens**: `font.context.[semantic-name]`
+<CxTable>
+| Token | Font weight | Font size | Line height | Paragraph spacing |
+| --- | --- | --- | --- | --- |
+| `font.context.jumbo` | `{typography.fontWeight.text.mass}` | `{size.unit.96}` | A percentage | `{typography.paragraphSpacing.base.zero}` |
+| `font.context.hero` | `{typography.fontWeight.text.mass}` | `{size.unit.64}` | A percentage | `{typography.paragraphSpacing.base.zero}` |
+| `font.context.lead` | `{typography.fontWeight.text.normal}` | `{typography.fontSize.text.xlarge}` | `{typography.lineHeight.text.xlarge}` | `{typography.paragraphSpacing.base.zero}` |
+| `font.context.heading` | `{typography.fontWeight.text.strong}` | `{typography.fontSize.text.3xlarge}` | `{typography.lineHeight.text.3xlarge}` | `{typography.paragraphSpacing.base.large}` |
+| `font.context.title.medium` | `{typography.fontWeight.text.strong}` | `{typography.fontSize.text.large}` | `{typography.lineHeight.text.large}` | `{typography.paragraphSpacing.base.medium}` |
+| `font.context.title.large` | `{typography.fontWeight.text.strong}` | `{typography.fontSize.text.xlarge}` | `{typography.lineHeight.text.xlarge}` | `{typography.paragraphSpacing.base.large}` |
+| `font.context.title.small` | `{typography.fontWeight.text.strong}` | `{typography.fontSize.text.medium}` | `{typography.lineHeight.text.medium}` | `{typography.paragraphSpacing.base.small}` |
+| `font.context.body.medium` | `{typography.fontWeight.text.normal}` | `{typography.fontSize.text.medium}` | `{typography.lineHeight.text.medium}` | `{typography.paragraphSpacing.base.medium}` |
+| `font.context.body.large` | `{typography.fontWeight.text.normal}` | `{typography.fontSize.text.large}` | `{typography.lineHeight.text.large}` | `{typography.paragraphSpacing.base.large}` |
+| `font.context.body.small` | `{typography.fontWeight.text.normal}` | `{typography.fontSize.text.small}` | `{typography.lineHeight.text.small}` | `{typography.paragraphSpacing.base.small}` |
+| `font.context.highlight.medium` | `{typography.fontWeight.text.normal}` | `{typography.fontSize.text.medium}` | `{typography.lineHeight.text.medium}` | `{typography.paragraphSpacing.base.medium}` |
+| `font.context.highlight.large` | `{typography.fontWeight.text.normal}` | `{typography.fontSize.text.large}` | `{typography.lineHeight.text.large}` | `{typography.paragraphSpacing.base.large}` |
+| `font.context.highlight.small` | `{typography.fontWeight.text.normal}` | `{typography.fontSize.text.small}` | `{typography.lineHeight.text.small}` | `{typography.paragraphSpacing.base.small}` |
+| `font.context.label.medium` | `{typography.fontWeight.text.strong}` | `{typography.fontSize.text.small}` | `{typography.lineHeight.text.small}` | `{typography.paragraphSpacing.base.zero}` |
+| `font.context.label.large` | `{typography.fontWeight.text.strong}` | `{typography.fontSize.text.medium}` | `{typography.lineHeight.text.medium}` | `{typography.paragraphSpacing.base.zero}` |
+| `font.context.label.small` | `{typography.fontWeight.text.strong}` | `{typography.fontSize.text.xsmall}` | `{typography.lineHeight.text.xsmall}` | `{typography.paragraphSpacing.base.zero}` |
+| `font.context.link.large` | `{typography.fontWeight.text.normal}` | `{typography.fontSize.text.large}` | `{typography.lineHeight.text.large}` | `{typography.paragraphSpacing.base.zero}` |
+| `font.context.link.medium` | `{typography.fontWeight.text.normal}` | `{typography.fontSize.text.medium}` | `{typography.lineHeight.text.medium}` | `{typography.paragraphSpacing.base.zero}` |
+| `font.context.link.small` | `{typography.fontWeight.text.normal}` | `{typography.fontSize.text.small}` | `{typography.lineHeight.text.small}` | `{typography.paragraphSpacing.base.zero}` |
+| `font.context.link.xsmall` | `{typography.fontWeight.text.normal}` | `{typography.fontSize.text.xsmall}` | `{typography.lineHeight.text.xsmall}` | `{typography.paragraphSpacing.base.zero}` |
+| `font.context.expired.large` | `{typography.fontWeight.text.strong}` | `{typography.fontSize.text.large}` | `{typography.lineHeight.text.large}` | `{typography.paragraphSpacing.base.zero}` |
+| `font.context.expired.medium` | `{typography.fontWeight.text.strong}` | `{typography.fontSize.text.medium}` | `{typography.lineHeight.text.medium}` | `{typography.paragraphSpacing.base.zero}` |
+| `font.context.expired.small` | `{typography.fontWeight.text.strong}` | `{typography.fontSize.text.small}` | `{typography.lineHeight.text.small}` | `{typography.paragraphSpacing.base.zero}` |
+| `font.context.code.large` | `{typography.fontWeight.code.normal}` | `{typography.fontSize.code.large}` | `{typography.lineHeight.code.large}` | `{typography.paragraphSpacing.base.zero}` |
+| `font.context.code.medium` | `{typography.fontWeight.code.normal}` | `{typography.fontSize.code.medium}` | `{typography.lineHeight.code.medium}` | `{typography.paragraphSpacing.base.zero}` |
+| `font.context.code.small` | `{typography.fontWeight.code.normal}` | `{typography.fontSize.code.small}` | `{typography.lineHeight.code.small}` | `{typography.paragraphSpacing.base.zero}` |
+</CxTable>
 
-- Example: `font.context.heading`
+`font.context.jumbo` and `font.context.hero` take their font size from the size scale, and their line height is a percentage of that font size. The other context tokens take both from the same step of a typography scale.
 
-**Component tokens**: `font.[component].[variant]`
+Some context tokens change a property that the table does not show. `font.context.link.*` references `{typography.textDecoration.base.underline}`, and `font.context.expired.*` references `{typography.textDecoration.base.line-through}`. `font.context.jumbo` tightens its letters with `{size.unit.nd05}`. Every other letter spacing, text case, and text decoration is that of the base tokens.
 
-- Example: `font.button.large`
+## HTML elements
 
-## Architecture Diagram
+The fonts of HTML elements are named after the element. Each takes its font size and its line height from the typography tokens of the same element, and its weight from `typography.fontWeight.html.*`, where the headings share one weight.
 
+<CxTable>
+| Token | Font family | Font weight | Font size | Line height |
+| --- | --- | --- | --- | --- |
+| `font.html.h1` | `{typography.fontFamily.html}` | `{typography.fontWeight.html.heading}` | `{typography.fontSize.html.h1}` | `{typography.lineHeight.html.h1}` |
+| `font.html.h2` | `{typography.fontFamily.html}` | `{typography.fontWeight.html.heading}` | `{typography.fontSize.html.h2}` | `{typography.lineHeight.html.h2}` |
+| `font.html.h3` | `{typography.fontFamily.html}` | `{typography.fontWeight.html.heading}` | `{typography.fontSize.html.h3}` | `{typography.lineHeight.html.h3}` |
+| `font.html.h4` | `{typography.fontFamily.html}` | `{typography.fontWeight.html.heading}` | `{typography.fontSize.html.h4}` | `{typography.lineHeight.html.h4}` |
+| `font.html.h5` | `{typography.fontFamily.html}` | `{typography.fontWeight.html.heading}` | `{typography.fontSize.html.h5}` | `{typography.lineHeight.html.h5}` |
+| `font.html.h6` | `{typography.fontFamily.html}` | `{typography.fontWeight.html.heading}` | `{typography.fontSize.html.h6}` | `{typography.lineHeight.html.h6}` |
+| `font.html.body` | `{typography.fontFamily.html}` | `{typography.fontWeight.html.body}` | `{typography.fontSize.html.body}` | `{typography.lineHeight.html.body}` |
+| `font.html.code` | `{typography.fontFamily.code}` | `{typography.fontWeight.html.code}` | `{typography.fontSize.html.code}` | `{typography.lineHeight.html.code}` |
+| `font.html.paragraph` | `{typography.fontFamily.html}` | `{typography.fontWeight.html.paragraph}` | `{typography.fontSize.html.paragraph}` | `{typography.lineHeight.html.paragraph}` |
+| `font.html.blockquote` | `{typography.fontFamily.html}` | `{typography.fontWeight.html.blockquote}` | `{typography.fontSize.html.blockquote}` | `{typography.lineHeight.html.blockquote}` |
+| `font.html.cite` | `{typography.fontFamily.html}` | `{typography.fontWeight.html.cite}` | `{typography.fontSize.html.cite}` | `{typography.lineHeight.html.cite}` |
+</CxTable>
+
+`typography.fontFamily.html` is a reference that a brand can override, so a brand chooses the family of the HTML elements without changing a font token. `font.html.blockquote` gets the font style `italic` from its weight. `font.html.paragraph` references `{typography.paragraphSpacing.base.medium}`; the other fonts of the group have no paragraph spacing.
+
+## Component tokens
+
+Component tokens assign a base token of the text family to a part of a component. A component token holds the reference only, so it has the properties of the base token it names.
+
+### Accordion
+
+Accordion fonts set the title and the body of each accordion size.
+
+<CxTable>
+| Token | Reference |
+| --- | --- |
+| `font.accordion.medium-title` | `{font.text.medium.strong}` |
+| `font.accordion.medium-body` | `{font.text.medium.normal}` |
+| `font.accordion.large-title` | `{font.text.large.strong}` |
+| `font.accordion.large-body` | `{font.text.large.normal}` |
+| `font.accordion.small-title` | `{font.text.small.strong}` |
+| `font.accordion.small-body` | `{font.text.small.normal}` |
+</CxTable>
+
+### Alert
+
+Alert fonts set the title and the body of each alert size. The title is one step larger than the body.
+
+<CxTable>
+| Token | Reference |
+| --- | --- |
+| `font.alert.large-title` | `{font.text.xlarge.strong}` |
+| `font.alert.large-body` | `{font.text.large.normal}` |
+| `font.alert.small-title` | `{font.text.large.strong}` |
+| `font.alert.small-body` | `{font.text.medium.normal}` |
+</CxTable>
+
+### Assist
+
+Assist fonts hold one text style per size, in the `normal` weight.
+
+<CxTable>
+| Token | Reference |
+| --- | --- |
+| `font.assist.medium` | `{font.text.medium.normal}` |
+| `font.assist.large` | `{font.text.large.normal}` |
+| `font.assist.small` | `{font.text.small.normal}` |
+</CxTable>
+
+### Badge
+
+Badge fonts are one step smaller than their name says: `font.badge.medium` references the `small` step of the text family.
+
+<CxTable>
+| Token | Reference |
+| --- | --- |
+| `font.badge.medium` | `{font.text.small.strong}` |
+| `font.badge.large` | `{font.text.medium.strong}` |
+| `font.badge.small` | `{font.text.xsmall.strong}` |
+</CxTable>
+
+### Breadcrumb
+
+The breadcrumb font sets the text of the pages in a breadcrumb.
+
+<CxTable>
+| Token | Reference |
+| --- | --- |
+| `font.breadcrumb.page` | `{font.text.medium.normal}` |
+</CxTable>
+
+### Button
+
+Button fonts set the label of each button size, in the `strong` weight.
+
+<CxTable>
+| Token | Reference |
+| --- | --- |
+| `font.button.medium` | `{font.text.medium.strong}` |
+| `font.button.large` | `{font.text.large.strong}` |
+| `font.button.small` | `{font.text.small.strong}` |
+</CxTable>
+
+### Chip
+
+Chip fonts reference the same base tokens as the badge fonts, one step smaller than their name.
+
+<CxTable>
+| Token | Reference |
+| --- | --- |
+| `font.chip.medium` | `{font.text.small.strong}` |
+| `font.chip.large` | `{font.text.medium.strong}` |
+| `font.chip.small` | `{font.text.xsmall.strong}` |
+</CxTable>
+
+### Date picker
+
+Datepicker fonts share the `small` step. The current day and the labels have the `strong` weight, the other days the `normal` weight.
+
+<CxTable>
+| Token | Reference |
+| --- | --- |
+| `font.datepicker.day` | `{font.text.small.normal}` |
+| `font.datepicker.today` | `{font.text.small.strong}` |
+| `font.datepicker.label` | `{font.text.small.strong}` |
+</CxTable>
+
+### Dropdown
+
+Dropdown fonts set the title of a dropdown and its items. The title is smaller than the items.
+
+<CxTable>
+| Token | Reference |
+| --- | --- |
+| `font.dropdown.title` | `{font.text.small.strong}` |
+| `font.dropdown.item` | `{font.text.medium.normal}` |
+</CxTable>
+
+### Form input
+
+Form input fonts set the label and the text of each input size. The `floating` tokens belong to the input with a floating label, whose label is `xsmall`.
+
+<CxTable>
+| Token | Reference |
+| --- | --- |
+| `font.form-input.medium-label` | `{font.text.medium.strong}` |
+| `font.form-input.large-label` | `{font.text.large.strong}` |
+| `font.form-input.small-label` | `{font.text.small.strong}` |
+| `font.form-input.medium-text` | `{font.text.medium.normal}` |
+| `font.form-input.large-text` | `{font.text.large.normal}` |
+| `font.form-input.small-text` | `{font.text.small.normal}` |
+| `font.form-input.floating-text` | `{font.text.medium.normal}` |
+| `font.form-input.floating-label` | `{font.text.xsmall.normal}` |
+</CxTable>
+
+### Modal
+
+Modal fonts set the title and the subtitle of each modal size. The title changes with the size; the subtitle is the same in every size.
+
+<CxTable>
+| Token | Reference |
+| --- | --- |
+| `font.modal.large-title` | `{font.text.xlarge.strong}` |
+| `font.modal.large-subtitle` | `{font.text.medium.normal}` |
+| `font.modal.medium-title` | `{font.text.large.strong}` |
+| `font.modal.medium-subtitle` | `{font.text.medium.normal}` |
+| `font.modal.small-title` | `{font.text.medium.strong}` |
+| `font.modal.small-subtitle` | `{font.text.medium.normal}` |
+</CxTable>
+
+### Notification
+
+Notification fonts set the title and the message of a notification.
+
+<CxTable>
+| Token | Reference |
+| --- | --- |
+| `font.notification.title` | `{font.text.large.strong}` |
+| `font.notification.message` | `{font.text.medium.normal}` |
+</CxTable>
+
+### Page
+
+Page fonts set the title and the subtitle of each page size. The `large` and the `medium` title reference the same base token.
+
+<CxTable>
+| Token | Reference |
+| --- | --- |
+| `font.page.large-title` | `{font.text.2xlarge.strong}` |
+| `font.page.large-subtitle` | `{font.text.medium.normal}` |
+| `font.page.medium-title` | `{font.text.2xlarge.strong}` |
+| `font.page.medium-subtitle` | `{font.text.medium.normal}` |
+| `font.page.small-title` | `{font.text.xlarge.strong}` |
+| `font.page.small-subtitle` | `{font.text.medium.normal}` |
+</CxTable>
+
+### Section
+
+Section fonts set the header of each section size.
+
+<CxTable>
+| Token | Reference |
+| --- | --- |
+| `font.section.header-large` | `{font.text.large.strong}` |
+| `font.section.header-medium` | `{font.text.medium.strong}` |
+| `font.section.header-small` | `{font.text.small.strong}` |
+</CxTable>
+
+### Segment
+
+Segment fonts are one step smaller than their name, as the badge fonts are, in the `normal` weight.
+
+<CxTable>
+| Token | Reference |
+| --- | --- |
+| `font.segment.medium` | `{font.text.small.normal}` |
+| `font.segment.large` | `{font.text.medium.normal}` |
+| `font.segment.small` | `{font.text.xsmall.normal}` |
+</CxTable>
+
+### Tab
+
+Tab fonts reference the same base tokens as the button fonts.
+
+<CxTable>
+| Token | Reference |
+| --- | --- |
+| `font.tab.medium` | `{font.text.medium.strong}` |
+| `font.tab.large` | `{font.text.large.strong}` |
+| `font.tab.small` | `{font.text.small.strong}` |
+</CxTable>
+
+### Table
+
+Table fonts share the `small` step. The head has the `strong` weight, the data the `normal` weight.
+
+<CxTable>
+| Token | Reference |
+| --- | --- |
+| `font.table.data-text` | `{font.text.small.normal}` |
+| `font.table.head-text` | `{font.text.small.strong}` |
+</CxTable>
+
+### Website
+
+Website fonts hold properties of their own, not a reference to a base token. Each takes its font size from the typography token of the same name, which the token set of each screen holds. The font family is `{typography.fontFamily.text}`, and the line height is a percentage of the font size, so it follows the font size of the screen.
+
+<CxTable>
+| Token | Font weight | Font size | Letter spacing |
+| --- | --- | --- | --- |
+| `font.website.hero-title` | `{typography.fontWeight.text.mass}` | `{typography.fontSize.website.hero-title}` | `{size.unit.n1}` |
+| `font.website.hero-body` | `{typography.fontWeight.text.normal}` | `{typography.fontSize.website.hero-body}` | `{typography.letterSpacing.base.zero}` |
+| `font.website.section-title` | `{typography.fontWeight.text.mass}` | `{typography.fontSize.website.section-title}` | `{size.unit.nd05}` |
+| `font.website.section-body` | `{typography.fontWeight.text.normal}` | `{typography.fontSize.website.section-body}` | `{typography.letterSpacing.base.zero}` |
+| `font.website.feature-title` | `{typography.fontWeight.text.mass}` | `{typography.fontSize.website.feature-title}` | `{typography.letterSpacing.base.zero}` |
+| `font.website.feature-body` | `{typography.fontWeight.text.normal}` | `{typography.fontSize.website.feature-body}` | `{typography.letterSpacing.base.zero}` |
+| `font.website.module-title` | `{typography.fontWeight.text.mass}` | `{typography.fontSize.website.module-title}` | `{typography.letterSpacing.base.zero}` |
+</CxTable>
+
+The website fonts are defined in `packages/tokens/source/screen-website/screen-base.json`, and the other font tokens in `packages/tokens/source/base/app-base.json`.
+
+## Usage
+
+Choose the level that names the text:
+
+- Use a component token for the part of a component that it names, such as `font.button.medium` for the label of a medium button.
+- Use a context token for content with a role: `font.context.heading`, `font.context.body.medium`, `font.context.link.medium`.
+- Use a base token where no context or component token fits. No context or component token references the display family, so `font.display.*` is the way to set a text in it.
+- Use `font.html.*` for the default style of an HTML element.
+
+Give a new component token a reference to a base token, as the existing component tokens have. The token then follows the typography scales and the fonts of each brand.
+
+A font token holds no color. Set the color of a text with a [color token]([[docsref:/design-tokens/color-tokens]]).
+
+## Platform output
+
+A font token prints as one Sass map on the web, and as one constant or resource per property on iOS and Android. The table shows the font size of `font.context.jumbo` on iOS and Android.
+
+<CxTable>
+| Platform | Name | Format |
+| --- | --- | --- |
+| Web | `$cx-font-context-jumbo` | A Sass map with one key per property |
+| iOS | `FontContextJumboFontSize` | A `CGFloat` in points |
+| Android | `@dimen/font_context_jumbo_font_size` | A `<dimen>` in `sp` |
+</CxTable>
+
+The values in the examples of this section are those of the `chassis` brand in the current version, and they differ in other brands.
+
+The build writes the map of the web to `main.scss`, on one line. The keys are CSS properties: the paragraph spacing is `margin-bottom`, and the text case is `text-transform`.
+
+```scss
+$cx-font-context-jumbo: ("font-family": var(--font-family-text), "font-weight": var(--font-weight-text-mass), "font-size": 6rem, "line-height": 1.25em, "font-style": normal, "letter-spacing": -0.0313em, "margin-bottom": 0rem, "text-transform": none, "text-decoration": none) !default;
 ```
-Brand Group (Foundational)
-├─ typography.fontFamily.text
-├─ typography.fontFamily.display
-└─ typography.fontWeight.*
-    ↓ referenced by
-App Group (Modular)
-├─ typography.fontSize.*
-├─ typography.lineHeight.*
-├─ typography.letterSpacing.*
-└─ typography.paragraphSpacing.*
-    ↓ combined into
-App Group (Composite)
-├─ font.text.[size].[weight]     ← "Font Tokens"
-├─ font.display.[size].[weight]
-├─ font.code.[size].[weight]
-└─ font.context.*
-    ↓ referenced by
-App Group (Component)
-└─ font.[component].*
+
+The `web` platform names the custom properties of Chassis CSS for the family, the weight, the font size, and the line height that a font token references, so its maps work with Chassis CSS only. The presets `web-scss`, `web-px`, and `web-vw` print the values; see the [Style Dictionary]([[docsref:/getting-started/style-dictionary]]) page.
+
+iOS and Android name each constant or resource after the token and the property. The format of a property is the format of its [typography token]([[docsref:/design-tokens/typography-tokens]]), except for the line height and the letter spacing.
+
+<CxTable>
+| Property | iOS | Android |
+| --- | --- | --- |
+| Font family | `FontContextJumboFontFamily` | `@string/font_context_jumbo_font_family` |
+| Font weight | `FontContextJumboFontWeight` | `@integer/font_context_jumbo_font_weight` |
+| Line height | `FontContextJumboLineHeight` | `@dimen/font_context_jumbo_line_height` |
+| Font size | `FontContextJumboFontSize` | `@dimen/font_context_jumbo_font_size` |
+| Letter spacing | `FontContextJumboLetterSpacing` | `@dimen/font_context_jumbo_letter_spacing` |
+| Paragraph spacing | `FontContextJumboParagraphSpacing` | `@dimen/font_context_jumbo_paragraph_spacing` |
+| Text case | `FontContextJumboTextCase` | `@string/font_context_jumbo_text_case` |
+| Text decoration | `FontContextJumboTextDecoration` | `@string/font_context_jumbo_text_decoration` |
+| Font style | `FontContextJumboFontStyle` | `@string/font_context_jumbo_font_style` |
+</CxTable>
+
+The build writes the sizes of a font token to the number file of each screen, and the other properties to the string file. The main file holds all of them. On iOS, `NumberLarge.swift` has these lines:
+
+```swift
+    public static let FontContextJumboLineHeight = CGFloat(120)
+    public static let FontContextJumboFontSize = CGFloat(96)
+    public static let FontContextJumboLetterSpacing = CGFloat(-0.5)
+    public static let FontContextJumboParagraphSpacing = CGFloat(0)
 ```
 
-## Migration from Other Systems
+On Android, `number_large.xml` has the same properties:
 
-If you're migrating from systems that separate "font tokens" from "typography tokens":
+```xml
+  <dimen name="font_context_jumbo_line_height">120sp</dimen>
+  <dimen name="font_context_jumbo_font_size">96sp</dimen>
+  <item name="font_context_jumbo_letter_spacing" type="dimen" format="float">-0.0052</item>
+  <dimen name="font_context_jumbo_paragraph_spacing">0sp</dimen>
+```
 
-**In Chassis Tokens**:
+The line height and the letter spacing print by rules of their own inside a font token:
 
-- What you might call "font tokens" = typography primitive tokens (fontFamily, fontWeight)
-- What you might call "text style tokens" = font tokens (composite typography)
+- A line height that is a percentage prints in `em` on the web. iOS and Android print a size: that percentage of the font size of the same token.
+- The letter spacing on Android is in ems of the font size of the same token, which `android:letterSpacing` takes.
 
-**Practical mapping**:
+<Callout type="warning">
+The web prints letter spacing in ems of 16 design pixels, not of the font size of the token. The number that the web prints for a font token is therefore not the number that Android prints for it.
+</Callout>
 
-- Old: Apply font family + font size + line height separately
-- New: Use single `font.text.medium.normal` token
-
-This consolidation reduces complexity and ensures all typographic properties are applied consistently.
-
-## See Also
-
-- [Typography Tokens]([[docsref:/design-tokens/typography-tokens]]) - Complete typography system documentation
-- [Color Tokens]([[docsref:/design-tokens/color-tokens]]) - Color system for text colors
-- [Tokens Studio]([[docsref:/getting-started/tokens-studio#typography-tokens]]) - How typography tokens are defined and organized
+See the [web]([[docsref:/use-in-project/web-applications]]), [iOS]([[docsref:/use-in-project/ios-applications]]), and [Android]([[docsref:/use-in-project/android-applications]]) docs for the files that hold these names.

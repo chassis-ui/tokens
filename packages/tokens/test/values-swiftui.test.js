@@ -29,9 +29,9 @@ describe('SwiftUI encode', () => {
     expect(encode(token, context)).toBe(swiftui(expected))
   })
 
-  test('prints colours as Color with opacity and weights as Font.Weight', () => {
-    const colour = fixture.ios.find((c) => c.token.$type === 'color').token
-    expect(encode(colour)).toMatch(
+  test('prints colors as Color with opacity and weights as Font.Weight', () => {
+    const color = fixture.ios.find((c) => c.token.$type === 'color').token
+    expect(encode(color)).toMatch(
       /^Color\(red: [\d.]+, green: [\d.]+, blue: [\d.]+, opacity: [\d.]+\)$/
     )
     const weight = fixture.ios.find((c) => c.token.$type === 'fontWeight').token
@@ -48,7 +48,7 @@ describe('SwiftUI encode', () => {
 
   test('refuses a reference whose value would change, as on iOS', () => {
     const { token, target } = fixture.iosReferences.find((c) =>
-      c.case.startsWith('rgba() colour whose first reference is a colour')
+      c.case.startsWith('rgba() color whose first reference is a color')
     )
     expect(encode(token)).not.toBe(encode(target))
     expect(reference(token, target)).toBeUndefined()

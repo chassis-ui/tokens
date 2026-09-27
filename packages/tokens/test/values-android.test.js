@@ -70,7 +70,7 @@ describe('Android encode and resourceType', () => {
     }
   })
 
-  test('prints an unparseable colour as is and warns', () => {
+  test('prints an unparseable color as is and warns', () => {
     const warn = vi.spyOn(console, 'warn').mockImplementation(() => {})
     const token = { ...tokenNamed('color_base_primitive_light_black_base'), $value: 'not-a-color' }
 
@@ -109,8 +109,8 @@ describe('Android reference', () => {
     expect(reference(token, undefined)).toBeUndefined()
   })
 
-  test('none for a base colour, even when the reference would be safe', () => {
-    const { token, target } = caseNamed('base colour with a reference')
+  test('none for a base color, even when the reference would be safe', () => {
+    const { token, target } = caseNamed('base color with a reference')
     expect([resourceKind(target), encode(target)]).toEqual([resourceKind(token), encode(token)])
     expect(reference(token, target)).toBeUndefined()
     expect(
@@ -156,10 +156,8 @@ describe('Android reference', () => {
     expect(reference(token, target)).toBeUndefined()
   })
 
-  test('none for an rgba() colour whose alpha the target lacks', () => {
-    const { token, target } = caseNamed(
-      'rgba() colour whose first reference is a colour: alpha lost'
-    )
+  test('none for an rgba() color whose alpha the target lacks', () => {
+    const { token, target } = caseNamed('rgba() color whose first reference is a color: alpha lost')
     expect([encode(token), encode(target)]).toEqual(['#80b7c0c2', '#ffb7c0c2'])
     expect(reference(token, target)).toBeUndefined()
   })

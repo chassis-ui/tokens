@@ -18,14 +18,14 @@ build.js            permutateThemes → one token-set list per brand, app, theme
         │
         ▼ for each instance
 preprocessor.js     align types, split font weights, number tokens in source order
-transforms.js       names, math, colour modifiers, web units and shadows (before resolution)
+transforms.js       names, math, color modifiers, web units and shadows (before resolution)
   (Style Dictionary resolves references)
 filters.js          which tokens go into which file
 formats.js          one line per resolved token, from values/ and the reference policies
 icons.js            actions: the Xcode asset catalog and the Android vector drawables
         │
         ▼ after every instance
-theme-colors.js     Color.swift, from the light and dark colour files
+theme-colors.js     Color.swift, from the light and dark color files
 ```
 
 `node build/build.js --dry-run` prints the plan: the instances, the files each writes, and the files written after the builds.
@@ -34,9 +34,9 @@ theme-colors.js     Color.swift, from the light and dark colour files
 
 ### Platform values are encoded after resolution, in pure functions
 
-Encoding a value means turning a resolved token into its final text: `UIColor(…)`, an ARGB hex colour, `sp` and `dp`, `CGFloat(…)`, quotes, escapes, references.
+Encoding a value means turning a resolved token into its final text: `UIColor(…)`, an ARGB hex color, `sp` and `dp`, `CGFloat(…)`, quotes, escapes, references.
 
-This cannot be a Style Dictionary value transform. Style Dictionary transforms a referenced token before it resolves the tokens that reference it. Many colour tokens are `rgba({colour}, {opacity})` or apply a Tokens Studio lighten or darken modifier to another colour; if that colour were already `UIColor(…)`, they would receive `UIColor(…)` as their input. Registering the iOS colour encoding as a transform fails the build with `Invalid color: rgba(UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1), 0)`.
+This cannot be a Style Dictionary value transform. Style Dictionary transforms a referenced token before it resolves the tokens that reference it. Many color tokens are `rgba({color}, {opacity})` or apply a Tokens Studio lighten or darken modifier to another color; if that color were already `UIColor(…)`, they would receive `UIColor(…)` as their input. Registering the iOS color encoding as a transform fails the build with `Invalid color: rgba(UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1), 0)`.
 
 So:
 
@@ -48,12 +48,12 @@ So:
 
 Style Dictionary takes `source` only at the top level of its configuration, so every platform of one instance sees the same tokens. `planBuilds` groups the outputs of a brand and app by the token-set list they need: the base files (main and string) and the files of the first theme and first screen share one list, and every other theme and screen adds one. With two themes and three screens that is four instances per brand and app, 16 for the configuration, which build in about 6 seconds:
 
-| Token-set list | Files                                      |
-| -------------- | ------------------------------------------ |
-| light + large  | main, string, light colours, large numbers |
-| dark + large   | dark colours                               |
-| light + medium | medium numbers                             |
-| light + small  | small numbers                              |
+| Token-set list | Files                                     |
+| -------------- | ----------------------------------------- |
+| light + large  | main, string, light colors, large numbers |
+| dark + large   | dark colors                               |
+| light + medium | medium numbers                            |
+| light + small  | small numbers                             |
 
 Each instance lists its sets in the order `permutateThemes` returns them from `source/$themes.json`, so later sets override earlier ones as in Tokens Studio. Style Dictionary logs these overrides as token collisions in every build (20 to 34 for a light list, 714 to 728 for a dark one); they are expected.
 
@@ -84,11 +84,11 @@ Which tokens print a reference instead of a value is decided by pure functions t
 
 ### A reference is printed only when it is safe
 
-With `outputReferences`, a mobile token names the token it references only when the reference compiles and keeps the value: the target is in the same file, the token is not a base colour and not a size computed with math, and the target encodes to the same text (on Android, also to the same resource kind). Otherwise it prints its value. Without this rule, references to colours drop the alpha of `rgba({colour}, {opacity})` tokens, and font sizes in `sp` name sizes in `dp`.
+With `outputReferences`, a mobile token names the token it references only when the reference compiles and keeps the value: the target is in the same file, the token is not a base color and not a size computed with math, and the target encodes to the same text (on Android, also to the same resource kind). Otherwise it prints its value. Without this rule, references to colors drop the alpha of `rgba({color}, {opacity})` tokens, and font sizes in `sp` name sizes in `dp`.
 
-### The colours that follow dark mode are written after the builds
+### The colors that follow dark mode are written after the builds
 
-The light and dark colour files come from two instances, so no format sees both themes. The iOS format records the constants of each theme's colour file in `theme-colors.js`, and `build.js` writes `Color.swift` after the last instance: a constant whose light and dark values differ becomes `UIColor { $0.userInterfaceStyle == .dark ? <dark> : <light> }`, and one whose values are equal keeps its value. The build fails when the two files declare different names, or when a constant that is not a colour differs.
+The light and dark color files come from two instances, so no format sees both themes. The iOS format records the constants of each theme's color file in `theme-colors.js`, and `build.js` writes `Color.swift` after the last instance: a constant whose light and dark values differ becomes `UIColor { $0.userInterfaceStyle == .dark ? <dark> : <light> }`, and one whose values are equal keeps its value. The build fails when the two files declare different names, or when a constant that is not a color differs.
 
 ### The committed `dist/` is the reference
 
@@ -145,22 +145,22 @@ The repository root also has `Package.swift`, written by `build/swift-package.js
 
 | Filter               | Files                               | Tokens                                                                                                          |
 | -------------------- | ----------------------------------- | --------------------------------------------------------------------------------------------------------------- |
-| `cx/allTokens`       | main                                | every emitted type, without colours whose `path[1]` is `primitive`, `context` or `utility`                      |
+| `cx/allTokens`       | main                                | every emitted type, without colors whose `path[1]` is `primitive`, `context` or `utility`                       |
 | `cx/stringTokens`    | string                              | asset, content, fontFamily, fontStyle, fontWeight, string, text, textCase, textDecoration, type                 |
-| `cx/themeTokens`     | colour files                        | colours, without `path[1]` `base` or `utility`                                                                  |
+| `cx/themeTokens`     | color files                         | colors, without `path[1]` `base` or `utility`                                                                   |
 | `cx/numberTokens`    | number files                        | duration, letterSpacing, number, opacity, and the size group: dimension, fontSize, lineHeight, paragraphSpacing |
-| `cx/baseColorTokens` | Android `res/values/color_base.xml` | colours whose `path[1]` is `base`                                                                               |
+| `cx/baseColorTokens` | Android `res/values/color_base.xml` | colors whose `path[1]` is `base`                                                                                |
 
 The type groups are in `utils.js`. Tokens typed `boolean` or `other` are never emitted. `dimension.base.*` is emitted in the main and number files on purpose: other sizes reference it, and with `outputReferences` they name it.
 
-So the main file holds every token except the theme colours, with the values of the first theme (its component colours) and the first screen. The string, colour and number files share no names with each other, and together they hold everything in main except the base colours.
+So the main file holds every token except the theme colors, with the values of the first theme (its component colors) and the first screen. The string, color and number files share no names with each other, and together they hold everything in main except the base colors.
 
 ### Web
 
 SCSS with the prefix `cx`: the header line `$prefix: cx- !default;`, then one `$cx-<name>: <value> !default;` per token between `// scss-docs-start design-tokens` and `// scss-docs-end design-tokens`.
 
-- **Sizes**: pixels divided by 16 with `rem`, not rounded; zero is `0rem`.
-- **Colours**: `#ffffff`, or `rgba(22, 26, 27, 0.5)` with alpha.
+- **Sizes**: pixels divided by 16 with `rem`; zero is `0rem`. A size that holds its value is not rounded (`dimension.base.05` is `0.03125rem`); a size that references another is rounded to four decimals, as math on rem values is (`size.unit.05` is `0.0313rem`).
+- **Colors**: `#ffffff`, or `rgba(22, 26, 27, 0.5)` with alpha.
 - **Line height tokens**: divided by the font size token at the same step, `typography.fontSize.<path[2]>.<path[3]>`, three decimals with trailing zeros removed, `em` (`1.25em`).
 - **Letter spacing** (tokens under `letterSpacing` and the `letter-spacing` of typography maps): pixels divided by 16, four decimals, `em` (`-0.5px` is `-0.0313em`).
 - **Shadows**: `x y blur spread color`, with ` inset` for inner shadows, layers joined with `, `, sizes in rem.
@@ -189,23 +189,23 @@ The short scale names are `4xs`, `3xs`, `2xs`, `xs`, `sm`, `md`, `lg`, `xl` and 
 
 #### SCSS variables of the presets
 
-`web-scss`, `web-px` and `web-vw` print resolved values. Their typography maps quote the font family list as one string (`"font-family": "Inter, system-ui, …"`). With `outputReferences`, single references in the groups `color`, `space`, `opacity`, `borderRadius` and `borderWidth` print the variable of the token that the shared rules above name (`$cx-color-context-default-fg-main`), and typography maps hold variables. A variable may be declared by another file of the build, so an app loads the colour and number files before `main.scss`; the build fails when no file declares it.
+`web-scss`, `web-px` and `web-vw` print resolved values. Their typography maps quote the font family list as one string (`"font-family": "Inter, system-ui, …"`). With `outputReferences`, single references in the groups `color`, `space`, `opacity`, `borderRadius` and `borderWidth` print the variable of the token that the shared rules above name (`$cx-color-context-default-fg-main`), and typography maps hold variables. A variable may be declared by another file of the build, so an app loads a color file before `main.scss`, whose color tokens reference variables of `color-<theme>.scss`; the other files use only variables they declare themselves. The build fails when no file declares a variable.
 
 ### iOS
 
 `import UIKit`, then one `public static let <PascalName> = <value>` per token. Typography and shadow tokens are expanded into one constant per property (`FontContextJumboFontSize`, `ShadowContextSmall1Blur`).
 
-- **Colours**: `UIColor(red: 0.086, green: 0.102, blue: 0.106, alpha: 1)`, three decimals per channel, the alpha as it is. A value that is not a colour prints as it is, with a warning.
+- **Colors**: `UIColor(red: 0.086, green: 0.102, blue: 0.106, alpha: 1)`, three decimals per channel, the alpha as it is. A value that is not a color prints as it is, with a warning.
 - **Numbers and sizes**: `CGFloat(16)`, in points. A line height in percent is that percentage of the font size of the same typography token, three decimals (`125%` of `96` is `CGFloat(120)`). Letter spacing is in points (`CGFloat(-0.5)`).
 - **Font families**: the first family of the list, without quotes, in double quotes (`"Inter"`).
 - **Font weights**: `UIFont.Weight.<name>`, from the weight number of the web's map rounded to the nearest hundred from 100 to 900: `ultraLight`, `thin`, `light`, `regular`, `medium`, `semibold`, `bold`, `heavy`, `black`. An unknown weight fails the build.
 - **Other strings**: in double quotes, including the SVG text of the icons.
-- **Gradients**: a colour token with a `linear-gradient(…)` value prints as parts: `<Name>Angle` in CSS degrees (0 points up, clockwise, from 0 to less than 360), and `<Name>Stop<N>Color` and `<Name>Stop<N>Position` (0 to 1) for each stop. The direction is `<number>deg`, `to top`, `to right`, `to bottom`, `to left`, or none (180); other directions and other gradient functions fail the build.
+- **Gradients**: a color token with a `linear-gradient(…)` value prints as parts: `<Name>Angle` in CSS degrees (0 points up, clockwise, from 0 to less than 360), and `<Name>Stop<N>Color` and `<Name>Stop<N>Position` (0 to 1) for each stop. The direction is `<number>deg`, `to top`, `to right`, `to bottom`, `to left`, or none (180); other directions and other gradient functions fail the build.
 - **Shadows**: the CSS parts, and `<Name>Radius`, half the blur, for Core Animation's `shadowRadius`.
 
-`Color.swift` declares `ChassisTokensColor`, as described in [the design decisions](#the-colours-that-follow-dark-mode-are-written-after-the-builds).
+`Color.swift` declares `ChassisTokensColor`, as described in [the design decisions](#the-colors-that-follow-dark-mode-are-written-after-the-builds).
 
-**SwiftUI** (`ios-swiftui`): the same constants with `import SwiftUI`, colours as `Color(red: 1.000, green: 1.000, blue: 1.000, opacity: 1)` and weights as `Font.Weight.<name>`.
+**SwiftUI** (`ios-swiftui`): the same constants, without the `…Radius` of the shadows, with `import SwiftUI`, colors as `Color(red: 1.000, green: 1.000, blue: 1.000, opacity: 1)` and weights as `Font.Weight.<name>`.
 
 ### Android
 
@@ -215,7 +215,7 @@ The short scale names are `4xs`, `3xs`, `2xs`, `xs`, `sm`, `md`, `lg`, `xl` and 
 | ------------------------------------------------------------------------------------------- | ------------------------------------ | -------------------------- |
 | opacity, letter spacing (type, or `path[1]` `letterSpacing`), gradient angles and positions | `<item type="dimen" format="float">` | `0.4`                      |
 | font weights                                                                                | `<integer>`, 100 to 900              | `400`                      |
-| colours                                                                                     | `<color>`, ARGB hex                  | `#80161a1b`                |
+| colors                                                                                      | `<color>`, ARGB hex                  | `#80161a1b`                |
 | other numbers                                                                               | `<integer>`                          | none in the current tokens |
 | sizes                                                                                       | `<dimen>`                            | `16dp`, `22sp`             |
 | everything else                                                                             | `<string>`                           | `Inter`                    |
@@ -225,7 +225,7 @@ The short scale names are `4xs`, `3xs`, `2xs`, `xs`, `sm`, `md`, `lg`, `xl` and 
 - **Strings** are escaped: `&`, `<` and `>` become entities, `\`, `'` and `"` get a backslash, and so does a leading `@` or `?`.
 - **Gradients**: as on iOS, `<name>_angle`, `<name>_stop_<n>_color` and `<name>_stop_<n>_position`.
 
-The `res/` tree has the strings and the base colours in `values`, the colours of the first theme in `values` and of `dark` in `values-night`, and each screen's numbers in the folder of its qualifier. Other themes have only their flat file.
+The `res/` tree has the strings and the base colors in `values`, the colors of the first theme in `values` and of `dark` in `values-night`, and each screen's numbers in the folder of its qualifier. Other themes have only their flat file.
 
 **Compose** (`android-compose`): one Kotlin `object` per file with a getter per token, camelCase names and the Android values: `Color(0xFFFFFFFF)`, `16.dp`, `22.sp`, `FontWeight(400)`, `0.4f` for float items, `(-0.0052).em` for the letter spacing of a typography token, and Kotlin string literals.
 
@@ -246,7 +246,7 @@ The mobile rule is the [safe reference rule](#a-reference-is-printed-only-when-i
 An icon is an `asset` token whose value is an SVG document. It stays a string token on every platform, and the build of the main file also writes it as an asset:
 
 - iOS: `Icons.xcassets/<Name>.imageset/` with the SVG and a `Contents.json` that keeps the vector and renders it as a template.
-- Android: `res/drawable/<name>.xml`, a vector drawable made by `svg2vectordrawable` with black fills and three decimals, which a tint colours.
+- Android: `res/drawable/<name>.xml`, a vector drawable made by `svg2vectordrawable` with black fills and three decimals, which a tint colors.
 
 ## Checks
 
@@ -268,13 +268,13 @@ An icon is an `asset` token whose value is an SVG document. It stays a string to
 
 They are part of the output contract and kept on purpose. Don't fix one without a changeset that says what breaks.
 
-- **The main file repeats the other files.** `ChassisTokens.swift` and `main.xml` hold every token except the theme colours, with the component colours of the light theme and the numbers of the large screen. `main.xml` cannot share a resource folder with the flat string, colour or number files: aapt2 fails with `has a conflicting value`.
+- **The main file repeats the other files.** `ChassisTokens.swift` and `main.xml` hold every token except the theme colors, with the component colors of the light theme and the numbers of the large screen. `main.xml` cannot share a resource folder with the flat string, color or number files: aapt2 fails with `has a conflicting value`.
 - **The flat files stay for one release.** `ColorLight.swift` and `ColorDark.swift` next to `Color.swift`, and the flat Android files next to `res/`, are kept since 0.6.0 so that apps can move over.
 - **Web letter spacing is in ems of 16 px.** The web divides pixels by 16, so `-0.5px` at a 96 px font size prints `-0.0313em`, where the em of that font size is `-0.0052`, which Android prints. Chassis CSS reads the web value, so it stays.
 - **Letter spacing has different units per platform.** Web ems of 16 px, iOS points, Android and Compose ems of the font size; the letter spacing scale is in pixels on iOS and Android because it has no font size.
 - **Icons are in the string files too.** The SVG text of each icon is a string constant or resource next to its asset; on Android it is escaped.
 - **`dimension.base.*` is emitted** in the main and number files, though apps use the scales that reference it.
-- **Two spellings of one weight.** The source spells semi bold `Semi Bold` for Inter and `SemiBold` for other fonts, the style name of each font in Figma. The build maps both to `600`; don't normalise the source, or the fonts break in Figma.
+- **Two spellings of one weight.** The source spells semi bold `Semi Bold` for Inter and `SemiBold` for other fonts, the style name of each font in Figma. The build maps both to `600`; don't normalize the source, or the fonts break in Figma.
 - **The web presets share the web folder.** `web`, `web-scss`, `web-px` and `web-vw` all write to `dist/web/<app>/<brand>/`, so an app selects one of them.
 - **iOS shadows have a derived radius.** `…Radius` is half the CSS blur, close to Core Animation's `shadowRadius`; the spread has no Core Animation equivalent.
 - **Unused token sets.** 8 token sets are selected by no theme and never built; `brand-demo-a/app-base` still uses the format before DTCG. The `brand` group also has options (`default`, `demo-a`, `demo-b`) that the configuration does not build.

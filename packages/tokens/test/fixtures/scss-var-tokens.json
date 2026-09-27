@@ -32,7 +32,7 @@
     {
       "preset": "web-px",
       "group": "resolved",
-      "case": "colour that references a context colour",
+      "case": "color that references a context color",
       "token": "color.accordion.item-fg-color",
       "expected": "#161a1b"
     },
@@ -116,7 +116,7 @@
     {
       "preset": "web-vw",
       "group": "resolved",
-      "case": "colour that references a context colour",
+      "case": "color that references a context color",
       "token": "color.accordion.item-fg-color",
       "expected": "#161a1b"
     },
@@ -200,7 +200,7 @@
     {
       "preset": "web-scss",
       "group": "resolved",
-      "case": "colour that references a context colour",
+      "case": "color that references a context color",
       "token": "color.accordion.item-fg-color",
       "expected": "#161a1b"
     },

@@ -1,5 +1,5 @@
 {
-  "source": "Resolved chassis/demo tokens from the SD 4.4 build and the matching committed dist lines, extracted 2026-09-27. \"androidReferences\" holds tokens of the SD 5.5 build with outputReferences, the first token of the same file that each references, and the matching lines of build/tokens/test/golden/android-references/. \"iosReferences\" holds the same for the iOS build with outputReferences and build/tokens/test/golden/ios-references/. \"context\" holds the font size part that the templates pass for line height and letter spacing parts, and \"typographyParts\" holds such parts with the lines of dist/; both were captured from the build and the expected lines updated in Phase 13 (2026-09-27). Font weight cases were updated from dist/ in Phase 14. \"gradients\" holds two gradient tokens of color_light with the lines of dist/ and of the reference baselines, and the colours their stops reference, captured in Phase 15. \"themeColors\" holds constants of ColorLight.swift and ColorDark.swift (dist/ and the ios-references baseline) with their values and printed forms, copied in Phase 18. \"shadowParts\" holds expanded box shadow tokens of the iOS build with their Tokens Studio extensions, captured in Phase 22.",
+  "source": "Resolved chassis/demo tokens from the SD 4.4 build and the matching committed dist lines, extracted 2026-09-27. \"androidReferences\" holds tokens of the SD 5.5 build with outputReferences, the first token of the same file that each references, and the matching lines of build/tokens/test/golden/android-references/. \"iosReferences\" holds the same for the iOS build with outputReferences and build/tokens/test/golden/ios-references/. \"context\" holds the font size part that the templates pass for line height and letter spacing parts, and \"typographyParts\" holds such parts with the lines of dist/; both were captured from the build and the expected lines updated in Phase 13 (2026-09-27). Font weight cases were updated from dist/ in Phase 14. \"gradients\" holds two gradient tokens of color_light with the lines of dist/ and of the reference baselines, and the colors their stops reference, captured in Phase 15. \"themeColors\" holds constants of ColorLight.swift and ColorDark.swift (dist/ and the ios-references baseline) with their values and printed forms, copied in Phase 18. \"shadowParts\" holds expanded box shadow tokens of the iOS build with their Tokens Studio extensions, captured in Phase 22.",
   "ios": [
     {
       "case": "dimension becomes CGFloat",
@@ -516,7 +516,7 @@
       }
     },
     {
-      "case": "color: hex with brand colour",
+      "case": "color: hex with brand color",
       "token": {
         "name": "color_base_primitive_light_primary_10",
         "path": ["color", "base", "primitive", "light", "primary", "10"],
@@ -596,7 +596,7 @@
       }
     },
     {
-      "case": "colour reference",
+      "case": "color reference",
       "file": "color_light.xml",
       "token": {
         "name": "color_accordion_item_fg_color",
@@ -677,7 +677,7 @@
       }
     },
     {
-      "case": "base colour with a reference",
+      "case": "base color with a reference",
       "file": "main.xml",
       "token": {
         "name": "color_base_primitive_light_black_contrast",
@@ -827,7 +827,7 @@
       }
     },
     {
-      "case": "rgba() colour whose first reference is an opacity: other element",
+      "case": "rgba() color whose first reference is an opacity: other element",
       "file": "main.xml",
       "token": {
         "name": "bg_blur_default_color",
@@ -853,7 +853,7 @@
       }
     },
     {
-      "case": "rgba() colour whose first reference is a colour: alpha lost",
+      "case": "rgba() color whose first reference is a color: alpha lost",
       "file": "color_light.xml",
       "token": {
         "name": "bg_blur_default_color",
@@ -881,7 +881,7 @@
   ],
   "iosReferences": [
     {
-      "case": "colour reference",
+      "case": "color reference",
       "file": "ColorLight.swift",
       "token": {
         "name": "ColorAccordionItemFgColor",
@@ -972,7 +972,7 @@
       }
     },
     {
-      "case": "base colour with a reference",
+      "case": "base color with a reference",
       "file": "ChassisTokens.swift",
       "token": {
         "name": "ColorBasePrimitiveLightBlackContrast",
@@ -997,7 +997,7 @@
       }
     },
     {
-      "case": "base colour with a modifier",
+      "case": "base color with a modifier",
       "file": "ChassisTokens.swift",
       "token": {
         "name": "ColorBasePrimitiveLightPrimary10",
@@ -1047,7 +1047,7 @@
       }
     },
     {
-      "case": "rgba() colour whose first reference is a colour: alpha lost",
+      "case": "rgba() color whose first reference is a color: alpha lost",
       "file": "ColorLight.swift",
       "token": {
         "name": "BgBlurDefaultColor",
@@ -1072,7 +1072,7 @@
       }
     },
     {
-      "case": "rgba() colour whose first reference is an opacity: another Swift type",
+      "case": "rgba() color whose first reference is an opacity: another Swift type",
       "file": "ChassisTokens.swift",
       "token": {
         "name": "BgBlurDefaultColor",
@@ -1409,7 +1409,7 @@
   },
   "themeColors": [
     {
-      "case": "a colour that differs by theme",
+      "case": "a color that differs by theme",
       "name": "ColorContextDefaultBgMain",
       "type": "color",
       "light": {
@@ -1422,7 +1422,7 @@
       }
     },
     {
-      "case": "a colour that is the same in both themes",
+      "case": "a color that is the same in both themes",
       "name": "GradientPrimitiveBlackL000Stop1Color",
       "type": "color",
       "light": {
