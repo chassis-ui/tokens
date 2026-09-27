@@ -263,11 +263,9 @@ describe('typography', () => {
   })
 
   test('throws on a literal font weight', () => {
-    const token = variant('font.context.jumbo', {
-      original: { $extensions: { chassis: { originalFontWeight: 'Bold' } } }
-    })
+    const token = variant('font.context.jumbo', { original: { $extensions: {} } })
     expect(() => webValue(token, references)).toThrow(
-      'font.context.jumbo: Not a single reference: "Bold"'
+      'font.context.jumbo: fontWeight does not reference a token: "Bold"'
     )
   })
 

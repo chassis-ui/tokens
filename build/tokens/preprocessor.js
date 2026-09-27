@@ -9,6 +9,7 @@
  */
 
 import { typeDtcgDelegate, usesReferences, resolveReferences } from 'style-dictionary/utils'
+import { isReference, referencePath } from './css-var-policy.js'
 
 /**
  * Aligns token types and updates metadata.
@@ -94,7 +95,9 @@ function alignTypes(slice) {
 }
 
 /**
- * Adds font weight metadata to typography tokens.
+ * Adds the path of the referenced font weight to typography tokens. It is stored as
+ * path segments, not as a reference: after the weight and style split the path is a
+ * group, and Style Dictionary 5 rejects references to groups.
  * @param {Object} slice - The token or token group to process.
  */
 function addFontWeightExtension(slice) {
@@ -103,15 +106,13 @@ function addFontWeightExtension(slice) {
     slice.$type === 'typography' &&
     typeof slice.$value === 'object'
   if (isTypographyObj) {
-    const fontWeight = slice.original?.$value.fontWeight
-      ? slice.original.$value.fontWeight
-      : slice.$value.fontWeight
-    if (fontWeight) {
+    const fontWeight = slice.$value.fontWeight
+    if (isReference(fontWeight)) {
       slice.$extensions = {
         ...slice.$extensions,
         ['chassis']: {
           ...(slice.$extensions?.['chassis'] ?? {}),
-          originalFontWeight: ` ${fontWeight}`.slice(1)
+          fontWeightPath: referencePath(fontWeight)
         }
       }
     }
@@ -223,6 +224,32 @@ function addFontStyles(slice, refCopy) {
 }
 
 /**
+ * Numbers the tokens in source order. Style Dictionary 5 moves expanded typography and
+ * shadow tokens to the end of the dictionary; the formats sort by this number to print
+ * them where their source token is.
+ * @param {Object} slice - The token or token group to process.
+ * @param {Object} counter - The next number to give out.
+ */
+function addSourceOrder(slice, counter = { next: 0 }) {
+  const isToken = Object.hasOwn(slice, '$type') && Object.hasOwn(slice, '$value')
+  if (isToken) {
+    slice.$extensions = {
+      ...slice.$extensions,
+      ['chassis']: {
+        ...(slice.$extensions?.['chassis'] ?? {}),
+        sourceOrder: counter.next++
+      }
+    }
+  } else {
+    Object.values(slice).forEach((val) => {
+      if (typeof val === 'object' && val !== null) {
+        addSourceOrder(val, counter)
+      }
+    })
+  }
+}
+
+/**
  * Prepares the global token dictionary by aligning types and adding extensions.
  * @param {Object} dictionary - The token dictionary to process.
  * @returns {Object} - The processed token dictionary.
@@ -232,5 +259,6 @@ export default function (dictionary) {
   alignTypes(dict)
   addFontWeightExtension(dict)
   addFontStyles(dict, structuredClone(dict))
+  addSourceOrder(dict)
   return dict
 }

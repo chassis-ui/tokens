@@ -15,6 +15,17 @@ import scssVariablesTemplate from './templates/scss-variables.template.js'
 import scssChassisCSSTemplate from './templates/scss-chassis-css.template.js'
 
 /**
+ * Returns the tokens in source order, by the number the preprocessor gave them. Expanded
+ * tokens share the number of their source token and keep their order.
+ * @param {Object[]} tokens - The tokens of a file.
+ * @returns {Object[]} - A sorted copy.
+ */
+export function inSourceOrder(tokens) {
+  const order = (token) => token.$extensions['chassis'].sourceOrder
+  return [...tokens].sort((a, b) => order(a) - order(b))
+}
+
+/**
  * Registers custom formats with Style Dictionary.
  * @param {Object} StyleDictionary - The Style Dictionary instance.
  */
@@ -44,8 +55,7 @@ export default function (StyleDictionary) {
     format: async function ({ dictionary, options, file, platform }) {
       const { formatting, commentStyle } = options
       const header = await fileHeader({ file, formatting, commentStyle })
-      dictionary.allTokens = [...dictionary.allTokens]
-      // .sort(sortByName)
+      dictionary.allTokens = inSourceOrder(dictionary.allTokens)
       return scssChassisCSSTemplate({ dictionary, options, file, header, platform })
     }
   })
@@ -73,8 +83,7 @@ export default function (StyleDictionary) {
       const { formatting, commentStyle } = options
       const header = await fileHeader({ file, formatting, commentStyle })
       options = setSwiftFileProperties(options, 'class', platform.transformGroup)
-      dictionary.allTokens = [...dictionary.allTokens]
-      // .sort(sortByName)
+      dictionary.allTokens = inSourceOrder(dictionary.allTokens)
       return iosSwiftClassTemplate({ dictionary, options, file, header, platform })
     }
   })
@@ -87,8 +96,7 @@ export default function (StyleDictionary) {
     format: async function ({ dictionary, options, file, platform }) {
       const { formatting, commentStyle } = options
       const header = await fileHeader({ file, formatting, commentStyle })
-      dictionary.allTokens = [...dictionary.allTokens]
-      // .sort(sortByName)
+      dictionary.allTokens = inSourceOrder(dictionary.allTokens)
       return androidResourcesTemplate({ dictionary, options, file, header, platform })
     }
   })

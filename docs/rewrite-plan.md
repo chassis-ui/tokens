@@ -34,7 +34,7 @@ If a phase is too large, split it into `Na`, `Nb` rows. If a fact in this file i
 | 1 | iOS and Android value encoders | Opus | Done | `rewrite(phase 1)` | 2026-09-27 |
 | 2 | Web value encoder | Opus | Done | `rewrite(phase 2)` | 2026-09-27 |
 | 3 | Web `var(--…)` policy | Fable | Done | `rewrite(phase 3)` | 2026-09-27 |
-| 4 | Upgrade to SD 5.5 and sd-transforms 2.0 | Fable | Not started | | |
+| 4 | Upgrade to SD 5.5 and sd-transforms 2.0 | Fable | Done | `rewrite(phase 4)` | 2026-09-27 |
 | 5 | Replace forked preprocessor (optional) | Opus | Not started | | |
 | 6 | Build loop, cleanup, CI, docs | Sonnet | Not started | | |
 
@@ -50,7 +50,8 @@ If a phase is too large, split it into `Na`, `Nb` rows. If a fact in this file i
 
 ## Facts verified on 2026-09-27
 
-- The current build (SD 4.4.0, sd-transforms 1.3.0, Node 24) reproduces all 42 files in `dist/` exactly, apart from the timestamp line. It takes about 20 s for 36 runs and reports 200 to 256 token collisions per run.
+- The SD 4.4.0 build (sd-transforms 1.3.0, Node 24) reproduces all 42 files in `dist/` exactly, apart from the timestamp line. It takes about 20 s for 36 runs. It reports 200 to 264 token collisions per light run and 3000 to 3064 per dark run.
+- The SD 5.5.5 build (sd-transforms 2.0.3, Node 24), in place since Phase 4, reproduces the same 42 files in about 9.5 s. It counts collisions differently: 21 to 34 per light run and 715 to 728 per dark run.
 - `pnpm tokens:test` passes: 8 files, 99 tests.
 - Latest published versions: `style-dictionary` 5.5.5 (needs Node 22 or later), `@tokens-studio/sd-transforms` 2.0.3 (needs SD 5; its changelog lists no other breaking change).
 - Style Dictionary accepts `source` and `include` only at the top level of the config, in both 4.4 and 5.5.5. All platforms of one instance share one token dictionary.
@@ -69,7 +70,10 @@ If a phase is too large, split it into `Na`, `Nb` rows. If a fact in this file i
 - The Android template's `@type/name` reference branch never runs, because `outputReferences` is never set.
 - No token in the built sets has a description, and `dist/` contains no per-token comments.
 - The token set `brand-chassis/app-base` is not selected by any theme in `$themes.json`, so it is never built.
-- In SD 4.4 the `dictionary.tokens` that a format receives is already filtered by the file's filter. The web reference lookups therefore see only the tokens of the file being printed (`main.scss` has no `color.primitive.*`, for example). Recheck in SD 5.
+- The `dictionary.tokens` that a format receives is already filtered by the file's filter, in SD 4.4 and in SD 5.5. The web reference lookups therefore see only the tokens of the file being printed (`main.scss` has no `color.primitive.*`, for example).
+- SD 5 resolves references in every token property except `original`, including `$extensions`, and fails the build on a reference to a group. SD 4.4 left such a reference as it was.
+- SD 5 keeps tokens in a map. Expanding a typography or shadow token deletes it and appends its sub-tokens at the end, so expanded tokens come after all others. SD 4.4 expanded them in place.
+- Resolved web token values, printed values and reference lookups are the same in SD 4.4 and SD 5.5 for all 14 web files, including math on references and letter spacing.
 - Of the web reference policy, current tokens reach only these rows: `color.context`, `shadow.context`, `borderRadius.context`, `borderWidth.context` and the `borderRadius.base.<component>` follow. No emitted token is a single reference to `color.primitive`, `space.context`, `opacity.context`, `opacity.level` or `<group>.base.context`, and there are no `borderWidth.base.*` tokens.
 - Every object-valued typography token references its font family, weight and size. Line height is a reference (244) or a literal `125%` / `150%` (18). Every reference-valued typography token points at `font.text.<size>.<weight>`.
 - Prototype, run in a scratch copy against the real tokens: the iOS value logic moved into a pure `encode(token)` function with a print-only template. All 14 iOS files came out identical to `dist/`.
@@ -92,7 +96,7 @@ So each platform gets an encoder module:
 
 ### One instance per token-set list
 
-Phase 6 builds one `StyleDictionary` instance per row of the token-set table above, with one SD platform per target platform of the app. That is 16 instances and 24 platform exports instead of 36 runs. Expect roughly a third off the build time.
+Phase 6 builds one `StyleDictionary` instance per row of the token-set table above, with one SD platform per target platform of the app. That is 16 instances and 24 platform exports instead of 36 runs. Expect roughly a third off the build time, which is about 9.5 s since Phase 4.
 
 Every instance lists its sets in `source`, in the order `permutateThemes` returns them, exactly as today. This keeps override precedence and token order unchanged.
 
@@ -195,7 +199,7 @@ Goal: one command that proves a build output equals `dist/`. No change to build 
 - [x] `build/tokens/test/golden.test.js`: runs the same check under vitest.
 - [x] Acceptance: `pnpm tokens:verify` green; `git status` shows `dist/` untouched.
 
-Usage for later phases: `pnpm tokens:verify` checks all 42 files (about 20 s). `pnpm tokens:verify --platform ios` builds and checks one platform only (about 8 s). `node build/tokens/verify.js --skip-build` re-compares an existing `dist-next/`. The verifier deletes its output directory before building and refuses any directory that is or contains `dist/`.
+Usage for later phases: `pnpm tokens:verify` checks all 42 files (about 10 s since Phase 4). `pnpm tokens:verify --platform ios` builds and checks one platform only (about 4 s). `node build/tokens/verify.js --skip-build` re-compares an existing `dist-next/`. The verifier deletes its output directory before building and refuses any directory that is or contains `dist/`.
 
 ## Phase 1: iOS and Android value encoders
 
@@ -252,12 +256,21 @@ Behaviour in cases that no current token reaches, where the old template printed
 
 Goal: same output on the new libraries, upgraded in place.
 
-- [ ] `pnpm add -D style-dictionary@^5.5 @tokens-studio/sd-transforms@^2.0`. Add `"engines": { "node": ">=22" }` to `package.json`.
-- [ ] Set `log.errors.brokenReferences` to `throw`.
-- [ ] SD 5 allows references to tokens only, not to groups. Test whether `$extensions.chassis.originalFontWeight`, which holds a string like `{typography.fontWeight.text.mass}`, triggers this. That path is a group after the weight and style split. If it does, store the path in a form SD does not parse as a reference.
-- [ ] Check math on references (`dimension.base.*`, letter spacing) for rounding changes.
-- [ ] Record build time before and after in the Session log.
-- [ ] Acceptance: `pnpm tokens:verify` green; all tests green.
+- [x] `pnpm add -D style-dictionary@^5.5 @tokens-studio/sd-transforms@^2.0`. Add `"engines": { "node": ">=22" }` to `package.json`.
+- [x] Set `log.errors.brokenReferences` to `throw`.
+- [x] SD 5 allows references to tokens only, not to groups. Test whether `$extensions.chassis.originalFontWeight`, which holds a string like `{typography.fontWeight.text.mass}`, triggers this. That path is a group after the weight and style split. If it does, store the path in a form SD does not parse as a reference.
+- [x] Check math on references (`dimension.base.*`, letter spacing) for rounding changes.
+- [x] Record build time before and after in the Session log.
+- [x] Acceptance: `pnpm tokens:verify` green; all tests green.
+
+Result: installed `style-dictionary` 5.5.5 and `@tokens-studio/sd-transforms` 2.0.3. Two things broke and were fixed in the build code; no value changed.
+
+| Problem on SD 5 | Fix |
+| --- | --- |
+| All 36 runs failed with 16 reference errors: `originalFontWeight` held references to groups | The preprocessor stores `$extensions.chassis.fontWeightPath` as path segments (`['typography', 'fontWeight', 'text', 'mass']`), only when the font weight is a single reference. `originalFontWeight` is gone. The policy module reads the segments. |
+| 20 iOS and Android files had the same lines in another order: expanded typography and shadow tokens moved to the end | The preprocessor numbers every token in source order (`$extensions.chassis.sourceOrder`), after the weight and style split. Expanded sub-tokens inherit the number. The three formats sort by it with `inSourceOrder` from `formats.js`. |
+
+The dead `scss-variables.template.js` and `cx/test` transform still read `originalFontWeight`. They are not used by any configured app and go in Phase 6.
 
 ## Phase 5: replace the forked preprocessor (optional)
 
@@ -265,7 +278,7 @@ Goal: use the official `tokens-studio` preprocessor plus a small `chassis/types`
 
 - [ ] First check whether the official preprocessor in 2.0 splits plain `fontWeight` tokens. In 1.3.0 it does not. If it still does not, `chassis/types` must do the split itself.
 - [ ] Do this phase only if the result is clearly smaller than the 236-line fork. If not, keep the fork, mark this phase `Done` with the reason, and move on.
-- [ ] `chassis/types`: `letterSpacing` to `number`, `text` to `content`, the fontWeight split, the original font weight path for the policy module.
+- [ ] `chassis/types`: `letterSpacing` to `number`, `text` to `content`, the fontWeight split, and the two extensions the build relies on: `fontWeightPath` for the policy module and `sourceOrder` for the formats. `sourceOrder` must be given after the fontWeight split.
 - [ ] Acceptance: `pnpm tokens:verify` green; all tests green.
 
 ## Phase 6: build loop, cleanup, CI, docs
@@ -318,3 +331,4 @@ Append-only.
 - 2026-09-27 (Phase 1, Opus 5.5): Added `build/tokens/values/{shared,ios,android}.js`; the Swift and XML templates now only print. Removed the dead Android `@` reference branch, the unused `file.resourceType` / `file.resourceMap` overrides (no config sets them), the empty gradient blocks and the iOS `token.$value` overwrite. Added `values-ios.test.js` and `values-android.test.js` (56 tests) with a fixture of real resolved tokens. Verified: `pnpm tokens:verify` passes, 42 of 42 files; `pnpm tokens:test` passes, 156 tests; no new lint warnings. Injected three regressions (colour rounding, a dropped `sp` rule, the old `$value` overwrite); each failed the intended test. Surprises: (1) gradient colour tokens print their first colour stop on mobile, a tinycolor quirk now recorded under Known oddities; the unparseable-colour fallback (warn, print raw) is still unused by current tokens and was kept unchanged. (2) One diagnostic `build.js` run without `--out` rewrote the timestamp line of six `dist/ios` files; only timestamps changed, the files were restored with `git checkout`, and a ground rule now forbids building into `dist/`. Next: Phase 2.
 - 2026-09-27 (Phase 2, Opus 5.5): Added `build/tokens/values/web.js`. The SCSS template now calls `encode` for line height, letter spacing, assets and pass-through values, and `typographyMap` / `percentToEm` for typography maps; it keeps only the `var(--…)` policy and its reference resolution (250 to 211 lines). `cx/size/rem` and `cx/shadow/web` now call `remSize` / `cssShadow`. Removed `cx/typography/web` from the web config after the golden diff showed its output is never read. Added `values-web.test.js` (27 tests) with a fixture of real resolved tokens; shadow and rem inputs were captured from builds without those transforms, and every expected value matches `dist/`. Verified: `pnpm tokens:verify` passes, 42 of 42 files; `pnpm tokens:test` passes, 183 tests; no new lint warnings; `dist/` untouched. Injected five regressions (line-height rounding, typography key order, dropped `inset`, rem rounding, wrong font-size path); each failed the intended tests. Surprise: jumbo's `-0.0313em` letter spacing comes from `size.unit.nd05`, rounded by `ts/resolveMath`, while `dimension.base.nd05` prints `-0.03125rem`; both are covered. Next: Phase 3.
 - 2026-09-27 (Phase 3, Fable 5.1): Added `build/tokens/css-var-policy.js`; the SCSS template now prints one line per token through `webValue` and holds no policy (211 to 43 lines). The chain follow is a loop bounded by `MAX_HOPS = 1` that throws on a cycle. Removed `getFontWeight`, `getFontStyle` and `fontWeightMap` from `utils.js` with their 11 tests, and moved `abbreviateScale` and `scaleAbbreviations` from `utils.js` to the policy module with their tests. Added `css-var-policy.test.js` (129 tests) and a fixture of real tokens. Verified: `pnpm tokens:verify` passes, 42 of 42 files; `pnpm tokens:test` passes, 299 tests; no new lint warnings; `dist/` untouched. Injected twelve regressions (missing abbreviation, four dropped exceptions, two hops, follow across groups, typography naming, percent line height, dropped literal fallback, no cycle check); each failed the intended tests. Surprises: (1) six of the ten table rows and the whole `borderWidth` follow are not reached by any current token, so their tests use constructed references. (2) The plan expected `splitReference` and `isReference` to become unused, but the dead `scss-variables.template.js` imports them; they stay until Phase 6. (3) Four unreachable cases that printed broken text now throw (see the Phase 3 result); this does not change any output. Next: Phase 4.
+- 2026-09-27 (Phase 4, Fable 5.1): Upgraded in place to `style-dictionary` 5.5.5 and `@tokens-studio/sd-transforms` 2.0.3; added `engines.node >= 22` and an explicit `log.errors.brokenReferences: 'throw'`. Fixed the two breaks described in the Phase 4 result: the font weight path is stored as segments (`fontWeightPath`), and tokens are numbered in source order (`sourceOrder`) and sorted in the formats. Added 7 tests (`formats.test.js`, a block in `preprocessor.test.js` with source tokens copied from `tokens/`) and regenerated `css-var-tokens.json` from the SD 5.5 build; only the extension key changed in it. Build time for 36 runs: 19.7 s before, 9.5 s after (two runs each). Verified: `pnpm tokens:verify` passes, 42 of 42 files; `pnpm tokens:test` passes, 306 tests; no new lint warnings; `dist/` untouched; a scratch token with a missing reference fails the build. Compared a dump of all web tokens between SD 4.4 and SD 5.5: resolved values, printed values and lookups are identical, so math and rounding did not change. Injected three regressions (no sort, numbering before the weight split, font weight kept as a reference); each failed the intended tests, and the first and third also failed the golden check. Surprises: (1) SD 5 moves expanded tokens to the end, which the plan did not foresee. (2) The collision counts in the facts were wrong for dark runs and are corrected. (3) `pnpm add` reported two peer warnings for ESLint plugins that want ESLint 9 or lower; they exist without this change. Not checked: whether sd-transforms 2.0 splits plain `fontWeight` tokens, which is the first item of Phase 5. Next: Phase 5, which needs Ozgur's decision.

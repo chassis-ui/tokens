@@ -1,5 +1,5 @@
 {
-  "source": "Resolved chassis/docs web tokens from the SD 4.4 build and the matching committed dist lines, extracted 2026-09-27. \"tokens\" holds every token under test and every token it looks up, keyed by path.",
+  "source": "Resolved chassis/docs web tokens from the SD 5.5 build and the matching committed dist lines, extracted 2026-09-27. \"tokens\" holds every token under test and every token it looks up, keyed by path.",
   "cases": [
     {
       "group": "table",
@@ -568,7 +568,7 @@
         },
         "$extensions": {
           "chassis": {
-            "originalFontWeight": "{typography.fontWeight.text.mass}"
+            "fontWeightPath": ["typography", "fontWeight", "text", "mass"]
           }
         }
       }
@@ -662,7 +662,7 @@
         },
         "$extensions": {
           "chassis": {
-            "originalFontWeight": "{typography.fontWeight.text.normal}"
+            "fontWeightPath": ["typography", "fontWeight", "text", "normal"]
           }
         }
       }
@@ -757,7 +757,7 @@
         },
         "$extensions": {
           "chassis": {
-            "originalFontWeight": "{typography.fontWeight.text.strong}"
+            "fontWeightPath": ["typography", "fontWeight", "text", "strong"]
           }
         }
       }
@@ -833,7 +833,7 @@
         },
         "$extensions": {
           "chassis": {
-            "originalFontWeight": "{typography.fontWeight.text.mass}"
+            "fontWeightPath": ["typography", "fontWeight", "text", "mass"]
           }
         }
       }
@@ -895,7 +895,7 @@
         },
         "$extensions": {
           "chassis": {
-            "originalFontWeight": "{typography.fontWeight.text.normal}"
+            "fontWeightPath": ["typography", "fontWeight", "text", "normal"]
           }
         }
       }
@@ -943,7 +943,7 @@
         },
         "$extensions": {
           "chassis": {
-            "originalFontWeight": "{typography.fontWeight.html.blockquote}"
+            "fontWeightPath": ["typography", "fontWeight", "html", "blockquote"]
           }
         }
       }
@@ -1005,7 +1005,7 @@
         },
         "$extensions": {
           "chassis": {
-            "originalFontWeight": "{typography.fontWeight.text.normal}"
+            "fontWeightPath": ["typography", "fontWeight", "text", "normal"]
           }
         }
       }
@@ -1048,7 +1048,7 @@
         },
         "$extensions": {
           "chassis": {
-            "originalFontWeight": "{typography.fontWeight.text.strong}"
+            "fontWeightPath": ["typography", "fontWeight", "text", "strong"]
           }
         }
       }

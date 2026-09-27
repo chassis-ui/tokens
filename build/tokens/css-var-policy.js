@@ -240,15 +240,18 @@ function resolvedParts(original, references) {
  * @param {Object} token - The typography token.
  * @param {Object} references - Token lookups.
  * @returns {string} The Sass map.
- * @throws {Error} When family, weight or size is not a reference.
+ * @throws {Error} When family, weight or size does not reference a token.
  */
 function typographyObject(token, references) {
   const original = token.original.$value
   const family = referencePath(original.fontFamily)
-  const weight = referencePath(token.original.$extensions['chassis'].originalFontWeight)
+  const weight = token.original.$extensions?.['chassis']?.fontWeightPath
   const size = references.token(original.fontSize)
   const height = references.token(original.lineHeight)
 
+  if (!weight) {
+    throw new Error(`fontWeight does not reference a token: ${JSON.stringify(original.fontWeight)}`)
+  }
   if (!size) {
     throw new Error(`fontSize does not reference a token: ${JSON.stringify(original.fontSize)}`)
   }

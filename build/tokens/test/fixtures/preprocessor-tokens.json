@@ -1,0 +1,75 @@
+{
+  "source": "Token slices copied from tokens/base/brand-base.json and tokens/base/app-base.json on 2026-09-27, in source form.",
+  "tokens": {
+    "typography": {
+      "fontWeight": {
+        "text": {
+          "normal": {
+            "$type": "fontWeights",
+            "$value": "Regular"
+          },
+          "strong": {
+            "$type": "fontWeights",
+            "$value": "SemiBold"
+          },
+          "mass": {
+            "$type": "fontWeights",
+            "$value": "Bold"
+          },
+          "elegant": {
+            "$type": "fontWeights",
+            "$value": "Light"
+          }
+        },
+        "html": {
+          "body": {
+            "$type": "fontWeights",
+            "$value": "{typography.fontWeight.text.normal}"
+          },
+          "blockquote": {
+            "$type": "fontWeights",
+            "$value": "Light Italic"
+          }
+        }
+      }
+    },
+    "font": {
+      "context": {
+        "jumbo": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "{typography.fontFamily.text}",
+            "fontWeight": "{typography.fontWeight.text.mass}",
+            "lineHeight": "125%",
+            "fontSize": "{size.unit.96}",
+            "letterSpacing": "{size.unit.nd05}",
+            "paragraphSpacing": "{typography.paragraphSpacing.base.zero}",
+            "textCase": "{typography.textCase.base.none}",
+            "textDecoration": "{typography.textDecoration.base.none}"
+          }
+        },
+        "lead": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "{typography.fontFamily.text}",
+            "fontWeight": "{typography.fontWeight.text.normal}",
+            "lineHeight": "{typography.lineHeight.text.xlarge}",
+            "fontSize": "{typography.fontSize.text.xlarge}",
+            "letterSpacing": "{typography.letterSpacing.base.zero}",
+            "paragraphSpacing": "{typography.paragraphSpacing.base.zero}",
+            "textCase": "{typography.textCase.base.none}",
+            "textDecoration": "{typography.textDecoration.base.none}"
+          }
+        }
+      }
+    },
+    "shadow": {
+      "context": {
+        "small": {
+          "$type": "boxShadow",
+          "$value": "{shadow.elevation.default.10}"
+        }
+      }
+    }
+  }
+}
