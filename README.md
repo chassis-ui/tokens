@@ -272,7 +272,20 @@ $cx-border-radius-accordion-main: $cx-border-radius-context-medium !default;
 
 With references, load a colour file before `main.scss`: its colour tokens reference variables of `color-<theme>.scss`. The other files use only variables they declare themselves. The build fails when a reference names a variable that no file declares.
 
-`outputReferences` also works on `android`: tokens print `@color/…`, `@dimen/…` references to resources of the same file. A token prints its value instead when the reference would not compile or would change the value, for example a font size in `sp` that references a size in `dp`. The iOS format prints values only.
+`outputReferences` also works on `android`: tokens print `@color/…`, `@dimen/…` references to resources of the same file. A token prints its value instead when the reference would not compile or would change the value, for example a font size in `sp` that references a size in `dp`.
+
+On `ios`, `outputReferences` names another constant of the same class:
+
+```json
+"options": { "ios": { "outputReferences": true } }
+```
+
+```swift
+@objc public static let SizeUnit4 = DimensionBase4
+@objc public static let ColorAccordionItemFgColor = ColorContextDefaultFgMain
+```
+
+iOS and Android follow the same rule: a token names a constant or resource of its own file only when that one has the same type and value. Base colours and sizes computed with math print their values. Every Swift file declares the class `ChassisTokens`, so a constant cannot name one in another file.
 
 Each platform file in `build/tokens/config/` can also be edited directly; `web-px.js`, `web-vw.js` and `web-scss.js` each call `webConfig({ unit, format })` from `web.js`.
 
@@ -334,7 +347,7 @@ pnpm tokens:test
 **Test coverage includes:**
 - The golden check: a full build must match `dist/`
 - The build plan, CLI filters and platform configurations
-- The value encoders for iOS, Android and web
+- The value encoders for iOS, Android and web, and their references
 - The web `var(--…)` reference policy
 - The preprocessor, filters, transforms and token order
 - Logger output
@@ -362,7 +375,7 @@ A build runs in three steps:
 
 1. **Preprocess**: `preprocessor.js` aligns types, splits every font weight into weight and style, and numbers the tokens in source order.
 2. **Transform**: Style Dictionary transforms only what is safe before references are resolved: names, math, colour modifiers, `rem` sizes and CSS shadows.
-3. **Format**: The formats print one line per resolved token. Platform values (`UIColor(…)`, ARGB colours, `sp`/`dp`, quoting, `em`, `var(--…)`, `$…` and `@type/…` references) come from pure functions in `values/` and the web reference policies, which run after resolution.
+3. **Format**: The formats print one line per resolved token. Platform values (`UIColor(…)`, ARGB colours, `sp`/`dp`, quoting, `em`, `var(--…)`, `$…`, `@type/…` and Swift constant references) come from pure functions in `values/` and the web reference policies, which run after resolution.
 
 **Key modules:**
 - `build/tokens/build.js`: Build plan (one Style Dictionary instance per token-set list) and CLI
@@ -370,7 +383,7 @@ A build runs in three steps:
 - `build/tokens/preprocessor.js`: Token preprocessing
 - `build/tokens/filters.js`: Which tokens go into which file
 - `build/tokens/transforms.js`: Custom value transforms that run before resolution (`rem`, `px` and `vw` sizes, CSS shadows)
-- `build/tokens/formats.js` and `build/tokens/templates/`: Output formats
+- `build/tokens/formats.js` and `build/tokens/templates/`: Output formats; `templates/references.js` finds the token that an iOS or Android reference names
 - `build/tokens/values/`: Value encoders for iOS, Android and web
 - `build/tokens/reference-policy.js`: Which web tokens print a reference and which token it names, shared by both web formats
 - `build/tokens/css-var-policy.js`: The `var(--…)` names of the Chassis CSS format

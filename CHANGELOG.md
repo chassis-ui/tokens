@@ -10,6 +10,8 @@ The presets for teams that do not use Chassis CSS are kept, in the new structure
 - Android references are printed only when they compile and keep the value. 30 lines now print their value: 16 letter spacing references to a `<dimen>` as `@integer/…`, 8 font sizes in `sp` that referenced a size in `dp`, and 6 `rgba()` colours that referenced another element or lost their alpha
 - A SCSS variables reference to a variable that no file declares fails the build
 
+`outputReferences` now also works on iOS (new): a Swift constant names another constant of the same class, such as `SizeUnit4 = DimensionBase4`, with the same rule as Android.
+
 ### Changed
 - Upgraded to Style Dictionary 5.5 and `@tokens-studio/sd-transforms` 2.0; the build now needs Node.js 22 or later
 - Moved platform value encoding (`UIColor(…)`, ARGB colours, `sp`/`dp`, quoting, `em` units, `var(--…)` references) out of the output templates into tested modules (`build/tokens/values/` and the web reference policies), which run on fully resolved tokens
@@ -27,6 +29,7 @@ The presets for teams that do not use Chassis CSS are kept, in the new structure
 - `chassis.build.options`: Style Dictionary options by platform, such as `outputReferences`
 - `--config <file>` build option, to read the build configuration from a JSON file
 - `pnpm tokens:verify:presets`: checks each preset against its baseline in `build/tokens/test/golden/`
+- `outputReferences` for the iOS format: a constant names another constant of the same class when it has the same type and value; base colours and sizes computed with math print their values
 
 ### Removed
 - The unused `cx/typography/web` and `cx/test` transforms, the `cx/test` format and the `cx/colorTokens` filter

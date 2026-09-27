@@ -52,7 +52,7 @@ If a phase is too large, split it into `Na`, `Nb` rows. If a fact in this file i
 | 9 | SCSS variable references (`outputReferences`) | Opus | Done | `rewrite(phase 9)` | 2026-09-27 |
 | 10 | Android references (`outputReferences`) | Opus | Done | `rewrite(phase 10)` | 2026-09-27 |
 | 11 | Preset docs | Opus | Done | `rewrite(phase 11)` | 2026-09-27 |
-| 12 | iOS references (`outputReferences`), new | Opus | Not started | | |
+| 12 | iOS references (`outputReferences`), new | Opus | Done | `rewrite(phase 12)` | 2026-09-27 |
 
 ## Ground rules
 
@@ -569,15 +569,49 @@ Also corrected on the edited pages: the `config/web.js` transform list, which no
 
 Goal: `outputReferences: true` on `ios` prints the names of other constants of the same class where that is safe, and `dist/` does not change. This is a new option; the old build and the Phase 10 result say the iOS format prints values only.
 
-- [ ] `values/ios.js`: `reference(token, target)` returns the bare constant name of `target`, or `undefined` when there is no target, when the token is a base colour (the Android rule, confirmed 2026-09-27), when the value is a size computed with math, or when `encode(target) !== encode(token)`. Share the math pattern (`WITHOUT_MATH`) with `values/android.js` through `values/shared.js` instead of copying it.
-- [ ] `formats.js` passes `settings.outputReferences` from the platform options to the iOS template, as it does for Android.
-- [ ] `templates/ios-swift-class.template.js` looks the target up in `dictionary.tokens` with `getReferences`, as the Android template does, and prints `reference(…) || encode(token)`.
-- [ ] `verify.js`: extend the undeclared-reference check to `.swift`. A right-hand side that is a bare name must be a `static let` of the same file.
-- [ ] Baseline `build/tokens/test/golden/ios-references.json` (`{ "demo": ["ios"] }`, `options.ios.outputReferences`) and `ios-references/`, written by the new code. Before committing it, run a one-off comparison with `dist/ios/demo/chassis/` (see Ground rules) and record the counts in the result.
-- [ ] Unit tests in `values-ios.test.js` on real tokens captured from the build: a plain colour reference, a number reference (`SizeUnit4` on `DimensionBase4`), a string reference, a base colour, an `rgba({colour}, {opacity})` colour, a colour with a modifier, a size with math, and a target of another Swift type. Template tests in `formats.test.js`: names only with `outputReferences`, values without it. A `verify.test.js` case for an undeclared Swift name.
-- [ ] Docs: `README.md` (replace "The iOS format prints values only"), the `cx/ios-swift-class` section of `site/content/docs/getting-started/style-dictionary.mdx`, `site/content/docs/use-in-project/ios-applications.mdx`, and the `[Unreleased]` CHANGELOG entry. Examples are copied from the baseline. Ozgur approved this exception to the frozen `site/` folder on 2026-09-27, as for Phases 7 and 11.
-- [ ] Acceptance: `node build/tokens/verify.js --preset ios-references` green; `pnpm tokens:verify:presets` green for all six presets; `pnpm tokens:verify` green, 42 of 42 files, `dist/` untouched; all tests green; lint clean; the 7 baseline files type-check with `swiftc -typecheck` against the stand-in UIKit module; the edited pages pass Prettier and `pnpm astro:build` succeeds.
-- [ ] Regressions to inject: no value check, no math rule, no base colour rule, `outputReferences` ignored, undeclared Swift check off. Each must fail a test.
+- [x] `values/ios.js`: `reference(token, target)` returns the bare constant name of `target`, or `undefined` when there is no target, when the token is a base colour (the Android rule, confirmed 2026-09-27), when the value is a size computed with math, or when `encode(target) !== encode(token)`. Share the math pattern (`WITHOUT_MATH`) with `values/android.js` through `values/shared.js` instead of copying it. (Done as `isSizeWithMath` and `isBaseColor` in `shared.js`, which both platforms call.)
+- [x] `formats.js` passes `settings.outputReferences` from the platform options to the iOS template, as it does for Android.
+- [x] `templates/ios-swift-class.template.js` looks the target up in `dictionary.tokens` with `getReferences`, as the Android template does (moved into `templates/references.js`, which both templates call), and prints `reference(…) || encode(token)`.
+- [x] `verify.js`: extend the undeclared-reference check to `.swift`. A right-hand side that is a bare name must be a `static let` of the same file.
+- [x] Baseline `build/tokens/test/golden/ios-references.json` (`{ "demo": ["ios"] }`, `options.ios.outputReferences`) and `ios-references/`, written by the new code. Before committing it, run a one-off comparison with `dist/ios/demo/chassis/` (see Ground rules) and record the counts in the result.
+- [x] Unit tests in `values-ios.test.js` on real tokens captured from the build: a plain colour reference, a number reference (`SizeUnit4` on `DimensionBase4`), a string reference, a base colour, an `rgba({colour}, {opacity})` colour, a colour with a modifier, a size with math, and a target of another Swift type. Template tests in `formats.test.js`: names only with `outputReferences`, values without it. A `verify.test.js` case for an undeclared Swift name.
+- [x] Docs: `README.md` (replace "The iOS format prints values only"), the `cx/ios-swift-class` section of `site/content/docs/getting-started/style-dictionary.mdx`, `site/content/docs/use-in-project/ios-applications.mdx`, and the `[Unreleased]` CHANGELOG entry. Examples are copied from the baseline. Ozgur approved this exception to the frozen `site/` folder on 2026-09-27, as for Phases 7 and 11.
+- [x] Acceptance: `node build/tokens/verify.js --preset ios-references` green; `pnpm tokens:verify:presets` green for all six presets; `pnpm tokens:verify` green, 42 of 42 files, `dist/` untouched; all tests green; lint clean; the 7 baseline files type-check with `swiftc -typecheck` against the stand-in UIKit module; the edited pages pass Prettier and `pnpm astro:build` succeeds.
+- [x] Regressions to inject: no value check, no math rule, no base colour rule, `outputReferences` ignored, undeclared Swift check off. Each must fail a test.
+
+Result: `"options": { "ios": { "outputReferences": true } }` makes a Swift constant name the constant of the first token its value references, in the same file, when both encode to the same Swift text. Without the option the output is `dist/` as before.
+
+| File | Lines that name a constant | Lines that print a value |
+| --- | --- | --- |
+| `Main.swift` | 3745 | 2742 |
+| `String.swift` | 577 | 838 |
+| `ColorLight.swift`, `ColorDark.swift` | 741 each | 704 each |
+| `NumberLarge.swift`, `…Medium`, `…Small` | 2811 each | 220 each |
+
+The 14237 names are as the prototype measured, minus the 715 base colours of `Main.swift` that the Android rule turns into values.
+
+How the baseline was accepted, against `dist/ios/demo/chassis/`:
+
+- A one-off script compared every line: the 5648 lines that print a value equal the `dist/` line, and each of the 14237 names has, in `dist/`, the same value as the line that declares it in the same file. The script found a name changed on purpose (`SizeUnit4 = DimensionBase8`).
+- All 7 files type-check with `swiftc -typecheck` (Swift 6.4) against the stand-in UIKit module.
+- `Main.swift`, `NumberLarge.swift`, `ColorLight.swift` and `String.swift` of the baseline and of `dist/` were built as two modules each and read by a program that compares every constant at run time: 12378 constants, none differ.
+
+Modules:
+
+| Module | Change |
+| --- | --- |
+| `values/shared.js` | `isBaseColor(token)` and `isSizeWithMath(token)`, the two conditions both platforms share; `WITHOUT_MATH` moved here from `android.js` |
+| `values/ios.js` | `reference(token, target)`: the bare constant name, or `undefined` |
+| `values/android.js` | `reference` calls the shared conditions; no change in output |
+| `templates/references.js` (new) | `firstReferencedToken(token, tokens)`, the lookup both mobile templates use |
+| `templates/ios-swift-class.template.js` | prints `reference(…) \|\| encode(token)` with `settings.outputReferences` |
+| `formats.js` | passes `settings.outputReferences` to the iOS template |
+| `verify.js` | the undeclared-reference check reads Swift: a value that is a bare name must be a `static let` of the same file |
+
+Real cases in the fixture cover a case the plan expected to construct: `BgBlurDefaultColor` in `Main.swift` references `OpacityContextFgSubtle` first, a `CGFloat`, so the target is another Swift type. The colours with a lighten or darken modifier are all base colours, so the base colour rule already prints their values; their test moves one to a context path to reach the value check. The math rule changes no current line either: `SizeDatepickerWeekWidth` (`{size.datepicker.day-width}*7`) also fails the value check, as on Android, so only its unit test covers it.
+
+The docs describe the option in the README, the Style Dictionary page (iOS platform and `cx/ios-swift-class`), the iOS guide (a section "Constant References") and the CHANGELOG. Every Swift example is a line of the baseline.
+
 
 ## Known oddities in the output (kept as they are)
 
@@ -652,3 +686,4 @@ Append-only.
 
 - 2026-09-27 (Phase 12 planning, Opus 5.5): Ozgur asked whether iOS could have `outputReferences` like Android. Built a prototype template in a scratch copy and measured it (see Facts about iOS references): 4460 of 6487 lines of `Main.swift` print a name, and all 7 files type-check with a stand-in UIKit. The value check keeps 660 lines as values that would otherwise lose an alpha or a colour modifier. Added Phase 12, a design decision, a ground rule for its baseline and three open decisions. Nothing in `build/` changed. Next: Ozgur's answers to the open decisions, then Phase 12.
 - 2026-09-27 (Phase 12 decisions): Ozgur confirmed all three open decisions: the Android base colour rule, bare constant names, and the docs update with an exception to the frozen `site/` folder. The plan was committed as `rewrite(plan): add phase 12 for iOS references`. Next: Phase 12.
+- 2026-09-27 (Phase 12, Opus 5.5): Added `reference(token, target)` to `values/ios.js`, with the Android rule: same file, no base colours, no math on sizes, same encoded Swift text. Moved the shared conditions into `values/shared.js` and the target lookup into `templates/references.js`; the Android output did not change. The iOS format reads `outputReferences` from the platform options. Extended the undeclared-reference check of `verify.js` to Swift. Wrote the `ios-references` baseline with the new code and accepted it after a line-by-line comparison with `dist/ios/demo/chassis/`, a type check of all 7 files and a run-time comparison of 12378 constants. Added 9 real cases to `mobile-tokens.json` (`iosReferences`), 17 tests in `values-ios.test.js`, 2 template tests in `formats.test.js` and 2 Swift cases in `verify.test.js`. Updated `README.md`, `CHANGELOG.md`, the tests README and the two site pages. Verified: `node build/tokens/verify.js --preset ios-references` passes; `pnpm tokens:verify:presets` passes for all six presets; `pnpm tokens:verify` passes, 42 of 42 files; `pnpm tokens:test` passes, 582 tests; lint reports no warnings; `build/tokens` passes Prettier; the two site pages pass Prettier and `pnpm astro:build` built 22 pages; `dist/` untouched. Injected five regressions (no value check, no math rule, no base colour rule, `outputReferences` ignored, Swift undeclared check off); each failed 1 to 7 tests. Surprises: (1) a real token references a target of another Swift type (`BgBlurDefaultColor` on an opacity), so that case needs no construction. (2) All modifier colours are base colours, and the math token also fails the value check, so neither rule changes a current line on its own; unit tests cover both. (3) The number files grow (`DimensionBase16` is longer than `CGFloat(16)`) while the colour files shrink. All phases are done.

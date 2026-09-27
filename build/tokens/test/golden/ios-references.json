@@ -1,0 +1,7 @@
+{
+  "brands": ["chassis"],
+  "themes": ["light", "dark"],
+  "screens": ["large", "medium", "small"],
+  "apps": { "demo": ["ios"] },
+  "options": { "ios": { "outputReferences": true } }
+}

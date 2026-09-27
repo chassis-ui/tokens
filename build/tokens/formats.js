@@ -75,7 +75,8 @@ export default function (StyleDictionary) {
       const header = await fileHeader({ file, formatting, commentStyle })
       options = setSwiftFileProperties(options, 'class', platform.transformGroup)
       dictionary.allTokens = inSourceOrder(dictionary.allTokens)
-      return iosSwiftClassTemplate({ dictionary, options, file, header, platform })
+      const settings = { outputReferences: options.outputReferences === true }
+      return iosSwiftClassTemplate({ dictionary, options, file, header, platform, settings })
     }
   })
 

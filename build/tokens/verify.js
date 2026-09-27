@@ -53,13 +53,15 @@ const MAX_REPORTED_LINES = 5
 /**
  * References in values, and the declarations they need. An Android `@type/name` needs a
  * `<type name="name">` in the same file; a SCSS `$name` needs a `$name:` in a SCSS file
- * of the same directory.
+ * of the same directory; a Swift constant whose value is a bare name needs a
+ * `static let name` in the same file.
  */
 const XML_REFERENCE = /^\s*<\w+ name="[^"]+"[^>]*>@(\w+)\/(\w+)</gm
 // `<dimen name="…">`, or `<item name="…" type="dimen" …>`
 const XML_DECLARATION = /^\s*<(\w+) name="([^"]+)"(?: type="(\w+)")?[^>]*>/gm
 const SCSS_VALUE = /^\$[\w-]+: (.*)$/gm
 const SCSS_VARIABLE = /\$([\w-]+)/g
+const SWIFT_REFERENCE = /static let \w+ = ([A-Za-z_]\w*)$/gm
 
 /**
  * Lists files under a directory as sorted, `/`-separated relative paths.
@@ -128,6 +130,11 @@ function findUndeclaredReferences(texts) {
       )
       for (const [, type, name] of text.matchAll(XML_REFERENCE)) {
         if (!declared.has(`${type}/${name}`)) references.add(`@${type}/${name}`)
+      }
+    } else if (extname(file) === '.swift') {
+      const declared = new Set([...text.matchAll(NAME_PATTERNS['.swift'])].map(([, name]) => name))
+      for (const [, name] of text.matchAll(SWIFT_REFERENCE)) {
+        if (!declared.has(name)) references.add(name)
       }
     } else if (extname(file) === '.scss') {
       const declared = scssDeclared.get(file.slice(0, file.lastIndexOf('/')))

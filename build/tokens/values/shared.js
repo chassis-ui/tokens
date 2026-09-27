@@ -8,6 +8,12 @@
  */
 
 import Color from 'tinycolor2'
+import { tokenTypes } from '../utils.js'
+
+/**
+ * A size value without math: at most a leading sign or operator, then no operator.
+ */
+const WITHOUT_MATH = /^[+\-*/]?[^+*/]*$/
 
 /**
  * Parses a resolved colour value.
@@ -43,4 +49,27 @@ export function firstFontFamily(value) {
  */
 export function fontWeightName(value) {
   return value.replace(' ', '-').toLowerCase()
+}
+
+/**
+ * Checks whether a token is a size whose original value is computed with math, such as
+ * `{size.datepicker.day-width}*7`. A reference to the first token it names would drop
+ * the math.
+ *
+ * @param {Object} token - A resolved token with `$type` and `original`.
+ * @returns {boolean}
+ */
+export function isSizeWithMath(token) {
+  return tokenTypes.size.includes(token.$type) && !WITHOUT_MATH.test(token.original.$value)
+}
+
+/**
+ * Checks whether a token is a base colour, the raw palette behind the context colours.
+ * Base colours print their value on iOS and Android, also with `outputReferences`.
+ *
+ * @param {Object} token - A resolved token with `$type` and `path`.
+ * @returns {boolean}
+ */
+export function isBaseColor(token) {
+  return token.$type === 'color' && token.path[1] === 'base'
 }

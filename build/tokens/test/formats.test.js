@@ -1,7 +1,7 @@
 /**
  * @file formats.test.js
- * @description Tests for the token order of the formats and the lookups of the SCSS and
- *              Android templates, using real tokens.
+ * @description Tests for the token order of the formats and the lookups of the SCSS,
+ *              Android and iOS templates, using real tokens.
  * @copyright Copyright (c) 2026 Ozgur Gunes
  * @license MIT
  */
@@ -12,6 +12,7 @@ import { inSourceOrder } from '../formats.js'
 import { scssValue } from '../scss-var-policy.js'
 import scssTemplate from '../templates/scss.template.js'
 import androidTemplate from '../templates/android-resources.template.js'
+import iosTemplate from '../templates/ios-swift-class.template.js'
 
 /**
  * A token as the formats see it, reduced to what the order needs.
@@ -133,5 +134,34 @@ describe('Android template', () => {
 
   test('prints the value without it', () => {
     expect(print(false)).toContain(`<dimen name="size_unit_16">16dp</dimen>`)
+  })
+})
+
+describe('iOS template', () => {
+  const fixture = JSON.parse(
+    readFileSync(new URL('./fixtures/mobile-tokens.json', import.meta.url), 'utf8')
+  )
+  const { token, target } = fixture.iosReferences.find((c) => c.case === 'number reference')
+  const tree = { [target.path[0]]: { base: { [target.path[2]]: target } } }
+  const print = (settings) =>
+    iosTemplate({
+      dictionary: { tokens: tree, allTokens: [token] },
+      file: { destination: 'NumberLarge.swift' },
+      header: '',
+      options: { import: ['UIKit'], accessControl: 'public', objectType: 'class' },
+      settings
+    })
+
+  test('names the constant with outputReferences', () => {
+    expect(print({ outputReferences: true })).toContain(
+      '@objc public static let SizeUnit4 = DimensionBase4'
+    )
+  })
+
+  test('prints the value without it', () => {
+    expect(print({ outputReferences: false })).toContain(
+      '@objc public static let SizeUnit4 = CGFloat(4)'
+    )
+    expect(print(undefined)).toContain('@objc public static let SizeUnit4 = CGFloat(4)')
   })
 })

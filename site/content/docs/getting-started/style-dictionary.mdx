@@ -246,6 +246,7 @@ public class ChassisTokens {
 - Sizes and numbers: `CGFloat`
 - Font families: the first family of the stack only
 - Imports: UIKit
+- References: optional, with `outputReferences` (see [cx/ios-swift-class](#cxios-swift-class))
 
 ### Android Platform
 
@@ -556,6 +557,21 @@ public class ChassisTokens {
 - Proper import statements
 - Public accessibility
 - Typography and shadow tokens expanded into one property per part (`FontContextLeadFontSize`)
+- Optional references to other constants of the class, with `outputReferences`
+
+With `outputReferences`, a token whose value references another token of the same file names that constant:
+
+```json
+"options": { "ios": { "outputReferences": true } }
+```
+
+```swift
+@objc public static let SpaceContextMedium = SizeUnit16
+@objc public static let FontContextJumboFontFamily = TypographyFontFamilyText
+@objc public static let BgBlurDefaultColor = UIColor(red: 0.718, green: 0.753, blue: 0.761, alpha: 0.5)
+```
+
+The rule is the one of [cx/android-resources](#cxandroid-resources): a token names a constant only when that constant has the same Swift type and value. `BgBlurDefaultColor` is `rgba({color.primitive.neutral.30}, {opacity.context.fg-subtle})`, so it prints its value, because `ColorPrimitiveNeutral30` has no alpha. Base colours and sizes computed with math also print their values. Every file declares the class `ChassisTokens`, so a constant never names one in another file, and a component colour of `Main.swift` prints its value where the colour file names a context colour.
 
 ### cx/android-resources
 

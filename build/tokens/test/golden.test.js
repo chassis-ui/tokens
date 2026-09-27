@@ -46,6 +46,7 @@ describe('Golden output', () => {
   test('the presets with a baseline', () => {
     expect(presets).toEqual([
       'android-references',
+      'ios-references',
       'web-px',
       'web-px-references',
       'web-scss',

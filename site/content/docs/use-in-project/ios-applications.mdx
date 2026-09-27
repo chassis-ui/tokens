@@ -54,6 +54,21 @@ pnpm tokens --brand chassis --app demo --platform ios
 
 The files are written to `Submodules/ChassisTokens/dist/ios/demo/chassis/`. To build them for your own app, add it to `chassis.build.apps` in `package.json` and give it token sets in `tokens/$themes.json`; see [Style Dictionary]([[docsref:/getting-started/style-dictionary#build-options]]).
 
+### Constant References
+
+By default every constant holds its value. With the `outputReferences` option in `chassis.build` of `package.json`, a constant names the constant of the token it references instead, which keeps the relationships of the design tokens visible in Swift:
+
+```json
+"options": { "ios": { "outputReferences": true } }
+```
+
+```swift
+@objc public static let SizeUnit4 = DimensionBase4
+@objc public static let ColorAccordionItemFgColor = ColorContextDefaultFgMain
+```
+
+The value of each constant is the same with and without the option. A constant names another only in the same file and only when both have the same Swift type and value; base colours, sizes computed with math and colours such as `rgba({colour}, {opacity})` print their values. The files are used as before, one per module.
+
 ## Add the Tokens to Your App
 
 ### One File

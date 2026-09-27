@@ -76,6 +76,30 @@ describe('undeclared references', () => {
     ])
   })
 
+  const swift = (...lines) =>
+    `import UIKit\n\npublic class ChassisTokens {\n    ${lines.join('\n    ')}\n}\n`
+  const dimensionBase4 = '@objc public static let DimensionBase4 = CGFloat(4)'
+
+  test('accepts a Swift constant named in the same file', async () => {
+    const result = await check({
+      'ios/NumberLarge.swift': swift(
+        dimensionBase4,
+        '@objc public static let SizeUnit4 = DimensionBase4',
+        '@objc public static let ColorBgMain = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1)'
+      )
+    })
+    expect(result.ok, formatReport(result)).toBe(true)
+  })
+
+  test('reports a Swift constant that the file does not declare', async () => {
+    const result = await check({
+      'ios/Main.swift': swift('@objc public static let SizeUnit4 = DimensionBase4'),
+      'ios/NumberLarge.swift': swift(dimensionBase4)
+    })
+    expect(result.undeclared).toEqual([{ file: 'ios/Main.swift', references: ['DimensionBase4'] }])
+    expect(formatReport(result)).toContain('undeclared ios/Main.swift: DimensionBase4')
+  })
+
   test('accepts a SCSS variable of another file in the same directory', async () => {
     const result = await check({
       'web/main.scss':

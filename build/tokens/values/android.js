@@ -10,7 +10,13 @@
  */
 
 import { tokenTypes } from '../utils.js'
-import { firstFontFamily, fontWeightName, parseColor } from './shared.js'
+import {
+  firstFontFamily,
+  fontWeightName,
+  isBaseColor,
+  isSizeWithMath,
+  parseColor
+} from './shared.js'
 
 /**
  * Resource kind per token type group. Groups are checked in `tokenTypes` order and the
@@ -160,11 +166,6 @@ function encodeValue(token) {
 }
 
 /**
- * A size value without math: at most a leading sign or operator, then no operator.
- */
-const WITHOUT_MATH = /^[+\-*/]?[^+*/]*$/
-
-/**
  * Returns the reference a token prints with `outputReferences`: the resource of the
  * first token its original value references. There is none for base colours, for sizes
  * computed with math, and when the reference would not compile or would change the
@@ -177,11 +178,7 @@ const WITHOUT_MATH = /^[+\-*/]?[^+*/]*$/
  * @returns {string|undefined} e.g. `@dimen/size_unit_16`
  */
 export function reference(token, target) {
-  if (!target) return undefined
-  if (token.$type === 'color' && token.path[1] === 'base') return undefined
-  if (tokenTypes.size.includes(token.$type) && !WITHOUT_MATH.test(token.original.$value)) {
-    return undefined
-  }
+  if (!target || isBaseColor(token) || isSizeWithMath(token)) return undefined
 
   if (resourceKind(target) !== resourceKind(token) || encode(target) !== encode(token)) {
     return undefined

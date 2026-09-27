@@ -1,15 +1,22 @@
 /**
  * @file ios.js
- * @description Encodes resolved tokens as Swift values. Runs at print time, after Style
- *              Dictionary has resolved every reference, because converting a colour to
- *              `UIColor(…)` any earlier would break the tokens that reference it.
+ * @description Encodes resolved tokens as Swift values, and decides when a token names
+ *              another constant instead. Runs at print time, after Style Dictionary has
+ *              resolved every reference, because converting a colour to `UIColor(…)` any
+ *              earlier would break the tokens that reference it.
  *
  * @copyright Copyright (c) 2026 Ozgur Gunes
  * @license MIT
  */
 
 import { tokenTypes } from '../utils.js'
-import { firstFontFamily, fontWeightName, parseColor } from './shared.js'
+import {
+  firstFontFamily,
+  fontWeightName,
+  isBaseColor,
+  isSizeWithMath,
+  parseColor
+} from './shared.js'
 
 /**
  * Formats a colour as a `UIColor` with three-decimal channels.
@@ -50,4 +57,24 @@ export function encode(token) {
     return `"${value}"`
   }
   return String(value)
+}
+
+/**
+ * Returns the constant a token names with `outputReferences`: the constant of the first
+ * token its original value references. There is none for base colours and for sizes
+ * computed with math, as on Android, and none when the target encodes to other Swift
+ * text. The text holds the Swift type (`UIColor(…)`, `CGFloat(…)`, a string literal),
+ * so equal text means the same type and value.
+ *
+ * The name is not qualified with the class, because Swift finds a static member of the
+ * same class from a static property initializer, whatever `className` is.
+ *
+ * @param {Object} token - A resolved token with `$type`, `$value`, `path` and `original`.
+ * @param {Object} [target] - The first token that the original value references, from
+ *   the same file.
+ * @returns {string|undefined} e.g. `DimensionBase16`
+ */
+export function reference(token, target) {
+  if (!target || isBaseColor(token) || isSizeWithMath(token)) return undefined
+  return encode(target) === encode(token) ? target.name : undefined
 }
