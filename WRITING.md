@@ -121,7 +121,7 @@ The project has one word for each concept. Using a synonym makes the reader wond
 | platform                        | A build target: `web`, `ios`, `android`, and the presets                                  | target, output format                        |
 | preset                          | A platform for adopters: `web-scss`, `web-px`, `web-vw`, `ios-swiftui`, `android-compose` | variant, flavor                              |
 | token set                       | One JSON file of `source/`                                                                | token file, collection                       |
-| base, context, component tokens | The three token levels (see [§10](#10-standard-section-order))                            | primitive, semantic, alias tokens            |
+| base, context, component tokens | The three token levels (see [§10](#10-standard-section-order))                            | semantic, alias, global tokens               |
 | the build                       | The Style Dictionary build in `packages/tokens/build/`                                    | the pipeline, the generator, the script      |
 
 Figma has its own terms: a **Variable**, a **Collection**, a **Mode**. Use them capitalized, and only for Figma; a Figma Mode that holds the dark theme is still "the dark theme" outside Figma.
@@ -225,6 +225,8 @@ Each doc type has a section order. Skip sections that don't apply; don't reorder
 ```
 
 **The three levels.** _Base tokens_ hold raw values (`space.unit.16`, `color.base.*`). _Context tokens_ name a value by its role (`space.context.medium`, `color.context.default.fg-main`). _Component tokens_ assign a value to a part of a component (`space.button.medium-gap`). Use these three names in headings and prose; a category that lacks a level skips its section.
+
+**Color has a fourth group.** `color.base.*` holds the palette of every theme, and `color.primitive.*` holds the palette of the current theme, between the base and the context tokens. "Primitive" is the name of that group only; it gets a `## Primitive colors` section after `## Base tokens`, and no other category uses the word.
 
 **Platform docs** (`use-in-project/*.mdx`) follow the order in which a developer meets the tokens. The three platform docs share this order, so a section added to one usually belongs in all three:
 
