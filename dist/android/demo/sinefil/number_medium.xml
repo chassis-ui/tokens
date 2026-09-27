@@ -2,7 +2,7 @@
 
 <!--
   Do not edit directly, this file was auto-generated.
-  Generated on Sun, 27 Sep 2026 08:13:19 GMT
+  Generated on Sun, 27 Sep 2026 09:46:54 GMT
   Chassis - Tokens v0.5.3
   Copyright 2026 Ozgur Gunes
   Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
@@ -641,11 +641,11 @@
   <dimen name="border_radius_tab_large">4dp</dimen>
   <dimen name="border_radius_tab_small">2dp</dimen>
   <dimen name="border_radius_tooltip_main">1dp</dimen>
-  <dimen name="font_context_jumbo_line_height">125sp</dimen>
+  <dimen name="font_context_jumbo_line_height">120sp</dimen>
   <dimen name="font_context_jumbo_font_size">96sp</dimen>
-  <item name="font_context_jumbo_letter_spacing" type="dimen" format="float">-0.5</item>
+  <item name="font_context_jumbo_letter_spacing" type="dimen" format="float">-0.0052</item>
   <dimen name="font_context_jumbo_paragraph_spacing">0sp</dimen>
-  <dimen name="font_context_hero_line_height">125sp</dimen>
+  <dimen name="font_context_hero_line_height">80sp</dimen>
   <dimen name="font_context_hero_font_size">64sp</dimen>
   <item name="font_context_hero_letter_spacing" type="dimen" format="float">0</item>
   <dimen name="font_context_hero_paragraph_spacing">0sp</dimen>
@@ -1381,31 +1381,31 @@
   <dimen name="font_table_head_text_font_size">14sp</dimen>
   <item name="font_table_head_text_letter_spacing" type="dimen" format="float">0</item>
   <dimen name="font_table_head_text_paragraph_spacing">0sp</dimen>
-  <dimen name="font_website_hero_title_line_height">125sp</dimen>
+  <dimen name="font_website_hero_title_line_height">60sp</dimen>
   <dimen name="font_website_hero_title_font_size">48sp</dimen>
-  <item name="font_website_hero_title_letter_spacing" type="dimen" format="float">-1</item>
+  <item name="font_website_hero_title_letter_spacing" type="dimen" format="float">-0.0208</item>
   <dimen name="font_website_hero_title_paragraph_spacing">0sp</dimen>
-  <dimen name="font_website_hero_body_line_height">150sp</dimen>
+  <dimen name="font_website_hero_body_line_height">28.5sp</dimen>
   <dimen name="font_website_hero_body_font_size">19sp</dimen>
   <item name="font_website_hero_body_letter_spacing" type="dimen" format="float">0</item>
   <dimen name="font_website_hero_body_paragraph_spacing">0sp</dimen>
-  <dimen name="font_website_section_title_line_height">125sp</dimen>
+  <dimen name="font_website_section_title_line_height">40sp</dimen>
   <dimen name="font_website_section_title_font_size">32sp</dimen>
-  <item name="font_website_section_title_letter_spacing" type="dimen" format="float">-0.5</item>
+  <item name="font_website_section_title_letter_spacing" type="dimen" format="float">-0.0156</item>
   <dimen name="font_website_section_title_paragraph_spacing">0sp</dimen>
-  <dimen name="font_website_section_body_line_height">150sp</dimen>
+  <dimen name="font_website_section_body_line_height">28.5sp</dimen>
   <dimen name="font_website_section_body_font_size">19sp</dimen>
   <item name="font_website_section_body_letter_spacing" type="dimen" format="float">0</item>
   <dimen name="font_website_section_body_paragraph_spacing">0sp</dimen>
-  <dimen name="font_website_feature_title_line_height">150sp</dimen>
+  <dimen name="font_website_feature_title_line_height">28.5sp</dimen>
   <dimen name="font_website_feature_title_font_size">19sp</dimen>
   <item name="font_website_feature_title_letter_spacing" type="dimen" format="float">0</item>
   <dimen name="font_website_feature_title_paragraph_spacing">0sp</dimen>
-  <dimen name="font_website_feature_body_line_height">150sp</dimen>
+  <dimen name="font_website_feature_body_line_height">24sp</dimen>
   <dimen name="font_website_feature_body_font_size">16sp</dimen>
   <item name="font_website_feature_body_letter_spacing" type="dimen" format="float">0</item>
   <dimen name="font_website_feature_body_paragraph_spacing">0sp</dimen>
-  <dimen name="font_website_module_title_line_height">150sp</dimen>
+  <dimen name="font_website_module_title_line_height">24sp</dimen>
   <dimen name="font_website_module_title_font_size">16sp</dimen>
   <item name="font_website_module_title_letter_spacing" type="dimen" format="float">0</item>
   <dimen name="font_website_module_title_paragraph_spacing">0sp</dimen>

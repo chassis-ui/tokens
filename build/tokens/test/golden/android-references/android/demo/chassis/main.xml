@@ -2,7 +2,7 @@
 
 <!--
   Do not edit directly, this file was auto-generated.
-  Generated on Sun, 27 Sep 2026 07:17:19 GMT
+  Generated on Sun, 27 Sep 2026 09:46:36 GMT
   Chassis - Tokens v0.5.3
   Copyright 2026 Ozgur Gunes
   Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
@@ -2354,16 +2354,16 @@
   <dimen name="border_radius_tooltip_main">@dimen/border_radius_context_small</dimen>
   <string name="font_context_jumbo_font_family">@string/typography_font_family_text</string>
   <string name="font_context_jumbo_font_weight">bold</string>
-  <dimen name="font_context_jumbo_line_height">125sp</dimen>
+  <dimen name="font_context_jumbo_line_height">120sp</dimen>
   <dimen name="font_context_jumbo_font_size">96sp</dimen>
-  <item name="font_context_jumbo_letter_spacing" type="dimen" format="float">-0.5</item>
+  <item name="font_context_jumbo_letter_spacing" type="dimen" format="float">-0.0052</item>
   <dimen name="font_context_jumbo_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
   <string name="font_context_jumbo_text_case">@string/typography_text_case_base_none</string>
   <string name="font_context_jumbo_text_decoration">@string/typography_text_decoration_base_none</string>
   <string name="font_context_jumbo_font_style">normal</string>
   <string name="font_context_hero_font_family">@string/typography_font_family_text</string>
   <string name="font_context_hero_font_weight">bold</string>
-  <dimen name="font_context_hero_line_height">125sp</dimen>
+  <dimen name="font_context_hero_line_height">80sp</dimen>
   <dimen name="font_context_hero_font_size">64sp</dimen>
   <item name="font_context_hero_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_base_zero</item>
   <dimen name="font_context_hero_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
@@ -4019,16 +4019,16 @@
   <string name="font_table_head_text_font_style">normal</string>
   <string name="font_website_hero_title_font_family">@string/typography_font_family_text</string>
   <string name="font_website_hero_title_font_weight">bold</string>
-  <dimen name="font_website_hero_title_line_height">125sp</dimen>
+  <dimen name="font_website_hero_title_line_height">80sp</dimen>
   <dimen name="font_website_hero_title_font_size">@dimen/typography_font_size_website_hero_title</dimen>
-  <item name="font_website_hero_title_letter_spacing" type="dimen" format="float">-1</item>
+  <item name="font_website_hero_title_letter_spacing" type="dimen" format="float">-0.0156</item>
   <dimen name="font_website_hero_title_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
   <string name="font_website_hero_title_text_case">@string/typography_text_case_base_none</string>
   <string name="font_website_hero_title_text_decoration">@string/typography_text_decoration_base_none</string>
   <string name="font_website_hero_title_font_style">normal</string>
   <string name="font_website_hero_body_font_family">@string/typography_font_family_text</string>
   <string name="font_website_hero_body_font_weight">regular</string>
-  <dimen name="font_website_hero_body_line_height">150sp</dimen>
+  <dimen name="font_website_hero_body_line_height">33sp</dimen>
   <dimen name="font_website_hero_body_font_size">@dimen/typography_font_size_website_hero_body</dimen>
   <item name="font_website_hero_body_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_base_zero</item>
   <dimen name="font_website_hero_body_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
@@ -4037,16 +4037,16 @@
   <string name="font_website_hero_body_font_style">normal</string>
   <string name="font_website_section_title_font_family">@string/typography_font_family_text</string>
   <string name="font_website_section_title_font_weight">bold</string>
-  <dimen name="font_website_section_title_line_height">125sp</dimen>
+  <dimen name="font_website_section_title_line_height">60sp</dimen>
   <dimen name="font_website_section_title_font_size">@dimen/typography_font_size_website_section_title</dimen>
-  <item name="font_website_section_title_letter_spacing" type="dimen" format="float">-0.5</item>
+  <item name="font_website_section_title_letter_spacing" type="dimen" format="float">-0.0104</item>
   <dimen name="font_website_section_title_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
   <string name="font_website_section_title_text_case">@string/typography_text_case_base_none</string>
   <string name="font_website_section_title_text_decoration">@string/typography_text_decoration_base_none</string>
   <string name="font_website_section_title_font_style">normal</string>
   <string name="font_website_section_body_font_family">@string/typography_font_family_text</string>
   <string name="font_website_section_body_font_weight">regular</string>
-  <dimen name="font_website_section_body_line_height">150sp</dimen>
+  <dimen name="font_website_section_body_line_height">33sp</dimen>
   <dimen name="font_website_section_body_font_size">@dimen/typography_font_size_website_section_body</dimen>
   <item name="font_website_section_body_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_base_zero</item>
   <dimen name="font_website_section_body_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
@@ -4055,7 +4055,7 @@
   <string name="font_website_section_body_font_style">normal</string>
   <string name="font_website_feature_title_font_family">@string/typography_font_family_text</string>
   <string name="font_website_feature_title_font_weight">bold</string>
-  <dimen name="font_website_feature_title_line_height">150sp</dimen>
+  <dimen name="font_website_feature_title_line_height">33sp</dimen>
   <dimen name="font_website_feature_title_font_size">@dimen/typography_font_size_website_feature_title</dimen>
   <item name="font_website_feature_title_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_base_zero</item>
   <dimen name="font_website_feature_title_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
@@ -4064,7 +4064,7 @@
   <string name="font_website_feature_title_font_style">normal</string>
   <string name="font_website_feature_body_font_family">@string/typography_font_family_text</string>
   <string name="font_website_feature_body_font_weight">regular</string>
-  <dimen name="font_website_feature_body_line_height">150sp</dimen>
+  <dimen name="font_website_feature_body_line_height">28.5sp</dimen>
   <dimen name="font_website_feature_body_font_size">@dimen/typography_font_size_website_feature_body</dimen>
   <item name="font_website_feature_body_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_base_zero</item>
   <dimen name="font_website_feature_body_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
@@ -4073,7 +4073,7 @@
   <string name="font_website_feature_body_font_style">normal</string>
   <string name="font_website_module_title_font_family">@string/typography_font_family_text</string>
   <string name="font_website_module_title_font_weight">bold</string>
-  <dimen name="font_website_module_title_line_height">150sp</dimen>
+  <dimen name="font_website_module_title_line_height">28.5sp</dimen>
   <dimen name="font_website_module_title_font_size">@dimen/typography_font_size_website_module_title</dimen>
   <item name="font_website_module_title_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_base_zero</item>
   <dimen name="font_website_module_title_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>

@@ -29,13 +29,13 @@ describe('Android encode and resourceType', () => {
     vi.restoreAllMocks()
   })
 
-  test.each(fixture.android)('$case ($token.name)', ({ token, expected }) => {
+  test.each(fixture.android)('$case ($token.name)', ({ token, context, expected }) => {
     expect(resourceTag(token).tag).toBe(expected.element)
-    expect(encode(token)).toBe(expected.value)
+    expect(encode(token, context)).toBe(expected.value)
   })
 
   // Android integer resources reject fractions such as 0.4 (aapt2: invalid integer)
-  test.each(['float: opacity as is', 'float: letterSpacing type is a bare number'])(
+  test.each(['float: opacity as is', 'float: a letterSpacing sub-token is in em of the font size'])(
     '%s prints a float dimen item',
     (label) => {
       const { token } = fixture.android.find((c) => c.case === label)
@@ -63,9 +63,9 @@ describe('Android encode and resourceType', () => {
   })
 
   test('does not modify the token', () => {
-    for (const { token } of fixture.android) {
+    for (const { token, context } of fixture.android) {
       const frozen = Object.freeze({ ...token, path: Object.freeze([...token.path]) })
-      expect(() => encode(frozen)).not.toThrow()
+      expect(() => encode(frozen, context)).not.toThrow()
     }
   })
 
@@ -91,9 +91,9 @@ describe('Android reference', () => {
 
   test.each(fixture.androidReferences)(
     '$case ($token.name in $file)',
-    ({ token, target, expected }) => {
+    ({ token, target, context, expected }) => {
       expect(resourceTag(token).tag).toBe(expected.element)
-      expect(reference(token, target) ?? encode(token)).toBe(expected.value)
+      expect(reference(token, target, context) ?? encode(token, context)).toBe(expected.value)
     }
   )
 
@@ -132,12 +132,12 @@ describe('Android reference', () => {
   })
 
   test('names a float resource as a dimen', () => {
-    const { token, target } = caseNamed('float reference')
-    expect(reference(token, target)).toBe(`@dimen/${target.name}`)
+    const { token, target, context } = caseNamed('float reference')
+    expect(reference(token, target, context)).toBe(`@dimen/${target.name}`)
   })
 
   test('none when the target is another kind with the same number', () => {
-    const { token, target } = caseNamed('float reference')
+    const { token, target, context } = caseNamed('float reference')
     const dimen = {
       ...target,
       name: 'size_unit_0',
@@ -145,8 +145,8 @@ describe('Android reference', () => {
       $type: 'dimension',
       $value: '0'
     }
-    expect(encode(token)).toBe('0')
-    expect(reference(token, dimen)).toBeUndefined()
+    expect(encode(token, context)).toBe('0')
+    expect(reference(token, dimen, context)).toBeUndefined()
   })
 
   test('none when the target encodes to another value', () => {
@@ -192,5 +192,44 @@ describe('Android string escaping', () => {
     expect(encode(text)).toBe("it\\'s")
     const opacity = fixture.android.find((c) => c.case === 'float: opacity as is').token
     expect(encode(opacity)).toBe('0.1')
+  })
+})
+
+describe('Android typography parts', () => {
+  const parts = fixture.typographyParts.filter((c) => c.platform === 'android')
+  const partNamed = (name) => structuredClone(parts.find((c) => c.token.name === name))
+
+  test.each(parts)('$case ($token.name in $file)', ({ token, context, expected }) => {
+    expect(encode(token, context)).toBe(expected)
+  })
+
+  test('a percentage line height needs the font size', () => {
+    const { token } = partNamed('font_website_hero_body_line_height')
+    expect(() => encode(token)).toThrow(
+      'No font size for the percentage line height of font.website.hero-body.lineHeight'
+    )
+  })
+
+  test('a letter spacing part needs the font size', () => {
+    const { token } = partNamed('font_context_jumbo_letter_spacing')
+    expect(() => encode(token)).toThrow(
+      'No font size for the letter spacing of font.context.jumbo.letterSpacing'
+    )
+  })
+
+  test('the standalone letter spacing scale stays in px', () => {
+    const token = tokenNamed('typography_letter_spacing_base_zero')
+    expect(encode({ ...token, $value: '-0.5px' })).toBe('-0.5')
+  })
+
+  test('a letter spacing in percent or em is converted without the font size', () => {
+    const { token, context } = partNamed('font_context_jumbo_letter_spacing')
+    expect(encode({ ...token, $value: '-2%' }, context)).toBe('-0.02')
+    expect(encode({ ...token, $value: '-0.01em' }, context)).toBe('-0.01')
+  })
+
+  test('a line height in points does not use the font size', () => {
+    const { token, context } = partNamed('font_context_lead_line_height')
+    expect(encode(token, context)).toBe(encode(token, { fontSize: '1000' }))
   })
 })

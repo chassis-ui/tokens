@@ -15,7 +15,8 @@ import {
   fontWeightName,
   isBaseColor,
   isSizeWithMath,
-  parseColor
+  parseColor,
+  percentLineHeight
 } from './shared.js'
 
 /**
@@ -36,16 +37,18 @@ function encodeColor(token) {
  * Encodes a resolved token as the right-hand side of a Swift `static let`.
  *
  * @param {Object} token - A resolved token with `$type`, `$value` and `path`.
+ * @param {Object} [context] - `fontSize`: the font size part of the typography token
+ *   that the token is a part of, for a percentage line height.
  * @returns {string} The Swift value.
  */
-export function encode(token) {
+export function encode(token, context = {}) {
   const { $type: type, $value: value } = token
 
   if (type === 'color') {
     return encodeColor(token)
   }
   if (tokenTypes.number.includes(type) || tokenTypes.size.includes(type)) {
-    return `CGFloat(${parseFloat(value)})`
+    return `CGFloat(${percentLineHeight(token, context.fontSize) ?? parseFloat(value)})`
   }
   if (type === 'fontFamily') {
     return `"${firstFontFamily(value)}"`
@@ -72,9 +75,11 @@ export function encode(token) {
  * @param {Object} token - A resolved token with `$type`, `$value`, `path` and `original`.
  * @param {Object} [target] - The first token that the original value references, from
  *   the same file.
+ * @param {Object} [context] - The encoding context of the token, as for `encode`.
+ * @param {Object} [targetContext] - The encoding context of the target.
  * @returns {string|undefined} e.g. `DimensionBase16`
  */
-export function reference(token, target) {
+export function reference(token, target, context = {}, targetContext = {}) {
   if (!target || isBaseColor(token) || isSizeWithMath(token)) return undefined
-  return encode(target) === encode(token) ? target.name : undefined
+  return encode(target, targetContext) === encode(token, context) ? target.name : undefined
 }

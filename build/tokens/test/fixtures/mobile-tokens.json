@@ -1,5 +1,5 @@
 {
-  "source": "Resolved chassis/demo tokens from the SD 4.4 build and the matching committed dist lines, extracted 2026-09-27. \"androidReferences\" holds tokens of the SD 5.5 build with outputReferences, the first token of the same file that each references, and the matching lines of build/tokens/test/golden/android-references/. \"iosReferences\" holds the same for the iOS build with outputReferences and build/tokens/test/golden/ios-references/.",
+  "source": "Resolved chassis/demo tokens from the SD 4.4 build and the matching committed dist lines, extracted 2026-09-27. \"androidReferences\" holds tokens of the SD 5.5 build with outputReferences, the first token of the same file that each references, and the matching lines of build/tokens/test/golden/android-references/. \"iosReferences\" holds the same for the iOS build with outputReferences and build/tokens/test/golden/ios-references/. \"context\" holds the font size part that the templates pass for line height and letter spacing parts, and \"typographyParts\" holds such parts with the lines of dist/; both were captured from the build and the expected lines updated in Phase 13 (2026-09-27).",
   "ios": [
     {
       "case": "dimension becomes CGFloat",
@@ -222,14 +222,17 @@
       "expected": "\"semibold\""
     },
     {
-      "case": "dimension: percent line height keeps the number",
+      "case": "dimension: percent line height becomes points of the font size",
       "token": {
         "name": "FontContextJumboLineHeight",
         "path": ["font", "context", "jumbo", "lineHeight"],
         "$type": "dimension",
         "$value": "125%"
       },
-      "expected": "CGFloat(125)"
+      "expected": "CGFloat(120)",
+      "context": {
+        "fontSize": "96px"
+      }
     },
     {
       "case": "dimension: fractional px",
@@ -249,7 +252,10 @@
         "$type": "number",
         "$value": "-0.5px"
       },
-      "expected": "CGFloat(-0.5)"
+      "expected": "CGFloat(-0.5)",
+      "context": {
+        "fontSize": "96px"
+      }
     }
   ],
   "android": [
@@ -293,7 +299,7 @@
       }
     },
     {
-      "case": "dimen: sp for a lineHeight sub-token",
+      "case": "dimen: a percent lineHeight sub-token becomes sp of the font size",
       "token": {
         "name": "font_context_jumbo_line_height",
         "path": ["font", "context", "jumbo", "lineHeight"],
@@ -302,7 +308,10 @@
       },
       "expected": {
         "element": "dimen",
-        "value": "125sp"
+        "value": "120sp"
+      },
+      "context": {
+        "fontSize": "96px"
       }
     },
     {
@@ -371,7 +380,7 @@
       }
     },
     {
-      "case": "float: letterSpacing type is a bare number",
+      "case": "float: a letterSpacing sub-token is in em of the font size",
       "token": {
         "name": "font_context_jumbo_letter_spacing",
         "path": ["font", "context", "jumbo", "letterSpacing"],
@@ -380,7 +389,10 @@
       },
       "expected": {
         "element": "item",
-        "value": "-0.5"
+        "value": "-0.0052"
+      },
+      "context": {
+        "fontSize": "96px"
       }
     },
     {
@@ -682,6 +694,9 @@
       "expected": {
         "element": "item",
         "value": "@dimen/typography_letter_spacing_base_zero"
+      },
+      "context": {
+        "fontSize": "64px"
       }
     },
     {
@@ -802,7 +817,10 @@
       },
       "expected": {
         "element": "item",
-        "value": "-0.5"
+        "value": "-0.0052"
+      },
+      "context": {
+        "fontSize": "96px"
       }
     },
     {
@@ -1100,6 +1118,170 @@
       "expected": {
         "value": "UIColor(red: 0.718, green: 0.753, blue: 0.761, alpha: 0.5)"
       }
+    }
+  ],
+  "typographyParts": [
+    {
+      "case": "percent line height: points of the font size",
+      "platform": "ios",
+      "file": "Main.swift",
+      "token": {
+        "name": "FontContextJumboLineHeight",
+        "path": ["font", "context", "jumbo", "lineHeight"],
+        "$type": "dimension",
+        "$value": "125%",
+        "original": {
+          "$value": "125%"
+        }
+      },
+      "context": {
+        "fontSize": "96px"
+      },
+      "expected": "CGFloat(120)"
+    },
+    {
+      "case": "percent line height of a unitless font size",
+      "platform": "ios",
+      "file": "Main.swift",
+      "token": {
+        "name": "FontWebsiteHeroBodyLineHeight",
+        "path": ["font", "website", "hero-body", "lineHeight"],
+        "$type": "dimension",
+        "$value": "150%",
+        "original": {
+          "$value": "150%"
+        }
+      },
+      "context": {
+        "fontSize": "22"
+      },
+      "expected": "CGFloat(33)"
+    },
+    {
+      "case": "letter spacing stays in points",
+      "platform": "ios",
+      "file": "Main.swift",
+      "token": {
+        "name": "FontContextJumboLetterSpacing",
+        "path": ["font", "context", "jumbo", "letterSpacing"],
+        "$type": "number",
+        "$value": "-0.5px",
+        "original": {
+          "$value": "{size.unit.nd05}"
+        }
+      },
+      "context": {
+        "fontSize": "96px"
+      },
+      "expected": "CGFloat(-0.5)"
+    },
+    {
+      "case": "percent line height: sp of the font size",
+      "platform": "android",
+      "file": "number_small.xml",
+      "token": {
+        "name": "font_website_hero_body_line_height",
+        "path": ["font", "website", "hero-body", "lineHeight"],
+        "$type": "dimension",
+        "$value": "150%",
+        "original": {
+          "$value": "150%"
+        }
+      },
+      "context": {
+        "fontSize": "19"
+      },
+      "expected": "28.5sp"
+    },
+    {
+      "case": "line height in points keeps its value",
+      "platform": "android",
+      "file": "main.xml",
+      "token": {
+        "name": "font_context_lead_line_height",
+        "path": ["font", "context", "lead", "lineHeight"],
+        "$type": "dimension",
+        "$value": "32",
+        "original": {
+          "$value": "{typography.lineHeight.text.xlarge}"
+        }
+      },
+      "context": {
+        "fontSize": "22"
+      },
+      "expected": "32sp"
+    },
+    {
+      "case": "letter spacing in em of the font size",
+      "platform": "android",
+      "file": "main.xml",
+      "token": {
+        "name": "font_context_jumbo_letter_spacing",
+        "path": ["font", "context", "jumbo", "letterSpacing"],
+        "$type": "letterSpacing",
+        "$value": "-0.5px",
+        "original": {
+          "$value": "{size.unit.nd05}"
+        }
+      },
+      "context": {
+        "fontSize": "96px"
+      },
+      "expected": "-0.0052"
+    },
+    {
+      "case": "letter spacing of -1px at 64",
+      "platform": "android",
+      "file": "main.xml",
+      "token": {
+        "name": "font_website_hero_title_letter_spacing",
+        "path": ["font", "website", "hero-title", "letterSpacing"],
+        "$type": "letterSpacing",
+        "$value": "-1px",
+        "original": {
+          "$value": "{size.unit.n1}"
+        }
+      },
+      "context": {
+        "fontSize": "64"
+      },
+      "expected": "-0.0156"
+    },
+    {
+      "case": "letter spacing rounded to four decimals",
+      "platform": "android",
+      "file": "number_small.xml",
+      "token": {
+        "name": "font_website_section_title_letter_spacing",
+        "path": ["font", "website", "section-title", "letterSpacing"],
+        "$type": "letterSpacing",
+        "$value": "-0.5px",
+        "original": {
+          "$value": "{size.unit.nd05}"
+        }
+      },
+      "context": {
+        "fontSize": "26"
+      },
+      "expected": "-0.0192"
+    },
+    {
+      "case": "zero letter spacing",
+      "platform": "android",
+      "file": "main.xml",
+      "token": {
+        "name": "font_context_hero_letter_spacing",
+        "path": ["font", "context", "hero", "letterSpacing"],
+        "$type": "letterSpacing",
+        "$value": "0px",
+        "original": {
+          "$value": "{typography.letterSpacing.base.zero}"
+        }
+      },
+      "context": {
+        "fontSize": "64px"
+      },
+      "expected": "0"
     }
   ]
 }

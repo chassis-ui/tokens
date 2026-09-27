@@ -4,7 +4,7 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Sun, 27 Sep 2026 08:52:14 GMT
+// Generated on Sun, 27 Sep 2026 09:46:35 GMT
 // Chassis - Tokens v0.5.3
 // Copyright 2026 Ozgur Gunes
 // Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
@@ -645,11 +645,11 @@ public class ChassisTokens {
     @objc public static let BorderRadiusTabLarge = BorderRadiusContextLarge
     @objc public static let BorderRadiusTabSmall = BorderRadiusContextMedium
     @objc public static let BorderRadiusTooltipMain = BorderRadiusContextSmall
-    @objc public static let FontContextJumboLineHeight = CGFloat(125)
+    @objc public static let FontContextJumboLineHeight = CGFloat(120)
     @objc public static let FontContextJumboFontSize = SizeUnit96
     @objc public static let FontContextJumboLetterSpacing = SizeUnitNd05
     @objc public static let FontContextJumboParagraphSpacing = TypographyParagraphSpacingBaseZero
-    @objc public static let FontContextHeroLineHeight = CGFloat(125)
+    @objc public static let FontContextHeroLineHeight = CGFloat(80)
     @objc public static let FontContextHeroFontSize = SizeUnit64
     @objc public static let FontContextHeroLetterSpacing = TypographyLetterSpacingBaseZero
     @objc public static let FontContextHeroParagraphSpacing = TypographyParagraphSpacingBaseZero
@@ -1385,31 +1385,31 @@ public class ChassisTokens {
     @objc public static let FontTableHeadTextFontSize = TypographyFontSizeTextSmall
     @objc public static let FontTableHeadTextLetterSpacing = TypographyLetterSpacingBaseZero
     @objc public static let FontTableHeadTextParagraphSpacing = TypographyParagraphSpacingBaseZero
-    @objc public static let FontWebsiteHeroTitleLineHeight = CGFloat(125)
+    @objc public static let FontWebsiteHeroTitleLineHeight = CGFloat(40)
     @objc public static let FontWebsiteHeroTitleFontSize = TypographyFontSizeWebsiteHeroTitle
     @objc public static let FontWebsiteHeroTitleLetterSpacing = SizeUnitN1
     @objc public static let FontWebsiteHeroTitleParagraphSpacing = TypographyParagraphSpacingBaseZero
-    @objc public static let FontWebsiteHeroBodyLineHeight = CGFloat(150)
+    @objc public static let FontWebsiteHeroBodyLineHeight = CGFloat(28.5)
     @objc public static let FontWebsiteHeroBodyFontSize = TypographyFontSizeWebsiteHeroBody
     @objc public static let FontWebsiteHeroBodyLetterSpacing = TypographyLetterSpacingBaseZero
     @objc public static let FontWebsiteHeroBodyParagraphSpacing = TypographyParagraphSpacingBaseZero
-    @objc public static let FontWebsiteSectionTitleLineHeight = CGFloat(125)
+    @objc public static let FontWebsiteSectionTitleLineHeight = CGFloat(32.5)
     @objc public static let FontWebsiteSectionTitleFontSize = TypographyFontSizeWebsiteSectionTitle
     @objc public static let FontWebsiteSectionTitleLetterSpacing = SizeUnitNd05
     @objc public static let FontWebsiteSectionTitleParagraphSpacing = TypographyParagraphSpacingBaseZero
-    @objc public static let FontWebsiteSectionBodyLineHeight = CGFloat(150)
+    @objc public static let FontWebsiteSectionBodyLineHeight = CGFloat(24)
     @objc public static let FontWebsiteSectionBodyFontSize = TypographyFontSizeWebsiteSectionBody
     @objc public static let FontWebsiteSectionBodyLetterSpacing = TypographyLetterSpacingBaseZero
     @objc public static let FontWebsiteSectionBodyParagraphSpacing = TypographyParagraphSpacingBaseZero
-    @objc public static let FontWebsiteFeatureTitleLineHeight = CGFloat(150)
+    @objc public static let FontWebsiteFeatureTitleLineHeight = CGFloat(28.5)
     @objc public static let FontWebsiteFeatureTitleFontSize = TypographyFontSizeWebsiteFeatureTitle
     @objc public static let FontWebsiteFeatureTitleLetterSpacing = TypographyLetterSpacingBaseZero
     @objc public static let FontWebsiteFeatureTitleParagraphSpacing = TypographyParagraphSpacingBaseZero
-    @objc public static let FontWebsiteFeatureBodyLineHeight = CGFloat(150)
+    @objc public static let FontWebsiteFeatureBodyLineHeight = CGFloat(24)
     @objc public static let FontWebsiteFeatureBodyFontSize = TypographyFontSizeWebsiteFeatureBody
     @objc public static let FontWebsiteFeatureBodyLetterSpacing = TypographyLetterSpacingBaseZero
     @objc public static let FontWebsiteFeatureBodyParagraphSpacing = TypographyParagraphSpacingBaseZero
-    @objc public static let FontWebsiteModuleTitleLineHeight = CGFloat(150)
+    @objc public static let FontWebsiteModuleTitleLineHeight = CGFloat(24)
     @objc public static let FontWebsiteModuleTitleFontSize = TypographyFontSizeWebsiteModuleTitle
     @objc public static let FontWebsiteModuleTitleLetterSpacing = TypographyLetterSpacingBaseZero
     @objc public static let FontWebsiteModuleTitleParagraphSpacing = TypographyParagraphSpacingBaseZero

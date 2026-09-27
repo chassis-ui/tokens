@@ -194,8 +194,8 @@ Typography tokens are split into one resource per property:
 
 - **Font family** is the first family of the stack. Map it to a font resource that your app bundles.
 - **Font weight** is a name such as `regular` or `semi-bold`, not a number. Map the names your app uses to weights or font resources.
-- **Line height** is in `sp`, except in tokens whose design value is a percentage: those print the percentage as a size, such as `125sp` for `font_context_jumbo_line_height`.
-- **Letter spacing** is in design pixels. `TextView.setLetterSpacing` takes ems, so divide by the font size; in Compose, `value.sp` is close at the default font scale.
+- **Line height** is in `sp`. A design value in percent is converted with the font size of the same typography token: `font_context_jumbo_line_height` is `125%` of `96`, so `120sp`.
+- **Letter spacing** of a typography token is in ems of its font size, which `TextView.setLetterSpacing` and `android:letterSpacing` take; in Compose, use `value.em`. `font_context_jumbo_letter_spacing` is `-0.0052`: `-0.5` design pixels at `96`. The letter spacing scale (`typography_letter_spacing_*`) has no font size and stays in design pixels.
 
 ## Shadows
 

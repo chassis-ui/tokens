@@ -1,6 +1,7 @@
 /**
  * @file references.js
- * @description The reference lookup of the iOS and Android templates.
+ * @description The token lookups of the iOS and Android templates: the token a reference
+ *              names, and the font size a typography part is encoded with.
  *
  * @copyright Copyright (c) 2026 Ozgur Gunes
  * @license MIT
@@ -22,4 +23,25 @@ export function firstReferencedToken(token, tokens) {
     usesDtcg: true,
     warnImmediately: false
   })[0]
+}
+
+/**
+ * Parts of a typography token whose value depends on the font size of the same token.
+ */
+const FONT_SIZE_PARTS = ['lineHeight', 'letterSpacing']
+
+/**
+ * Returns the encoding context of a token: for the line height and letter spacing parts
+ * of a typography token, the resolved font size part of the same token. Style Dictionary
+ * expands the parts of a typography token into the same file, next to each other.
+ *
+ * @param {Object} token - A resolved token with `path`.
+ * @param {Object} tokens - The token tree of the file, `dictionary.tokens`.
+ * @returns {Object} `{ fontSize }`, or `{}` for other tokens.
+ */
+export function encodingContext(token, tokens) {
+  const { path } = token
+  if (!FONT_SIZE_PARTS.includes(path[path.length - 1])) return {}
+  const fontSize = [...path.slice(0, -1), 'fontSize'].reduce((node, key) => node?.[key], tokens)
+  return fontSize?.$value === undefined ? {} : { fontSize: fontSize.$value }
 }

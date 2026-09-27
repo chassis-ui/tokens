@@ -15,7 +15,9 @@ import {
   fontWeightName,
   isBaseColor,
   isSizeWithMath,
-  parseColor
+  letterSpacingEm,
+  parseColor,
+  percentLineHeight
 } from './shared.js'
 
 /**
@@ -123,10 +125,12 @@ export function escapeString(text) {
  * resources are escaped.
  *
  * @param {Object} token - A resolved token with `$type`, `$value` and `path`.
+ * @param {Object} [context] - `fontSize`: the font size part of the typography token
+ *   that the token is a part of, for a percentage line height and a letter spacing.
  * @returns {string} The resource value.
  */
-export function encode(token) {
-  const value = encodeValue(token)
+export function encode(token, context = {}) {
+  const value = encodeValue(token, context)
   return resourceKind(token) === 'string' ? escapeString(value) : value
 }
 
@@ -135,9 +139,10 @@ export function encode(token) {
  * matters and matches the frozen output contract.
  *
  * @param {Object} token - A resolved token with `$type`, `$value` and `path`.
+ * @param {Object} context - As for `encode`.
  * @returns {string} The value.
  */
-function encodeValue(token) {
+function encodeValue(token, context) {
   const { $type: type, $value: value, path } = token
 
   if (type === 'color') {
@@ -154,10 +159,10 @@ function encodeValue(token) {
     SP_TYPES.includes(type) ||
     path[1] === 'paragraphSpacing'
   ) {
-    return `${parseFloat(value)}sp`
+    return `${percentLineHeight(token, context.fontSize) ?? parseFloat(value)}sp`
   }
   if (path[1] === 'letterSpacing' || type === 'letterSpacing') {
-    return `${parseFloat(value)}`
+    return `${letterSpacingEm(token, context.fontSize) ?? parseFloat(value)}`
   }
   if (tokenTypes.size.includes(type)) {
     return `${parseFloat(value)}dp`
@@ -175,12 +180,17 @@ function encodeValue(token) {
  * @param {Object} token - A resolved token with `$type`, `$value`, `path` and `original`.
  * @param {Object} [target] - The first token that the original value references, from
  *   the same file.
+ * @param {Object} [context] - The encoding context of the token, as for `encode`.
+ * @param {Object} [targetContext] - The encoding context of the target.
  * @returns {string|undefined} e.g. `@dimen/size_unit_16`
  */
-export function reference(token, target) {
+export function reference(token, target, context = {}, targetContext = {}) {
   if (!target || isBaseColor(token) || isSizeWithMath(token)) return undefined
 
-  if (resourceKind(target) !== resourceKind(token) || encode(target) !== encode(token)) {
+  if (
+    resourceKind(target) !== resourceKind(token) ||
+    encode(target, targetContext) !== encode(token, context)
+  ) {
     return undefined
   }
   return `@${resourceType(token)}/${target.name}`

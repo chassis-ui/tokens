@@ -193,7 +193,7 @@ ChassisTokensLarge.ChassisTokens.FontContextLeadLetterSpacing    // 0
 
 - **Font family** is the first family of the stack. `UIFont(name:size:)` returns `nil` unless the app bundles and registers that font.
 - **Font weight** is a name such as `"regular"` or `"semi-bold"`, not a `UIFont.Weight`. Map the names your app uses to weights or to font file names.
-- **Line height** is in points, except in tokens whose design value is a percentage: those print the percentage as a number, such as `125`.
+- **Line height** is in points. A design value in percent is converted with the font size of the same typography token: `FontContextJumboLineHeight` is `125%` of `96`, so `120`.
 - **Letter spacing** is in points.
 
 ## Shadows and Opacity

@@ -165,3 +165,50 @@ describe('iOS template', () => {
     expect(print(undefined)).toContain('@objc public static let SizeUnit4 = CGFloat(4)')
   })
 })
+
+describe('Typography parts in the mobile templates', () => {
+  const fixture = JSON.parse(
+    readFileSync(new URL('./fixtures/mobile-tokens.json', import.meta.url), 'utf8')
+  )
+  // A typography token expanded into a font size part and a line height part
+  const partsOf = (platform) => {
+    const { token, context } = fixture.typographyParts.find(
+      (c) => c.platform === platform && c.token.path.join('.') === 'font.context.jumbo.lineHeight'
+    )
+    const fontSize = {
+      ...token,
+      path: [...token.path.slice(0, -1), 'fontSize'],
+      $value: context.fontSize
+    }
+    const tree = { font: { context: { jumbo: { fontSize, lineHeight: token } } } }
+    return { tree, token }
+  }
+
+  test('the iOS template encodes a percentage line height with its font size', () => {
+    const { tree, token } = partsOf('ios')
+    const swift = iosTemplate({
+      dictionary: { tokens: tree, allTokens: [token] },
+      file: { destination: 'Main.swift' },
+      header: '',
+      options: { import: ['UIKit'], accessControl: 'public', objectType: 'class' }
+    })
+    expect(swift).toContain('@objc public static let FontContextJumboLineHeight = CGFloat(120)')
+  })
+
+  test('the Android template encodes a percentage line height with its font size', () => {
+    const android = fixture.android.find((c) => c.token.name === 'font_context_jumbo_line_height')
+    const { token, context } = android
+    const fontSize = {
+      ...token,
+      path: [...token.path.slice(0, -1), 'fontSize'],
+      $value: context.fontSize
+    }
+    const tree = { font: { context: { jumbo: { fontSize, lineHeight: token } } } }
+    const xml = androidTemplate({
+      dictionary: { tokens: tree, allTokens: [token] },
+      header: '',
+      settings: {}
+    })
+    expect(xml).toContain('<dimen name="font_context_jumbo_line_height">120sp</dimen>')
+  })
+})

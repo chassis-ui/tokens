@@ -9,7 +9,7 @@
  */
 
 import { encode, reference, resourceTag } from '../values/android.js'
-import { firstReferencedToken } from './references.js'
+import { encodingContext, firstReferencedToken } from './references.js'
 
 /**
  * Generates an Android resources XML file from the provided tokens.
@@ -24,12 +24,17 @@ import { firstReferencedToken } from './references.js'
 export default (opts) => {
   const { dictionary, header, settings } = opts
 
+  // The reference a token prints with `outputReferences`, if any
+  const referenceOf = (token, context) => {
+    const target = firstReferencedToken(token, dictionary.tokens)
+    return reference(token, target, context, target && encodingContext(target, dictionary.tokens))
+  }
+
   const tokenToLine = (token) => {
     const { tag, attributes } = resourceTag(token)
+    const context = encodingContext(token, dictionary.tokens)
     const value =
-      (settings.outputReferences &&
-        reference(token, firstReferencedToken(token, dictionary.tokens))) ||
-      encode(token)
+      (settings.outputReferences && referenceOf(token, context)) || encode(token, context)
     const comment = token.comment ? ` <!-- ${token.comment} -->` : ''
     return `<${tag} name="${token.name}"${attributes}>${value}</${tag}>${comment}`
   }

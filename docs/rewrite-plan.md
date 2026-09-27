@@ -57,7 +57,7 @@ If a phase is too large, split it into `Na`, `Nb` rows. If a fact in this file i
 | 10 | Android references (`outputReferences`) | Opus | Done | `rewrite(phase 10)` | 2026-09-27 |
 | 11 | Preset docs | Opus | Done | `rewrite(phase 11)` | 2026-09-27 |
 | 12 | iOS references (`outputReferences`), new | Opus | Done | `rewrite(phase 12)` | 2026-09-27 |
-| 13 | Mobile typography values: percent line height, Android letter spacing in em | Opus | Not started | | |
+| 13 | Mobile typography values: percent line height, Android letter spacing in em | Opus | Done | `rewrite(phase 13)` | 2026-09-27 |
 | 14 | Font weights as numbers | Opus | Not started | | |
 | 15 | Gradients on mobile as parts | Opus | Not started | | |
 | 16 | Dead `dimension` filter condition | Sonnet | Not started | | |
@@ -264,7 +264,7 @@ Scale abbreviations: 4xsmall→4xs, 3xsmall→3xs, 2xsmall→2xs, xsmall→xs, s
 `import UIKit`, `public class ChassisTokens`, one `@objc public static let <PascalName> = …` per token. Typography and shadow tokens are expanded into sub-tokens (`FontContextJumboFontSize`, `ShadowContextSmall1Blur`).
 
 - Colours: `UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1)`, three decimals per channel, alpha as parsed.
-- Number and size groups: `CGFloat(<parseFloat>)`.
+- Number and size groups: `CGFloat(<parseFloat>)`. Since Phase 13, a percentage line height is the percentage of the font size part of the same typography token, to three decimals (`125%` of `96` is `CGFloat(120)`).
 - fontFamily: first family only, quotes stripped, then double-quoted.
 - fontWeight: lowercase, first space replaced by a hyphen, double-quoted.
 - Other string-group types: double-quoted.
@@ -275,8 +275,8 @@ Scale abbreviations: 4xsmall→4xs, 3xsmall→3xs, 2xsmall→2xs, xsmall→xs, s
 
 - Element by type: size group → `dimen`, color → `color`, string group and content → `string`, number group → `integer`, anything else → `string`. Changed 2026-09-27 with Ozgur's approval: opacity and letter spacing (type `opacity` or `letterSpacing`, or `path[1] == letterSpacing`) → `<item type="dimen" format="float">`, because aapt2 rejects fractions in `<integer>`. References to them are `@dimen/…`.
 - Colours: ARGB hex8 (`#80b7c0c2`).
-- `sp` when the last path segment is fontSize, lineHeight or paragraphSpacing, or the type is fontSize or lineHeight, or `path[1]` is `paragraphSpacing`.
-- Bare number when `path[1]` is `letterSpacing` or the type is `letterSpacing`.
+- `sp` when the last path segment is fontSize, lineHeight or paragraphSpacing, or the type is fontSize or lineHeight, or `path[1]` is `paragraphSpacing`. Since Phase 13, a percentage line height is the percentage of the font size part of the same typography token (`120sp`).
+- Bare number when `path[1]` is `letterSpacing` or the type is `letterSpacing`. Since Phase 13, the letter spacing part of a typography token is in ems of its font size, to four decimals (`-0.0052`); the standalone scale keeps its px number.
 - `dp` for the remaining size-group types.
 - The order of these rules matters: colour, fontFamily, fontWeight, `sp`, letterSpacing, `dp`.
 - String resources are escaped (since 2026-09-27, with Ozgur's approval): `&`, `<` and `>` become entities, `\`, `'` and `"` get a backslash, and so does a leading `@` or `?`.
@@ -638,12 +638,29 @@ Facts, measured on `dist/` of 2026-09-27 (both brands are the same):
 - Android letter spacing is in design pixels. `TextView.setLetterSpacing` and `android:letterSpacing` take ems. 3 typography parts are not zero: `font_context_jumbo_letter_spacing` (`-0.5`), `font_website_hero_title_letter_spacing` (`-1`), `font_website_section_title_letter_spacing` (`-0.5`); 190 are `0`. The standalone scale token `typography.letterSpacing.base.zero` is `0`. iOS letter spacing is in points, which `NSAttributedString.Key.kern` takes, so iOS stays as it is.
 - The parts of one typography token are expanded into the same file, so the font size part is available when the line height and letter spacing parts are printed.
 
-- [ ] `values/shared.js`: `lineHeightPoints(percent, fontSize)` and `letterSpacingEm(px, fontSize)`, pure, with the rounding decided below.
-- [ ] The iOS and Android templates pass the font size part of the same typography token to the encoders (look it up by path: the parent path plus `fontSize`), the same way the reference lookup is passed in.
-- [ ] Line height: a percentage becomes points on iOS and `sp` on Android (`125%` of `96` is `120`).
-- [ ] Android letter spacing of a typography part: px divided by the font size of the part, in em. The standalone letter spacing scale keeps its value.
-- [ ] Unit tests on real tokens: jumbo, `font.website.hero-body` (`150%`), a line height in points (unchanged), the three letter spacing parts, a zero letter spacing, the standalone scale token.
-- [ ] Acceptance: the changed lines are exactly the ones listed above, both brands; all other lines equal `dist/`; `swiftc` and aapt2 pass; the Android and iOS guides describe the new units.
+- [x] `values/shared.js`: `lineHeightPoints(percent, fontSize)` and `letterSpacingEm(px, fontSize)`, pure, with the rounding decided below.
+- [x] The iOS and Android templates pass the font size part of the same typography token to the encoders (look it up by path: the parent path plus `fontSize`), the same way the reference lookup is passed in. (Done as `encodingContext` in `templates/references.js`; `encode` and `reference` take the context.)
+- [x] Line height: a percentage becomes points on iOS and `sp` on Android (`125%` of `96` is `120`).
+- [x] Android letter spacing of a typography part: px divided by the font size of the part, in em. The standalone letter spacing scale keeps its value.
+- [x] Unit tests on real tokens: jumbo, `font.website.hero-body` (`150%`), a line height in points (unchanged), the three letter spacing parts, a zero letter spacing, the standalone scale token.
+- [x] Acceptance: the changed lines are exactly the ones listed above, both brands; all other lines equal `dist/`; `swiftc` and aapt2 pass; the Android and iOS guides describe the new units.
+
+Result: 168 lines of `dist/` changed, and nothing else. Web output did not change.
+
+| Change | Files | Lines per file | Example |
+| --- | --- | --- | --- |
+| Percentage line height in points | iOS `Main`, `Number*`, both brands (8 files) | 9 | `FontContextJumboLineHeight = CGFloat(120)`, was `CGFloat(125)` |
+| Percentage line height in `sp` | Android `main`, `number_*`, both brands (8 files) | 9 | `font_context_jumbo_line_height` `120sp`, was `125sp` |
+| Letter spacing in em | Android `main`, `number_*`, both brands (8 files) | 3 | `font_context_jumbo_letter_spacing` `-0.0052`, was `-0.5` |
+
+The values follow the font size of each screen: `font.website.hero-body` is `33` on large and `28.5` on small screens (`150%` of `22` and `19`), `font.website.hero-title` letter spacing is `-0.0156`, `-0.0208` and `-0.0313` em (`-1px` at `64`, `48` and `32`). The 190 zero letter spacings print `0` as before, and `font_context_hero_letter_spacing` still names `@dimen/typography_letter_spacing_base_zero` with `outputReferences`, since both are `0`.
+
+The `ios-references` and `android-references` baselines changed in the same lines (9 and 12 per `Main`/`main` and number file); each changed line equals the new line of `dist/`.
+
+Checked: all Swift files of both brands type-check (stand-in UIKit); aapt2 compiles and links the Android qualifier layout of the guide and `main.xml` alone, for both brands, and its resource dump shows `-0.0052` and `120.000000sp`.
+
+A percentage line height or a letter spacing part without a font size in its file fails the build with the token path. No current token reaches it.
+
 
 ## Phase 14: font weights as numbers
 
@@ -753,8 +770,7 @@ Facts: shadow tokens are expanded into `OffsetX`, `OffsetY`, `Blur`, `Spread` an
 
 These are part of the frozen contract. They are listed so nobody "fixes" them by accident. Added 2026-09-27: Phases 13 to 16 change the letter spacing, line height, font weight and gradient items and remove the dead filter condition, each only after Ozgur approves it in Open decisions.
 
-- Android letter spacing prints its number in design pixels (`-0.5`), as a float item since 2026-09-27; it was an `<integer>`, which did not compile.
-- A `125%` line height prints as `CGFloat(125)` on iOS and `125sp` on Android.
+- Fixed in Phase 13: Android letter spacing printed its number in design pixels (`-0.5`), and a `125%` line height printed as `CGFloat(125)` on iOS and `125sp` on Android.
 - Font weight on iOS and Android is a name string such as `"bold"`.
 - Android asset tokens hold SVG markup inside `<string>`. It was raw markup, which aapt2 dropped, so the icons compiled to empty strings; since 2026-09-27 it is escaped and compiles to the SVG text.
 - The 88 `gradient.primitive.*` tokens are typed `color` with `linear-gradient(…)` values. Web prints the gradient. iOS and Android print only its first colour stop, because tinycolor parses the gradient string leniently: `linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, #000000 100%)` becomes `UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0)` and `#00000000`.
@@ -842,3 +858,4 @@ Append-only.
 - 2026-09-27 (Phase 12, Opus 5.5): Added `reference(token, target)` to `values/ios.js`, with the Android rule: same file, no base colours, no math on sizes, same encoded Swift text. Moved the shared conditions into `values/shared.js` and the target lookup into `templates/references.js`; the Android output did not change. The iOS format reads `outputReferences` from the platform options. Extended the undeclared-reference check of `verify.js` to Swift. Wrote the `ios-references` baseline with the new code and accepted it after a line-by-line comparison with `dist/ios/demo/chassis/`, a type check of all 7 files and a run-time comparison of 12378 constants. Added 9 real cases to `mobile-tokens.json` (`iosReferences`), 17 tests in `values-ios.test.js`, 2 template tests in `formats.test.js` and 2 Swift cases in `verify.test.js`. Updated `README.md`, `CHANGELOG.md`, the tests README and the two site pages. Verified: `node build/tokens/verify.js --preset ios-references` passes; `pnpm tokens:verify:presets` passes for all six presets; `pnpm tokens:verify` passes, 42 of 42 files; `pnpm tokens:test` passes, 582 tests; lint reports no warnings; `build/tokens` passes Prettier; the two site pages pass Prettier and `pnpm astro:build` built 22 pages; `dist/` untouched. Injected five regressions (no value check, no math rule, no base colour rule, `outputReferences` ignored, Swift undeclared check off); each failed 1 to 7 tests. Surprises: (1) a real token references a target of another Swift type (`BgBlurDefaultColor` on an opacity), so that case needs no construction. (2) All modifier colours are base colours, and the math token also fails the value check, so neither rule changes a current line on its own; unit tests cover both. (3) The number files grow (`DimensionBase16` is longer than `CGFloat(16)`) while the colour files shrink. All phases are done.
 - 2026-09-27 (Phases 13 to 22 planning, Opus 5.5): Ozgur asked how to fix the iOS and Android issues and oddities, then asked for them as phases. Measured the facts on `dist/` for both brands: 9 percent line heights per file, 3 Android letter spacing parts other than zero, two spellings of semi bold, 88 gradients per colour file printing their first stop, `main.xml` conflicting with 409 dark colours and 61 screen values, 1382 base colours only in `main.xml`, and no constant in the Objective-C header despite `@objc`. Added Phases 13 to 22, a ground rule for approved output changes and 14 open decisions. Nothing in `build/` or `dist/` changed. Next: Ozgur's answers, then Phase 13.
 - 2026-09-27 (Phases 13 to 22 decisions, Opus 5.5): Ozgur confirmed all recommendations except making the semi bold spelling consistent in Tokens Studio: each spelling is the style name of its font in Figma, and the Phase 14 map accepts both. The check of the style names found `Light Oblique` for the `sinefil` blockquote weight, where the other brands use `Light Italic`; Source Serif 4 names its italic styles `Italic`. At Ozgur's request it was changed in `tokens/brand-sinefil/brand-base.json` and committed as `fix(tokens): use Light Italic for the sinefil blockquote weight`: 11 lines in 6 `sinefil` files of `dist/` changed from `oblique` to `italic`, nothing else; `pnpm tokens:verify`, the six preset checks and 582 tests pass. Not checked against Figma's own font list, because no Figma file was given. The plan was committed as `rewrite(plan): add phases 13 to 22 for the iOS and Android output`. Next: Phase 13.
+- 2026-09-27 (Phase 13, Opus 5.5): Added `percentLineHeight` and `letterSpacingEm` to `values/shared.js`, a font size context to `encode` and `reference` of both mobile encoders, and `encodingContext` to `templates/references.js`, which the iOS and Android templates call. Rebuilt both brands into the scratchpad and copied the 16 changed files into `dist/` and the 8 changed baseline files into `golden/`; every changed line is a line height or letter spacing part (168 lines in `dist/`). Added contexts to 6 fixture cases, 9 `typographyParts` cases captured from the build, 16 tests in `values-ios.test.js` and `values-android.test.js`, and 2 template tests in `formats.test.js`. Updated the iOS and Android guides, the Style Dictionary page, the CHANGELOG and the tests README. Verified: `pnpm tokens:verify` passes, 42 of 42 files; the six preset checks pass; `pnpm tokens:test` passes, 601 tests; lint and Prettier report nothing; `swiftc` and aapt2 pass for both brands; `pnpm astro:build` built 22 pages. Injected six regressions (template drops the context, Android letter spacing in px, iOS percentage kept, three-decimal rounding, reference without context, context lookup finds nothing); each failed 1 to 7 unit tests. Surprises: (1) font size parts are `96px` in some files and `22` without a unit in others; `parseFloat` reads both. (2) A bare `> file` in zsh waits for input, which stalled a diff command; the harness moved it to the background and it was stopped. Next: Phase 14.

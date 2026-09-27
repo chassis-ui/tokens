@@ -21,14 +21,14 @@ describe('iOS encode', () => {
     vi.restoreAllMocks()
   })
 
-  test.each(fixture.ios)('$case ($token.name)', ({ token, expected }) => {
-    expect(encode(token)).toBe(expected)
+  test.each(fixture.ios)('$case ($token.name)', ({ token, context, expected }) => {
+    expect(encode(token, context)).toBe(expected)
   })
 
   test('does not modify the token', () => {
-    for (const { token } of fixture.ios) {
+    for (const { token, context } of fixture.ios) {
       const frozen = Object.freeze({ ...token, path: Object.freeze([...token.path]) })
-      expect(() => encode(frozen)).not.toThrow()
+      expect(() => encode(frozen, context)).not.toThrow()
     }
   })
 
@@ -120,5 +120,32 @@ describe('iOS reference', () => {
     const string = { ...target, $type: 'string', $value: 'CGFloat(4)' }
     expect(encode(string)).toBe('"CGFloat(4)"')
     expect(reference(token, string)).toBeUndefined()
+  })
+})
+
+describe('iOS typography parts', () => {
+  const parts = fixture.typographyParts.filter((c) => c.platform === 'ios')
+
+  test.each(parts)('$case ($token.name in $file)', ({ token, context, expected }) => {
+    expect(encode(token, context)).toBe(expected)
+  })
+
+  test('a percentage line height needs the font size', () => {
+    const { token } = parts.find((c) => c.token.name === 'FontContextJumboLineHeight')
+    expect(() => encode(token)).toThrow(
+      'No font size for the percentage line height of font.context.jumbo.lineHeight'
+    )
+  })
+
+  test('letter spacing does not use the font size', () => {
+    const { token, context } = parts.find((c) => c.token.name === 'FontContextJumboLetterSpacing')
+    expect(encode(token)).toBe(encode(token, context))
+  })
+
+  test('the reference check compares encoded values with their font sizes', () => {
+    const { token, context } = parts.find((c) => c.token.name === 'FontContextJumboLineHeight')
+    const target = { ...token, name: 'Other', path: ['font', 'context', 'other', 'lineHeight'] }
+    expect(reference(token, target, context, context)).toBe('Other')
+    expect(reference(token, target, context, { fontSize: '64px' })).toBeUndefined()
   })
 })
