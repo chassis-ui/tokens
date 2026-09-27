@@ -61,7 +61,7 @@ If a phase is too large, split it into `Na`, `Nb` rows. If a fact in this file i
 | 14 | Font weights as numbers | Opus | Done | `rewrite(phase 14)` | 2026-09-27 |
 | 15 | Gradients on mobile as parts | Opus | Done | `rewrite(phase 15)` | 2026-09-27 |
 | 16 | Dead `dimension` filter condition | Sonnet | Done | `rewrite(phase 16)` | 2026-09-27 |
-| 17 | iOS type and file names | Opus | Not started | | |
+| 17 | iOS type and file names | Opus | Done | `rewrite(phase 17)` | 2026-09-27 |
 | 18 | iOS colours that follow dark mode | Fable | Not started | | |
 | 19 | Android resource tree | Fable | Not started | | |
 | 20 | SwiftUI and Compose outputs (optional) | Opus | Not started | | |
@@ -201,7 +201,7 @@ Every instance lists its sets in `source`, in the order `permutateThemes` return
 | Platform | Files |
 | --- | --- |
 | web | `main.scss`, `string.scss`, `color-<theme>.scss`, `number-<screen>.scss` |
-| iOS | `Main.swift`, `String.swift`, `Color<Theme>.swift`, `Number<Screen>.swift` |
+| iOS | `ChassisTokens.swift` (`Main.swift` until Phase 17), `String.swift`, `Color<Theme>.swift`, `Number<Screen>.swift` |
 | Android | `main.xml`, `string.xml`, `color_<theme>.xml`, `number_<screen>.xml` |
 
 ### Filters
@@ -261,7 +261,7 @@ Scale abbreviations: 4xsmall→4xs, 3xsmall→3xs, 2xsmall→2xs, xsmall→xs, s
 
 ### iOS
 
-`import UIKit`, `public class ChassisTokens`, one `@objc public static let <PascalName> = …` per token. Typography and shadow tokens are expanded into sub-tokens (`FontContextJumboFontSize`, `ShadowContextSmall1Blur`).
+`import UIKit`, one `public static let <PascalName> = …` per token. Since Phase 17 each file declares its own `public enum`: `ChassisTokens` in `ChassisTokens.swift` and `ChassisTokens<File>` in the others; until then every file declared `public class ChassisTokens` and marked each constant `@objc`. Typography and shadow tokens are expanded into sub-tokens (`FontContextJumboFontSize`, `ShadowContextSmall1Blur`).
 
 - Colours: `UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1)`, three decimals per channel, alpha as parsed.
 - Number and size groups: `CGFloat(<parseFloat>)`. Since Phase 13, a percentage line height is the percentage of the font size part of the same typography token, to three decimals (`125%` of `96` is `CGFloat(120)`).
@@ -746,11 +746,33 @@ Facts:
 - `@objc` has no effect: checked on 2026-09-27 with `-emit-objc-header-path`, the generated Objective-C header contains no constant, because `ChassisTokens` is not an `NSObject` subclass.
 - The template already reads `options.className`, `objectType` and `accessControl`.
 
-- [ ] One type per file, named as decided below, set by the iOS config per file.
-- [ ] Rename `Main.swift` as decided below.
-- [ ] `objectType` and `@objc` as decided below.
-- [ ] `outputReferences` still names constants of the same type; the reference check of `verify.js` still passes.
-- [ ] Acceptance: all 7 files of each brand compile together in one module (stand-in UIKit), and as a Swift package library target; the iOS guide drops the one-module-per-file setup; all other lines equal `dist/` apart from the type line and `@objc`.
+- [x] One type per file, named as decided below, set by the iOS config per file.
+- [x] Rename `Main.swift` as decided below.
+- [x] `objectType` and `@objc` as decided below.
+- [x] `outputReferences` still names constants of the same type; the reference check of `verify.js` still passes.
+- [x] Acceptance: all 7 files of each brand compile together in one module (stand-in UIKit), and as a Swift package library target; the iOS guide drops the one-module-per-file setup; all other lines equal `dist/` apart from the type line and `@objc`.
+
+Result: every iOS file declares its own caseless enum, and the main file is `ChassisTokens.swift`.
+
+| File | Type |
+| --- | --- |
+| `ChassisTokens.swift` (was `Main.swift`) | `ChassisTokens` |
+| `String.swift` | `ChassisTokensString` |
+| `ColorLight.swift`, `ColorDark.swift` | `ChassisTokensColorLight`, `ChassisTokensColorDark` |
+| `NumberLarge.swift`, `NumberMedium.swift`, `NumberSmall.swift` (`Number.swift` without screens) | `ChassisTokensNumberLarge`, … (`ChassisTokensNumber`) |
+
+In `dist/ios` of both brands, 41194 lines changed and nothing else: the `@objc ` prefix of every constant, the type line of each file, and the file name comment of the main file. Android and web did not change. The `ios-references` baseline changed the same way.
+
+How it is set: the iOS config gives each file `options.className` and the platform `objectType: 'enum'`; Style Dictionary merges the file options into the options the format receives. The template marks constants `@objc` only for `objectType: 'class'`, since Swift rejects `@objc` in an enum. An adopter can still choose a class per file. The template's default name no longer depends on a trailing space: a custom `className` printed two spaces before `{`.
+
+Checked:
+
+- All 7 files of each brand type-check together in one module, and so do the 7 files of the `ios-references` baseline, where constants name others of their type.
+- A Swift package with one library target holding the 7 files builds, and a program reads `ChassisTokensNumberLarge` and `ChassisTokensNumberSmall` sizes (`80`, `48`), both colour types and `ChassisTokens` side by side.
+- The iOS guide's `Package.swift` validates with `swift package describe`; the same package with a stand-in UIKit target (which adds `UITraitCollection` and `UIColor(dynamicProvider:)` for the examples) builds an app from every token-using Swift block of the guide, and the gradient example runs. The SwiftUI block is not compiled: `Color(uiColor:)` exists only on iOS.
+
+The iOS guide drops the one-module-per-file setup, the ambiguity and redeclaration workarounds and the `Main.swift` exclusion: files go into one target or one package library, and code writes the type (`ChassisTokensColorLight.ColorContextDefaultBgMain`).
+
 
 ## Phase 18: iOS colours that follow dark mode
 
@@ -903,3 +925,4 @@ Append-only.
 - 2026-09-27 (Phase 14, Opus 5.5): Replaced `fontWeightName` with `fontWeightNumber` in `values/shared.js`, which uses the web's map through `transformFontWeight` and fails on an unknown name. iOS prints `UIFont.Weight.<name>` at the nearest hundred; Android prints `<integer>` weights. Copied the 8 changed files into `dist/` and the 4 changed baseline files into `golden/`; every changed line is a weight line (1680 in `dist/`), and both spellings of semi bold give 600. Updated 5 fixture cases from `dist/`, added 19 weight tests, and updated the iOS and Android guides, the Style Dictionary page and the CHANGELOG. Verified: `pnpm tokens:verify` passes, 42 of 42 files; the six preset checks pass; `pnpm tokens:test` passes, 619 tests; lint and Prettier report nothing; `swiftc` (type check and a run-time weight check) and aapt2 pass for both brands; `pnpm astro:build` built 22 pages. Injected five regressions (Android weight as a string element, hyphen spelling not read, no unknown-name check, iOS rounding down, `thin` and `ultraLight` swapped); each failed 1 to 3 tests. Surprises: (1) no weight prints a reference, because typography parts hold the resolved weight. (2) The sd-transforms map gives `ultra black` 950, which iOS rounds to `.black`. Next: Phase 15.
 - 2026-09-27 (Phase 15, Opus 5.5): Added `isGradient`, `parseLinearGradient` and `gradientParts` to `values/shared.js`, `partName` to both mobile encoders, float items for the number parts on Android, and a gradient guard in `parseColor`. The iOS and Android templates print a gradient as its parts. Copied the 8 changed colour files into `dist/` and the 4 changed baseline files into `golden/`; only gradient lines changed, and all 3520 parts equal the web gradients. Replaced the two first-stop fixture cases with a `gradients` section (two real tokens, their stop colours and the expected lines), added `values-shared.test.js` and template and part name tests (24 tests). Updated both guides with gradient examples, the Style Dictionary page, the CHANGELOG and the tests README. Verified: `pnpm tokens:verify` passes, 42 of 42 files; the six preset checks pass; `pnpm tokens:test` passes, 643 tests; lint and Prettier report nothing; `swiftc` and aapt2 pass; the iOS guide example runs; `pnpm astro:build` built 22 pages. Injected six regressions (template does not expand, angle not normalised, positions in percent, stop colours without references, Android parts as integers, no gradient guard); each failed 1 to 11 tests. Surprises: (1) the gradient sources reference colours, so the stop colours can print references, and in the old reference baselines each gradient named its first-stop colour. (2) 12 gradients have negative angles. (3) My first cross-check script dropped the angle when splitting the list, reporting every part as different; the output was right. Next: Phase 16.
 - 2026-09-27 (Phase 16, Opus 5.5): Removed the `path[1] !== 'dimension'` condition from the main and number filters, after checking that no token set has a `dimension` group at `path[1]`; the filter comment now says why `dimension.base.*` is emitted. Replaced the test that kept the exclusion. Verified: `pnpm tokens:verify` passes, 42 of 42 files, with no change; the six preset checks pass; `pnpm tokens:test` passes, 643 tests; lint and Prettier report nothing; putting the condition back failed the new test. The site docs do not mention the condition, so they did not change. Next: Phase 17.
+- 2026-09-27 (Phase 17, Opus 5.5): The iOS config names each file's type (`swiftFile` in `config/ios.js`) and makes the types enums; the template prints `@objc` only for classes. `Main.swift` became `ChassisTokens.swift` in `dist/` and the `ios-references` baseline, with `git mv`. Every changed line is an `@objc` prefix, a type line or the main file's name comment (41194 lines). Updated the config, build, format and verify tests and the fixture labels, and added config and template tests (638 unit tests, 646 with the golden ones). Rewrote the setup parts of the iOS guide and updated the Style Dictionary page, the introduction, the quick start, the README and the CHANGELOG. Verified: `pnpm tokens:verify` passes, 42 of 42 files; the six preset checks pass; all tests pass; lint and Prettier report nothing; all files compile in one module and as one package library, and the guide's examples compile; `pnpm astro:build` built 22 pages. Injected four regressions (always `@objc`, one type name for every file, classes again, the old main file name); each failed 1 to 8 tests. Surprises: (1) the template's default class name had no trailing space but a custom one did, so a custom `className` printed `X  {`; fixed. (2) Swift allows a module and a type both named `ChassisTokens`; `ChassisTokens.SpaceContextMedium` resolves to the type, which the package check confirmed. Next: Phase 18.

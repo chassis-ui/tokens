@@ -59,7 +59,13 @@ describe('config', () => {
     [
       'ios',
       'cx/ios-swift-class',
-      ['Main.swift', 'String.swift', 'ColorLight.swift', 'NumberLarge.swift', 'Number.swift']
+      [
+        'ChassisTokens.swift',
+        'String.swift',
+        'ColorLight.swift',
+        'NumberLarge.swift',
+        'Number.swift'
+      ]
     ],
     [
       'android',
@@ -67,13 +73,28 @@ describe('config', () => {
       ['main.xml', 'string.xml', 'color_light.xml', 'number_large.xml', 'number.xml']
     ]
   ])('%s writes each output with its filter', (platform, format, names) => {
-    expect(files(platform, [...outputs, { kind: 'number' }])).toEqual([
+    const written = files(platform, [...outputs, { kind: 'number' }])
+    expect(
+      written.map(({ destination, filter, format }) => ({ destination, filter, format }))
+    ).toEqual([
       { destination: names[0], filter: 'cx/allTokens', format },
       { destination: names[1], filter: 'cx/stringTokens', format },
       { destination: names[2], filter: 'cx/themeTokens', format },
       { destination: names[3], filter: 'cx/numberTokens', format },
       { destination: names[4], filter: 'cx/numberTokens', format }
     ])
+  })
+
+  test('iOS files declare one type each, so they can share a target', () => {
+    const written = files('ios', [...outputs, { kind: 'number' }])
+    expect(written.map((file) => file.options.className)).toEqual([
+      'ChassisTokens',
+      'ChassisTokensString',
+      'ChassisTokensColorLight',
+      'ChassisTokensNumberLarge',
+      'ChassisTokensNumber'
+    ])
+    expect(config(build).platforms.ios.options.objectType).toBe('enum')
   })
 
   // Presets for other CSS frameworks than Chassis CSS

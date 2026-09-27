@@ -21,7 +21,7 @@ const token = (name, sourceOrder) => ({ name, $extensions: { chassis: { sourceOr
 
 describe('inSourceOrder', () => {
   // Style Dictionary 5 puts expanded tokens after all others. These are tokens of
-  // ios/demo/chassis/Main.swift with their numbers, in the order Style Dictionary 5.5
+  // ios/demo/chassis/ChassisTokens.swift with their numbers, in the order Style Dictionary 5.5
   // passes them to the format.
   const tokens = [
     token('BorderRadiusTooltipMain', 3061),
@@ -148,21 +148,56 @@ describe('iOS template', () => {
       dictionary: { tokens: tree, allTokens: [token] },
       file: { destination: 'NumberLarge.swift' },
       header: '',
-      options: { import: ['UIKit'], accessControl: 'public', objectType: 'class' },
+      options: {
+        import: ['UIKit'],
+        accessControl: 'public',
+        objectType: 'enum',
+        className: 'ChassisTokens'
+      },
       settings
     })
 
   test('names the constant with outputReferences', () => {
     expect(print({ outputReferences: true })).toContain(
-      '@objc public static let SizeUnit4 = DimensionBase4'
+      'public static let SizeUnit4 = DimensionBase4'
     )
   })
 
+  test('declares the type of the file, an enum without @objc by default', () => {
+    const swift = iosTemplate({
+      dictionary: { tokens: tree, allTokens: [token] },
+      file: { destination: 'NumberLarge.swift' },
+      header: '',
+      options: {
+        import: ['UIKit'],
+        accessControl: 'public',
+        objectType: 'enum',
+        className: 'ChassisTokensNumberLarge'
+      }
+    })
+    expect(swift).toContain('public enum ChassisTokensNumberLarge {\n')
+    expect(swift).not.toContain('@objc')
+  })
+
+  test('marks the constants of a class @objc', () => {
+    const swift = iosTemplate({
+      dictionary: { tokens: tree, allTokens: [token] },
+      file: { destination: 'NumberLarge.swift' },
+      header: '',
+      options: {
+        import: ['UIKit'],
+        accessControl: 'public',
+        objectType: 'class',
+        className: 'Tokens'
+      }
+    })
+    expect(swift).toContain('public class Tokens {\n')
+    expect(swift).toContain('@objc public static let SizeUnit4 = CGFloat(4)')
+  })
+
   test('prints the value without it', () => {
-    expect(print({ outputReferences: false })).toContain(
-      '@objc public static let SizeUnit4 = CGFloat(4)'
-    )
-    expect(print(undefined)).toContain('@objc public static let SizeUnit4 = CGFloat(4)')
+    expect(print({ outputReferences: false })).toContain('public static let SizeUnit4 = CGFloat(4)')
+    expect(print(undefined)).toContain('public static let SizeUnit4 = CGFloat(4)')
   })
 })
 
@@ -188,11 +223,16 @@ describe('Typography parts in the mobile templates', () => {
     const { tree, token } = partsOf('ios')
     const swift = iosTemplate({
       dictionary: { tokens: tree, allTokens: [token] },
-      file: { destination: 'Main.swift' },
+      file: { destination: 'ChassisTokens.swift' },
       header: '',
-      options: { import: ['UIKit'], accessControl: 'public', objectType: 'class' }
+      options: {
+        import: ['UIKit'],
+        accessControl: 'public',
+        objectType: 'enum',
+        className: 'ChassisTokens'
+      }
     })
-    expect(swift).toContain('@objc public static let FontContextJumboLineHeight = CGFloat(120)')
+    expect(swift).toContain('public static let FontContextJumboLineHeight = CGFloat(120)')
   })
 
   test('the Android template encodes a percentage line height with its font size', () => {
@@ -238,7 +278,12 @@ describe('Gradients in the mobile templates', () => {
       dictionary: dictionaryFor('ios', gradient),
       file: { destination: 'ColorLight.swift' },
       header: '',
-      options: { import: ['UIKit'], accessControl: 'public', objectType: 'class' },
+      options: {
+        import: ['UIKit'],
+        accessControl: 'public',
+        objectType: 'enum',
+        className: 'ChassisTokens'
+      },
       settings: { outputReferences }
     })
   const printAndroid = (gradient, outputReferences) =>

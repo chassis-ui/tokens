@@ -103,9 +103,9 @@ describe('planBuilds', () => {
       'dist/android/demo/chassis/main.xml',
       'dist/android/demo/chassis/number.xml',
       'dist/android/demo/chassis/string.xml',
+      'dist/ios/demo/chassis/ChassisTokens.swift',
       'dist/ios/demo/chassis/ColorDark.swift',
       'dist/ios/demo/chassis/ColorLight.swift',
-      'dist/ios/demo/chassis/Main.swift',
       'dist/ios/demo/chassis/Number.swift',
       'dist/ios/demo/chassis/String.swift',
       'dist/web/docs/chassis/color-dark.scss',
@@ -142,8 +142,8 @@ describe('planBuilds with filters', () => {
       ['chassis_demo_light_small', ['ios']]
     ])
     expect(destinations(builds)).toEqual([
+      'dist/ios/demo/chassis/ChassisTokens.swift',
       'dist/ios/demo/chassis/ColorDark.swift',
-      'dist/ios/demo/chassis/Main.swift',
       'dist/ios/demo/chassis/NumberLarge.swift',
       'dist/ios/demo/chassis/NumberMedium.swift',
       'dist/ios/demo/chassis/NumberSmall.swift',

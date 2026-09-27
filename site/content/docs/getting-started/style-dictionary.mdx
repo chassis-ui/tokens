@@ -227,21 +227,20 @@ The platform files `config/web-scss.js`, `config/web-px.js` and `config/web-vw.j
 
 ### iOS Platform
 
-Generates Swift class files with native iOS types:
+Generates Swift files with native iOS types. Each file declares its own caseless enum, so all files can be in one target:
 
 ```swift
 import UIKit
 
-public class ChassisTokens {
-    @objc public static let ColorContextDefaultFgMain = UIColor(red: 0.086, green: 0.102, blue: 0.106, alpha: 1)
-    @objc public static let SpaceContextMedium = CGFloat(16)
-    @objc public static let TypographyFontFamilyText = "Inter"
+public enum ChassisTokensColorLight {
+    public static let ColorContextDefaultFgMain = UIColor(red: 0.086, green: 0.102, blue: 0.106, alpha: 1)
 }
 ```
 
 **Configuration:**
 
 - Naming convention: PascalCase
+- Types: `ChassisTokens` in `ChassisTokens.swift`, and `ChassisTokens<File>` in the other files (`ChassisTokensColorLight`, `ChassisTokensNumberLarge`, `ChassisTokensString`)
 - Color output: UIColor with three decimals per channel
 - Sizes and numbers: `CGFloat`
 - Font families: the first family of the stack only
@@ -297,7 +296,7 @@ dist/
 ├── ios/
 │   └── demo/
 │       └── chassis/
-│           ├── Main.swift
+│           ├── ChassisTokens.swift
 │           ├── String.swift
 │           └── ...
 └── android/
@@ -544,26 +543,27 @@ With `outputReferences`, load a colour file (`color-light.scss` or `color-dark.s
 
 ### cx/ios-swift-class
 
-Generates Swift class with static properties:
+Generates a Swift type with static properties:
 
 ```swift
 import UIKit
 
-public class ChassisTokens {
-    @objc public static let ColorContextDefaultFgMain = UIColor(red: 0.086, green: 0.102, blue: 0.106, alpha: 1)
-    @objc public static let SizeButtonMediumMain = CGFloat(40)
-    @objc public static let TypographyFontWeightTextStrongWeight = UIFont.Weight.semibold
+public enum ChassisTokens {
+    public static let ColorButtonPrimaryBgIdle = UIColor(red: 0.000, green: 0.643, blue: 0.800, alpha: 1)
+    public static let SizeButtonMediumMain = CGFloat(40)
+    public static let TypographyFontWeightTextStrongWeight = UIFont.Weight.semibold
 }
 ```
 
 **Features:**
 
+- The type is set per file with the `className` and `objectType` options; the iOS config gives each file its own enum. With `objectType: 'class'` the constants are marked `@objc`
 - PascalCase property names
 - Native iOS types (UIColor, CGFloat)
 - Proper import statements
 - Public accessibility
 - Typography and shadow tokens expanded into one property per part (`FontContextLeadFontSize`)
-- Optional references to other constants of the class, with `outputReferences`
+- Optional references to other constants of the type, with `outputReferences`
 
 With `outputReferences`, a token whose value references another token of the same file names that constant:
 
@@ -572,12 +572,12 @@ With `outputReferences`, a token whose value references another token of the sam
 ```
 
 ```swift
-@objc public static let SpaceContextMedium = SizeUnit16
-@objc public static let FontContextJumboFontFamily = TypographyFontFamilyText
-@objc public static let BgBlurDefaultColor = UIColor(red: 0.718, green: 0.753, blue: 0.761, alpha: 0.5)
+public static let SpaceContextMedium = SizeUnit16
+public static let FontContextJumboFontFamily = TypographyFontFamilyText
+public static let BgBlurDefaultColor = UIColor(red: 0.718, green: 0.753, blue: 0.761, alpha: 0.5)
 ```
 
-The rule is the one of [cx/android-resources](#cxandroid-resources): a token names a constant only when that constant has the same Swift type and value. `BgBlurDefaultColor` is `rgba({color.primitive.neutral.30}, {opacity.context.fg-subtle})`, so it prints its value, because `ColorPrimitiveNeutral30` has no alpha. Base colours and sizes computed with math also print their values. Every file declares the class `ChassisTokens`, so a constant never names one in another file, and a component colour of `Main.swift` prints its value where the colour file names a context colour.
+The rule is the one of [cx/android-resources](#cxandroid-resources): a token names a constant only when that constant has the same Swift type and value. `BgBlurDefaultColor` is `rgba({color.primitive.neutral.30}, {opacity.context.fg-subtle})`, so it prints its value, because `ColorPrimitiveNeutral30` has no alpha. Base colours and sizes computed with math also print their values. A constant never names one of another file, so a component colour of `ChassisTokens.swift` prints its value where the colour file names a context colour.
 
 ### cx/android-resources
 

@@ -224,12 +224,12 @@ The token sets of each file come from `tokens/$themes.json`. Colour files use th
 **Supported platforms:**
 - `web`: SCSS variables for Chassis CSS (rem units, `var(--…)` references)
 - `web-scss`, `web-px`, `web-vw`: SCSS variables for other CSS frameworks (see [below](#presets-for-other-css-frameworks))
-- `ios`: Swift classes (PascalCase naming)
+- `ios`: Swift types, one caseless enum per file (PascalCase naming)
 - `android`: XML resources (snake_case naming)
 
 **File naming conventions:**
 - Web: `main.scss`, `color-light.scss`, `number-large.scss`
-- iOS: `Main.swift`, `ColorLight.swift`, `NumberLarge.swift`
+- iOS: `ChassisTokens.swift`, `ColorLight.swift`, `NumberLarge.swift` (types `ChassisTokens`, `ChassisTokensColorLight`, `ChassisTokensNumberLarge`)
 - Android: `main.xml`, `color_light.xml`, `number_large.xml`
 
 Only the collections and sets defined under `build` are processed.
@@ -281,11 +281,11 @@ On `ios`, `outputReferences` names another constant of the same class:
 ```
 
 ```swift
-@objc public static let SizeUnit4 = DimensionBase4
-@objc public static let ColorAccordionItemFgColor = ColorContextDefaultFgMain
+public static let SizeUnit4 = DimensionBase4
+public static let ColorAccordionItemFgColor = ColorContextDefaultFgMain
 ```
 
-iOS and Android follow the same rule: a token names a constant or resource of its own file only when that one has the same type and value. Base colours and sizes computed with math print their values. Every Swift file declares the class `ChassisTokens`, so a constant cannot name one in another file.
+iOS and Android follow the same rule: a token names a constant or resource of its own file only when that one has the same type and value. Base colours and sizes computed with math print their values. A Swift constant cannot name one of another file.
 
 Each platform file in `build/tokens/config/` can also be edited directly; `web-px.js`, `web-vw.js` and `web-scss.js` each call `webConfig({ unit, format })` from `web.js`.
 

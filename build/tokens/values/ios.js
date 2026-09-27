@@ -97,7 +97,7 @@ export function encode(token, context = {}) {
  * so equal text means the same type and value.
  *
  * The name is not qualified with the class, because Swift finds a static member of the
- * same class from a static property initializer, whatever `className` is.
+ * same type from a static property initializer, whatever `className` is.
  *
  * @param {Object} token - A resolved token with `$type`, `$value`, `path` and `original`.
  * @param {Object} [target] - The first token that the original value references, from

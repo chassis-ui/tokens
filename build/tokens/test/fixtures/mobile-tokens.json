@@ -932,7 +932,7 @@
     },
     {
       "case": "string reference of an expanded typography token",
-      "file": "Main.swift",
+      "file": "ChassisTokens.swift",
       "token": {
         "name": "FontContextJumboFontFamily",
         "path": ["font", "context", "jumbo", "fontFamily"],
@@ -973,7 +973,7 @@
     },
     {
       "case": "base colour with a reference",
-      "file": "Main.swift",
+      "file": "ChassisTokens.swift",
       "token": {
         "name": "ColorBasePrimitiveLightBlackContrast",
         "path": ["color", "base", "primitive", "light", "black", "contrast"],
@@ -998,7 +998,7 @@
     },
     {
       "case": "base colour with a modifier",
-      "file": "Main.swift",
+      "file": "ChassisTokens.swift",
       "token": {
         "name": "ColorBasePrimitiveLightPrimary10",
         "path": ["color", "base", "primitive", "light", "primary", "10"],
@@ -1023,7 +1023,7 @@
     },
     {
       "case": "size computed with math",
-      "file": "Main.swift",
+      "file": "ChassisTokens.swift",
       "token": {
         "name": "SizeDatepickerWeekWidth",
         "path": ["size", "datepicker", "week-width"],
@@ -1073,7 +1073,7 @@
     },
     {
       "case": "rgba() colour whose first reference is an opacity: another Swift type",
-      "file": "Main.swift",
+      "file": "ChassisTokens.swift",
       "token": {
         "name": "BgBlurDefaultColor",
         "path": ["bg-blur", "default", "color"],
@@ -1101,7 +1101,7 @@
     {
       "case": "percent line height: points of the font size",
       "platform": "ios",
-      "file": "Main.swift",
+      "file": "ChassisTokens.swift",
       "token": {
         "name": "FontContextJumboLineHeight",
         "path": ["font", "context", "jumbo", "lineHeight"],
@@ -1119,7 +1119,7 @@
     {
       "case": "percent line height of a unitless font size",
       "platform": "ios",
-      "file": "Main.swift",
+      "file": "ChassisTokens.swift",
       "token": {
         "name": "FontWebsiteHeroBodyLineHeight",
         "path": ["font", "website", "hero-body", "lineHeight"],
@@ -1137,7 +1137,7 @@
     {
       "case": "letter spacing stays in points",
       "platform": "ios",
-      "file": "Main.swift",
+      "file": "ChassisTokens.swift",
       "token": {
         "name": "FontContextJumboLetterSpacing",
         "path": ["font", "context", "jumbo", "letterSpacing"],

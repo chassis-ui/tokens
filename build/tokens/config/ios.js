@@ -11,7 +11,9 @@ const options = {
   fileHeader: 'cxFileHeader',
   commentStyle: 'short',
   formatting: { fileHeaderTimestamp: true },
-  import: ['UIKit']
+  import: ['UIKit'],
+  // A caseless enum groups constants without instances; Objective-C cannot see them
+  objectType: 'enum'
 }
 
 const transforms = ['name/pascal', 'ts/resolveMath', 'ts/color/modifiers', 'ts/color/css/hexrgba']
@@ -37,6 +39,18 @@ function toPascalCase(name) {
 }
 
 /**
+ * Returns a Swift file: its destination and the type it declares. The main file declares
+ * `ChassisTokens`, and every other file `ChassisTokens<File>`, so all files can be in
+ * one target.
+ * @param {string} name - The file name without `.swift`, e.g. `ColorLight`.
+ * @param {string} filter - The file's filter.
+ */
+function swiftFile(name, filter) {
+  const className = name === 'ChassisTokens' ? name : `ChassisTokens${name}`
+  return { destination: `${name}.swift`, filter, format, options: { className } }
+}
+
+/**
  * Returns the files of one output.
  * @param {Object} output - `{ kind: 'base' }`, `{ kind: 'color', theme }` or
  *   `{ kind: 'number', screen }`; `screen` is undefined when no screens are configured.
@@ -44,22 +58,11 @@ function toPascalCase(name) {
 function generateFiles({ kind, theme, screen }) {
   switch (kind) {
     case 'base':
-      return [
-        { destination: 'Main.swift', filter: 'cx/allTokens', format },
-        { destination: 'String.swift', filter: 'cx/stringTokens', format }
-      ]
+      return [swiftFile('ChassisTokens', 'cx/allTokens'), swiftFile('String', 'cx/stringTokens')]
     case 'color':
-      return [
-        { destination: `Color${toPascalCase(theme)}.swift`, filter: 'cx/themeTokens', format }
-      ]
+      return [swiftFile(`Color${toPascalCase(theme)}`, 'cx/themeTokens')]
     case 'number':
-      return [
-        {
-          destination: `Number${screen ? toPascalCase(screen) : ''}.swift`,
-          filter: 'cx/numberTokens',
-          format
-        }
-      ]
+      return [swiftFile(`Number${screen ? toPascalCase(screen) : ''}`, 'cx/numberTokens')]
     default:
       throw new Error(`Unknown output: ${kind}`)
   }
