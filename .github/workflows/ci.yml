@@ -153,6 +153,8 @@ jobs:
         uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
         with:
           node-version: 22
+          # Nothing is installed, so there is no store to cache
+          package-manager-cache: false
 
       - name: Token diff report
         run: |
@@ -177,6 +179,9 @@ jobs:
         uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
         with:
           node-version: 22
+          # The audit installs nothing: the automatic cache of setup-node finds no pnpm
+          # store to save, and its post step fails the job
+          package-manager-cache: false
 
       - name: Audit dependencies
         run: pnpm check:pnpm
