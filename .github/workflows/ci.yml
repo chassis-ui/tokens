@@ -214,10 +214,11 @@ jobs:
       - name: Audit dependencies
         run: pnpm check:pnpm
 
-  # Whether the native jobs run. A pull request runs them only when it changes the token
-  # source, the build, the output, the preset baselines or the checks themselves, because
-  # macOS minutes cost ten times Linux minutes. Every other event runs them: a push to main,
-  # through publish-release.yml, and a manual run.
+  # Whether the native jobs run. A pull request and a push to develop run them only when they
+  # change the token source, the build, the output, the preset baselines or the checks
+  # themselves, because macOS minutes cost ten times Linux minutes. A pull request is compared
+  # with its base branch, a push to develop with the tip it replaced. Every other event runs
+  # them: a push to main, through publish-release.yml, and a manual run.
   native-changes:
     name: Native changes
     runs-on: ubuntu-latest
@@ -226,26 +227,39 @@ jobs:
       native: ${{ steps.changes.outputs.native }}
     steps:
       - name: Checkout
-        if: github.event_name == 'pull_request'
+        if: >-
+          github.event_name == 'pull_request' ||
+          (github.event_name == 'push' && github.ref == 'refs/heads/develop')
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
-          # The merge commit and its parents
-          fetch-depth: 2
+          # A pull request needs the merge commit and its parents, a push the tip it replaced
+          fetch-depth: ${{ github.event_name == 'pull_request' && 2 || 0 }}
           persist-credentials: false
 
       - name: Changed paths
         id: changes
         env:
           EVENT_NAME: ${{ github.event_name }}
+          REF: ${{ github.ref }}
+          BEFORE: ${{ github.event.before }}
         run: |
-          if [ "$EVENT_NAME" != pull_request ]; then
-            echo "Not a pull request, the native jobs run"
+          if [ "$EVENT_NAME" = pull_request ]; then
+            # The test merge commit against its first parent, the base branch
+            SINCE=HEAD^1
+          elif [ "$EVENT_NAME" = push ] && [ "$REF" = refs/heads/develop ]; then
+            if [ -z "$BEFORE" ] || ! git cat-file -e "$BEFORE^{commit}" 2>/dev/null; then
+              echo "No earlier commit to compare with, the native jobs run"
+              echo "native=true" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+            SINCE="$BEFORE"
+          else
+            echo "Not a pull request or a push to develop, the native jobs run"
             echo "native=true" >> "$GITHUB_OUTPUT"
             exit 0
           fi
 
-          # The test merge commit against its first parent, the base branch
-          changed=$(git diff --name-only HEAD^1 HEAD -- \
+          changed=$(git diff --name-only "$SINCE" HEAD -- \
             packages/tokens/source \
             packages/tokens/build \
             packages/tokens/dist \
@@ -306,7 +320,7 @@ jobs:
       # Checks the Gradle wrapper against Gradle's checksums and caches Gradle's downloads,
       # with the open source cache of the action
       - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@9c971963bec38e04b3d30dcc455b5382be2fdbfb # v6.3.0
+        uses: gradle/actions/setup-gradle@3f5f9adaf7d9fecd50b5935e54106014257a94e6 # v6.4.0
         with:
           cache-provider: basic
 
