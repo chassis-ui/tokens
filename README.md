@@ -348,7 +348,7 @@ pnpm site:build
 Every pull request runs `.github/workflows/ci.yml`:
 
 - **Tokens** (Node.js 22 and 24): `tokens:lint`, `tokens:lint:source`, `tokens:typecheck`, `tokens:test`, `tokens:verify`, `tokens:verify:presets`
-- **Site**: `lint:prettier` (the whole repository), `site:lint`, `check:astro`, `site:build`
+- **Site**: `lint:prettier` (the whole repository), `site:lint`, `check:astro`, `site:build`, `site:lint:html`
 - **Audit**: `pnpm audit` for moderate advisories and above
 - **Token diff**: the [token diff report](#token-diff-report) of the pull request against its base branch, in the job summary
 - **Changeset**: a pull request that changes `source/`, `build/` or `dist/` must add a changeset (`pnpm changeset`)

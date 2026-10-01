@@ -101,6 +101,9 @@ jobs:
       - name: Build
         run: pnpm site:build
 
+      - name: Validate HTML
+        run: pnpm site:lint:html
+
   # A change to packages/tokens/source, build or dist needs a changeset (changedFilePatterns in
   # .changeset/config.json); `pnpm changeset --empty` adds one that releases nothing. A pull
   # request is compared with its base branch, a push to develop with the tip it replaced. The
