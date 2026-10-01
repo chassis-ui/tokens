@@ -167,13 +167,15 @@ Before opening a pull request:
 pnpm site:lint
 pnpm check:astro
 pnpm site:build
+pnpm site:lint:html
 ```
 
 ## What a pull request needs before merge
 
 - **Passing CI**: `.github/workflows/ci.yml` runs the token lint, tests and golden checks on
-  Node.js 22 and 24, the site lint, `astro check` and site build, Prettier on the whole repository
-  (`pnpm lint:prettier`) and `pnpm audit`. The commands above run the same checks locally.
+  Node.js 22 and 24, the site lint, `astro check`, the site build and the HTML validation of its
+  output, Prettier on the whole repository (`pnpm lint:prettier`) and `pnpm audit`. The commands
+  above run the same checks locally.
 - **A changeset** for anything that changes the published package: token names or values, file
   names, formats or the package contents. CI fails a pull request or a push to `develop` that
   changes `packages/tokens/source/`, `build/` or `dist/` without one; for such a change that releases

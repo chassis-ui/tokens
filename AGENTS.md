@@ -39,7 +39,7 @@ Run the checks of the area you changed, and report the ones that fail.
 | ------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
 | `packages/tokens/build/` or `test/`               | `pnpm tokens:lint`, `pnpm tokens:typecheck`, `pnpm tokens:test`, `pnpm tokens:verify`, `pnpm tokens:verify:presets` |
 | `packages/tokens/source/`                         | `pnpm tokens:lint:source`, `pnpm tokens`, `pnpm tokens:diff`, then the row above                                    |
-| `packages/site/`                                  | `pnpm site:lint`, `pnpm check:astro`, `pnpm site:build`                                                             |
+| `packages/site/`                                  | `pnpm site:lint`, `pnpm check:astro`, `pnpm site:build`, `pnpm site:lint:html`                                      |
 | Any Markdown, JSON or configuration file          | `pnpm lint:prettier`                                                                                                |
 | `chassis.build` in `packages/tokens/package.json` | `pnpm tokens`, `pnpm tokens:swift-package`                                                                          |
 
@@ -87,7 +87,8 @@ Run the checks of the area you changed, and report the ones that fail.
   and break its rules. Do not copy a convention from a page.
 - Every token name and value in a page must exist in `packages/tokens/source/` or
   `packages/tokens/dist/` as written. Copy generated code from `dist/`; do not retype it.
-- Run `pnpm site:lint` and `pnpm site:build` after editing `packages/site/`.
+- Run `pnpm site:lint`, `pnpm site:build` and `pnpm site:lint:html` after editing
+  `packages/site/`.
 
 ## Cautions
 
