@@ -1,0 +1,286 @@
+---
+title: Shadow Tokens
+description: Shadow tokens hold the layers of drop and inner shadows, from the elevation scale and the glows to the shadows of states and components.
+toc: true
+---
+
+<Callout type="warning" name="work-in-progress" />
+
+## Introduction
+
+Shadow tokens hold the shadows of elements: the offset, blur, spread, and color of each layer, and whether the layer falls outside or inside the element. The sizes of a layer reference the dimension scale, and its color references a color token, so the colors of a shadow follow the brand and the theme.
+
+### Token levels
+
+The shadow category has the three token levels, in two token sets. `packages/tokens/source/base/effect-base.json` holds the base tokens, and `packages/tokens/source/base/app-base.json` holds the context and component tokens.
+
+- **Base tokens** hold the layers: `shadow.elevation.*` and `shadow.glow.*`. The colors of the elevation layers reference the shadow colors, `color.shadow.*`.
+- **Context tokens** name a shadow by its size or by the state of an element: `shadow.context.*`.
+- **Component tokens** assign a shadow to a component: `shadow.<component>.*`.
+
+The shadow of a card passes through every level:
+
+```text
+shadow.card.main               {shadow.context.medium}
+shadow.context.medium          {shadow.elevation.default.20}
+shadow.elevation.default.20    layers with the color {color.shadow.default}
+color.shadow.default           {color.base.shadow.light.default}
+```
+
+### Shadow layers
+
+A shadow token has the type `boxShadow`, and its value is one layer or a list of layers. `shadow.elevation.default.10` in `packages/tokens/source/base/effect-base.json` holds a list:
+
+```json
+{
+  "shadow": {
+    "elevation": {
+      "default": {
+        "10": {
+          "$type": "boxShadow",
+          "$value": [
+            {
+              "color": "{color.shadow.default}",
+              "type": "dropShadow",
+              "x": "{dimension.base.0}",
+              "y": "{dimension.base.2}",
+              "blur": "{dimension.base.8}",
+              "spread": "{dimension.base.n2}"
+            },
+            {
+              "color": "{color.shadow.default}",
+              "type": "dropShadow",
+              "x": "{dimension.base.0}",
+              "y": "{dimension.base.1}",
+              "blur": "{dimension.base.4}",
+              "spread": "{dimension.base.n1}"
+            }
+          ]
+        }
+      }
+    }
+  }
+}
+```
+
+Each layer has the same keys, and a token with one layer may hold the layer without the list.
+
+<CxTable>
+| Key | Holds |
+| --- | --- |
+| `color` | The color of the layer, a reference to a color token |
+| `type` | `dropShadow` for a shadow outside the element, `innerShadow` for a shadow inside it |
+| `x` | The horizontal offset |
+| `y` | The vertical offset |
+| `blur` | The blur of the layer |
+| `spread` | The size that the layer gains, or loses when the value is negative |
+</CxTable>
+
+The sizes are in design pixels and reference `dimension.base.*`, whose names state the size: `8` is eight, `n2` is minus two, and `d25` is two and a half. The build renames `x` and `y` to `offsetX` and `offsetY`, which is where the names of the iOS and Android output come from.
+
+## Base tokens
+
+The base tokens hold the layers that the other levels reference. The shadow colors belong to the color category and are listed here because the elevation tokens reference them.
+
+### Shadow colors
+
+`color.shadow.*` holds one color per color context. Each token references the base color of its theme, so the table has one reference column per theme.
+
+<CxTable>
+| Token | Reference |
+| --- | --- |
+| `color.shadow.default` | `{color.base.shadow.<theme>.default}` |
+| `color.shadow.alternate` | `{color.base.shadow.<theme>.alternate}` |
+| `color.shadow.primary` | `{color.base.shadow.<theme>.primary}` |
+| `color.shadow.secondary` | `{color.base.shadow.<theme>.secondary}` |
+| `color.shadow.neutral` | `{color.base.shadow.<theme>.neutral}` |
+| `color.shadow.danger` | `{color.base.shadow.<theme>.danger}` |
+| `color.shadow.success` | `{color.base.shadow.<theme>.success}` |
+| `color.shadow.warning` | `{color.base.shadow.<theme>.warning}` |
+| `color.shadow.info` | `{color.base.shadow.<theme>.info}` |
+</CxTable>
+
+The [color tokens]([[docsref:/design-tokens/color-tokens]]) doc describes `color.base.*` and the palettes that these colors come from.
+
+### Elevation
+
+Elevation tokens are named `shadow.elevation.<context>.<level>`. The levels are `05`, `10`, `20`, `30`, `40`, `50`, `60`, `70`, `80`, `90`, and `95`, and a higher level holds a larger shadow; the source and the generated files list `05` last.
+
+Each level of the `default` context holds two layers of the type `dropShadow`. In the first layer the blur is four times the vertical offset and the spread is the negative offset; the second layer has half the sizes of the first.
+
+<CxTable>
+| Token | Layer | `color` | `x` | `y` | `blur` | `spread` |
+| --- | --- | --- | --- | --- | --- | --- |
+| `shadow.elevation.default.10` | 1 | `{color.shadow.default}` | `{dimension.base.0}` | `{dimension.base.2}` | `{dimension.base.8}` | `{dimension.base.n2}` |
+| `shadow.elevation.default.10` | 2 | `{color.shadow.default}` | `{dimension.base.0}` | `{dimension.base.1}` | `{dimension.base.4}` | `{dimension.base.n1}` |
+| `shadow.elevation.default.20` | 1 | `{color.shadow.default}` | `{dimension.base.0}` | `{dimension.base.4}` | `{dimension.base.16}` | `{dimension.base.n4}` |
+| `shadow.elevation.default.20` | 2 | `{color.shadow.default}` | `{dimension.base.0}` | `{dimension.base.2}` | `{dimension.base.8}` | `{dimension.base.n2}` |
+| `shadow.elevation.default.30` | 1 | `{color.shadow.default}` | `{dimension.base.0}` | `{dimension.base.5}` | `{dimension.base.20}` | `{dimension.base.n5}` |
+| `shadow.elevation.default.30` | 2 | `{color.shadow.default}` | `{dimension.base.0}` | `{dimension.base.d25}` | `{dimension.base.10}` | `{dimension.base.nd25}` |
+| `shadow.elevation.default.40` | 1 | `{color.shadow.default}` | `{dimension.base.0}` | `{dimension.base.6}` | `{dimension.base.24}` | `{dimension.base.n6}` |
+| `shadow.elevation.default.40` | 2 | `{color.shadow.default}` | `{dimension.base.0}` | `{dimension.base.3}` | `{dimension.base.12}` | `{dimension.base.n3}` |
+| `shadow.elevation.default.50` | 1 | `{color.shadow.default}` | `{dimension.base.0}` | `{dimension.base.8}` | `{dimension.base.32}` | `{dimension.base.n8}` |
+| `shadow.elevation.default.50` | 2 | `{color.shadow.default}` | `{dimension.base.0}` | `{dimension.base.4}` | `{dimension.base.16}` | `{dimension.base.n4}` |
+| `shadow.elevation.default.60` | 1 | `{color.shadow.default}` | `{dimension.base.0}` | `{dimension.base.10}` | `{dimension.base.40}` | `{dimension.base.n10}` |
+| `shadow.elevation.default.60` | 2 | `{color.shadow.default}` | `{dimension.base.0}` | `{dimension.base.5}` | `{dimension.base.20}` | `{dimension.base.n5}` |
+| `shadow.elevation.default.70` | 1 | `{color.shadow.default}` | `{dimension.base.0}` | `{dimension.base.12}` | `{dimension.base.48}` | `{dimension.base.n12}` |
+| `shadow.elevation.default.70` | 2 | `{color.shadow.default}` | `{dimension.base.0}` | `{dimension.base.6}` | `{dimension.base.24}` | `{dimension.base.n6}` |
+| `shadow.elevation.default.80` | 1 | `{color.shadow.default}` | `{dimension.base.0}` | `{dimension.base.14}` | `{dimension.base.56}` | `{dimension.base.n14}` |
+| `shadow.elevation.default.80` | 2 | `{color.shadow.default}` | `{dimension.base.0}` | `{dimension.base.7}` | `{dimension.base.28}` | `{dimension.base.n7}` |
+| `shadow.elevation.default.90` | 1 | `{color.shadow.default}` | `{dimension.base.0}` | `{dimension.base.16}` | `{dimension.base.64}` | `{dimension.base.n16}` |
+| `shadow.elevation.default.90` | 2 | `{color.shadow.default}` | `{dimension.base.0}` | `{dimension.base.8}` | `{dimension.base.32}` | `{dimension.base.n8}` |
+| `shadow.elevation.default.95` | 1 | `{color.shadow.default}` | `{dimension.base.0}` | `{dimension.base.20}` | `{dimension.base.80}` | `{dimension.base.n20}` |
+| `shadow.elevation.default.95` | 2 | `{color.shadow.default}` | `{dimension.base.0}` | `{dimension.base.10}` | `{dimension.base.40}` | `{dimension.base.n10}` |
+| `shadow.elevation.default.05` | 1 | `{color.shadow.default}` | `{dimension.base.0}` | `{dimension.base.1}` | `{dimension.base.4}` | `{dimension.base.n1}` |
+| `shadow.elevation.default.05` | 2 | `{color.shadow.default}` | `{dimension.base.0}` | `{dimension.base.d05}` | `{dimension.base.2}` | `{dimension.base.nd05}` |
+</CxTable>
+
+The other contexts have the sizes of `default` at every level and differ in their colors:
+
+- `alternate` has the same two layers with the color `{color.shadow.alternate}`.
+- `primary`, `secondary`, `neutral`, `danger`, `success`, `warning`, and `info` add a third layer to the two layers of `default`. It has the sizes of the first layer and the color `{color.shadow.<context>}`.
+- `brand` and `accent` add the same third layer with the colors `{color.primitive.brand.t-5020}` and `{color.primitive.accent.t-5020}`.
+
+### Glow
+
+Glow tokens are named `shadow.glow.<context>`, for the contexts `default`, `alternate`, `black`, `white`, `primary`, `secondary`, `neutral`, `danger`, `success`, `warning`, and `info`. Each holds one layer of the type `dropShadow` in a color of its context, with the blur `{dimension.base.4}` and with `{dimension.base.0}` as both offsets and as the spread, so the glow surrounds the element evenly.
+
+## Context tokens
+
+`shadow.context.*` names a shadow by its size (`none`, `small`, `medium`, `large`, `inset`) or by the state of an element (`idle`, `disabled`, `hover`, `press`, `focus`, `highlight`). Reach for these tokens in components that have no shadow token of their own.
+
+<CxTable>
+| Token | Reference |
+| --- | --- |
+| `shadow.context.small` | `{shadow.elevation.default.10}` |
+| `shadow.context.medium` | `{shadow.elevation.default.20}` |
+| `shadow.context.large` | `{shadow.elevation.default.40}` |
+| `shadow.context.idle` | `{shadow.context.none}` |
+| `shadow.context.disabled` | `{shadow.context.none}` |
+| `shadow.context.hover` | `{shadow.elevation.default.20}` |
+| `shadow.context.press` | `{shadow.elevation.default.10}` |
+</CxTable>
+
+The other context tokens hold a layer of their own. `shadow.context.none` is a transparent layer without sizes, `shadow.context.inset` is the inner shadow of the category, and `shadow.context.focus` and `shadow.context.highlight` are glows in the cue color of the `default` context.
+
+<CxTable>
+| Token | `type` | `color` | `x` | `y` | `blur` | `spread` |
+| --- | --- | --- | --- | --- | --- | --- |
+| `shadow.context.none` | `dropShadow` | `{color.primitive.black.transparent}` | `{dimension.base.0}` | `{dimension.base.0}` | `{dimension.base.0}` | `{dimension.base.0}` |
+| `shadow.context.inset` | `innerShadow` | `{color.shadow.default}` | `{dimension.base.0}` | `{dimension.base.2}` | `{dimension.base.4}` | `{dimension.base.0}` |
+| `shadow.context.focus` | `dropShadow` | `{color.context.default.cue-main}` | `{dimension.base.0}` | `{dimension.base.0}` | `{dimension.base.4}` | `{dimension.base.0}` |
+| `shadow.context.highlight` | `dropShadow` | `{color.context.default.cue-main}` | `{dimension.base.0}` | `{dimension.base.0}` | `{dimension.base.4}` | `{dimension.base.0}` |
+</CxTable>
+
+## Component tokens
+
+Component tokens assign a shadow to a component or to one of its states. All of them are in `packages/tokens/source/base/app-base.json`.
+
+### Buttons
+
+Button shadows have one token per state. Each references `{shadow.context.none}`, so a button has no shadow in any state.
+
+<CxTable>
+| Token | Reference |
+| --- | --- |
+| `shadow.button.idle` | `{shadow.context.none}` |
+| `shadow.button.hover` | `{shadow.context.none}` |
+| `shadow.button.press` | `{shadow.context.none}` |
+| `shadow.button.disabled` | `{shadow.context.none}` |
+</CxTable>
+
+### Other components
+
+The other components have one shadow token each, named `main`, or `item` for the items of a segment.
+
+<CxTable>
+| Token | Reference |
+| --- | --- |
+| `shadow.alert.main` | `{shadow.context.large}` |
+| `shadow.card.main` | `{shadow.context.medium}` |
+| `shadow.datepicker.main` | `{shadow.context.medium}` |
+| `shadow.dropdown.main` | `{shadow.context.medium}` |
+| `shadow.form-input.main` | `{shadow.context.none}` |
+| `shadow.nav-top.main` | `{shadow.context.large}` |
+| `shadow.message.main` | `{shadow.context.small}` |
+| `shadow.modal.main` | `{shadow.context.large}` |
+| `shadow.section.main` | `{shadow.context.medium}` |
+| `shadow.segment.item` | `{shadow.context.small}` |
+| `shadow.table.main` | `{shadow.context.none}` |
+</CxTable>
+
+`shadow.nav-left.main` references no other shadow. It holds two layers of the type `dropShadow` with a horizontal offset, in colors of the primitive black palette.
+
+<CxTable>
+| Token | Layer | `color` | `x` | `y` | `blur` | `spread` |
+| --- | --- | --- | --- | --- | --- | --- |
+| `shadow.nav-left.main` | 1 | `{color.primitive.black.t-20}` | `{dimension.base.5}` | `{dimension.base.0}` | `{dimension.base.20}` | `{dimension.base.n5}` |
+| `shadow.nav-left.main` | 2 | `{color.primitive.black.t-10}` | `{dimension.base.d25}` | `{dimension.base.0}` | `{dimension.base.10}` | `{dimension.base.nd25}` |
+</CxTable>
+
+## Usage
+
+Choose a shadow token by its level, then by its size or state. The brand and the theme set its colors.
+
+### Choosing a level
+
+Use the component token when the component has one: `shadow.card.main` for a card, `shadow.modal.main` for a modal. Use `shadow.context.small`, `shadow.context.medium`, or `shadow.context.large` for an element without a token of its own; they reference the levels `10`, `20`, and `40` of `shadow.elevation.default.*`.
+
+For an element that changes its shadow with its state, use the state tokens: `shadow.context.idle` and `shadow.context.disabled` reference `shadow.context.none`, `shadow.context.hover` references level `20`, and `shadow.context.press` references level `10`. Use `shadow.elevation.*` directly for a level that the context tokens don't name, or for a shadow with a colored layer such as `shadow.elevation.primary.20`.
+
+### Themes and brands
+
+Only the colors of a shadow change with the theme and the brand; the sizes reference the same `dimension.base.*` tokens in each of them. `color.shadow.*` references `color.base.shadow.light.*` or `color.base.shadow.dark.*`, and these reference the palettes of the brand. `shadow.context.focus` and `shadow.context.highlight` follow `color.context.default.cue-main`, and `shadow.glow.<context>` follows `color.context.<context>.base-color`, or `fg-main` for `default` and `alternate`.
+
+## Platform output
+
+The web prints a shadow token as one CSS `box-shadow` value with sizes in `rem`. iOS and Android split it into one constant or resource per part of each layer, with sizes in points on iOS and in `dp` on Android.
+
+<CxTable>
+| Platform | Name | Format |
+| --- | --- | --- |
+| Web | `$cx-shadow-card-main` | A `box-shadow` value with sizes in `rem`, or a custom property of Chassis CSS |
+| iOS | `ShadowCardMain1Blur` | A `CGFloat` in points |
+| Android | `@dimen/shadow_card_main_1_blur` | A `<dimen>` in `dp` |
+</CxTable>
+
+The web row is the whole shadow of `shadow.card.main`; the iOS and Android rows are the blur of its first layer. The values in the examples of this section are those of the `chassis` brand in the current version and differ in other brands.
+
+On the web, the build writes each layer as x, y, blur, spread, and color, adds `inset` to an inner shadow, and separates the layers with a comma:
+
+```scss
+$cx-shadow-context-medium: 0rem 0.25rem 1rem -0.25rem rgba(0, 0, 0, 0.1), 0rem 0.125rem 0.5rem -0.125rem rgba(0, 0, 0, 0.1) !default;
+$cx-shadow-context-inset: 0rem 0.125rem 0.25rem 0rem rgba(0, 0, 0, 0.1) inset !default;
+$cx-shadow-card-main: var(--box-shadow-md) !default;
+```
+
+`main.scss` holds the shadows in the colors of the first theme. The color file of each theme, such as `color-dark.scss`, holds every shadow again in the colors of that theme.
+
+A token whose value is a reference to `shadow.context.<name>` prints `var(--box-shadow-<name>)`, a custom property of [Chassis CSS](https://github.com/chassis-ui/css), with `sm`, `md`, and `lg` for `small`, `medium`, and `large`. Tokens named after a state (`idle`, `hover`, `press`, `disabled`, `focus`, `highlight`) print their value instead, as `$cx-shadow-button-idle` does. The presets `web-scss`, `web-px`, and `web-vw` print the value of every shadow token, with sizes in `rem`, `px`, and `vw`.
+
+On iOS, the build writes the parts `Color`, `Type`, `Blur`, `Radius`, `Spread`, `OffsetX`, and `OffsetY`. The number of the layer follows the name of the token when the token has more than one layer, so `ShadowElevationDefault101Blur` is the blur of layer `1` of level `10`. `Radius` is half the blur, for the `shadowRadius` of Core Animation, which has no equivalent of the spread.
+
+```swift
+    public static let ShadowCardMain1Color = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0.1)
+    public static let ShadowCardMain1Type = "dropShadow"
+    public static let ShadowCardMain1Blur = CGFloat(16)
+    public static let ShadowCardMain1Radius = CGFloat(8)
+    public static let ShadowCardMain1Spread = CGFloat(-4)
+    public static let ShadowCardMain1OffsetX = CGFloat(0)
+    public static let ShadowCardMain1OffsetY = CGFloat(4)
+```
+
+On Android, the build writes the same parts without the radius, as `<color>`, `<string>`, and `<dimen>` resources:
+
+```xml
+  <color name="shadow_card_main_1_color">#1a000000</color>
+  <string name="shadow_card_main_1_type">dropShadow</string>
+  <dimen name="shadow_card_main_1_blur">16dp</dimen>
+  <dimen name="shadow_card_main_1_spread">-4dp</dimen>
+  <dimen name="shadow_card_main_1_offset_x">0dp</dimen>
+  <dimen name="shadow_card_main_1_offset_y">4dp</dimen>
+```
+
+The parts of a shadow also go to the file of their type: the colors of each theme to the color files, the sizes to the number files, and the types to the string files.
+
+See the [web]([[docsref:/use-in-project/web-applications]]), [iOS]([[docsref:/use-in-project/ios-applications]]), and [Android]([[docsref:/use-in-project/android-applications]]) docs for the files that hold these names.

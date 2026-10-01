@@ -1,0 +1,112 @@
+---
+title: Welcome to Chassis Tokens
+description: Chassis Tokens holds the design tokens of the Chassis Design System in Tokens Studio format and builds them into SCSS, Swift and Android resources.
+toc: true
+sections:
+  - title: Quick Start
+    description: Install the published tokens in a web, iOS or Android project, or fork the repository and build your own.
+    slug: quick-start
+  - title: Tokens Studio
+    description: The token sets, the groups that select them, and how to change tokens in Tokens Studio.
+    slug: tokens-studio
+  - title: Style Dictionary
+    description: The build, its options and platforms, and the files it writes.
+    slug: style-dictionary
+  - title: Figma Variables
+    description: How the token sets become Variables, Collections and Modes in Figma.
+    slug: figma-variables
+aliases:
+  - '/getting-started'
+  - '[[docsref:/getting-started]]'
+---
+
+<Callout type="warning" name="work-in-progress" />
+
+## Introduction
+
+Chassis Tokens holds the design tokens of the Chassis Design System and the build that turns them into files for the web, iOS and Android. The tokens are JSON files in [Tokens Studio](https://tokens.studio) format, synced with Figma. The build uses [Style Dictionary](https://styledictionary.com) and writes SCSS variables, Swift constants and Android resources.
+
+The output is committed to the repository and published, so you can install the tokens without building them. [Chassis CSS](https://github.com/chassis-ui/css) is built on the web output.
+
+You can also own the tokens: fork the repository, change the token sets, and build your own brands, themes, apps and platforms. The [quick start]([[docsref:/getting-started/quick-start]]) covers both ways.
+
+## Token sets
+
+A token set is one JSON file of `packages/tokens/source/`, such as `base/theme-base.json`. `packages/tokens/source/$themes.json` sorts the token sets into groups, and each option of a group selects the token sets that hold its tokens. The token system is built on three core groups, `brand`, `theme` and `app`. `screen` is an optional fourth group.
+
+<CxTable>
+| Group | Token sets of an option hold | Options of the committed configuration |
+| --- | --- | --- |
+| `brand` | The palette, the font families and weights, and the base border radius | `chassis`, `sinefil` |
+| `theme` | The primitive and context colors, and the shadows | `light`, `dark` |
+| `app` | The component tokens, with the overrides of the app | `docs`, `demo` |
+| `screen`, optional | The font sizes, and the sizes and spacing that differ per screen | `large`, `medium`, `small` |
+</CxTable>
+
+One option of each group makes a list of token sets, named `<brand>_<app>_<theme>_<screen>`, such as `chassis_docs_light_large`. A token set overrides the tokens of the sets before it in the list, as in Tokens Studio: the `dark` theme selects `base/theme-base.json` and then `base/theme-dark.json`, whose colors replace those of the first.
+
+The options in the table are examples, and the groups are yours to change when you own the tokens. To remove the `screen` group, remove it from `$themes.json`, and set `screens` to `[]` or leave the key out of `chassis.build`. A group of your own also needs a change to `planBuilds` in `packages/tokens/build/build.js`, which makes the name of a list from the brand, the app, the theme and the screen.
+
+The [Tokens Studio guide]([[docsref:/getting-started/tokens-studio]]) describes the token sets and how to change them, and the [Figma Variables guide]([[docsref:/getting-started/figma-variables]]) how they become Variables in Figma.
+
+## Token levels
+
+Tokens reference each other on three levels, so a change to a base token reaches every token that references it. The sizes of the base level reference `dimension.base.*`, which holds the numbers of the scales and references nothing.
+
+<CxTable>
+| Level | Holds | Example | Reference |
+| --- | --- | --- | --- |
+| Base tokens | The steps of a scale or the colors of a palette | `size.unit.16` | `{dimension.base.16}` |
+| Context tokens | A value named by its role | `space.context.medium` | `{size.unit.16}` |
+| Component tokens | A value for a part of a component | `space.button.medium-gap` | `{space.unit.8}` |
+</CxTable>
+
+The pages of the token categories, such as the [space tokens]([[docsref:/design-tokens/space-tokens]]) and the [color tokens]([[docsref:/design-tokens/color-tokens]]), list the tokens of each level.
+
+## Build output
+
+The build reads `chassis.build` of `packages/tokens/package.json`, which lists the brands, themes, screens and apps to build, and the platforms of each app. The committed configuration builds the brands `chassis` and `sinefil`, the app `docs` for the `web` platform, and the app `demo` for the `ios` and `android` platforms. An option of `$themes.json` that the configuration does not list is not built.
+
+Every app and brand gets one folder per platform, `packages/tokens/dist/<platform>/<app>/<brand>/`.
+
+<CxTable>
+| Platform | Folder | Files |
+| --- | --- | --- |
+| `web` | `dist/web/<app>/<brand>/` | SCSS variables: `main.scss`, `string.scss`, one color file per theme and one number file per screen |
+| `ios` | `dist/ios/<app>/<brand>/` | Swift constants with UIKit values: `ChassisTokens.swift`, `String.swift`, one color file per theme and one number file per screen; `Color.swift`, whose colors follow the light and dark appearance; the icons in `Icons.xcassets` |
+| `android` | `dist/android/<app>/<brand>/` | XML resources: `main.xml`, `string.xml`, one color file per theme and one number file per screen; the same resources as a `res/` tree with night and screen-size qualifiers, and the icons as vector drawables |
+</CxTable>
+
+A token keeps its name on every platform, in the spelling of the platform, and its value gets the type and the unit of the platform.
+
+<CxTable>
+| Platform | Name | Format |
+| --- | --- | --- |
+| Web | `$cx-space-context-medium` | A size in `rem` |
+| iOS | `SpaceContextMedium` | A `CGFloat` in points |
+| Android | `@dimen/space_context_medium` | A `<dimen>` in `dp` |
+</CxTable>
+
+The `web` platform writes SCSS for Chassis CSS: `$cx-color-accordion-item-fg-color` is `var(--default-fg-main)`, the custom property that Chassis CSS generates for `color.context.default.fg-main`. The presets `web-scss`, `web-px` and `web-vw` write SCSS variables without custom properties for other CSS frameworks, and the presets `ios-swiftui` and `android-compose` write SwiftUI and Jetpack Compose values. No preset is part of the committed configuration; you select one when you build your own tokens. The [Style Dictionary guide]([[docsref:/getting-started/style-dictionary]]) is the reference of the build.
+
+## Packages
+
+An npm package, a Swift package and an Android library hold the files of `packages/tokens/dist/`, built from the committed configuration. The current version is [[config:currentVersion]].
+
+<CxTable>
+| Package | Name | Contents |
+| --- | --- | --- |
+| npm package | `@chassis-ui/tokens` | All of `dist/`: the web, iOS and Android folders of every brand |
+| Swift package | `[[config:repo]].git`, with one library per app and brand, such as `ChassisTokensDemoChassis` | The Swift files and the icons of `dist/ios/<app>/<brand>/` |
+| Android library | `chassis-tokens-<app>-<brand>-<version>.aar`, attached to the [GitHub release]([[config:repo]]/releases) | The `res/` tree of `dist/android/<app>/<brand>/` |
+</CxTable>
+
+## Roadmap
+
+Seasonal and high-contrast themes are planned. Output in other formats, such as JavaScript and JSON, is planned as well. The [changelog]([[config:repo]]/blob/main/packages/tokens/CHANGELOG.md) names what each release adds.
+
+## Next steps
+
+- The [quick start]([[docsref:/getting-started/quick-start]]) installs the tokens in a project and builds them from a fork.
+- The [web]([[docsref:/use-in-project/web-applications]]), [iOS]([[docsref:/use-in-project/ios-applications]]) and [Android]([[docsref:/use-in-project/android-applications]]) guides cover the files, themes and screen sizes of each platform.
+- The source is in the [repository on GitHub]([[config:repo]]).

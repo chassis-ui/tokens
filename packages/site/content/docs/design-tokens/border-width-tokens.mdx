@@ -1,0 +1,121 @@
+---
+title: Border Width Tokens
+description: Border width tokens set the thickness of component borders and separators, with a scale named by size and one width per component.
+toc: true
+---
+
+<Callout type="warning" name="work-in-progress" />
+
+## Introduction
+
+Border width tokens hold the thickness of the borders of components and of the lines that separate content, as a size in design pixels. In the committed configuration, the border width tokens are the same in every brand, theme, and app, and on every screen.
+
+### Token levels
+
+Border width tokens have a context and a component level, and no base level of their own. Context tokens (`borderWidth.context.*`) reference the [size scale]([[docsref:/design-tokens/size-tokens]]) `size.unit.*`, and component tokens (`borderWidth.<component>.*`) reference the context tokens. The border of an active form input leads to a step of the size scale:
+
+```text
+borderWidth.form-input.active   {borderWidth.context.xlarge}
+borderWidth.context.xlarge      {size.unit.2}
+```
+
+Both levels are in `packages/tokens/source/base/app-base.json`.
+
+## Context tokens
+
+Context tokens name a border width, and each references a step of `size.unit.*`. The steps from `zero` to `2xlarge` are a scale in which each step is wider than the one before.
+
+<CxTable>
+| Token | Reference |
+| --- | --- |
+| `borderWidth.context.zero` | `{size.unit.0}` |
+| `borderWidth.context.small` | `{size.unit.05}` |
+| `borderWidth.context.medium` | `{size.unit.1}` |
+| `borderWidth.context.large` | `{size.unit.d15}` |
+| `borderWidth.context.xlarge` | `{size.unit.2}` |
+| `borderWidth.context.2xlarge` | `{size.unit.4}` |
+</CxTable>
+
+## Component tokens
+
+Component tokens assign a border width to a component. Most components have one token, named `main`; form inputs and assets have more.
+
+### Component borders
+
+The `main` token of a component is the width of its border. Every one references `{borderWidth.context.medium}`, except the border of the section, which references `{borderWidth.context.zero}`.
+
+<CxTable>
+| Token | Reference |
+| --- | --- |
+| `borderWidth.accordion.main` | `{borderWidth.context.medium}` |
+| `borderWidth.alert.main` | `{borderWidth.context.medium}` |
+| `borderWidth.badge.main` | `{borderWidth.context.medium}` |
+| `borderWidth.button.main` | `{borderWidth.context.medium}` |
+| `borderWidth.card.main` | `{borderWidth.context.medium}` |
+| `borderWidth.chip.main` | `{borderWidth.context.medium}` |
+| `borderWidth.datepicker.main` | `{borderWidth.context.medium}` |
+| `borderWidth.dropdown.main` | `{borderWidth.context.medium}` |
+| `borderWidth.table.main` | `{borderWidth.context.medium}` |
+| `borderWidth.modal.main` | `{borderWidth.context.medium}` |
+| `borderWidth.notification.main` | `{borderWidth.context.medium}` |
+| `borderWidth.tooltip.main` | `{borderWidth.context.medium}` |
+| `borderWidth.section.main` | `{borderWidth.context.zero}` |
+| `borderWidth.tab.main` | `{borderWidth.context.medium}` |
+</CxTable>
+
+### Form inputs
+
+Form inputs have a border width per state and one for the floating input. The `active` and `floating` borders reference a wider step of the scale than the `regular` and `inactive` borders.
+
+<CxTable>
+| Token | Reference |
+| --- | --- |
+| `borderWidth.form-input.regular` | `{borderWidth.context.medium}` |
+| `borderWidth.form-input.floating` | `{borderWidth.context.xlarge}` |
+| `borderWidth.form-input.active` | `{borderWidth.context.xlarge}` |
+| `borderWidth.form-input.inactive` | `{borderWidth.context.medium}` |
+</CxTable>
+
+### Assets
+
+The asset tokens hold the thickness of the indicator and of the separator line. They reference the size tokens of the same assets, `size.asset.*`, and not the context tokens.
+
+<CxTable>
+| Token | Reference |
+| --- | --- |
+| `borderWidth.asset.indicator` | `{size.asset.indicator}` |
+| `borderWidth.asset.separator` | `{size.asset.separator}` |
+</CxTable>
+
+## Usage
+
+Use the token of the lowest level that fits the element.
+
+- **A component with a token**: use its component token, `borderWidth.button.main` for the border of a button.
+- **An element without a token**: use a step of `borderWidth.context.*`. `borderWidth.context.medium` is the border of nearly every component.
+- **No border**: use `borderWidth.context.zero`, as `borderWidth.section.main` does.
+- **A new component token**: reference a step of the scale from `zero` to `2xlarge`, as the existing component tokens do.
+
+## Platform output
+
+A border width prints as a custom property of Chassis CSS or a size in `rem` on the web, as a `CGFloat` in points on iOS, and as a `<dimen>` in `dp` on Android.
+
+<CxTable>
+| Platform | Name | Format |
+| --- | --- | --- |
+| Web | `$cx-border-width-button-main` | A custom property of Chassis CSS; a size in `rem` for context tokens |
+| iOS | `BorderWidthButtonMain` | A `CGFloat` in points |
+| Android | `@dimen/border_width_button_main` | A `<dimen>` in `dp` |
+</CxTable>
+
+The `web` platform prints the size of the context tokens, and a custom property for a component token that references a context token. The asset tokens reference a size token, so they print their size. The values in the examples are those of the `chassis` brand in the current version and can differ in other brands. The build writes these lines:
+
+```scss
+$cx-border-width-context-medium: 0.0625rem !default;
+$cx-border-width-asset-indicator: 0.25rem !default;
+$cx-border-width-button-main: var(--border-width-md) !default;
+```
+
+The custom property is named after the referenced step in its short form: `md` for `medium` and `xl` for `xlarge`, while `zero` keeps its name. Chassis CSS declares these custom properties, so the files of the `web` platform work with Chassis CSS only. The presets `web-scss`, `web-px`, and `web-vw` print the size of every token; see [the Style Dictionary guide]([[docsref:/getting-started/style-dictionary]]).
+
+See the [web]([[docsref:/use-in-project/web-applications]]), [iOS]([[docsref:/use-in-project/ios-applications]]), and [Android]([[docsref:/use-in-project/android-applications]]) docs for the files that hold these names.

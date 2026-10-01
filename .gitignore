@@ -1,8 +1,22 @@
+# Token build verification output
+dist-next
+
+# Swift Package Manager
+.build
+.swiftpm
+Package.resolved
+
+# Native compile checks (Gradle)
+packages/tokens/test/native/android/.gradle
+packages/tokens/test/native/android/.kotlin
+packages/tokens/test/native/android/local.properties
+packages/tokens/test/native/android/**/build
+
 # Site
 _site
 .astro
-site/dist
-site/public
+packages/site/dist
+packages/site/public
 
 # OS
 ._*

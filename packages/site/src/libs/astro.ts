@@ -1,0 +1,161 @@
+import fs from 'node:fs'
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
+import mdx from '@astrojs/mdx'
+import sitemap from '@astrojs/sitemap'
+import type { AstroIntegration } from 'astro'
+import {
+  getChassisAssetsFsPath,
+  getChassisCSSFsPath,
+  getChassisIconsFsPath
+} from '@chassis-ui/docs'
+import type { ChassisConfig } from '@chassis-ui/docs/schema'
+
+// Static file paths that will be aliased (copied) to a different destination path.
+const staticFileAliases = {
+  '/images/apple-touch-icon.png': '/apple-touch-icon.png',
+  '/images/favicon.png': '/favicon.ico'
+}
+
+// Pages excluded from the generated sitemap.
+const sitemapExcludes = ['/404', '/docs']
+
+/**
+ * Returns the site's own Astro integrations, added after `chassisDocs()` of `@chassis-ui/docs`.
+ *
+ * Includes the `chassis-integration` (static file copying), MDX support and the sitemap
+ * generator.
+ */
+export function chassis({
+  config,
+  root
+}: {
+  config: ChassisConfig
+  root: string
+}): AstroIntegration[] {
+  const sitemapExcludedUrls = sitemapExcludes.map((url) => `${config.baseURL}${url}/`)
+  const publicDir = path.join(root, 'public')
+
+  // `astro check` / `astro sync` doesn't need static assets copied into _site.
+  // Track the command so the config:done hook can skip expensive file copies.
+  let cmd = 'dev'
+  let outDir = path.join(root, 'dist')
+
+  return [
+    {
+      name: 'chassis-integration',
+      hooks: {
+        'astro:config:setup': ({ addWatchFile, command, config: astroConfig }) => {
+          cmd = command
+          outDir = fileURLToPath(astroConfig.outDir)
+          // Reload the config when the integration is modified.
+          addWatchFile(path.join(root, 'src/libs/astro.ts'))
+        },
+        'astro:config:done': () => {
+          if (cmd === 'sync') return
+          cleanPublicDirectory(publicDir)
+          copyStatic(path.join(root, 'static'), publicDir)
+          copyChassisAssets(root, publicDir)
+          copyChassisCSS(root, publicDir)
+          copyChassisIcons(root, publicDir)
+          aliasStatic(root, publicDir)
+          copyPagefindIndex(outDir, publicDir)
+        }
+      }
+    },
+    // https://github.com/withastro/astro/issues/6475
+    mdx() as AstroIntegration,
+    sitemap({
+      filter: (page) => !sitemapExcludedUrls.includes(page)
+    })
+  ]
+}
+
+/**
+ * Copies the previously-generated Pagefind search index from `_site/tokens/pagefind/`
+ * into `public/tokens/pagefind/` so `astro dev` can serve search at `/tokens/pagefind/`,
+ * matching the path prefix this site is proxied under in production.
+ * No-op if no production build has been run yet — dev simply returns no results.
+ */
+function copyPagefindIndex(outDir: string, publicDir: string) {
+  const source = path.join(outDir, 'tokens', 'pagefind')
+  if (!fs.existsSync(source)) return
+  const destination = path.join(publicDir, 'tokens', 'pagefind')
+
+  fs.mkdirSync(destination, { recursive: true })
+  fs.cpSync(source, destination, { recursive: true })
+}
+
+/**
+ * Deletes the contents of the `public/` directory before each dev/build run so
+ * stale vendor assets (CSS, icons, images) from a previous build are removed.
+ * The directory itself is preserved to avoid ENOTEMPTY errors on the root.
+ * Errors on individual entries are intentionally swallowed — the directory may
+ * contain locked or read-only files in some environments.
+ */
+function cleanPublicDirectory(dir: string) {
+  if (!fs.existsSync(dir)) return
+  for (const entry of fs.readdirSync(dir)) {
+    const entryPath = path.join(dir, entry)
+    try {
+      fs.rmSync(entryPath, { force: true, recursive: true })
+    } catch {
+      // ignore
+    }
+  }
+}
+
+/**
+ * Copies the Chassis assets package output into `public/static/`.
+ */
+function copyChassisAssets(root: string, publicDir: string) {
+  const source = getChassisAssetsFsPath({ root })
+  const destination = path.join(publicDir, 'static')
+
+  fs.mkdirSync(destination, { recursive: true })
+  fs.cpSync(source, destination, { recursive: true })
+}
+
+/**
+ * Copies the compiled Chassis CSS bundle into `public/static/`.
+ */
+function copyChassisCSS(root: string, publicDir: string) {
+  const source = getChassisCSSFsPath({ root })
+  const destination = path.join(publicDir, 'static')
+
+  fs.mkdirSync(destination, { recursive: true })
+  fs.cpSync(source, destination, { recursive: true })
+}
+
+/**
+ * Copies the `icons/` folder from the Chassis Icons package into
+ * `public/static/icons/` so icons are served from `/static/icons/`.
+ */
+function copyChassisIcons(root: string, publicDir: string) {
+  const source = path.join(getChassisIconsFsPath({ root }), 'icons')
+  const destination = path.join(publicDir, 'static', 'icons')
+
+  fs.mkdirSync(destination, { recursive: true })
+  fs.cpSync(source, destination, { recursive: true })
+}
+
+/**
+ * Copies the contents of the `static/` source directory into `public/`
+ * so files are served from the root URL (`/`).
+ */
+function copyStatic(source: string, publicDir: string) {
+  fs.mkdirSync(publicDir, { recursive: true })
+  fs.cpSync(source, publicDir, { recursive: true })
+}
+
+/**
+ * Copies select static files from the Chassis assets package to alternative
+ * destination paths (e.g. `apple-touch-icon.png` → `/apple-touch-icon.png`).
+ */
+function aliasStatic(root: string, publicDir: string) {
+  const source = getChassisAssetsFsPath({ root })
+
+  for (const [aliasSource, aliasDestination] of Object.entries(staticFileAliases)) {
+    fs.cpSync(path.join(source, aliasSource), path.join(publicDir, aliasDestination))
+  }
+}

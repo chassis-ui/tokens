@@ -1,0 +1,49 @@
+---
+import FeatureCard from '@chassis-ui/docs/components/FeatureCard.astro'
+---
+
+<section class="home-section py-3xl md:py-6xl">
+  <div class="container 2xl section-content">
+    <div class="row mb-3xl md:mb-6xl">
+      <header class="section-header col lg:col-10 xl:col-8 text-center mx-auto">
+        <h2 class="section-title font-3xl md:font-4xl lg:font-5xl mb-xs md:mb-sm lg:mb-md">
+          <span class="font-normal d-block">Automated Pipeline</span> from Figma to Code
+        </h2>
+        <p class="section-body md:font-lg lg:font-xl m-0">
+          Chassis Tokens provide your team with a reliable method to deliver consistent interfaces
+          across brands, products, and platforms, cutting down on coordination hassles.
+        </p>
+      </header>
+    </div>
+
+    <div class="section-features row row-cols-1 md:row-cols-3 g-md md:g-xl">
+      <div class="col">
+        <FeatureCard icon="cx-swatchbook">
+          <Fragment slot="title">Multi-Brand Token Inheritance</Fragment>
+          <Fragment slot="body">
+            Manage multiple brand identities from a single repository. Switch brands instantly in
+            design and code while maintaining consistent token structure.
+          </Fragment>
+        </FeatureCard>
+      </div>
+      <div class="col">
+        <FeatureCard icon="cx-laptop-mobile">
+          <Fragment slot="title">Platform-Native Code Generation</Fragment>
+          <Fragment slot="body">
+            One source of truth generates optimized tokens for web (SCSS/CSS), iOS (Swift), and
+            Android (XML) with platform-native conventions.
+          </Fragment>
+        </FeatureCard>
+      </div>
+      <div class="col">
+        <FeatureCard icon="cx-figma">
+          <Fragment slot="title">Figma Variables Integration</Fragment>
+          <Fragment slot="body">
+            Design with tokens directly in Figma using Variables. Changes sync automatically between
+            design files and code repositories.
+          </Fragment>
+        </FeatureCard>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,287 @@
+name: CI
+
+# Pull requests run this workflow directly. Pushes to main run it through
+# publish-release.yml, which publishes only after these jobs pass.
+on:
+  pull_request:
+  workflow_dispatch:
+  workflow_call:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.head_ref || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  tokens:
+    name: Tokens (Node ${{ matrix.node }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        node: [22, 24]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@ea17c68df8912ef543352723c149a84f56e3d413 # v6.1.0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: ${{ matrix.node }}
+          cache: pnpm
+
+      # The tokens package and the root's lint tools, not the site: the build must not
+      # depend on the site's packages
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile --filter @chassis-ui/tokens
+
+      - name: Lint
+        run: pnpm tokens:lint
+
+      # Mistakes in source/ that the build would accept, named by token set and token
+      - name: Lint token source
+        run: pnpm tokens:lint:source
+
+      # checkJs on build/ with the types of Style Dictionary and Node.js 22
+      - name: Type check
+        run: pnpm tokens:typecheck
+
+      - name: Test
+        run: pnpm tokens:test
+
+      # Fails when the committed dist/ differs from a fresh build of tokens/
+      - name: Verify dist/
+        run: pnpm tokens:verify
+
+      - name: Verify presets
+        run: pnpm tokens:verify:presets
+
+  site:
+    name: Site
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@ea17c68df8912ef543352723c149a84f56e3d413 # v6.1.0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Prettier
+        run: pnpm lint:prettier
+
+      - name: Lint
+        run: pnpm site:lint
+
+      - name: Astro check
+        run: pnpm check:astro
+
+      # The same build as Vercel: syncs and builds vendor/assets, then Astro and Pagefind
+      - name: Build
+        run: pnpm site:build
+
+  # A pull request that changes packages/tokens/source, build or dist needs a changeset
+  # (changedFilePatterns in .changeset/config.json); `pnpm changeset --empty` adds one that
+  # releases nothing. The Version Packages pull request consumes changesets, so it is skipped.
+  changeset:
+    name: Changeset
+    if: github.event_name == 'pull_request' && !startsWith(github.head_ref, 'changeset-release/')
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          # Changesets compares against the base branch
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@ea17c68df8912ef543352723c149a84f56e3d413 # v6.1.0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile --filter chassis-tokens-workspace
+
+      - name: Check for a changeset
+        env:
+          BASE_REF: ${{ github.base_ref }}
+        run: pnpm changeset status --since "origin/$BASE_REF"
+
+  # What the pull request does to the tokens, in the job summary: the names added, removed,
+  # renamed and changed in each dist/ file. It compares the committed dist/ of the test merge
+  # commit with that of its first parent, the base branch; the Tokens job checks that both
+  # equal a fresh build. Needs no install: build/diff.js uses Node.js only.
+  token-diff:
+    name: Token diff
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          # The merge commit and its parents
+          fetch-depth: 2
+          persist-credentials: false
+
+      - name: Setup Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: 22
+          # Nothing is installed, so there is no store to cache
+          package-manager-cache: false
+
+      - name: Token diff report
+        run: |
+          node packages/tokens/build/diff.js --base HEAD^1 > "$RUNNER_TEMP/token-diff.md"
+          cat "$RUNNER_TEMP/token-diff.md" >> "$GITHUB_STEP_SUMMARY"
+          cat "$RUNNER_TEMP/token-diff.md"
+
+  audit:
+    name: Audit
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@ea17c68df8912ef543352723c149a84f56e3d413 # v6.1.0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: 22
+          # The audit installs nothing: the automatic cache of setup-node finds no pnpm
+          # store to save, and its post step fails the job
+          package-manager-cache: false
+
+      - name: Audit dependencies
+        run: pnpm check:pnpm
+
+  # Whether the native jobs run. A pull request runs them only when it changes the token
+  # source, the build, the output, the preset baselines or the checks themselves, because
+  # macOS minutes cost ten times Linux minutes. Every other event runs them: a push to main,
+  # through publish-release.yml, and a manual run.
+  native-changes:
+    name: Native changes
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      native: ${{ steps.changes.outputs.native }}
+    steps:
+      - name: Checkout
+        if: github.event_name == 'pull_request'
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          # The merge commit and its parents
+          fetch-depth: 2
+          persist-credentials: false
+
+      - name: Changed paths
+        id: changes
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+        run: |
+          if [ "$EVENT_NAME" != pull_request ]; then
+            echo "Not a pull request, the native jobs run"
+            echo "native=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          # The test merge commit against its first parent, the base branch
+          changed=$(git diff --name-only HEAD^1 HEAD -- \
+            packages/tokens/source \
+            packages/tokens/build \
+            packages/tokens/dist \
+            packages/tokens/test/golden \
+            packages/tokens/test/native \
+            packages/tokens/package.json \
+            Package.swift \
+            .github/workflows/ci.yml)
+
+          if [ -n "$changed" ]; then
+            echo "$changed"
+            echo "native=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "No change to the tokens, the build, the output or the native checks"
+            echo "native=false" >> "$GITHUB_OUTPUT"
+          fi
+
+  # The Swift files against the iOS simulator SDK (UIKit and SwiftUI), the asset catalogs
+  # with actool, and a sample that depends on the libraries of Package.swift and reads
+  # their tokens. Needs no install: a shell script
+  native-ios:
+    name: Native iOS
+    needs: native-changes
+    if: needs.native-changes.outputs.native == 'true'
+    runs-on: macos-26
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Compile the iOS output
+        run: packages/tokens/test/native/ios/check.sh
+
+  # The Android resources, compiled and linked against android.jar, the Compose objects
+  # against Jetpack Compose, and a sample app that depends on the Android libraries of the
+  # release and reads their resources, with the Gradle project of test/native/android. The
+  # runner has the Android SDK
+  native-android:
+    name: Native Android
+    needs: native-changes
+    if: needs.native-changes.outputs.native == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Setup Java
+        uses: actions/setup-java@de7274f081f381c8f8158605e0321c36c376e2e6 # v6.0.1
+        with:
+          distribution: temurin
+          java-version: 21
+
+      # Checks the Gradle wrapper against Gradle's checksums and caches Gradle's downloads,
+      # with the open source cache of the action
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@9c971963bec38e04b3d30dcc455b5382be2fdbfb # v6.3.0
+        with:
+          cache-provider: basic
+
+      - name: Compile the Android output
+        working-directory: packages/tokens/test/native/android
+        run: ./gradlew compileTokens

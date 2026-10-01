@@ -1,0 +1,234 @@
+---
+title: Figma Variables
+description: How Tokens Studio exports the token sets to Figma as Variables and styles, which Collections and Modes they form, and how to publish and scope them.
+toc: true
+---
+
+<Callout type="warning" name="work-in-progress" />
+
+## Introduction
+
+Tokens Studio exports the token sets of `packages/tokens/source/` to a Figma file as Variables and styles. Every group of `$themes.json` becomes a Variable Collection, and every option of a group becomes a Mode of that Collection, so the Modes of a design set its brand, its theme, its app, and its screen.
+
+This guide lists what each Collection holds, walks through the export, and names the Variables to hide and to scope. The [Tokens Studio guide]([[docsref:/getting-started/tokens-studio]]) describes the token sets and the groups themselves.
+
+## Prerequisites
+
+The export needs a Figma file and a plugin that reads the token sets:
+
+- Tokens Studio, connected to the repository that holds the token sets. The [Tokens Studio guide]([[docsref:/getting-started/tokens-studio]]) describes the connection.
+- Edit access to the Figma file that receives the Variables.
+
+## Collections and Modes
+
+The token system is built on three core groups, `brand`, `theme`, and `app`, and `screen` is an optional fourth group. Tokens Studio creates one Collection for each group of `packages/tokens/source/$themes.json` and one Mode for each option of the group. A token becomes a Variable of the Collection whose options mark its token set as `enabled`. A set that an option marks as `source` resolves references and creates no Variable.
+
+<CxTable>
+| Collection | Variables | Styles |
+| --- | --- | --- |
+| `brand` | `color.base.*`, `borderRadius.base.*`, `typography.fontFamily.*`, `typography.fontWeight.*`, `typography.fontSize.*`, `typography.lineHeight.*` | None |
+| `theme` | `color.primitive.*`, `color.context.*`, `color.shadow.*`, `color.utility.*` | `shadow.elevation.*`, `shadow.glow.*`, `bg-blur.*`, `gradient.primitive.*` |
+| `app` | Component colors such as `color.button.*`, `size.*`, `space.*`, `borderRadius.context.*` and the component radii, `borderWidth.*`, `opacity.*`, `grid.*`, `typography.letterSpacing.*`, `typography.paragraphSpacing.*` | `font.*`, `shadow.context.*` and the component shadows such as `shadow.button.*` |
+| `screen` | `size.website.*`, `space.website.*`, `typography.fontSize.website.*`, `figma.website.*` | `font.website.*` |
+</CxTable>
+
+The `website` groups of `size.*`, `space.*`, `typography.fontSize.*`, and `font.*` belong to the `screen` Collection, not to `app` or `brand`. Every Collection also holds the [visibility switches](#visibility-switches) of its group, `figma.switch.<group>.*`.
+
+The Modes depend on the options of your `$themes.json`. In the committed configuration, for example, the `theme` Collection has the Modes `light` and `dark`, and the `screen` Collection has the Modes `large`, `medium`, and `small`. Every option becomes a Mode, including an option that the build does not write because `chassis.build` of `packages/tokens/package.json` does not list it.
+
+The groups can change with your project. Without a `screen` group in `$themes.json`, Figma gets no `screen` Collection, and a group that you add becomes a Collection of its own. The build must follow such a change: see the [build options]([[docsref:/getting-started/style-dictionary#build-options]]) of the Style Dictionary guide.
+
+### Aliases
+
+A Variable whose token references a token of another Collection is an alias of that Variable, so a Mode of one Collection changes the Variables of another. The fill of the primary button runs through the Collections of the three core groups, shown here with the themes of the committed configuration:
+
+```text
+color.button.primary.bg-idle                        app
+  {color.context.primary.bg-idle}                   theme
+    {color.base.context.light.primary.bg-idle}      brand, in the light Mode of theme
+    {color.base.context.dark.primary.bg-idle}       brand, in the dark Mode of theme
+```
+
+The `brand` Collection holds the colors of every theme, and the Mode of the `theme` Collection selects one of them. The fill of the button therefore changes with the Mode of the `brand` Collection and with the Mode of the `theme` Collection, although its Variable belongs to the `app` Collection.
+
+### Figma references
+
+`$themes.json` keeps the identifiers of the Figma objects next to the token sets of each option. Tokens Studio writes these keys, so an export can change the file.
+
+<CxTable>
+| Key | Holds |
+| --- | --- |
+| `$figmaCollectionId` | The Collection of the group, the same for every option of the group |
+| `$figmaModeId` | The Mode of the option |
+| `$figmaVariableReferences` | The Variable of each token, by token name |
+| `$figmaStyleReferences` | The style of each token, by token name |
+</CxTable>
+
+## Variables and styles
+
+The type of a token decides what it becomes in Figma. A token that holds one color, number, or text becomes a Variable; a font, a shadow, or a gradient becomes a style.
+
+<CxTable>
+| Tokens | In Figma |
+| --- | --- |
+| `color.*` | Color Variable |
+| `size.*`, `space.*`, `grid.*`, `borderRadius.*`, `borderWidth.*`, `opacity.*` | Number Variable |
+| `typography.fontSize.*`, `typography.lineHeight.*`, `typography.letterSpacing.*`, `typography.paragraphSpacing.*` | Number Variable |
+| `typography.fontFamily.*`, `typography.fontWeight.*` | String Variable |
+| `figma.switch.*` | Boolean Variable |
+| `font.*` | Text style |
+| `shadow.*`, `bg-blur.*` | Effect style |
+| `gradient.*` | Color style |
+</CxTable>
+
+A style refers to Variables for the values that are Variables: the text style of `font.button.medium` takes its font family from `typography.fontFamily.text`, a Variable of the `brand` Collection, so it follows the Mode of that Collection.
+
+`dimension.base.*` and `modify.*` have no Variable, because every option marks their token set, `base/metric-source`, as `source`. `typography.textCase.*`, `typography.textDecoration.*`, and `icon.*` have none either.
+
+## Export to Figma
+
+The export runs in the Tokens Studio plugin, in the Figma file that holds the Variables. The first export creates the Collections, and a later export updates them.
+
+### First export
+
+The first export creates the Collections, the Modes, the Variables, and the styles in the file.
+
+1. Open the Tokens Studio plugin in the Figma file.
+2. Pull the latest tokens from the repository.
+3. Open **Styles & Variables** at the bottom of the plugin and choose **Export Styles & Variables To Figma**.
+4. Choose the export options and click **Confirm**.
+5. Select the options of the groups to export. Each selected option becomes a Mode.
+6. Click **Export to Figma** and wait until the plugin finishes.
+7. Open the Variables panel of Figma and check that it lists one Collection per group, `brand`, `theme`, `app`, and `screen`, each with the Modes you selected.
+8. Publish the library if other files use it.
+
+### Update the values
+
+A change of the token sets in the repository reaches Figma with another export.
+
+1. Pull the latest tokens from the repository. The plugin lists the tokens that changed.
+2. Export the Variables and styles again, as in the [first export](#first-export).
+3. Check the designs that use the changed Variables. Layers that use a Variable take the new value without an edit.
+4. Publish the library if other files use it.
+
+## Publish the library
+
+A published library offers its Variables to every file that enables it. Export the latest tokens before you publish, then decide which Variables the other files see and where Figma suggests them. The Figma help describes [how to publish a library](https://help.figma.com/hc/en-us/articles/360025508373-Publish-a-library).
+
+### Hide from publishing
+
+The `brand` Collection holds Variables that a design does not use directly; they exist as the source of the Variables of the `theme` and `app` Collections. Hide these groups, so that Figma does not list them when you set a property:
+
+- `color.base.*`
+- `borderRadius.base.*`
+
+To hide Variables, select them in the Variables panel, click **Edit variable**, and check **Hide from publishing**. Other Variables can still reference a hidden Variable.
+
+### Variable scopes
+
+A scope limits a Variable to the properties it is made for, so the list of a property shows only the Variables that apply. To set scopes, select the Variables in the Variables panel, click **Edit variable**, and check the scopes in the scope tab. The Figma help describes [the scopes of each Variable type](https://help.figma.com/hc/en-us/articles/15145852043927-Create-and-manage-variables-and-collections).
+
+<CxTable>
+| Variables | Scopes |
+| --- | --- |
+| `size.*` | **Width and height** |
+| `space.*` | **Gap** |
+| `borderRadius.*` | **Corner radius** |
+| `borderWidth.*` | **Stroke** |
+| `opacity.*` | **Layer opacity** |
+| `typography.fontSize.*` | **Font size**, **Width and height** |
+| `typography.lineHeight.*` | **Line height**, **Width and height** |
+| `typography.paragraphSpacing.*` | **Paragraph spacing**, **Width and height** |
+| `typography.letterSpacing.*` | **Letter spacing** |
+</CxTable>
+
+The typography Variables also have the **Width and height** scope because the skeleton placeholders of Chassis take their dimensions from the font size and the line height of the text they replace.
+
+## Use in designs
+
+A Variable in Figma has the name of its token with slashes instead of dots: `space.button.medium-gap` is `space/button/medium-gap`. Set a Mode of each Collection on a page or a frame, and the layers inside it take the values of that Mode.
+
+### Button example
+
+The medium primary button in its idle state takes its values from Variables of the `app` Collection and from one text style:
+
+```text
+Button (frame with auto layout)
+│    Min height:          size/button/medium-main
+│    Horizontal padding:  space/button/medium-padding-x
+│    Vertical padding:    space/button/medium-padding-y
+│    Gap:                 space/button/medium-gap
+│    Fill:                color/button/primary/bg-idle
+│    Stroke color:        color/button/primary/border-idle
+│    Stroke weight:       borderWidth/button/main
+│    Corner radius:       borderRadius/button/medium
+└─ Label (text layer)
+     Fill:                color/button/primary/fg-idle
+     Text style:          font/button/medium
+```
+
+Because these Variables are [aliases](#aliases), one button follows the Modes of the `brand` and `theme` Collections too, and needs no copy per brand or theme.
+
+### Visibility switches
+
+Switches are Boolean Variables that show or hide a layer according to the Mode. Each switch `figma.switch.<group>.mode-<n>` is `true` in one option of its group and `false` in every other option, because the token set of the option sets its own switch. In the committed configuration, for example, `figma.switch.theme.mode-1` is `true` in the `light` Mode and `figma.switch.theme.mode-2` in the `dark` Mode.
+
+A group can hold more switches than it has options, such as `figma.switch.theme.mode-3`; a switch without an option is `false` in every Mode. For an option that you add, set the next switch to `true` in the token set of the option.
+
+Bind a switch to the visibility of a layer, and nest layers to combine two groups. This example uses the brands and the themes of the committed configuration, where the `chassis` brand sets `figma.switch.brand.mode-2` and the `sinefil` brand sets `figma.switch.brand.mode-3`:
+
+```text
+Header
+├─ Chassis logo (group)   Visibility: figma/switch/brand/mode-2
+│  ├─ Light logo          Visibility: figma/switch/theme/mode-1
+│  └─ Dark logo           Visibility: figma/switch/theme/mode-2
+└─ Sinefil logo (group)   Visibility: figma/switch/brand/mode-3
+   ├─ Light logo          Visibility: figma/switch/theme/mode-1
+   └─ Dark logo           Visibility: figma/switch/theme/mode-2
+```
+
+With the `sinefil` and `dark` Modes, the header shows the dark logo of the Sinefil group only. The build does not write the switches to any platform, because it never writes a token of the type `boolean`.
+
+### Screen Variables
+
+The Modes of the optional `screen` Collection resize a design of the website without a copy of its frames. `size.website.*`, `space.website.*`, and `typography.fontSize.website.*` differ per screen, so a frame that uses them follows the Mode of the Collection.
+
+The `figma.website.*` tokens hold what the Figma files of the website need per screen: sizes in design pixels, and the names of component variants as text. The build writes no `figma.*` token to any platform; the group exists for Figma only.
+
+<CxTable>
+| Token | Purpose |
+| --- | --- |
+| `figma.website.size.page-w` | Width of the page |
+| `figma.website.size.slide-min-w` | Minimum width of a slide |
+| `figma.website.size.card-min-w` | Minimum width of a card |
+| `figma.website.variant.nav` | Name of the variant that the navigation shows |
+| `figma.website.variant.section` | Name of the variant that a section shows |
+</CxTable>
+
+## Troubleshooting
+
+The entries name a symptom in the Figma interface, not a message, and give its cause and its fix.
+
+### Variable is missing
+
+A token has no Variable after the export. Tokens Studio creates Variables for the token sets that the exported option marks as `enabled`, and the set of the token is `source` or not selected in that option. Check the set under `selectedTokenSets` of the option in `$themes.json`, set it to `enabled` in Tokens Studio, and export again.
+
+### Variable not in the list
+
+Figma does not list a Variable when you set a property of a layer. Either the [scopes](#variable-scopes) of the Variable leave out that property, or the Variable is [hidden from publishing](#hide-from-publishing) and you work in a file that uses the library. Open **Edit variable** in the library file and change the scope or the publishing setting.
+
+### Value does not change
+
+A layer keeps its value when you switch a Mode. The layer has a fixed value instead of a Variable, or the Variable has the same value in both Modes: between the `docs` and `demo` Modes of the `app` Collection in the committed configuration, only `color.page.bg-body` and the switches `figma.switch.app.*` differ. Select the layer, check that the property shows a Variable, and switch the Mode of the Collection that holds the difference.
+
+### Library update missing
+
+A file that uses the library shows the old values after an export. The export changes the library file only; other files get the change when the library is published. Publish the library, then accept the update in the file that uses it.
+
+## Next steps
+
+The other guides cover the steps before and after Figma, and the token reference lists the tokens behind the Variables:
+
+- [Tokens Studio]([[docsref:/getting-started/tokens-studio]]) for the token sets and the groups.
+- [Style Dictionary]([[docsref:/getting-started/style-dictionary]]) for the build that writes the tokens for each platform.
+- [Color tokens]([[docsref:/design-tokens/color-tokens]]), [typography tokens]([[docsref:/design-tokens/typography-tokens]]), and [shadow tokens]([[docsref:/design-tokens/shadow-tokens]]) for the tokens behind the Variables and the styles.

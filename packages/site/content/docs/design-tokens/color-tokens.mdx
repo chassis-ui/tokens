@@ -1,0 +1,596 @@
+---
+title: Color Tokens
+description: The palettes, context colors, and component colors of Chassis Tokens, how they reference each other, and how each platform prints them.
+toc: true
+---
+
+<Callout type="warning" name="work-in-progress" />
+
+## Introduction
+
+Color tokens define the colors of text, surfaces, borders, icons, links, shadows, and gradients. A brand sets the base color of each palette, and the shades, the context colors, and the component colors are derived from these base colors. The context and the component colors follow the theme; the committed themes are `light` and `dark`.
+
+The tables list each token with the token it references. A column named `light` or `dark` holds the reference of the token in that theme.
+
+### Token levels
+
+Color tokens have the three token levels and a fourth group, the primitive colors. The base tokens hold the colors of every theme, and the context tokens select the colors of the current theme. A component color resolves through the three levels:
+
+```text
+color.button.default.fg-idle                     component token
+  {color.context.default.fg-idle}                context token
+    {color.base.context.light.default.fg-idle}   base token of the light theme
+      {color.base.context.light.default.fg-main}
+        {color.base.primitive.light.neutral.90}
+          {color.base.primitive.light.neutral.base}
+```
+
+In the dark theme, `color.context.default.fg-idle` references `{color.base.context.dark.default.fg-idle}`, and the rest of the chain follows the dark tokens. The primitive colors select the palette of the current theme in the same way: `color.primitive.neutral.90` references `{color.base.primitive.light.neutral.90}` in the light theme.
+
+The token sets of these groups are in `packages/tokens/source/base/`.
+
+<CxTable>
+| Group | Level | Content | Token set |
+| --- | --- | --- | --- |
+| `color.base.primitive.<theme>.*` | Base | Palettes of each theme | `brand-base.json` |
+| `color.base.context.<theme>.*` | Base | Context colors of each theme | `brand-base.json` |
+| `color.base.shadow.<theme>.*` | Base | Shadow colors of each theme | `brand-base.json` |
+| `color.primitive.*` | Primitive | Palettes of the current theme | `theme-base.json`, `theme-dark.json` |
+| `gradient.primitive.*` | Primitive | Gradients of the palettes | `theme-base.json` |
+| `color.context.*` | Context | Colors named by role, for each context | `theme-base.json`, `theme-dark.json` |
+| `color.shadow.*` | Context | Shadow colors of the current theme | `theme-base.json`, `theme-dark.json` |
+| `color.utility.*` | Context | Colors that the build does not write | `theme-base.json`, `theme-dark.json` |
+| `color.<component>.*` | Component | Colors of the parts of a component | `app-base.json`, `app-demo.json` |
+</CxTable>
+
+`theme-base.json` references the light base tokens, and `theme-dark.json` replaces these references with the dark ones. See the [Tokens Studio]([[docsref:/getting-started/tokens-studio]]) guide for the token sets and the groups that select them.
+
+## Base tokens
+
+Base tokens hold the colors of every theme at once, under `color.base.primitive`, `color.base.context`, and `color.base.shadow`, each with a `light` and a `dark` group. They are the source of the other color tokens and do not follow the theme of an app.
+
+### Palettes
+
+A palette is a group of colors that are derived from one base color. The palettes are `black`, `white`, `primary`, `secondary`, `neutral`, `danger`, `success`, `warning`, `info`, `brand`, and `accent`. Next to its base color, every palette has a contrast color and a transparent color.
+
+<CxTable>
+| Token | Reference | Purpose |
+| --- | --- | --- |
+| `color.base.primitive.light.primary.base` | None, the brand sets the color | Base color of the palette |
+| `color.base.primitive.light.primary.transparent` | `rgba({color.base.primitive.light.primary.base}, {opacity.level.zero})` | Base color with no opacity, the first stop of the gradients |
+| `color.base.primitive.light.primary.contrast` | `{color.base.primitive.light.white.base}` | Text and icons on the base color |
+</CxTable>
+
+A `base` token holds a color of its own, and the other tokens of its palette reference it. The token set of a brand, such as `packages/tokens/source/brand-chassis/brand-base.json`, overrides the `base` tokens, and it can override a `contrast` token when the base color needs the other contrast color.
+
+### Shades
+
+Shades are lighter and darker steps of the base color, named from `05` for the lightest to `95` for the darkest. Every palette except `black` and `white` has them. A shade references the base color with a color modifier of Tokens Studio: `lighten` mixes the color with white and `darken` with black in the sRGB color space, by the share that a `modify.*` token holds.
+
+<CxTable>
+| Token | Reference | Purpose |
+| --- | --- | --- |
+| `color.base.primitive.light.primary.10` | `{color.base.primitive.light.primary.base}` | Lightened by the share of `modify.lighten.10` |
+| `color.base.primitive.light.primary.20` | `{color.base.primitive.light.primary.base}` | Lightened by the share of `modify.lighten.20` |
+| `color.base.primitive.light.primary.30` | `{color.base.primitive.light.primary.base}` | Lightened by the share of `modify.lighten.30` |
+| `color.base.primitive.light.primary.40` | `{color.base.primitive.light.primary.base}` | Lightened by the share of `modify.lighten.40` |
+| `color.base.primitive.light.primary.50` | `{color.base.primitive.light.primary.base}` | The base color without a modifier |
+| `color.base.primitive.light.primary.60` | `{color.base.primitive.light.primary.base}` | Darkened by the share of `modify.darken.60` |
+| `color.base.primitive.light.primary.70` | `{color.base.primitive.light.primary.base}` | Darkened by the share of `modify.darken.70` |
+| `color.base.primitive.light.primary.80` | `{color.base.primitive.light.primary.base}` | Darkened by the share of `modify.darken.80` |
+| `color.base.primitive.light.primary.90` | `{color.base.primitive.light.primary.base}` | Darkened by the share of `modify.darken.90` |
+| `color.base.primitive.light.primary.95` | `{color.base.primitive.light.primary.base}` | Darkened by the share of `modify.darken.95` |
+| `color.base.primitive.light.primary.05` | `{color.base.primitive.light.primary.base}` | Lightened by the share of `modify.lighten.05` |
+</CxTable>
+
+The shades of the other palettes have the same names and the same modifiers, such as `color.base.primitive.light.danger.60`.
+
+### Transparency colors
+
+Transparency colors are a color of the palette with an [opacity token]([[docsref:/design-tokens/opacity-tokens]]) as its alpha value. Their name holds the shade and the opacity level: `t-5020` is shade `50` with `opacity.level.20`. Every palette with shades has the transparency colors of its shade `50`.
+
+<CxTable>
+| Token | Reference |
+| --- | --- |
+| `color.base.primitive.light.primary.t-5005` | `rgba({color.base.primitive.light.primary.50}, {opacity.level.05})` |
+| `color.base.primitive.light.primary.t-5010` | `rgba({color.base.primitive.light.primary.50}, {opacity.level.10})` |
+| `color.base.primitive.light.primary.t-5020` | `rgba({color.base.primitive.light.primary.50}, {opacity.level.20})` |
+| `color.base.primitive.light.primary.t-5030` | `rgba({color.base.primitive.light.primary.50}, {opacity.level.30})` |
+| `color.base.primitive.light.primary.t-5040` | `rgba({color.base.primitive.light.primary.50}, {opacity.level.40})` |
+| `color.base.primitive.light.primary.t-5050` | `rgba({color.base.primitive.light.primary.50}, {opacity.level.50})` |
+| `color.base.primitive.light.primary.t-5060` | `rgba({color.base.primitive.light.primary.50}, {opacity.level.60})` |
+| `color.base.primitive.light.primary.t-5070` | `rgba({color.base.primitive.light.primary.50}, {opacity.level.70})` |
+| `color.base.primitive.light.primary.t-5080` | `rgba({color.base.primitive.light.primary.50}, {opacity.level.80})` |
+| `color.base.primitive.light.primary.t-5090` | `rgba({color.base.primitive.light.primary.50}, {opacity.level.90})` |
+| `color.base.primitive.light.primary.t-5095` | `rgba({color.base.primitive.light.primary.50}, {opacity.level.95})` |
+</CxTable>
+
+The `black` and `white` palettes have no shades, so their transparency colors are named by the opacity level only, from `t-05` to `t-95`: `color.base.primitive.light.black.t-50` is the base color of `black` with `opacity.level.50`.
+
+### Base context colors
+
+`color.base.context.<theme>.<context>.<role>` assigns a color of a palette to each role of each context, once per theme. The roles are those of the [context tokens](#context-tokens). A role references a shade, a transparency color, or another role of its context, alone or with an opacity token as its alpha value.
+
+<CxTable>
+| Token | Reference |
+| --- | --- |
+| `color.base.context.light.default.fg-main` | `{color.base.primitive.light.neutral.90}` |
+| `color.base.context.light.default.fg-subtle` | `rgba({color.base.context.light.default.fg-main}, {opacity.context.fg-subtle})` |
+| `color.base.context.light.default.bg-main` | `{color.base.primitive.light.white.base}` |
+| `color.base.context.light.default.dim-main` | `{color.base.primitive.light.black.t-70}` |
+| `color.base.context.light.default.fg-idle` | `{color.base.context.light.default.fg-main}` |
+| `color.base.context.light.danger.fg-main` | `{color.base.primitive.light.danger.60}` |
+| `color.base.context.dark.default.fg-main` | `{color.base.primitive.dark.neutral.10}` |
+| `color.base.context.dark.default.fg-subtle` | `rgba({color.base.context.dark.default.fg-main}, {opacity.context.fg-subtle})` |
+| `color.base.context.dark.default.bg-main` | `{color.base.primitive.dark.neutral.95}` |
+| `color.base.context.dark.default.dim-main` | `{color.base.primitive.dark.white.t-70}` |
+| `color.base.context.dark.default.fg-idle` | `{color.base.context.dark.default.fg-main}` |
+| `color.base.context.dark.danger.fg-main` | `{color.base.primitive.dark.danger.40}` |
+</CxTable>
+
+`color.base.shadow.<theme>.<context>` holds the shadow color of a context in the same way. The shadow colors of `default` and `alternate` reference transparency colors of the `black` palette, and those of `primary`, `secondary`, `neutral`, `danger`, `success`, `warning`, and `info` reference `t-5040` of their palette.
+
+## Primitive colors
+
+Primitive colors are the palettes of the current theme. Each `color.primitive.<palette>.<name>` references the base token of the same name: `color.base.primitive.light.*` in the light theme and `color.base.primitive.dark.*` in the dark theme.
+
+<CxTable>
+| Token | Reference |
+| --- | --- |
+| `color.primitive.primary.50` | `{color.base.primitive.<theme>.primary.50}` |
+| `color.primitive.primary.base` | `{color.base.primitive.<theme>.primary.base}` |
+| `color.primitive.primary.transparent` | `{color.base.primitive.<theme>.primary.transparent}` |
+| `color.primitive.primary.contrast` | `{color.base.primitive.<theme>.primary.contrast}` |
+| `color.primitive.primary.t-5050` | `{color.base.primitive.<theme>.primary.t-5050}` |
+</CxTable>
+
+The names after the palette are those of the base tokens: `base`, `contrast`, `transparent`, the shades, and the transparency colors.
+
+### Gradients
+
+Gradient tokens are linear gradients from the `transparent` to the `base` color of a palette. `gradient.primitive.<palette>.l-50-<angle>` names the angle in three digits, from `000` to `315` in steps of 45 degrees. The gradients of `black` and `white` leave out the shade: `gradient.primitive.black.l-090`.
+
+<CxTable>
+| Token | Reference |
+| --- | --- |
+| `gradient.primitive.primary.l-50-000` | `linear-gradient(0deg, {color.primitive.primary.transparent} 0%, {color.primitive.primary.base} 100%)` |
+| `gradient.primitive.primary.l-50-045` | `linear-gradient(45deg, {color.primitive.primary.transparent} 0%, {color.primitive.primary.base} 100%)` |
+| `gradient.primitive.primary.l-50-090` | `linear-gradient(90deg, {color.primitive.primary.transparent} 0%, {color.primitive.primary.base} 100%)` |
+| `gradient.primitive.primary.l-50-135` | `linear-gradient(135deg, {color.primitive.primary.transparent} 0%, {color.primitive.primary.base} 100%)` |
+| `gradient.primitive.primary.l-50-180` | `linear-gradient(180deg, {color.primitive.primary.transparent} 0%, {color.primitive.primary.base} 100%)` |
+| `gradient.primitive.primary.l-50-225` | `linear-gradient(225deg, {color.primitive.primary.transparent} 0%, {color.primitive.primary.base} 100%)` |
+| `gradient.primitive.primary.l-50-270` | `linear-gradient(270deg, {color.primitive.primary.transparent} 0%, {color.primitive.primary.base} 100%)` |
+| `gradient.primitive.primary.l-50-315` | `linear-gradient(-45deg, {color.primitive.primary.transparent} 0%, {color.primitive.primary.base} 100%)` |
+</CxTable>
+
+The token type of a gradient is `color`, so the build writes gradients into the color files. See [Platform output](#platform-output) for their parts on iOS and Android.
+
+## Context tokens
+
+Context tokens name a color by its role, such as `fg-main` for text and `bg-main` for the surface under it. Every context has the same roles, so a component changes its context without changing the roles it uses.
+
+<CxTable>
+| Context | Colors |
+| --- | --- |
+| `default` | Dark text on a light surface in the light theme, light text on a dark surface in the dark theme |
+| `alternate` | Light text on a dark surface in both themes |
+| `primary`, `secondary`, `neutral`, `danger`, `success`, `warning`, `info` | Shades and transparency colors of the palette with the name of the context |
+| `black`, `white` | Base color and transparency colors of the `black` and the `white` palette |
+</CxTable>
+
+### Roles
+
+A role is the last part of a context token, and its prefix names what it colors: `fg` for text, `bg` for surfaces, `border`, `icon`, `cue`, `link`, and `dim`. Each role references the base context color of the same name in the current theme. The roles of `color.context.default` are listed in full; the other contexts, such as `color.context.danger.fg-main`, have the same roles with the colors of their palette.
+
+<CxTable>
+| Token | Reference | Purpose |
+| --- | --- | --- |
+| `color.context.default.base-color` | `{color.base.context.<theme>.default.base-color}` | Solid color of the context |
+| `color.context.default.contrast-color` | `{color.base.context.<theme>.default.contrast-color}` | Text and icons on `base-color` |
+| `color.context.default.transparent-color` | `{color.base.context.<theme>.default.transparent-color}` | Invisible color, for a part without a visible border or background |
+| `color.context.default.fg-main` | `{color.base.context.<theme>.default.fg-main}` | Text |
+| `color.context.default.fg-subtle` | `{color.base.context.<theme>.default.fg-subtle}` | Secondary text; `fg-main` with the alpha of `opacity.context.fg-subtle` |
+| `color.context.default.fg-slight` | `{color.base.context.<theme>.default.fg-slight}` | Least prominent text; `fg-main` with the alpha of `opacity.context.fg-slight` |
+| `color.context.default.fg-active` | `{color.base.context.<theme>.default.fg-active}` | Text on `bg-active` |
+| `color.context.default.fg-inverse` | `{color.base.context.<theme>.default.fg-inverse}` | Text on `bg-inverse` |
+| `color.context.default.fg-solid` | `{color.base.context.<theme>.default.fg-solid}` | Text on `bg-solid` |
+| `color.context.default.fg-highlight` | `{color.base.context.<theme>.default.fg-highlight}` | Text on `bg-highlight` |
+| `color.context.default.bg-main` | `{color.base.context.<theme>.default.bg-main}` | Main surface |
+| `color.context.default.bg-even` | `{color.base.context.<theme>.default.bg-even}` | Second surface, such as the alternating rows of a table |
+| `color.context.default.bg-evident` | `{color.base.context.<theme>.default.bg-evident}` | Third surface, such as the head of a table |
+| `color.context.default.bg-active` | `{color.base.context.<theme>.default.bg-active}` | Selected item, such as the active item of a dropdown |
+| `color.context.default.bg-inverse` | `{color.base.context.<theme>.default.bg-inverse}` | Surface with the lightness of the other theme |
+| `color.context.default.bg-solid` | `{color.base.context.<theme>.default.bg-solid}` | Solid fill |
+| `color.context.default.bg-highlight` | `{color.base.context.<theme>.default.bg-highlight}` | Highlighted item, such as the hovered item of a dropdown |
+| `color.context.default.border-main` | `{color.base.context.<theme>.default.border-main}` | Border |
+| `color.context.default.border-subtle` | `{color.base.context.<theme>.default.border-subtle}` | Divider; `fg-main` with the alpha of `opacity.context.border-subtle` |
+| `color.context.default.icon-main` | `{color.base.context.<theme>.default.icon-main}` | Icon |
+| `color.context.default.icon-subtle` | `{color.base.context.<theme>.default.icon-subtle}` | Secondary icon; `fg-main` with the alpha of `opacity.context.icon-subtle` |
+| `color.context.default.icon-slight` | `{color.base.context.<theme>.default.icon-slight}` | Least prominent icon; `icon-main` with the alpha of `opacity.context.icon-slight` |
+| `color.context.default.cue-main` | `{color.base.context.<theme>.default.cue-main}` | Mark of the focused or the current item; color of `shadow.context.focus` |
+| `color.context.default.cue-slight` | `{color.base.context.<theme>.default.cue-slight}` | `cue-main` with the alpha of `opacity.context.cue-slight` |
+| `color.context.default.link-main` | `{color.base.context.<theme>.default.link-main}` | Link |
+| `color.context.default.link-hover` | `{color.base.context.<theme>.default.link-hover}` | Link in the hover state |
+| `color.context.default.link-active` | `{color.base.context.<theme>.default.link-active}` | Link in the active state |
+| `color.context.default.link-visited` | `{color.base.context.<theme>.default.link-visited}` | Visited link |
+| `color.context.default.dim-main` | `{color.base.context.<theme>.default.dim-main}` | Strongest dimming layer |
+| `color.context.default.dim-subtle` | `{color.base.context.<theme>.default.dim-subtle}` | Medium dimming layer |
+| `color.context.default.dim-slight` | `{color.base.context.<theme>.default.dim-slight}` | Lightest dimming layer, such as the bar of a segmented control |
+| `color.context.default.fg-idle` | `{color.base.context.<theme>.default.fg-idle}` | Text of a control |
+| `color.context.default.fg-hover` | `{color.base.context.<theme>.default.fg-hover}` | Text of a control in the hover state |
+| `color.context.default.fg-press` | `{color.base.context.<theme>.default.fg-press}` | Text of a control in the press state |
+| `color.context.default.fg-disabled` | `{color.base.context.<theme>.default.fg-disabled}` | Text of a disabled control |
+| `color.context.default.bg-idle` | `{color.base.context.<theme>.default.bg-idle}` | Background of a control |
+| `color.context.default.bg-hover` | `{color.base.context.<theme>.default.bg-hover}` | Background of a control in the hover state |
+| `color.context.default.bg-press` | `{color.base.context.<theme>.default.bg-press}` | Background of a control in the press state |
+| `color.context.default.bg-disabled` | `{color.base.context.<theme>.default.bg-disabled}` | Background of a disabled control |
+</CxTable>
+
+The `idle`, `hover`, `press`, and `disabled` roles are the states of a control. The button colors reference them, and a component without color tokens of its own uses them in the same way.
+
+### Shadow colors
+
+Shadow colors are the colors of the layers of a shadow. `color.shadow.<context>` references the base shadow color of its context in the current theme, and the `shadow.elevation.*` tokens of the [shadow tokens]([[docsref:/design-tokens/shadow-tokens]]) reference the shadow colors.
+
+<CxTable>
+| Token | Reference |
+| --- | --- |
+| `color.shadow.default` | `{color.base.shadow.<theme>.default}` |
+| `color.shadow.alternate` | `{color.base.shadow.<theme>.alternate}` |
+| `color.shadow.primary` | `{color.base.shadow.<theme>.primary}` |
+| `color.shadow.secondary` | `{color.base.shadow.<theme>.secondary}` |
+| `color.shadow.neutral` | `{color.base.shadow.<theme>.neutral}` |
+| `color.shadow.danger` | `{color.base.shadow.<theme>.danger}` |
+| `color.shadow.success` | `{color.base.shadow.<theme>.success}` |
+| `color.shadow.warning` | `{color.base.shadow.<theme>.warning}` |
+| `color.shadow.info` | `{color.base.shadow.<theme>.info}` |
+</CxTable>
+
+### Utility colors
+
+Utility colors are in the token sets of the themes, but the filters of the build leave `color.utility.*` out of every file, so no platform has them. Their names start with `container`, `inverter`, `technical`, `grid-column`, and `grid-sidebar`, such as `color.utility.grid-column-default`.
+
+## Component tokens
+
+Component tokens assign a context color to a part of a component. Every component color references a token of `color.context.*`, so it follows the theme, and its reference is the same in every theme.
+
+### Accordion
+
+Accordion colors cover the item, its title in the idle and the active state, the indicator, and the border between items.
+
+<CxTable>
+| Token | Reference |
+| --- | --- |
+| `color.accordion.item-fg-color` | `{color.context.default.fg-main}` |
+| `color.accordion.item-bg-color` | `{color.context.default.bg-main}` |
+| `color.accordion.title-fg-idle` | `{color.context.default.fg-main}` |
+| `color.accordion.title-bg-idle` | `{color.context.default.bg-main}` |
+| `color.accordion.title-fg-active` | `{color.context.default.fg-main}` |
+| `color.accordion.title-bg-active` | `{color.context.default.bg-main}` |
+| `color.accordion.indicator-idle` | `{color.context.default.fg-main}` |
+| `color.accordion.indicator-active` | `{color.context.default.icon-main}` |
+| `color.accordion.border-main` | `{color.context.default.border-subtle}` |
+</CxTable>
+
+### Button
+
+Button colors are named `color.button.<context>.<part>-<state>`, with the parts `fg`, `bg`, and `border` and the states `idle`, `disabled`, `hover`, and `press`. Every context has its button colors: `default`, `alternate`, `black`, `white`, `primary`, `secondary`, `neutral`, `danger`, `success`, `warning`, and `info`.
+
+<CxTable>
+| Token | Reference |
+| --- | --- |
+| `color.button.default.fg-idle` | `{color.context.default.fg-idle}` |
+| `color.button.default.fg-disabled` | `{color.context.default.fg-disabled}` |
+| `color.button.default.fg-hover` | `{color.context.default.fg-hover}` |
+| `color.button.default.fg-press` | `{color.context.default.fg-press}` |
+| `color.button.default.bg-idle` | `{color.context.default.bg-idle}` |
+| `color.button.default.bg-disabled` | `{color.context.default.bg-disabled}` |
+| `color.button.default.bg-hover` | `{color.context.default.bg-hover}` |
+| `color.button.default.bg-press` | `{color.context.default.bg-press}` |
+| `color.button.default.border-idle` | `{color.context.default.border-main}` |
+| `color.button.default.border-disabled` | `{color.context.default.transparent-color}` |
+| `color.button.default.border-hover` | `{color.context.default.border-main}` |
+| `color.button.default.border-press` | `{color.context.default.fg-idle}` |
+</CxTable>
+
+The `fg` and `bg` tokens of the other contexts reference the role of the same name in their context: `color.button.danger.bg-hover` references `{color.context.danger.bg-hover}`. Only `default` and `alternate` have a visible border. The border tokens of the other contexts reference the `transparent-color` of their context in every state.
+
+### Date picker
+
+Date picker colors are in the group `color.datepicker`. A pair of `fg` and `bg` tokens colors a day in each of its states, and `fg-main`, `bg-main`, `border-main`, and `border-subtle` color the picker itself.
+
+<CxTable>
+| Token | Reference |
+| --- | --- |
+| `color.datepicker.fg-idle` | `{color.context.default.fg-main}` |
+| `color.datepicker.bg-idle` | `{color.context.default.transparent-color}` |
+| `color.datepicker.fg-hover` | `{color.context.default.fg-main}` |
+| `color.datepicker.bg-hover` | `{color.context.default.bg-even}` |
+| `color.datepicker.fg-press` | `{color.context.default.fg-main}` |
+| `color.datepicker.bg-press` | `{color.context.default.bg-evident}` |
+| `color.datepicker.fg-active` | `{color.context.primary.contrast-color}` |
+| `color.datepicker.bg-active` | `{color.context.primary.base-color}` |
+| `color.datepicker.fg-range` | `{color.context.default.fg-idle}` |
+| `color.datepicker.bg-range` | `{color.context.default.bg-highlight}` |
+| `color.datepicker.fg-today` | `{color.context.default.cue-main}` |
+| `color.datepicker.bg-today` | `{color.context.default.transparent-color}` |
+| `color.datepicker.fg-weekend` | `{color.context.default.fg-subtle}` |
+| `color.datepicker.bg-weekend` | `{color.context.default.transparent-color}` |
+| `color.datepicker.fg-outside` | `{color.context.default.fg-slight}` |
+| `color.datepicker.bg-outside` | `{color.context.default.transparent-color}` |
+| `color.datepicker.fg-main` | `{color.context.default.fg-main}` |
+| `color.datepicker.bg-main` | `{color.context.default.bg-main}` |
+| `color.datepicker.border-main` | `{color.context.default.transparent-color}` |
+| `color.datepicker.border-subtle` | `{color.context.default.border-subtle}` |
+</CxTable>
+
+### Dropdown
+
+Dropdown colors set the text, the background, and the icon of a menu item in the idle, hover, active, and disabled state. The header of a group of items and the menu itself have their own tokens.
+
+<CxTable>
+| Token | Reference |
+| --- | --- |
+| `color.dropdown.fg-idle` | `{color.context.default.fg-main}` |
+| `color.dropdown.bg-idle` | `{color.context.default.transparent-color}` |
+| `color.dropdown.icon-idle` | `{color.context.default.icon-main}` |
+| `color.dropdown.fg-hover` | `{color.context.default.fg-highlight}` |
+| `color.dropdown.bg-hover` | `{color.context.default.bg-highlight}` |
+| `color.dropdown.icon-hover` | `{color.context.default.fg-highlight}` |
+| `color.dropdown.fg-active` | `{color.context.default.fg-active}` |
+| `color.dropdown.bg-active` | `{color.context.default.bg-active}` |
+| `color.dropdown.icon-active` | `{color.context.default.fg-active}` |
+| `color.dropdown.fg-disabled` | `{color.context.default.fg-slight}` |
+| `color.dropdown.bg-disabled` | `{color.context.default.transparent-color}` |
+| `color.dropdown.icon-disabled` | `{color.context.default.icon-slight}` |
+| `color.dropdown.fg-header` | `{color.context.default.fg-subtle}` |
+| `color.dropdown.bg-header` | `{color.context.default.transparent-color}` |
+| `color.dropdown.fg-main` | `{color.context.default.fg-main}` |
+| `color.dropdown.bg-main` | `{color.context.default.bg-main}` |
+| `color.dropdown.border-main` | `{color.context.default.transparent-color}` |
+| `color.dropdown.border-subtle` | `{color.context.default.border-subtle}` |
+</CxTable>
+
+### Form input
+
+Form input colors are named `color.form-input.<state>.<part>`, with the states `idle`, `focus`, `error`, `success`, and `disabled`. Every state has the same parts, which the `idle` state shows.
+
+<CxTable>
+| Token | Reference |
+| --- | --- |
+| `color.form-input.idle.bg-regular` | `{color.context.default.bg-main}` |
+| `color.form-input.idle.bg-floating` | `{color.context.default.bg-even}` |
+| `color.form-input.idle.border` | `{color.context.default.border-main}` |
+| `color.form-input.idle.fg-active` | `{color.context.default.fg-main}` |
+| `color.form-input.idle.fg-inactive` | `{color.context.default.fg-subtle}` |
+| `color.form-input.idle.caret` | `{color.context.default.fg-main}` |
+| `color.form-input.idle.help` | `{color.context.default.fg-main}` |
+</CxTable>
+
+The `focus`, `error`, and `success` states change the border and the help text and keep the other references of `idle`. The `disabled` state changes every part.
+
+<CxTable>
+| Token | Reference |
+| --- | --- |
+| `color.form-input.focus.border` | `{color.context.primary.icon-main}` |
+| `color.form-input.focus.help` | `{color.context.primary.icon-main}` |
+| `color.form-input.error.border` | `{color.context.danger.base-color}` |
+| `color.form-input.error.help` | `{color.context.danger.fg-main}` |
+| `color.form-input.success.border` | `{color.context.success.base-color}` |
+| `color.form-input.success.help` | `{color.context.success.fg-main}` |
+| `color.form-input.disabled.bg-regular` | `{color.context.default.bg-disabled}` |
+| `color.form-input.disabled.bg-floating` | `{color.context.default.bg-disabled}` |
+| `color.form-input.disabled.border` | `{color.context.default.fg-slight}` |
+| `color.form-input.disabled.fg-active` | `{color.context.default.fg-subtle}` |
+| `color.form-input.disabled.fg-inactive` | `{color.context.default.fg-slight}` |
+| `color.form-input.disabled.caret` | `{color.context.default.fg-slight}` |
+| `color.form-input.disabled.help` | `{color.context.default.fg-slight}` |
+</CxTable>
+
+### List
+
+List colors set the icon of a list item and its disclosure indicator.
+
+<CxTable>
+| Token | Reference |
+| --- | --- |
+| `color.list.icon` | `{color.context.default.icon-main}` |
+| `color.list.disclosure` | `{color.context.default.fg-subtle}` |
+</CxTable>
+
+### Map
+
+Map colors set the marker, the paths, the points, and the start and the end of a trip.
+
+<CxTable>
+| Token | Reference |
+| --- | --- |
+| `color.map.marker-bg` | `{color.context.primary.base-color}` |
+| `color.map.marker-fg` | `{color.context.primary.contrast-color}` |
+| `color.map.path-ride` | `{color.context.default.cue-main}` |
+| `color.map.path-walk` | `{color.context.neutral.base-color}` |
+| `color.map.point-active` | `{color.context.default.cue-main}` |
+| `color.map.point-inactive` | `{color.context.neutral.cue-slight}` |
+| `color.map.trip-start` | `{color.context.success.base-color}` |
+| `color.map.trip-stop` | `{color.context.danger.base-color}` |
+</CxTable>
+
+### Message
+
+Message colors set the chat surface, the form, and the pairs of `fg` and `bg` tokens of received, sent, embedded, and status messages.
+
+<CxTable>
+| Token | Reference |
+| --- | --- |
+| `color.message.bg-chat` | `{color.context.default.bg-evident}` |
+| `color.message.fg-form` | `{color.context.primary.base-color}` |
+| `color.message.bg-form` | `{color.context.default.bg-even}` |
+| `color.message.fg-received` | `{color.context.default.fg-main}` |
+| `color.message.bg-received` | `{color.context.default.bg-main}` |
+| `color.message.fg-sent` | `{color.context.default.fg-main}` |
+| `color.message.bg-sent` | `{color.context.primary.bg-even}` |
+| `color.message.fg-embed` | `{color.context.default.fg-main}` |
+| `color.message.bg-embed` | `{color.context.default.dim-slight}` |
+| `color.message.fg-status` | `{color.context.default.fg-main}` |
+| `color.message.bg-status` | `{color.context.default.dim-slight}` |
+</CxTable>
+
+### Page
+
+Page colors set the background of the body and of a section. An app can override them in its token set, as `packages/tokens/source/base/app-demo.json` does, so the table has a column for each committed app, `docs` and `demo`.
+
+<CxTable>
+| Token | `docs` | `demo` |
+| --- | --- | --- |
+| `color.page.bg-body` | `{color.context.default.bg-main}` | `{color.context.default.bg-even}` |
+| `color.page.bg-section` | `{color.context.default.bg-main}` | `{color.context.default.bg-main}` |
+</CxTable>
+
+### Pagination
+
+Pagination colors set the dots of a pagination in the idle and the active state.
+
+<CxTable>
+| Token | Reference |
+| --- | --- |
+| `color.pagination.dot-idle` | `{color.context.default.fg-slight}` |
+| `color.pagination.dot-active` | `{color.context.default.fg-main}` |
+</CxTable>
+
+### Progress
+
+Progress colors set the text, the background, and the border of a step, for the steps in the past, the current step, and the next steps.
+
+<CxTable>
+| Token | Reference |
+| --- | --- |
+| `color.progress.fg-past` | `{color.context.default.contrast-color}` |
+| `color.progress.bg-past` | `{color.context.default.base-color}` |
+| `color.progress.border-past` | `{color.context.default.base-color}` |
+| `color.progress.fg-current` | `{color.context.default.fg-active}` |
+| `color.progress.bg-current` | `{color.context.default.bg-active}` |
+| `color.progress.border-current` | `{color.context.default.bg-active}` |
+| `color.progress.fg-next` | `{color.context.default.fg-main}` |
+| `color.progress.bg-next` | `{color.context.default.bg-evident}` |
+| `color.progress.border-next` | `{color.context.default.bg-evident}` |
+</CxTable>
+
+### Section
+
+Section colors set the text and the icon of a section in the sizes `large`, `medium`, and `small`.
+
+<CxTable>
+| Token | Reference |
+| --- | --- |
+| `color.section.fg-large` | `{color.context.default.fg-main}` |
+| `color.section.fg-medium` | `{color.context.default.fg-main}` |
+| `color.section.fg-small` | `{color.context.default.fg-main}` |
+| `color.section.icon-large` | `{color.context.default.icon-main}` |
+| `color.section.icon-medium` | `{color.context.default.icon-main}` |
+| `color.section.icon-small` | `{color.context.default.icon-main}` |
+</CxTable>
+
+### Segment
+
+Segment colors set the bar of a segmented control and its segments in the idle and the active state.
+
+<CxTable>
+| Token | Reference |
+| --- | --- |
+| `color.segment.bg-bar` | `{color.context.default.dim-slight}` |
+| `color.segment.bg-idle` | `{color.context.default.transparent-color}` |
+| `color.segment.fg-idle` | `{color.context.default.fg-main}` |
+| `color.segment.bg-active` | `{color.context.default.bg-main}` |
+| `color.segment.fg-active` | `{color.context.default.fg-main}` |
+</CxTable>
+
+### Table
+
+Table colors set the head and the data cells, the rows in the alternating, hover, active, and edit state, and the border and the sort icon.
+
+<CxTable>
+| Token | Reference |
+| --- | --- |
+| `color.table.fg-head` | `{color.context.default.fg-main}` |
+| `color.table.fg-data` | `{color.context.default.fg-main}` |
+| `color.table.bg-head` | `{color.context.default.bg-evident}` |
+| `color.table.bg-data` | `{color.context.default.bg-main}` |
+| `color.table.bg-alt` | `{color.context.default.bg-even}` |
+| `color.table.bg-hover` | `{color.context.default.bg-evident}` |
+| `color.table.bg-active` | `{color.context.default.bg-highlight}` |
+| `color.table.bg-edit` | `{color.context.warning.bg-even}` |
+| `color.table.cue-active` | `{color.context.default.cue-main}` |
+| `color.table.border-main` | `{color.context.default.border-subtle}` |
+| `color.table.icon-sort` | `{color.context.default.fg-subtle}` |
+</CxTable>
+
+## Usage
+
+Choose the token of the most specific level that fits, because only the context and the component tokens follow the theme.
+
+- Use a component token for a part of its component: `color.table.bg-alt` for the alternating rows of a table.
+- Use a context token for everything that has no component token. Choose the context by meaning (`danger` for an error) and the role by function (`fg-main` for text, `border-subtle` for a divider).
+- Use a primitive color only when no role has the shade, as the gradients do with `color.primitive.primary.base`.
+- Do not use `color.base.*` in an app. A base token such as `color.base.context.light.default.fg-main` keeps the color of the light theme in the dark theme.
+
+## Accessibility
+
+Foreground and background roles are made to be used in pairs. Take both roles of a pair from the same context.
+
+<CxTable>
+| Foreground | Background |
+| --- | --- |
+| `fg-main`, `fg-subtle`, `fg-slight` | `bg-main`, `bg-even`, `bg-evident` |
+| `fg-solid` | `bg-solid` |
+| `fg-inverse` | `bg-inverse` |
+| `fg-highlight` | `bg-highlight` |
+| `fg-active` | `bg-active` |
+| `fg-idle`, `fg-hover`, `fg-press`, `fg-disabled` | The `bg` role of the same state |
+| `contrast-color` | `base-color` |
+</CxTable>
+
+In `color.context.default`, `fg-subtle` and `fg-slight` are `fg-main` with the alpha value of an opacity token, so their contrast is lower than that of `fg-main` on every background. The contrast of a pair depends on the base colors of the brand, on the context, and on the theme, so measure the pairs of a brand in each theme.
+
+## Platform output
+
+Colors print as hex or `rgba()` values on the web, as `UIColor` on iOS, and as `<color>` resources on Android.
+
+<CxTable>
+| Platform | Name | Format |
+| --- | --- | --- |
+| Web | `$cx-color-context-default-fg-main` | A hex color, or `rgba()` for a color with an alpha value |
+| iOS | `ColorContextDefaultFgMain` | A `UIColor` with channels from 0 to 1 |
+| Android | `@color/color_context_default_fg_main` | A `<color>` in ARGB hex |
+</CxTable>
+
+The build writes the primitive colors, the context colors, and the gradients into the color file of each theme, such as `color-light.scss` and `color-dark.scss`. The component and the shadow colors are in these files too, and on the web the shadow tokens with the colors of the theme. The main file has the base colors, and the component and the shadow colors of the first theme.
+
+The values in the examples are those of the `chassis` brand in the current version and differ in other brands.
+
+With the `web` platform, a color that references a context or a primitive color prints the custom property of Chassis CSS instead of its value, so every component color is a `var(--…)` reference. The build writes these lines into `color-light.scss`:
+
+```scss
+$cx-color-context-default-fg-main: #161a1b !default;
+$cx-color-context-default-fg-subtle: rgba(22, 26, 27, 0.5) !default;
+$cx-color-button-default-fg-idle: var(--default-fg-idle) !default;
+```
+
+On iOS, the channels have three decimals. The build writes these constants into `ColorLight.swift`:
+
+```swift
+    public static let ColorContextDefaultFgMain = UIColor(red: 0.086, green: 0.102, blue: 0.106, alpha: 1)
+    public static let ColorContextDefaultFgSubtle = UIColor(red: 0.086, green: 0.102, blue: 0.106, alpha: 0.5)
+```
+
+`Color.swift` has the same names with colors that follow the appearance of the device: a constant whose colors differ between the light and the dark theme is a dynamic `UIColor` that holds both.
+
+On Android, the alpha value comes first, in the first two digits of the hex number. The build writes these resources into `color_light.xml`:
+
+```xml
+  <color name="color_context_default_fg_main">#ff161a1b</color>
+  <color name="color_context_default_fg_subtle">#80161a1b</color>
+```
+
+A gradient prints as a `linear-gradient()` value on the web. On iOS and Android the build splits it into an angle and, for each stop, a color and a position: `GradientPrimitivePrimaryL50090Angle`, `GradientPrimitivePrimaryL50090Stop1Color`, and `GradientPrimitivePrimaryL50090Stop1Position` on iOS, `gradient_primitive_primary_l_50_090_angle`, `gradient_primitive_primary_l_50_090_stop_1_color`, and `gradient_primitive_primary_l_50_090_stop_1_position` on Android.
+
+See the [web]([[docsref:/use-in-project/web-applications]]), [iOS]([[docsref:/use-in-project/ios-applications]]), and [Android]([[docsref:/use-in-project/android-applications]]) docs for the files that hold these names.

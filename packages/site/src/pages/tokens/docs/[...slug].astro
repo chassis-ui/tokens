@@ -1,0 +1,27 @@
+---
+import DocsLayout from '@chassis-ui/docs/layouts/DocsLayout.astro'
+import Code from '@chassis-ui/docs/shortcodes/Code.astro'
+import { getCollection, render } from 'astro:content'
+
+export async function getStaticPaths() {
+  const docsPages = await getCollection('docs')
+  return docsPages.map((docsPage) => {
+    return {
+      params: { slug: docsPage.id },
+      props: docsPage
+    }
+  })
+}
+
+const docsPage = Astro.props
+const { id, data } = docsPage
+const frontmatter = data
+const { Content, headings } = await render(docsPage)
+---
+
+<DocsLayout frontmatter={frontmatter} headings={headings} id={id}>
+  <Content components={{ pre: Code }} />
+  <Fragment slot="scripts">
+    <script src="@chassis-ui/docs/js/example-mode.js"></script>
+  </Fragment>
+</DocsLayout>

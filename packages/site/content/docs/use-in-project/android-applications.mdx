@@ -1,0 +1,445 @@
+---
+title: Android Applications
+description: Chassis Tokens on Android, as XML resources in a resource tree with folders for the dark theme and the screen sizes, and vector drawables for icons.
+toc: true
+---
+
+<Callout type="warning" name="created-by-ai" />
+
+## Introduction
+
+The Android output of Chassis Tokens is XML resources, one resource per token. Names are in snake_case without a prefix.
+
+The values in the examples of this page are those of the `chassis` brand in the current version, and they differ in other brands. The build writes lines such as these of `res/values/number.xml`:
+
+```xml
+<resources>
+  <dimen name="space_context_medium">16dp</dimen>
+  <item name="opacity_level_40" type="dimen" format="float">0.4</item>
+  <dimen name="font_context_lead_font_size">22sp</dimen>
+</resources>
+```
+
+The type of a token decides the kind of its resource. Sizes are in `dp` or `sp`, one for one design pixel.
+
+<CxTable>
+| Tokens | Resource |
+| --- | --- |
+| Colors | `<color>`, ARGB hex |
+| Font sizes, line heights, paragraph spacing | `<dimen>` in `sp` |
+| Other sizes and spacing | `<dimen>` in `dp` |
+| Opacities, letter spacing, gradient angles and positions | `<item type="dimen" format="float">` |
+| Font weights | `<integer>`, a weight from 100 to 900 |
+| Font families, other strings and the SVG text of icons | `<string>`, escaped |
+</CxTable>
+
+The resources work in layouts, in Kotlin and in Jetpack Compose. The `android-compose` preset writes Kotlin objects with Compose values; you build it from the repository, as [Compose values](#compose-values) describes.
+
+## Generated files
+
+The build writes one folder for each brand and app, `dist/android/<app>/<brand>/`, with the colors of each theme and the numbers of each screen in files of their own. The committed configuration builds the Android app `demo` for the brands `chassis` and `sinefil`, with the themes `light` and `dark` and the screens `large`, `medium` and `small`. The `res/` folder is a resource tree that an app uses as it is:
+
+<CxTable>
+| File | Contents |
+| --- | --- |
+| `res/values/string.xml` | Font families, font weights and styles, text cases and decorations, and the SVG text of the icons |
+| `res/values/color_base.xml` | The base colors |
+| `res/values/color.xml` | The theme colors of the first theme: context, primitive and component colors, gradients and shadow colors |
+| `res/values-night/color.xml` | The theme colors of the `dark` theme |
+| `res/values/number.xml`, `res/values-<qualifier>/number.xml` | Sizes, spacing, border radii and widths, font sizes, line heights and opacities of one screen, in the folder of that screen |
+| `res/drawable/<icon>.xml` | One vector drawable per icon |
+</CxTable>
+
+Next to the tree, the build writes the same resources as flat files, for a project that sorts them into folders itself:
+
+<CxTable>
+| File | Contents |
+| --- | --- |
+| `main.xml` | Every token except the theme colors, with the component colors of the first theme and the sizes of the first screen |
+| `string.xml` | The resources of `res/values/string.xml` |
+| `color_<theme>.xml` | The theme colors of one theme. `color_light.xml` and `color_dark.xml` in the committed configuration |
+| `number_<screen>.xml` | The numbers of one screen. `number_large.xml`, `number_medium.xml` and `number_small.xml` in the committed configuration |
+</CxTable>
+
+<Callout type="warning">
+`main.xml` cannot share a resource folder with the flat string, color and number files: aapt2 fails with `has a conflicting value`. It repeats the resources of the string file, of the number file of the first screen, and the component colors of the color file of the first theme. The theme colors are in the color files by design, so an app that needs context colors uses the resource tree.
+</Callout>
+
+## Installation
+
+Install the Android library to use the tokens as they are. The same resources are in the npm package, and a build from the repository writes them for your own tokens.
+
+### Android library
+
+Every [release]([[config:repo]]/releases) has the resource tree of each app and brand as an Android library, named `chassis-tokens-<app>-<brand>-<version>.aar`: `chassis-tokens-demo-chassis-[[config:currentVersion]].aar` and `chassis-tokens-demo-sinefil-[[config:currentVersion]].aar` in the committed configuration. The library needs Android 5.0 (API 21) or later and has no dependencies.
+
+Download the library of your brand into `app/libs/` and add it to `app/build.gradle.kts`:
+
+```kotlin
+dependencies {
+    implementation(files("libs/chassis-tokens-demo-chassis-[[config:currentVersion]].aar"))
+}
+```
+
+Layouts use the resources of the library like those of the app, such as `@color/color_context_default_bg_main`. In Kotlin, the resources are in the `R` class of the library, `chassis.tokens.R`.
+
+### Files from npm
+
+The npm package `@chassis-ui/tokens` holds the same resource tree, for a project that installs its dependencies with npm:
+
+```bash
+npm install @chassis-ui/tokens
+```
+
+Add the `res/` folder to the resources of the app module in `app/build.gradle.kts`. Gradle merges it with the resources of the app, which are then in the `R` class of the app. This path is for a `node_modules` folder at the root of the project:
+
+```kotlin
+android {
+    sourceSets["main"].res.srcDir("../node_modules/@chassis-ui/tokens/dist/android/demo/chassis/res")
+}
+```
+
+### Build from source
+
+The repository holds the token sets and the build, for a team that changes the tokens, adds a brand, a theme or an app, or needs a preset. Add it to your project, for example as a Git submodule. The build needs Node.js 22 or later and pnpm:
+
+```bash
+git submodule add [[config:repo]].git vendor/chassis-tokens
+cd vendor/chassis-tokens
+pnpm install --filter @chassis-ui/tokens
+pnpm tokens --brand chassis --app demo --platform android
+```
+
+The build writes the files to `vendor/chassis-tokens/packages/tokens/dist/android/demo/chassis/`. The repository commits `dist/`, so the files of the committed configuration are there before the first build. Add the `res/` folder of that path to the app module as a resource folder, as in [Files from npm](#files-from-npm).
+
+To build the tokens of your own app, add it to `chassis.build.apps` in `packages/tokens/package.json` and give it token sets in `packages/tokens/source/$themes.json`. The [Style Dictionary guide]([[docsref:/getting-started/style-dictionary#build-options]]) describes the build options.
+
+To install your own tokens as Android libraries, build the library of every `res/` tree in `dist/android/`. The command needs a JDK and the Android SDK, and writes to `packages/tokens/test/native/android/library/build/aars/`:
+
+```bash
+pnpm tokens
+pnpm tokens:aar
+```
+
+## Basic usage
+
+Reference a token in a layout by the kind and the name of its resource. Add a layout such as `res/layout/card.xml`:
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<TextView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/color_context_default_bg_main"
+    android:padding="@dimen/space_context_medium"
+    android:text="Card"
+    android:textColor="@color/color_context_default_fg_main"
+    android:textSize="@dimen/font_context_lead_font_size" />
+```
+
+Android picks the value of each resource for the current configuration: the colors of the `dark` theme in night mode, and the numbers of the widest screen folder that fits.
+
+### Kotlin
+
+Kotlin reads the resources through the `R` class that holds them: `chassis.tokens.R` with the Android library, and the `R` class of the app with the resource tree as a resource folder. This example imports the class of the library:
+
+```kotlin
+import android.content.Context
+import androidx.core.content.ContextCompat
+import androidx.core.content.res.ResourcesCompat
+import chassis.tokens.R
+
+class CardTokens(context: Context) {
+    val background = ContextCompat.getColor(context, R.color.color_context_default_bg_main)
+    val padding = context.resources.getDimensionPixelSize(R.dimen.space_context_medium)
+    val opacity = ResourcesCompat.getFloat(context.resources, R.dimen.opacity_level_40)
+    val weight = context.resources.getInteger(R.integer.font_context_lead_font_weight)
+    val family = context.getString(R.string.typography_font_family_text)
+}
+```
+
+Opacities and letter spacing are float resources. Read them with `ResourcesCompat.getFloat`, or with `Resources.getFloat` on API 29 and later.
+
+### Jetpack Compose
+
+Compose reads the same resources with `colorResource` and `dimensionResource`. It has no function for float resources, so read those through `ResourcesCompat.getFloat`:
+
+```kotlin
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.dimensionResource
+import androidx.core.content.res.ResourcesCompat
+import chassis.tokens.R
+
+@Composable
+fun Card(text: String) {
+    val subtle = ResourcesCompat.getFloat(LocalContext.current.resources, R.dimen.opacity_level_40)
+
+    Text(
+        text = text,
+        color = colorResource(R.color.color_context_default_fg_main).copy(alpha = subtle),
+        modifier = Modifier
+            .background(
+                colorResource(R.color.color_context_default_bg_main),
+                RoundedCornerShape(dimensionResource(R.dimen.border_radius_context_medium))
+            )
+            .padding(dimensionResource(R.dimen.space_context_medium))
+    )
+}
+```
+
+## Themes
+
+The color files of the themes declare the same resources, each with the colors of its theme. The committed configuration has the themes `light` and `dark`. The resource tree has the colors of the first configured theme in `res/values/color.xml` and those of the `dark` theme in `res/values-night/color.xml`. The build writes to `res/values/color.xml`:
+
+```xml
+  <color name="color_context_default_bg_main">#ffffffff</color>
+```
+
+`res/values-night/color.xml` declares the same name with the color of the `dark` theme. Android picks the file by the night mode of the configuration, so `@color/color_context_default_bg_main` needs no code for the theme. A theme with another name has its flat file, `color_<theme>.xml`, and no folder in the tree.
+
+## Screen sizes
+
+The `screen` group is optional. A configuration without screens, with `screens` empty or left out of `chassis.build` and no `screen` group in `$themes.json`, writes one number file without a screen suffix, `number.xml`, and a resource tree without screen folders: its numbers are in `res/values/number.xml`.
+
+The committed configuration has the screens `large`, `medium` and `small`. The resource tree has the numbers of each screen in its own folder, under the same names: the `small` screen in `values`, the `medium` screen in `values-sw600dp` and the `large` screen in `values-sw840dp`. Android picks the folder by the smallest width of the screen. In the current tokens, the resources that differ between screens belong to the `website` groups, such as `@dimen/size_website_section_icon`. [Screen folders](#screen-folders) describes how to change the folders.
+
+A layout names the resource, and Android takes it from the folder of the screen:
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<ImageView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/size_website_section_icon"
+    android:layout_height="@dimen/size_website_section_icon"
+    android:importantForAccessibility="no"
+    android:src="@drawable/icon_chip_remove" />
+```
+
+## Typography
+
+A typography token is split into one resource per property. The numbers are in the number files, and the build writes them to `res/values/number.xml` and to the number file of each screen folder:
+
+```xml
+  <dimen name="font_context_lead_line_height">32sp</dimen>
+  <dimen name="font_context_lead_font_size">22sp</dimen>
+  <item name="font_context_lead_letter_spacing" type="dimen" format="float">0</item>
+```
+
+The other properties are in `res/values/string.xml`: the font family, the text case, the text decoration and the font style as a `<string>`, such as `@string/font_context_lead_font_family`, and the font weight as an `<integer>`, `@integer/font_context_lead_font_weight`. The resources follow these rules:
+
+- The font family is the first family of the list that the token holds. Map it to a font resource that the app bundles.
+- The font weight is the number of the weight that the token names, from 100 to 900. Compose takes it as `FontWeight(integerResource(R.integer.font_context_lead_font_weight))`, and `Typeface.create(family, weight, italic)` takes it on API 28 and later.
+- The line height is in `sp`. A line height in percent is converted with the font size of the same typography token.
+- The letter spacing of a typography token is in ems of its font size, which `android:letterSpacing` and `TextView.setLetterSpacing` take. A token of the letter spacing scale, `typography_letter_spacing_*`, belongs to no font size and stays in design pixels.
+
+## Shadows
+
+A shadow token is split into its layers and their parts. The name of a part holds the number of its layer, from `1`, as in `shadow_context_small_1_blur`. The build writes the numbers of a layer to the number files:
+
+```xml
+  <dimen name="shadow_context_small_1_blur">8dp</dimen>
+  <dimen name="shadow_context_small_1_spread">-2dp</dimen>
+  <dimen name="shadow_context_small_1_offset_x">0dp</dimen>
+  <dimen name="shadow_context_small_1_offset_y">2dp</dimen>
+```
+
+It writes the color of a layer, `@color/shadow_context_small_1_color`, to the color files. The elevation shadows of Android do not take these parts. Use them for a shadow that the app draws itself, or choose an elevation that looks close.
+
+## Gradients
+
+A gradient token is split into its parts: the angle, and the color and the position of each stop, numbered from `1`. The build writes them to the color files:
+
+```xml
+  <item name="gradient_primitive_black_l_000_angle" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_black_l_000_stop_1_color">#00000000</color>
+  <item name="gradient_primitive_black_l_000_stop_1_position" type="dimen" format="float">0</item>
+```
+
+The angle is the CSS angle in degrees: `0` points up and angles turn clockwise, so `90` runs from left to right. Positions go from `0` to `1`. In Compose, build a brush from the parts once the size is known. Read the angle and the positions with `ResourcesCompat.getFloat` and the colors with `colorResource`:
+
+```kotlin
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Size
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
+import kotlin.math.cos
+import kotlin.math.sin
+
+fun gradientBrush(angle: Float, stops: Array<Pair<Float, Color>>, size: Size): Brush {
+    val radians = Math.toRadians(angle.toDouble())
+    val half = Offset((sin(radians) * size.width / 2).toFloat(), (-cos(radians) * size.height / 2).toFloat())
+    val center = Offset(size.width / 2, size.height / 2)
+    return Brush.linearGradient(*stops, start = center - half, end = center + half)
+}
+```
+
+In views, a `GradientDrawable` takes an angle that is a multiple of 45 degrees as its `Orientation`: `0` is `BOTTOM_TOP`, `90` is `LEFT_RIGHT`, `180` is `TOP_BOTTOM` and `270` is `RIGHT_LEFT`.
+
+## Icons
+
+The resource tree has one vector drawable per icon token in `res/drawable/`, named like its string resource, such as `icon_chip_remove`. The paths are filled black, and a tint gives them their color. In Compose:
+
+```kotlin
+import androidx.compose.material3.Icon
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.painterResource
+import chassis.tokens.R
+
+@Composable
+fun RemoveIcon() {
+    Icon(
+        painter = painterResource(R.drawable.icon_chip_remove),
+        contentDescription = "Remove",
+        tint = colorResource(R.color.color_context_default_fg_main)
+    )
+}
+```
+
+In views, set `app:srcCompat="@drawable/icon_chip_remove"` and `app:tint` on an `ImageView`. The SVG text of each icon is also a string resource, `@string/icon_chip_remove`.
+
+## Build options
+
+Build options change what the generated files hold, so they need a [build from the repository](#build-from-source). Set them in `chassis.build` of `packages/tokens/package.json`.
+
+### Compose values
+
+The `android-compose` preset writes Kotlin objects with Compose values to `dist/android-compose/<app>/<brand>/`, in the package `chassis.tokens` or the package that `packageName` names. In `chassis.build` of `packages/tokens/package.json`:
+
+```json
+"apps": {
+  "demo": ["android", "android-compose"]
+},
+"options": {
+  "android-compose": { "packageName": "com.example.tokens" }
+}
+```
+
+The build then writes properties in camelCase, here to `ChassisTokens.kt`:
+
+```kotlin
+    val spaceContextMedium get() = 16.dp
+    val opacityLevel40 get() = 0.4f
+    val colorAccordionItemFgColor get() = Color(0xFF161A1B)
+    val fontContextLeadFontSize get() = 22.sp
+```
+
+A font weight is a `FontWeight`, and the letter spacing of a typography token is a number with `.em`. Add the folder to the Kotlin sources of the app module and use the values as they are, such as `Modifier.padding(ChassisTokens.spaceContextMedium)`. The objects have the names of the iOS types, such as `ChassisTokensColorLight`, `ChassisTokensColorDark` and `ChassisTokensNumberSmall`, with one theme or one screen each; pick one with `isSystemInDarkTheme()` or by the size of the window. The preset writes no icons. The [Style Dictionary guide]([[docsref:/getting-started/style-dictionary#swiftui-and-compose-presets]]) describes the preset.
+
+### Screen folders
+
+`options.android.screens` maps each screen to the qualifier of its folder, with `""` for the default `values` folder. Without the option, the build puts the screen `small` into `values`, `medium` into `values-sw600dp` and `large` into `values-sw840dp`, the width classes of Material Design. In `chassis.build` of `packages/tokens/package.json`:
+
+```json
+"options": {
+  "android": {
+    "screens": { "small": "", "medium": "sw600dp", "large": "sw840dp" }
+  }
+}
+```
+
+Every screen needs a folder, and exactly one screen goes into the default folder, which Android uses when no other folder fits. The build fails otherwise. Screens with other names than `small`, `medium` and `large` have no folders until the option names them.
+
+### outputReferences
+
+With `outputReferences`, a resource holds a reference to the resource of the token it references. In `chassis.build` of `packages/tokens/package.json`:
+
+```json
+"options": {
+  "android": { "outputReferences": true }
+}
+```
+
+The build then writes references, here to the number files:
+
+```xml
+  <dimen name="size_unit_4">@dimen/dimension_base_4</dimen>
+  <dimen name="space_button_medium_padding_x">@dimen/space_unit_12</dimen>
+```
+
+The value of every resource is the same with and without the option. A resource references another only when both are in the same file and have the same kind and value. Base colors, sizes computed with math, and a font size in `sp` that references a size in `dp` keep their values.
+
+## Continuous integration
+
+With the Android library in `app/libs/`, a workflow needs no step for the tokens. With the repository as a submodule, check out the submodules; `dist/` is committed, so the files are there. To build the tokens in the workflow, set up Node.js 22 or later and pnpm, and build before the app:
+
+```yaml
+name: Build
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          submodules: recursive
+
+      - uses: pnpm/action-setup@v6
+        with:
+          package_json_file: vendor/chassis-tokens/package.json
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+
+      - name: Build tokens
+        working-directory: vendor/chassis-tokens
+        run: |
+          pnpm install --filter @chassis-ui/tokens
+          pnpm tokens --brand chassis --app demo --platform android
+
+      - uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: 21
+
+      - name: Build app
+        run: ./gradlew assembleDebug
+```
+
+## Best practices
+
+✅ **Use the resource tree**: Android picks `@color/color_context_default_bg_main` from `values-night` in night mode and `@dimen/size_website_section_icon` from the folder of the screen. The flat files leave that choice to code.
+
+✅ **Read floats as floats**: `@dimen/opacity_level_40` and `@dimen/font_context_jumbo_letter_spacing` are float items of the kind `dimen`. Read them with `ResourcesCompat.getFloat`, or with `Resources.getFloat` on API 29 and later.
+
+✅ **Change tokens at the source**: A build overwrites the files of `dist/`. Change the token sets in `packages/tokens/source/` and build again.
+
+❌ **Don't add `main.xml` next to the other files**: It repeats the resources of `string.xml` and of the number and color files, such as `@dimen/space_context_medium`, and aapt2 fails with `has a conflicting value`.
+
+❌ **Don't read theme colors from `main.xml`**: The theme colors are in the color files. `@color/color_context_default_fg_main` is in `color.xml` of the resource tree and in the flat color files.
+
+## Troubleshooting
+
+### Conflicting value
+
+aapt2 stops with `has a conflicting value`. `main.xml` is in a resource folder with a flat string, color or number file, which declare the same resources. Use the resource tree, as in [Files from npm](#files-from-npm), or `main.xml` alone.
+
+### Unresolved reference
+
+The Kotlin compiler stops with `Unresolved reference` and the name of a resource. The `R` class does not have the resource. With the Android library, import `chassis.tokens.R`. Then check the name in the generated file: names are in snake_case without a prefix, such as `color_context_default_bg_main`, and the theme colors are in the color files.
+
+### Resource not found
+
+The app stops with `Resources$NotFoundException`. The resource exists only in a folder with a qualifier, such as `values-sw600dp`, and the app runs in a configuration without it. Every resource needs a value in `values`. The resource tree has one for each; copy all of its folders.
+
+### No default screen folder
+
+The build stops with `options.android.screens must put exactly one screen in the default folder ("") but puts <count>`. No screen of `options.android.screens` has the qualifier `""`, or more than one has it. Give `""` to one screen, as in [Screen folders](#screen-folders).
+
+## Next steps
+
+- Read how the token sets are organized in the [Tokens Studio guide]([[docsref:/getting-started/tokens-studio]]).
+- Read how the build turns them into files in the [Style Dictionary guide]([[docsref:/getting-started/style-dictionary]]).
+- Find a token in the token reference, starting with the [color tokens]([[docsref:/design-tokens/color-tokens]]).
+- Use the same tokens on the [web]([[docsref:/use-in-project/web-applications]]) and on [iOS]([[docsref:/use-in-project/ios-applications]]).

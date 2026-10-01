@@ -1,0 +1,27 @@
+title:                  "Chassis - Tokens"
+baseURL:                "https://chassis-ui.com/tokens"
+
+docsPath:               "/tokens/docs"
+sitePath:               "packages/site"
+
+subtitle:               "Multi-Brand Design Tokens for Web, iOS & Android"
+description:            "Design tokens for Chassis UI in Tokens Studio format, with Style Dictionary build scripts that output Web (SCSS), iOS (Swift), and Android (XML) themes."
+authors:                "Ozgur Gunes"
+
+currentVersion:         "0.6.0"
+repo:                   "https://github.com/chassis-ui/tokens"
+
+githubOrg:              "chassis-ui"
+figmaHandle:            "chassis_ui"
+xUsername:              "chassis_ui"
+
+analytics:
+  googleId:             "G-QGR8C28VYN"
+
+anchors:
+  min:                  2
+  max:                  5
+
+toc:
+  min:                  2
+  max:                  6
