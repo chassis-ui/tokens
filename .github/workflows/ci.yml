@@ -1,8 +1,10 @@
 name: CI
 
-# Pull requests run this workflow directly. Pushes to main run it through
+# Pull requests and pushes to develop run this workflow directly. Pushes to main run it through
 # publish-release.yml, which publishes only after these jobs pass.
 on:
+  push:
+    branches: [develop]
   pull_request:
   workflow_dispatch:
   workflow_call:
@@ -99,19 +101,23 @@ jobs:
       - name: Build
         run: pnpm site:build
 
-  # A pull request that changes packages/tokens/source, build or dist needs a changeset
-  # (changedFilePatterns in .changeset/config.json); `pnpm changeset --empty` adds one that
-  # releases nothing. The Version Packages pull request consumes changesets, so it is skipped.
+  # A change to packages/tokens/source, build or dist needs a changeset (changedFilePatterns in
+  # .changeset/config.json); `pnpm changeset --empty` adds one that releases nothing. A pull
+  # request is compared with its base branch, a push to develop with the tip it replaced. The
+  # Version Packages pull request consumes changesets, and so does the version commit when it
+  # comes back from main into develop, so both are skipped.
   changeset:
     name: Changeset
-    if: github.event_name == 'pull_request' && !startsWith(github.head_ref, 'changeset-release/')
+    if: >-
+      (github.event_name == 'pull_request' && !startsWith(github.head_ref, 'changeset-release/')) ||
+      (github.event_name == 'push' && github.ref == 'refs/heads/develop')
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
-          # Changesets compares against the base branch
+          # Changesets compares with an earlier commit
           fetch-depth: 0
           persist-credentials: false
 
@@ -129,8 +135,30 @@ jobs:
 
       - name: Check for a changeset
         env:
+          EVENT: ${{ github.event_name }}
           BASE_REF: ${{ github.base_ref }}
-        run: pnpm changeset status --since "origin/$BASE_REF"
+          BEFORE: ${{ github.event.before }}
+        run: |
+          if [ "$EVENT" = pull_request ]; then
+            SINCE="origin/$BASE_REF"
+          else
+            if [ -z "$BEFORE" ] || ! git cat-file -e "$BEFORE^{commit}" 2>/dev/null; then
+              echo "No earlier commit to compare with"
+              exit 0
+            fi
+
+            PACKAGE_JSON=packages/tokens/package.json
+            OLD_VERSION=$(git show "$BEFORE:$PACKAGE_JSON" | node -p 'JSON.parse(require("node:fs").readFileSync(0, "utf8")).version')
+            NEW_VERSION=$(node -p 'require("./packages/tokens/package.json").version')
+            if [ "$OLD_VERSION" != "$NEW_VERSION" ]; then
+              echo "The push changes the version ($OLD_VERSION → $NEW_VERSION): a version step, which consumes changesets"
+              exit 0
+            fi
+
+            SINCE="$BEFORE"
+          fi
+
+          pnpm changeset status --since "$SINCE"
 
   # What the pull request does to the tokens, in the job summary: the names added, removed,
   # renamed and changed in each dist/ file. It compares the committed dist/ of the test merge

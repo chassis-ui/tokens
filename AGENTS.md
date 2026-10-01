@@ -91,6 +91,11 @@ Run the checks of the area you changed, and report the ones that fail.
 
 ## Cautions
 
+- Work on `develop` or on a branch made from it, never on `main`. `main` holds released
+  versions only and gets `develop` when the maintainer releases. Check the branch before the
+  first edit of a task.
+- A finished branch is merged locally into `develop` with a merge commit. Do not open a pull
+  request unless asked.
 - Never commit, merge or push without being asked. Pushing `main` starts the release workflow,
   which publishes `@chassis-ui/tokens` to npm.
 - Do not edit generated or fetched files: `_site/`, `dist-next/`, `.cache/`, `.build/`,

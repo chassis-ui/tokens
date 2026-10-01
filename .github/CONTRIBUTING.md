@@ -36,6 +36,9 @@ pnpm install --filter @chassis-ui/tokens
 
 ## Branch and commit conventions
 
+`develop` is the integration branch: branch from it, and open pull requests against it. `main`
+holds released versions only; pushing it publishes to npm (see [Releases](#releases)).
+
 Commits follow a loose `<type>(<scope>): <description>` convention:
 
 - **Types in use**: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`, `ci`.
@@ -171,8 +174,8 @@ pnpm site:build
   Node.js 22 and 24, the site lint, `astro check` and site build, Prettier on the whole repository
   (`pnpm lint:prettier`) and `pnpm audit`. The commands above run the same checks locally.
 - **A changeset** for anything that changes the published package: token names or values, file
-  names, formats or the package contents. CI fails a pull request that changes
-  `packages/tokens/source/`, `build/` or `dist/` without one; for such a change that releases
+  names, formats or the package contents. CI fails a pull request or a push to `develop` that
+  changes `packages/tokens/source/`, `build/` or `dist/` without one; for such a change that releases
   nothing, such as a build refactor with the same output, add an empty changeset. A pull request
   that only touches the site, the docs, the tests or the tooling doesn't need one.
 - **The rebuilt `dist/`** committed with any change to tokens or the build that changes the
@@ -208,20 +211,23 @@ pnpm changeset --empty
 Releases are made from `main` by `.github/workflows/publish-release.yml`, after the CI checks pass
 on the pushed commit:
 
-1. When `main` has changesets, the workflow opens or updates a "Version Packages" pull request. It
-   runs `pnpm changeset:version`, which removes the changesets, bumps the version in
-   `packages/tokens/package.json`, writes the CHANGELOG entry, updates `currentVersion` in
-   `packages/site/config.yml` and rebuilds `dist/`, so its headers name the new version.
+1. A maintainer merges `develop` into `main` and pushes it. When `main` has changesets, the
+   workflow opens or updates a "Version Packages" pull request. It runs `pnpm changeset:version`,
+   which removes the changesets, bumps the version in `packages/tokens/package.json`, writes the
+   CHANGELOG entry, updates `currentVersion` in `packages/site/config.yml` and rebuilds `dist/`,
+   so its headers name the new version.
 2. Merging that pull request pushes `main` again. The version is not on npm yet, so the workflow
    runs `pnpm tokens:verify`, publishes `@chassis-ui/tokens` with npm trusted publishing and
    provenance (no npm token), and creates the GitHub release `v<version>` with the CHANGELOG entry
    as its body and the Android library of every app and brand attached
    (`chassis-tokens-<app>-<brand>-<version>.aar`). Swift Package Manager resolves the tag of the
    release, so the Swift package needs no publishing step.
+3. The maintainer merges `main` back into `develop`, so the next changes start from the released
+   version. The Changeset check skips that push, since it changes the version.
 
-A maintainer can also run `pnpm changeset:version` locally, review and commit the result and push
-`main`; the workflow then publishes without a pull request. A version without a CHANGELOG entry
-is not published.
+A maintainer can also run `pnpm changeset:version` locally on `develop`, review and commit the
+result, merge `develop` into `main` and push it; the workflow then publishes without a pull
+request. A version without a CHANGELOG entry is not published.
 
 ## Using the issue tracker
 

@@ -3,6 +3,7 @@ version: 2
 updates:
   - package-ecosystem: npm
     directory: /
+    target-branch: develop
     schedule:
       interval: weekly
       day: monday
@@ -27,6 +28,7 @@ updates:
   # Compose and the Gradle wrapper
   - package-ecosystem: gradle
     directory: /packages/tokens/test/native/android
+    target-branch: develop
     schedule:
       interval: weekly
       day: monday
@@ -38,6 +40,7 @@ updates:
 
   - package-ecosystem: github-actions
     directory: /
+    target-branch: develop
     schedule:
       interval: weekly
       day: monday
