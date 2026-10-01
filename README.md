@@ -60,7 +60,7 @@ The repository is a [pnpm workspace](https://pnpm.io/workspaces) with two packag
 | `packages/tokens/` | `@chassis-ui/tokens` (published) | `source/` (the Tokens Studio token files), `build/` (the Style Dictionary build), `test/`, `dist/`, the build configuration in `package.json`, `CHANGELOG.md` |
 | `packages/site/`   | `chassis-tokens-site` (private)  | The documentation site and its dependencies                                                                                                                   |
 
-The root holds the workspace configuration, the lint and format configurations with their dependencies, the CI workflows, the Changesets configuration in `.changeset/`, the repository scripts in `build/` (`sync-version-refs.js`, `release-notes.js`, `sync-submodules.js`, `html-validate.js`), the assets submodule in `vendor/assets` and the site output in `_site/`. Paths in the sections below (`source/`, `build/`, `test/`, `dist/`, `package.json`) are relative to `packages/tokens/`.
+The root holds the workspace configuration, the lint and format configurations with their dependencies, the CI workflows, the Changesets configuration in `.changeset/`, the repository scripts in `build/` (`sync-version-refs.js`, `release-notes.js`), the assets submodule in `vendor/assets` and the site output in `_site/`. Paths in the sections below (`source/`, `build/`, `test/`, `dist/`, `package.json`) are relative to `packages/tokens/`.
 
 ## Development
 
