@@ -3,7 +3,6 @@ baseURL:                "https://chassis-ui.com/tokens"
 
 docsPath:               "/tokens/docs"
 sitePath:               "packages/site"
-staticPath:             "/tokens/static"
 
 subtitle:               "Multi-Brand Design Tokens for Web, iOS & Android"
 description:            "Design tokens for Chassis UI in Tokens Studio format, with Style Dictionary build scripts that output Web (SCSS), iOS (Swift), and Android (XML) themes."
