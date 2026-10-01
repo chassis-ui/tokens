@@ -11,7 +11,10 @@ const config = loadConfig({ root })
 export default defineConfig({
   outDir: '../../_site',
   build: {
-    assets: `static/astro`
+    assets: `static/astro`,
+    // The site is served under /tokens of chassis-ui.com, where /static belongs to the main
+    // site. With `staticPath` of config.yml, every static file is requested under /tokens/static.
+    assetsPrefix: '/tokens'
   },
   integrations: [chassisDocs({ config }), ...chassis({ config, root })],
   vite: {

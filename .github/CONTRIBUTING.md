@@ -24,8 +24,9 @@ This repo is a pnpm workspace with two packages:
   is never published to npm.
 
 The root holds the lint and format configurations, the repository scripts in `build/`, the
-assets submodule in `vendor/assets` (the site needs it; `pnpm dev` and `pnpm site:build` fetch
-and build it) and the CI workflows. Run every command from the root.
+assets submodule in `vendor/assets` (the site needs it; `pnpm dev` and `pnpm site:build` check
+it out at the pinned commit and build it, and `pnpm sync-submodules` moves the pin to the latest
+`app/docs`) and the CI workflows. Run every command from the root.
 
 To work on the tokens only, install the tokens package and the root's lint tools without the
 site's dependencies:

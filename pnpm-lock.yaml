@@ -41,18 +41,9 @@ importers:
       globals:
         specifier: ^17.12.0
         version: 17.12.0
-      globby:
-        specifier: ^16.2.4
-        version: 16.2.4
-      html-validate:
-        specifier: ^11.16.0
-        version: 11.16.0(@vitest/expect@4.1.11)(vitest@4.1.11(@types/node@24.19.0)(vite@8.3.1(@types/node@24.19.0)(esbuild@0.28.2)(sass@1.105.0)(yaml@2.9.1)))
       pagefind:
         specifier: ^1.5.2
         version: 1.5.2
-      picocolors:
-        specifier: ^1.1.1
-        version: 1.1.1
       prettier:
         specifier: ^3.9.9
         version: 3.9.9
@@ -116,6 +107,9 @@ importers:
       autoprefixer:
         specifier: ^10.6.1
         version: 10.6.1(postcss@8.5.28)
+      html-validate:
+        specifier: ^11.16.0
+        version: 11.16.0(@vitest/expect@4.1.11)(vitest@4.1.11(@types/node@24.19.0)(vite@8.3.1(@types/node@24.19.0)(esbuild@0.28.2)(sass@1.105.0)(yaml@2.9.1)))
       htmlparser2:
         specifier: ^12.0.0
         version: 12.0.0
@@ -1467,10 +1461,6 @@ packages:
     peerDependencies:
       ajv: ^8.0.0
 
-  '@sindresorhus/merge-streams@4.0.0':
-    resolution: {integrity: sha512-tlqY9xq5ukxTUZBmoOp+m61cqwQD5pHJtFY3Mn8CA8ps6yghLH/Hw8UPdqg4OLmFW3IFlcXnQNmo/dh8HzXYIQ==}
-    engines: {node: '>=18'}
-
   '@stackblitz/sdk@1.11.1':
     resolution: {integrity: sha512-5wl1j3IhtmE7POTl2W9VGQdbQyBQrRsF3jcYBK+0V353AuO8H2GFZkiFNyTRxL+TDY3HIFCHc3G983Osmg76Lg==}
 
@@ -2670,10 +2660,6 @@ packages:
     resolution: {integrity: sha512-jhIXaOzy1sb8IyocaruWSn1TjmnBVs8Ayhcy83rmxNJ8q2uWKCAj3CnJY+KpGSXCueAPc0i05kVvVKtP1t9S3g==}
     engines: {node: '>=10'}
 
-  globby@16.2.4:
-    resolution: {integrity: sha512-c8B/VNLmxRcmqqenRA9t+9IyOjf9+V6lTxPaUJLqOCONdQkWZ0ETYgX0qbtJqPsgCNusT9MZ5Jeidw8Eb9tn2g==}
-    engines: {node: '>=20'}
-
   globjoin@0.1.4:
     resolution: {integrity: sha512-xYfnw62CKG8nLkZBfWbhWwDw02CHty86jfPcc2cr3ZfeuK9ysoVPPEUxf21bAD/rWAgk52SuBrLJlefNy8mvFg==}
 
@@ -2976,10 +2962,6 @@ packages:
   is-number@7.0.0:
     resolution: {integrity: sha512-41Cifkg6e8TylSpdtTpeLVMqvSBEVzTttHvERD741+pnZ8ANv0004MRL43QKPDlK9cGvNp6NZWZUBlbGXYxxng==}
     engines: {node: '>=0.12.0'}
-
-  is-path-inside@4.0.0:
-    resolution: {integrity: sha512-lJJV/5dYS+RcL8uQdBDW9c9uWFLLBNRyFhnAKXw5tVqLlKZ4RMGZKv+YQ/IA3OhD+RpbJa1LLFM1FQPGyIXvOA==}
-    engines: {node: '>=12'}
 
   is-plain-obj@4.1.0:
     resolution: {integrity: sha512-+Pgi+vMuUNkJyExiMBt5IlFoMyKnr5zhJ4Uspz58WOhBF5QoIZkFyNHIbBAtHwzVAgk5RtndVNsDRN61/mmDqg==}
@@ -4020,10 +4002,6 @@ packages:
     resolution: {integrity: sha512-g9Q1haeby36OSStwb4ntCGGGaKsaVSjQ68fBxoQcutl5fS1vuY18H3wSt3jFyFtrkx+Kz0V1G85A4MyAdDMi2Q==}
     engines: {node: '>=8'}
 
-  slash@5.1.0:
-    resolution: {integrity: sha512-ZA6oR3T/pEyuqwMgAKT0/hAv8oAXckzbkmR0UkUosQ+Mc4RxGoJkRmwHgHufaenlyAgE1Mxgpdcrf75y6XcnDg==}
-    engines: {node: '>=14.16'}
-
   slice-ansi@4.0.0:
     resolution: {integrity: sha512-qMCMfhY040cVHT43K9BFygqYbUPFZKHOg7K73mtTWJRb8pyP3fzf4Ixd5SzdEJQ6MRUg/WBnOLxghZtKKurENQ==}
     engines: {node: '>=10'}
@@ -4363,10 +4341,6 @@ packages:
   undici@8.11.2:
     resolution: {integrity: sha512-u4UB2/IrKdU6lFxumHmmo1a3fCQO5tzQllRorfoRS63txhrB7xTpSn1PftwC4qEHkOaqP95fCWW4lJzwErwzhQ==}
     engines: {node: '>=22.19.0'}
-
-  unicorn-magic@0.4.1:
-    resolution: {integrity: sha512-lzlXPoVB0Uy/FvTaUgX39RbixYiSKoc3JSoSf01+0c2B6FR3qdYIPN7Qjo/AV7n6sqLCk0509cT3LRj1oSZ1+A==}
-    engines: {node: '>=20'}
 
   unified@11.0.5:
     resolution: {integrity: sha512-xKvGhPWw3k84Qjh8bI3ZeJjqnyadK+GEFtazSfZv/rKeTkTjOJho6mFqh2SM96iIcZokxiOpg78GazTSg8+KHA==}
@@ -6032,8 +6006,6 @@ snapshots:
     dependencies:
       ajv: 8.20.0
 
-  '@sindresorhus/merge-streams@4.0.0': {}
-
   '@stackblitz/sdk@1.11.1': {}
 
   '@standard-schema/spec@1.1.0': {}
@@ -7542,16 +7514,6 @@ snapshots:
       merge2: 1.4.1
       slash: 3.0.0
 
-  globby@16.2.4:
-    dependencies:
-      '@sindresorhus/merge-streams': 4.0.0
-      fast-glob: 3.3.3
-      ignore: 7.0.10
-      is-path-inside: 4.0.0
-      micromatch: 4.0.8
-      slash: 5.1.0
-      unicorn-magic: 0.4.1
-
   globjoin@0.1.4: {}
 
   good-listener@1.2.2:
@@ -7915,8 +7877,6 @@ snapshots:
       has-tostringtag: 1.0.2
 
   is-number@7.0.0: {}
-
-  is-path-inside@4.0.0: {}
 
   is-plain-obj@4.1.0: {}
 
@@ -9359,8 +9319,6 @@ snapshots:
 
   slash@3.0.0: {}
 
-  slash@5.1.0: {}
-
   slice-ansi@4.0.0:
     dependencies:
       ansi-styles: 4.3.0
@@ -9787,8 +9745,6 @@ snapshots:
   undici-types@7.24.6: {}
 
   undici@8.11.2: {}
-
-  unicorn-magic@0.4.1: {}
 
   unified@11.0.5:
     dependencies:

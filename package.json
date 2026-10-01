@@ -10,12 +10,12 @@
   "author": "Ozgur Gunes <o.gunes@gmail.com>",
   "license": "MIT",
   "engines": {
-    "node": ">=22"
+    "node": ">=22.12.0"
   },
   "scripts": {
     "build": "pnpm tokens:site && pnpm site:build",
     "clean": "pnpm site:clean && pnpm --filter @chassis-ui/tokens clean",
-    "dev": "pnpm sync-submodules && pnpm tokens:site && pnpm --filter chassis-tokens-site dev",
+    "dev": "pnpm vendor && pnpm tokens:site && pnpm --filter chassis-tokens-site dev",
     "test": "pnpm tokens:test",
     "tokens": "pnpm tokens:build",
     "tokens:aar": "pnpm --filter @chassis-ui/tokens aar",
@@ -32,14 +32,14 @@
     "tokens:verify": "pnpm --filter @chassis-ui/tokens verify",
     "tokens:verify:presets": "pnpm --filter @chassis-ui/tokens verify:presets",
     "site": "pnpm site:build && pnpm site:lint",
-    "site:build": "pnpm sync-submodules && pnpm --filter chassis-tokens-site build && pnpm site:pagefind",
+    "site:build": "pnpm vendor && pnpm --filter chassis-tokens-site build && pnpm site:pagefind",
     "site:clean": "rm -rf _site && pnpm --filter chassis-tokens-site clean",
     "site:lint": "pnpm site:lint:eslint && pnpm site:lint:fusv && pnpm site:lint:stylelint && pnpm site:lint:prettier",
     "site:lint:eslint": "eslint packages/site --cache --cache-location .cache/.eslintcache --report-unused-disable-directives",
     "site:lint:fusv": "find-unused-sass-variables packages/site/src/scss/",
     "site:lint:prettier": "prettier -c --cache packages/site",
     "site:lint:stylelint": "stylelint packages/site/src/scss/ --cache --cache-location .cache/.stylelintcache",
-    "site:lint:html": "node build/html-validate.js",
+    "site:lint:html": "pnpm --filter chassis-tokens-site lint:html",
     "site:pagefind": "pagefind --site _site --output-subdir tokens/pagefind",
     "site:preview": "pnpm --filter chassis-tokens-site preview",
     "lint:prettier": "prettier -c --cache .",
@@ -48,7 +48,8 @@
     "check:pnpm": "pnpm audit --audit-level moderate",
     "changeset": "changeset",
     "changeset:version": "changeset version && node build/sync-version-refs.js",
-    "sync-submodules": "node build/sync-submodules.js"
+    "sync-submodules": "pnpm --filter chassis-tokens-site exec chassis-docs sync-submodules",
+    "vendor": "pnpm --filter chassis-tokens-site exec chassis-docs vendor"
   },
   "devDependencies": {
     "@changesets/cli": "^3.0.3",
@@ -62,10 +63,7 @@
     "eslint-plugin-unicorn": "^70.0.0",
     "find-unused-sass-variables": "^6.2.1",
     "globals": "^17.12.0",
-    "globby": "^16.2.4",
-    "html-validate": "^11.16.0",
     "pagefind": "^1.5.2",
-    "picocolors": "^1.1.1",
     "prettier": "^3.9.9",
     "prettier-plugin-astro": "^0.14.1",
     "stylelint": "^16.26.1",

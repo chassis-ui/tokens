@@ -1,5 +1,6 @@
 ---
 import FeatureCard from '@chassis-ui/docs/components/FeatureCard.astro'
+import { getDocsPath } from '@chassis-ui/docs/site'
 ---
 
 <section class="home-section py-3xl md:py-6xl">
@@ -26,16 +27,24 @@ import FeatureCard from '@chassis-ui/docs/components/FeatureCard.astro'
           </Fragment>
           <ul class="list-unstyled d-flex flex-column gap-xs">
             <li>
-              <a href="/getting-started/introduction" class="link-primary">Introduction</a>
+              <a href={getDocsPath('/getting-started/introduction/')} class="link-primary"
+                >Introduction</a
+              >
             </li>
             <li>
-              <a href="/getting-started/tokens-studio" class="link-primary">Tokens Studio Setup</a>
+              <a href={getDocsPath('/getting-started/tokens-studio/')} class="link-primary"
+                >Tokens Studio Setup</a
+              >
             </li>
             <li>
-              <a href="/getting-started/style-dictionary" class="link-primary">Style Dictionary</a>
+              <a href={getDocsPath('/getting-started/style-dictionary/')} class="link-primary"
+                >Style Dictionary</a
+              >
             </li>
             <li>
-              <a href="/getting-started/figma-variables" class="link-primary">Figma Variables</a>
+              <a href={getDocsPath('/getting-started/figma-variables/')} class="link-primary"
+                >Figma Variables</a
+              >
             </li>
           </ul>
         </FeatureCard>
@@ -49,16 +58,23 @@ import FeatureCard from '@chassis-ui/docs/components/FeatureCard.astro'
           </Fragment>
           <ul class="list-unstyled d-flex flex-column gap-xs">
             <li>
-              <a href="/design-tokens/color-tokens" class="link-primary">Color System</a>
+              <a href={getDocsPath('/design-tokens/color-tokens/')} class="link-primary"
+                >Color System</a
+              >
             </li>
             <li>
-              <a href="/design-tokens/typography-tokens" class="link-primary">Typography</a>
+              <a href={getDocsPath('/design-tokens/typography-tokens/')} class="link-primary"
+                >Typography</a
+              >
             </li>
             <li>
-              <a href="/design-tokens/size-tokens" class="link-primary">Sizing &amp; Spacing</a>
+              <a href={getDocsPath('/design-tokens/size-tokens/')} class="link-primary"
+                >Sizing &amp; Spacing</a
+              >
             </li>
             <li>
-              <a href="/design-tokens/shadow-tokens" class="link-primary">Shadows</a>
+              <a href={getDocsPath('/design-tokens/shadow-tokens/')} class="link-primary">Shadows</a
+              >
             </li>
           </ul>
         </FeatureCard>
@@ -72,13 +88,17 @@ import FeatureCard from '@chassis-ui/docs/components/FeatureCard.astro'
           </Fragment>
           <ul class="list-unstyled d-flex flex-column gap-xs">
             <li>
-              <a href="/use-in-project/web-applications" class="link-primary">Web Applications</a>
+              <a href={getDocsPath('/use-in-project/web-applications/')} class="link-primary"
+                >Web Applications</a
+              >
             </li>
             <li>
-              <a href="/use-in-project/ios-applications" class="link-primary">iOS Applications</a>
+              <a href={getDocsPath('/use-in-project/ios-applications/')} class="link-primary"
+                >iOS Applications</a
+              >
             </li>
             <li>
-              <a href="/use-in-project/android-applications" class="link-primary"
+              <a href={getDocsPath('/use-in-project/android-applications/')} class="link-primary"
                 >Android Applications</a
               >
             </li>
@@ -96,8 +116,10 @@ import FeatureCard from '@chassis-ui/docs/components/FeatureCard.astro'
     </div>
 
     <div class="d-flex gap-md justify-content-center mt-3xl md:mt-6xl">
-      <a href="/getting-started" class="button primary lg">Get Started</a>
-      <a href="/docs/" class="button default lg">View Documentation</a>
+      <a href={getDocsPath('/getting-started/introduction/')} class="button primary lg"
+        >Get Started</a
+      >
+      <a href={getDocsPath('/')} class="button default lg">View Documentation</a>
     </div>
   </div>
 </section>
