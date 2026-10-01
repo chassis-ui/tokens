@@ -5,7 +5,7 @@
  *
  * Copies the version of @chassis-ui/tokens into the places that show it but are not part of the
  * workspace's dependency graph, so `changeset version` cannot update them:
- * packages/site/config.yml's `current_version`, and the `Chassis - Tokens v…` header of the files
+ * packages/site/config.yml's `currentVersion`, and the `Chassis - Tokens v…` header of the files
  * in packages/tokens/dist/, which it updates by rebuilding dist/ when a header names another
  * version. A version step that bumps nothing (only empty changesets) leaves dist/ as it is.
  *
@@ -41,14 +41,14 @@ async function syncSiteConfig(version) {
   const file = 'packages/site/config.yml'
   const original = await fs.readFile(file, 'utf8')
 
-  if (!/^current_version:/m.test(original)) {
-    console.error(`❌ No current_version field in ${file}`)
+  if (!/^currentVersion:/m.test(original)) {
+    console.error(`❌ No currentVersion field in ${file}`)
     process.exit(1)
   }
 
   const updated = original.replace(
-    /^current_version:(\s*)"[^"]*"/m,
-    (_match, spacing) => `current_version:${spacing}"${version}"`
+    /^currentVersion:(\s*)"[^"]*"/m,
+    (_match, spacing) => `currentVersion:${spacing}"${version}"`
   )
 
   if (updated === original) {
@@ -56,7 +56,7 @@ async function syncSiteConfig(version) {
   }
 
   await fs.writeFile(file, updated, 'utf8')
-  console.log(`📄 Updated ${file}'s current_version → ${version}`)
+  console.log(`📄 Updated ${file}'s currentVersion → ${version}`)
   return true
 }
 

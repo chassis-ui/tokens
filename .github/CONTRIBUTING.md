@@ -210,7 +210,7 @@ on the pushed commit:
 
 1. When `main` has changesets, the workflow opens or updates a "Version Packages" pull request. It
    runs `pnpm changeset:version`, which removes the changesets, bumps the version in
-   `packages/tokens/package.json`, writes the CHANGELOG entry, updates `current_version` in
+   `packages/tokens/package.json`, writes the CHANGELOG entry, updates `currentVersion` in
    `packages/site/config.yml` and rebuilds `dist/`, so its headers name the new version.
 2. Merging that pull request pushes `main` again. The version is not on npm yet, so the workflow
    runs `pnpm tokens:verify`, publishes `@chassis-ui/tokens` with npm trusted publishing and

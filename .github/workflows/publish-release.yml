@@ -2,7 +2,7 @@ name: Publish Release
 
 # On a push to main, after the checks of ci.yml pass on that commit:
 # - Pending changesets (.changeset/*.md): open or update the "Version Packages" pull request,
-#   which bumps the version, writes the CHANGELOG, the site's current_version and the dist/
+#   which bumps the version, writes the CHANGELOG, the site's currentVersion and the dist/
 #   headers. Merging it pushes main again, and that run publishes.
 # - A version in packages/tokens/package.json that is not on npm yet: publish it with npm trusted
 #   publishing (no npm token) and provenance, then create the GitHub release from its CHANGELOG

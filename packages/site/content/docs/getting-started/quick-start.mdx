@@ -21,7 +21,7 @@ What you need depends on the way you take.
 
 ## Use the published tokens
 
-The published tokens are the files of `packages/tokens/dist/` in version [[config:current_version]], built from the committed configuration: the app `docs` for the web, and the app `demo` for iOS and Android, each for the brands `chassis` and `sinefil`. The examples use the brand `chassis`.
+The published tokens are the files of `packages/tokens/dist/` in version [[config:currentVersion]], built from the committed configuration: the app `docs` for the web, and the app `demo` for iOS and Android, each for the brands `chassis` and `sinefil`. The examples use the brand `chassis`.
 
 ### Web
 
@@ -69,13 +69,13 @@ The colors of `ChassisTokensColor` follow the light and dark appearance. The [iO
 
 ### Android
 
-The Android library holds the resource tree of one brand. Download `chassis-tokens-demo-chassis-[[config:current_version]].aar` from the [GitHub release]([[config:repo]]/releases) and copy it to the `libs/` folder of your module.
+The Android library holds the resource tree of one brand. Download `chassis-tokens-demo-chassis-[[config:currentVersion]].aar` from the [GitHub release]([[config:repo]]/releases) and copy it to the `libs/` folder of your module.
 
 Add the file to the dependencies in the `build.gradle.kts` of the module:
 
 ```kotlin
 dependencies {
-  implementation(files("libs/chassis-tokens-demo-chassis-[[config:current_version]].aar"))
+  implementation(files("libs/chassis-tokens-demo-chassis-[[config:currentVersion]].aar"))
 }
 ```
 

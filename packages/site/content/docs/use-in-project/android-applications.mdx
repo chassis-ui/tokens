@@ -71,13 +71,13 @@ Install the Android library to use the tokens as they are. The same resources ar
 
 ### Android library
 
-Every [release]([[config:repo]]/releases) has the resource tree of each app and brand as an Android library, named `chassis-tokens-<app>-<brand>-<version>.aar`: `chassis-tokens-demo-chassis-[[config:current_version]].aar` and `chassis-tokens-demo-sinefil-[[config:current_version]].aar` in the committed configuration. The library needs Android 5.0 (API 21) or later and has no dependencies.
+Every [release]([[config:repo]]/releases) has the resource tree of each app and brand as an Android library, named `chassis-tokens-<app>-<brand>-<version>.aar`: `chassis-tokens-demo-chassis-[[config:currentVersion]].aar` and `chassis-tokens-demo-sinefil-[[config:currentVersion]].aar` in the committed configuration. The library needs Android 5.0 (API 21) or later and has no dependencies.
 
 Download the library of your brand into `app/libs/` and add it to `app/build.gradle.kts`:
 
 ```kotlin
 dependencies {
-    implementation(files("libs/chassis-tokens-demo-chassis-[[config:current_version]].aar"))
+    implementation(files("libs/chassis-tokens-demo-chassis-[[config:currentVersion]].aar"))
 }
 ```
 
