@@ -19,6 +19,10 @@ updates:
         - '@chassis-ui/*'
     commit-message:
       prefix: 'chore(deps)'
+    ignore:
+      # The build is type-checked against Node.js 22, the oldest version the package supports
+      - dependency-name: '@types/node'
+        update-types: ['version-update:semver-major']
     groups:
       # Minor and patch updates of the tooling in one pull request. The packages
       # that produce dist/ are left out: they get a pull request each, since they
