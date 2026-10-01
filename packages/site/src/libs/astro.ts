@@ -23,8 +23,8 @@ const sitemapExcludes = ['/404', '/docs']
 /**
  * Returns the site's own Astro integrations, added after `chassisDocs()` of `@chassis-ui/docs`.
  *
- * Includes the `chassis-integration` (static file copying), MDX support and the sitemap
- * generator.
+ * Includes the `chassis-integration` (static file copying), MDX support, the sitemap
+ * generator, and a post-process integration that lists the sitemap under the site's path.
  */
 export function chassis({
   config,
@@ -60,6 +60,20 @@ export function chassis({
           copyChassisIcons(root, publicDir)
           aliasStatic(root, publicDir)
           copyPagefindIndex(outDir, publicDir)
+        },
+        'astro:server:setup': ({ server }) => {
+          // The pages request the static files under `staticPath` of config.yml, and the
+          // files are in `public/static/`. In production a rewrite of vercel.json maps one
+          // to the other; the dev server has no such rewrite, so this does the same.
+          const staticPath = config.staticPath
+          if (!staticPath || staticPath === '/static') return
+
+          server.middlewares.use((request, _response, next) => {
+            if (request.url?.startsWith(`${staticPath}/`)) {
+              request.url = `/static${request.url.slice(staticPath.length)}`
+            }
+            next()
+          })
         }
       }
     },
@@ -67,8 +81,38 @@ export function chassis({
     mdx() as AstroIntegration,
     sitemap({
       filter: (page) => !sitemapExcludedUrls.includes(page)
-    })
+    }),
+    {
+      // Must run after `@astrojs/sitemap` writes `sitemap-index.xml`.
+      name: 'chassis-sitemap-postprocess',
+      hooks: {
+        'astro:build:done': ({ dir }) => {
+          rebaseSitemapIndex(fileURLToPath(dir), config.baseURL)
+        }
+      }
+    }
   ]
+}
+
+/**
+ * Rewrites the sitemaps listed in `sitemap-index.xml` to the URLs they are served from.
+ *
+ * `@astrojs/sitemap` lists them at the origin, `https://chassis-ui.com/sitemap-0.xml`, which is
+ * the sitemap of the main site. This site is proxied under the path of `baseURL`, so its own
+ * sitemap is `https://chassis-ui.com/tokens/sitemap-0.xml`.
+ */
+function rebaseSitemapIndex(outDir: string, baseURL: string) {
+  const sitemapIndexPath = path.join(outDir, 'sitemap-index.xml')
+  if (!fs.existsSync(sitemapIndexPath)) return
+
+  const origin = new URL(baseURL).origin
+  const base = baseURL.replace(/\/$/, '')
+  const content = fs.readFileSync(sitemapIndexPath, 'utf8')
+
+  fs.writeFileSync(
+    sitemapIndexPath,
+    content.replaceAll(`<loc>${origin}/sitemap-`, `<loc>${base}/sitemap-`)
+  )
 }
 
 /**

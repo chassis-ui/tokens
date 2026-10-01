@@ -17,7 +17,7 @@ packages/
     test/        # Vitest tests, fixtures, preset baselines (golden/), native checks (native/)
     dist/        # the build output, committed and published
   site/          # chassis-tokens-site, the Astro documentation site (private)
-build/           # repository scripts (submodules, version references, release notes)
+build/           # repository scripts (version references, release notes)
 docs/            # architecture.md
 vendor/assets    # git submodule of chassis-ui/assets
 Package.swift    # written by `pnpm tokens:swift-package`

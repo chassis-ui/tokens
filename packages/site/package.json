@@ -8,6 +8,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check",
+    "lint:html": "chassis-docs html-validate ../../_site --config html-validate.json",
     "clean": "rm -rf .astro public"
   },
   "devDependencies": {
@@ -25,6 +26,7 @@
     "@stackblitz/sdk": "^1.11.1",
     "astro": "^7.3.5",
     "autoprefixer": "^10.6.1",
+    "html-validate": "^11.16.0",
     "htmlparser2": "^12.0.0",
     "postcss": "^8.5.28",
     "postcss-prefix-custom-properties": "^0.1.0",
