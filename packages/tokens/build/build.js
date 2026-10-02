@@ -21,6 +21,9 @@ import cxPrep from './preprocessor.js'
 import logger from './logger.js'
 import { THEMES, THEME_COLORS_FILE, writeThemeColors } from './theme-colors.js'
 
+/** The token files, at the root of the repository; the build runs in `packages/tokens/`. */
+const SOURCE_DIR = '../../source'
+
 const HELP = `
 Chassis Tokens Build System
 
@@ -260,7 +263,7 @@ function planBuilds(sets, buildOptions, filters = {}) {
           outputs: keyOutputs,
           themes,
           screens,
-          source: sets[key].map((tokenSet) => `source/${tokenSet}.json`)
+          source: sets[key].map((tokenSet) => `${SOURCE_DIR}/${tokenSet}.json`)
         })
       }
     }
@@ -336,7 +339,7 @@ async function run() {
 
     registerDictionary(version)
 
-    const $themes = JSON.parse(await promises.readFile('source/$themes.json', 'utf-8'))
+    const $themes = JSON.parse(await promises.readFile(`${SOURCE_DIR}/$themes.json`, 'utf-8'))
     const sets = permutateThemes($themes, { separator: '_' })
     const builds = planBuilds(sets, buildOptions, filters).map((build) => ({
       ...build,
@@ -381,7 +384,7 @@ async function run() {
 }
 
 // Export for testing
-export { loadConfig, planBuilds, planThemeColors, parseArgs }
+export { loadConfig, planBuilds, planThemeColors, parseArgs, SOURCE_DIR }
 
 // Only run if this is the main module (not imported)
 if (import.meta.url === `file://${process.argv[1]}`) {

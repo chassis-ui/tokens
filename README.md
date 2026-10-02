@@ -55,12 +55,12 @@ The guides for [web](https://chassis-ui.com/tokens/docs/use-in-project/web-appli
 
 The repository is a [pnpm workspace](https://pnpm.io/workspaces) with two packages, in the layout of the other Chassis repositories such as [chassis-react](https://github.com/chassis-ui/react):
 
-| Folder             | Package                          | Contents                                                                                                                                                      |
-| ------------------ | -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `packages/tokens/` | `@chassis-ui/tokens` (published) | `source/` (the Tokens Studio token files), `build/` (the Style Dictionary build), `test/`, `dist/`, the build configuration in `package.json`, `CHANGELOG.md` |
-| `packages/site/`   | `chassis-tokens-site` (private)  | The documentation site and its dependencies                                                                                                                   |
+| Folder             | Package                          | Contents                                                                                                           |
+| ------------------ | -------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| `packages/tokens/` | `@chassis-ui/tokens` (published) | `build/` (the Style Dictionary build), `test/`, `dist/`, the build configuration in `package.json`, `CHANGELOG.md` |
+| `packages/site/`   | `chassis-tokens-site` (private)  | The documentation site and its dependencies                                                                        |
 
-The root holds the workspace configuration, the lint and format configurations with their dependencies, the CI workflows, the Changesets configuration in `.changeset/`, the repository scripts in `build/` (`sync-version-refs.js`, `release-notes.js`), the assets submodule in `vendor/assets` and the site output in `_site/`. Paths in the sections below (`source/`, `build/`, `test/`, `dist/`, `package.json`) are relative to `packages/tokens/`.
+The root holds the Tokens Studio token files in `source/`, the workspace configuration, the lint and format configurations with their dependencies, the CI workflows, the Changesets configuration in `.changeset/`, the repository scripts in `build/` (`sync-version-refs.js`, `release-notes.js`), the assets submodule in `vendor/assets` and the site output in `_site/`. Paths in the sections below (`build/`, `test/`, `dist/`, `package.json`) are relative to `packages/tokens/`; `source/` is at the root.
 
 ## Development
 

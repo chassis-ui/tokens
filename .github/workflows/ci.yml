@@ -113,10 +113,12 @@ jobs:
       - name: Validate HTML
         run: pnpm site:lint:html
 
-  # A change to packages/tokens/source, build or dist needs a changeset (changedFilePatterns in
-  # .changeset/config.json); `pnpm changeset --empty` adds one that releases nothing. A pull
-  # request is compared with its base branch, a push to develop with the tip it replaced. The
-  # version commit consumes the changesets, so a push that changes the version is skipped.
+  # A change to source, packages/tokens/build or packages/tokens/dist needs a changeset;
+  # `pnpm changeset --empty` adds one that releases nothing. Changesets checks build and dist
+  # (changedFilePatterns in .changeset/config.json). It matches files inside a package only, so
+  # the step checks source, at the root, by itself. A pull request is compared with its base
+  # branch, a push to develop with the tip it replaced. The version commit consumes the
+  # changesets, so a push that changes the version is skipped.
   changeset:
     name: Changeset
     # A manual run has nothing to compare with
@@ -166,6 +168,13 @@ jobs:
             fi
 
             SINCE="$BEFORE"
+          fi
+
+          # Changesets does not see source/, which is outside the package
+          if [ -n "$(git diff --name-only "$SINCE...HEAD" -- source)" ] &&
+            [ -z "$(git diff --name-only --diff-filter=A "$SINCE...HEAD" -- '.changeset/*.md')" ]; then
+            echo "::error::source/ changed but no changeset was added. Run \`pnpm changeset\`, or \`pnpm changeset --empty\` if the change releases nothing."
+            exit 1
           fi
 
           pnpm changeset status --since "$SINCE"
@@ -290,7 +299,7 @@ jobs:
           fi
 
           changed=$(git diff --name-only "$SINCE" HEAD -- \
-            packages/tokens/source \
+            source \
             packages/tokens/build \
             packages/tokens/dist \
             packages/tokens/test/golden \

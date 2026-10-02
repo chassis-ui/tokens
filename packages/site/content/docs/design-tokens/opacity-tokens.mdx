@@ -14,7 +14,7 @@ Opacity tokens hold alpha values, as a number from `0` to `1`. The color tokens 
 
 Opacity tokens have a base and a context level, and no component level. Base tokens (`opacity.level.*`) hold a scale of levels, and context tokens (`opacity.context.*`) hold the alpha of a color role. The context tokens do not reference the scale: each holds a number of its own, which need not be a level of the scale.
 
-Both levels are in `packages/tokens/source/base/metric-base.json`.
+Both levels are in `source/base/metric-base.json`.
 
 ## Base tokens
 
@@ -41,7 +41,7 @@ Color tokens reference the opacity tokens, so an app that needs a transparent co
 
 ### Opacity in colors
 
-A transparent color holds `rgba()` with a reference to a color and a reference to an opacity. In `packages/tokens/source/base/brand-base.json`, the black of the palette with the alpha of `opacity.level.30` is defined like this:
+A transparent color holds `rgba()` with a reference to a color and a reference to an opacity. In `source/base/brand-base.json`, the black of the palette with the alpha of `opacity.level.30` is defined like this:
 
 ```json
 "t-30": {

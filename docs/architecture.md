@@ -2,7 +2,7 @@
 
 How the token build of `@chassis-ui/tokens` works, why it is built this way, and what it promises to write. It is for contributors who change the build in `packages/tokens/build/` or the output in `packages/tokens/dist/`. How to set up the repository, run the checks and open a pull request is in [CONTRIBUTING.md](../.github/CONTRIBUTING.md).
 
-Paths below are relative to `packages/tokens/` unless they start with the repository root.
+Paths below are relative to `packages/tokens/` unless they start with the repository root. `source/`, the folder of the token files, is at the root.
 
 ## The build in one picture
 

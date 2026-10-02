@@ -10,9 +10,9 @@ into SCSS, Swift, SwiftUI, Android resources and Jetpack Compose, with Style Dic
 a pnpm workspace in the layout of `chassis-react`:
 
 ```
+source/          # Tokens Studio token files
 packages/
   tokens/        # @chassis-ui/tokens, published to npm
-    source/      # Tokens Studio token files
     build/       # the Style Dictionary build (JavaScript with JSDoc types)
     test/        # Vitest tests, fixtures, preset baselines (golden/), native checks (native/)
     dist/        # the build output, committed and published
@@ -38,7 +38,7 @@ Run the checks of the area you changed, and report the ones that fail.
 | Area changed                                      | Run                                                                                                                 |
 | ------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
 | `packages/tokens/build/` or `test/`               | `pnpm tokens:lint`, `pnpm tokens:typecheck`, `pnpm tokens:test`, `pnpm tokens:verify`, `pnpm tokens:verify:presets` |
-| `packages/tokens/source/`                         | `pnpm tokens:lint:source`, `pnpm tokens`, `pnpm tokens:diff`, then the row above                                    |
+| `source/`                                         | `pnpm tokens:lint:source`, `pnpm tokens`, `pnpm tokens:diff`, then the row above                                    |
 | `packages/site/`                                  | `pnpm site:lint`, `pnpm check:astro`, `pnpm site:build`, `pnpm site:lint:html`                                      |
 | Any Markdown, JSON or configuration file          | `pnpm lint:prettier`                                                                                                |
 | `chassis.build` in `packages/tokens/package.json` | `pnpm tokens`, `pnpm tokens:swift-package`                                                                          |
@@ -68,7 +68,7 @@ Run the checks of the area you changed, and report the ones that fail.
   Style Dictionary.
 - **Types are JSDoc.** The build code is JavaScript checked with `checkJs`; do not convert it
   to TypeScript.
-- **Add a changeset** (`pnpm changeset`) to a change in `packages/tokens/source/`, `build/` or
+- **Add a changeset** (`pnpm changeset`) to a change in `source/`, `build/` or
   `dist/`, and an empty one (`pnpm changeset --empty`) when it releases nothing.
 - **Do not install Xcode, a JDK or the Android SDK**, and do not make a local check need them.
   CI compiles the native output. Run `pnpm tokens:native:ios` and `pnpm tokens:native:android`
@@ -85,7 +85,7 @@ Run the checks of the area you changed, and report the ones that fail.
   followed by a sentence.
 - **The guide is the reference, not the existing pages.** Most pages are older than the guide
   and break its rules. Do not copy a convention from a page.
-- Every token name and value in a page must exist in `packages/tokens/source/` or
+- Every token name and value in a page must exist in `source/` or
   `packages/tokens/dist/` as written. Copy generated code from `dist/`; do not retype it.
 - Run `pnpm site:lint`, `pnpm site:build` and `pnpm site:lint:html` after editing
   `packages/site/`.

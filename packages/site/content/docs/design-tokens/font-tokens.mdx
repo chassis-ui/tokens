@@ -10,7 +10,7 @@ toc: true
 
 Font tokens are composite tokens: each holds a whole text style, where a [typography token]([[docsref:/design-tokens/typography-tokens]]) holds one property. A font token has the type `typography`, and its value is an object with a font family, a font weight, a font size, a line height, a letter spacing, a paragraph spacing, a text case, and a text decoration.
 
-Each property references a typography token, as `font.text.medium.strong` shows in `packages/tokens/source/base/app-base.json`:
+Each property references a typography token, as `font.text.medium.strong` shows in `source/base/app-base.json`:
 
 ```json
 {
@@ -362,7 +362,7 @@ Website fonts hold properties of their own, not a reference to a base token. Eac
 | `font.website.module-title` | `{typography.fontWeight.text.mass}` | `{typography.fontSize.website.module-title}` | `{typography.letterSpacing.base.zero}` |
 </CxTable>
 
-The website fonts are defined in `packages/tokens/source/screen-website/screen-base.json`, and the other font tokens in `packages/tokens/source/base/app-base.json`.
+The website fonts are defined in `source/screen-website/screen-base.json`, and the other font tokens in `source/base/app-base.json`.
 
 ## Usage
 

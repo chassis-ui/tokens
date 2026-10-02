@@ -12,13 +12,13 @@ import { fileURLToPath } from 'node:url'
 import StyleDictionary from 'style-dictionary'
 import { permutateThemes } from '@tokens-studio/sd-transforms'
 import { describe, expect, test } from 'vitest'
-import { planBuilds, planThemeColors } from '../build/build.js'
+import { planBuilds, planThemeColors, SOURCE_DIR } from '../build/build.js'
 import config from '../build/config/index.js'
 
 const ROOT = fileURLToPath(new URL('../', import.meta.url))
 const read = (path) => JSON.parse(readFileSync(join(ROOT, path), 'utf8'))
 const buildOptions = read('package.json').chassis.build
-const $themes = read('source/$themes.json')
+const $themes = read(`${SOURCE_DIR}/$themes.json`)
 const sets = permutateThemes($themes, { separator: '_' })
 
 /**
@@ -106,7 +106,9 @@ describe('planBuilds', () => {
 
   test('uses the token-set lists of $themes.json in their order', () => {
     for (const build of builds) {
-      expect(build.source).toEqual(sets[build.key].map((tokenSet) => `source/${tokenSet}.json`))
+      expect(build.source).toEqual(
+        sets[build.key].map((tokenSet) => `${SOURCE_DIR}/${tokenSet}.json`)
+      )
     }
   })
 
@@ -227,12 +229,13 @@ describe('planBuilds with filters', () => {
 
 describe('token-set order', () => {
   const [build] = planBuilds(sets, buildOptions, { brands: ['chassis'], apps: ['docs'] })
-  const brandBase = read('source/base/brand-base.json').typography.fontFamily.text.$value
-  const chassisBase = read('source/brand-chassis/brand-base.json').typography.fontFamily.text.$value
+  const brandBase = read(`${SOURCE_DIR}/base/brand-base.json`).typography.fontFamily.text.$value
+  const chassisBase = read(`${SOURCE_DIR}/brand-chassis/brand-base.json`).typography.fontFamily.text
+    .$value
 
   test('lists brand-chassis/brand-base after base/brand-base, in source only', () => {
-    expect(build.source.indexOf('source/brand-chassis/brand-base.json')).toBeGreaterThan(
-      build.source.indexOf('source/base/brand-base.json')
+    expect(build.source.indexOf(`${SOURCE_DIR}/brand-chassis/brand-base.json`)).toBeGreaterThan(
+      build.source.indexOf(`${SOURCE_DIR}/base/brand-base.json`)
     )
     expect(config(build)).not.toHaveProperty('include')
   })

@@ -18,10 +18,11 @@ pnpm install
 This repo is a pnpm workspace with two packages:
 
 - [`packages/tokens`](../packages/tokens/) — `@chassis-ui/tokens`, the published package: the
-  token files in `source/`, the Style Dictionary build in `build/`, its tests in `test/` and the
-  output in `dist/`.
+  Style Dictionary build in `build/`, its tests in `test/` and the output in `dist/`.
 - [`packages/site`](../packages/site/) — `chassis-tokens-site`, the Astro documentation site. It
   is never published to npm.
+
+The token files that the build reads are in [`source/`](../source/), at the root of the repo.
 
 The root holds the lint and format configurations, the repository scripts in `build/`, the
 assets submodule in `vendor/assets` (the site needs it; `pnpm dev` and `pnpm site:build` check
@@ -54,9 +55,9 @@ Branch names aren't templated; name yours descriptively (for example `fix/androi
 
 ## Changing tokens
 
-The token files in `packages/tokens/source/` are in [Tokens Studio](https://tokens.studio)
+The token files in `source/` are in [Tokens Studio](https://tokens.studio)
 format. Edit them in Figma with Tokens Studio, synced to this repository with the file path
-`packages/tokens/source`, or edit the JSON directly. Then:
+`source`, or edit the JSON directly. Then:
 
 1. Lint the token source, rebuild the output and review every changed line:
 
@@ -185,7 +186,7 @@ pnpm site:lint:html
   locally.
 - **A changeset** for anything that changes the published package: token names or values, file
   names, formats or the package contents. CI fails a pull request or a push to `develop` that
-  changes `packages/tokens/source/`, `build/` or `dist/` without one; for such a change that releases
+  changes `source/`, `build/` or `dist/` without one; for such a change that releases
   nothing, such as a build refactor with the same output, add an empty changeset. A pull request
   that only touches the site, the docs, the tests or the tooling doesn't need one.
 - **The rebuilt `dist/`** committed with any change to tokens or the build that changes the

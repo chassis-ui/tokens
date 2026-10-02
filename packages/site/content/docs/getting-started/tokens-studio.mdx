@@ -8,7 +8,7 @@ toc: true
 
 ## Introduction
 
-Chassis Tokens keeps its design tokens as [Tokens Studio](https://tokens.studio) files in `packages/tokens/source/`. Tokens Studio is a Figma plugin that edits these files, syncs them with the Git repository, and exports them to Figma. The build reads the same files, so Figma and the code of every platform get their values from one place.
+Chassis Tokens keeps its design tokens as [Tokens Studio](https://tokens.studio) files in `source/`. Tokens Studio is a Figma plugin that edits these files, syncs them with the Git repository, and exports them to Figma. The build reads the same files, so Figma and the code of every platform get their values from one place.
 
 This guide connects the plugin to the repository, describes the token sets and the groups that select them, and adds a brand.
 
@@ -30,7 +30,7 @@ Tokens Studio reads and writes the token sets through a sync provider, which nam
 3. Enter a name for the provider and your personal access token.
 4. Enter the repository, `chassis-ui/tokens` or `<owner>/<repository>` for your fork.
 5. Enter the branch, `main` or the branch you work on.
-6. Enter the file path, `packages/tokens/source`.
+6. Enter the file path, `source`.
 7. Save the provider, return to the **Tokens** tab, and pull the tokens from the repository.
 8. Select one option of each group: a brand, a theme, an app, and a screen.
 
@@ -38,7 +38,7 @@ The file path names a folder, so Tokens Studio keeps every token set in a file o
 
 ## Token sets
 
-A token set is one JSON file of `packages/tokens/source/`. Its name is its path without the extension, such as `base/brand-base`. The folder `base` holds the sets that every brand shares, a folder `brand-<brand>` holds the sets of one brand, and `screen-website` holds the sets of the screens. The committed options select these sets:
+A token set is one JSON file of `source/`. Its name is its path without the extension, such as `base/brand-base`. The folder `base` holds the sets that every brand shares, a folder `brand-<brand>` holds the sets of one brand, and `screen-website` holds the sets of the screens. The committed options select these sets:
 
 <CxTable>
 | Token set | Tokens |
@@ -63,7 +63,7 @@ The committed brand sets are `brand-chassis/brand-base`, `brand-sinefil/brand-ba
 
 ### Set order
 
-When two selected token sets declare the same token, the set that comes later overrides the earlier one. In Tokens Studio, the order is `tokenSetOrder` of `packages/tokens/source/$metadata.json`. The build lists the sets of the selected options in the order of `$themes.json`. For the brand `chassis`, the app `docs`, the theme `light`, and the screen `large`, the list is:
+When two selected token sets declare the same token, the set that comes later overrides the earlier one. In Tokens Studio, the order is `tokenSetOrder` of `source/$metadata.json`. The build lists the sets of the selected options in the order of `$themes.json`. For the brand `chassis`, the app `docs`, the theme `light`, and the screen `large`, the list is:
 
 ```text
 base/metric-source
@@ -104,7 +104,7 @@ The folders hold such sets next to the selected ones: `base/metric-rem`, `base/m
 
 ## Groups
 
-A group is a list of options, and an option is a list of token sets with their status. Tokens Studio calls them theme groups and theme options, and keeps them in `packages/tokens/source/$themes.json`. You select one option of each group, and the selected options together select the token sets of a design or of a build.
+A group is a list of options, and an option is a list of token sets with their status. Tokens Studio calls them theme groups and theme options, and keeps them in `source/$themes.json`. You select one option of each group, and the selected options together select the token sets of a design or of a build.
 
 The token system is built on three core groups, `brand`, `theme`, and `app`. `screen` is an optional fourth group.
 
@@ -360,7 +360,7 @@ The token set of a brand declares the tokens of `base/brand-base` that the brand
 
 With the token set written, the steps are:
 
-1. Add the token set as `brand-<brand>/brand-base`, which is the file `packages/tokens/source/brand-<brand>/brand-base.json`, and add its name to `tokenSetOrder` of `$metadata.json`, after `base/brand-base`.
+1. Add the token set as `brand-<brand>/brand-base`, which is the file `source/brand-<brand>/brand-base.json`, and add its name to `tokenSetOrder` of `$metadata.json`, after `base/brand-base`.
 
 2. Add an option to the `brand` group with the token sets of the [brand group](#brand-group). The option `sinefil` in `$themes.json`, without its Figma references:
 
