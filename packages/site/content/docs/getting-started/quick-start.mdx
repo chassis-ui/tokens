@@ -126,7 +126,7 @@ The plan of the committed configuration starts with the web files of the brand `
 
 ### Change the tokens
 
-The token sets are the JSON files of `packages/tokens/source/`, in Tokens Studio format. Edit them in Figma with Tokens Studio, synced to your fork with the file path `packages/tokens/source`, or edit the JSON files directly. A brand of your own is an option of the `brand` group with its own token set, as `brand-sinefil/brand-base.json` is for `sinefil`. The [Tokens Studio guide]([[docsref:/getting-started/tokens-studio]]) describes the token sets and the groups.
+The token sets are the JSON files of `source/`, in Tokens Studio format. Edit them in Figma with Tokens Studio, synced to your fork with the file path `source`, or edit the JSON files directly. A brand of your own is an option of the `brand` group with its own token set, as `brand-sinefil/brand-base.json` is for `sinefil`. The [Tokens Studio guide]([[docsref:/getting-started/tokens-studio]]) describes the token sets and the groups.
 
 Lint the token sets before you build:
 
@@ -204,7 +204,7 @@ Sass stops with `Error: Can't find stylesheet to import.` at the `@use` rule of 
 
 ### No token sets
 
-The build stops with `No token sets for <brand>_<app>_<theme>_<screen> in source/$themes.json`, with the names of the list it looked for. `chassis.build` lists a brand, theme, app or screen that is not an option of its group in `packages/tokens/source/$themes.json`, or it lists no screens while `$themes.json` has a `screen` group. Correct the name in `chassis.build`, or add the option to the group in Tokens Studio.
+The build stops with `No token sets for <brand>_<app>_<theme>_<screen> in source/$themes.json`, with the names of the list it looked for. `chassis.build` lists a brand, theme, app or screen that is not an option of its group in `source/$themes.json`, or it lists no screens while `$themes.json` has a `screen` group. Correct the name in `chassis.build`, or add the option to the group in Tokens Studio.
 
 ## Next steps
 

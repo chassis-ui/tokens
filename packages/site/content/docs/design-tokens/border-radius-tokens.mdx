@@ -20,7 +20,7 @@ borderRadius.base.button.medium    {borderRadius.base.context.medium}
 borderRadius.base.context.medium   {dimension.base.<size>}
 ```
 
-The base tokens are in `packages/tokens/source/base/brand-base.json`, and the token set of a brand overrides them. The context and component tokens are in `packages/tokens/source/base/app-base.json`.
+The base tokens are in `source/base/brand-base.json`, and the token set of a brand overrides them. The context and component tokens are in `source/base/app-base.json`.
 
 ## Base tokens
 
@@ -36,7 +36,7 @@ Base component tokens pick a step of the scale for a component, so a brand chang
 
 ### Brand overrides
 
-A brand overrides base tokens in its own token set, `packages/tokens/source/brand-<brand>/brand-base.json`, and takes the rest from `packages/tokens/source/base/brand-base.json`. A brand set may hold a part of the base tokens, such as the steps of the scale and the radii of a few components, or all of them.
+A brand overrides base tokens in its own token set, `source/brand-<brand>/brand-base.json`, and takes the rest from `source/base/brand-base.json`. A brand set may hold a part of the base tokens, such as the steps of the scale and the radii of a few components, or all of them.
 
 ## Context tokens
 
@@ -172,9 +172,9 @@ Use the token of the lowest level that fits the element.
 - **A component with a token**: use its component token, `borderRadius.button.medium` for a medium button. It follows the brand.
 - **An element without a token**: use a step of `borderRadius.context.*`, such as `borderRadius.context.medium`, which is the radius of cards, tables, and accordions.
 - **Round ends**: use `borderRadius.context.full`. The shape of badges and chips is a choice of the brand, so use their component tokens where the shape must follow the brand.
-- **A new component token**: reference a context token, or add a base token to `packages/tokens/source/base/brand-base.json` when brands need to shape the component.
+- **A new component token**: reference a context token, or add a base token to `source/base/brand-base.json` when brands need to shape the component.
 
-To change the corners of a brand, override base tokens in the token set of the brand and leave the context and component tokens as they are. In `packages/tokens/source/brand-chassis/brand-base.json`, the `chassis` brand gives the medium badge the `full` step of the scale like this:
+To change the corners of a brand, override base tokens in the token set of the brand and leave the context and component tokens as they are. In `source/brand-chassis/brand-base.json`, the `chassis` brand gives the medium badge the `full` step of the scale like this:
 
 ```json
 {

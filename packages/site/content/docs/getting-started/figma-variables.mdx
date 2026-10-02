@@ -8,7 +8,7 @@ toc: true
 
 ## Introduction
 
-Tokens Studio exports the token sets of `packages/tokens/source/` to a Figma file as Variables and styles. Every group of `$themes.json` becomes a Variable Collection, and every option of a group becomes a Mode of that Collection, so the Modes of a design set its brand, its theme, its app, and its screen.
+Tokens Studio exports the token sets of `source/` to a Figma file as Variables and styles. Every group of `$themes.json` becomes a Variable Collection, and every option of a group becomes a Mode of that Collection, so the Modes of a design set its brand, its theme, its app, and its screen.
 
 This guide lists what each Collection holds, walks through the export, and names the Variables to hide and to scope. The [Tokens Studio guide]([[docsref:/getting-started/tokens-studio]]) describes the token sets and the groups themselves.
 
@@ -21,7 +21,7 @@ The export needs a Figma file and a plugin that reads the token sets:
 
 ## Collections and Modes
 
-The token system is built on three core groups, `brand`, `theme`, and `app`, and `screen` is an optional fourth group. Tokens Studio creates one Collection for each group of `packages/tokens/source/$themes.json` and one Mode for each option of the group. A token becomes a Variable of the Collection whose options mark its token set as `enabled`. A set that an option marks as `source` resolves references and creates no Variable.
+The token system is built on three core groups, `brand`, `theme`, and `app`, and `screen` is an optional fourth group. Tokens Studio creates one Collection for each group of `source/$themes.json` and one Mode for each option of the group. A token becomes a Variable of the Collection whose options mark its token set as `enabled`. A set that an option marks as `source` resolves references and creates no Variable.
 
 <CxTable>
 | Collection | Variables | Styles |

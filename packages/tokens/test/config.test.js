@@ -20,7 +20,7 @@ const build = {
   outputs,
   themes: ['light', 'dark'],
   screens: ['large', 'medium', 'small'],
-  source: ['source/base/metric-source.json', 'source/brand-chassis/brand-base.json']
+  source: ['../../source/base/metric-source.json', '../../source/brand-chassis/brand-base.json']
 }
 
 const files = (platform, outputList = outputs) =>

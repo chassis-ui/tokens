@@ -27,7 +27,7 @@ color.button.default.fg-idle                     component token
 
 In the dark theme, `color.context.default.fg-idle` references `{color.base.context.dark.default.fg-idle}`, and the rest of the chain follows the dark tokens. The primitive colors select the palette of the current theme in the same way: `color.primitive.neutral.90` references `{color.base.primitive.light.neutral.90}` in the light theme.
 
-The token sets of these groups are in `packages/tokens/source/base/`.
+The token sets of these groups are in `source/base/`.
 
 <CxTable>
 | Group | Level | Content | Token set |
@@ -61,7 +61,7 @@ A palette is a group of colors that are derived from one base color. The palette
 | `color.base.primitive.light.primary.contrast` | `{color.base.primitive.light.white.base}` | Text and icons on the base color |
 </CxTable>
 
-A `base` token holds a color of its own, and the other tokens of its palette reference it. The token set of a brand, such as `packages/tokens/source/brand-chassis/brand-base.json`, overrides the `base` tokens, and it can override a `contrast` token when the base color needs the other contrast color.
+A `base` token holds a color of its own, and the other tokens of its palette reference it. The token set of a brand, such as `source/brand-chassis/brand-base.json`, overrides the `base` tokens, and it can override a `contrast` token when the base color needs the other contrast color.
 
 ### Shades
 
@@ -437,7 +437,7 @@ Message colors set the chat surface, the form, and the pairs of `fg` and `bg` to
 
 ### Page
 
-Page colors set the background of the body and of a section. An app can override them in its token set, as `packages/tokens/source/base/app-demo.json` does, so the table has a column for each committed app, `docs` and `demo`.
+Page colors set the background of the body and of a section. An app can override them in its token set, as `source/base/app-demo.json` does, so the table has a column for each committed app, `docs` and `demo`.
 
 <CxTable>
 | Token | `docs` | `demo` |

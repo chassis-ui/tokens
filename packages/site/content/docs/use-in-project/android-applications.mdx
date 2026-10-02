@@ -112,7 +112,7 @@ pnpm tokens --brand chassis --app demo --platform android
 
 The build writes the files to `vendor/chassis-tokens/packages/tokens/dist/android/demo/chassis/`. The repository commits `dist/`, so the files of the committed configuration are there before the first build. Add the `res/` folder of that path to the app module as a resource folder, as in [Files from npm](#files-from-npm).
 
-To build the tokens of your own app, add it to `chassis.build.apps` in `packages/tokens/package.json` and give it token sets in `packages/tokens/source/$themes.json`. The [Style Dictionary guide]([[docsref:/getting-started/style-dictionary#build-options]]) describes the build options.
+To build the tokens of your own app, add it to `chassis.build.apps` in `packages/tokens/package.json` and give it token sets in `source/$themes.json`. The [Style Dictionary guide]([[docsref:/getting-started/style-dictionary#build-options]]) describes the build options.
 
 To install your own tokens as Android libraries, build the library of every `res/` tree in `dist/android/`. The command needs a JDK and the Android SDK, and writes to `packages/tokens/test/native/android/library/build/aars/`:
 
@@ -413,7 +413,7 @@ jobs:
 
 ✅ **Read floats as floats**: `@dimen/opacity_level_40` and `@dimen/font_context_jumbo_letter_spacing` are float items of the kind `dimen`. Read them with `ResourcesCompat.getFloat`, or with `Resources.getFloat` on API 29 and later.
 
-✅ **Change tokens at the source**: A build overwrites the files of `dist/`. Change the token sets in `packages/tokens/source/` and build again.
+✅ **Change tokens at the source**: A build overwrites the files of `dist/`. Change the token sets in `source/` and build again.
 
 ❌ **Don't add `main.xml` next to the other files**: It repeats the resources of `string.xml` and of the number and color files, such as `@dimen/space_context_medium`, and aapt2 fails with `has a conflicting value`.
 

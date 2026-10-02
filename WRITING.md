@@ -165,7 +165,7 @@ Token reference docs use dot paths; platform docs use the names of their platfor
 
 Chassis Tokens is a multi-brand, multi-platform system that its adopters own and customize. The names of the tokens and the references between them are its structure. The values are not: a color, a font family, a radius, or a contrast ratio belongs to one brand, changes with the next release, and is different in the fork of an adopter. Document the structure, and keep the values out.
 
-**Names must exist.** Every token name, reference, file name, command, and option in a doc must exist in `packages/tokens/source/`, `packages/tokens/dist/`, or the build as written. Don't write a token from memory, don't extend a scale by analogy, and don't invent an example token — a reader will search for it. Before adding a name, find it:
+**Names must exist.** Every token name, reference, file name, command, and option in a doc must exist in `source/`, `packages/tokens/dist/`, or the build as written. Don't write a token from memory, don't extend a scale by analogy, and don't invent an example token — a reader will search for it. Before adding a name, find it:
 
 ```bash
 grep -rn "space-context-medium" packages/tokens/dist/web/docs/chassis/

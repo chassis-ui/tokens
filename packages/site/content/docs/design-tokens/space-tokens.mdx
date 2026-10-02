@@ -24,7 +24,7 @@ dimension.base.16                       holds the size
     └── space.context.medium            {size.unit.16}
 ```
 
-The two upper levels reference different scales. Component tokens reference `space.unit.*`, and context tokens reference `size.unit.*` of the size tokens. No component token references `space.context.*`, so a change to `space.context.medium` leaves `space.button.large-padding-x` as it is. The token sets of each level are files of `packages/tokens/source/`:
+The two upper levels reference different scales. Component tokens reference `space.unit.*`, and context tokens reference `size.unit.*` of the size tokens. No component token references `space.context.*`, so a change to `space.context.medium` leaves `space.button.large-padding-x` as it is. The token sets of each level are files of `source/`:
 
 <CxTable>
 | Level | Tokens | References | Token set |

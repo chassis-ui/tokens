@@ -12,7 +12,7 @@ Shadow tokens hold the shadows of elements: the offset, blur, spread, and color 
 
 ### Token levels
 
-The shadow category has the three token levels, in two token sets. `packages/tokens/source/base/effect-base.json` holds the base tokens, and `packages/tokens/source/base/app-base.json` holds the context and component tokens.
+The shadow category has the three token levels, in two token sets. `source/base/effect-base.json` holds the base tokens, and `source/base/app-base.json` holds the context and component tokens.
 
 - **Base tokens** hold the layers: `shadow.elevation.*` and `shadow.glow.*`. The colors of the elevation layers reference the shadow colors, `color.shadow.*`.
 - **Context tokens** name a shadow by its size or by the state of an element: `shadow.context.*`.
@@ -29,7 +29,7 @@ color.shadow.default           {color.base.shadow.light.default}
 
 ### Shadow layers
 
-A shadow token has the type `boxShadow`, and its value is one layer or a list of layers. `shadow.elevation.default.10` in `packages/tokens/source/base/effect-base.json` holds a list:
+A shadow token has the type `boxShadow`, and its value is one layer or a list of layers. `shadow.elevation.default.10` in `source/base/effect-base.json` holds a list:
 
 ```json
 {
@@ -174,7 +174,7 @@ The other context tokens hold a layer of their own. `shadow.context.none` is a t
 
 ## Component tokens
 
-Component tokens assign a shadow to a component or to one of its states. All of them are in `packages/tokens/source/base/app-base.json`.
+Component tokens assign a shadow to a component or to one of its states. All of them are in `source/base/app-base.json`.
 
 ### Buttons
 

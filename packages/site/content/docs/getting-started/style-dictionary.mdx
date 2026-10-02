@@ -8,11 +8,11 @@ toc: true
 
 ## Introduction
 
-Chassis Tokens builds its tokens with [Style Dictionary](https://styledictionary.com) 5 and [`@tokens-studio/sd-transforms`](https://github.com/tokens-studio/sd-transforms) 2. The build reads the token sets that Tokens Studio writes to `packages/tokens/source/`, and writes SCSS, Swift, Android resources, and Kotlin to `packages/tokens/dist/`.
+Chassis Tokens builds its tokens with [Style Dictionary](https://styledictionary.com) 5 and [`@tokens-studio/sd-transforms`](https://github.com/tokens-studio/sd-transforms) 2. The build reads the token sets that Tokens Studio writes to `source/`, and writes SCSS, Swift, Android resources, and Kotlin to `packages/tokens/dist/`.
 
 This page is the reference of the build for a team that builds its own tokens: how to run and configure the build, which platforms and presets it has, which files it writes, and which transforms, filters, and formats it registers. [docs/architecture.md]([[config:repo]]/blob/main/docs/architecture.md) explains why the build works this way and holds the full output contract.
 
-The build, its configuration, and its output are in `packages/tokens/`, the folder of the published package. Paths on this page that start with `source/`, `build/`, `dist/`, or `test/` are relative to that folder.
+The build, its configuration, and its output are in `packages/tokens/`, the folder of the published package. Paths on this page that start with `build/`, `dist/`, or `test/` are relative to that folder. The token sets are in `source/`, at the root of the repository.
 
 The generated code on this page shows the format of each platform. Its values are those of the `chassis` brand in the current version, and differ in other brands.
 
@@ -35,7 +35,7 @@ The build runs in a clone of the repository. It needs:
 - Node.js 22 or later
 - pnpm
 - The dependencies of the workspace
-- Token sets in `packages/tokens/source/`, with the `$themes.json` that Tokens Studio writes; see [Tokens Studio]([[docsref:/getting-started/tokens-studio]])
+- Token sets in `source/`, with the `$themes.json` that Tokens Studio writes; see [Tokens Studio]([[docsref:/getting-started/tokens-studio]])
 
 Clone the repository and install the dependencies:
 

@@ -6,7 +6,7 @@
   "linked": [],
   "access": "public",
   "baseBranch": "develop",
-  "changedFilePatterns": ["source/**", "build/**", "dist/**"],
+  "changedFilePatterns": ["build/**", "dist/**"],
   "updateInternalDependencies": "patch",
   "ignore": ["chassis-tokens-site"]
 }

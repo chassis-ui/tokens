@@ -19,10 +19,10 @@ A brand gives the text its character by overriding the font families and the fon
 <CxTable>
 | Tokens | Token set |
 | --- | --- |
-| `typography.fontFamily.*`, `typography.fontWeight.*` | `packages/tokens/source/base/brand-base.json`, overridden by the `brand-base.json` of a brand, such as `packages/tokens/source/brand-chassis/brand-base.json` |
-| `typography.fontSize.*`, `typography.lineHeight.*` | `packages/tokens/source/base/brand-base.json` |
-| `typography.fontSize.website.*` | The token set of each screen, such as `packages/tokens/source/screen-website/screen-large.json` |
-| `typography.letterSpacing.*`, `typography.paragraphSpacing.*`, `typography.textCase.*`, `typography.textDecoration.*` | `packages/tokens/source/base/app-base.json` |
+| `typography.fontFamily.*`, `typography.fontWeight.*` | `source/base/brand-base.json`, overridden by the `brand-base.json` of a brand, such as `source/brand-chassis/brand-base.json` |
+| `typography.fontSize.*`, `typography.lineHeight.*` | `source/base/brand-base.json` |
+| `typography.fontSize.website.*` | The token set of each screen, such as `source/screen-website/screen-large.json` |
+| `typography.letterSpacing.*`, `typography.paragraphSpacing.*`, `typography.textCase.*`, `typography.textDecoration.*` | `source/base/app-base.json` |
 </CxTable>
 
 ## Font families
@@ -142,7 +142,7 @@ Set text with a [font token]([[docsref:/design-tokens/font-tokens]]), which hold
 
 Take the font size and the line height from the same step. `typography.lineHeight.text.large` is made for `typography.fontSize.text.large`, and the web output of a line height is relative to the font size of its step.
 
-Give a brand its own fonts by overriding `typography.fontFamily.*` and `typography.fontWeight.*` in the token set of the brand. Every font token follows, because the font tokens hold references. An override can be a reference too, as in `packages/tokens/source/brand-sinefil/brand-base.json`:
+Give a brand its own fonts by overriding `typography.fontFamily.*` and `typography.fontWeight.*` in the token set of the brand. Every font token follows, because the font tokens hold references. An override can be a reference too, as in `source/brand-sinefil/brand-base.json`:
 
 ```json
 {

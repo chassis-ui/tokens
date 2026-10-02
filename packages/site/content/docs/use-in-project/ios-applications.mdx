@@ -97,7 +97,7 @@ pnpm tokens --brand chassis --app demo --platform ios
 
 The build writes the files to `vendor/chassis-tokens/packages/tokens/dist/ios/demo/chassis/`. The repository commits `dist/`, so the files of the committed configuration are there before the first build.
 
-To build the tokens of your own app, add it to `chassis.build.apps` in `packages/tokens/package.json` and give it token sets in `packages/tokens/source/$themes.json`. The [Style Dictionary guide]([[docsref:/getting-started/style-dictionary#build-options]]) describes the build options.
+To build the tokens of your own app, add it to `chassis.build.apps` in `packages/tokens/package.json` and give it token sets in `source/$themes.json`. The [Style Dictionary guide]([[docsref:/getting-started/style-dictionary#build-options]]) describes the build options.
 
 To install your own tokens as a Swift package, use the URL of your repository. After a change to the apps or brands of `chassis.build`, write `Package.swift` again, then commit the files and tag a version:
 
@@ -399,7 +399,7 @@ jobs:
 
 ✅ **Take screen values from the number types**: `ChassisTokens` has the first screen only. Read `SizeWebsiteSectionIcon` and the other `…Website…` constants from the number type of the screen.
 
-✅ **Change tokens at the source**: A build overwrites the files of `dist/`. Change the token sets in `packages/tokens/source/` and build again.
+✅ **Change tokens at the source**: A build overwrites the files of `dist/`. Change the token sets in `source/` and build again.
 
 ❌ **Don't lower `shadowOpacity`**: `ShadowContextSmall1Color` carries the opacity of the shadow in its alpha. A `shadowOpacity` below `1` makes the shadow lighter than the token.
 

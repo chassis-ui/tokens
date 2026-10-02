@@ -18,7 +18,7 @@
  * Usage:
  *   node build/lint-tokens.js [--dir <dir>]
  *
- *   --dir <dir>  The token source directory (default: source).
+ *   --dir <dir>  The token source directory (default: source, at the root of the repository).
  *
  * @copyright Copyright (c) 2026 Ozgur Gunes
  * @license MIT
@@ -33,7 +33,7 @@ import StyleDictionary from 'style-dictionary'
 import { splitWeightStyle } from './preprocessor.js'
 import { fontWeightNumber } from './values/shared.js'
 
-const SOURCE_DIR = fileURLToPath(new URL('../source', import.meta.url))
+const SOURCE_DIR = fileURLToPath(new URL('../../../source', import.meta.url))
 
 /** Theme groups whose options must declare the same names. */
 export const SAME_NAME_GROUPS = ['theme', 'screen']
