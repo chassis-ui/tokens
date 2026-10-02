@@ -38,7 +38,9 @@ pnpm install --filter @chassis-ui/tokens
 ## Branch and commit conventions
 
 `develop` is the integration branch: branch from it, and open pull requests against it. `main`
-holds released versions only; pushing it publishes to npm (see [Releases](#releases)).
+holds released versions only; pushing it publishes to npm (see [Releases](#releases)). `staging`
+is for previews of the site: a maintainer pushes `develop` to it when one is wanted, and no
+workflow runs on it.
 
 Commits follow a loose `<type>(<scope>): <description>` convention:
 
@@ -172,10 +174,15 @@ pnpm site:lint:html
 
 ## What a pull request needs before merge
 
-- **Passing CI**: `.github/workflows/ci.yml` runs the token lint, tests and golden checks on
-  Node.js 22 and 24, the site lint, `astro check`, the site build and the HTML validation of its
-  output, Prettier on the whole repository (`pnpm lint:prettier`) and `pnpm audit`. The commands
-  above run the same checks locally.
+- **Passing CI**: `.github/workflows/ci.yml` runs on every pull request and every push to
+  `develop`. Its jobs are Tokens (the token lint, tests and golden checks, on Node.js 22 and 24),
+  Site (Prettier on the whole repository with `pnpm lint:prettier`, the site lint, `astro check`,
+  the site build and the HTML validation of its output), Changeset, Audit (`pnpm check:pnpm`,
+  which is `pnpm audit --prod` and fails on a moderate advisory in what the package installs; the
+  audit of the tooling is reported and doesn't fail), Token Diff and Dependency Review on a pull
+  request, and Native iOS and Native Android when the change touches the tokens, the build, the
+  output or the native checks, and on every manual run. The commands above run the same checks
+  locally.
 - **A changeset** for anything that changes the published package: token names or values, file
   names, formats or the package contents. CI fails a pull request or a push to `develop` that
   changes `packages/tokens/source/`, `build/` or `dist/` without one; for such a change that releases
@@ -211,26 +218,51 @@ pnpm changeset --empty
 
 ## Releases
 
-Releases are made from `main` by `.github/workflows/publish-release.yml`, after the CI checks pass
-on the pushed commit:
+A release is a version commit on `develop` that reaches `main`. The checks of a commit run
+once, on `develop`; pushing the same commit to `staging` or `main` doesn't run them again.
 
-1. A maintainer merges `develop` into `main` and pushes it. When `main` has changesets, the
-   workflow opens or updates a "Version Packages" pull request. It runs `pnpm changeset:version`,
-   which removes the changesets, bumps the version in `packages/tokens/package.json`, writes the
-   CHANGELOG entry, updates `currentVersion` in `packages/site/config.yml` and rebuilds `dist/`,
-   so its headers name the new version.
-2. Merging that pull request pushes `main` again. The version is not on npm yet, so the workflow
-   runs `pnpm tokens:verify`, publishes `@chassis-ui/tokens` with npm trusted publishing and
-   provenance (no npm token), and creates the GitHub release `v<version>` with the CHANGELOG entry
-   as its body and the Android library of every app and brand attached
-   (`chassis-tokens-<app>-<brand>-<version>.aar`). Swift Package Manager resolves the tag of the
-   release, so the Swift package needs no publishing step.
-3. The maintainer merges `main` back into `develop`, so the next changes start from the released
-   version. The Changeset check skips that push, since it changes the version.
+1. On `develop`, a maintainer runs `pnpm changeset:version`. It removes the changesets, bumps
+   the version in `packages/tokens/package.json`, writes the CHANGELOG entry, updates
+   `currentVersion` in `packages/site/config.yml` and rebuilds `dist/`, so its headers name the
+   new version. The maintainer reviews the result, commits it and pushes `develop`.
+2. CI runs on that commit. The version commit changes `dist/`, so the Native iOS and Native
+   Android jobs run too. The Changeset job skips the push, since it changes the version. A
+   release needs the native jobs to have run on the commit that reaches `main`: when another
+   commit is pushed on top of the version commit and doesn't change the tokens, the build, the
+   output or the native checks, run CI by hand on `develop` (**Run workflow** on the CI page
+   of the Actions tab, or `gh workflow run ci.yml --ref develop`), which always runs them.
+3. When CI has passed, the maintainer pushes the same commit to `main`. The ruleset of `main`
+   requires the checks `Tokens (Node 22)`, `Tokens (Node 24)` and `Site` on the commit, and
+   blocks a force push and a deletion.
+4. The push runs `.github/workflows/release.yml`, in three jobs:
+   - **Detect Version** reads the version and asks npm whether it has it. When it has, the
+     workflow stops: a push to `main` without a new version publishes nothing.
+   - **Checks Passed** reads the check-runs of the commit by name. It stops unless
+     `Tokens (Node 22)`, `Tokens (Node 24)`, `Site`, `Native iOS` and `Native Android` passed
+     on it. A skipped native job doesn't count.
+   - **Publish** runs `pnpm tokens:verify`, builds the Android libraries, publishes
+     `@chassis-ui/tokens` with npm trusted publishing and provenance (no npm token), and creates
+     the GitHub release `v<version>` with the CHANGELOG entry as its body and the Android library
+     of every app and brand attached (`chassis-tokens-<app>-<brand>-<version>.aar`). Swift
+     Package Manager resolves the tag of the release, so the Swift package needs no publishing
+     step.
 
-A maintainer can also run `pnpm changeset:version` locally on `develop`, review and commit the
-result, merge `develop` into `main` and push it; the workflow then publishes without a pull
-request. A version without a CHANGELOG entry is not published.
+`develop` and `main` are at the same commit after a release, so nothing is merged back.
+
+A version without a CHANGELOG entry is not published. A prerelease goes to the npm dist-tag of
+its first identifier, so `0.7.0-next.0` goes to `next`, and its GitHub release is marked as a
+prerelease; every other version goes to `latest`.
+
+The workflow can also be run by hand, on `main` only: a run on another branch stops in its
+first job. Three names are tied to settings outside the repository, so change them together:
+
+- The file name `release.yml` is the trusted publisher of `@chassis-ui/tokens` on npmjs.com.
+  Renaming the file breaks publishing until the trusted publisher names the new file.
+- The job names `Tokens (Node 22)`, `Tokens (Node 24)` and `Site` are the required checks of
+  the ruleset of `main`, and they are in the `REQUIRED` list of `release.yml` with `Native iOS`
+  and `Native Android`. The ruleset can't require the native jobs, since they are skipped on
+  some pushes.
+- The tag `v<version>` is what Swift Package Manager resolves.
 
 ## Using the issue tracker
 

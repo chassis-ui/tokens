@@ -45,7 +45,7 @@
     "lint:prettier": "prettier -c --cache .",
     "check": "pnpm check:astro && pnpm check:pnpm",
     "check:astro": "pnpm --filter chassis-tokens-site check",
-    "check:pnpm": "pnpm audit --audit-level moderate",
+    "check:pnpm": "pnpm audit --prod --audit-level moderate",
     "changeset": "changeset",
     "changeset:version": "changeset version && node build/sync-version-refs.js",
     "sync-submodules": "pnpm --filter chassis-tokens-site exec chassis-docs sync-submodules",

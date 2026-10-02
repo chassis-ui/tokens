@@ -4,7 +4,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![npm version](https://img.shields.io/npm/v/@chassis-ui/tokens)](https://www.npmjs.com/package/@chassis-ui/tokens)
-[![Release](https://github.com/chassis-ui/tokens/actions/workflows/publish-release.yml/badge.svg?branch=main)](https://github.com/chassis-ui/tokens/actions/workflows/publish-release.yml)
+[![Release](https://github.com/chassis-ui/tokens/actions/workflows/release.yml/badge.svg?branch=main)](https://github.com/chassis-ui/tokens/actions/workflows/release.yml)
 
 ## Overview
 
@@ -345,19 +345,20 @@ pnpm site:build
 
 ## Continuous Integration and Releases
 
-Every pull request runs `.github/workflows/ci.yml`:
+Every pull request and every push to `develop` runs `.github/workflows/ci.yml`:
 
 - **Tokens** (Node.js 22 and 24): `tokens:lint`, `tokens:lint:source`, `tokens:typecheck`, `tokens:test`, `tokens:verify`, `tokens:verify:presets`
 - **Site**: `lint:prettier` (the whole repository), `site:lint`, `check:astro`, `site:build`, `site:lint:html`
-- **Audit**: `pnpm audit` for moderate advisories and above
-- **Token diff**: the [token diff report](#token-diff-report) of the pull request against its base branch, in the job summary
+- **Audit**: `pnpm check:pnpm`, which is `pnpm audit --prod` for moderate advisories and above in what the package installs, and a report of `pnpm audit` on every dependency, which does not fail the job
+- **Dependency Review**: on a pull request, fails when it adds a dependency with a known vulnerability of moderate severity or above
+- **Token Diff**: the [token diff report](#token-diff-report) of the pull request against its base branch, in the job summary
 - **Changeset**: a pull request that changes `source/`, `build/` or `dist/` must add a changeset (`pnpm changeset`)
 - **Native iOS** (macOS, Xcode): every Swift file of `dist/` and of the preset baselines type-checked against the iOS simulator SDK, the asset catalogs compiled with `actool`, and a sample built that depends on the libraries of `Package.swift` and reads their tokens
 - **Native Android**: the resources of `dist/` and of the preset baselines compiled and linked against the Android SDK, the Compose objects compiled against Jetpack Compose, and a sample app built that depends on the Android libraries and reads their resources, with the Gradle project in `test/native/android/`
 
-The two native jobs run on a pull request or a push to `develop` only when it changes `source/`, `build/`, `dist/`, the preset baselines or the checks themselves, and on every push to `main`. See [Native compile checks](packages/tokens/test/README.md#native-compile-checks).
+The two native jobs run on a pull request or a push to `develop` only when it changes `source/`, `build/`, `dist/`, the preset baselines or the checks themselves, and on every manual run of the workflow. A release needs both to have passed on its commit: the version commit changes `dist/`, so they run on it by themselves, and a manual run does it for any other commit. See [Native compile checks](packages/tokens/test/README.md#native-compile-checks).
 
-Releases use [Changesets](https://changesets.dev). Pushing `main` runs the release workflow, after the same CI checks on that commit: pending changesets open or update a "Version Packages" pull request, which bumps the version and writes the CHANGELOG. Merging it publishes `@chassis-ui/tokens` to npm with trusted publishing and provenance, and creates a GitHub release from the CHANGELOG entry, with the Android libraries attached; its tag is the version of the Swift package. See [Releases](.github/CONTRIBUTING.md#releases). Dependabot opens weekly pull requests for npm packages, GitHub Actions and the Gradle project of the native checks; the actions are pinned to commit SHAs.
+Releases use [Changesets](https://changesets.dev). A maintainer runs `pnpm changeset:version` on `develop`, which bumps the version and writes the CHANGELOG, and pushes the commit to `develop`, then to `main`. The checks run once, on `develop`. Pushing `main` runs `.github/workflows/release.yml`, which reads the results of those checks on the commit and stops unless they passed, the two native jobs included, publishes `@chassis-ui/tokens` to npm with trusted publishing and provenance, and creates a GitHub release from the CHANGELOG entry, with the Android libraries attached; its tag, `v<version>`, is the version of the Swift package. See [Releases](.github/CONTRIBUTING.md#releases). Dependabot opens weekly pull requests for npm packages, GitHub Actions and the Gradle project of the native checks; the actions are pinned to commit SHAs.
 
 ## Chassis Ecosystem
 

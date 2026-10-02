@@ -5,7 +5,7 @@
   "fixed": [],
   "linked": [],
   "access": "public",
-  "baseBranch": "main",
+  "baseBranch": "develop",
   "changedFilePatterns": ["source/**", "build/**", "dist/**"],
   "updateInternalDependencies": "patch",
   "ignore": ["chassis-tokens-site"]

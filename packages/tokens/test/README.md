@@ -132,7 +132,7 @@ node build/build.js --config test/golden/web-px.json --out test/golden/web-px
 
 ## Native compile checks
 
-`native/` compiles the iOS and Android output against the real SDKs. CI runs both checks (the **Native iOS** and **Native Android** jobs) on a pull request or a push to `develop` that changes `source/`, `build/`, `dist/`, the baselines or the checks, and on every push to `main`, so nobody has to install an SDK to contribute. Both checks find the output folders themselves: every folder of `dist/` and of the baselines in `golden/` with files of the platform, so a new brand, app or preset baseline is checked without a change here.
+`native/` compiles the iOS and Android output against the real SDKs. CI runs both checks (the **Native iOS** and **Native Android** jobs) on a pull request or a push to `develop` that changes `source/`, `build/`, `dist/`, the baselines or the checks, which the version commit of every release does, and on every manual run of the workflow, so nobody has to install an SDK to contribute. Both checks find the output folders themselves: every folder of `dist/` and of the baselines in `golden/` with files of the platform, so a new brand, app or preset baseline is checked without a change here.
 
 ### iOS
 

@@ -1,22 +1,31 @@
 name: CI
 
-# Pull requests and pushes to develop run this workflow directly. Pushes to main run it through
-# publish-release.yml, which publishes only after these jobs pass.
 on:
   push:
+    # A commit reaches `main` only after these checks passed on it, so they run on `develop`
+    # first. Their results belong to the commit, and the ruleset of `main` and the release
+    # workflow read them there, so pushing the same commit to `staging` or `main` does not
+    # run them again. See "Releases" in CONTRIBUTING.md.
     branches: [develop]
   pull_request:
+    # Contributors open pull requests against `develop`
+    branches: [develop, staging, main]
+  # A manual run always runs the native jobs: the way to run them on a commit that does not
+  # change the native paths, which a release needs. See "Releases" in CONTRIBUTING.md.
   workflow_dispatch:
-  workflow_call:
 
 permissions:
   contents: read
 
+# A newer push to the same pull request supersedes the running one. A push to `develop` always
+# runs to the end: the ruleset and the release workflow read the results of that commit.
 concurrency:
-  group: ci-${{ github.workflow }}-${{ github.head_ref || github.ref }}
+  group: ci-${{ github.event.pull_request.number || github.sha }}
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
+  # The ruleset of `main` requires Tokens (Node 22), Tokens (Node 24) and Site by these names,
+  # and release.yml reads them and the two native jobs. Rename a job in all three places.
   tokens:
     name: Tokens (Node ${{ matrix.node }})
     runs-on: ubuntu-latest
@@ -107,13 +116,11 @@ jobs:
   # A change to packages/tokens/source, build or dist needs a changeset (changedFilePatterns in
   # .changeset/config.json); `pnpm changeset --empty` adds one that releases nothing. A pull
   # request is compared with its base branch, a push to develop with the tip it replaced. The
-  # Version Packages pull request consumes changesets, and so does the version commit when it
-  # comes back from main into develop, so both are skipped.
+  # version commit consumes the changesets, so a push that changes the version is skipped.
   changeset:
     name: Changeset
-    if: >-
-      (github.event_name == 'pull_request' && !startsWith(github.head_ref, 'changeset-release/')) ||
-      (github.event_name == 'push' && github.ref == 'refs/heads/develop')
+    # A manual run has nothing to compare with
+    if: github.event_name != 'workflow_dispatch'
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
@@ -168,7 +175,7 @@ jobs:
   # commit with that of its first parent, the base branch; the Tokens job checks that both
   # equal a fresh build. Needs no install: build/diff.js uses Node.js only.
   token-diff:
-    name: Token diff
+    name: Token Diff
     if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
     timeout-minutes: 5
@@ -214,25 +221,47 @@ jobs:
           # store to save, and its post step fails the job
           package-manager-cache: false
 
-      - name: Audit dependencies
+      # Blocking: what is installed with @chassis-ui/tokens reaches every app that uses it
+      - name: Audit runtime dependencies
         run: pnpm check:pnpm
+
+      # Reports only: the build, test and site tooling never ships in the package
+      - name: Audit all dependencies
+        run: pnpm audit
+        continue-on-error: true
+
+  dependency-review:
+    name: Dependency Review
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Review dependency changes
+        uses: actions/dependency-review-action@a1d282b36b6f3519aa1f3fc636f609c47dddb294 # v5.0.0
+        with:
+          fail-on-severity: moderate
 
   # Whether the native jobs run. A pull request and a push to develop run them only when they
   # change the token source, the build, the output, the preset baselines or the checks
   # themselves, because macOS minutes cost ten times Linux minutes. A pull request is compared
-  # with its base branch, a push to develop with the tip it replaced. Every other event runs
-  # them: a push to main, through publish-release.yml, and a manual run.
+  # with its base branch, a push to develop with the tip it replaced. A manual run always
+  # runs them. release.yml publishes a commit only when both passed on it: the version commit
+  # changes dist/ and package.json, so they run on it by themselves, and a commit pushed on
+  # top of it that does not change these paths needs a manual run.
   native-changes:
-    name: Native changes
+    name: Native Changes
     runs-on: ubuntu-latest
     timeout-minutes: 5
     outputs:
       native: ${{ steps.changes.outputs.native }}
     steps:
       - name: Checkout
-        if: >-
-          github.event_name == 'pull_request' ||
-          (github.event_name == 'push' && github.ref == 'refs/heads/develop')
+        if: github.event_name != 'workflow_dispatch'
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           # A pull request needs the merge commit and its parents, a push the tip it replaced
@@ -243,23 +272,21 @@ jobs:
         id: changes
         env:
           EVENT_NAME: ${{ github.event_name }}
-          REF: ${{ github.ref }}
           BEFORE: ${{ github.event.before }}
         run: |
-          if [ "$EVENT_NAME" = pull_request ]; then
-            # The test merge commit against its first parent, the base branch
-            SINCE=HEAD^1
-          elif [ "$EVENT_NAME" = push ] && [ "$REF" = refs/heads/develop ]; then
-            if [ -z "$BEFORE" ] || ! git cat-file -e "$BEFORE^{commit}" 2>/dev/null; then
-              echo "No earlier commit to compare with, the native jobs run"
-              echo "native=true" >> "$GITHUB_OUTPUT"
-              exit 0
-            fi
-            SINCE="$BEFORE"
-          else
-            echo "Not a pull request or a push to develop, the native jobs run"
+          if [ "$EVENT_NAME" = workflow_dispatch ]; then
+            echo "A manual run, the native jobs run"
             echo "native=true" >> "$GITHUB_OUTPUT"
             exit 0
+          elif [ "$EVENT_NAME" = pull_request ]; then
+            # The test merge commit against its first parent, the base branch
+            SINCE=HEAD^1
+          elif [ -z "$BEFORE" ] || ! git cat-file -e "$BEFORE^{commit}" 2>/dev/null; then
+            echo "No earlier commit to compare with, the native jobs run"
+            echo "native=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          else
+            SINCE="$BEFORE"
           fi
 
           changed=$(git diff --name-only "$SINCE" HEAD -- \
