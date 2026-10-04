@@ -92,7 +92,7 @@ The light and dark color files come from two instances, so no format sees both t
 
 ### The committed `dist/` is the reference
 
-`dist/` is committed and published. `pnpm tokens:verify` builds into `dist-next/` and compares every file with `dist/`, ignoring only the header lines with the timestamp and the version, so any change to the build that changes the output fails until `dist/` is rebuilt and the change is reviewed. The presets write nothing into `dist/`, so their reference output is committed in `test/golden/<preset>/` and checked by `pnpm tokens:verify:presets`.
+`dist/` is committed and published. `pnpm tokens:verify` builds into `dist-next/` and compares every file with `dist/`, ignoring only the header lines with the timestamp and the version, so any change to the build that changes the output fails until `dist/` is rebuilt and the change is reviewed. The presets write nothing into `dist/`, so their reference output is committed in `test/golden/<preset>/` and checked by `pnpm tokens:verify:presets`. `pnpm tokens:verify:update` writes both references again after a change that is meant to change the output.
 
 ## Configuration
 
@@ -260,6 +260,7 @@ An icon is an `asset` token whose value is an SVG document. It stays a string to
 | `pnpm tokens:test`           | Vitest, on real tokens and the committed `dist/`; includes the golden checks and that `Package.swift` matches `chassis.build`                                        |
 | `pnpm tokens:verify`         | A fresh build equals `dist/`; no name twice in one file; every reference names something the output declares                                                         |
 | `pnpm tokens:verify:presets` | Each preset equals its baseline in `test/golden/`                                                                                                                    |
+| `pnpm tokens:verify:update`  | Not a check: writes the files of `dist/` and of the baselines that differ from a fresh build                                                                         |
 | `pnpm tokens:diff`           | Not a check: the names added, removed, renamed and changed in each `dist/` file against another ref; CI writes it to the pull request's summary                      |
 | `pnpm tokens:native:ios`     | The Swift files against the iOS simulator SDK, the asset catalogs with `actool`, and a sample that uses the Swift package (needs Xcode)                              |
 | `pnpm tokens:native:android` | The Android resources against `android.jar`, the Compose objects against Compose, and a sample app that uses the Android libraries (needs a JDK and the Android SDK) |

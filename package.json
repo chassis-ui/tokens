@@ -31,6 +31,7 @@
     "tokens:typecheck": "pnpm --filter @chassis-ui/tokens typecheck",
     "tokens:verify": "pnpm --filter @chassis-ui/tokens verify",
     "tokens:verify:presets": "pnpm --filter @chassis-ui/tokens verify:presets",
+    "tokens:verify:update": "pnpm --filter @chassis-ui/tokens verify:update",
     "site": "pnpm site:build && pnpm site:lint",
     "site:build": "pnpm vendor && pnpm --filter chassis-tokens-site build && pnpm site:pagefind",
     "site:clean": "rm -rf _site && pnpm --filter chassis-tokens-site clean",

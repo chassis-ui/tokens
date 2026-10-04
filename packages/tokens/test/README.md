@@ -20,7 +20,7 @@ The run takes about 10 seconds, most of it for the golden test, which builds eve
 | File                                                                 | What it checks                                                                                                                                                                                                                                                                                                 |
 | -------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `golden.test.js`                                                     | A full build into a temporary directory matches `dist/` file by file, apart from the timestamp and version header lines. Same check as `pnpm tokens:verify`. Every preset matches its baseline in `golden/`. Same check as `pnpm tokens:verify:presets`.                                                       |
-| `verify.test.js`                                                     | The check that every `@type/name`, `$name` and Swift constant reference in the output names something the output declares.                                                                                                                                                                                     |
+| `verify.test.js`                                                     | The check that every `@type/name`, `$name` and Swift constant reference in the output names something the output declares, and the update of a reference by `pnpm tokens:verify:update`.                                                                                                                       |
 | `diff.test.js`                                                       | The token diff report: the declarations it reads from every `dist/` file, renames, value changes, additions and removals recreated from real commits (the `headers-gap` rename, Phases 14, 21 and 22), header-only rebuilds, icon assets and the Markdown report.                                              |
 | `lint-tokens.test.js`                                                | The token source lint: the real `source/` passes, and each rule fails on a broken copy of `fixtures/lint-tokens.json`, among them the `headers-gap` mistake, with the token set and token named.                                                                                                               |
 | `swift-package.test.js`                                              | The Swift package manifest: one library for every brand of every app with an iOS platform, named after app, brand and platform, with the icon catalog as a resource; the committed `Package.swift` at the root of the repository is the manifest of the real configuration; no type is named like its library. |
@@ -124,10 +124,16 @@ In `android-references`, 30 lines print their value instead of the reference the
 
 ### When tokens change
 
-A change in `source/` changes `dist/` and the baselines. After the new `dist/` is built and reviewed, write each baseline again with the current build, from `packages/tokens/`, and review the difference as for `dist/`:
+A change in `source/` changes `dist/` and the baselines. Write both again with the current build, from the repository root, and review the difference of the baselines as for `dist/`:
 
 ```sh
-node build/build.js --config test/golden/web-px.json --out test/golden/web-px
+pnpm tokens:verify:update
+```
+
+Only the files that differ are written; a file that differs in its header lines only is left as it is. Write one baseline again, or a new one, from `packages/tokens/`:
+
+```sh
+node build/verify.js --update --preset web-px
 ```
 
 ## Native compile checks
