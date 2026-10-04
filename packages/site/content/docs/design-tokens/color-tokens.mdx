@@ -125,7 +125,7 @@ The `black` and `white` palettes have no shades, so their transparency colors ar
 | `color.base.context.dark.default.bg-main` | `{color.base.primitive.dark.neutral.95}` |
 | `color.base.context.dark.default.dim-main` | `{color.base.primitive.dark.white.t-70}` |
 | `color.base.context.dark.default.fg-idle` | `{color.base.context.dark.default.fg-main}` |
-| `color.base.context.dark.danger.fg-main` | `{color.base.primitive.dark.danger.40}` |
+| `color.base.context.dark.danger.fg-main` | `{color.base.primitive.dark.danger.30}` |
 </CxTable>
 
 `color.base.shadow.<theme>.<context>` holds the shadow color of a context in the same way. The shadow colors of `default` and `alternate` reference transparency colors of the `black` palette, and those of `primary`, `secondary`, `neutral`, `danger`, `success`, `warning`, and `info` reference `t-5040` of their palette.
@@ -571,7 +571,7 @@ With the `web` platform, a color that references a context or a primitive color 
 
 ```scss
 $cx-color-context-default-fg-main: #161a1b !default;
-$cx-color-context-default-fg-subtle: rgba(22, 26, 27, 0.5) !default;
+$cx-color-context-default-fg-subtle: rgba(22, 26, 27, 0.6) !default;
 $cx-color-button-default-fg-idle: var(--default-fg-idle) !default;
 ```
 
@@ -579,7 +579,7 @@ On iOS, the channels have three decimals. The build writes these constants into 
 
 ```swift
     public static let ColorContextDefaultFgMain = UIColor(red: 0.086, green: 0.102, blue: 0.106, alpha: 1)
-    public static let ColorContextDefaultFgSubtle = UIColor(red: 0.086, green: 0.102, blue: 0.106, alpha: 0.5)
+    public static let ColorContextDefaultFgSubtle = UIColor(red: 0.086, green: 0.102, blue: 0.106, alpha: 0.6)
 ```
 
 `Color.swift` has the same names with colors that follow the appearance of the device: a constant whose colors differ between the light and the dark theme is a dynamic `UIColor` that holds both.
@@ -588,7 +588,7 @@ On Android, the alpha value comes first, in the first two digits of the hex numb
 
 ```xml
   <color name="color_context_default_fg_main">#ff161a1b</color>
-  <color name="color_context_default_fg_subtle">#80161a1b</color>
+  <color name="color_context_default_fg_subtle">#99161a1b</color>
 ```
 
 A gradient prints as a `linear-gradient()` value on the web. On iOS and Android the build splits it into an angle and, for each stop, a color and a position: `GradientPrimitivePrimaryL50090Angle`, `GradientPrimitivePrimaryL50090Stop1Color`, and `GradientPrimitivePrimaryL50090Stop1Position` on iOS, `gradient_primitive_primary_l_50_090_angle`, `gradient_primitive_primary_l_50_090_stop_1_color`, and `gradient_primitive_primary_l_50_090_stop_1_position` on Android.

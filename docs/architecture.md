@@ -143,15 +143,15 @@ The repository root also has `Package.swift`, written by `build/swift-package.js
 
 ### Filters
 
-| Filter               | Files                               | Tokens                                                                                                                    |
-| -------------------- | ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
-| `cx/allTokens`       | main                                | every emitted type, without the colors under `color.primitive`, `color.context`, `color.utility` and `gradient.primitive` |
-| `cx/stringTokens`    | string                              | asset, content, fontFamily, fontStyle, fontWeight, string, text, textCase, textDecoration, type                           |
-| `cx/themeTokens`     | color files                         | colors, without `path[1]` `base` or `utility`, and shadows                                                                |
-| `cx/numberTokens`    | number files                        | duration, letterSpacing, number, opacity, and the size group: dimension, fontSize, lineHeight, paragraphSpacing           |
-| `cx/baseColorTokens` | Android `res/values/color_base.xml` | colors whose `path[1]` is `base`                                                                                          |
+| Filter               | Files                               | Tokens                                                                                                                                                  |
+| -------------------- | ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `cx/allTokens`       | main                                | every emitted type, without the colors under `color.primitive`, `color.context`, `color.utility` and `gradient.primitive`, and without `opacity.base.*` |
+| `cx/stringTokens`    | string                              | asset, content, fontFamily, fontStyle, fontWeight, string, text, textCase, textDecoration, type                                                         |
+| `cx/themeTokens`     | color files                         | colors, without `path[1]` `base` or `utility`, and shadows                                                                                              |
+| `cx/numberTokens`    | number files                        | duration, letterSpacing, number, opacity without `opacity.base.*`, and the size group: dimension, fontSize, lineHeight, paragraphSpacing                |
+| `cx/baseColorTokens` | Android `res/values/color_base.xml` | colors whose `path[1]` is `base`                                                                                                                        |
 
-The type groups are in `utils.js`. Tokens typed `boolean` or `other` are never emitted, and neither are the groups that exist for Figma only, `figma.*` (mode switches and the frame sizes of the Figma files) and `bg-blur.*` (background blur effects); every filter leaves them out (`figmaOnlyGroups` in `filters.js`). `dimension.base.*` is emitted in the main and number files on purpose: other sizes reference it, and with `outputReferences` they name it.
+The type groups are in `utils.js`. Tokens typed `boolean` or `other` are never emitted, and neither are the groups that exist for Figma only, `figma.*` (mode switches and the frame sizes of the Figma files) and `bg-blur.*` (background blur effects); every filter leaves them out (`figmaOnlyGroups` in `filters.js`). `dimension.base.*` is emitted in the main and number files on purpose: other sizes reference it, and with `outputReferences` they name it. `opacity.base.*` is not emitted (`isBaseOpacity` in `filters.js`): it holds the alphas of the color roles that a brand sets, `opacity.context.*` references them one to one, and apps use those.
 
 Only the web keeps a shadow token whole, so only the web color files hold shadows. The mobile platforms expand a shadow into its parts; the color part of each layer is a color, in the main file and the color files, and the other parts are sizes and strings.
 
@@ -277,6 +277,7 @@ They are part of the output contract and kept on purpose. Don't fix one without 
 - **Letter spacing has different units per platform.** Web ems of 16 px, iOS points, Android and Compose ems of the font size; the letter spacing scale is in pixels on iOS and Android because it has no font size.
 - **Icons are in the string files too.** The SVG text of each icon is a string constant or resource next to its asset; on Android it is escaped.
 - **`dimension.base.*` is emitted** in the main and number files, though apps use the scales that reference it.
+- **`opacity.base.*` is not emitted**, though `dimension.base.*` and the base colors are. With `outputReferences`, an `opacity.context.*` token prints its number, since no file declares the token it references.
 - **Two spellings of one weight.** The source spells semi bold `Semi Bold` for Inter and `SemiBold` for other fonts, the style name of each font in Figma. The build maps both to `600`; don't normalize the source, or the fonts break in Figma.
 - **The web presets share the web folder.** `web`, `web-scss`, `web-px` and `web-vw` all write to `dist/web/<app>/<brand>/`, so an app selects one of them.
 - **iOS shadows have a derived radius.** `…Radius` is half the CSS blur, close to Core Animation's `shadowRadius`; the spread has no Core Animation equivalent.

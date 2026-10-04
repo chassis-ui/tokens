@@ -2,7 +2,7 @@
 
 <!--
   Do not edit directly, this file was auto-generated.
-  Generated on Sun, 27 Sep 2026 20:28:12 GMT
+  Generated on Sun, 04 Oct 2026 07:19:20 GMT
   Chassis - Tokens v0.6.0
   Copyright 2026 Ozgur Gunes
   Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
@@ -13,7 +13,7 @@
   <color name="color_context_default_contrast_color">#ffffffff</color>
   <color name="color_context_default_transparent_color">#00000000</color>
   <color name="color_context_default_fg_main">#ff191716</color>
-  <color name="color_context_default_fg_subtle">#80191716</color>
+  <color name="color_context_default_fg_subtle">#99191716</color>
   <color name="color_context_default_fg_slight">#40191716</color>
   <color name="color_context_default_fg_active">#ffffffff</color>
   <color name="color_context_default_fg_inverse">#ffeceae9</color>
@@ -29,7 +29,7 @@
   <color name="color_context_default_border_main">#ff9e9892</color>
   <color name="color_context_default_border_subtle">#26191716</color>
   <color name="color_context_default_icon_main">#ff7a2e6f</color>
-  <color name="color_context_default_icon_subtle">#66191716</color>
+  <color name="color_context_default_icon_subtle">#80191716</color>
   <color name="color_context_default_icon_slight">#337a2e6f</color>
   <color name="color_context_default_cue_main">#ff7a2e6f</color>
   <color name="color_context_default_cue_slight">#337a2e6f</color>
@@ -52,7 +52,7 @@
   <color name="color_context_alternate_contrast_color">#ff000000</color>
   <color name="color_context_alternate_transparent_color">#00ffffff</color>
   <color name="color_context_alternate_fg_main">#ffeceae9</color>
-  <color name="color_context_alternate_fg_subtle">#80eceae9</color>
+  <color name="color_context_alternate_fg_subtle">#99eceae9</color>
   <color name="color_context_alternate_fg_slight">#40eceae9</color>
   <color name="color_context_alternate_fg_active">#ffffffff</color>
   <color name="color_context_alternate_fg_inverse">#ff191716</color>
@@ -68,7 +68,7 @@
   <color name="color_context_alternate_border_main">#ff5f5853</color>
   <color name="color_context_alternate_border_subtle">#26eceae9</color>
   <color name="color_context_alternate_icon_main">#ff7a2e6f</color>
-  <color name="color_context_alternate_icon_subtle">#66eceae9</color>
+  <color name="color_context_alternate_icon_subtle">#80eceae9</color>
   <color name="color_context_alternate_icon_slight">#337a2e6f</color>
   <color name="color_context_alternate_cue_main">#ff7a2e6f</color>
   <color name="color_context_alternate_cue_slight">#337a2e6f</color>
@@ -91,7 +91,7 @@
   <color name="color_context_primary_contrast_color">#ffffffff</color>
   <color name="color_context_primary_transparent_color">#007a2e6f</color>
   <color name="color_context_primary_fg_main">#ff5c2353</color>
-  <color name="color_context_primary_fg_subtle">#805c2353</color>
+  <color name="color_context_primary_fg_subtle">#b35c2353</color>
   <color name="color_context_primary_fg_slight">#405c2353</color>
   <color name="color_context_primary_fg_active">#ffffffff</color>
   <color name="color_context_primary_fg_inverse">#ffebe0e9</color>
@@ -107,7 +107,7 @@
   <color name="color_context_primary_border_main">#ff9b6293</color>
   <color name="color_context_primary_border_subtle">#265c2353</color>
   <color name="color_context_primary_icon_main">#ff7a2e6f</color>
-  <color name="color_context_primary_icon_subtle">#665c2353</color>
+  <color name="color_context_primary_icon_subtle">#805c2353</color>
   <color name="color_context_primary_icon_slight">#337a2e6f</color>
   <color name="color_context_primary_cue_main">#ff7a2e6f</color>
   <color name="color_context_primary_cue_slight">#337a2e6f</color>
@@ -130,7 +130,7 @@
   <color name="color_context_secondary_contrast_color">#ffffffff</color>
   <color name="color_context_secondary_transparent_color">#00241e1c</color>
   <color name="color_context_secondary_fg_main">#ff1b1615</color>
-  <color name="color_context_secondary_fg_subtle">#801b1615</color>
+  <color name="color_context_secondary_fg_subtle">#b31b1615</color>
   <color name="color_context_secondary_fg_slight">#401b1615</color>
   <color name="color_context_secondary_fg_active">#ffffffff</color>
   <color name="color_context_secondary_fg_inverse">#ffdedddd</color>
@@ -146,7 +146,7 @@
   <color name="color_context_secondary_border_main">#ff5b5655</color>
   <color name="color_context_secondary_border_subtle">#261b1615</color>
   <color name="color_context_secondary_icon_main">#ff241e1c</color>
-  <color name="color_context_secondary_icon_subtle">#661b1615</color>
+  <color name="color_context_secondary_icon_subtle">#801b1615</color>
   <color name="color_context_secondary_icon_slight">#33241e1c</color>
   <color name="color_context_secondary_cue_main">#ff241e1c</color>
   <color name="color_context_secondary_cue_slight">#33241e1c</color>
@@ -169,7 +169,7 @@
   <color name="color_context_neutral_contrast_color">#ffffffff</color>
   <color name="color_context_neutral_transparent_color">#007e756e</color>
   <color name="color_context_neutral_fg_main">#ff5f5853</color>
-  <color name="color_context_neutral_fg_subtle">#805f5853</color>
+  <color name="color_context_neutral_fg_subtle">#b35f5853</color>
   <color name="color_context_neutral_fg_slight">#405f5853</color>
   <color name="color_context_neutral_fg_active">#ffffffff</color>
   <color name="color_context_neutral_fg_inverse">#ffeceae9</color>
@@ -185,7 +185,7 @@
   <color name="color_context_neutral_border_main">#ff9e9892</color>
   <color name="color_context_neutral_border_subtle">#265f5853</color>
   <color name="color_context_neutral_icon_main">#ff7e756e</color>
-  <color name="color_context_neutral_icon_subtle">#665f5853</color>
+  <color name="color_context_neutral_icon_subtle">#805f5853</color>
   <color name="color_context_neutral_icon_slight">#337e756e</color>
   <color name="color_context_neutral_cue_main">#ff7e756e</color>
   <color name="color_context_neutral_cue_slight">#337e756e</color>
@@ -208,7 +208,7 @@
   <color name="color_context_danger_contrast_color">#ffffffff</color>
   <color name="color_context_danger_transparent_color">#00b3261e</color>
   <color name="color_context_danger_fg_main">#ff861c16</color>
-  <color name="color_context_danger_fg_subtle">#80861c16</color>
+  <color name="color_context_danger_fg_subtle">#b3861c16</color>
   <color name="color_context_danger_fg_slight">#40861c16</color>
   <color name="color_context_danger_fg_active">#ffffffff</color>
   <color name="color_context_danger_fg_inverse">#fff4dedd</color>
@@ -224,7 +224,7 @@
   <color name="color_context_danger_border_main">#ffc65c56</color>
   <color name="color_context_danger_border_subtle">#26861c16</color>
   <color name="color_context_danger_icon_main">#ffb3261e</color>
-  <color name="color_context_danger_icon_subtle">#66861c16</color>
+  <color name="color_context_danger_icon_subtle">#80861c16</color>
   <color name="color_context_danger_icon_slight">#33b3261e</color>
   <color name="color_context_danger_cue_main">#ffb3261e</color>
   <color name="color_context_danger_cue_slight">#33b3261e</color>
@@ -247,7 +247,7 @@
   <color name="color_context_success_contrast_color">#ffffffff</color>
   <color name="color_context_success_transparent_color">#0022703f</color>
   <color name="color_context_success_fg_main">#ff1a542f</color>
-  <color name="color_context_success_fg_subtle">#801a542f</color>
+  <color name="color_context_success_fg_subtle">#b31a542f</color>
   <color name="color_context_success_fg_slight">#401a542f</color>
   <color name="color_context_success_fg_inverse">#ffdeeae2</color>
   <color name="color_context_success_fg_active">#ffffffff</color>
@@ -263,7 +263,7 @@
   <color name="color_context_success_border_main">#ff59946f</color>
   <color name="color_context_success_border_subtle">#261a542f</color>
   <color name="color_context_success_icon_main">#ff22703f</color>
-  <color name="color_context_success_icon_subtle">#661a542f</color>
+  <color name="color_context_success_icon_subtle">#801a542f</color>
   <color name="color_context_success_icon_slight">#3322703f</color>
   <color name="color_context_success_cue_main">#ff22703f</color>
   <color name="color_context_success_cue_slight">#3322703f</color>
@@ -286,7 +286,7 @@
   <color name="color_context_warning_contrast_color">#ffffffff</color>
   <color name="color_context_warning_transparent_color">#008a5600</color>
   <color name="color_context_warning_fg_main">#ff684100</color>
-  <color name="color_context_warning_fg_subtle">#80684100</color>
+  <color name="color_context_warning_fg_subtle">#b3684100</color>
   <color name="color_context_warning_fg_slight">#40684100</color>
   <color name="color_context_warning_fg_active">#ffffffff</color>
   <color name="color_context_warning_fg_inverse">#ffede6d9</color>
@@ -302,7 +302,7 @@
   <color name="color_context_warning_border_main">#ffa78040</color>
   <color name="color_context_warning_border_subtle">#26684100</color>
   <color name="color_context_warning_icon_main">#ff8a5600</color>
-  <color name="color_context_warning_icon_subtle">#66684100</color>
+  <color name="color_context_warning_icon_subtle">#80684100</color>
   <color name="color_context_warning_icon_slight">#338a5600</color>
   <color name="color_context_warning_cue_main">#ff8a5600</color>
   <color name="color_context_warning_cue_slight">#338a5600</color>
@@ -325,7 +325,7 @@
   <color name="color_context_info_contrast_color">#ffffffff</color>
   <color name="color_context_info_transparent_color">#002e5c9e</color>
   <color name="color_context_info_fg_main">#ff234577</color>
-  <color name="color_context_info_fg_subtle">#80234577</color>
+  <color name="color_context_info_fg_subtle">#b3234577</color>
   <color name="color_context_info_fg_slight">#40234577</color>
   <color name="color_context_info_fg_active">#ffffffff</color>
   <color name="color_context_info_fg_inverse">#ffe0e7f0</color>
@@ -341,7 +341,7 @@
   <color name="color_context_info_border_main">#ff6285b6</color>
   <color name="color_context_info_border_subtle">#26234577</color>
   <color name="color_context_info_icon_main">#ff2e5c9e</color>
-  <color name="color_context_info_icon_subtle">#66234577</color>
+  <color name="color_context_info_icon_subtle">#80234577</color>
   <color name="color_context_info_icon_slight">#332e5c9e</color>
   <color name="color_context_info_cue_main">#ff2e5c9e</color>
   <color name="color_context_info_cue_slight">#332e5c9e</color>
@@ -380,7 +380,7 @@
   <color name="color_context_black_border_main">#4d000000</color>
   <color name="color_context_black_border_subtle">#26000000</color>
   <color name="color_context_black_icon_main">#ff000000</color>
-  <color name="color_context_black_icon_subtle">#66000000</color>
+  <color name="color_context_black_icon_subtle">#80000000</color>
   <color name="color_context_black_icon_slight">#33000000</color>
   <color name="color_context_black_cue_main">#ff000000</color>
   <color name="color_context_black_cue_slight">#33000000</color>
@@ -419,7 +419,7 @@
   <color name="color_context_white_border_main">#4dffffff</color>
   <color name="color_context_white_border_subtle">#26ffffff</color>
   <color name="color_context_white_icon_main">#ffffffff</color>
-  <color name="color_context_white_icon_subtle">#66ffffff</color>
+  <color name="color_context_white_icon_subtle">#80ffffff</color>
   <color name="color_context_white_icon_slight">#33ffffff</color>
   <color name="color_context_white_cue_main">#ffffffff</color>
   <color name="color_context_white_cue_slight">#33ffffff</color>
@@ -853,7 +853,7 @@
   <color name="color_datepicker_bg_range">#ffebe0e9</color>
   <color name="color_datepicker_fg_today">#ff7a2e6f</color>
   <color name="color_datepicker_bg_today">#00000000</color>
-  <color name="color_datepicker_fg_weekend">#80191716</color>
+  <color name="color_datepicker_fg_weekend">#99191716</color>
   <color name="color_datepicker_bg_weekend">#00000000</color>
   <color name="color_datepicker_fg_outside">#40191716</color>
   <color name="color_datepicker_bg_outside">#00000000</color>
@@ -873,7 +873,7 @@
   <color name="color_dropdown_fg_disabled">#40191716</color>
   <color name="color_dropdown_bg_disabled">#00000000</color>
   <color name="color_dropdown_icon_disabled">#337a2e6f</color>
-  <color name="color_dropdown_fg_header">#80191716</color>
+  <color name="color_dropdown_fg_header">#99191716</color>
   <color name="color_dropdown_bg_header">#00000000</color>
   <color name="color_dropdown_fg_main">#ff191716</color>
   <color name="color_dropdown_bg_main">#ffffffff</color>
@@ -883,39 +883,39 @@
   <color name="color_form_input_idle_bg_floating">#fff6f5f5</color>
   <color name="color_form_input_idle_border">#ff9e9892</color>
   <color name="color_form_input_idle_fg_active">#ff191716</color>
-  <color name="color_form_input_idle_fg_inactive">#80191716</color>
+  <color name="color_form_input_idle_fg_inactive">#99191716</color>
   <color name="color_form_input_idle_caret">#ff191716</color>
   <color name="color_form_input_idle_help">#ff191716</color>
   <color name="color_form_input_focus_bg_regular">#ffffffff</color>
   <color name="color_form_input_focus_bg_floating">#fff6f5f5</color>
   <color name="color_form_input_focus_border">#ff7a2e6f</color>
   <color name="color_form_input_focus_fg_active">#ff191716</color>
-  <color name="color_form_input_focus_fg_inactive">#80191716</color>
+  <color name="color_form_input_focus_fg_inactive">#99191716</color>
   <color name="color_form_input_focus_caret">#ff191716</color>
   <color name="color_form_input_focus_help">#ff7a2e6f</color>
   <color name="color_form_input_error_bg_regular">#ffffffff</color>
   <color name="color_form_input_error_bg_floating">#fff6f5f5</color>
   <color name="color_form_input_error_border">#ffb3261e</color>
   <color name="color_form_input_error_fg_active">#ff191716</color>
-  <color name="color_form_input_error_fg_inactive">#80191716</color>
+  <color name="color_form_input_error_fg_inactive">#99191716</color>
   <color name="color_form_input_error_caret">#ff191716</color>
   <color name="color_form_input_error_help">#ff861c16</color>
   <color name="color_form_input_success_bg_regular">#ffffffff</color>
   <color name="color_form_input_success_bg_floating">#fff6f5f5</color>
   <color name="color_form_input_success_border">#ff22703f</color>
   <color name="color_form_input_success_fg_active">#ff191716</color>
-  <color name="color_form_input_success_fg_inactive">#80191716</color>
+  <color name="color_form_input_success_fg_inactive">#99191716</color>
   <color name="color_form_input_success_caret">#ff191716</color>
   <color name="color_form_input_success_help">#ff1a542f</color>
   <color name="color_form_input_disabled_bg_regular">#ffd8d6d3</color>
   <color name="color_form_input_disabled_bg_floating">#ffd8d6d3</color>
   <color name="color_form_input_disabled_border">#40191716</color>
-  <color name="color_form_input_disabled_fg_active">#80191716</color>
+  <color name="color_form_input_disabled_fg_active">#99191716</color>
   <color name="color_form_input_disabled_fg_inactive">#40191716</color>
   <color name="color_form_input_disabled_caret">#40191716</color>
   <color name="color_form_input_disabled_help">#40191716</color>
   <color name="color_list_icon">#ff7a2e6f</color>
-  <color name="color_list_disclosure">#80191716</color>
+  <color name="color_list_disclosure">#99191716</color>
   <color name="color_map_marker_bg">#ff7a2e6f</color>
   <color name="color_map_marker_fg">#ffffffff</color>
   <color name="color_map_path_ride">#ff7a2e6f</color>
@@ -969,7 +969,7 @@
   <color name="color_table_bg_edit">#ffede6d9</color>
   <color name="color_table_cue_active">#ff7a2e6f</color>
   <color name="color_table_border_main">#26191716</color>
-  <color name="color_table_icon_sort">#80191716</color>
+  <color name="color_table_icon_sort">#99191716</color>
   <item name="gradient_primitive_black_l_000_angle" type="dimen" format="float">0</item>
   <color name="gradient_primitive_black_l_000_stop_1_color">#00000000</color>
   <item name="gradient_primitive_black_l_000_stop_1_position" type="dimen" format="float">0</item>

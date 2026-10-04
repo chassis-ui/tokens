@@ -3,7 +3,7 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Sun, 27 Sep 2026 20:31:46 GMT
+// Generated on Sun, 04 Oct 2026 07:19:23 GMT
 // Chassis - Tokens v0.6.0
 // Copyright 2026 Ozgur Gunes
 // Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
@@ -465,11 +465,12 @@ object ChassisTokensNumberMedium {
     val opacityLevelZero get() = 0f
     val opacityLevel05 get() = 0.05f
     val opacityLevelSolid get() = 1f
-    val opacityContextFgSubtle get() = 0.5f
+    val opacityContextFgSubtle get() = 0.6f
     val opacityContextFgSlight get() = 0.25f
+    val opacityContextFgA11y get() = 0.7f
     val opacityContextBorderMain get() = 0.4f
     val opacityContextBorderSubtle get() = 0.15f
-    val opacityContextIconSubtle get() = 0.4f
+    val opacityContextIconSubtle get() = 0.5f
     val opacityContextIconSlight get() = 0.2f
     val opacityContextCueSlight get() = 0.2f
     val opacityContextDimMain get() = 0.7f

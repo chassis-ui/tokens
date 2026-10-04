@@ -4,7 +4,7 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Sun, 27 Sep 2026 20:31:49 GMT
+// Generated on Sun, 04 Oct 2026 07:19:27 GMT
 // Chassis - Tokens v0.6.0
 // Copyright 2026 Ozgur Gunes
 // Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
@@ -460,11 +460,12 @@ public enum ChassisTokensNumberMedium {
     public static let OpacityLevelZero = CGFloat(0)
     public static let OpacityLevel05 = CGFloat(0.05)
     public static let OpacityLevelSolid = CGFloat(1)
-    public static let OpacityContextFgSubtle = CGFloat(0.5)
+    public static let OpacityContextFgSubtle = CGFloat(0.6)
     public static let OpacityContextFgSlight = CGFloat(0.25)
+    public static let OpacityContextFgA11y = CGFloat(0.7)
     public static let OpacityContextBorderMain = CGFloat(0.4)
     public static let OpacityContextBorderSubtle = CGFloat(0.15)
-    public static let OpacityContextIconSubtle = CGFloat(0.4)
+    public static let OpacityContextIconSubtle = CGFloat(0.5)
     public static let OpacityContextIconSlight = CGFloat(0.2)
     public static let OpacityContextCueSlight = CGFloat(0.2)
     public static let OpacityContextDimMain = CGFloat(0.7)
