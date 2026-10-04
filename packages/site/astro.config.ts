@@ -11,7 +11,11 @@ const config = loadConfig({ root })
 export default defineConfig({
   outDir: '../../_site',
   build: {
-    assets: `static/astro`
+    // The files of the build are written to _site/tokens/static/astro/ and requested as
+    // /tokens/static/astro/…, which chassis-ui.com routes to this site by path. Under /static
+    // it routes by the `Referer` header, and that of a script another script imports names no
+    // site. The shared files stay on /static. Keep this folder in every name pattern below.
+    assets: `tokens/static/astro`
   },
   integrations: [chassisDocs({ config }), ...chassis({ config, root })],
   vite: {
@@ -20,9 +24,9 @@ export default defineConfig({
         build: {
           rolldownOptions: {
             output: {
-              entryFileNames: `static/astro/docs.[hash].js`,
-              chunkFileNames: 'static/astro/docs.[hash].js'
-              // assetFileNames: 'static/astro/docs.[hash][extname]'
+              entryFileNames: `tokens/static/astro/docs.[hash].js`,
+              chunkFileNames: 'tokens/static/astro/docs.[hash].js'
+              // assetFileNames: 'tokens/static/astro/docs.[hash][extname]'
             }
           }
         }
@@ -32,7 +36,7 @@ export default defineConfig({
     build: {
       rolldownOptions: {
         output: {
-          assetFileNames: 'static/astro/docs.[hash][extname]'
+          assetFileNames: 'tokens/static/astro/docs.[hash][extname]'
         }
       }
     },
