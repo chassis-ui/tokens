@@ -92,7 +92,7 @@ The light and dark color files come from two instances, so no format sees both t
 
 ### The committed `dist/` is the reference
 
-`dist/` is committed and published. `pnpm tokens:verify` builds into `dist-next/` and compares every file with `dist/`, ignoring only the header lines with the timestamp and the version, so any change to the build that changes the output fails until `dist/` is rebuilt and the change is reviewed. The presets write nothing into `dist/`, so their reference output is committed in `test/golden/<preset>/` and checked by `pnpm tokens:verify:presets`.
+`dist/` is committed and published. `pnpm tokens:verify` builds into `dist-next/` and compares every file with `dist/`, ignoring only the header lines with the timestamp and the version, so any change to the build that changes the output fails until `dist/` is rebuilt and the change is reviewed. The presets write nothing into `dist/`, so their reference output is committed in `test/golden/<preset>/` and checked by `pnpm tokens:verify:presets`. `pnpm tokens:verify:update` writes both references again after a change that is meant to change the output.
 
 ## Configuration
 
@@ -143,15 +143,15 @@ The repository root also has `Package.swift`, written by `build/swift-package.js
 
 ### Filters
 
-| Filter               | Files                               | Tokens                                                                                                                    |
-| -------------------- | ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
-| `cx/allTokens`       | main                                | every emitted type, without the colors under `color.primitive`, `color.context`, `color.utility` and `gradient.primitive` |
-| `cx/stringTokens`    | string                              | asset, content, fontFamily, fontStyle, fontWeight, string, text, textCase, textDecoration, type                           |
-| `cx/themeTokens`     | color files                         | colors, without `path[1]` `base` or `utility`, and shadows                                                                |
-| `cx/numberTokens`    | number files                        | duration, letterSpacing, number, opacity, and the size group: dimension, fontSize, lineHeight, paragraphSpacing           |
-| `cx/baseColorTokens` | Android `res/values/color_base.xml` | colors whose `path[1]` is `base`                                                                                          |
+| Filter               | Files                               | Tokens                                                                                                                                                  |
+| -------------------- | ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `cx/allTokens`       | main                                | every emitted type, without the colors under `color.primitive`, `color.context`, `color.utility` and `gradient.primitive`, and without `opacity.base.*` |
+| `cx/stringTokens`    | string                              | asset, content, fontFamily, fontStyle, fontWeight, string, text, textCase, textDecoration, type                                                         |
+| `cx/themeTokens`     | color files                         | colors, without `path[1]` `base` or `utility`, and shadows                                                                                              |
+| `cx/numberTokens`    | number files                        | duration, letterSpacing, number, opacity without `opacity.base.*`, and the size group: dimension, fontSize, lineHeight, paragraphSpacing                |
+| `cx/baseColorTokens` | Android `res/values/color_base.xml` | colors whose `path[1]` is `base`                                                                                                                        |
 
-The type groups are in `utils.js`. Tokens typed `boolean` or `other` are never emitted, and neither are the groups that exist for Figma only, `figma.*` (mode switches and the frame sizes of the Figma files) and `bg-blur.*` (background blur effects); every filter leaves them out (`figmaOnlyGroups` in `filters.js`). `dimension.base.*` is emitted in the main and number files on purpose: other sizes reference it, and with `outputReferences` they name it.
+The type groups are in `utils.js`. Tokens typed `boolean` or `other` are never emitted, and neither are the groups that exist for Figma only, `figma.*` (mode switches and the frame sizes of the Figma files) and `bg-blur.*` (background blur effects); every filter leaves them out (`figmaOnlyGroups` in `filters.js`). `dimension.base.*` is emitted in the main and number files on purpose: other sizes reference it, and with `outputReferences` they name it. `opacity.base.*` is not emitted (`isBaseOpacity` in `filters.js`): it holds the alphas of the color roles that a brand sets, `opacity.context.*` references them one to one, and apps use those.
 
 Only the web keeps a shadow token whole, so only the web color files hold shadows. The mobile platforms expand a shadow into its parts; the color part of each layer is a color, in the main file and the color files, and the other parts are sizes and strings.
 
@@ -260,6 +260,7 @@ An icon is an `asset` token whose value is an SVG document. It stays a string to
 | `pnpm tokens:test`           | Vitest, on real tokens and the committed `dist/`; includes the golden checks and that `Package.swift` matches `chassis.build`                                        |
 | `pnpm tokens:verify`         | A fresh build equals `dist/`; no name twice in one file; every reference names something the output declares                                                         |
 | `pnpm tokens:verify:presets` | Each preset equals its baseline in `test/golden/`                                                                                                                    |
+| `pnpm tokens:verify:update`  | Not a check: writes the files of `dist/` and of the baselines that differ from a fresh build                                                                         |
 | `pnpm tokens:diff`           | Not a check: the names added, removed, renamed and changed in each `dist/` file against another ref; CI writes it to the pull request's summary                      |
 | `pnpm tokens:native:ios`     | The Swift files against the iOS simulator SDK, the asset catalogs with `actool`, and a sample that uses the Swift package (needs Xcode)                              |
 | `pnpm tokens:native:android` | The Android resources against `android.jar`, the Compose objects against Compose, and a sample app that uses the Android libraries (needs a JDK and the Android SDK) |
@@ -276,6 +277,7 @@ They are part of the output contract and kept on purpose. Don't fix one without 
 - **Letter spacing has different units per platform.** Web ems of 16 px, iOS points, Android and Compose ems of the font size; the letter spacing scale is in pixels on iOS and Android because it has no font size.
 - **Icons are in the string files too.** The SVG text of each icon is a string constant or resource next to its asset; on Android it is escaped.
 - **`dimension.base.*` is emitted** in the main and number files, though apps use the scales that reference it.
+- **`opacity.base.*` is not emitted**, though `dimension.base.*` and the base colors are. With `outputReferences`, an `opacity.context.*` token prints its number, since no file declares the token it references.
 - **Two spellings of one weight.** The source spells semi bold `Semi Bold` for Inter and `SemiBold` for other fonts, the style name of each font in Figma. The build maps both to `600`; don't normalize the source, or the fonts break in Figma.
 - **The web presets share the web folder.** `web`, `web-scss`, `web-px` and `web-vw` all write to `dist/web/<app>/<brand>/`, so an app selects one of them.
 - **iOS shadows have a derived radius.** `…Radius` is half the CSS blur, close to Core Animation's `shadowRadius`; the spread has no Core Animation equivalent.

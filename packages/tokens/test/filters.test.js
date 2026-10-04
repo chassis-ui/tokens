@@ -48,6 +48,17 @@ describe('filters', () => {
     }
   })
 
+  test('leave the base opacities of the brand out of every file', () => {
+    for (const role of ['fg-subtle', 'fg-a11y', 'transparent-color']) {
+      const token = { path: ['opacity', 'base', 'context', role], $type: 'opacity' }
+      expect(matchingFilters(token)).toEqual([])
+      expect(matchingFilters({ ...token, path: ['opacity', 'context', role] })).toEqual([
+        'cx/allTokens',
+        'cx/numberTokens'
+      ])
+    }
+  })
+
   test('leave out the groups that exist for Figma only', () => {
     expect(figmaOnlyGroups).toEqual(['figma', 'bg-blur'])
     for (const [path, $type] of [
@@ -68,6 +79,27 @@ describe('filters', () => {
     expect(swift).toMatch(/static let ShadowContextSmall1Color = UIColor\(/)
     expect(xml).toMatch(/<color name="shadow_context_small_1_color">/)
     expect(swift).not.toMatch(/Figma|BgBlur/)
+  })
+
+  test('put the context opacities into the committed files, without the base opacities', () => {
+    for (const file of ['web/docs/chassis/main.scss', 'web/docs/chassis/number-large.scss']) {
+      expect(dist(file)).toMatch(/^\$cx-opacity-context-fg-a11y: /m)
+      expect(dist(file)).not.toMatch(/opacity-base/)
+    }
+    for (const file of [
+      'ios/demo/chassis/ChassisTokens.swift',
+      'ios/demo/chassis/NumberLarge.swift'
+    ]) {
+      expect(dist(file)).toMatch(/static let OpacityContextFgA11y = /)
+      expect(dist(file)).not.toMatch(/OpacityBase/)
+    }
+    for (const file of [
+      'android/demo/chassis/main.xml',
+      'android/demo/chassis/res/values/number.xml'
+    ]) {
+      expect(dist(file)).toMatch(/<item name="opacity_context_fg_a11y" /)
+      expect(dist(file)).not.toMatch(/opacity_base/)
+    }
   })
 
   test('put every web shadow into the color file of each theme', () => {

@@ -29,17 +29,26 @@ const isPaletteColor = (token) =>
   ['primitive', 'context', 'utility'].includes(token.path[1])
 
 /**
+ * The opacities a brand sets, under `opacity.base`. No file has them: the
+ * `opacity.context.*` tokens reference them one to one, and apps use those.
+ * @param {Object} token - A resolved token.
+ * @returns {boolean}
+ */
+const isBaseOpacity = (token) => token.path[0] === 'opacity' && token.path[1] === 'base'
+
+/**
  * The file filters by name, before the Figma-only groups are left out. The
  * `dimension.base.*` scale is emitted in the main and number files on purpose: other sizes
  * reference it, and with `outputReferences` they name it (`SizeUnit4 = DimensionBase4`).
  */
 const fileFilters = {
-  // Everything that goes into main: all emitted types, without the theme palettes.
+  // Everything that goes into main: all emitted types, without the theme palettes and the
+  // base opacities.
   'cx/allTokens': (token) =>
     (tokenTypes.color.includes(token.$type) && !isPaletteColor(token)) ||
     tokenTypes.font.includes(token.$type) ||
     tokenTypes.gradient.includes(token.$type) ||
-    tokenTypes.number.includes(token.$type) ||
+    (tokenTypes.number.includes(token.$type) && !isBaseOpacity(token)) ||
     tokenTypes.shadow.includes(token.$type) ||
     tokenTypes.size.includes(token.$type) ||
     tokenTypes.string.includes(token.$type),
@@ -55,9 +64,10 @@ const fileFilters = {
     (tokenTypes.color.includes(token.$type) && !['base', 'utility'].includes(token.path[1])) ||
     tokenTypes.shadow.includes(token.$type),
 
-  // Numbers and sizes, which change with the screen.
+  // Numbers and sizes, which change with the screen, without the base opacities.
   'cx/numberTokens': (token) =>
-    tokenTypes.number.includes(token.$type) || tokenTypes.size.includes(token.$type),
+    (tokenTypes.number.includes(token.$type) || tokenTypes.size.includes(token.$type)) &&
+    !isBaseOpacity(token),
 
   // Strings, font names and assets.
   'cx/stringTokens': (token) => tokenTypes.string.includes(token.$type)

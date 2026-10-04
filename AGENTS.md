@@ -38,7 +38,7 @@ Run the checks of the area you changed, and report the ones that fail.
 | Area changed                                      | Run                                                                                                                 |
 | ------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
 | `packages/tokens/build/` or `test/`               | `pnpm tokens:lint`, `pnpm tokens:typecheck`, `pnpm tokens:test`, `pnpm tokens:verify`, `pnpm tokens:verify:presets` |
-| `source/`                                         | `pnpm tokens:lint:source`, `pnpm tokens`, `pnpm tokens:diff`, then the row above                                    |
+| `source/`                                         | `pnpm tokens:lint:source`, `pnpm tokens:verify:update`, `pnpm tokens:diff`, then the row above                      |
 | `packages/site/`                                  | `pnpm site:lint`, `pnpm check:astro`, `pnpm site:build`, `pnpm site:lint:html`                                      |
 | Any Markdown, JSON or configuration file          | `pnpm lint:prettier`                                                                                                |
 | `chassis.build` in `packages/tokens/package.json` | `pnpm tokens`, `pnpm tokens:swift-package`                                                                          |
@@ -48,8 +48,9 @@ Run the checks of the area you changed, and report the ones that fail.
 - **Never edit `packages/tokens/dist/` or the baselines in `test/golden/<preset>/` by hand.**
   They are the reference that `tokens:verify` and `tokens:verify:presets` compare a fresh build
   with. Change the source or
-  the build, rebuild, and review the result with `pnpm tokens:diff`. The commands that write the
-  preset baselines again are in [CONTRIBUTING.md](.github/CONTRIBUTING.md#changing-tokens).
+  the build, write both again with `pnpm tokens:verify:update`, and review the result with
+  `pnpm tokens:diff` and `git diff`. The steps are in
+  [CONTRIBUTING.md](.github/CONTRIBUTING.md#changing-tokens).
 - **Templates only print.** Platform values (`UIColor(…)`, ARGB colors, `sp` and `dp`, quoting,
   references) come from the pure functions in `build/values/` and the reference policies, which
   run on resolved tokens. Do not encode a value in a template, and do not register an encoder

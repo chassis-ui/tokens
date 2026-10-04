@@ -545,47 +545,51 @@
     "context": {
       "fg-subtle": {
         "$type": "opacity",
-        "$value": "0.5"
+        "$value": "{opacity.base.context.fg-subtle}"
       },
       "fg-slight": {
         "$type": "opacity",
-        "$value": "0.25"
+        "$value": "{opacity.base.context.fg-slight}"
+      },
+      "fg-a11y": {
+        "$type": "opacity",
+        "$value": "{opacity.base.context.fg-a11y}"
       },
       "border-main": {
         "$type": "opacity",
-        "$value": "0.4"
+        "$value": "{opacity.base.context.border-main}"
       },
       "border-subtle": {
         "$type": "opacity",
-        "$value": "0.15"
+        "$value": "{opacity.base.context.border-subtle}"
       },
       "icon-subtle": {
         "$type": "opacity",
-        "$value": "0.4"
+        "$value": "{opacity.base.context.icon-subtle}"
       },
       "icon-slight": {
         "$type": "opacity",
-        "$value": "0.2"
+        "$value": "{opacity.base.context.icon-slight}"
       },
       "cue-slight": {
         "$type": "opacity",
-        "$value": "0.2"
+        "$value": "{opacity.base.context.cue-slight}"
       },
       "dim-main": {
         "$type": "opacity",
-        "$value": "0.7"
+        "$value": "{opacity.base.context.dim-main}"
       },
       "dim-subtle": {
         "$type": "opacity",
-        "$value": "0.3"
+        "$value": "{opacity.base.context.dim-subtle}"
       },
       "dim-slight": {
         "$type": "opacity",
-        "$value": "0.05"
+        "$value": "{opacity.base.context.dim-slight}"
       },
       "transparent-color": {
         "$type": "opacity",
-        "$value": "0"
+        "$value": "{opacity.base.context.transparent-color}"
       }
     }
   }

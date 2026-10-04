@@ -1,5 +1,5 @@
 {
-  "source": "Resolved chassis/docs web tokens (light and large sets) from the SD 5.5 build, extracted 2026-09-27. \"files\" lists the filters whose file in the committed dist/web/docs/chassis/ declares the token: cx/allTokens main.scss, cx/themeTokens color-light.scss, cx/numberTokens number-large.scss, cx/stringTokens string.scss. One token per type, per color group and per result.",
+  "source": "Resolved chassis/docs web tokens (light and large sets) from the SD 5.5 build, extracted 2026-09-27. \"files\" lists the filters whose file in the committed dist/web/docs/chassis/ declares the token: cx/allTokens main.scss, cx/themeTokens color-light.scss, cx/numberTokens number-large.scss, cx/stringTokens string.scss. One token per type, per color group and per result. The two fg-subtle opacities were added on 2026-10-04: the build resolves opacity.base.context.fg-subtle and no file declares it.",
   "cases": [
     {
       "token": {
@@ -24,6 +24,22 @@
         "$type": "opacity"
       },
       "files": ["cx/allTokens", "cx/numberTokens"]
+    },
+    {
+      "token": {
+        "name": "cx-opacity-context-fg-subtle",
+        "path": ["opacity", "context", "fg-subtle"],
+        "$type": "opacity"
+      },
+      "files": ["cx/allTokens", "cx/numberTokens"]
+    },
+    {
+      "token": {
+        "name": "cx-opacity-base-context-fg-subtle",
+        "path": ["opacity", "base", "context", "fg-subtle"],
+        "$type": "opacity"
+      },
+      "files": []
     },
     {
       "token": {

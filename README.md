@@ -157,6 +157,20 @@ The [presets](#presets-for-other-css-frameworks) write nothing into `dist/`. The
 pnpm tokens:verify:presets
 ```
 
+After a change that is meant to change the output, write both references again:
+
+```sh
+pnpm tokens:verify:update
+```
+
+It builds `dist/` and every preset, and writes the files that differ into `dist/` and `test/golden/`; a file that differs in its header lines only is left as it is. It names each file it writes or deletes, and writes nothing when a name appears twice or a reference names nothing. Review the result with `pnpm tokens:diff` and `git diff`.
+
+```sh
+# One reference only (from packages/tokens/)
+node build/verify.js --update
+node build/verify.js --update --preset web-px
+```
+
 ### Token Diff Report
 
 See what a change does to the tokens without reading `dist/`: the names added, removed and changed in value in each file, and a removed and an added name with the same value as a possible rename. Removed and renamed names are marked breaking. Header lines are ignored, and the icon assets are compared as whole files.
@@ -171,7 +185,7 @@ pnpm tokens:diff --base v0.5.3
 
 The report is Markdown. On a pull request, CI writes it to the job summary.
 
-After changing tokens, run `pnpm tokens`, commit the updated `dist/` and write the preset baselines again; [CONTRIBUTING.md](.github/CONTRIBUTING.md#changing-tokens) has the commands.
+After changing tokens, run `pnpm tokens:verify:update` and commit the updated `dist/` and preset baselines; [CONTRIBUTING.md](.github/CONTRIBUTING.md#changing-tokens) has the steps.
 
 ### Tests
 

@@ -85,13 +85,13 @@ format. Edit them in Figma with Tokens Studio, synced to this repository with th
    difference the same way:
 
    ```sh
-   cd packages/tokens
-   for config in test/golden/*.json; do
-     node build/build.js --config "$config" --out "test/golden/$(basename "$config" .json)"
-   done
-   cd ../..
-   pnpm tokens:verify:presets
+   pnpm tokens:verify:update
+   git diff packages/tokens/test/golden
    ```
+
+   `pnpm tokens:verify:update` builds `dist/` and every preset, and writes the files that differ
+   into `dist/` and `test/golden/`. It names each file it writes or deletes, and writes nothing
+   when the build fails one of the other checks of `pnpm tokens:verify`.
 
 4. Add a changeset (see [Changesets](#changesets)) that says what changed and what an app has to
    change, if anything.

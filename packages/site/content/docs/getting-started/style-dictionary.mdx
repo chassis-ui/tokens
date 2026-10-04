@@ -441,11 +441,11 @@ A filter selects the tokens of one kind of file by their type and path. Every pl
 | `cx/allTokens` | Main | Every type that the build writes, without the colors under `color.primitive`, `color.context`, `color.utility`, and `gradient.primitive` | `color.accordion.item-fg-color` |
 | `cx/stringTokens` | String | `asset`, `content`, `fontFamily`, `fontStyle`, `fontWeight`, `string`, `text`, `textCase`, `textDecoration`, `type` | `icon.accordion.indicator` |
 | `cx/themeTokens` | Color | Colors whose second path segment is not `base` or `utility`, and shadows | `color.context.default.fg-main` |
-| `cx/numberTokens` | Number | `duration`, `letterSpacing`, `number`, `opacity`, and the sizes | `space.context.medium` |
+| `cx/numberTokens` | Number | `duration`, `letterSpacing`, `number`, `opacity` without `opacity.base.*`, and the sizes | `space.context.medium` |
 | `cx/baseColorTokens` | `res/values/color_base.xml` of Android | Colors whose second path segment is `base` | `color.base.context.light.default.fg-main` |
 </CxTable>
 
-Gradients are typed `color`, so `gradient.primitive.*` is in the color files and not in the main file. Only the web keeps a shadow whole, so only the web color files hold shadows; iOS and Android split a shadow into parts, and the color of each layer is in the main file and the color files. No file holds the tokens typed `boolean` or `other`, the colors under `color.utility`, or the groups that exist for Figma only, `figma.*` and `bg-blur.*`.
+Gradients are typed `color`, so `gradient.primitive.*` is in the color files and not in the main file. Only the web keeps a shadow whole, so only the web color files hold shadows; iOS and Android split a shadow into parts, and the color of each layer is in the main file and the color files. No file holds the tokens typed `boolean` or `other`, the colors under `color.utility`, the opacities under `opacity.base`, which the `opacity.context.*` tokens reference, or the groups that exist for Figma only, `figma.*` and `bg-blur.*`.
 
 ## Formats
 

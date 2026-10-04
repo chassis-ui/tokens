@@ -6,25 +6,30 @@
  *              one file, because Sass rejects duplicate `$cx-*` variables, and when a
  *              reference names nothing the output declares. With
  *              `--preset`, builds a preset that writes nothing into `dist/` and
- *              compares it with its baseline in `test/golden/`.
+ *              compares it with its baseline in `test/golden/`. With `--update`,
+ *              writes the files that differ into the reference instead of failing.
  *
  * Usage:
  *   node build/verify.js [--out <dir>] [--platform <name>] [--skip-build]
  *   node build/verify.js --preset <name> [--out <dir>] [--skip-build]
+ *   node build/verify.js --update [--preset <name>] [--out <dir>]
  *
  *   --out <dir>        Scratch output directory (default: dist-next). Deleted before the build.
  *   --platform <name>  Build and compare one platform only; repeat or comma-separate for more.
  *   --preset <name>    Check a preset against its baseline; repeat or comma-separate for
  *                      more, or `all` for every preset.
  *   --skip-build       Compare an existing output directory without building.
+ *   --update           Write the reference again: `dist/`, or with `--preset` the baselines.
+ *                      Only the files that differ are written, and the output directory
+ *                      is deleted afterwards.
  *
  * @copyright Copyright (c) 2026 Ozgur Gunes
  * @license MIT
  */
 
 import { spawn } from 'node:child_process'
-import { readdir, readFile, rm } from 'node:fs/promises'
-import { basename, extname, isAbsolute, join, relative, resolve, sep } from 'node:path'
+import { copyFile, mkdir, readdir, readFile, rm } from 'node:fs/promises'
+import { basename, dirname, extname, isAbsolute, join, relative, resolve, sep } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { parseArgs } from 'node:util'
 
@@ -263,6 +268,37 @@ export function formatReport(result, reference = 'dist/') {
 }
 
 /**
+ * Writes a build output into the reference directory: the files that differ and the new
+ * ones are copied, and the files the build no longer writes are deleted. A file that
+ * differs in its header lines only is left as it is. Writes nothing when a token name
+ * appears twice in one file or a reference names nothing the output declares, since no
+ * reference can make that check pass.
+ *
+ * @param {string} expectedDir - The reference output; created when it has no files yet.
+ * @param {string} actualDir - Output of the build to take over.
+ * @returns {Promise<Object>} `{ ok, written, deleted, result }`, with the relative paths
+ *   written and deleted and the result of `compareOutput` before the update.
+ */
+export async function updateReference(expectedDir, actualDir) {
+  // A preset without a baseline yet has nothing to compare with
+  const isNew = (await listFiles(expectedDir)).length === 0
+  const result = await compareOutput(isNew ? actualDir : expectedDir, actualDir)
+  if (result.duplicates.length > 0 || result.undeclared.length > 0) {
+    return { ok: false, written: [], deleted: [], result }
+  }
+
+  const written = isNew
+    ? await listFiles(actualDir)
+    : [...result.differing.map(({ file }) => file), ...result.extra].sort()
+  for (const file of written) {
+    await mkdir(dirname(join(expectedDir, file)), { recursive: true })
+    await copyFile(join(actualDir, file), join(expectedDir, file))
+  }
+  for (const file of result.missing) await rm(join(expectedDir, file))
+  return { ok: true, written, deleted: result.missing, result }
+}
+
+/**
  * Lists the presets that have a baseline: every `<name>.json` in the golden directory.
  */
 export async function listPresets() {
@@ -353,13 +389,51 @@ async function check({ expectedDir, outDir, platforms, config, skipBuild }) {
   return result.ok
 }
 
+/**
+ * Builds into `outDir`, writes the files that differ into `expectedDir` and deletes
+ * `outDir`.
+ *
+ * @param {Object} options
+ * @param {string} options.expectedDir - The reference output to write again.
+ * @param {string} options.outDir - The scratch output directory.
+ * @param {string} [options.config] - A preset's build configuration file.
+ * @returns {Promise<boolean>} Whether the reference now matches the build.
+ */
+async function update({ expectedDir, outDir, config }) {
+  const build = await runBuild(outDir, { config })
+  if (build.code !== 0) {
+    console.error(build.output.split('\n').slice(-40).join('\n'))
+    console.error(`❌ Build failed with exit code ${build.code}`)
+    return false
+  }
+
+  const reference = `${relative(ROOT_DIR, expectedDir)}/`
+  const { ok, written, deleted, result } = await updateReference(expectedDir, outDir)
+  if (!ok) {
+    console.error(formatReport({ ...result, missing: [], extra: [], differing: [] }, reference))
+    console.error(`❌ ${reference} not updated`)
+    return false
+  }
+  await rm(outDir, { recursive: true, force: true })
+
+  if (written.length + deleted.length === 0) {
+    console.log(`✅ ${reference} is up to date`)
+    return true
+  }
+  for (const file of written) console.log(`  written    ${file}`)
+  for (const file of deleted) console.log(`  deleted    ${file}`)
+  console.log(`✅ Updated ${reference}: ${written.length} written, ${deleted.length} deleted`)
+  return true
+}
+
 async function main() {
   const { values } = parseArgs({
     options: {
       out: { type: 'string', default: 'dist-next' },
       platform: { type: 'string', multiple: true, default: [] },
       preset: { type: 'string', multiple: true, default: [] },
-      'skip-build': { type: 'boolean', default: false }
+      'skip-build': { type: 'boolean', default: false },
+      update: { type: 'boolean', default: false }
     }
   })
   const list = (items) => items.flatMap((value) => value.split(',')).filter(Boolean)
@@ -368,8 +442,14 @@ async function main() {
   const platforms = list(values.platform)
   let presets = list(values.preset)
 
+  if (values.update && (skipBuild || platforms.length > 0)) {
+    throw new Error('--update takes neither --skip-build nor --platform')
+  }
+  const run = (options) =>
+    values.update ? update(options) : check({ ...options, platforms, skipBuild })
+
   if (presets.length === 0) {
-    const ok = await check({ expectedDir: DIST_DIR, outDir, platforms, skipBuild })
+    const ok = await run({ expectedDir: DIST_DIR, outDir })
     process.exit(ok ? 0 : 1)
   }
 
@@ -385,7 +465,7 @@ async function main() {
 
   let ok = true
   for (const preset of presets) {
-    const passed = await check({ ...presetPaths(preset), outDir, platforms, skipBuild })
+    const passed = await run({ ...presetPaths(preset), outDir })
     ok = ok && passed
   }
   process.exit(ok ? 0 : 1)

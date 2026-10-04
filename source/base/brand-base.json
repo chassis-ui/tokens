@@ -4370,7 +4370,7 @@
             },
             "fg-subtle": {
               "$type": "color",
-              "$value": "rgba({color.base.context.light.primary.fg-main}, {opacity.context.fg-subtle})"
+              "$value": "rgba({color.base.context.light.primary.fg-main}, {opacity.context.fg-a11y})"
             },
             "fg-slight": {
               "$type": "color",
@@ -4528,7 +4528,7 @@
             },
             "fg-subtle": {
               "$type": "color",
-              "$value": "rgba({color.base.context.light.secondary.fg-main}, {opacity.context.fg-subtle})"
+              "$value": "rgba({color.base.context.light.secondary.fg-main}, {opacity.context.fg-a11y})"
             },
             "fg-slight": {
               "$type": "color",
@@ -4686,7 +4686,7 @@
             },
             "fg-subtle": {
               "$type": "color",
-              "$value": "rgba({color.base.context.light.neutral.fg-main}, {opacity.context.fg-subtle})"
+              "$value": "rgba({color.base.context.light.neutral.fg-main}, {opacity.context.fg-a11y})"
             },
             "fg-slight": {
               "$type": "color",
@@ -4844,7 +4844,7 @@
             },
             "fg-subtle": {
               "$type": "color",
-              "$value": "rgba({color.base.context.light.danger.fg-main}, {opacity.context.fg-subtle})"
+              "$value": "rgba({color.base.context.light.danger.fg-main}, {opacity.context.fg-a11y})"
             },
             "fg-slight": {
               "$type": "color",
@@ -5002,7 +5002,7 @@
             },
             "fg-subtle": {
               "$type": "color",
-              "$value": "rgba({color.base.context.light.success.fg-main}, {opacity.context.fg-subtle})"
+              "$value": "rgba({color.base.context.light.success.fg-main}, {opacity.context.fg-a11y})"
             },
             "fg-slight": {
               "$type": "color",
@@ -5160,7 +5160,7 @@
             },
             "fg-subtle": {
               "$type": "color",
-              "$value": "rgba({color.base.context.light.warning.fg-main}, {opacity.context.fg-subtle})"
+              "$value": "rgba({color.base.context.light.warning.fg-main}, {opacity.context.fg-a11y})"
             },
             "fg-slight": {
               "$type": "color",
@@ -5318,7 +5318,7 @@
             },
             "fg-subtle": {
               "$type": "color",
-              "$value": "rgba({color.base.context.light.info.fg-main}, {opacity.context.fg-subtle})"
+              "$value": "rgba({color.base.context.light.info.fg-main}, {opacity.context.fg-a11y})"
             },
             "fg-slight": {
               "$type": "color",
@@ -6106,11 +6106,11 @@
             },
             "fg-main": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.primary.40}"
+              "$value": "{color.base.primitive.dark.primary.30}"
             },
             "fg-subtle": {
               "$type": "color",
-              "$value": "rgba({color.base.context.dark.primary.fg-main}, {opacity.context.fg-subtle})"
+              "$value": "rgba({color.base.context.dark.primary.fg-main}, {opacity.context.fg-a11y})"
             },
             "fg-slight": {
               "$type": "color",
@@ -6130,7 +6130,7 @@
             },
             "fg-highlight": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.primary.30}"
+              "$value": "{color.base.primitive.dark.primary.20}"
             },
             "bg-main": {
               "$type": "color",
@@ -6190,15 +6190,15 @@
             },
             "link-main": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.primary.40}"
+              "$value": "{color.base.primitive.dark.primary.20}"
             },
             "link-hover": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.primary.30}"
+              "$value": "{color.base.primitive.dark.primary.10}"
             },
             "link-active": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.primary.40}"
+              "$value": "{color.base.primitive.dark.primary.20}"
             },
             "link-visited": {
               "$type": "color",
@@ -6264,11 +6264,11 @@
             },
             "fg-main": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.secondary.40}"
+              "$value": "{color.base.primitive.dark.secondary.30}"
             },
             "fg-subtle": {
               "$type": "color",
-              "$value": "rgba({color.base.context.dark.secondary.fg-main}, {opacity.context.fg-subtle})"
+              "$value": "rgba({color.base.context.dark.secondary.fg-main}, {opacity.context.fg-a11y})"
             },
             "fg-slight": {
               "$type": "color",
@@ -6288,7 +6288,7 @@
             },
             "fg-highlight": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.secondary.30}"
+              "$value": "{color.base.primitive.dark.secondary.20}"
             },
             "bg-main": {
               "$type": "color",
@@ -6348,15 +6348,15 @@
             },
             "link-main": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.secondary.40}"
+              "$value": "{color.base.primitive.dark.secondary.20}"
             },
             "link-hover": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.secondary.30}"
+              "$value": "{color.base.primitive.dark.secondary.10}"
             },
             "link-active": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.secondary.40}"
+              "$value": "{color.base.primitive.dark.secondary.20}"
             },
             "link-visited": {
               "$type": "color",
@@ -6422,11 +6422,11 @@
             },
             "fg-main": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.neutral.40}"
+              "$value": "{color.base.primitive.dark.neutral.30}"
             },
             "fg-subtle": {
               "$type": "color",
-              "$value": "rgba({color.base.context.dark.neutral.fg-main}, {opacity.context.fg-subtle})"
+              "$value": "rgba({color.base.context.dark.neutral.fg-main}, {opacity.context.fg-a11y})"
             },
             "fg-slight": {
               "$type": "color",
@@ -6446,7 +6446,7 @@
             },
             "fg-highlight": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.neutral.30}"
+              "$value": "{color.base.primitive.dark.neutral.20}"
             },
             "bg-main": {
               "$type": "color",
@@ -6506,15 +6506,15 @@
             },
             "link-main": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.neutral.40}"
+              "$value": "{color.base.primitive.dark.neutral.20}"
             },
             "link-hover": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.neutral.30}"
+              "$value": "{color.base.primitive.dark.neutral.10}"
             },
             "link-active": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.neutral.40}"
+              "$value": "{color.base.primitive.dark.neutral.20}"
             },
             "link-visited": {
               "$type": "color",
@@ -6580,11 +6580,11 @@
             },
             "fg-main": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.danger.40}"
+              "$value": "{color.base.primitive.dark.danger.30}"
             },
             "fg-subtle": {
               "$type": "color",
-              "$value": "rgba({color.base.context.dark.danger.fg-main}, {opacity.context.fg-subtle})"
+              "$value": "rgba({color.base.context.dark.danger.fg-main}, {opacity.context.fg-a11y})"
             },
             "fg-slight": {
               "$type": "color",
@@ -6604,7 +6604,7 @@
             },
             "fg-highlight": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.danger.30}"
+              "$value": "{color.base.primitive.dark.danger.20}"
             },
             "bg-main": {
               "$type": "color",
@@ -6664,15 +6664,15 @@
             },
             "link-main": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.danger.40}"
+              "$value": "{color.base.primitive.dark.danger.20}"
             },
             "link-hover": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.danger.30}"
+              "$value": "{color.base.primitive.dark.danger.10}"
             },
             "link-active": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.danger.40}"
+              "$value": "{color.base.primitive.dark.danger.20}"
             },
             "link-visited": {
               "$type": "color",
@@ -6738,11 +6738,11 @@
             },
             "fg-main": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.success.40}"
+              "$value": "{color.base.primitive.dark.success.30}"
             },
             "fg-subtle": {
               "$type": "color",
-              "$value": "rgba({color.base.context.dark.success.fg-main}, {opacity.context.fg-subtle})"
+              "$value": "rgba({color.base.context.dark.success.fg-main}, {opacity.context.fg-a11y})"
             },
             "fg-slight": {
               "$type": "color",
@@ -6762,7 +6762,7 @@
             },
             "fg-highlight": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.success.30}"
+              "$value": "{color.base.primitive.dark.success.20}"
             },
             "bg-main": {
               "$type": "color",
@@ -6822,15 +6822,15 @@
             },
             "link-main": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.success.40}"
+              "$value": "{color.base.primitive.dark.success.20}"
             },
             "link-hover": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.success.30}"
+              "$value": "{color.base.primitive.dark.success.10}"
             },
             "link-active": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.success.40}"
+              "$value": "{color.base.primitive.dark.success.20}"
             },
             "link-visited": {
               "$type": "color",
@@ -6896,11 +6896,11 @@
             },
             "fg-main": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.warning.40}"
+              "$value": "{color.base.primitive.dark.warning.30}"
             },
             "fg-subtle": {
               "$type": "color",
-              "$value": "rgba({color.base.context.dark.warning.fg-main}, {opacity.context.fg-subtle})"
+              "$value": "rgba({color.base.context.dark.warning.fg-main}, {opacity.context.fg-a11y})"
             },
             "fg-slight": {
               "$type": "color",
@@ -6920,7 +6920,7 @@
             },
             "fg-highlight": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.warning.30}"
+              "$value": "{color.base.primitive.dark.warning.20}"
             },
             "bg-main": {
               "$type": "color",
@@ -6980,15 +6980,15 @@
             },
             "link-main": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.warning.40}"
+              "$value": "{color.base.primitive.dark.warning.20}"
             },
             "link-hover": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.warning.30}"
+              "$value": "{color.base.primitive.dark.warning.10}"
             },
             "link-active": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.warning.40}"
+              "$value": "{color.base.primitive.dark.warning.20}"
             },
             "link-visited": {
               "$type": "color",
@@ -7054,11 +7054,11 @@
             },
             "fg-main": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.info.40}"
+              "$value": "{color.base.primitive.dark.info.30}"
             },
             "fg-subtle": {
               "$type": "color",
-              "$value": "rgba({color.base.context.dark.info.fg-main}, {opacity.context.fg-subtle})"
+              "$value": "rgba({color.base.context.dark.info.fg-main}, {opacity.context.fg-a11y})"
             },
             "fg-slight": {
               "$type": "color",
@@ -7078,7 +7078,7 @@
             },
             "fg-highlight": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.info.30}"
+              "$value": "{color.base.primitive.dark.info.20}"
             },
             "bg-main": {
               "$type": "color",
@@ -7138,15 +7138,15 @@
             },
             "link-main": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.info.40}"
+              "$value": "{color.base.primitive.dark.info.20}"
             },
             "link-hover": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.info.30}"
+              "$value": "{color.base.primitive.dark.info.10}"
             },
             "link-active": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.info.40}"
+              "$value": "{color.base.primitive.dark.info.20}"
             },
             "link-visited": {
               "$type": "color",
@@ -7859,6 +7859,60 @@
         "small-item": {
           "$type": "borderRadius",
           "$value": "{borderRadius.base.context.small}"
+        }
+      }
+    }
+  },
+  "opacity": {
+    "base": {
+      "context": {
+        "fg-subtle": {
+          "$type": "opacity",
+          "$value": "0.6"
+        },
+        "fg-slight": {
+          "$type": "opacity",
+          "$value": "0.25"
+        },
+        "fg-a11y": {
+          "$type": "opacity",
+          "$value": "0.7"
+        },
+        "border-main": {
+          "$type": "opacity",
+          "$value": "0.4"
+        },
+        "border-subtle": {
+          "$type": "opacity",
+          "$value": "0.15"
+        },
+        "icon-subtle": {
+          "$type": "opacity",
+          "$value": "0.5"
+        },
+        "icon-slight": {
+          "$type": "opacity",
+          "$value": "0.2"
+        },
+        "cue-slight": {
+          "$type": "opacity",
+          "$value": "0.2"
+        },
+        "dim-main": {
+          "$type": "opacity",
+          "$value": "0.7"
+        },
+        "dim-subtle": {
+          "$type": "opacity",
+          "$value": "0.3"
+        },
+        "dim-slight": {
+          "$type": "opacity",
+          "$value": "0.05"
+        },
+        "transparent-color": {
+          "$type": "opacity",
+          "$value": "0"
         }
       }
     }

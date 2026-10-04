@@ -2,7 +2,7 @@
 
 <!--
   Do not edit directly, this file was auto-generated.
-  Generated on Sun, 27 Sep 2026 20:28:14 GMT
+  Generated on Sun, 04 Oct 2026 07:19:21 GMT
   Chassis - Tokens v0.6.0
   Copyright 2026 Ozgur Gunes
   Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
@@ -456,11 +456,12 @@
   <item name="opacity_level_zero" type="dimen" format="float">0</item>
   <item name="opacity_level_05" type="dimen" format="float">0.05</item>
   <item name="opacity_level_solid" type="dimen" format="float">1</item>
-  <item name="opacity_context_fg_subtle" type="dimen" format="float">0.5</item>
+  <item name="opacity_context_fg_subtle" type="dimen" format="float">0.6</item>
   <item name="opacity_context_fg_slight" type="dimen" format="float">0.25</item>
+  <item name="opacity_context_fg_a11y" type="dimen" format="float">0.7</item>
   <item name="opacity_context_border_main" type="dimen" format="float">0.4</item>
   <item name="opacity_context_border_subtle" type="dimen" format="float">0.15</item>
-  <item name="opacity_context_icon_subtle" type="dimen" format="float">0.4</item>
+  <item name="opacity_context_icon_subtle" type="dimen" format="float">0.5</item>
   <item name="opacity_context_icon_slight" type="dimen" format="float">0.2</item>
   <item name="opacity_context_cue_slight" type="dimen" format="float">0.2</item>
   <item name="opacity_context_dim_main" type="dimen" format="float">0.7</item>

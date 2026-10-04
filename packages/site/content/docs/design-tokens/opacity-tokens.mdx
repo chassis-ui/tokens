@@ -12,27 +12,32 @@ Opacity tokens hold alpha values, as a number from `0` to `1`. The color tokens 
 
 ### Token levels
 
-Opacity tokens have a base and a context level, and no component level. Base tokens (`opacity.level.*`) hold a scale of levels, and context tokens (`opacity.context.*`) hold the alpha of a color role. The context tokens do not reference the scale: each holds a number of its own, which need not be a level of the scale.
+Opacity tokens have a base and a context level, and no component level. Base tokens hold a scale of levels (`opacity.level.*`) and the alpha of each color role (`opacity.base.context.*`). Context tokens (`opacity.context.*`) reference the alphas of the color roles. An alpha of a color role does not reference the scale: it holds a number of its own, which need not be a level of the scale.
 
-Both levels are in `source/base/metric-base.json`.
+The scale and the context tokens are in `source/base/metric-base.json`. The alphas of the color roles are in `source/base/brand-base.json`, next to the base colors, and the token set of a brand overrides them.
 
 ## Base tokens
 
 Base tokens hold the opacity scale, `opacity.level.*`. The name of a level is its opacity in percent: `opacity.level.30` is 30 percent opaque. The levels go from `10` to `90` in steps of ten, with `05` and `95` next to the ends of the scale; `zero` is fully transparent and `solid` is fully opaque. The transparent colors of the palette reference the levels from `05` to `95`, and the `transparent` colors reference `zero`; see [Usage](#usage).
 
+### Role alphas
+
+`opacity.base.context.*` holds the alpha of each color role, under the name of its context token: `opacity.base.context.fg-subtle` is the number that `opacity.context.fg-subtle` references. A brand sets its own alphas by overriding these tokens in its token set, `source/brand-<brand>/brand-base.json`, and takes the rest from `source/base/brand-base.json`. The build does not write them: the output has the context tokens, with the numbers of the brand.
+
 ## Context tokens
 
-Context tokens hold the alpha of a color role, and carry the name of that role. The colors of `color.base.context.*` reference them, in the color groups of every theme.
+Context tokens hold the alpha of a color role, and each references the base token of the same name. The colors of `color.base.context.*` reference them, in the color groups of every theme. The `fg-subtle` colors have two alphas: `opacity.context.fg-subtle` in the `default` and `alternate` contexts, and `opacity.context.fg-a11y` in the contexts of a brand or status color, such as `primary` and `danger`.
 
 <CxTable>
-| Token | Purpose |
-| --- | --- |
-| `opacity.context.fg-subtle` | Alpha of the `fg-subtle` colors |
-| `opacity.context.fg-slight` | Alpha of the `fg-slight` and `fg-disabled` colors |
-| `opacity.context.border-subtle` | Alpha of the `border-subtle` colors |
-| `opacity.context.icon-subtle` | Alpha of the `icon-subtle` colors |
-| `opacity.context.icon-slight` | Alpha of the `icon-slight` colors |
-| `opacity.context.cue-slight` | Alpha of the `cue-slight` colors |
+| Token | Reference | Purpose |
+| --- | --- | --- |
+| `opacity.context.fg-subtle` | `{opacity.base.context.fg-subtle}` | Alpha of the `fg-subtle` colors of the `default` and `alternate` contexts |
+| `opacity.context.fg-slight` | `{opacity.base.context.fg-slight}` | Alpha of the `fg-slight` and `fg-disabled` colors |
+| `opacity.context.fg-a11y` | `{opacity.base.context.fg-a11y}` | Alpha of the `fg-subtle` colors of the `primary`, `secondary`, `neutral`, `danger`, `success`, `warning`, and `info` contexts |
+| `opacity.context.border-subtle` | `{opacity.base.context.border-subtle}` | Alpha of the `border-subtle` colors |
+| `opacity.context.icon-subtle` | `{opacity.base.context.icon-subtle}` | Alpha of the `icon-subtle` colors |
+| `opacity.context.icon-slight` | `{opacity.base.context.icon-slight}` | Alpha of the `icon-slight` colors |
+| `opacity.context.cue-slight` | `{opacity.base.context.cue-slight}` | Alpha of the `cue-slight` colors |
 </CxTable>
 
 ## Usage
@@ -74,11 +79,12 @@ The level to change depends on how far the change must reach. A change to `opaci
 
 - **A transparent color in an app**: use the color token, such as `color.context.default.fg-subtle`, and not a color combined with an opacity token.
 - **A new transparent color token**: reference an `opacity.context.*` token when its role has one, and a level of `opacity.level.*` otherwise.
+- **The alpha of a role in one brand**: override the `opacity.base.context.*` token in the token set of the brand, and leave the context token as it is.
 - **The opacity of an element**: use a level of `opacity.level.*`.
 
 ## Platform output
 
-An opacity prints as a number without a unit on the web, as a `CGFloat` on iOS, and as a float item on Android.
+An opacity prints as a number without a unit on the web, as a `CGFloat` on iOS, and as a float item on Android. The build writes the scale and the context tokens, and not `opacity.base.context.*`.
 
 <CxTable>
 | Platform | Name | Format |
@@ -91,7 +97,7 @@ An opacity prints as a number without a unit on the web, as a `CGFloat` on iOS, 
 On Android, the build writes an `<item>` of the type `dimen` with the format `float` instead of a `<dimen>` element, and the reference of the item starts with `@dimen/`, as for a size. The values in the examples are those of the `chassis` brand in the current version and can differ in other brands. The build writes this line:
 
 ```xml
-  <item name="opacity_context_fg_subtle" type="dimen" format="float">0.5</item>
+  <item name="opacity_context_fg_subtle" type="dimen" format="float">0.6</item>
 ```
 
 A color that references an opacity token prints with its alpha, and not with a reference to the opacity: inside `rgba()` on the web, as the `alpha` of a `UIColor` on iOS, and as the first two digits of the ARGB hex color on Android.
