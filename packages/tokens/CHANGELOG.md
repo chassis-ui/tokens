@@ -1,5 +1,26 @@
 # Changelog
 
+## 0.7.0
+
+### Minor Changes
+
+- 40bbc73: A brand can set the alphas of its color roles, and the subtle text of the colored contexts has an alpha of its own.
+
+  - New token `opacity.context.fg-a11y` (`$cx-opacity-context-fg-a11y`, `OpacityContextFgA11y`, `opacity_context_fg_a11y`): the alpha of the `fg-subtle` colors of the `primary`, `secondary`, `neutral`, `danger`, `success`, `warning` and `info` contexts, which had the alpha of `opacity.context.fg-subtle`
+  - `opacity.context.*` references the new `opacity.base.context.*` in `source/base/brand-base.json`, which a brand overrides in its own token set. The build does not write `opacity.base.context.*`; the names and the format of the output stay as they are
+  - `opacity.context.fg-subtle` and `opacity.context.icon-subtle` are higher, and so is the alpha of every `fg-subtle` and `icon-subtle` color
+  - In the dark theme, `fg-main`, `fg-highlight`, `link-main`, `link-hover` and `link-active` of the same seven contexts are lighter shades of their palette, and so are the colors that reference them
+
+  No name is renamed or removed, so an app has nothing to change.
+
+- 3fb0d2c: The grid tokens hold the page margin and the number of columns of each breakpoint, and the gutters have new values.
+
+  - New tokens `grid.margin.xsmall` to `grid.margin.2xlarge` (`$cx-grid-margin-xsmall`, `GridMarginXsmall`, `grid_margin_xsmall`): the margin of the page at each breakpoint, a size like `grid.gutter.*`
+  - New tokens `grid.columns.xsmall` to `grid.columns.2xlarge` (`$cx-grid-columns-xsmall`, `GridColumnsXsmall`, `grid_columns_xsmall`): the number of columns of the layout grid at each breakpoint, a number without a unit. On Android it is an `<integer>` resource, and an `Int` in Compose
+  - `grid.gutter.*` changed in value: `xsmall` is 16 design pixels where it was 8, and `large`, `xlarge` and `2xlarge` are 24, the value of `medium`, where they were 32, 40 and 48. `grid.margin.*` holds the same values as the gutters
+
+  No name is renamed or removed. An app that uses `grid.gutter.*` gets the new gutters and has nothing to change.
+
 ## [0.6.0] - 2026-09-27
 
 The token build was rewritten on Style Dictionary 5.5, and the iOS and Android output was fixed so that it compiles and holds values the platforms can use. The web SCSS output keeps its format; the tokens it renames, removes and corrects are listed below. The npm package now holds the iOS and Android files too.
