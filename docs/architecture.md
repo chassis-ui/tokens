@@ -213,14 +213,14 @@ The short scale names are `4xs`, `3xs`, `2xs`, `xs`, `sm`, `md`, `lg`, `xl` and 
 
 `<resources>` with one element per token, snake_case names, expanded as on iOS. The element comes from the type, in this order:
 
-| Tokens                                                                                      | Element                              | Example                    |
-| ------------------------------------------------------------------------------------------- | ------------------------------------ | -------------------------- |
-| opacity, letter spacing (type, or `path[1]` `letterSpacing`), gradient angles and positions | `<item type="dimen" format="float">` | `0.4`                      |
-| font weights                                                                                | `<integer>`, 100 to 900              | `400`                      |
-| colors                                                                                      | `<color>`, ARGB hex                  | `#80161a1b`                |
-| other numbers                                                                               | `<integer>`                          | none in the current tokens |
-| sizes                                                                                       | `<dimen>`                            | `16dp`, `22sp`             |
-| everything else                                                                             | `<string>`                           | `Inter`                    |
+| Tokens                                                                                      | Element                              | Example                 |
+| ------------------------------------------------------------------------------------------- | ------------------------------------ | ----------------------- |
+| opacity, letter spacing (type, or `path[1]` `letterSpacing`), gradient angles and positions | `<item type="dimen" format="float">` | `0.4`                   |
+| font weights                                                                                | `<integer>`, 100 to 900              | `400`                   |
+| colors                                                                                      | `<color>`, ARGB hex                  | `#80161a1b`             |
+| other numbers                                                                               | `<integer>`                          | `12` (`grid.columns.*`) |
+| sizes                                                                                       | `<dimen>`                            | `16dp`, `22sp`          |
+| everything else                                                                             | `<string>`                           | `Inter`                 |
 
 - **`sp`** when the last path segment is `fontSize`, `lineHeight` or `paragraphSpacing`, the type is `fontSize` or `lineHeight`, or `path[1]` is `paragraphSpacing`; **`dp`** for other sizes. A line height in percent is converted as on iOS (`120sp`).
 - **Letter spacing** of a typography token is in ems of its font size, four decimals (`-0.0052`), which `android:letterSpacing` takes; the letter spacing scale (`typography.letterSpacing.*`) has no font size and keeps its pixel number.

@@ -303,9 +303,9 @@ Website sizes hold the thumb and the icon of a section, a feature, and a module 
 
 ## Grid tokens
 
-`grid.*` is a group of its own, next to `size.*`, in `base/app-base.json`. It holds the widths of the layout grid, named `grid.<part>.<step>` with the steps `xsmall`, `small`, `medium`, `large`, `xlarge`, and `2xlarge`. The tokens hold a size of their own, reference no step of the scale, and are the same on every screen.
+`grid.*` is a group of its own, next to `size.*`, in `base/app-base.json`. It holds the measures of the layout grid, named `grid.<part>.<step>` with the steps `xsmall`, `small`, `medium`, `large`, `xlarge`, and `2xlarge`. The tokens hold a value of their own, reference no step of the scale, and are the same on every screen.
 
-`grid.breakpoint.*` holds the breakpoints, `grid.container.*` the width of the container at each breakpoint, and `grid.gutter.*` the gutters. The container of a step is narrower than the breakpoint of that step. The page gaps `space.page.large-gap`, `space.page.medium-gap`, and `space.page.small-gap` of the [space tokens]([[docsref:/design-tokens/space-tokens]]) reference `grid.gutter.medium`.
+`grid.breakpoint.*` holds the breakpoints, `grid.container.*` the width of the container at each breakpoint, `grid.gutter.*` the gutters, and `grid.margin.*` the margins of the page, each a size in design pixels. `grid.columns.*` holds the number of columns at each breakpoint, a number without a unit. The container of a step is narrower than the breakpoint of that step. The page gaps `space.page.large-gap`, `space.page.medium-gap`, and `space.page.small-gap` of the [space tokens]([[docsref:/design-tokens/space-tokens]]) reference `grid.gutter.medium`.
 
 ## Usage
 
