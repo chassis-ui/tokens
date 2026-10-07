@@ -4589,15 +4589,15 @@
     "gutter": {
       "2xlarge": {
         "$type": "sizing",
-        "$value": "48"
+        "$value": "24"
       },
       "xlarge": {
         "$type": "sizing",
-        "$value": "40"
+        "$value": "24"
       },
       "large": {
         "$type": "sizing",
-        "$value": "32"
+        "$value": "24"
       },
       "medium": {
         "$type": "sizing",
@@ -4609,7 +4609,59 @@
       },
       "xsmall": {
         "$type": "sizing",
-        "$value": "8"
+        "$value": "16"
+      }
+    },
+    "margin": {
+      "2xlarge": {
+        "$type": "sizing",
+        "$value": "24"
+      },
+      "xlarge": {
+        "$type": "sizing",
+        "$value": "24"
+      },
+      "large": {
+        "$type": "sizing",
+        "$value": "24"
+      },
+      "medium": {
+        "$type": "sizing",
+        "$value": "24"
+      },
+      "small": {
+        "$type": "sizing",
+        "$value": "16"
+      },
+      "xsmall": {
+        "$type": "sizing",
+        "$value": "16"
+      }
+    },
+    "columns": {
+      "2xlarge": {
+        "$type": "number",
+        "$value": "12"
+      },
+      "xlarge": {
+        "$type": "number",
+        "$value": "12"
+      },
+      "large": {
+        "$type": "number",
+        "$value": "12"
+      },
+      "medium": {
+        "$type": "number",
+        "$value": "12"
+      },
+      "small": {
+        "$type": "number",
+        "$value": "12"
+      },
+      "xsmall": {
+        "$type": "number",
+        "$value": "12"
       }
     }
   },

@@ -4,7 +4,7 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Sun, 04 Oct 2026 07:19:18 GMT
+// Generated on Wed, 07 Oct 2026 07:18:20 GMT
 // Chassis - Tokens v0.6.0
 // Copyright 2026 Ozgur Gunes
 // Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
@@ -1449,12 +1449,24 @@ public enum ChassisTokensNumberLarge {
     public static let GridContainerMedium = CGFloat(720)
     public static let GridContainerSmall = CGFloat(540)
     public static let GridContainerXsmall = CGFloat(360)
-    public static let GridGutter2xlarge = CGFloat(48)
-    public static let GridGutterXlarge = CGFloat(40)
-    public static let GridGutterLarge = CGFloat(32)
+    public static let GridGutter2xlarge = CGFloat(24)
+    public static let GridGutterXlarge = CGFloat(24)
+    public static let GridGutterLarge = CGFloat(24)
     public static let GridGutterMedium = CGFloat(24)
     public static let GridGutterSmall = CGFloat(16)
-    public static let GridGutterXsmall = CGFloat(8)
+    public static let GridGutterXsmall = CGFloat(16)
+    public static let GridMargin2xlarge = CGFloat(24)
+    public static let GridMarginXlarge = CGFloat(24)
+    public static let GridMarginLarge = CGFloat(24)
+    public static let GridMarginMedium = CGFloat(24)
+    public static let GridMarginSmall = CGFloat(16)
+    public static let GridMarginXsmall = CGFloat(16)
+    public static let GridColumns2xlarge = CGFloat(12)
+    public static let GridColumnsXlarge = CGFloat(12)
+    public static let GridColumnsLarge = CGFloat(12)
+    public static let GridColumnsMedium = CGFloat(12)
+    public static let GridColumnsSmall = CGFloat(12)
+    public static let GridColumnsXsmall = CGFloat(12)
     public static let ShadowContextNoneBlur = CGFloat(0)
     public static let ShadowContextNoneRadius = CGFloat(0)
     public static let ShadowContextNoneSpread = CGFloat(0)

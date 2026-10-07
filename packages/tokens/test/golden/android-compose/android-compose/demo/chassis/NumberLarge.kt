@@ -3,7 +3,7 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Sun, 04 Oct 2026 07:19:23 GMT
+// Generated on Wed, 07 Oct 2026 07:18:25 GMT
 // Chassis - Tokens v0.6.0
 // Copyright 2026 Ozgur Gunes
 // Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
@@ -1454,12 +1454,24 @@ object ChassisTokensNumberLarge {
     val gridContainerMedium get() = 720.dp
     val gridContainerSmall get() = 540.dp
     val gridContainerXsmall get() = 360.dp
-    val gridGutter2xlarge get() = 48.dp
-    val gridGutterXlarge get() = 40.dp
-    val gridGutterLarge get() = 32.dp
+    val gridGutter2xlarge get() = 24.dp
+    val gridGutterXlarge get() = 24.dp
+    val gridGutterLarge get() = 24.dp
     val gridGutterMedium get() = 24.dp
     val gridGutterSmall get() = 16.dp
-    val gridGutterXsmall get() = 8.dp
+    val gridGutterXsmall get() = 16.dp
+    val gridMargin2xlarge get() = 24.dp
+    val gridMarginXlarge get() = 24.dp
+    val gridMarginLarge get() = 24.dp
+    val gridMarginMedium get() = 24.dp
+    val gridMarginSmall get() = 16.dp
+    val gridMarginXsmall get() = 16.dp
+    val gridColumns2xlarge get() = 12
+    val gridColumnsXlarge get() = 12
+    val gridColumnsLarge get() = 12
+    val gridColumnsMedium get() = 12
+    val gridColumnsSmall get() = 12
+    val gridColumnsXsmall get() = 12
     val shadowContextNoneBlur get() = 0.dp
     val shadowContextNoneSpread get() = 0.dp
     val shadowContextNoneOffsetX get() = 0.dp
