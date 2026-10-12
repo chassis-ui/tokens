@@ -232,7 +232,8 @@ once, on `develop`; pushing the same commit to `staging` or `main` doesn't run t
    commit is pushed on top of the version commit and doesn't change the tokens, the build, the
    output or the native checks, run CI by hand on `develop` (**Run workflow** on the CI page
    of the Actions tab, or `gh workflow run ci.yml --ref develop`), which always runs them.
-3. When CI has passed, the maintainer pushes the same commit to `main`. The ruleset of `main`
+3. When CI has passed, the maintainer pushes the same commit to `main`
+   (`git push origin develop:main`), never a merge commit of `develop`. The ruleset of `main`
    requires the checks `Tokens (Node 22)`, `Tokens (Node 24)` and `Site` on the commit, and
    blocks a force push and a deletion.
 4. The push runs `.github/workflows/release.yml`, in three jobs:

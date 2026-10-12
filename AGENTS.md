@@ -94,12 +94,14 @@ Run the checks of the area you changed, and report the ones that fail.
 ## Cautions
 
 - Work on `develop` or on a branch made from it, never on `main`. `main` holds released
-  versions only and gets `develop` when the maintainer releases. Check the branch before the
-  first edit of a task.
+  versions only. `develop` reaches it as the same commit, with `git push origin develop:main`,
+  when the maintainer releases: no merge commit, nothing merged back, and the ruleset of `main`
+  blocks a force push. Check the branch before the first edit of a task.
 - A finished branch is merged locally into `develop` with a merge commit. Do not open a pull
   request unless asked.
-- Never commit, merge or push without being asked. Pushing `main` starts the release workflow,
-  which publishes `@chassis-ui/tokens` to npm.
+- Never commit, merge or push without being asked, and never merge into `main`. Pushing `main`
+  starts the release workflow, which publishes `@chassis-ui/tokens` to npm when the version is
+  new.
 - Do not edit generated or fetched files: `_site/`, `dist-next/`, `.cache/`, `.build/`,
   `node_modules/` and `vendor/assets` (a submodule; changes belong in `chassis-ui/assets`).
 - `Package.swift` and the version references are written by scripts
