@@ -7,3 +7,10 @@ packages:
 # in .github/dependabot.yml, which exempts the same packages.
 minimumReleaseAgeExclude:
   - '@chassis-ui/*'
+
+# @stylistic/stylelint-plugin 3, which stylelint-config-twbs-bootstrap 16 pins, asks for
+# postcss-selector-parser 6. GHSA-rj75-hqrm-r3gf is fixed in 7.1.6 only, the version stylelint
+# itself already runs on, and the plugin reports the same warnings with it. Remove this once the
+# Bootstrap config takes a plugin that asks for 7.
+overrides:
+  '@stylistic/stylelint-plugin>postcss-selector-parser': ^7.1.6
