@@ -117,7 +117,7 @@ The token system is built on three core groups, `brand`, `theme`, and `app`. `sc
 | `screen`, optional | The tokens that differ per screen size | `large`, `medium`, `small` |
 </CxTable>
 
-The options are the committed ones, and you can add your own. The build writes files for the names in `chassis.build` of `packages/tokens/package.json`. The committed configuration names the brands `chassis` and `sinefil`, and every committed theme, app, and screen; the brands `default`, `demo-a`, and `demo-b` are options in Tokens Studio only.
+The options are the committed ones, and you can add your own. The build writes files for the names in `chassis.build` of the root `package.json`. The committed configuration names the brands `chassis` and `sinefil`, and every committed theme, app, and screen; the brands `default`, `demo-a`, and `demo-b` are options in Tokens Studio only.
 
 ### Brand group
 
@@ -194,7 +194,7 @@ Chassis Tokens is meant to be owned and customized, so the groups are yours to c
 To remove the `screen` group:
 
 1. Remove the options of the `screen` group from `$themes.json`.
-2. Set `chassis.build.screens` to `[]`, or remove the key, in `packages/tokens/package.json`.
+2. Set `chassis.build.screens` to `[]`, or remove the key, in the root `package.json`.
 3. Move the tokens of the screen sets that you still need to a set of another group, such as `base/app-base`.
 
 The build then names the lists `<brand>_<app>_<theme>` and writes one number file without the name of a screen: `number.scss`, `Number.swift`, and `number.xml`.
@@ -378,7 +378,7 @@ With the token set written, the steps are:
    }
    ```
 
-3. Add the name of the option to `chassis.build.brands` in `packages/tokens/package.json`:
+3. Add the name of the option to `chassis.build.brands` in the root `package.json`:
 
    ```json
    "chassis": {
@@ -420,7 +420,7 @@ The lint and the build name the token set and the token of a mistake in the sour
 
 ### No token sets
 
-The build stops with `No token sets for <brand>_docs_light_large in source/$themes.json`. `chassis.build` names a brand, an app, a theme, or a screen that is not an option of its group in `$themes.json`. Add the option, or write the name in `packages/tokens/package.json` as the option spells it.
+The build stops with `No token sets for <brand>_docs_light_large in source/$themes.json`. `chassis.build` names a brand, an app, a theme, or a screen that is not an option of its group in `$themes.json`. Add the option, or write the name in the root `package.json` as the option spells it.
 
 ### Token missing in a screen
 

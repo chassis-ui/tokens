@@ -98,8 +98,8 @@ format. Edit them in Figma with Tokens Studio, synced to this repository with th
 
 Token names are the public API: renaming or removing a token breaks every app that uses it.
 
-After a change to the brands or apps of `chassis.build` in `packages/tokens/package.json`, build
-the tokens and write the Swift package manifest at the root of the repository again, which has
+After a change to the brands or apps of `chassis.build` in the root `package.json`, build the
+tokens and write the Swift package manifest at the root of the repository again, which has
 one library for every app and brand with an iOS platform:
 
 ```sh

@@ -34,7 +34,7 @@ The token system is built on three core groups, `brand`, `theme`, and `app`, and
 
 The `website` groups of `size.*`, `space.*`, `typography.fontSize.*`, and `font.*` belong to the `screen` Collection, not to `app` or `brand`. Every Collection also holds the [visibility switches](#visibility-switches) of its group, `figma.switch.<group>.*`.
 
-The Modes depend on the options of your `$themes.json`. In the committed configuration, for example, the `theme` Collection has the Modes `light` and `dark`, and the `screen` Collection has the Modes `large`, `medium`, and `small`. Every option becomes a Mode, including an option that the build does not write because `chassis.build` of `packages/tokens/package.json` does not list it.
+The Modes depend on the options of your `$themes.json`. In the committed configuration, for example, the `theme` Collection has the Modes `light` and `dark`, and the `screen` Collection has the Modes `large`, `medium`, and `small`. Every option becomes a Mode, including an option that the build does not write because `chassis.build` of the root `package.json` does not list it.
 
 The groups can change with your project. Without a `screen` group in `$themes.json`, Figma gets no `screen` Collection, and a group that you add becomes a Collection of its own. The build must follow such a change: see the [build options]([[docsref:/getting-started/style-dictionary#build-options]]) of the Style Dictionary guide.
 

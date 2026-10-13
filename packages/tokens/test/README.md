@@ -10,7 +10,7 @@ The run takes about 10 seconds, most of it for the golden test, which builds eve
 
 ## Principles
 
-- **Real tokens, not mocks.** Tests use tokens from `source/`, resolved tokens captured from the real build, the real `package.json` configuration and `source/$themes.json`. No test mocks `style-dictionary`.
+- **Real tokens, not mocks.** Tests use tokens from `source/`, resolved tokens captured from the real build, the real configuration of the root `package.json` and `source/$themes.json`. No test mocks `style-dictionary`.
 - **`dist/` is the reference.** Expected values come from the committed `dist/`. The build must not change what it writes, so a test that disagrees with `dist/` is a bug in the build, not in `dist/`.
 - **Presets have baselines.** The presets for other CSS frameworks (`web-scss`, `web-px`, `web-vw`) write nothing into `dist/`. Their reference output, with and without `outputReferences`, is in `golden/`.
 - **Pure functions first.** Value encoding, the web reference policy, the build plan and argument parsing are pure functions, tested without running Style Dictionary.
@@ -62,10 +62,10 @@ When tokens change, the fixtures stay valid: they hold their own copies. When th
 
 `golden/` holds the reference output of the presets, for the brand `chassis`:
 
-| Entry           | Contents                                                                                                                                                                         |
-| --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `<preset>.json` | The build configuration of the check, in the form of `chassis.build` in `package.json`. A preset with this file is checked by `golden.test.js` and `pnpm tokens:verify:presets`. |
-| `<preset>/`     | The files the preset must write.                                                                                                                                                 |
+| Entry           | Contents                                                                                                                                                                                  |
+| --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `<preset>.json` | The build configuration of the check, in the form of `chassis.build` in the root `package.json`. A preset with this file is checked by `golden.test.js` and `pnpm tokens:verify:presets`. |
+| `<preset>/`     | The files the preset must write.                                                                                                                                                          |
 
 `web-px-references`, `android-references` and `ios-references` are `web-px`, `android` and `ios` with `outputReferences`, set in their configuration files under `options`.
 
