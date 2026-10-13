@@ -260,10 +260,10 @@ describe('compareDist', () => {
     })
     expect(result.files).toHaveLength(1)
     const [entry] = result.files
-    expect(entry.added.length).toBe(394)
+    expect(entry.added.length).toBe(328)
     expect(entry.removed.length + entry.changed.length + entry.renamed.length).toBe(0)
     const report = formatReport(result)
-    expect(report).toContain('- …and 369 more')
+    expect(report).toContain('- …and 303 more')
     expect(report).not.toContain('Breaking')
   })
 

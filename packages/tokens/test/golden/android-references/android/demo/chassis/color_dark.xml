@@ -2,8 +2,8 @@
 
 <!--
   Do not edit directly, this file was auto-generated.
-  Generated on Sun, 04 Oct 2026 07:19:25 GMT
-  Chassis - Tokens v0.6.0
+  Generated on Tue, 13 Oct 2026 10:08:01 GMT
+  Chassis - Tokens v0.7.0
   Copyright 2026 Ozgur Gunes
   Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
 -->
@@ -641,56 +641,6 @@
   <color name="color_primitive_white_t_80">#ccffffff</color>
   <color name="color_primitive_white_t_90">#e6ffffff</color>
   <color name="color_primitive_white_t_95">#f2ffffff</color>
-  <color name="color_primitive_brand_10">#ffd9f1f7</color>
-  <color name="color_primitive_brand_20">#ffb3e4f0</color>
-  <color name="color_primitive_brand_30">#ff80d2e6</color>
-  <color name="color_primitive_brand_40">#ff40bbd9</color>
-  <color name="color_primitive_brand_50">#ff00a4cc</color>
-  <color name="color_primitive_brand_60">#ff007b99</color>
-  <color name="color_primitive_brand_70">#ff005266</color>
-  <color name="color_primitive_brand_80">#ff00313d</color>
-  <color name="color_primitive_brand_90">#ff002129</color>
-  <color name="color_primitive_brand_95">#ff00191f</color>
-  <color name="color_primitive_brand_base">#ff00a4cc</color>
-  <color name="color_primitive_brand_transparent">#0000a4cc</color>
-  <color name="color_primitive_brand_contrast">#ffffffff</color>
-  <color name="color_primitive_brand_05">#ffedf9fb</color>
-  <color name="color_primitive_brand_t_5005">#0d00a4cc</color>
-  <color name="color_primitive_brand_t_5010">#1a00a4cc</color>
-  <color name="color_primitive_brand_t_5020">#3300a4cc</color>
-  <color name="color_primitive_brand_t_5030">#4d00a4cc</color>
-  <color name="color_primitive_brand_t_5040">#6600a4cc</color>
-  <color name="color_primitive_brand_t_5050">#8000a4cc</color>
-  <color name="color_primitive_brand_t_5060">#9900a4cc</color>
-  <color name="color_primitive_brand_t_5070">#b300a4cc</color>
-  <color name="color_primitive_brand_t_5080">#cc00a4cc</color>
-  <color name="color_primitive_brand_t_5090">#e600a4cc</color>
-  <color name="color_primitive_brand_t_5095">#f200a4cc</color>
-  <color name="color_primitive_accent_10">#fffee5d9</color>
-  <color name="color_primitive_accent_20">#fffccbb3</color>
-  <color name="color_primitive_accent_30">#fffaa980</color>
-  <color name="color_primitive_accent_40">#fff87d40</color>
-  <color name="color_primitive_accent_50">#fff55200</color>
-  <color name="color_primitive_accent_60">#ffb83e00</color>
-  <color name="color_primitive_accent_70">#ff7b2900</color>
-  <color name="color_primitive_accent_80">#ff4a1900</color>
-  <color name="color_primitive_accent_90">#ff311000</color>
-  <color name="color_primitive_accent_95">#ff250c00</color>
-  <color name="color_primitive_accent_base">#fff55200</color>
-  <color name="color_primitive_accent_transparent">#00f55200</color>
-  <color name="color_primitive_accent_contrast">#ffffffff</color>
-  <color name="color_primitive_accent_05">#fffef3ed</color>
-  <color name="color_primitive_accent_t_5005">#0df55200</color>
-  <color name="color_primitive_accent_t_5010">#1af55200</color>
-  <color name="color_primitive_accent_t_5020">#33f55200</color>
-  <color name="color_primitive_accent_t_5030">#4df55200</color>
-  <color name="color_primitive_accent_t_5040">#66f55200</color>
-  <color name="color_primitive_accent_t_5050">#80f55200</color>
-  <color name="color_primitive_accent_t_5060">#99f55200</color>
-  <color name="color_primitive_accent_t_5070">#b3f55200</color>
-  <color name="color_primitive_accent_t_5080">#ccf55200</color>
-  <color name="color_primitive_accent_t_5090">#e6f55200</color>
-  <color name="color_primitive_accent_t_5095">#f2f55200</color>
   <color name="color_shadow_default">#66000000</color>
   <color name="color_shadow_alternate">#99000000</color>
   <color name="color_shadow_primary">#6600a4cc</color>
@@ -1330,86 +1280,6 @@
   <item name="gradient_primitive_info_l_50_315_stop_1_position" type="dimen" format="float">0</item>
   <color name="gradient_primitive_info_l_50_315_stop_2_color">@color/color_primitive_info_base</color>
   <item name="gradient_primitive_info_l_50_315_stop_2_position" type="dimen" format="float">1</item>
-  <item name="gradient_primitive_brand_l_50_000_angle" type="dimen" format="float">0</item>
-  <color name="gradient_primitive_brand_l_50_000_stop_1_color">@color/color_primitive_brand_transparent</color>
-  <item name="gradient_primitive_brand_l_50_000_stop_1_position" type="dimen" format="float">0</item>
-  <color name="gradient_primitive_brand_l_50_000_stop_2_color">@color/color_primitive_brand_base</color>
-  <item name="gradient_primitive_brand_l_50_000_stop_2_position" type="dimen" format="float">1</item>
-  <item name="gradient_primitive_brand_l_50_045_angle" type="dimen" format="float">45</item>
-  <color name="gradient_primitive_brand_l_50_045_stop_1_color">@color/color_primitive_brand_transparent</color>
-  <item name="gradient_primitive_brand_l_50_045_stop_1_position" type="dimen" format="float">0</item>
-  <color name="gradient_primitive_brand_l_50_045_stop_2_color">@color/color_primitive_brand_base</color>
-  <item name="gradient_primitive_brand_l_50_045_stop_2_position" type="dimen" format="float">1</item>
-  <item name="gradient_primitive_brand_l_50_090_angle" type="dimen" format="float">90</item>
-  <color name="gradient_primitive_brand_l_50_090_stop_1_color">@color/color_primitive_brand_transparent</color>
-  <item name="gradient_primitive_brand_l_50_090_stop_1_position" type="dimen" format="float">0</item>
-  <color name="gradient_primitive_brand_l_50_090_stop_2_color">@color/color_primitive_brand_base</color>
-  <item name="gradient_primitive_brand_l_50_090_stop_2_position" type="dimen" format="float">1</item>
-  <item name="gradient_primitive_brand_l_50_135_angle" type="dimen" format="float">135</item>
-  <color name="gradient_primitive_brand_l_50_135_stop_1_color">@color/color_primitive_brand_transparent</color>
-  <item name="gradient_primitive_brand_l_50_135_stop_1_position" type="dimen" format="float">0</item>
-  <color name="gradient_primitive_brand_l_50_135_stop_2_color">@color/color_primitive_brand_base</color>
-  <item name="gradient_primitive_brand_l_50_135_stop_2_position" type="dimen" format="float">1</item>
-  <item name="gradient_primitive_brand_l_50_180_angle" type="dimen" format="float">180</item>
-  <color name="gradient_primitive_brand_l_50_180_stop_1_color">@color/color_primitive_brand_transparent</color>
-  <item name="gradient_primitive_brand_l_50_180_stop_1_position" type="dimen" format="float">0</item>
-  <color name="gradient_primitive_brand_l_50_180_stop_2_color">@color/color_primitive_brand_base</color>
-  <item name="gradient_primitive_brand_l_50_180_stop_2_position" type="dimen" format="float">1</item>
-  <item name="gradient_primitive_brand_l_50_225_angle" type="dimen" format="float">225</item>
-  <color name="gradient_primitive_brand_l_50_225_stop_1_color">@color/color_primitive_brand_transparent</color>
-  <item name="gradient_primitive_brand_l_50_225_stop_1_position" type="dimen" format="float">0</item>
-  <color name="gradient_primitive_brand_l_50_225_stop_2_color">@color/color_primitive_brand_base</color>
-  <item name="gradient_primitive_brand_l_50_225_stop_2_position" type="dimen" format="float">1</item>
-  <item name="gradient_primitive_brand_l_50_270_angle" type="dimen" format="float">270</item>
-  <color name="gradient_primitive_brand_l_50_270_stop_1_color">@color/color_primitive_brand_transparent</color>
-  <item name="gradient_primitive_brand_l_50_270_stop_1_position" type="dimen" format="float">0</item>
-  <color name="gradient_primitive_brand_l_50_270_stop_2_color">@color/color_primitive_brand_base</color>
-  <item name="gradient_primitive_brand_l_50_270_stop_2_position" type="dimen" format="float">1</item>
-  <item name="gradient_primitive_brand_l_50_315_angle" type="dimen" format="float">315</item>
-  <color name="gradient_primitive_brand_l_50_315_stop_1_color">@color/color_primitive_brand_transparent</color>
-  <item name="gradient_primitive_brand_l_50_315_stop_1_position" type="dimen" format="float">0</item>
-  <color name="gradient_primitive_brand_l_50_315_stop_2_color">@color/color_primitive_brand_base</color>
-  <item name="gradient_primitive_brand_l_50_315_stop_2_position" type="dimen" format="float">1</item>
-  <item name="gradient_primitive_accent_l_50_000_angle" type="dimen" format="float">0</item>
-  <color name="gradient_primitive_accent_l_50_000_stop_1_color">@color/color_primitive_accent_transparent</color>
-  <item name="gradient_primitive_accent_l_50_000_stop_1_position" type="dimen" format="float">0</item>
-  <color name="gradient_primitive_accent_l_50_000_stop_2_color">@color/color_primitive_accent_base</color>
-  <item name="gradient_primitive_accent_l_50_000_stop_2_position" type="dimen" format="float">1</item>
-  <item name="gradient_primitive_accent_l_50_045_angle" type="dimen" format="float">45</item>
-  <color name="gradient_primitive_accent_l_50_045_stop_1_color">@color/color_primitive_accent_transparent</color>
-  <item name="gradient_primitive_accent_l_50_045_stop_1_position" type="dimen" format="float">0</item>
-  <color name="gradient_primitive_accent_l_50_045_stop_2_color">@color/color_primitive_accent_base</color>
-  <item name="gradient_primitive_accent_l_50_045_stop_2_position" type="dimen" format="float">1</item>
-  <item name="gradient_primitive_accent_l_50_090_angle" type="dimen" format="float">90</item>
-  <color name="gradient_primitive_accent_l_50_090_stop_1_color">@color/color_primitive_accent_transparent</color>
-  <item name="gradient_primitive_accent_l_50_090_stop_1_position" type="dimen" format="float">0</item>
-  <color name="gradient_primitive_accent_l_50_090_stop_2_color">@color/color_primitive_accent_base</color>
-  <item name="gradient_primitive_accent_l_50_090_stop_2_position" type="dimen" format="float">1</item>
-  <item name="gradient_primitive_accent_l_50_135_angle" type="dimen" format="float">135</item>
-  <color name="gradient_primitive_accent_l_50_135_stop_1_color">@color/color_primitive_accent_transparent</color>
-  <item name="gradient_primitive_accent_l_50_135_stop_1_position" type="dimen" format="float">0</item>
-  <color name="gradient_primitive_accent_l_50_135_stop_2_color">@color/color_primitive_accent_base</color>
-  <item name="gradient_primitive_accent_l_50_135_stop_2_position" type="dimen" format="float">1</item>
-  <item name="gradient_primitive_accent_l_50_180_angle" type="dimen" format="float">180</item>
-  <color name="gradient_primitive_accent_l_50_180_stop_1_color">@color/color_primitive_accent_transparent</color>
-  <item name="gradient_primitive_accent_l_50_180_stop_1_position" type="dimen" format="float">0</item>
-  <color name="gradient_primitive_accent_l_50_180_stop_2_color">@color/color_primitive_accent_base</color>
-  <item name="gradient_primitive_accent_l_50_180_stop_2_position" type="dimen" format="float">1</item>
-  <item name="gradient_primitive_accent_l_50_225_angle" type="dimen" format="float">225</item>
-  <color name="gradient_primitive_accent_l_50_225_stop_1_color">@color/color_primitive_accent_transparent</color>
-  <item name="gradient_primitive_accent_l_50_225_stop_1_position" type="dimen" format="float">0</item>
-  <color name="gradient_primitive_accent_l_50_225_stop_2_color">@color/color_primitive_accent_base</color>
-  <item name="gradient_primitive_accent_l_50_225_stop_2_position" type="dimen" format="float">1</item>
-  <item name="gradient_primitive_accent_l_50_270_angle" type="dimen" format="float">270</item>
-  <color name="gradient_primitive_accent_l_50_270_stop_1_color">@color/color_primitive_accent_transparent</color>
-  <item name="gradient_primitive_accent_l_50_270_stop_1_position" type="dimen" format="float">0</item>
-  <color name="gradient_primitive_accent_l_50_270_stop_2_color">@color/color_primitive_accent_base</color>
-  <item name="gradient_primitive_accent_l_50_270_stop_2_position" type="dimen" format="float">1</item>
-  <item name="gradient_primitive_accent_l_50_315_angle" type="dimen" format="float">315</item>
-  <color name="gradient_primitive_accent_l_50_315_stop_1_color">@color/color_primitive_accent_transparent</color>
-  <item name="gradient_primitive_accent_l_50_315_stop_1_position" type="dimen" format="float">0</item>
-  <color name="gradient_primitive_accent_l_50_315_stop_2_color">@color/color_primitive_accent_base</color>
-  <item name="gradient_primitive_accent_l_50_315_stop_2_position" type="dimen" format="float">1</item>
   <color name="shadow_context_none_color">@color/color_primitive_black_transparent</color>
   <color name="shadow_context_small_1_color">@color/color_shadow_default</color>
   <color name="shadow_context_small_2_color">@color/color_shadow_default</color>
@@ -1727,72 +1597,6 @@
   <color name="shadow_elevation_info_05_1_color">@color/color_shadow_default</color>
   <color name="shadow_elevation_info_05_2_color">@color/color_shadow_default</color>
   <color name="shadow_elevation_info_05_3_color">@color/color_shadow_info</color>
-  <color name="shadow_elevation_brand_10_1_color">@color/color_shadow_default</color>
-  <color name="shadow_elevation_brand_10_2_color">@color/color_shadow_default</color>
-  <color name="shadow_elevation_brand_10_3_color">@color/color_primitive_brand_t_5020</color>
-  <color name="shadow_elevation_brand_20_1_color">@color/color_shadow_default</color>
-  <color name="shadow_elevation_brand_20_2_color">@color/color_shadow_default</color>
-  <color name="shadow_elevation_brand_20_3_color">@color/color_primitive_brand_t_5020</color>
-  <color name="shadow_elevation_brand_30_1_color">@color/color_shadow_default</color>
-  <color name="shadow_elevation_brand_30_2_color">@color/color_shadow_default</color>
-  <color name="shadow_elevation_brand_30_3_color">@color/color_primitive_brand_t_5020</color>
-  <color name="shadow_elevation_brand_40_1_color">@color/color_shadow_default</color>
-  <color name="shadow_elevation_brand_40_2_color">@color/color_shadow_default</color>
-  <color name="shadow_elevation_brand_40_3_color">@color/color_primitive_brand_t_5020</color>
-  <color name="shadow_elevation_brand_50_1_color">@color/color_shadow_default</color>
-  <color name="shadow_elevation_brand_50_2_color">@color/color_shadow_default</color>
-  <color name="shadow_elevation_brand_50_3_color">@color/color_primitive_brand_t_5020</color>
-  <color name="shadow_elevation_brand_60_1_color">@color/color_shadow_default</color>
-  <color name="shadow_elevation_brand_60_2_color">@color/color_shadow_default</color>
-  <color name="shadow_elevation_brand_60_3_color">@color/color_primitive_brand_t_5020</color>
-  <color name="shadow_elevation_brand_70_1_color">@color/color_shadow_default</color>
-  <color name="shadow_elevation_brand_70_2_color">@color/color_shadow_default</color>
-  <color name="shadow_elevation_brand_70_3_color">@color/color_primitive_brand_t_5020</color>
-  <color name="shadow_elevation_brand_80_1_color">@color/color_shadow_default</color>
-  <color name="shadow_elevation_brand_80_2_color">@color/color_shadow_default</color>
-  <color name="shadow_elevation_brand_80_3_color">@color/color_primitive_brand_t_5020</color>
-  <color name="shadow_elevation_brand_90_1_color">@color/color_shadow_default</color>
-  <color name="shadow_elevation_brand_90_2_color">@color/color_shadow_default</color>
-  <color name="shadow_elevation_brand_90_3_color">@color/color_primitive_brand_t_5020</color>
-  <color name="shadow_elevation_brand_95_1_color">@color/color_shadow_default</color>
-  <color name="shadow_elevation_brand_95_2_color">@color/color_shadow_default</color>
-  <color name="shadow_elevation_brand_95_3_color">@color/color_primitive_brand_t_5020</color>
-  <color name="shadow_elevation_brand_05_1_color">@color/color_shadow_default</color>
-  <color name="shadow_elevation_brand_05_2_color">@color/color_shadow_default</color>
-  <color name="shadow_elevation_brand_05_3_color">@color/color_primitive_brand_t_5020</color>
-  <color name="shadow_elevation_accent_10_1_color">@color/color_shadow_default</color>
-  <color name="shadow_elevation_accent_10_2_color">@color/color_shadow_default</color>
-  <color name="shadow_elevation_accent_10_3_color">@color/color_primitive_accent_t_5020</color>
-  <color name="shadow_elevation_accent_20_1_color">@color/color_shadow_default</color>
-  <color name="shadow_elevation_accent_20_2_color">@color/color_shadow_default</color>
-  <color name="shadow_elevation_accent_20_3_color">@color/color_primitive_accent_t_5020</color>
-  <color name="shadow_elevation_accent_30_1_color">@color/color_shadow_default</color>
-  <color name="shadow_elevation_accent_30_2_color">@color/color_shadow_default</color>
-  <color name="shadow_elevation_accent_30_3_color">@color/color_primitive_accent_t_5020</color>
-  <color name="shadow_elevation_accent_40_1_color">@color/color_shadow_default</color>
-  <color name="shadow_elevation_accent_40_2_color">@color/color_shadow_default</color>
-  <color name="shadow_elevation_accent_40_3_color">@color/color_primitive_accent_t_5020</color>
-  <color name="shadow_elevation_accent_50_1_color">@color/color_shadow_default</color>
-  <color name="shadow_elevation_accent_50_2_color">@color/color_shadow_default</color>
-  <color name="shadow_elevation_accent_50_3_color">@color/color_primitive_accent_t_5020</color>
-  <color name="shadow_elevation_accent_60_1_color">@color/color_shadow_default</color>
-  <color name="shadow_elevation_accent_60_2_color">@color/color_shadow_default</color>
-  <color name="shadow_elevation_accent_60_3_color">@color/color_primitive_accent_t_5020</color>
-  <color name="shadow_elevation_accent_70_1_color">@color/color_shadow_default</color>
-  <color name="shadow_elevation_accent_70_2_color">@color/color_shadow_default</color>
-  <color name="shadow_elevation_accent_70_3_color">@color/color_primitive_accent_t_5020</color>
-  <color name="shadow_elevation_accent_80_1_color">@color/color_shadow_default</color>
-  <color name="shadow_elevation_accent_80_2_color">@color/color_shadow_default</color>
-  <color name="shadow_elevation_accent_80_3_color">@color/color_primitive_accent_t_5020</color>
-  <color name="shadow_elevation_accent_90_1_color">@color/color_shadow_default</color>
-  <color name="shadow_elevation_accent_90_2_color">@color/color_shadow_default</color>
-  <color name="shadow_elevation_accent_90_3_color">@color/color_primitive_accent_t_5020</color>
-  <color name="shadow_elevation_accent_95_1_color">@color/color_shadow_default</color>
-  <color name="shadow_elevation_accent_95_2_color">@color/color_shadow_default</color>
-  <color name="shadow_elevation_accent_95_3_color">@color/color_primitive_accent_t_5020</color>
-  <color name="shadow_elevation_accent_05_1_color">@color/color_shadow_default</color>
-  <color name="shadow_elevation_accent_05_2_color">@color/color_shadow_default</color>
-  <color name="shadow_elevation_accent_05_3_color">@color/color_primitive_accent_t_5020</color>
   <color name="shadow_glow_default_color">@color/color_context_default_fg_main</color>
   <color name="shadow_glow_alternate_color">@color/color_context_alternate_fg_main</color>
   <color name="shadow_glow_black_color">@color/color_context_black_base_color</color>
