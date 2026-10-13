@@ -516,7 +516,7 @@ Table colors set the head and the data cells, the rows in the alternating, hover
 | `color.table.bg-head` | `{color.context.default.bg-evident}` |
 | `color.table.bg-data` | `{color.context.default.bg-main}` |
 | `color.table.bg-alt` | `{color.context.default.bg-even}` |
-| `color.table.bg-hover` | `{color.context.default.bg-evident}` |
+| `color.table.bg-hover` | `{color.context.default.dim-slight}` |
 | `color.table.bg-active` | `{color.context.default.bg-highlight}` |
 | `color.table.bg-edit` | `{color.context.warning.bg-even}` |
 | `color.table.cue-active` | `{color.context.default.cue-main}` |
@@ -570,16 +570,16 @@ The values in the examples are those of the `chassis` brand in the current versi
 With the `web` platform, a color that references a context or a primitive color prints the custom property of Chassis CSS instead of its value, so every component color is a `var(--…)` reference. The build writes these lines into `color-light.scss`:
 
 ```scss
-$cx-color-context-default-fg-main: #161a1b !default;
-$cx-color-context-default-fg-subtle: rgba(22, 26, 27, 0.6) !default;
+$cx-color-context-default-fg-main: #191b1c !default;
+$cx-color-context-default-fg-subtle: rgba(25, 27, 28, 0.6) !default;
 $cx-color-button-default-fg-idle: var(--default-fg-idle) !default;
 ```
 
 On iOS, the channels have three decimals. The build writes these constants into `ColorLight.swift`:
 
 ```swift
-    public static let ColorContextDefaultFgMain = UIColor(red: 0.086, green: 0.102, blue: 0.106, alpha: 1)
-    public static let ColorContextDefaultFgSubtle = UIColor(red: 0.086, green: 0.102, blue: 0.106, alpha: 0.6)
+    public static let ColorContextDefaultFgMain = UIColor(red: 0.098, green: 0.106, blue: 0.110, alpha: 1)
+    public static let ColorContextDefaultFgSubtle = UIColor(red: 0.098, green: 0.106, blue: 0.110, alpha: 0.6)
 ```
 
 `Color.swift` has the same names with colors that follow the appearance of the device: a constant whose colors differ between the light and the dark theme is a dynamic `UIColor` that holds both.
@@ -587,8 +587,8 @@ On iOS, the channels have three decimals. The build writes these constants into 
 On Android, the alpha value comes first, in the first two digits of the hex number. The build writes these resources into `color_light.xml`:
 
 ```xml
-  <color name="color_context_default_fg_main">#ff161a1b</color>
-  <color name="color_context_default_fg_subtle">#99161a1b</color>
+  <color name="color_context_default_fg_main">#ff191b1c</color>
+  <color name="color_context_default_fg_subtle">#99191b1c</color>
 ```
 
 A gradient prints as a `linear-gradient()` value on the web. On iOS and Android the build splits it into an angle and, for each stop, a color and a position: `GradientPrimitivePrimaryL50090Angle`, `GradientPrimitivePrimaryL50090Stop1Color`, and `GradientPrimitivePrimaryL50090Stop1Position` on iOS, `gradient_primitive_primary_l_50_090_angle`, `gradient_primitive_primary_l_50_090_stop_1_color`, and `gradient_primitive_primary_l_50_090_stop_1_position` on Android.

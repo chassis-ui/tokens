@@ -2,7 +2,7 @@
 
 <!--
   Do not edit directly, this file was auto-generated.
-  Generated on Tue, 13 Oct 2026 09:12:43 GMT
+  Generated on Tue, 13 Oct 2026 15:43:29 GMT
   Chassis - Tokens v0.7.0
   Copyright 2026 Ozgur Gunes
   Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
@@ -937,10 +937,10 @@
   <color name="color_base_context_light_alternate_icon_slight">#337a2e6f</color>
   <color name="color_base_context_light_alternate_cue_main">#ff7a2e6f</color>
   <color name="color_base_context_light_alternate_cue_slight">#337a2e6f</color>
-  <color name="color_base_context_light_alternate_link_main">#ff7a2e6f</color>
-  <color name="color_base_context_light_alternate_link_hover">#ff9b6293</color>
-  <color name="color_base_context_light_alternate_link_active">#ffb3261e</color>
-  <color name="color_base_context_light_alternate_link_visited">#ff5c2353</color>
+  <color name="color_base_context_light_alternate_link_main">#ffbd97b7</color>
+  <color name="color_base_context_light_alternate_link_hover">#ffd7c0d4</color>
+  <color name="color_base_context_light_alternate_link_active">#ffd9938f</color>
+  <color name="color_base_context_light_alternate_link_visited">#ff9b6293</color>
   <color name="color_base_context_light_alternate_dim_main">#b3ffffff</color>
   <color name="color_base_context_light_alternate_dim_subtle">#4dffffff</color>
   <color name="color_base_context_light_alternate_dim_slight">#0dffffff</color>
@@ -1039,7 +1039,7 @@
   <color name="color_base_context_light_primary_fg_active">#ffffffff</color>
   <color name="color_base_context_light_primary_fg_inverse">#ffebe0e9</color>
   <color name="color_base_context_light_primary_fg_solid">#ffffffff</color>
-  <color name="color_base_context_light_primary_fg_highlight">#ff5c2353</color>
+  <color name="color_base_context_light_primary_fg_highlight">#ff3d1738</color>
   <color name="color_base_context_light_primary_bg_main">#fff6f0f5</color>
   <color name="color_base_context_light_primary_bg_even">#ffebe0e9</color>
   <color name="color_base_context_light_primary_bg_evident">#ffd7c0d4</color>
@@ -1078,7 +1078,7 @@
   <color name="color_base_context_light_secondary_fg_active">#ffffffff</color>
   <color name="color_base_context_light_secondary_fg_inverse">#ffdedddd</color>
   <color name="color_base_context_light_secondary_fg_solid">#ffffffff</color>
-  <color name="color_base_context_light_secondary_fg_highlight">#ff1b1615</color>
+  <color name="color_base_context_light_secondary_fg_highlight">#ff120f0e</color>
   <color name="color_base_context_light_secondary_bg_main">#fff0efef</color>
   <color name="color_base_context_light_secondary_bg_even">#ffdedddd</color>
   <color name="color_base_context_light_secondary_bg_evident">#ffbdbbbb</color>
@@ -1117,7 +1117,7 @@
   <color name="color_base_context_light_neutral_fg_active">#ffffffff</color>
   <color name="color_base_context_light_neutral_fg_inverse">#ffeceae9</color>
   <color name="color_base_context_light_neutral_fg_solid">#ffffffff</color>
-  <color name="color_base_context_light_neutral_fg_highlight">#ff5f5853</color>
+  <color name="color_base_context_light_neutral_fg_highlight">#ff3f3b37</color>
   <color name="color_base_context_light_neutral_bg_main">#fff6f5f5</color>
   <color name="color_base_context_light_neutral_bg_even">#ffeceae9</color>
   <color name="color_base_context_light_neutral_bg_evident">#ffd8d6d3</color>
@@ -1156,7 +1156,7 @@
   <color name="color_base_context_light_danger_fg_active">#ffffffff</color>
   <color name="color_base_context_light_danger_fg_inverse">#fff4dedd</color>
   <color name="color_base_context_light_danger_fg_solid">#ffffffff</color>
-  <color name="color_base_context_light_danger_fg_highlight">#ff861c16</color>
+  <color name="color_base_context_light_danger_fg_highlight">#ff5a130f</color>
   <color name="color_base_context_light_danger_bg_main">#fffaf0ef</color>
   <color name="color_base_context_light_danger_bg_even">#fff4dedd</color>
   <color name="color_base_context_light_danger_bg_evident">#ffe8bebb</color>
@@ -1195,7 +1195,7 @@
   <color name="color_base_context_light_success_fg_active">#ffffffff</color>
   <color name="color_base_context_light_success_fg_inverse">#ffdeeae2</color>
   <color name="color_base_context_light_success_fg_solid">#ffffffff</color>
-  <color name="color_base_context_light_success_fg_highlight">#ff1a542f</color>
+  <color name="color_base_context_light_success_fg_highlight">#ff113820</color>
   <color name="color_base_context_light_success_bg_main">#fff0f5f2</color>
   <color name="color_base_context_light_success_bg_even">#ffdeeae2</color>
   <color name="color_base_context_light_success_bg_evident">#ffbdd4c5</color>
@@ -1234,7 +1234,7 @@
   <color name="color_base_context_light_warning_fg_active">#ffffffff</color>
   <color name="color_base_context_light_warning_fg_inverse">#ffede6d9</color>
   <color name="color_base_context_light_warning_fg_solid">#ffffffff</color>
-  <color name="color_base_context_light_warning_fg_highlight">#ff684100</color>
+  <color name="color_base_context_light_warning_fg_highlight">#ff452b00</color>
   <color name="color_base_context_light_warning_bg_main">#fff7f3ed</color>
   <color name="color_base_context_light_warning_bg_even">#ffede6d9</color>
   <color name="color_base_context_light_warning_bg_evident">#ffdcccb3</color>
@@ -1273,7 +1273,7 @@
   <color name="color_base_context_light_info_fg_active">#ffffffff</color>
   <color name="color_base_context_light_info_fg_inverse">#ffe0e7f0</color>
   <color name="color_base_context_light_info_fg_solid">#ffffffff</color>
-  <color name="color_base_context_light_info_fg_highlight">#ff234577</color>
+  <color name="color_base_context_light_info_fg_highlight">#ff172e4f</color>
   <color name="color_base_context_light_info_bg_main">#fff0f4f8</color>
   <color name="color_base_context_light_info_bg_even">#ffe0e7f0</color>
   <color name="color_base_context_light_info_bg_evident">#ffc0cee2</color>
@@ -1483,10 +1483,10 @@
   <color name="color_base_context_dark_primary_icon_slight">#339b6293</color>
   <color name="color_base_context_dark_primary_cue_main">#ff9b6293</color>
   <color name="color_base_context_dark_primary_cue_slight">#339b6293</color>
-  <color name="color_base_context_dark_primary_link_main">#ffd7c0d4</color>
-  <color name="color_base_context_dark_primary_link_hover">#ffebe0e9</color>
-  <color name="color_base_context_dark_primary_link_active">#ffd7c0d4</color>
-  <color name="color_base_context_dark_primary_link_visited">#ffbd97b7</color>
+  <color name="color_base_context_dark_primary_link_main">#ffbd97b7</color>
+  <color name="color_base_context_dark_primary_link_hover">#ffd7c0d4</color>
+  <color name="color_base_context_dark_primary_link_active">#ffbd97b7</color>
+  <color name="color_base_context_dark_primary_link_visited">#ff9b6293</color>
   <color name="color_base_context_dark_primary_dim_main">#b37a2e6f</color>
   <color name="color_base_context_dark_primary_dim_subtle">#4d7a2e6f</color>
   <color name="color_base_context_dark_primary_dim_slight">#1a7a2e6f</color>
@@ -1522,10 +1522,10 @@
   <color name="color_base_context_dark_secondary_icon_slight">#335b5655</color>
   <color name="color_base_context_dark_secondary_cue_main">#ff5b5655</color>
   <color name="color_base_context_dark_secondary_cue_slight">#335b5655</color>
-  <color name="color_base_context_dark_secondary_link_main">#ffbdbbbb</color>
-  <color name="color_base_context_dark_secondary_link_hover">#ffdedddd</color>
-  <color name="color_base_context_dark_secondary_link_active">#ffbdbbbb</color>
-  <color name="color_base_context_dark_secondary_link_visited">#ff928f8e</color>
+  <color name="color_base_context_dark_secondary_link_main">#ff928f8e</color>
+  <color name="color_base_context_dark_secondary_link_hover">#ffbdbbbb</color>
+  <color name="color_base_context_dark_secondary_link_active">#ff928f8e</color>
+  <color name="color_base_context_dark_secondary_link_visited">#ff5b5655</color>
   <color name="color_base_context_dark_secondary_dim_main">#b3241e1c</color>
   <color name="color_base_context_dark_secondary_dim_subtle">#4d241e1c</color>
   <color name="color_base_context_dark_secondary_dim_slight">#1a241e1c</color>
@@ -1561,10 +1561,10 @@
   <color name="color_base_context_dark_neutral_icon_slight">#339e9892</color>
   <color name="color_base_context_dark_neutral_cue_main">#ff9e9892</color>
   <color name="color_base_context_dark_neutral_cue_slight">#339e9892</color>
-  <color name="color_base_context_dark_neutral_link_main">#ffd8d6d3</color>
-  <color name="color_base_context_dark_neutral_link_hover">#ffeceae9</color>
-  <color name="color_base_context_dark_neutral_link_active">#ffd8d6d3</color>
-  <color name="color_base_context_dark_neutral_link_visited">#ffbfbab7</color>
+  <color name="color_base_context_dark_neutral_link_main">#ffbfbab7</color>
+  <color name="color_base_context_dark_neutral_link_hover">#ffd8d6d3</color>
+  <color name="color_base_context_dark_neutral_link_active">#ffbfbab7</color>
+  <color name="color_base_context_dark_neutral_link_visited">#ff9e9892</color>
   <color name="color_base_context_dark_neutral_dim_main">#b37e756e</color>
   <color name="color_base_context_dark_neutral_dim_subtle">#4d7e756e</color>
   <color name="color_base_context_dark_neutral_dim_slight">#1a7e756e</color>
@@ -1600,10 +1600,10 @@
   <color name="color_base_context_dark_danger_icon_slight">#33c65c56</color>
   <color name="color_base_context_dark_danger_cue_main">#ffc65c56</color>
   <color name="color_base_context_dark_danger_cue_slight">#33c65c56</color>
-  <color name="color_base_context_dark_danger_link_main">#ffe8bebb</color>
-  <color name="color_base_context_dark_danger_link_hover">#fff4dedd</color>
-  <color name="color_base_context_dark_danger_link_active">#ffe8bebb</color>
-  <color name="color_base_context_dark_danger_link_visited">#ffd9938f</color>
+  <color name="color_base_context_dark_danger_link_main">#ffd9938f</color>
+  <color name="color_base_context_dark_danger_link_hover">#ffe8bebb</color>
+  <color name="color_base_context_dark_danger_link_active">#ffd9938f</color>
+  <color name="color_base_context_dark_danger_link_visited">#ffc65c56</color>
   <color name="color_base_context_dark_danger_dim_main">#b3b3261e</color>
   <color name="color_base_context_dark_danger_dim_subtle">#4db3261e</color>
   <color name="color_base_context_dark_danger_dim_slight">#1ab3261e</color>
@@ -1639,10 +1639,10 @@
   <color name="color_base_context_dark_success_icon_slight">#3359946f</color>
   <color name="color_base_context_dark_success_cue_main">#ff59946f</color>
   <color name="color_base_context_dark_success_cue_slight">#3359946f</color>
-  <color name="color_base_context_dark_success_link_main">#ffbdd4c5</color>
-  <color name="color_base_context_dark_success_link_hover">#ffdeeae2</color>
-  <color name="color_base_context_dark_success_link_active">#ffbdd4c5</color>
-  <color name="color_base_context_dark_success_link_visited">#ff91b89f</color>
+  <color name="color_base_context_dark_success_link_main">#ff91b89f</color>
+  <color name="color_base_context_dark_success_link_hover">#ffbdd4c5</color>
+  <color name="color_base_context_dark_success_link_active">#ff91b89f</color>
+  <color name="color_base_context_dark_success_link_visited">#ff59946f</color>
   <color name="color_base_context_dark_success_dim_main">#b322703f</color>
   <color name="color_base_context_dark_success_dim_subtle">#4d22703f</color>
   <color name="color_base_context_dark_success_dim_slight">#1a22703f</color>
@@ -1678,10 +1678,10 @@
   <color name="color_base_context_dark_warning_icon_slight">#33a78040</color>
   <color name="color_base_context_dark_warning_cue_main">#ffa78040</color>
   <color name="color_base_context_dark_warning_cue_slight">#33a78040</color>
-  <color name="color_base_context_dark_warning_link_main">#ffdcccb3</color>
-  <color name="color_base_context_dark_warning_link_hover">#ffede6d9</color>
-  <color name="color_base_context_dark_warning_link_active">#ffdcccb3</color>
-  <color name="color_base_context_dark_warning_link_visited">#ffc4ab80</color>
+  <color name="color_base_context_dark_warning_link_main">#ffc4ab80</color>
+  <color name="color_base_context_dark_warning_link_hover">#ffdcccb3</color>
+  <color name="color_base_context_dark_warning_link_active">#ffc4ab80</color>
+  <color name="color_base_context_dark_warning_link_visited">#ffa78040</color>
   <color name="color_base_context_dark_warning_dim_main">#b38a5600</color>
   <color name="color_base_context_dark_warning_dim_subtle">#4d8a5600</color>
   <color name="color_base_context_dark_warning_dim_slight">#1a8a5600</color>
@@ -1717,10 +1717,10 @@
   <color name="color_base_context_dark_info_icon_slight">#336285b6</color>
   <color name="color_base_context_dark_info_cue_main">#ff6285b6</color>
   <color name="color_base_context_dark_info_cue_slight">#336285b6</color>
-  <color name="color_base_context_dark_info_link_main">#ffc0cee2</color>
-  <color name="color_base_context_dark_info_link_hover">#ffe0e7f0</color>
-  <color name="color_base_context_dark_info_link_active">#ffc0cee2</color>
-  <color name="color_base_context_dark_info_link_visited">#ff97aecf</color>
+  <color name="color_base_context_dark_info_link_main">#ff97aecf</color>
+  <color name="color_base_context_dark_info_link_hover">#ffc0cee2</color>
+  <color name="color_base_context_dark_info_link_active">#ff97aecf</color>
+  <color name="color_base_context_dark_info_link_visited">#ff6285b6</color>
   <color name="color_base_context_dark_info_dim_main">#b32e5c9e</color>
   <color name="color_base_context_dark_info_dim_subtle">#4d2e5c9e</color>
   <color name="color_base_context_dark_info_dim_slight">#1a2e5c9e</color>
@@ -2023,7 +2023,7 @@
   <color name="color_table_bg_head">#ffeceae9</color>
   <color name="color_table_bg_data">#ffffffff</color>
   <color name="color_table_bg_alt">#fff6f5f5</color>
-  <color name="color_table_bg_hover">#ffeceae9</color>
+  <color name="color_table_bg_hover">#0d000000</color>
   <color name="color_table_bg_active">#ffebe0e9</color>
   <color name="color_table_bg_edit">#ffede6d9</color>
   <color name="color_table_cue_active">#ff7a2e6f</color>
@@ -2062,7 +2062,7 @@
   <string name="typography_font_weight_html_body_style">normal</string>
   <integer name="typography_font_weight_html_paragraph_weight">400</integer>
   <string name="typography_font_weight_html_paragraph_style">normal</string>
-  <integer name="typography_font_weight_html_heading_weight">700</integer>
+  <integer name="typography_font_weight_html_heading_weight">600</integer>
   <string name="typography_font_weight_html_heading_style">normal</string>
   <integer name="typography_font_weight_html_cite_weight">600</integer>
   <string name="typography_font_weight_html_cite_style">normal</string>
@@ -3203,7 +3203,7 @@
   <string name="font_display_2xsmall_elegant_text_decoration">none</string>
   <string name="font_display_2xsmall_elegant_font_style">normal</string>
   <string name="font_html_h1_font_family">Source Serif 4</string>
-  <integer name="font_html_h1_font_weight">700</integer>
+  <integer name="font_html_h1_font_weight">600</integer>
   <dimen name="font_html_h1_line_height">46sp</dimen>
   <dimen name="font_html_h1_font_size">38sp</dimen>
   <item name="font_html_h1_letter_spacing" type="dimen" format="float">0</item>
@@ -3212,7 +3212,7 @@
   <string name="font_html_h1_text_decoration">none</string>
   <string name="font_html_h1_font_style">normal</string>
   <string name="font_html_h2_font_family">Source Serif 4</string>
-  <integer name="font_html_h2_font_weight">700</integer>
+  <integer name="font_html_h2_font_weight">600</integer>
   <dimen name="font_html_h2_line_height">40sp</dimen>
   <dimen name="font_html_h2_font_size">32sp</dimen>
   <item name="font_html_h2_letter_spacing" type="dimen" format="float">0</item>
@@ -3221,7 +3221,7 @@
   <string name="font_html_h2_text_decoration">none</string>
   <string name="font_html_h2_font_style">normal</string>
   <string name="font_html_h3_font_family">Source Serif 4</string>
-  <integer name="font_html_h3_font_weight">700</integer>
+  <integer name="font_html_h3_font_weight">600</integer>
   <dimen name="font_html_h3_line_height">32sp</dimen>
   <dimen name="font_html_h3_font_size">26sp</dimen>
   <item name="font_html_h3_letter_spacing" type="dimen" format="float">0</item>
@@ -3230,7 +3230,7 @@
   <string name="font_html_h3_text_decoration">none</string>
   <string name="font_html_h3_font_style">normal</string>
   <string name="font_html_h4_font_family">Source Serif 4</string>
-  <integer name="font_html_h4_font_weight">700</integer>
+  <integer name="font_html_h4_font_weight">600</integer>
   <dimen name="font_html_h4_line_height">28sp</dimen>
   <dimen name="font_html_h4_font_size">22sp</dimen>
   <item name="font_html_h4_letter_spacing" type="dimen" format="float">0</item>
@@ -3239,7 +3239,7 @@
   <string name="font_html_h4_text_decoration">none</string>
   <string name="font_html_h4_font_style">normal</string>
   <string name="font_html_h5_font_family">Source Serif 4</string>
-  <integer name="font_html_h5_font_weight">700</integer>
+  <integer name="font_html_h5_font_weight">600</integer>
   <dimen name="font_html_h5_line_height">24sp</dimen>
   <dimen name="font_html_h5_font_size">19sp</dimen>
   <item name="font_html_h5_letter_spacing" type="dimen" format="float">0</item>
@@ -3248,7 +3248,7 @@
   <string name="font_html_h5_text_decoration">none</string>
   <string name="font_html_h5_font_style">normal</string>
   <string name="font_html_h6_font_family">Source Serif 4</string>
-  <integer name="font_html_h6_font_weight">700</integer>
+  <integer name="font_html_h6_font_weight">600</integer>
   <dimen name="font_html_h6_line_height">20sp</dimen>
   <dimen name="font_html_h6_font_size">16sp</dimen>
   <item name="font_html_h6_letter_spacing" type="dimen" format="float">0</item>

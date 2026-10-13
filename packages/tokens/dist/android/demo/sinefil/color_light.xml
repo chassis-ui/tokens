@@ -2,7 +2,7 @@
 
 <!--
   Do not edit directly, this file was auto-generated.
-  Generated on Tue, 13 Oct 2026 09:12:43 GMT
+  Generated on Tue, 13 Oct 2026 15:43:29 GMT
   Chassis - Tokens v0.7.0
   Copyright 2026 Ozgur Gunes
   Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
@@ -72,10 +72,10 @@
   <color name="color_context_alternate_icon_slight">#337a2e6f</color>
   <color name="color_context_alternate_cue_main">#ff7a2e6f</color>
   <color name="color_context_alternate_cue_slight">#337a2e6f</color>
-  <color name="color_context_alternate_link_main">#ff7a2e6f</color>
-  <color name="color_context_alternate_link_hover">#ff9b6293</color>
-  <color name="color_context_alternate_link_active">#ffb3261e</color>
-  <color name="color_context_alternate_link_visited">#ff5c2353</color>
+  <color name="color_context_alternate_link_main">#ffbd97b7</color>
+  <color name="color_context_alternate_link_hover">#ffd7c0d4</color>
+  <color name="color_context_alternate_link_active">#ffd9938f</color>
+  <color name="color_context_alternate_link_visited">#ff9b6293</color>
   <color name="color_context_alternate_dim_main">#b3ffffff</color>
   <color name="color_context_alternate_dim_subtle">#4dffffff</color>
   <color name="color_context_alternate_dim_slight">#0dffffff</color>
@@ -96,7 +96,7 @@
   <color name="color_context_primary_fg_active">#ffffffff</color>
   <color name="color_context_primary_fg_inverse">#ffebe0e9</color>
   <color name="color_context_primary_fg_solid">#ffffffff</color>
-  <color name="color_context_primary_fg_highlight">#ff5c2353</color>
+  <color name="color_context_primary_fg_highlight">#ff3d1738</color>
   <color name="color_context_primary_bg_main">#fff6f0f5</color>
   <color name="color_context_primary_bg_even">#ffebe0e9</color>
   <color name="color_context_primary_bg_evident">#ffd7c0d4</color>
@@ -135,7 +135,7 @@
   <color name="color_context_secondary_fg_active">#ffffffff</color>
   <color name="color_context_secondary_fg_inverse">#ffdedddd</color>
   <color name="color_context_secondary_fg_solid">#ffffffff</color>
-  <color name="color_context_secondary_fg_highlight">#ff1b1615</color>
+  <color name="color_context_secondary_fg_highlight">#ff120f0e</color>
   <color name="color_context_secondary_bg_main">#fff0efef</color>
   <color name="color_context_secondary_bg_even">#ffdedddd</color>
   <color name="color_context_secondary_bg_evident">#ffbdbbbb</color>
@@ -174,7 +174,7 @@
   <color name="color_context_neutral_fg_active">#ffffffff</color>
   <color name="color_context_neutral_fg_inverse">#ffeceae9</color>
   <color name="color_context_neutral_fg_solid">#ffffffff</color>
-  <color name="color_context_neutral_fg_highlight">#ff5f5853</color>
+  <color name="color_context_neutral_fg_highlight">#ff3f3b37</color>
   <color name="color_context_neutral_bg_main">#fff6f5f5</color>
   <color name="color_context_neutral_bg_even">#ffeceae9</color>
   <color name="color_context_neutral_bg_evident">#ffd8d6d3</color>
@@ -213,7 +213,7 @@
   <color name="color_context_danger_fg_active">#ffffffff</color>
   <color name="color_context_danger_fg_inverse">#fff4dedd</color>
   <color name="color_context_danger_fg_solid">#ffffffff</color>
-  <color name="color_context_danger_fg_highlight">#ff861c16</color>
+  <color name="color_context_danger_fg_highlight">#ff5a130f</color>
   <color name="color_context_danger_bg_main">#fffaf0ef</color>
   <color name="color_context_danger_bg_even">#fff4dedd</color>
   <color name="color_context_danger_bg_evident">#ffe8bebb</color>
@@ -252,7 +252,7 @@
   <color name="color_context_success_fg_inverse">#ffdeeae2</color>
   <color name="color_context_success_fg_active">#ffffffff</color>
   <color name="color_context_success_fg_solid">#ffffffff</color>
-  <color name="color_context_success_fg_highlight">#ff1a542f</color>
+  <color name="color_context_success_fg_highlight">#ff113820</color>
   <color name="color_context_success_bg_main">#fff0f5f2</color>
   <color name="color_context_success_bg_even">#ffdeeae2</color>
   <color name="color_context_success_bg_evident">#ffbdd4c5</color>
@@ -291,7 +291,7 @@
   <color name="color_context_warning_fg_active">#ffffffff</color>
   <color name="color_context_warning_fg_inverse">#ffede6d9</color>
   <color name="color_context_warning_fg_solid">#ffffffff</color>
-  <color name="color_context_warning_fg_highlight">#ff684100</color>
+  <color name="color_context_warning_fg_highlight">#ff452b00</color>
   <color name="color_context_warning_bg_main">#fff7f3ed</color>
   <color name="color_context_warning_bg_even">#ffede6d9</color>
   <color name="color_context_warning_bg_evident">#ffdcccb3</color>
@@ -330,7 +330,7 @@
   <color name="color_context_info_fg_active">#ffffffff</color>
   <color name="color_context_info_fg_inverse">#ffe0e7f0</color>
   <color name="color_context_info_fg_solid">#ffffffff</color>
-  <color name="color_context_info_fg_highlight">#ff234577</color>
+  <color name="color_context_info_fg_highlight">#ff172e4f</color>
   <color name="color_context_info_bg_main">#fff0f4f8</color>
   <color name="color_context_info_bg_even">#ffe0e7f0</color>
   <color name="color_context_info_bg_evident">#ffc0cee2</color>
@@ -914,7 +914,7 @@
   <color name="color_table_bg_head">#ffeceae9</color>
   <color name="color_table_bg_data">#ffffffff</color>
   <color name="color_table_bg_alt">#fff6f5f5</color>
-  <color name="color_table_bg_hover">#ffeceae9</color>
+  <color name="color_table_bg_hover">#0d000000</color>
   <color name="color_table_bg_active">#ffebe0e9</color>
   <color name="color_table_bg_edit">#ffede6d9</color>
   <color name="color_table_cue_active">#ff7a2e6f</color>

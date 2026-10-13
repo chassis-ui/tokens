@@ -4,7 +4,7 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Tue, 13 Oct 2026 09:12:43 GMT
+// Generated on Tue, 13 Oct 2026 15:43:29 GMT
 // Chassis - Tokens v0.7.0
 // Copyright 2026 Ozgur Gunes
 // Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
@@ -76,10 +76,10 @@ public enum ChassisTokensColor {
     public static let ColorContextAlternateIconSlight = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.608, green: 0.384, blue: 0.576, alpha: 0.2) : UIColor(red: 0.478, green: 0.180, blue: 0.435, alpha: 0.2) }
     public static let ColorContextAlternateCueMain = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.608, green: 0.384, blue: 0.576, alpha: 1) : UIColor(red: 0.478, green: 0.180, blue: 0.435, alpha: 1) }
     public static let ColorContextAlternateCueSlight = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.608, green: 0.384, blue: 0.576, alpha: 0.2) : UIColor(red: 0.478, green: 0.180, blue: 0.435, alpha: 0.2) }
-    public static let ColorContextAlternateLinkMain = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.608, green: 0.384, blue: 0.576, alpha: 1) : UIColor(red: 0.478, green: 0.180, blue: 0.435, alpha: 1) }
-    public static let ColorContextAlternateLinkHover = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.741, green: 0.592, blue: 0.718, alpha: 1) : UIColor(red: 0.608, green: 0.384, blue: 0.576, alpha: 1) }
-    public static let ColorContextAlternateLinkActive = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.776, green: 0.361, blue: 0.337, alpha: 1) : UIColor(red: 0.702, green: 0.149, blue: 0.118, alpha: 1) }
-    public static let ColorContextAlternateLinkVisited = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.741, green: 0.592, blue: 0.718, alpha: 1) : UIColor(red: 0.361, green: 0.137, blue: 0.325, alpha: 1) }
+    public static let ColorContextAlternateLinkMain = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.608, green: 0.384, blue: 0.576, alpha: 1) : UIColor(red: 0.741, green: 0.592, blue: 0.718, alpha: 1) }
+    public static let ColorContextAlternateLinkHover = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.741, green: 0.592, blue: 0.718, alpha: 1) : UIColor(red: 0.843, green: 0.753, blue: 0.831, alpha: 1) }
+    public static let ColorContextAlternateLinkActive = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.776, green: 0.361, blue: 0.337, alpha: 1) : UIColor(red: 0.851, green: 0.576, blue: 0.561, alpha: 1) }
+    public static let ColorContextAlternateLinkVisited = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.741, green: 0.592, blue: 0.718, alpha: 1) : UIColor(red: 0.608, green: 0.384, blue: 0.576, alpha: 1) }
     public static let ColorContextAlternateDimMain = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0.7) : UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 0.7) }
     public static let ColorContextAlternateDimSubtle = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0.3) : UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 0.3) }
     public static let ColorContextAlternateDimSlight = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0.05) : UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 0.05) }
@@ -100,7 +100,7 @@ public enum ChassisTokensColor {
     public static let ColorContextPrimaryFgActive = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1)
     public static let ColorContextPrimaryFgInverse = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.094, green: 0.035, blue: 0.086, alpha: 1) : UIColor(red: 0.922, green: 0.878, blue: 0.914, alpha: 1) }
     public static let ColorContextPrimaryFgSolid = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1)
-    public static let ColorContextPrimaryFgHighlight = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.843, green: 0.753, blue: 0.831, alpha: 1) : UIColor(red: 0.361, green: 0.137, blue: 0.325, alpha: 1) }
+    public static let ColorContextPrimaryFgHighlight = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.843, green: 0.753, blue: 0.831, alpha: 1) : UIColor(red: 0.239, green: 0.090, blue: 0.220, alpha: 1) }
     public static let ColorContextPrimaryBgMain = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.071, green: 0.027, blue: 0.067, alpha: 1) : UIColor(red: 0.965, green: 0.941, blue: 0.961, alpha: 1) }
     public static let ColorContextPrimaryBgEven = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.094, green: 0.035, blue: 0.086, alpha: 1) : UIColor(red: 0.922, green: 0.878, blue: 0.914, alpha: 1) }
     public static let ColorContextPrimaryBgEvident = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.145, green: 0.055, blue: 0.129, alpha: 1) : UIColor(red: 0.843, green: 0.753, blue: 0.831, alpha: 1) }
@@ -115,10 +115,10 @@ public enum ChassisTokensColor {
     public static let ColorContextPrimaryIconSlight = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.608, green: 0.384, blue: 0.576, alpha: 0.2) : UIColor(red: 0.478, green: 0.180, blue: 0.435, alpha: 0.2) }
     public static let ColorContextPrimaryCueMain = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.608, green: 0.384, blue: 0.576, alpha: 1) : UIColor(red: 0.478, green: 0.180, blue: 0.435, alpha: 1) }
     public static let ColorContextPrimaryCueSlight = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.608, green: 0.384, blue: 0.576, alpha: 0.2) : UIColor(red: 0.478, green: 0.180, blue: 0.435, alpha: 0.2) }
-    public static let ColorContextPrimaryLinkMain = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.843, green: 0.753, blue: 0.831, alpha: 1) : UIColor(red: 0.478, green: 0.180, blue: 0.435, alpha: 1) }
-    public static let ColorContextPrimaryLinkHover = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.922, green: 0.878, blue: 0.914, alpha: 1) : UIColor(red: 0.608, green: 0.384, blue: 0.576, alpha: 1) }
-    public static let ColorContextPrimaryLinkActive = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.843, green: 0.753, blue: 0.831, alpha: 1) : UIColor(red: 0.478, green: 0.180, blue: 0.435, alpha: 1) }
-    public static let ColorContextPrimaryLinkVisited = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.741, green: 0.592, blue: 0.718, alpha: 1) : UIColor(red: 0.361, green: 0.137, blue: 0.325, alpha: 1) }
+    public static let ColorContextPrimaryLinkMain = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.741, green: 0.592, blue: 0.718, alpha: 1) : UIColor(red: 0.478, green: 0.180, blue: 0.435, alpha: 1) }
+    public static let ColorContextPrimaryLinkHover = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.843, green: 0.753, blue: 0.831, alpha: 1) : UIColor(red: 0.608, green: 0.384, blue: 0.576, alpha: 1) }
+    public static let ColorContextPrimaryLinkActive = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.741, green: 0.592, blue: 0.718, alpha: 1) : UIColor(red: 0.478, green: 0.180, blue: 0.435, alpha: 1) }
+    public static let ColorContextPrimaryLinkVisited = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.608, green: 0.384, blue: 0.576, alpha: 1) : UIColor(red: 0.361, green: 0.137, blue: 0.325, alpha: 1) }
     public static let ColorContextPrimaryDimMain = UIColor(red: 0.478, green: 0.180, blue: 0.435, alpha: 0.7)
     public static let ColorContextPrimaryDimSubtle = UIColor(red: 0.478, green: 0.180, blue: 0.435, alpha: 0.3)
     public static let ColorContextPrimaryDimSlight = UIColor(red: 0.478, green: 0.180, blue: 0.435, alpha: 0.1)
@@ -139,7 +139,7 @@ public enum ChassisTokensColor {
     public static let ColorContextSecondaryFgActive = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1)
     public static let ColorContextSecondaryFgInverse = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.027, green: 0.024, blue: 0.024, alpha: 1) : UIColor(red: 0.871, green: 0.867, blue: 0.867, alpha: 1) }
     public static let ColorContextSecondaryFgSolid = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1)
-    public static let ColorContextSecondaryFgHighlight = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.741, green: 0.733, blue: 0.733, alpha: 1) : UIColor(red: 0.106, green: 0.086, blue: 0.082, alpha: 1) }
+    public static let ColorContextSecondaryFgHighlight = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.741, green: 0.733, blue: 0.733, alpha: 1) : UIColor(red: 0.071, green: 0.059, blue: 0.055, alpha: 1) }
     public static let ColorContextSecondaryBgMain = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.020, green: 0.020, blue: 0.016, alpha: 1) : UIColor(red: 0.941, green: 0.937, blue: 0.937, alpha: 1) }
     public static let ColorContextSecondaryBgEven = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.027, green: 0.024, blue: 0.024, alpha: 1) : UIColor(red: 0.871, green: 0.867, blue: 0.867, alpha: 1) }
     public static let ColorContextSecondaryBgEvident = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.043, green: 0.035, blue: 0.031, alpha: 1) : UIColor(red: 0.741, green: 0.733, blue: 0.733, alpha: 1) }
@@ -154,10 +154,10 @@ public enum ChassisTokensColor {
     public static let ColorContextSecondaryIconSlight = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.357, green: 0.337, blue: 0.333, alpha: 0.2) : UIColor(red: 0.141, green: 0.118, blue: 0.110, alpha: 0.2) }
     public static let ColorContextSecondaryCueMain = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.357, green: 0.337, blue: 0.333, alpha: 1) : UIColor(red: 0.141, green: 0.118, blue: 0.110, alpha: 1) }
     public static let ColorContextSecondaryCueSlight = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.357, green: 0.337, blue: 0.333, alpha: 0.2) : UIColor(red: 0.141, green: 0.118, blue: 0.110, alpha: 0.2) }
-    public static let ColorContextSecondaryLinkMain = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.741, green: 0.733, blue: 0.733, alpha: 1) : UIColor(red: 0.141, green: 0.118, blue: 0.110, alpha: 1) }
-    public static let ColorContextSecondaryLinkHover = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.871, green: 0.867, blue: 0.867, alpha: 1) : UIColor(red: 0.357, green: 0.337, blue: 0.333, alpha: 1) }
-    public static let ColorContextSecondaryLinkActive = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.741, green: 0.733, blue: 0.733, alpha: 1) : UIColor(red: 0.141, green: 0.118, blue: 0.110, alpha: 1) }
-    public static let ColorContextSecondaryLinkVisited = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.573, green: 0.561, blue: 0.557, alpha: 1) : UIColor(red: 0.106, green: 0.086, blue: 0.082, alpha: 1) }
+    public static let ColorContextSecondaryLinkMain = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.573, green: 0.561, blue: 0.557, alpha: 1) : UIColor(red: 0.141, green: 0.118, blue: 0.110, alpha: 1) }
+    public static let ColorContextSecondaryLinkHover = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.741, green: 0.733, blue: 0.733, alpha: 1) : UIColor(red: 0.357, green: 0.337, blue: 0.333, alpha: 1) }
+    public static let ColorContextSecondaryLinkActive = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.573, green: 0.561, blue: 0.557, alpha: 1) : UIColor(red: 0.141, green: 0.118, blue: 0.110, alpha: 1) }
+    public static let ColorContextSecondaryLinkVisited = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.357, green: 0.337, blue: 0.333, alpha: 1) : UIColor(red: 0.106, green: 0.086, blue: 0.082, alpha: 1) }
     public static let ColorContextSecondaryDimMain = UIColor(red: 0.141, green: 0.118, blue: 0.110, alpha: 0.7)
     public static let ColorContextSecondaryDimSubtle = UIColor(red: 0.141, green: 0.118, blue: 0.110, alpha: 0.3)
     public static let ColorContextSecondaryDimSlight = UIColor(red: 0.141, green: 0.118, blue: 0.110, alpha: 0.1)
@@ -178,7 +178,7 @@ public enum ChassisTokensColor {
     public static let ColorContextNeutralFgActive = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1)
     public static let ColorContextNeutralFgInverse = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.098, green: 0.090, blue: 0.086, alpha: 1) : UIColor(red: 0.925, green: 0.918, blue: 0.914, alpha: 1) }
     public static let ColorContextNeutralFgSolid = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1)
-    public static let ColorContextNeutralFgHighlight = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.847, green: 0.839, blue: 0.827, alpha: 1) : UIColor(red: 0.373, green: 0.345, blue: 0.325, alpha: 1) }
+    public static let ColorContextNeutralFgHighlight = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.847, green: 0.839, blue: 0.827, alpha: 1) : UIColor(red: 0.247, green: 0.231, blue: 0.216, alpha: 1) }
     public static let ColorContextNeutralBgMain = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.075, green: 0.071, blue: 0.063, alpha: 1) : UIColor(red: 0.965, green: 0.961, blue: 0.961, alpha: 1) }
     public static let ColorContextNeutralBgEven = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.098, green: 0.090, blue: 0.086, alpha: 1) : UIColor(red: 0.925, green: 0.918, blue: 0.914, alpha: 1) }
     public static let ColorContextNeutralBgEvident = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.149, green: 0.137, blue: 0.129, alpha: 1) : UIColor(red: 0.847, green: 0.839, blue: 0.827, alpha: 1) }
@@ -193,10 +193,10 @@ public enum ChassisTokensColor {
     public static let ColorContextNeutralIconSlight = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.620, green: 0.596, blue: 0.573, alpha: 0.2) : UIColor(red: 0.494, green: 0.459, blue: 0.431, alpha: 0.2) }
     public static let ColorContextNeutralCueMain = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.620, green: 0.596, blue: 0.573, alpha: 1) : UIColor(red: 0.494, green: 0.459, blue: 0.431, alpha: 1) }
     public static let ColorContextNeutralCueSlight = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.620, green: 0.596, blue: 0.573, alpha: 0.2) : UIColor(red: 0.494, green: 0.459, blue: 0.431, alpha: 0.2) }
-    public static let ColorContextNeutralLinkMain = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.847, green: 0.839, blue: 0.827, alpha: 1) : UIColor(red: 0.494, green: 0.459, blue: 0.431, alpha: 1) }
-    public static let ColorContextNeutralLinkHover = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.925, green: 0.918, blue: 0.914, alpha: 1) : UIColor(red: 0.620, green: 0.596, blue: 0.573, alpha: 1) }
-    public static let ColorContextNeutralLinkActive = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.847, green: 0.839, blue: 0.827, alpha: 1) : UIColor(red: 0.494, green: 0.459, blue: 0.431, alpha: 1) }
-    public static let ColorContextNeutralLinkVisited = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.749, green: 0.729, blue: 0.718, alpha: 1) : UIColor(red: 0.373, green: 0.345, blue: 0.325, alpha: 1) }
+    public static let ColorContextNeutralLinkMain = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.749, green: 0.729, blue: 0.718, alpha: 1) : UIColor(red: 0.494, green: 0.459, blue: 0.431, alpha: 1) }
+    public static let ColorContextNeutralLinkHover = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.847, green: 0.839, blue: 0.827, alpha: 1) : UIColor(red: 0.620, green: 0.596, blue: 0.573, alpha: 1) }
+    public static let ColorContextNeutralLinkActive = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.749, green: 0.729, blue: 0.718, alpha: 1) : UIColor(red: 0.494, green: 0.459, blue: 0.431, alpha: 1) }
+    public static let ColorContextNeutralLinkVisited = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.620, green: 0.596, blue: 0.573, alpha: 1) : UIColor(red: 0.373, green: 0.345, blue: 0.325, alpha: 1) }
     public static let ColorContextNeutralDimMain = UIColor(red: 0.494, green: 0.459, blue: 0.431, alpha: 0.7)
     public static let ColorContextNeutralDimSubtle = UIColor(red: 0.494, green: 0.459, blue: 0.431, alpha: 0.3)
     public static let ColorContextNeutralDimSlight = UIColor(red: 0.494, green: 0.459, blue: 0.431, alpha: 0.1)
@@ -217,7 +217,7 @@ public enum ChassisTokensColor {
     public static let ColorContextDangerFgActive = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1)
     public static let ColorContextDangerFgInverse = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.141, green: 0.031, blue: 0.024, alpha: 1) : UIColor(red: 0.957, green: 0.871, blue: 0.867, alpha: 1) }
     public static let ColorContextDangerFgSolid = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1)
-    public static let ColorContextDangerFgHighlight = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.910, green: 0.745, blue: 0.733, alpha: 1) : UIColor(red: 0.525, green: 0.110, blue: 0.086, alpha: 1) }
+    public static let ColorContextDangerFgHighlight = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.910, green: 0.745, blue: 0.733, alpha: 1) : UIColor(red: 0.353, green: 0.075, blue: 0.059, alpha: 1) }
     public static let ColorContextDangerBgMain = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.106, green: 0.024, blue: 0.020, alpha: 1) : UIColor(red: 0.980, green: 0.941, blue: 0.937, alpha: 1) }
     public static let ColorContextDangerBgEven = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.141, green: 0.031, blue: 0.024, alpha: 1) : UIColor(red: 0.957, green: 0.871, blue: 0.867, alpha: 1) }
     public static let ColorContextDangerBgEvident = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.212, green: 0.043, blue: 0.035, alpha: 1) : UIColor(red: 0.910, green: 0.745, blue: 0.733, alpha: 1) }
@@ -232,10 +232,10 @@ public enum ChassisTokensColor {
     public static let ColorContextDangerIconSlight = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.776, green: 0.361, blue: 0.337, alpha: 0.2) : UIColor(red: 0.702, green: 0.149, blue: 0.118, alpha: 0.2) }
     public static let ColorContextDangerCueMain = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.776, green: 0.361, blue: 0.337, alpha: 1) : UIColor(red: 0.702, green: 0.149, blue: 0.118, alpha: 1) }
     public static let ColorContextDangerCueSlight = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.776, green: 0.361, blue: 0.337, alpha: 0.2) : UIColor(red: 0.702, green: 0.149, blue: 0.118, alpha: 0.2) }
-    public static let ColorContextDangerLinkMain = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.910, green: 0.745, blue: 0.733, alpha: 1) : UIColor(red: 0.702, green: 0.149, blue: 0.118, alpha: 1) }
-    public static let ColorContextDangerLinkHover = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.957, green: 0.871, blue: 0.867, alpha: 1) : UIColor(red: 0.776, green: 0.361, blue: 0.337, alpha: 1) }
-    public static let ColorContextDangerLinkActive = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.910, green: 0.745, blue: 0.733, alpha: 1) : UIColor(red: 0.702, green: 0.149, blue: 0.118, alpha: 1) }
-    public static let ColorContextDangerLinkVisited = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.851, green: 0.576, blue: 0.561, alpha: 1) : UIColor(red: 0.525, green: 0.110, blue: 0.086, alpha: 1) }
+    public static let ColorContextDangerLinkMain = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.851, green: 0.576, blue: 0.561, alpha: 1) : UIColor(red: 0.702, green: 0.149, blue: 0.118, alpha: 1) }
+    public static let ColorContextDangerLinkHover = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.910, green: 0.745, blue: 0.733, alpha: 1) : UIColor(red: 0.776, green: 0.361, blue: 0.337, alpha: 1) }
+    public static let ColorContextDangerLinkActive = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.851, green: 0.576, blue: 0.561, alpha: 1) : UIColor(red: 0.702, green: 0.149, blue: 0.118, alpha: 1) }
+    public static let ColorContextDangerLinkVisited = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.776, green: 0.361, blue: 0.337, alpha: 1) : UIColor(red: 0.525, green: 0.110, blue: 0.086, alpha: 1) }
     public static let ColorContextDangerDimMain = UIColor(red: 0.702, green: 0.149, blue: 0.118, alpha: 0.7)
     public static let ColorContextDangerDimSubtle = UIColor(red: 0.702, green: 0.149, blue: 0.118, alpha: 0.3)
     public static let ColorContextDangerDimSlight = UIColor(red: 0.702, green: 0.149, blue: 0.118, alpha: 0.1)
@@ -256,7 +256,7 @@ public enum ChassisTokensColor {
     public static let ColorContextSuccessFgInverse = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.027, green: 0.086, blue: 0.051, alpha: 1) : UIColor(red: 0.871, green: 0.918, blue: 0.886, alpha: 1) }
     public static let ColorContextSuccessFgActive = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1)
     public static let ColorContextSuccessFgSolid = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1)
-    public static let ColorContextSuccessFgHighlight = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.741, green: 0.831, blue: 0.773, alpha: 1) : UIColor(red: 0.102, green: 0.329, blue: 0.184, alpha: 1) }
+    public static let ColorContextSuccessFgHighlight = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.741, green: 0.831, blue: 0.773, alpha: 1) : UIColor(red: 0.067, green: 0.220, blue: 0.125, alpha: 1) }
     public static let ColorContextSuccessBgMain = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.020, green: 0.067, blue: 0.035, alpha: 1) : UIColor(red: 0.941, green: 0.961, blue: 0.949, alpha: 1) }
     public static let ColorContextSuccessBgEven = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.027, green: 0.086, blue: 0.051, alpha: 1) : UIColor(red: 0.871, green: 0.918, blue: 0.886, alpha: 1) }
     public static let ColorContextSuccessBgEvident = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.039, green: 0.133, blue: 0.075, alpha: 1) : UIColor(red: 0.741, green: 0.831, blue: 0.773, alpha: 1) }
@@ -271,10 +271,10 @@ public enum ChassisTokensColor {
     public static let ColorContextSuccessIconSlight = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.349, green: 0.580, blue: 0.435, alpha: 0.2) : UIColor(red: 0.133, green: 0.439, blue: 0.247, alpha: 0.2) }
     public static let ColorContextSuccessCueMain = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.349, green: 0.580, blue: 0.435, alpha: 1) : UIColor(red: 0.133, green: 0.439, blue: 0.247, alpha: 1) }
     public static let ColorContextSuccessCueSlight = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.349, green: 0.580, blue: 0.435, alpha: 0.2) : UIColor(red: 0.133, green: 0.439, blue: 0.247, alpha: 0.2) }
-    public static let ColorContextSuccessLinkMain = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.741, green: 0.831, blue: 0.773, alpha: 1) : UIColor(red: 0.133, green: 0.439, blue: 0.247, alpha: 1) }
-    public static let ColorContextSuccessLinkHover = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.871, green: 0.918, blue: 0.886, alpha: 1) : UIColor(red: 0.349, green: 0.580, blue: 0.435, alpha: 1) }
-    public static let ColorContextSuccessLinkActive = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.741, green: 0.831, blue: 0.773, alpha: 1) : UIColor(red: 0.133, green: 0.439, blue: 0.247, alpha: 1) }
-    public static let ColorContextSuccessLinkVisited = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.569, green: 0.722, blue: 0.624, alpha: 1) : UIColor(red: 0.102, green: 0.329, blue: 0.184, alpha: 1) }
+    public static let ColorContextSuccessLinkMain = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.569, green: 0.722, blue: 0.624, alpha: 1) : UIColor(red: 0.133, green: 0.439, blue: 0.247, alpha: 1) }
+    public static let ColorContextSuccessLinkHover = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.741, green: 0.831, blue: 0.773, alpha: 1) : UIColor(red: 0.349, green: 0.580, blue: 0.435, alpha: 1) }
+    public static let ColorContextSuccessLinkActive = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.569, green: 0.722, blue: 0.624, alpha: 1) : UIColor(red: 0.133, green: 0.439, blue: 0.247, alpha: 1) }
+    public static let ColorContextSuccessLinkVisited = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.349, green: 0.580, blue: 0.435, alpha: 1) : UIColor(red: 0.102, green: 0.329, blue: 0.184, alpha: 1) }
     public static let ColorContextSuccessDimMain = UIColor(red: 0.133, green: 0.439, blue: 0.247, alpha: 0.7)
     public static let ColorContextSuccessDimSubtle = UIColor(red: 0.133, green: 0.439, blue: 0.247, alpha: 0.3)
     public static let ColorContextSuccessDimSlight = UIColor(red: 0.133, green: 0.439, blue: 0.247, alpha: 0.1)
@@ -295,7 +295,7 @@ public enum ChassisTokensColor {
     public static let ColorContextWarningFgActive = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1)
     public static let ColorContextWarningFgInverse = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.110, green: 0.067, blue: 0.000, alpha: 1) : UIColor(red: 0.929, green: 0.902, blue: 0.851, alpha: 1) }
     public static let ColorContextWarningFgSolid = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1)
-    public static let ColorContextWarningFgHighlight = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.863, green: 0.800, blue: 0.702, alpha: 1) : UIColor(red: 0.408, green: 0.255, blue: 0.000, alpha: 1) }
+    public static let ColorContextWarningFgHighlight = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.863, green: 0.800, blue: 0.702, alpha: 1) : UIColor(red: 0.271, green: 0.169, blue: 0.000, alpha: 1) }
     public static let ColorContextWarningBgMain = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.082, green: 0.051, blue: 0.000, alpha: 1) : UIColor(red: 0.969, green: 0.953, blue: 0.929, alpha: 1) }
     public static let ColorContextWarningBgEven = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.110, green: 0.067, blue: 0.000, alpha: 1) : UIColor(red: 0.929, green: 0.902, blue: 0.851, alpha: 1) }
     public static let ColorContextWarningBgEvident = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.161, green: 0.102, blue: 0.000, alpha: 1) : UIColor(red: 0.863, green: 0.800, blue: 0.702, alpha: 1) }
@@ -310,10 +310,10 @@ public enum ChassisTokensColor {
     public static let ColorContextWarningIconSlight = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.655, green: 0.502, blue: 0.251, alpha: 0.2) : UIColor(red: 0.541, green: 0.337, blue: 0.000, alpha: 0.2) }
     public static let ColorContextWarningCueMain = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.655, green: 0.502, blue: 0.251, alpha: 1) : UIColor(red: 0.541, green: 0.337, blue: 0.000, alpha: 1) }
     public static let ColorContextWarningCueSlight = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.655, green: 0.502, blue: 0.251, alpha: 0.2) : UIColor(red: 0.541, green: 0.337, blue: 0.000, alpha: 0.2) }
-    public static let ColorContextWarningLinkMain = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.863, green: 0.800, blue: 0.702, alpha: 1) : UIColor(red: 0.541, green: 0.337, blue: 0.000, alpha: 1) }
-    public static let ColorContextWarningLinkHover = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.929, green: 0.902, blue: 0.851, alpha: 1) : UIColor(red: 0.655, green: 0.502, blue: 0.251, alpha: 1) }
-    public static let ColorContextWarningLinkActive = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.863, green: 0.800, blue: 0.702, alpha: 1) : UIColor(red: 0.541, green: 0.337, blue: 0.000, alpha: 1) }
-    public static let ColorContextWarningLinkVisited = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.769, green: 0.671, blue: 0.502, alpha: 1) : UIColor(red: 0.408, green: 0.255, blue: 0.000, alpha: 1) }
+    public static let ColorContextWarningLinkMain = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.769, green: 0.671, blue: 0.502, alpha: 1) : UIColor(red: 0.541, green: 0.337, blue: 0.000, alpha: 1) }
+    public static let ColorContextWarningLinkHover = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.863, green: 0.800, blue: 0.702, alpha: 1) : UIColor(red: 0.655, green: 0.502, blue: 0.251, alpha: 1) }
+    public static let ColorContextWarningLinkActive = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.769, green: 0.671, blue: 0.502, alpha: 1) : UIColor(red: 0.541, green: 0.337, blue: 0.000, alpha: 1) }
+    public static let ColorContextWarningLinkVisited = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.655, green: 0.502, blue: 0.251, alpha: 1) : UIColor(red: 0.408, green: 0.255, blue: 0.000, alpha: 1) }
     public static let ColorContextWarningDimMain = UIColor(red: 0.541, green: 0.337, blue: 0.000, alpha: 0.7)
     public static let ColorContextWarningDimSubtle = UIColor(red: 0.541, green: 0.337, blue: 0.000, alpha: 0.3)
     public static let ColorContextWarningDimSlight = UIColor(red: 0.541, green: 0.337, blue: 0.000, alpha: 0.1)
@@ -334,7 +334,7 @@ public enum ChassisTokensColor {
     public static let ColorContextInfoFgActive = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1)
     public static let ColorContextInfoFgInverse = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.035, green: 0.071, blue: 0.125, alpha: 1) : UIColor(red: 0.878, green: 0.906, blue: 0.941, alpha: 1) }
     public static let ColorContextInfoFgSolid = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1)
-    public static let ColorContextInfoFgHighlight = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.753, green: 0.808, blue: 0.886, alpha: 1) : UIColor(red: 0.137, green: 0.271, blue: 0.467, alpha: 1) }
+    public static let ColorContextInfoFgHighlight = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.753, green: 0.808, blue: 0.886, alpha: 1) : UIColor(red: 0.090, green: 0.180, blue: 0.310, alpha: 1) }
     public static let ColorContextInfoBgMain = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.027, green: 0.055, blue: 0.094, alpha: 1) : UIColor(red: 0.941, green: 0.957, blue: 0.973, alpha: 1) }
     public static let ColorContextInfoBgEven = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.035, green: 0.071, blue: 0.125, alpha: 1) : UIColor(red: 0.878, green: 0.906, blue: 0.941, alpha: 1) }
     public static let ColorContextInfoBgEvident = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.055, green: 0.110, blue: 0.184, alpha: 1) : UIColor(red: 0.753, green: 0.808, blue: 0.886, alpha: 1) }
@@ -349,10 +349,10 @@ public enum ChassisTokensColor {
     public static let ColorContextInfoIconSlight = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.384, green: 0.522, blue: 0.714, alpha: 0.2) : UIColor(red: 0.180, green: 0.361, blue: 0.620, alpha: 0.2) }
     public static let ColorContextInfoCueMain = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.384, green: 0.522, blue: 0.714, alpha: 1) : UIColor(red: 0.180, green: 0.361, blue: 0.620, alpha: 1) }
     public static let ColorContextInfoCueSlight = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.384, green: 0.522, blue: 0.714, alpha: 0.2) : UIColor(red: 0.180, green: 0.361, blue: 0.620, alpha: 0.2) }
-    public static let ColorContextInfoLinkMain = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.753, green: 0.808, blue: 0.886, alpha: 1) : UIColor(red: 0.180, green: 0.361, blue: 0.620, alpha: 1) }
-    public static let ColorContextInfoLinkHover = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.878, green: 0.906, blue: 0.941, alpha: 1) : UIColor(red: 0.384, green: 0.522, blue: 0.714, alpha: 1) }
-    public static let ColorContextInfoLinkActive = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.753, green: 0.808, blue: 0.886, alpha: 1) : UIColor(red: 0.180, green: 0.361, blue: 0.620, alpha: 1) }
-    public static let ColorContextInfoLinkVisited = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.592, green: 0.682, blue: 0.812, alpha: 1) : UIColor(red: 0.137, green: 0.271, blue: 0.467, alpha: 1) }
+    public static let ColorContextInfoLinkMain = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.592, green: 0.682, blue: 0.812, alpha: 1) : UIColor(red: 0.180, green: 0.361, blue: 0.620, alpha: 1) }
+    public static let ColorContextInfoLinkHover = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.753, green: 0.808, blue: 0.886, alpha: 1) : UIColor(red: 0.384, green: 0.522, blue: 0.714, alpha: 1) }
+    public static let ColorContextInfoLinkActive = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.592, green: 0.682, blue: 0.812, alpha: 1) : UIColor(red: 0.180, green: 0.361, blue: 0.620, alpha: 1) }
+    public static let ColorContextInfoLinkVisited = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.384, green: 0.522, blue: 0.714, alpha: 1) : UIColor(red: 0.137, green: 0.271, blue: 0.467, alpha: 1) }
     public static let ColorContextInfoDimMain = UIColor(red: 0.180, green: 0.361, blue: 0.620, alpha: 0.7)
     public static let ColorContextInfoDimSubtle = UIColor(red: 0.180, green: 0.361, blue: 0.620, alpha: 0.3)
     public static let ColorContextInfoDimSlight = UIColor(red: 0.180, green: 0.361, blue: 0.620, alpha: 0.1)
@@ -918,7 +918,7 @@ public enum ChassisTokensColor {
     public static let ColorTableBgHead = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.149, green: 0.137, blue: 0.129, alpha: 1) : UIColor(red: 0.925, green: 0.918, blue: 0.914, alpha: 1) }
     public static let ColorTableBgData = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.075, green: 0.071, blue: 0.063, alpha: 1) : UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1) }
     public static let ColorTableBgAlt = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.098, green: 0.090, blue: 0.086, alpha: 1) : UIColor(red: 0.965, green: 0.961, blue: 0.961, alpha: 1) }
-    public static let ColorTableBgHover = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.149, green: 0.137, blue: 0.129, alpha: 1) : UIColor(red: 0.925, green: 0.918, blue: 0.914, alpha: 1) }
+    public static let ColorTableBgHover = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 0.05) : UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0.05) }
     public static let ColorTableBgActive = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.145, green: 0.055, blue: 0.129, alpha: 1) : UIColor(red: 0.922, green: 0.878, blue: 0.914, alpha: 1) }
     public static let ColorTableBgEdit = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.110, green: 0.067, blue: 0.000, alpha: 1) : UIColor(red: 0.929, green: 0.902, blue: 0.851, alpha: 1) }
     public static let ColorTableCueActive = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.608, green: 0.384, blue: 0.576, alpha: 1) : UIColor(red: 0.478, green: 0.180, blue: 0.435, alpha: 1) }

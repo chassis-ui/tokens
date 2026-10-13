@@ -4,7 +4,7 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Tue, 13 Oct 2026 09:12:42 GMT
+// Generated on Tue, 13 Oct 2026 15:43:28 GMT
 // Chassis - Tokens v0.7.0
 // Copyright 2026 Ozgur Gunes
 // Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
@@ -75,10 +75,10 @@ $cx-color-context-alternate-icon-subtle: rgba(236, 234, 233, 0.5) !default;
 $cx-color-context-alternate-icon-slight: rgba(122, 46, 111, 0.2) !default;
 $cx-color-context-alternate-cue-main: #7A2E6F !default;
 $cx-color-context-alternate-cue-slight: rgba(122, 46, 111, 0.2) !default;
-$cx-color-context-alternate-link-main: #7A2E6F !default;
-$cx-color-context-alternate-link-hover: #9b6293 !default;
-$cx-color-context-alternate-link-active: #B3261E !default;
-$cx-color-context-alternate-link-visited: #5c2353 !default;
+$cx-color-context-alternate-link-main: #bd97b7 !default;
+$cx-color-context-alternate-link-hover: #d7c0d4 !default;
+$cx-color-context-alternate-link-active: #d9938f !default;
+$cx-color-context-alternate-link-visited: #9b6293 !default;
 $cx-color-context-alternate-dim-main: rgba(255, 255, 255, 0.7) !default;
 $cx-color-context-alternate-dim-subtle: rgba(255, 255, 255, 0.3) !default;
 $cx-color-context-alternate-dim-slight: rgba(255, 255, 255, 0.05) !default;
@@ -99,7 +99,7 @@ $cx-color-context-primary-fg-slight: rgba(92, 35, 83, 0.25) !default;
 $cx-color-context-primary-fg-active: #ffffff !default;
 $cx-color-context-primary-fg-inverse: #ebe0e9 !default;
 $cx-color-context-primary-fg-solid: #ffffff !default;
-$cx-color-context-primary-fg-highlight: #5c2353 !default;
+$cx-color-context-primary-fg-highlight: #3d1738 !default;
 $cx-color-context-primary-bg-main: #f6f0f5 !default;
 $cx-color-context-primary-bg-even: #ebe0e9 !default;
 $cx-color-context-primary-bg-evident: #d7c0d4 !default;
@@ -138,7 +138,7 @@ $cx-color-context-secondary-fg-slight: rgba(27, 22, 21, 0.25) !default;
 $cx-color-context-secondary-fg-active: #ffffff !default;
 $cx-color-context-secondary-fg-inverse: #dedddd !default;
 $cx-color-context-secondary-fg-solid: #ffffff !default;
-$cx-color-context-secondary-fg-highlight: #1b1615 !default;
+$cx-color-context-secondary-fg-highlight: #120f0e !default;
 $cx-color-context-secondary-bg-main: #f0efef !default;
 $cx-color-context-secondary-bg-even: #dedddd !default;
 $cx-color-context-secondary-bg-evident: #bdbbbb !default;
@@ -177,7 +177,7 @@ $cx-color-context-neutral-fg-slight: rgba(95, 88, 83, 0.25) !default;
 $cx-color-context-neutral-fg-active: #ffffff !default;
 $cx-color-context-neutral-fg-inverse: #eceae9 !default;
 $cx-color-context-neutral-fg-solid: #ffffff !default;
-$cx-color-context-neutral-fg-highlight: #5f5853 !default;
+$cx-color-context-neutral-fg-highlight: #3f3b37 !default;
 $cx-color-context-neutral-bg-main: #f6f5f5 !default;
 $cx-color-context-neutral-bg-even: #eceae9 !default;
 $cx-color-context-neutral-bg-evident: #d8d6d3 !default;
@@ -216,7 +216,7 @@ $cx-color-context-danger-fg-slight: rgba(134, 28, 22, 0.25) !default;
 $cx-color-context-danger-fg-active: #ffffff !default;
 $cx-color-context-danger-fg-inverse: #f4dedd !default;
 $cx-color-context-danger-fg-solid: #ffffff !default;
-$cx-color-context-danger-fg-highlight: #861c16 !default;
+$cx-color-context-danger-fg-highlight: #5a130f !default;
 $cx-color-context-danger-bg-main: #faf0ef !default;
 $cx-color-context-danger-bg-even: #f4dedd !default;
 $cx-color-context-danger-bg-evident: #e8bebb !default;
@@ -255,7 +255,7 @@ $cx-color-context-success-fg-slight: rgba(26, 84, 47, 0.25) !default;
 $cx-color-context-success-fg-inverse: #deeae2 !default;
 $cx-color-context-success-fg-active: #ffffff !default;
 $cx-color-context-success-fg-solid: #ffffff !default;
-$cx-color-context-success-fg-highlight: #1a542f !default;
+$cx-color-context-success-fg-highlight: #113820 !default;
 $cx-color-context-success-bg-main: #f0f5f2 !default;
 $cx-color-context-success-bg-even: #deeae2 !default;
 $cx-color-context-success-bg-evident: #bdd4c5 !default;
@@ -294,7 +294,7 @@ $cx-color-context-warning-fg-slight: rgba(104, 65, 0, 0.25) !default;
 $cx-color-context-warning-fg-active: #ffffff !default;
 $cx-color-context-warning-fg-inverse: #ede6d9 !default;
 $cx-color-context-warning-fg-solid: #ffffff !default;
-$cx-color-context-warning-fg-highlight: #684100 !default;
+$cx-color-context-warning-fg-highlight: #452b00 !default;
 $cx-color-context-warning-bg-main: #f7f3ed !default;
 $cx-color-context-warning-bg-even: #ede6d9 !default;
 $cx-color-context-warning-bg-evident: #dcccb3 !default;
@@ -333,7 +333,7 @@ $cx-color-context-info-fg-slight: rgba(35, 69, 119, 0.25) !default;
 $cx-color-context-info-fg-active: #ffffff !default;
 $cx-color-context-info-fg-inverse: #e0e7f0 !default;
 $cx-color-context-info-fg-solid: #ffffff !default;
-$cx-color-context-info-fg-highlight: #234577 !default;
+$cx-color-context-info-fg-highlight: #172e4f !default;
 $cx-color-context-info-bg-main: #f0f4f8 !default;
 $cx-color-context-info-bg-even: #e0e7f0 !default;
 $cx-color-context-info-bg-evident: #c0cee2 !default;
@@ -917,7 +917,7 @@ $cx-color-table-fg-data: var(--default-fg-main) !default;
 $cx-color-table-bg-head: var(--default-bg-evident) !default;
 $cx-color-table-bg-data: var(--default-bg-main) !default;
 $cx-color-table-bg-alt: var(--default-bg-even) !default;
-$cx-color-table-bg-hover: var(--default-bg-evident) !default;
+$cx-color-table-bg-hover: var(--default-dim-slight) !default;
 $cx-color-table-bg-active: var(--default-bg-highlight) !default;
 $cx-color-table-bg-edit: var(--warning-bg-even) !default;
 $cx-color-table-cue-active: var(--default-cue-main) !default;

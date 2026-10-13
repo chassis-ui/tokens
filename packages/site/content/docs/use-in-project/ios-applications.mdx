@@ -17,7 +17,7 @@ import UIKit
 
 public enum ChassisTokens {
     public static let SpaceContextMedium = CGFloat(16)
-    public static let ColorAccordionItemFgColor = UIColor(red: 0.086, green: 0.102, blue: 0.106, alpha: 1)
+    public static let ColorAccordionItemFgColor = UIColor(red: 0.098, green: 0.106, blue: 0.110, alpha: 1)
 }
 ```
 
@@ -149,7 +149,7 @@ struct Card: View {
 The color types of the themes declare the same constants, each with the colors of its theme. The committed configuration has the themes `light` and `dark`. When the configured themes include these two, the build also writes `Color.swift`, whose type `ChassisTokensColor` holds every theme color once. A color that differs between the two themes follows the interface style of the view that uses it. The build writes to `Color.swift`:
 
 ```swift
-    public static let ColorContextDefaultBgMain = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.067, green: 0.075, blue: 0.078, alpha: 1) : UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1) }
+    public static let ColorContextDefaultBgMain = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.071, green: 0.078, blue: 0.082, alpha: 1) : UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1) }
 ```
 
 Use these colors in views, and the appearance of each view picks the color:
@@ -333,7 +333,7 @@ The `ios-swiftui` preset writes the same types with SwiftUI values, `Color` and 
 The build then writes SwiftUI values, here to `ChassisTokens.swift`:
 
 ```swift
-    public static let ColorAccordionItemFgColor = Color(red: 0.086, green: 0.102, blue: 0.106, opacity: 1)
+    public static let ColorAccordionItemFgColor = Color(red: 0.098, green: 0.106, blue: 0.110, opacity: 1)
     public static let TypographyFontWeightTextStrongWeight = Font.Weight.semibold
 ```
 

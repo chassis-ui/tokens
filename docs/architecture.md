@@ -162,7 +162,7 @@ So the main file holds every token except the theme colors, with the values of t
 SCSS with the prefix `cx`: the header line `$prefix: cx- !default;`, then one `$cx-<name>: <value> !default;` per token between `// scss-docs-start design-tokens` and `// scss-docs-end design-tokens`.
 
 - **Sizes**: pixels divided by 16 with `rem`, not rounded; zero is `0rem`. A size that references another prints the same value (`dimension.base.05` and `size.unit.05` are `0.03125rem`).
-- **Colors**: `#ffffff`, or `rgba(22, 26, 27, 0.5)` with alpha.
+- **Colors**: `#ffffff`, or `rgba(25, 27, 28, 0.5)` with alpha.
 - **Line height tokens**: divided by the font size token at the same step, `typography.fontSize.<path[2]>.<path[3]>`, three decimals with trailing zeros removed, `em` (`1.25em`).
 - **Letter spacing** (tokens under `letterSpacing` and the `letter-spacing` of typography maps): pixels divided by 16, four decimals, `em` (`-0.5px` is `-0.0313em`).
 - **Shadows**: `x y blur spread color`, with ` inset` for inner shadows, layers joined with `, `, sizes in rem. `main.scss` has the shadows with the colors of the first theme, and `color-<theme>.scss` every shadow with the colors of its theme.
@@ -197,7 +197,7 @@ The short scale names are `4xs`, `3xs`, `2xs`, `xs`, `sm`, `md`, `lg`, `xl` and 
 
 `import UIKit`, then one `public static let <PascalName> = <value>` per token. Typography and shadow tokens are expanded into one constant per property (`FontContextJumboFontSize`, `ShadowContextSmall1Blur`).
 
-- **Colors**: `UIColor(red: 0.086, green: 0.102, blue: 0.106, alpha: 1)`, three decimals per channel, the alpha as it is. A value that is not a color prints as it is, with a warning.
+- **Colors**: `UIColor(red: 0.098, green: 0.106, blue: 0.110, alpha: 1)`, three decimals per channel, the alpha as it is. A value that is not a color prints as it is, with a warning.
 - **Numbers and sizes**: `CGFloat(16)`, in points. A line height in percent is that percentage of the font size of the same typography token, three decimals (`125%` of `96` is `CGFloat(120)`). Letter spacing is in points (`CGFloat(-0.5)`).
 - **Font families**: the first family of the list, without quotes, in double quotes (`"Inter"`).
 - **Font weights**: `UIFont.Weight.<name>`, from the weight number of the web's map rounded to the nearest hundred from 100 to 900: `ultraLight`, `thin`, `light`, `regular`, `medium`, `semibold`, `bold`, `heavy`, `black`. An unknown weight fails the build.
@@ -217,7 +217,7 @@ The short scale names are `4xs`, `3xs`, `2xs`, `xs`, `sm`, `md`, `lg`, `xl` and 
 | ------------------------------------------------------------------------------------------- | ------------------------------------ | ----------------------- |
 | opacity, letter spacing (type, or `path[1]` `letterSpacing`), gradient angles and positions | `<item type="dimen" format="float">` | `0.4`                   |
 | font weights                                                                                | `<integer>`, 100 to 900              | `400`                   |
-| colors                                                                                      | `<color>`, ARGB hex                  | `#80161a1b`             |
+| colors                                                                                      | `<color>`, ARGB hex                  | `#80191b1c`             |
 | other numbers                                                                               | `<integer>`                          | `12` (`grid.columns.*`) |
 | sizes                                                                                       | `<dimen>`                            | `16dp`, `22sp`          |
 | everything else                                                                             | `<string>`                           | `Inter`                 |

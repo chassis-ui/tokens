@@ -3208,19 +3208,19 @@
             },
             "link-main": {
               "$type": "color",
-              "$value": "{color.base.primitive.light.primary.50}"
+              "$value": "{color.base.primitive.light.primary.30}"
             },
             "link-hover": {
               "$type": "color",
-              "$value": "{color.base.primitive.light.primary.40}"
+              "$value": "{color.base.primitive.light.primary.20}"
             },
             "link-active": {
               "$type": "color",
-              "$value": "{color.base.primitive.light.danger.50}"
+              "$value": "{color.base.primitive.light.danger.30}"
             },
             "link-visited": {
               "$type": "color",
-              "$value": "{color.base.primitive.light.primary.60}"
+              "$value": "{color.base.primitive.light.primary.40}"
             },
             "dim-main": {
               "$type": "color",
@@ -3622,7 +3622,7 @@
             },
             "fg-highlight": {
               "$type": "color",
-              "$value": "{color.base.primitive.light.primary.60}"
+              "$value": "{color.base.primitive.light.primary.70}"
             },
             "bg-main": {
               "$type": "color",
@@ -3780,7 +3780,7 @@
             },
             "fg-highlight": {
               "$type": "color",
-              "$value": "{color.base.primitive.light.secondary.60}"
+              "$value": "{color.base.primitive.light.secondary.70}"
             },
             "bg-main": {
               "$type": "color",
@@ -3938,7 +3938,7 @@
             },
             "fg-highlight": {
               "$type": "color",
-              "$value": "{color.base.primitive.light.neutral.60}"
+              "$value": "{color.base.primitive.light.neutral.70}"
             },
             "bg-main": {
               "$type": "color",
@@ -4096,7 +4096,7 @@
             },
             "fg-highlight": {
               "$type": "color",
-              "$value": "{color.base.primitive.light.danger.60}"
+              "$value": "{color.base.primitive.light.danger.70}"
             },
             "bg-main": {
               "$type": "color",
@@ -4254,7 +4254,7 @@
             },
             "fg-highlight": {
               "$type": "color",
-              "$value": "{color.base.primitive.light.success.60}"
+              "$value": "{color.base.primitive.light.success.70}"
             },
             "bg-main": {
               "$type": "color",
@@ -4412,7 +4412,7 @@
             },
             "fg-highlight": {
               "$type": "color",
-              "$value": "{color.base.primitive.light.warning.60}"
+              "$value": "{color.base.primitive.light.warning.70}"
             },
             "bg-main": {
               "$type": "color",
@@ -4570,7 +4570,7 @@
             },
             "fg-highlight": {
               "$type": "color",
-              "$value": "{color.base.primitive.light.info.60}"
+              "$value": "{color.base.primitive.light.info.70}"
             },
             "bg-main": {
               "$type": "color",
@@ -5422,19 +5422,19 @@
             },
             "link-main": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.primary.20}"
+              "$value": "{color.base.primitive.dark.primary.30}"
             },
             "link-hover": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.primary.10}"
+              "$value": "{color.base.primitive.dark.primary.20}"
             },
             "link-active": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.primary.20}"
+              "$value": "{color.base.primitive.dark.primary.30}"
             },
             "link-visited": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.primary.30}"
+              "$value": "{color.base.primitive.dark.primary.40}"
             },
             "dim-main": {
               "$type": "color",
@@ -5580,19 +5580,19 @@
             },
             "link-main": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.secondary.20}"
+              "$value": "{color.base.primitive.dark.secondary.30}"
             },
             "link-hover": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.secondary.10}"
+              "$value": "{color.base.primitive.dark.secondary.20}"
             },
             "link-active": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.secondary.20}"
+              "$value": "{color.base.primitive.dark.secondary.30}"
             },
             "link-visited": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.secondary.30}"
+              "$value": "{color.base.primitive.dark.secondary.40}"
             },
             "dim-main": {
               "$type": "color",
@@ -5738,19 +5738,19 @@
             },
             "link-main": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.neutral.20}"
+              "$value": "{color.base.primitive.dark.neutral.30}"
             },
             "link-hover": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.neutral.10}"
+              "$value": "{color.base.primitive.dark.neutral.20}"
             },
             "link-active": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.neutral.20}"
+              "$value": "{color.base.primitive.dark.neutral.30}"
             },
             "link-visited": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.neutral.30}"
+              "$value": "{color.base.primitive.dark.neutral.40}"
             },
             "dim-main": {
               "$type": "color",
@@ -5896,19 +5896,19 @@
             },
             "link-main": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.danger.20}"
+              "$value": "{color.base.primitive.dark.danger.30}"
             },
             "link-hover": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.danger.10}"
+              "$value": "{color.base.primitive.dark.danger.20}"
             },
             "link-active": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.danger.20}"
+              "$value": "{color.base.primitive.dark.danger.30}"
             },
             "link-visited": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.danger.30}"
+              "$value": "{color.base.primitive.dark.danger.40}"
             },
             "dim-main": {
               "$type": "color",
@@ -6054,19 +6054,19 @@
             },
             "link-main": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.success.20}"
+              "$value": "{color.base.primitive.dark.success.30}"
             },
             "link-hover": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.success.10}"
+              "$value": "{color.base.primitive.dark.success.20}"
             },
             "link-active": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.success.20}"
+              "$value": "{color.base.primitive.dark.success.30}"
             },
             "link-visited": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.success.30}"
+              "$value": "{color.base.primitive.dark.success.40}"
             },
             "dim-main": {
               "$type": "color",
@@ -6212,19 +6212,19 @@
             },
             "link-main": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.warning.20}"
+              "$value": "{color.base.primitive.dark.warning.30}"
             },
             "link-hover": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.warning.10}"
+              "$value": "{color.base.primitive.dark.warning.20}"
             },
             "link-active": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.warning.20}"
+              "$value": "{color.base.primitive.dark.warning.30}"
             },
             "link-visited": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.warning.30}"
+              "$value": "{color.base.primitive.dark.warning.40}"
             },
             "dim-main": {
               "$type": "color",
@@ -6370,19 +6370,19 @@
             },
             "link-main": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.info.20}"
+              "$value": "{color.base.primitive.dark.info.30}"
             },
             "link-hover": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.info.10}"
+              "$value": "{color.base.primitive.dark.info.20}"
             },
             "link-active": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.info.20}"
+              "$value": "{color.base.primitive.dark.info.30}"
             },
             "link-visited": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.info.30}"
+              "$value": "{color.base.primitive.dark.info.40}"
             },
             "dim-main": {
               "$type": "color",

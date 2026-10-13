@@ -307,7 +307,7 @@ The default `web` platform writes SCSS for [Chassis CSS](https://github.com/chas
 All web platforms write the same files to `dist/web/<app>/<brand>/`. The SCSS variables format prints resolved values:
 
 ```scss
-$cx-color-accordion-item-fg-color: #161a1b !default;
+$cx-color-accordion-item-fg-color: #191b1c !default;
 $cx-border-radius-accordion-main: 0.375rem !default;
 ```
 

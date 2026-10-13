@@ -264,7 +264,7 @@ The main file holds every token except the theme colors, which are `color.primit
 On iOS, each file declares a caseless `public enum`, so all files fit in one module: `ChassisTokens` in `ChassisTokens.swift`, and `ChassisTokens<File>` in the others, such as `ChassisTokensColorLight`. When the themes include `light` and `dark`, the build writes `Color.swift` after the other files. Its type `ChassisTokensColor` holds the colors of both themes:
 
 ```swift
-    public static let ColorContextDefaultFgMain = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.914, green: 0.925, blue: 0.929, alpha: 1) : UIColor(red: 0.086, green: 0.102, blue: 0.106, alpha: 1) }
+    public static let ColorContextDefaultFgMain = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.922, green: 0.929, blue: 0.933, alpha: 1) : UIColor(red: 0.098, green: 0.106, blue: 0.110, alpha: 1) }
 ```
 
 `Package.swift` at the repository root declares one Swift library per brand of every app with an iOS platform. Run `pnpm tokens:swift-package` after you change the brands or apps.
@@ -478,7 +478,7 @@ This format prints SCSS variables for other CSS frameworks, and the presets `web
 
 ```scss
 $cx-space-context-medium: 1rem !default;
-$cx-color-accordion-item-fg-color: #161a1b !default;
+$cx-color-accordion-item-fg-color: #191b1c !default;
 $cx-border-radius-accordion-main: 0.375rem !default;
 ```
 
@@ -493,7 +493,7 @@ import UIKit
 
 public enum ChassisTokens {
     public static let SpaceContextMedium = CGFloat(16)
-    public static let ColorButtonPrimaryBgIdle = UIColor(red: 0.000, green: 0.643, blue: 0.800, alpha: 1)
+    public static let ColorButtonPrimaryBgIdle = UIColor(red: 0.000, green: 0.580, blue: 0.722, alpha: 1)
     public static let FontContextJumboLineHeight = CGFloat(120)
     public static let FontContextJumboFontSize = CGFloat(96)
     public static let FontContextJumboLetterSpacing = CGFloat(-0.5)
@@ -516,7 +516,7 @@ This format prints the Swift files with SwiftUI values, and the `ios-swiftui` pr
 import SwiftUI
 
 public enum ChassisTokensColorLight {
-    public static let ColorContextDefaultFgMain = Color(red: 0.086, green: 0.102, blue: 0.106, opacity: 1)
+    public static let ColorContextDefaultFgMain = Color(red: 0.098, green: 0.106, blue: 0.110, opacity: 1)
 }
 ```
 
@@ -528,7 +528,7 @@ This format prints a `<resources>` file with one element per token, and the `and
 <resources>
   <dimen name="space_context_medium">16dp</dimen>
   <item name="opacity_level_10" type="dimen" format="float">0.1</item>
-  <color name="color_button_primary_bg_idle">#ff00a4cc</color>
+  <color name="color_button_primary_bg_idle">#ff0094b8</color>
   <dimen name="font_context_jumbo_line_height">120sp</dimen>
   <dimen name="font_context_jumbo_font_size">96sp</dimen>
   <item name="font_context_jumbo_letter_spacing" type="dimen" format="float">-0.0052</item>

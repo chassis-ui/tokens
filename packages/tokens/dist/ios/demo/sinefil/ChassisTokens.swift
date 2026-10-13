@@ -4,7 +4,7 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Tue, 13 Oct 2026 09:12:43 GMT
+// Generated on Tue, 13 Oct 2026 15:43:29 GMT
 // Chassis - Tokens v0.7.0
 // Copyright 2026 Ozgur Gunes
 // Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
@@ -941,10 +941,10 @@ public enum ChassisTokens {
     public static let ColorBaseContextLightAlternateIconSlight = UIColor(red: 0.478, green: 0.180, blue: 0.435, alpha: 0.2)
     public static let ColorBaseContextLightAlternateCueMain = UIColor(red: 0.478, green: 0.180, blue: 0.435, alpha: 1)
     public static let ColorBaseContextLightAlternateCueSlight = UIColor(red: 0.478, green: 0.180, blue: 0.435, alpha: 0.2)
-    public static let ColorBaseContextLightAlternateLinkMain = UIColor(red: 0.478, green: 0.180, blue: 0.435, alpha: 1)
-    public static let ColorBaseContextLightAlternateLinkHover = UIColor(red: 0.608, green: 0.384, blue: 0.576, alpha: 1)
-    public static let ColorBaseContextLightAlternateLinkActive = UIColor(red: 0.702, green: 0.149, blue: 0.118, alpha: 1)
-    public static let ColorBaseContextLightAlternateLinkVisited = UIColor(red: 0.361, green: 0.137, blue: 0.325, alpha: 1)
+    public static let ColorBaseContextLightAlternateLinkMain = UIColor(red: 0.741, green: 0.592, blue: 0.718, alpha: 1)
+    public static let ColorBaseContextLightAlternateLinkHover = UIColor(red: 0.843, green: 0.753, blue: 0.831, alpha: 1)
+    public static let ColorBaseContextLightAlternateLinkActive = UIColor(red: 0.851, green: 0.576, blue: 0.561, alpha: 1)
+    public static let ColorBaseContextLightAlternateLinkVisited = UIColor(red: 0.608, green: 0.384, blue: 0.576, alpha: 1)
     public static let ColorBaseContextLightAlternateDimMain = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 0.7)
     public static let ColorBaseContextLightAlternateDimSubtle = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 0.3)
     public static let ColorBaseContextLightAlternateDimSlight = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 0.05)
@@ -1043,7 +1043,7 @@ public enum ChassisTokens {
     public static let ColorBaseContextLightPrimaryFgActive = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1)
     public static let ColorBaseContextLightPrimaryFgInverse = UIColor(red: 0.922, green: 0.878, blue: 0.914, alpha: 1)
     public static let ColorBaseContextLightPrimaryFgSolid = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1)
-    public static let ColorBaseContextLightPrimaryFgHighlight = UIColor(red: 0.361, green: 0.137, blue: 0.325, alpha: 1)
+    public static let ColorBaseContextLightPrimaryFgHighlight = UIColor(red: 0.239, green: 0.090, blue: 0.220, alpha: 1)
     public static let ColorBaseContextLightPrimaryBgMain = UIColor(red: 0.965, green: 0.941, blue: 0.961, alpha: 1)
     public static let ColorBaseContextLightPrimaryBgEven = UIColor(red: 0.922, green: 0.878, blue: 0.914, alpha: 1)
     public static let ColorBaseContextLightPrimaryBgEvident = UIColor(red: 0.843, green: 0.753, blue: 0.831, alpha: 1)
@@ -1082,7 +1082,7 @@ public enum ChassisTokens {
     public static let ColorBaseContextLightSecondaryFgActive = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1)
     public static let ColorBaseContextLightSecondaryFgInverse = UIColor(red: 0.871, green: 0.867, blue: 0.867, alpha: 1)
     public static let ColorBaseContextLightSecondaryFgSolid = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1)
-    public static let ColorBaseContextLightSecondaryFgHighlight = UIColor(red: 0.106, green: 0.086, blue: 0.082, alpha: 1)
+    public static let ColorBaseContextLightSecondaryFgHighlight = UIColor(red: 0.071, green: 0.059, blue: 0.055, alpha: 1)
     public static let ColorBaseContextLightSecondaryBgMain = UIColor(red: 0.941, green: 0.937, blue: 0.937, alpha: 1)
     public static let ColorBaseContextLightSecondaryBgEven = UIColor(red: 0.871, green: 0.867, blue: 0.867, alpha: 1)
     public static let ColorBaseContextLightSecondaryBgEvident = UIColor(red: 0.741, green: 0.733, blue: 0.733, alpha: 1)
@@ -1121,7 +1121,7 @@ public enum ChassisTokens {
     public static let ColorBaseContextLightNeutralFgActive = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1)
     public static let ColorBaseContextLightNeutralFgInverse = UIColor(red: 0.925, green: 0.918, blue: 0.914, alpha: 1)
     public static let ColorBaseContextLightNeutralFgSolid = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1)
-    public static let ColorBaseContextLightNeutralFgHighlight = UIColor(red: 0.373, green: 0.345, blue: 0.325, alpha: 1)
+    public static let ColorBaseContextLightNeutralFgHighlight = UIColor(red: 0.247, green: 0.231, blue: 0.216, alpha: 1)
     public static let ColorBaseContextLightNeutralBgMain = UIColor(red: 0.965, green: 0.961, blue: 0.961, alpha: 1)
     public static let ColorBaseContextLightNeutralBgEven = UIColor(red: 0.925, green: 0.918, blue: 0.914, alpha: 1)
     public static let ColorBaseContextLightNeutralBgEvident = UIColor(red: 0.847, green: 0.839, blue: 0.827, alpha: 1)
@@ -1160,7 +1160,7 @@ public enum ChassisTokens {
     public static let ColorBaseContextLightDangerFgActive = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1)
     public static let ColorBaseContextLightDangerFgInverse = UIColor(red: 0.957, green: 0.871, blue: 0.867, alpha: 1)
     public static let ColorBaseContextLightDangerFgSolid = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1)
-    public static let ColorBaseContextLightDangerFgHighlight = UIColor(red: 0.525, green: 0.110, blue: 0.086, alpha: 1)
+    public static let ColorBaseContextLightDangerFgHighlight = UIColor(red: 0.353, green: 0.075, blue: 0.059, alpha: 1)
     public static let ColorBaseContextLightDangerBgMain = UIColor(red: 0.980, green: 0.941, blue: 0.937, alpha: 1)
     public static let ColorBaseContextLightDangerBgEven = UIColor(red: 0.957, green: 0.871, blue: 0.867, alpha: 1)
     public static let ColorBaseContextLightDangerBgEvident = UIColor(red: 0.910, green: 0.745, blue: 0.733, alpha: 1)
@@ -1199,7 +1199,7 @@ public enum ChassisTokens {
     public static let ColorBaseContextLightSuccessFgActive = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1)
     public static let ColorBaseContextLightSuccessFgInverse = UIColor(red: 0.871, green: 0.918, blue: 0.886, alpha: 1)
     public static let ColorBaseContextLightSuccessFgSolid = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1)
-    public static let ColorBaseContextLightSuccessFgHighlight = UIColor(red: 0.102, green: 0.329, blue: 0.184, alpha: 1)
+    public static let ColorBaseContextLightSuccessFgHighlight = UIColor(red: 0.067, green: 0.220, blue: 0.125, alpha: 1)
     public static let ColorBaseContextLightSuccessBgMain = UIColor(red: 0.941, green: 0.961, blue: 0.949, alpha: 1)
     public static let ColorBaseContextLightSuccessBgEven = UIColor(red: 0.871, green: 0.918, blue: 0.886, alpha: 1)
     public static let ColorBaseContextLightSuccessBgEvident = UIColor(red: 0.741, green: 0.831, blue: 0.773, alpha: 1)
@@ -1238,7 +1238,7 @@ public enum ChassisTokens {
     public static let ColorBaseContextLightWarningFgActive = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1)
     public static let ColorBaseContextLightWarningFgInverse = UIColor(red: 0.929, green: 0.902, blue: 0.851, alpha: 1)
     public static let ColorBaseContextLightWarningFgSolid = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1)
-    public static let ColorBaseContextLightWarningFgHighlight = UIColor(red: 0.408, green: 0.255, blue: 0.000, alpha: 1)
+    public static let ColorBaseContextLightWarningFgHighlight = UIColor(red: 0.271, green: 0.169, blue: 0.000, alpha: 1)
     public static let ColorBaseContextLightWarningBgMain = UIColor(red: 0.969, green: 0.953, blue: 0.929, alpha: 1)
     public static let ColorBaseContextLightWarningBgEven = UIColor(red: 0.929, green: 0.902, blue: 0.851, alpha: 1)
     public static let ColorBaseContextLightWarningBgEvident = UIColor(red: 0.863, green: 0.800, blue: 0.702, alpha: 1)
@@ -1277,7 +1277,7 @@ public enum ChassisTokens {
     public static let ColorBaseContextLightInfoFgActive = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1)
     public static let ColorBaseContextLightInfoFgInverse = UIColor(red: 0.878, green: 0.906, blue: 0.941, alpha: 1)
     public static let ColorBaseContextLightInfoFgSolid = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1)
-    public static let ColorBaseContextLightInfoFgHighlight = UIColor(red: 0.137, green: 0.271, blue: 0.467, alpha: 1)
+    public static let ColorBaseContextLightInfoFgHighlight = UIColor(red: 0.090, green: 0.180, blue: 0.310, alpha: 1)
     public static let ColorBaseContextLightInfoBgMain = UIColor(red: 0.941, green: 0.957, blue: 0.973, alpha: 1)
     public static let ColorBaseContextLightInfoBgEven = UIColor(red: 0.878, green: 0.906, blue: 0.941, alpha: 1)
     public static let ColorBaseContextLightInfoBgEvident = UIColor(red: 0.753, green: 0.808, blue: 0.886, alpha: 1)
@@ -1487,10 +1487,10 @@ public enum ChassisTokens {
     public static let ColorBaseContextDarkPrimaryIconSlight = UIColor(red: 0.608, green: 0.384, blue: 0.576, alpha: 0.2)
     public static let ColorBaseContextDarkPrimaryCueMain = UIColor(red: 0.608, green: 0.384, blue: 0.576, alpha: 1)
     public static let ColorBaseContextDarkPrimaryCueSlight = UIColor(red: 0.608, green: 0.384, blue: 0.576, alpha: 0.2)
-    public static let ColorBaseContextDarkPrimaryLinkMain = UIColor(red: 0.843, green: 0.753, blue: 0.831, alpha: 1)
-    public static let ColorBaseContextDarkPrimaryLinkHover = UIColor(red: 0.922, green: 0.878, blue: 0.914, alpha: 1)
-    public static let ColorBaseContextDarkPrimaryLinkActive = UIColor(red: 0.843, green: 0.753, blue: 0.831, alpha: 1)
-    public static let ColorBaseContextDarkPrimaryLinkVisited = UIColor(red: 0.741, green: 0.592, blue: 0.718, alpha: 1)
+    public static let ColorBaseContextDarkPrimaryLinkMain = UIColor(red: 0.741, green: 0.592, blue: 0.718, alpha: 1)
+    public static let ColorBaseContextDarkPrimaryLinkHover = UIColor(red: 0.843, green: 0.753, blue: 0.831, alpha: 1)
+    public static let ColorBaseContextDarkPrimaryLinkActive = UIColor(red: 0.741, green: 0.592, blue: 0.718, alpha: 1)
+    public static let ColorBaseContextDarkPrimaryLinkVisited = UIColor(red: 0.608, green: 0.384, blue: 0.576, alpha: 1)
     public static let ColorBaseContextDarkPrimaryDimMain = UIColor(red: 0.478, green: 0.180, blue: 0.435, alpha: 0.7)
     public static let ColorBaseContextDarkPrimaryDimSubtle = UIColor(red: 0.478, green: 0.180, blue: 0.435, alpha: 0.3)
     public static let ColorBaseContextDarkPrimaryDimSlight = UIColor(red: 0.478, green: 0.180, blue: 0.435, alpha: 0.1)
@@ -1526,10 +1526,10 @@ public enum ChassisTokens {
     public static let ColorBaseContextDarkSecondaryIconSlight = UIColor(red: 0.357, green: 0.337, blue: 0.333, alpha: 0.2)
     public static let ColorBaseContextDarkSecondaryCueMain = UIColor(red: 0.357, green: 0.337, blue: 0.333, alpha: 1)
     public static let ColorBaseContextDarkSecondaryCueSlight = UIColor(red: 0.357, green: 0.337, blue: 0.333, alpha: 0.2)
-    public static let ColorBaseContextDarkSecondaryLinkMain = UIColor(red: 0.741, green: 0.733, blue: 0.733, alpha: 1)
-    public static let ColorBaseContextDarkSecondaryLinkHover = UIColor(red: 0.871, green: 0.867, blue: 0.867, alpha: 1)
-    public static let ColorBaseContextDarkSecondaryLinkActive = UIColor(red: 0.741, green: 0.733, blue: 0.733, alpha: 1)
-    public static let ColorBaseContextDarkSecondaryLinkVisited = UIColor(red: 0.573, green: 0.561, blue: 0.557, alpha: 1)
+    public static let ColorBaseContextDarkSecondaryLinkMain = UIColor(red: 0.573, green: 0.561, blue: 0.557, alpha: 1)
+    public static let ColorBaseContextDarkSecondaryLinkHover = UIColor(red: 0.741, green: 0.733, blue: 0.733, alpha: 1)
+    public static let ColorBaseContextDarkSecondaryLinkActive = UIColor(red: 0.573, green: 0.561, blue: 0.557, alpha: 1)
+    public static let ColorBaseContextDarkSecondaryLinkVisited = UIColor(red: 0.357, green: 0.337, blue: 0.333, alpha: 1)
     public static let ColorBaseContextDarkSecondaryDimMain = UIColor(red: 0.141, green: 0.118, blue: 0.110, alpha: 0.7)
     public static let ColorBaseContextDarkSecondaryDimSubtle = UIColor(red: 0.141, green: 0.118, blue: 0.110, alpha: 0.3)
     public static let ColorBaseContextDarkSecondaryDimSlight = UIColor(red: 0.141, green: 0.118, blue: 0.110, alpha: 0.1)
@@ -1565,10 +1565,10 @@ public enum ChassisTokens {
     public static let ColorBaseContextDarkNeutralIconSlight = UIColor(red: 0.620, green: 0.596, blue: 0.573, alpha: 0.2)
     public static let ColorBaseContextDarkNeutralCueMain = UIColor(red: 0.620, green: 0.596, blue: 0.573, alpha: 1)
     public static let ColorBaseContextDarkNeutralCueSlight = UIColor(red: 0.620, green: 0.596, blue: 0.573, alpha: 0.2)
-    public static let ColorBaseContextDarkNeutralLinkMain = UIColor(red: 0.847, green: 0.839, blue: 0.827, alpha: 1)
-    public static let ColorBaseContextDarkNeutralLinkHover = UIColor(red: 0.925, green: 0.918, blue: 0.914, alpha: 1)
-    public static let ColorBaseContextDarkNeutralLinkActive = UIColor(red: 0.847, green: 0.839, blue: 0.827, alpha: 1)
-    public static let ColorBaseContextDarkNeutralLinkVisited = UIColor(red: 0.749, green: 0.729, blue: 0.718, alpha: 1)
+    public static let ColorBaseContextDarkNeutralLinkMain = UIColor(red: 0.749, green: 0.729, blue: 0.718, alpha: 1)
+    public static let ColorBaseContextDarkNeutralLinkHover = UIColor(red: 0.847, green: 0.839, blue: 0.827, alpha: 1)
+    public static let ColorBaseContextDarkNeutralLinkActive = UIColor(red: 0.749, green: 0.729, blue: 0.718, alpha: 1)
+    public static let ColorBaseContextDarkNeutralLinkVisited = UIColor(red: 0.620, green: 0.596, blue: 0.573, alpha: 1)
     public static let ColorBaseContextDarkNeutralDimMain = UIColor(red: 0.494, green: 0.459, blue: 0.431, alpha: 0.7)
     public static let ColorBaseContextDarkNeutralDimSubtle = UIColor(red: 0.494, green: 0.459, blue: 0.431, alpha: 0.3)
     public static let ColorBaseContextDarkNeutralDimSlight = UIColor(red: 0.494, green: 0.459, blue: 0.431, alpha: 0.1)
@@ -1604,10 +1604,10 @@ public enum ChassisTokens {
     public static let ColorBaseContextDarkDangerIconSlight = UIColor(red: 0.776, green: 0.361, blue: 0.337, alpha: 0.2)
     public static let ColorBaseContextDarkDangerCueMain = UIColor(red: 0.776, green: 0.361, blue: 0.337, alpha: 1)
     public static let ColorBaseContextDarkDangerCueSlight = UIColor(red: 0.776, green: 0.361, blue: 0.337, alpha: 0.2)
-    public static let ColorBaseContextDarkDangerLinkMain = UIColor(red: 0.910, green: 0.745, blue: 0.733, alpha: 1)
-    public static let ColorBaseContextDarkDangerLinkHover = UIColor(red: 0.957, green: 0.871, blue: 0.867, alpha: 1)
-    public static let ColorBaseContextDarkDangerLinkActive = UIColor(red: 0.910, green: 0.745, blue: 0.733, alpha: 1)
-    public static let ColorBaseContextDarkDangerLinkVisited = UIColor(red: 0.851, green: 0.576, blue: 0.561, alpha: 1)
+    public static let ColorBaseContextDarkDangerLinkMain = UIColor(red: 0.851, green: 0.576, blue: 0.561, alpha: 1)
+    public static let ColorBaseContextDarkDangerLinkHover = UIColor(red: 0.910, green: 0.745, blue: 0.733, alpha: 1)
+    public static let ColorBaseContextDarkDangerLinkActive = UIColor(red: 0.851, green: 0.576, blue: 0.561, alpha: 1)
+    public static let ColorBaseContextDarkDangerLinkVisited = UIColor(red: 0.776, green: 0.361, blue: 0.337, alpha: 1)
     public static let ColorBaseContextDarkDangerDimMain = UIColor(red: 0.702, green: 0.149, blue: 0.118, alpha: 0.7)
     public static let ColorBaseContextDarkDangerDimSubtle = UIColor(red: 0.702, green: 0.149, blue: 0.118, alpha: 0.3)
     public static let ColorBaseContextDarkDangerDimSlight = UIColor(red: 0.702, green: 0.149, blue: 0.118, alpha: 0.1)
@@ -1643,10 +1643,10 @@ public enum ChassisTokens {
     public static let ColorBaseContextDarkSuccessIconSlight = UIColor(red: 0.349, green: 0.580, blue: 0.435, alpha: 0.2)
     public static let ColorBaseContextDarkSuccessCueMain = UIColor(red: 0.349, green: 0.580, blue: 0.435, alpha: 1)
     public static let ColorBaseContextDarkSuccessCueSlight = UIColor(red: 0.349, green: 0.580, blue: 0.435, alpha: 0.2)
-    public static let ColorBaseContextDarkSuccessLinkMain = UIColor(red: 0.741, green: 0.831, blue: 0.773, alpha: 1)
-    public static let ColorBaseContextDarkSuccessLinkHover = UIColor(red: 0.871, green: 0.918, blue: 0.886, alpha: 1)
-    public static let ColorBaseContextDarkSuccessLinkActive = UIColor(red: 0.741, green: 0.831, blue: 0.773, alpha: 1)
-    public static let ColorBaseContextDarkSuccessLinkVisited = UIColor(red: 0.569, green: 0.722, blue: 0.624, alpha: 1)
+    public static let ColorBaseContextDarkSuccessLinkMain = UIColor(red: 0.569, green: 0.722, blue: 0.624, alpha: 1)
+    public static let ColorBaseContextDarkSuccessLinkHover = UIColor(red: 0.741, green: 0.831, blue: 0.773, alpha: 1)
+    public static let ColorBaseContextDarkSuccessLinkActive = UIColor(red: 0.569, green: 0.722, blue: 0.624, alpha: 1)
+    public static let ColorBaseContextDarkSuccessLinkVisited = UIColor(red: 0.349, green: 0.580, blue: 0.435, alpha: 1)
     public static let ColorBaseContextDarkSuccessDimMain = UIColor(red: 0.133, green: 0.439, blue: 0.247, alpha: 0.7)
     public static let ColorBaseContextDarkSuccessDimSubtle = UIColor(red: 0.133, green: 0.439, blue: 0.247, alpha: 0.3)
     public static let ColorBaseContextDarkSuccessDimSlight = UIColor(red: 0.133, green: 0.439, blue: 0.247, alpha: 0.1)
@@ -1682,10 +1682,10 @@ public enum ChassisTokens {
     public static let ColorBaseContextDarkWarningIconSlight = UIColor(red: 0.655, green: 0.502, blue: 0.251, alpha: 0.2)
     public static let ColorBaseContextDarkWarningCueMain = UIColor(red: 0.655, green: 0.502, blue: 0.251, alpha: 1)
     public static let ColorBaseContextDarkWarningCueSlight = UIColor(red: 0.655, green: 0.502, blue: 0.251, alpha: 0.2)
-    public static let ColorBaseContextDarkWarningLinkMain = UIColor(red: 0.863, green: 0.800, blue: 0.702, alpha: 1)
-    public static let ColorBaseContextDarkWarningLinkHover = UIColor(red: 0.929, green: 0.902, blue: 0.851, alpha: 1)
-    public static let ColorBaseContextDarkWarningLinkActive = UIColor(red: 0.863, green: 0.800, blue: 0.702, alpha: 1)
-    public static let ColorBaseContextDarkWarningLinkVisited = UIColor(red: 0.769, green: 0.671, blue: 0.502, alpha: 1)
+    public static let ColorBaseContextDarkWarningLinkMain = UIColor(red: 0.769, green: 0.671, blue: 0.502, alpha: 1)
+    public static let ColorBaseContextDarkWarningLinkHover = UIColor(red: 0.863, green: 0.800, blue: 0.702, alpha: 1)
+    public static let ColorBaseContextDarkWarningLinkActive = UIColor(red: 0.769, green: 0.671, blue: 0.502, alpha: 1)
+    public static let ColorBaseContextDarkWarningLinkVisited = UIColor(red: 0.655, green: 0.502, blue: 0.251, alpha: 1)
     public static let ColorBaseContextDarkWarningDimMain = UIColor(red: 0.541, green: 0.337, blue: 0.000, alpha: 0.7)
     public static let ColorBaseContextDarkWarningDimSubtle = UIColor(red: 0.541, green: 0.337, blue: 0.000, alpha: 0.3)
     public static let ColorBaseContextDarkWarningDimSlight = UIColor(red: 0.541, green: 0.337, blue: 0.000, alpha: 0.1)
@@ -1721,10 +1721,10 @@ public enum ChassisTokens {
     public static let ColorBaseContextDarkInfoIconSlight = UIColor(red: 0.384, green: 0.522, blue: 0.714, alpha: 0.2)
     public static let ColorBaseContextDarkInfoCueMain = UIColor(red: 0.384, green: 0.522, blue: 0.714, alpha: 1)
     public static let ColorBaseContextDarkInfoCueSlight = UIColor(red: 0.384, green: 0.522, blue: 0.714, alpha: 0.2)
-    public static let ColorBaseContextDarkInfoLinkMain = UIColor(red: 0.753, green: 0.808, blue: 0.886, alpha: 1)
-    public static let ColorBaseContextDarkInfoLinkHover = UIColor(red: 0.878, green: 0.906, blue: 0.941, alpha: 1)
-    public static let ColorBaseContextDarkInfoLinkActive = UIColor(red: 0.753, green: 0.808, blue: 0.886, alpha: 1)
-    public static let ColorBaseContextDarkInfoLinkVisited = UIColor(red: 0.592, green: 0.682, blue: 0.812, alpha: 1)
+    public static let ColorBaseContextDarkInfoLinkMain = UIColor(red: 0.592, green: 0.682, blue: 0.812, alpha: 1)
+    public static let ColorBaseContextDarkInfoLinkHover = UIColor(red: 0.753, green: 0.808, blue: 0.886, alpha: 1)
+    public static let ColorBaseContextDarkInfoLinkActive = UIColor(red: 0.592, green: 0.682, blue: 0.812, alpha: 1)
+    public static let ColorBaseContextDarkInfoLinkVisited = UIColor(red: 0.384, green: 0.522, blue: 0.714, alpha: 1)
     public static let ColorBaseContextDarkInfoDimMain = UIColor(red: 0.180, green: 0.361, blue: 0.620, alpha: 0.7)
     public static let ColorBaseContextDarkInfoDimSubtle = UIColor(red: 0.180, green: 0.361, blue: 0.620, alpha: 0.3)
     public static let ColorBaseContextDarkInfoDimSlight = UIColor(red: 0.180, green: 0.361, blue: 0.620, alpha: 0.1)
@@ -2027,7 +2027,7 @@ public enum ChassisTokens {
     public static let ColorTableBgHead = UIColor(red: 0.925, green: 0.918, blue: 0.914, alpha: 1)
     public static let ColorTableBgData = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1)
     public static let ColorTableBgAlt = UIColor(red: 0.965, green: 0.961, blue: 0.961, alpha: 1)
-    public static let ColorTableBgHover = UIColor(red: 0.925, green: 0.918, blue: 0.914, alpha: 1)
+    public static let ColorTableBgHover = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0.05)
     public static let ColorTableBgActive = UIColor(red: 0.922, green: 0.878, blue: 0.914, alpha: 1)
     public static let ColorTableBgEdit = UIColor(red: 0.929, green: 0.902, blue: 0.851, alpha: 1)
     public static let ColorTableCueActive = UIColor(red: 0.478, green: 0.180, blue: 0.435, alpha: 1)
@@ -2066,7 +2066,7 @@ public enum ChassisTokens {
     public static let TypographyFontWeightHtmlBodyStyle = "normal"
     public static let TypographyFontWeightHtmlParagraphWeight = UIFont.Weight.regular
     public static let TypographyFontWeightHtmlParagraphStyle = "normal"
-    public static let TypographyFontWeightHtmlHeadingWeight = UIFont.Weight.bold
+    public static let TypographyFontWeightHtmlHeadingWeight = UIFont.Weight.semibold
     public static let TypographyFontWeightHtmlHeadingStyle = "normal"
     public static let TypographyFontWeightHtmlCiteWeight = UIFont.Weight.semibold
     public static let TypographyFontWeightHtmlCiteStyle = "normal"
@@ -3207,7 +3207,7 @@ public enum ChassisTokens {
     public static let FontDisplay2xsmallElegantTextDecoration = "none"
     public static let FontDisplay2xsmallElegantFontStyle = "normal"
     public static let FontHtmlH1FontFamily = "Source Serif 4"
-    public static let FontHtmlH1FontWeight = UIFont.Weight.bold
+    public static let FontHtmlH1FontWeight = UIFont.Weight.semibold
     public static let FontHtmlH1LineHeight = CGFloat(46)
     public static let FontHtmlH1FontSize = CGFloat(38)
     public static let FontHtmlH1LetterSpacing = CGFloat(0)
@@ -3216,7 +3216,7 @@ public enum ChassisTokens {
     public static let FontHtmlH1TextDecoration = "none"
     public static let FontHtmlH1FontStyle = "normal"
     public static let FontHtmlH2FontFamily = "Source Serif 4"
-    public static let FontHtmlH2FontWeight = UIFont.Weight.bold
+    public static let FontHtmlH2FontWeight = UIFont.Weight.semibold
     public static let FontHtmlH2LineHeight = CGFloat(40)
     public static let FontHtmlH2FontSize = CGFloat(32)
     public static let FontHtmlH2LetterSpacing = CGFloat(0)
@@ -3225,7 +3225,7 @@ public enum ChassisTokens {
     public static let FontHtmlH2TextDecoration = "none"
     public static let FontHtmlH2FontStyle = "normal"
     public static let FontHtmlH3FontFamily = "Source Serif 4"
-    public static let FontHtmlH3FontWeight = UIFont.Weight.bold
+    public static let FontHtmlH3FontWeight = UIFont.Weight.semibold
     public static let FontHtmlH3LineHeight = CGFloat(32)
     public static let FontHtmlH3FontSize = CGFloat(26)
     public static let FontHtmlH3LetterSpacing = CGFloat(0)
@@ -3234,7 +3234,7 @@ public enum ChassisTokens {
     public static let FontHtmlH3TextDecoration = "none"
     public static let FontHtmlH3FontStyle = "normal"
     public static let FontHtmlH4FontFamily = "Source Serif 4"
-    public static let FontHtmlH4FontWeight = UIFont.Weight.bold
+    public static let FontHtmlH4FontWeight = UIFont.Weight.semibold
     public static let FontHtmlH4LineHeight = CGFloat(28)
     public static let FontHtmlH4FontSize = CGFloat(22)
     public static let FontHtmlH4LetterSpacing = CGFloat(0)
@@ -3243,7 +3243,7 @@ public enum ChassisTokens {
     public static let FontHtmlH4TextDecoration = "none"
     public static let FontHtmlH4FontStyle = "normal"
     public static let FontHtmlH5FontFamily = "Source Serif 4"
-    public static let FontHtmlH5FontWeight = UIFont.Weight.bold
+    public static let FontHtmlH5FontWeight = UIFont.Weight.semibold
     public static let FontHtmlH5LineHeight = CGFloat(24)
     public static let FontHtmlH5FontSize = CGFloat(19)
     public static let FontHtmlH5LetterSpacing = CGFloat(0)
@@ -3252,7 +3252,7 @@ public enum ChassisTokens {
     public static let FontHtmlH5TextDecoration = "none"
     public static let FontHtmlH5FontStyle = "normal"
     public static let FontHtmlH6FontFamily = "Source Serif 4"
-    public static let FontHtmlH6FontWeight = UIFont.Weight.bold
+    public static let FontHtmlH6FontWeight = UIFont.Weight.semibold
     public static let FontHtmlH6LineHeight = CGFloat(20)
     public static let FontHtmlH6FontSize = CGFloat(16)
     public static let FontHtmlH6LetterSpacing = CGFloat(0)

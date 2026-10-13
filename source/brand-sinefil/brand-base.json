@@ -126,6 +126,10 @@
         }
       },
       "html": {
+        "heading": {
+          "$type": "fontWeights",
+          "$value": "{typography.fontWeight.display.strong}"
+        },
         "blockquote": {
           "$type": "fontWeights",
           "$value": "Light Italic"

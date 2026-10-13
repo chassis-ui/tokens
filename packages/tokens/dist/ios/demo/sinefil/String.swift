@@ -4,7 +4,7 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Tue, 13 Oct 2026 09:12:43 GMT
+// Generated on Tue, 13 Oct 2026 15:43:29 GMT
 // Chassis - Tokens v0.7.0
 // Copyright 2026 Ozgur Gunes
 // Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
@@ -46,7 +46,7 @@ public enum ChassisTokensString {
     public static let TypographyFontWeightHtmlBodyStyle = "normal"
     public static let TypographyFontWeightHtmlParagraphWeight = UIFont.Weight.regular
     public static let TypographyFontWeightHtmlParagraphStyle = "normal"
-    public static let TypographyFontWeightHtmlHeadingWeight = UIFont.Weight.bold
+    public static let TypographyFontWeightHtmlHeadingWeight = UIFont.Weight.semibold
     public static let TypographyFontWeightHtmlHeadingStyle = "normal"
     public static let TypographyFontWeightHtmlCiteWeight = UIFont.Weight.semibold
     public static let TypographyFontWeightHtmlCiteStyle = "normal"
@@ -592,32 +592,32 @@ public enum ChassisTokensString {
     public static let FontDisplay2xsmallElegantTextDecoration = "none"
     public static let FontDisplay2xsmallElegantFontStyle = "normal"
     public static let FontHtmlH1FontFamily = "Source Serif 4"
-    public static let FontHtmlH1FontWeight = UIFont.Weight.bold
+    public static let FontHtmlH1FontWeight = UIFont.Weight.semibold
     public static let FontHtmlH1TextCase = "none"
     public static let FontHtmlH1TextDecoration = "none"
     public static let FontHtmlH1FontStyle = "normal"
     public static let FontHtmlH2FontFamily = "Source Serif 4"
-    public static let FontHtmlH2FontWeight = UIFont.Weight.bold
+    public static let FontHtmlH2FontWeight = UIFont.Weight.semibold
     public static let FontHtmlH2TextCase = "none"
     public static let FontHtmlH2TextDecoration = "none"
     public static let FontHtmlH2FontStyle = "normal"
     public static let FontHtmlH3FontFamily = "Source Serif 4"
-    public static let FontHtmlH3FontWeight = UIFont.Weight.bold
+    public static let FontHtmlH3FontWeight = UIFont.Weight.semibold
     public static let FontHtmlH3TextCase = "none"
     public static let FontHtmlH3TextDecoration = "none"
     public static let FontHtmlH3FontStyle = "normal"
     public static let FontHtmlH4FontFamily = "Source Serif 4"
-    public static let FontHtmlH4FontWeight = UIFont.Weight.bold
+    public static let FontHtmlH4FontWeight = UIFont.Weight.semibold
     public static let FontHtmlH4TextCase = "none"
     public static let FontHtmlH4TextDecoration = "none"
     public static let FontHtmlH4FontStyle = "normal"
     public static let FontHtmlH5FontFamily = "Source Serif 4"
-    public static let FontHtmlH5FontWeight = UIFont.Weight.bold
+    public static let FontHtmlH5FontWeight = UIFont.Weight.semibold
     public static let FontHtmlH5TextCase = "none"
     public static let FontHtmlH5TextDecoration = "none"
     public static let FontHtmlH5FontStyle = "normal"
     public static let FontHtmlH6FontFamily = "Source Serif 4"
-    public static let FontHtmlH6FontWeight = UIFont.Weight.bold
+    public static let FontHtmlH6FontWeight = UIFont.Weight.semibold
     public static let FontHtmlH6TextCase = "none"
     public static let FontHtmlH6TextDecoration = "none"
     public static let FontHtmlH6FontStyle = "normal"
