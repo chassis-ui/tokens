@@ -119,7 +119,7 @@ describe('loadConfig', () => {
     if (dir) await rm(dir, { recursive: true, force: true })
   })
 
-  test('reads chassis.build of package.json by default', async () => {
+  test('reads chassis.build of the root package.json by default', async () => {
     const { version, buildOptions } = await loadConfig()
     expect(version).toMatch(/^\d+\.\d+\.\d+/)
     expect(buildOptions.apps).toEqual({ docs: ['web'], demo: ['ios', 'android'] })

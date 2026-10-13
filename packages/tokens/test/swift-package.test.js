@@ -13,9 +13,8 @@ import { fileURLToPath } from 'node:url'
 import { afterAll, describe, expect, test } from 'vitest'
 import { MANIFEST, swiftLibraries, swiftPackage } from '../build/swift-package.js'
 
-const packageDir = fileURLToPath(new URL('..', import.meta.url))
 const repositoryDir = fileURLToPath(new URL('../../..', import.meta.url))
-const { build } = JSON.parse(readFileSync(join(packageDir, 'package.json'), 'utf8')).chassis
+const { build } = JSON.parse(readFileSync(join(repositoryDir, 'package.json'), 'utf8')).chassis
 
 const temporary = mkdtempSync(join(tmpdir(), 'swift-package-'))
 afterAll(() => rmSync(temporary, { recursive: true }))

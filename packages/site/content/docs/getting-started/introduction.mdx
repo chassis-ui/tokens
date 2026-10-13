@@ -65,7 +65,7 @@ The pages of the token categories, such as the [space tokens]([[docsref:/design-
 
 ## Build output
 
-The build reads `chassis.build` of `packages/tokens/package.json`, which lists the brands, themes, screens and apps to build, and the platforms of each app. The committed configuration builds the brands `chassis` and `sinefil`, the app `docs` for the `web` platform, and the app `demo` for the `ios` and `android` platforms. An option of `$themes.json` that the configuration does not list is not built.
+The build reads `chassis.build` of the root `package.json`, which lists the brands, themes, screens and apps to build, and the platforms of each app. The committed configuration builds the brands `chassis` and `sinefil`, the app `docs` for the `web` platform, and the app `demo` for the `ios` and `android` platforms. An option of `$themes.json` that the configuration does not list is not built.
 
 Every app and brand gets one folder per platform, `packages/tokens/dist/<platform>/<app>/<brand>/`.
 

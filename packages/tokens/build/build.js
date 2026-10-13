@@ -24,6 +24,9 @@ import { THEMES, THEME_COLORS_FILE, writeThemeColors } from './theme-colors.js'
 /** The token files, at the root of the repository; the build runs in `packages/tokens/`. */
 const SOURCE_DIR = '../../source'
 
+/** The `package.json` of the workspace, at the root of the repository, with `chassis.build`. */
+const CONFIG_FILE = '../../package.json'
+
 const HELP = `
 Chassis Tokens Build System
 
@@ -37,7 +40,7 @@ Options:
   --screen <screens...>     Filter by screen(s)
   --out <dir>               Output root directory (default: dist)
   --config <file>           JSON file to read the build configuration from, instead of
-                            chassis.build in package.json
+                            chassis.build in the root package.json
   --dry-run                 Show builds without executing
   --help, -h                Show this help
   --version, -v             Show version
@@ -48,8 +51,8 @@ Examples:
 `
 
 /**
- * Loads the package version and the build configuration: `chassis.build` of
- * `package.json`, or the content of `configFile`.
+ * Loads the package version, from the `package.json` of the package, and the build
+ * configuration: `chassis.build` of the root `package.json`, or the content of `configFile`.
  * The optional `options` of the configuration hold Style Dictionary options by platform
  * name, e.g. `{ "web-px": { "outputReferences": true } }`.
  * @param {string} [configFile] - A JSON file with `brands`, `themes`, `screens`, `apps`
@@ -59,15 +62,17 @@ Examples:
  */
 async function loadConfig(configFile) {
   const readJson = async (file) => JSON.parse(await promises.readFile(file, 'utf-8'))
-  const packageJson = await readJson('package.json')
-  const buildOptions = configFile ? await readJson(configFile) : packageJson.chassis?.build
+  const { version } = await readJson('package.json')
+  const buildOptions = configFile
+    ? await readJson(configFile)
+    : (await readJson(CONFIG_FILE)).chassis?.build
 
   const source = configFile ?? 'package.json'
   if (!buildOptions?.brands || !buildOptions?.themes || !buildOptions?.apps) {
     throw new Error(
       configFile
         ? `Invalid ${configFile}: missing brands, themes or apps`
-        : 'Invalid package.json: missing required chassis.build configuration'
+        : 'Invalid package.json: missing required chassis.build configuration at the root of the repository'
     )
   }
   const platforms = Object.values(buildOptions.apps).flat()
@@ -82,7 +87,7 @@ async function loadConfig(configFile) {
       throw new Error(`Invalid ${source}: ${error.message}`, { cause: error })
     }
   }
-  return { version: packageJson.version, buildOptions }
+  return { version, buildOptions }
 }
 
 /**
@@ -178,7 +183,7 @@ function parseArgs(args = process.argv.slice(2)) {
 /**
  * Checks the filter values against the configuration, so that a mistyped value fails
  * instead of building nothing.
- * @param {Object} buildOptions - `chassis.build` from `package.json`.
+ * @param {Object} buildOptions - `chassis.build` from the root `package.json`.
  * @param {Object} filters - Filters from `parseArgs`.
  * @throws {Error} When a filter names a brand, app, platform, theme or screen that the
  *   configuration does not have.
@@ -212,7 +217,7 @@ function checkFilters(buildOptions, filters) {
  *
  * @param {Object} sets - Token-set lists by `<brand>_<app>_<theme>[_<screen>]`, as
  *   `permutateThemes` returns them from `source/$themes.json`.
- * @param {Object} buildOptions - `chassis.build` from `package.json`.
+ * @param {Object} buildOptions - `chassis.build` from the root `package.json`.
  * @param {Object} [filters] - Filters from `parseArgs`; an empty filter selects all.
  * @returns {Object[]} Builds with `brand`, `app`, `key`, `platforms`, `outputs`, the
  *   configured `themes` and `screens`, and `source`, the token files in override order.
@@ -384,7 +389,7 @@ async function run() {
 }
 
 // Export for testing
-export { loadConfig, planBuilds, planThemeColors, parseArgs, SOURCE_DIR }
+export { loadConfig, planBuilds, planThemeColors, parseArgs, CONFIG_FILE, SOURCE_DIR }
 
 // Only run if this is the main module (not imported)
 if (import.meta.url === `file://${process.argv[1]}`) {

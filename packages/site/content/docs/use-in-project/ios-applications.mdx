@@ -97,7 +97,7 @@ pnpm tokens --brand chassis --app demo --platform ios
 
 The build writes the files to `vendor/chassis-tokens/packages/tokens/dist/ios/demo/chassis/`. The repository commits `dist/`, so the files of the committed configuration are there before the first build.
 
-To build the tokens of your own app, add it to `chassis.build.apps` in `packages/tokens/package.json` and give it token sets in `source/$themes.json`. The [Style Dictionary guide]([[docsref:/getting-started/style-dictionary#build-options]]) describes the build options.
+To build the tokens of your own app, add it to `chassis.build.apps` in the root `package.json` and give it token sets in `source/$themes.json`. The [Style Dictionary guide]([[docsref:/getting-started/style-dictionary#build-options]]) describes the build options.
 
 To install your own tokens as a Swift package, use the URL of your repository. After a change to the apps or brands of `chassis.build`, write `Package.swift` again, then commit the files and tag a version:
 
@@ -318,11 +318,11 @@ With the files in the app target, add the catalog to the target too. The icons a
 
 ## Build options
 
-Build options change what the generated files hold, so they need a [build from the repository](#build-from-source). Set them in `chassis.build` of `packages/tokens/package.json`.
+Build options change what the generated files hold, so they need a [build from the repository](#build-from-source). Set them in `chassis.build` of the root `package.json`.
 
 ### SwiftUI values
 
-The `ios-swiftui` preset writes the same types with SwiftUI values, `Color` and `Font.Weight`, to `dist/ios-swiftui/<app>/<brand>/`. In `chassis.build` of `packages/tokens/package.json`:
+The `ios-swiftui` preset writes the same types with SwiftUI values, `Color` and `Font.Weight`, to `dist/ios-swiftui/<app>/<brand>/`. In `chassis.build` of the root `package.json`:
 
 ```json
 "apps": {
@@ -341,7 +341,7 @@ The preset writes no `Color.swift` and no icon catalog, and its colors have one 
 
 ### outputReferences
 
-With `outputReferences`, a constant holds the constant of the token it references. In `chassis.build` of `packages/tokens/package.json`:
+With `outputReferences`, a constant holds the constant of the token it references. In `chassis.build` of the root `package.json`:
 
 ```json
 "options": {

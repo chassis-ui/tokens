@@ -12,7 +12,7 @@ Chassis Tokens builds its tokens with [Style Dictionary](https://styledictionary
 
 This page is the reference of the build for a team that builds its own tokens: how to run and configure the build, which platforms and presets it has, which files it writes, and which transforms, filters, and formats it registers. [docs/architecture.md]([[config:repo]]/blob/main/docs/architecture.md) explains why the build works this way and holds the full output contract.
 
-The build, its configuration, and its output are in `packages/tokens/`, the folder of the published package. Paths on this page that start with `build/`, `dist/`, or `test/` are relative to that folder. The token sets are in `source/`, at the root of the repository.
+The build and its output are in `packages/tokens/`, the folder of the published package. Paths on this page that start with `build/`, `dist/`, or `test/` are relative to that folder. The token sets, in `source/`, and the build options, in `package.json`, are at the root of the repository.
 
 The generated code on this page shows the format of each platform. Its values are those of the `chassis` brand in the current version, and differ in other brands.
 
@@ -115,7 +115,7 @@ The lists of the other screens follow, each with its number file.
 
 ## Build options
 
-The token system is built on three core groups, `brand`, `theme`, and `app`, and on an optional fourth group, `screen`. The build options name the options of each group that the build writes, and the platforms of each app. The committed build options are in `chassis.build` of `packages/tokens/package.json`:
+The token system is built on three core groups, `brand`, `theme`, and `app`, and on an optional fourth group, `screen`. The build options name the options of each group that the build writes, and the platforms of each app. The committed build options are in `chassis.build` of the root `package.json`:
 
 ```json
 "chassis": {
@@ -215,7 +215,7 @@ A preset is a platform for a team that owns its tokens and does not use Chassis 
 
 ### Presets for other CSS frameworks
 
-The `web` platform prints the custom properties of [Chassis CSS](https://github.com/chassis-ui/css), such as `var(--default-fg-main)`, so its SCSS works only with Chassis CSS. The presets `web-scss`, `web-px`, and `web-vw` print resolved values in the unit of their name. In `chassis.build` of `packages/tokens/package.json`:
+The `web` platform prints the custom properties of [Chassis CSS](https://github.com/chassis-ui/css), such as `var(--default-fg-main)`, so its SCSS works only with Chassis CSS. The presets `web-scss`, `web-px`, and `web-vw` print resolved values in the unit of their name. In `chassis.build` of the root `package.json`:
 
 ```json
 "apps": {
@@ -229,7 +229,7 @@ Each preset is a file of `packages/tokens/build/config/` that calls `webConfig({
 
 ### SwiftUI and Compose presets
 
-The presets `ios-swiftui` and `android-compose` write the tokens for apps that use SwiftUI or Jetpack Compose. Select them next to, or instead of, `ios` and `android`. In `chassis.build` of `packages/tokens/package.json`:
+The presets `ios-swiftui` and `android-compose` write the tokens for apps that use SwiftUI or Jetpack Compose. Select them next to, or instead of, `ios` and `android`. In `chassis.build` of the root `package.json`:
 
 ```json
 "apps": { "demo": ["ios-swiftui", "android-compose"] },
@@ -290,7 +290,7 @@ An icon is an `asset` token whose value is an SVG document, such as `icon.accord
 
 By default every token prints its resolved value. With `outputReferences`, a token that references another token prints the name of that token, wherever the result compiles and keeps the value. The `web` platform ignores the option: it prints the custom properties of Chassis CSS in every build.
 
-Set the option per platform. In `chassis.build` of `packages/tokens/package.json`:
+Set the option per platform. In `chassis.build` of the root `package.json`:
 
 ```json
 "apps": { "docs": ["web-px"], "demo": ["ios", "android"] },

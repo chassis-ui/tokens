@@ -9,6 +9,32 @@
   },
   "author": "Ozgur Gunes <o.gunes@gmail.com>",
   "license": "MIT",
+  "chassis": {
+    "build": {
+      "brands": [
+        "chassis",
+        "sinefil"
+      ],
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "screens": [
+        "large",
+        "medium",
+        "small"
+      ],
+      "apps": {
+        "docs": [
+          "web"
+        ],
+        "demo": [
+          "ios",
+          "android"
+        ]
+      }
+    }
+  },
   "engines": {
     "node": ">=22.12.0"
   },

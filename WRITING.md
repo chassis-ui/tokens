@@ -198,7 +198,7 @@ A doc that states a number makes a promise the next release can break. Don't cou
 
 **Versions.** Write "Node.js 22 or later", not "the latest Node.js". For the version of Chassis Tokens, use the `[[config:current_version]]` token ([§17](#17-cross-references)) instead of a number typed by hand.
 
-**Configuration.** The brands, themes, screens, and apps in `chassis.build` of `packages/tokens/package.json` are the committed configuration, not the system. Name them as such ("the configured iOS app is `demo`"), and use them in examples, not in definitions, so an adopter with another configuration can follow.
+**Configuration.** The brands, themes, screens, and apps in `chassis.build` of the root `package.json` are the committed configuration, not the system. Name them as such ("the configured iOS app is `demo`"), and use them in examples, not in definitions, so an adopter with another configuration can follow.
 
 **Roadmap.** A planned feature is named as planned, in the `## Roadmap` section of `getting-started/introduction.mdx` and nowhere else. No doc describes a planned feature as if the build had it. Planned today: seasonal and high-contrast themes, and output in other formats such as JavaScript and JSON.
 
@@ -425,7 +425,7 @@ A doc shows two kinds of code, and the reader must be able to tell them apart. I
 
 - **Generated code** is an excerpt of `dist/`, copied as it is ([§7](#7-names-are-facts-values-are-examples)). It can be partial: show the lines under discussion.
 - **Usage code** is standalone: a reader copying it into a project with the tokens installed should see it compile. Start with the imports (`import ChassisTokensDemoChassis`, `@use`), and use real token names.
-- **Configuration** shows the key inside its parent, and the intro sentence names the file: "In `chassis.build` of `packages/tokens/package.json`:".
+- **Configuration** shows the key inside its parent, and the intro sentence names the file: "In `chassis.build` of the root `package.json`:".
 
 When an option changes the output, show the configuration block, then the output block, in that order. Commands run from the repository root unless the sentence before them says otherwise. Prefer working code over comment-only placeholders.
 

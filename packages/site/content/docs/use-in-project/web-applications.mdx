@@ -67,7 +67,7 @@ pnpm tokens --brand chassis --app docs --platform web
 
 The build writes the files to `vendor/chassis-tokens/packages/tokens/dist/web/docs/chassis/`. The repository commits `dist/`, so the files of the committed configuration are there before the first build.
 
-To build the tokens of your own app, add it to `chassis.build.apps` in `packages/tokens/package.json` and give it token sets in `source/$themes.json`. The [Style Dictionary guide]([[docsref:/getting-started/style-dictionary#build-options]]) describes the build options.
+To build the tokens of your own app, add it to `chassis.build.apps` in the root `package.json` and give it token sets in `source/$themes.json`. The [Style Dictionary guide]([[docsref:/getting-started/style-dictionary#build-options]]) describes the build options.
 
 ## Basic usage
 
@@ -333,7 +333,7 @@ An icon token is a string on the web: a variable of `string.scss` and `main.scss
 
 ## Build options
 
-Build options change what the generated files hold, so they need a [build from the repository](#build-from-source). Set them in `chassis.build` of `packages/tokens/package.json`.
+Build options change what the generated files hold, so they need a [build from the repository](#build-from-source). Set them in `chassis.build` of the root `package.json`.
 
 ### Presets
 
@@ -348,7 +348,7 @@ A preset is a web platform for a project that does not load Chassis CSS: every v
 | `web-vw` | Resolved | `vw`, 16 pixels are `1vw` |
 </CxTable>
 
-In `chassis.build` of `packages/tokens/package.json`:
+In `chassis.build` of the root `package.json`:
 
 ```json
 "apps": {
@@ -366,7 +366,7 @@ The [Style Dictionary guide]([[docsref:/getting-started/style-dictionary#presets
 
 ### outputReferences
 
-With `outputReferences`, a variable of a preset holds the variable of the token it references, where the default output holds a custom property. Shadows keep their values. The option changes nothing on the `web` platform. In `chassis.build` of `packages/tokens/package.json`:
+With `outputReferences`, a variable of a preset holds the variable of the token it references, where the default output holds a custom property. Shadows keep their values. The option changes nothing on the `web` platform. In `chassis.build` of the root `package.json`:
 
 ```json
 "apps": { "docs": ["web-px"] },

@@ -35,13 +35,13 @@ Package.swift    # written by `pnpm tokens:swift-package`
 
 Run the checks of the area you changed, and report the ones that fail.
 
-| Area changed                                      | Run                                                                                                                 |
-| ------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
-| `packages/tokens/build/` or `test/`               | `pnpm tokens:lint`, `pnpm tokens:typecheck`, `pnpm tokens:test`, `pnpm tokens:verify`, `pnpm tokens:verify:presets` |
-| `source/`                                         | `pnpm tokens:lint:source`, `pnpm tokens:verify:update`, `pnpm tokens:diff`, then the row above                      |
-| `packages/site/`                                  | `pnpm site:lint`, `pnpm check:astro`, `pnpm site:build`, `pnpm site:lint:html`                                      |
-| Any Markdown, JSON or configuration file          | `pnpm lint:prettier`                                                                                                |
-| `chassis.build` in `packages/tokens/package.json` | `pnpm tokens`, `pnpm tokens:swift-package`                                                                          |
+| Area changed                               | Run                                                                                                                 |
+| ------------------------------------------ | ------------------------------------------------------------------------------------------------------------------- |
+| `packages/tokens/build/` or `test/`        | `pnpm tokens:lint`, `pnpm tokens:typecheck`, `pnpm tokens:test`, `pnpm tokens:verify`, `pnpm tokens:verify:presets` |
+| `source/`                                  | `pnpm tokens:lint:source`, `pnpm tokens:verify:update`, `pnpm tokens:diff`, then the row above                      |
+| `packages/site/`                           | `pnpm site:lint`, `pnpm check:astro`, `pnpm site:build`, `pnpm site:lint:html`                                      |
+| Any Markdown, JSON or configuration file   | `pnpm lint:prettier`                                                                                                |
+| `chassis.build` in the root `package.json` | `pnpm tokens`, `pnpm tokens:swift-package`                                                                          |
 
 ## Rules
 

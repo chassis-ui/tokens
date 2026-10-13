@@ -32,32 +32,6 @@
     "./dist/*": "./dist/*",
     "./package.json": "./package.json"
   },
-  "chassis": {
-    "build": {
-      "brands": [
-        "chassis",
-        "sinefil"
-      ],
-      "themes": [
-        "light",
-        "dark"
-      ],
-      "screens": [
-        "large",
-        "medium",
-        "small"
-      ],
-      "apps": {
-        "docs": [
-          "web"
-        ],
-        "demo": [
-          "ios",
-          "android"
-        ]
-      }
-    }
-  },
   "engines": {
     "node": ">=22"
   },

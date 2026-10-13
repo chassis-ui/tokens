@@ -55,12 +55,12 @@ The guides for [web](https://chassis-ui.com/tokens/docs/use-in-project/web-appli
 
 The repository is a [pnpm workspace](https://pnpm.io/workspaces) with two packages, in the layout of the other Chassis repositories such as [chassis-react](https://github.com/chassis-ui/react):
 
-| Folder             | Package                          | Contents                                                                                                           |
-| ------------------ | -------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
-| `packages/tokens/` | `@chassis-ui/tokens` (published) | `build/` (the Style Dictionary build), `test/`, `dist/`, the build configuration in `package.json`, `CHANGELOG.md` |
-| `packages/site/`   | `chassis-tokens-site` (private)  | The documentation site and its dependencies                                                                        |
+| Folder             | Package                          | Contents                                                                |
+| ------------------ | -------------------------------- | ----------------------------------------------------------------------- |
+| `packages/tokens/` | `@chassis-ui/tokens` (published) | `build/` (the Style Dictionary build), `test/`, `dist/`, `CHANGELOG.md` |
+| `packages/site/`   | `chassis-tokens-site` (private)  | The documentation site and its dependencies                             |
 
-The root holds the Tokens Studio token files in `source/`, the workspace configuration, the lint and format configurations with their dependencies, the CI workflows, the Changesets configuration in `.changeset/`, the repository scripts in `build/` (`sync-version-refs.js`, `release-notes.js`), the assets submodule in `vendor/assets` and the site output in `_site/`. Paths in the sections below (`build/`, `test/`, `dist/`, `package.json`) are relative to `packages/tokens/`; `source/` is at the root.
+The root holds the Tokens Studio token files in `source/`, the build configuration in `chassis.build` of `package.json`, the workspace configuration, the lint and format configurations with their dependencies, the CI workflows, the Changesets configuration in `.changeset/`, the repository scripts in `build/` (`sync-version-refs.js`, `release-notes.js`), the assets submodule in `vendor/assets` and the site output in `_site/`. Paths in the sections below (`build/`, `test/`, `dist/`) are relative to `packages/tokens/`; `source/` and the `package.json` of the build configuration are at the root.
 
 ## Development
 
@@ -95,18 +95,18 @@ pnpm tokens --brand sinefil --platform ios android --screen large small
 pnpm tokens --theme light dark --dry-run
 ```
 
-| Option                      | Effect                                                                                     |
-| --------------------------- | ------------------------------------------------------------------------------------------ |
-| `--brand <brands...>`       | Only these brands, such as `chassis sinefil`                                               |
-| `--theme <themes...>`       | Only these themes, such as `light dark`                                                    |
-| `--app <apps...>`           | Only these apps, such as `docs demo`                                                       |
-| `--platform <platforms...>` | Only these platforms, such as `web ios android`                                            |
-| `--screen <screens...>`     | Only these screen sizes, such as `large medium small`                                      |
-| `--out <dir>`               | Write to another output root instead of `dist`, such as `dist-next`                        |
-| `--config <file>`           | Read the build configuration from a JSON file instead of `chassis.build` in `package.json` |
-| `--dry-run`                 | List the builds and the files each would write, without building                           |
-| `--help`, `-h`              | Show the help                                                                              |
-| `--version`, `-v`           | Show the version                                                                           |
+| Option                      | Effect                                                                                              |
+| --------------------------- | --------------------------------------------------------------------------------------------------- |
+| `--brand <brands...>`       | Only these brands, such as `chassis sinefil`                                                        |
+| `--theme <themes...>`       | Only these themes, such as `light dark`                                                             |
+| `--app <apps...>`           | Only these apps, such as `docs demo`                                                                |
+| `--platform <platforms...>` | Only these platforms, such as `web ios android`                                                     |
+| `--screen <screens...>`     | Only these screen sizes, such as `large medium small`                                               |
+| `--out <dir>`               | Write to another output root instead of `dist`, such as `dist-next`                                 |
+| `--config <file>`           | Read the build configuration from a JSON file instead of `chassis.build` in the root `package.json` |
+| `--dry-run`                 | List the builds and the files each would write, without building                                    |
+| `--help`, `-h`              | Show the help                                                                                       |
+| `--version`, `-v`           | Show the version                                                                                    |
 
 A filter value that the configuration does not have, such as `--brand chasis`, fails the build and names the configured values, and so do filters that together select nothing, such as `--app docs --platform ios`.
 
@@ -248,7 +248,7 @@ See the [Tokens Studio documentation](https://docs.tokens.studio) and the [Token
 
 ### Build Options
 
-The `chassis.build` key of `package.json` defines which brands, themes, screens and apps the build writes:
+The `chassis.build` key of the root `package.json` defines which brands, themes, screens and apps the build writes:
 
 ```json
 "chassis": {
