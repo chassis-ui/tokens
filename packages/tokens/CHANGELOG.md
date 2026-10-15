@@ -1,5 +1,50 @@
 # Changelog
 
+## 0.8.0
+
+### Minor Changes
+
+- 2826c94: **Breaking:** `typography.fontFamily.html` is removed and replaced by one family per group of HTML elements, and the text case and text decoration tokens are removed. A brand can retune the context text styles, `font.context.*`, as it can the HTML elements, and set each group of HTML elements in its own family. Every font token keeps its value in every brand and on every platform, and no other name is removed.
+
+  - Removed `typography.textCase.base.none`, `typography.textCase.base.lowercase`, `typography.textCase.base.uppercase` and `typography.textCase.base.capitalize` (`$cx-typography-text-case-base-none`, `TypographyTextCaseBaseNone`, `typography_text_case_base_none`, `typographyTextCaseBaseNone`, and so on for each keyword)
+  - Removed `typography.textDecoration.base.none`, `typography.textDecoration.base.underline` and `typography.textDecoration.base.line-through` (`$cx-typography-text-decoration-base-none`, `TypographyTextDecorationBaseNone`, `typography_text_decoration_base_none`, `typographyTextDecorationBaseNone`, and so on for each keyword)
+  - Removed `typography.fontFamily.html` (`$cx-typography-font-family-html`, `TypographyFontFamilyHtml`, `typography_font_family_html`, `typographyFontFamilyHtml`), and the custom property `--font-family-html` that the maps of `font.html.*` named in the `web` platform. Use the family of the element group instead: `typography.fontFamily.html.heading` for the headings, `typography.fontFamily.html.body` for the body, and so on
+  - Added `typography.fontFamily.html.<element>` (`$cx-typography-font-family-html-heading`, `TypographyFontFamilyHtmlHeading`, `typography_font_family_html_heading`, `typographyFontFamilyHtmlHeading`) for `heading`, `body`, `paragraph`, `blockquote`, `list`, `cite` and `code`, the names of `typography.fontWeight.html.*`. Each references `typography.fontFamily.text`, and `code` references `typography.fontFamily.code`, as `font.html.code` did. The `sinefil` brand sets every group except `code` in its display family, as it set `typography.fontFamily.html` before
+  - Added `typography.fontFamily.context.<role>` (`$cx-typography-font-family-context-title`, `TypographyFontFamilyContextTitle`, `typography_font_family_context_title`): one family per role, shared by its sizes, for `jumbo`, `hero`, `lead`, `heading`, `title`, `body`, `highlight`, `label`, `link`, `expired` and `code`. Each references `typography.fontFamily.text`, and `code` references `typography.fontFamily.code`
+  - Added `typography.fontWeight.context.<role>` (`$cx-typography-font-weight-context-title-weight`, `TypographyFontWeightContextTitleWeight`, `typography_font_weight_context_title_weight`): one weight per role, shared by its sizes, for the same roles as the families. Each references the weight that every size of the role used before
+  - Added `typography.fontSize.context.<role>` for every context token: `jumbo`, `hero`, `lead`, `heading`, and `title`, `body`, `highlight`, `label`, `link`, `expired` and `code` with their sizes, such as `title-medium`
+  - Added `typography.lineHeight.context.<role>` for the same roles and sizes except `jumbo` and `hero`, whose line height stays a percentage of their font size
+  - Added one letter spacing per weight of the `text` and `display` families, `typography.letterSpacing.text.<weight>` and `typography.letterSpacing.display.<weight>` (`$cx-typography-letter-spacing-text-strong`, `TypographyLetterSpacingTextStrong`, `typography_letter_spacing_text_strong`), for `normal`, `strong`, `mass` and `elegant`. `font.text.*`, `font.display.*` and `font.website.*` reference the letter spacing of their weight
+  - Added `typography.letterSpacing.html.<element>`, for the element groups of the families, and `typography.letterSpacing.context.<role>`, one per role and shared by its sizes like the family and the weight. Each references the letter spacing of the weight of its group or role; `typography.letterSpacing.context.jumbo` keeps its negative size
+  - Moved `typography.letterSpacing.base.zero` and `typography.paragraphSpacing.base.*` from `base/app-base` to `base/brand-base`, with the same names and values, so a brand can change them. `font.code.*` keeps `typography.letterSpacing.base.zero`
+
+  An app that uses `typography.fontFamily.html` under one of its names must replace it with the family of an element group. An app that uses a text case or text decoration constant uses the keyword instead, which the constant held. A font token names its text case and text decoration as a keyword where it is not `none`, such as `"textDecoration": "underline"` in `font.context.link.*`, and every font token still has the text case and text decoration parts on every platform, with the same values: the build fills in `none`. A brand token set that overrides `typography.fontFamily.html` overrides the families of the groups instead. A brand that sets a group or a role in another family also points its weight and its letter spacing at those of that family, such as `{typography.fontFamily.display}` with `{typography.fontWeight.display.mass}` and `{typography.letterSpacing.display.mass}` for the `hero` role.
+
+  The maps of `font.context.*` and `font.html.*` in the `web` platform name no new custom property: a part that references a role token names the token the role points to in the brand, so the context maps print what they printed before, and the HTML maps print `var(--font-family-text)` or `var(--font-family-display)` where they printed `var(--font-family-html)`. A role that holds a value of its own prints the value. Chassis CSS must stop reading `$cx-typography-font-family-html` before an app updates: Chassis CSS 0.7.2 does not compile with this version. The presets `web-scss`, `web-px` and `web-vw` print the same values as before, and with `outputReferences` they name the new variables.
+
+- b91fa03: **Breaking:** the `brand` and `accent` palettes are removed, with the gradients and the elevation shadows that used them. No other token referenced them.
+
+  - Removed `color.primitive.brand.*` and `color.primitive.accent.*` (`$cx-color-primitive-brand-50`, `ColorPrimitiveBrand50`, `color_primitive_brand_50`): the 25 colors of each palette, in the light and the dark theme
+  - Removed `color.base.primitive.<theme>.brand.*` and `color.base.primitive.<theme>.accent.*` (`$cx-color-base-primitive-light-brand-50`, `ColorBasePrimitiveLightBrand50`, `color_base_primitive_light_brand_50`): the 25 base colors of each palette, for the `light` and the `dark` theme
+  - Removed `gradient.primitive.brand.*` and `gradient.primitive.accent.*` (`$cx-gradient-primitive-brand-l-50-000`, `GradientPrimitiveBrandL50000Angle`, `gradient_primitive_brand_l_50_000_angle`): the 8 gradients of each palette
+  - Removed `shadow.elevation.brand.*` and `shadow.elevation.accent.*` (`$cx-shadow-elevation-brand-10`, `ShadowElevationBrand101Blur`, `shadow_elevation_brand_10_1_blur`): the 11 levels of each context
+
+  No other name or value changes. An app that uses one of these names must replace it. In the `default` and `chassis` brands, `brand` had the base color of `primary` and `accent` that of `secondary`, so those palettes give the same colors. An app that uses none of the names has nothing to change.
+
+### Patch Changes
+
+- 3cfdc6e: The build configuration, `chassis.build`, is in the `package.json` at the root of the repository instead of `packages/tokens/package.json`, next to the token files in `source/`. The published `package.json` no longer has the `chassis` key. No token name, value or file changes, and an app that installs the package has nothing to change.
+
+  A repository that owns its tokens moves its `chassis` key to the root `package.json`. Until then the build stops with `Invalid package.json: missing required chassis.build configuration at the root of the repository`. `--config` still takes a path relative to `packages/tokens/`.
+
+- 44066bb: The colors of the `chassis` brand, the link and highlight colors of the contexts, the hover color of a table row and the heading weight of the `sinefil` brand change in value. No name is added, removed or renamed, and an app has nothing to change.
+
+  - `chassis` brand: new base colors for `primary` (`#00A4CC` to `#0094B8`), `neutral` (`#6F8085` to `#7B878E`), `danger` (`#F52314` to `#D72A1D`), `success` (`#10C263` to `#1A9E4F`), `warning` (`#F5A300` to `#F0A205`) and `info` (`#1414F5` to `#3A72E4`). Every color made from them changes with them
+  - Light theme: `fg-highlight` of the `primary`, `secondary`, `neutral`, `danger`, `success`, `warning` and `info` contexts is one step darker (`70` instead of `60`), and the four link colors of the `alternate` context use the lighter steps `20` to `40`
+  - Dark theme: the four link colors of the `primary`, `secondary`, `neutral`, `danger`, `success`, `warning` and `info` contexts are one step stronger (`link-main` and `link-active` at `30`, `link-hover` at `20`, `link-visited` at `40`)
+  - `color.table.bg-hover` references `color.context.default.dim-slight`, a translucent layer over the row, instead of `color.context.default.bg-evident`
+  - `sinefil` brand: `typography.fontWeight.html.heading` is the `display.strong` weight, so `font.html.h1` to `font.html.h6` are Semi Bold (`600`) instead of Bold (`700`)
+
 ## 0.7.0
 
 ### Minor Changes
