@@ -33,9 +33,7 @@
           "lineHeight": "{typography.lineHeight.button.medium}",
           "fontSize": "{typography.fontSize.button.medium}",
           "letterSpacing": "{typography.letterSpacing.base.zero}",
-          "paragraphSpacing": "{typography.paragraphSpacing.base.zero}",
-          "textCase": "{typography.textCase.base.none}",
-          "textDecoration": "{typography.textDecoration.base.none}"
+          "paragraphSpacing": "{typography.paragraphSpacing.base.zero}"
         }
       },
       "large": {
@@ -46,9 +44,7 @@
           "lineHeight": "{typography.lineHeight.button.large}",
           "fontSize": "{typography.fontSize.button.large}",
           "letterSpacing": "{typography.letterSpacing.base.zero}",
-          "paragraphSpacing": "{typography.paragraphSpacing.base.zero}",
-          "textCase": "{typography.textCase.base.none}",
-          "textDecoration": "{typography.textDecoration.base.none}"
+          "paragraphSpacing": "{typography.paragraphSpacing.base.zero}"
         }
       },
       "small": {
@@ -59,9 +55,7 @@
           "lineHeight": "{typography.lineHeight.button.small}",
           "fontSize": "{typography.fontSize.button.small}",
           "letterSpacing": "{typography.letterSpacing.base.zero}",
-          "paragraphSpacing": "{typography.paragraphSpacing.base.zero}",
-          "textCase": "{typography.textCase.base.none}",
-          "textDecoration": "{typography.textDecoration.base.none}"
+          "paragraphSpacing": "{typography.paragraphSpacing.base.zero}"
         }
       }
     },
@@ -122,9 +116,7 @@
           "lineHeight": "{typography.lineHeight.notification.title}",
           "fontSize": "{typography.fontSize.notification.title}",
           "letterSpacing": "{typography.letterSpacing.base.zero}",
-          "paragraphSpacing": "{typography.paragraphSpacing.base.zero}",
-          "textCase": "{typography.textCase.base.none}",
-          "textDecoration": "{typography.textDecoration.base.none}"
+          "paragraphSpacing": "{typography.paragraphSpacing.base.zero}"
         }
       },
       "message": {
@@ -135,9 +127,7 @@
           "lineHeight": "{typography.lineHeight.notification.message}",
           "fontSize": "{typography.fontSize.notification.message}",
           "letterSpacing": "{typography.letterSpacing.base.zero}",
-          "paragraphSpacing": "{typography.paragraphSpacing.base.zero}",
-          "textCase": "{typography.textCase.base.none}",
-          "textDecoration": "{typography.textDecoration.base.none}"
+          "paragraphSpacing": "{typography.paragraphSpacing.base.zero}"
         }
       }
     }

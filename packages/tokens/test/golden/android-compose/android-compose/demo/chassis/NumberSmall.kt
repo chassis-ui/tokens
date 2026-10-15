@@ -3,7 +3,7 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Tue, 13 Oct 2026 10:08:01 GMT
+// Generated on Thu, 15 Oct 2026 08:58:26 GMT
 // Chassis - Tokens v0.7.0
 // Copyright 2026 Ozgur Gunes
 // Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
@@ -509,6 +509,32 @@ object ChassisTokensNumberSmall {
     val typographyFontSizeHtmlCode get() = 16.sp
     val typographyFontSizeHtmlBlockquote get() = 16.sp
     val typographyFontSizeHtmlCite get() = 14.sp
+    val typographyFontSizeContextJumbo get() = 96.sp
+    val typographyFontSizeContextHero get() = 64.sp
+    val typographyFontSizeContextLead get() = 22.sp
+    val typographyFontSizeContextHeading get() = 32.sp
+    val typographyFontSizeContextTitleMedium get() = 19.sp
+    val typographyFontSizeContextTitleLarge get() = 22.sp
+    val typographyFontSizeContextTitleSmall get() = 16.sp
+    val typographyFontSizeContextBodyMedium get() = 16.sp
+    val typographyFontSizeContextBodyLarge get() = 19.sp
+    val typographyFontSizeContextBodySmall get() = 14.sp
+    val typographyFontSizeContextHighlightMedium get() = 16.sp
+    val typographyFontSizeContextHighlightLarge get() = 19.sp
+    val typographyFontSizeContextHighlightSmall get() = 14.sp
+    val typographyFontSizeContextLabelMedium get() = 14.sp
+    val typographyFontSizeContextLabelLarge get() = 16.sp
+    val typographyFontSizeContextLabelSmall get() = 12.sp
+    val typographyFontSizeContextLinkLarge get() = 19.sp
+    val typographyFontSizeContextLinkMedium get() = 16.sp
+    val typographyFontSizeContextLinkSmall get() = 14.sp
+    val typographyFontSizeContextLinkXsmall get() = 12.sp
+    val typographyFontSizeContextExpiredLarge get() = 19.sp
+    val typographyFontSizeContextExpiredMedium get() = 16.sp
+    val typographyFontSizeContextExpiredSmall get() = 14.sp
+    val typographyFontSizeContextCodeLarge get() = 19.sp
+    val typographyFontSizeContextCodeMedium get() = 16.sp
+    val typographyFontSizeContextCodeSmall get() = 14.sp
     val typographyFontSizeCodeLarge get() = 19.sp
     val typographyFontSizeCodeMedium get() = 16.sp
     val typographyFontSizeCodeSmall get() = 14.sp
@@ -551,10 +577,60 @@ object ChassisTokensNumberSmall {
     val typographyLineHeightHtmlList get() = 24.sp
     val typographyLineHeightHtmlBlockquote get() = 24.sp
     val typographyLineHeightHtmlCite get() = 20.sp
+    val typographyLineHeightContextLead get() = 32.sp
+    val typographyLineHeightContextHeading get() = 40.sp
+    val typographyLineHeightContextTitleMedium get() = 28.sp
+    val typographyLineHeightContextTitleLarge get() = 32.sp
+    val typographyLineHeightContextTitleSmall get() = 24.sp
+    val typographyLineHeightContextBodyMedium get() = 24.sp
+    val typographyLineHeightContextBodyLarge get() = 28.sp
+    val typographyLineHeightContextBodySmall get() = 20.sp
+    val typographyLineHeightContextHighlightMedium get() = 24.sp
+    val typographyLineHeightContextHighlightLarge get() = 28.sp
+    val typographyLineHeightContextHighlightSmall get() = 20.sp
+    val typographyLineHeightContextLabelMedium get() = 20.sp
+    val typographyLineHeightContextLabelLarge get() = 24.sp
+    val typographyLineHeightContextLabelSmall get() = 18.sp
+    val typographyLineHeightContextLinkLarge get() = 28.sp
+    val typographyLineHeightContextLinkMedium get() = 24.sp
+    val typographyLineHeightContextLinkSmall get() = 20.sp
+    val typographyLineHeightContextLinkXsmall get() = 18.sp
+    val typographyLineHeightContextExpiredLarge get() = 28.sp
+    val typographyLineHeightContextExpiredMedium get() = 24.sp
+    val typographyLineHeightContextExpiredSmall get() = 20.sp
+    val typographyLineHeightContextCodeLarge get() = 28.sp
+    val typographyLineHeightContextCodeMedium get() = 24.sp
+    val typographyLineHeightContextCodeSmall get() = 20.sp
     val typographyLineHeightCodeLarge get() = 28.sp
     val typographyLineHeightCodeMedium get() = 24.sp
     val typographyLineHeightCodeSmall get() = 20.sp
     val typographyLetterSpacingBaseZero get() = 0f
+    val typographyLetterSpacingTextNormal get() = 0f
+    val typographyLetterSpacingTextStrong get() = 0f
+    val typographyLetterSpacingTextMass get() = 0f
+    val typographyLetterSpacingTextElegant get() = 0f
+    val typographyLetterSpacingDisplayNormal get() = 0f
+    val typographyLetterSpacingDisplayStrong get() = 0f
+    val typographyLetterSpacingDisplayMass get() = 0f
+    val typographyLetterSpacingDisplayElegant get() = 0f
+    val typographyLetterSpacingHtmlHeading get() = 0f
+    val typographyLetterSpacingHtmlBody get() = 0f
+    val typographyLetterSpacingHtmlParagraph get() = 0f
+    val typographyLetterSpacingHtmlBlockquote get() = 0f
+    val typographyLetterSpacingHtmlList get() = 0f
+    val typographyLetterSpacingHtmlCite get() = 0f
+    val typographyLetterSpacingHtmlCode get() = 0f
+    val typographyLetterSpacingContextJumbo get() = -0.5f
+    val typographyLetterSpacingContextHero get() = 0f
+    val typographyLetterSpacingContextLead get() = 0f
+    val typographyLetterSpacingContextHeading get() = 0f
+    val typographyLetterSpacingContextTitle get() = 0f
+    val typographyLetterSpacingContextBody get() = 0f
+    val typographyLetterSpacingContextHighlight get() = 0f
+    val typographyLetterSpacingContextLabel get() = 0f
+    val typographyLetterSpacingContextLink get() = 0f
+    val typographyLetterSpacingContextExpired get() = 0f
+    val typographyLetterSpacingContextCode get() = 0f
     val typographyParagraphSpacingBaseZero get() = 0.sp
     val typographyParagraphSpacingBaseSmall get() = 8.sp
     val typographyParagraphSpacingBaseMedium get() = 16.sp

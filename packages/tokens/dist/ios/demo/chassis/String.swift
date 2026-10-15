@@ -4,7 +4,7 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Tue, 13 Oct 2026 15:43:26 GMT
+// Generated on Thu, 15 Oct 2026 10:03:52 GMT
 // Chassis - Tokens v0.7.0
 // Copyright 2026 Ozgur Gunes
 // Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
@@ -15,7 +15,24 @@ import UIKit
 public enum ChassisTokensString {
     public static let TypographyFontFamilyText = "Inter"
     public static let TypographyFontFamilyDisplay = "Archivo Narrow"
-    public static let TypographyFontFamilyHtml = "Inter"
+    public static let TypographyFontFamilyHtmlHeading = "Inter"
+    public static let TypographyFontFamilyHtmlBody = "Inter"
+    public static let TypographyFontFamilyHtmlParagraph = "Inter"
+    public static let TypographyFontFamilyHtmlBlockquote = "Inter"
+    public static let TypographyFontFamilyHtmlList = "Inter"
+    public static let TypographyFontFamilyHtmlCite = "Inter"
+    public static let TypographyFontFamilyHtmlCode = "Fira Code"
+    public static let TypographyFontFamilyContextJumbo = "Inter"
+    public static let TypographyFontFamilyContextHero = "Inter"
+    public static let TypographyFontFamilyContextLead = "Inter"
+    public static let TypographyFontFamilyContextHeading = "Inter"
+    public static let TypographyFontFamilyContextTitle = "Inter"
+    public static let TypographyFontFamilyContextBody = "Inter"
+    public static let TypographyFontFamilyContextHighlight = "Inter"
+    public static let TypographyFontFamilyContextLabel = "Inter"
+    public static let TypographyFontFamilyContextLink = "Inter"
+    public static let TypographyFontFamilyContextExpired = "Inter"
+    public static let TypographyFontFamilyContextCode = "Fira Code"
     public static let TypographyFontFamilyCode = "Fira Code"
     public static let TypographyFontFamilyIcon = "Chassis-Icons"
     public static let TypographyFontWeightTextNormalWeight = UIFont.Weight.regular
@@ -54,13 +71,28 @@ public enum ChassisTokensString {
     public static let TypographyFontWeightHtmlListStyle = "normal"
     public static let TypographyFontWeightHtmlBoldWeight = UIFont.Weight.bold
     public static let TypographyFontWeightHtmlBoldStyle = "normal"
-    public static let TypographyTextCaseBaseNone = "none"
-    public static let TypographyTextCaseBaseLowercase = "lowercase"
-    public static let TypographyTextCaseBaseUppercase = "uppercase"
-    public static let TypographyTextCaseBaseCapitalize = "capitalize"
-    public static let TypographyTextDecorationBaseNone = "none"
-    public static let TypographyTextDecorationBaseUnderline = "underline"
-    public static let TypographyTextDecorationBaseLineThrough = "line-through"
+    public static let TypographyFontWeightContextJumboWeight = UIFont.Weight.bold
+    public static let TypographyFontWeightContextJumboStyle = "normal"
+    public static let TypographyFontWeightContextHeroWeight = UIFont.Weight.bold
+    public static let TypographyFontWeightContextHeroStyle = "normal"
+    public static let TypographyFontWeightContextLeadWeight = UIFont.Weight.regular
+    public static let TypographyFontWeightContextLeadStyle = "normal"
+    public static let TypographyFontWeightContextHeadingWeight = UIFont.Weight.semibold
+    public static let TypographyFontWeightContextHeadingStyle = "normal"
+    public static let TypographyFontWeightContextTitleWeight = UIFont.Weight.semibold
+    public static let TypographyFontWeightContextTitleStyle = "normal"
+    public static let TypographyFontWeightContextBodyWeight = UIFont.Weight.regular
+    public static let TypographyFontWeightContextBodyStyle = "normal"
+    public static let TypographyFontWeightContextHighlightWeight = UIFont.Weight.regular
+    public static let TypographyFontWeightContextHighlightStyle = "normal"
+    public static let TypographyFontWeightContextLabelWeight = UIFont.Weight.semibold
+    public static let TypographyFontWeightContextLabelStyle = "normal"
+    public static let TypographyFontWeightContextLinkWeight = UIFont.Weight.regular
+    public static let TypographyFontWeightContextLinkStyle = "normal"
+    public static let TypographyFontWeightContextExpiredWeight = UIFont.Weight.semibold
+    public static let TypographyFontWeightContextExpiredStyle = "normal"
+    public static let TypographyFontWeightContextCodeWeight = UIFont.Weight.regular
+    public static let TypographyFontWeightContextCodeStyle = "normal"
     public static let FontContextJumboFontFamily = "Inter"
     public static let FontContextJumboFontWeight = UIFont.Weight.bold
     public static let FontContextJumboTextCase = "none"

@@ -2,7 +2,7 @@
 
 <!--
   Do not edit directly, this file was auto-generated.
-  Generated on Tue, 13 Oct 2026 15:43:31 GMT
+  Generated on Thu, 15 Oct 2026 08:58:24 GMT
   Chassis - Tokens v0.7.0
   Copyright 2026 Ozgur Gunes
   Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
@@ -500,6 +500,32 @@
   <dimen name="typography_font_size_html_code">16sp</dimen>
   <dimen name="typography_font_size_html_blockquote">16sp</dimen>
   <dimen name="typography_font_size_html_cite">14sp</dimen>
+  <dimen name="typography_font_size_context_jumbo">96sp</dimen>
+  <dimen name="typography_font_size_context_hero">64sp</dimen>
+  <dimen name="typography_font_size_context_lead">22sp</dimen>
+  <dimen name="typography_font_size_context_heading">32sp</dimen>
+  <dimen name="typography_font_size_context_title_medium">19sp</dimen>
+  <dimen name="typography_font_size_context_title_large">22sp</dimen>
+  <dimen name="typography_font_size_context_title_small">16sp</dimen>
+  <dimen name="typography_font_size_context_body_medium">16sp</dimen>
+  <dimen name="typography_font_size_context_body_large">19sp</dimen>
+  <dimen name="typography_font_size_context_body_small">14sp</dimen>
+  <dimen name="typography_font_size_context_highlight_medium">16sp</dimen>
+  <dimen name="typography_font_size_context_highlight_large">19sp</dimen>
+  <dimen name="typography_font_size_context_highlight_small">14sp</dimen>
+  <dimen name="typography_font_size_context_label_medium">14sp</dimen>
+  <dimen name="typography_font_size_context_label_large">16sp</dimen>
+  <dimen name="typography_font_size_context_label_small">12sp</dimen>
+  <dimen name="typography_font_size_context_link_large">19sp</dimen>
+  <dimen name="typography_font_size_context_link_medium">16sp</dimen>
+  <dimen name="typography_font_size_context_link_small">14sp</dimen>
+  <dimen name="typography_font_size_context_link_xsmall">12sp</dimen>
+  <dimen name="typography_font_size_context_expired_large">19sp</dimen>
+  <dimen name="typography_font_size_context_expired_medium">16sp</dimen>
+  <dimen name="typography_font_size_context_expired_small">14sp</dimen>
+  <dimen name="typography_font_size_context_code_large">19sp</dimen>
+  <dimen name="typography_font_size_context_code_medium">16sp</dimen>
+  <dimen name="typography_font_size_context_code_small">14sp</dimen>
   <dimen name="typography_font_size_code_large">19sp</dimen>
   <dimen name="typography_font_size_code_medium">16sp</dimen>
   <dimen name="typography_font_size_code_small">14sp</dimen>
@@ -542,10 +568,60 @@
   <dimen name="typography_line_height_html_list">24sp</dimen>
   <dimen name="typography_line_height_html_blockquote">24sp</dimen>
   <dimen name="typography_line_height_html_cite">20sp</dimen>
+  <dimen name="typography_line_height_context_lead">32sp</dimen>
+  <dimen name="typography_line_height_context_heading">40sp</dimen>
+  <dimen name="typography_line_height_context_title_medium">28sp</dimen>
+  <dimen name="typography_line_height_context_title_large">32sp</dimen>
+  <dimen name="typography_line_height_context_title_small">24sp</dimen>
+  <dimen name="typography_line_height_context_body_medium">24sp</dimen>
+  <dimen name="typography_line_height_context_body_large">28sp</dimen>
+  <dimen name="typography_line_height_context_body_small">20sp</dimen>
+  <dimen name="typography_line_height_context_highlight_medium">24sp</dimen>
+  <dimen name="typography_line_height_context_highlight_large">28sp</dimen>
+  <dimen name="typography_line_height_context_highlight_small">20sp</dimen>
+  <dimen name="typography_line_height_context_label_medium">20sp</dimen>
+  <dimen name="typography_line_height_context_label_large">24sp</dimen>
+  <dimen name="typography_line_height_context_label_small">18sp</dimen>
+  <dimen name="typography_line_height_context_link_large">28sp</dimen>
+  <dimen name="typography_line_height_context_link_medium">24sp</dimen>
+  <dimen name="typography_line_height_context_link_small">20sp</dimen>
+  <dimen name="typography_line_height_context_link_xsmall">18sp</dimen>
+  <dimen name="typography_line_height_context_expired_large">28sp</dimen>
+  <dimen name="typography_line_height_context_expired_medium">24sp</dimen>
+  <dimen name="typography_line_height_context_expired_small">20sp</dimen>
+  <dimen name="typography_line_height_context_code_large">28sp</dimen>
+  <dimen name="typography_line_height_context_code_medium">24sp</dimen>
+  <dimen name="typography_line_height_context_code_small">20sp</dimen>
   <dimen name="typography_line_height_code_large">28sp</dimen>
   <dimen name="typography_line_height_code_medium">24sp</dimen>
   <dimen name="typography_line_height_code_small">20sp</dimen>
   <item name="typography_letter_spacing_base_zero" type="dimen" format="float">0</item>
+  <item name="typography_letter_spacing_text_normal" type="dimen" format="float">0</item>
+  <item name="typography_letter_spacing_text_strong" type="dimen" format="float">0</item>
+  <item name="typography_letter_spacing_text_mass" type="dimen" format="float">0</item>
+  <item name="typography_letter_spacing_text_elegant" type="dimen" format="float">0</item>
+  <item name="typography_letter_spacing_display_normal" type="dimen" format="float">0</item>
+  <item name="typography_letter_spacing_display_strong" type="dimen" format="float">0</item>
+  <item name="typography_letter_spacing_display_mass" type="dimen" format="float">0</item>
+  <item name="typography_letter_spacing_display_elegant" type="dimen" format="float">0</item>
+  <item name="typography_letter_spacing_html_heading" type="dimen" format="float">0</item>
+  <item name="typography_letter_spacing_html_body" type="dimen" format="float">0</item>
+  <item name="typography_letter_spacing_html_paragraph" type="dimen" format="float">0</item>
+  <item name="typography_letter_spacing_html_blockquote" type="dimen" format="float">0</item>
+  <item name="typography_letter_spacing_html_list" type="dimen" format="float">0</item>
+  <item name="typography_letter_spacing_html_cite" type="dimen" format="float">0</item>
+  <item name="typography_letter_spacing_html_code" type="dimen" format="float">0</item>
+  <item name="typography_letter_spacing_context_jumbo" type="dimen" format="float">-0.5</item>
+  <item name="typography_letter_spacing_context_hero" type="dimen" format="float">0</item>
+  <item name="typography_letter_spacing_context_lead" type="dimen" format="float">0</item>
+  <item name="typography_letter_spacing_context_heading" type="dimen" format="float">0</item>
+  <item name="typography_letter_spacing_context_title" type="dimen" format="float">0</item>
+  <item name="typography_letter_spacing_context_body" type="dimen" format="float">0</item>
+  <item name="typography_letter_spacing_context_highlight" type="dimen" format="float">0</item>
+  <item name="typography_letter_spacing_context_label" type="dimen" format="float">0</item>
+  <item name="typography_letter_spacing_context_link" type="dimen" format="float">0</item>
+  <item name="typography_letter_spacing_context_expired" type="dimen" format="float">0</item>
+  <item name="typography_letter_spacing_context_code" type="dimen" format="float">0</item>
   <dimen name="typography_paragraph_spacing_base_zero">0sp</dimen>
   <dimen name="typography_paragraph_spacing_base_small">8sp</dimen>
   <dimen name="typography_paragraph_spacing_base_medium">16sp</dimen>

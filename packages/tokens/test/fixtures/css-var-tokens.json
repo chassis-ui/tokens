@@ -1,5 +1,5 @@
 {
-  "source": "Resolved chassis/docs web tokens from the SD 5.5 build and the matching committed dist lines, extracted 2026-09-27. \"tokens\" holds every token under test and every token it looks up, keyed by path.",
+  "source": "Resolved chassis/docs web tokens from the SD 5.5 build and the matching committed dist lines, extracted 2026-09-27. \"tokens\" holds every token under test and every token it looks up, keyed by path. The alias-following cases and the tokens they look up were added from the build of 2026-10-15.",
   "cases": [
     {
       "group": "table",
@@ -150,13 +150,6 @@
     },
     {
       "group": "typography",
-      "case": "object-valued, size from a dimension token, percent line height",
-      "token": "font.context.jumbo",
-      "file": "main.scss",
-      "expected": "(\"font-family\": var(--font-family-text), \"font-weight\": var(--font-weight-text-mass), \"font-size\": 6rem, \"line-height\": 1.25em, \"font-style\": normal, \"letter-spacing\": -0.0313em, \"margin-bottom\": 0rem, \"text-transform\": none, \"text-decoration\": none)"
-    },
-    {
-      "group": "typography",
       "case": "object-valued, named size and line height",
       "token": "font.context.lead",
       "file": "main.scss",
@@ -195,7 +188,7 @@
       "case": "object-valued, italic",
       "token": "font.html.blockquote",
       "file": "main.scss",
-      "expected": "(\"font-family\": var(--font-family-html), \"font-weight\": var(--font-weight-html-blockquote), \"font-size\": var(--font-size-html-blockquote), \"line-height\": var(--line-height-html-blockquote), \"font-style\": italic, \"letter-spacing\": 0em, \"margin-bottom\": 0rem, \"text-transform\": none, \"text-decoration\": none)"
+      "expected": "(\"font-family\": var(--font-family-text), \"font-weight\": var(--font-weight-html-blockquote), \"font-size\": var(--font-size-html-blockquote), \"line-height\": var(--line-height-html-blockquote), \"font-style\": italic, \"letter-spacing\": 0em, \"margin-bottom\": 0rem, \"text-transform\": none, \"text-decoration\": none)"
     },
     {
       "group": "typography",
@@ -238,6 +231,41 @@
       "token": "shadow.context.none",
       "file": "main.scss",
       "expected": "0rem 0rem 0rem 0rem rgba(0, 0, 0, 0)"
+    },
+    {
+      "group": "typography",
+      "case": "context role family, weight, size and line height follow their aliases",
+      "token": "font.context.title.medium",
+      "file": "main.scss",
+      "expected": "(\"font-family\": var(--font-family-text), \"font-weight\": var(--font-weight-text-strong), \"font-size\": var(--font-size-text-lg), \"line-height\": var(--line-height-text-lg), \"font-style\": normal, \"letter-spacing\": 0em, \"margin-bottom\": 1rem, \"text-transform\": none, \"text-decoration\": none)"
+    },
+    {
+      "group": "typography",
+      "case": "context role with a size of another group prints its value",
+      "token": "font.context.jumbo",
+      "file": "main.scss",
+      "expected": "(\"font-family\": var(--font-family-text), \"font-weight\": var(--font-weight-text-mass), \"font-size\": 6rem, \"line-height\": 1.25em, \"font-style\": normal, \"letter-spacing\": -0.03125em, \"margin-bottom\": 0rem, \"text-transform\": none, \"text-decoration\": none)"
+    },
+    {
+      "group": "typography",
+      "case": "context role with a literal line height",
+      "token": "font.context.hero",
+      "file": "main.scss",
+      "expected": "(\"font-family\": var(--font-family-text), \"font-weight\": var(--font-weight-text-mass), \"font-size\": 4rem, \"line-height\": 1.25em, \"font-style\": normal, \"letter-spacing\": 0em, \"margin-bottom\": 0rem, \"text-transform\": none, \"text-decoration\": none)"
+    },
+    {
+      "group": "typography",
+      "case": "html element group family follows its alias",
+      "token": "font.html.h1",
+      "file": "main.scss",
+      "expected": "(\"font-family\": var(--font-family-text), \"font-weight\": var(--font-weight-html-heading), \"font-size\": var(--font-size-html-h1), \"line-height\": var(--line-height-html-h1), \"font-style\": normal, \"letter-spacing\": 0em, \"margin-bottom\": 0rem, \"text-transform\": none, \"text-decoration\": none)"
+    },
+    {
+      "group": "typography",
+      "case": "html code family follows its alias to the code family",
+      "token": "font.html.code",
+      "file": "main.scss",
+      "expected": "(\"font-family\": var(--font-family-code), \"font-weight\": var(--font-weight-html-code), \"font-size\": var(--font-size-html-code), \"line-height\": var(--line-height-html-code), \"font-style\": normal, \"letter-spacing\": 0em, \"margin-bottom\": 0rem, \"text-transform\": none, \"text-decoration\": none)"
     }
   ],
   "tokens": {
@@ -548,7 +576,7 @@
         "fontWeight": 700,
         "lineHeight": "125%",
         "fontSize": "6rem",
-        "letterSpacing": "-0.0313rem",
+        "letterSpacing": "-0.03125rem",
         "paragraphSpacing": "0rem",
         "textCase": "none",
         "textDecoration": "none",
@@ -556,19 +584,20 @@
       },
       "original": {
         "$value": {
-          "fontFamily": "{typography.fontFamily.text}",
+          "fontFamily": "{typography.fontFamily.context.jumbo}",
           "fontWeight": "Bold",
           "lineHeight": "125%",
-          "fontSize": "{size.unit.96}",
-          "letterSpacing": "{size.unit.nd05}",
+          "fontSize": "{typography.fontSize.context.jumbo}",
+          "letterSpacing": "{typography.letterSpacing.context.jumbo}",
           "paragraphSpacing": "{typography.paragraphSpacing.base.zero}",
-          "textCase": "{typography.textCase.base.none}",
-          "textDecoration": "{typography.textDecoration.base.none}",
+          "textCase": "none",
+          "textDecoration": "none",
           "fontStyle": "normal"
         },
         "$extensions": {
           "chassis": {
-            "fontWeightPath": ["typography", "fontWeight", "text", "mass"]
+            "fontWeightPath": ["typography", "fontWeight", "context", "jumbo"],
+            "sourceOrder": 3105
           }
         }
       }
@@ -583,6 +612,9 @@
         "$extensions": {
           "studio.tokens": {
             "originalType": "sizing"
+          },
+          "chassis": {
+            "sourceOrder": 116
           }
         }
       }
@@ -591,12 +623,15 @@
       "name": "cx-size-unit-nd05",
       "path": ["size", "unit", "nd05"],
       "$type": "dimension",
-      "$value": "-0.0313rem",
+      "$value": "-0.03125rem",
       "original": {
         "$value": "{dimension.base.nd05}",
         "$extensions": {
           "studio.tokens": {
             "originalType": "sizing"
+          },
+          "chassis": {
+            "sourceOrder": 148
           }
         }
       }
@@ -611,6 +646,9 @@
         "$extensions": {
           "studio.tokens": {
             "originalType": "paragraphSpacing"
+          },
+          "chassis": {
+            "sourceOrder": 2940
           }
         }
       }
@@ -705,6 +743,9 @@
         "$extensions": {
           "studio.tokens": {
             "originalType": "letterSpacing"
+          },
+          "chassis": {
+            "sourceOrder": 2913
           }
         }
       }
@@ -772,6 +813,9 @@
         "$extensions": {
           "studio.tokens": {
             "originalType": "fontFamilies"
+          },
+          "chassis": {
+            "sourceOrder": 2706
           }
         }
       }
@@ -931,7 +975,7 @@
       },
       "original": {
         "$value": {
-          "fontFamily": "{typography.fontFamily.html}",
+          "fontFamily": "{typography.fontFamily.html.blockquote}",
           "fontWeight": "Light",
           "lineHeight": "{typography.lineHeight.html.blockquote}",
           "fontSize": "{typography.fontSize.html.blockquote}",
@@ -1229,6 +1273,797 @@
         "$extensions": {
           "studio.tokens": {
             "originalType": "borderRadius"
+          }
+        }
+      }
+    },
+    "size.unit.0": {
+      "name": "cx-size-unit-0",
+      "path": ["size", "unit", "0"],
+      "$type": "dimension",
+      "$value": "0rem",
+      "original": {
+        "$value": "{dimension.base.0}",
+        "$extensions": {
+          "studio.tokens": {
+            "originalType": "sizing"
+          },
+          "chassis": {
+            "sourceOrder": 81
+          }
+        }
+      }
+    },
+    "size.unit.64": {
+      "name": "cx-size-unit-64",
+      "path": ["size", "unit", "64"],
+      "$type": "dimension",
+      "$value": "4rem",
+      "original": {
+        "$value": "{dimension.base.64}",
+        "$extensions": {
+          "studio.tokens": {
+            "originalType": "sizing"
+          },
+          "chassis": {
+            "sourceOrder": 110
+          }
+        }
+      }
+    },
+    "typography.fontFamily.html.heading": {
+      "name": "cx-typography-font-family-html-heading",
+      "path": ["typography", "fontFamily", "html", "heading"],
+      "$type": "fontFamily",
+      "$value": "Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif",
+      "original": {
+        "$value": "{typography.fontFamily.text}",
+        "$extensions": {
+          "studio.tokens": {
+            "originalType": "fontFamilies"
+          },
+          "chassis": {
+            "sourceOrder": 2708
+          }
+        }
+      }
+    },
+    "typography.fontFamily.html.code": {
+      "name": "cx-typography-font-family-html-code",
+      "path": ["typography", "fontFamily", "html", "code"],
+      "$type": "fontFamily",
+      "$value": "Fira Code, Menlo, Monaco, Consolas, 'Courier New', monospace",
+      "original": {
+        "$value": "{typography.fontFamily.code}",
+        "$extensions": {
+          "studio.tokens": {
+            "originalType": "fontFamilies"
+          },
+          "chassis": {
+            "sourceOrder": 2714
+          }
+        }
+      }
+    },
+    "typography.fontFamily.context.jumbo": {
+      "name": "cx-typography-font-family-context-jumbo",
+      "path": ["typography", "fontFamily", "context", "jumbo"],
+      "$type": "fontFamily",
+      "$value": "Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif",
+      "original": {
+        "$value": "{typography.fontFamily.text}",
+        "$extensions": {
+          "studio.tokens": {
+            "originalType": "fontFamilies"
+          },
+          "chassis": {
+            "sourceOrder": 2715
+          }
+        }
+      }
+    },
+    "typography.fontFamily.context.hero": {
+      "name": "cx-typography-font-family-context-hero",
+      "path": ["typography", "fontFamily", "context", "hero"],
+      "$type": "fontFamily",
+      "$value": "Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif",
+      "original": {
+        "$value": "{typography.fontFamily.text}",
+        "$extensions": {
+          "studio.tokens": {
+            "originalType": "fontFamilies"
+          },
+          "chassis": {
+            "sourceOrder": 2716
+          }
+        }
+      }
+    },
+    "typography.fontFamily.context.title": {
+      "name": "cx-typography-font-family-context-title",
+      "path": ["typography", "fontFamily", "context", "title"],
+      "$type": "fontFamily",
+      "$value": "Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif",
+      "original": {
+        "$value": "{typography.fontFamily.text}",
+        "$extensions": {
+          "studio.tokens": {
+            "originalType": "fontFamilies"
+          },
+          "chassis": {
+            "sourceOrder": 2719
+          }
+        }
+      }
+    },
+    "typography.fontFamily.code": {
+      "name": "cx-typography-font-family-code",
+      "path": ["typography", "fontFamily", "code"],
+      "$type": "fontFamily",
+      "$value": "Fira Code, Menlo, Monaco, Consolas, 'Courier New', monospace",
+      "original": {
+        "$value": "Fira Code, Menlo, Monaco, Consolas, 'Courier New', monospace",
+        "$extensions": {
+          "studio.tokens": {
+            "originalType": "fontFamilies"
+          },
+          "chassis": {
+            "sourceOrder": 2726
+          }
+        }
+      }
+    },
+    "typography.fontWeight.text.strong.weight": {
+      "name": "cx-typography-font-weight-text-strong-weight",
+      "path": ["typography", "fontWeight", "text", "strong", "weight"],
+      "$type": "fontWeight",
+      "$value": 600,
+      "original": {
+        "$value": "Semi Bold",
+        "$extensions": {
+          "studio.tokens": {
+            "originalType": "fontWeights"
+          },
+          "chassis": {
+            "sourceOrder": 2730
+          }
+        }
+      }
+    },
+    "typography.fontWeight.text.mass.weight": {
+      "name": "cx-typography-font-weight-text-mass-weight",
+      "path": ["typography", "fontWeight", "text", "mass", "weight"],
+      "$type": "fontWeight",
+      "$value": 700,
+      "original": {
+        "$value": "Bold",
+        "$extensions": {
+          "studio.tokens": {
+            "originalType": "fontWeights"
+          },
+          "chassis": {
+            "sourceOrder": 2732
+          }
+        }
+      }
+    },
+    "typography.fontWeight.html.code.weight": {
+      "name": "cx-typography-font-weight-html-code-weight",
+      "path": ["typography", "fontWeight", "html", "code", "weight"],
+      "$type": "fontWeight",
+      "$value": 400,
+      "original": {
+        "$value": "Regular",
+        "$extensions": {
+          "studio.tokens": {
+            "originalType": "fontWeights"
+          },
+          "chassis": {
+            "aliasPath": ["typography", "fontWeight", "text", "normal"],
+            "sourceOrder": 2748
+          }
+        }
+      }
+    },
+    "typography.fontWeight.html.heading.weight": {
+      "name": "cx-typography-font-weight-html-heading-weight",
+      "path": ["typography", "fontWeight", "html", "heading", "weight"],
+      "$type": "fontWeight",
+      "$value": 700,
+      "original": {
+        "$value": "Bold",
+        "$extensions": {
+          "studio.tokens": {
+            "originalType": "fontWeights"
+          },
+          "chassis": {
+            "aliasPath": ["typography", "fontWeight", "text", "mass"],
+            "sourceOrder": 2756
+          }
+        }
+      }
+    },
+    "typography.fontWeight.context.jumbo.weight": {
+      "name": "cx-typography-font-weight-context-jumbo-weight",
+      "path": ["typography", "fontWeight", "context", "jumbo", "weight"],
+      "$type": "fontWeight",
+      "$value": 700,
+      "original": {
+        "$value": "Bold",
+        "$extensions": {
+          "studio.tokens": {
+            "originalType": "fontWeights"
+          },
+          "chassis": {
+            "aliasPath": ["typography", "fontWeight", "text", "mass"],
+            "sourceOrder": 2764
+          }
+        }
+      }
+    },
+    "typography.fontWeight.context.hero.weight": {
+      "name": "cx-typography-font-weight-context-hero-weight",
+      "path": ["typography", "fontWeight", "context", "hero", "weight"],
+      "$type": "fontWeight",
+      "$value": 700,
+      "original": {
+        "$value": "Bold",
+        "$extensions": {
+          "studio.tokens": {
+            "originalType": "fontWeights"
+          },
+          "chassis": {
+            "aliasPath": ["typography", "fontWeight", "text", "mass"],
+            "sourceOrder": 2766
+          }
+        }
+      }
+    },
+    "typography.fontWeight.context.title.weight": {
+      "name": "cx-typography-font-weight-context-title-weight",
+      "path": ["typography", "fontWeight", "context", "title", "weight"],
+      "$type": "fontWeight",
+      "$value": 600,
+      "original": {
+        "$value": "Semi Bold",
+        "$extensions": {
+          "studio.tokens": {
+            "originalType": "fontWeights"
+          },
+          "chassis": {
+            "aliasPath": ["typography", "fontWeight", "text", "strong"],
+            "sourceOrder": 2772
+          }
+        }
+      }
+    },
+    "typography.fontSize.text.large": {
+      "name": "cx-typography-font-size-text-large",
+      "path": ["typography", "fontSize", "text", "large"],
+      "$type": "fontSize",
+      "$value": "1.1875rem",
+      "original": {
+        "$value": "19",
+        "$extensions": {
+          "studio.tokens": {
+            "originalType": "fontSizes"
+          },
+          "chassis": {
+            "sourceOrder": 2791
+          }
+        }
+      }
+    },
+    "typography.fontSize.html.h1": {
+      "name": "cx-typography-font-size-html-h1",
+      "path": ["typography", "fontSize", "html", "h1"],
+      "$type": "fontSize",
+      "$value": "2.375rem",
+      "original": {
+        "$value": "38",
+        "$extensions": {
+          "studio.tokens": {
+            "originalType": "fontSizes"
+          },
+          "chassis": {
+            "sourceOrder": 2806
+          }
+        }
+      }
+    },
+    "typography.fontSize.html.code": {
+      "name": "cx-typography-font-size-html-code",
+      "path": ["typography", "fontSize", "html", "code"],
+      "$type": "fontSize",
+      "$value": "1rem",
+      "original": {
+        "$value": "16",
+        "$extensions": {
+          "studio.tokens": {
+            "originalType": "fontSizes"
+          },
+          "chassis": {
+            "sourceOrder": 2815
+          }
+        }
+      }
+    },
+    "typography.fontSize.context.jumbo": {
+      "name": "cx-typography-font-size-context-jumbo",
+      "path": ["typography", "fontSize", "context", "jumbo"],
+      "$type": "fontSize",
+      "$value": "6rem",
+      "original": {
+        "$value": "{size.unit.96}",
+        "$extensions": {
+          "studio.tokens": {
+            "originalType": "fontSizes"
+          },
+          "chassis": {
+            "sourceOrder": 2818
+          }
+        }
+      }
+    },
+    "typography.fontSize.context.hero": {
+      "name": "cx-typography-font-size-context-hero",
+      "path": ["typography", "fontSize", "context", "hero"],
+      "$type": "fontSize",
+      "$value": "4rem",
+      "original": {
+        "$value": "{size.unit.64}",
+        "$extensions": {
+          "studio.tokens": {
+            "originalType": "fontSizes"
+          },
+          "chassis": {
+            "sourceOrder": 2819
+          }
+        }
+      }
+    },
+    "typography.fontSize.context.title-medium": {
+      "name": "cx-typography-font-size-context-title-medium",
+      "path": ["typography", "fontSize", "context", "title-medium"],
+      "$type": "fontSize",
+      "$value": "1.1875rem",
+      "original": {
+        "$value": "{typography.fontSize.text.large}",
+        "$extensions": {
+          "studio.tokens": {
+            "originalType": "fontSizes"
+          },
+          "chassis": {
+            "sourceOrder": 2822
+          }
+        }
+      }
+    },
+    "typography.lineHeight.text.large": {
+      "name": "cx-typography-line-height-text-large",
+      "path": ["typography", "lineHeight", "text", "large"],
+      "$type": "lineHeight",
+      "$value": "1.75rem",
+      "original": {
+        "$value": "28",
+        "$extensions": {
+          "studio.tokens": {
+            "originalType": "lineHeights"
+          },
+          "chassis": {
+            "sourceOrder": 2859
+          }
+        }
+      }
+    },
+    "typography.lineHeight.html.h1": {
+      "name": "cx-typography-line-height-html-h1",
+      "path": ["typography", "lineHeight", "html", "h1"],
+      "$type": "lineHeight",
+      "$value": "2.875rem",
+      "original": {
+        "$value": "46",
+        "$extensions": {
+          "studio.tokens": {
+            "originalType": "lineHeights"
+          },
+          "chassis": {
+            "sourceOrder": 2874
+          }
+        }
+      }
+    },
+    "typography.lineHeight.html.code": {
+      "name": "cx-typography-line-height-html-code",
+      "path": ["typography", "lineHeight", "html", "code"],
+      "$type": "lineHeight",
+      "$value": "1.5rem",
+      "original": {
+        "$value": "24",
+        "$extensions": {
+          "studio.tokens": {
+            "originalType": "lineHeights"
+          },
+          "chassis": {
+            "sourceOrder": 2882
+          }
+        }
+      }
+    },
+    "typography.lineHeight.context.title-medium": {
+      "name": "cx-typography-line-height-context-title-medium",
+      "path": ["typography", "lineHeight", "context", "title-medium"],
+      "$type": "lineHeight",
+      "$value": "1.75rem",
+      "original": {
+        "$value": "{typography.lineHeight.text.large}",
+        "$extensions": {
+          "studio.tokens": {
+            "originalType": "lineHeights"
+          },
+          "chassis": {
+            "sourceOrder": 2888
+          }
+        }
+      }
+    },
+    "typography.letterSpacing.text.strong": {
+      "name": "cx-typography-letter-spacing-text-strong",
+      "path": ["typography", "letterSpacing", "text", "strong"],
+      "$type": "number",
+      "$value": "0rem",
+      "original": {
+        "$value": "{size.unit.0}",
+        "$extensions": {
+          "studio.tokens": {
+            "originalType": "letterSpacing"
+          },
+          "chassis": {
+            "sourceOrder": 2915
+          }
+        }
+      }
+    },
+    "typography.letterSpacing.text.mass": {
+      "name": "cx-typography-letter-spacing-text-mass",
+      "path": ["typography", "letterSpacing", "text", "mass"],
+      "$type": "number",
+      "$value": "0rem",
+      "original": {
+        "$value": "{size.unit.0}",
+        "$extensions": {
+          "studio.tokens": {
+            "originalType": "letterSpacing"
+          },
+          "chassis": {
+            "sourceOrder": 2916
+          }
+        }
+      }
+    },
+    "typography.letterSpacing.html.heading": {
+      "name": "cx-typography-letter-spacing-html-heading",
+      "path": ["typography", "letterSpacing", "html", "heading"],
+      "$type": "number",
+      "$value": "0rem",
+      "original": {
+        "$value": "{typography.letterSpacing.text.mass}",
+        "$extensions": {
+          "studio.tokens": {
+            "originalType": "letterSpacing"
+          },
+          "chassis": {
+            "sourceOrder": 2922
+          }
+        }
+      }
+    },
+    "typography.letterSpacing.html.code": {
+      "name": "cx-typography-letter-spacing-html-code",
+      "path": ["typography", "letterSpacing", "html", "code"],
+      "$type": "number",
+      "$value": "0rem",
+      "original": {
+        "$value": "{typography.letterSpacing.base.zero}",
+        "$extensions": {
+          "studio.tokens": {
+            "originalType": "letterSpacing"
+          },
+          "chassis": {
+            "sourceOrder": 2928
+          }
+        }
+      }
+    },
+    "typography.letterSpacing.context.jumbo": {
+      "name": "cx-typography-letter-spacing-context-jumbo",
+      "path": ["typography", "letterSpacing", "context", "jumbo"],
+      "$type": "number",
+      "$value": "-0.03125rem",
+      "original": {
+        "$value": "{size.unit.nd05}",
+        "$extensions": {
+          "studio.tokens": {
+            "originalType": "letterSpacing"
+          },
+          "chassis": {
+            "sourceOrder": 2929
+          }
+        }
+      }
+    },
+    "typography.letterSpacing.context.hero": {
+      "name": "cx-typography-letter-spacing-context-hero",
+      "path": ["typography", "letterSpacing", "context", "hero"],
+      "$type": "number",
+      "$value": "0rem",
+      "original": {
+        "$value": "{typography.letterSpacing.text.mass}",
+        "$extensions": {
+          "studio.tokens": {
+            "originalType": "letterSpacing"
+          },
+          "chassis": {
+            "sourceOrder": 2930
+          }
+        }
+      }
+    },
+    "typography.letterSpacing.context.title": {
+      "name": "cx-typography-letter-spacing-context-title",
+      "path": ["typography", "letterSpacing", "context", "title"],
+      "$type": "number",
+      "$value": "0rem",
+      "original": {
+        "$value": "{typography.letterSpacing.text.strong}",
+        "$extensions": {
+          "studio.tokens": {
+            "originalType": "letterSpacing"
+          },
+          "chassis": {
+            "sourceOrder": 2933
+          }
+        }
+      }
+    },
+    "typography.paragraphSpacing.base.medium": {
+      "name": "cx-typography-paragraph-spacing-base-medium",
+      "path": ["typography", "paragraphSpacing", "base", "medium"],
+      "$type": "dimension",
+      "$value": "1rem",
+      "original": {
+        "$value": "16px",
+        "$extensions": {
+          "studio.tokens": {
+            "originalType": "paragraphSpacing"
+          },
+          "chassis": {
+            "sourceOrder": 2942
+          }
+        }
+      }
+    },
+    "font.context.hero": {
+      "name": "cx-font-context-hero",
+      "path": ["font", "context", "hero"],
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif",
+        "fontWeight": 700,
+        "lineHeight": "125%",
+        "fontSize": "4rem",
+        "letterSpacing": "0rem",
+        "paragraphSpacing": "0rem",
+        "textCase": "none",
+        "textDecoration": "none",
+        "fontStyle": "normal"
+      },
+      "original": {
+        "$value": {
+          "fontFamily": "{typography.fontFamily.context.hero}",
+          "fontWeight": "Bold",
+          "lineHeight": "125%",
+          "fontSize": "{typography.fontSize.context.hero}",
+          "letterSpacing": "{typography.letterSpacing.context.hero}",
+          "paragraphSpacing": "{typography.paragraphSpacing.base.zero}",
+          "textCase": "none",
+          "textDecoration": "none",
+          "fontStyle": "normal"
+        },
+        "$extensions": {
+          "chassis": {
+            "fontWeightPath": ["typography", "fontWeight", "context", "hero"],
+            "sourceOrder": 3106
+          }
+        }
+      }
+    },
+    "font.context.title.medium": {
+      "name": "cx-font-context-title-medium",
+      "path": ["font", "context", "title", "medium"],
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif",
+        "fontWeight": 600,
+        "lineHeight": "1.75rem",
+        "fontSize": "1.1875rem",
+        "letterSpacing": "0rem",
+        "paragraphSpacing": "1rem",
+        "textCase": "none",
+        "textDecoration": "none",
+        "fontStyle": "normal"
+      },
+      "original": {
+        "$value": {
+          "fontFamily": "{typography.fontFamily.context.title}",
+          "fontWeight": "Semi Bold",
+          "lineHeight": "{typography.lineHeight.context.title-medium}",
+          "fontSize": "{typography.fontSize.context.title-medium}",
+          "letterSpacing": "{typography.letterSpacing.context.title}",
+          "paragraphSpacing": "{typography.paragraphSpacing.base.medium}",
+          "textCase": "none",
+          "textDecoration": "none",
+          "fontStyle": "normal"
+        },
+        "$extensions": {
+          "chassis": {
+            "fontWeightPath": ["typography", "fontWeight", "context", "title"],
+            "sourceOrder": 3109
+          }
+        }
+      }
+    },
+    "font.html.h1": {
+      "name": "cx-font-html-h1",
+      "path": ["font", "html", "h1"],
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif",
+        "fontWeight": 700,
+        "lineHeight": "2.875rem",
+        "fontSize": "2.375rem",
+        "letterSpacing": "0rem",
+        "paragraphSpacing": "0rem",
+        "textCase": "none",
+        "textDecoration": "none",
+        "fontStyle": "normal"
+      },
+      "original": {
+        "$value": {
+          "fontFamily": "{typography.fontFamily.html.heading}",
+          "fontWeight": "Bold",
+          "lineHeight": "{typography.lineHeight.html.h1}",
+          "fontSize": "{typography.fontSize.html.h1}",
+          "letterSpacing": "{typography.letterSpacing.html.heading}",
+          "paragraphSpacing": "{typography.paragraphSpacing.base.zero}",
+          "textCase": "none",
+          "textDecoration": "none",
+          "fontStyle": "normal"
+        },
+        "$extensions": {
+          "chassis": {
+            "fontWeightPath": ["typography", "fontWeight", "html", "heading"],
+            "sourceOrder": 3211
+          }
+        }
+      }
+    },
+    "font.html.code": {
+      "name": "cx-font-html-code",
+      "path": ["font", "html", "code"],
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "Fira Code, Menlo, Monaco, Consolas, 'Courier New', monospace",
+        "fontWeight": 400,
+        "lineHeight": "1.5rem",
+        "fontSize": "1rem",
+        "letterSpacing": "0rem",
+        "paragraphSpacing": "0rem",
+        "textCase": "none",
+        "textDecoration": "none",
+        "fontStyle": "normal"
+      },
+      "original": {
+        "$value": {
+          "fontFamily": "{typography.fontFamily.html.code}",
+          "fontWeight": "Regular",
+          "lineHeight": "{typography.lineHeight.html.code}",
+          "fontSize": "{typography.fontSize.html.code}",
+          "letterSpacing": "{typography.letterSpacing.html.code}",
+          "paragraphSpacing": "{typography.paragraphSpacing.base.zero}",
+          "textCase": "none",
+          "textDecoration": "none",
+          "fontStyle": "normal"
+        },
+        "$extensions": {
+          "chassis": {
+            "fontWeightPath": ["typography", "fontWeight", "html", "code"],
+            "sourceOrder": 3218
+          }
+        }
+      }
+    },
+    "typography.fontFamily.html.body": {
+      "name": "cx-typography-font-family-html-body",
+      "path": ["typography", "fontFamily", "html", "body"],
+      "$type": "fontFamily",
+      "$value": "Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif",
+      "original": {
+        "$value": "{typography.fontFamily.text}",
+        "$extensions": {
+          "studio.tokens": {
+            "originalType": "fontFamilies"
+          },
+          "chassis": {
+            "sourceOrder": 2709
+          }
+        }
+      }
+    },
+    "typography.fontFamily.html.paragraph": {
+      "name": "cx-typography-font-family-html-paragraph",
+      "path": ["typography", "fontFamily", "html", "paragraph"],
+      "$type": "fontFamily",
+      "$value": "Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif",
+      "original": {
+        "$value": "{typography.fontFamily.text}",
+        "$extensions": {
+          "studio.tokens": {
+            "originalType": "fontFamilies"
+          },
+          "chassis": {
+            "sourceOrder": 2710
+          }
+        }
+      }
+    },
+    "typography.fontFamily.html.blockquote": {
+      "name": "cx-typography-font-family-html-blockquote",
+      "path": ["typography", "fontFamily", "html", "blockquote"],
+      "$type": "fontFamily",
+      "$value": "Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif",
+      "original": {
+        "$value": "{typography.fontFamily.text}",
+        "$extensions": {
+          "studio.tokens": {
+            "originalType": "fontFamilies"
+          },
+          "chassis": {
+            "sourceOrder": 2711
+          }
+        }
+      }
+    },
+    "typography.fontFamily.html.list": {
+      "name": "cx-typography-font-family-html-list",
+      "path": ["typography", "fontFamily", "html", "list"],
+      "$type": "fontFamily",
+      "$value": "Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif",
+      "original": {
+        "$value": "{typography.fontFamily.text}",
+        "$extensions": {
+          "studio.tokens": {
+            "originalType": "fontFamilies"
+          },
+          "chassis": {
+            "sourceOrder": 2712
+          }
+        }
+      }
+    },
+    "typography.fontFamily.html.cite": {
+      "name": "cx-typography-font-family-html-cite",
+      "path": ["typography", "fontFamily", "html", "cite"],
+      "$type": "fontFamily",
+      "$value": "Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif",
+      "original": {
+        "$value": "{typography.fontFamily.text}",
+        "$extensions": {
+          "studio.tokens": {
+            "originalType": "fontFamilies"
+          },
+          "chassis": {
+            "sourceOrder": 2713
           }
         }
       }

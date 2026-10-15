@@ -27,9 +27,7 @@
           "lineHeight": "125%",
           "fontSize": "{typography.fontSize.website.hero-title}",
           "letterSpacing": "{size.unit.n1}",
-          "paragraphSpacing": "{typography.paragraphSpacing.base.zero}",
-          "textCase": "{typography.textCase.base.none}",
-          "textDecoration": "{typography.textDecoration.base.none}"
+          "paragraphSpacing": "{typography.paragraphSpacing.base.zero}"
         }
       },
       "hero-body": {
@@ -39,10 +37,8 @@
           "fontWeight": "{typography.fontWeight.text.normal}",
           "lineHeight": "150%",
           "fontSize": "{typography.fontSize.website.hero-body}",
-          "letterSpacing": "{typography.letterSpacing.base.zero}",
-          "paragraphSpacing": "{typography.paragraphSpacing.base.zero}",
-          "textCase": "{typography.textCase.base.none}",
-          "textDecoration": "{typography.textDecoration.base.none}"
+          "letterSpacing": "{typography.letterSpacing.text.normal}",
+          "paragraphSpacing": "{typography.paragraphSpacing.base.zero}"
         }
       },
       "section-title": {
@@ -53,9 +49,7 @@
           "lineHeight": "125%",
           "fontSize": "{typography.fontSize.website.section-title}",
           "letterSpacing": "{size.unit.nd05}",
-          "paragraphSpacing": "{typography.paragraphSpacing.base.zero}",
-          "textCase": "{typography.textCase.base.none}",
-          "textDecoration": "{typography.textDecoration.base.none}"
+          "paragraphSpacing": "{typography.paragraphSpacing.base.zero}"
         }
       },
       "section-body": {
@@ -65,10 +59,8 @@
           "fontWeight": "{typography.fontWeight.text.normal}",
           "lineHeight": "150%",
           "fontSize": "{typography.fontSize.website.section-body}",
-          "letterSpacing": "{typography.letterSpacing.base.zero}",
-          "paragraphSpacing": "{typography.paragraphSpacing.base.zero}",
-          "textCase": "{typography.textCase.base.none}",
-          "textDecoration": "{typography.textDecoration.base.none}"
+          "letterSpacing": "{typography.letterSpacing.text.normal}",
+          "paragraphSpacing": "{typography.paragraphSpacing.base.zero}"
         }
       },
       "feature-title": {
@@ -78,10 +70,8 @@
           "fontWeight": "{typography.fontWeight.text.mass}",
           "lineHeight": "150%",
           "fontSize": "{typography.fontSize.website.feature-title}",
-          "letterSpacing": "{typography.letterSpacing.base.zero}",
-          "paragraphSpacing": "{typography.paragraphSpacing.base.zero}",
-          "textCase": "{typography.textCase.base.none}",
-          "textDecoration": "{typography.textDecoration.base.none}"
+          "letterSpacing": "{typography.letterSpacing.text.mass}",
+          "paragraphSpacing": "{typography.paragraphSpacing.base.zero}"
         }
       },
       "feature-body": {
@@ -91,10 +81,8 @@
           "fontWeight": "{typography.fontWeight.text.normal}",
           "lineHeight": "150%",
           "fontSize": "{typography.fontSize.website.feature-body}",
-          "letterSpacing": "{typography.letterSpacing.base.zero}",
-          "paragraphSpacing": "{typography.paragraphSpacing.base.zero}",
-          "textCase": "{typography.textCase.base.none}",
-          "textDecoration": "{typography.textDecoration.base.none}"
+          "letterSpacing": "{typography.letterSpacing.text.normal}",
+          "paragraphSpacing": "{typography.paragraphSpacing.base.zero}"
         }
       },
       "module-title": {
@@ -104,10 +92,8 @@
           "fontWeight": "{typography.fontWeight.text.mass}",
           "lineHeight": "150%",
           "fontSize": "{typography.fontSize.website.module-title}",
-          "letterSpacing": "{typography.letterSpacing.base.zero}",
-          "paragraphSpacing": "{typography.paragraphSpacing.base.zero}",
-          "textCase": "{typography.textCase.base.none}",
-          "textDecoration": "{typography.textDecoration.base.none}"
+          "letterSpacing": "{typography.letterSpacing.text.mass}",
+          "paragraphSpacing": "{typography.paragraphSpacing.base.zero}"
         }
       }
     }

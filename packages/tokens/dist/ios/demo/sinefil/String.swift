@@ -4,7 +4,7 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Tue, 13 Oct 2026 15:43:29 GMT
+// Generated on Thu, 15 Oct 2026 10:03:55 GMT
 // Chassis - Tokens v0.7.0
 // Copyright 2026 Ozgur Gunes
 // Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
@@ -15,7 +15,24 @@ import UIKit
 public enum ChassisTokensString {
     public static let TypographyFontFamilyText = "DM Sans"
     public static let TypographyFontFamilyDisplay = "Source Serif 4"
-    public static let TypographyFontFamilyHtml = "Source Serif 4"
+    public static let TypographyFontFamilyHtmlHeading = "Source Serif 4"
+    public static let TypographyFontFamilyHtmlBody = "Source Serif 4"
+    public static let TypographyFontFamilyHtmlParagraph = "Source Serif 4"
+    public static let TypographyFontFamilyHtmlBlockquote = "Source Serif 4"
+    public static let TypographyFontFamilyHtmlList = "Source Serif 4"
+    public static let TypographyFontFamilyHtmlCite = "Source Serif 4"
+    public static let TypographyFontFamilyHtmlCode = "IBM Plex Mono"
+    public static let TypographyFontFamilyContextJumbo = "DM Sans"
+    public static let TypographyFontFamilyContextHero = "DM Sans"
+    public static let TypographyFontFamilyContextLead = "DM Sans"
+    public static let TypographyFontFamilyContextHeading = "DM Sans"
+    public static let TypographyFontFamilyContextTitle = "DM Sans"
+    public static let TypographyFontFamilyContextBody = "DM Sans"
+    public static let TypographyFontFamilyContextHighlight = "DM Sans"
+    public static let TypographyFontFamilyContextLabel = "DM Sans"
+    public static let TypographyFontFamilyContextLink = "DM Sans"
+    public static let TypographyFontFamilyContextExpired = "DM Sans"
+    public static let TypographyFontFamilyContextCode = "IBM Plex Mono"
     public static let TypographyFontFamilyCode = "IBM Plex Mono"
     public static let TypographyFontFamilyIcon = "Chassis-Icons"
     public static let TypographyFontWeightTextNormalWeight = UIFont.Weight.regular
@@ -54,13 +71,28 @@ public enum ChassisTokensString {
     public static let TypographyFontWeightHtmlListStyle = "normal"
     public static let TypographyFontWeightHtmlBoldWeight = UIFont.Weight.bold
     public static let TypographyFontWeightHtmlBoldStyle = "normal"
-    public static let TypographyTextCaseBaseNone = "none"
-    public static let TypographyTextCaseBaseLowercase = "lowercase"
-    public static let TypographyTextCaseBaseUppercase = "uppercase"
-    public static let TypographyTextCaseBaseCapitalize = "capitalize"
-    public static let TypographyTextDecorationBaseNone = "none"
-    public static let TypographyTextDecorationBaseUnderline = "underline"
-    public static let TypographyTextDecorationBaseLineThrough = "line-through"
+    public static let TypographyFontWeightContextJumboWeight = UIFont.Weight.bold
+    public static let TypographyFontWeightContextJumboStyle = "normal"
+    public static let TypographyFontWeightContextHeroWeight = UIFont.Weight.bold
+    public static let TypographyFontWeightContextHeroStyle = "normal"
+    public static let TypographyFontWeightContextLeadWeight = UIFont.Weight.regular
+    public static let TypographyFontWeightContextLeadStyle = "normal"
+    public static let TypographyFontWeightContextHeadingWeight = UIFont.Weight.semibold
+    public static let TypographyFontWeightContextHeadingStyle = "normal"
+    public static let TypographyFontWeightContextTitleWeight = UIFont.Weight.semibold
+    public static let TypographyFontWeightContextTitleStyle = "normal"
+    public static let TypographyFontWeightContextBodyWeight = UIFont.Weight.regular
+    public static let TypographyFontWeightContextBodyStyle = "normal"
+    public static let TypographyFontWeightContextHighlightWeight = UIFont.Weight.regular
+    public static let TypographyFontWeightContextHighlightStyle = "normal"
+    public static let TypographyFontWeightContextLabelWeight = UIFont.Weight.semibold
+    public static let TypographyFontWeightContextLabelStyle = "normal"
+    public static let TypographyFontWeightContextLinkWeight = UIFont.Weight.regular
+    public static let TypographyFontWeightContextLinkStyle = "normal"
+    public static let TypographyFontWeightContextExpiredWeight = UIFont.Weight.semibold
+    public static let TypographyFontWeightContextExpiredStyle = "normal"
+    public static let TypographyFontWeightContextCodeWeight = UIFont.Weight.regular
+    public static let TypographyFontWeightContextCodeStyle = "normal"
     public static let FontContextJumboFontFamily = "DM Sans"
     public static let FontContextJumboFontWeight = UIFont.Weight.bold
     public static let FontContextJumboTextCase = "none"

@@ -2,9 +2,10 @@
  * @file preprocessor.js
  * @description Prepares the token dictionary. Types are aligned by
  *              '@tokens-studio/sd-transforms'. On top of that Chassis types letter
- *              spacing as a number, splits every font weight into weight and style,
- *              stores the font weight path of typography tokens, and numbers the tokens
- *              in source order.
+ *              spacing as a number, gives typography tokens the text case and text
+ *              decoration `none` where they name none, splits every font weight into
+ *              weight and style, stores the font weight path of typography tokens, and
+ *              numbers the tokens in source order.
  *
  * @copyright Copyright (c) 2025 Ozgur Gunes
  * @license MIT
@@ -64,6 +65,34 @@ function addTypes(dictionary) {
 }
 
 /**
+ * Typography properties that a typography token may leave out, with the value it has
+ * then. The source names them only where they are not `none`; the platforms print them
+ * for every typography token.
+ */
+export const typographyDefaults = { textCase: 'none', textDecoration: 'none' }
+
+/**
+ * Gives every object-valued typography token the properties of `typographyDefaults` that
+ * it leaves out. The properties go last, in the order of `typographyDefaults`, so the
+ * expanded parts keep their order whether the source names a property or not.
+ * @param {Object} dictionary - The dictionary with aligned types.
+ */
+function addTypographyDefaults(dictionary) {
+  eachToken(dictionary, (token) => {
+    if (token.$type !== 'typography' || typeof token.$value !== 'object') return
+    const value = { ...token.$value }
+    const defaults = Object.fromEntries(
+      Object.entries(typographyDefaults).map(([key, fallback]) => {
+        const named = value[key]
+        delete value[key]
+        return [key, named ?? fallback]
+      })
+    )
+    token.$value = { ...value, ...defaults }
+  })
+}
+
+/**
  * Splits a font weight such as `Light Italic` into weight and style.
  * @param {string} fontWeight - The resolved font weight.
  * @returns {Object} - e.g. `{ weight: 'Light', style: 'italic' }`; the style is `normal`
@@ -83,7 +112,9 @@ export function splitWeightStyle(fontWeight) {
 /**
  * Adds the font style to typography tokens and splits every font weight token into a
  * `weight` and a `style` token. '@tokens-studio/sd-transforms' splits only the font
- * weight tokens that name a style.
+ * weight tokens that name a style. A font weight token that only references another one
+ * keeps the path of that weight, before the split, as `aliasPath`: the split replaces
+ * the reference with the resolved weight.
  * @param {Object} dictionary - The dictionary with aligned types.
  */
 function addFontStyles(dictionary) {
@@ -98,6 +129,8 @@ function addFontStyles(dictionary) {
       token.$value.fontStyle = style
     } else if (token.$type === 'fontWeight') {
       const { weight, style } = resolve(token.$value)
+      // The split resolves the weight, so the reference of an alias is kept here
+      if (isReference(token.$value)) extend(token, { aliasPath: referencePath(token.$value) })
       group[key] = {
         weight: { ...token, $value: weight },
         style: { ...token, $type: 'fontStyle', $value: style }
@@ -125,6 +158,7 @@ function addSourceOrder(dictionary) {
 export default function (dictionary) {
   const dict = alignTypes(dictionary)
   addTypes(dict)
+  addTypographyDefaults(dict)
   addFontStyles(dict)
   addSourceOrder(dict)
   return dict

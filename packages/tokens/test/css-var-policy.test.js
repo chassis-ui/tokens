@@ -13,6 +13,7 @@ import {
   customProperties,
   customProperty,
   referencingGroups,
+  roleGroups,
   webValue
 } from '../build/css-var-policy.js'
 import {
@@ -266,6 +267,73 @@ describe('typography', () => {
     expect(() => webValue(token, references)).toThrow(
       'font.button.medium: Not a font.<family>.<size>.<weight> reference: {font.context.lead}'
     )
+  })
+})
+
+describe('role tokens', () => {
+  const title = fixture.tokens['font.context.title.medium']
+
+  /**
+   * Lookups in which the role token at `path` holds `value` of its own.
+   */
+  const withLiteral = (path, value) => {
+    const token = fixture.tokens[path]
+    const original = { ...token.original, $value: value, $extensions: {} }
+    return lookupsIn({ ...fixture.tokens, [path]: { ...token, original } })
+  }
+
+  test('a part that references a role names the token its alias leads to', () => {
+    const value = webValue(title, references)
+    expect(value).toContain('"font-family": var(--font-family-text), ')
+    expect(value).toContain('"font-weight": var(--font-weight-text-strong), ')
+    expect(value).toContain('"font-size": var(--font-size-text-lg), ')
+    expect(value).toContain('"line-height": var(--line-height-text-lg), ')
+  })
+
+  test('names no role custom property', () => {
+    for (const { token } of fixture.cases) {
+      expect(webValue(fixture.tokens[token], references)).not.toMatch(
+        /var\(--(font-family-(context|html)|(font-weight|font-size|line-height)-context)-/
+      )
+    }
+  })
+
+  test('prints the value of a role family that holds one', () => {
+    const lookups = withLiteral('typography.fontFamily.context.title', 'Inter')
+    expect(webValue(title, lookups)).toContain(
+      `"font-family": "${fixture.tokens['typography.fontFamily.context.title'].$value}", `
+    )
+  })
+
+  test('prints the value of a role weight that holds one', () => {
+    const lookups = withLiteral('typography.fontWeight.context.title.weight', 'Semi Bold')
+    expect(webValue(title, lookups)).toContain('"font-weight": 600, ')
+  })
+
+  test('prints the value of a role size that holds one', () => {
+    const lookups = withLiteral('typography.fontSize.context.title-medium', '19')
+    expect(webValue(title, lookups)).toContain('"font-size": 1.1875rem, ')
+  })
+
+  test('prints a role line height that holds a value in em of the role font size', () => {
+    const lookups = withLiteral('typography.lineHeight.context.title-medium', '28')
+    expect(webValue(title, lookups)).toContain('"line-height": 1.474em, ')
+  })
+
+  test('prints the value of a role whose alias leads to another group', () => {
+    expect(webValue(fixture.tokens['font.context.jumbo'], references)).toContain(
+      '"font-size": 6rem, '
+    )
+  })
+
+  test('the role groups are the families, weights, sizes and line heights per role', () => {
+    expect(roleGroups).toEqual([
+      'typography.fontFamily.context',
+      'typography.fontFamily.html',
+      'typography.fontWeight.context',
+      'typography.fontSize.context',
+      'typography.lineHeight.context'
+    ])
   })
 })
 

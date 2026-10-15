@@ -2,7 +2,7 @@
 
 <!--
   Do not edit directly, this file was auto-generated.
-  Generated on Tue, 13 Oct 2026 15:43:26 GMT
+  Generated on Thu, 15 Oct 2026 10:03:52 GMT
   Chassis - Tokens v0.7.0
   Copyright 2026 Ozgur Gunes
   Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
@@ -2031,7 +2031,24 @@
   <color name="color_table_icon_sort">#99191b1c</color>
   <string name="typography_font_family_text">Inter</string>
   <string name="typography_font_family_display">Archivo Narrow</string>
-  <string name="typography_font_family_html">Inter</string>
+  <string name="typography_font_family_html_heading">Inter</string>
+  <string name="typography_font_family_html_body">Inter</string>
+  <string name="typography_font_family_html_paragraph">Inter</string>
+  <string name="typography_font_family_html_blockquote">Inter</string>
+  <string name="typography_font_family_html_list">Inter</string>
+  <string name="typography_font_family_html_cite">Inter</string>
+  <string name="typography_font_family_html_code">Fira Code</string>
+  <string name="typography_font_family_context_jumbo">Inter</string>
+  <string name="typography_font_family_context_hero">Inter</string>
+  <string name="typography_font_family_context_lead">Inter</string>
+  <string name="typography_font_family_context_heading">Inter</string>
+  <string name="typography_font_family_context_title">Inter</string>
+  <string name="typography_font_family_context_body">Inter</string>
+  <string name="typography_font_family_context_highlight">Inter</string>
+  <string name="typography_font_family_context_label">Inter</string>
+  <string name="typography_font_family_context_link">Inter</string>
+  <string name="typography_font_family_context_expired">Inter</string>
+  <string name="typography_font_family_context_code">Fira Code</string>
   <string name="typography_font_family_code">Fira Code</string>
   <string name="typography_font_family_icon">Chassis-Icons</string>
   <integer name="typography_font_weight_text_normal_weight">400</integer>
@@ -2070,6 +2087,28 @@
   <string name="typography_font_weight_html_list_style">normal</string>
   <integer name="typography_font_weight_html_bold_weight">700</integer>
   <string name="typography_font_weight_html_bold_style">normal</string>
+  <integer name="typography_font_weight_context_jumbo_weight">700</integer>
+  <string name="typography_font_weight_context_jumbo_style">normal</string>
+  <integer name="typography_font_weight_context_hero_weight">700</integer>
+  <string name="typography_font_weight_context_hero_style">normal</string>
+  <integer name="typography_font_weight_context_lead_weight">400</integer>
+  <string name="typography_font_weight_context_lead_style">normal</string>
+  <integer name="typography_font_weight_context_heading_weight">600</integer>
+  <string name="typography_font_weight_context_heading_style">normal</string>
+  <integer name="typography_font_weight_context_title_weight">600</integer>
+  <string name="typography_font_weight_context_title_style">normal</string>
+  <integer name="typography_font_weight_context_body_weight">400</integer>
+  <string name="typography_font_weight_context_body_style">normal</string>
+  <integer name="typography_font_weight_context_highlight_weight">400</integer>
+  <string name="typography_font_weight_context_highlight_style">normal</string>
+  <integer name="typography_font_weight_context_label_weight">600</integer>
+  <string name="typography_font_weight_context_label_style">normal</string>
+  <integer name="typography_font_weight_context_link_weight">400</integer>
+  <string name="typography_font_weight_context_link_style">normal</string>
+  <integer name="typography_font_weight_context_expired_weight">600</integer>
+  <string name="typography_font_weight_context_expired_style">normal</string>
+  <integer name="typography_font_weight_context_code_weight">400</integer>
+  <string name="typography_font_weight_context_code_style">normal</string>
   <dimen name="typography_font_size_text_5xlarge">44sp</dimen>
   <dimen name="typography_font_size_text_4xlarge">38sp</dimen>
   <dimen name="typography_font_size_text_3xlarge">32sp</dimen>
@@ -2102,6 +2141,32 @@
   <dimen name="typography_font_size_html_code">16sp</dimen>
   <dimen name="typography_font_size_html_blockquote">16sp</dimen>
   <dimen name="typography_font_size_html_cite">14sp</dimen>
+  <dimen name="typography_font_size_context_jumbo">96sp</dimen>
+  <dimen name="typography_font_size_context_hero">64sp</dimen>
+  <dimen name="typography_font_size_context_lead">22sp</dimen>
+  <dimen name="typography_font_size_context_heading">32sp</dimen>
+  <dimen name="typography_font_size_context_title_medium">19sp</dimen>
+  <dimen name="typography_font_size_context_title_large">22sp</dimen>
+  <dimen name="typography_font_size_context_title_small">16sp</dimen>
+  <dimen name="typography_font_size_context_body_medium">16sp</dimen>
+  <dimen name="typography_font_size_context_body_large">19sp</dimen>
+  <dimen name="typography_font_size_context_body_small">14sp</dimen>
+  <dimen name="typography_font_size_context_highlight_medium">16sp</dimen>
+  <dimen name="typography_font_size_context_highlight_large">19sp</dimen>
+  <dimen name="typography_font_size_context_highlight_small">14sp</dimen>
+  <dimen name="typography_font_size_context_label_medium">14sp</dimen>
+  <dimen name="typography_font_size_context_label_large">16sp</dimen>
+  <dimen name="typography_font_size_context_label_small">12sp</dimen>
+  <dimen name="typography_font_size_context_link_large">19sp</dimen>
+  <dimen name="typography_font_size_context_link_medium">16sp</dimen>
+  <dimen name="typography_font_size_context_link_small">14sp</dimen>
+  <dimen name="typography_font_size_context_link_xsmall">12sp</dimen>
+  <dimen name="typography_font_size_context_expired_large">19sp</dimen>
+  <dimen name="typography_font_size_context_expired_medium">16sp</dimen>
+  <dimen name="typography_font_size_context_expired_small">14sp</dimen>
+  <dimen name="typography_font_size_context_code_large">19sp</dimen>
+  <dimen name="typography_font_size_context_code_medium">16sp</dimen>
+  <dimen name="typography_font_size_context_code_small">14sp</dimen>
   <dimen name="typography_font_size_code_large">19sp</dimen>
   <dimen name="typography_font_size_code_medium">16sp</dimen>
   <dimen name="typography_font_size_code_small">14sp</dimen>
@@ -2144,21 +2209,64 @@
   <dimen name="typography_line_height_html_list">24sp</dimen>
   <dimen name="typography_line_height_html_blockquote">24sp</dimen>
   <dimen name="typography_line_height_html_cite">20sp</dimen>
+  <dimen name="typography_line_height_context_lead">32sp</dimen>
+  <dimen name="typography_line_height_context_heading">40sp</dimen>
+  <dimen name="typography_line_height_context_title_medium">28sp</dimen>
+  <dimen name="typography_line_height_context_title_large">32sp</dimen>
+  <dimen name="typography_line_height_context_title_small">24sp</dimen>
+  <dimen name="typography_line_height_context_body_medium">24sp</dimen>
+  <dimen name="typography_line_height_context_body_large">28sp</dimen>
+  <dimen name="typography_line_height_context_body_small">20sp</dimen>
+  <dimen name="typography_line_height_context_highlight_medium">24sp</dimen>
+  <dimen name="typography_line_height_context_highlight_large">28sp</dimen>
+  <dimen name="typography_line_height_context_highlight_small">20sp</dimen>
+  <dimen name="typography_line_height_context_label_medium">20sp</dimen>
+  <dimen name="typography_line_height_context_label_large">24sp</dimen>
+  <dimen name="typography_line_height_context_label_small">18sp</dimen>
+  <dimen name="typography_line_height_context_link_large">28sp</dimen>
+  <dimen name="typography_line_height_context_link_medium">24sp</dimen>
+  <dimen name="typography_line_height_context_link_small">20sp</dimen>
+  <dimen name="typography_line_height_context_link_xsmall">18sp</dimen>
+  <dimen name="typography_line_height_context_expired_large">28sp</dimen>
+  <dimen name="typography_line_height_context_expired_medium">24sp</dimen>
+  <dimen name="typography_line_height_context_expired_small">20sp</dimen>
+  <dimen name="typography_line_height_context_code_large">28sp</dimen>
+  <dimen name="typography_line_height_context_code_medium">24sp</dimen>
+  <dimen name="typography_line_height_context_code_small">20sp</dimen>
   <dimen name="typography_line_height_code_large">28sp</dimen>
   <dimen name="typography_line_height_code_medium">24sp</dimen>
   <dimen name="typography_line_height_code_small">20sp</dimen>
   <item name="typography_letter_spacing_base_zero" type="dimen" format="float">0</item>
+  <item name="typography_letter_spacing_text_normal" type="dimen" format="float">0</item>
+  <item name="typography_letter_spacing_text_strong" type="dimen" format="float">0</item>
+  <item name="typography_letter_spacing_text_mass" type="dimen" format="float">0</item>
+  <item name="typography_letter_spacing_text_elegant" type="dimen" format="float">0</item>
+  <item name="typography_letter_spacing_display_normal" type="dimen" format="float">0</item>
+  <item name="typography_letter_spacing_display_strong" type="dimen" format="float">0</item>
+  <item name="typography_letter_spacing_display_mass" type="dimen" format="float">0</item>
+  <item name="typography_letter_spacing_display_elegant" type="dimen" format="float">0</item>
+  <item name="typography_letter_spacing_html_heading" type="dimen" format="float">0</item>
+  <item name="typography_letter_spacing_html_body" type="dimen" format="float">0</item>
+  <item name="typography_letter_spacing_html_paragraph" type="dimen" format="float">0</item>
+  <item name="typography_letter_spacing_html_blockquote" type="dimen" format="float">0</item>
+  <item name="typography_letter_spacing_html_list" type="dimen" format="float">0</item>
+  <item name="typography_letter_spacing_html_cite" type="dimen" format="float">0</item>
+  <item name="typography_letter_spacing_html_code" type="dimen" format="float">0</item>
+  <item name="typography_letter_spacing_context_jumbo" type="dimen" format="float">-0.5</item>
+  <item name="typography_letter_spacing_context_hero" type="dimen" format="float">0</item>
+  <item name="typography_letter_spacing_context_lead" type="dimen" format="float">0</item>
+  <item name="typography_letter_spacing_context_heading" type="dimen" format="float">0</item>
+  <item name="typography_letter_spacing_context_title" type="dimen" format="float">0</item>
+  <item name="typography_letter_spacing_context_body" type="dimen" format="float">0</item>
+  <item name="typography_letter_spacing_context_highlight" type="dimen" format="float">0</item>
+  <item name="typography_letter_spacing_context_label" type="dimen" format="float">0</item>
+  <item name="typography_letter_spacing_context_link" type="dimen" format="float">0</item>
+  <item name="typography_letter_spacing_context_expired" type="dimen" format="float">0</item>
+  <item name="typography_letter_spacing_context_code" type="dimen" format="float">0</item>
   <dimen name="typography_paragraph_spacing_base_zero">0sp</dimen>
   <dimen name="typography_paragraph_spacing_base_small">8sp</dimen>
   <dimen name="typography_paragraph_spacing_base_medium">16sp</dimen>
   <dimen name="typography_paragraph_spacing_base_large">24sp</dimen>
-  <string name="typography_text_case_base_none">none</string>
-  <string name="typography_text_case_base_lowercase">lowercase</string>
-  <string name="typography_text_case_base_uppercase">uppercase</string>
-  <string name="typography_text_case_base_capitalize">capitalize</string>
-  <string name="typography_text_decoration_base_none">none</string>
-  <string name="typography_text_decoration_base_underline">underline</string>
-  <string name="typography_text_decoration_base_line_through">line-through</string>
   <dimen name="border_radius_base_context_zero">0dp</dimen>
   <dimen name="border_radius_base_context_xsmall">2dp</dimen>
   <dimen name="border_radius_base_context_small">4dp</dimen>

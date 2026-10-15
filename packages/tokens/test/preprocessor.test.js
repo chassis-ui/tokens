@@ -40,6 +40,25 @@ describe('Chassis extensions on real tokens', () => {
     ])
   })
 
+  test('stores the path that a font weight alias references on its weight and style', () => {
+    const path = ['typography', 'fontWeight', 'text', 'normal']
+    expect(find('typography.fontWeight.html.body.weight').$extensions.chassis.aliasPath).toEqual(
+      path
+    )
+    expect(find('typography.fontWeight.html.body.style').$extensions.chassis.aliasPath).toEqual(
+      path
+    )
+  })
+
+  test('stores no alias path on a font weight that holds a value', () => {
+    expect(find('typography.fontWeight.text.normal.weight').$extensions?.chassis?.aliasPath).toBe(
+      undefined
+    )
+    expect(
+      find('typography.fontWeight.html.blockquote.weight').$extensions?.chassis?.aliasPath
+    ).toBe(undefined)
+  })
+
   test('leaves no reference in the extensions', () => {
     // Style Dictionary 5 resolves references in $extensions and rejects references to
     // groups, which the font weight paths are after the weight and style split.
@@ -149,6 +168,94 @@ describe('Font styles on real tokens', () => {
     })
     expect(result.typography.fontWeight.text.mass.weight.$value).toBe(weight)
     expect(result.typography.fontWeight.text.mass.style.$value).toBe(style)
+  })
+})
+
+describe('Typography defaults on real tokens', () => {
+  // Copied from source/base/brand-base.json and source/base/app-base.json. Neither
+  // composite names a text case, and only font.context.expired.small names a text
+  // decoration.
+  const slice = {
+    typography: {
+      fontWeight: {
+        text: {
+          strong: {
+            $type: 'fontWeights',
+            $value: 'SemiBold'
+          }
+        },
+        context: {
+          heading: {
+            $type: 'fontWeights',
+            $value: '{typography.fontWeight.text.strong}'
+          },
+          expired: {
+            $type: 'fontWeights',
+            $value: '{typography.fontWeight.text.strong}'
+          }
+        }
+      }
+    },
+    font: {
+      context: {
+        heading: {
+          $type: 'typography',
+          $value: {
+            fontFamily: '{typography.fontFamily.context.heading}',
+            fontWeight: '{typography.fontWeight.context.heading}',
+            lineHeight: '{typography.lineHeight.context.heading}',
+            fontSize: '{typography.fontSize.context.heading}',
+            letterSpacing: '{typography.letterSpacing.context.heading}',
+            paragraphSpacing: '{typography.paragraphSpacing.base.large}'
+          }
+        },
+        expired: {
+          small: {
+            $type: 'typography',
+            $value: {
+              fontFamily: '{typography.fontFamily.context.expired}',
+              fontWeight: '{typography.fontWeight.context.expired}',
+              lineHeight: '{typography.lineHeight.context.expired-small}',
+              fontSize: '{typography.fontSize.context.expired-small}',
+              letterSpacing: '{typography.letterSpacing.context.expired}',
+              paragraphSpacing: '{typography.paragraphSpacing.base.zero}',
+              textDecoration: 'line-through'
+            }
+          }
+        }
+      }
+    }
+  }
+  const tokens = preprocess(structuredClone(slice))
+
+  test('gives a composite without text case or text decoration the value none', () => {
+    expect(slice.font.context.heading.$value).not.toHaveProperty('textCase')
+    expect(slice.font.context.heading.$value).not.toHaveProperty('textDecoration')
+    expect(tokens.font.context.heading.$value).toMatchObject({
+      textCase: 'none',
+      textDecoration: 'none'
+    })
+  })
+
+  test('keeps a text decoration that the composite names', () => {
+    expect(tokens.font.context.expired.small.$value).toMatchObject({
+      textCase: 'none',
+      textDecoration: 'line-through'
+    })
+  })
+
+  test('puts text case and text decoration after the other properties, before the font style', () => {
+    expect(Object.keys(tokens.font.context.expired.small.$value)).toEqual([
+      'fontFamily',
+      'fontWeight',
+      'lineHeight',
+      'fontSize',
+      'letterSpacing',
+      'paragraphSpacing',
+      'textCase',
+      'textDecoration',
+      'fontStyle'
+    ])
   })
 })
 

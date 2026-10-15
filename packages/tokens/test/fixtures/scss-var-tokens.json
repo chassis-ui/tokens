@@ -467,7 +467,7 @@
       "case": "object-valued, italic",
       "token": "font.html.blockquote",
       "file": "main.scss",
-      "expected": "(\"font-family\": $cx-typography-font-family-html, \"font-weight\": $cx-typography-font-weight-html-blockquote-weight, \"font-size\": $cx-typography-font-size-html-blockquote, \"line-height\": $cx-typography-line-height-html-blockquote, \"font-style\": $cx-typography-font-weight-html-blockquote-style, \"letter-spacing\": 0em, \"margin-bottom\": 0px, \"text-transform\": none, \"text-decoration\": none)"
+      "expected": "(\"font-family\": $cx-typography-font-family-html-blockquote, \"font-weight\": $cx-typography-font-weight-html-blockquote-weight, \"font-size\": $cx-typography-font-size-html-blockquote, \"line-height\": $cx-typography-line-height-html-blockquote, \"font-style\": $cx-typography-font-weight-html-blockquote-style, \"letter-spacing\": 0em, \"margin-bottom\": 0px, \"text-transform\": none, \"text-decoration\": none)"
     },
     {
       "preset": "web-px-references",
@@ -1991,7 +1991,7 @@
         },
         "original": {
           "$value": {
-            "fontFamily": "{typography.fontFamily.html}",
+            "fontFamily": "{typography.fontFamily.html.blockquote}",
             "fontWeight": "Light",
             "lineHeight": "{typography.lineHeight.html.blockquote}",
             "fontSize": "{typography.fontSize.html.blockquote}",
@@ -2364,7 +2364,7 @@
       "typography.fontSize.website.hero-body": "cx-typography-font-size-website-hero-body",
       "typography.lineHeight.html.blockquote": "cx-typography-line-height-html-blockquote",
       "typography.fontWeight.html.blockquote.style": "cx-typography-font-weight-html-blockquote-style",
-      "typography.fontFamily.html": "cx-typography-font-family-html",
+      "typography.fontFamily.html.blockquote": "cx-typography-font-family-html-blockquote",
       "typography.fontWeight.html.blockquote.weight": "cx-typography-font-weight-html-blockquote-weight",
       "typography.fontSize.html.blockquote": "cx-typography-font-size-html-blockquote",
       "typography.lineHeight.text.3xlarge": "cx-typography-line-height-text-3xlarge",
