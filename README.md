@@ -131,6 +131,7 @@ It reads the token sets that `source/$themes.json` selects and fails, naming the
 - a font weight is not one the build knows (`Semi Bold`, `SemiBold` and `semi-bold` are all `600`; a style word such as `Italic` may follow)
 - a token has no `$type`, or a value is not a token (such as `value` and `type` without `$`)
 - two sets of one token-set list declare the same name with different types
+- a letter spacing is in percent or in `em`, which Figma variables cannot hold: write it in pixels
 
 ### Verify the Output
 

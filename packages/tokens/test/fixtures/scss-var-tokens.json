@@ -6,28 +6,28 @@
       "group": "typography",
       "case": "percent line height and letter spacing",
       "token": "font.context.jumbo",
-      "expected": "(\"font-family\": \"Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif\", \"font-weight\": 700, \"font-size\": 96px, \"line-height\": 1.25em, \"font-style\": normal, \"letter-spacing\": -0.0313em, \"margin-bottom\": 0px, \"text-transform\": none, \"text-decoration\": none)"
+      "expected": "(\"font-family\": \"Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif\", \"font-weight\": 700, \"font-size\": 96px, \"line-height\": 1.25em, \"font-style\": normal, \"letter-spacing\": -0.5px, \"margin-bottom\": 0px, \"text-transform\": none, \"text-decoration\": none)"
     },
     {
       "preset": "web-px",
       "group": "typography",
       "case": "line height relative to the font size",
       "token": "font.context.lead",
-      "expected": "(\"font-family\": \"Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif\", \"font-weight\": 400, \"font-size\": 22px, \"line-height\": 1.455em, \"font-style\": normal, \"letter-spacing\": 0em, \"margin-bottom\": 0px, \"text-transform\": none, \"text-decoration\": none)"
+      "expected": "(\"font-family\": \"Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif\", \"font-weight\": 400, \"font-size\": 22px, \"line-height\": 1.455em, \"font-style\": normal, \"letter-spacing\": 0px, \"margin-bottom\": 0px, \"text-transform\": none, \"text-decoration\": none)"
     },
     {
       "preset": "web-px",
       "group": "typography",
       "case": "reference to a typography token",
       "token": "font.button.medium",
-      "expected": "(\"font-family\": \"Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif\", \"font-weight\": 600, \"font-size\": 16px, \"line-height\": 1.5em, \"font-style\": normal, \"letter-spacing\": 0em, \"margin-bottom\": 0px, \"text-transform\": none, \"text-decoration\": none)"
+      "expected": "(\"font-family\": \"Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif\", \"font-weight\": 600, \"font-size\": 16px, \"line-height\": 1.5em, \"font-style\": normal, \"letter-spacing\": 0px, \"margin-bottom\": 0px, \"text-transform\": none, \"text-decoration\": none)"
     },
     {
       "preset": "web-px",
       "group": "typography",
       "case": "negative letter spacing",
       "token": "font.website.hero-title",
-      "expected": "(\"font-family\": \"Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif\", \"font-weight\": 700, \"font-size\": 64px, \"line-height\": 1.25em, \"font-style\": normal, \"letter-spacing\": -0.0625em, \"margin-bottom\": 0px, \"text-transform\": none, \"text-decoration\": none)"
+      "expected": "(\"font-family\": \"Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif\", \"font-weight\": 700, \"font-size\": 64px, \"line-height\": 1.25em, \"font-style\": normal, \"letter-spacing\": -1px, \"margin-bottom\": 0px, \"text-transform\": none, \"text-decoration\": none)"
     },
     {
       "preset": "web-px",
@@ -76,7 +76,7 @@
       "group": "encode",
       "case": "letter spacing token",
       "token": "typography.letterSpacing.base.zero",
-      "expected": "0em"
+      "expected": "0px"
     },
     {
       "preset": "web-px",
@@ -90,28 +90,28 @@
       "group": "typography",
       "case": "percent line height and letter spacing",
       "token": "font.context.jumbo",
-      "expected": "(\"font-family\": \"Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif\", \"font-weight\": 700, \"font-size\": 6vw, \"line-height\": 1.25em, \"font-style\": normal, \"letter-spacing\": -0.0313em, \"margin-bottom\": 0vw, \"text-transform\": none, \"text-decoration\": none)"
+      "expected": "(\"font-family\": \"Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif\", \"font-weight\": 700, \"font-size\": 6vw, \"line-height\": 1.25em, \"font-style\": normal, \"letter-spacing\": -0.0313vw, \"margin-bottom\": 0vw, \"text-transform\": none, \"text-decoration\": none)"
     },
     {
       "preset": "web-vw",
       "group": "typography",
       "case": "line height relative to the font size",
       "token": "font.context.lead",
-      "expected": "(\"font-family\": \"Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif\", \"font-weight\": 400, \"font-size\": 1.375vw, \"line-height\": 1.455em, \"font-style\": normal, \"letter-spacing\": 0em, \"margin-bottom\": 0vw, \"text-transform\": none, \"text-decoration\": none)"
+      "expected": "(\"font-family\": \"Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif\", \"font-weight\": 400, \"font-size\": 1.375vw, \"line-height\": 1.455em, \"font-style\": normal, \"letter-spacing\": 0vw, \"margin-bottom\": 0vw, \"text-transform\": none, \"text-decoration\": none)"
     },
     {
       "preset": "web-vw",
       "group": "typography",
       "case": "reference to a typography token",
       "token": "font.button.medium",
-      "expected": "(\"font-family\": \"Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif\", \"font-weight\": 600, \"font-size\": 1vw, \"line-height\": 1.5em, \"font-style\": normal, \"letter-spacing\": 0em, \"margin-bottom\": 0vw, \"text-transform\": none, \"text-decoration\": none)"
+      "expected": "(\"font-family\": \"Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif\", \"font-weight\": 600, \"font-size\": 1vw, \"line-height\": 1.5em, \"font-style\": normal, \"letter-spacing\": 0vw, \"margin-bottom\": 0vw, \"text-transform\": none, \"text-decoration\": none)"
     },
     {
       "preset": "web-vw",
       "group": "typography",
       "case": "negative letter spacing",
       "token": "font.website.hero-title",
-      "expected": "(\"font-family\": \"Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif\", \"font-weight\": 700, \"font-size\": 4vw, \"line-height\": 1.25em, \"font-style\": normal, \"letter-spacing\": -0.0625em, \"margin-bottom\": 0vw, \"text-transform\": none, \"text-decoration\": none)"
+      "expected": "(\"font-family\": \"Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif\", \"font-weight\": 700, \"font-size\": 4vw, \"line-height\": 1.25em, \"font-style\": normal, \"letter-spacing\": -0.0625vw, \"margin-bottom\": 0vw, \"text-transform\": none, \"text-decoration\": none)"
     },
     {
       "preset": "web-vw",
@@ -160,7 +160,7 @@
       "group": "encode",
       "case": "letter spacing token",
       "token": "typography.letterSpacing.base.zero",
-      "expected": "0em"
+      "expected": "0vw"
     },
     {
       "preset": "web-vw",
@@ -174,28 +174,28 @@
       "group": "typography",
       "case": "percent line height and letter spacing",
       "token": "font.context.jumbo",
-      "expected": "(\"font-family\": \"Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif\", \"font-weight\": 700, \"font-size\": 6rem, \"line-height\": 1.25em, \"font-style\": normal, \"letter-spacing\": -0.0313em, \"margin-bottom\": 0rem, \"text-transform\": none, \"text-decoration\": none)"
+      "expected": "(\"font-family\": \"Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif\", \"font-weight\": 700, \"font-size\": 6rem, \"line-height\": 1.25em, \"font-style\": normal, \"letter-spacing\": -0.0313rem, \"margin-bottom\": 0rem, \"text-transform\": none, \"text-decoration\": none)"
     },
     {
       "preset": "web-scss",
       "group": "typography",
       "case": "line height relative to the font size",
       "token": "font.context.lead",
-      "expected": "(\"font-family\": \"Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif\", \"font-weight\": 400, \"font-size\": 1.375rem, \"line-height\": 1.455em, \"font-style\": normal, \"letter-spacing\": 0em, \"margin-bottom\": 0rem, \"text-transform\": none, \"text-decoration\": none)"
+      "expected": "(\"font-family\": \"Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif\", \"font-weight\": 400, \"font-size\": 1.375rem, \"line-height\": 1.455em, \"font-style\": normal, \"letter-spacing\": 0rem, \"margin-bottom\": 0rem, \"text-transform\": none, \"text-decoration\": none)"
     },
     {
       "preset": "web-scss",
       "group": "typography",
       "case": "reference to a typography token",
       "token": "font.button.medium",
-      "expected": "(\"font-family\": \"Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif\", \"font-weight\": 600, \"font-size\": 1rem, \"line-height\": 1.5em, \"font-style\": normal, \"letter-spacing\": 0em, \"margin-bottom\": 0rem, \"text-transform\": none, \"text-decoration\": none)"
+      "expected": "(\"font-family\": \"Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif\", \"font-weight\": 600, \"font-size\": 1rem, \"line-height\": 1.5em, \"font-style\": normal, \"letter-spacing\": 0rem, \"margin-bottom\": 0rem, \"text-transform\": none, \"text-decoration\": none)"
     },
     {
       "preset": "web-scss",
       "group": "typography",
       "case": "negative letter spacing",
       "token": "font.website.hero-title",
-      "expected": "(\"font-family\": \"Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif\", \"font-weight\": 700, \"font-size\": 4rem, \"line-height\": 1.25em, \"font-style\": normal, \"letter-spacing\": -0.0625em, \"margin-bottom\": 0rem, \"text-transform\": none, \"text-decoration\": none)"
+      "expected": "(\"font-family\": \"Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif\", \"font-weight\": 700, \"font-size\": 4rem, \"line-height\": 1.25em, \"font-style\": normal, \"letter-spacing\": -0.0625rem, \"margin-bottom\": 0rem, \"text-transform\": none, \"text-decoration\": none)"
     },
     {
       "preset": "web-scss",
@@ -244,7 +244,7 @@
       "group": "encode",
       "case": "letter spacing token",
       "token": "typography.letterSpacing.base.zero",
-      "expected": "0em"
+      "expected": "0rem"
     },
     {
       "preset": "web-scss",
@@ -419,7 +419,7 @@
       "case": "object-valued, size from a dimension token, percent line height",
       "token": "font.context.jumbo",
       "file": "main.scss",
-      "expected": "(\"font-family\": $cx-typography-font-family-text, \"font-weight\": $cx-typography-font-weight-text-mass-weight, \"font-size\": 96px, \"line-height\": 1.25em, \"font-style\": $cx-typography-font-weight-text-mass-style, \"letter-spacing\": -0.0313em, \"margin-bottom\": 0px, \"text-transform\": none, \"text-decoration\": none)"
+      "expected": "(\"font-family\": $cx-typography-font-family-text, \"font-weight\": $cx-typography-font-weight-text-mass-weight, \"font-size\": 96px, \"line-height\": 1.25em, \"font-style\": $cx-typography-font-weight-text-mass-style, \"letter-spacing\": -0.5px, \"margin-bottom\": 0px, \"text-transform\": none, \"text-decoration\": none)"
     },
     {
       "preset": "web-px-references",
@@ -427,7 +427,7 @@
       "case": "object-valued, named size and line height",
       "token": "font.context.lead",
       "file": "main.scss",
-      "expected": "(\"font-family\": $cx-typography-font-family-text, \"font-weight\": $cx-typography-font-weight-text-normal-weight, \"font-size\": $cx-typography-font-size-text-xlarge, \"line-height\": $cx-typography-line-height-text-xlarge, \"font-style\": $cx-typography-font-weight-text-normal-style, \"letter-spacing\": 0em, \"margin-bottom\": 0px, \"text-transform\": none, \"text-decoration\": none)"
+      "expected": "(\"font-family\": $cx-typography-font-family-text, \"font-weight\": $cx-typography-font-weight-text-normal-weight, \"font-size\": $cx-typography-font-size-text-xlarge, \"line-height\": $cx-typography-line-height-text-xlarge, \"font-style\": $cx-typography-font-weight-text-normal-style, \"letter-spacing\": 0px, \"margin-bottom\": 0px, \"text-transform\": none, \"text-decoration\": none)"
     },
     {
       "preset": "web-px-references",
@@ -435,7 +435,7 @@
       "case": "reference-valued",
       "token": "font.button.medium",
       "file": "main.scss",
-      "expected": "(\"font-family\": $cx-typography-font-family-text, \"font-weight\": $cx-typography-font-weight-text-strong-weight, \"font-size\": $cx-typography-font-size-text-medium, \"line-height\": $cx-typography-line-height-text-medium, \"font-style\": $cx-typography-font-weight-text-strong-style, \"letter-spacing\": 0em, \"margin-bottom\": 0px, \"text-transform\": none, \"text-decoration\": none)"
+      "expected": "(\"font-family\": $cx-typography-font-family-text, \"font-weight\": $cx-typography-font-weight-text-strong-weight, \"font-size\": $cx-typography-font-size-text-medium, \"line-height\": $cx-typography-line-height-text-medium, \"font-style\": $cx-typography-font-weight-text-strong-style, \"letter-spacing\": 0px, \"margin-bottom\": 0px, \"text-transform\": none, \"text-decoration\": none)"
     },
     {
       "preset": "web-px-references",
@@ -443,7 +443,7 @@
       "case": "object-valued, the target of font.button.medium",
       "token": "font.text.medium.strong",
       "file": "main.scss",
-      "expected": "(\"font-family\": $cx-typography-font-family-text, \"font-weight\": $cx-typography-font-weight-text-strong-weight, \"font-size\": $cx-typography-font-size-text-medium, \"line-height\": $cx-typography-line-height-text-medium, \"font-style\": $cx-typography-font-weight-text-strong-style, \"letter-spacing\": 0em, \"margin-bottom\": 0px, \"text-transform\": none, \"text-decoration\": none)"
+      "expected": "(\"font-family\": $cx-typography-font-family-text, \"font-weight\": $cx-typography-font-weight-text-strong-weight, \"font-size\": $cx-typography-font-size-text-medium, \"line-height\": $cx-typography-line-height-text-medium, \"font-style\": $cx-typography-font-weight-text-strong-style, \"letter-spacing\": 0px, \"margin-bottom\": 0px, \"text-transform\": none, \"text-decoration\": none)"
     },
     {
       "preset": "web-px-references",
@@ -451,7 +451,7 @@
       "case": "object-valued, size name passes through, negative letter spacing",
       "token": "font.website.hero-title",
       "file": "main.scss",
-      "expected": "(\"font-family\": $cx-typography-font-family-text, \"font-weight\": $cx-typography-font-weight-text-mass-weight, \"font-size\": $cx-typography-font-size-website-hero-title, \"line-height\": 1.25em, \"font-style\": $cx-typography-font-weight-text-mass-style, \"letter-spacing\": -0.0625em, \"margin-bottom\": 0px, \"text-transform\": none, \"text-decoration\": none)"
+      "expected": "(\"font-family\": $cx-typography-font-family-text, \"font-weight\": $cx-typography-font-weight-text-mass-weight, \"font-size\": $cx-typography-font-size-website-hero-title, \"line-height\": 1.25em, \"font-style\": $cx-typography-font-weight-text-mass-style, \"letter-spacing\": -1px, \"margin-bottom\": 0px, \"text-transform\": none, \"text-decoration\": none)"
     },
     {
       "preset": "web-px-references",
@@ -459,7 +459,7 @@
       "case": "object-valued, 150% line height",
       "token": "font.website.hero-body",
       "file": "main.scss",
-      "expected": "(\"font-family\": $cx-typography-font-family-text, \"font-weight\": $cx-typography-font-weight-text-normal-weight, \"font-size\": $cx-typography-font-size-website-hero-body, \"line-height\": 1.5em, \"font-style\": $cx-typography-font-weight-text-normal-style, \"letter-spacing\": 0em, \"margin-bottom\": 0px, \"text-transform\": none, \"text-decoration\": none)"
+      "expected": "(\"font-family\": $cx-typography-font-family-text, \"font-weight\": $cx-typography-font-weight-text-normal-weight, \"font-size\": $cx-typography-font-size-website-hero-body, \"line-height\": 1.5em, \"font-style\": $cx-typography-font-weight-text-normal-style, \"letter-spacing\": 0px, \"margin-bottom\": 0px, \"text-transform\": none, \"text-decoration\": none)"
     },
     {
       "preset": "web-px-references",
@@ -467,7 +467,7 @@
       "case": "object-valued, italic",
       "token": "font.html.blockquote",
       "file": "main.scss",
-      "expected": "(\"font-family\": $cx-typography-font-family-html-blockquote, \"font-weight\": $cx-typography-font-weight-html-blockquote-weight, \"font-size\": $cx-typography-font-size-html-blockquote, \"line-height\": $cx-typography-line-height-html-blockquote, \"font-style\": $cx-typography-font-weight-html-blockquote-style, \"letter-spacing\": 0em, \"margin-bottom\": 0px, \"text-transform\": none, \"text-decoration\": none)"
+      "expected": "(\"font-family\": $cx-typography-font-family-html-blockquote, \"font-weight\": $cx-typography-font-weight-html-blockquote-weight, \"font-size\": $cx-typography-font-size-html-blockquote, \"line-height\": $cx-typography-line-height-html-blockquote, \"font-style\": $cx-typography-font-weight-html-blockquote-style, \"letter-spacing\": 0px, \"margin-bottom\": 0px, \"text-transform\": none, \"text-decoration\": none)"
     },
     {
       "preset": "web-px-references",
@@ -475,7 +475,7 @@
       "case": "object-valued, underline",
       "token": "font.context.link.medium",
       "file": "main.scss",
-      "expected": "(\"font-family\": $cx-typography-font-family-text, \"font-weight\": $cx-typography-font-weight-text-normal-weight, \"font-size\": $cx-typography-font-size-text-medium, \"line-height\": $cx-typography-line-height-text-medium, \"font-style\": $cx-typography-font-weight-text-normal-style, \"letter-spacing\": 0em, \"margin-bottom\": 0px, \"text-transform\": none, \"text-decoration\": underline)"
+      "expected": "(\"font-family\": $cx-typography-font-family-text, \"font-weight\": $cx-typography-font-weight-text-normal-weight, \"font-size\": $cx-typography-font-size-text-medium, \"line-height\": $cx-typography-line-height-text-medium, \"font-style\": $cx-typography-font-weight-text-normal-style, \"letter-spacing\": 0px, \"margin-bottom\": 0px, \"text-transform\": none, \"text-decoration\": underline)"
     },
     {
       "preset": "web-px-references",
@@ -483,7 +483,7 @@
       "case": "object-valued, paragraph spacing",
       "token": "font.context.heading",
       "file": "main.scss",
-      "expected": "(\"font-family\": $cx-typography-font-family-text, \"font-weight\": $cx-typography-font-weight-text-strong-weight, \"font-size\": $cx-typography-font-size-text-3xlarge, \"line-height\": $cx-typography-line-height-text-3xlarge, \"font-style\": $cx-typography-font-weight-text-strong-style, \"letter-spacing\": 0em, \"margin-bottom\": 24px, \"text-transform\": none, \"text-decoration\": none)"
+      "expected": "(\"font-family\": $cx-typography-font-family-text, \"font-weight\": $cx-typography-font-weight-text-strong-weight, \"font-size\": $cx-typography-font-size-text-3xlarge, \"line-height\": $cx-typography-line-height-text-3xlarge, \"font-style\": $cx-typography-font-weight-text-strong-style, \"letter-spacing\": 0px, \"margin-bottom\": 24px, \"text-transform\": none, \"text-decoration\": none)"
     },
     {
       "preset": "web-px-references",

@@ -223,7 +223,7 @@ The `web` platform prints the custom properties of [Chassis CSS](https://github.
 }
 ```
 
-The build then writes every value resolved, with sizes in pixels; [cx/scss-variables](#cxscss-variables) shows the format. The web platforms write the same file names to the same folder, `dist/web/<app>/<brand>/`, so give an app one of them. Line heights and letter spacing are in `em` in every unit.
+The build then writes every value resolved, with sizes in pixels; [cx/scss-variables](#cxscss-variables) shows the format. The web platforms write the same file names to the same folder, `dist/web/<app>/<brand>/`, so give an app one of them. Line heights are in `em` in every unit, and letter spacing is in the unit of the other sizes.
 
 Each preset is a file of `packages/tokens/build/config/` that calls `webConfig({ unit, format })` of `web.js`. You can edit these files as any other platform file.
 
@@ -358,6 +358,7 @@ The lint fails, and names the token set and the token, when:
 - a font weight is not one the build knows
 - a token has no `$type`, or a value is not a token
 - two token sets of one token-set list declare the same name with different types
+- a letter spacing is in percent or in `em`, which Figma variables cannot hold
 
 ### Verify the output
 
@@ -460,7 +461,7 @@ $cx-space-context-medium: 1rem !default;
 $cx-color-accordion-item-fg-color: var(--default-fg-main) !default;
 $cx-typography-line-height-text-medium: 1.5em !default;
 $cx-border-radius-accordion-main: var(--border-radius-md) !default;
-$cx-font-context-lead: ("font-family": var(--font-family-text), "font-weight": var(--font-weight-text-normal), "font-size": var(--font-size-text-xl), "line-height": var(--line-height-text-xl), "font-style": normal, "letter-spacing": 0em, "margin-bottom": 0rem, "text-transform": none, "text-decoration": none) !default;
+$cx-font-context-lead: ("font-family": var(--font-family-text), "font-weight": var(--font-weight-text-normal), "font-size": var(--font-size-text-xl), "line-height": var(--line-height-text-xl), "font-style": normal, "letter-spacing": 0rem, "margin-bottom": 0rem, "text-transform": none, "text-decoration": none) !default;
 ```
 
 A token prints `var(--<name>)` when its value is a single reference to a token that Chassis CSS has a custom property for: `color.context.*`, `color.primitive.*`, `space.context.*`, `opacity.context.*`, `opacity.level.*`, `shadow.context.*`, `borderRadius.context.*`, or `borderWidth.context.*`. The name follows the referenced path, with the scale steps shortened as in Chassis CSS: `medium` becomes `md`, and `xlarge` becomes `xl`. Every other token prints its value:
@@ -468,7 +469,7 @@ A token prints `var(--<name>)` when its value is a single reference to a token t
 - Sizes are in `rem`.
 - Colors are hex, or `rgba()` when they have an alpha.
 - A line height token is divided by the font size token of the same step, and printed in `em`.
-- Letter spacing is in `em`: the design pixels divided by `basePxFontSize`.
+- Letter spacing is in `rem`, as the other sizes, so it is the same at every font size.
 - Font weights are numbers, font families keep their whole list, and assets are in double quotes.
 - A typography token is a Sass map, with a custom property for its family, weight, size, and line height.
 
@@ -496,7 +497,7 @@ public enum ChassisTokens {
     public static let ColorButtonPrimaryBgIdle = UIColor(red: 0.000, green: 0.580, blue: 0.722, alpha: 1)
     public static let FontContextJumboLineHeight = CGFloat(120)
     public static let FontContextJumboFontSize = CGFloat(96)
-    public static let FontContextJumboLetterSpacing = CGFloat(-0.5)
+    public static let FontContextJumboLetterSpacing = CGFloat(0)
     public static let ShadowContextSmall1Blur = CGFloat(8)
     public static let ShadowContextSmall1Radius = CGFloat(4)
 }
@@ -531,7 +532,7 @@ This format prints a `<resources>` file with one element per token, and the `and
   <color name="color_button_primary_bg_idle">#ff0094b8</color>
   <dimen name="font_context_jumbo_line_height">120sp</dimen>
   <dimen name="font_context_jumbo_font_size">96sp</dimen>
-  <item name="font_context_jumbo_letter_spacing" type="dimen" format="float">-0.0052</item>
+  <item name="font_context_jumbo_letter_spacing" type="dimen" format="float">0</item>
 </resources>
 ```
 
@@ -559,7 +560,7 @@ package chassis.tokens
 object ChassisTokensNumberLarge {
     val spaceContextMedium get() = 16.dp
     val opacityLevel40 get() = 0.4f
-    val fontContextJumboLetterSpacing get() = (-0.0052).em
+    val fontContextJumboLetterSpacing get() = 0.em
     val fontContextLeadFontSize get() = 22.sp
 }
 ```

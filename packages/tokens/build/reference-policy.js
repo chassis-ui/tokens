@@ -258,11 +258,12 @@ function resolvedParts(original, references) {
  *   `fontFamily`, `fontWeight` (the path of the weight before the weight and style
  *   split), `fontSize`, `lineHeight`, and optionally `fontStyle` (the same path as
  *   `fontWeight`); without it the font style prints its value.
- * @param {number} [basePxFontSize] - Pixels per em, for a letter spacing in px.
+ * @param {number} [basePxFontSize] - Pixels per rem or vw, for the letter spacing.
+ * @param {string} [sizeUnit] - The size unit of the platform, for the letter spacing.
  * @returns {string} The Sass map.
  * @throws {Error} When family, weight or size does not reference a token.
  */
-export function typographyObject(token, references, names, basePxFontSize) {
+export function typographyObject(token, references, names, basePxFontSize, sizeUnit) {
   const original = token.original.$value
   const family = referencePath(original.fontFamily)
   const weight = token.original.$extensions?.['chassis']?.fontWeightPath
@@ -295,7 +296,8 @@ export function typographyObject(token, references, names, basePxFontSize) {
       fontSize: size.$type === 'fontSize' ? names.fontSize(size.path) : size.$value,
       lineHeight
     },
-    basePxFontSize
+    basePxFontSize,
+    sizeUnit
   )
 }
 
@@ -309,11 +311,12 @@ export function typographyObject(token, references, names, basePxFontSize) {
  * @param {Function} names - Takes `{ family, size, weight }` and returns the parts that
  *   print references: `fontFamily`, `fontWeight`, `fontSize`, `lineHeight` and
  *   optionally `fontStyle`.
- * @param {number} [basePxFontSize] - Pixels per em, for a letter spacing in px.
+ * @param {number} [basePxFontSize] - Pixels per rem or vw, for the letter spacing.
+ * @param {string} [sizeUnit] - The size unit of the platform, for the letter spacing.
  * @returns {string} The Sass map.
  * @throws {Error} When the reference does not have four segments.
  */
-export function typographyReference(token, references, names, basePxFontSize) {
+export function typographyReference(token, references, names, basePxFontSize, sizeUnit) {
   const reference = referencePath(token.original.$value)
   if (reference.length !== 4) {
     throw new Error(`Not a font.<family>.<size>.<weight> reference: ${token.original.$value}`)
@@ -326,6 +329,7 @@ export function typographyReference(token, references, names, basePxFontSize) {
       ...resolvedParts(target.original.$value, references),
       ...names({ family, size, weight })
     },
-    basePxFontSize
+    basePxFontSize,
+    sizeUnit
   )
 }

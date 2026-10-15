@@ -43,6 +43,7 @@ function scssFormat(value) {
     dictionary.allTokens = inSourceOrder(dictionary.allTokens)
     const settings = {
       basePxFontSize: platform.basePxFontSize,
+      sizeUnit: platform.sizeUnit,
       outputReferences: options.outputReferences === true
     }
     return scssTemplate({ dictionary, options, file, header, platform, value, settings })

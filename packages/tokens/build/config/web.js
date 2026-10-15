@@ -67,6 +67,8 @@ export function webConfig({ unit = 'rem', format = 'cx/scss-chassis-css' } = {})
     return {
       prefix: 'cx',
       basePxFontSize: 16,
+      // The unit of the size transform, for letter spacing, which is typed as a number
+      sizeUnit: unit,
       // Math on sizes (`ts/resolveMath`) rounds to four decimals by default, which would
       // round a size that references another: `0.03125rem` would become `0.0313rem`.
       mathFractionDigits: MATH_FRACTION_DIGITS,

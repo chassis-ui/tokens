@@ -65,7 +65,7 @@ Style Dictionary 5 keeps tokens in a map and appends the parts of an expanded ty
 
 `alignTypes` from sd-transforms aligns the Tokens Studio types, turns `text` into `content` and shadow `x` and `y` into `offsetX` and `offsetY`. The preprocessor adds four things on top:
 
-- Letter spacing tokens are typed `number`, not `dimension`, so size transforms leave them alone.
+- Letter spacing tokens are typed `number`, not `dimension`, so size transforms leave them alone; each platform converts them when it prints them.
 - A typography token that names no `textCase` or `textDecoration` gets `none` for it, before Style Dictionary expands the composites. The source names them only where they are not `none`, and every platform still prints both parts of every typography token, in the same order.
 - Every `fontWeight` token becomes a group of two tokens, `<name>.weight` and `<name>.style` (`Light Italic` becomes `Light` and `italic`; a weight without a style gets `normal`). sd-transforms splits only the weights that name a style, so the output would otherwise depend on the spelling of each weight.
 - A typography token that references its font weight stores the path of that weight as segments (`fontWeightPath`), not as a reference: after the split the weight is a group, and Style Dictionary 5 fails the build on a reference to a group.
@@ -165,7 +165,7 @@ SCSS with the prefix `cx`: the header line `$prefix: cx- !default;`, then one `$
 - **Sizes**: pixels divided by 16 with `rem`, not rounded; zero is `0rem`. A size that references another prints the same value (`dimension.base.05` and `size.unit.05` are `0.03125rem`).
 - **Colors**: `#ffffff`, or `rgba(25, 27, 28, 0.5)` with alpha.
 - **Line height tokens**: divided by the font size token at the same step, `typography.fontSize.<path[2]>.<path[3]>`, three decimals with trailing zeros removed, `em` (`1.25em`).
-- **Letter spacing** (tokens under `letterSpacing` and the `letter-spacing` of typography maps): pixels divided by 16, four decimals, `em` (`-0.5px` is `-0.0313em`).
+- **Letter spacing** (tokens under `letterSpacing` and the `letter-spacing` of typography maps): in the size unit of the platform, as the size transforms convert other sizes, so it is the same number of pixels at every font size, as in Figma: `-0.5px` is `-0.03125rem` in `web` and `web-scss`, `-0.5px` in `web-px` and `-0.03125vw` in `web-vw`. A percentage or a value in `em` prints in `em`, four decimals.
 - **Shadows**: `x y blur spread color`, with ` inset` for inner shadows, layers joined with `, `, sizes in rem. `main.scss` has the shadows with the colors of the first theme, and `color-<theme>.scss` every shadow with the colors of its theme.
 - **Font weights**: numbers (`400`). Font families: the whole list, as written.
 - **Assets**: in double quotes.
@@ -201,7 +201,7 @@ The short scale names are `4xs`, `3xs`, `2xs`, `xs`, `sm`, `md`, `lg`, `xl` and 
 `import UIKit`, then one `public static let <PascalName> = <value>` per token. Typography and shadow tokens are expanded into one constant per property (`FontContextJumboFontSize`, `ShadowContextSmall1Blur`).
 
 - **Colors**: `UIColor(red: 0.098, green: 0.106, blue: 0.110, alpha: 1)`, three decimals per channel, the alpha as it is. A value that is not a color prints as it is, with a warning.
-- **Numbers and sizes**: `CGFloat(16)`, in points. A line height in percent is that percentage of the font size of the same typography token, three decimals (`125%` of `96` is `CGFloat(120)`). Letter spacing is in points (`CGFloat(-0.5)`).
+- **Numbers and sizes**: `CGFloat(16)`, in points. A line height in percent is that percentage of the font size of the same typography token, three decimals (`125%` of `96` is `CGFloat(120)`). Letter spacing is in points (`CGFloat(-0.5)`); a percentage in a typography token is that percentage of its font size.
 - **Font families**: the first family of the list, without quotes, in double quotes (`"Inter"`).
 - **Font weights**: `UIFont.Weight.<name>`, from the weight number of the web's map rounded to the nearest hundred from 100 to 900: `ultraLight`, `thin`, `light`, `regular`, `medium`, `semibold`, `bold`, `heavy`, `black`. An unknown weight fails the build.
 - **Other strings**: in double quotes, including the SVG text of the icons.
@@ -276,8 +276,8 @@ They are part of the output contract and kept on purpose. Don't fix one without 
 
 - **The main file repeats the other files.** `ChassisTokens.swift` and `main.xml` hold every token except the theme colors, with the component colors of the light theme and the numbers of the large screen. `main.xml` cannot share a resource folder with the flat string, color or number files: aapt2 fails with `has a conflicting value`.
 - **The flat files stay for one release.** `ColorLight.swift` and `ColorDark.swift` next to `Color.swift`, and the flat Android files next to `res/`, are kept since 0.6.0 so that apps can move over.
-- **Web letter spacing is in ems of 16 px.** The web divides pixels by 16, so `-0.5px` at a 96 px font size prints `-0.0313em`, where the em of that font size is `-0.0052`, which Android prints. Chassis CSS reads the web value, so it stays.
-- **Letter spacing has different units per platform.** Web ems of 16 px, iOS points, Android and Compose ems of the font size; the letter spacing scale is in pixels on iOS and Android because it has no font size.
+- **Letter spacing is in pixels.** Figma reads a number variable bound to letter spacing as pixels and cannot hold a percentage, so Tokens Studio exports no variable for one; `pnpm tokens:lint:source` fails on a letter spacing in percent or in `em`. A pixel value is the same at every font size, so a brand that sets one on a token shared by several font sizes tightens the small sizes more. The build still prints a percentage on every platform.
+- **Letter spacing has different units per platform, for the same pixels.** The web prints the size unit, iOS points, Android and Compose ems of the font size, which `android:letterSpacing` takes. The letter spacing scale keeps its pixel number on iOS and Android, because it has no font size.
 - **Icons are in the string files too.** The SVG text of each icon is a string constant or resource next to its asset; on Android it is escaped.
 - **`dimension.base.*` is emitted** in the main and number files, though apps use the scales that reference it.
 - **`opacity.base.*` is not emitted**, though `dimension.base.*` and the base colors are. With `outputReferences`, an `opacity.context.*` token prints its number, since no file declares the token it references.

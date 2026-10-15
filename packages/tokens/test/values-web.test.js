@@ -11,7 +11,7 @@ import { describe, expect, test } from 'vitest'
 import {
   cssShadow,
   encode,
-  letterSpacingEm,
+  letterSpacingSize,
   lineHeightEm,
   percentToEm,
   pxSize,
@@ -126,9 +126,9 @@ describe('resolvedTypographyMap', () => {
   }
 
   test('quotes the family list and converts a percent line height', () => {
-    expect(resolvedTypographyMap(value, 16)).toBe(
+    expect(resolvedTypographyMap(value, 16, 'px')).toBe(
       '("font-family": "Inter, system-ui, sans-serif", "font-weight": 700, "font-size": 96px, ' +
-        '"line-height": 1.25em, "font-style": normal, "letter-spacing": -0.0313em, ' +
+        '"line-height": 1.25em, "font-style": normal, "letter-spacing": -0.5px, ' +
         '"margin-bottom": 0px, "text-transform": none, "text-decoration": none)'
     )
   })
@@ -137,26 +137,39 @@ describe('resolvedTypographyMap', () => {
     const map = resolvedTypographyMap({ ...value, fontSize: '22px', lineHeight: '32px' }, 16)
     expect(map).toContain('"line-height": 1.455em')
   })
+
+  test('prints a letter spacing in the size unit, the same at every font size', () => {
+    expect(resolvedTypographyMap(value, 16)).toContain('"letter-spacing": -0.03125rem')
+    expect(resolvedTypographyMap({ ...value, fontSize: '22px' }, 16)).toContain(
+      '"letter-spacing": -0.03125rem'
+    )
+    expect(resolvedTypographyMap(value, 16, 'vw')).toContain('"letter-spacing": -0.03125vw')
+  })
 })
 
 describe('unit helpers', () => {
-  test('letterSpacingEm keeps the math-rounded number', () => {
-    expect(letterSpacingEm('-0.0313rem')).toBe('-0.0313em')
+  test('letterSpacingSize converts pixels to the size unit', () => {
+    expect(letterSpacingSize('-0.5px')).toBe('-0.03125rem')
+    expect(letterSpacingSize('-0.5')).toBe('-0.03125rem')
+    expect(letterSpacingSize('-0.5px', 'px')).toBe('-0.5px')
+    expect(letterSpacingSize('-0.5px', 'vw')).toBe('-0.03125vw')
+    expect(letterSpacingSize('-0.5px', 'rem', 10)).toBe('-0.05rem')
   })
 
-  test('letterSpacingEm prints zero as 0em', () => {
-    expect(letterSpacingEm('0rem')).toBe('0em')
-    expect(letterSpacingEm('0px')).toBe('0em')
+  test('letterSpacingSize converts rem and vw through pixels', () => {
+    expect(letterSpacingSize('-0.03125rem', 'px')).toBe('-0.5px')
+    expect(letterSpacingSize('-0.03125vw', 'rem')).toBe('-0.03125rem')
   })
 
-  test('letterSpacingEm divides a px value by the base font size, to four decimals', () => {
-    expect(letterSpacingEm('-0.5px', 16)).toBe('-0.0313em')
-    expect(letterSpacingEm('-1px', 16)).toBe('-0.0625em')
-    expect(letterSpacingEm('2px')).toBe('0.125em')
+  test('letterSpacingSize prints zero without a sign', () => {
+    expect(letterSpacingSize('0px')).toBe('0rem')
+    expect(letterSpacingSize('-0', 'px')).toBe('0px')
   })
 
-  test('letterSpacingEm does not divide rem and vw values', () => {
-    expect(letterSpacingEm('-0.0313vw', 16)).toBe('-0.0313em')
+  test('letterSpacingSize prints a percentage or em in em, to four decimals', () => {
+    expect(letterSpacingSize('-2.5%')).toBe('-0.025em')
+    expect(letterSpacingSize('-0.02em', 'px')).toBe('-0.02em')
+    expect(letterSpacingSize('0%')).toBe('0em')
   })
 
   test('lineHeightEm trims trailing zeros', () => {

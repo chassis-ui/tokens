@@ -19,7 +19,12 @@ const fixture = JSON.parse(
 
 const REFERENCE = /\{([^{}]+)\}/g
 const REFERENCES = 'web-px-references'
-const settingsOf = (preset) => ({ basePxFontSize: 16, outputReferences: preset === REFERENCES })
+const SIZE_UNITS = { 'web-px': 'px', [REFERENCES]: 'px', 'web-vw': 'vw', 'web-scss': 'rem' }
+const settingsOf = (preset) => ({
+  basePxFontSize: 16,
+  sizeUnit: SIZE_UNITS[preset],
+  outputReferences: preset === REFERENCES
+})
 
 /**
  * Token lookups over a set of tokens keyed by path, and variables by path.
@@ -141,22 +146,26 @@ describe('scssValue with outputReferences', () => {
 describe('letter spacing', () => {
   const spacing = (preset, path) => valueOf(preset, path).match(/"letter-spacing": ([^,]+)/)[1]
 
-  // web-px holds the pixel value; it prints what the rem and vw presets print
+  // web-px holds the pixel value; each preset prints it in its own size unit
   test.each([
-    ['font.context.jumbo', '-0.5px', '-0.0313em'],
-    ['font.website.hero-title', '-1px', '-0.0625em'],
-    ['font.context.lead', '0px', '0em']
-  ])('%s: %s in web-px prints %s, as in web-scss and web-vw', (path, px, expected) => {
+    // The rem and vw fixtures hold -0.0313, as the build rounded math to four decimals then
+    ['font.context.jumbo', '-0.5px', ['-0.5px', '-0.0313rem', '-0.0313vw']],
+    ['font.website.hero-title', '-1px', ['-1px', '-0.0625rem', '-0.0625vw']],
+    ['font.context.lead', '0px', ['0px', '0rem', '0vw']]
+  ])('%s: %s prints in the size unit of web-px, web-scss and web-vw', (path, px, expected) => {
     expect(fixture.tokens['web-px'][path].$value.letterSpacing).toBe(px)
-    expect(spacing('web-px', path)).toBe(expected)
-    expect(spacing('web-scss', path)).toBe(expected)
-    expect(spacing('web-vw', path)).toBe(expected)
+    expect([spacing('web-px', path), spacing('web-scss', path), spacing('web-vw', path)]).toEqual(
+      expected
+    )
   })
 
   test('uses the base font size of the platform', () => {
     const tokens = fixture.tokens['web-px']
-    const value = scssValue(tokens['font.context.jumbo'], lookupsIn(tokens), { basePxFontSize: 10 })
-    expect(value).toContain('"letter-spacing": -0.05em')
+    const value = scssValue(tokens['font.context.jumbo'], lookupsIn(tokens), {
+      basePxFontSize: 10,
+      sizeUnit: 'rem'
+    })
+    expect(value).toContain('"letter-spacing": -0.05rem')
   })
 })
 

@@ -199,6 +199,44 @@ describe('type-conflict', () => {
   })
 })
 
+describe('letter-spacing', () => {
+  const spacing = (value) => ({ $type: 'letterSpacing', $value: value })
+
+  test('accepts pixels, with and without px, and references', () => {
+    const errors = lintWith((sets) => {
+      sets[BRAND_CHASSIS].typography.letterSpacing = {
+        display: { mass: spacing('-0.5'), normal: spacing('0'), strong: spacing('1px') },
+        context: {
+          jumbo: spacing('{typography.letterSpacing.display.mass}'),
+          hero: spacing('{size.unit.nd05}')
+        }
+      }
+    })
+    expect(errors).toEqual([])
+  })
+
+  test('fails on a percentage or em in a letter spacing token, which Figma cannot hold', () => {
+    const errors = lintWith((sets) => {
+      sets[BRAND_CHASSIS].typography.letterSpacing = {
+        context: { hero: spacing('-2.5%'), jumbo: spacing('-0.02em') }
+      }
+    })
+    expect(errors.map(formatError)).toEqual([
+      'brand-chassis/brand-base: typography.letterSpacing.context.hero is "-2.5%", which Figma variables cannot hold; write it in pixels, such as "-0.5" [letter-spacing]',
+      'brand-chassis/brand-base: typography.letterSpacing.context.jumbo is "-0.02em", which Figma variables cannot hold; write it in pixels, such as "-0.5" [letter-spacing]'
+    ])
+  })
+
+  test('fails on a percentage in the letter spacing of a typography token', () => {
+    const errors = lintWith((sets) => {
+      sets[BASE].font.website['hero-title'].$value.letterSpacing = '-2.5%'
+    })
+    expect(errors.map(formatError)).toEqual([
+      'screen-website/screen-base: font.website.hero-title has a letter spacing that is "-2.5%", which Figma variables cannot hold; write it in pixels, such as "-0.5" [letter-spacing]'
+    ])
+  })
+})
+
 describe('loadSource', () => {
   const dirs = []
   afterAll(async () => {

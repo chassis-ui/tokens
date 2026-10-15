@@ -15,6 +15,8 @@ import {
   fontWeightNumber,
   isBaseColor,
   isSizeWithMath,
+  letterSpacingNumber,
+  letterSpacingPoints,
   parseColor,
   percentLineHeight
 } from './shared.js'
@@ -91,7 +93,7 @@ export function fontWeightConstant(token) {
  *
  * @param {Object} token - A resolved token with `$type`, `$value` and `path`.
  * @param {Object} [context] - `fontSize`: the font size part of the typography token
- *   that the token is a part of, for a percentage line height.
+ *   that the token is a part of, for a percentage line height and a letter spacing.
  * @returns {string} The Swift value.
  */
 export function encode(token, context = {}) {
@@ -100,8 +102,15 @@ export function encode(token, context = {}) {
   if (type === 'color') {
     return encodeColor(token)
   }
+  if (token.path[1] === 'letterSpacing') {
+    return `CGFloat(${letterSpacingNumber(token)})`
+  }
   if (tokenTypes.number.includes(type) || tokenTypes.size.includes(type)) {
-    return `CGFloat(${percentLineHeight(token, context.fontSize) ?? parseFloat(value)})`
+    const number =
+      percentLineHeight(token, context.fontSize) ??
+      letterSpacingPoints(token, context.fontSize) ??
+      parseFloat(value)
+    return `CGFloat(${number})`
   }
   if (type === 'fontFamily') {
     return `"${firstFontFamily(value)}"`

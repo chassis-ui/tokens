@@ -120,29 +120,105 @@ export function percentLineHeight(token, fontSize) {
 }
 
 /**
- * Returns the letter spacing part of a typography token in ems of its font size, to
- * four decimals, as the web rounds letter spacing. A value in px or without a unit is
- * divided by the font size; a percentage is divided by 100. Android's `letterSpacing`
- * takes ems. Letter spacing tokens outside a typography token have no font size and
- * return `undefined`.
+ * Rounds a number to a number of decimals, without a negative zero.
  *
- * @param {Object} token - A resolved token with `$value` and `path`.
- * @param {string|number} [fontSize] - The font size part of the same typography token.
- * @returns {number|undefined} e.g. `-0.0052` for `-0.5px` at `96px`
- * @throws {Error} When the token is a letter spacing part without a font size.
+ * @param {number} value
+ * @param {number} digits
+ * @returns {number}
  */
-export function letterSpacingEm(token, fontSize) {
-  if (token.path[token.path.length - 1] !== 'letterSpacing') return undefined
+function round(value, digits) {
+  return Number(value.toFixed(digits)) || 0
+}
+
+/**
+ * Returns a letter spacing that is relative to the font size, as a fraction of the font
+ * size: a percentage divided by 100, or a number of ems. A value in px, rem or vw, or
+ * without a unit, is absolute and returns `undefined`; the source writes pixels, which
+ * Figma variables hold.
+ *
+ * @param {string|number} value - e.g. `-2%`, `-0.02em`, `-0.5px`
+ * @returns {number|undefined} e.g. `-0.02`
+ */
+export function letterSpacingFraction(value) {
+  const text = String(value).trim()
+  if (text.endsWith('%')) return parseFloat(text) / 100
+  if (/\dem$/.test(text)) return parseFloat(text)
+  return undefined
+}
+
+/**
+ * Checks whether a token is the letter spacing part of a typography token.
+ *
+ * @param {Object} token - A resolved token with `path`.
+ * @returns {boolean}
+ */
+function isLetterSpacingPart(token) {
+  return token.path[token.path.length - 1] === 'letterSpacing'
+}
+
+/**
+ * Throws when a letter spacing part has no font size to be encoded with.
+ *
+ * @param {Object} token - A resolved token with `path`.
+ * @param {string|number} [fontSize]
+ * @throws {Error}
+ */
+function requireFontSize(token, fontSize) {
   if (fontSize === undefined) {
     throw new Error(`No font size for the letter spacing of ${token.path.join('.')}`)
   }
-  const value = String(token.$value)
-  const em = value.endsWith('%')
-    ? parseFloat(value) / 100
-    : value.endsWith('em')
-      ? parseFloat(value)
-      : parseFloat(value) / parseFloat(String(fontSize))
-  return Number(em.toFixed(4)) || 0
+}
+
+/**
+ * Returns the letter spacing part of a typography token in ems of its font size, to
+ * four decimals, as the web rounds letter spacing. A percentage is divided by 100; an
+ * absolute value is divided by the font size. Android's `letterSpacing` takes ems.
+ * Letter spacing tokens outside a typography token return `undefined`.
+ *
+ * @param {Object} token - A resolved token with `$value` and `path`.
+ * @param {string|number} [fontSize] - The font size part of the same typography token.
+ * @returns {number|undefined} e.g. `-0.02` for `-2%`, `-0.0052` for `-0.5px` at `96px`
+ * @throws {Error} When the token is a letter spacing part without a font size.
+ */
+export function letterSpacingEm(token, fontSize) {
+  if (!isLetterSpacingPart(token)) return undefined
+  requireFontSize(token, fontSize)
+  const em =
+    letterSpacingFraction(token.$value) ??
+    parseFloat(String(token.$value)) / parseFloat(String(fontSize))
+  return round(em, 4)
+}
+
+/**
+ * Returns the letter spacing part of a typography token in points, which UIKit's `kern`
+ * and SwiftUI's `tracking` take: a percentage of the font size of the same token, to
+ * three decimals, as a percentage line height. An absolute value is already in points.
+ * Letter spacing tokens outside a typography token return `undefined`.
+ *
+ * @param {Object} token - A resolved token with `$value` and `path`.
+ * @param {string|number} [fontSize] - The font size part of the same typography token.
+ * @returns {number|undefined} e.g. `-2.88` for `-3%` at `96px`
+ * @throws {Error} When the token is a letter spacing part without a font size.
+ */
+export function letterSpacingPoints(token, fontSize) {
+  if (!isLetterSpacingPart(token)) return undefined
+  requireFontSize(token, fontSize)
+  const fraction = letterSpacingFraction(token.$value)
+  if (fraction === undefined) return parseFloat(String(token.$value))
+  return round(fraction * parseFloat(String(fontSize)), 3)
+}
+
+/**
+ * Returns the number that a letter spacing token outside a typography token prints on
+ * iOS and Android, where it has no font size: a fraction of the font size for a
+ * percentage, to four decimals, and the number of an absolute value.
+ *
+ * @param {Object} token - A resolved token with `$value`.
+ * @returns {number} e.g. `-0.03` for `-3%`, `-0.5` for `-0.5px`
+ */
+export function letterSpacingNumber(token) {
+  const fraction = letterSpacingFraction(token.$value)
+  return fraction === undefined ? parseFloat(String(token.$value)) : round(fraction, 4)
 }
 
 /**

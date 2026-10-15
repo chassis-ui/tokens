@@ -102,7 +102,7 @@ Context tokens name a text style by its role in the content. Each takes its prop
 
 `font.context.jumbo` and `font.context.hero` have no line height token: their line height is a percentage of their font size, so it follows a brand that changes `typography.fontSize.context.jumbo` or `typography.fontSize.context.hero`. The [typography tokens]([[docsref:/design-tokens/typography-tokens]]) reference lists what each token of the `context` group references.
 
-Some context tokens change a property that the table does not show. `font.context.link.*` names the text decoration `underline`, and `font.context.expired.*` names `line-through`. `font.context.jumbo` tightens its letters, because `typography.letterSpacing.context.jumbo` references `{size.unit.nd05}`. No other context token names a text case or a text decoration.
+Some context tokens change a property that the table does not show. `font.context.link.*` names the text decoration `underline`, and `font.context.expired.*` names `line-through`. No other context token names a text case or a text decoration.
 
 ## HTML elements
 
@@ -393,7 +393,7 @@ The values in the examples of this section are those of the `chassis` brand in t
 The build writes the map of the web to `main.scss`, on one line. The keys are CSS properties: the paragraph spacing is `margin-bottom`, and the text case is `text-transform`. Every map has the keys `text-transform` and `text-decoration`, and a font token that names no text case or text decoration has `none` for it, on every platform.
 
 ```scss
-$cx-font-context-jumbo: ("font-family": var(--font-family-text), "font-weight": var(--font-weight-text-mass), "font-size": 6rem, "line-height": 1.25em, "font-style": normal, "letter-spacing": -0.03125em, "margin-bottom": 0rem, "text-transform": none, "text-decoration": none) !default;
+$cx-font-context-jumbo: ("font-family": var(--font-family-text), "font-weight": var(--font-weight-text-mass), "font-size": 6rem, "line-height": 1.25em, "font-style": normal, "letter-spacing": 0rem, "margin-bottom": 0rem, "text-transform": none, "text-decoration": none) !default;
 ```
 
 The `web` platform names the custom properties of Chassis CSS for the family, the weight, the font size, and the line height that a font token references, so its maps work with Chassis CSS only. A context or HTML font token references role tokens, which Chassis CSS has no custom property for. The map names the token that each role points to in the brand instead: `var(--font-family-text)` in the example, or `var(--font-family-display)` in a brand that sets the role in its display family. A role that holds a value of its own prints the value. The presets `web-scss`, `web-px`, and `web-vw` print the values; see the [Style Dictionary]([[docsref:/getting-started/style-dictionary]]) page.
@@ -419,7 +419,7 @@ The build writes the sizes of a font token to the number file of each screen, an
 ```swift
     public static let FontContextJumboLineHeight = CGFloat(120)
     public static let FontContextJumboFontSize = CGFloat(96)
-    public static let FontContextJumboLetterSpacing = CGFloat(-0.5)
+    public static let FontContextJumboLetterSpacing = CGFloat(0)
     public static let FontContextJumboParagraphSpacing = CGFloat(0)
 ```
 
@@ -428,17 +428,13 @@ On Android, `number_large.xml` has the same properties:
 ```xml
   <dimen name="font_context_jumbo_line_height">120sp</dimen>
   <dimen name="font_context_jumbo_font_size">96sp</dimen>
-  <item name="font_context_jumbo_letter_spacing" type="dimen" format="float">-0.0052</item>
+  <item name="font_context_jumbo_letter_spacing" type="dimen" format="float">0</item>
   <dimen name="font_context_jumbo_paragraph_spacing">0sp</dimen>
 ```
 
 The line height and the letter spacing print by rules of their own inside a font token:
 
 - A line height that is a percentage prints in `em` on the web. iOS and Android print a size: that percentage of the font size of the same token.
-- The letter spacing on Android is in ems of the font size of the same token, which `android:letterSpacing` takes.
-
-<Callout type="warning">
-The web prints letter spacing in ems of 16 design pixels, not of the font size of the token. The number that the web prints for a font token is therefore not the number that Android prints for it.
-</Callout>
+- The letter spacing is in design pixels, the same at every font size, as in Figma. The web prints it in `rem` and iOS in points. Android prints it in ems of the font size of the same token, which `android:letterSpacing` takes: `-1` at a 64 px font size is `-0.0156`.
 
 See the [web]([[docsref:/use-in-project/web-applications]]), [iOS]([[docsref:/use-in-project/ios-applications]]), and [Android]([[docsref:/use-in-project/android-applications]]) docs for the files that hold these names.

@@ -10,6 +10,7 @@
  */
 
 import { removeTrailingZeros } from '../utils.js'
+import { letterSpacingFraction } from './shared.js'
 
 /**
  * Converts each space-separated px value to a unit, without rounding. Values already in
@@ -89,19 +90,39 @@ export function cssShadow(value) {
 }
 
 /**
- * Converts a letter spacing to em. A value in px is divided by the base font size and
- * rounded to four decimals, as the math on rem values is. Other values keep their number
- * and drop their unit.
+ * Converts a size to pixels: a value in rem or vw is `basePxFontSize` pixels per unit, as
+ * the `cx/size/*` transforms convert it; a value in px or without a unit is in pixels.
  *
- * @param {string|number} value - e.g. `-0.0313rem`, `-0.5px`
- * @param {number} [basePxFontSize] - Pixels per em, for values in px.
- * @returns {string} e.g. `-0.0313em`
+ * @param {string|number} value - e.g. `6rem`, `96px`
+ * @param {number} basePxFontSize - Pixels per rem or vw.
+ * @returns {number} e.g. `96`
  */
-export function letterSpacingEm(value, basePxFontSize = 16) {
-  if (String(value).endsWith('px')) {
-    return `${removeTrailingZeros((parseFloat(String(value)) / basePxFontSize).toFixed(4))}em`
+function sizePx(value, basePxFontSize) {
+  const text = String(value)
+  const number = parseFloat(text)
+  return text.endsWith('rem') || text.endsWith('vw') ? number * basePxFontSize : number
+}
+
+/**
+ * Converts a letter spacing to the size unit of the platform, as the `cx/size/*`
+ * transforms convert other sizes: a value in px, rem or vw, or without a unit, becomes
+ * `unit`, so it is the same number of pixels at every font size, as in Figma. A
+ * percentage or a value in em is relative to the font size and prints in em, to four
+ * decimals.
+ *
+ * @param {string|number} value - e.g. `-0.5`, `-0.03125rem`, `-2%`
+ * @param {string} [unit] - `rem`, `px` or `vw`.
+ * @param {number} [basePxFontSize] - Pixels per rem or vw.
+ * @returns {string} e.g. `-0.03125rem`, `-0.5px`, `-0.02em`
+ */
+export function letterSpacingSize(value, unit = 'rem', basePxFontSize = 16) {
+  const fraction = letterSpacingFraction(value)
+  if (fraction !== undefined) {
+    return `${removeTrailingZeros(fraction.toFixed(4)).replace(/^-0$/, '0')}em`
   }
-  return `${parseFloat(String(value))}em`
+  const px = sizePx(value, basePxFontSize)
+  const number = unit === 'px' ? px : px / basePxFontSize
+  return `${Number(number.toFixed(10)) || 0}${unit}`
 }
 
 /**
@@ -131,8 +152,9 @@ export function percentToEm(value) {
  * output contract.
  *
  * @param {Object} parts - Values already in their final form, except `letterSpacing`,
- *   which is converted to em here.
- * @param {number} [basePxFontSize] - Pixels per em, for a letter spacing in px.
+ *   which is converted here with `letterSpacingSize`.
+ * @param {number} [basePxFontSize] - Pixels per rem or vw, for the letter spacing.
+ * @param {string} [sizeUnit] - The size unit of the platform, for the letter spacing.
  * @returns {string} e.g. `("font-family": var(--font-family-text), …)`
  */
 export function typographyMap(
@@ -147,7 +169,8 @@ export function typographyMap(
     textCase,
     textDecoration
   },
-  basePxFontSize
+  basePxFontSize,
+  sizeUnit
 ) {
   return `(${[
     `"font-family": ${fontFamily}`,
@@ -155,7 +178,7 @@ export function typographyMap(
     `"font-size": ${fontSize}`,
     `"line-height": ${lineHeight}`,
     `"font-style": ${fontStyle}`,
-    `"letter-spacing": ${letterSpacingEm(letterSpacing, basePxFontSize)}`,
+    `"letter-spacing": ${letterSpacingSize(letterSpacing, sizeUnit, basePxFontSize)}`,
     `"margin-bottom": ${paragraphSpacing}`,
     `"text-transform": ${textCase}`,
     `"text-decoration": ${textDecoration}`
@@ -168,10 +191,11 @@ export function typographyMap(
  * font size, and a percent line height is converted to em.
  *
  * @param {Object} value - The resolved `$value` of a typography token.
- * @param {number} [basePxFontSize] - Pixels per em, for a letter spacing in px.
+ * @param {number} [basePxFontSize] - Pixels per rem or vw, for the letter spacing.
+ * @param {string} [sizeUnit] - The size unit of the platform, for the letter spacing.
  * @returns {string} e.g. `("font-family": "Inter, system-ui", "font-weight": 700, …)`
  */
-export function resolvedTypographyMap(value, basePxFontSize) {
+export function resolvedTypographyMap(value, basePxFontSize, sizeUnit) {
   const { fontFamily, fontSize, lineHeight } = value
   return typographyMap(
     {
@@ -181,7 +205,8 @@ export function resolvedTypographyMap(value, basePxFontSize) {
         ? percentToEm(lineHeight)
         : lineHeightEm(lineHeight, fontSize)
     },
-    basePxFontSize
+    basePxFontSize,
+    sizeUnit
   )
 }
 
@@ -193,10 +218,12 @@ export function resolvedTypographyMap(value, basePxFontSize) {
  * @param {Object} context
  * @param {Function} context.resolveReference - Returns the resolved value of a
  *   `{path.to.token}` reference.
- * @param {number} [context.basePxFontSize] - Pixels per em, for a letter spacing in px.
+ * @param {number} [context.basePxFontSize] - Pixels per rem or vw, for a letter spacing.
+ * @param {string} [context.sizeUnit] - The size unit of the platform, for a letter
+ *   spacing: `rem`, `px` or `vw`.
  * @returns {string} The SCSS value.
  */
-export function encode(token, { resolveReference, basePxFontSize }) {
+export function encode(token, { resolveReference, basePxFontSize, sizeUnit }) {
   const { $type: type, $value: value, path } = token
 
   if (type === 'lineHeight') {
@@ -204,7 +231,7 @@ export function encode(token, { resolveReference, basePxFontSize }) {
     return lineHeightEm(value, resolveReference(`{typography.fontSize.${path[2]}.${path[3]}}`))
   }
   if (path[1] === 'letterSpacing') {
-    return letterSpacingEm(value, basePxFontSize)
+    return letterSpacingSize(value, sizeUnit, basePxFontSize)
   }
   if (type === 'asset') {
     return `"${value}"`

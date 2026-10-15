@@ -61,17 +61,17 @@ function referenceNames(references) {
  * Returns the SCSS value of a web token with references: a variable, a typography map
  * of variables, or the encoded value.
  */
-function referenceValue(token, references, basePxFontSize) {
+function referenceValue(token, references, basePxFontSize, sizeUnit) {
   if (printsReference(token, referencingGroups)) {
     const target = referenceTarget(token, references)
     return target ? references.variable(target) : token.$value
   }
   if (token.$type === 'typography') {
     return typeof token.original.$value === 'object'
-      ? typographyObject(token, references, objectNames(references), basePxFontSize)
-      : typographyReference(token, references, referenceNames(references), basePxFontSize)
+      ? typographyObject(token, references, objectNames(references), basePxFontSize, sizeUnit)
+      : typographyReference(token, references, referenceNames(references), basePxFontSize, sizeUnit)
   }
-  return encode(token, { resolveReference: references.value, basePxFontSize })
+  return encode(token, { resolveReference: references.value, basePxFontSize, sizeUnit })
 }
 
 /**
@@ -80,19 +80,21 @@ function referenceValue(token, references, basePxFontSize) {
  * @param {Object} token - A resolved token with `$type`, `$value`, `path` and `original`.
  * @param {Object} references - Token lookups.
  * @param {Object} [settings]
- * @param {number} [settings.basePxFontSize] - Pixels per em, for a letter spacing in px.
+ * @param {number} [settings.basePxFontSize] - Pixels per rem, for an absolute letter spacing.
+ * @param {string} [settings.sizeUnit] - The size unit of the platform, for a letter
+ *   spacing token.
  * @param {boolean} [settings.outputReferences] - Print variables instead of values.
  * @returns {string} The SCSS value.
  */
-export function scssValue(token, references, { basePxFontSize, outputReferences } = {}) {
+export function scssValue(token, references, { basePxFontSize, sizeUnit, outputReferences } = {}) {
   try {
     if (outputReferences) {
-      return referenceValue(token, references, basePxFontSize)
+      return referenceValue(token, references, basePxFontSize, sizeUnit)
     }
     if (token.$type === 'typography') {
-      return resolvedTypographyMap(token.$value, basePxFontSize)
+      return resolvedTypographyMap(token.$value, basePxFontSize, sizeUnit)
     }
-    return encode(token, { resolveReference: references.value, basePxFontSize })
+    return encode(token, { resolveReference: references.value, basePxFontSize, sizeUnit })
   } catch (error) {
     throw new Error(`${token.path.join('.')}: ${error.message}`, { cause: error })
   }

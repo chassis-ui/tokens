@@ -134,7 +134,7 @@ The website has no line height tokens. `font.website.*` holds its line heights a
 
 ## Letter spacing
 
-Letter spacing tokens hold the space between letters, and they are in `source/base/brand-base.json`, so a brand can change them. The families `text` and `display` have one letter spacing per weight, `typography.letterSpacing.<family>.<weight>`, and a base token of each size references the letter spacing of its weight: `font.text.medium.strong` references `{typography.letterSpacing.text.strong}`. Each of these tokens references `{size.unit.0}`, and so does `typography.letterSpacing.base.zero`, the letter spacing of `font.code.*`. The family `code` has no letter spacing of its own.
+Letter spacing tokens hold the space between letters in design pixels, the unit that a Figma variable holds. A pixel value is the same at every font size. The tokens are in `source/base/brand-base.json`, so a brand can change them. The families `text` and `display` have one letter spacing per weight, `typography.letterSpacing.<family>.<weight>`, and a base token of each size references the letter spacing of its weight: `font.text.medium.strong` references `{typography.letterSpacing.text.strong}`. Each of these tokens references `{size.unit.0}`, and so does `typography.letterSpacing.base.zero`, the letter spacing of `font.code.*`. The family `code` has no letter spacing of its own.
 
 <CxTable>
 | Token | Reference |
@@ -162,7 +162,7 @@ The `html` and `context` groups hold one letter spacing per group of HTML elemen
 | `typography.letterSpacing.html.list` | `{typography.letterSpacing.text.normal}` |
 | `typography.letterSpacing.html.cite` | `{typography.letterSpacing.text.strong}` |
 | `typography.letterSpacing.html.code` | `{typography.letterSpacing.base.zero}` |
-| `typography.letterSpacing.context.jumbo` | `{size.unit.nd05}` |
+| `typography.letterSpacing.context.jumbo` | `{typography.letterSpacing.text.mass}` |
 | `typography.letterSpacing.context.hero` | `{typography.letterSpacing.text.mass}` |
 | `typography.letterSpacing.context.lead` | `{typography.letterSpacing.text.normal}` |
 | `typography.letterSpacing.context.heading` | `{typography.letterSpacing.text.strong}` |
@@ -175,7 +175,7 @@ The `html` and `context` groups hold one letter spacing per group of HTML elemen
 | `typography.letterSpacing.context.code` | `{typography.letterSpacing.base.zero}` |
 </CxTable>
 
-`typography.letterSpacing.html.blockquote` references the `elegant` weight, because `font.html.blockquote` is set in a light italic. A font token that tightens its letters references a negative step of the size scale, as `typography.letterSpacing.context.jumbo` and `font.website.hero-title` do with `{size.unit.nd05}` and `{size.unit.n1}`.
+`typography.letterSpacing.html.blockquote` references the `elegant` weight, because `font.html.blockquote` is set in a light italic. A font token that tightens its letters references a negative step of the size scale, as `font.website.hero-title` and `font.website.section-title` do with `{size.unit.n1}` and `{size.unit.nd05}`. Figma variables cannot hold a percentage, so `pnpm tokens:lint:source` fails on a letter spacing in percent or in `em`.
 
 ## Paragraph spacing
 
@@ -352,7 +352,7 @@ The other properties have these formats.
 | `typography.fontWeight.*.weight` | A number from `100` to `900` | A case of `UIFont.Weight` | An `<integer>` from `100` to `900` |
 | `typography.fontWeight.*.style` | A keyword | A string | A `<string>` |
 | `typography.fontSize.*` | A size in `rem` | A `CGFloat` in points | A `<dimen>` in `sp` |
-| `typography.letterSpacing.*` | A number in `em`: the design pixels divided by 16 | A `CGFloat` in points | An `<item>` of the type `dimen` with the format `float`, in design pixels |
+| `typography.letterSpacing.*` | A size in `rem` | A `CGFloat` in points | An `<item>` of the type `dimen` with the format `float`, in design pixels |
 | `typography.paragraphSpacing.*` | A size in `rem` | A `CGFloat` in points | A `<dimen>` in `sp` |
 </CxTable>
 

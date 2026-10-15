@@ -216,7 +216,13 @@ describe('Android typography parts', () => {
     )
   })
 
-  test('the standalone letter spacing scale stays in px', () => {
+  test('the standalone letter spacing scale is a fraction of the font size', () => {
+    const token = tokenNamed('typography_letter_spacing_base_zero')
+    expect(encode({ ...token, $value: '-3%' })).toBe('-0.03')
+    expect(encode({ ...token, $value: '0%' })).toBe('0')
+  })
+
+  test('a standalone letter spacing in px keeps its pixel number', () => {
     const token = tokenNamed('typography_letter_spacing_base_zero')
     expect(encode({ ...token, $value: '-0.5px' })).toBe('-0.5')
   })

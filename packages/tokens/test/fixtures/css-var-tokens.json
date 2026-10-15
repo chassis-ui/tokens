@@ -153,56 +153,56 @@
       "case": "object-valued, named size and line height",
       "token": "font.context.lead",
       "file": "main.scss",
-      "expected": "(\"font-family\": var(--font-family-text), \"font-weight\": var(--font-weight-text-normal), \"font-size\": var(--font-size-text-xl), \"line-height\": var(--line-height-text-xl), \"font-style\": normal, \"letter-spacing\": 0em, \"margin-bottom\": 0rem, \"text-transform\": none, \"text-decoration\": none)"
+      "expected": "(\"font-family\": var(--font-family-text), \"font-weight\": var(--font-weight-text-normal), \"font-size\": var(--font-size-text-xl), \"line-height\": var(--line-height-text-xl), \"font-style\": normal, \"letter-spacing\": 0rem, \"margin-bottom\": 0rem, \"text-transform\": none, \"text-decoration\": none)"
     },
     {
       "group": "typography",
       "case": "reference-valued",
       "token": "font.button.medium",
       "file": "main.scss",
-      "expected": "(\"font-family\": var(--font-family-text), \"font-weight\": var(--font-weight-strong), \"font-size\": var(--font-size-md), \"line-height\": var(--line-height-md), \"font-style\": normal, \"letter-spacing\": 0em, \"margin-bottom\": 0rem, \"text-transform\": none, \"text-decoration\": none)"
+      "expected": "(\"font-family\": var(--font-family-text), \"font-weight\": var(--font-weight-strong), \"font-size\": var(--font-size-md), \"line-height\": var(--line-height-md), \"font-style\": normal, \"letter-spacing\": 0rem, \"margin-bottom\": 0rem, \"text-transform\": none, \"text-decoration\": none)"
     },
     {
       "group": "typography",
       "case": "object-valued, the target of font.button.medium",
       "token": "font.text.medium.strong",
       "file": "main.scss",
-      "expected": "(\"font-family\": var(--font-family-text), \"font-weight\": var(--font-weight-text-strong), \"font-size\": var(--font-size-text-md), \"line-height\": var(--line-height-text-md), \"font-style\": normal, \"letter-spacing\": 0em, \"margin-bottom\": 0rem, \"text-transform\": none, \"text-decoration\": none)"
+      "expected": "(\"font-family\": var(--font-family-text), \"font-weight\": var(--font-weight-text-strong), \"font-size\": var(--font-size-text-md), \"line-height\": var(--line-height-text-md), \"font-style\": normal, \"letter-spacing\": 0rem, \"margin-bottom\": 0rem, \"text-transform\": none, \"text-decoration\": none)"
     },
     {
       "group": "typography",
       "case": "object-valued, size name passes through, negative letter spacing",
       "token": "font.website.hero-title",
       "file": "main.scss",
-      "expected": "(\"font-family\": var(--font-family-text), \"font-weight\": var(--font-weight-text-mass), \"font-size\": var(--font-size-website-hero-title), \"line-height\": 1.25em, \"font-style\": normal, \"letter-spacing\": -0.0625em, \"margin-bottom\": 0rem, \"text-transform\": none, \"text-decoration\": none)"
+      "expected": "(\"font-family\": var(--font-family-text), \"font-weight\": var(--font-weight-text-mass), \"font-size\": var(--font-size-website-hero-title), \"line-height\": 1.25em, \"font-style\": normal, \"letter-spacing\": -0.0625rem, \"margin-bottom\": 0rem, \"text-transform\": none, \"text-decoration\": none)"
     },
     {
       "group": "typography",
       "case": "object-valued, 150% line height",
       "token": "font.website.hero-body",
       "file": "main.scss",
-      "expected": "(\"font-family\": var(--font-family-text), \"font-weight\": var(--font-weight-text-normal), \"font-size\": var(--font-size-website-hero-body), \"line-height\": 1.5em, \"font-style\": normal, \"letter-spacing\": 0em, \"margin-bottom\": 0rem, \"text-transform\": none, \"text-decoration\": none)"
+      "expected": "(\"font-family\": var(--font-family-text), \"font-weight\": var(--font-weight-text-normal), \"font-size\": var(--font-size-website-hero-body), \"line-height\": 1.5em, \"font-style\": normal, \"letter-spacing\": 0rem, \"margin-bottom\": 0rem, \"text-transform\": none, \"text-decoration\": none)"
     },
     {
       "group": "typography",
       "case": "object-valued, italic",
       "token": "font.html.blockquote",
       "file": "main.scss",
-      "expected": "(\"font-family\": var(--font-family-text), \"font-weight\": var(--font-weight-html-blockquote), \"font-size\": var(--font-size-html-blockquote), \"line-height\": var(--line-height-html-blockquote), \"font-style\": italic, \"letter-spacing\": 0em, \"margin-bottom\": 0rem, \"text-transform\": none, \"text-decoration\": none)"
+      "expected": "(\"font-family\": var(--font-family-text), \"font-weight\": var(--font-weight-html-blockquote), \"font-size\": var(--font-size-html-blockquote), \"line-height\": var(--line-height-html-blockquote), \"font-style\": italic, \"letter-spacing\": 0rem, \"margin-bottom\": 0rem, \"text-transform\": none, \"text-decoration\": none)"
     },
     {
       "group": "typography",
       "case": "object-valued, underline",
       "token": "font.context.link.medium",
       "file": "main.scss",
-      "expected": "(\"font-family\": var(--font-family-text), \"font-weight\": var(--font-weight-text-normal), \"font-size\": var(--font-size-text-md), \"line-height\": var(--line-height-text-md), \"font-style\": normal, \"letter-spacing\": 0em, \"margin-bottom\": 0rem, \"text-transform\": none, \"text-decoration\": underline)"
+      "expected": "(\"font-family\": var(--font-family-text), \"font-weight\": var(--font-weight-text-normal), \"font-size\": var(--font-size-text-md), \"line-height\": var(--line-height-text-md), \"font-style\": normal, \"letter-spacing\": 0rem, \"margin-bottom\": 0rem, \"text-transform\": none, \"text-decoration\": underline)"
     },
     {
       "group": "typography",
       "case": "object-valued, paragraph spacing",
       "token": "font.context.heading",
       "file": "main.scss",
-      "expected": "(\"font-family\": var(--font-family-text), \"font-weight\": var(--font-weight-text-strong), \"font-size\": var(--font-size-text-3xl), \"line-height\": var(--line-height-text-3xl), \"font-style\": normal, \"letter-spacing\": 0em, \"margin-bottom\": 1.5rem, \"text-transform\": none, \"text-decoration\": none)"
+      "expected": "(\"font-family\": var(--font-family-text), \"font-weight\": var(--font-weight-text-strong), \"font-size\": var(--font-size-text-3xl), \"line-height\": var(--line-height-text-3xl), \"font-style\": normal, \"letter-spacing\": 0rem, \"margin-bottom\": 1.5rem, \"text-transform\": none, \"text-decoration\": none)"
     },
     {
       "group": "encode",
@@ -237,35 +237,35 @@
       "case": "context role family, weight, size and line height follow their aliases",
       "token": "font.context.title.medium",
       "file": "main.scss",
-      "expected": "(\"font-family\": var(--font-family-text), \"font-weight\": var(--font-weight-text-strong), \"font-size\": var(--font-size-text-lg), \"line-height\": var(--line-height-text-lg), \"font-style\": normal, \"letter-spacing\": 0em, \"margin-bottom\": 1rem, \"text-transform\": none, \"text-decoration\": none)"
+      "expected": "(\"font-family\": var(--font-family-text), \"font-weight\": var(--font-weight-text-strong), \"font-size\": var(--font-size-text-lg), \"line-height\": var(--line-height-text-lg), \"font-style\": normal, \"letter-spacing\": 0rem, \"margin-bottom\": 1rem, \"text-transform\": none, \"text-decoration\": none)"
     },
     {
       "group": "typography",
       "case": "context role with a size of another group prints its value",
       "token": "font.context.jumbo",
       "file": "main.scss",
-      "expected": "(\"font-family\": var(--font-family-text), \"font-weight\": var(--font-weight-text-mass), \"font-size\": 6rem, \"line-height\": 1.25em, \"font-style\": normal, \"letter-spacing\": -0.03125em, \"margin-bottom\": 0rem, \"text-transform\": none, \"text-decoration\": none)"
+      "expected": "(\"font-family\": var(--font-family-text), \"font-weight\": var(--font-weight-text-mass), \"font-size\": 6rem, \"line-height\": 1.25em, \"font-style\": normal, \"letter-spacing\": -0.03125rem, \"margin-bottom\": 0rem, \"text-transform\": none, \"text-decoration\": none)"
     },
     {
       "group": "typography",
       "case": "context role with a literal line height",
       "token": "font.context.hero",
       "file": "main.scss",
-      "expected": "(\"font-family\": var(--font-family-text), \"font-weight\": var(--font-weight-text-mass), \"font-size\": 4rem, \"line-height\": 1.25em, \"font-style\": normal, \"letter-spacing\": 0em, \"margin-bottom\": 0rem, \"text-transform\": none, \"text-decoration\": none)"
+      "expected": "(\"font-family\": var(--font-family-text), \"font-weight\": var(--font-weight-text-mass), \"font-size\": 4rem, \"line-height\": 1.25em, \"font-style\": normal, \"letter-spacing\": 0rem, \"margin-bottom\": 0rem, \"text-transform\": none, \"text-decoration\": none)"
     },
     {
       "group": "typography",
       "case": "html element group family follows its alias",
       "token": "font.html.h1",
       "file": "main.scss",
-      "expected": "(\"font-family\": var(--font-family-text), \"font-weight\": var(--font-weight-html-heading), \"font-size\": var(--font-size-html-h1), \"line-height\": var(--line-height-html-h1), \"font-style\": normal, \"letter-spacing\": 0em, \"margin-bottom\": 0rem, \"text-transform\": none, \"text-decoration\": none)"
+      "expected": "(\"font-family\": var(--font-family-text), \"font-weight\": var(--font-weight-html-heading), \"font-size\": var(--font-size-html-h1), \"line-height\": var(--line-height-html-h1), \"font-style\": normal, \"letter-spacing\": 0rem, \"margin-bottom\": 0rem, \"text-transform\": none, \"text-decoration\": none)"
     },
     {
       "group": "typography",
       "case": "html code family follows its alias to the code family",
       "token": "font.html.code",
       "file": "main.scss",
-      "expected": "(\"font-family\": var(--font-family-code), \"font-weight\": var(--font-weight-html-code), \"font-size\": var(--font-size-html-code), \"line-height\": var(--line-height-html-code), \"font-style\": normal, \"letter-spacing\": 0em, \"margin-bottom\": 0rem, \"text-transform\": none, \"text-decoration\": none)"
+      "expected": "(\"font-family\": var(--font-family-code), \"font-weight\": var(--font-weight-html-code), \"font-size\": var(--font-size-html-code), \"line-height\": var(--line-height-html-code), \"font-style\": normal, \"letter-spacing\": 0rem, \"margin-bottom\": 0rem, \"text-transform\": none, \"text-decoration\": none)"
     }
   ],
   "tokens": {

@@ -4,8 +4,8 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Thu, 15 Oct 2026 08:58:29 GMT
-// Chassis - Tokens v0.7.0
+// Generated on Fri, 16 Oct 2026 08:19:08 GMT
+// Chassis - Tokens v0.8.0
 // Copyright 2026 Ozgur Gunes
 // Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
 
@@ -615,7 +615,7 @@ public enum ChassisTokensNumberMedium {
     public static let TypographyLetterSpacingHtmlList = TypographyLetterSpacingTextNormal
     public static let TypographyLetterSpacingHtmlCite = TypographyLetterSpacingTextStrong
     public static let TypographyLetterSpacingHtmlCode = TypographyLetterSpacingBaseZero
-    public static let TypographyLetterSpacingContextJumbo = SizeUnitNd05
+    public static let TypographyLetterSpacingContextJumbo = TypographyLetterSpacingTextMass
     public static let TypographyLetterSpacingContextHero = TypographyLetterSpacingTextMass
     public static let TypographyLetterSpacingContextLead = TypographyLetterSpacingTextNormal
     public static let TypographyLetterSpacingContextHeading = TypographyLetterSpacingTextStrong

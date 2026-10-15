@@ -3,8 +3,8 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Thu, 15 Oct 2026 10:03:58 GMT
-// Chassis - Tokens v0.7.0
+// Generated on Fri, 16 Oct 2026 08:19:05 GMT
+// Chassis - Tokens v0.8.0
 // Copyright 2026 Ozgur Gunes
 // Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
 
@@ -2261,7 +2261,7 @@ object ChassisTokens {
     val typographyLetterSpacingHtmlList get() = 0f
     val typographyLetterSpacingHtmlCite get() = 0f
     val typographyLetterSpacingHtmlCode get() = 0f
-    val typographyLetterSpacingContextJumbo get() = -0.5f
+    val typographyLetterSpacingContextJumbo get() = 0f
     val typographyLetterSpacingContextHero get() = 0f
     val typographyLetterSpacingContextLead get() = 0f
     val typographyLetterSpacingContextHeading get() = 0f
@@ -2369,7 +2369,7 @@ object ChassisTokens {
     val fontContextJumboFontWeight get() = FontWeight(700)
     val fontContextJumboLineHeight get() = 120.sp
     val fontContextJumboFontSize get() = 96.sp
-    val fontContextJumboLetterSpacing get() = (-0.0052).em
+    val fontContextJumboLetterSpacing get() = 0.em
     val fontContextJumboParagraphSpacing get() = 0.sp
     val fontContextJumboTextCase get() = "none"
     val fontContextJumboTextDecoration get() = "none"

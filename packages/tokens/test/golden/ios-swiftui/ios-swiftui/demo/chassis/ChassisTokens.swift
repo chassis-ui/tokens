@@ -4,8 +4,8 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Thu, 15 Oct 2026 10:04:02 GMT
-// Chassis - Tokens v0.7.0
+// Generated on Fri, 16 Oct 2026 08:19:09 GMT
+// Chassis - Tokens v0.8.0
 // Copyright 2026 Ozgur Gunes
 // Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
 
@@ -2256,7 +2256,7 @@ public enum ChassisTokens {
     public static let TypographyLetterSpacingHtmlList = CGFloat(0)
     public static let TypographyLetterSpacingHtmlCite = CGFloat(0)
     public static let TypographyLetterSpacingHtmlCode = CGFloat(0)
-    public static let TypographyLetterSpacingContextJumbo = CGFloat(-0.5)
+    public static let TypographyLetterSpacingContextJumbo = CGFloat(0)
     public static let TypographyLetterSpacingContextHero = CGFloat(0)
     public static let TypographyLetterSpacingContextLead = CGFloat(0)
     public static let TypographyLetterSpacingContextHeading = CGFloat(0)
@@ -2364,7 +2364,7 @@ public enum ChassisTokens {
     public static let FontContextJumboFontWeight = Font.Weight.bold
     public static let FontContextJumboLineHeight = CGFloat(120)
     public static let FontContextJumboFontSize = CGFloat(96)
-    public static let FontContextJumboLetterSpacing = CGFloat(-0.5)
+    public static let FontContextJumboLetterSpacing = CGFloat(0)
     public static let FontContextJumboParagraphSpacing = CGFloat(0)
     public static let FontContextJumboTextCase = "none"
     public static let FontContextJumboTextDecoration = "none"

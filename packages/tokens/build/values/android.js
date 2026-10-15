@@ -16,6 +16,7 @@ import {
   isBaseColor,
   isSizeWithMath,
   letterSpacingEm,
+  letterSpacingNumber,
   parseColor,
   percentLineHeight
 } from './shared.js'
@@ -176,7 +177,7 @@ export function encodeValue(token, context = {}) {
     return `${percentLineHeight(token, context.fontSize) ?? parseFloat(value)}sp`
   }
   if (path[1] === 'letterSpacing' || type === 'letterSpacing') {
-    return `${letterSpacingEm(token, context.fontSize) ?? parseFloat(value)}`
+    return `${letterSpacingEm(token, context.fontSize) ?? letterSpacingNumber(token)}`
   }
   if (tokenTypes.size.includes(type)) {
     return `${parseFloat(value)}dp`

@@ -12,6 +12,9 @@
  *              - token-type:    every token has a type, and every value is a token
  *              - type-conflict: no two sets of one token-set list declare the same name
  *                               with different types
+ *              - letter-spacing: no letter spacing is a percentage or in em, which
+ *                               Figma variables cannot hold; it is in pixels, with
+ *                               or without `px`, or a reference
  *
  *              Sets that no theme selects are not built, so they are not checked.
  *
@@ -43,6 +46,7 @@ const NAME_TRANSFORMS = ['name/kebab', 'name/pascal', 'name/snake', 'name/camel'
 
 const NAME_SEGMENT = /^[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*$/
 const FONT_WEIGHT_TYPES = new Set(['fontWeights', 'fontWeight'])
+const RELATIVE_SIZE = /^-?(\d+(\.\d+)?|\.\d+)(%|em)$/
 
 /**
  * Reads `$themes.json` and every token set it selects.
@@ -105,6 +109,19 @@ export function readTokens(group, path = [], result = { tokens: new Map(), stray
 
 function isReference(value) {
   return typeof value === 'string' && value.includes('{')
+}
+
+/**
+ * Checks a letter spacing value. Figma reads a number variable bound to letter spacing
+ * as pixels and cannot hold a percentage, so Tokens Studio exports no variable for one.
+ * The build converts pixels to the unit of each platform.
+ * @param {*} value - The letter spacing of a `letterSpacing` or typography token.
+ * @returns {string|undefined} What is wrong, or `undefined`.
+ */
+export function letterSpacingProblem(value) {
+  const text = String(value).trim()
+  if (!RELATIVE_SIZE.test(text)) return undefined
+  return `is "${text}", which Figma variables cannot hold; write it in pixels, such as "-0.5"`
 }
 
 /**
@@ -248,7 +265,32 @@ export function lintTokens({ themes, sets }) {
     }
   }
 
-  const ruleOrder = ['same-names', 'name-format', 'font-weight', 'token-type', 'type-conflict']
+  // letter-spacing
+  for (const [set, { tokens }] of Object.entries(tokensBySet)) {
+    for (const [name, token] of tokens) {
+      const spacing =
+        token.$type === 'letterSpacing'
+          ? token.$value
+          : token.$type === 'typography'
+            ? token.$value?.letterSpacing
+            : undefined
+      if (spacing === undefined) continue
+      const problem = letterSpacingProblem(spacing)
+      if (problem) {
+        const part = token.$type === 'typography' ? 'has a letter spacing that ' : ''
+        report('letter-spacing', set, name, `${part}${problem}`)
+      }
+    }
+  }
+
+  const ruleOrder = [
+    'same-names',
+    'name-format',
+    'font-weight',
+    'token-type',
+    'type-conflict',
+    'letter-spacing'
+  ]
   const setOrder = Object.keys(sets)
   return errors.sort(
     (a, b) =>

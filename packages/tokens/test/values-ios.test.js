@@ -135,9 +135,35 @@ describe('iOS typography parts', () => {
     )
   })
 
-  test('letter spacing does not use the font size', () => {
+  test('a letter spacing part needs the font size', () => {
+    const { token } = parts.find((c) => c.token.name === 'FontContextJumboLetterSpacing')
+    expect(() => encode(token)).toThrow(
+      'No font size for the letter spacing of font.context.jumbo.letterSpacing'
+    )
+  })
+
+  test('a percentage letter spacing is that percentage of the font size, in points', () => {
     const { token, context } = parts.find((c) => c.token.name === 'FontContextJumboLetterSpacing')
-    expect(encode(token)).toBe(encode(token, context))
+    expect(encode({ ...token, $value: '-3%' }, context)).toBe('CGFloat(-2.88)')
+    expect(encode({ ...token, $value: '-0.03em' }, context)).toBe('CGFloat(-2.88)')
+    expect(encode({ ...token, $value: '-3%' }, { fontSize: '17' })).toBe('CGFloat(-0.51)')
+  })
+
+  test('a letter spacing in px is in points already', () => {
+    const { token, context } = parts.find((c) => c.token.name === 'FontContextJumboLetterSpacing')
+    expect(encode(token, context)).toBe(encode(token, { fontSize: '1000' }))
+  })
+
+  test('the standalone letter spacing scale is a fraction of the font size', () => {
+    const scale = {
+      name: 'TypographyLetterSpacingDisplayMass',
+      path: ['typography', 'letterSpacing', 'display', 'mass'],
+      $type: 'number',
+      $value: '-3%'
+    }
+    expect(encode(scale)).toBe('CGFloat(-0.03)')
+    expect(encode({ ...scale, $value: '0%' })).toBe('CGFloat(0)')
+    expect(encode({ ...scale, $value: '-0.5px' })).toBe('CGFloat(-0.5)')
   })
 
   test('the reference check compares encoded values with their font sizes', () => {

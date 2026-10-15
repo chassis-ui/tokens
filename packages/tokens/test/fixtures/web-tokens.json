@@ -24,14 +24,14 @@
       "fontSize": "2.375rem"
     },
     {
-      "case": "letter spacing token in em",
+      "case": "letter spacing token in the size unit",
       "token": {
         "name": "cx-typography-letter-spacing-base-zero",
         "path": ["typography", "letterSpacing", "base", "zero"],
         "$type": "number",
         "$value": "0rem"
       },
-      "expected": "0em"
+      "expected": "0rem"
     },
     {
       "case": "asset is quoted",
@@ -193,7 +193,7 @@
         "textCase": "none",
         "textDecoration": "none"
       },
-      "expected": "(\"font-family\": var(--font-family-text), \"font-weight\": var(--font-weight-text-mass), \"font-size\": 6rem, \"line-height\": 1.25em, \"font-style\": normal, \"letter-spacing\": -0.0313em, \"margin-bottom\": 0rem, \"text-transform\": none, \"text-decoration\": none)"
+      "expected": "(\"font-family\": var(--font-family-text), \"font-weight\": var(--font-weight-text-mass), \"font-size\": 6rem, \"line-height\": 1.25em, \"font-style\": normal, \"letter-spacing\": -0.0313rem, \"margin-bottom\": 0rem, \"text-transform\": none, \"text-decoration\": none)"
     },
     {
       "case": "reference-valued component typography",
@@ -209,7 +209,7 @@
         "textCase": "none",
         "textDecoration": "none"
       },
-      "expected": "(\"font-family\": var(--font-family-text), \"font-weight\": var(--font-weight-strong), \"font-size\": var(--font-size-md), \"line-height\": var(--line-height-md), \"font-style\": normal, \"letter-spacing\": 0em, \"margin-bottom\": 0rem, \"text-transform\": none, \"text-decoration\": none)"
+      "expected": "(\"font-family\": var(--font-family-text), \"font-weight\": var(--font-weight-strong), \"font-size\": var(--font-size-md), \"line-height\": var(--line-height-md), \"font-style\": normal, \"letter-spacing\": 0rem, \"margin-bottom\": 0rem, \"text-transform\": none, \"text-decoration\": none)"
     }
   ],
   "percentToEm": [

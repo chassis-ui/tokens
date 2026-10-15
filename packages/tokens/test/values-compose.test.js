@@ -62,6 +62,20 @@ describe('Compose encode', () => {
     expect(encode(spacing, context)).toBe('(-0.0052).em')
   })
 
+  test('prints a percentage letter spacing in em, and the scale as a Float', () => {
+    const { token: spacing, context } = caseNamed(
+      'float: a letterSpacing sub-token is in em of the font size'
+    )
+    expect(encode({ ...spacing, $value: '-3%' }, context)).toBe('(-0.03).em')
+    const scale = {
+      ...spacing,
+      path: ['typography', 'letterSpacing', 'display', 'mass'],
+      $type: 'number',
+      $value: '-3%'
+    }
+    expect(encode(scale)).toBe('-0.03f')
+  })
+
   test('prints a float without a font size as a Float', () => {
     const { token } = caseNamed('float: opacity as is')
     expect(encode(token)).toMatch(/^[\d.]+f$/)
