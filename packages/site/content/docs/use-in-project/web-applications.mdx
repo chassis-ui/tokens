@@ -237,7 +237,7 @@ Load the number files with their own namespaces and use them in media queries. T
 A typography token is a Sass map whose keys are CSS property names: `font-family`, `font-weight`, `font-size`, `line-height`, `font-style`, `letter-spacing`, `margin-bottom`, `text-transform` and `text-decoration`. The build writes this map to `main.scss`:
 
 ```scss
-$cx-font-context-lead: ("font-family": var(--font-family-context-lead), "font-weight": var(--font-weight-context-lead), "font-size": var(--font-size-context-lead), "line-height": var(--line-height-context-lead), "font-style": normal, "letter-spacing": 0em, "margin-bottom": 0rem, "text-transform": none, "text-decoration": none) !default;
+$cx-font-context-lead: ("font-family": var(--font-family-text), "font-weight": var(--font-weight-text-normal), "font-size": var(--font-size-text-xl), "line-height": var(--line-height-text-xl), "font-style": normal, "letter-spacing": 0em, "margin-bottom": 0rem, "text-transform": none, "text-decoration": none) !default;
 ```
 
 A map is not a CSS value. Write all of its properties with `@each`, or read one with `map.get`:
@@ -261,7 +261,7 @@ A map is not a CSS value. Write all of its properties with `@each`, or read one 
 }
 ```
 
-In the default output, the font family and the font weight are custom properties of Chassis CSS, and so are the font size and the line height when the token references a step of the typography scale. In the presets every part is a resolved value, and the list of font families is one quoted string. A line height is in `em` of the font size of the same step, and a letter spacing is in `em` too: its design pixels divided by 16.
+In the default output, the font family and the font weight are custom properties of Chassis CSS, and so are the font size and the line height when the token references a step of the typography scale. A context or HTML font names the family, weight and step that its role points to in your brand, so a brand that sets its headings in the display family gets `var(--font-family-display)` in their maps. In the presets every part is a resolved value, and the list of font families is one quoted string. A line height is in `em` of the font size of the same step, and a letter spacing is in `em` too: its design pixels divided by 16.
 
 ## Shadows
 

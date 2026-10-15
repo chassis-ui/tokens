@@ -460,7 +460,7 @@ $cx-space-context-medium: 1rem !default;
 $cx-color-accordion-item-fg-color: var(--default-fg-main) !default;
 $cx-typography-line-height-text-medium: 1.5em !default;
 $cx-border-radius-accordion-main: var(--border-radius-md) !default;
-$cx-font-context-lead: ("font-family": var(--font-family-context-lead), "font-weight": var(--font-weight-context-lead), "font-size": var(--font-size-context-lead), "line-height": var(--line-height-context-lead), "font-style": normal, "letter-spacing": 0em, "margin-bottom": 0rem, "text-transform": none, "text-decoration": none) !default;
+$cx-font-context-lead: ("font-family": var(--font-family-text), "font-weight": var(--font-weight-text-normal), "font-size": var(--font-size-text-xl), "line-height": var(--line-height-text-xl), "font-style": normal, "letter-spacing": 0em, "margin-bottom": 0rem, "text-transform": none, "text-decoration": none) !default;
 ```
 
 A token prints `var(--<name>)` when its value is a single reference to a token that Chassis CSS has a custom property for: `color.context.*`, `color.primitive.*`, `space.context.*`, `opacity.context.*`, `opacity.level.*`, `shadow.context.*`, `borderRadius.context.*`, or `borderWidth.context.*`. The name follows the referenced path, with the scale steps shortened as in Chassis CSS: `medium` becomes `md`, and `xlarge` becomes `xl`. Every other token prints its value:

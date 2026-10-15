@@ -11,6 +11,8 @@ import { readFileSync } from 'node:fs'
 import { describe, expect, test } from 'vitest'
 import { referencingGroups as cssVarGroups } from '../build/css-var-policy.js'
 import {
+  aliasPath,
+  followAliases,
   followedGroups,
   isReference,
   printsReference,
@@ -136,3 +138,60 @@ describe('referenceTarget', () => {
 function casesOf(group) {
   return fixture.cases.filter((item) => item.group === group)
 }
+
+describe('followAliases', () => {
+  const roles = ['typography.fontFamily.context', 'typography.fontWeight.context']
+  const path = (key) => key.split('.')
+
+  test('aliasPath reads a single reference, or the path a font weight keeps', () => {
+    expect(aliasPath(fixture.tokens['typography.fontFamily.context.hero'])).toEqual(
+      path('typography.fontFamily.text')
+    )
+    expect(aliasPath(fixture.tokens['typography.fontWeight.context.title.weight'])).toEqual(
+      path('typography.fontWeight.text.strong')
+    )
+    expect(aliasPath(fixture.tokens['typography.fontFamily.text'])).toBeUndefined()
+  })
+
+  test('follows a family out of the groups', () => {
+    expect(followAliases(path('typography.fontFamily.context.hero'), references, roles)).toEqual(
+      path('typography.fontFamily.text')
+    )
+  })
+
+  test('follows a font weight by its path before the weight and style split', () => {
+    expect(followAliases(path('typography.fontWeight.context.title'), references, roles)).toEqual(
+      path('typography.fontWeight.text.strong')
+    )
+  })
+
+  test('returns a path outside the groups as it is', () => {
+    const text = path('typography.fontFamily.text')
+    expect(followAliases(text, references, roles)).toEqual(text)
+  })
+
+  test('stops on a token of the groups that holds a value', () => {
+    const literal = {
+      token: (value) =>
+        value === '{typography.fontFamily.context.hero}'
+          ? {
+              ...fixture.tokens['typography.fontFamily.context.hero'],
+              original: { $value: 'Inter' }
+            }
+          : references.token(value),
+      value: references.value
+    }
+    const hero = path('typography.fontFamily.context.hero')
+    expect(followAliases(hero, literal, roles)).toEqual(hero)
+  })
+
+  test('throws on a cycle', () => {
+    const cycle = {
+      token: () => ({ original: { $value: '{typography.fontFamily.context.hero}' } }),
+      value: references.value
+    }
+    expect(() => followAliases(path('typography.fontFamily.context.hero'), cycle, roles)).toThrow(
+      'Circular reference: typography.fontFamily.context.hero → typography.fontFamily.context.hero'
+    )
+  })
+})

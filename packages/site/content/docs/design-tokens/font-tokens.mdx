@@ -393,10 +393,10 @@ The values in the examples of this section are those of the `chassis` brand in t
 The build writes the map of the web to `main.scss`, on one line. The keys are CSS properties: the paragraph spacing is `margin-bottom`, and the text case is `text-transform`. Every map has the keys `text-transform` and `text-decoration`, and a font token that names no text case or text decoration has `none` for it, on every platform.
 
 ```scss
-$cx-font-context-jumbo: ("font-family": var(--font-family-context-jumbo), "font-weight": var(--font-weight-context-jumbo), "font-size": var(--font-size-context-jumbo), "line-height": 1.25em, "font-style": normal, "letter-spacing": -0.03125em, "margin-bottom": 0rem, "text-transform": none, "text-decoration": none) !default;
+$cx-font-context-jumbo: ("font-family": var(--font-family-text), "font-weight": var(--font-weight-text-mass), "font-size": 6rem, "line-height": 1.25em, "font-style": normal, "letter-spacing": -0.03125em, "margin-bottom": 0rem, "text-transform": none, "text-decoration": none) !default;
 ```
 
-The `web` platform names the custom properties of Chassis CSS for the family, the weight, the font size, and the line height that a font token references, so its maps work with Chassis CSS only. The presets `web-scss`, `web-px`, and `web-vw` print the values; see the [Style Dictionary]([[docsref:/getting-started/style-dictionary]]) page.
+The `web` platform names the custom properties of Chassis CSS for the family, the weight, the font size, and the line height that a font token references, so its maps work with Chassis CSS only. A context or HTML font token references role tokens, which Chassis CSS has no custom property for. The map names the token that each role points to in the brand instead: `var(--font-family-text)` in the example, or `var(--font-family-display)` in a brand that sets the role in its display family. A role that holds a value of its own prints the value. The presets `web-scss`, `web-px`, and `web-vw` print the values; see the [Style Dictionary]([[docsref:/getting-started/style-dictionary]]) page.
 
 iOS and Android name each constant or resource after the token and the property. The format of a property is the format of its [typography token]([[docsref:/design-tokens/typography-tokens]]), except for the line height and the letter spacing.
 

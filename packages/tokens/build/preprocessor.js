@@ -112,7 +112,9 @@ export function splitWeightStyle(fontWeight) {
 /**
  * Adds the font style to typography tokens and splits every font weight token into a
  * `weight` and a `style` token. '@tokens-studio/sd-transforms' splits only the font
- * weight tokens that name a style.
+ * weight tokens that name a style. A font weight token that only references another one
+ * keeps the path of that weight, before the split, as `aliasPath`: the split replaces
+ * the reference with the resolved weight.
  * @param {Object} dictionary - The dictionary with aligned types.
  */
 function addFontStyles(dictionary) {
@@ -127,6 +129,8 @@ function addFontStyles(dictionary) {
       token.$value.fontStyle = style
     } else if (token.$type === 'fontWeight') {
       const { weight, style } = resolve(token.$value)
+      // The split resolves the weight, so the reference of an alias is kept here
+      if (isReference(token.$value)) extend(token, { aliasPath: referencePath(token.$value) })
       group[key] = {
         weight: { ...token, $value: weight },
         style: { ...token, $type: 'fontStyle', $value: style }

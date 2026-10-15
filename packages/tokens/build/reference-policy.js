@@ -177,6 +177,59 @@ export function referenceTarget(token, references) {
 }
 
 /**
+ * Returns the path that a token aliases: the reference of a token whose value is a
+ * single reference and nothing else. A font weight token keeps it as `aliasPath`, since
+ * the preprocessor replaces its reference with the resolved weight.
+ *
+ * @param {Object} token - A resolved token with `original`.
+ * @returns {string[]|undefined} e.g. `['typography', 'fontWeight', 'text', 'strong']`
+ */
+export function aliasPath(token) {
+  const stored = token.original?.$extensions?.['chassis']?.aliasPath
+  if (stored) return stored
+  return isReference(token.original?.$value) ? referencePath(token.original.$value) : undefined
+}
+
+/**
+ * Follows a reference through the tokens of `groups` that alias another token, to the
+ * first token outside `groups`. A font weight is looked up by its path before the weight
+ * and style split.
+ *
+ * @param {string[]} path - The referenced path, e.g.
+ *   `['typography', 'fontFamily', 'context', 'hero']`.
+ * @param {Object} references - Token lookups.
+ * @param {string[]} groups - Starts of the paths to follow, e.g.
+ *   `typography.fontFamily.context`.
+ * @returns {string[]} The path the chain ends on; a path in `groups` when that token
+ *   holds a value or is not in the file's token set.
+ * @throws {Error} When the references form a cycle.
+ */
+export function followAliases(path, references, groups) {
+  const seen = []
+  let current = path
+
+  while (groups.some((start) => startsWith(current, start))) {
+    const key = current.join('.')
+    if (seen.includes(key)) {
+      throw new Error(`Circular reference: ${[...seen, key].join(' → ')}`)
+    }
+    seen.push(key)
+
+    let token
+    try {
+      token = references.token(`{${key}${current[1] === 'fontWeight' ? '.weight' : ''}}`)
+    } catch {
+      // The token is not in this file's token set.
+      return current
+    }
+    const next = token && aliasPath(token)
+    if (!next) return current
+    current = next
+  }
+  return current
+}
+
+/**
  * Resolves the typography parts that print as values.
  *
  * @param {Object} original - The original value of an object-valued typography token.

@@ -40,6 +40,25 @@ describe('Chassis extensions on real tokens', () => {
     ])
   })
 
+  test('stores the path that a font weight alias references on its weight and style', () => {
+    const path = ['typography', 'fontWeight', 'text', 'normal']
+    expect(find('typography.fontWeight.html.body.weight').$extensions.chassis.aliasPath).toEqual(
+      path
+    )
+    expect(find('typography.fontWeight.html.body.style').$extensions.chassis.aliasPath).toEqual(
+      path
+    )
+  })
+
+  test('stores no alias path on a font weight that holds a value', () => {
+    expect(find('typography.fontWeight.text.normal.weight').$extensions?.chassis?.aliasPath).toBe(
+      undefined
+    )
+    expect(
+      find('typography.fontWeight.html.blockquote.weight').$extensions?.chassis?.aliasPath
+    ).toBe(undefined)
+  })
+
   test('leaves no reference in the extensions', () => {
     // Style Dictionary 5 resolves references in $extensions and rejects references to
     // groups, which the font weight paths are after the weight and style split.
