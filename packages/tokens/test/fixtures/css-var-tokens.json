@@ -195,7 +195,7 @@
       "case": "object-valued, italic",
       "token": "font.html.blockquote",
       "file": "main.scss",
-      "expected": "(\"font-family\": var(--font-family-html), \"font-weight\": var(--font-weight-html-blockquote), \"font-size\": var(--font-size-html-blockquote), \"line-height\": var(--line-height-html-blockquote), \"font-style\": italic, \"letter-spacing\": 0em, \"margin-bottom\": 0rem, \"text-transform\": none, \"text-decoration\": none)"
+      "expected": "(\"font-family\": var(--font-family-html-blockquote), \"font-weight\": var(--font-weight-html-blockquote), \"font-size\": var(--font-size-html-blockquote), \"line-height\": var(--line-height-html-blockquote), \"font-style\": italic, \"letter-spacing\": 0em, \"margin-bottom\": 0rem, \"text-transform\": none, \"text-decoration\": none)"
     },
     {
       "group": "typography",
@@ -931,7 +931,7 @@
       },
       "original": {
         "$value": {
-          "fontFamily": "{typography.fontFamily.html}",
+          "fontFamily": "{typography.fontFamily.html.blockquote}",
           "fontWeight": "Light",
           "lineHeight": "{typography.lineHeight.html.blockquote}",
           "fontSize": "{typography.fontSize.html.blockquote}",

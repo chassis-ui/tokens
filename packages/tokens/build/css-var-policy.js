@@ -99,9 +99,12 @@ export function customProperty(token, references) {
 
 /**
  * Custom property names of the typography parts of an object-valued typography token.
+ * A family is named by every segment after `fontFamily`: `typography.fontFamily.text`
+ * prints `--font-family-text`, `typography.fontFamily.context.hero`
+ * `--font-family-context-hero`.
  */
 const objectNames = {
-  fontFamily: (path) => `var(--font-family-${path[2]})`,
+  fontFamily: (path) => `var(--font-family-${path.slice(2).join('-')})`,
   fontWeight: (path) => `var(--font-weight-${path[2]}-${path[3]})`,
   fontSize: (path) => `var(--font-size-${path[2]}-${abbreviateScale(path[3])})`,
   lineHeight: (path) => `var(--line-height-${path[2]}-${abbreviateScale(path[3])})`

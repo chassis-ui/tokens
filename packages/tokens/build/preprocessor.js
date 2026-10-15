@@ -2,9 +2,10 @@
  * @file preprocessor.js
  * @description Prepares the token dictionary. Types are aligned by
  *              '@tokens-studio/sd-transforms'. On top of that Chassis types letter
- *              spacing as a number, splits every font weight into weight and style,
- *              stores the font weight path of typography tokens, and numbers the tokens
- *              in source order.
+ *              spacing as a number, gives typography tokens the text case and text
+ *              decoration `none` where they name none, splits every font weight into
+ *              weight and style, stores the font weight path of typography tokens, and
+ *              numbers the tokens in source order.
  *
  * @copyright Copyright (c) 2025 Ozgur Gunes
  * @license MIT
@@ -60,6 +61,34 @@ function addTypes(dictionary) {
     if (token.$type === 'typography' && isReference(token.$value.fontWeight)) {
       extend(token, { fontWeightPath: referencePath(token.$value.fontWeight) })
     }
+  })
+}
+
+/**
+ * Typography properties that a typography token may leave out, with the value it has
+ * then. The source names them only where they are not `none`; the platforms print them
+ * for every typography token.
+ */
+export const typographyDefaults = { textCase: 'none', textDecoration: 'none' }
+
+/**
+ * Gives every object-valued typography token the properties of `typographyDefaults` that
+ * it leaves out. The properties go last, in the order of `typographyDefaults`, so the
+ * expanded parts keep their order whether the source names a property or not.
+ * @param {Object} dictionary - The dictionary with aligned types.
+ */
+function addTypographyDefaults(dictionary) {
+  eachToken(dictionary, (token) => {
+    if (token.$type !== 'typography' || typeof token.$value !== 'object') return
+    const value = { ...token.$value }
+    const defaults = Object.fromEntries(
+      Object.entries(typographyDefaults).map(([key, fallback]) => {
+        const named = value[key]
+        delete value[key]
+        return [key, named ?? fallback]
+      })
+    )
+    token.$value = { ...value, ...defaults }
   })
 }
 
@@ -125,6 +154,7 @@ function addSourceOrder(dictionary) {
 export default function (dictionary) {
   const dict = alignTypes(dictionary)
   addTypes(dict)
+  addTypographyDefaults(dict)
   addFontStyles(dict)
   addSourceOrder(dict)
   return dict

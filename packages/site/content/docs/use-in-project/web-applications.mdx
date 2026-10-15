@@ -237,7 +237,7 @@ Load the number files with their own namespaces and use them in media queries. T
 A typography token is a Sass map whose keys are CSS property names: `font-family`, `font-weight`, `font-size`, `line-height`, `font-style`, `letter-spacing`, `margin-bottom`, `text-transform` and `text-decoration`. The build writes this map to `main.scss`:
 
 ```scss
-$cx-font-context-lead: ("font-family": var(--font-family-text), "font-weight": var(--font-weight-text-normal), "font-size": var(--font-size-text-xl), "line-height": var(--line-height-text-xl), "font-style": normal, "letter-spacing": 0em, "margin-bottom": 0rem, "text-transform": none, "text-decoration": none) !default;
+$cx-font-context-lead: ("font-family": var(--font-family-context-lead), "font-weight": var(--font-weight-context-lead), "font-size": var(--font-size-context-lead), "line-height": var(--line-height-context-lead), "font-style": normal, "letter-spacing": 0em, "margin-bottom": 0rem, "text-transform": none, "text-decoration": none) !default;
 ```
 
 A map is not a CSS value. Write all of its properties with `@each`, or read one with `map.get`:

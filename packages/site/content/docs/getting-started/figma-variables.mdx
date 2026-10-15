@@ -26,9 +26,9 @@ The token system is built on three core groups, `brand`, `theme`, and `app`, and
 <CxTable>
 | Collection | Variables | Styles |
 | --- | --- | --- |
-| `brand` | `color.base.*`, `borderRadius.base.*`, `typography.fontFamily.*`, `typography.fontWeight.*`, `typography.fontSize.*`, `typography.lineHeight.*` | None |
+| `brand` | `color.base.*`, `borderRadius.base.*`, `typography.fontFamily.*`, `typography.fontWeight.*`, `typography.fontSize.*`, `typography.lineHeight.*`, `typography.letterSpacing.*`, `typography.paragraphSpacing.*` | None |
 | `theme` | `color.primitive.*`, `color.context.*`, `color.shadow.*`, `color.utility.*` | `shadow.elevation.*`, `shadow.glow.*`, `bg-blur.*`, `gradient.primitive.*` |
-| `app` | Component colors such as `color.button.*`, `size.*`, `space.*`, `borderRadius.context.*` and the component radii, `borderWidth.*`, `opacity.*`, `grid.*`, `typography.letterSpacing.*`, `typography.paragraphSpacing.*` | `font.*`, `shadow.context.*` and the component shadows such as `shadow.button.*` |
+| `app` | Component colors such as `color.button.*`, `size.*`, `space.*`, `borderRadius.context.*` and the component radii, `borderWidth.*`, `opacity.*`, `grid.*` | `font.*`, `shadow.context.*` and the component shadows such as `shadow.button.*` |
 | `screen` | `size.website.*`, `space.website.*`, `typography.fontSize.website.*`, `figma.website.*` | `font.website.*` |
 </CxTable>
 
@@ -83,7 +83,7 @@ The type of a token decides what it becomes in Figma. A token that holds one col
 
 A style refers to Variables for the values that are Variables: the text style of `font.button.medium` takes its font family from `typography.fontFamily.text`, a Variable of the `brand` Collection, so it follows the Mode of that Collection.
 
-`dimension.base.*` and `modify.*` have no Variable, because every option marks their token set, `base/metric-source`, as `source`. `typography.textCase.*`, `typography.textDecoration.*`, and `icon.*` have none either.
+`dimension.base.*` and `modify.*` have no Variable, because every option marks their token set, `base/metric-source`, as `source`. `icon.*` has none either.
 
 ## Export to Figma
 

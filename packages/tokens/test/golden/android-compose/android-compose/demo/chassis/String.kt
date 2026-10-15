@@ -3,7 +3,7 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Tue, 13 Oct 2026 10:08:00 GMT
+// Generated on Thu, 15 Oct 2026 10:03:58 GMT
 // Chassis - Tokens v0.7.0
 // Copyright 2026 Ozgur Gunes
 // Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
@@ -20,7 +20,24 @@ import androidx.compose.ui.unit.sp
 object ChassisTokensString {
     val typographyFontFamilyText get() = "Inter"
     val typographyFontFamilyDisplay get() = "Archivo Narrow"
-    val typographyFontFamilyHtml get() = "Inter"
+    val typographyFontFamilyHtmlHeading get() = "Inter"
+    val typographyFontFamilyHtmlBody get() = "Inter"
+    val typographyFontFamilyHtmlParagraph get() = "Inter"
+    val typographyFontFamilyHtmlBlockquote get() = "Inter"
+    val typographyFontFamilyHtmlList get() = "Inter"
+    val typographyFontFamilyHtmlCite get() = "Inter"
+    val typographyFontFamilyHtmlCode get() = "Fira Code"
+    val typographyFontFamilyContextJumbo get() = "Inter"
+    val typographyFontFamilyContextHero get() = "Inter"
+    val typographyFontFamilyContextLead get() = "Inter"
+    val typographyFontFamilyContextHeading get() = "Inter"
+    val typographyFontFamilyContextTitle get() = "Inter"
+    val typographyFontFamilyContextBody get() = "Inter"
+    val typographyFontFamilyContextHighlight get() = "Inter"
+    val typographyFontFamilyContextLabel get() = "Inter"
+    val typographyFontFamilyContextLink get() = "Inter"
+    val typographyFontFamilyContextExpired get() = "Inter"
+    val typographyFontFamilyContextCode get() = "Fira Code"
     val typographyFontFamilyCode get() = "Fira Code"
     val typographyFontFamilyIcon get() = "Chassis-Icons"
     val typographyFontWeightTextNormalWeight get() = FontWeight(400)
@@ -59,13 +76,28 @@ object ChassisTokensString {
     val typographyFontWeightHtmlListStyle get() = "normal"
     val typographyFontWeightHtmlBoldWeight get() = FontWeight(700)
     val typographyFontWeightHtmlBoldStyle get() = "normal"
-    val typographyTextCaseBaseNone get() = "none"
-    val typographyTextCaseBaseLowercase get() = "lowercase"
-    val typographyTextCaseBaseUppercase get() = "uppercase"
-    val typographyTextCaseBaseCapitalize get() = "capitalize"
-    val typographyTextDecorationBaseNone get() = "none"
-    val typographyTextDecorationBaseUnderline get() = "underline"
-    val typographyTextDecorationBaseLineThrough get() = "line-through"
+    val typographyFontWeightContextJumboWeight get() = FontWeight(700)
+    val typographyFontWeightContextJumboStyle get() = "normal"
+    val typographyFontWeightContextHeroWeight get() = FontWeight(700)
+    val typographyFontWeightContextHeroStyle get() = "normal"
+    val typographyFontWeightContextLeadWeight get() = FontWeight(400)
+    val typographyFontWeightContextLeadStyle get() = "normal"
+    val typographyFontWeightContextHeadingWeight get() = FontWeight(600)
+    val typographyFontWeightContextHeadingStyle get() = "normal"
+    val typographyFontWeightContextTitleWeight get() = FontWeight(600)
+    val typographyFontWeightContextTitleStyle get() = "normal"
+    val typographyFontWeightContextBodyWeight get() = FontWeight(400)
+    val typographyFontWeightContextBodyStyle get() = "normal"
+    val typographyFontWeightContextHighlightWeight get() = FontWeight(400)
+    val typographyFontWeightContextHighlightStyle get() = "normal"
+    val typographyFontWeightContextLabelWeight get() = FontWeight(600)
+    val typographyFontWeightContextLabelStyle get() = "normal"
+    val typographyFontWeightContextLinkWeight get() = FontWeight(400)
+    val typographyFontWeightContextLinkStyle get() = "normal"
+    val typographyFontWeightContextExpiredWeight get() = FontWeight(600)
+    val typographyFontWeightContextExpiredStyle get() = "normal"
+    val typographyFontWeightContextCodeWeight get() = FontWeight(400)
+    val typographyFontWeightContextCodeStyle get() = "normal"
     val fontContextJumboFontFamily get() = "Inter"
     val fontContextJumboFontWeight get() = FontWeight(700)
     val fontContextJumboTextCase get() = "none"

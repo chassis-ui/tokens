@@ -17,7 +17,7 @@ build.js            permutateThemes → one token-set list per brand, app, theme
                                       with one platform per target platform of the app
         │
         ▼ for each instance
-preprocessor.js     align types, split font weights, number tokens in source order
+preprocessor.js     align types, default text case and decoration, split font weights, number tokens in source order
 transforms.js       names, math, color modifiers, web units and shadows (before resolution)
   (Style Dictionary resolves references)
 filters.js          which tokens go into which file
@@ -63,9 +63,10 @@ Style Dictionary 5 keeps tokens in a map and appends the parts of an expanded ty
 
 ### Every font weight is split into weight and style
 
-`alignTypes` from sd-transforms aligns the Tokens Studio types, turns `text` into `content` and shadow `x` and `y` into `offsetX` and `offsetY`. The preprocessor adds three things on top:
+`alignTypes` from sd-transforms aligns the Tokens Studio types, turns `text` into `content` and shadow `x` and `y` into `offsetX` and `offsetY`. The preprocessor adds four things on top:
 
 - Letter spacing tokens are typed `number`, not `dimension`, so size transforms leave them alone.
+- A typography token that names no `textCase` or `textDecoration` gets `none` for it, before Style Dictionary expands the composites. The source names them only where they are not `none`, and every platform still prints both parts of every typography token, in the same order.
 - Every `fontWeight` token becomes a group of two tokens, `<name>.weight` and `<name>.style` (`Light Italic` becomes `Light` and `italic`; a weight without a style gets `normal`). sd-transforms splits only the weights that name a style, so the output would otherwise depend on the spelling of each weight.
 - A typography token that references its font weight stores the path of that weight as segments (`fontWeightPath`), not as a reference: after the split the weight is a group, and Style Dictionary 5 fails the build on a reference to a group.
 
@@ -168,7 +169,7 @@ SCSS with the prefix `cx`: the header line `$prefix: cx- !default;`, then one `$
 - **Shadows**: `x y blur spread color`, with ` inset` for inner shadows, layers joined with `, `, sizes in rem. `main.scss` has the shadows with the colors of the first theme, and `color-<theme>.scss` every shadow with the colors of its theme.
 - **Font weights**: numbers (`400`). Font families: the whole list, as written.
 - **Assets**: in double quotes.
-- **Typography**: a Sass map with the keys `font-family`, `font-weight`, `font-size`, `line-height`, `font-style`, `letter-spacing`, `margin-bottom`, `text-transform`, `text-decoration`, in this order.
+- **Typography**: a Sass map with the keys `font-family`, `font-weight`, `font-size`, `line-height`, `font-style`, `letter-spacing`, `margin-bottom`, `text-transform`, `text-decoration`, in this order. A token that names no text case or text decoration has `none` for it (see the preprocessor above).
 
 #### `var(--…)` references of the Chassis CSS format
 
@@ -185,7 +186,7 @@ The `web` platform prints the custom properties that Chassis CSS generates, so i
 | `borderRadius.base.<component>.X`, `borderWidth.base.<component>.X` | follows one more reference; if that is in the same group and under `context`, its last segment names it |
 | anything else                                                       | the resolved value                                                                                      |
 
-Typography maps name the font family, weight, size and line height: `var(--font-family-<family>)`, `var(--font-weight-<family>-<weight>)`, `var(--font-size-<group>-<short size>)` and `var(--line-height-<group>-<short size>)` for a typography value, and `var(--font-family-text)`, `var(--font-weight-strong)`, `var(--font-size-md)`, `var(--line-height-md)` for a reference to another typography token, from its path. A literal line height in percent prints in `em` (`125%` is `1.25em`).
+Typography maps name the font family, weight, size and line height: `var(--font-family-<family>)` (every segment after `fontFamily`, so `typography.fontFamily.context.hero` is `--font-family-context-hero`), `var(--font-weight-<group>-<name>)` (`typography.fontWeight.text.strong` is `--font-weight-text-strong`, `typography.fontWeight.context.title` is `--font-weight-context-title`), `var(--font-size-<group>-<short size>)` and `var(--line-height-<group>-<short size>)` for a typography value, and `var(--font-family-text)`, `var(--font-weight-strong)`, `var(--font-size-md)`, `var(--line-height-md)` for a reference to another typography token, from its path. A literal line height in percent prints in `em` (`125%` is `1.25em`).
 
 The short scale names are `4xs`, `3xs`, `2xs`, `xs`, `sm`, `md`, `lg`, `xl` and `2xl` to `6xl` for `4xsmall` to `6xlarge`; other names stay as they are.
 

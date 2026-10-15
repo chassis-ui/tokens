@@ -8,7 +8,7 @@ toc: true
 
 ## Introduction
 
-Font tokens are composite tokens: each holds a whole text style, where a [typography token]([[docsref:/design-tokens/typography-tokens]]) holds one property. A font token has the type `typography`, and its value is an object with a font family, a font weight, a font size, a line height, a letter spacing, a paragraph spacing, a text case, and a text decoration.
+Font tokens are composite tokens: each holds a whole text style, where a [typography token]([[docsref:/design-tokens/typography-tokens]]) holds one property. A font token has the type `typography`, and its value is an object with a font family, a font weight, a font size, a line height, a letter spacing, and a paragraph spacing. A font token has no text case or text decoration unless it names one as a keyword, and only the link and expired roles of `font.context.*` name theirs.
 
 Each property references a typography token, as `font.text.medium.strong` shows in `source/base/app-base.json`:
 
@@ -24,10 +24,8 @@ Each property references a typography token, as `font.text.medium.strong` shows 
             "fontWeight": "{typography.fontWeight.text.strong}",
             "lineHeight": "{typography.lineHeight.text.medium}",
             "fontSize": "{typography.fontSize.text.medium}",
-            "letterSpacing": "{typography.letterSpacing.base.zero}",
-            "paragraphSpacing": "{typography.paragraphSpacing.base.zero}",
-            "textCase": "{typography.textCase.base.none}",
-            "textDecoration": "{typography.textDecoration.base.none}"
+            "letterSpacing": "{typography.letterSpacing.text.strong}",
+            "paragraphSpacing": "{typography.paragraphSpacing.base.zero}"
           }
         }
       }
@@ -38,7 +36,7 @@ Each property references a typography token, as `font.text.medium.strong` shows 
 
 The build adds one more property, the font style, which it takes from the font weight: `normal`, or the style that the weight names, such as `italic`.
 
-Font tokens hold references, so their values follow the typography tokens. A brand changes the text styles by overriding the font families and the font weights, and no font token has to change. Where the token system has the optional `screen` group, `font.website.*` differs per screen, because its font sizes do.
+Font tokens hold references, so their values follow the typography tokens. A brand changes the text styles by overriding the font families and the font weights, or the typography tokens of one HTML element or one context role, and no font token has to change. Where the token system has the optional `screen` group, `font.website.*` differs per screen, because its font sizes do.
 
 ### Token levels
 
@@ -65,68 +63,69 @@ Base tokens are named `font.<family>.<size>.<weight>`. Each combines the family,
 | `font.code.<size>.<weight>` | `large`, `medium`, `small` | `normal`, `strong` |
 </CxTable>
 
-The other properties are the same in every base token: `{typography.letterSpacing.base.zero}`, `{typography.paragraphSpacing.base.zero}`, `{typography.textCase.base.none}`, and `{typography.textDecoration.base.none}`.
+A base token of the `text` or `display` family takes its letter spacing from its weight, such as `{typography.letterSpacing.display.mass}`, and `font.code.*` references `{typography.letterSpacing.base.zero}`. Every base token references `{typography.paragraphSpacing.base.zero}` and names no text case or text decoration.
 
 ## Context tokens
 
-Context tokens name a text style by its role in the content. The table shows the properties that change with the role. The font family is `{typography.fontFamily.text}`, except in `font.context.code.*`, which references `{typography.fontFamily.code}`.
+Context tokens name a text style by its role in the content. Each takes its properties from the typography tokens of its role, in the `context` group of `source/base/brand-base.json`, which a brand can override. The family, the weight, and the letter spacing belong to the role and are shared by its sizes, such as `{typography.fontFamily.context.title}`, `{typography.fontWeight.context.title}`, and `{typography.letterSpacing.context.title}`. The font size and the line height are named after the role and its size, such as `{typography.fontSize.context.title-medium}`. The table shows the other properties that change with the role.
 
 <CxTable>
-| Token | Font weight | Font size | Line height | Paragraph spacing |
-| --- | --- | --- | --- | --- |
-| `font.context.jumbo` | `{typography.fontWeight.text.mass}` | `{size.unit.96}` | A percentage | `{typography.paragraphSpacing.base.zero}` |
-| `font.context.hero` | `{typography.fontWeight.text.mass}` | `{size.unit.64}` | A percentage | `{typography.paragraphSpacing.base.zero}` |
-| `font.context.lead` | `{typography.fontWeight.text.normal}` | `{typography.fontSize.text.xlarge}` | `{typography.lineHeight.text.xlarge}` | `{typography.paragraphSpacing.base.zero}` |
-| `font.context.heading` | `{typography.fontWeight.text.strong}` | `{typography.fontSize.text.3xlarge}` | `{typography.lineHeight.text.3xlarge}` | `{typography.paragraphSpacing.base.large}` |
-| `font.context.title.medium` | `{typography.fontWeight.text.strong}` | `{typography.fontSize.text.large}` | `{typography.lineHeight.text.large}` | `{typography.paragraphSpacing.base.medium}` |
-| `font.context.title.large` | `{typography.fontWeight.text.strong}` | `{typography.fontSize.text.xlarge}` | `{typography.lineHeight.text.xlarge}` | `{typography.paragraphSpacing.base.large}` |
-| `font.context.title.small` | `{typography.fontWeight.text.strong}` | `{typography.fontSize.text.medium}` | `{typography.lineHeight.text.medium}` | `{typography.paragraphSpacing.base.small}` |
-| `font.context.body.medium` | `{typography.fontWeight.text.normal}` | `{typography.fontSize.text.medium}` | `{typography.lineHeight.text.medium}` | `{typography.paragraphSpacing.base.medium}` |
-| `font.context.body.large` | `{typography.fontWeight.text.normal}` | `{typography.fontSize.text.large}` | `{typography.lineHeight.text.large}` | `{typography.paragraphSpacing.base.large}` |
-| `font.context.body.small` | `{typography.fontWeight.text.normal}` | `{typography.fontSize.text.small}` | `{typography.lineHeight.text.small}` | `{typography.paragraphSpacing.base.small}` |
-| `font.context.highlight.medium` | `{typography.fontWeight.text.normal}` | `{typography.fontSize.text.medium}` | `{typography.lineHeight.text.medium}` | `{typography.paragraphSpacing.base.medium}` |
-| `font.context.highlight.large` | `{typography.fontWeight.text.normal}` | `{typography.fontSize.text.large}` | `{typography.lineHeight.text.large}` | `{typography.paragraphSpacing.base.large}` |
-| `font.context.highlight.small` | `{typography.fontWeight.text.normal}` | `{typography.fontSize.text.small}` | `{typography.lineHeight.text.small}` | `{typography.paragraphSpacing.base.small}` |
-| `font.context.label.medium` | `{typography.fontWeight.text.strong}` | `{typography.fontSize.text.small}` | `{typography.lineHeight.text.small}` | `{typography.paragraphSpacing.base.zero}` |
-| `font.context.label.large` | `{typography.fontWeight.text.strong}` | `{typography.fontSize.text.medium}` | `{typography.lineHeight.text.medium}` | `{typography.paragraphSpacing.base.zero}` |
-| `font.context.label.small` | `{typography.fontWeight.text.strong}` | `{typography.fontSize.text.xsmall}` | `{typography.lineHeight.text.xsmall}` | `{typography.paragraphSpacing.base.zero}` |
-| `font.context.link.large` | `{typography.fontWeight.text.normal}` | `{typography.fontSize.text.large}` | `{typography.lineHeight.text.large}` | `{typography.paragraphSpacing.base.zero}` |
-| `font.context.link.medium` | `{typography.fontWeight.text.normal}` | `{typography.fontSize.text.medium}` | `{typography.lineHeight.text.medium}` | `{typography.paragraphSpacing.base.zero}` |
-| `font.context.link.small` | `{typography.fontWeight.text.normal}` | `{typography.fontSize.text.small}` | `{typography.lineHeight.text.small}` | `{typography.paragraphSpacing.base.zero}` |
-| `font.context.link.xsmall` | `{typography.fontWeight.text.normal}` | `{typography.fontSize.text.xsmall}` | `{typography.lineHeight.text.xsmall}` | `{typography.paragraphSpacing.base.zero}` |
-| `font.context.expired.large` | `{typography.fontWeight.text.strong}` | `{typography.fontSize.text.large}` | `{typography.lineHeight.text.large}` | `{typography.paragraphSpacing.base.zero}` |
-| `font.context.expired.medium` | `{typography.fontWeight.text.strong}` | `{typography.fontSize.text.medium}` | `{typography.lineHeight.text.medium}` | `{typography.paragraphSpacing.base.zero}` |
-| `font.context.expired.small` | `{typography.fontWeight.text.strong}` | `{typography.fontSize.text.small}` | `{typography.lineHeight.text.small}` | `{typography.paragraphSpacing.base.zero}` |
-| `font.context.code.large` | `{typography.fontWeight.code.normal}` | `{typography.fontSize.code.large}` | `{typography.lineHeight.code.large}` | `{typography.paragraphSpacing.base.zero}` |
-| `font.context.code.medium` | `{typography.fontWeight.code.normal}` | `{typography.fontSize.code.medium}` | `{typography.lineHeight.code.medium}` | `{typography.paragraphSpacing.base.zero}` |
-| `font.context.code.small` | `{typography.fontWeight.code.normal}` | `{typography.fontSize.code.small}` | `{typography.lineHeight.code.small}` | `{typography.paragraphSpacing.base.zero}` |
+| Token | Font family | Font weight | Font size | Line height | Paragraph spacing |
+| --- | --- | --- | --- | --- | --- |
+| `font.context.jumbo` | `{typography.fontFamily.context.jumbo}` | `{typography.fontWeight.context.jumbo}` | `{typography.fontSize.context.jumbo}` | A percentage | `{typography.paragraphSpacing.base.zero}` |
+| `font.context.hero` | `{typography.fontFamily.context.hero}` | `{typography.fontWeight.context.hero}` | `{typography.fontSize.context.hero}` | A percentage | `{typography.paragraphSpacing.base.zero}` |
+| `font.context.lead` | `{typography.fontFamily.context.lead}` | `{typography.fontWeight.context.lead}` | `{typography.fontSize.context.lead}` | `{typography.lineHeight.context.lead}` | `{typography.paragraphSpacing.base.zero}` |
+| `font.context.heading` | `{typography.fontFamily.context.heading}` | `{typography.fontWeight.context.heading}` | `{typography.fontSize.context.heading}` | `{typography.lineHeight.context.heading}` | `{typography.paragraphSpacing.base.large}` |
+| `font.context.title.medium` | `{typography.fontFamily.context.title}` | `{typography.fontWeight.context.title}` | `{typography.fontSize.context.title-medium}` | `{typography.lineHeight.context.title-medium}` | `{typography.paragraphSpacing.base.medium}` |
+| `font.context.title.large` | `{typography.fontFamily.context.title}` | `{typography.fontWeight.context.title}` | `{typography.fontSize.context.title-large}` | `{typography.lineHeight.context.title-large}` | `{typography.paragraphSpacing.base.large}` |
+| `font.context.title.small` | `{typography.fontFamily.context.title}` | `{typography.fontWeight.context.title}` | `{typography.fontSize.context.title-small}` | `{typography.lineHeight.context.title-small}` | `{typography.paragraphSpacing.base.small}` |
+| `font.context.body.medium` | `{typography.fontFamily.context.body}` | `{typography.fontWeight.context.body}` | `{typography.fontSize.context.body-medium}` | `{typography.lineHeight.context.body-medium}` | `{typography.paragraphSpacing.base.medium}` |
+| `font.context.body.large` | `{typography.fontFamily.context.body}` | `{typography.fontWeight.context.body}` | `{typography.fontSize.context.body-large}` | `{typography.lineHeight.context.body-large}` | `{typography.paragraphSpacing.base.large}` |
+| `font.context.body.small` | `{typography.fontFamily.context.body}` | `{typography.fontWeight.context.body}` | `{typography.fontSize.context.body-small}` | `{typography.lineHeight.context.body-small}` | `{typography.paragraphSpacing.base.small}` |
+| `font.context.highlight.medium` | `{typography.fontFamily.context.highlight}` | `{typography.fontWeight.context.highlight}` | `{typography.fontSize.context.highlight-medium}` | `{typography.lineHeight.context.highlight-medium}` | `{typography.paragraphSpacing.base.medium}` |
+| `font.context.highlight.large` | `{typography.fontFamily.context.highlight}` | `{typography.fontWeight.context.highlight}` | `{typography.fontSize.context.highlight-large}` | `{typography.lineHeight.context.highlight-large}` | `{typography.paragraphSpacing.base.large}` |
+| `font.context.highlight.small` | `{typography.fontFamily.context.highlight}` | `{typography.fontWeight.context.highlight}` | `{typography.fontSize.context.highlight-small}` | `{typography.lineHeight.context.highlight-small}` | `{typography.paragraphSpacing.base.small}` |
+| `font.context.label.medium` | `{typography.fontFamily.context.label}` | `{typography.fontWeight.context.label}` | `{typography.fontSize.context.label-medium}` | `{typography.lineHeight.context.label-medium}` | `{typography.paragraphSpacing.base.zero}` |
+| `font.context.label.large` | `{typography.fontFamily.context.label}` | `{typography.fontWeight.context.label}` | `{typography.fontSize.context.label-large}` | `{typography.lineHeight.context.label-large}` | `{typography.paragraphSpacing.base.zero}` |
+| `font.context.label.small` | `{typography.fontFamily.context.label}` | `{typography.fontWeight.context.label}` | `{typography.fontSize.context.label-small}` | `{typography.lineHeight.context.label-small}` | `{typography.paragraphSpacing.base.zero}` |
+| `font.context.link.large` | `{typography.fontFamily.context.link}` | `{typography.fontWeight.context.link}` | `{typography.fontSize.context.link-large}` | `{typography.lineHeight.context.link-large}` | `{typography.paragraphSpacing.base.zero}` |
+| `font.context.link.medium` | `{typography.fontFamily.context.link}` | `{typography.fontWeight.context.link}` | `{typography.fontSize.context.link-medium}` | `{typography.lineHeight.context.link-medium}` | `{typography.paragraphSpacing.base.zero}` |
+| `font.context.link.small` | `{typography.fontFamily.context.link}` | `{typography.fontWeight.context.link}` | `{typography.fontSize.context.link-small}` | `{typography.lineHeight.context.link-small}` | `{typography.paragraphSpacing.base.zero}` |
+| `font.context.link.xsmall` | `{typography.fontFamily.context.link}` | `{typography.fontWeight.context.link}` | `{typography.fontSize.context.link-xsmall}` | `{typography.lineHeight.context.link-xsmall}` | `{typography.paragraphSpacing.base.zero}` |
+| `font.context.expired.large` | `{typography.fontFamily.context.expired}` | `{typography.fontWeight.context.expired}` | `{typography.fontSize.context.expired-large}` | `{typography.lineHeight.context.expired-large}` | `{typography.paragraphSpacing.base.zero}` |
+| `font.context.expired.medium` | `{typography.fontFamily.context.expired}` | `{typography.fontWeight.context.expired}` | `{typography.fontSize.context.expired-medium}` | `{typography.lineHeight.context.expired-medium}` | `{typography.paragraphSpacing.base.zero}` |
+| `font.context.expired.small` | `{typography.fontFamily.context.expired}` | `{typography.fontWeight.context.expired}` | `{typography.fontSize.context.expired-small}` | `{typography.lineHeight.context.expired-small}` | `{typography.paragraphSpacing.base.zero}` |
+| `font.context.code.large` | `{typography.fontFamily.context.code}` | `{typography.fontWeight.context.code}` | `{typography.fontSize.context.code-large}` | `{typography.lineHeight.context.code-large}` | `{typography.paragraphSpacing.base.zero}` |
+| `font.context.code.medium` | `{typography.fontFamily.context.code}` | `{typography.fontWeight.context.code}` | `{typography.fontSize.context.code-medium}` | `{typography.lineHeight.context.code-medium}` | `{typography.paragraphSpacing.base.zero}` |
+| `font.context.code.small` | `{typography.fontFamily.context.code}` | `{typography.fontWeight.context.code}` | `{typography.fontSize.context.code-small}` | `{typography.lineHeight.context.code-small}` | `{typography.paragraphSpacing.base.zero}` |
 </CxTable>
 
-`font.context.jumbo` and `font.context.hero` take their font size from the size scale, and their line height is a percentage of that font size. The other context tokens take both from the same step of a typography scale.
+`font.context.jumbo` and `font.context.hero` have no line height token: their line height is a percentage of their font size, so it follows a brand that changes `typography.fontSize.context.jumbo` or `typography.fontSize.context.hero`. The [typography tokens]([[docsref:/design-tokens/typography-tokens]]) reference lists what each token of the `context` group references.
 
-Some context tokens change a property that the table does not show. `font.context.link.*` references `{typography.textDecoration.base.underline}`, and `font.context.expired.*` references `{typography.textDecoration.base.line-through}`. `font.context.jumbo` tightens its letters with `{size.unit.nd05}`. Every other letter spacing, text case, and text decoration is that of the base tokens.
+Some context tokens change a property that the table does not show. `font.context.link.*` names the text decoration `underline`, and `font.context.expired.*` names `line-through`. `font.context.jumbo` tightens its letters, because `typography.letterSpacing.context.jumbo` references `{size.unit.nd05}`. No other context token names a text case or a text decoration.
 
 ## HTML elements
 
-The fonts of HTML elements are named after the element. Each takes its font size and its line height from the typography tokens of the same element, and its weight from `typography.fontWeight.html.*`, where the headings share one weight.
+The fonts of HTML elements are named after the element. Each takes its font size and its line height from the typography tokens of the same element, and its family, its weight, and its letter spacing from `typography.fontFamily.html.*`, `typography.fontWeight.html.*`, and `typography.letterSpacing.html.*`, where the headings share one of each.
 
 <CxTable>
 | Token | Font family | Font weight | Font size | Line height |
 | --- | --- | --- | --- | --- |
-| `font.html.h1` | `{typography.fontFamily.html}` | `{typography.fontWeight.html.heading}` | `{typography.fontSize.html.h1}` | `{typography.lineHeight.html.h1}` |
-| `font.html.h2` | `{typography.fontFamily.html}` | `{typography.fontWeight.html.heading}` | `{typography.fontSize.html.h2}` | `{typography.lineHeight.html.h2}` |
-| `font.html.h3` | `{typography.fontFamily.html}` | `{typography.fontWeight.html.heading}` | `{typography.fontSize.html.h3}` | `{typography.lineHeight.html.h3}` |
-| `font.html.h4` | `{typography.fontFamily.html}` | `{typography.fontWeight.html.heading}` | `{typography.fontSize.html.h4}` | `{typography.lineHeight.html.h4}` |
-| `font.html.h5` | `{typography.fontFamily.html}` | `{typography.fontWeight.html.heading}` | `{typography.fontSize.html.h5}` | `{typography.lineHeight.html.h5}` |
-| `font.html.h6` | `{typography.fontFamily.html}` | `{typography.fontWeight.html.heading}` | `{typography.fontSize.html.h6}` | `{typography.lineHeight.html.h6}` |
-| `font.html.body` | `{typography.fontFamily.html}` | `{typography.fontWeight.html.body}` | `{typography.fontSize.html.body}` | `{typography.lineHeight.html.body}` |
-| `font.html.code` | `{typography.fontFamily.code}` | `{typography.fontWeight.html.code}` | `{typography.fontSize.html.code}` | `{typography.lineHeight.html.code}` |
-| `font.html.paragraph` | `{typography.fontFamily.html}` | `{typography.fontWeight.html.paragraph}` | `{typography.fontSize.html.paragraph}` | `{typography.lineHeight.html.paragraph}` |
-| `font.html.blockquote` | `{typography.fontFamily.html}` | `{typography.fontWeight.html.blockquote}` | `{typography.fontSize.html.blockquote}` | `{typography.lineHeight.html.blockquote}` |
-| `font.html.cite` | `{typography.fontFamily.html}` | `{typography.fontWeight.html.cite}` | `{typography.fontSize.html.cite}` | `{typography.lineHeight.html.cite}` |
+| `font.html.h1` | `{typography.fontFamily.html.heading}` | `{typography.fontWeight.html.heading}` | `{typography.fontSize.html.h1}` | `{typography.lineHeight.html.h1}` |
+| `font.html.h2` | `{typography.fontFamily.html.heading}` | `{typography.fontWeight.html.heading}` | `{typography.fontSize.html.h2}` | `{typography.lineHeight.html.h2}` |
+| `font.html.h3` | `{typography.fontFamily.html.heading}` | `{typography.fontWeight.html.heading}` | `{typography.fontSize.html.h3}` | `{typography.lineHeight.html.h3}` |
+| `font.html.h4` | `{typography.fontFamily.html.heading}` | `{typography.fontWeight.html.heading}` | `{typography.fontSize.html.h4}` | `{typography.lineHeight.html.h4}` |
+| `font.html.h5` | `{typography.fontFamily.html.heading}` | `{typography.fontWeight.html.heading}` | `{typography.fontSize.html.h5}` | `{typography.lineHeight.html.h5}` |
+| `font.html.h6` | `{typography.fontFamily.html.heading}` | `{typography.fontWeight.html.heading}` | `{typography.fontSize.html.h6}` | `{typography.lineHeight.html.h6}` |
+| `font.html.body` | `{typography.fontFamily.html.body}` | `{typography.fontWeight.html.body}` | `{typography.fontSize.html.body}` | `{typography.lineHeight.html.body}` |
+| `font.html.code` | `{typography.fontFamily.html.code}` | `{typography.fontWeight.html.code}` | `{typography.fontSize.html.code}` | `{typography.lineHeight.html.code}` |
+| `font.html.paragraph` | `{typography.fontFamily.html.paragraph}` | `{typography.fontWeight.html.paragraph}` | `{typography.fontSize.html.paragraph}` | `{typography.lineHeight.html.paragraph}` |
+| `font.html.blockquote` | `{typography.fontFamily.html.blockquote}` | `{typography.fontWeight.html.blockquote}` | `{typography.fontSize.html.blockquote}` | `{typography.lineHeight.html.blockquote}` |
+| `font.html.list` | `{typography.fontFamily.html.list}` | `{typography.fontWeight.html.list}` | `{typography.fontSize.html.list}` | `{typography.lineHeight.html.list}` |
+| `font.html.cite` | `{typography.fontFamily.html.cite}` | `{typography.fontWeight.html.cite}` | `{typography.fontSize.html.cite}` | `{typography.lineHeight.html.cite}` |
 </CxTable>
 
-`typography.fontFamily.html` is a reference that a brand can override, so a brand chooses the family of the HTML elements without changing a font token. `font.html.blockquote` gets the font style `italic` from its weight. `font.html.paragraph` references `{typography.paragraphSpacing.base.medium}`; the other fonts of the group have no paragraph spacing.
+The families of the `html` group are references that a brand can override, so a brand chooses the family of each group of elements without changing a font token. `font.html.blockquote` gets the font style `italic` from its weight. `font.html.paragraph` references `{typography.paragraphSpacing.base.medium}`; the other fonts of the group have no paragraph spacing.
 
 ## Component tokens
 
@@ -354,12 +353,12 @@ Website fonts hold properties of their own, not a reference to a base token. Eac
 | Token | Font weight | Font size | Letter spacing |
 | --- | --- | --- | --- |
 | `font.website.hero-title` | `{typography.fontWeight.text.mass}` | `{typography.fontSize.website.hero-title}` | `{size.unit.n1}` |
-| `font.website.hero-body` | `{typography.fontWeight.text.normal}` | `{typography.fontSize.website.hero-body}` | `{typography.letterSpacing.base.zero}` |
+| `font.website.hero-body` | `{typography.fontWeight.text.normal}` | `{typography.fontSize.website.hero-body}` | `{typography.letterSpacing.text.normal}` |
 | `font.website.section-title` | `{typography.fontWeight.text.mass}` | `{typography.fontSize.website.section-title}` | `{size.unit.nd05}` |
-| `font.website.section-body` | `{typography.fontWeight.text.normal}` | `{typography.fontSize.website.section-body}` | `{typography.letterSpacing.base.zero}` |
-| `font.website.feature-title` | `{typography.fontWeight.text.mass}` | `{typography.fontSize.website.feature-title}` | `{typography.letterSpacing.base.zero}` |
-| `font.website.feature-body` | `{typography.fontWeight.text.normal}` | `{typography.fontSize.website.feature-body}` | `{typography.letterSpacing.base.zero}` |
-| `font.website.module-title` | `{typography.fontWeight.text.mass}` | `{typography.fontSize.website.module-title}` | `{typography.letterSpacing.base.zero}` |
+| `font.website.section-body` | `{typography.fontWeight.text.normal}` | `{typography.fontSize.website.section-body}` | `{typography.letterSpacing.text.normal}` |
+| `font.website.feature-title` | `{typography.fontWeight.text.mass}` | `{typography.fontSize.website.feature-title}` | `{typography.letterSpacing.text.mass}` |
+| `font.website.feature-body` | `{typography.fontWeight.text.normal}` | `{typography.fontSize.website.feature-body}` | `{typography.letterSpacing.text.normal}` |
+| `font.website.module-title` | `{typography.fontWeight.text.mass}` | `{typography.fontSize.website.module-title}` | `{typography.letterSpacing.text.mass}` |
 </CxTable>
 
 The website fonts are defined in `source/screen-website/screen-base.json`, and the other font tokens in `source/base/app-base.json`.
@@ -391,10 +390,10 @@ A font token prints as one Sass map on the web, and as one constant or resource 
 
 The values in the examples of this section are those of the `chassis` brand in the current version, and they differ in other brands.
 
-The build writes the map of the web to `main.scss`, on one line. The keys are CSS properties: the paragraph spacing is `margin-bottom`, and the text case is `text-transform`.
+The build writes the map of the web to `main.scss`, on one line. The keys are CSS properties: the paragraph spacing is `margin-bottom`, and the text case is `text-transform`. Every map has the keys `text-transform` and `text-decoration`, and a font token that names no text case or text decoration has `none` for it, on every platform.
 
 ```scss
-$cx-font-context-jumbo: ("font-family": var(--font-family-text), "font-weight": var(--font-weight-text-mass), "font-size": 6rem, "line-height": 1.25em, "font-style": normal, "letter-spacing": -0.0313em, "margin-bottom": 0rem, "text-transform": none, "text-decoration": none) !default;
+$cx-font-context-jumbo: ("font-family": var(--font-family-context-jumbo), "font-weight": var(--font-weight-context-jumbo), "font-size": var(--font-size-context-jumbo), "line-height": 1.25em, "font-style": normal, "letter-spacing": -0.03125em, "margin-bottom": 0rem, "text-transform": none, "text-decoration": none) !default;
 ```
 
 The `web` platform names the custom properties of Chassis CSS for the family, the weight, the font size, and the line height that a font token references, so its maps work with Chassis CSS only. The presets `web-scss`, `web-px`, and `web-vw` print the values; see the [Style Dictionary]([[docsref:/getting-started/style-dictionary]]) page.

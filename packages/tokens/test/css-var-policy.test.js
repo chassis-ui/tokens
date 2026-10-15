@@ -248,6 +248,12 @@ describe('typography', () => {
     )
   })
 
+  test('names a family by every segment after fontFamily', () => {
+    expect(
+      webValue(withOriginal('fontFamily', '{typography.fontFamily.context.hero}'), references)
+    ).toContain('"font-family": var(--font-family-context-hero), ')
+  })
+
   test('throws on a literal font family', () => {
     expect(() => webValue(withOriginal('fontFamily', 'Inter'), references)).toThrow(
       'font.context.jumbo: Not a single reference: "Inter"'

@@ -45,14 +45,14 @@ A token set is one JSON file of `source/`. Its name is its path without the exte
 | --- | --- |
 | `base/metric-source` | `dimension.base.*`, the scale that the sizes reference, and `modify.*`, the shares of the color modifiers |
 | `base/metric-base` | `size.unit.*`, `space.unit.*`, `opacity.level.*`, `opacity.context.*` |
-| `base/brand-base` | `color.base.*`, `typography.fontFamily.*`, `typography.fontWeight.*`, `typography.fontSize.*`, `typography.lineHeight.*`, `borderRadius.base.*` |
+| `base/brand-base` | `color.base.*`, `typography.fontFamily.*`, `typography.fontWeight.*`, `typography.fontSize.*`, `typography.lineHeight.*`, `typography.letterSpacing.*`, `typography.paragraphSpacing.*`, `borderRadius.base.*` |
 | `base/brand-default` | No token except the switch of the `default` brand |
 | `brand-<brand>/brand-base` | The tokens of `base/brand-base` that the brand changes |
 | `base/theme-base` | `color.primitive.*`, `color.context.*`, `color.shadow.*`, `color.utility.*`, `gradient.primitive.*` |
 | `base/theme-light` | No token except the switch of the `light` theme |
 | `base/theme-dark` | The colors of `base/theme-base`, with the references of the dark theme |
 | `base/effect-base` | `shadow.elevation.*`, `shadow.glow.*`, `bg-blur.*` |
-| `base/app-base` | `font.*`, `grid.*`, `icon.*`, the component colors, the context and component tokens of `size`, `space`, `borderRadius`, `borderWidth`, and `shadow`, and `typography.letterSpacing.*`, `typography.paragraphSpacing.*`, `typography.textCase.*`, `typography.textDecoration.*` |
+| `base/app-base` | `font.*`, `grid.*`, `icon.*`, the component colors, the context and component tokens of `size`, `space`, `borderRadius`, `borderWidth`, and `shadow` |
 | `base/app-docs` | No token except the switch of the `docs` app |
 | `base/app-demo` | `color.page.bg-body`, `color.page.bg-section` |
 | `screen-website/screen-base` | `font.website.*` |
@@ -243,15 +243,17 @@ Colors with an opacity are in the brand sets too. Figma cannot change the opacit
 
 ### Typography tokens
 
-The brand sets hold the four typography groups that the composite `font.*` tokens of `base/app-base` reference.
+The brand sets hold the typography groups that the composite `font.*` tokens of `base/app-base` reference.
 
 <CxTable>
 | Tokens | Content |
 | --- | --- |
-| `typography.fontFamily.*` | The families `text`, `display`, `html`, `code`, and `icon` |
+| `typography.fontFamily.*` | The families `text`, `display`, `code`, and `icon`, one family per group of HTML elements, such as `html.heading`, and one per context role, such as `context.title` |
 | `typography.fontWeight.*` | The weights of each family, such as `normal`, `strong`, `mass`, and `elegant` of `text` |
 | `typography.fontSize.*` | The sizes of each family, from `2xsmall` to `5xlarge` for `text` |
 | `typography.lineHeight.*` | The line height of each size |
+| `typography.letterSpacing.*` | The letter spacing of each weight of `text` and `display`, of each group of HTML elements, and of each context role |
+| `typography.paragraphSpacing.*` | The space after a paragraph, from `zero` to `large` |
 </CxTable>
 
 The brand sets of `chassis` and `sinefil` declare the font families and the font weights, and take the font sizes and the line heights of `base/brand-base`. A font family token holds a list of font families, with the font of the brand first and its fallbacks after it.
@@ -260,7 +262,7 @@ The brand sets of `chassis` and `sinefil` declare the font families and the font
 A font weight token holds the style name that the font has in Figma, and fonts spell the same weight in different ways, with or without a space between the words. The build reads every spelling as the same weight. Keep the spelling of the font, or Figma does not find the style.
 </Callout>
 
-The remaining typography groups (`typography.letterSpacing.*`, `typography.paragraphSpacing.*`, `typography.textCase.*`, `typography.textDecoration.*`) are in `base/app-base`, the same for every brand. See the [typography tokens]([[docsref:/design-tokens/typography-tokens]]) reference.
+`base/app-base` holds no typography group. A font token names its text case and text decoration as a keyword where it has one, and has neither otherwise. See the [typography tokens]([[docsref:/design-tokens/typography-tokens]]) reference.
 
 ### Border radius tokens
 
@@ -334,13 +336,11 @@ font.text.medium.strong    base/app-base
   fontWeight               {typography.fontWeight.text.strong}       brand-<brand>/brand-base
   lineHeight               {typography.lineHeight.text.medium}       base/brand-base
   fontSize                 {typography.fontSize.text.medium}         base/brand-base
-  letterSpacing            {typography.letterSpacing.base.zero}      base/app-base
-  paragraphSpacing         {typography.paragraphSpacing.base.zero}   base/app-base
-  textCase                 {typography.textCase.base.none}           base/app-base
-  textDecoration           {typography.textDecoration.base.none}     base/app-base
+  letterSpacing            {typography.letterSpacing.text.strong}    base/brand-base
+  paragraphSpacing         {typography.paragraphSpacing.base.zero}   base/brand-base
 ```
 
-The font family and the font weight are values of the brand. The font size and the line height are values of `base/brand-base`, which a brand set can override.
+The font family and the font weight are values of the brand. The font size, the line height, the letter spacing, and the paragraph spacing are values of `base/brand-base`, which a brand set can override.
 
 ## Add a brand
 

@@ -1,6 +1,6 @@
 ---
 title: Typography Tokens
-description: The single text properties of Chassis Tokens, from font families and weights to text decoration, with their names, references, and platform formats.
+description: The single text properties of Chassis Tokens, from font families and weights to paragraph spacing, with their names, references, and platform formats.
 toc: true
 ---
 
@@ -8,21 +8,20 @@ toc: true
 
 ## Introduction
 
-Typography tokens hold the single properties of a text style. Each property has a group under `typography.*`: `fontFamily`, `fontWeight`, `fontSize`, `lineHeight`, `letterSpacing`, `paragraphSpacing`, `textCase`, and `textDecoration`. The [font tokens]([[docsref:/design-tokens/font-tokens]]) combine these properties into text styles.
+Typography tokens hold the single properties of a text style. Each property has a group under `typography.*`: `fontFamily`, `fontWeight`, `fontSize`, `lineHeight`, `letterSpacing`, and `paragraphSpacing`. The [font tokens]([[docsref:/design-tokens/font-tokens]]) combine these properties into text styles. Text case and text decoration have no typography tokens: a font token has neither unless it names one as a keyword, and only the link and expired roles of `font.context.*` name theirs.
 
 ### Token levels
 
-Typography tokens have no levels. Most of them hold a value of their own, and a few reference another typography token or a size. The `font.*` tokens are the next step: they reference the typography tokens property by property.
+Typography tokens have no levels. The scales of each family hold values of their own. The letter spacing of each weight, and the `html` and `context` groups, reference a size, a step of a scale, or another typography token, one token per weight, HTML element, or role. The `font.*` tokens are the next step: they reference the typography tokens property by property.
 
-A brand gives the text its character by overriding the font families and the font weights in its own token set. Where the token system has the optional `screen` group, each screen has a token set that holds `typography.fontSize.website.*`. No theme and no app of the committed configuration overrides a typography token.
+A brand gives the text its character by overriding the font families and the font weights in its own token set. It retunes an HTML element or a [context role](#context-roles) by overriding the tokens of the `html` or `context` group. Where the token system has the optional `screen` group, each screen has a token set that holds `typography.fontSize.website.*`. No theme and no app of the committed configuration overrides a typography token.
 
 <CxTable>
 | Tokens | Token set |
 | --- | --- |
 | `typography.fontFamily.*`, `typography.fontWeight.*` | `source/base/brand-base.json`, overridden by the `brand-base.json` of a brand, such as `source/brand-chassis/brand-base.json` |
-| `typography.fontSize.*`, `typography.lineHeight.*` | `source/base/brand-base.json` |
+| `typography.fontSize.*`, `typography.lineHeight.*`, `typography.letterSpacing.*`, `typography.paragraphSpacing.*` | `source/base/brand-base.json` |
 | `typography.fontSize.website.*` | The token set of each screen, such as `source/screen-website/screen-large.json` |
-| `typography.letterSpacing.*`, `typography.paragraphSpacing.*`, `typography.textCase.*`, `typography.textDecoration.*` | `source/base/app-base.json` |
 </CxTable>
 
 ## Font families
@@ -32,16 +31,45 @@ A font family token holds a list of font families: the font of the brand first, 
 <CxTable>
 | Token | Purpose |
 | --- | --- |
-| `typography.fontFamily.text` | The font family of the brand for running text and for the text of components: `font.text.*`, `font.website.*`, and `font.context.*` except `font.context.code.*` |
+| `typography.fontFamily.text` | The font family of the brand for running text and for the text of components: `font.text.*`, `font.website.*`, and the families of the `html` and `context` groups except `code` |
 | `typography.fontFamily.display` | The font family of the brand for display text: `font.display.*` |
-| `typography.fontFamily.html` | The font family of the HTML elements: `font.html.*` |
-| `typography.fontFamily.code` | The font family of the brand for code: `font.code.*`, `font.context.code.*`, and `font.html.code` |
+| `typography.fontFamily.code` | The font family of the brand for code: `font.code.*`, and the `code` families of the `html` and `context` groups |
 | `typography.fontFamily.icon` | The font family of the icon font |
 </CxTable>
 
-`typography.fontFamily.html` is the only family that holds a reference, `{typography.fontFamily.text}`. A brand sets the HTML elements in another family by overriding the reference, as the `sinefil` brand does with `{typography.fontFamily.display}`.
+The `html` group holds one family per group of HTML elements, with the same names as the weights in `typography.fontWeight.html.*`. `typography.fontFamily.html.heading` is the family of `font.html.h1` to `font.html.h6`, and each other family belongs to the element of its name. A brand sets a group of elements in another family by overriding its reference, as the `sinefil` brand does with `{typography.fontFamily.display}` for every group except `code`.
 
-The committed brands override `typography.fontFamily.text`, `typography.fontFamily.display`, and `typography.fontFamily.code`. `typography.fontFamily.icon` is the same in every brand.
+<CxTable>
+| Token | Reference |
+| --- | --- |
+| `typography.fontFamily.html.heading` | `{typography.fontFamily.text}` |
+| `typography.fontFamily.html.body` | `{typography.fontFamily.text}` |
+| `typography.fontFamily.html.paragraph` | `{typography.fontFamily.text}` |
+| `typography.fontFamily.html.blockquote` | `{typography.fontFamily.text}` |
+| `typography.fontFamily.html.list` | `{typography.fontFamily.text}` |
+| `typography.fontFamily.html.cite` | `{typography.fontFamily.text}` |
+| `typography.fontFamily.html.code` | `{typography.fontFamily.code}` |
+</CxTable>
+
+The `context` group holds references too, one family per role of `font.context.*`. Every size of a role shares the family of the role: `typography.fontFamily.context.title` is the family of `font.context.title.medium`, `font.context.title.large`, and `font.context.title.small`.
+
+<CxTable>
+| Token | Reference |
+| --- | --- |
+| `typography.fontFamily.context.jumbo` | `{typography.fontFamily.text}` |
+| `typography.fontFamily.context.hero` | `{typography.fontFamily.text}` |
+| `typography.fontFamily.context.lead` | `{typography.fontFamily.text}` |
+| `typography.fontFamily.context.heading` | `{typography.fontFamily.text}` |
+| `typography.fontFamily.context.title` | `{typography.fontFamily.text}` |
+| `typography.fontFamily.context.body` | `{typography.fontFamily.text}` |
+| `typography.fontFamily.context.highlight` | `{typography.fontFamily.text}` |
+| `typography.fontFamily.context.label` | `{typography.fontFamily.text}` |
+| `typography.fontFamily.context.link` | `{typography.fontFamily.text}` |
+| `typography.fontFamily.context.expired` | `{typography.fontFamily.text}` |
+| `typography.fontFamily.context.code` | `{typography.fontFamily.code}` |
+</CxTable>
+
+The committed brands override `typography.fontFamily.text`, `typography.fontFamily.display`, and `typography.fontFamily.code`, and the `sinefil` brand overrides the `html` group too. `typography.fontFamily.icon` is the same in every brand.
 
 ## Font weights
 
@@ -61,13 +89,17 @@ The weights of the HTML elements reference the roles of the text family, so they
 | `typography.fontWeight.html.paragraph` | `{typography.fontWeight.text.normal}` | Weight of `font.html.paragraph` |
 | `typography.fontWeight.html.heading` | `{typography.fontWeight.text.mass}` | Weight of the headings, `font.html.h1` to `font.html.h6` |
 | `typography.fontWeight.html.cite` | `{typography.fontWeight.text.strong}` | Weight of `font.html.cite` |
+| `typography.fontWeight.html.list` | `{typography.fontWeight.text.normal}` | Weight of `font.html.list` |
+| `typography.fontWeight.html.bold` | `{typography.fontWeight.text.mass}` | Bold text inside an element; no font token references it |
 </CxTable>
 
 `typography.fontWeight.html.blockquote` holds a style name of its own, with an italic style. It is the weight of `font.html.blockquote`.
 
+The weights of the context roles are in the group `typography.fontWeight.context.*`, one token per role, shared by the sizes of the role. They reference a role of the text family, or of the code family for the code roles; [Context roles](#context-roles) lists them.
+
 ## Font sizes
 
-A font size token holds a size in design pixels. The tokens follow the pattern `typography.fontSize.<group>.<step>`, and every token except some of the website holds a size of its own.
+A font size token holds a size in design pixels. The tokens follow the pattern `typography.fontSize.<group>.<step>`. The scales hold sizes of their own, and the `context` group and some of the website tokens hold a reference.
 
 <CxTable>
 | Tokens | Steps |
@@ -76,6 +108,7 @@ A font size token holds a size in design pixels. The tokens follow the pattern `
 | `typography.fontSize.display.*` | The steps of the text family |
 | `typography.fontSize.code.*` | `large`, `medium`, `small` |
 | `typography.fontSize.html.*` | The name of an HTML element, such as `h1` or `paragraph` |
+| `typography.fontSize.context.*` | The name of a context role and its size, such as `heading` or `title-medium` |
 | `typography.fontSize.website.*` | The part of a website section, such as `hero-title` |
 </CxTable>
 
@@ -95,23 +128,58 @@ Each step of a scale is larger than the step after it in the list, from `5xlarge
 
 ## Line heights
 
-A line height token holds the line height of the font size with the same name, in design pixels: `typography.lineHeight.text.medium` belongs to `typography.fontSize.text.medium`. The groups `text`, `display`, `code`, and `html` have a line height for each of their font sizes, and every line height is larger than its font size.
+A line height token holds the line height of the font size with the same name, in design pixels: `typography.lineHeight.text.medium` belongs to `typography.fontSize.text.medium`. The groups `text`, `display`, `code`, and `html` have a line height for each of their font sizes, and every line height is larger than its font size. The `context` group has one for each of its font sizes except `jumbo` and `hero`, whose font tokens hold a percentage instead.
 
 The website has no line height tokens. `font.website.*` holds its line heights as a percentage of the font size, so they follow the font size of the screen.
 
 ## Letter spacing
 
-The letter spacing scale holds a step for text without letter spacing. Every font token that does not change the space between its letters references it. A font token that tightens its letters references a negative step of the size scale instead, such as `{size.unit.nd05}`.
+Letter spacing tokens hold the space between letters, and they are in `source/base/brand-base.json`, so a brand can change them. The families `text` and `display` have one letter spacing per weight, `typography.letterSpacing.<family>.<weight>`, and a base token of each size references the letter spacing of its weight: `font.text.medium.strong` references `{typography.letterSpacing.text.strong}`. Each of these tokens references `{size.unit.0}`, and so does `typography.letterSpacing.base.zero`, the letter spacing of `font.code.*`. The family `code` has no letter spacing of its own.
 
 <CxTable>
-| Token | Reference | Purpose |
-| --- | --- | --- |
-| `typography.letterSpacing.base.zero` | `{size.unit.0}` | No letter spacing |
+| Token | Reference |
+| --- | --- |
+| `typography.letterSpacing.base.zero` | `{size.unit.0}` |
+| `typography.letterSpacing.text.normal` | `{size.unit.0}` |
+| `typography.letterSpacing.text.strong` | `{size.unit.0}` |
+| `typography.letterSpacing.text.mass` | `{size.unit.0}` |
+| `typography.letterSpacing.text.elegant` | `{size.unit.0}` |
+| `typography.letterSpacing.display.normal` | `{size.unit.0}` |
+| `typography.letterSpacing.display.strong` | `{size.unit.0}` |
+| `typography.letterSpacing.display.mass` | `{size.unit.0}` |
+| `typography.letterSpacing.display.elegant` | `{size.unit.0}` |
 </CxTable>
+
+The `html` and `context` groups hold one letter spacing per group of HTML elements and per role, with the names of their families and weights. Each references the letter spacing of the weight that its group or role uses, so a brand that changes the letter spacing of a weight changes them too.
+
+<CxTable>
+| Token | Reference |
+| --- | --- |
+| `typography.letterSpacing.html.heading` | `{typography.letterSpacing.text.mass}` |
+| `typography.letterSpacing.html.body` | `{typography.letterSpacing.text.normal}` |
+| `typography.letterSpacing.html.paragraph` | `{typography.letterSpacing.text.normal}` |
+| `typography.letterSpacing.html.blockquote` | `{typography.letterSpacing.text.elegant}` |
+| `typography.letterSpacing.html.list` | `{typography.letterSpacing.text.normal}` |
+| `typography.letterSpacing.html.cite` | `{typography.letterSpacing.text.strong}` |
+| `typography.letterSpacing.html.code` | `{typography.letterSpacing.base.zero}` |
+| `typography.letterSpacing.context.jumbo` | `{size.unit.nd05}` |
+| `typography.letterSpacing.context.hero` | `{typography.letterSpacing.text.mass}` |
+| `typography.letterSpacing.context.lead` | `{typography.letterSpacing.text.normal}` |
+| `typography.letterSpacing.context.heading` | `{typography.letterSpacing.text.strong}` |
+| `typography.letterSpacing.context.title` | `{typography.letterSpacing.text.strong}` |
+| `typography.letterSpacing.context.body` | `{typography.letterSpacing.text.normal}` |
+| `typography.letterSpacing.context.highlight` | `{typography.letterSpacing.text.normal}` |
+| `typography.letterSpacing.context.label` | `{typography.letterSpacing.text.strong}` |
+| `typography.letterSpacing.context.link` | `{typography.letterSpacing.text.normal}` |
+| `typography.letterSpacing.context.expired` | `{typography.letterSpacing.text.strong}` |
+| `typography.letterSpacing.context.code` | `{typography.letterSpacing.base.zero}` |
+</CxTable>
+
+`typography.letterSpacing.html.blockquote` references the `elegant` weight, because `font.html.blockquote` is set in a light italic. A font token that tightens its letters references a negative step of the size scale, as `typography.letterSpacing.context.jumbo` and `font.website.hero-title` do with `{size.unit.nd05}` and `{size.unit.n1}`.
 
 ## Paragraph spacing
 
-Paragraph spacing tokens hold the space after a paragraph, as a size in design pixels. Each step from `small` to `large` is larger than the one before.
+Paragraph spacing tokens hold the space after a paragraph, as a size in design pixels. They are in `source/base/brand-base.json`, so a brand can change them. Each step from `small` to `large` is larger than the one before.
 
 <CxTable>
 | Token | Purpose |
@@ -122,19 +190,60 @@ Paragraph spacing tokens hold the space after a paragraph, as a size in design p
 | `typography.paragraphSpacing.base.large` | The `large` step of the same groups, and `font.context.heading` |
 </CxTable>
 
-## Text case and decoration
+## Context roles
 
-Text case and text decoration tokens hold a keyword, and the name of the token is the keyword. The text case tokens are `typography.textCase.base.none`, `typography.textCase.base.lowercase`, `typography.textCase.base.uppercase`, and `typography.textCase.base.capitalize`. Every font token references `typography.textCase.base.none`.
-
-Links and expired text have a text decoration: links are underlined, and expired text is struck through.
+The `context` group holds the typography tokens of each role of `font.context.*`, in `source/base/brand-base.json`. Each references a step of a typography scale or a size, so a font token follows the brand. The family, the weight, and the letter spacing belong to the role and are shared by its sizes: `font.context.title.medium`, `font.context.title.large`, and `font.context.title.small` take their weight from `typography.fontWeight.context.title`.
 
 <CxTable>
-| Token | Purpose |
+| Token | Reference |
 | --- | --- |
-| `typography.textDecoration.base.none` | Every other font token |
-| `typography.textDecoration.base.underline` | `font.context.link.*` |
-| `typography.textDecoration.base.line-through` | `font.context.expired.*` |
+| `typography.fontWeight.context.jumbo` | `{typography.fontWeight.text.mass}` |
+| `typography.fontWeight.context.hero` | `{typography.fontWeight.text.mass}` |
+| `typography.fontWeight.context.lead` | `{typography.fontWeight.text.normal}` |
+| `typography.fontWeight.context.heading` | `{typography.fontWeight.text.strong}` |
+| `typography.fontWeight.context.title` | `{typography.fontWeight.text.strong}` |
+| `typography.fontWeight.context.body` | `{typography.fontWeight.text.normal}` |
+| `typography.fontWeight.context.highlight` | `{typography.fontWeight.text.normal}` |
+| `typography.fontWeight.context.label` | `{typography.fontWeight.text.strong}` |
+| `typography.fontWeight.context.link` | `{typography.fontWeight.text.normal}` |
+| `typography.fontWeight.context.expired` | `{typography.fontWeight.text.strong}` |
+| `typography.fontWeight.context.code` | `{typography.fontWeight.code.normal}` |
 </CxTable>
+
+The font size and the line height are named after the role and its size: `font.context.title.medium` takes them from `typography.fontSize.context.title-medium` and `typography.lineHeight.context.title-medium`. The table names each role and size, and the reference of each token.
+
+<CxTable>
+| Role and size | `typography.fontSize.context.<role>` | `typography.lineHeight.context.<role>` |
+| --- | --- | --- |
+| `jumbo` | `{size.unit.96}` | None |
+| `hero` | `{size.unit.64}` | None |
+| `lead` | `{typography.fontSize.text.xlarge}` | `{typography.lineHeight.text.xlarge}` |
+| `heading` | `{typography.fontSize.text.3xlarge}` | `{typography.lineHeight.text.3xlarge}` |
+| `title-medium` | `{typography.fontSize.text.large}` | `{typography.lineHeight.text.large}` |
+| `title-large` | `{typography.fontSize.text.xlarge}` | `{typography.lineHeight.text.xlarge}` |
+| `title-small` | `{typography.fontSize.text.medium}` | `{typography.lineHeight.text.medium}` |
+| `body-medium` | `{typography.fontSize.text.medium}` | `{typography.lineHeight.text.medium}` |
+| `body-large` | `{typography.fontSize.text.large}` | `{typography.lineHeight.text.large}` |
+| `body-small` | `{typography.fontSize.text.small}` | `{typography.lineHeight.text.small}` |
+| `highlight-medium` | `{typography.fontSize.text.medium}` | `{typography.lineHeight.text.medium}` |
+| `highlight-large` | `{typography.fontSize.text.large}` | `{typography.lineHeight.text.large}` |
+| `highlight-small` | `{typography.fontSize.text.small}` | `{typography.lineHeight.text.small}` |
+| `label-medium` | `{typography.fontSize.text.small}` | `{typography.lineHeight.text.small}` |
+| `label-large` | `{typography.fontSize.text.medium}` | `{typography.lineHeight.text.medium}` |
+| `label-small` | `{typography.fontSize.text.xsmall}` | `{typography.lineHeight.text.xsmall}` |
+| `link-large` | `{typography.fontSize.text.large}` | `{typography.lineHeight.text.large}` |
+| `link-medium` | `{typography.fontSize.text.medium}` | `{typography.lineHeight.text.medium}` |
+| `link-small` | `{typography.fontSize.text.small}` | `{typography.lineHeight.text.small}` |
+| `link-xsmall` | `{typography.fontSize.text.xsmall}` | `{typography.lineHeight.text.xsmall}` |
+| `expired-large` | `{typography.fontSize.text.large}` | `{typography.lineHeight.text.large}` |
+| `expired-medium` | `{typography.fontSize.text.medium}` | `{typography.lineHeight.text.medium}` |
+| `expired-small` | `{typography.fontSize.text.small}` | `{typography.lineHeight.text.small}` |
+| `code-large` | `{typography.fontSize.code.large}` | `{typography.lineHeight.code.large}` |
+| `code-medium` | `{typography.fontSize.code.medium}` | `{typography.lineHeight.code.medium}` |
+| `code-small` | `{typography.fontSize.code.small}` | `{typography.lineHeight.code.small}` |
+</CxTable>
+
+The family of a role is in [Font families](#font-families), and its letter spacing in [Letter spacing](#letter-spacing). `jumbo` and `hero` have no line height token: `font.context.jumbo` and `font.context.hero` hold a percentage of their font size, so the line height follows a brand that changes the font size.
 
 ## Usage
 
@@ -142,20 +251,81 @@ Set text with a [font token]([[docsref:/design-tokens/font-tokens]]), which hold
 
 Take the font size and the line height from the same step. `typography.lineHeight.text.large` is made for `typography.fontSize.text.large`, and the web output of a line height is relative to the font size of its step.
 
-Give a brand its own fonts by overriding `typography.fontFamily.*` and `typography.fontWeight.*` in the token set of the brand. Every font token follows, because the font tokens hold references. An override can be a reference too, as in `source/brand-sinefil/brand-base.json`:
+Give a brand its own fonts by overriding `typography.fontFamily.*` and `typography.fontWeight.*` in the token set of the brand. Every font token follows, because the font tokens hold references. An override can be a reference too. `source/brand-sinefil/brand-base.json` sets every group of HTML elements except `code` in the display family:
 
 ```json
 {
   "typography": {
     "fontFamily": {
       "html": {
-        "$type": "fontFamilies",
-        "$value": "{typography.fontFamily.display}"
+        "heading": {
+          "$type": "fontFamilies",
+          "$value": "{typography.fontFamily.display}"
+        },
+        "body": {
+          "$type": "fontFamilies",
+          "$value": "{typography.fontFamily.display}"
+        },
+        "paragraph": {
+          "$type": "fontFamilies",
+          "$value": "{typography.fontFamily.display}"
+        },
+        "blockquote": {
+          "$type": "fontFamilies",
+          "$value": "{typography.fontFamily.display}"
+        },
+        "list": {
+          "$type": "fontFamilies",
+          "$value": "{typography.fontFamily.display}"
+        },
+        "cite": {
+          "$type": "fontFamilies",
+          "$value": "{typography.fontFamily.display}"
+        }
       }
     }
   }
 }
 ```
+
+A weight names a style of one family, so a brand that moves a group of elements to another family also points the weight and the letter spacing of that group at those of that family, such as `{typography.letterSpacing.display.mass}` for `typography.letterSpacing.html.heading`. The `sinefil` brand points `typography.fontWeight.html.heading` at `{typography.fontWeight.display.strong}` for its headings.
+
+Retune a context role in the same way. Override a token of the `context` group to give a role another step, weight, or family: `typography.fontSize.context.heading` with another step of the text scale changes `font.context.heading`, and no font token has to change.
+
+In the same way, a brand that overrides the family of a role also points the weight and the letter spacing of that role at those of the same family. To set `font.context.hero` in the display family, override the family, the weight, and the letter spacing of `hero` together:
+
+```json
+{
+  "typography": {
+    "fontFamily": {
+      "context": {
+        "hero": {
+          "$type": "fontFamilies",
+          "$value": "{typography.fontFamily.display}"
+        }
+      }
+    },
+    "fontWeight": {
+      "context": {
+        "hero": {
+          "$type": "fontWeights",
+          "$value": "{typography.fontWeight.display.mass}"
+        }
+      }
+    },
+    "letterSpacing": {
+      "context": {
+        "hero": {
+          "$type": "letterSpacing",
+          "$value": "{typography.letterSpacing.display.mass}"
+        }
+      }
+    }
+  }
+}
+```
+
+A role with several sizes shares one family, one weight, and one letter spacing, so one override changes every size: `typography.fontFamily.context.title`, `typography.fontWeight.context.title`, and `typography.letterSpacing.context.title` set `font.context.title.medium`, `font.context.title.large`, and `font.context.title.small`.
 
 Write a font weight as the font names it in Figma, and keep that spelling. `pnpm tokens:lint:source` reports a weight that the build does not know.
 
@@ -171,7 +341,7 @@ Line heights, font sizes, and paragraph spacing print as sizes, each platform in
 | Android | `@dimen/typography_line_height_text_medium` | A `<dimen>` in `sp` |
 </CxTable>
 
-The web divides a line height by the font size of the same step, so the line height is relative to the font size. iOS and Android print the line height as a size.
+The web divides a line height by the font size of the same name, so the line height is relative to the font size. iOS and Android print the line height as a size.
 
 The other properties have these formats.
 
@@ -184,11 +354,10 @@ The other properties have these formats.
 | `typography.fontSize.*` | A size in `rem` | A `CGFloat` in points | A `<dimen>` in `sp` |
 | `typography.letterSpacing.*` | A number in `em`: the design pixels divided by 16 | A `CGFloat` in points | An `<item>` of the type `dimen` with the format `float`, in design pixels |
 | `typography.paragraphSpacing.*` | A size in `rem` | A `CGFloat` in points | A `<dimen>` in `sp` |
-| `typography.textCase.*`, `typography.textDecoration.*` | A keyword | A string | A `<string>` |
 </CxTable>
 
 The build prints the two tokens of a font weight under their own names, such as `$cx-typography-font-weight-text-strong-weight` and `$cx-typography-font-weight-text-strong-style` on the web.
 
-The web writes the families, weights, text cases, and text decorations to `string.scss`, and the sizes, line heights, and spacings to the number file of each screen; `main.scss` holds all of them. iOS and Android split the tokens the same way between their string and number files.
+The web writes the families and weights to `string.scss`, and the sizes, line heights, and spacings to the number file of each screen; `main.scss` holds all of them. iOS and Android split the tokens the same way between their string and number files.
 
 See the [web]([[docsref:/use-in-project/web-applications]]), [iOS]([[docsref:/use-in-project/ios-applications]]), and [Android]([[docsref:/use-in-project/android-applications]]) docs for the files that hold these names.
