@@ -168,7 +168,7 @@ func applyTheme(to view: UIView, label: UILabel) {
 
 ## Screen sizes
 
-The `screen` group is optional. A configuration without screens, with `screens` empty or left out of `chassis.build` and no `screen` group in `$themes.json`, writes one number file without a screen suffix, `Number.swift`, with the type `ChassisTokensNumber`.
+The `screen` group is optional. A configuration without screens, with `screens` empty or left out of `chassis.build`, writes one number file without a screen suffix, `Number.swift`, with the type `ChassisTokensNumber` and the values of the first screen in `$themes.json`.
 
 The committed configuration has the screens `large`, `medium` and `small`. Each number type declares the same constants with the values of one screen, and `ChassisTokens` has the values of the first screen, `large`. In the current tokens, the constants that differ between screens belong to the `website` groups, such as `SizeWebsiteSectionIcon`.
 

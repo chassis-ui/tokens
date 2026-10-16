@@ -157,6 +157,31 @@ describe('planBuilds', () => {
       'dist/web/docs/chassis/string.scss'
     ])
   })
+
+  test('builds from the first screen of $themes.json when no screens are configured', () => {
+    const withoutScreens = Object.fromEntries(
+      Object.entries(buildOptions).filter(([key]) => key !== 'screens')
+    )
+    const planned = planBuilds(sets, withoutScreens, { brands: ['chassis'] })
+    expect(planned.map((build) => [build.key, build.outputs])).toEqual([
+      [
+        'chassis_docs_light_large',
+        [{ kind: 'base' }, { kind: 'color', theme: 'light' }, { kind: 'number' }]
+      ],
+      ['chassis_docs_dark_large', [{ kind: 'color', theme: 'dark' }]],
+      [
+        'chassis_demo_light_large',
+        [{ kind: 'base' }, { kind: 'color', theme: 'light' }, { kind: 'number' }]
+      ],
+      ['chassis_demo_dark_large', [{ kind: 'color', theme: 'dark' }]]
+    ])
+    expect(destinations(planned).filter((file) => /number/i.test(file))).toEqual([
+      'dist/android/demo/chassis/number.xml',
+      'dist/android/demo/chassis/res/values/number.xml',
+      'dist/ios/demo/chassis/Number.swift',
+      'dist/web/docs/chassis/number.scss'
+    ])
+  })
 })
 
 describe('planBuilds with filters', () => {

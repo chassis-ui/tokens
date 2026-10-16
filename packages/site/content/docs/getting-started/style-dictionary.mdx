@@ -143,11 +143,11 @@ The token system is built on three core groups, `brand`, `theme`, and `app`, and
 
 The names in the block are the committed configuration, not the system. The build writes only what the keys list, so to build a brand, a theme, or an app of your own, add its name to the key of its group and give it token sets in `source/$themes.json`.
 
-To build without screens, set `screens` to `[]` or leave the key out, and remove the `screen` group from `source/$themes.json`. The build then writes one number file with no screen in its name: `number.scss` on the web, `Number.swift` on iOS, and `number.xml` with `res/values/number.xml` on Android.
+To build without screens, set `screens` to `[]` or leave the key out. The build then writes one number file with no screen in its name, with the values of the first screen in `source/$themes.json`, or of no screen when it has no `screen` group: `number.scss` on the web, `Number.swift` on iOS, and `number.xml` with `res/values/number.xml` on Android.
 
 ### Token-set lists
 
-A token-set list is the list of token sets that one run of Style Dictionary reads. The build combines one option of each group of `source/$themes.json` into a list named `<brand>_<app>_<theme>_<screen>`, or `<brand>_<app>_<theme>` without screens. `chassis_docs_light_large` is a list of the committed configuration. Every name in the build options must be an option of its group.
+A token-set list is the list of token sets that one run of Style Dictionary reads. The build combines one option of each group of `source/$themes.json` into a list named `<brand>_<app>_<theme>_<screen>`, or `<brand>_<app>_<theme>` when `source/$themes.json` has no `screen` group. `chassis_docs_light_large` is a list of the committed configuration. Every name in the build options must be an option of its group.
 
 The files of a brand and an app that need the same token sets share one list:
 

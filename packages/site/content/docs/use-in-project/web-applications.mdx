@@ -204,7 +204,7 @@ To write a group of tokens at once, loop over the variables of a module with `me
 
 ## Screen sizes
 
-The `screen` group is optional. A configuration without screens, with `screens` empty or left out of `chassis.build` and no `screen` group in `$themes.json`, writes one number file without a screen suffix, `number.scss`.
+The `screen` group is optional. A configuration without screens, with `screens` empty or left out of `chassis.build`, writes one number file without a screen suffix, `number.scss`, with the values of the first screen in `$themes.json`.
 
 The committed configuration has the screens `large`, `medium` and `small`. Each number file declares the same variables with the values of one screen, and `main.scss` has the values of the first screen, `large`. In the current tokens, the variables that differ between screens belong to the `website` groups: `$cx-size-website-*`, `$cx-space-website-*` and `$cx-typography-font-size-website-*`.
 

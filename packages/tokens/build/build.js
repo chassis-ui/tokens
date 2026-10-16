@@ -213,7 +213,8 @@ function checkFilters(buildOptions, filters) {
  * output and every screen a number output. Outputs are built from the token sets of
  * their own theme or screen and the first configured theme or screen otherwise, so the
  * base output (main, string) shares its token sets with the first color and the first
- * number output.
+ * number output. Without configured screens there is one number output, built from the
+ * token sets of the first screen in `source/$themes.json` when it has a screen group.
  *
  * @param {Object} sets - Token-set lists by `<brand>_<app>_<theme>[_<screen>]`, as
  *   `permutateThemes` returns them from `source/$themes.json`.
@@ -256,7 +257,13 @@ function planBuilds(sets, buildOptions, filters = {}) {
         byKey.get(key).push(output)
       }
 
-      for (const [key, keyOutputs] of byKey) {
+      for (const [name, keyOutputs] of byKey) {
+        // Without configured screens, the source may still have a screen group: its first
+        // screen, the first that `permutateThemes` lists, gives the token sets
+        const key =
+          sets[name] || screens.length > 0
+            ? name
+            : (Object.keys(sets).find((setKey) => setKey.startsWith(`${name}_`)) ?? name)
         if (!sets[key]) {
           throw new Error(`No token sets for ${key} in source/$themes.json`)
         }

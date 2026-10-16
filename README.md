@@ -267,7 +267,7 @@ The `chassis.build` key of the root `package.json` defines which brands, themes,
 
 - **`brands`**: Brand names
 - **`themes`**: Theme names, such as `light` and `dark`
-- **`screens`**: Screen sizes for responsive tokens. Set to `[]` or omit to generate single number files without screen suffixes; `source/$themes.json` must then have no screen group
+- **`screens`**: Screen sizes for responsive tokens. Set to `[]` or omit to generate single number files without screen suffixes; they take the values of the first screen in `source/$themes.json` when it has a screen group
 - **`apps`**: App names mapped to their platforms
 - **`options`**: (Optional) Style Dictionary options by platform name, merged into the options of that platform, e.g. `{ "web-px": { "outputReferences": true } }`. The build fails when it names a platform that no app uses
 

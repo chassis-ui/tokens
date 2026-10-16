@@ -207,7 +207,7 @@ The color files of the themes declare the same resources, each with the colors o
 
 ## Screen sizes
 
-The `screen` group is optional. A configuration without screens, with `screens` empty or left out of `chassis.build` and no `screen` group in `$themes.json`, writes one number file without a screen suffix, `number.xml`, and a resource tree without screen folders: its numbers are in `res/values/number.xml`.
+The `screen` group is optional. A configuration without screens, with `screens` empty or left out of `chassis.build`, writes one number file without a screen suffix, `number.xml`, with the values of the first screen in `$themes.json`, and a resource tree without screen folders: its numbers are in `res/values/number.xml`.
 
 The committed configuration has the screens `large`, `medium` and `small`. The resource tree has the numbers of each screen in its own folder, under the same names: the `small` screen in `values`, the `medium` screen in `values-sw600dp` and the `large` screen in `values-sw840dp`. Android picks the folder by the smallest width of the screen. In the current tokens, the resources that differ between screens belong to the `website` groups, such as `@dimen/size_website_section_icon`. [Screen folders](#screen-folders) describes how to change the folders.
 
