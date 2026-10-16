@@ -67,19 +67,39 @@
     "fontFamily": {
       "text": {
         "$type": "fontFamilies",
-        "$value": "Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif"
+        "$value": "'Inter', system-ui, -apple-system, Helvetica, Arial, sans-serif"
       },
       "display": {
         "$type": "fontFamilies",
-        "$value": "'Archivo Narrow', Georgia, 'Times New Roman', Times, serif"
+        "$value": "'Montserrat', system-ui, -apple-system, Helvetica, Arial, sans-serif"
       },
       "code": {
         "$type": "fontFamilies",
-        "$value": "Fira Code, Menlo, Monaco, Consolas, 'Courier New', monospace"
+        "$value": "'Fira Code', Menlo, Monaco, Consolas, 'Courier New', monospace"
       },
       "icon": {
         "$type": "fontFamilies",
         "$value": "Chassis-Icons"
+      },
+      "html": {
+        "heading": {
+          "$type": "fontFamilies",
+          "$value": "{typography.fontFamily.display}"
+        }
+      },
+      "context": {
+        "jumbo": {
+          "$type": "fontFamilies",
+          "$value": "{typography.fontFamily.display}"
+        },
+        "hero": {
+          "$type": "fontFamilies",
+          "$value": "{typography.fontFamily.display}"
+        },
+        "heading": {
+          "$type": "fontFamilies",
+          "$value": "{typography.fontFamily.display}"
+        }
       }
     },
     "fontWeight": {
@@ -127,6 +147,42 @@
         "strong": {
           "$type": "fontWeights",
           "$value": "Bold"
+        }
+      },
+      "html": {
+        "heading": {
+          "$type": "fontWeights",
+          "$value": "{typography.fontWeight.display.mass}"
+        }
+      },
+      "context": {
+        "jumbo": {
+          "$type": "fontWeights",
+          "$value": "{typography.fontWeight.display.mass}"
+        },
+        "hero": {
+          "$type": "fontWeights",
+          "$value": "{typography.fontWeight.display.mass}"
+        },
+        "title": {
+          "$type": "fontWeights",
+          "$value": "{typography.fontWeight.display.strong}"
+        },
+        "lead": {
+          "$type": "fontWeights",
+          "$value": "{typography.fontWeight.text.elegant}"
+        }
+      }
+    },
+    "letterSpacing": {
+      "context": {
+        "jumbo": {
+          "$type": "letterSpacing",
+          "$value": "{size.unit.nd25}"
+        },
+        "hero": {
+          "$type": "letterSpacing",
+          "$value": "{size.unit.nd15}"
         }
       }
     }

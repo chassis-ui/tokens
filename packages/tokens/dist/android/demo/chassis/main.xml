@@ -2,7 +2,7 @@
 
 <!--
   Do not edit directly, this file was auto-generated.
-  Generated on Fri, 16 Oct 2026 08:16:08 GMT
+  Generated on Fri, 16 Oct 2026 09:52:37 GMT
   Chassis - Tokens v0.8.0
   Copyright 2026 Ozgur Gunes
   Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
@@ -2030,18 +2030,18 @@
   <color name="color_table_border_main">#26191b1c</color>
   <color name="color_table_icon_sort">#99191b1c</color>
   <string name="typography_font_family_text">Inter</string>
-  <string name="typography_font_family_display">Archivo Narrow</string>
-  <string name="typography_font_family_html_heading">Inter</string>
+  <string name="typography_font_family_display">Montserrat</string>
+  <string name="typography_font_family_html_heading">Montserrat</string>
   <string name="typography_font_family_html_body">Inter</string>
   <string name="typography_font_family_html_paragraph">Inter</string>
   <string name="typography_font_family_html_blockquote">Inter</string>
   <string name="typography_font_family_html_list">Inter</string>
   <string name="typography_font_family_html_cite">Inter</string>
   <string name="typography_font_family_html_code">Fira Code</string>
-  <string name="typography_font_family_context_jumbo">Inter</string>
-  <string name="typography_font_family_context_hero">Inter</string>
+  <string name="typography_font_family_context_jumbo">Montserrat</string>
+  <string name="typography_font_family_context_hero">Montserrat</string>
   <string name="typography_font_family_context_lead">Inter</string>
-  <string name="typography_font_family_context_heading">Inter</string>
+  <string name="typography_font_family_context_heading">Montserrat</string>
   <string name="typography_font_family_context_title">Inter</string>
   <string name="typography_font_family_context_body">Inter</string>
   <string name="typography_font_family_context_highlight">Inter</string>
@@ -2091,7 +2091,7 @@
   <string name="typography_font_weight_context_jumbo_style">normal</string>
   <integer name="typography_font_weight_context_hero_weight">700</integer>
   <string name="typography_font_weight_context_hero_style">normal</string>
-  <integer name="typography_font_weight_context_lead_weight">400</integer>
+  <integer name="typography_font_weight_context_lead_weight">300</integer>
   <string name="typography_font_weight_context_lead_style">normal</string>
   <integer name="typography_font_weight_context_heading_weight">600</integer>
   <string name="typography_font_weight_context_heading_style">normal</string>
@@ -2252,8 +2252,8 @@
   <item name="typography_letter_spacing_html_list" type="dimen" format="float">0</item>
   <item name="typography_letter_spacing_html_cite" type="dimen" format="float">0</item>
   <item name="typography_letter_spacing_html_code" type="dimen" format="float">0</item>
-  <item name="typography_letter_spacing_context_jumbo" type="dimen" format="float">0</item>
-  <item name="typography_letter_spacing_context_hero" type="dimen" format="float">0</item>
+  <item name="typography_letter_spacing_context_jumbo" type="dimen" format="float">-2.5</item>
+  <item name="typography_letter_spacing_context_hero" type="dimen" format="float">-1.5</item>
   <item name="typography_letter_spacing_context_lead" type="dimen" format="float">0</item>
   <item name="typography_letter_spacing_context_heading" type="dimen" format="float">0</item>
   <item name="typography_letter_spacing_context_title" type="dimen" format="float">0</item>
@@ -2356,26 +2356,26 @@
   <dimen name="border_radius_tab_large">8dp</dimen>
   <dimen name="border_radius_tab_small">6dp</dimen>
   <dimen name="border_radius_tooltip_main">4dp</dimen>
-  <string name="font_context_jumbo_font_family">Inter</string>
+  <string name="font_context_jumbo_font_family">Montserrat</string>
   <integer name="font_context_jumbo_font_weight">700</integer>
   <dimen name="font_context_jumbo_line_height">120sp</dimen>
   <dimen name="font_context_jumbo_font_size">96sp</dimen>
-  <item name="font_context_jumbo_letter_spacing" type="dimen" format="float">0</item>
+  <item name="font_context_jumbo_letter_spacing" type="dimen" format="float">-0.026</item>
   <dimen name="font_context_jumbo_paragraph_spacing">0sp</dimen>
   <string name="font_context_jumbo_text_case">none</string>
   <string name="font_context_jumbo_text_decoration">none</string>
   <string name="font_context_jumbo_font_style">normal</string>
-  <string name="font_context_hero_font_family">Inter</string>
+  <string name="font_context_hero_font_family">Montserrat</string>
   <integer name="font_context_hero_font_weight">700</integer>
   <dimen name="font_context_hero_line_height">80sp</dimen>
   <dimen name="font_context_hero_font_size">64sp</dimen>
-  <item name="font_context_hero_letter_spacing" type="dimen" format="float">0</item>
+  <item name="font_context_hero_letter_spacing" type="dimen" format="float">-0.0234</item>
   <dimen name="font_context_hero_paragraph_spacing">0sp</dimen>
   <string name="font_context_hero_text_case">none</string>
   <string name="font_context_hero_text_decoration">none</string>
   <string name="font_context_hero_font_style">normal</string>
   <string name="font_context_lead_font_family">Inter</string>
-  <integer name="font_context_lead_font_weight">400</integer>
+  <integer name="font_context_lead_font_weight">300</integer>
   <dimen name="font_context_lead_line_height">32sp</dimen>
   <dimen name="font_context_lead_font_size">22sp</dimen>
   <item name="font_context_lead_letter_spacing" type="dimen" format="float">0</item>
@@ -2383,7 +2383,7 @@
   <string name="font_context_lead_text_case">none</string>
   <string name="font_context_lead_text_decoration">none</string>
   <string name="font_context_lead_font_style">normal</string>
-  <string name="font_context_heading_font_family">Inter</string>
+  <string name="font_context_heading_font_family">Montserrat</string>
   <integer name="font_context_heading_font_weight">600</integer>
   <dimen name="font_context_heading_line_height">40sp</dimen>
   <dimen name="font_context_heading_font_size">32sp</dimen>
@@ -2950,7 +2950,7 @@
   <string name="font_text_2xsmall_elegant_text_case">none</string>
   <string name="font_text_2xsmall_elegant_text_decoration">none</string>
   <string name="font_text_2xsmall_elegant_font_style">normal</string>
-  <string name="font_display_5xlarge_normal_font_family">Archivo Narrow</string>
+  <string name="font_display_5xlarge_normal_font_family">Montserrat</string>
   <integer name="font_display_5xlarge_normal_font_weight">500</integer>
   <dimen name="font_display_5xlarge_normal_line_height">56sp</dimen>
   <dimen name="font_display_5xlarge_normal_font_size">44sp</dimen>
@@ -2959,7 +2959,7 @@
   <string name="font_display_5xlarge_normal_text_case">none</string>
   <string name="font_display_5xlarge_normal_text_decoration">none</string>
   <string name="font_display_5xlarge_normal_font_style">normal</string>
-  <string name="font_display_5xlarge_strong_font_family">Archivo Narrow</string>
+  <string name="font_display_5xlarge_strong_font_family">Montserrat</string>
   <integer name="font_display_5xlarge_strong_font_weight">600</integer>
   <dimen name="font_display_5xlarge_strong_line_height">56sp</dimen>
   <dimen name="font_display_5xlarge_strong_font_size">44sp</dimen>
@@ -2968,7 +2968,7 @@
   <string name="font_display_5xlarge_strong_text_case">none</string>
   <string name="font_display_5xlarge_strong_text_decoration">none</string>
   <string name="font_display_5xlarge_strong_font_style">normal</string>
-  <string name="font_display_5xlarge_mass_font_family">Archivo Narrow</string>
+  <string name="font_display_5xlarge_mass_font_family">Montserrat</string>
   <integer name="font_display_5xlarge_mass_font_weight">700</integer>
   <dimen name="font_display_5xlarge_mass_line_height">56sp</dimen>
   <dimen name="font_display_5xlarge_mass_font_size">44sp</dimen>
@@ -2977,7 +2977,7 @@
   <string name="font_display_5xlarge_mass_text_case">none</string>
   <string name="font_display_5xlarge_mass_text_decoration">none</string>
   <string name="font_display_5xlarge_mass_font_style">normal</string>
-  <string name="font_display_5xlarge_elegant_font_family">Archivo Narrow</string>
+  <string name="font_display_5xlarge_elegant_font_family">Montserrat</string>
   <integer name="font_display_5xlarge_elegant_font_weight">400</integer>
   <dimen name="font_display_5xlarge_elegant_line_height">56sp</dimen>
   <dimen name="font_display_5xlarge_elegant_font_size">44sp</dimen>
@@ -2986,7 +2986,7 @@
   <string name="font_display_5xlarge_elegant_text_case">none</string>
   <string name="font_display_5xlarge_elegant_text_decoration">none</string>
   <string name="font_display_5xlarge_elegant_font_style">normal</string>
-  <string name="font_display_4xlarge_normal_font_family">Archivo Narrow</string>
+  <string name="font_display_4xlarge_normal_font_family">Montserrat</string>
   <integer name="font_display_4xlarge_normal_font_weight">500</integer>
   <dimen name="font_display_4xlarge_normal_line_height">48sp</dimen>
   <dimen name="font_display_4xlarge_normal_font_size">38sp</dimen>
@@ -2995,7 +2995,7 @@
   <string name="font_display_4xlarge_normal_text_case">none</string>
   <string name="font_display_4xlarge_normal_text_decoration">none</string>
   <string name="font_display_4xlarge_normal_font_style">normal</string>
-  <string name="font_display_4xlarge_strong_font_family">Archivo Narrow</string>
+  <string name="font_display_4xlarge_strong_font_family">Montserrat</string>
   <integer name="font_display_4xlarge_strong_font_weight">600</integer>
   <dimen name="font_display_4xlarge_strong_line_height">48sp</dimen>
   <dimen name="font_display_4xlarge_strong_font_size">38sp</dimen>
@@ -3004,7 +3004,7 @@
   <string name="font_display_4xlarge_strong_text_case">none</string>
   <string name="font_display_4xlarge_strong_text_decoration">none</string>
   <string name="font_display_4xlarge_strong_font_style">normal</string>
-  <string name="font_display_4xlarge_mass_font_family">Archivo Narrow</string>
+  <string name="font_display_4xlarge_mass_font_family">Montserrat</string>
   <integer name="font_display_4xlarge_mass_font_weight">700</integer>
   <dimen name="font_display_4xlarge_mass_line_height">48sp</dimen>
   <dimen name="font_display_4xlarge_mass_font_size">38sp</dimen>
@@ -3013,7 +3013,7 @@
   <string name="font_display_4xlarge_mass_text_case">none</string>
   <string name="font_display_4xlarge_mass_text_decoration">none</string>
   <string name="font_display_4xlarge_mass_font_style">normal</string>
-  <string name="font_display_4xlarge_elegant_font_family">Archivo Narrow</string>
+  <string name="font_display_4xlarge_elegant_font_family">Montserrat</string>
   <integer name="font_display_4xlarge_elegant_font_weight">400</integer>
   <dimen name="font_display_4xlarge_elegant_line_height">48sp</dimen>
   <dimen name="font_display_4xlarge_elegant_font_size">38sp</dimen>
@@ -3022,7 +3022,7 @@
   <string name="font_display_4xlarge_elegant_text_case">none</string>
   <string name="font_display_4xlarge_elegant_text_decoration">none</string>
   <string name="font_display_4xlarge_elegant_font_style">normal</string>
-  <string name="font_display_3xlarge_normal_font_family">Archivo Narrow</string>
+  <string name="font_display_3xlarge_normal_font_family">Montserrat</string>
   <integer name="font_display_3xlarge_normal_font_weight">500</integer>
   <dimen name="font_display_3xlarge_normal_line_height">40sp</dimen>
   <dimen name="font_display_3xlarge_normal_font_size">32sp</dimen>
@@ -3031,7 +3031,7 @@
   <string name="font_display_3xlarge_normal_text_case">none</string>
   <string name="font_display_3xlarge_normal_text_decoration">none</string>
   <string name="font_display_3xlarge_normal_font_style">normal</string>
-  <string name="font_display_3xlarge_strong_font_family">Archivo Narrow</string>
+  <string name="font_display_3xlarge_strong_font_family">Montserrat</string>
   <integer name="font_display_3xlarge_strong_font_weight">600</integer>
   <dimen name="font_display_3xlarge_strong_line_height">40sp</dimen>
   <dimen name="font_display_3xlarge_strong_font_size">32sp</dimen>
@@ -3040,7 +3040,7 @@
   <string name="font_display_3xlarge_strong_text_case">none</string>
   <string name="font_display_3xlarge_strong_text_decoration">none</string>
   <string name="font_display_3xlarge_strong_font_style">normal</string>
-  <string name="font_display_3xlarge_mass_font_family">Archivo Narrow</string>
+  <string name="font_display_3xlarge_mass_font_family">Montserrat</string>
   <integer name="font_display_3xlarge_mass_font_weight">700</integer>
   <dimen name="font_display_3xlarge_mass_line_height">40sp</dimen>
   <dimen name="font_display_3xlarge_mass_font_size">32sp</dimen>
@@ -3049,7 +3049,7 @@
   <string name="font_display_3xlarge_mass_text_case">none</string>
   <string name="font_display_3xlarge_mass_text_decoration">none</string>
   <string name="font_display_3xlarge_mass_font_style">normal</string>
-  <string name="font_display_3xlarge_elegant_font_family">Archivo Narrow</string>
+  <string name="font_display_3xlarge_elegant_font_family">Montserrat</string>
   <integer name="font_display_3xlarge_elegant_font_weight">400</integer>
   <dimen name="font_display_3xlarge_elegant_line_height">40sp</dimen>
   <dimen name="font_display_3xlarge_elegant_font_size">32sp</dimen>
@@ -3058,7 +3058,7 @@
   <string name="font_display_3xlarge_elegant_text_case">none</string>
   <string name="font_display_3xlarge_elegant_text_decoration">none</string>
   <string name="font_display_3xlarge_elegant_font_style">normal</string>
-  <string name="font_display_2xlarge_normal_font_family">Archivo Narrow</string>
+  <string name="font_display_2xlarge_normal_font_family">Montserrat</string>
   <integer name="font_display_2xlarge_normal_font_weight">500</integer>
   <dimen name="font_display_2xlarge_normal_line_height">36sp</dimen>
   <dimen name="font_display_2xlarge_normal_font_size">26sp</dimen>
@@ -3067,7 +3067,7 @@
   <string name="font_display_2xlarge_normal_text_case">none</string>
   <string name="font_display_2xlarge_normal_text_decoration">none</string>
   <string name="font_display_2xlarge_normal_font_style">normal</string>
-  <string name="font_display_2xlarge_strong_font_family">Archivo Narrow</string>
+  <string name="font_display_2xlarge_strong_font_family">Montserrat</string>
   <integer name="font_display_2xlarge_strong_font_weight">600</integer>
   <dimen name="font_display_2xlarge_strong_line_height">36sp</dimen>
   <dimen name="font_display_2xlarge_strong_font_size">26sp</dimen>
@@ -3076,7 +3076,7 @@
   <string name="font_display_2xlarge_strong_text_case">none</string>
   <string name="font_display_2xlarge_strong_text_decoration">none</string>
   <string name="font_display_2xlarge_strong_font_style">normal</string>
-  <string name="font_display_2xlarge_mass_font_family">Archivo Narrow</string>
+  <string name="font_display_2xlarge_mass_font_family">Montserrat</string>
   <integer name="font_display_2xlarge_mass_font_weight">700</integer>
   <dimen name="font_display_2xlarge_mass_line_height">36sp</dimen>
   <dimen name="font_display_2xlarge_mass_font_size">26sp</dimen>
@@ -3085,7 +3085,7 @@
   <string name="font_display_2xlarge_mass_text_case">none</string>
   <string name="font_display_2xlarge_mass_text_decoration">none</string>
   <string name="font_display_2xlarge_mass_font_style">normal</string>
-  <string name="font_display_2xlarge_elegant_font_family">Archivo Narrow</string>
+  <string name="font_display_2xlarge_elegant_font_family">Montserrat</string>
   <integer name="font_display_2xlarge_elegant_font_weight">400</integer>
   <dimen name="font_display_2xlarge_elegant_line_height">36sp</dimen>
   <dimen name="font_display_2xlarge_elegant_font_size">26sp</dimen>
@@ -3094,7 +3094,7 @@
   <string name="font_display_2xlarge_elegant_text_case">none</string>
   <string name="font_display_2xlarge_elegant_text_decoration">none</string>
   <string name="font_display_2xlarge_elegant_font_style">normal</string>
-  <string name="font_display_xlarge_normal_font_family">Archivo Narrow</string>
+  <string name="font_display_xlarge_normal_font_family">Montserrat</string>
   <integer name="font_display_xlarge_normal_font_weight">500</integer>
   <dimen name="font_display_xlarge_normal_line_height">32sp</dimen>
   <dimen name="font_display_xlarge_normal_font_size">22sp</dimen>
@@ -3103,7 +3103,7 @@
   <string name="font_display_xlarge_normal_text_case">none</string>
   <string name="font_display_xlarge_normal_text_decoration">none</string>
   <string name="font_display_xlarge_normal_font_style">normal</string>
-  <string name="font_display_xlarge_strong_font_family">Archivo Narrow</string>
+  <string name="font_display_xlarge_strong_font_family">Montserrat</string>
   <integer name="font_display_xlarge_strong_font_weight">600</integer>
   <dimen name="font_display_xlarge_strong_line_height">32sp</dimen>
   <dimen name="font_display_xlarge_strong_font_size">22sp</dimen>
@@ -3112,7 +3112,7 @@
   <string name="font_display_xlarge_strong_text_case">none</string>
   <string name="font_display_xlarge_strong_text_decoration">none</string>
   <string name="font_display_xlarge_strong_font_style">normal</string>
-  <string name="font_display_xlarge_mass_font_family">Archivo Narrow</string>
+  <string name="font_display_xlarge_mass_font_family">Montserrat</string>
   <integer name="font_display_xlarge_mass_font_weight">700</integer>
   <dimen name="font_display_xlarge_mass_line_height">32sp</dimen>
   <dimen name="font_display_xlarge_mass_font_size">22sp</dimen>
@@ -3121,7 +3121,7 @@
   <string name="font_display_xlarge_mass_text_case">none</string>
   <string name="font_display_xlarge_mass_text_decoration">none</string>
   <string name="font_display_xlarge_mass_font_style">normal</string>
-  <string name="font_display_xlarge_elegant_font_family">Archivo Narrow</string>
+  <string name="font_display_xlarge_elegant_font_family">Montserrat</string>
   <integer name="font_display_xlarge_elegant_font_weight">400</integer>
   <dimen name="font_display_xlarge_elegant_line_height">32sp</dimen>
   <dimen name="font_display_xlarge_elegant_font_size">22sp</dimen>
@@ -3130,7 +3130,7 @@
   <string name="font_display_xlarge_elegant_text_case">none</string>
   <string name="font_display_xlarge_elegant_text_decoration">none</string>
   <string name="font_display_xlarge_elegant_font_style">normal</string>
-  <string name="font_display_large_normal_font_family">Archivo Narrow</string>
+  <string name="font_display_large_normal_font_family">Montserrat</string>
   <integer name="font_display_large_normal_font_weight">500</integer>
   <dimen name="font_display_large_normal_line_height">28sp</dimen>
   <dimen name="font_display_large_normal_font_size">19sp</dimen>
@@ -3139,7 +3139,7 @@
   <string name="font_display_large_normal_text_case">none</string>
   <string name="font_display_large_normal_text_decoration">none</string>
   <string name="font_display_large_normal_font_style">normal</string>
-  <string name="font_display_large_strong_font_family">Archivo Narrow</string>
+  <string name="font_display_large_strong_font_family">Montserrat</string>
   <integer name="font_display_large_strong_font_weight">600</integer>
   <dimen name="font_display_large_strong_line_height">28sp</dimen>
   <dimen name="font_display_large_strong_font_size">19sp</dimen>
@@ -3148,7 +3148,7 @@
   <string name="font_display_large_strong_text_case">none</string>
   <string name="font_display_large_strong_text_decoration">none</string>
   <string name="font_display_large_strong_font_style">normal</string>
-  <string name="font_display_large_mass_font_family">Archivo Narrow</string>
+  <string name="font_display_large_mass_font_family">Montserrat</string>
   <integer name="font_display_large_mass_font_weight">700</integer>
   <dimen name="font_display_large_mass_line_height">28sp</dimen>
   <dimen name="font_display_large_mass_font_size">19sp</dimen>
@@ -3157,7 +3157,7 @@
   <string name="font_display_large_mass_text_case">none</string>
   <string name="font_display_large_mass_text_decoration">none</string>
   <string name="font_display_large_mass_font_style">normal</string>
-  <string name="font_display_large_elegant_font_family">Archivo Narrow</string>
+  <string name="font_display_large_elegant_font_family">Montserrat</string>
   <integer name="font_display_large_elegant_font_weight">400</integer>
   <dimen name="font_display_large_elegant_line_height">28sp</dimen>
   <dimen name="font_display_large_elegant_font_size">19sp</dimen>
@@ -3166,7 +3166,7 @@
   <string name="font_display_large_elegant_text_case">none</string>
   <string name="font_display_large_elegant_text_decoration">none</string>
   <string name="font_display_large_elegant_font_style">normal</string>
-  <string name="font_display_medium_normal_font_family">Archivo Narrow</string>
+  <string name="font_display_medium_normal_font_family">Montserrat</string>
   <integer name="font_display_medium_normal_font_weight">500</integer>
   <dimen name="font_display_medium_normal_line_height">24sp</dimen>
   <dimen name="font_display_medium_normal_font_size">16sp</dimen>
@@ -3175,7 +3175,7 @@
   <string name="font_display_medium_normal_text_case">none</string>
   <string name="font_display_medium_normal_text_decoration">none</string>
   <string name="font_display_medium_normal_font_style">normal</string>
-  <string name="font_display_medium_strong_font_family">Archivo Narrow</string>
+  <string name="font_display_medium_strong_font_family">Montserrat</string>
   <integer name="font_display_medium_strong_font_weight">600</integer>
   <dimen name="font_display_medium_strong_line_height">24sp</dimen>
   <dimen name="font_display_medium_strong_font_size">16sp</dimen>
@@ -3184,7 +3184,7 @@
   <string name="font_display_medium_strong_text_case">none</string>
   <string name="font_display_medium_strong_text_decoration">none</string>
   <string name="font_display_medium_strong_font_style">normal</string>
-  <string name="font_display_medium_mass_font_family">Archivo Narrow</string>
+  <string name="font_display_medium_mass_font_family">Montserrat</string>
   <integer name="font_display_medium_mass_font_weight">700</integer>
   <dimen name="font_display_medium_mass_line_height">24sp</dimen>
   <dimen name="font_display_medium_mass_font_size">16sp</dimen>
@@ -3193,7 +3193,7 @@
   <string name="font_display_medium_mass_text_case">none</string>
   <string name="font_display_medium_mass_text_decoration">none</string>
   <string name="font_display_medium_mass_font_style">normal</string>
-  <string name="font_display_medium_elegant_font_family">Archivo Narrow</string>
+  <string name="font_display_medium_elegant_font_family">Montserrat</string>
   <integer name="font_display_medium_elegant_font_weight">400</integer>
   <dimen name="font_display_medium_elegant_line_height">24sp</dimen>
   <dimen name="font_display_medium_elegant_font_size">16sp</dimen>
@@ -3202,7 +3202,7 @@
   <string name="font_display_medium_elegant_text_case">none</string>
   <string name="font_display_medium_elegant_text_decoration">none</string>
   <string name="font_display_medium_elegant_font_style">normal</string>
-  <string name="font_display_small_normal_font_family">Archivo Narrow</string>
+  <string name="font_display_small_normal_font_family">Montserrat</string>
   <integer name="font_display_small_normal_font_weight">500</integer>
   <dimen name="font_display_small_normal_line_height">20sp</dimen>
   <dimen name="font_display_small_normal_font_size">14sp</dimen>
@@ -3211,7 +3211,7 @@
   <string name="font_display_small_normal_text_case">none</string>
   <string name="font_display_small_normal_text_decoration">none</string>
   <string name="font_display_small_normal_font_style">normal</string>
-  <string name="font_display_small_strong_font_family">Archivo Narrow</string>
+  <string name="font_display_small_strong_font_family">Montserrat</string>
   <integer name="font_display_small_strong_font_weight">600</integer>
   <dimen name="font_display_small_strong_line_height">20sp</dimen>
   <dimen name="font_display_small_strong_font_size">14sp</dimen>
@@ -3220,7 +3220,7 @@
   <string name="font_display_small_strong_text_case">none</string>
   <string name="font_display_small_strong_text_decoration">none</string>
   <string name="font_display_small_strong_font_style">normal</string>
-  <string name="font_display_small_mass_font_family">Archivo Narrow</string>
+  <string name="font_display_small_mass_font_family">Montserrat</string>
   <integer name="font_display_small_mass_font_weight">700</integer>
   <dimen name="font_display_small_mass_line_height">20sp</dimen>
   <dimen name="font_display_small_mass_font_size">14sp</dimen>
@@ -3229,7 +3229,7 @@
   <string name="font_display_small_mass_text_case">none</string>
   <string name="font_display_small_mass_text_decoration">none</string>
   <string name="font_display_small_mass_font_style">normal</string>
-  <string name="font_display_small_elegant_font_family">Archivo Narrow</string>
+  <string name="font_display_small_elegant_font_family">Montserrat</string>
   <integer name="font_display_small_elegant_font_weight">400</integer>
   <dimen name="font_display_small_elegant_line_height">20sp</dimen>
   <dimen name="font_display_small_elegant_font_size">14sp</dimen>
@@ -3238,7 +3238,7 @@
   <string name="font_display_small_elegant_text_case">none</string>
   <string name="font_display_small_elegant_text_decoration">none</string>
   <string name="font_display_small_elegant_font_style">normal</string>
-  <string name="font_display_xsmall_normal_font_family">Archivo Narrow</string>
+  <string name="font_display_xsmall_normal_font_family">Montserrat</string>
   <integer name="font_display_xsmall_normal_font_weight">500</integer>
   <dimen name="font_display_xsmall_normal_line_height">18sp</dimen>
   <dimen name="font_display_xsmall_normal_font_size">12sp</dimen>
@@ -3247,7 +3247,7 @@
   <string name="font_display_xsmall_normal_text_case">none</string>
   <string name="font_display_xsmall_normal_text_decoration">none</string>
   <string name="font_display_xsmall_normal_font_style">normal</string>
-  <string name="font_display_xsmall_strong_font_family">Archivo Narrow</string>
+  <string name="font_display_xsmall_strong_font_family">Montserrat</string>
   <integer name="font_display_xsmall_strong_font_weight">600</integer>
   <dimen name="font_display_xsmall_strong_line_height">18sp</dimen>
   <dimen name="font_display_xsmall_strong_font_size">12sp</dimen>
@@ -3256,7 +3256,7 @@
   <string name="font_display_xsmall_strong_text_case">none</string>
   <string name="font_display_xsmall_strong_text_decoration">none</string>
   <string name="font_display_xsmall_strong_font_style">normal</string>
-  <string name="font_display_xsmall_mass_font_family">Archivo Narrow</string>
+  <string name="font_display_xsmall_mass_font_family">Montserrat</string>
   <integer name="font_display_xsmall_mass_font_weight">700</integer>
   <dimen name="font_display_xsmall_mass_line_height">18sp</dimen>
   <dimen name="font_display_xsmall_mass_font_size">12sp</dimen>
@@ -3265,7 +3265,7 @@
   <string name="font_display_xsmall_mass_text_case">none</string>
   <string name="font_display_xsmall_mass_text_decoration">none</string>
   <string name="font_display_xsmall_mass_font_style">normal</string>
-  <string name="font_display_xsmall_elegant_font_family">Archivo Narrow</string>
+  <string name="font_display_xsmall_elegant_font_family">Montserrat</string>
   <integer name="font_display_xsmall_elegant_font_weight">400</integer>
   <dimen name="font_display_xsmall_elegant_line_height">18sp</dimen>
   <dimen name="font_display_xsmall_elegant_font_size">12sp</dimen>
@@ -3274,7 +3274,7 @@
   <string name="font_display_xsmall_elegant_text_case">none</string>
   <string name="font_display_xsmall_elegant_text_decoration">none</string>
   <string name="font_display_xsmall_elegant_font_style">normal</string>
-  <string name="font_display_2xsmall_normal_font_family">Archivo Narrow</string>
+  <string name="font_display_2xsmall_normal_font_family">Montserrat</string>
   <integer name="font_display_2xsmall_normal_font_weight">500</integer>
   <dimen name="font_display_2xsmall_normal_line_height">14sp</dimen>
   <dimen name="font_display_2xsmall_normal_font_size">10sp</dimen>
@@ -3283,7 +3283,7 @@
   <string name="font_display_2xsmall_normal_text_case">none</string>
   <string name="font_display_2xsmall_normal_text_decoration">none</string>
   <string name="font_display_2xsmall_normal_font_style">normal</string>
-  <string name="font_display_2xsmall_strong_font_family">Archivo Narrow</string>
+  <string name="font_display_2xsmall_strong_font_family">Montserrat</string>
   <integer name="font_display_2xsmall_strong_font_weight">600</integer>
   <dimen name="font_display_2xsmall_strong_line_height">14sp</dimen>
   <dimen name="font_display_2xsmall_strong_font_size">10sp</dimen>
@@ -3292,7 +3292,7 @@
   <string name="font_display_2xsmall_strong_text_case">none</string>
   <string name="font_display_2xsmall_strong_text_decoration">none</string>
   <string name="font_display_2xsmall_strong_font_style">normal</string>
-  <string name="font_display_2xsmall_mass_font_family">Archivo Narrow</string>
+  <string name="font_display_2xsmall_mass_font_family">Montserrat</string>
   <integer name="font_display_2xsmall_mass_font_weight">700</integer>
   <dimen name="font_display_2xsmall_mass_line_height">14sp</dimen>
   <dimen name="font_display_2xsmall_mass_font_size">10sp</dimen>
@@ -3301,7 +3301,7 @@
   <string name="font_display_2xsmall_mass_text_case">none</string>
   <string name="font_display_2xsmall_mass_text_decoration">none</string>
   <string name="font_display_2xsmall_mass_font_style">normal</string>
-  <string name="font_display_2xsmall_elegant_font_family">Archivo Narrow</string>
+  <string name="font_display_2xsmall_elegant_font_family">Montserrat</string>
   <integer name="font_display_2xsmall_elegant_font_weight">400</integer>
   <dimen name="font_display_2xsmall_elegant_line_height">14sp</dimen>
   <dimen name="font_display_2xsmall_elegant_font_size">10sp</dimen>
@@ -3310,7 +3310,7 @@
   <string name="font_display_2xsmall_elegant_text_case">none</string>
   <string name="font_display_2xsmall_elegant_text_decoration">none</string>
   <string name="font_display_2xsmall_elegant_font_style">normal</string>
-  <string name="font_html_h1_font_family">Inter</string>
+  <string name="font_html_h1_font_family">Montserrat</string>
   <integer name="font_html_h1_font_weight">700</integer>
   <dimen name="font_html_h1_line_height">46sp</dimen>
   <dimen name="font_html_h1_font_size">38sp</dimen>
@@ -3319,7 +3319,7 @@
   <string name="font_html_h1_text_case">none</string>
   <string name="font_html_h1_text_decoration">none</string>
   <string name="font_html_h1_font_style">normal</string>
-  <string name="font_html_h2_font_family">Inter</string>
+  <string name="font_html_h2_font_family">Montserrat</string>
   <integer name="font_html_h2_font_weight">700</integer>
   <dimen name="font_html_h2_line_height">40sp</dimen>
   <dimen name="font_html_h2_font_size">32sp</dimen>
@@ -3328,7 +3328,7 @@
   <string name="font_html_h2_text_case">none</string>
   <string name="font_html_h2_text_decoration">none</string>
   <string name="font_html_h2_font_style">normal</string>
-  <string name="font_html_h3_font_family">Inter</string>
+  <string name="font_html_h3_font_family">Montserrat</string>
   <integer name="font_html_h3_font_weight">700</integer>
   <dimen name="font_html_h3_line_height">32sp</dimen>
   <dimen name="font_html_h3_font_size">26sp</dimen>
@@ -3337,7 +3337,7 @@
   <string name="font_html_h3_text_case">none</string>
   <string name="font_html_h3_text_decoration">none</string>
   <string name="font_html_h3_font_style">normal</string>
-  <string name="font_html_h4_font_family">Inter</string>
+  <string name="font_html_h4_font_family">Montserrat</string>
   <integer name="font_html_h4_font_weight">700</integer>
   <dimen name="font_html_h4_line_height">28sp</dimen>
   <dimen name="font_html_h4_font_size">22sp</dimen>
@@ -3346,7 +3346,7 @@
   <string name="font_html_h4_text_case">none</string>
   <string name="font_html_h4_text_decoration">none</string>
   <string name="font_html_h4_font_style">normal</string>
-  <string name="font_html_h5_font_family">Inter</string>
+  <string name="font_html_h5_font_family">Montserrat</string>
   <integer name="font_html_h5_font_weight">700</integer>
   <dimen name="font_html_h5_line_height">24sp</dimen>
   <dimen name="font_html_h5_font_size">19sp</dimen>
@@ -3355,7 +3355,7 @@
   <string name="font_html_h5_text_case">none</string>
   <string name="font_html_h5_text_decoration">none</string>
   <string name="font_html_h5_font_style">normal</string>
-  <string name="font_html_h6_font_family">Inter</string>
+  <string name="font_html_h6_font_family">Montserrat</string>
   <integer name="font_html_h6_font_weight">700</integer>
   <dimen name="font_html_h6_line_height">20sp</dimen>
   <dimen name="font_html_h6_font_size">16sp</dimen>

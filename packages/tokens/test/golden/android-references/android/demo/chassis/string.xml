@@ -2,7 +2,7 @@
 
 <!--
   Do not edit directly, this file was auto-generated.
-  Generated on Thu, 15 Oct 2026 18:11:44 GMT
+  Generated on Fri, 16 Oct 2026 09:56:09 GMT
   Chassis - Tokens v0.8.0
   Copyright 2026 Ozgur Gunes
   Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
@@ -10,18 +10,18 @@
 
 <resources>
   <string name="typography_font_family_text">Inter</string>
-  <string name="typography_font_family_display">Archivo Narrow</string>
-  <string name="typography_font_family_html_heading">@string/typography_font_family_text</string>
+  <string name="typography_font_family_display">Montserrat</string>
+  <string name="typography_font_family_html_heading">@string/typography_font_family_display</string>
   <string name="typography_font_family_html_body">@string/typography_font_family_text</string>
   <string name="typography_font_family_html_paragraph">@string/typography_font_family_text</string>
   <string name="typography_font_family_html_blockquote">@string/typography_font_family_text</string>
   <string name="typography_font_family_html_list">@string/typography_font_family_text</string>
   <string name="typography_font_family_html_cite">@string/typography_font_family_text</string>
   <string name="typography_font_family_html_code">@string/typography_font_family_code</string>
-  <string name="typography_font_family_context_jumbo">@string/typography_font_family_text</string>
-  <string name="typography_font_family_context_hero">@string/typography_font_family_text</string>
+  <string name="typography_font_family_context_jumbo">@string/typography_font_family_display</string>
+  <string name="typography_font_family_context_hero">@string/typography_font_family_display</string>
   <string name="typography_font_family_context_lead">@string/typography_font_family_text</string>
-  <string name="typography_font_family_context_heading">@string/typography_font_family_text</string>
+  <string name="typography_font_family_context_heading">@string/typography_font_family_display</string>
   <string name="typography_font_family_context_title">@string/typography_font_family_text</string>
   <string name="typography_font_family_context_body">@string/typography_font_family_text</string>
   <string name="typography_font_family_context_highlight">@string/typography_font_family_text</string>
@@ -71,7 +71,7 @@
   <string name="typography_font_weight_context_jumbo_style">normal</string>
   <integer name="typography_font_weight_context_hero_weight">700</integer>
   <string name="typography_font_weight_context_hero_style">normal</string>
-  <integer name="typography_font_weight_context_lead_weight">400</integer>
+  <integer name="typography_font_weight_context_lead_weight">300</integer>
   <string name="typography_font_weight_context_lead_style">normal</string>
   <integer name="typography_font_weight_context_heading_weight">600</integer>
   <string name="typography_font_weight_context_heading_style">normal</string>
@@ -100,7 +100,7 @@
   <string name="font_context_hero_text_decoration">none</string>
   <string name="font_context_hero_font_style">normal</string>
   <string name="font_context_lead_font_family">@string/typography_font_family_context_lead</string>
-  <integer name="font_context_lead_font_weight">400</integer>
+  <integer name="font_context_lead_font_weight">300</integer>
   <string name="font_context_lead_text_case">none</string>
   <string name="font_context_lead_text_decoration">none</string>
   <string name="font_context_lead_font_style">normal</string>

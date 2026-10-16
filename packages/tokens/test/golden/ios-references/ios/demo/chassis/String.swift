@@ -4,7 +4,7 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Thu, 15 Oct 2026 18:11:46 GMT
+// Generated on Fri, 16 Oct 2026 09:56:11 GMT
 // Chassis - Tokens v0.8.0
 // Copyright 2026 Ozgur Gunes
 // Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
@@ -14,18 +14,18 @@ import UIKit
 
 public enum ChassisTokensString {
     public static let TypographyFontFamilyText = "Inter"
-    public static let TypographyFontFamilyDisplay = "Archivo Narrow"
-    public static let TypographyFontFamilyHtmlHeading = TypographyFontFamilyText
+    public static let TypographyFontFamilyDisplay = "Montserrat"
+    public static let TypographyFontFamilyHtmlHeading = TypographyFontFamilyDisplay
     public static let TypographyFontFamilyHtmlBody = TypographyFontFamilyText
     public static let TypographyFontFamilyHtmlParagraph = TypographyFontFamilyText
     public static let TypographyFontFamilyHtmlBlockquote = TypographyFontFamilyText
     public static let TypographyFontFamilyHtmlList = TypographyFontFamilyText
     public static let TypographyFontFamilyHtmlCite = TypographyFontFamilyText
     public static let TypographyFontFamilyHtmlCode = TypographyFontFamilyCode
-    public static let TypographyFontFamilyContextJumbo = TypographyFontFamilyText
-    public static let TypographyFontFamilyContextHero = TypographyFontFamilyText
+    public static let TypographyFontFamilyContextJumbo = TypographyFontFamilyDisplay
+    public static let TypographyFontFamilyContextHero = TypographyFontFamilyDisplay
     public static let TypographyFontFamilyContextLead = TypographyFontFamilyText
-    public static let TypographyFontFamilyContextHeading = TypographyFontFamilyText
+    public static let TypographyFontFamilyContextHeading = TypographyFontFamilyDisplay
     public static let TypographyFontFamilyContextTitle = TypographyFontFamilyText
     public static let TypographyFontFamilyContextBody = TypographyFontFamilyText
     public static let TypographyFontFamilyContextHighlight = TypographyFontFamilyText
@@ -75,7 +75,7 @@ public enum ChassisTokensString {
     public static let TypographyFontWeightContextJumboStyle = "normal"
     public static let TypographyFontWeightContextHeroWeight = UIFont.Weight.bold
     public static let TypographyFontWeightContextHeroStyle = "normal"
-    public static let TypographyFontWeightContextLeadWeight = UIFont.Weight.regular
+    public static let TypographyFontWeightContextLeadWeight = UIFont.Weight.light
     public static let TypographyFontWeightContextLeadStyle = "normal"
     public static let TypographyFontWeightContextHeadingWeight = UIFont.Weight.semibold
     public static let TypographyFontWeightContextHeadingStyle = "normal"
@@ -104,7 +104,7 @@ public enum ChassisTokensString {
     public static let FontContextHeroTextDecoration = "none"
     public static let FontContextHeroFontStyle = "normal"
     public static let FontContextLeadFontFamily = TypographyFontFamilyContextLead
-    public static let FontContextLeadFontWeight = UIFont.Weight.regular
+    public static let FontContextLeadFontWeight = UIFont.Weight.light
     public static let FontContextLeadTextCase = "none"
     public static let FontContextLeadTextDecoration = "none"
     public static let FontContextLeadFontStyle = "normal"

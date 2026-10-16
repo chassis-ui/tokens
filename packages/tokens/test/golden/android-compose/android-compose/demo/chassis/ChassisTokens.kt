@@ -3,7 +3,7 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Fri, 16 Oct 2026 08:19:05 GMT
+// Generated on Fri, 16 Oct 2026 09:56:08 GMT
 // Chassis - Tokens v0.8.0
 // Copyright 2026 Ozgur Gunes
 // Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
@@ -2039,18 +2039,18 @@ object ChassisTokens {
     val colorTableBorderMain get() = Color(0x26191B1C)
     val colorTableIconSort get() = Color(0x99191B1C)
     val typographyFontFamilyText get() = "Inter"
-    val typographyFontFamilyDisplay get() = "Archivo Narrow"
-    val typographyFontFamilyHtmlHeading get() = "Inter"
+    val typographyFontFamilyDisplay get() = "Montserrat"
+    val typographyFontFamilyHtmlHeading get() = "Montserrat"
     val typographyFontFamilyHtmlBody get() = "Inter"
     val typographyFontFamilyHtmlParagraph get() = "Inter"
     val typographyFontFamilyHtmlBlockquote get() = "Inter"
     val typographyFontFamilyHtmlList get() = "Inter"
     val typographyFontFamilyHtmlCite get() = "Inter"
     val typographyFontFamilyHtmlCode get() = "Fira Code"
-    val typographyFontFamilyContextJumbo get() = "Inter"
-    val typographyFontFamilyContextHero get() = "Inter"
+    val typographyFontFamilyContextJumbo get() = "Montserrat"
+    val typographyFontFamilyContextHero get() = "Montserrat"
     val typographyFontFamilyContextLead get() = "Inter"
-    val typographyFontFamilyContextHeading get() = "Inter"
+    val typographyFontFamilyContextHeading get() = "Montserrat"
     val typographyFontFamilyContextTitle get() = "Inter"
     val typographyFontFamilyContextBody get() = "Inter"
     val typographyFontFamilyContextHighlight get() = "Inter"
@@ -2100,7 +2100,7 @@ object ChassisTokens {
     val typographyFontWeightContextJumboStyle get() = "normal"
     val typographyFontWeightContextHeroWeight get() = FontWeight(700)
     val typographyFontWeightContextHeroStyle get() = "normal"
-    val typographyFontWeightContextLeadWeight get() = FontWeight(400)
+    val typographyFontWeightContextLeadWeight get() = FontWeight(300)
     val typographyFontWeightContextLeadStyle get() = "normal"
     val typographyFontWeightContextHeadingWeight get() = FontWeight(600)
     val typographyFontWeightContextHeadingStyle get() = "normal"
@@ -2261,8 +2261,8 @@ object ChassisTokens {
     val typographyLetterSpacingHtmlList get() = 0f
     val typographyLetterSpacingHtmlCite get() = 0f
     val typographyLetterSpacingHtmlCode get() = 0f
-    val typographyLetterSpacingContextJumbo get() = 0f
-    val typographyLetterSpacingContextHero get() = 0f
+    val typographyLetterSpacingContextJumbo get() = -2.5f
+    val typographyLetterSpacingContextHero get() = -1.5f
     val typographyLetterSpacingContextLead get() = 0f
     val typographyLetterSpacingContextHeading get() = 0f
     val typographyLetterSpacingContextTitle get() = 0f
@@ -2365,26 +2365,26 @@ object ChassisTokens {
     val borderRadiusTabLarge get() = 8.dp
     val borderRadiusTabSmall get() = 6.dp
     val borderRadiusTooltipMain get() = 4.dp
-    val fontContextJumboFontFamily get() = "Inter"
+    val fontContextJumboFontFamily get() = "Montserrat"
     val fontContextJumboFontWeight get() = FontWeight(700)
     val fontContextJumboLineHeight get() = 120.sp
     val fontContextJumboFontSize get() = 96.sp
-    val fontContextJumboLetterSpacing get() = 0.em
+    val fontContextJumboLetterSpacing get() = (-0.026).em
     val fontContextJumboParagraphSpacing get() = 0.sp
     val fontContextJumboTextCase get() = "none"
     val fontContextJumboTextDecoration get() = "none"
     val fontContextJumboFontStyle get() = "normal"
-    val fontContextHeroFontFamily get() = "Inter"
+    val fontContextHeroFontFamily get() = "Montserrat"
     val fontContextHeroFontWeight get() = FontWeight(700)
     val fontContextHeroLineHeight get() = 80.sp
     val fontContextHeroFontSize get() = 64.sp
-    val fontContextHeroLetterSpacing get() = 0.em
+    val fontContextHeroLetterSpacing get() = (-0.0234).em
     val fontContextHeroParagraphSpacing get() = 0.sp
     val fontContextHeroTextCase get() = "none"
     val fontContextHeroTextDecoration get() = "none"
     val fontContextHeroFontStyle get() = "normal"
     val fontContextLeadFontFamily get() = "Inter"
-    val fontContextLeadFontWeight get() = FontWeight(400)
+    val fontContextLeadFontWeight get() = FontWeight(300)
     val fontContextLeadLineHeight get() = 32.sp
     val fontContextLeadFontSize get() = 22.sp
     val fontContextLeadLetterSpacing get() = 0.em
@@ -2392,7 +2392,7 @@ object ChassisTokens {
     val fontContextLeadTextCase get() = "none"
     val fontContextLeadTextDecoration get() = "none"
     val fontContextLeadFontStyle get() = "normal"
-    val fontContextHeadingFontFamily get() = "Inter"
+    val fontContextHeadingFontFamily get() = "Montserrat"
     val fontContextHeadingFontWeight get() = FontWeight(600)
     val fontContextHeadingLineHeight get() = 40.sp
     val fontContextHeadingFontSize get() = 32.sp
@@ -2959,7 +2959,7 @@ object ChassisTokens {
     val fontText2xsmallElegantTextCase get() = "none"
     val fontText2xsmallElegantTextDecoration get() = "none"
     val fontText2xsmallElegantFontStyle get() = "normal"
-    val fontDisplay5xlargeNormalFontFamily get() = "Archivo Narrow"
+    val fontDisplay5xlargeNormalFontFamily get() = "Montserrat"
     val fontDisplay5xlargeNormalFontWeight get() = FontWeight(500)
     val fontDisplay5xlargeNormalLineHeight get() = 56.sp
     val fontDisplay5xlargeNormalFontSize get() = 44.sp
@@ -2968,7 +2968,7 @@ object ChassisTokens {
     val fontDisplay5xlargeNormalTextCase get() = "none"
     val fontDisplay5xlargeNormalTextDecoration get() = "none"
     val fontDisplay5xlargeNormalFontStyle get() = "normal"
-    val fontDisplay5xlargeStrongFontFamily get() = "Archivo Narrow"
+    val fontDisplay5xlargeStrongFontFamily get() = "Montserrat"
     val fontDisplay5xlargeStrongFontWeight get() = FontWeight(600)
     val fontDisplay5xlargeStrongLineHeight get() = 56.sp
     val fontDisplay5xlargeStrongFontSize get() = 44.sp
@@ -2977,7 +2977,7 @@ object ChassisTokens {
     val fontDisplay5xlargeStrongTextCase get() = "none"
     val fontDisplay5xlargeStrongTextDecoration get() = "none"
     val fontDisplay5xlargeStrongFontStyle get() = "normal"
-    val fontDisplay5xlargeMassFontFamily get() = "Archivo Narrow"
+    val fontDisplay5xlargeMassFontFamily get() = "Montserrat"
     val fontDisplay5xlargeMassFontWeight get() = FontWeight(700)
     val fontDisplay5xlargeMassLineHeight get() = 56.sp
     val fontDisplay5xlargeMassFontSize get() = 44.sp
@@ -2986,7 +2986,7 @@ object ChassisTokens {
     val fontDisplay5xlargeMassTextCase get() = "none"
     val fontDisplay5xlargeMassTextDecoration get() = "none"
     val fontDisplay5xlargeMassFontStyle get() = "normal"
-    val fontDisplay5xlargeElegantFontFamily get() = "Archivo Narrow"
+    val fontDisplay5xlargeElegantFontFamily get() = "Montserrat"
     val fontDisplay5xlargeElegantFontWeight get() = FontWeight(400)
     val fontDisplay5xlargeElegantLineHeight get() = 56.sp
     val fontDisplay5xlargeElegantFontSize get() = 44.sp
@@ -2995,7 +2995,7 @@ object ChassisTokens {
     val fontDisplay5xlargeElegantTextCase get() = "none"
     val fontDisplay5xlargeElegantTextDecoration get() = "none"
     val fontDisplay5xlargeElegantFontStyle get() = "normal"
-    val fontDisplay4xlargeNormalFontFamily get() = "Archivo Narrow"
+    val fontDisplay4xlargeNormalFontFamily get() = "Montserrat"
     val fontDisplay4xlargeNormalFontWeight get() = FontWeight(500)
     val fontDisplay4xlargeNormalLineHeight get() = 48.sp
     val fontDisplay4xlargeNormalFontSize get() = 38.sp
@@ -3004,7 +3004,7 @@ object ChassisTokens {
     val fontDisplay4xlargeNormalTextCase get() = "none"
     val fontDisplay4xlargeNormalTextDecoration get() = "none"
     val fontDisplay4xlargeNormalFontStyle get() = "normal"
-    val fontDisplay4xlargeStrongFontFamily get() = "Archivo Narrow"
+    val fontDisplay4xlargeStrongFontFamily get() = "Montserrat"
     val fontDisplay4xlargeStrongFontWeight get() = FontWeight(600)
     val fontDisplay4xlargeStrongLineHeight get() = 48.sp
     val fontDisplay4xlargeStrongFontSize get() = 38.sp
@@ -3013,7 +3013,7 @@ object ChassisTokens {
     val fontDisplay4xlargeStrongTextCase get() = "none"
     val fontDisplay4xlargeStrongTextDecoration get() = "none"
     val fontDisplay4xlargeStrongFontStyle get() = "normal"
-    val fontDisplay4xlargeMassFontFamily get() = "Archivo Narrow"
+    val fontDisplay4xlargeMassFontFamily get() = "Montserrat"
     val fontDisplay4xlargeMassFontWeight get() = FontWeight(700)
     val fontDisplay4xlargeMassLineHeight get() = 48.sp
     val fontDisplay4xlargeMassFontSize get() = 38.sp
@@ -3022,7 +3022,7 @@ object ChassisTokens {
     val fontDisplay4xlargeMassTextCase get() = "none"
     val fontDisplay4xlargeMassTextDecoration get() = "none"
     val fontDisplay4xlargeMassFontStyle get() = "normal"
-    val fontDisplay4xlargeElegantFontFamily get() = "Archivo Narrow"
+    val fontDisplay4xlargeElegantFontFamily get() = "Montserrat"
     val fontDisplay4xlargeElegantFontWeight get() = FontWeight(400)
     val fontDisplay4xlargeElegantLineHeight get() = 48.sp
     val fontDisplay4xlargeElegantFontSize get() = 38.sp
@@ -3031,7 +3031,7 @@ object ChassisTokens {
     val fontDisplay4xlargeElegantTextCase get() = "none"
     val fontDisplay4xlargeElegantTextDecoration get() = "none"
     val fontDisplay4xlargeElegantFontStyle get() = "normal"
-    val fontDisplay3xlargeNormalFontFamily get() = "Archivo Narrow"
+    val fontDisplay3xlargeNormalFontFamily get() = "Montserrat"
     val fontDisplay3xlargeNormalFontWeight get() = FontWeight(500)
     val fontDisplay3xlargeNormalLineHeight get() = 40.sp
     val fontDisplay3xlargeNormalFontSize get() = 32.sp
@@ -3040,7 +3040,7 @@ object ChassisTokens {
     val fontDisplay3xlargeNormalTextCase get() = "none"
     val fontDisplay3xlargeNormalTextDecoration get() = "none"
     val fontDisplay3xlargeNormalFontStyle get() = "normal"
-    val fontDisplay3xlargeStrongFontFamily get() = "Archivo Narrow"
+    val fontDisplay3xlargeStrongFontFamily get() = "Montserrat"
     val fontDisplay3xlargeStrongFontWeight get() = FontWeight(600)
     val fontDisplay3xlargeStrongLineHeight get() = 40.sp
     val fontDisplay3xlargeStrongFontSize get() = 32.sp
@@ -3049,7 +3049,7 @@ object ChassisTokens {
     val fontDisplay3xlargeStrongTextCase get() = "none"
     val fontDisplay3xlargeStrongTextDecoration get() = "none"
     val fontDisplay3xlargeStrongFontStyle get() = "normal"
-    val fontDisplay3xlargeMassFontFamily get() = "Archivo Narrow"
+    val fontDisplay3xlargeMassFontFamily get() = "Montserrat"
     val fontDisplay3xlargeMassFontWeight get() = FontWeight(700)
     val fontDisplay3xlargeMassLineHeight get() = 40.sp
     val fontDisplay3xlargeMassFontSize get() = 32.sp
@@ -3058,7 +3058,7 @@ object ChassisTokens {
     val fontDisplay3xlargeMassTextCase get() = "none"
     val fontDisplay3xlargeMassTextDecoration get() = "none"
     val fontDisplay3xlargeMassFontStyle get() = "normal"
-    val fontDisplay3xlargeElegantFontFamily get() = "Archivo Narrow"
+    val fontDisplay3xlargeElegantFontFamily get() = "Montserrat"
     val fontDisplay3xlargeElegantFontWeight get() = FontWeight(400)
     val fontDisplay3xlargeElegantLineHeight get() = 40.sp
     val fontDisplay3xlargeElegantFontSize get() = 32.sp
@@ -3067,7 +3067,7 @@ object ChassisTokens {
     val fontDisplay3xlargeElegantTextCase get() = "none"
     val fontDisplay3xlargeElegantTextDecoration get() = "none"
     val fontDisplay3xlargeElegantFontStyle get() = "normal"
-    val fontDisplay2xlargeNormalFontFamily get() = "Archivo Narrow"
+    val fontDisplay2xlargeNormalFontFamily get() = "Montserrat"
     val fontDisplay2xlargeNormalFontWeight get() = FontWeight(500)
     val fontDisplay2xlargeNormalLineHeight get() = 36.sp
     val fontDisplay2xlargeNormalFontSize get() = 26.sp
@@ -3076,7 +3076,7 @@ object ChassisTokens {
     val fontDisplay2xlargeNormalTextCase get() = "none"
     val fontDisplay2xlargeNormalTextDecoration get() = "none"
     val fontDisplay2xlargeNormalFontStyle get() = "normal"
-    val fontDisplay2xlargeStrongFontFamily get() = "Archivo Narrow"
+    val fontDisplay2xlargeStrongFontFamily get() = "Montserrat"
     val fontDisplay2xlargeStrongFontWeight get() = FontWeight(600)
     val fontDisplay2xlargeStrongLineHeight get() = 36.sp
     val fontDisplay2xlargeStrongFontSize get() = 26.sp
@@ -3085,7 +3085,7 @@ object ChassisTokens {
     val fontDisplay2xlargeStrongTextCase get() = "none"
     val fontDisplay2xlargeStrongTextDecoration get() = "none"
     val fontDisplay2xlargeStrongFontStyle get() = "normal"
-    val fontDisplay2xlargeMassFontFamily get() = "Archivo Narrow"
+    val fontDisplay2xlargeMassFontFamily get() = "Montserrat"
     val fontDisplay2xlargeMassFontWeight get() = FontWeight(700)
     val fontDisplay2xlargeMassLineHeight get() = 36.sp
     val fontDisplay2xlargeMassFontSize get() = 26.sp
@@ -3094,7 +3094,7 @@ object ChassisTokens {
     val fontDisplay2xlargeMassTextCase get() = "none"
     val fontDisplay2xlargeMassTextDecoration get() = "none"
     val fontDisplay2xlargeMassFontStyle get() = "normal"
-    val fontDisplay2xlargeElegantFontFamily get() = "Archivo Narrow"
+    val fontDisplay2xlargeElegantFontFamily get() = "Montserrat"
     val fontDisplay2xlargeElegantFontWeight get() = FontWeight(400)
     val fontDisplay2xlargeElegantLineHeight get() = 36.sp
     val fontDisplay2xlargeElegantFontSize get() = 26.sp
@@ -3103,7 +3103,7 @@ object ChassisTokens {
     val fontDisplay2xlargeElegantTextCase get() = "none"
     val fontDisplay2xlargeElegantTextDecoration get() = "none"
     val fontDisplay2xlargeElegantFontStyle get() = "normal"
-    val fontDisplayXlargeNormalFontFamily get() = "Archivo Narrow"
+    val fontDisplayXlargeNormalFontFamily get() = "Montserrat"
     val fontDisplayXlargeNormalFontWeight get() = FontWeight(500)
     val fontDisplayXlargeNormalLineHeight get() = 32.sp
     val fontDisplayXlargeNormalFontSize get() = 22.sp
@@ -3112,7 +3112,7 @@ object ChassisTokens {
     val fontDisplayXlargeNormalTextCase get() = "none"
     val fontDisplayXlargeNormalTextDecoration get() = "none"
     val fontDisplayXlargeNormalFontStyle get() = "normal"
-    val fontDisplayXlargeStrongFontFamily get() = "Archivo Narrow"
+    val fontDisplayXlargeStrongFontFamily get() = "Montserrat"
     val fontDisplayXlargeStrongFontWeight get() = FontWeight(600)
     val fontDisplayXlargeStrongLineHeight get() = 32.sp
     val fontDisplayXlargeStrongFontSize get() = 22.sp
@@ -3121,7 +3121,7 @@ object ChassisTokens {
     val fontDisplayXlargeStrongTextCase get() = "none"
     val fontDisplayXlargeStrongTextDecoration get() = "none"
     val fontDisplayXlargeStrongFontStyle get() = "normal"
-    val fontDisplayXlargeMassFontFamily get() = "Archivo Narrow"
+    val fontDisplayXlargeMassFontFamily get() = "Montserrat"
     val fontDisplayXlargeMassFontWeight get() = FontWeight(700)
     val fontDisplayXlargeMassLineHeight get() = 32.sp
     val fontDisplayXlargeMassFontSize get() = 22.sp
@@ -3130,7 +3130,7 @@ object ChassisTokens {
     val fontDisplayXlargeMassTextCase get() = "none"
     val fontDisplayXlargeMassTextDecoration get() = "none"
     val fontDisplayXlargeMassFontStyle get() = "normal"
-    val fontDisplayXlargeElegantFontFamily get() = "Archivo Narrow"
+    val fontDisplayXlargeElegantFontFamily get() = "Montserrat"
     val fontDisplayXlargeElegantFontWeight get() = FontWeight(400)
     val fontDisplayXlargeElegantLineHeight get() = 32.sp
     val fontDisplayXlargeElegantFontSize get() = 22.sp
@@ -3139,7 +3139,7 @@ object ChassisTokens {
     val fontDisplayXlargeElegantTextCase get() = "none"
     val fontDisplayXlargeElegantTextDecoration get() = "none"
     val fontDisplayXlargeElegantFontStyle get() = "normal"
-    val fontDisplayLargeNormalFontFamily get() = "Archivo Narrow"
+    val fontDisplayLargeNormalFontFamily get() = "Montserrat"
     val fontDisplayLargeNormalFontWeight get() = FontWeight(500)
     val fontDisplayLargeNormalLineHeight get() = 28.sp
     val fontDisplayLargeNormalFontSize get() = 19.sp
@@ -3148,7 +3148,7 @@ object ChassisTokens {
     val fontDisplayLargeNormalTextCase get() = "none"
     val fontDisplayLargeNormalTextDecoration get() = "none"
     val fontDisplayLargeNormalFontStyle get() = "normal"
-    val fontDisplayLargeStrongFontFamily get() = "Archivo Narrow"
+    val fontDisplayLargeStrongFontFamily get() = "Montserrat"
     val fontDisplayLargeStrongFontWeight get() = FontWeight(600)
     val fontDisplayLargeStrongLineHeight get() = 28.sp
     val fontDisplayLargeStrongFontSize get() = 19.sp
@@ -3157,7 +3157,7 @@ object ChassisTokens {
     val fontDisplayLargeStrongTextCase get() = "none"
     val fontDisplayLargeStrongTextDecoration get() = "none"
     val fontDisplayLargeStrongFontStyle get() = "normal"
-    val fontDisplayLargeMassFontFamily get() = "Archivo Narrow"
+    val fontDisplayLargeMassFontFamily get() = "Montserrat"
     val fontDisplayLargeMassFontWeight get() = FontWeight(700)
     val fontDisplayLargeMassLineHeight get() = 28.sp
     val fontDisplayLargeMassFontSize get() = 19.sp
@@ -3166,7 +3166,7 @@ object ChassisTokens {
     val fontDisplayLargeMassTextCase get() = "none"
     val fontDisplayLargeMassTextDecoration get() = "none"
     val fontDisplayLargeMassFontStyle get() = "normal"
-    val fontDisplayLargeElegantFontFamily get() = "Archivo Narrow"
+    val fontDisplayLargeElegantFontFamily get() = "Montserrat"
     val fontDisplayLargeElegantFontWeight get() = FontWeight(400)
     val fontDisplayLargeElegantLineHeight get() = 28.sp
     val fontDisplayLargeElegantFontSize get() = 19.sp
@@ -3175,7 +3175,7 @@ object ChassisTokens {
     val fontDisplayLargeElegantTextCase get() = "none"
     val fontDisplayLargeElegantTextDecoration get() = "none"
     val fontDisplayLargeElegantFontStyle get() = "normal"
-    val fontDisplayMediumNormalFontFamily get() = "Archivo Narrow"
+    val fontDisplayMediumNormalFontFamily get() = "Montserrat"
     val fontDisplayMediumNormalFontWeight get() = FontWeight(500)
     val fontDisplayMediumNormalLineHeight get() = 24.sp
     val fontDisplayMediumNormalFontSize get() = 16.sp
@@ -3184,7 +3184,7 @@ object ChassisTokens {
     val fontDisplayMediumNormalTextCase get() = "none"
     val fontDisplayMediumNormalTextDecoration get() = "none"
     val fontDisplayMediumNormalFontStyle get() = "normal"
-    val fontDisplayMediumStrongFontFamily get() = "Archivo Narrow"
+    val fontDisplayMediumStrongFontFamily get() = "Montserrat"
     val fontDisplayMediumStrongFontWeight get() = FontWeight(600)
     val fontDisplayMediumStrongLineHeight get() = 24.sp
     val fontDisplayMediumStrongFontSize get() = 16.sp
@@ -3193,7 +3193,7 @@ object ChassisTokens {
     val fontDisplayMediumStrongTextCase get() = "none"
     val fontDisplayMediumStrongTextDecoration get() = "none"
     val fontDisplayMediumStrongFontStyle get() = "normal"
-    val fontDisplayMediumMassFontFamily get() = "Archivo Narrow"
+    val fontDisplayMediumMassFontFamily get() = "Montserrat"
     val fontDisplayMediumMassFontWeight get() = FontWeight(700)
     val fontDisplayMediumMassLineHeight get() = 24.sp
     val fontDisplayMediumMassFontSize get() = 16.sp
@@ -3202,7 +3202,7 @@ object ChassisTokens {
     val fontDisplayMediumMassTextCase get() = "none"
     val fontDisplayMediumMassTextDecoration get() = "none"
     val fontDisplayMediumMassFontStyle get() = "normal"
-    val fontDisplayMediumElegantFontFamily get() = "Archivo Narrow"
+    val fontDisplayMediumElegantFontFamily get() = "Montserrat"
     val fontDisplayMediumElegantFontWeight get() = FontWeight(400)
     val fontDisplayMediumElegantLineHeight get() = 24.sp
     val fontDisplayMediumElegantFontSize get() = 16.sp
@@ -3211,7 +3211,7 @@ object ChassisTokens {
     val fontDisplayMediumElegantTextCase get() = "none"
     val fontDisplayMediumElegantTextDecoration get() = "none"
     val fontDisplayMediumElegantFontStyle get() = "normal"
-    val fontDisplaySmallNormalFontFamily get() = "Archivo Narrow"
+    val fontDisplaySmallNormalFontFamily get() = "Montserrat"
     val fontDisplaySmallNormalFontWeight get() = FontWeight(500)
     val fontDisplaySmallNormalLineHeight get() = 20.sp
     val fontDisplaySmallNormalFontSize get() = 14.sp
@@ -3220,7 +3220,7 @@ object ChassisTokens {
     val fontDisplaySmallNormalTextCase get() = "none"
     val fontDisplaySmallNormalTextDecoration get() = "none"
     val fontDisplaySmallNormalFontStyle get() = "normal"
-    val fontDisplaySmallStrongFontFamily get() = "Archivo Narrow"
+    val fontDisplaySmallStrongFontFamily get() = "Montserrat"
     val fontDisplaySmallStrongFontWeight get() = FontWeight(600)
     val fontDisplaySmallStrongLineHeight get() = 20.sp
     val fontDisplaySmallStrongFontSize get() = 14.sp
@@ -3229,7 +3229,7 @@ object ChassisTokens {
     val fontDisplaySmallStrongTextCase get() = "none"
     val fontDisplaySmallStrongTextDecoration get() = "none"
     val fontDisplaySmallStrongFontStyle get() = "normal"
-    val fontDisplaySmallMassFontFamily get() = "Archivo Narrow"
+    val fontDisplaySmallMassFontFamily get() = "Montserrat"
     val fontDisplaySmallMassFontWeight get() = FontWeight(700)
     val fontDisplaySmallMassLineHeight get() = 20.sp
     val fontDisplaySmallMassFontSize get() = 14.sp
@@ -3238,7 +3238,7 @@ object ChassisTokens {
     val fontDisplaySmallMassTextCase get() = "none"
     val fontDisplaySmallMassTextDecoration get() = "none"
     val fontDisplaySmallMassFontStyle get() = "normal"
-    val fontDisplaySmallElegantFontFamily get() = "Archivo Narrow"
+    val fontDisplaySmallElegantFontFamily get() = "Montserrat"
     val fontDisplaySmallElegantFontWeight get() = FontWeight(400)
     val fontDisplaySmallElegantLineHeight get() = 20.sp
     val fontDisplaySmallElegantFontSize get() = 14.sp
@@ -3247,7 +3247,7 @@ object ChassisTokens {
     val fontDisplaySmallElegantTextCase get() = "none"
     val fontDisplaySmallElegantTextDecoration get() = "none"
     val fontDisplaySmallElegantFontStyle get() = "normal"
-    val fontDisplayXsmallNormalFontFamily get() = "Archivo Narrow"
+    val fontDisplayXsmallNormalFontFamily get() = "Montserrat"
     val fontDisplayXsmallNormalFontWeight get() = FontWeight(500)
     val fontDisplayXsmallNormalLineHeight get() = 18.sp
     val fontDisplayXsmallNormalFontSize get() = 12.sp
@@ -3256,7 +3256,7 @@ object ChassisTokens {
     val fontDisplayXsmallNormalTextCase get() = "none"
     val fontDisplayXsmallNormalTextDecoration get() = "none"
     val fontDisplayXsmallNormalFontStyle get() = "normal"
-    val fontDisplayXsmallStrongFontFamily get() = "Archivo Narrow"
+    val fontDisplayXsmallStrongFontFamily get() = "Montserrat"
     val fontDisplayXsmallStrongFontWeight get() = FontWeight(600)
     val fontDisplayXsmallStrongLineHeight get() = 18.sp
     val fontDisplayXsmallStrongFontSize get() = 12.sp
@@ -3265,7 +3265,7 @@ object ChassisTokens {
     val fontDisplayXsmallStrongTextCase get() = "none"
     val fontDisplayXsmallStrongTextDecoration get() = "none"
     val fontDisplayXsmallStrongFontStyle get() = "normal"
-    val fontDisplayXsmallMassFontFamily get() = "Archivo Narrow"
+    val fontDisplayXsmallMassFontFamily get() = "Montserrat"
     val fontDisplayXsmallMassFontWeight get() = FontWeight(700)
     val fontDisplayXsmallMassLineHeight get() = 18.sp
     val fontDisplayXsmallMassFontSize get() = 12.sp
@@ -3274,7 +3274,7 @@ object ChassisTokens {
     val fontDisplayXsmallMassTextCase get() = "none"
     val fontDisplayXsmallMassTextDecoration get() = "none"
     val fontDisplayXsmallMassFontStyle get() = "normal"
-    val fontDisplayXsmallElegantFontFamily get() = "Archivo Narrow"
+    val fontDisplayXsmallElegantFontFamily get() = "Montserrat"
     val fontDisplayXsmallElegantFontWeight get() = FontWeight(400)
     val fontDisplayXsmallElegantLineHeight get() = 18.sp
     val fontDisplayXsmallElegantFontSize get() = 12.sp
@@ -3283,7 +3283,7 @@ object ChassisTokens {
     val fontDisplayXsmallElegantTextCase get() = "none"
     val fontDisplayXsmallElegantTextDecoration get() = "none"
     val fontDisplayXsmallElegantFontStyle get() = "normal"
-    val fontDisplay2xsmallNormalFontFamily get() = "Archivo Narrow"
+    val fontDisplay2xsmallNormalFontFamily get() = "Montserrat"
     val fontDisplay2xsmallNormalFontWeight get() = FontWeight(500)
     val fontDisplay2xsmallNormalLineHeight get() = 14.sp
     val fontDisplay2xsmallNormalFontSize get() = 10.sp
@@ -3292,7 +3292,7 @@ object ChassisTokens {
     val fontDisplay2xsmallNormalTextCase get() = "none"
     val fontDisplay2xsmallNormalTextDecoration get() = "none"
     val fontDisplay2xsmallNormalFontStyle get() = "normal"
-    val fontDisplay2xsmallStrongFontFamily get() = "Archivo Narrow"
+    val fontDisplay2xsmallStrongFontFamily get() = "Montserrat"
     val fontDisplay2xsmallStrongFontWeight get() = FontWeight(600)
     val fontDisplay2xsmallStrongLineHeight get() = 14.sp
     val fontDisplay2xsmallStrongFontSize get() = 10.sp
@@ -3301,7 +3301,7 @@ object ChassisTokens {
     val fontDisplay2xsmallStrongTextCase get() = "none"
     val fontDisplay2xsmallStrongTextDecoration get() = "none"
     val fontDisplay2xsmallStrongFontStyle get() = "normal"
-    val fontDisplay2xsmallMassFontFamily get() = "Archivo Narrow"
+    val fontDisplay2xsmallMassFontFamily get() = "Montserrat"
     val fontDisplay2xsmallMassFontWeight get() = FontWeight(700)
     val fontDisplay2xsmallMassLineHeight get() = 14.sp
     val fontDisplay2xsmallMassFontSize get() = 10.sp
@@ -3310,7 +3310,7 @@ object ChassisTokens {
     val fontDisplay2xsmallMassTextCase get() = "none"
     val fontDisplay2xsmallMassTextDecoration get() = "none"
     val fontDisplay2xsmallMassFontStyle get() = "normal"
-    val fontDisplay2xsmallElegantFontFamily get() = "Archivo Narrow"
+    val fontDisplay2xsmallElegantFontFamily get() = "Montserrat"
     val fontDisplay2xsmallElegantFontWeight get() = FontWeight(400)
     val fontDisplay2xsmallElegantLineHeight get() = 14.sp
     val fontDisplay2xsmallElegantFontSize get() = 10.sp
@@ -3319,7 +3319,7 @@ object ChassisTokens {
     val fontDisplay2xsmallElegantTextCase get() = "none"
     val fontDisplay2xsmallElegantTextDecoration get() = "none"
     val fontDisplay2xsmallElegantFontStyle get() = "normal"
-    val fontHtmlH1FontFamily get() = "Inter"
+    val fontHtmlH1FontFamily get() = "Montserrat"
     val fontHtmlH1FontWeight get() = FontWeight(700)
     val fontHtmlH1LineHeight get() = 46.sp
     val fontHtmlH1FontSize get() = 38.sp
@@ -3328,7 +3328,7 @@ object ChassisTokens {
     val fontHtmlH1TextCase get() = "none"
     val fontHtmlH1TextDecoration get() = "none"
     val fontHtmlH1FontStyle get() = "normal"
-    val fontHtmlH2FontFamily get() = "Inter"
+    val fontHtmlH2FontFamily get() = "Montserrat"
     val fontHtmlH2FontWeight get() = FontWeight(700)
     val fontHtmlH2LineHeight get() = 40.sp
     val fontHtmlH2FontSize get() = 32.sp
@@ -3337,7 +3337,7 @@ object ChassisTokens {
     val fontHtmlH2TextCase get() = "none"
     val fontHtmlH2TextDecoration get() = "none"
     val fontHtmlH2FontStyle get() = "normal"
-    val fontHtmlH3FontFamily get() = "Inter"
+    val fontHtmlH3FontFamily get() = "Montserrat"
     val fontHtmlH3FontWeight get() = FontWeight(700)
     val fontHtmlH3LineHeight get() = 32.sp
     val fontHtmlH3FontSize get() = 26.sp
@@ -3346,7 +3346,7 @@ object ChassisTokens {
     val fontHtmlH3TextCase get() = "none"
     val fontHtmlH3TextDecoration get() = "none"
     val fontHtmlH3FontStyle get() = "normal"
-    val fontHtmlH4FontFamily get() = "Inter"
+    val fontHtmlH4FontFamily get() = "Montserrat"
     val fontHtmlH4FontWeight get() = FontWeight(700)
     val fontHtmlH4LineHeight get() = 28.sp
     val fontHtmlH4FontSize get() = 22.sp
@@ -3355,7 +3355,7 @@ object ChassisTokens {
     val fontHtmlH4TextCase get() = "none"
     val fontHtmlH4TextDecoration get() = "none"
     val fontHtmlH4FontStyle get() = "normal"
-    val fontHtmlH5FontFamily get() = "Inter"
+    val fontHtmlH5FontFamily get() = "Montserrat"
     val fontHtmlH5FontWeight get() = FontWeight(700)
     val fontHtmlH5LineHeight get() = 24.sp
     val fontHtmlH5FontSize get() = 19.sp
@@ -3364,7 +3364,7 @@ object ChassisTokens {
     val fontHtmlH5TextCase get() = "none"
     val fontHtmlH5TextDecoration get() = "none"
     val fontHtmlH5FontStyle get() = "normal"
-    val fontHtmlH6FontFamily get() = "Inter"
+    val fontHtmlH6FontFamily get() = "Montserrat"
     val fontHtmlH6FontWeight get() = FontWeight(700)
     val fontHtmlH6LineHeight get() = 20.sp
     val fontHtmlH6FontSize get() = 16.sp

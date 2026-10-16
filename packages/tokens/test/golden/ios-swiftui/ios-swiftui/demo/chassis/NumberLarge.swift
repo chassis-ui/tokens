@@ -4,7 +4,7 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Fri, 16 Oct 2026 08:19:09 GMT
+// Generated on Fri, 16 Oct 2026 09:56:12 GMT
 // Chassis - Tokens v0.8.0
 // Copyright 2026 Ozgur Gunes
 // Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
@@ -615,8 +615,8 @@ public enum ChassisTokensNumberLarge {
     public static let TypographyLetterSpacingHtmlList = CGFloat(0)
     public static let TypographyLetterSpacingHtmlCite = CGFloat(0)
     public static let TypographyLetterSpacingHtmlCode = CGFloat(0)
-    public static let TypographyLetterSpacingContextJumbo = CGFloat(0)
-    public static let TypographyLetterSpacingContextHero = CGFloat(0)
+    public static let TypographyLetterSpacingContextJumbo = CGFloat(-2.5)
+    public static let TypographyLetterSpacingContextHero = CGFloat(-1.5)
     public static let TypographyLetterSpacingContextLead = CGFloat(0)
     public static let TypographyLetterSpacingContextHeading = CGFloat(0)
     public static let TypographyLetterSpacingContextTitle = CGFloat(0)
@@ -721,11 +721,11 @@ public enum ChassisTokensNumberLarge {
     public static let BorderRadiusTooltipMain = CGFloat(4)
     public static let FontContextJumboLineHeight = CGFloat(120)
     public static let FontContextJumboFontSize = CGFloat(96)
-    public static let FontContextJumboLetterSpacing = CGFloat(0)
+    public static let FontContextJumboLetterSpacing = CGFloat(-2.5)
     public static let FontContextJumboParagraphSpacing = CGFloat(0)
     public static let FontContextHeroLineHeight = CGFloat(80)
     public static let FontContextHeroFontSize = CGFloat(64)
-    public static let FontContextHeroLetterSpacing = CGFloat(0)
+    public static let FontContextHeroLetterSpacing = CGFloat(-1.5)
     public static let FontContextHeroParagraphSpacing = CGFloat(0)
     public static let FontContextLeadLineHeight = CGFloat(32)
     public static let FontContextLeadFontSize = CGFloat(22)

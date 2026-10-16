@@ -4,7 +4,7 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Fri, 16 Oct 2026 08:19:11 GMT
+// Generated on Fri, 16 Oct 2026 09:56:14 GMT
 // Chassis - Tokens v0.8.0
 // Copyright 2026 Ozgur Gunes
 // Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
@@ -2032,27 +2032,27 @@ $cx-color-table-bg-edit: $cx-color-context-warning-bg-even !default;
 $cx-color-table-cue-active: $cx-color-context-default-cue-main !default;
 $cx-color-table-border-main: $cx-color-context-default-border-subtle !default;
 $cx-color-table-icon-sort: $cx-color-context-default-fg-subtle !default;
-$cx-typography-font-family-text: Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif !default;
-$cx-typography-font-family-display: 'Archivo Narrow', Georgia, 'Times New Roman', Times, serif !default;
-$cx-typography-font-family-html-heading: Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif !default;
-$cx-typography-font-family-html-body: Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif !default;
-$cx-typography-font-family-html-paragraph: Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif !default;
-$cx-typography-font-family-html-blockquote: Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif !default;
-$cx-typography-font-family-html-list: Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif !default;
-$cx-typography-font-family-html-cite: Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif !default;
-$cx-typography-font-family-html-code: Fira Code, Menlo, Monaco, Consolas, 'Courier New', monospace !default;
-$cx-typography-font-family-context-jumbo: Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif !default;
-$cx-typography-font-family-context-hero: Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif !default;
-$cx-typography-font-family-context-lead: Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif !default;
-$cx-typography-font-family-context-heading: Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif !default;
-$cx-typography-font-family-context-title: Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif !default;
-$cx-typography-font-family-context-body: Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif !default;
-$cx-typography-font-family-context-highlight: Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif !default;
-$cx-typography-font-family-context-label: Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif !default;
-$cx-typography-font-family-context-link: Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif !default;
-$cx-typography-font-family-context-expired: Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif !default;
-$cx-typography-font-family-context-code: Fira Code, Menlo, Monaco, Consolas, 'Courier New', monospace !default;
-$cx-typography-font-family-code: Fira Code, Menlo, Monaco, Consolas, 'Courier New', monospace !default;
+$cx-typography-font-family-text: 'Inter', system-ui, -apple-system, Helvetica, Arial, sans-serif !default;
+$cx-typography-font-family-display: 'Montserrat', system-ui, -apple-system, Helvetica, Arial, sans-serif !default;
+$cx-typography-font-family-html-heading: 'Montserrat', system-ui, -apple-system, Helvetica, Arial, sans-serif !default;
+$cx-typography-font-family-html-body: 'Inter', system-ui, -apple-system, Helvetica, Arial, sans-serif !default;
+$cx-typography-font-family-html-paragraph: 'Inter', system-ui, -apple-system, Helvetica, Arial, sans-serif !default;
+$cx-typography-font-family-html-blockquote: 'Inter', system-ui, -apple-system, Helvetica, Arial, sans-serif !default;
+$cx-typography-font-family-html-list: 'Inter', system-ui, -apple-system, Helvetica, Arial, sans-serif !default;
+$cx-typography-font-family-html-cite: 'Inter', system-ui, -apple-system, Helvetica, Arial, sans-serif !default;
+$cx-typography-font-family-html-code: 'Fira Code', Menlo, Monaco, Consolas, 'Courier New', monospace !default;
+$cx-typography-font-family-context-jumbo: 'Montserrat', system-ui, -apple-system, Helvetica, Arial, sans-serif !default;
+$cx-typography-font-family-context-hero: 'Montserrat', system-ui, -apple-system, Helvetica, Arial, sans-serif !default;
+$cx-typography-font-family-context-lead: 'Inter', system-ui, -apple-system, Helvetica, Arial, sans-serif !default;
+$cx-typography-font-family-context-heading: 'Montserrat', system-ui, -apple-system, Helvetica, Arial, sans-serif !default;
+$cx-typography-font-family-context-title: 'Inter', system-ui, -apple-system, Helvetica, Arial, sans-serif !default;
+$cx-typography-font-family-context-body: 'Inter', system-ui, -apple-system, Helvetica, Arial, sans-serif !default;
+$cx-typography-font-family-context-highlight: 'Inter', system-ui, -apple-system, Helvetica, Arial, sans-serif !default;
+$cx-typography-font-family-context-label: 'Inter', system-ui, -apple-system, Helvetica, Arial, sans-serif !default;
+$cx-typography-font-family-context-link: 'Inter', system-ui, -apple-system, Helvetica, Arial, sans-serif !default;
+$cx-typography-font-family-context-expired: 'Inter', system-ui, -apple-system, Helvetica, Arial, sans-serif !default;
+$cx-typography-font-family-context-code: 'Fira Code', Menlo, Monaco, Consolas, 'Courier New', monospace !default;
+$cx-typography-font-family-code: 'Fira Code', Menlo, Monaco, Consolas, 'Courier New', monospace !default;
 $cx-typography-font-family-icon: Chassis-Icons !default;
 $cx-typography-font-weight-text-normal-weight: 400 !default;
 $cx-typography-font-weight-text-normal-style: normal !default;
@@ -2094,7 +2094,7 @@ $cx-typography-font-weight-context-jumbo-weight: 700 !default;
 $cx-typography-font-weight-context-jumbo-style: normal !default;
 $cx-typography-font-weight-context-hero-weight: 700 !default;
 $cx-typography-font-weight-context-hero-style: normal !default;
-$cx-typography-font-weight-context-lead-weight: 400 !default;
+$cx-typography-font-weight-context-lead-weight: 300 !default;
 $cx-typography-font-weight-context-lead-style: normal !default;
 $cx-typography-font-weight-context-heading-weight: 600 !default;
 $cx-typography-font-weight-context-heading-style: normal !default;
@@ -2255,8 +2255,8 @@ $cx-typography-letter-spacing-html-blockquote: 0px !default;
 $cx-typography-letter-spacing-html-list: 0px !default;
 $cx-typography-letter-spacing-html-cite: 0px !default;
 $cx-typography-letter-spacing-html-code: 0px !default;
-$cx-typography-letter-spacing-context-jumbo: 0px !default;
-$cx-typography-letter-spacing-context-hero: 0px !default;
+$cx-typography-letter-spacing-context-jumbo: -2.5px !default;
+$cx-typography-letter-spacing-context-hero: -1.5px !default;
 $cx-typography-letter-spacing-context-lead: 0px !default;
 $cx-typography-letter-spacing-context-heading: 0px !default;
 $cx-typography-letter-spacing-context-title: 0px !default;
@@ -2359,8 +2359,8 @@ $cx-border-radius-tab-medium: $cx-border-radius-context-medium !default;
 $cx-border-radius-tab-large: $cx-border-radius-context-large !default;
 $cx-border-radius-tab-small: $cx-border-radius-context-medium !default;
 $cx-border-radius-tooltip-main: $cx-border-radius-context-small !default;
-$cx-font-context-jumbo: ("font-family": $cx-typography-font-family-context-jumbo, "font-weight": $cx-typography-font-weight-context-jumbo-weight, "font-size": $cx-typography-font-size-context-jumbo, "line-height": 1.25em, "font-style": $cx-typography-font-weight-context-jumbo-style, "letter-spacing": 0px, "margin-bottom": 0px, "text-transform": none, "text-decoration": none) !default;
-$cx-font-context-hero: ("font-family": $cx-typography-font-family-context-hero, "font-weight": $cx-typography-font-weight-context-hero-weight, "font-size": $cx-typography-font-size-context-hero, "line-height": 1.25em, "font-style": $cx-typography-font-weight-context-hero-style, "letter-spacing": 0px, "margin-bottom": 0px, "text-transform": none, "text-decoration": none) !default;
+$cx-font-context-jumbo: ("font-family": $cx-typography-font-family-context-jumbo, "font-weight": $cx-typography-font-weight-context-jumbo-weight, "font-size": $cx-typography-font-size-context-jumbo, "line-height": 1.25em, "font-style": $cx-typography-font-weight-context-jumbo-style, "letter-spacing": -2.5px, "margin-bottom": 0px, "text-transform": none, "text-decoration": none) !default;
+$cx-font-context-hero: ("font-family": $cx-typography-font-family-context-hero, "font-weight": $cx-typography-font-weight-context-hero-weight, "font-size": $cx-typography-font-size-context-hero, "line-height": 1.25em, "font-style": $cx-typography-font-weight-context-hero-style, "letter-spacing": -1.5px, "margin-bottom": 0px, "text-transform": none, "text-decoration": none) !default;
 $cx-font-context-lead: ("font-family": $cx-typography-font-family-context-lead, "font-weight": $cx-typography-font-weight-context-lead-weight, "font-size": $cx-typography-font-size-context-lead, "line-height": $cx-typography-line-height-context-lead, "font-style": $cx-typography-font-weight-context-lead-style, "letter-spacing": 0px, "margin-bottom": 0px, "text-transform": none, "text-decoration": none) !default;
 $cx-font-context-heading: ("font-family": $cx-typography-font-family-context-heading, "font-weight": $cx-typography-font-weight-context-heading-weight, "font-size": $cx-typography-font-size-context-heading, "line-height": $cx-typography-line-height-context-heading, "font-style": $cx-typography-font-weight-context-heading-style, "letter-spacing": 0px, "margin-bottom": 24px, "text-transform": none, "text-decoration": none) !default;
 $cx-font-context-title-medium: ("font-family": $cx-typography-font-family-context-title, "font-weight": $cx-typography-font-weight-context-title-weight, "font-size": $cx-typography-font-size-context-title-medium, "line-height": $cx-typography-line-height-context-title-medium, "font-style": $cx-typography-font-weight-context-title-style, "letter-spacing": 0px, "margin-bottom": 16px, "text-transform": none, "text-decoration": none) !default;

@@ -4,7 +4,7 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Fri, 16 Oct 2026 08:19:08 GMT
+// Generated on Fri, 16 Oct 2026 09:56:11 GMT
 // Chassis - Tokens v0.8.0
 // Copyright 2026 Ozgur Gunes
 // Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
@@ -615,8 +615,8 @@ public enum ChassisTokensNumberLarge {
     public static let TypographyLetterSpacingHtmlList = TypographyLetterSpacingTextNormal
     public static let TypographyLetterSpacingHtmlCite = TypographyLetterSpacingTextStrong
     public static let TypographyLetterSpacingHtmlCode = TypographyLetterSpacingBaseZero
-    public static let TypographyLetterSpacingContextJumbo = TypographyLetterSpacingTextMass
-    public static let TypographyLetterSpacingContextHero = TypographyLetterSpacingTextMass
+    public static let TypographyLetterSpacingContextJumbo = SizeUnitNd25
+    public static let TypographyLetterSpacingContextHero = SizeUnitNd15
     public static let TypographyLetterSpacingContextLead = TypographyLetterSpacingTextNormal
     public static let TypographyLetterSpacingContextHeading = TypographyLetterSpacingTextStrong
     public static let TypographyLetterSpacingContextTitle = TypographyLetterSpacingTextStrong

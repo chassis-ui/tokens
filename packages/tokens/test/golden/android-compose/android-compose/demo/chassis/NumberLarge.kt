@@ -3,7 +3,7 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Fri, 16 Oct 2026 08:19:05 GMT
+// Generated on Fri, 16 Oct 2026 09:56:08 GMT
 // Chassis - Tokens v0.8.0
 // Copyright 2026 Ozgur Gunes
 // Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
@@ -620,8 +620,8 @@ object ChassisTokensNumberLarge {
     val typographyLetterSpacingHtmlList get() = 0f
     val typographyLetterSpacingHtmlCite get() = 0f
     val typographyLetterSpacingHtmlCode get() = 0f
-    val typographyLetterSpacingContextJumbo get() = 0f
-    val typographyLetterSpacingContextHero get() = 0f
+    val typographyLetterSpacingContextJumbo get() = -2.5f
+    val typographyLetterSpacingContextHero get() = -1.5f
     val typographyLetterSpacingContextLead get() = 0f
     val typographyLetterSpacingContextHeading get() = 0f
     val typographyLetterSpacingContextTitle get() = 0f
@@ -726,11 +726,11 @@ object ChassisTokensNumberLarge {
     val borderRadiusTooltipMain get() = 4.dp
     val fontContextJumboLineHeight get() = 120.sp
     val fontContextJumboFontSize get() = 96.sp
-    val fontContextJumboLetterSpacing get() = 0.em
+    val fontContextJumboLetterSpacing get() = (-0.026).em
     val fontContextJumboParagraphSpacing get() = 0.sp
     val fontContextHeroLineHeight get() = 80.sp
     val fontContextHeroFontSize get() = 64.sp
-    val fontContextHeroLetterSpacing get() = 0.em
+    val fontContextHeroLetterSpacing get() = (-0.0234).em
     val fontContextHeroParagraphSpacing get() = 0.sp
     val fontContextLeadLineHeight get() = 32.sp
     val fontContextLeadFontSize get() = 22.sp
