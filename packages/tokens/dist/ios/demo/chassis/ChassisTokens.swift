@@ -4,7 +4,7 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Fri, 16 Oct 2026 09:52:37 GMT
+// Generated on Fri, 16 Oct 2026 10:31:39 GMT
 // Chassis - Tokens v0.8.0
 // Copyright 2026 Ozgur Gunes
 // Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
@@ -3656,6 +3656,87 @@ public enum ChassisTokens {
     public static let FontButtonSmallTextCase = "none"
     public static let FontButtonSmallTextDecoration = "none"
     public static let FontButtonSmallFontStyle = "normal"
+    public static let FontCardMediumTitleFontFamily = "Inter"
+    public static let FontCardMediumTitleFontWeight = UIFont.Weight.semibold
+    public static let FontCardMediumTitleLineHeight = CGFloat(28)
+    public static let FontCardMediumTitleFontSize = CGFloat(19)
+    public static let FontCardMediumTitleLetterSpacing = CGFloat(0)
+    public static let FontCardMediumTitleParagraphSpacing = CGFloat(0)
+    public static let FontCardMediumTitleTextCase = "none"
+    public static let FontCardMediumTitleTextDecoration = "none"
+    public static let FontCardMediumTitleFontStyle = "normal"
+    public static let FontCardMediumSubtitleFontFamily = "Inter"
+    public static let FontCardMediumSubtitleFontWeight = UIFont.Weight.semibold
+    public static let FontCardMediumSubtitleLineHeight = CGFloat(20)
+    public static let FontCardMediumSubtitleFontSize = CGFloat(14)
+    public static let FontCardMediumSubtitleLetterSpacing = CGFloat(0)
+    public static let FontCardMediumSubtitleParagraphSpacing = CGFloat(0)
+    public static let FontCardMediumSubtitleTextCase = "none"
+    public static let FontCardMediumSubtitleTextDecoration = "none"
+    public static let FontCardMediumSubtitleFontStyle = "normal"
+    public static let FontCardMediumBodyFontFamily = "Inter"
+    public static let FontCardMediumBodyFontWeight = UIFont.Weight.regular
+    public static let FontCardMediumBodyLineHeight = CGFloat(24)
+    public static let FontCardMediumBodyFontSize = CGFloat(16)
+    public static let FontCardMediumBodyLetterSpacing = CGFloat(0)
+    public static let FontCardMediumBodyParagraphSpacing = CGFloat(0)
+    public static let FontCardMediumBodyTextCase = "none"
+    public static let FontCardMediumBodyTextDecoration = "none"
+    public static let FontCardMediumBodyFontStyle = "normal"
+    public static let FontCardLargeTitleFontFamily = "Inter"
+    public static let FontCardLargeTitleFontWeight = UIFont.Weight.semibold
+    public static let FontCardLargeTitleLineHeight = CGFloat(32)
+    public static let FontCardLargeTitleFontSize = CGFloat(22)
+    public static let FontCardLargeTitleLetterSpacing = CGFloat(0)
+    public static let FontCardLargeTitleParagraphSpacing = CGFloat(0)
+    public static let FontCardLargeTitleTextCase = "none"
+    public static let FontCardLargeTitleTextDecoration = "none"
+    public static let FontCardLargeTitleFontStyle = "normal"
+    public static let FontCardLargeSubtitleFontFamily = "Inter"
+    public static let FontCardLargeSubtitleFontWeight = UIFont.Weight.semibold
+    public static let FontCardLargeSubtitleLineHeight = CGFloat(24)
+    public static let FontCardLargeSubtitleFontSize = CGFloat(16)
+    public static let FontCardLargeSubtitleLetterSpacing = CGFloat(0)
+    public static let FontCardLargeSubtitleParagraphSpacing = CGFloat(0)
+    public static let FontCardLargeSubtitleTextCase = "none"
+    public static let FontCardLargeSubtitleTextDecoration = "none"
+    public static let FontCardLargeSubtitleFontStyle = "normal"
+    public static let FontCardLargeBodyFontFamily = "Inter"
+    public static let FontCardLargeBodyFontWeight = UIFont.Weight.regular
+    public static let FontCardLargeBodyLineHeight = CGFloat(28)
+    public static let FontCardLargeBodyFontSize = CGFloat(19)
+    public static let FontCardLargeBodyLetterSpacing = CGFloat(0)
+    public static let FontCardLargeBodyParagraphSpacing = CGFloat(0)
+    public static let FontCardLargeBodyTextCase = "none"
+    public static let FontCardLargeBodyTextDecoration = "none"
+    public static let FontCardLargeBodyFontStyle = "normal"
+    public static let FontCardSmallTitleFontFamily = "Inter"
+    public static let FontCardSmallTitleFontWeight = UIFont.Weight.semibold
+    public static let FontCardSmallTitleLineHeight = CGFloat(24)
+    public static let FontCardSmallTitleFontSize = CGFloat(16)
+    public static let FontCardSmallTitleLetterSpacing = CGFloat(0)
+    public static let FontCardSmallTitleParagraphSpacing = CGFloat(0)
+    public static let FontCardSmallTitleTextCase = "none"
+    public static let FontCardSmallTitleTextDecoration = "none"
+    public static let FontCardSmallTitleFontStyle = "normal"
+    public static let FontCardSmallSubtitleFontFamily = "Inter"
+    public static let FontCardSmallSubtitleFontWeight = UIFont.Weight.semibold
+    public static let FontCardSmallSubtitleLineHeight = CGFloat(18)
+    public static let FontCardSmallSubtitleFontSize = CGFloat(12)
+    public static let FontCardSmallSubtitleLetterSpacing = CGFloat(0)
+    public static let FontCardSmallSubtitleParagraphSpacing = CGFloat(0)
+    public static let FontCardSmallSubtitleTextCase = "none"
+    public static let FontCardSmallSubtitleTextDecoration = "none"
+    public static let FontCardSmallSubtitleFontStyle = "normal"
+    public static let FontCardSmallBodyFontFamily = "Inter"
+    public static let FontCardSmallBodyFontWeight = UIFont.Weight.regular
+    public static let FontCardSmallBodyLineHeight = CGFloat(20)
+    public static let FontCardSmallBodyFontSize = CGFloat(14)
+    public static let FontCardSmallBodyLetterSpacing = CGFloat(0)
+    public static let FontCardSmallBodyParagraphSpacing = CGFloat(0)
+    public static let FontCardSmallBodyTextCase = "none"
+    public static let FontCardSmallBodyTextDecoration = "none"
+    public static let FontCardSmallBodyFontStyle = "normal"
     public static let FontChipMediumFontFamily = "Inter"
     public static let FontChipMediumFontWeight = UIFont.Weight.semibold
     public static let FontChipMediumLineHeight = CGFloat(20)

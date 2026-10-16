@@ -3,7 +3,7 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Fri, 16 Oct 2026 09:56:08 GMT
+// Generated on Fri, 16 Oct 2026 10:34:28 GMT
 // Chassis - Tokens v0.8.0
 // Copyright 2026 Ozgur Gunes
 // Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
@@ -818,6 +818,51 @@ object ChassisTokensString {
     val fontButtonSmallTextCase get() = "none"
     val fontButtonSmallTextDecoration get() = "none"
     val fontButtonSmallFontStyle get() = "normal"
+    val fontCardMediumTitleFontFamily get() = "Inter"
+    val fontCardMediumTitleFontWeight get() = FontWeight(600)
+    val fontCardMediumTitleTextCase get() = "none"
+    val fontCardMediumTitleTextDecoration get() = "none"
+    val fontCardMediumTitleFontStyle get() = "normal"
+    val fontCardMediumSubtitleFontFamily get() = "Inter"
+    val fontCardMediumSubtitleFontWeight get() = FontWeight(600)
+    val fontCardMediumSubtitleTextCase get() = "none"
+    val fontCardMediumSubtitleTextDecoration get() = "none"
+    val fontCardMediumSubtitleFontStyle get() = "normal"
+    val fontCardMediumBodyFontFamily get() = "Inter"
+    val fontCardMediumBodyFontWeight get() = FontWeight(400)
+    val fontCardMediumBodyTextCase get() = "none"
+    val fontCardMediumBodyTextDecoration get() = "none"
+    val fontCardMediumBodyFontStyle get() = "normal"
+    val fontCardLargeTitleFontFamily get() = "Inter"
+    val fontCardLargeTitleFontWeight get() = FontWeight(600)
+    val fontCardLargeTitleTextCase get() = "none"
+    val fontCardLargeTitleTextDecoration get() = "none"
+    val fontCardLargeTitleFontStyle get() = "normal"
+    val fontCardLargeSubtitleFontFamily get() = "Inter"
+    val fontCardLargeSubtitleFontWeight get() = FontWeight(600)
+    val fontCardLargeSubtitleTextCase get() = "none"
+    val fontCardLargeSubtitleTextDecoration get() = "none"
+    val fontCardLargeSubtitleFontStyle get() = "normal"
+    val fontCardLargeBodyFontFamily get() = "Inter"
+    val fontCardLargeBodyFontWeight get() = FontWeight(400)
+    val fontCardLargeBodyTextCase get() = "none"
+    val fontCardLargeBodyTextDecoration get() = "none"
+    val fontCardLargeBodyFontStyle get() = "normal"
+    val fontCardSmallTitleFontFamily get() = "Inter"
+    val fontCardSmallTitleFontWeight get() = FontWeight(600)
+    val fontCardSmallTitleTextCase get() = "none"
+    val fontCardSmallTitleTextDecoration get() = "none"
+    val fontCardSmallTitleFontStyle get() = "normal"
+    val fontCardSmallSubtitleFontFamily get() = "Inter"
+    val fontCardSmallSubtitleFontWeight get() = FontWeight(600)
+    val fontCardSmallSubtitleTextCase get() = "none"
+    val fontCardSmallSubtitleTextDecoration get() = "none"
+    val fontCardSmallSubtitleFontStyle get() = "normal"
+    val fontCardSmallBodyFontFamily get() = "Inter"
+    val fontCardSmallBodyFontWeight get() = FontWeight(400)
+    val fontCardSmallBodyTextCase get() = "none"
+    val fontCardSmallBodyTextDecoration get() = "none"
+    val fontCardSmallBodyFontStyle get() = "normal"
     val fontChipMediumFontFamily get() = "Inter"
     val fontChipMediumFontWeight get() = FontWeight(600)
     val fontChipMediumTextCase get() = "none"

@@ -4,7 +4,7 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Fri, 16 Oct 2026 09:56:12 GMT
+// Generated on Fri, 16 Oct 2026 10:34:32 GMT
 // Chassis - Tokens v0.8.0
 // Copyright 2026 Ozgur Gunes
 // Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
@@ -1295,6 +1295,42 @@ public enum ChassisTokensNumberSmall {
     public static let FontButtonSmallFontSize = TypographyFontSizeTextSmall
     public static let FontButtonSmallLetterSpacing = TypographyLetterSpacingTextStrong
     public static let FontButtonSmallParagraphSpacing = TypographyParagraphSpacingBaseZero
+    public static let FontCardMediumTitleLineHeight = TypographyLineHeightTextLarge
+    public static let FontCardMediumTitleFontSize = TypographyFontSizeTextLarge
+    public static let FontCardMediumTitleLetterSpacing = TypographyLetterSpacingTextStrong
+    public static let FontCardMediumTitleParagraphSpacing = TypographyParagraphSpacingBaseZero
+    public static let FontCardMediumSubtitleLineHeight = TypographyLineHeightTextSmall
+    public static let FontCardMediumSubtitleFontSize = TypographyFontSizeTextSmall
+    public static let FontCardMediumSubtitleLetterSpacing = TypographyLetterSpacingTextStrong
+    public static let FontCardMediumSubtitleParagraphSpacing = TypographyParagraphSpacingBaseZero
+    public static let FontCardMediumBodyLineHeight = TypographyLineHeightTextMedium
+    public static let FontCardMediumBodyFontSize = TypographyFontSizeTextMedium
+    public static let FontCardMediumBodyLetterSpacing = TypographyLetterSpacingTextNormal
+    public static let FontCardMediumBodyParagraphSpacing = TypographyParagraphSpacingBaseZero
+    public static let FontCardLargeTitleLineHeight = TypographyLineHeightTextXlarge
+    public static let FontCardLargeTitleFontSize = TypographyFontSizeTextXlarge
+    public static let FontCardLargeTitleLetterSpacing = TypographyLetterSpacingTextStrong
+    public static let FontCardLargeTitleParagraphSpacing = TypographyParagraphSpacingBaseZero
+    public static let FontCardLargeSubtitleLineHeight = TypographyLineHeightTextMedium
+    public static let FontCardLargeSubtitleFontSize = TypographyFontSizeTextMedium
+    public static let FontCardLargeSubtitleLetterSpacing = TypographyLetterSpacingTextStrong
+    public static let FontCardLargeSubtitleParagraphSpacing = TypographyParagraphSpacingBaseZero
+    public static let FontCardLargeBodyLineHeight = TypographyLineHeightTextLarge
+    public static let FontCardLargeBodyFontSize = TypographyFontSizeTextLarge
+    public static let FontCardLargeBodyLetterSpacing = TypographyLetterSpacingTextNormal
+    public static let FontCardLargeBodyParagraphSpacing = TypographyParagraphSpacingBaseZero
+    public static let FontCardSmallTitleLineHeight = TypographyLineHeightTextMedium
+    public static let FontCardSmallTitleFontSize = TypographyFontSizeTextMedium
+    public static let FontCardSmallTitleLetterSpacing = TypographyLetterSpacingTextStrong
+    public static let FontCardSmallTitleParagraphSpacing = TypographyParagraphSpacingBaseZero
+    public static let FontCardSmallSubtitleLineHeight = TypographyLineHeightTextXsmall
+    public static let FontCardSmallSubtitleFontSize = TypographyFontSizeTextXsmall
+    public static let FontCardSmallSubtitleLetterSpacing = TypographyLetterSpacingTextStrong
+    public static let FontCardSmallSubtitleParagraphSpacing = TypographyParagraphSpacingBaseZero
+    public static let FontCardSmallBodyLineHeight = TypographyLineHeightTextSmall
+    public static let FontCardSmallBodyFontSize = TypographyFontSizeTextSmall
+    public static let FontCardSmallBodyLetterSpacing = TypographyLetterSpacingTextNormal
+    public static let FontCardSmallBodyParagraphSpacing = TypographyParagraphSpacingBaseZero
     public static let FontChipMediumLineHeight = TypographyLineHeightTextSmall
     public static let FontChipMediumFontSize = TypographyFontSizeTextSmall
     public static let FontChipMediumLetterSpacing = TypographyLetterSpacingTextStrong

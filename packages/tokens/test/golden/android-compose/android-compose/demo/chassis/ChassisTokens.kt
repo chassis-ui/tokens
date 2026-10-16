@@ -3,7 +3,7 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Fri, 16 Oct 2026 09:56:08 GMT
+// Generated on Fri, 16 Oct 2026 10:34:28 GMT
 // Chassis - Tokens v0.8.0
 // Copyright 2026 Ozgur Gunes
 // Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
@@ -3661,6 +3661,87 @@ object ChassisTokens {
     val fontButtonSmallTextCase get() = "none"
     val fontButtonSmallTextDecoration get() = "none"
     val fontButtonSmallFontStyle get() = "normal"
+    val fontCardMediumTitleFontFamily get() = "Inter"
+    val fontCardMediumTitleFontWeight get() = FontWeight(600)
+    val fontCardMediumTitleLineHeight get() = 28.sp
+    val fontCardMediumTitleFontSize get() = 19.sp
+    val fontCardMediumTitleLetterSpacing get() = 0.em
+    val fontCardMediumTitleParagraphSpacing get() = 0.sp
+    val fontCardMediumTitleTextCase get() = "none"
+    val fontCardMediumTitleTextDecoration get() = "none"
+    val fontCardMediumTitleFontStyle get() = "normal"
+    val fontCardMediumSubtitleFontFamily get() = "Inter"
+    val fontCardMediumSubtitleFontWeight get() = FontWeight(600)
+    val fontCardMediumSubtitleLineHeight get() = 20.sp
+    val fontCardMediumSubtitleFontSize get() = 14.sp
+    val fontCardMediumSubtitleLetterSpacing get() = 0.em
+    val fontCardMediumSubtitleParagraphSpacing get() = 0.sp
+    val fontCardMediumSubtitleTextCase get() = "none"
+    val fontCardMediumSubtitleTextDecoration get() = "none"
+    val fontCardMediumSubtitleFontStyle get() = "normal"
+    val fontCardMediumBodyFontFamily get() = "Inter"
+    val fontCardMediumBodyFontWeight get() = FontWeight(400)
+    val fontCardMediumBodyLineHeight get() = 24.sp
+    val fontCardMediumBodyFontSize get() = 16.sp
+    val fontCardMediumBodyLetterSpacing get() = 0.em
+    val fontCardMediumBodyParagraphSpacing get() = 0.sp
+    val fontCardMediumBodyTextCase get() = "none"
+    val fontCardMediumBodyTextDecoration get() = "none"
+    val fontCardMediumBodyFontStyle get() = "normal"
+    val fontCardLargeTitleFontFamily get() = "Inter"
+    val fontCardLargeTitleFontWeight get() = FontWeight(600)
+    val fontCardLargeTitleLineHeight get() = 32.sp
+    val fontCardLargeTitleFontSize get() = 22.sp
+    val fontCardLargeTitleLetterSpacing get() = 0.em
+    val fontCardLargeTitleParagraphSpacing get() = 0.sp
+    val fontCardLargeTitleTextCase get() = "none"
+    val fontCardLargeTitleTextDecoration get() = "none"
+    val fontCardLargeTitleFontStyle get() = "normal"
+    val fontCardLargeSubtitleFontFamily get() = "Inter"
+    val fontCardLargeSubtitleFontWeight get() = FontWeight(600)
+    val fontCardLargeSubtitleLineHeight get() = 24.sp
+    val fontCardLargeSubtitleFontSize get() = 16.sp
+    val fontCardLargeSubtitleLetterSpacing get() = 0.em
+    val fontCardLargeSubtitleParagraphSpacing get() = 0.sp
+    val fontCardLargeSubtitleTextCase get() = "none"
+    val fontCardLargeSubtitleTextDecoration get() = "none"
+    val fontCardLargeSubtitleFontStyle get() = "normal"
+    val fontCardLargeBodyFontFamily get() = "Inter"
+    val fontCardLargeBodyFontWeight get() = FontWeight(400)
+    val fontCardLargeBodyLineHeight get() = 28.sp
+    val fontCardLargeBodyFontSize get() = 19.sp
+    val fontCardLargeBodyLetterSpacing get() = 0.em
+    val fontCardLargeBodyParagraphSpacing get() = 0.sp
+    val fontCardLargeBodyTextCase get() = "none"
+    val fontCardLargeBodyTextDecoration get() = "none"
+    val fontCardLargeBodyFontStyle get() = "normal"
+    val fontCardSmallTitleFontFamily get() = "Inter"
+    val fontCardSmallTitleFontWeight get() = FontWeight(600)
+    val fontCardSmallTitleLineHeight get() = 24.sp
+    val fontCardSmallTitleFontSize get() = 16.sp
+    val fontCardSmallTitleLetterSpacing get() = 0.em
+    val fontCardSmallTitleParagraphSpacing get() = 0.sp
+    val fontCardSmallTitleTextCase get() = "none"
+    val fontCardSmallTitleTextDecoration get() = "none"
+    val fontCardSmallTitleFontStyle get() = "normal"
+    val fontCardSmallSubtitleFontFamily get() = "Inter"
+    val fontCardSmallSubtitleFontWeight get() = FontWeight(600)
+    val fontCardSmallSubtitleLineHeight get() = 18.sp
+    val fontCardSmallSubtitleFontSize get() = 12.sp
+    val fontCardSmallSubtitleLetterSpacing get() = 0.em
+    val fontCardSmallSubtitleParagraphSpacing get() = 0.sp
+    val fontCardSmallSubtitleTextCase get() = "none"
+    val fontCardSmallSubtitleTextDecoration get() = "none"
+    val fontCardSmallSubtitleFontStyle get() = "normal"
+    val fontCardSmallBodyFontFamily get() = "Inter"
+    val fontCardSmallBodyFontWeight get() = FontWeight(400)
+    val fontCardSmallBodyLineHeight get() = 20.sp
+    val fontCardSmallBodyFontSize get() = 14.sp
+    val fontCardSmallBodyLetterSpacing get() = 0.em
+    val fontCardSmallBodyParagraphSpacing get() = 0.sp
+    val fontCardSmallBodyTextCase get() = "none"
+    val fontCardSmallBodyTextDecoration get() = "none"
+    val fontCardSmallBodyFontStyle get() = "normal"
     val fontChipMediumFontFamily get() = "Inter"
     val fontChipMediumFontWeight get() = FontWeight(600)
     val fontChipMediumLineHeight get() = 20.sp

@@ -1555,6 +1555,44 @@
         "$value": "{font.text.small.strong}"
       }
     },
+    "card": {
+      "medium-title": {
+        "$type": "typography",
+        "$value": "{font.text.large.strong}"
+      },
+      "medium-subtitle": {
+        "$type": "typography",
+        "$value": "{font.text.small.strong}"
+      },
+      "medium-body": {
+        "$type": "typography",
+        "$value": "{font.text.medium.normal}"
+      },
+      "large-title": {
+        "$type": "typography",
+        "$value": "{font.text.xlarge.strong}"
+      },
+      "large-subtitle": {
+        "$type": "typography",
+        "$value": "{font.text.medium.strong}"
+      },
+      "large-body": {
+        "$type": "typography",
+        "$value": "{font.text.large.normal}"
+      },
+      "small-title": {
+        "$type": "typography",
+        "$value": "{font.text.medium.strong}"
+      },
+      "small-subtitle": {
+        "$type": "typography",
+        "$value": "{font.text.xsmall.strong}"
+      },
+      "small-body": {
+        "$type": "typography",
+        "$value": "{font.text.small.normal}"
+      }
+    },
     "chip": {
       "medium": {
         "$type": "typography",

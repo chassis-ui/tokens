@@ -3,7 +3,7 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Fri, 16 Oct 2026 09:56:08 GMT
+// Generated on Fri, 16 Oct 2026 10:34:28 GMT
 // Chassis - Tokens v0.8.0
 // Copyright 2026 Ozgur Gunes
 // Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
@@ -1300,6 +1300,42 @@ object ChassisTokensNumberLarge {
     val fontButtonSmallFontSize get() = 14.sp
     val fontButtonSmallLetterSpacing get() = 0.em
     val fontButtonSmallParagraphSpacing get() = 0.sp
+    val fontCardMediumTitleLineHeight get() = 28.sp
+    val fontCardMediumTitleFontSize get() = 19.sp
+    val fontCardMediumTitleLetterSpacing get() = 0.em
+    val fontCardMediumTitleParagraphSpacing get() = 0.sp
+    val fontCardMediumSubtitleLineHeight get() = 20.sp
+    val fontCardMediumSubtitleFontSize get() = 14.sp
+    val fontCardMediumSubtitleLetterSpacing get() = 0.em
+    val fontCardMediumSubtitleParagraphSpacing get() = 0.sp
+    val fontCardMediumBodyLineHeight get() = 24.sp
+    val fontCardMediumBodyFontSize get() = 16.sp
+    val fontCardMediumBodyLetterSpacing get() = 0.em
+    val fontCardMediumBodyParagraphSpacing get() = 0.sp
+    val fontCardLargeTitleLineHeight get() = 32.sp
+    val fontCardLargeTitleFontSize get() = 22.sp
+    val fontCardLargeTitleLetterSpacing get() = 0.em
+    val fontCardLargeTitleParagraphSpacing get() = 0.sp
+    val fontCardLargeSubtitleLineHeight get() = 24.sp
+    val fontCardLargeSubtitleFontSize get() = 16.sp
+    val fontCardLargeSubtitleLetterSpacing get() = 0.em
+    val fontCardLargeSubtitleParagraphSpacing get() = 0.sp
+    val fontCardLargeBodyLineHeight get() = 28.sp
+    val fontCardLargeBodyFontSize get() = 19.sp
+    val fontCardLargeBodyLetterSpacing get() = 0.em
+    val fontCardLargeBodyParagraphSpacing get() = 0.sp
+    val fontCardSmallTitleLineHeight get() = 24.sp
+    val fontCardSmallTitleFontSize get() = 16.sp
+    val fontCardSmallTitleLetterSpacing get() = 0.em
+    val fontCardSmallTitleParagraphSpacing get() = 0.sp
+    val fontCardSmallSubtitleLineHeight get() = 18.sp
+    val fontCardSmallSubtitleFontSize get() = 12.sp
+    val fontCardSmallSubtitleLetterSpacing get() = 0.em
+    val fontCardSmallSubtitleParagraphSpacing get() = 0.sp
+    val fontCardSmallBodyLineHeight get() = 20.sp
+    val fontCardSmallBodyFontSize get() = 14.sp
+    val fontCardSmallBodyLetterSpacing get() = 0.em
+    val fontCardSmallBodyParagraphSpacing get() = 0.sp
     val fontChipMediumLineHeight get() = 20.sp
     val fontChipMediumFontSize get() = 14.sp
     val fontChipMediumLetterSpacing get() = 0.em

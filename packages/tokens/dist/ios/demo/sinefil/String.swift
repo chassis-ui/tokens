@@ -4,7 +4,7 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Fri, 16 Oct 2026 09:52:40 GMT
+// Generated on Fri, 16 Oct 2026 10:31:42 GMT
 // Chassis - Tokens v0.8.0
 // Copyright 2026 Ozgur Gunes
 // Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
@@ -813,6 +813,51 @@ public enum ChassisTokensString {
     public static let FontButtonSmallTextCase = "none"
     public static let FontButtonSmallTextDecoration = "none"
     public static let FontButtonSmallFontStyle = "normal"
+    public static let FontCardMediumTitleFontFamily = "DM Sans"
+    public static let FontCardMediumTitleFontWeight = UIFont.Weight.semibold
+    public static let FontCardMediumTitleTextCase = "none"
+    public static let FontCardMediumTitleTextDecoration = "none"
+    public static let FontCardMediumTitleFontStyle = "normal"
+    public static let FontCardMediumSubtitleFontFamily = "DM Sans"
+    public static let FontCardMediumSubtitleFontWeight = UIFont.Weight.semibold
+    public static let FontCardMediumSubtitleTextCase = "none"
+    public static let FontCardMediumSubtitleTextDecoration = "none"
+    public static let FontCardMediumSubtitleFontStyle = "normal"
+    public static let FontCardMediumBodyFontFamily = "DM Sans"
+    public static let FontCardMediumBodyFontWeight = UIFont.Weight.regular
+    public static let FontCardMediumBodyTextCase = "none"
+    public static let FontCardMediumBodyTextDecoration = "none"
+    public static let FontCardMediumBodyFontStyle = "normal"
+    public static let FontCardLargeTitleFontFamily = "DM Sans"
+    public static let FontCardLargeTitleFontWeight = UIFont.Weight.semibold
+    public static let FontCardLargeTitleTextCase = "none"
+    public static let FontCardLargeTitleTextDecoration = "none"
+    public static let FontCardLargeTitleFontStyle = "normal"
+    public static let FontCardLargeSubtitleFontFamily = "DM Sans"
+    public static let FontCardLargeSubtitleFontWeight = UIFont.Weight.semibold
+    public static let FontCardLargeSubtitleTextCase = "none"
+    public static let FontCardLargeSubtitleTextDecoration = "none"
+    public static let FontCardLargeSubtitleFontStyle = "normal"
+    public static let FontCardLargeBodyFontFamily = "DM Sans"
+    public static let FontCardLargeBodyFontWeight = UIFont.Weight.regular
+    public static let FontCardLargeBodyTextCase = "none"
+    public static let FontCardLargeBodyTextDecoration = "none"
+    public static let FontCardLargeBodyFontStyle = "normal"
+    public static let FontCardSmallTitleFontFamily = "DM Sans"
+    public static let FontCardSmallTitleFontWeight = UIFont.Weight.semibold
+    public static let FontCardSmallTitleTextCase = "none"
+    public static let FontCardSmallTitleTextDecoration = "none"
+    public static let FontCardSmallTitleFontStyle = "normal"
+    public static let FontCardSmallSubtitleFontFamily = "DM Sans"
+    public static let FontCardSmallSubtitleFontWeight = UIFont.Weight.semibold
+    public static let FontCardSmallSubtitleTextCase = "none"
+    public static let FontCardSmallSubtitleTextDecoration = "none"
+    public static let FontCardSmallSubtitleFontStyle = "normal"
+    public static let FontCardSmallBodyFontFamily = "DM Sans"
+    public static let FontCardSmallBodyFontWeight = UIFont.Weight.regular
+    public static let FontCardSmallBodyTextCase = "none"
+    public static let FontCardSmallBodyTextDecoration = "none"
+    public static let FontCardSmallBodyFontStyle = "normal"
     public static let FontChipMediumFontFamily = "DM Sans"
     public static let FontChipMediumFontWeight = UIFont.Weight.semibold
     public static let FontChipMediumTextCase = "none"

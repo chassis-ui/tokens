@@ -4,7 +4,7 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Fri, 16 Oct 2026 09:56:11 GMT
+// Generated on Fri, 16 Oct 2026 10:34:31 GMT
 // Chassis - Tokens v0.8.0
 // Copyright 2026 Ozgur Gunes
 // Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
@@ -3656,6 +3656,87 @@ public enum ChassisTokens {
     public static let FontButtonSmallTextCase = "none"
     public static let FontButtonSmallTextDecoration = "none"
     public static let FontButtonSmallFontStyle = "normal"
+    public static let FontCardMediumTitleFontFamily = TypographyFontFamilyText
+    public static let FontCardMediumTitleFontWeight = UIFont.Weight.semibold
+    public static let FontCardMediumTitleLineHeight = TypographyLineHeightTextLarge
+    public static let FontCardMediumTitleFontSize = TypographyFontSizeTextLarge
+    public static let FontCardMediumTitleLetterSpacing = TypographyLetterSpacingTextStrong
+    public static let FontCardMediumTitleParagraphSpacing = TypographyParagraphSpacingBaseZero
+    public static let FontCardMediumTitleTextCase = "none"
+    public static let FontCardMediumTitleTextDecoration = "none"
+    public static let FontCardMediumTitleFontStyle = "normal"
+    public static let FontCardMediumSubtitleFontFamily = TypographyFontFamilyText
+    public static let FontCardMediumSubtitleFontWeight = UIFont.Weight.semibold
+    public static let FontCardMediumSubtitleLineHeight = TypographyLineHeightTextSmall
+    public static let FontCardMediumSubtitleFontSize = TypographyFontSizeTextSmall
+    public static let FontCardMediumSubtitleLetterSpacing = TypographyLetterSpacingTextStrong
+    public static let FontCardMediumSubtitleParagraphSpacing = TypographyParagraphSpacingBaseZero
+    public static let FontCardMediumSubtitleTextCase = "none"
+    public static let FontCardMediumSubtitleTextDecoration = "none"
+    public static let FontCardMediumSubtitleFontStyle = "normal"
+    public static let FontCardMediumBodyFontFamily = TypographyFontFamilyText
+    public static let FontCardMediumBodyFontWeight = UIFont.Weight.regular
+    public static let FontCardMediumBodyLineHeight = TypographyLineHeightTextMedium
+    public static let FontCardMediumBodyFontSize = TypographyFontSizeTextMedium
+    public static let FontCardMediumBodyLetterSpacing = TypographyLetterSpacingTextNormal
+    public static let FontCardMediumBodyParagraphSpacing = TypographyParagraphSpacingBaseZero
+    public static let FontCardMediumBodyTextCase = "none"
+    public static let FontCardMediumBodyTextDecoration = "none"
+    public static let FontCardMediumBodyFontStyle = "normal"
+    public static let FontCardLargeTitleFontFamily = TypographyFontFamilyText
+    public static let FontCardLargeTitleFontWeight = UIFont.Weight.semibold
+    public static let FontCardLargeTitleLineHeight = TypographyLineHeightTextXlarge
+    public static let FontCardLargeTitleFontSize = TypographyFontSizeTextXlarge
+    public static let FontCardLargeTitleLetterSpacing = TypographyLetterSpacingTextStrong
+    public static let FontCardLargeTitleParagraphSpacing = TypographyParagraphSpacingBaseZero
+    public static let FontCardLargeTitleTextCase = "none"
+    public static let FontCardLargeTitleTextDecoration = "none"
+    public static let FontCardLargeTitleFontStyle = "normal"
+    public static let FontCardLargeSubtitleFontFamily = TypographyFontFamilyText
+    public static let FontCardLargeSubtitleFontWeight = UIFont.Weight.semibold
+    public static let FontCardLargeSubtitleLineHeight = TypographyLineHeightTextMedium
+    public static let FontCardLargeSubtitleFontSize = TypographyFontSizeTextMedium
+    public static let FontCardLargeSubtitleLetterSpacing = TypographyLetterSpacingTextStrong
+    public static let FontCardLargeSubtitleParagraphSpacing = TypographyParagraphSpacingBaseZero
+    public static let FontCardLargeSubtitleTextCase = "none"
+    public static let FontCardLargeSubtitleTextDecoration = "none"
+    public static let FontCardLargeSubtitleFontStyle = "normal"
+    public static let FontCardLargeBodyFontFamily = TypographyFontFamilyText
+    public static let FontCardLargeBodyFontWeight = UIFont.Weight.regular
+    public static let FontCardLargeBodyLineHeight = TypographyLineHeightTextLarge
+    public static let FontCardLargeBodyFontSize = TypographyFontSizeTextLarge
+    public static let FontCardLargeBodyLetterSpacing = TypographyLetterSpacingTextNormal
+    public static let FontCardLargeBodyParagraphSpacing = TypographyParagraphSpacingBaseZero
+    public static let FontCardLargeBodyTextCase = "none"
+    public static let FontCardLargeBodyTextDecoration = "none"
+    public static let FontCardLargeBodyFontStyle = "normal"
+    public static let FontCardSmallTitleFontFamily = TypographyFontFamilyText
+    public static let FontCardSmallTitleFontWeight = UIFont.Weight.semibold
+    public static let FontCardSmallTitleLineHeight = TypographyLineHeightTextMedium
+    public static let FontCardSmallTitleFontSize = TypographyFontSizeTextMedium
+    public static let FontCardSmallTitleLetterSpacing = TypographyLetterSpacingTextStrong
+    public static let FontCardSmallTitleParagraphSpacing = TypographyParagraphSpacingBaseZero
+    public static let FontCardSmallTitleTextCase = "none"
+    public static let FontCardSmallTitleTextDecoration = "none"
+    public static let FontCardSmallTitleFontStyle = "normal"
+    public static let FontCardSmallSubtitleFontFamily = TypographyFontFamilyText
+    public static let FontCardSmallSubtitleFontWeight = UIFont.Weight.semibold
+    public static let FontCardSmallSubtitleLineHeight = TypographyLineHeightTextXsmall
+    public static let FontCardSmallSubtitleFontSize = TypographyFontSizeTextXsmall
+    public static let FontCardSmallSubtitleLetterSpacing = TypographyLetterSpacingTextStrong
+    public static let FontCardSmallSubtitleParagraphSpacing = TypographyParagraphSpacingBaseZero
+    public static let FontCardSmallSubtitleTextCase = "none"
+    public static let FontCardSmallSubtitleTextDecoration = "none"
+    public static let FontCardSmallSubtitleFontStyle = "normal"
+    public static let FontCardSmallBodyFontFamily = TypographyFontFamilyText
+    public static let FontCardSmallBodyFontWeight = UIFont.Weight.regular
+    public static let FontCardSmallBodyLineHeight = TypographyLineHeightTextSmall
+    public static let FontCardSmallBodyFontSize = TypographyFontSizeTextSmall
+    public static let FontCardSmallBodyLetterSpacing = TypographyLetterSpacingTextNormal
+    public static let FontCardSmallBodyParagraphSpacing = TypographyParagraphSpacingBaseZero
+    public static let FontCardSmallBodyTextCase = "none"
+    public static let FontCardSmallBodyTextDecoration = "none"
+    public static let FontCardSmallBodyFontStyle = "normal"
     public static let FontChipMediumFontFamily = TypographyFontFamilyText
     public static let FontChipMediumFontWeight = UIFont.Weight.semibold
     public static let FontChipMediumLineHeight = TypographyLineHeightTextSmall

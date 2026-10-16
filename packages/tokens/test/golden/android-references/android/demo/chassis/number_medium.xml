@@ -2,7 +2,7 @@
 
 <!--
   Do not edit directly, this file was auto-generated.
-  Generated on Fri, 16 Oct 2026 09:56:10 GMT
+  Generated on Fri, 16 Oct 2026 10:34:30 GMT
   Chassis - Tokens v0.8.0
   Copyright 2026 Ozgur Gunes
   Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
@@ -1291,6 +1291,42 @@
   <dimen name="font_button_small_font_size">@dimen/typography_font_size_text_small</dimen>
   <item name="font_button_small_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_strong</item>
   <dimen name="font_button_small_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_card_medium_title_line_height">@dimen/typography_line_height_text_large</dimen>
+  <dimen name="font_card_medium_title_font_size">@dimen/typography_font_size_text_large</dimen>
+  <item name="font_card_medium_title_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_strong</item>
+  <dimen name="font_card_medium_title_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_card_medium_subtitle_line_height">@dimen/typography_line_height_text_small</dimen>
+  <dimen name="font_card_medium_subtitle_font_size">@dimen/typography_font_size_text_small</dimen>
+  <item name="font_card_medium_subtitle_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_strong</item>
+  <dimen name="font_card_medium_subtitle_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_card_medium_body_line_height">@dimen/typography_line_height_text_medium</dimen>
+  <dimen name="font_card_medium_body_font_size">@dimen/typography_font_size_text_medium</dimen>
+  <item name="font_card_medium_body_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_normal</item>
+  <dimen name="font_card_medium_body_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_card_large_title_line_height">@dimen/typography_line_height_text_xlarge</dimen>
+  <dimen name="font_card_large_title_font_size">@dimen/typography_font_size_text_xlarge</dimen>
+  <item name="font_card_large_title_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_strong</item>
+  <dimen name="font_card_large_title_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_card_large_subtitle_line_height">@dimen/typography_line_height_text_medium</dimen>
+  <dimen name="font_card_large_subtitle_font_size">@dimen/typography_font_size_text_medium</dimen>
+  <item name="font_card_large_subtitle_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_strong</item>
+  <dimen name="font_card_large_subtitle_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_card_large_body_line_height">@dimen/typography_line_height_text_large</dimen>
+  <dimen name="font_card_large_body_font_size">@dimen/typography_font_size_text_large</dimen>
+  <item name="font_card_large_body_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_normal</item>
+  <dimen name="font_card_large_body_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_card_small_title_line_height">@dimen/typography_line_height_text_medium</dimen>
+  <dimen name="font_card_small_title_font_size">@dimen/typography_font_size_text_medium</dimen>
+  <item name="font_card_small_title_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_strong</item>
+  <dimen name="font_card_small_title_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_card_small_subtitle_line_height">@dimen/typography_line_height_text_xsmall</dimen>
+  <dimen name="font_card_small_subtitle_font_size">@dimen/typography_font_size_text_xsmall</dimen>
+  <item name="font_card_small_subtitle_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_strong</item>
+  <dimen name="font_card_small_subtitle_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_card_small_body_line_height">@dimen/typography_line_height_text_small</dimen>
+  <dimen name="font_card_small_body_font_size">@dimen/typography_font_size_text_small</dimen>
+  <item name="font_card_small_body_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_normal</item>
+  <dimen name="font_card_small_body_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
   <dimen name="font_chip_medium_line_height">@dimen/typography_line_height_text_small</dimen>
   <dimen name="font_chip_medium_font_size">@dimen/typography_font_size_text_small</dimen>
   <item name="font_chip_medium_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_strong</item>
