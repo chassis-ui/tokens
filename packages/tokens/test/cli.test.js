@@ -20,6 +20,7 @@ describe('parseArgs', () => {
       themes: [],
       screens: [],
       out: 'dist',
+      clean: false,
       dryRun: false,
       help: false,
       version: false
@@ -91,6 +92,7 @@ describe('parseArgs', () => {
   )
 
   test.each([
+    ['--clean', 'clean'],
     ['--dry-run', 'dryRun'],
     ['--help', 'help'],
     ['-h', 'help'],

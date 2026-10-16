@@ -28,7 +28,7 @@ icons.js            actions: the Xcode asset catalog and the Android vector draw
 theme-colors.js     Color.swift, from the light and dark color files
 ```
 
-`node build/build.js --dry-run` prints the plan: the instances, the files each writes, and the files written after the builds.
+`node build/build.js --dry-run` prints the plan: the directories `--clean` deletes, the instances, the files each writes, and the files written after the builds. The build deletes no file unless `--clean` is given, and then the whole output directory of each selected brand, app and platform (`planClean`).
 
 ## Design decisions
 

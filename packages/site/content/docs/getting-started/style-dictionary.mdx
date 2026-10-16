@@ -71,6 +71,7 @@ The options select a part of the build, change where the build reads and writes,
 | `--screen <screens...>` | Only the number files of these screens, such as `large medium small` |
 | `--out <dir>` | Write to another output root instead of `dist` |
 | `--config <file>` | Read the build options from a JSON file instead of `chassis.build` |
+| `--clean` | Delete the output directory of each selected brand, app and platform before building |
 | `--dry-run` | List the builds and the files each would write, without building |
 | `--help`, `-h` | Show the help |
 | `--version`, `-v` | Show the version |
@@ -85,6 +86,13 @@ pnpm tokens --brand sinefil --platform ios android --screen large small
 ```
 
 `--theme` and `--screen` limit the color and number files only: every build of a brand, an app, and a platform writes the main and string files. The iOS file `Color.swift` needs the color files of both themes, so a build with `--theme light` does not write it.
+
+The build writes files but deletes none. When you remove a screen, a theme or an icon, its files stay in `dist/` until you delete them. `--clean` deletes the folder `dist/<platform>/<app>/<brand>/` of each selected build before it builds. You cannot combine it with `--theme` or `--screen`, which rebuild only some files of a folder:
+
+```bash
+pnpm tokens --clean
+pnpm tokens --brand sinefil --clean
+```
 
 `--config` and `--out` take paths relative to `packages/tokens/`. The file of `--config` holds the keys of `chassis.build` at its top level. This command builds the `web-px` preset into `dist-next/` and leaves `dist/` as it is:
 

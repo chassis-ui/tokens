@@ -12,7 +12,7 @@ import { fileURLToPath } from 'node:url'
 import StyleDictionary from 'style-dictionary'
 import { permutateThemes } from '@tokens-studio/sd-transforms'
 import { describe, expect, test } from 'vitest'
-import { planBuilds, planThemeColors, CONFIG_FILE, SOURCE_DIR } from '../build/build.js'
+import { planBuilds, planThemeColors, planClean, CONFIG_FILE, SOURCE_DIR } from '../build/build.js'
 import config from '../build/config/index.js'
 
 const ROOT = fileURLToPath(new URL('../', import.meta.url))
@@ -275,4 +275,36 @@ describe('token-set order', () => {
     await sd.hasInitialized
     expect(sd.tokens.typography.fontFamily.text.$value).toBe(chassisBase)
   })
+})
+
+describe('planClean', () => {
+  const withConfig = (builds) =>
+    builds.map((build) => ({ ...build, cfg: config({ ...build, outDir: 'dist' }) }))
+
+  test('deletes the directory of every brand, app and platform once', () => {
+    expect(planClean(withConfig(planBuilds(sets, buildOptions)))).toEqual([
+      'dist/web/docs/chassis/',
+      'dist/ios/demo/chassis/',
+      'dist/android/demo/chassis/',
+      'dist/web/docs/sinefil/',
+      'dist/ios/demo/sinefil/',
+      'dist/android/demo/sinefil/'
+    ])
+  })
+
+  test('deletes only the directories of the selected brands, apps and platforms', () => {
+    const filters = { brands: ['sinefil'], platforms: ['ios'] }
+    expect(planClean(withConfig(planBuilds(sets, buildOptions, filters)), filters)).toEqual([
+      'dist/ios/demo/sinefil/'
+    ])
+  })
+
+  test.each([[{ themes: ['dark'] }], [{ screens: ['small'] }]])(
+    'throws with a filter that builds only some files of a directory: %o',
+    (filters) => {
+      expect(() => planClean(withConfig(planBuilds(sets, buildOptions, filters)), filters)).toThrow(
+        '--clean cannot be combined with --theme or --screen'
+      )
+    }
+  )
 })

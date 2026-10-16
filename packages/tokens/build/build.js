@@ -41,6 +41,8 @@ Options:
   --out <dir>               Output root directory (default: dist)
   --config <file>           JSON file to read the build configuration from, instead of
                             chassis.build in the root package.json
+  --clean                   Delete the output directory of each selected brand, app and
+                            platform before building; not with --theme or --screen
   --dry-run                 Show builds without executing
   --help, -h                Show this help
   --version, -v             Show version
@@ -48,6 +50,7 @@ Options:
 Examples:
   node build/build.js --brand chassis --platform web
   node build/build.js --theme light dark --dry-run
+  node build/build.js --brand sinefil --clean
 `
 
 /**
@@ -127,7 +130,7 @@ function registerDictionary(version) {
  * @param {string[]} [args] - The arguments after the script name.
  * @returns {Object} Filters (`brands`, `apps`, `platforms`, `themes`, `screens`), the
  *   output directory (`out`), the configuration file (`config`, when given) and the
- *   flags `dryRun`, `help` and `version`.
+ *   flags `clean`, `dryRun`, `help` and `version`.
  */
 function parseArgs(args = process.argv.slice(2)) {
   const options = {
@@ -137,6 +140,7 @@ function parseArgs(args = process.argv.slice(2)) {
     themes: [],
     screens: [],
     out: 'dist',
+    clean: args.includes('--clean'),
     dryRun: args.includes('--dry-run'),
     help: args.includes('--help') || args.includes('-h'),
     version: args.includes('--version') || args.includes('-v')
@@ -311,6 +315,29 @@ function planThemeColors(builds, outDir) {
 }
 
 /**
+ * Plans the directories that `--clean` deletes before the builds: the output directory of
+ * every selected brand, app and platform, so that no file the build no longer writes,
+ * such as the number file of a removed screen, stays behind.
+ *
+ * @param {Object[]} builds - Builds from `planBuilds`, with their Style Dictionary `cfg`.
+ * @param {Object} [filters] - Filters from `parseArgs`.
+ * @returns {string[]} The directories, e.g. `dist/web/docs/chassis/`.
+ * @throws {Error} When a theme or screen filter is set: those builds write only some files
+ *   of their directories, and the others would be deleted.
+ */
+function planClean(builds, filters = {}) {
+  if (filters.themes?.length > 0 || filters.screens?.length > 0) {
+    throw new Error(
+      '--clean cannot be combined with --theme or --screen, which build only some files of a directory'
+    )
+  }
+  const dirs = builds.flatMap(({ cfg }) =>
+    Object.values(cfg.platforms).map(({ buildPath }) => buildPath)
+  )
+  return [...new Set(dirs)]
+}
+
+/**
  * Builds all platforms of one planned build.
  * @param {Object} build - A build from `planBuilds`, with its Style Dictionary `cfg`.
  */
@@ -358,9 +385,16 @@ async function run() {
       cfg: config({ ...build, outDir: filters.out, platformOptions: buildOptions.options })
     }))
 
+    const cleanDirs = filters.clean ? planClean(builds, filters) : []
+
     if (filters.dryRun) {
-      logger.dryRun(builds, planThemeColors(builds, filters.out))
+      logger.dryRun(builds, planThemeColors(builds, filters.out), cleanDirs)
       return
+    }
+
+    for (const dir of cleanDirs) {
+      await promises.rm(dir, { recursive: true, force: true })
+      logger.info(`🧹 Deleted ${dir}`)
     }
 
     logger.header(`📦 Processing ${builds.length} build(s)...`)
@@ -396,7 +430,7 @@ async function run() {
 }
 
 // Export for testing
-export { loadConfig, planBuilds, planThemeColors, parseArgs, CONFIG_FILE, SOURCE_DIR }
+export { loadConfig, planBuilds, planThemeColors, planClean, parseArgs, CONFIG_FILE, SOURCE_DIR }
 
 // Only run if this is the main module (not imported)
 if (import.meta.url === `file://${process.argv[1]}`) {

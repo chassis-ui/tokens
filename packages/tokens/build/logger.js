@@ -111,12 +111,16 @@ export default {
   },
 
   /**
-   * Log dry-run results: each planned build with the files it would write, and the files
-   * written after the builds
+   * Log dry-run results: the directories deleted before the builds, each planned build with
+   * the files it would write, and the files written after the builds
    */
-  dryRun(builds, afterBuilds = []) {
+  dryRun(builds, afterBuilds = [], beforeBuilds = []) {
     if (currentLevel >= LogLevel.INFO) {
       console.log(`\n🔍 Dry run - showing ${builds.length} build(s) that would run:\n`)
+      if (beforeBuilds.length > 0) {
+        console.log(`  • deleted before the builds`)
+        beforeBuilds.forEach((path) => console.log(`      ${path}`))
+      }
       builds.forEach(({ key, cfg }) => {
         console.log(`  • ${key}`)
         Object.values(cfg.platforms).forEach(({ buildPath, files }) => {

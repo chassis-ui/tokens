@@ -202,6 +202,13 @@ describe('Logger Module', () => {
       expect(console.log).toHaveBeenCalledWith(expect.stringContaining('chassis_demo_dark_large'))
     })
 
+    test('should log the directories deleted before the builds', () => {
+      loggerModule.default.dryRun(builds, [], ['dist/ios/demo/chassis/'])
+
+      expect(console.log).toHaveBeenCalledWith(expect.stringContaining('deleted before the builds'))
+      expect(console.log).toHaveBeenCalledWith(expect.stringContaining('dist/ios/demo/chassis/'))
+    })
+
     test('should log the files of each platform', () => {
       loggerModule.default.dryRun(builds)
 

@@ -104,9 +104,12 @@ pnpm tokens --theme light dark --dry-run
 | `--screen <screens...>`     | Only these screen sizes, such as `large medium small`                                               |
 | `--out <dir>`               | Write to another output root instead of `dist`, such as `dist-next`                                 |
 | `--config <file>`           | Read the build configuration from a JSON file instead of `chassis.build` in the root `package.json` |
+| `--clean`                   | Delete the output directory of each selected brand, app and platform before building                |
 | `--dry-run`                 | List the builds and the files each would write, without building                                    |
 | `--help`, `-h`              | Show the help                                                                                       |
 | `--version`, `-v`           | Show the version                                                                                    |
+
+The build writes files but deletes none, so a file it no longer writes stays in `dist/`, such as the number files of a removed screen. `--clean` deletes `dist/<platform>/<app>/<brand>/` of each selected build first; it fails with `--theme` or `--screen`, which rebuild only some files of a directory.
 
 A filter value that the configuration does not have, such as `--brand chasis`, fails the build and names the configured values, and so do filters that together select nothing, such as `--app docs --platform ios`.
 
