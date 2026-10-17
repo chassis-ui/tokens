@@ -1,5 +1,34 @@
 # Changelog
 
+## 0.9.0
+
+### Minor Changes
+
+- a9afec2: Add the card fonts: `font.card.<size>-title`, `font.card.<size>-subtitle` and `font.card.<size>-body` for the `large`, `medium` and `small` card sizes. Each references a base token of the text family, so the title is one step larger than the body and the subtitle one step smaller, in the `strong` weight. Nothing is removed or renamed.
+
+  - Web: the typography maps `$cx-font-card-medium-title` to `$cx-font-card-small-body` in `main.scss`
+  - iOS: a constant per property, such as `FontCardMediumTitleFontFamily` and `FontCardMediumTitleFontSize`, in `ChassisTokens.swift`, `String.swift` and the number files
+  - Android: a resource per property, such as `font_card_medium_title_font_family` and `font_card_medium_title_font_size`, in `main.xml`, `string.xml`, the number files and the `res/` tree
+
+### Patch Changes
+
+- e7e906d: Add the `--clean` option to the build. The build writes files but deletes none, so a file it no longer writes, such as the number file of a removed screen or the image set of a removed icon, stayed in `dist/`. `pnpm tokens --clean` deletes `dist/<platform>/<app>/<brand>/` of each selected brand, app and platform before building, and `--dry-run` lists those directories. It fails with `--theme` or `--screen`, which rebuild only some files of a directory. The files of the package do not change.
+- 8fa1425: The fonts of the `chassis` brand change in value. No name is added, removed or renamed, and an app has nothing to change.
+
+  - `typography.fontFamily.display` is Montserrat (`'Montserrat', system-ui, -apple-system, Helvetica, Arial, sans-serif`) instead of Archivo Narrow, so every `font.display.*` style changes with it
+  - `font.html.h1` to `font.html.h6` and the `jumbo`, `hero` and `heading` contexts use the display family, Montserrat, instead of the text family, Inter
+  - `font.context.lead` is Light (`300`) instead of Regular (`400`)
+  - `font.context.jumbo` and `font.context.hero` tighten their letters by 2.5 and 1.5 pixels (`-0.15625rem` and `-0.09375rem` on the web), where they had no letter spacing
+  - The web quotes the first family of `text` and `code` (`'Inter'` and `'Fira Code'`), as it does for the families with a space in their name. iOS and Android print the same names as before
+
+- 2f73a83: Fix the build without screens. With `screens` empty or left out of `chassis.build`, the build failed with `No token sets for chassis_docs_light in source/$themes.json` unless the screen group was also removed from `source/$themes.json`. It now takes the token sets of the first screen in `source/$themes.json`, as the build did before 0.6.0, and writes one number file without a screen suffix: `number.scss`, `Number.swift` and `number.xml`. The committed configuration and its files do not change.
+- 7ba2f86: Fix the web letter spacing, which tightened text several times more than iOS, Android and Figma. The web divided the pixels by 16 and printed ems, which CSS multiplies by the font size of the text: `font.website.hero-title` printed `-0.0625em`, 4 px at its 64 px font size, where its token says 1 px. The web now prints letter spacing in its size unit, as the other sizes, so it is the same number of pixels as on iOS, Android and in Figma. No name changes; these values do:
+
+  - The `letter-spacing` of every typography map is in the size unit: `-0.0625rem` for `font.website.hero-title` in `web` and `web-scss`, where it was `-0.0625em`, `-1px` in `web-px` and `-0.0625vw` in `web-vw`. A letter spacing of zero prints `0rem` (`0px`, `0vw`), where it printed `0em`
+  - The letter spacing tokens, `$cx-typography-letter-spacing-*`, are in the size unit too: `0rem` where they printed `0em`
+  - `typography.letterSpacing.context.jumbo` references `typography.letterSpacing.text.mass`, as `context.hero` does, instead of `size.unit.nd05`, so `font.context.jumbo` no longer tightens its letters on any platform
+  - A letter spacing in percent prints on every platform: in `em` on the web and Android, and in points of the font size on iOS. The source writes pixels, because Figma variables cannot hold a percentage, and `pnpm tokens:lint:source` fails on a letter spacing in percent or in `em`
+
 ## 0.8.0
 
 ### Minor Changes
