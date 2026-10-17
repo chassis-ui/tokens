@@ -30,10 +30,14 @@ Package.swift    # written by `pnpm tokens:swift-package`
 - `pnpm tokens` builds `dist/`; `--brand`, `--app`, `--platform`, `--theme` and `--screen`
   build a part of it, and `--dry-run` prints the plan.
 - `pnpm dev` runs the site at `http://localhost:4322/tokens/`.
+- `pnpm test:ci` runs every check of `.github/workflows/ci.yml` except the changeset check,
+  the token diff, the dependency review and the native compiles, in one run, the site build
+  included. `pnpm test` runs only the token tests.
 
 ## Before a task is done
 
-Run the checks of the area you changed, and report the ones that fail.
+Run the checks of the area you changed, or `pnpm test:ci` for all of them, and report the ones
+that fail.
 
 | Area changed                               | Run                                                                                                                 |
 | ------------------------------------------ | ------------------------------------------------------------------------------------------------------------------- |
@@ -42,6 +46,7 @@ Run the checks of the area you changed, and report the ones that fail.
 | `packages/site/`                           | `pnpm site:lint`, `pnpm check:astro`, `pnpm site:build`, `pnpm site:lint:html`                                      |
 | Any Markdown, JSON or configuration file   | `pnpm lint:prettier`                                                                                                |
 | `chassis.build` in the root `package.json` | `pnpm tokens`, `pnpm tokens:swift-package`                                                                          |
+| `.github/workflows/ci.yml`                 | `pnpm tokens:test`: a script that a step of `ci.yml` runs is part of `test:ci` in the root `package.json`           |
 
 ## Rules
 

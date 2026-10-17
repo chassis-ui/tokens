@@ -43,6 +43,7 @@
     "clean": "pnpm site:clean && pnpm --filter @chassis-ui/tokens clean",
     "dev": "pnpm vendor && pnpm tokens:site && pnpm --filter chassis-tokens-site dev",
     "test": "pnpm tokens:test",
+    "test:ci": "pnpm tokens:lint && pnpm tokens:lint:source && pnpm tokens:typecheck && pnpm tokens:test && pnpm tokens:verify && pnpm tokens:verify:presets && pnpm lint:prettier && pnpm site:lint && pnpm check:astro && pnpm site:build && pnpm site:lint:html && pnpm check:pnpm",
     "tokens": "pnpm tokens:build",
     "tokens:aar": "pnpm --filter @chassis-ui/tokens aar",
     "tokens:build": "pnpm --filter @chassis-ui/tokens build",

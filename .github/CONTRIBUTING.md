@@ -184,7 +184,9 @@ pnpm site:lint:html
   audit of the tooling is reported and doesn't fail), Token Diff and Dependency Review on a pull
   request, and Native iOS and Native Android when the change touches the tokens, the build, the
   output or the native checks, and on every manual run. The commands above run the same checks
-  locally.
+  locally. `pnpm test:ci` runs all of them in one command except Changeset, Token Diff,
+  Dependency Review and the two native jobs; `tokens:test` fails when `ci.yml` runs a script
+  that `test:ci` doesn't.
 - **A changeset** for anything that changes the published package: token names or values, file
   names, formats or the package contents. CI fails a pull request or a push to `develop` that
   changes `source/`, `build/` or `dist/` without one; for such a change that releases
