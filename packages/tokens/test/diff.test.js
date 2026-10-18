@@ -68,7 +68,7 @@ describe('parseDeclarations', () => {
     ).toBe('CGFloat(8)')
     expect(
       parseDeclarations(XML_MAIN, await readDist(XML_MAIN)).get(
-        'typography_font_weight_text_normal_weight'
+        'typography_font_weight_ui_normal_weight'
       )
     ).toBe('<integer>400')
   })
@@ -143,12 +143,12 @@ describe('diffDeclarations', () => {
 
   test('reports a changed Android resource type as a changed value', () => {
     const result = diffDeclarations(
-      map([['typography_font_weight_text_normal_weight', '<string>regular']]),
-      map([['typography_font_weight_text_normal_weight', '<integer>400']])
+      map([['typography_font_weight_ui_normal_weight', '<string>regular']]),
+      map([['typography_font_weight_ui_normal_weight', '<integer>400']])
     )
     expect(result.changed).toEqual([
       {
-        name: 'typography_font_weight_text_normal_weight',
+        name: 'typography_font_weight_ui_normal_weight',
         from: '<string>regular',
         to: '<integer>400'
       }

@@ -99,17 +99,38 @@ export function customProperty(token, references) {
 }
 
 /**
- * Typography groups that hold one token per role or element group, which a brand points
- * at another token, and that chassis-css declares no custom property for. A part that
- * references one of them names the token that the alias leads to.
+ * Typography groups that hold one token per role group (`heading`, `body`, `title`…),
+ * which a brand points at a family. A part that references one follows the alias to the
+ * family token it leads to, and the token itself prints the custom property of that
+ * family token.
  */
-export const roleGroups = [
-  'typography.fontFamily.context',
-  'typography.fontFamily.html',
-  'typography.fontWeight.context',
-  'typography.fontSize.context',
-  'typography.lineHeight.context'
-]
+export const roleGroups = ['typography.fontFamily.context', 'typography.fontWeight.context']
+
+/**
+ * Typography groups that hold one value per role (`h1`, `title-large`…). Chassis CSS
+ * declares a custom property for each, named without the group (`--font-size-h1`); a
+ * role whose alias leads to a token of another group (`{size.unit.96}`) prints its value.
+ */
+export const roleValueGroups = ['typography.fontSize.context', 'typography.lineHeight.context']
+
+/**
+ * Names the custom property suffix of a role: the scale step after the last hyphen is
+ * abbreviated.
+ *
+ * @param {string} role - e.g. `title-large`, `h1`
+ * @returns {string} e.g. `title-lg`, `h1`
+ */
+export function roleName(role) {
+  const segments = role.split('-')
+  return [...segments.slice(0, -1), abbreviateScale(segments[segments.length - 1])].join('-')
+}
+
+/**
+ * Names the scale part of a size or line height custom property: `<family>-<short step>`
+ * for a scale token, the role name for a role token.
+ */
+const scaleName = (path) =>
+  path[2] === 'context' ? roleName(path[3]) : `${path[2]}-${abbreviateScale(path[3])}`
 
 /**
  * Custom property names of the typography parts of an object-valued typography token.
@@ -117,8 +138,8 @@ export const roleGroups = [
 const propertyNames = {
   fontFamily: (path) => `var(--font-family-${path[2]})`,
   fontWeight: (path) => `var(--font-weight-${path[2]}-${path[3]})`,
-  fontSize: (path) => `var(--font-size-${path[2]}-${abbreviateScale(path[3])})`,
-  lineHeight: (path) => `var(--line-height-${path[2]}-${abbreviateScale(path[3])})`
+  fontSize: (path) => `var(--font-size-${scaleName(path)})`,
+  lineHeight: (path) => `var(--line-height-${scaleName(path)})`
 }
 
 /**
@@ -133,28 +154,32 @@ const partValues = {
   lineHeight: (token, references) => encode(token, { resolveReference: references.value })
 }
 
+const inGroups = (path, groups) => groups.some((start) => startsWith(path, start))
+
 /**
- * Returns the names of the typography parts. A part that references a role token
+ * Returns the names of the typography parts. A part that references a role group token
  * (`roleGroups`) follows the alias and names the custom property of the token it leads
- * to: `typography.fontFamily.context.hero` = `{typography.fontFamily.text}` prints
- * `var(--font-family-text)`. When the role holds a value of its own, or the alias leads
- * to a token of another group (`{size.unit.96}`), the part prints the value.
+ * to: `typography.fontFamily.context.heading` = `{typography.fontFamily.display}` prints
+ * `var(--font-family-display)`. A part that references a role value (`roleValueGroups`)
+ * names the role's own custom property, `var(--font-size-h1)`. When a role group holds a
+ * value of its own, or an alias leads to a token of another group (`{size.unit.96}`),
+ * the part prints the value.
  *
  * @param {Object} references - Token lookups.
  * @returns {Record<string, (path: string[]) => string>} One function per part, taking
  *   the referenced path (for a font weight, the path before the weight and style split).
  */
 function objectNames(references) {
-  const isRole = (path) => roleGroups.some((start) => startsWith(path, start))
+  const followed = [...roleGroups, ...roleValueGroups]
 
   return Object.fromEntries(
     Object.entries(propertyNames).map(([property, name]) => [
       property,
       (/** @type {string[]} */ path) => {
-        if (!isRole(path)) return name(path)
+        if (!inGroups(path, followed)) return name(path)
 
-        const target = followAliases(path, references, roleGroups)
-        if (startsWith(target, `typography.${property}`) && !isRole(target)) {
+        const target = followAliases(path, references, followed)
+        if (startsWith(target, `typography.${property}`) && !inGroups(target, roleGroups)) {
           return name(target)
         }
         const suffix = property === 'fontWeight' ? '.weight' : ''
@@ -165,13 +190,41 @@ function objectNames(references) {
 }
 
 /**
- * Custom property names of a reference-valued typography token.
+ * Returns the custom property of a role group token that aliases a family token:
+ * `typography.fontFamily.context.heading` = `{typography.fontFamily.display}` prints
+ * `var(--font-family-display)`, and the `weight` part of
+ * `typography.fontWeight.context.heading` = `{typography.fontWeight.display.mass}`
+ * prints `var(--font-weight-display-mass)`. Chassis CSS declares the role group property
+ * from it (`--font-family-heading`), so a brand swap is one custom property.
+ *
+ * @param {Object} token - A resolved token.
+ * @param {Object} references - Token lookups.
+ * @returns {string|undefined} `undefined` for other tokens, the `style` part of a weight,
+ *   and a role group that holds a value.
+ */
+function roleGroupProperty(token, references) {
+  const { path } = token
+  const property = path[1]
+  if (!inGroups(path, roleGroups)) return undefined
+  if (property === 'fontWeight' && path[path.length - 1] !== 'weight') return undefined
+
+  const role = property === 'fontWeight' ? path.slice(0, -1) : path
+  const target = followAliases(role, references, roleGroups)
+  if (inGroups(target, roleGroups) || !startsWith(target, `typography.${property}`)) {
+    return undefined
+  }
+  return propertyNames[property](target)
+}
+
+/**
+ * Custom property names of a reference-valued typography token, from the referenced
+ * `font.<family>.<size>.<weight>` path.
  */
 const referenceNames = ({ family, size, weight }) => ({
   fontFamily: `var(--font-family-${family})`,
-  fontWeight: `var(--font-weight-${weight})`,
-  fontSize: `var(--font-size-${abbreviateScale(size)})`,
-  lineHeight: `var(--line-height-${abbreviateScale(size)})`
+  fontWeight: `var(--font-weight-${family}-${weight})`,
+  fontSize: `var(--font-size-${family}-${abbreviateScale(size)})`,
+  lineHeight: `var(--line-height-${family}-${abbreviateScale(size)})`
 })
 
 /**
@@ -192,7 +245,9 @@ export function webValue(token, references) {
         ? typographyObject(token, references, objectNames(references))
         : typographyReference(token, references, referenceNames)
     }
-    return encode(token, { resolveReference: references.value })
+    return (
+      roleGroupProperty(token, references) ?? encode(token, { resolveReference: references.value })
+    )
   } catch (error) {
     throw new Error(`${token.path.join('.')}: ${error.message}`, { cause: error })
   }

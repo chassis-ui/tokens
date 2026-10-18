@@ -59,7 +59,7 @@ describe('references', () => {
   })
 
   test('referencePath splits a reference', () => {
-    expect(referencePath('{font.text.medium.strong}')).toEqual(['font', 'text', 'medium', 'strong'])
+    expect(referencePath('{font.ui.medium.strong}')).toEqual(['font', 'ui', 'medium', 'strong'])
   })
 
   test('referencePath throws on anything else', () => {
@@ -145,29 +145,31 @@ describe('followAliases', () => {
 
   test('aliasPath reads a single reference, or the path a font weight keeps', () => {
     expect(aliasPath(fixture.tokens['typography.fontFamily.context.hero'])).toEqual(
-      path('typography.fontFamily.text')
+      path('typography.fontFamily.display')
     )
     expect(aliasPath(fixture.tokens['typography.fontWeight.context.title.weight'])).toEqual(
-      path('typography.fontWeight.text.strong')
+      path('typography.fontWeight.display.strong')
     )
-    expect(aliasPath(fixture.tokens['typography.fontFamily.text'])).toBeUndefined()
+    expect(
+      aliasPath(fixture.tokens['typography.fontWeight.context.blockquote.weight'])
+    ).toBeUndefined()
   })
 
   test('follows a family out of the groups', () => {
     expect(followAliases(path('typography.fontFamily.context.hero'), references, roles)).toEqual(
-      path('typography.fontFamily.text')
+      path('typography.fontFamily.display')
     )
   })
 
   test('follows a font weight by its path before the weight and style split', () => {
     expect(followAliases(path('typography.fontWeight.context.title'), references, roles)).toEqual(
-      path('typography.fontWeight.text.strong')
+      path('typography.fontWeight.display.strong')
     )
   })
 
   test('returns a path outside the groups as it is', () => {
-    const text = path('typography.fontFamily.text')
-    expect(followAliases(text, references, roles)).toEqual(text)
+    const ui = path('typography.fontFamily.ui')
+    expect(followAliases(ui, references, roles)).toEqual(ui)
   })
 
   test('stops on a token of the groups that holds a value', () => {

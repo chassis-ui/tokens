@@ -155,7 +155,7 @@ export function percentToEm(value) {
  *   which is converted here with `letterSpacingSize`.
  * @param {number} [basePxFontSize] - Pixels per rem or vw, for the letter spacing.
  * @param {string} [sizeUnit] - The size unit of the platform, for the letter spacing.
- * @returns {string} e.g. `("font-family": var(--font-family-text), …)`
+ * @returns {string} e.g. `("font-family": var(--font-family-ui), …)`
  */
 export function typographyMap(
   {

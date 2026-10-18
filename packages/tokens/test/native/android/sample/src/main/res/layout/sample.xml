@@ -10,13 +10,13 @@
   <ImageView
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:contentDescription="@string/typography_font_family_text"
+    android:contentDescription="@string/typography_font_family_ui"
     android:src="@drawable/icon_chip_remove" />
 
   <TextView
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:text="@string/typography_font_family_text"
+    android:text="@string/typography_font_family_ui"
     android:textColor="@color/color_context_default_fg_main"
     android:textSize="@dimen/font_context_lead_font_size" />
 
