@@ -173,9 +173,9 @@ grep -rn "space-context-medium" packages/tokens/dist/web/docs/chassis/
 
 **Values stay out of prose and tables.** Don't write the value of a token: no hex or `rgba()` colors, no font family or weight names, no sizes in pixels, no opacity numbers, no contrast ratios. Describe a token by what it references and what it is for.
 
-**Good:** "`space.context.medium` references `{size.unit.16}`. `color.context.default.fg-subtle` is `fg-main` with the alpha of `opacity.context.fg-subtle`. `typography.fontFamily.text` holds the font family of the brand for running text."
+**Good:** "`space.context.medium` references `{size.unit.16}`. `color.context.default.fg-subtle` is `fg-main` with the alpha of `opacity.context.fg-subtle`. `typography.fontFamily.ui` holds the font family of the brand for components."
 
-**Bad:** "`space.context.medium` is `16px`. `color.context.default.fg-subtle` is `rgba(22, 26, 27, 0.5)`. `typography.fontFamily.text` is Inter."
+**Bad:** "`space.context.medium` is `16px`. `color.context.default.fg-subtle` is `rgba(22, 26, 27, 0.5)`. `typography.fontFamily.ui` is Inter."
 
 What a doc may say about values:
 

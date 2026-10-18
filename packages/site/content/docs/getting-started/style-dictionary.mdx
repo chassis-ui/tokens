@@ -394,7 +394,7 @@ The preprocessor `cx/global` prepares the tokens of every build before the trans
 
 - It aligns the types of Tokens Studio with the types of Style Dictionary, with `alignTypes` of `@tokens-studio/sd-transforms`: `fontWeights` becomes `fontWeight`.
 - It types letter spacing tokens as `number`, so the size transforms leave them alone.
-- It splits every font weight token into a `weight` and a `style` token. `typography.fontWeight.html.blockquote` names a weight and a style, and becomes `typography.fontWeight.html.blockquote.weight` and `typography.fontWeight.html.blockquote.style`. A weight that names no style gets the style `normal`.
+- It splits every font weight token into a `weight` and a `style` token. `typography.fontWeight.context.blockquote` names a weight and a style, and becomes `typography.fontWeight.context.blockquote.weight` and `typography.fontWeight.context.blockquote.style`. A weight that names no style gets the style `normal`.
 - It numbers the tokens in source order. The formats sort by this number, so the parts of a typography or shadow token stand where the token is in the source.
 
 ## Transforms
@@ -467,9 +467,9 @@ This format prints SCSS variables for Chassis CSS, and the `web` platform uses i
 ```scss
 $cx-space-context-medium: 1rem !default;
 $cx-color-accordion-item-fg-color: var(--default-fg-main) !default;
-$cx-typography-line-height-text-medium: 1.5em !default;
+$cx-typography-line-height-ui-medium: 1.5em !default;
 $cx-border-radius-accordion-main: var(--border-radius-md) !default;
-$cx-font-context-lead: ("font-family": var(--font-family-text), "font-weight": var(--font-weight-text-normal), "font-size": var(--font-size-text-xl), "line-height": var(--line-height-text-xl), "font-style": normal, "letter-spacing": 0rem, "margin-bottom": 0rem, "text-transform": none, "text-decoration": none) !default;
+$cx-font-context-lead: ("font-family": var(--font-family-prose), "font-weight": var(--font-weight-prose-elegant), "font-size": var(--font-size-lead), "line-height": var(--line-height-lead), "font-style": normal, "letter-spacing": 0rem, "margin-bottom": 0rem, "text-transform": none, "text-decoration": none) !default;
 ```
 
 A token prints `var(--<name>)` when its value is a single reference to a token that Chassis CSS has a custom property for: `color.context.*`, `color.primitive.*`, `space.context.*`, `opacity.context.*`, `opacity.level.*`, `shadow.context.*`, `borderRadius.context.*`, or `borderWidth.context.*`. The name follows the referenced path, with the scale steps shortened as in Chassis CSS: `medium` becomes `md`, and `xlarge` becomes `xl`. Every other token prints its value:
@@ -480,6 +480,7 @@ A token prints `var(--<name>)` when its value is a single reference to a token t
 - Letter spacing is in `rem`, as the other sizes, so it is the same at every font size.
 - Font weights are numbers, font families keep their whole list, and assets are in double quotes.
 - A typography token is a Sass map, with a custom property for its family, weight, size, and line height.
+- The family and the weight of a text role group print the custom property of the family token they reference, such as `var(--font-family-display)`.
 
 ### cx/scss-variables
 
@@ -540,7 +541,7 @@ This format prints a `<resources>` file with one element per token, and the `and
   <color name="color_button_primary_bg_idle">#ff0094b8</color>
   <dimen name="font_context_jumbo_line_height">120sp</dimen>
   <dimen name="font_context_jumbo_font_size">96sp</dimen>
-  <item name="font_context_jumbo_letter_spacing" type="dimen" format="float">0</item>
+  <item name="font_context_jumbo_letter_spacing" type="dimen" format="float">-0.026</item>
 </resources>
 ```
 
@@ -609,7 +610,7 @@ A build with `outputReferences` fails with `No file declares a variable for`, fo
 
 ### Unknown font weight
 
-A build of an iOS or Android platform fails with `Unknown font weight "Extra Heavy" in typography.fontWeight.text.strong.weight`. The build knows the weight names of `ts/typography/fontWeight`, and ignores case, spaces, and hyphens in them. Use one of these names in the token; `pnpm tokens:lint:source` finds the token before the build.
+A build of an iOS or Android platform fails with `Unknown font weight "Extra Heavy" in typography.fontWeight.ui.strong.weight`. The build knows the weight names of `ts/typography/fontWeight`, and ignores case, spaces, and hyphens in them. Use one of these names in the token; `pnpm tokens:lint:source` finds the token before the build.
 
 ### Golden check failed
 
