@@ -248,11 +248,11 @@ The brand sets hold the typography groups that the composite `font.*` tokens of 
 <CxTable>
 | Tokens | Content |
 | --- | --- |
-| `typography.fontFamily.*` | The families `text`, `display`, `code`, and `icon`, one family per group of HTML elements, such as `html.heading`, and one per context role, such as `context.title` |
-| `typography.fontWeight.*` | The weights of each family, such as `normal`, `strong`, `mass`, and `elegant` of `text` |
-| `typography.fontSize.*` | The sizes of each family, from `2xsmall` to `5xlarge` for `text` |
-| `typography.lineHeight.*` | The line height of each size |
-| `typography.letterSpacing.*` | The letter spacing of each weight of `text` and `display`, of each group of HTML elements, and of each context role |
+| `typography.fontFamily.*` | The families `ui`, `prose`, `display`, `code`, and `icon`, and one family per text role group, such as `context.heading` |
+| `typography.fontWeight.*` | The weights of each family, such as `normal`, `strong`, `mass`, and `elegant` of `ui`, and one weight per text role group |
+| `typography.fontSize.*` | The sizes of each scaled family, from `2xsmall` to `5xlarge` for `ui`, and one size per text role, such as `context.h1` |
+| `typography.lineHeight.*` | The line height of each size and of each text role |
+| `typography.letterSpacing.*` | The letter spacing of each weight of `ui` and `prose`, and of each text role |
 | `typography.paragraphSpacing.*` | The space after a paragraph, from `zero` to `large` |
 </CxTable>
 
@@ -330,13 +330,13 @@ opacity.context.fg-subtle                     base/metric-base    A number from 
 The font of the medium button references a composite token, whose properties reference the typography tokens:
 
 ```text
-font.button.medium         base/app-base   {font.text.medium.strong}
-font.text.medium.strong    base/app-base
-  fontFamily               {typography.fontFamily.text}              brand-<brand>/brand-base
-  fontWeight               {typography.fontWeight.text.strong}       brand-<brand>/brand-base
-  lineHeight               {typography.lineHeight.text.medium}       base/brand-base
-  fontSize                 {typography.fontSize.text.medium}         base/brand-base
-  letterSpacing            {typography.letterSpacing.text.strong}    base/brand-base
+font.button.medium         base/app-base   {font.ui.medium.strong}
+font.ui.medium.strong      base/app-base
+  fontFamily               {typography.fontFamily.ui}                brand-<brand>/brand-base
+  fontWeight               {typography.fontWeight.ui.strong}         brand-<brand>/brand-base
+  lineHeight               {typography.lineHeight.ui.medium}         base/brand-base
+  fontSize                 {typography.fontSize.ui.medium}           base/brand-base
+  letterSpacing            {typography.letterSpacing.ui.strong}      base/brand-base
   paragraphSpacing         {typography.paragraphSpacing.base.zero}   base/brand-base
 ```
 

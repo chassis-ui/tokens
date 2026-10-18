@@ -17,11 +17,11 @@
     "notification": {
       "title": {
         "$type": "typography",
-        "$value": "{font.text.medium.strong}"
+        "$value": "{font.ui.medium.strong}"
       },
       "message": {
         "$type": "typography",
-        "$value": "{font.text.small.normal}"
+        "$value": "{font.ui.small.normal}"
       }
     }
   },
@@ -156,25 +156,25 @@
       "button": {
         "large": {
           "$type": "fontSizes",
-          "$value": "{typography.fontSize.text.large}"
+          "$value": "{typography.fontSize.ui.large}"
         },
         "medium": {
           "$type": "fontSizes",
-          "$value": "{typography.fontSize.text.medium}"
+          "$value": "{typography.fontSize.ui.medium}"
         },
         "small": {
           "$type": "fontSizes",
-          "$value": "{typography.fontSize.text.medium}"
+          "$value": "{typography.fontSize.ui.medium}"
         }
       },
       "notification": {
         "title": {
           "$type": "fontSizes",
-          "$value": "{typography.fontSize.text.medium}"
+          "$value": "{typography.fontSize.ui.medium}"
         },
         "message": {
           "$type": "fontSizes",
-          "$value": "{typography.fontSize.text.small}"
+          "$value": "{typography.fontSize.ui.small}"
         }
       }
     },
@@ -182,25 +182,25 @@
       "button": {
         "large": {
           "$type": "lineHeights",
-          "$value": "{typography.lineHeight.text.large}"
+          "$value": "{typography.lineHeight.ui.large}"
         },
         "medium": {
           "$type": "lineHeights",
-          "$value": "{typography.lineHeight.text.medium}"
+          "$value": "{typography.lineHeight.ui.medium}"
         },
         "small": {
           "$type": "lineHeights",
-          "$value": "{typography.lineHeight.text.medium}"
+          "$value": "{typography.lineHeight.ui.medium}"
         }
       },
       "notification": {
         "title": {
           "$type": "lineHeights",
-          "$value": "{typography.lineHeight.text.medium}"
+          "$value": "{typography.lineHeight.ui.medium}"
         },
         "message": {
           "$type": "lineHeights",
-          "$value": "{typography.lineHeight.text.small}"
+          "$value": "{typography.lineHeight.ui.small}"
         }
       }
     }

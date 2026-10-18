@@ -142,25 +142,25 @@
       "button": {
         "large": {
           "$type": "fontSizes",
-          "$value": "{typography.fontSize.text.medium}"
+          "$value": "{typography.fontSize.ui.medium}"
         },
         "medium": {
           "$type": "fontSizes",
-          "$value": "{typography.fontSize.text.small}"
+          "$value": "{typography.fontSize.ui.small}"
         },
         "small": {
           "$type": "fontSizes",
-          "$value": "{typography.fontSize.text.xsmall}"
+          "$value": "{typography.fontSize.ui.xsmall}"
         }
       },
       "notification": {
         "title": {
           "$type": "fontSizes",
-          "$value": "{typography.fontSize.text.large}"
+          "$value": "{typography.fontSize.ui.large}"
         },
         "message": {
           "$type": "fontSizes",
-          "$value": "{typography.fontSize.text.medium}"
+          "$value": "{typography.fontSize.ui.medium}"
         }
       }
     },
@@ -168,25 +168,25 @@
       "button": {
         "large": {
           "$type": "lineHeights",
-          "$value": "{typography.lineHeight.text.medium}"
+          "$value": "{typography.lineHeight.ui.medium}"
         },
         "medium": {
           "$type": "lineHeights",
-          "$value": "{typography.lineHeight.text.small}"
+          "$value": "{typography.lineHeight.ui.small}"
         },
         "small": {
           "$type": "lineHeights",
-          "$value": "{typography.lineHeight.text.xsmall}"
+          "$value": "{typography.lineHeight.ui.xsmall}"
         }
       },
       "notification": {
         "title": {
           "$type": "lineHeights",
-          "$value": "{typography.lineHeight.text.large}"
+          "$value": "{typography.lineHeight.ui.large}"
         },
         "message": {
           "$type": "lineHeights",
-          "$value": "{typography.lineHeight.text.medium}"
+          "$value": "{typography.lineHeight.ui.medium}"
         }
       }
     }

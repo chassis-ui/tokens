@@ -14,6 +14,8 @@ import {
   customProperty,
   referencingGroups,
   roleGroups,
+  roleName,
+  roleValueGroups,
   webValue
 } from '../build/css-var-policy.js'
 import {
@@ -79,12 +81,14 @@ describe('printsReference', () => {
     }
   )
 
-  test.each([...casesIn('exception'), ...casesIn('typography'), ...casesIn('encode')])(
-    'false for $token',
-    ({ token }) => {
-      expect(printsReference(fixture.tokens[token])).toBe(false)
-    }
-  )
+  test.each([
+    ...casesIn('exception'),
+    ...casesIn('typography'),
+    ...casesIn('encode'),
+    ...casesIn('role group')
+  ])('false for $token', ({ token }) => {
+    expect(printsReference(fixture.tokens[token])).toBe(false)
+  })
 
   test.each(['idle', 'hover', 'press', 'disabled', 'focus', 'highlight'])(
     'false for the shadow state %s',
@@ -262,6 +266,32 @@ describe('typography', () => {
     )
   })
 
+  test('prints a text decoration', () => {
+    expect(webValue(withOriginal('textDecoration', 'underline'), references)).toContain(
+      '"text-decoration": underline)'
+    )
+  })
+
+  test('names the family of the parts of a reference to another family', () => {
+    const token = variant('font.button.medium', {
+      original: { $value: '{font.prose.large.normal}' }
+    })
+    const value = webValue(token, references)
+    expect(value).toContain('"font-family": var(--font-family-prose), ')
+    expect(value).toContain('"font-weight": var(--font-weight-prose-normal), ')
+    expect(value).toContain('"font-size": var(--font-size-prose-lg), ')
+    expect(value).toContain('"line-height": var(--line-height-prose-lg), ')
+  })
+
+  test('throws on a reference to a removed family scale', () => {
+    const token = variant('font.button.medium', {
+      original: { $value: '{font.display.medium.normal}' }
+    })
+    expect(() => webValue(token, references)).toThrow(
+      'font.button.medium: Tries to reference font.display.medium.normal, which is not defined.'
+    )
+  })
+
   test('throws on a reference that is not font.<family>.<size>.<weight>', () => {
     const token = variant('font.button.medium', { original: { $value: '{font.context.lead}' } })
     expect(() => webValue(token, references)).toThrow(
@@ -282,18 +312,23 @@ describe('role tokens', () => {
     return lookupsIn({ ...fixture.tokens, [path]: { ...token, original } })
   }
 
-  test('a part that references a role names the token its alias leads to', () => {
+  // chassis points the title role group at the display family and weight
+  test('a part that references a role group names the family token its alias leads to', () => {
     const value = webValue(title, references)
-    expect(value).toContain('"font-family": var(--font-family-text), ')
-    expect(value).toContain('"font-weight": var(--font-weight-text-strong), ')
-    expect(value).toContain('"font-size": var(--font-size-text-lg), ')
-    expect(value).toContain('"line-height": var(--line-height-text-lg), ')
+    expect(value).toContain('"font-family": var(--font-family-display), ')
+    expect(value).toContain('"font-weight": var(--font-weight-display-strong), ')
   })
 
-  test('names no role custom property', () => {
-    for (const { token } of fixture.cases) {
+  test('a part that references a role value names the custom property of the role', () => {
+    const value = webValue(title, references)
+    expect(value).toContain('"font-size": var(--font-size-title-md), ')
+    expect(value).toContain('"line-height": var(--line-height-title-md), ')
+  })
+
+  test('names no custom property of a role group', () => {
+    for (const { token } of casesIn('typography')) {
       expect(webValue(fixture.tokens[token], references)).not.toMatch(
-        /var\(--(font-family-(context|html)|(font-weight|font-size|line-height)-context)-/
+        /var\(--(font-family|font-weight)-(context|jumbo|hero|heading|lead|blockquote|cite|body|title|label)\b/
       )
     }
   })
@@ -310,14 +345,12 @@ describe('role tokens', () => {
     expect(webValue(title, lookups)).toContain('"font-weight": 600, ')
   })
 
-  test('prints the value of a role size that holds one', () => {
-    const lookups = withLiteral('typography.fontSize.context.title-medium', '19')
-    expect(webValue(title, lookups)).toContain('"font-size": 1.1875rem, ')
-  })
-
-  test('prints a role line height that holds a value in em of the role font size', () => {
-    const lookups = withLiteral('typography.lineHeight.context.title-medium', '28')
-    expect(webValue(title, lookups)).toContain('"line-height": 1.474em, ')
+  test('names the scale step that a role size aliases', () => {
+    const lookups = withLiteral(
+      'typography.fontSize.context.title-medium',
+      '{typography.fontSize.ui.medium}'
+    )
+    expect(webValue(title, lookups)).toContain('"font-size": var(--font-size-ui-md), ')
   })
 
   test('prints the value of a role whose alias leads to another group', () => {
@@ -326,14 +359,48 @@ describe('role tokens', () => {
     )
   })
 
-  test('the role groups are the families, weights, sizes and line heights per role', () => {
-    expect(roleGroups).toEqual([
-      'typography.fontFamily.context',
-      'typography.fontFamily.html',
-      'typography.fontWeight.context',
+  test('the role groups are the families and weights per role group', () => {
+    expect(roleGroups).toEqual(['typography.fontFamily.context', 'typography.fontWeight.context'])
+  })
+
+  test('the role value groups are the sizes and line heights per role', () => {
+    expect(roleValueGroups).toEqual([
       'typography.fontSize.context',
       'typography.lineHeight.context'
     ])
+  })
+})
+
+describe('role group tokens', () => {
+  const heading = fixture.tokens['typography.fontFamily.context.heading']
+
+  test.each(casesIn('role group'))('$case ($token)', ({ token, expected }) => {
+    expect(webValue(fixture.tokens[token], references)).toBe(expected)
+  })
+
+  test('prints the value of a role group family that holds one', () => {
+    const token = variant('typography.fontFamily.context.heading', {
+      original: { $value: 'Inter', $extensions: {} }
+    })
+    const lookups = lookupsIn({ ...fixture.tokens, 'typography.fontFamily.context.heading': token })
+    expect(webValue(token, lookups)).toBe(heading.$value)
+  })
+
+  test('prints the value of a role group family it cannot look up', () => {
+    const lookups = lookupsIn({})
+    expect(webValue(heading, lookups)).toBe(heading.$value)
+  })
+})
+
+describe('roleName', () => {
+  test.each([
+    ['h1', 'h1'],
+    ['lead', 'lead'],
+    ['title-large', 'title-lg'],
+    ['body-medium', 'body-md'],
+    ['label-small', 'label-sm']
+  ])('%s becomes %s', (role, expected) => {
+    expect(roleName(role)).toBe(expected)
   })
 })
 

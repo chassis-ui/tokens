@@ -2,8 +2,8 @@
 
 <!--
   Do not edit directly, this file was auto-generated.
-  Generated on Fri, 16 Oct 2026 10:34:30 GMT
-  Chassis - Tokens v0.8.0
+  Generated on Sun, 18 Oct 2026 13:49:22 GMT
+  Chassis - Tokens v0.9.0
   Copyright 2026 Ozgur Gunes
   Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
 -->
@@ -468,160 +468,126 @@
   <item name="opacity_context_dim_subtle" type="dimen" format="float">0.3</item>
   <item name="opacity_context_dim_slight" type="dimen" format="float">0.05</item>
   <item name="opacity_context_transparent_color" type="dimen" format="float">0</item>
-  <dimen name="typography_font_size_text_5xlarge">44sp</dimen>
-  <dimen name="typography_font_size_text_4xlarge">38sp</dimen>
-  <dimen name="typography_font_size_text_3xlarge">32sp</dimen>
-  <dimen name="typography_font_size_text_2xlarge">26sp</dimen>
-  <dimen name="typography_font_size_text_xlarge">22sp</dimen>
-  <dimen name="typography_font_size_text_large">19sp</dimen>
-  <dimen name="typography_font_size_text_medium">16sp</dimen>
-  <dimen name="typography_font_size_text_small">14sp</dimen>
-  <dimen name="typography_font_size_text_xsmall">12sp</dimen>
-  <dimen name="typography_font_size_text_2xsmall">10sp</dimen>
-  <dimen name="typography_font_size_display_5xlarge">44sp</dimen>
-  <dimen name="typography_font_size_display_4xlarge">38sp</dimen>
-  <dimen name="typography_font_size_display_3xlarge">32sp</dimen>
-  <dimen name="typography_font_size_display_2xlarge">26sp</dimen>
-  <dimen name="typography_font_size_display_xlarge">22sp</dimen>
-  <dimen name="typography_font_size_display_large">19sp</dimen>
-  <dimen name="typography_font_size_display_medium">16sp</dimen>
-  <dimen name="typography_font_size_display_small">14sp</dimen>
-  <dimen name="typography_font_size_display_xsmall">12sp</dimen>
-  <dimen name="typography_font_size_display_2xsmall">10sp</dimen>
-  <dimen name="typography_font_size_html_h1">38sp</dimen>
-  <dimen name="typography_font_size_html_h2">32sp</dimen>
-  <dimen name="typography_font_size_html_h3">26sp</dimen>
-  <dimen name="typography_font_size_html_h4">22sp</dimen>
-  <dimen name="typography_font_size_html_h5">19sp</dimen>
-  <dimen name="typography_font_size_html_h6">16sp</dimen>
-  <dimen name="typography_font_size_html_paragraph">16sp</dimen>
-  <dimen name="typography_font_size_html_body">16sp</dimen>
-  <dimen name="typography_font_size_html_list">16sp</dimen>
-  <dimen name="typography_font_size_html_code">16sp</dimen>
-  <dimen name="typography_font_size_html_blockquote">16sp</dimen>
-  <dimen name="typography_font_size_html_cite">14sp</dimen>
+  <dimen name="typography_font_size_ui_5xlarge">44sp</dimen>
+  <dimen name="typography_font_size_ui_4xlarge">38sp</dimen>
+  <dimen name="typography_font_size_ui_3xlarge">32sp</dimen>
+  <dimen name="typography_font_size_ui_2xlarge">26sp</dimen>
+  <dimen name="typography_font_size_ui_xlarge">22sp</dimen>
+  <dimen name="typography_font_size_ui_large">19sp</dimen>
+  <dimen name="typography_font_size_ui_medium">16sp</dimen>
+  <dimen name="typography_font_size_ui_small">14sp</dimen>
+  <dimen name="typography_font_size_ui_xsmall">12sp</dimen>
+  <dimen name="typography_font_size_ui_2xsmall">10sp</dimen>
+  <dimen name="typography_font_size_prose_5xlarge">@dimen/typography_font_size_ui_5xlarge</dimen>
+  <dimen name="typography_font_size_prose_4xlarge">@dimen/typography_font_size_ui_4xlarge</dimen>
+  <dimen name="typography_font_size_prose_3xlarge">@dimen/typography_font_size_ui_3xlarge</dimen>
+  <dimen name="typography_font_size_prose_2xlarge">@dimen/typography_font_size_ui_2xlarge</dimen>
+  <dimen name="typography_font_size_prose_xlarge">@dimen/typography_font_size_ui_xlarge</dimen>
+  <dimen name="typography_font_size_prose_large">@dimen/typography_font_size_ui_large</dimen>
+  <dimen name="typography_font_size_prose_medium">@dimen/typography_font_size_ui_medium</dimen>
+  <dimen name="typography_font_size_prose_small">@dimen/typography_font_size_ui_small</dimen>
+  <dimen name="typography_font_size_prose_xsmall">@dimen/typography_font_size_ui_xsmall</dimen>
+  <dimen name="typography_font_size_prose_2xsmall">@dimen/typography_font_size_ui_2xsmall</dimen>
   <dimen name="typography_font_size_context_jumbo">96sp</dimen>
   <dimen name="typography_font_size_context_hero">64sp</dimen>
-  <dimen name="typography_font_size_context_lead">@dimen/typography_font_size_text_xlarge</dimen>
-  <dimen name="typography_font_size_context_heading">@dimen/typography_font_size_text_3xlarge</dimen>
-  <dimen name="typography_font_size_context_title_medium">@dimen/typography_font_size_text_large</dimen>
-  <dimen name="typography_font_size_context_title_large">@dimen/typography_font_size_text_xlarge</dimen>
-  <dimen name="typography_font_size_context_title_small">@dimen/typography_font_size_text_medium</dimen>
-  <dimen name="typography_font_size_context_body_medium">@dimen/typography_font_size_text_medium</dimen>
-  <dimen name="typography_font_size_context_body_large">@dimen/typography_font_size_text_large</dimen>
-  <dimen name="typography_font_size_context_body_small">@dimen/typography_font_size_text_small</dimen>
-  <dimen name="typography_font_size_context_highlight_medium">@dimen/typography_font_size_text_medium</dimen>
-  <dimen name="typography_font_size_context_highlight_large">@dimen/typography_font_size_text_large</dimen>
-  <dimen name="typography_font_size_context_highlight_small">@dimen/typography_font_size_text_small</dimen>
-  <dimen name="typography_font_size_context_label_medium">@dimen/typography_font_size_text_small</dimen>
-  <dimen name="typography_font_size_context_label_large">@dimen/typography_font_size_text_medium</dimen>
-  <dimen name="typography_font_size_context_label_small">@dimen/typography_font_size_text_xsmall</dimen>
-  <dimen name="typography_font_size_context_link_large">@dimen/typography_font_size_text_large</dimen>
-  <dimen name="typography_font_size_context_link_medium">@dimen/typography_font_size_text_medium</dimen>
-  <dimen name="typography_font_size_context_link_small">@dimen/typography_font_size_text_small</dimen>
-  <dimen name="typography_font_size_context_link_xsmall">@dimen/typography_font_size_text_xsmall</dimen>
-  <dimen name="typography_font_size_context_expired_large">@dimen/typography_font_size_text_large</dimen>
-  <dimen name="typography_font_size_context_expired_medium">@dimen/typography_font_size_text_medium</dimen>
-  <dimen name="typography_font_size_context_expired_small">@dimen/typography_font_size_text_small</dimen>
-  <dimen name="typography_font_size_context_code_large">@dimen/typography_font_size_code_large</dimen>
-  <dimen name="typography_font_size_context_code_medium">@dimen/typography_font_size_code_medium</dimen>
-  <dimen name="typography_font_size_context_code_small">@dimen/typography_font_size_code_small</dimen>
+  <dimen name="typography_font_size_context_h1">38sp</dimen>
+  <dimen name="typography_font_size_context_h2">32sp</dimen>
+  <dimen name="typography_font_size_context_h3">26sp</dimen>
+  <dimen name="typography_font_size_context_h4">22sp</dimen>
+  <dimen name="typography_font_size_context_h5">19sp</dimen>
+  <dimen name="typography_font_size_context_h6">16sp</dimen>
+  <dimen name="typography_font_size_context_lead">22sp</dimen>
+  <dimen name="typography_font_size_context_blockquote">16sp</dimen>
+  <dimen name="typography_font_size_context_cite">14sp</dimen>
+  <dimen name="typography_font_size_context_body_large">19sp</dimen>
+  <dimen name="typography_font_size_context_body_medium">16sp</dimen>
+  <dimen name="typography_font_size_context_body_small">14sp</dimen>
+  <dimen name="typography_font_size_context_title_large">22sp</dimen>
+  <dimen name="typography_font_size_context_title_medium">19sp</dimen>
+  <dimen name="typography_font_size_context_title_small">16sp</dimen>
+  <dimen name="typography_font_size_context_label_large">16sp</dimen>
+  <dimen name="typography_font_size_context_label_medium">14sp</dimen>
+  <dimen name="typography_font_size_context_label_small">12sp</dimen>
   <dimen name="typography_font_size_code_large">19sp</dimen>
   <dimen name="typography_font_size_code_medium">16sp</dimen>
   <dimen name="typography_font_size_code_small">14sp</dimen>
   <dimen name="typography_font_size_website_hero_title">64sp</dimen>
-  <dimen name="typography_font_size_website_hero_body">@dimen/typography_font_size_text_xlarge</dimen>
+  <dimen name="typography_font_size_website_hero_body">@dimen/typography_font_size_ui_xlarge</dimen>
   <dimen name="typography_font_size_website_section_title">48sp</dimen>
-  <dimen name="typography_font_size_website_section_body">@dimen/typography_font_size_text_xlarge</dimen>
-  <dimen name="typography_font_size_website_feature_title">@dimen/typography_font_size_text_xlarge</dimen>
-  <dimen name="typography_font_size_website_feature_body">@dimen/typography_font_size_text_large</dimen>
-  <dimen name="typography_font_size_website_module_title">@dimen/typography_font_size_text_large</dimen>
-  <dimen name="typography_line_height_text_5xlarge">56sp</dimen>
-  <dimen name="typography_line_height_text_4xlarge">48sp</dimen>
-  <dimen name="typography_line_height_text_3xlarge">40sp</dimen>
-  <dimen name="typography_line_height_text_2xlarge">36sp</dimen>
-  <dimen name="typography_line_height_text_xlarge">32sp</dimen>
-  <dimen name="typography_line_height_text_large">28sp</dimen>
-  <dimen name="typography_line_height_text_medium">24sp</dimen>
-  <dimen name="typography_line_height_text_small">20sp</dimen>
-  <dimen name="typography_line_height_text_xsmall">18sp</dimen>
-  <dimen name="typography_line_height_text_2xsmall">14sp</dimen>
-  <dimen name="typography_line_height_display_5xlarge">56sp</dimen>
-  <dimen name="typography_line_height_display_4xlarge">48sp</dimen>
-  <dimen name="typography_line_height_display_3xlarge">40sp</dimen>
-  <dimen name="typography_line_height_display_2xlarge">36sp</dimen>
-  <dimen name="typography_line_height_display_xlarge">32sp</dimen>
-  <dimen name="typography_line_height_display_large">28sp</dimen>
-  <dimen name="typography_line_height_display_medium">24sp</dimen>
-  <dimen name="typography_line_height_display_small">20sp</dimen>
-  <dimen name="typography_line_height_display_xsmall">18sp</dimen>
-  <dimen name="typography_line_height_display_2xsmall">14sp</dimen>
-  <dimen name="typography_line_height_html_h1">46sp</dimen>
-  <dimen name="typography_line_height_html_h2">40sp</dimen>
-  <dimen name="typography_line_height_html_h3">32sp</dimen>
-  <dimen name="typography_line_height_html_h4">28sp</dimen>
-  <dimen name="typography_line_height_html_h5">24sp</dimen>
-  <dimen name="typography_line_height_html_h6">20sp</dimen>
-  <dimen name="typography_line_height_html_paragraph">24sp</dimen>
-  <dimen name="typography_line_height_html_body">24sp</dimen>
-  <dimen name="typography_line_height_html_code">24sp</dimen>
-  <dimen name="typography_line_height_html_list">24sp</dimen>
-  <dimen name="typography_line_height_html_blockquote">24sp</dimen>
-  <dimen name="typography_line_height_html_cite">20sp</dimen>
-  <dimen name="typography_line_height_context_lead">@dimen/typography_line_height_text_xlarge</dimen>
-  <dimen name="typography_line_height_context_heading">@dimen/typography_line_height_text_3xlarge</dimen>
-  <dimen name="typography_line_height_context_title_medium">@dimen/typography_line_height_text_large</dimen>
-  <dimen name="typography_line_height_context_title_large">@dimen/typography_line_height_text_xlarge</dimen>
-  <dimen name="typography_line_height_context_title_small">@dimen/typography_line_height_text_medium</dimen>
-  <dimen name="typography_line_height_context_body_medium">@dimen/typography_line_height_text_medium</dimen>
-  <dimen name="typography_line_height_context_body_large">@dimen/typography_line_height_text_large</dimen>
-  <dimen name="typography_line_height_context_body_small">@dimen/typography_line_height_text_small</dimen>
-  <dimen name="typography_line_height_context_highlight_medium">@dimen/typography_line_height_text_medium</dimen>
-  <dimen name="typography_line_height_context_highlight_large">@dimen/typography_line_height_text_large</dimen>
-  <dimen name="typography_line_height_context_highlight_small">@dimen/typography_line_height_text_small</dimen>
-  <dimen name="typography_line_height_context_label_medium">@dimen/typography_line_height_text_small</dimen>
-  <dimen name="typography_line_height_context_label_large">@dimen/typography_line_height_text_medium</dimen>
-  <dimen name="typography_line_height_context_label_small">@dimen/typography_line_height_text_xsmall</dimen>
-  <dimen name="typography_line_height_context_link_large">@dimen/typography_line_height_text_large</dimen>
-  <dimen name="typography_line_height_context_link_medium">@dimen/typography_line_height_text_medium</dimen>
-  <dimen name="typography_line_height_context_link_small">@dimen/typography_line_height_text_small</dimen>
-  <dimen name="typography_line_height_context_link_xsmall">@dimen/typography_line_height_text_xsmall</dimen>
-  <dimen name="typography_line_height_context_expired_large">@dimen/typography_line_height_text_large</dimen>
-  <dimen name="typography_line_height_context_expired_medium">@dimen/typography_line_height_text_medium</dimen>
-  <dimen name="typography_line_height_context_expired_small">@dimen/typography_line_height_text_small</dimen>
-  <dimen name="typography_line_height_context_code_large">@dimen/typography_line_height_code_large</dimen>
-  <dimen name="typography_line_height_context_code_medium">@dimen/typography_line_height_code_medium</dimen>
-  <dimen name="typography_line_height_context_code_small">@dimen/typography_line_height_code_small</dimen>
+  <dimen name="typography_font_size_website_section_body">@dimen/typography_font_size_ui_xlarge</dimen>
+  <dimen name="typography_font_size_website_feature_title">@dimen/typography_font_size_ui_xlarge</dimen>
+  <dimen name="typography_font_size_website_feature_body">@dimen/typography_font_size_ui_large</dimen>
+  <dimen name="typography_font_size_website_module_title">@dimen/typography_font_size_ui_large</dimen>
+  <dimen name="typography_line_height_ui_5xlarge">56sp</dimen>
+  <dimen name="typography_line_height_ui_4xlarge">48sp</dimen>
+  <dimen name="typography_line_height_ui_3xlarge">40sp</dimen>
+  <dimen name="typography_line_height_ui_2xlarge">36sp</dimen>
+  <dimen name="typography_line_height_ui_xlarge">32sp</dimen>
+  <dimen name="typography_line_height_ui_large">28sp</dimen>
+  <dimen name="typography_line_height_ui_medium">24sp</dimen>
+  <dimen name="typography_line_height_ui_small">20sp</dimen>
+  <dimen name="typography_line_height_ui_xsmall">18sp</dimen>
+  <dimen name="typography_line_height_ui_2xsmall">14sp</dimen>
+  <dimen name="typography_line_height_prose_5xlarge">@dimen/typography_line_height_ui_5xlarge</dimen>
+  <dimen name="typography_line_height_prose_4xlarge">@dimen/typography_line_height_ui_4xlarge</dimen>
+  <dimen name="typography_line_height_prose_3xlarge">@dimen/typography_line_height_ui_3xlarge</dimen>
+  <dimen name="typography_line_height_prose_2xlarge">@dimen/typography_line_height_ui_2xlarge</dimen>
+  <dimen name="typography_line_height_prose_xlarge">@dimen/typography_line_height_ui_xlarge</dimen>
+  <dimen name="typography_line_height_prose_large">@dimen/typography_line_height_ui_large</dimen>
+  <dimen name="typography_line_height_prose_medium">@dimen/typography_line_height_ui_medium</dimen>
+  <dimen name="typography_line_height_prose_small">@dimen/typography_line_height_ui_small</dimen>
+  <dimen name="typography_line_height_prose_xsmall">@dimen/typography_line_height_ui_xsmall</dimen>
+  <dimen name="typography_line_height_prose_2xsmall">@dimen/typography_line_height_ui_2xsmall</dimen>
+  <dimen name="typography_line_height_context_h1">46sp</dimen>
+  <dimen name="typography_line_height_context_h2">40sp</dimen>
+  <dimen name="typography_line_height_context_h3">32sp</dimen>
+  <dimen name="typography_line_height_context_h4">28sp</dimen>
+  <dimen name="typography_line_height_context_h5">24sp</dimen>
+  <dimen name="typography_line_height_context_h6">20sp</dimen>
+  <dimen name="typography_line_height_context_lead">32sp</dimen>
+  <dimen name="typography_line_height_context_blockquote">24sp</dimen>
+  <dimen name="typography_line_height_context_cite">20sp</dimen>
+  <dimen name="typography_line_height_context_body_large">28sp</dimen>
+  <dimen name="typography_line_height_context_body_medium">24sp</dimen>
+  <dimen name="typography_line_height_context_body_small">20sp</dimen>
+  <dimen name="typography_line_height_context_title_large">32sp</dimen>
+  <dimen name="typography_line_height_context_title_medium">28sp</dimen>
+  <dimen name="typography_line_height_context_title_small">24sp</dimen>
+  <dimen name="typography_line_height_context_label_large">24sp</dimen>
+  <dimen name="typography_line_height_context_label_medium">20sp</dimen>
+  <dimen name="typography_line_height_context_label_small">18sp</dimen>
   <dimen name="typography_line_height_code_large">28sp</dimen>
   <dimen name="typography_line_height_code_medium">24sp</dimen>
   <dimen name="typography_line_height_code_small">20sp</dimen>
   <item name="typography_letter_spacing_base_zero" type="dimen" format="float">0</item>
-  <item name="typography_letter_spacing_text_normal" type="dimen" format="float">0</item>
-  <item name="typography_letter_spacing_text_strong" type="dimen" format="float">0</item>
-  <item name="typography_letter_spacing_text_mass" type="dimen" format="float">0</item>
-  <item name="typography_letter_spacing_text_elegant" type="dimen" format="float">0</item>
-  <item name="typography_letter_spacing_display_normal" type="dimen" format="float">0</item>
-  <item name="typography_letter_spacing_display_strong" type="dimen" format="float">0</item>
-  <item name="typography_letter_spacing_display_mass" type="dimen" format="float">0</item>
-  <item name="typography_letter_spacing_display_elegant" type="dimen" format="float">0</item>
-  <item name="typography_letter_spacing_html_heading" type="dimen" format="float">@dimen/typography_letter_spacing_text_mass</item>
-  <item name="typography_letter_spacing_html_body" type="dimen" format="float">@dimen/typography_letter_spacing_text_normal</item>
-  <item name="typography_letter_spacing_html_paragraph" type="dimen" format="float">@dimen/typography_letter_spacing_text_normal</item>
-  <item name="typography_letter_spacing_html_blockquote" type="dimen" format="float">@dimen/typography_letter_spacing_text_elegant</item>
-  <item name="typography_letter_spacing_html_list" type="dimen" format="float">@dimen/typography_letter_spacing_text_normal</item>
-  <item name="typography_letter_spacing_html_cite" type="dimen" format="float">@dimen/typography_letter_spacing_text_strong</item>
-  <item name="typography_letter_spacing_html_code" type="dimen" format="float">@dimen/typography_letter_spacing_base_zero</item>
+  <item name="typography_letter_spacing_ui_normal" type="dimen" format="float">0</item>
+  <item name="typography_letter_spacing_ui_strong" type="dimen" format="float">0</item>
+  <item name="typography_letter_spacing_ui_mass" type="dimen" format="float">0</item>
+  <item name="typography_letter_spacing_ui_elegant" type="dimen" format="float">0</item>
+  <item name="typography_letter_spacing_prose_normal" type="dimen" format="float">@dimen/typography_letter_spacing_ui_normal</item>
+  <item name="typography_letter_spacing_prose_strong" type="dimen" format="float">@dimen/typography_letter_spacing_ui_strong</item>
+  <item name="typography_letter_spacing_prose_mass" type="dimen" format="float">@dimen/typography_letter_spacing_ui_mass</item>
+  <item name="typography_letter_spacing_prose_elegant" type="dimen" format="float">@dimen/typography_letter_spacing_ui_elegant</item>
   <item name="typography_letter_spacing_context_jumbo" type="dimen" format="float">-2.5</item>
   <item name="typography_letter_spacing_context_hero" type="dimen" format="float">-1.5</item>
-  <item name="typography_letter_spacing_context_lead" type="dimen" format="float">@dimen/typography_letter_spacing_text_normal</item>
-  <item name="typography_letter_spacing_context_heading" type="dimen" format="float">@dimen/typography_letter_spacing_text_strong</item>
-  <item name="typography_letter_spacing_context_title" type="dimen" format="float">@dimen/typography_letter_spacing_text_strong</item>
-  <item name="typography_letter_spacing_context_body" type="dimen" format="float">@dimen/typography_letter_spacing_text_normal</item>
-  <item name="typography_letter_spacing_context_highlight" type="dimen" format="float">@dimen/typography_letter_spacing_text_normal</item>
-  <item name="typography_letter_spacing_context_label" type="dimen" format="float">@dimen/typography_letter_spacing_text_strong</item>
-  <item name="typography_letter_spacing_context_link" type="dimen" format="float">@dimen/typography_letter_spacing_text_normal</item>
-  <item name="typography_letter_spacing_context_expired" type="dimen" format="float">@dimen/typography_letter_spacing_text_strong</item>
-  <item name="typography_letter_spacing_context_code" type="dimen" format="float">@dimen/typography_letter_spacing_base_zero</item>
+  <item name="typography_letter_spacing_context_h1" type="dimen" format="float">0</item>
+  <item name="typography_letter_spacing_context_h2" type="dimen" format="float">0</item>
+  <item name="typography_letter_spacing_context_h3" type="dimen" format="float">0</item>
+  <item name="typography_letter_spacing_context_h4" type="dimen" format="float">0</item>
+  <item name="typography_letter_spacing_context_h5" type="dimen" format="float">0</item>
+  <item name="typography_letter_spacing_context_h6" type="dimen" format="float">0</item>
+  <item name="typography_letter_spacing_context_lead" type="dimen" format="float">0</item>
+  <item name="typography_letter_spacing_context_blockquote" type="dimen" format="float">0</item>
+  <item name="typography_letter_spacing_context_cite" type="dimen" format="float">0</item>
+  <item name="typography_letter_spacing_context_body_large" type="dimen" format="float">0</item>
+  <item name="typography_letter_spacing_context_body_medium" type="dimen" format="float">0</item>
+  <item name="typography_letter_spacing_context_body_small" type="dimen" format="float">0</item>
+  <item name="typography_letter_spacing_context_title_large" type="dimen" format="float">0</item>
+  <item name="typography_letter_spacing_context_title_medium" type="dimen" format="float">0</item>
+  <item name="typography_letter_spacing_context_title_small" type="dimen" format="float">0</item>
+  <item name="typography_letter_spacing_context_label_large" type="dimen" format="float">0</item>
+  <item name="typography_letter_spacing_context_label_medium" type="dimen" format="float">0</item>
+  <item name="typography_letter_spacing_context_label_small" type="dimen" format="float">0</item>
   <dimen name="typography_paragraph_spacing_base_zero">0sp</dimen>
   <dimen name="typography_paragraph_spacing_base_small">8sp</dimen>
   <dimen name="typography_paragraph_spacing_base_medium">16sp</dimen>
@@ -723,470 +689,398 @@
   <dimen name="font_context_hero_font_size">@dimen/typography_font_size_context_hero</dimen>
   <item name="font_context_hero_letter_spacing" type="dimen" format="float">-0.0234</item>
   <dimen name="font_context_hero_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_context_h1_line_height">@dimen/typography_line_height_context_h1</dimen>
+  <dimen name="font_context_h1_font_size">@dimen/typography_font_size_context_h1</dimen>
+  <item name="font_context_h1_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_context_h1</item>
+  <dimen name="font_context_h1_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_context_h2_line_height">@dimen/typography_line_height_context_h2</dimen>
+  <dimen name="font_context_h2_font_size">@dimen/typography_font_size_context_h2</dimen>
+  <item name="font_context_h2_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_context_h2</item>
+  <dimen name="font_context_h2_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_context_h3_line_height">@dimen/typography_line_height_context_h3</dimen>
+  <dimen name="font_context_h3_font_size">@dimen/typography_font_size_context_h3</dimen>
+  <item name="font_context_h3_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_context_h3</item>
+  <dimen name="font_context_h3_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_context_h4_line_height">@dimen/typography_line_height_context_h4</dimen>
+  <dimen name="font_context_h4_font_size">@dimen/typography_font_size_context_h4</dimen>
+  <item name="font_context_h4_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_context_h4</item>
+  <dimen name="font_context_h4_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_context_h5_line_height">@dimen/typography_line_height_context_h5</dimen>
+  <dimen name="font_context_h5_font_size">@dimen/typography_font_size_context_h5</dimen>
+  <item name="font_context_h5_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_context_h5</item>
+  <dimen name="font_context_h5_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_context_h6_line_height">@dimen/typography_line_height_context_h6</dimen>
+  <dimen name="font_context_h6_font_size">@dimen/typography_font_size_context_h6</dimen>
+  <item name="font_context_h6_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_context_h6</item>
+  <dimen name="font_context_h6_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
   <dimen name="font_context_lead_line_height">@dimen/typography_line_height_context_lead</dimen>
   <dimen name="font_context_lead_font_size">@dimen/typography_font_size_context_lead</dimen>
   <item name="font_context_lead_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_context_lead</item>
   <dimen name="font_context_lead_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_context_heading_line_height">@dimen/typography_line_height_context_heading</dimen>
-  <dimen name="font_context_heading_font_size">@dimen/typography_font_size_context_heading</dimen>
-  <item name="font_context_heading_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_context_heading</item>
-  <dimen name="font_context_heading_paragraph_spacing">@dimen/typography_paragraph_spacing_base_large</dimen>
-  <dimen name="font_context_title_medium_line_height">@dimen/typography_line_height_context_title_medium</dimen>
-  <dimen name="font_context_title_medium_font_size">@dimen/typography_font_size_context_title_medium</dimen>
-  <item name="font_context_title_medium_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_context_title</item>
-  <dimen name="font_context_title_medium_paragraph_spacing">@dimen/typography_paragraph_spacing_base_medium</dimen>
-  <dimen name="font_context_title_large_line_height">@dimen/typography_line_height_context_title_large</dimen>
-  <dimen name="font_context_title_large_font_size">@dimen/typography_font_size_context_title_large</dimen>
-  <item name="font_context_title_large_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_context_title</item>
-  <dimen name="font_context_title_large_paragraph_spacing">@dimen/typography_paragraph_spacing_base_large</dimen>
-  <dimen name="font_context_title_small_line_height">@dimen/typography_line_height_context_title_small</dimen>
-  <dimen name="font_context_title_small_font_size">@dimen/typography_font_size_context_title_small</dimen>
-  <item name="font_context_title_small_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_context_title</item>
-  <dimen name="font_context_title_small_paragraph_spacing">@dimen/typography_paragraph_spacing_base_small</dimen>
-  <dimen name="font_context_body_medium_line_height">@dimen/typography_line_height_context_body_medium</dimen>
-  <dimen name="font_context_body_medium_font_size">@dimen/typography_font_size_context_body_medium</dimen>
-  <item name="font_context_body_medium_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_context_body</item>
-  <dimen name="font_context_body_medium_paragraph_spacing">@dimen/typography_paragraph_spacing_base_medium</dimen>
+  <dimen name="font_context_blockquote_line_height">@dimen/typography_line_height_context_blockquote</dimen>
+  <dimen name="font_context_blockquote_font_size">@dimen/typography_font_size_context_blockquote</dimen>
+  <item name="font_context_blockquote_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_context_blockquote</item>
+  <dimen name="font_context_blockquote_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_context_cite_line_height">@dimen/typography_line_height_context_cite</dimen>
+  <dimen name="font_context_cite_font_size">@dimen/typography_font_size_context_cite</dimen>
+  <item name="font_context_cite_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_context_cite</item>
+  <dimen name="font_context_cite_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
   <dimen name="font_context_body_large_line_height">@dimen/typography_line_height_context_body_large</dimen>
   <dimen name="font_context_body_large_font_size">@dimen/typography_font_size_context_body_large</dimen>
-  <item name="font_context_body_large_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_context_body</item>
+  <item name="font_context_body_large_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_context_body_large</item>
   <dimen name="font_context_body_large_paragraph_spacing">@dimen/typography_paragraph_spacing_base_large</dimen>
+  <dimen name="font_context_body_medium_line_height">@dimen/typography_line_height_context_body_medium</dimen>
+  <dimen name="font_context_body_medium_font_size">@dimen/typography_font_size_context_body_medium</dimen>
+  <item name="font_context_body_medium_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_context_body_medium</item>
+  <dimen name="font_context_body_medium_paragraph_spacing">@dimen/typography_paragraph_spacing_base_medium</dimen>
   <dimen name="font_context_body_small_line_height">@dimen/typography_line_height_context_body_small</dimen>
   <dimen name="font_context_body_small_font_size">@dimen/typography_font_size_context_body_small</dimen>
-  <item name="font_context_body_small_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_context_body</item>
+  <item name="font_context_body_small_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_context_body_small</item>
   <dimen name="font_context_body_small_paragraph_spacing">@dimen/typography_paragraph_spacing_base_small</dimen>
-  <dimen name="font_context_highlight_medium_line_height">@dimen/typography_line_height_context_highlight_medium</dimen>
-  <dimen name="font_context_highlight_medium_font_size">@dimen/typography_font_size_context_highlight_medium</dimen>
-  <item name="font_context_highlight_medium_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_context_highlight</item>
-  <dimen name="font_context_highlight_medium_paragraph_spacing">@dimen/typography_paragraph_spacing_base_medium</dimen>
-  <dimen name="font_context_highlight_large_line_height">@dimen/typography_line_height_context_highlight_large</dimen>
-  <dimen name="font_context_highlight_large_font_size">@dimen/typography_font_size_context_highlight_large</dimen>
-  <item name="font_context_highlight_large_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_context_highlight</item>
-  <dimen name="font_context_highlight_large_paragraph_spacing">@dimen/typography_paragraph_spacing_base_large</dimen>
-  <dimen name="font_context_highlight_small_line_height">@dimen/typography_line_height_context_highlight_small</dimen>
-  <dimen name="font_context_highlight_small_font_size">@dimen/typography_font_size_context_highlight_small</dimen>
-  <item name="font_context_highlight_small_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_context_highlight</item>
-  <dimen name="font_context_highlight_small_paragraph_spacing">@dimen/typography_paragraph_spacing_base_small</dimen>
-  <dimen name="font_context_label_medium_line_height">@dimen/typography_line_height_context_label_medium</dimen>
-  <dimen name="font_context_label_medium_font_size">@dimen/typography_font_size_context_label_medium</dimen>
-  <item name="font_context_label_medium_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_context_label</item>
-  <dimen name="font_context_label_medium_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_context_title_large_line_height">@dimen/typography_line_height_context_title_large</dimen>
+  <dimen name="font_context_title_large_font_size">@dimen/typography_font_size_context_title_large</dimen>
+  <item name="font_context_title_large_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_context_title_large</item>
+  <dimen name="font_context_title_large_paragraph_spacing">@dimen/typography_paragraph_spacing_base_large</dimen>
+  <dimen name="font_context_title_medium_line_height">@dimen/typography_line_height_context_title_medium</dimen>
+  <dimen name="font_context_title_medium_font_size">@dimen/typography_font_size_context_title_medium</dimen>
+  <item name="font_context_title_medium_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_context_title_medium</item>
+  <dimen name="font_context_title_medium_paragraph_spacing">@dimen/typography_paragraph_spacing_base_medium</dimen>
+  <dimen name="font_context_title_small_line_height">@dimen/typography_line_height_context_title_small</dimen>
+  <dimen name="font_context_title_small_font_size">@dimen/typography_font_size_context_title_small</dimen>
+  <item name="font_context_title_small_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_context_title_small</item>
+  <dimen name="font_context_title_small_paragraph_spacing">@dimen/typography_paragraph_spacing_base_small</dimen>
   <dimen name="font_context_label_large_line_height">@dimen/typography_line_height_context_label_large</dimen>
   <dimen name="font_context_label_large_font_size">@dimen/typography_font_size_context_label_large</dimen>
-  <item name="font_context_label_large_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_context_label</item>
+  <item name="font_context_label_large_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_context_label_large</item>
   <dimen name="font_context_label_large_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_context_label_medium_line_height">@dimen/typography_line_height_context_label_medium</dimen>
+  <dimen name="font_context_label_medium_font_size">@dimen/typography_font_size_context_label_medium</dimen>
+  <item name="font_context_label_medium_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_context_label_medium</item>
+  <dimen name="font_context_label_medium_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
   <dimen name="font_context_label_small_line_height">@dimen/typography_line_height_context_label_small</dimen>
   <dimen name="font_context_label_small_font_size">@dimen/typography_font_size_context_label_small</dimen>
-  <item name="font_context_label_small_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_context_label</item>
+  <item name="font_context_label_small_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_context_label_small</item>
   <dimen name="font_context_label_small_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_context_link_large_line_height">@dimen/typography_line_height_context_link_large</dimen>
-  <dimen name="font_context_link_large_font_size">@dimen/typography_font_size_context_link_large</dimen>
-  <item name="font_context_link_large_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_context_link</item>
-  <dimen name="font_context_link_large_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_context_link_medium_line_height">@dimen/typography_line_height_context_link_medium</dimen>
-  <dimen name="font_context_link_medium_font_size">@dimen/typography_font_size_context_link_medium</dimen>
-  <item name="font_context_link_medium_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_context_link</item>
-  <dimen name="font_context_link_medium_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_context_link_small_line_height">@dimen/typography_line_height_context_link_small</dimen>
-  <dimen name="font_context_link_small_font_size">@dimen/typography_font_size_context_link_small</dimen>
-  <item name="font_context_link_small_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_context_link</item>
-  <dimen name="font_context_link_small_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_context_link_xsmall_line_height">@dimen/typography_line_height_context_link_xsmall</dimen>
-  <dimen name="font_context_link_xsmall_font_size">@dimen/typography_font_size_context_link_xsmall</dimen>
-  <item name="font_context_link_xsmall_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_context_link</item>
-  <dimen name="font_context_link_xsmall_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_context_expired_large_line_height">@dimen/typography_line_height_context_expired_large</dimen>
-  <dimen name="font_context_expired_large_font_size">@dimen/typography_font_size_context_expired_large</dimen>
-  <item name="font_context_expired_large_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_context_expired</item>
-  <dimen name="font_context_expired_large_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_context_expired_medium_line_height">@dimen/typography_line_height_context_expired_medium</dimen>
-  <dimen name="font_context_expired_medium_font_size">@dimen/typography_font_size_context_expired_medium</dimen>
-  <item name="font_context_expired_medium_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_context_expired</item>
-  <dimen name="font_context_expired_medium_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_context_expired_small_line_height">@dimen/typography_line_height_context_expired_small</dimen>
-  <dimen name="font_context_expired_small_font_size">@dimen/typography_font_size_context_expired_small</dimen>
-  <item name="font_context_expired_small_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_context_expired</item>
-  <dimen name="font_context_expired_small_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_context_code_large_line_height">@dimen/typography_line_height_context_code_large</dimen>
-  <dimen name="font_context_code_large_font_size">@dimen/typography_font_size_context_code_large</dimen>
-  <item name="font_context_code_large_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_context_code</item>
-  <dimen name="font_context_code_large_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_context_code_medium_line_height">@dimen/typography_line_height_context_code_medium</dimen>
-  <dimen name="font_context_code_medium_font_size">@dimen/typography_font_size_context_code_medium</dimen>
-  <item name="font_context_code_medium_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_context_code</item>
-  <dimen name="font_context_code_medium_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_context_code_small_line_height">@dimen/typography_line_height_context_code_small</dimen>
-  <dimen name="font_context_code_small_font_size">@dimen/typography_font_size_context_code_small</dimen>
-  <item name="font_context_code_small_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_context_code</item>
-  <dimen name="font_context_code_small_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_text_5xlarge_normal_line_height">@dimen/typography_line_height_text_5xlarge</dimen>
-  <dimen name="font_text_5xlarge_normal_font_size">@dimen/typography_font_size_text_5xlarge</dimen>
-  <item name="font_text_5xlarge_normal_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_normal</item>
-  <dimen name="font_text_5xlarge_normal_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_text_5xlarge_strong_line_height">@dimen/typography_line_height_text_5xlarge</dimen>
-  <dimen name="font_text_5xlarge_strong_font_size">@dimen/typography_font_size_text_5xlarge</dimen>
-  <item name="font_text_5xlarge_strong_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_strong</item>
-  <dimen name="font_text_5xlarge_strong_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_text_5xlarge_mass_line_height">@dimen/typography_line_height_text_5xlarge</dimen>
-  <dimen name="font_text_5xlarge_mass_font_size">@dimen/typography_font_size_text_5xlarge</dimen>
-  <item name="font_text_5xlarge_mass_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_mass</item>
-  <dimen name="font_text_5xlarge_mass_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_text_5xlarge_elegant_line_height">@dimen/typography_line_height_text_5xlarge</dimen>
-  <dimen name="font_text_5xlarge_elegant_font_size">@dimen/typography_font_size_text_5xlarge</dimen>
-  <item name="font_text_5xlarge_elegant_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_elegant</item>
-  <dimen name="font_text_5xlarge_elegant_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_text_4xlarge_normal_line_height">@dimen/typography_line_height_text_4xlarge</dimen>
-  <dimen name="font_text_4xlarge_normal_font_size">@dimen/typography_font_size_text_4xlarge</dimen>
-  <item name="font_text_4xlarge_normal_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_normal</item>
-  <dimen name="font_text_4xlarge_normal_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_text_4xlarge_strong_line_height">@dimen/typography_line_height_text_4xlarge</dimen>
-  <dimen name="font_text_4xlarge_strong_font_size">@dimen/typography_font_size_text_4xlarge</dimen>
-  <item name="font_text_4xlarge_strong_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_strong</item>
-  <dimen name="font_text_4xlarge_strong_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_text_4xlarge_mass_line_height">@dimen/typography_line_height_text_4xlarge</dimen>
-  <dimen name="font_text_4xlarge_mass_font_size">@dimen/typography_font_size_text_4xlarge</dimen>
-  <item name="font_text_4xlarge_mass_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_mass</item>
-  <dimen name="font_text_4xlarge_mass_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_text_4xlarge_elegant_line_height">@dimen/typography_line_height_text_4xlarge</dimen>
-  <dimen name="font_text_4xlarge_elegant_font_size">@dimen/typography_font_size_text_4xlarge</dimen>
-  <item name="font_text_4xlarge_elegant_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_elegant</item>
-  <dimen name="font_text_4xlarge_elegant_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_text_3xlarge_normal_line_height">@dimen/typography_line_height_text_3xlarge</dimen>
-  <dimen name="font_text_3xlarge_normal_font_size">@dimen/typography_font_size_text_3xlarge</dimen>
-  <item name="font_text_3xlarge_normal_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_normal</item>
-  <dimen name="font_text_3xlarge_normal_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_text_3xlarge_strong_line_height">@dimen/typography_line_height_text_3xlarge</dimen>
-  <dimen name="font_text_3xlarge_strong_font_size">@dimen/typography_font_size_text_3xlarge</dimen>
-  <item name="font_text_3xlarge_strong_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_strong</item>
-  <dimen name="font_text_3xlarge_strong_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_text_3xlarge_mass_line_height">@dimen/typography_line_height_text_3xlarge</dimen>
-  <dimen name="font_text_3xlarge_mass_font_size">@dimen/typography_font_size_text_3xlarge</dimen>
-  <item name="font_text_3xlarge_mass_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_mass</item>
-  <dimen name="font_text_3xlarge_mass_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_text_3xlarge_elegant_line_height">@dimen/typography_line_height_text_3xlarge</dimen>
-  <dimen name="font_text_3xlarge_elegant_font_size">@dimen/typography_font_size_text_3xlarge</dimen>
-  <item name="font_text_3xlarge_elegant_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_elegant</item>
-  <dimen name="font_text_3xlarge_elegant_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_text_2xlarge_normal_line_height">@dimen/typography_line_height_text_2xlarge</dimen>
-  <dimen name="font_text_2xlarge_normal_font_size">@dimen/typography_font_size_text_2xlarge</dimen>
-  <item name="font_text_2xlarge_normal_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_normal</item>
-  <dimen name="font_text_2xlarge_normal_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_text_2xlarge_strong_line_height">@dimen/typography_line_height_text_2xlarge</dimen>
-  <dimen name="font_text_2xlarge_strong_font_size">@dimen/typography_font_size_text_2xlarge</dimen>
-  <item name="font_text_2xlarge_strong_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_strong</item>
-  <dimen name="font_text_2xlarge_strong_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_text_2xlarge_mass_line_height">@dimen/typography_line_height_text_2xlarge</dimen>
-  <dimen name="font_text_2xlarge_mass_font_size">@dimen/typography_font_size_text_2xlarge</dimen>
-  <item name="font_text_2xlarge_mass_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_mass</item>
-  <dimen name="font_text_2xlarge_mass_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_text_2xlarge_elegant_line_height">@dimen/typography_line_height_text_2xlarge</dimen>
-  <dimen name="font_text_2xlarge_elegant_font_size">@dimen/typography_font_size_text_2xlarge</dimen>
-  <item name="font_text_2xlarge_elegant_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_elegant</item>
-  <dimen name="font_text_2xlarge_elegant_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_text_xlarge_normal_line_height">@dimen/typography_line_height_text_xlarge</dimen>
-  <dimen name="font_text_xlarge_normal_font_size">@dimen/typography_font_size_text_xlarge</dimen>
-  <item name="font_text_xlarge_normal_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_normal</item>
-  <dimen name="font_text_xlarge_normal_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_text_xlarge_strong_line_height">@dimen/typography_line_height_text_xlarge</dimen>
-  <dimen name="font_text_xlarge_strong_font_size">@dimen/typography_font_size_text_xlarge</dimen>
-  <item name="font_text_xlarge_strong_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_strong</item>
-  <dimen name="font_text_xlarge_strong_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_text_xlarge_mass_line_height">@dimen/typography_line_height_text_xlarge</dimen>
-  <dimen name="font_text_xlarge_mass_font_size">@dimen/typography_font_size_text_xlarge</dimen>
-  <item name="font_text_xlarge_mass_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_mass</item>
-  <dimen name="font_text_xlarge_mass_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_text_xlarge_elegant_line_height">@dimen/typography_line_height_text_xlarge</dimen>
-  <dimen name="font_text_xlarge_elegant_font_size">@dimen/typography_font_size_text_xlarge</dimen>
-  <item name="font_text_xlarge_elegant_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_elegant</item>
-  <dimen name="font_text_xlarge_elegant_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_text_large_normal_line_height">@dimen/typography_line_height_text_large</dimen>
-  <dimen name="font_text_large_normal_font_size">@dimen/typography_font_size_text_large</dimen>
-  <item name="font_text_large_normal_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_normal</item>
-  <dimen name="font_text_large_normal_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_text_large_strong_line_height">@dimen/typography_line_height_text_large</dimen>
-  <dimen name="font_text_large_strong_font_size">@dimen/typography_font_size_text_large</dimen>
-  <item name="font_text_large_strong_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_strong</item>
-  <dimen name="font_text_large_strong_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_text_large_mass_line_height">@dimen/typography_line_height_text_large</dimen>
-  <dimen name="font_text_large_mass_font_size">@dimen/typography_font_size_text_large</dimen>
-  <item name="font_text_large_mass_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_mass</item>
-  <dimen name="font_text_large_mass_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_text_large_elegant_line_height">@dimen/typography_line_height_text_large</dimen>
-  <dimen name="font_text_large_elegant_font_size">@dimen/typography_font_size_text_large</dimen>
-  <item name="font_text_large_elegant_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_elegant</item>
-  <dimen name="font_text_large_elegant_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_text_medium_normal_line_height">@dimen/typography_line_height_text_medium</dimen>
-  <dimen name="font_text_medium_normal_font_size">@dimen/typography_font_size_text_medium</dimen>
-  <item name="font_text_medium_normal_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_normal</item>
-  <dimen name="font_text_medium_normal_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_text_medium_strong_line_height">@dimen/typography_line_height_text_medium</dimen>
-  <dimen name="font_text_medium_strong_font_size">@dimen/typography_font_size_text_medium</dimen>
-  <item name="font_text_medium_strong_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_strong</item>
-  <dimen name="font_text_medium_strong_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_text_medium_mass_line_height">@dimen/typography_line_height_text_medium</dimen>
-  <dimen name="font_text_medium_mass_font_size">@dimen/typography_font_size_text_medium</dimen>
-  <item name="font_text_medium_mass_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_mass</item>
-  <dimen name="font_text_medium_mass_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_text_medium_elegant_line_height">@dimen/typography_line_height_text_medium</dimen>
-  <dimen name="font_text_medium_elegant_font_size">@dimen/typography_font_size_text_medium</dimen>
-  <item name="font_text_medium_elegant_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_elegant</item>
-  <dimen name="font_text_medium_elegant_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_text_small_normal_line_height">@dimen/typography_line_height_text_small</dimen>
-  <dimen name="font_text_small_normal_font_size">@dimen/typography_font_size_text_small</dimen>
-  <item name="font_text_small_normal_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_normal</item>
-  <dimen name="font_text_small_normal_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_text_small_strong_line_height">@dimen/typography_line_height_text_small</dimen>
-  <dimen name="font_text_small_strong_font_size">@dimen/typography_font_size_text_small</dimen>
-  <item name="font_text_small_strong_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_strong</item>
-  <dimen name="font_text_small_strong_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_text_small_mass_line_height">@dimen/typography_line_height_text_small</dimen>
-  <dimen name="font_text_small_mass_font_size">@dimen/typography_font_size_text_small</dimen>
-  <item name="font_text_small_mass_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_mass</item>
-  <dimen name="font_text_small_mass_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_text_small_elegant_line_height">@dimen/typography_line_height_text_small</dimen>
-  <dimen name="font_text_small_elegant_font_size">@dimen/typography_font_size_text_small</dimen>
-  <item name="font_text_small_elegant_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_elegant</item>
-  <dimen name="font_text_small_elegant_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_text_xsmall_normal_line_height">@dimen/typography_line_height_text_xsmall</dimen>
-  <dimen name="font_text_xsmall_normal_font_size">@dimen/typography_font_size_text_xsmall</dimen>
-  <item name="font_text_xsmall_normal_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_normal</item>
-  <dimen name="font_text_xsmall_normal_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_text_xsmall_strong_line_height">@dimen/typography_line_height_text_xsmall</dimen>
-  <dimen name="font_text_xsmall_strong_font_size">@dimen/typography_font_size_text_xsmall</dimen>
-  <item name="font_text_xsmall_strong_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_strong</item>
-  <dimen name="font_text_xsmall_strong_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_text_xsmall_mass_line_height">@dimen/typography_line_height_text_xsmall</dimen>
-  <dimen name="font_text_xsmall_mass_font_size">@dimen/typography_font_size_text_xsmall</dimen>
-  <item name="font_text_xsmall_mass_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_mass</item>
-  <dimen name="font_text_xsmall_mass_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_text_xsmall_elegant_line_height">@dimen/typography_line_height_text_xsmall</dimen>
-  <dimen name="font_text_xsmall_elegant_font_size">@dimen/typography_font_size_text_xsmall</dimen>
-  <item name="font_text_xsmall_elegant_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_elegant</item>
-  <dimen name="font_text_xsmall_elegant_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_text_2xsmall_normal_line_height">@dimen/typography_line_height_text_2xsmall</dimen>
-  <dimen name="font_text_2xsmall_normal_font_size">@dimen/typography_font_size_text_2xsmall</dimen>
-  <item name="font_text_2xsmall_normal_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_normal</item>
-  <dimen name="font_text_2xsmall_normal_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_text_2xsmall_strong_line_height">@dimen/typography_line_height_text_2xsmall</dimen>
-  <dimen name="font_text_2xsmall_strong_font_size">@dimen/typography_font_size_text_2xsmall</dimen>
-  <item name="font_text_2xsmall_strong_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_strong</item>
-  <dimen name="font_text_2xsmall_strong_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_text_2xsmall_mass_line_height">@dimen/typography_line_height_text_2xsmall</dimen>
-  <dimen name="font_text_2xsmall_mass_font_size">@dimen/typography_font_size_text_2xsmall</dimen>
-  <item name="font_text_2xsmall_mass_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_mass</item>
-  <dimen name="font_text_2xsmall_mass_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_text_2xsmall_elegant_line_height">@dimen/typography_line_height_text_2xsmall</dimen>
-  <dimen name="font_text_2xsmall_elegant_font_size">@dimen/typography_font_size_text_2xsmall</dimen>
-  <item name="font_text_2xsmall_elegant_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_elegant</item>
-  <dimen name="font_text_2xsmall_elegant_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_display_5xlarge_normal_line_height">@dimen/typography_line_height_display_5xlarge</dimen>
-  <dimen name="font_display_5xlarge_normal_font_size">@dimen/typography_font_size_display_5xlarge</dimen>
-  <item name="font_display_5xlarge_normal_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_display_normal</item>
-  <dimen name="font_display_5xlarge_normal_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_display_5xlarge_strong_line_height">@dimen/typography_line_height_display_5xlarge</dimen>
-  <dimen name="font_display_5xlarge_strong_font_size">@dimen/typography_font_size_display_5xlarge</dimen>
-  <item name="font_display_5xlarge_strong_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_display_strong</item>
-  <dimen name="font_display_5xlarge_strong_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_display_5xlarge_mass_line_height">@dimen/typography_line_height_display_5xlarge</dimen>
-  <dimen name="font_display_5xlarge_mass_font_size">@dimen/typography_font_size_display_5xlarge</dimen>
-  <item name="font_display_5xlarge_mass_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_display_mass</item>
-  <dimen name="font_display_5xlarge_mass_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_display_5xlarge_elegant_line_height">@dimen/typography_line_height_display_5xlarge</dimen>
-  <dimen name="font_display_5xlarge_elegant_font_size">@dimen/typography_font_size_display_5xlarge</dimen>
-  <item name="font_display_5xlarge_elegant_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_display_elegant</item>
-  <dimen name="font_display_5xlarge_elegant_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_display_4xlarge_normal_line_height">@dimen/typography_line_height_display_4xlarge</dimen>
-  <dimen name="font_display_4xlarge_normal_font_size">@dimen/typography_font_size_display_4xlarge</dimen>
-  <item name="font_display_4xlarge_normal_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_display_normal</item>
-  <dimen name="font_display_4xlarge_normal_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_display_4xlarge_strong_line_height">@dimen/typography_line_height_display_4xlarge</dimen>
-  <dimen name="font_display_4xlarge_strong_font_size">@dimen/typography_font_size_display_4xlarge</dimen>
-  <item name="font_display_4xlarge_strong_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_display_strong</item>
-  <dimen name="font_display_4xlarge_strong_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_display_4xlarge_mass_line_height">@dimen/typography_line_height_display_4xlarge</dimen>
-  <dimen name="font_display_4xlarge_mass_font_size">@dimen/typography_font_size_display_4xlarge</dimen>
-  <item name="font_display_4xlarge_mass_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_display_mass</item>
-  <dimen name="font_display_4xlarge_mass_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_display_4xlarge_elegant_line_height">@dimen/typography_line_height_display_4xlarge</dimen>
-  <dimen name="font_display_4xlarge_elegant_font_size">@dimen/typography_font_size_display_4xlarge</dimen>
-  <item name="font_display_4xlarge_elegant_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_display_elegant</item>
-  <dimen name="font_display_4xlarge_elegant_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_display_3xlarge_normal_line_height">@dimen/typography_line_height_display_3xlarge</dimen>
-  <dimen name="font_display_3xlarge_normal_font_size">@dimen/typography_font_size_display_3xlarge</dimen>
-  <item name="font_display_3xlarge_normal_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_display_normal</item>
-  <dimen name="font_display_3xlarge_normal_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_display_3xlarge_strong_line_height">@dimen/typography_line_height_display_3xlarge</dimen>
-  <dimen name="font_display_3xlarge_strong_font_size">@dimen/typography_font_size_display_3xlarge</dimen>
-  <item name="font_display_3xlarge_strong_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_display_strong</item>
-  <dimen name="font_display_3xlarge_strong_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_display_3xlarge_mass_line_height">@dimen/typography_line_height_display_3xlarge</dimen>
-  <dimen name="font_display_3xlarge_mass_font_size">@dimen/typography_font_size_display_3xlarge</dimen>
-  <item name="font_display_3xlarge_mass_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_display_mass</item>
-  <dimen name="font_display_3xlarge_mass_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_display_3xlarge_elegant_line_height">@dimen/typography_line_height_display_3xlarge</dimen>
-  <dimen name="font_display_3xlarge_elegant_font_size">@dimen/typography_font_size_display_3xlarge</dimen>
-  <item name="font_display_3xlarge_elegant_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_display_elegant</item>
-  <dimen name="font_display_3xlarge_elegant_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_display_2xlarge_normal_line_height">@dimen/typography_line_height_display_2xlarge</dimen>
-  <dimen name="font_display_2xlarge_normal_font_size">@dimen/typography_font_size_display_2xlarge</dimen>
-  <item name="font_display_2xlarge_normal_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_display_normal</item>
-  <dimen name="font_display_2xlarge_normal_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_display_2xlarge_strong_line_height">@dimen/typography_line_height_display_2xlarge</dimen>
-  <dimen name="font_display_2xlarge_strong_font_size">@dimen/typography_font_size_display_2xlarge</dimen>
-  <item name="font_display_2xlarge_strong_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_display_strong</item>
-  <dimen name="font_display_2xlarge_strong_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_display_2xlarge_mass_line_height">@dimen/typography_line_height_display_2xlarge</dimen>
-  <dimen name="font_display_2xlarge_mass_font_size">@dimen/typography_font_size_display_2xlarge</dimen>
-  <item name="font_display_2xlarge_mass_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_display_mass</item>
-  <dimen name="font_display_2xlarge_mass_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_display_2xlarge_elegant_line_height">@dimen/typography_line_height_display_2xlarge</dimen>
-  <dimen name="font_display_2xlarge_elegant_font_size">@dimen/typography_font_size_display_2xlarge</dimen>
-  <item name="font_display_2xlarge_elegant_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_display_elegant</item>
-  <dimen name="font_display_2xlarge_elegant_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_display_xlarge_normal_line_height">@dimen/typography_line_height_display_xlarge</dimen>
-  <dimen name="font_display_xlarge_normal_font_size">@dimen/typography_font_size_display_xlarge</dimen>
-  <item name="font_display_xlarge_normal_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_display_normal</item>
-  <dimen name="font_display_xlarge_normal_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_display_xlarge_strong_line_height">@dimen/typography_line_height_display_xlarge</dimen>
-  <dimen name="font_display_xlarge_strong_font_size">@dimen/typography_font_size_display_xlarge</dimen>
-  <item name="font_display_xlarge_strong_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_display_strong</item>
-  <dimen name="font_display_xlarge_strong_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_display_xlarge_mass_line_height">@dimen/typography_line_height_display_xlarge</dimen>
-  <dimen name="font_display_xlarge_mass_font_size">@dimen/typography_font_size_display_xlarge</dimen>
-  <item name="font_display_xlarge_mass_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_display_mass</item>
-  <dimen name="font_display_xlarge_mass_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_display_xlarge_elegant_line_height">@dimen/typography_line_height_display_xlarge</dimen>
-  <dimen name="font_display_xlarge_elegant_font_size">@dimen/typography_font_size_display_xlarge</dimen>
-  <item name="font_display_xlarge_elegant_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_display_elegant</item>
-  <dimen name="font_display_xlarge_elegant_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_display_large_normal_line_height">@dimen/typography_line_height_display_large</dimen>
-  <dimen name="font_display_large_normal_font_size">@dimen/typography_font_size_display_large</dimen>
-  <item name="font_display_large_normal_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_display_normal</item>
-  <dimen name="font_display_large_normal_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_display_large_strong_line_height">@dimen/typography_line_height_display_large</dimen>
-  <dimen name="font_display_large_strong_font_size">@dimen/typography_font_size_display_large</dimen>
-  <item name="font_display_large_strong_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_display_strong</item>
-  <dimen name="font_display_large_strong_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_display_large_mass_line_height">@dimen/typography_line_height_display_large</dimen>
-  <dimen name="font_display_large_mass_font_size">@dimen/typography_font_size_display_large</dimen>
-  <item name="font_display_large_mass_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_display_mass</item>
-  <dimen name="font_display_large_mass_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_display_large_elegant_line_height">@dimen/typography_line_height_display_large</dimen>
-  <dimen name="font_display_large_elegant_font_size">@dimen/typography_font_size_display_large</dimen>
-  <item name="font_display_large_elegant_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_display_elegant</item>
-  <dimen name="font_display_large_elegant_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_display_medium_normal_line_height">@dimen/typography_line_height_display_medium</dimen>
-  <dimen name="font_display_medium_normal_font_size">@dimen/typography_font_size_display_medium</dimen>
-  <item name="font_display_medium_normal_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_display_normal</item>
-  <dimen name="font_display_medium_normal_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_display_medium_strong_line_height">@dimen/typography_line_height_display_medium</dimen>
-  <dimen name="font_display_medium_strong_font_size">@dimen/typography_font_size_display_medium</dimen>
-  <item name="font_display_medium_strong_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_display_strong</item>
-  <dimen name="font_display_medium_strong_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_display_medium_mass_line_height">@dimen/typography_line_height_display_medium</dimen>
-  <dimen name="font_display_medium_mass_font_size">@dimen/typography_font_size_display_medium</dimen>
-  <item name="font_display_medium_mass_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_display_mass</item>
-  <dimen name="font_display_medium_mass_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_display_medium_elegant_line_height">@dimen/typography_line_height_display_medium</dimen>
-  <dimen name="font_display_medium_elegant_font_size">@dimen/typography_font_size_display_medium</dimen>
-  <item name="font_display_medium_elegant_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_display_elegant</item>
-  <dimen name="font_display_medium_elegant_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_display_small_normal_line_height">@dimen/typography_line_height_display_small</dimen>
-  <dimen name="font_display_small_normal_font_size">@dimen/typography_font_size_display_small</dimen>
-  <item name="font_display_small_normal_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_display_normal</item>
-  <dimen name="font_display_small_normal_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_display_small_strong_line_height">@dimen/typography_line_height_display_small</dimen>
-  <dimen name="font_display_small_strong_font_size">@dimen/typography_font_size_display_small</dimen>
-  <item name="font_display_small_strong_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_display_strong</item>
-  <dimen name="font_display_small_strong_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_display_small_mass_line_height">@dimen/typography_line_height_display_small</dimen>
-  <dimen name="font_display_small_mass_font_size">@dimen/typography_font_size_display_small</dimen>
-  <item name="font_display_small_mass_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_display_mass</item>
-  <dimen name="font_display_small_mass_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_display_small_elegant_line_height">@dimen/typography_line_height_display_small</dimen>
-  <dimen name="font_display_small_elegant_font_size">@dimen/typography_font_size_display_small</dimen>
-  <item name="font_display_small_elegant_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_display_elegant</item>
-  <dimen name="font_display_small_elegant_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_display_xsmall_normal_line_height">@dimen/typography_line_height_display_xsmall</dimen>
-  <dimen name="font_display_xsmall_normal_font_size">@dimen/typography_font_size_display_xsmall</dimen>
-  <item name="font_display_xsmall_normal_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_display_normal</item>
-  <dimen name="font_display_xsmall_normal_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_display_xsmall_strong_line_height">@dimen/typography_line_height_display_xsmall</dimen>
-  <dimen name="font_display_xsmall_strong_font_size">@dimen/typography_font_size_display_xsmall</dimen>
-  <item name="font_display_xsmall_strong_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_display_strong</item>
-  <dimen name="font_display_xsmall_strong_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_display_xsmall_mass_line_height">@dimen/typography_line_height_display_xsmall</dimen>
-  <dimen name="font_display_xsmall_mass_font_size">@dimen/typography_font_size_display_xsmall</dimen>
-  <item name="font_display_xsmall_mass_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_display_mass</item>
-  <dimen name="font_display_xsmall_mass_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_display_xsmall_elegant_line_height">@dimen/typography_line_height_display_xsmall</dimen>
-  <dimen name="font_display_xsmall_elegant_font_size">@dimen/typography_font_size_display_xsmall</dimen>
-  <item name="font_display_xsmall_elegant_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_display_elegant</item>
-  <dimen name="font_display_xsmall_elegant_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_display_2xsmall_normal_line_height">@dimen/typography_line_height_display_2xsmall</dimen>
-  <dimen name="font_display_2xsmall_normal_font_size">@dimen/typography_font_size_display_2xsmall</dimen>
-  <item name="font_display_2xsmall_normal_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_display_normal</item>
-  <dimen name="font_display_2xsmall_normal_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_display_2xsmall_strong_line_height">@dimen/typography_line_height_display_2xsmall</dimen>
-  <dimen name="font_display_2xsmall_strong_font_size">@dimen/typography_font_size_display_2xsmall</dimen>
-  <item name="font_display_2xsmall_strong_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_display_strong</item>
-  <dimen name="font_display_2xsmall_strong_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_display_2xsmall_mass_line_height">@dimen/typography_line_height_display_2xsmall</dimen>
-  <dimen name="font_display_2xsmall_mass_font_size">@dimen/typography_font_size_display_2xsmall</dimen>
-  <item name="font_display_2xsmall_mass_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_display_mass</item>
-  <dimen name="font_display_2xsmall_mass_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_display_2xsmall_elegant_line_height">@dimen/typography_line_height_display_2xsmall</dimen>
-  <dimen name="font_display_2xsmall_elegant_font_size">@dimen/typography_font_size_display_2xsmall</dimen>
-  <item name="font_display_2xsmall_elegant_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_display_elegant</item>
-  <dimen name="font_display_2xsmall_elegant_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_html_h1_line_height">@dimen/typography_line_height_html_h1</dimen>
-  <dimen name="font_html_h1_font_size">@dimen/typography_font_size_html_h1</dimen>
-  <item name="font_html_h1_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_html_heading</item>
-  <dimen name="font_html_h1_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_html_h2_line_height">@dimen/typography_line_height_html_h2</dimen>
-  <dimen name="font_html_h2_font_size">@dimen/typography_font_size_html_h2</dimen>
-  <item name="font_html_h2_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_html_heading</item>
-  <dimen name="font_html_h2_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_html_h3_line_height">@dimen/typography_line_height_html_h3</dimen>
-  <dimen name="font_html_h3_font_size">@dimen/typography_font_size_html_h3</dimen>
-  <item name="font_html_h3_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_html_heading</item>
-  <dimen name="font_html_h3_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_html_h4_line_height">@dimen/typography_line_height_html_h4</dimen>
-  <dimen name="font_html_h4_font_size">@dimen/typography_font_size_html_h4</dimen>
-  <item name="font_html_h4_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_html_heading</item>
-  <dimen name="font_html_h4_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_html_h5_line_height">@dimen/typography_line_height_html_h5</dimen>
-  <dimen name="font_html_h5_font_size">@dimen/typography_font_size_html_h5</dimen>
-  <item name="font_html_h5_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_html_heading</item>
-  <dimen name="font_html_h5_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_html_h6_line_height">@dimen/typography_line_height_html_h6</dimen>
-  <dimen name="font_html_h6_font_size">@dimen/typography_font_size_html_h6</dimen>
-  <item name="font_html_h6_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_html_heading</item>
-  <dimen name="font_html_h6_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_html_body_line_height">@dimen/typography_line_height_html_body</dimen>
-  <dimen name="font_html_body_font_size">@dimen/typography_font_size_html_body</dimen>
-  <item name="font_html_body_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_html_body</item>
-  <dimen name="font_html_body_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_html_code_line_height">@dimen/typography_line_height_html_code</dimen>
-  <dimen name="font_html_code_font_size">@dimen/typography_font_size_html_code</dimen>
-  <item name="font_html_code_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_html_code</item>
-  <dimen name="font_html_code_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_html_paragraph_line_height">@dimen/typography_line_height_html_paragraph</dimen>
-  <dimen name="font_html_paragraph_font_size">@dimen/typography_font_size_html_paragraph</dimen>
-  <item name="font_html_paragraph_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_html_paragraph</item>
-  <dimen name="font_html_paragraph_paragraph_spacing">@dimen/typography_paragraph_spacing_base_medium</dimen>
-  <dimen name="font_html_blockquote_line_height">@dimen/typography_line_height_html_blockquote</dimen>
-  <dimen name="font_html_blockquote_font_size">@dimen/typography_font_size_html_blockquote</dimen>
-  <item name="font_html_blockquote_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_html_blockquote</item>
-  <dimen name="font_html_blockquote_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_html_list_line_height">@dimen/typography_line_height_html_list</dimen>
-  <dimen name="font_html_list_font_size">@dimen/typography_font_size_html_list</dimen>
-  <item name="font_html_list_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_html_list</item>
-  <dimen name="font_html_list_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_html_cite_line_height">@dimen/typography_line_height_html_cite</dimen>
-  <dimen name="font_html_cite_font_size">@dimen/typography_font_size_html_cite</dimen>
-  <item name="font_html_cite_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_html_cite</item>
-  <dimen name="font_html_cite_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_ui_5xlarge_normal_line_height">@dimen/typography_line_height_ui_5xlarge</dimen>
+  <dimen name="font_ui_5xlarge_normal_font_size">@dimen/typography_font_size_ui_5xlarge</dimen>
+  <item name="font_ui_5xlarge_normal_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_normal</item>
+  <dimen name="font_ui_5xlarge_normal_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_ui_5xlarge_strong_line_height">@dimen/typography_line_height_ui_5xlarge</dimen>
+  <dimen name="font_ui_5xlarge_strong_font_size">@dimen/typography_font_size_ui_5xlarge</dimen>
+  <item name="font_ui_5xlarge_strong_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_strong</item>
+  <dimen name="font_ui_5xlarge_strong_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_ui_5xlarge_mass_line_height">@dimen/typography_line_height_ui_5xlarge</dimen>
+  <dimen name="font_ui_5xlarge_mass_font_size">@dimen/typography_font_size_ui_5xlarge</dimen>
+  <item name="font_ui_5xlarge_mass_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_mass</item>
+  <dimen name="font_ui_5xlarge_mass_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_ui_5xlarge_elegant_line_height">@dimen/typography_line_height_ui_5xlarge</dimen>
+  <dimen name="font_ui_5xlarge_elegant_font_size">@dimen/typography_font_size_ui_5xlarge</dimen>
+  <item name="font_ui_5xlarge_elegant_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_elegant</item>
+  <dimen name="font_ui_5xlarge_elegant_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_ui_4xlarge_normal_line_height">@dimen/typography_line_height_ui_4xlarge</dimen>
+  <dimen name="font_ui_4xlarge_normal_font_size">@dimen/typography_font_size_ui_4xlarge</dimen>
+  <item name="font_ui_4xlarge_normal_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_normal</item>
+  <dimen name="font_ui_4xlarge_normal_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_ui_4xlarge_strong_line_height">@dimen/typography_line_height_ui_4xlarge</dimen>
+  <dimen name="font_ui_4xlarge_strong_font_size">@dimen/typography_font_size_ui_4xlarge</dimen>
+  <item name="font_ui_4xlarge_strong_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_strong</item>
+  <dimen name="font_ui_4xlarge_strong_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_ui_4xlarge_mass_line_height">@dimen/typography_line_height_ui_4xlarge</dimen>
+  <dimen name="font_ui_4xlarge_mass_font_size">@dimen/typography_font_size_ui_4xlarge</dimen>
+  <item name="font_ui_4xlarge_mass_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_mass</item>
+  <dimen name="font_ui_4xlarge_mass_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_ui_4xlarge_elegant_line_height">@dimen/typography_line_height_ui_4xlarge</dimen>
+  <dimen name="font_ui_4xlarge_elegant_font_size">@dimen/typography_font_size_ui_4xlarge</dimen>
+  <item name="font_ui_4xlarge_elegant_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_elegant</item>
+  <dimen name="font_ui_4xlarge_elegant_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_ui_3xlarge_normal_line_height">@dimen/typography_line_height_ui_3xlarge</dimen>
+  <dimen name="font_ui_3xlarge_normal_font_size">@dimen/typography_font_size_ui_3xlarge</dimen>
+  <item name="font_ui_3xlarge_normal_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_normal</item>
+  <dimen name="font_ui_3xlarge_normal_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_ui_3xlarge_strong_line_height">@dimen/typography_line_height_ui_3xlarge</dimen>
+  <dimen name="font_ui_3xlarge_strong_font_size">@dimen/typography_font_size_ui_3xlarge</dimen>
+  <item name="font_ui_3xlarge_strong_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_strong</item>
+  <dimen name="font_ui_3xlarge_strong_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_ui_3xlarge_mass_line_height">@dimen/typography_line_height_ui_3xlarge</dimen>
+  <dimen name="font_ui_3xlarge_mass_font_size">@dimen/typography_font_size_ui_3xlarge</dimen>
+  <item name="font_ui_3xlarge_mass_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_mass</item>
+  <dimen name="font_ui_3xlarge_mass_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_ui_3xlarge_elegant_line_height">@dimen/typography_line_height_ui_3xlarge</dimen>
+  <dimen name="font_ui_3xlarge_elegant_font_size">@dimen/typography_font_size_ui_3xlarge</dimen>
+  <item name="font_ui_3xlarge_elegant_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_elegant</item>
+  <dimen name="font_ui_3xlarge_elegant_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_ui_2xlarge_normal_line_height">@dimen/typography_line_height_ui_2xlarge</dimen>
+  <dimen name="font_ui_2xlarge_normal_font_size">@dimen/typography_font_size_ui_2xlarge</dimen>
+  <item name="font_ui_2xlarge_normal_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_normal</item>
+  <dimen name="font_ui_2xlarge_normal_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_ui_2xlarge_strong_line_height">@dimen/typography_line_height_ui_2xlarge</dimen>
+  <dimen name="font_ui_2xlarge_strong_font_size">@dimen/typography_font_size_ui_2xlarge</dimen>
+  <item name="font_ui_2xlarge_strong_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_strong</item>
+  <dimen name="font_ui_2xlarge_strong_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_ui_2xlarge_mass_line_height">@dimen/typography_line_height_ui_2xlarge</dimen>
+  <dimen name="font_ui_2xlarge_mass_font_size">@dimen/typography_font_size_ui_2xlarge</dimen>
+  <item name="font_ui_2xlarge_mass_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_mass</item>
+  <dimen name="font_ui_2xlarge_mass_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_ui_2xlarge_elegant_line_height">@dimen/typography_line_height_ui_2xlarge</dimen>
+  <dimen name="font_ui_2xlarge_elegant_font_size">@dimen/typography_font_size_ui_2xlarge</dimen>
+  <item name="font_ui_2xlarge_elegant_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_elegant</item>
+  <dimen name="font_ui_2xlarge_elegant_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_ui_xlarge_normal_line_height">@dimen/typography_line_height_ui_xlarge</dimen>
+  <dimen name="font_ui_xlarge_normal_font_size">@dimen/typography_font_size_ui_xlarge</dimen>
+  <item name="font_ui_xlarge_normal_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_normal</item>
+  <dimen name="font_ui_xlarge_normal_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_ui_xlarge_strong_line_height">@dimen/typography_line_height_ui_xlarge</dimen>
+  <dimen name="font_ui_xlarge_strong_font_size">@dimen/typography_font_size_ui_xlarge</dimen>
+  <item name="font_ui_xlarge_strong_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_strong</item>
+  <dimen name="font_ui_xlarge_strong_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_ui_xlarge_mass_line_height">@dimen/typography_line_height_ui_xlarge</dimen>
+  <dimen name="font_ui_xlarge_mass_font_size">@dimen/typography_font_size_ui_xlarge</dimen>
+  <item name="font_ui_xlarge_mass_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_mass</item>
+  <dimen name="font_ui_xlarge_mass_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_ui_xlarge_elegant_line_height">@dimen/typography_line_height_ui_xlarge</dimen>
+  <dimen name="font_ui_xlarge_elegant_font_size">@dimen/typography_font_size_ui_xlarge</dimen>
+  <item name="font_ui_xlarge_elegant_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_elegant</item>
+  <dimen name="font_ui_xlarge_elegant_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_ui_large_normal_line_height">@dimen/typography_line_height_ui_large</dimen>
+  <dimen name="font_ui_large_normal_font_size">@dimen/typography_font_size_ui_large</dimen>
+  <item name="font_ui_large_normal_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_normal</item>
+  <dimen name="font_ui_large_normal_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_ui_large_strong_line_height">@dimen/typography_line_height_ui_large</dimen>
+  <dimen name="font_ui_large_strong_font_size">@dimen/typography_font_size_ui_large</dimen>
+  <item name="font_ui_large_strong_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_strong</item>
+  <dimen name="font_ui_large_strong_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_ui_large_mass_line_height">@dimen/typography_line_height_ui_large</dimen>
+  <dimen name="font_ui_large_mass_font_size">@dimen/typography_font_size_ui_large</dimen>
+  <item name="font_ui_large_mass_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_mass</item>
+  <dimen name="font_ui_large_mass_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_ui_large_elegant_line_height">@dimen/typography_line_height_ui_large</dimen>
+  <dimen name="font_ui_large_elegant_font_size">@dimen/typography_font_size_ui_large</dimen>
+  <item name="font_ui_large_elegant_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_elegant</item>
+  <dimen name="font_ui_large_elegant_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_ui_medium_normal_line_height">@dimen/typography_line_height_ui_medium</dimen>
+  <dimen name="font_ui_medium_normal_font_size">@dimen/typography_font_size_ui_medium</dimen>
+  <item name="font_ui_medium_normal_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_normal</item>
+  <dimen name="font_ui_medium_normal_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_ui_medium_strong_line_height">@dimen/typography_line_height_ui_medium</dimen>
+  <dimen name="font_ui_medium_strong_font_size">@dimen/typography_font_size_ui_medium</dimen>
+  <item name="font_ui_medium_strong_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_strong</item>
+  <dimen name="font_ui_medium_strong_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_ui_medium_mass_line_height">@dimen/typography_line_height_ui_medium</dimen>
+  <dimen name="font_ui_medium_mass_font_size">@dimen/typography_font_size_ui_medium</dimen>
+  <item name="font_ui_medium_mass_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_mass</item>
+  <dimen name="font_ui_medium_mass_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_ui_medium_elegant_line_height">@dimen/typography_line_height_ui_medium</dimen>
+  <dimen name="font_ui_medium_elegant_font_size">@dimen/typography_font_size_ui_medium</dimen>
+  <item name="font_ui_medium_elegant_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_elegant</item>
+  <dimen name="font_ui_medium_elegant_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_ui_small_normal_line_height">@dimen/typography_line_height_ui_small</dimen>
+  <dimen name="font_ui_small_normal_font_size">@dimen/typography_font_size_ui_small</dimen>
+  <item name="font_ui_small_normal_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_normal</item>
+  <dimen name="font_ui_small_normal_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_ui_small_strong_line_height">@dimen/typography_line_height_ui_small</dimen>
+  <dimen name="font_ui_small_strong_font_size">@dimen/typography_font_size_ui_small</dimen>
+  <item name="font_ui_small_strong_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_strong</item>
+  <dimen name="font_ui_small_strong_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_ui_small_mass_line_height">@dimen/typography_line_height_ui_small</dimen>
+  <dimen name="font_ui_small_mass_font_size">@dimen/typography_font_size_ui_small</dimen>
+  <item name="font_ui_small_mass_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_mass</item>
+  <dimen name="font_ui_small_mass_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_ui_small_elegant_line_height">@dimen/typography_line_height_ui_small</dimen>
+  <dimen name="font_ui_small_elegant_font_size">@dimen/typography_font_size_ui_small</dimen>
+  <item name="font_ui_small_elegant_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_elegant</item>
+  <dimen name="font_ui_small_elegant_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_ui_xsmall_normal_line_height">@dimen/typography_line_height_ui_xsmall</dimen>
+  <dimen name="font_ui_xsmall_normal_font_size">@dimen/typography_font_size_ui_xsmall</dimen>
+  <item name="font_ui_xsmall_normal_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_normal</item>
+  <dimen name="font_ui_xsmall_normal_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_ui_xsmall_strong_line_height">@dimen/typography_line_height_ui_xsmall</dimen>
+  <dimen name="font_ui_xsmall_strong_font_size">@dimen/typography_font_size_ui_xsmall</dimen>
+  <item name="font_ui_xsmall_strong_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_strong</item>
+  <dimen name="font_ui_xsmall_strong_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_ui_xsmall_mass_line_height">@dimen/typography_line_height_ui_xsmall</dimen>
+  <dimen name="font_ui_xsmall_mass_font_size">@dimen/typography_font_size_ui_xsmall</dimen>
+  <item name="font_ui_xsmall_mass_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_mass</item>
+  <dimen name="font_ui_xsmall_mass_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_ui_xsmall_elegant_line_height">@dimen/typography_line_height_ui_xsmall</dimen>
+  <dimen name="font_ui_xsmall_elegant_font_size">@dimen/typography_font_size_ui_xsmall</dimen>
+  <item name="font_ui_xsmall_elegant_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_elegant</item>
+  <dimen name="font_ui_xsmall_elegant_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_ui_2xsmall_normal_line_height">@dimen/typography_line_height_ui_2xsmall</dimen>
+  <dimen name="font_ui_2xsmall_normal_font_size">@dimen/typography_font_size_ui_2xsmall</dimen>
+  <item name="font_ui_2xsmall_normal_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_normal</item>
+  <dimen name="font_ui_2xsmall_normal_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_ui_2xsmall_strong_line_height">@dimen/typography_line_height_ui_2xsmall</dimen>
+  <dimen name="font_ui_2xsmall_strong_font_size">@dimen/typography_font_size_ui_2xsmall</dimen>
+  <item name="font_ui_2xsmall_strong_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_strong</item>
+  <dimen name="font_ui_2xsmall_strong_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_ui_2xsmall_mass_line_height">@dimen/typography_line_height_ui_2xsmall</dimen>
+  <dimen name="font_ui_2xsmall_mass_font_size">@dimen/typography_font_size_ui_2xsmall</dimen>
+  <item name="font_ui_2xsmall_mass_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_mass</item>
+  <dimen name="font_ui_2xsmall_mass_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_ui_2xsmall_elegant_line_height">@dimen/typography_line_height_ui_2xsmall</dimen>
+  <dimen name="font_ui_2xsmall_elegant_font_size">@dimen/typography_font_size_ui_2xsmall</dimen>
+  <item name="font_ui_2xsmall_elegant_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_elegant</item>
+  <dimen name="font_ui_2xsmall_elegant_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_prose_5xlarge_normal_line_height">@dimen/typography_line_height_prose_5xlarge</dimen>
+  <dimen name="font_prose_5xlarge_normal_font_size">@dimen/typography_font_size_prose_5xlarge</dimen>
+  <item name="font_prose_5xlarge_normal_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_prose_normal</item>
+  <dimen name="font_prose_5xlarge_normal_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_prose_5xlarge_strong_line_height">@dimen/typography_line_height_prose_5xlarge</dimen>
+  <dimen name="font_prose_5xlarge_strong_font_size">@dimen/typography_font_size_prose_5xlarge</dimen>
+  <item name="font_prose_5xlarge_strong_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_prose_strong</item>
+  <dimen name="font_prose_5xlarge_strong_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_prose_5xlarge_mass_line_height">@dimen/typography_line_height_prose_5xlarge</dimen>
+  <dimen name="font_prose_5xlarge_mass_font_size">@dimen/typography_font_size_prose_5xlarge</dimen>
+  <item name="font_prose_5xlarge_mass_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_prose_mass</item>
+  <dimen name="font_prose_5xlarge_mass_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_prose_5xlarge_elegant_line_height">@dimen/typography_line_height_prose_5xlarge</dimen>
+  <dimen name="font_prose_5xlarge_elegant_font_size">@dimen/typography_font_size_prose_5xlarge</dimen>
+  <item name="font_prose_5xlarge_elegant_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_prose_elegant</item>
+  <dimen name="font_prose_5xlarge_elegant_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_prose_4xlarge_normal_line_height">@dimen/typography_line_height_prose_4xlarge</dimen>
+  <dimen name="font_prose_4xlarge_normal_font_size">@dimen/typography_font_size_prose_4xlarge</dimen>
+  <item name="font_prose_4xlarge_normal_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_prose_normal</item>
+  <dimen name="font_prose_4xlarge_normal_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_prose_4xlarge_strong_line_height">@dimen/typography_line_height_prose_4xlarge</dimen>
+  <dimen name="font_prose_4xlarge_strong_font_size">@dimen/typography_font_size_prose_4xlarge</dimen>
+  <item name="font_prose_4xlarge_strong_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_prose_strong</item>
+  <dimen name="font_prose_4xlarge_strong_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_prose_4xlarge_mass_line_height">@dimen/typography_line_height_prose_4xlarge</dimen>
+  <dimen name="font_prose_4xlarge_mass_font_size">@dimen/typography_font_size_prose_4xlarge</dimen>
+  <item name="font_prose_4xlarge_mass_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_prose_mass</item>
+  <dimen name="font_prose_4xlarge_mass_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_prose_4xlarge_elegant_line_height">@dimen/typography_line_height_prose_4xlarge</dimen>
+  <dimen name="font_prose_4xlarge_elegant_font_size">@dimen/typography_font_size_prose_4xlarge</dimen>
+  <item name="font_prose_4xlarge_elegant_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_prose_elegant</item>
+  <dimen name="font_prose_4xlarge_elegant_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_prose_3xlarge_normal_line_height">@dimen/typography_line_height_prose_3xlarge</dimen>
+  <dimen name="font_prose_3xlarge_normal_font_size">@dimen/typography_font_size_prose_3xlarge</dimen>
+  <item name="font_prose_3xlarge_normal_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_prose_normal</item>
+  <dimen name="font_prose_3xlarge_normal_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_prose_3xlarge_strong_line_height">@dimen/typography_line_height_prose_3xlarge</dimen>
+  <dimen name="font_prose_3xlarge_strong_font_size">@dimen/typography_font_size_prose_3xlarge</dimen>
+  <item name="font_prose_3xlarge_strong_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_prose_strong</item>
+  <dimen name="font_prose_3xlarge_strong_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_prose_3xlarge_mass_line_height">@dimen/typography_line_height_prose_3xlarge</dimen>
+  <dimen name="font_prose_3xlarge_mass_font_size">@dimen/typography_font_size_prose_3xlarge</dimen>
+  <item name="font_prose_3xlarge_mass_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_prose_mass</item>
+  <dimen name="font_prose_3xlarge_mass_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_prose_3xlarge_elegant_line_height">@dimen/typography_line_height_prose_3xlarge</dimen>
+  <dimen name="font_prose_3xlarge_elegant_font_size">@dimen/typography_font_size_prose_3xlarge</dimen>
+  <item name="font_prose_3xlarge_elegant_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_prose_elegant</item>
+  <dimen name="font_prose_3xlarge_elegant_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_prose_2xlarge_normal_line_height">@dimen/typography_line_height_prose_2xlarge</dimen>
+  <dimen name="font_prose_2xlarge_normal_font_size">@dimen/typography_font_size_prose_2xlarge</dimen>
+  <item name="font_prose_2xlarge_normal_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_prose_normal</item>
+  <dimen name="font_prose_2xlarge_normal_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_prose_2xlarge_strong_line_height">@dimen/typography_line_height_prose_2xlarge</dimen>
+  <dimen name="font_prose_2xlarge_strong_font_size">@dimen/typography_font_size_prose_2xlarge</dimen>
+  <item name="font_prose_2xlarge_strong_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_prose_strong</item>
+  <dimen name="font_prose_2xlarge_strong_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_prose_2xlarge_mass_line_height">@dimen/typography_line_height_prose_2xlarge</dimen>
+  <dimen name="font_prose_2xlarge_mass_font_size">@dimen/typography_font_size_prose_2xlarge</dimen>
+  <item name="font_prose_2xlarge_mass_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_prose_mass</item>
+  <dimen name="font_prose_2xlarge_mass_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_prose_2xlarge_elegant_line_height">@dimen/typography_line_height_prose_2xlarge</dimen>
+  <dimen name="font_prose_2xlarge_elegant_font_size">@dimen/typography_font_size_prose_2xlarge</dimen>
+  <item name="font_prose_2xlarge_elegant_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_prose_elegant</item>
+  <dimen name="font_prose_2xlarge_elegant_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_prose_xlarge_normal_line_height">@dimen/typography_line_height_prose_xlarge</dimen>
+  <dimen name="font_prose_xlarge_normal_font_size">@dimen/typography_font_size_prose_xlarge</dimen>
+  <item name="font_prose_xlarge_normal_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_prose_normal</item>
+  <dimen name="font_prose_xlarge_normal_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_prose_xlarge_strong_line_height">@dimen/typography_line_height_prose_xlarge</dimen>
+  <dimen name="font_prose_xlarge_strong_font_size">@dimen/typography_font_size_prose_xlarge</dimen>
+  <item name="font_prose_xlarge_strong_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_prose_strong</item>
+  <dimen name="font_prose_xlarge_strong_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_prose_xlarge_mass_line_height">@dimen/typography_line_height_prose_xlarge</dimen>
+  <dimen name="font_prose_xlarge_mass_font_size">@dimen/typography_font_size_prose_xlarge</dimen>
+  <item name="font_prose_xlarge_mass_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_prose_mass</item>
+  <dimen name="font_prose_xlarge_mass_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_prose_xlarge_elegant_line_height">@dimen/typography_line_height_prose_xlarge</dimen>
+  <dimen name="font_prose_xlarge_elegant_font_size">@dimen/typography_font_size_prose_xlarge</dimen>
+  <item name="font_prose_xlarge_elegant_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_prose_elegant</item>
+  <dimen name="font_prose_xlarge_elegant_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_prose_large_normal_line_height">@dimen/typography_line_height_prose_large</dimen>
+  <dimen name="font_prose_large_normal_font_size">@dimen/typography_font_size_prose_large</dimen>
+  <item name="font_prose_large_normal_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_prose_normal</item>
+  <dimen name="font_prose_large_normal_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_prose_large_strong_line_height">@dimen/typography_line_height_prose_large</dimen>
+  <dimen name="font_prose_large_strong_font_size">@dimen/typography_font_size_prose_large</dimen>
+  <item name="font_prose_large_strong_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_prose_strong</item>
+  <dimen name="font_prose_large_strong_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_prose_large_mass_line_height">@dimen/typography_line_height_prose_large</dimen>
+  <dimen name="font_prose_large_mass_font_size">@dimen/typography_font_size_prose_large</dimen>
+  <item name="font_prose_large_mass_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_prose_mass</item>
+  <dimen name="font_prose_large_mass_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_prose_large_elegant_line_height">@dimen/typography_line_height_prose_large</dimen>
+  <dimen name="font_prose_large_elegant_font_size">@dimen/typography_font_size_prose_large</dimen>
+  <item name="font_prose_large_elegant_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_prose_elegant</item>
+  <dimen name="font_prose_large_elegant_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_prose_medium_normal_line_height">@dimen/typography_line_height_prose_medium</dimen>
+  <dimen name="font_prose_medium_normal_font_size">@dimen/typography_font_size_prose_medium</dimen>
+  <item name="font_prose_medium_normal_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_prose_normal</item>
+  <dimen name="font_prose_medium_normal_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_prose_medium_strong_line_height">@dimen/typography_line_height_prose_medium</dimen>
+  <dimen name="font_prose_medium_strong_font_size">@dimen/typography_font_size_prose_medium</dimen>
+  <item name="font_prose_medium_strong_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_prose_strong</item>
+  <dimen name="font_prose_medium_strong_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_prose_medium_mass_line_height">@dimen/typography_line_height_prose_medium</dimen>
+  <dimen name="font_prose_medium_mass_font_size">@dimen/typography_font_size_prose_medium</dimen>
+  <item name="font_prose_medium_mass_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_prose_mass</item>
+  <dimen name="font_prose_medium_mass_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_prose_medium_elegant_line_height">@dimen/typography_line_height_prose_medium</dimen>
+  <dimen name="font_prose_medium_elegant_font_size">@dimen/typography_font_size_prose_medium</dimen>
+  <item name="font_prose_medium_elegant_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_prose_elegant</item>
+  <dimen name="font_prose_medium_elegant_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_prose_small_normal_line_height">@dimen/typography_line_height_prose_small</dimen>
+  <dimen name="font_prose_small_normal_font_size">@dimen/typography_font_size_prose_small</dimen>
+  <item name="font_prose_small_normal_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_prose_normal</item>
+  <dimen name="font_prose_small_normal_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_prose_small_strong_line_height">@dimen/typography_line_height_prose_small</dimen>
+  <dimen name="font_prose_small_strong_font_size">@dimen/typography_font_size_prose_small</dimen>
+  <item name="font_prose_small_strong_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_prose_strong</item>
+  <dimen name="font_prose_small_strong_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_prose_small_mass_line_height">@dimen/typography_line_height_prose_small</dimen>
+  <dimen name="font_prose_small_mass_font_size">@dimen/typography_font_size_prose_small</dimen>
+  <item name="font_prose_small_mass_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_prose_mass</item>
+  <dimen name="font_prose_small_mass_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_prose_small_elegant_line_height">@dimen/typography_line_height_prose_small</dimen>
+  <dimen name="font_prose_small_elegant_font_size">@dimen/typography_font_size_prose_small</dimen>
+  <item name="font_prose_small_elegant_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_prose_elegant</item>
+  <dimen name="font_prose_small_elegant_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_prose_xsmall_normal_line_height">@dimen/typography_line_height_prose_xsmall</dimen>
+  <dimen name="font_prose_xsmall_normal_font_size">@dimen/typography_font_size_prose_xsmall</dimen>
+  <item name="font_prose_xsmall_normal_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_prose_normal</item>
+  <dimen name="font_prose_xsmall_normal_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_prose_xsmall_strong_line_height">@dimen/typography_line_height_prose_xsmall</dimen>
+  <dimen name="font_prose_xsmall_strong_font_size">@dimen/typography_font_size_prose_xsmall</dimen>
+  <item name="font_prose_xsmall_strong_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_prose_strong</item>
+  <dimen name="font_prose_xsmall_strong_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_prose_xsmall_mass_line_height">@dimen/typography_line_height_prose_xsmall</dimen>
+  <dimen name="font_prose_xsmall_mass_font_size">@dimen/typography_font_size_prose_xsmall</dimen>
+  <item name="font_prose_xsmall_mass_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_prose_mass</item>
+  <dimen name="font_prose_xsmall_mass_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_prose_xsmall_elegant_line_height">@dimen/typography_line_height_prose_xsmall</dimen>
+  <dimen name="font_prose_xsmall_elegant_font_size">@dimen/typography_font_size_prose_xsmall</dimen>
+  <item name="font_prose_xsmall_elegant_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_prose_elegant</item>
+  <dimen name="font_prose_xsmall_elegant_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_prose_2xsmall_normal_line_height">@dimen/typography_line_height_prose_2xsmall</dimen>
+  <dimen name="font_prose_2xsmall_normal_font_size">@dimen/typography_font_size_prose_2xsmall</dimen>
+  <item name="font_prose_2xsmall_normal_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_prose_normal</item>
+  <dimen name="font_prose_2xsmall_normal_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_prose_2xsmall_strong_line_height">@dimen/typography_line_height_prose_2xsmall</dimen>
+  <dimen name="font_prose_2xsmall_strong_font_size">@dimen/typography_font_size_prose_2xsmall</dimen>
+  <item name="font_prose_2xsmall_strong_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_prose_strong</item>
+  <dimen name="font_prose_2xsmall_strong_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_prose_2xsmall_mass_line_height">@dimen/typography_line_height_prose_2xsmall</dimen>
+  <dimen name="font_prose_2xsmall_mass_font_size">@dimen/typography_font_size_prose_2xsmall</dimen>
+  <item name="font_prose_2xsmall_mass_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_prose_mass</item>
+  <dimen name="font_prose_2xsmall_mass_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
+  <dimen name="font_prose_2xsmall_elegant_line_height">@dimen/typography_line_height_prose_2xsmall</dimen>
+  <dimen name="font_prose_2xsmall_elegant_font_size">@dimen/typography_font_size_prose_2xsmall</dimen>
+  <item name="font_prose_2xsmall_elegant_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_prose_elegant</item>
+  <dimen name="font_prose_2xsmall_elegant_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
   <dimen name="font_code_large_normal_line_height">@dimen/typography_line_height_code_large</dimen>
   <dimen name="font_code_large_normal_font_size">@dimen/typography_font_size_code_large</dimen>
   <item name="font_code_large_normal_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_base_zero</item>
@@ -1211,285 +1105,285 @@
   <dimen name="font_code_small_strong_font_size">@dimen/typography_font_size_code_small</dimen>
   <item name="font_code_small_strong_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_base_zero</item>
   <dimen name="font_code_small_strong_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_accordion_medium_title_line_height">@dimen/typography_line_height_text_medium</dimen>
-  <dimen name="font_accordion_medium_title_font_size">@dimen/typography_font_size_text_medium</dimen>
-  <item name="font_accordion_medium_title_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_strong</item>
+  <dimen name="font_accordion_medium_title_line_height">@dimen/typography_line_height_ui_medium</dimen>
+  <dimen name="font_accordion_medium_title_font_size">@dimen/typography_font_size_ui_medium</dimen>
+  <item name="font_accordion_medium_title_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_strong</item>
   <dimen name="font_accordion_medium_title_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_accordion_medium_body_line_height">@dimen/typography_line_height_text_medium</dimen>
-  <dimen name="font_accordion_medium_body_font_size">@dimen/typography_font_size_text_medium</dimen>
-  <item name="font_accordion_medium_body_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_normal</item>
+  <dimen name="font_accordion_medium_body_line_height">@dimen/typography_line_height_ui_medium</dimen>
+  <dimen name="font_accordion_medium_body_font_size">@dimen/typography_font_size_ui_medium</dimen>
+  <item name="font_accordion_medium_body_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_normal</item>
   <dimen name="font_accordion_medium_body_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_accordion_large_title_line_height">@dimen/typography_line_height_text_large</dimen>
-  <dimen name="font_accordion_large_title_font_size">@dimen/typography_font_size_text_large</dimen>
-  <item name="font_accordion_large_title_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_strong</item>
+  <dimen name="font_accordion_large_title_line_height">@dimen/typography_line_height_ui_large</dimen>
+  <dimen name="font_accordion_large_title_font_size">@dimen/typography_font_size_ui_large</dimen>
+  <item name="font_accordion_large_title_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_strong</item>
   <dimen name="font_accordion_large_title_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_accordion_large_body_line_height">@dimen/typography_line_height_text_large</dimen>
-  <dimen name="font_accordion_large_body_font_size">@dimen/typography_font_size_text_large</dimen>
-  <item name="font_accordion_large_body_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_normal</item>
+  <dimen name="font_accordion_large_body_line_height">@dimen/typography_line_height_ui_large</dimen>
+  <dimen name="font_accordion_large_body_font_size">@dimen/typography_font_size_ui_large</dimen>
+  <item name="font_accordion_large_body_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_normal</item>
   <dimen name="font_accordion_large_body_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_accordion_small_title_line_height">@dimen/typography_line_height_text_small</dimen>
-  <dimen name="font_accordion_small_title_font_size">@dimen/typography_font_size_text_small</dimen>
-  <item name="font_accordion_small_title_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_strong</item>
+  <dimen name="font_accordion_small_title_line_height">@dimen/typography_line_height_ui_small</dimen>
+  <dimen name="font_accordion_small_title_font_size">@dimen/typography_font_size_ui_small</dimen>
+  <item name="font_accordion_small_title_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_strong</item>
   <dimen name="font_accordion_small_title_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_accordion_small_body_line_height">@dimen/typography_line_height_text_small</dimen>
-  <dimen name="font_accordion_small_body_font_size">@dimen/typography_font_size_text_small</dimen>
-  <item name="font_accordion_small_body_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_normal</item>
+  <dimen name="font_accordion_small_body_line_height">@dimen/typography_line_height_ui_small</dimen>
+  <dimen name="font_accordion_small_body_font_size">@dimen/typography_font_size_ui_small</dimen>
+  <item name="font_accordion_small_body_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_normal</item>
   <dimen name="font_accordion_small_body_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_alert_large_title_line_height">@dimen/typography_line_height_text_xlarge</dimen>
-  <dimen name="font_alert_large_title_font_size">@dimen/typography_font_size_text_xlarge</dimen>
-  <item name="font_alert_large_title_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_strong</item>
+  <dimen name="font_alert_large_title_line_height">@dimen/typography_line_height_ui_xlarge</dimen>
+  <dimen name="font_alert_large_title_font_size">@dimen/typography_font_size_ui_xlarge</dimen>
+  <item name="font_alert_large_title_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_strong</item>
   <dimen name="font_alert_large_title_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_alert_large_body_line_height">@dimen/typography_line_height_text_large</dimen>
-  <dimen name="font_alert_large_body_font_size">@dimen/typography_font_size_text_large</dimen>
-  <item name="font_alert_large_body_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_normal</item>
+  <dimen name="font_alert_large_body_line_height">@dimen/typography_line_height_ui_large</dimen>
+  <dimen name="font_alert_large_body_font_size">@dimen/typography_font_size_ui_large</dimen>
+  <item name="font_alert_large_body_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_normal</item>
   <dimen name="font_alert_large_body_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_alert_small_title_line_height">@dimen/typography_line_height_text_large</dimen>
-  <dimen name="font_alert_small_title_font_size">@dimen/typography_font_size_text_large</dimen>
-  <item name="font_alert_small_title_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_strong</item>
+  <dimen name="font_alert_small_title_line_height">@dimen/typography_line_height_ui_large</dimen>
+  <dimen name="font_alert_small_title_font_size">@dimen/typography_font_size_ui_large</dimen>
+  <item name="font_alert_small_title_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_strong</item>
   <dimen name="font_alert_small_title_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_alert_small_body_line_height">@dimen/typography_line_height_text_medium</dimen>
-  <dimen name="font_alert_small_body_font_size">@dimen/typography_font_size_text_medium</dimen>
-  <item name="font_alert_small_body_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_normal</item>
+  <dimen name="font_alert_small_body_line_height">@dimen/typography_line_height_ui_medium</dimen>
+  <dimen name="font_alert_small_body_font_size">@dimen/typography_font_size_ui_medium</dimen>
+  <item name="font_alert_small_body_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_normal</item>
   <dimen name="font_alert_small_body_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_assist_medium_line_height">@dimen/typography_line_height_text_medium</dimen>
-  <dimen name="font_assist_medium_font_size">@dimen/typography_font_size_text_medium</dimen>
-  <item name="font_assist_medium_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_normal</item>
+  <dimen name="font_assist_medium_line_height">@dimen/typography_line_height_ui_medium</dimen>
+  <dimen name="font_assist_medium_font_size">@dimen/typography_font_size_ui_medium</dimen>
+  <item name="font_assist_medium_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_normal</item>
   <dimen name="font_assist_medium_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_assist_large_line_height">@dimen/typography_line_height_text_large</dimen>
-  <dimen name="font_assist_large_font_size">@dimen/typography_font_size_text_large</dimen>
-  <item name="font_assist_large_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_normal</item>
+  <dimen name="font_assist_large_line_height">@dimen/typography_line_height_ui_large</dimen>
+  <dimen name="font_assist_large_font_size">@dimen/typography_font_size_ui_large</dimen>
+  <item name="font_assist_large_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_normal</item>
   <dimen name="font_assist_large_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_assist_small_line_height">@dimen/typography_line_height_text_small</dimen>
-  <dimen name="font_assist_small_font_size">@dimen/typography_font_size_text_small</dimen>
-  <item name="font_assist_small_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_normal</item>
+  <dimen name="font_assist_small_line_height">@dimen/typography_line_height_ui_small</dimen>
+  <dimen name="font_assist_small_font_size">@dimen/typography_font_size_ui_small</dimen>
+  <item name="font_assist_small_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_normal</item>
   <dimen name="font_assist_small_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_badge_medium_line_height">@dimen/typography_line_height_text_small</dimen>
-  <dimen name="font_badge_medium_font_size">@dimen/typography_font_size_text_small</dimen>
-  <item name="font_badge_medium_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_strong</item>
+  <dimen name="font_badge_medium_line_height">@dimen/typography_line_height_ui_small</dimen>
+  <dimen name="font_badge_medium_font_size">@dimen/typography_font_size_ui_small</dimen>
+  <item name="font_badge_medium_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_strong</item>
   <dimen name="font_badge_medium_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_badge_large_line_height">@dimen/typography_line_height_text_medium</dimen>
-  <dimen name="font_badge_large_font_size">@dimen/typography_font_size_text_medium</dimen>
-  <item name="font_badge_large_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_strong</item>
+  <dimen name="font_badge_large_line_height">@dimen/typography_line_height_ui_medium</dimen>
+  <dimen name="font_badge_large_font_size">@dimen/typography_font_size_ui_medium</dimen>
+  <item name="font_badge_large_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_strong</item>
   <dimen name="font_badge_large_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_badge_small_line_height">@dimen/typography_line_height_text_xsmall</dimen>
-  <dimen name="font_badge_small_font_size">@dimen/typography_font_size_text_xsmall</dimen>
-  <item name="font_badge_small_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_strong</item>
+  <dimen name="font_badge_small_line_height">@dimen/typography_line_height_ui_xsmall</dimen>
+  <dimen name="font_badge_small_font_size">@dimen/typography_font_size_ui_xsmall</dimen>
+  <item name="font_badge_small_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_strong</item>
   <dimen name="font_badge_small_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_breadcrumb_page_line_height">@dimen/typography_line_height_text_medium</dimen>
-  <dimen name="font_breadcrumb_page_font_size">@dimen/typography_font_size_text_medium</dimen>
-  <item name="font_breadcrumb_page_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_normal</item>
+  <dimen name="font_breadcrumb_page_line_height">@dimen/typography_line_height_ui_medium</dimen>
+  <dimen name="font_breadcrumb_page_font_size">@dimen/typography_font_size_ui_medium</dimen>
+  <item name="font_breadcrumb_page_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_normal</item>
   <dimen name="font_breadcrumb_page_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_button_medium_line_height">@dimen/typography_line_height_text_medium</dimen>
-  <dimen name="font_button_medium_font_size">@dimen/typography_font_size_text_medium</dimen>
-  <item name="font_button_medium_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_strong</item>
+  <dimen name="font_button_medium_line_height">@dimen/typography_line_height_ui_medium</dimen>
+  <dimen name="font_button_medium_font_size">@dimen/typography_font_size_ui_medium</dimen>
+  <item name="font_button_medium_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_strong</item>
   <dimen name="font_button_medium_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_button_large_line_height">@dimen/typography_line_height_text_large</dimen>
-  <dimen name="font_button_large_font_size">@dimen/typography_font_size_text_large</dimen>
-  <item name="font_button_large_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_strong</item>
+  <dimen name="font_button_large_line_height">@dimen/typography_line_height_ui_large</dimen>
+  <dimen name="font_button_large_font_size">@dimen/typography_font_size_ui_large</dimen>
+  <item name="font_button_large_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_strong</item>
   <dimen name="font_button_large_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_button_small_line_height">@dimen/typography_line_height_text_small</dimen>
-  <dimen name="font_button_small_font_size">@dimen/typography_font_size_text_small</dimen>
-  <item name="font_button_small_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_strong</item>
+  <dimen name="font_button_small_line_height">@dimen/typography_line_height_ui_small</dimen>
+  <dimen name="font_button_small_font_size">@dimen/typography_font_size_ui_small</dimen>
+  <item name="font_button_small_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_strong</item>
   <dimen name="font_button_small_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_card_medium_title_line_height">@dimen/typography_line_height_text_large</dimen>
-  <dimen name="font_card_medium_title_font_size">@dimen/typography_font_size_text_large</dimen>
-  <item name="font_card_medium_title_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_strong</item>
+  <dimen name="font_card_medium_title_line_height">@dimen/typography_line_height_ui_large</dimen>
+  <dimen name="font_card_medium_title_font_size">@dimen/typography_font_size_ui_large</dimen>
+  <item name="font_card_medium_title_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_strong</item>
   <dimen name="font_card_medium_title_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_card_medium_subtitle_line_height">@dimen/typography_line_height_text_small</dimen>
-  <dimen name="font_card_medium_subtitle_font_size">@dimen/typography_font_size_text_small</dimen>
-  <item name="font_card_medium_subtitle_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_strong</item>
+  <dimen name="font_card_medium_subtitle_line_height">@dimen/typography_line_height_ui_small</dimen>
+  <dimen name="font_card_medium_subtitle_font_size">@dimen/typography_font_size_ui_small</dimen>
+  <item name="font_card_medium_subtitle_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_strong</item>
   <dimen name="font_card_medium_subtitle_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_card_medium_body_line_height">@dimen/typography_line_height_text_medium</dimen>
-  <dimen name="font_card_medium_body_font_size">@dimen/typography_font_size_text_medium</dimen>
-  <item name="font_card_medium_body_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_normal</item>
+  <dimen name="font_card_medium_body_line_height">@dimen/typography_line_height_ui_medium</dimen>
+  <dimen name="font_card_medium_body_font_size">@dimen/typography_font_size_ui_medium</dimen>
+  <item name="font_card_medium_body_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_normal</item>
   <dimen name="font_card_medium_body_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_card_large_title_line_height">@dimen/typography_line_height_text_xlarge</dimen>
-  <dimen name="font_card_large_title_font_size">@dimen/typography_font_size_text_xlarge</dimen>
-  <item name="font_card_large_title_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_strong</item>
+  <dimen name="font_card_large_title_line_height">@dimen/typography_line_height_ui_xlarge</dimen>
+  <dimen name="font_card_large_title_font_size">@dimen/typography_font_size_ui_xlarge</dimen>
+  <item name="font_card_large_title_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_strong</item>
   <dimen name="font_card_large_title_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_card_large_subtitle_line_height">@dimen/typography_line_height_text_medium</dimen>
-  <dimen name="font_card_large_subtitle_font_size">@dimen/typography_font_size_text_medium</dimen>
-  <item name="font_card_large_subtitle_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_strong</item>
+  <dimen name="font_card_large_subtitle_line_height">@dimen/typography_line_height_ui_medium</dimen>
+  <dimen name="font_card_large_subtitle_font_size">@dimen/typography_font_size_ui_medium</dimen>
+  <item name="font_card_large_subtitle_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_strong</item>
   <dimen name="font_card_large_subtitle_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_card_large_body_line_height">@dimen/typography_line_height_text_large</dimen>
-  <dimen name="font_card_large_body_font_size">@dimen/typography_font_size_text_large</dimen>
-  <item name="font_card_large_body_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_normal</item>
+  <dimen name="font_card_large_body_line_height">@dimen/typography_line_height_ui_large</dimen>
+  <dimen name="font_card_large_body_font_size">@dimen/typography_font_size_ui_large</dimen>
+  <item name="font_card_large_body_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_normal</item>
   <dimen name="font_card_large_body_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_card_small_title_line_height">@dimen/typography_line_height_text_medium</dimen>
-  <dimen name="font_card_small_title_font_size">@dimen/typography_font_size_text_medium</dimen>
-  <item name="font_card_small_title_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_strong</item>
+  <dimen name="font_card_small_title_line_height">@dimen/typography_line_height_ui_medium</dimen>
+  <dimen name="font_card_small_title_font_size">@dimen/typography_font_size_ui_medium</dimen>
+  <item name="font_card_small_title_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_strong</item>
   <dimen name="font_card_small_title_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_card_small_subtitle_line_height">@dimen/typography_line_height_text_xsmall</dimen>
-  <dimen name="font_card_small_subtitle_font_size">@dimen/typography_font_size_text_xsmall</dimen>
-  <item name="font_card_small_subtitle_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_strong</item>
+  <dimen name="font_card_small_subtitle_line_height">@dimen/typography_line_height_ui_xsmall</dimen>
+  <dimen name="font_card_small_subtitle_font_size">@dimen/typography_font_size_ui_xsmall</dimen>
+  <item name="font_card_small_subtitle_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_strong</item>
   <dimen name="font_card_small_subtitle_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_card_small_body_line_height">@dimen/typography_line_height_text_small</dimen>
-  <dimen name="font_card_small_body_font_size">@dimen/typography_font_size_text_small</dimen>
-  <item name="font_card_small_body_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_normal</item>
+  <dimen name="font_card_small_body_line_height">@dimen/typography_line_height_ui_small</dimen>
+  <dimen name="font_card_small_body_font_size">@dimen/typography_font_size_ui_small</dimen>
+  <item name="font_card_small_body_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_normal</item>
   <dimen name="font_card_small_body_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_chip_medium_line_height">@dimen/typography_line_height_text_small</dimen>
-  <dimen name="font_chip_medium_font_size">@dimen/typography_font_size_text_small</dimen>
-  <item name="font_chip_medium_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_strong</item>
+  <dimen name="font_chip_medium_line_height">@dimen/typography_line_height_ui_small</dimen>
+  <dimen name="font_chip_medium_font_size">@dimen/typography_font_size_ui_small</dimen>
+  <item name="font_chip_medium_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_strong</item>
   <dimen name="font_chip_medium_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_chip_large_line_height">@dimen/typography_line_height_text_medium</dimen>
-  <dimen name="font_chip_large_font_size">@dimen/typography_font_size_text_medium</dimen>
-  <item name="font_chip_large_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_strong</item>
+  <dimen name="font_chip_large_line_height">@dimen/typography_line_height_ui_medium</dimen>
+  <dimen name="font_chip_large_font_size">@dimen/typography_font_size_ui_medium</dimen>
+  <item name="font_chip_large_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_strong</item>
   <dimen name="font_chip_large_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_chip_small_line_height">@dimen/typography_line_height_text_xsmall</dimen>
-  <dimen name="font_chip_small_font_size">@dimen/typography_font_size_text_xsmall</dimen>
-  <item name="font_chip_small_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_strong</item>
+  <dimen name="font_chip_small_line_height">@dimen/typography_line_height_ui_xsmall</dimen>
+  <dimen name="font_chip_small_font_size">@dimen/typography_font_size_ui_xsmall</dimen>
+  <item name="font_chip_small_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_strong</item>
   <dimen name="font_chip_small_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_datepicker_day_line_height">@dimen/typography_line_height_text_small</dimen>
-  <dimen name="font_datepicker_day_font_size">@dimen/typography_font_size_text_small</dimen>
-  <item name="font_datepicker_day_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_normal</item>
+  <dimen name="font_datepicker_day_line_height">@dimen/typography_line_height_ui_small</dimen>
+  <dimen name="font_datepicker_day_font_size">@dimen/typography_font_size_ui_small</dimen>
+  <item name="font_datepicker_day_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_normal</item>
   <dimen name="font_datepicker_day_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_datepicker_today_line_height">@dimen/typography_line_height_text_small</dimen>
-  <dimen name="font_datepicker_today_font_size">@dimen/typography_font_size_text_small</dimen>
-  <item name="font_datepicker_today_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_strong</item>
+  <dimen name="font_datepicker_today_line_height">@dimen/typography_line_height_ui_small</dimen>
+  <dimen name="font_datepicker_today_font_size">@dimen/typography_font_size_ui_small</dimen>
+  <item name="font_datepicker_today_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_strong</item>
   <dimen name="font_datepicker_today_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_datepicker_label_line_height">@dimen/typography_line_height_text_small</dimen>
-  <dimen name="font_datepicker_label_font_size">@dimen/typography_font_size_text_small</dimen>
-  <item name="font_datepicker_label_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_strong</item>
+  <dimen name="font_datepicker_label_line_height">@dimen/typography_line_height_ui_small</dimen>
+  <dimen name="font_datepicker_label_font_size">@dimen/typography_font_size_ui_small</dimen>
+  <item name="font_datepicker_label_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_strong</item>
   <dimen name="font_datepicker_label_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_dropdown_title_line_height">@dimen/typography_line_height_text_small</dimen>
-  <dimen name="font_dropdown_title_font_size">@dimen/typography_font_size_text_small</dimen>
-  <item name="font_dropdown_title_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_strong</item>
+  <dimen name="font_dropdown_title_line_height">@dimen/typography_line_height_ui_small</dimen>
+  <dimen name="font_dropdown_title_font_size">@dimen/typography_font_size_ui_small</dimen>
+  <item name="font_dropdown_title_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_strong</item>
   <dimen name="font_dropdown_title_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_dropdown_item_line_height">@dimen/typography_line_height_text_medium</dimen>
-  <dimen name="font_dropdown_item_font_size">@dimen/typography_font_size_text_medium</dimen>
-  <item name="font_dropdown_item_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_normal</item>
+  <dimen name="font_dropdown_item_line_height">@dimen/typography_line_height_ui_medium</dimen>
+  <dimen name="font_dropdown_item_font_size">@dimen/typography_font_size_ui_medium</dimen>
+  <item name="font_dropdown_item_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_normal</item>
   <dimen name="font_dropdown_item_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_form_input_medium_label_line_height">@dimen/typography_line_height_text_medium</dimen>
-  <dimen name="font_form_input_medium_label_font_size">@dimen/typography_font_size_text_medium</dimen>
-  <item name="font_form_input_medium_label_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_strong</item>
+  <dimen name="font_form_input_medium_label_line_height">@dimen/typography_line_height_ui_medium</dimen>
+  <dimen name="font_form_input_medium_label_font_size">@dimen/typography_font_size_ui_medium</dimen>
+  <item name="font_form_input_medium_label_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_strong</item>
   <dimen name="font_form_input_medium_label_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_form_input_large_label_line_height">@dimen/typography_line_height_text_large</dimen>
-  <dimen name="font_form_input_large_label_font_size">@dimen/typography_font_size_text_large</dimen>
-  <item name="font_form_input_large_label_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_strong</item>
+  <dimen name="font_form_input_large_label_line_height">@dimen/typography_line_height_ui_large</dimen>
+  <dimen name="font_form_input_large_label_font_size">@dimen/typography_font_size_ui_large</dimen>
+  <item name="font_form_input_large_label_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_strong</item>
   <dimen name="font_form_input_large_label_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_form_input_small_label_line_height">@dimen/typography_line_height_text_small</dimen>
-  <dimen name="font_form_input_small_label_font_size">@dimen/typography_font_size_text_small</dimen>
-  <item name="font_form_input_small_label_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_strong</item>
+  <dimen name="font_form_input_small_label_line_height">@dimen/typography_line_height_ui_small</dimen>
+  <dimen name="font_form_input_small_label_font_size">@dimen/typography_font_size_ui_small</dimen>
+  <item name="font_form_input_small_label_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_strong</item>
   <dimen name="font_form_input_small_label_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_form_input_medium_text_line_height">@dimen/typography_line_height_text_medium</dimen>
-  <dimen name="font_form_input_medium_text_font_size">@dimen/typography_font_size_text_medium</dimen>
-  <item name="font_form_input_medium_text_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_normal</item>
+  <dimen name="font_form_input_medium_text_line_height">@dimen/typography_line_height_ui_medium</dimen>
+  <dimen name="font_form_input_medium_text_font_size">@dimen/typography_font_size_ui_medium</dimen>
+  <item name="font_form_input_medium_text_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_normal</item>
   <dimen name="font_form_input_medium_text_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_form_input_large_text_line_height">@dimen/typography_line_height_text_large</dimen>
-  <dimen name="font_form_input_large_text_font_size">@dimen/typography_font_size_text_large</dimen>
-  <item name="font_form_input_large_text_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_normal</item>
+  <dimen name="font_form_input_large_text_line_height">@dimen/typography_line_height_ui_large</dimen>
+  <dimen name="font_form_input_large_text_font_size">@dimen/typography_font_size_ui_large</dimen>
+  <item name="font_form_input_large_text_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_normal</item>
   <dimen name="font_form_input_large_text_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_form_input_small_text_line_height">@dimen/typography_line_height_text_small</dimen>
-  <dimen name="font_form_input_small_text_font_size">@dimen/typography_font_size_text_small</dimen>
-  <item name="font_form_input_small_text_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_normal</item>
+  <dimen name="font_form_input_small_text_line_height">@dimen/typography_line_height_ui_small</dimen>
+  <dimen name="font_form_input_small_text_font_size">@dimen/typography_font_size_ui_small</dimen>
+  <item name="font_form_input_small_text_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_normal</item>
   <dimen name="font_form_input_small_text_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_form_input_floating_text_line_height">@dimen/typography_line_height_text_medium</dimen>
-  <dimen name="font_form_input_floating_text_font_size">@dimen/typography_font_size_text_medium</dimen>
-  <item name="font_form_input_floating_text_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_normal</item>
+  <dimen name="font_form_input_floating_text_line_height">@dimen/typography_line_height_ui_medium</dimen>
+  <dimen name="font_form_input_floating_text_font_size">@dimen/typography_font_size_ui_medium</dimen>
+  <item name="font_form_input_floating_text_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_normal</item>
   <dimen name="font_form_input_floating_text_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_form_input_floating_label_line_height">@dimen/typography_line_height_text_xsmall</dimen>
-  <dimen name="font_form_input_floating_label_font_size">@dimen/typography_font_size_text_xsmall</dimen>
-  <item name="font_form_input_floating_label_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_normal</item>
+  <dimen name="font_form_input_floating_label_line_height">@dimen/typography_line_height_ui_xsmall</dimen>
+  <dimen name="font_form_input_floating_label_font_size">@dimen/typography_font_size_ui_xsmall</dimen>
+  <item name="font_form_input_floating_label_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_normal</item>
   <dimen name="font_form_input_floating_label_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_modal_large_title_line_height">@dimen/typography_line_height_text_xlarge</dimen>
-  <dimen name="font_modal_large_title_font_size">@dimen/typography_font_size_text_xlarge</dimen>
-  <item name="font_modal_large_title_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_strong</item>
+  <dimen name="font_modal_large_title_line_height">@dimen/typography_line_height_ui_xlarge</dimen>
+  <dimen name="font_modal_large_title_font_size">@dimen/typography_font_size_ui_xlarge</dimen>
+  <item name="font_modal_large_title_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_strong</item>
   <dimen name="font_modal_large_title_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_modal_large_subtitle_line_height">@dimen/typography_line_height_text_medium</dimen>
-  <dimen name="font_modal_large_subtitle_font_size">@dimen/typography_font_size_text_medium</dimen>
-  <item name="font_modal_large_subtitle_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_normal</item>
+  <dimen name="font_modal_large_subtitle_line_height">@dimen/typography_line_height_ui_medium</dimen>
+  <dimen name="font_modal_large_subtitle_font_size">@dimen/typography_font_size_ui_medium</dimen>
+  <item name="font_modal_large_subtitle_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_normal</item>
   <dimen name="font_modal_large_subtitle_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_modal_medium_title_line_height">@dimen/typography_line_height_text_large</dimen>
-  <dimen name="font_modal_medium_title_font_size">@dimen/typography_font_size_text_large</dimen>
-  <item name="font_modal_medium_title_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_strong</item>
+  <dimen name="font_modal_medium_title_line_height">@dimen/typography_line_height_ui_large</dimen>
+  <dimen name="font_modal_medium_title_font_size">@dimen/typography_font_size_ui_large</dimen>
+  <item name="font_modal_medium_title_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_strong</item>
   <dimen name="font_modal_medium_title_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_modal_medium_subtitle_line_height">@dimen/typography_line_height_text_medium</dimen>
-  <dimen name="font_modal_medium_subtitle_font_size">@dimen/typography_font_size_text_medium</dimen>
-  <item name="font_modal_medium_subtitle_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_normal</item>
+  <dimen name="font_modal_medium_subtitle_line_height">@dimen/typography_line_height_ui_medium</dimen>
+  <dimen name="font_modal_medium_subtitle_font_size">@dimen/typography_font_size_ui_medium</dimen>
+  <item name="font_modal_medium_subtitle_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_normal</item>
   <dimen name="font_modal_medium_subtitle_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_modal_small_title_line_height">@dimen/typography_line_height_text_medium</dimen>
-  <dimen name="font_modal_small_title_font_size">@dimen/typography_font_size_text_medium</dimen>
-  <item name="font_modal_small_title_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_strong</item>
+  <dimen name="font_modal_small_title_line_height">@dimen/typography_line_height_ui_medium</dimen>
+  <dimen name="font_modal_small_title_font_size">@dimen/typography_font_size_ui_medium</dimen>
+  <item name="font_modal_small_title_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_strong</item>
   <dimen name="font_modal_small_title_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_modal_small_subtitle_line_height">@dimen/typography_line_height_text_medium</dimen>
-  <dimen name="font_modal_small_subtitle_font_size">@dimen/typography_font_size_text_medium</dimen>
-  <item name="font_modal_small_subtitle_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_normal</item>
+  <dimen name="font_modal_small_subtitle_line_height">@dimen/typography_line_height_ui_medium</dimen>
+  <dimen name="font_modal_small_subtitle_font_size">@dimen/typography_font_size_ui_medium</dimen>
+  <item name="font_modal_small_subtitle_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_normal</item>
   <dimen name="font_modal_small_subtitle_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_notification_title_line_height">@dimen/typography_line_height_text_large</dimen>
-  <dimen name="font_notification_title_font_size">@dimen/typography_font_size_text_large</dimen>
-  <item name="font_notification_title_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_strong</item>
+  <dimen name="font_notification_title_line_height">@dimen/typography_line_height_ui_large</dimen>
+  <dimen name="font_notification_title_font_size">@dimen/typography_font_size_ui_large</dimen>
+  <item name="font_notification_title_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_strong</item>
   <dimen name="font_notification_title_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_notification_message_line_height">@dimen/typography_line_height_text_medium</dimen>
-  <dimen name="font_notification_message_font_size">@dimen/typography_font_size_text_medium</dimen>
-  <item name="font_notification_message_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_normal</item>
+  <dimen name="font_notification_message_line_height">@dimen/typography_line_height_ui_medium</dimen>
+  <dimen name="font_notification_message_font_size">@dimen/typography_font_size_ui_medium</dimen>
+  <item name="font_notification_message_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_normal</item>
   <dimen name="font_notification_message_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_page_large_title_line_height">@dimen/typography_line_height_text_2xlarge</dimen>
-  <dimen name="font_page_large_title_font_size">@dimen/typography_font_size_text_2xlarge</dimen>
-  <item name="font_page_large_title_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_strong</item>
+  <dimen name="font_page_large_title_line_height">@dimen/typography_line_height_ui_2xlarge</dimen>
+  <dimen name="font_page_large_title_font_size">@dimen/typography_font_size_ui_2xlarge</dimen>
+  <item name="font_page_large_title_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_strong</item>
   <dimen name="font_page_large_title_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_page_large_subtitle_line_height">@dimen/typography_line_height_text_medium</dimen>
-  <dimen name="font_page_large_subtitle_font_size">@dimen/typography_font_size_text_medium</dimen>
-  <item name="font_page_large_subtitle_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_normal</item>
+  <dimen name="font_page_large_subtitle_line_height">@dimen/typography_line_height_ui_medium</dimen>
+  <dimen name="font_page_large_subtitle_font_size">@dimen/typography_font_size_ui_medium</dimen>
+  <item name="font_page_large_subtitle_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_normal</item>
   <dimen name="font_page_large_subtitle_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_page_medium_title_line_height">@dimen/typography_line_height_text_2xlarge</dimen>
-  <dimen name="font_page_medium_title_font_size">@dimen/typography_font_size_text_2xlarge</dimen>
-  <item name="font_page_medium_title_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_strong</item>
+  <dimen name="font_page_medium_title_line_height">@dimen/typography_line_height_ui_2xlarge</dimen>
+  <dimen name="font_page_medium_title_font_size">@dimen/typography_font_size_ui_2xlarge</dimen>
+  <item name="font_page_medium_title_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_strong</item>
   <dimen name="font_page_medium_title_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_page_medium_subtitle_line_height">@dimen/typography_line_height_text_medium</dimen>
-  <dimen name="font_page_medium_subtitle_font_size">@dimen/typography_font_size_text_medium</dimen>
-  <item name="font_page_medium_subtitle_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_normal</item>
+  <dimen name="font_page_medium_subtitle_line_height">@dimen/typography_line_height_ui_medium</dimen>
+  <dimen name="font_page_medium_subtitle_font_size">@dimen/typography_font_size_ui_medium</dimen>
+  <item name="font_page_medium_subtitle_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_normal</item>
   <dimen name="font_page_medium_subtitle_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_page_small_title_line_height">@dimen/typography_line_height_text_xlarge</dimen>
-  <dimen name="font_page_small_title_font_size">@dimen/typography_font_size_text_xlarge</dimen>
-  <item name="font_page_small_title_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_strong</item>
+  <dimen name="font_page_small_title_line_height">@dimen/typography_line_height_ui_xlarge</dimen>
+  <dimen name="font_page_small_title_font_size">@dimen/typography_font_size_ui_xlarge</dimen>
+  <item name="font_page_small_title_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_strong</item>
   <dimen name="font_page_small_title_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_page_small_subtitle_line_height">@dimen/typography_line_height_text_medium</dimen>
-  <dimen name="font_page_small_subtitle_font_size">@dimen/typography_font_size_text_medium</dimen>
-  <item name="font_page_small_subtitle_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_normal</item>
+  <dimen name="font_page_small_subtitle_line_height">@dimen/typography_line_height_ui_medium</dimen>
+  <dimen name="font_page_small_subtitle_font_size">@dimen/typography_font_size_ui_medium</dimen>
+  <item name="font_page_small_subtitle_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_normal</item>
   <dimen name="font_page_small_subtitle_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_section_header_large_line_height">@dimen/typography_line_height_text_large</dimen>
-  <dimen name="font_section_header_large_font_size">@dimen/typography_font_size_text_large</dimen>
-  <item name="font_section_header_large_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_strong</item>
+  <dimen name="font_section_header_large_line_height">@dimen/typography_line_height_ui_large</dimen>
+  <dimen name="font_section_header_large_font_size">@dimen/typography_font_size_ui_large</dimen>
+  <item name="font_section_header_large_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_strong</item>
   <dimen name="font_section_header_large_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_section_header_medium_line_height">@dimen/typography_line_height_text_medium</dimen>
-  <dimen name="font_section_header_medium_font_size">@dimen/typography_font_size_text_medium</dimen>
-  <item name="font_section_header_medium_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_strong</item>
+  <dimen name="font_section_header_medium_line_height">@dimen/typography_line_height_ui_medium</dimen>
+  <dimen name="font_section_header_medium_font_size">@dimen/typography_font_size_ui_medium</dimen>
+  <item name="font_section_header_medium_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_strong</item>
   <dimen name="font_section_header_medium_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_section_header_small_line_height">@dimen/typography_line_height_text_small</dimen>
-  <dimen name="font_section_header_small_font_size">@dimen/typography_font_size_text_small</dimen>
-  <item name="font_section_header_small_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_strong</item>
+  <dimen name="font_section_header_small_line_height">@dimen/typography_line_height_ui_small</dimen>
+  <dimen name="font_section_header_small_font_size">@dimen/typography_font_size_ui_small</dimen>
+  <item name="font_section_header_small_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_strong</item>
   <dimen name="font_section_header_small_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_segment_medium_line_height">@dimen/typography_line_height_text_small</dimen>
-  <dimen name="font_segment_medium_font_size">@dimen/typography_font_size_text_small</dimen>
-  <item name="font_segment_medium_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_normal</item>
+  <dimen name="font_segment_medium_line_height">@dimen/typography_line_height_ui_small</dimen>
+  <dimen name="font_segment_medium_font_size">@dimen/typography_font_size_ui_small</dimen>
+  <item name="font_segment_medium_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_normal</item>
   <dimen name="font_segment_medium_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_segment_large_line_height">@dimen/typography_line_height_text_medium</dimen>
-  <dimen name="font_segment_large_font_size">@dimen/typography_font_size_text_medium</dimen>
-  <item name="font_segment_large_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_normal</item>
+  <dimen name="font_segment_large_line_height">@dimen/typography_line_height_ui_medium</dimen>
+  <dimen name="font_segment_large_font_size">@dimen/typography_font_size_ui_medium</dimen>
+  <item name="font_segment_large_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_normal</item>
   <dimen name="font_segment_large_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_segment_small_line_height">@dimen/typography_line_height_text_xsmall</dimen>
-  <dimen name="font_segment_small_font_size">@dimen/typography_font_size_text_xsmall</dimen>
-  <item name="font_segment_small_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_normal</item>
+  <dimen name="font_segment_small_line_height">@dimen/typography_line_height_ui_xsmall</dimen>
+  <dimen name="font_segment_small_font_size">@dimen/typography_font_size_ui_xsmall</dimen>
+  <item name="font_segment_small_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_normal</item>
   <dimen name="font_segment_small_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_tab_medium_line_height">@dimen/typography_line_height_text_medium</dimen>
-  <dimen name="font_tab_medium_font_size">@dimen/typography_font_size_text_medium</dimen>
-  <item name="font_tab_medium_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_strong</item>
+  <dimen name="font_tab_medium_line_height">@dimen/typography_line_height_ui_medium</dimen>
+  <dimen name="font_tab_medium_font_size">@dimen/typography_font_size_ui_medium</dimen>
+  <item name="font_tab_medium_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_strong</item>
   <dimen name="font_tab_medium_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_tab_large_line_height">@dimen/typography_line_height_text_large</dimen>
-  <dimen name="font_tab_large_font_size">@dimen/typography_font_size_text_large</dimen>
-  <item name="font_tab_large_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_strong</item>
+  <dimen name="font_tab_large_line_height">@dimen/typography_line_height_ui_large</dimen>
+  <dimen name="font_tab_large_font_size">@dimen/typography_font_size_ui_large</dimen>
+  <item name="font_tab_large_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_strong</item>
   <dimen name="font_tab_large_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_tab_small_line_height">@dimen/typography_line_height_text_small</dimen>
-  <dimen name="font_tab_small_font_size">@dimen/typography_font_size_text_small</dimen>
-  <item name="font_tab_small_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_strong</item>
+  <dimen name="font_tab_small_line_height">@dimen/typography_line_height_ui_small</dimen>
+  <dimen name="font_tab_small_font_size">@dimen/typography_font_size_ui_small</dimen>
+  <item name="font_tab_small_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_strong</item>
   <dimen name="font_tab_small_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_table_data_text_line_height">@dimen/typography_line_height_text_small</dimen>
-  <dimen name="font_table_data_text_font_size">@dimen/typography_font_size_text_small</dimen>
-  <item name="font_table_data_text_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_normal</item>
+  <dimen name="font_table_data_text_line_height">@dimen/typography_line_height_ui_small</dimen>
+  <dimen name="font_table_data_text_font_size">@dimen/typography_font_size_ui_small</dimen>
+  <item name="font_table_data_text_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_normal</item>
   <dimen name="font_table_data_text_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_table_head_text_line_height">@dimen/typography_line_height_text_small</dimen>
-  <dimen name="font_table_head_text_font_size">@dimen/typography_font_size_text_small</dimen>
-  <item name="font_table_head_text_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_strong</item>
+  <dimen name="font_table_head_text_line_height">@dimen/typography_line_height_ui_small</dimen>
+  <dimen name="font_table_head_text_font_size">@dimen/typography_font_size_ui_small</dimen>
+  <item name="font_table_head_text_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_strong</item>
   <dimen name="font_table_head_text_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
   <dimen name="font_website_hero_title_line_height">80sp</dimen>
   <dimen name="font_website_hero_title_font_size">@dimen/typography_font_size_website_hero_title</dimen>
@@ -1497,7 +1391,7 @@
   <dimen name="font_website_hero_title_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
   <dimen name="font_website_hero_body_line_height">33sp</dimen>
   <dimen name="font_website_hero_body_font_size">@dimen/typography_font_size_website_hero_body</dimen>
-  <item name="font_website_hero_body_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_normal</item>
+  <item name="font_website_hero_body_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_normal</item>
   <dimen name="font_website_hero_body_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
   <dimen name="font_website_section_title_line_height">60sp</dimen>
   <dimen name="font_website_section_title_font_size">@dimen/typography_font_size_website_section_title</dimen>
@@ -1505,19 +1399,19 @@
   <dimen name="font_website_section_title_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
   <dimen name="font_website_section_body_line_height">33sp</dimen>
   <dimen name="font_website_section_body_font_size">@dimen/typography_font_size_website_section_body</dimen>
-  <item name="font_website_section_body_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_normal</item>
+  <item name="font_website_section_body_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_normal</item>
   <dimen name="font_website_section_body_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
   <dimen name="font_website_feature_title_line_height">33sp</dimen>
   <dimen name="font_website_feature_title_font_size">@dimen/typography_font_size_website_feature_title</dimen>
-  <item name="font_website_feature_title_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_mass</item>
+  <item name="font_website_feature_title_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_mass</item>
   <dimen name="font_website_feature_title_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
   <dimen name="font_website_feature_body_line_height">28.5sp</dimen>
   <dimen name="font_website_feature_body_font_size">@dimen/typography_font_size_website_feature_body</dimen>
-  <item name="font_website_feature_body_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_normal</item>
+  <item name="font_website_feature_body_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_normal</item>
   <dimen name="font_website_feature_body_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
   <dimen name="font_website_module_title_line_height">28.5sp</dimen>
   <dimen name="font_website_module_title_font_size">@dimen/typography_font_size_website_module_title</dimen>
-  <item name="font_website_module_title_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_text_mass</item>
+  <item name="font_website_module_title_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_ui_mass</item>
   <dimen name="font_website_module_title_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
   <dimen name="border_width_context_zero">@dimen/size_unit_0</dimen>
   <dimen name="border_width_context_small">@dimen/size_unit_05</dimen>

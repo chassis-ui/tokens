@@ -589,7 +589,7 @@
   },
   "typography": {
     "fontFamily": {
-      "text": {
+      "ui": {
         "$type": "fontFamilies",
         "$value": "Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif"
       },
@@ -603,7 +603,25 @@
       }
     },
     "fontWeight": {
-      "text": {
+      "ui": {
+        "normal": {
+          "$type": "fontWeights",
+          "$value": "Regular"
+        },
+        "strong": {
+          "$type": "fontWeights",
+          "$value": "Medium"
+        },
+        "mass": {
+          "$type": "fontWeights",
+          "$value": "Semi Bold"
+        },
+        "elegant": {
+          "$type": "fontWeights",
+          "$value": "Light"
+        }
+      },
+      "prose": {
         "normal": {
           "$type": "fontWeights",
           "$value": "Regular"
@@ -637,6 +655,16 @@
         "elegant": {
           "$type": "fontWeights",
           "$value": "Medium"
+        }
+      },
+      "code": {
+        "normal": {
+          "$type": "fontWeights",
+          "$value": "Regular"
+        },
+        "strong": {
+          "$type": "fontWeights",
+          "$value": "Bold"
         }
       }
     }

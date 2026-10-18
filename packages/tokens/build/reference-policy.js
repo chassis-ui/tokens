@@ -182,7 +182,7 @@ export function referenceTarget(token, references) {
  * the preprocessor replaces its reference with the resolved weight.
  *
  * @param {Object} token - A resolved token with `original`.
- * @returns {string[]|undefined} e.g. `['typography', 'fontWeight', 'text', 'strong']`
+ * @returns {string[]|undefined} e.g. `['typography', 'fontWeight', 'ui', 'strong']`
  */
 export function aliasPath(token) {
   const stored = token.original?.$extensions?.['chassis']?.aliasPath
@@ -248,7 +248,7 @@ function resolvedParts(original, references) {
 
 /**
  * Builds the map for an object-valued typography token (`font.context.*`,
- * `font.text.*`). Family and weight print references. Font size and line height print
+ * `font.ui.*`). Family and weight print references. Font size and line height print
  * references when they reference `fontSize` and `lineHeight` tokens, and their values
  * otherwise; a literal percent line height is converted to em.
  *
@@ -303,7 +303,7 @@ export function typographyObject(token, references, names, basePxFontSize, sizeU
 
 /**
  * Builds the map for a reference-valued typography token (`font.button.medium` =
- * `{font.text.medium.strong}`). The references are named after the referenced path,
+ * `{font.ui.medium.strong}`). The references are named after the referenced path,
  * `font.<family>.<size>.<weight>`; the other parts are the referenced token's.
  *
  * @param {Object} token - The typography token.

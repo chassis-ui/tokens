@@ -127,7 +127,9 @@ describe('font-weight', () => {
   test('accepts the weight names of the source, with and without a style', () => {
     const weights = new Set(
       [BRAND, BRAND_CHASSIS].flatMap((set) =>
-        [...readTokens(fixture.sets[set]).tokens.values()].map((token) => token.$value)
+        [...readTokens(fixture.sets[set]).tokens.values()]
+          .filter((token) => token.$type === 'fontWeights')
+          .map((token) => token.$value)
       )
     )
     expect([...weights].filter((weight) => !weight.includes('{')).sort()).toEqual([
@@ -140,19 +142,19 @@ describe('font-weight', () => {
       'SemiBold'
     ])
     const errors = lintWith((sets) => {
-      sets[BRAND].typography.fontWeight.text.normal.$value = 600
-      sets[BRAND].typography.fontWeight.text.strong.$value = 'semi-bold'
-      sets[BRAND].typography.fontWeight.text.mass.$value = 'Italic'
+      sets[BRAND].typography.fontWeight.ui.normal.$value = 600
+      sets[BRAND].typography.fontWeight.ui.strong.$value = 'semi-bold'
+      sets[BRAND].typography.fontWeight.ui.mass.$value = 'Italic'
     })
     expect(errors).toEqual([])
   })
 
   test('fails on an unknown weight in a font weight token', () => {
     const errors = lintWith((sets) => {
-      sets[BRAND].typography.fontWeight.text.mass.$value = 'Heavyish'
+      sets[BRAND].typography.fontWeight.ui.mass.$value = 'Heavyish'
     })
     expect(errors.map(formatError)).toEqual([
-      'base/brand-base: typography.fontWeight.text.mass "Heavyish" is not a font weight the build knows [font-weight]'
+      'base/brand-base: typography.fontWeight.ui.mass "Heavyish" is not a font weight the build knows [font-weight]'
     ])
   })
 
@@ -233,6 +235,73 @@ describe('letter-spacing', () => {
     })
     expect(errors.map(formatError)).toEqual([
       'screen-website/screen-base: font.website.hero-title has a letter spacing that is "-2.5%", which Figma variables cannot hold; write it in pixels, such as "-0.5" [letter-spacing]'
+    ])
+  })
+})
+
+describe('font-weight-family', () => {
+  const reference = (path) => `{${path}}`
+
+  test('accepts a role group that a brand points at another family with its weight', () => {
+    const { fontFamily, fontWeight } = fixture.sets[BRAND_CHASSIS].typography
+    expect(fontFamily.context.heading.$value).toBe(reference('typography.fontFamily.display'))
+    expect(fontWeight.context.heading.$value).toBe(reference('typography.fontWeight.display.mass'))
+    expect(lintTokens(fixture)).toEqual([])
+  })
+
+  test('accepts a role group weight that holds a style name of its own', () => {
+    const weight = fixture.sets[BRAND].typography.fontWeight.context.blockquote.$value
+    expect(weight).toBe('Light Italic')
+    expect(lintTokens(fixture)).toEqual([])
+  })
+
+  test('fails on a role group whose weight belongs to another family', () => {
+    const errors = lintWith((sets) => {
+      sets[BRAND_CHASSIS].typography.fontWeight.context.lead.$value = reference(
+        'typography.fontWeight.ui.elegant'
+      )
+    })
+    expect(errors.map(formatError)).toEqual([
+      'brand-chassis/brand-base: typography.fontWeight.context.lead is a weight of the family "ui", but typography.fontFamily.context.lead leads to the family "prose" [font-weight-family]'
+    ])
+  })
+
+  test('follows the family of a role group that a brand overrides', () => {
+    const errors = lintWith((sets) => {
+      sets[BRAND_CHASSIS].typography.fontFamily.context.label = {
+        $type: 'fontFamilies',
+        $value: reference('typography.fontFamily.display')
+      }
+    })
+    expect(errors.map(formatError)).toEqual([
+      'base/brand-base: typography.fontWeight.context.label is a weight of the family "ui", but typography.fontFamily.context.label leads to the family "display" [font-weight-family]'
+    ])
+  })
+
+  test('fails on a set that sets a family without its weights', () => {
+    const errors = lintWith((sets) => {
+      delete sets[BRAND_CHASSIS].typography.fontWeight.code.strong
+    })
+    expect(errors.map(formatError)).toEqual([
+      'brand-chassis/brand-base: typography.fontFamily.code sets the family "code" without its weights typography.fontWeight.code.strong [font-weight-family]'
+    ])
+  })
+
+  test('accepts a set that sets the weights of a family it takes from another set', () => {
+    const { fontFamily, fontWeight } = fixture.sets[BRAND_CHASSIS].typography
+    expect(fontFamily.prose).toBeUndefined()
+    expect(Object.keys(fontWeight.prose)).toEqual(['normal', 'strong', 'mass', 'elegant'])
+    expect(lintTokens(fixture)).toEqual([])
+  })
+
+  test('fails on a font token whose weight belongs to another family', () => {
+    const errors = lintWith((sets) => {
+      sets[BASE].font.website['hero-title'].$value.fontWeight = reference(
+        'typography.fontWeight.prose.mass'
+      )
+    })
+    expect(errors.map(formatError)).toEqual([
+      'screen-website/screen-base: font.website.hero-title has a weight of the family "prose" (typography.fontWeight.prose.mass), but its family leads to "ui" [font-weight-family]'
     ])
   })
 })

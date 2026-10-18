@@ -254,8 +254,8 @@ describe('planBuilds with filters', () => {
 
 describe('token-set order', () => {
   const [build] = planBuilds(sets, buildOptions, { brands: ['chassis'], apps: ['docs'] })
-  const brandBase = read(`${SOURCE_DIR}/base/brand-base.json`).typography.fontFamily.text.$value
-  const chassisBase = read(`${SOURCE_DIR}/brand-chassis/brand-base.json`).typography.fontFamily.text
+  const brandBase = read(`${SOURCE_DIR}/base/brand-base.json`).typography.fontFamily.ui.$value
+  const chassisBase = read(`${SOURCE_DIR}/brand-chassis/brand-base.json`).typography.fontFamily.ui
     .$value
 
   test('lists brand-chassis/brand-base after base/brand-base, in source only', () => {
@@ -273,7 +273,7 @@ describe('token-set order', () => {
       log: { verbosity: 'silent', warnings: 'disabled' }
     })
     await sd.hasInitialized
-    expect(sd.tokens.typography.fontFamily.text.$value).toBe(chassisBase)
+    expect(sd.tokens.typography.fontFamily.ui.$value).toBe(chassisBase)
   })
 })
 
