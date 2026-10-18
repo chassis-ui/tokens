@@ -13,23 +13,23 @@
     "badge": {
       "medium": {
         "$type": "typography",
-        "$value": "{font.text.small.normal}"
+        "$value": "{font.ui.small.normal}"
       },
       "large": {
         "$type": "typography",
-        "$value": "{font.text.medium.normal}"
+        "$value": "{font.ui.medium.normal}"
       },
       "small": {
         "$type": "typography",
-        "$value": "{font.text.xsmall.normal}"
+        "$value": "{font.ui.xsmall.normal}"
       }
     },
     "button": {
       "medium": {
         "$type": "typography",
         "$value": {
-          "fontFamily": "{typography.fontFamily.text}",
-          "fontWeight": "{typography.fontWeight.text.strong}",
+          "fontFamily": "{typography.fontFamily.ui}",
+          "fontWeight": "{typography.fontWeight.ui.strong}",
           "lineHeight": "{typography.lineHeight.button.medium}",
           "fontSize": "{typography.fontSize.button.medium}",
           "letterSpacing": "{typography.letterSpacing.base.zero}",
@@ -39,8 +39,8 @@
       "large": {
         "$type": "typography",
         "$value": {
-          "fontFamily": "{typography.fontFamily.text}",
-          "fontWeight": "{typography.fontWeight.text.strong}",
+          "fontFamily": "{typography.fontFamily.ui}",
+          "fontWeight": "{typography.fontWeight.ui.strong}",
           "lineHeight": "{typography.lineHeight.button.large}",
           "fontSize": "{typography.fontSize.button.large}",
           "letterSpacing": "{typography.letterSpacing.base.zero}",
@@ -50,8 +50,8 @@
       "small": {
         "$type": "typography",
         "$value": {
-          "fontFamily": "{typography.fontFamily.text}",
-          "fontWeight": "{typography.fontWeight.text.strong}",
+          "fontFamily": "{typography.fontFamily.ui}",
+          "fontWeight": "{typography.fontWeight.ui.strong}",
           "lineHeight": "{typography.lineHeight.button.small}",
           "fontSize": "{typography.fontSize.button.small}",
           "letterSpacing": "{typography.letterSpacing.base.zero}",
@@ -62,57 +62,57 @@
     "chip": {
       "medium": {
         "$type": "typography",
-        "$value": "{font.text.small.strong}"
+        "$value": "{font.ui.small.strong}"
       },
       "large": {
         "$type": "typography",
-        "$value": "{font.text.medium.strong}"
+        "$value": "{font.ui.medium.strong}"
       },
       "small": {
         "$type": "typography",
-        "$value": "{font.text.xsmall.strong}"
+        "$value": "{font.ui.xsmall.strong}"
       }
     },
     "form-input": {
       "medium-label": {
         "$type": "typography",
-        "$value": "{font.text.medium.strong}"
+        "$value": "{font.ui.medium.strong}"
       },
       "large-label": {
         "$type": "typography",
-        "$value": "{font.text.large.strong}"
+        "$value": "{font.ui.large.strong}"
       },
       "small-label": {
         "$type": "typography",
-        "$value": "{font.text.small.strong}"
+        "$value": "{font.ui.small.strong}"
       },
       "medium-text": {
         "$type": "typography",
-        "$value": "{font.text.medium.normal}"
+        "$value": "{font.ui.medium.normal}"
       },
       "large-text": {
         "$type": "typography",
-        "$value": "{font.text.large.normal}"
+        "$value": "{font.ui.large.normal}"
       },
       "small-text": {
         "$type": "typography",
-        "$value": "{font.text.small.normal}"
+        "$value": "{font.ui.small.normal}"
       },
       "floating-text": {
         "$type": "typography",
-        "$value": "{font.text.medium.normal}"
+        "$value": "{font.ui.medium.normal}"
       },
       "floating-label": {
         "$type": "typography",
-        "$value": "{font.text.xsmall.normal}"
+        "$value": "{font.ui.xsmall.normal}"
       }
     },
     "notification": {
       "title": {
         "$type": "typography",
         "$value": {
-          "fontFamily": "{typography.fontFamily.text}",
-          "fontWeight": "{typography.fontWeight.text.strong}",
+          "fontFamily": "{typography.fontFamily.ui}",
+          "fontWeight": "{typography.fontWeight.ui.strong}",
           "lineHeight": "{typography.lineHeight.notification.title}",
           "fontSize": "{typography.fontSize.notification.title}",
           "letterSpacing": "{typography.letterSpacing.base.zero}",
@@ -122,8 +122,8 @@
       "message": {
         "$type": "typography",
         "$value": {
-          "fontFamily": "{typography.fontFamily.text}",
-          "fontWeight": "{typography.fontWeight.text.normal}",
+          "fontFamily": "{typography.fontFamily.ui}",
+          "fontWeight": "{typography.fontWeight.ui.normal}",
           "lineHeight": "{typography.lineHeight.notification.message}",
           "fontSize": "{typography.fontSize.notification.message}",
           "letterSpacing": "{typography.letterSpacing.base.zero}",
@@ -1837,25 +1837,25 @@
       "button": {
         "large": {
           "$type": "fontSizes",
-          "$value": "{typography.fontSize.text.large}"
+          "$value": "{typography.fontSize.ui.large}"
         },
         "medium": {
           "$type": "fontSizes",
-          "$value": "{typography.fontSize.text.medium}"
+          "$value": "{typography.fontSize.ui.medium}"
         },
         "small": {
           "$type": "fontSizes",
-          "$value": "{typography.fontSize.text.small}"
+          "$value": "{typography.fontSize.ui.small}"
         }
       },
       "notification": {
         "title": {
           "$type": "fontSizes",
-          "$value": "{typography.fontSize.text.large}"
+          "$value": "{typography.fontSize.ui.large}"
         },
         "message": {
           "$type": "fontSizes",
-          "$value": "{typography.fontSize.text.medium}"
+          "$value": "{typography.fontSize.ui.medium}"
         }
       }
     },
@@ -1905,25 +1905,25 @@
       "button": {
         "large": {
           "$type": "lineHeights",
-          "$value": "{typography.lineHeight.text.large}"
+          "$value": "{typography.lineHeight.ui.large}"
         },
         "medium": {
           "$type": "lineHeights",
-          "$value": "{typography.lineHeight.text.medium}"
+          "$value": "{typography.lineHeight.ui.medium}"
         },
         "small": {
           "$type": "lineHeights",
-          "$value": "{typography.lineHeight.text.small}"
+          "$value": "{typography.lineHeight.ui.small}"
         }
       },
       "notification": {
         "title": {
           "$type": "lineHeights",
-          "$value": "{typography.lineHeight.text.large}"
+          "$value": "{typography.lineHeight.ui.large}"
         },
         "message": {
           "$type": "lineHeights",
-          "$value": "{typography.lineHeight.text.medium}"
+          "$value": "{typography.lineHeight.ui.medium}"
         }
       }
     }

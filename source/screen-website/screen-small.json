@@ -44,7 +44,7 @@
         },
         "hero-body": {
           "$type": "fontSizes",
-          "$value": "{typography.fontSize.text.large}"
+          "$value": "{typography.fontSize.ui.large}"
         },
         "section-title": {
           "$type": "fontSizes",
@@ -52,19 +52,19 @@
         },
         "section-body": {
           "$type": "fontSizes",
-          "$value": "{typography.fontSize.text.medium}"
+          "$value": "{typography.fontSize.ui.medium}"
         },
         "feature-title": {
           "$type": "fontSizes",
-          "$value": "{typography.fontSize.text.large}"
+          "$value": "{typography.fontSize.ui.large}"
         },
         "feature-body": {
           "$type": "fontSizes",
-          "$value": "{typography.fontSize.text.medium}"
+          "$value": "{typography.fontSize.ui.medium}"
         },
         "module-title": {
           "$type": "fontSizes",
-          "$value": "{typography.fontSize.text.medium}"
+          "$value": "{typography.fontSize.ui.medium}"
         }
       }
     }

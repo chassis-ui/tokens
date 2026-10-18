@@ -61,36 +61,20 @@
   },
   "typography": {
     "fontFamily": {
-      "text": {
+      "ui": {
         "$type": "fontFamilies",
         "$value": "'DM Sans', Inter, system-ui, sans-serif"
+      },
+      "prose": {
+        "$type": "fontFamilies",
+        "$value": "{typography.fontFamily.display}"
       },
       "display": {
         "$type": "fontFamilies",
         "$value": "'Source Serif 4','Source Serif Pro', ui-serif, serif"
       },
-      "html": {
+      "context": {
         "heading": {
-          "$type": "fontFamilies",
-          "$value": "{typography.fontFamily.display}"
-        },
-        "body": {
-          "$type": "fontFamilies",
-          "$value": "{typography.fontFamily.display}"
-        },
-        "paragraph": {
-          "$type": "fontFamilies",
-          "$value": "{typography.fontFamily.display}"
-        },
-        "blockquote": {
-          "$type": "fontFamilies",
-          "$value": "{typography.fontFamily.display}"
-        },
-        "list": {
-          "$type": "fontFamilies",
-          "$value": "{typography.fontFamily.display}"
-        },
-        "cite": {
           "$type": "fontFamilies",
           "$value": "{typography.fontFamily.display}"
         }
@@ -101,7 +85,7 @@
       }
     },
     "fontWeight": {
-      "text": {
+      "ui": {
         "normal": {
           "$type": "fontWeights",
           "$value": "Regular"
@@ -147,7 +131,7 @@
           "$value": "Bold"
         }
       },
-      "html": {
+      "context": {
         "heading": {
           "$type": "fontWeights",
           "$value": "{typography.fontWeight.display.strong}"

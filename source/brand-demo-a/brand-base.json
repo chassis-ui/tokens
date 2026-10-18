@@ -589,7 +589,7 @@
   },
   "typography": {
     "fontFamily": {
-      "text": {
+      "ui": {
         "$type": "fontFamilies",
         "$value": "Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif"
       },
@@ -603,7 +603,7 @@
       }
     },
     "fontWeight": {
-      "text": {
+      "ui": {
         "normal": {
           "$type": "fontWeights",
           "$value": "Regular"

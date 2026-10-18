@@ -65,7 +65,7 @@
   },
   "typography": {
     "fontFamily": {
-      "text": {
+      "ui": {
         "$type": "fontFamilies",
         "$value": "'Inter', system-ui, -apple-system, Helvetica, Arial, sans-serif"
       },
@@ -80,12 +80,6 @@
       "icon": {
         "$type": "fontFamilies",
         "$value": "Chassis-Icons"
-      },
-      "html": {
-        "heading": {
-          "$type": "fontFamilies",
-          "$value": "{typography.fontFamily.display}"
-        }
       },
       "context": {
         "jumbo": {
@@ -103,7 +97,7 @@
       }
     },
     "fontWeight": {
-      "text": {
+      "ui": {
         "normal": {
           "$type": "fontWeights",
           "$value": "Regular"
@@ -149,12 +143,6 @@
           "$value": "Bold"
         }
       },
-      "html": {
-        "heading": {
-          "$type": "fontWeights",
-          "$value": "{typography.fontWeight.display.mass}"
-        }
-      },
       "context": {
         "jumbo": {
           "$type": "fontWeights",
@@ -164,13 +152,17 @@
           "$type": "fontWeights",
           "$value": "{typography.fontWeight.display.mass}"
         },
+        "heading": {
+          "$type": "fontWeights",
+          "$value": "{typography.fontWeight.display.mass}"
+        },
         "title": {
           "$type": "fontWeights",
           "$value": "{typography.fontWeight.display.strong}"
         },
         "lead": {
           "$type": "fontWeights",
-          "$value": "{typography.fontWeight.text.elegant}"
+          "$value": "{typography.fontWeight.ui.elegant}"
         }
       }
     },

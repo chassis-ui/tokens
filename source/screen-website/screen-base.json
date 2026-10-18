@@ -22,8 +22,8 @@
       "hero-title": {
         "$type": "typography",
         "$value": {
-          "fontFamily": "{typography.fontFamily.text}",
-          "fontWeight": "{typography.fontWeight.text.mass}",
+          "fontFamily": "{typography.fontFamily.ui}",
+          "fontWeight": "{typography.fontWeight.ui.mass}",
           "lineHeight": "125%",
           "fontSize": "{typography.fontSize.website.hero-title}",
           "letterSpacing": "{size.unit.n1}",
@@ -33,19 +33,19 @@
       "hero-body": {
         "$type": "typography",
         "$value": {
-          "fontFamily": "{typography.fontFamily.text}",
-          "fontWeight": "{typography.fontWeight.text.normal}",
+          "fontFamily": "{typography.fontFamily.ui}",
+          "fontWeight": "{typography.fontWeight.ui.normal}",
           "lineHeight": "150%",
           "fontSize": "{typography.fontSize.website.hero-body}",
-          "letterSpacing": "{typography.letterSpacing.text.normal}",
+          "letterSpacing": "{typography.letterSpacing.ui.normal}",
           "paragraphSpacing": "{typography.paragraphSpacing.base.zero}"
         }
       },
       "section-title": {
         "$type": "typography",
         "$value": {
-          "fontFamily": "{typography.fontFamily.text}",
-          "fontWeight": "{typography.fontWeight.text.mass}",
+          "fontFamily": "{typography.fontFamily.ui}",
+          "fontWeight": "{typography.fontWeight.ui.mass}",
           "lineHeight": "125%",
           "fontSize": "{typography.fontSize.website.section-title}",
           "letterSpacing": "{size.unit.nd05}",
@@ -55,44 +55,44 @@
       "section-body": {
         "$type": "typography",
         "$value": {
-          "fontFamily": "{typography.fontFamily.text}",
-          "fontWeight": "{typography.fontWeight.text.normal}",
+          "fontFamily": "{typography.fontFamily.ui}",
+          "fontWeight": "{typography.fontWeight.ui.normal}",
           "lineHeight": "150%",
           "fontSize": "{typography.fontSize.website.section-body}",
-          "letterSpacing": "{typography.letterSpacing.text.normal}",
+          "letterSpacing": "{typography.letterSpacing.ui.normal}",
           "paragraphSpacing": "{typography.paragraphSpacing.base.zero}"
         }
       },
       "feature-title": {
         "$type": "typography",
         "$value": {
-          "fontFamily": "{typography.fontFamily.text}",
-          "fontWeight": "{typography.fontWeight.text.mass}",
+          "fontFamily": "{typography.fontFamily.ui}",
+          "fontWeight": "{typography.fontWeight.ui.mass}",
           "lineHeight": "150%",
           "fontSize": "{typography.fontSize.website.feature-title}",
-          "letterSpacing": "{typography.letterSpacing.text.mass}",
+          "letterSpacing": "{typography.letterSpacing.ui.mass}",
           "paragraphSpacing": "{typography.paragraphSpacing.base.zero}"
         }
       },
       "feature-body": {
         "$type": "typography",
         "$value": {
-          "fontFamily": "{typography.fontFamily.text}",
-          "fontWeight": "{typography.fontWeight.text.normal}",
+          "fontFamily": "{typography.fontFamily.ui}",
+          "fontWeight": "{typography.fontWeight.ui.normal}",
           "lineHeight": "150%",
           "fontSize": "{typography.fontSize.website.feature-body}",
-          "letterSpacing": "{typography.letterSpacing.text.normal}",
+          "letterSpacing": "{typography.letterSpacing.ui.normal}",
           "paragraphSpacing": "{typography.paragraphSpacing.base.zero}"
         }
       },
       "module-title": {
         "$type": "typography",
         "$value": {
-          "fontFamily": "{typography.fontFamily.text}",
-          "fontWeight": "{typography.fontWeight.text.mass}",
+          "fontFamily": "{typography.fontFamily.ui}",
+          "fontWeight": "{typography.fontWeight.ui.mass}",
           "lineHeight": "150%",
           "fontSize": "{typography.fontSize.website.module-title}",
-          "letterSpacing": "{typography.letterSpacing.text.mass}",
+          "letterSpacing": "{typography.letterSpacing.ui.mass}",
           "paragraphSpacing": "{typography.paragraphSpacing.base.zero}"
         }
       }
