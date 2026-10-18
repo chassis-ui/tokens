@@ -46,10 +46,13 @@ export default defineConfig({
           // The integration adds the fallback `_chassis-tokens.scss` of `@chassis-ui/css`.
           // Custom override `_chassis-tokens.scss` if present in `src/scss`
           // loadPaths: [path.resolve(import.meta.dirname, 'src/scss')],
-          // Resolve `@chassis-ui/tokens/...` imports to the workspace package in
-          // `packages/tokens/`. The framework fallback `_chassis-tokens.scss` in
-          // `@chassis-ui/css` forwards `@chassis-ui/tokens/dist/...`, which would otherwise
-          // resolve to the published version that `@chassis-ui/css` depends on.
+          // Resolve `@chassis-ui/tokens/...` imports to the version in the site's own
+          // `node_modules`, the one `package.json` names. The framework fallback
+          // `_chassis-tokens.scss` in `@chassis-ui/css` forwards `@chassis-ui/tokens/dist/...`,
+          // which would otherwise resolve to the version that `@chassis-ui/css` depends on.
+          // The site names the published 0.9.0 until a release of `@chassis-ui/css` reads the
+          // typography names of 0.10 (`ui`, `prose`, `font.context.h1`); then it goes back to
+          // `workspace:*`.
           importers: [
             {
               findFileUrl(url: string) {
