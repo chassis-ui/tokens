@@ -4,7 +4,7 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Sun, 18 Oct 2026 13:49:25 GMT
+// Generated on Sun, 18 Oct 2026 14:44:28 GMT
 // Chassis - Tokens v0.9.0
 // Copyright 2026 Ozgur Gunes
 // Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
@@ -23,7 +23,7 @@ public enum ChassisTokensString {
     public static let TypographyFontFamilyContextBlockquote = "Inter"
     public static let TypographyFontFamilyContextCite = "Inter"
     public static let TypographyFontFamilyContextBody = "Inter"
-    public static let TypographyFontFamilyContextTitle = "Inter"
+    public static let TypographyFontFamilyContextTitle = "Montserrat"
     public static let TypographyFontFamilyContextLabel = "Inter"
     public static let TypographyFontFamilyCode = "Fira Code"
     public static let TypographyFontFamilyIcon = "Chassis-Icons"
@@ -143,17 +143,17 @@ public enum ChassisTokensString {
     public static let FontContextBodySmallTextCase = "none"
     public static let FontContextBodySmallTextDecoration = "none"
     public static let FontContextBodySmallFontStyle = "normal"
-    public static let FontContextTitleLargeFontFamily = "Inter"
+    public static let FontContextTitleLargeFontFamily = "Montserrat"
     public static let FontContextTitleLargeFontWeight = Font.Weight.semibold
     public static let FontContextTitleLargeTextCase = "none"
     public static let FontContextTitleLargeTextDecoration = "none"
     public static let FontContextTitleLargeFontStyle = "normal"
-    public static let FontContextTitleMediumFontFamily = "Inter"
+    public static let FontContextTitleMediumFontFamily = "Montserrat"
     public static let FontContextTitleMediumFontWeight = Font.Weight.semibold
     public static let FontContextTitleMediumTextCase = "none"
     public static let FontContextTitleMediumTextDecoration = "none"
     public static let FontContextTitleMediumFontStyle = "normal"
-    public static let FontContextTitleSmallFontFamily = "Inter"
+    public static let FontContextTitleSmallFontFamily = "Montserrat"
     public static let FontContextTitleSmallFontWeight = Font.Weight.semibold
     public static let FontContextTitleSmallTextCase = "none"
     public static let FontContextTitleSmallTextDecoration = "none"

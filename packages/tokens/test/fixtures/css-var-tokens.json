@@ -153,7 +153,7 @@
       "case": "object-valued, role size and line height",
       "token": "font.context.lead",
       "file": "main.scss",
-      "expected": "(\"font-family\": var(--font-family-prose), \"font-weight\": var(--font-weight-ui-elegant), \"font-size\": var(--font-size-lead), \"line-height\": var(--line-height-lead), \"font-style\": normal, \"letter-spacing\": 0rem, \"margin-bottom\": 0rem, \"text-transform\": none, \"text-decoration\": none)"
+      "expected": "(\"font-family\": var(--font-family-prose), \"font-weight\": var(--font-weight-prose-elegant), \"font-size\": var(--font-size-lead), \"line-height\": var(--line-height-lead), \"font-style\": normal, \"letter-spacing\": 0rem, \"margin-bottom\": 0rem, \"text-transform\": none, \"text-decoration\": none)"
     },
     {
       "group": "typography",
@@ -209,7 +209,7 @@
       "case": "context role family, weight, size and line height",
       "token": "font.context.title.medium",
       "file": "main.scss",
-      "expected": "(\"font-family\": var(--font-family-ui), \"font-weight\": var(--font-weight-display-strong), \"font-size\": var(--font-size-title-md), \"line-height\": var(--line-height-title-md), \"font-style\": normal, \"letter-spacing\": 0rem, \"margin-bottom\": 1rem, \"text-transform\": none, \"text-decoration\": none)"
+      "expected": "(\"font-family\": var(--font-family-display), \"font-weight\": var(--font-weight-display-strong), \"font-size\": var(--font-size-title-md), \"line-height\": var(--line-height-title-md), \"font-style\": normal, \"letter-spacing\": 0rem, \"margin-bottom\": 1rem, \"text-transform\": none, \"text-decoration\": none)"
     },
     {
       "group": "typography",
@@ -1008,7 +1008,7 @@
       "path": ["font", "context", "title", "medium"],
       "$type": "typography",
       "$value": {
-        "fontFamily": "'Inter', system-ui, -apple-system, Helvetica, Arial, sans-serif",
+        "fontFamily": "'Montserrat', system-ui, -apple-system, Helvetica, Arial, sans-serif",
         "fontWeight": 600,
         "lineHeight": "1.75rem",
         "fontSize": "1.1875rem",
@@ -1284,9 +1284,9 @@
       "name": "cx-typography-font-family-context-title",
       "path": ["typography", "fontFamily", "context", "title"],
       "$type": "fontFamily",
-      "$value": "'Inter', system-ui, -apple-system, Helvetica, Arial, sans-serif",
+      "$value": "'Montserrat', system-ui, -apple-system, Helvetica, Arial, sans-serif",
       "original": {
-        "$value": "{typography.fontFamily.ui}",
+        "$value": "{typography.fontFamily.display}",
         "$extensions": {
           "studio.tokens": {
             "originalType": "fontFamilies"
@@ -1620,7 +1620,7 @@
             "originalType": "fontWeights"
           },
           "chassis": {
-            "aliasPath": ["typography", "fontWeight", "ui", "elegant"],
+            "aliasPath": ["typography", "fontWeight", "prose", "elegant"],
             "sourceOrder": 2754
           }
         }

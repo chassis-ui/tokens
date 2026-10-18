@@ -3,7 +3,7 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Sun, 18 Oct 2026 13:49:21 GMT
+// Generated on Sun, 18 Oct 2026 14:44:23 GMT
 // Chassis - Tokens v0.9.0
 // Copyright 2026 Ozgur Gunes
 // Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
@@ -28,7 +28,7 @@ object ChassisTokensString {
     val typographyFontFamilyContextBlockquote get() = "Inter"
     val typographyFontFamilyContextCite get() = "Inter"
     val typographyFontFamilyContextBody get() = "Inter"
-    val typographyFontFamilyContextTitle get() = "Inter"
+    val typographyFontFamilyContextTitle get() = "Montserrat"
     val typographyFontFamilyContextLabel get() = "Inter"
     val typographyFontFamilyCode get() = "Fira Code"
     val typographyFontFamilyIcon get() = "Chassis-Icons"
@@ -148,17 +148,17 @@ object ChassisTokensString {
     val fontContextBodySmallTextCase get() = "none"
     val fontContextBodySmallTextDecoration get() = "none"
     val fontContextBodySmallFontStyle get() = "normal"
-    val fontContextTitleLargeFontFamily get() = "Inter"
+    val fontContextTitleLargeFontFamily get() = "Montserrat"
     val fontContextTitleLargeFontWeight get() = FontWeight(600)
     val fontContextTitleLargeTextCase get() = "none"
     val fontContextTitleLargeTextDecoration get() = "none"
     val fontContextTitleLargeFontStyle get() = "normal"
-    val fontContextTitleMediumFontFamily get() = "Inter"
+    val fontContextTitleMediumFontFamily get() = "Montserrat"
     val fontContextTitleMediumFontWeight get() = FontWeight(600)
     val fontContextTitleMediumTextCase get() = "none"
     val fontContextTitleMediumTextDecoration get() = "none"
     val fontContextTitleMediumFontStyle get() = "normal"
-    val fontContextTitleSmallFontFamily get() = "Inter"
+    val fontContextTitleSmallFontFamily get() = "Montserrat"
     val fontContextTitleSmallFontWeight get() = FontWeight(600)
     val fontContextTitleSmallTextCase get() = "none"
     val fontContextTitleSmallTextDecoration get() = "none"

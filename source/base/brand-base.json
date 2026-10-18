@@ -6594,19 +6594,19 @@
       "prose": {
         "normal": {
           "$type": "fontWeights",
-          "$value": "{typography.fontWeight.ui.normal}"
+          "$value": "Regular"
         },
         "strong": {
           "$type": "fontWeights",
-          "$value": "{typography.fontWeight.ui.strong}"
+          "$value": "SemiBold"
         },
         "mass": {
           "$type": "fontWeights",
-          "$value": "{typography.fontWeight.ui.mass}"
+          "$value": "Bold"
         },
         "elegant": {
           "$type": "fontWeights",
-          "$value": "{typography.fontWeight.ui.elegant}"
+          "$value": "Light"
         }
       },
       "display": {

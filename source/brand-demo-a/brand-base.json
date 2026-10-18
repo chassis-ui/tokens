@@ -621,6 +621,24 @@
           "$value": "Light"
         }
       },
+      "prose": {
+        "normal": {
+          "$type": "fontWeights",
+          "$value": "Regular"
+        },
+        "strong": {
+          "$type": "fontWeights",
+          "$value": "Medium"
+        },
+        "mass": {
+          "$type": "fontWeights",
+          "$value": "Semi Bold"
+        },
+        "elegant": {
+          "$type": "fontWeights",
+          "$value": "Light"
+        }
+      },
       "display": {
         "normal": {
           "$type": "fontWeights",
@@ -637,6 +655,16 @@
         "elegant": {
           "$type": "fontWeights",
           "$value": "Medium"
+        }
+      },
+      "code": {
+        "normal": {
+          "$type": "fontWeights",
+          "$value": "Regular"
+        },
+        "strong": {
+          "$type": "fontWeights",
+          "$value": "Bold"
         }
       }
     }

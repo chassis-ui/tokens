@@ -93,11 +93,33 @@
         "heading": {
           "$type": "fontFamilies",
           "$value": "{typography.fontFamily.display}"
+        },
+        "title": {
+          "$type": "fontFamilies",
+          "$value": "{typography.fontFamily.display}"
         }
       }
     },
     "fontWeight": {
       "ui": {
+        "normal": {
+          "$type": "fontWeights",
+          "$value": "Regular"
+        },
+        "strong": {
+          "$type": "fontWeights",
+          "$value": "Semi Bold"
+        },
+        "mass": {
+          "$type": "fontWeights",
+          "$value": "Bold"
+        },
+        "elegant": {
+          "$type": "fontWeights",
+          "$value": "Light"
+        }
+      },
+      "prose": {
         "normal": {
           "$type": "fontWeights",
           "$value": "Regular"
@@ -162,7 +184,7 @@
         },
         "lead": {
           "$type": "fontWeights",
-          "$value": "{typography.fontWeight.ui.elegant}"
+          "$value": "{typography.fontWeight.prose.elegant}"
         }
       }
     },

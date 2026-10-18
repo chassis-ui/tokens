@@ -312,10 +312,10 @@ describe('role tokens', () => {
     return lookupsIn({ ...fixture.tokens, [path]: { ...token, original } })
   }
 
-  // chassis points the title weight at the display family
+  // chassis points the title role group at the display family and weight
   test('a part that references a role group names the family token its alias leads to', () => {
     const value = webValue(title, references)
-    expect(value).toContain('"font-family": var(--font-family-ui), ')
+    expect(value).toContain('"font-family": var(--font-family-display), ')
     expect(value).toContain('"font-weight": var(--font-weight-display-strong), ')
   })
 

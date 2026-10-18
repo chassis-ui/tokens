@@ -69,8 +69,9 @@ format. Edit them in Figma with Tokens Studio, synced to this repository with th
 
    `pnpm tokens:lint:source` names the token set and the token of mistakes the build would
    accept: a name that one theme or screen declares and another does not, a name the platforms
-   cannot use, an unknown font weight, a token without a type, one name with two types, or a
-   letter spacing that Figma variables cannot hold.
+   cannot use, an unknown font weight, a token without a type, one name with two types, a
+   letter spacing that Figma variables cannot hold, or a font token or text role group whose
+   weight belongs to another family than its family.
 
    `pnpm tokens:diff` lists the token names added, removed, renamed and changed in value in each
    file of `dist/`, against `main`; `git diff packages/tokens/dist` shows the lines. CI adds the

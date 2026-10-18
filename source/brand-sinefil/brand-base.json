@@ -103,6 +103,24 @@
           "$value": "Light"
         }
       },
+      "prose": {
+        "normal": {
+          "$type": "fontWeights",
+          "$value": "Regular"
+        },
+        "strong": {
+          "$type": "fontWeights",
+          "$value": "SemiBold"
+        },
+        "mass": {
+          "$type": "fontWeights",
+          "$value": "Bold"
+        },
+        "elegant": {
+          "$type": "fontWeights",
+          "$value": "Light"
+        }
+      },
       "display": {
         "normal": {
           "$type": "fontWeights",

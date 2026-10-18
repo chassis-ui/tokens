@@ -4,7 +4,7 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Sun, 18 Oct 2026 13:49:24 GMT
+// Generated on Sun, 18 Oct 2026 14:44:26 GMT
 // Chassis - Tokens v0.9.0
 // Copyright 2026 Ozgur Gunes
 // Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
@@ -23,7 +23,7 @@ public enum ChassisTokensString {
     public static let TypographyFontFamilyContextBlockquote = TypographyFontFamilyProse
     public static let TypographyFontFamilyContextCite = TypographyFontFamilyProse
     public static let TypographyFontFamilyContextBody = TypographyFontFamilyProse
-    public static let TypographyFontFamilyContextTitle = TypographyFontFamilyUi
+    public static let TypographyFontFamilyContextTitle = TypographyFontFamilyDisplay
     public static let TypographyFontFamilyContextLabel = TypographyFontFamilyUi
     public static let TypographyFontFamilyCode = "Fira Code"
     public static let TypographyFontFamilyIcon = "Chassis-Icons"

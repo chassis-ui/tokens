@@ -4,7 +4,7 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Sun, 18 Oct 2026 13:49:16 GMT
+// Generated on Sun, 18 Oct 2026 14:44:18 GMT
 // Chassis - Tokens v0.9.0
 // Copyright 2026 Ozgur Gunes
 // Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
@@ -2043,7 +2043,7 @@ public enum ChassisTokens {
     public static let TypographyFontFamilyContextBlockquote = "Inter"
     public static let TypographyFontFamilyContextCite = "Inter"
     public static let TypographyFontFamilyContextBody = "Inter"
-    public static let TypographyFontFamilyContextTitle = "Inter"
+    public static let TypographyFontFamilyContextTitle = "Montserrat"
     public static let TypographyFontFamilyContextLabel = "Inter"
     public static let TypographyFontFamilyCode = "Fira Code"
     public static let TypographyFontFamilyIcon = "Chassis-Icons"
@@ -2432,7 +2432,7 @@ public enum ChassisTokens {
     public static let FontContextBodySmallTextCase = "none"
     public static let FontContextBodySmallTextDecoration = "none"
     public static let FontContextBodySmallFontStyle = "normal"
-    public static let FontContextTitleLargeFontFamily = "Inter"
+    public static let FontContextTitleLargeFontFamily = "Montserrat"
     public static let FontContextTitleLargeFontWeight = UIFont.Weight.semibold
     public static let FontContextTitleLargeLineHeight = CGFloat(32)
     public static let FontContextTitleLargeFontSize = CGFloat(22)
@@ -2441,7 +2441,7 @@ public enum ChassisTokens {
     public static let FontContextTitleLargeTextCase = "none"
     public static let FontContextTitleLargeTextDecoration = "none"
     public static let FontContextTitleLargeFontStyle = "normal"
-    public static let FontContextTitleMediumFontFamily = "Inter"
+    public static let FontContextTitleMediumFontFamily = "Montserrat"
     public static let FontContextTitleMediumFontWeight = UIFont.Weight.semibold
     public static let FontContextTitleMediumLineHeight = CGFloat(28)
     public static let FontContextTitleMediumFontSize = CGFloat(19)
@@ -2450,7 +2450,7 @@ public enum ChassisTokens {
     public static let FontContextTitleMediumTextCase = "none"
     public static let FontContextTitleMediumTextDecoration = "none"
     public static let FontContextTitleMediumFontStyle = "normal"
-    public static let FontContextTitleSmallFontFamily = "Inter"
+    public static let FontContextTitleSmallFontFamily = "Montserrat"
     public static let FontContextTitleSmallFontWeight = UIFont.Weight.semibold
     public static let FontContextTitleSmallLineHeight = CGFloat(24)
     public static let FontContextTitleSmallFontSize = CGFloat(16)

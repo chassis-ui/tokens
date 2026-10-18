@@ -1,5 +1,5 @@
 {
-  "source": "Copied from source/ on 2026-09-27, in source form: the theme options chassis, light, dark, large, medium and small of $themes.json with the sets they enable (fewer for the brand and themes); typography.fontWeight of base/brand-base.json and brand-chassis/brand-base.json; the figma switch and six color.utility tokens of base/theme-base.json and base/theme-dark.json, with the figma switch of base/theme-light.json and base/theme-dark.json; the four screen-website sets in full.",
+  "source": "Copied from source/ on 2026-09-27, in source form: the theme options chassis, light, dark, large, medium and small of $themes.json with the sets they enable (fewer for the brand and themes); typography.fontFamily and typography.fontWeight of base/brand-base.json and brand-chassis/brand-base.json; the figma switch and six color.utility tokens of base/theme-base.json and base/theme-dark.json, with the figma switch of base/theme-light.json and base/theme-dark.json; the four screen-website sets in full. The typography of the brand sets and the screen-website sets were copied again on 2026-10-18, after the typography families were named by job.",
   "themes": [
     {
       "group": "brand",
@@ -53,8 +53,86 @@
   "sets": {
     "base/brand-base": {
       "typography": {
+        "fontFamily": {
+          "ui": {
+            "$type": "fontFamilies",
+            "$value": "'Open Sans', system-ui, sans-serif"
+          },
+          "prose": {
+            "$type": "fontFamilies",
+            "$value": "{typography.fontFamily.ui}"
+          },
+          "display": {
+            "$type": "fontFamilies",
+            "$value": "Merriweather, ui-serif, serif"
+          },
+          "context": {
+            "jumbo": {
+              "$type": "fontFamilies",
+              "$value": "{typography.fontFamily.ui}"
+            },
+            "hero": {
+              "$type": "fontFamilies",
+              "$value": "{typography.fontFamily.ui}"
+            },
+            "heading": {
+              "$type": "fontFamilies",
+              "$value": "{typography.fontFamily.ui}"
+            },
+            "lead": {
+              "$type": "fontFamilies",
+              "$value": "{typography.fontFamily.prose}"
+            },
+            "blockquote": {
+              "$type": "fontFamilies",
+              "$value": "{typography.fontFamily.prose}"
+            },
+            "cite": {
+              "$type": "fontFamilies",
+              "$value": "{typography.fontFamily.prose}"
+            },
+            "body": {
+              "$type": "fontFamilies",
+              "$value": "{typography.fontFamily.prose}"
+            },
+            "title": {
+              "$type": "fontFamilies",
+              "$value": "{typography.fontFamily.ui}"
+            },
+            "label": {
+              "$type": "fontFamilies",
+              "$value": "{typography.fontFamily.ui}"
+            }
+          },
+          "code": {
+            "$type": "fontFamilies",
+            "$value": "'IBM Plex Mono', Courier, monospace"
+          },
+          "icon": {
+            "$type": "fontFamilies",
+            "$value": "Chassis-Icons"
+          }
+        },
         "fontWeight": {
-          "text": {
+          "ui": {
+            "normal": {
+              "$type": "fontWeights",
+              "$value": "Regular"
+            },
+            "strong": {
+              "$type": "fontWeights",
+              "$value": "SemiBold"
+            },
+            "mass": {
+              "$type": "fontWeights",
+              "$value": "Bold"
+            },
+            "elegant": {
+              "$type": "fontWeights",
+              "$value": "Light"
+            }
+          },
+          "prose": {
             "normal": {
               "$type": "fontWeights",
               "$value": "Regular"
@@ -100,38 +178,42 @@
               "$value": "Bold"
             }
           },
-          "html": {
-            "code": {
+          "context": {
+            "jumbo": {
               "$type": "fontWeights",
-              "$value": "{typography.fontWeight.text.normal}"
+              "$value": "{typography.fontWeight.ui.mass}"
+            },
+            "hero": {
+              "$type": "fontWeights",
+              "$value": "{typography.fontWeight.ui.mass}"
+            },
+            "heading": {
+              "$type": "fontWeights",
+              "$value": "{typography.fontWeight.ui.mass}"
+            },
+            "lead": {
+              "$type": "fontWeights",
+              "$value": "{typography.fontWeight.prose.normal}"
             },
             "blockquote": {
               "$type": "fontWeights",
               "$value": "Light Italic"
             },
-            "body": {
-              "$type": "fontWeights",
-              "$value": "{typography.fontWeight.text.normal}"
-            },
-            "paragraph": {
-              "$type": "fontWeights",
-              "$value": "{typography.fontWeight.text.normal}"
-            },
-            "heading": {
-              "$type": "fontWeights",
-              "$value": "{typography.fontWeight.text.mass}"
-            },
             "cite": {
               "$type": "fontWeights",
-              "$value": "{typography.fontWeight.text.strong}"
+              "$value": "{typography.fontWeight.prose.strong}"
             },
-            "list": {
+            "body": {
               "$type": "fontWeights",
-              "$value": "{typography.fontWeight.text.normal}"
+              "$value": "{typography.fontWeight.prose.normal}"
             },
-            "bold": {
+            "title": {
               "$type": "fontWeights",
-              "$value": "{typography.fontWeight.text.mass}"
+              "$value": "{typography.fontWeight.ui.strong}"
+            },
+            "label": {
+              "$type": "fontWeights",
+              "$value": "{typography.fontWeight.ui.strong}"
             }
           }
         }
@@ -139,8 +221,62 @@
     },
     "brand-chassis/brand-base": {
       "typography": {
+        "fontFamily": {
+          "ui": {
+            "$type": "fontFamilies",
+            "$value": "'Inter', system-ui, -apple-system, Helvetica, Arial, sans-serif"
+          },
+          "display": {
+            "$type": "fontFamilies",
+            "$value": "'Montserrat', system-ui, -apple-system, Helvetica, Arial, sans-serif"
+          },
+          "code": {
+            "$type": "fontFamilies",
+            "$value": "'Fira Code', Menlo, Monaco, Consolas, 'Courier New', monospace"
+          },
+          "icon": {
+            "$type": "fontFamilies",
+            "$value": "Chassis-Icons"
+          },
+          "context": {
+            "jumbo": {
+              "$type": "fontFamilies",
+              "$value": "{typography.fontFamily.display}"
+            },
+            "hero": {
+              "$type": "fontFamilies",
+              "$value": "{typography.fontFamily.display}"
+            },
+            "heading": {
+              "$type": "fontFamilies",
+              "$value": "{typography.fontFamily.display}"
+            },
+            "title": {
+              "$type": "fontFamilies",
+              "$value": "{typography.fontFamily.display}"
+            }
+          }
+        },
         "fontWeight": {
-          "text": {
+          "ui": {
+            "normal": {
+              "$type": "fontWeights",
+              "$value": "Regular"
+            },
+            "strong": {
+              "$type": "fontWeights",
+              "$value": "Semi Bold"
+            },
+            "mass": {
+              "$type": "fontWeights",
+              "$value": "Bold"
+            },
+            "elegant": {
+              "$type": "fontWeights",
+              "$value": "Light"
+            }
+          },
+          "prose": {
             "normal": {
               "$type": "fontWeights",
               "$value": "Regular"
@@ -184,6 +320,28 @@
             "strong": {
               "$type": "fontWeights",
               "$value": "Bold"
+            }
+          },
+          "context": {
+            "jumbo": {
+              "$type": "fontWeights",
+              "$value": "{typography.fontWeight.display.mass}"
+            },
+            "hero": {
+              "$type": "fontWeights",
+              "$value": "{typography.fontWeight.display.mass}"
+            },
+            "heading": {
+              "$type": "fontWeights",
+              "$value": "{typography.fontWeight.display.mass}"
+            },
+            "title": {
+              "$type": "fontWeights",
+              "$value": "{typography.fontWeight.display.strong}"
+            },
+            "lead": {
+              "$type": "fontWeights",
+              "$value": "{typography.fontWeight.prose.elegant}"
             }
           }
         }
@@ -317,92 +475,78 @@
           "hero-title": {
             "$type": "typography",
             "$value": {
-              "fontFamily": "{typography.fontFamily.text}",
-              "fontWeight": "{typography.fontWeight.text.mass}",
+              "fontFamily": "{typography.fontFamily.ui}",
+              "fontWeight": "{typography.fontWeight.ui.mass}",
               "lineHeight": "125%",
               "fontSize": "{typography.fontSize.website.hero-title}",
               "letterSpacing": "{size.unit.n1}",
-              "paragraphSpacing": "{typography.paragraphSpacing.base.zero}",
-              "textCase": "{typography.textCase.base.none}",
-              "textDecoration": "{typography.textDecoration.base.none}"
+              "paragraphSpacing": "{typography.paragraphSpacing.base.zero}"
             }
           },
           "hero-body": {
             "$type": "typography",
             "$value": {
-              "fontFamily": "{typography.fontFamily.text}",
-              "fontWeight": "{typography.fontWeight.text.normal}",
+              "fontFamily": "{typography.fontFamily.ui}",
+              "fontWeight": "{typography.fontWeight.ui.normal}",
               "lineHeight": "150%",
               "fontSize": "{typography.fontSize.website.hero-body}",
-              "letterSpacing": "{typography.letterSpacing.base.zero}",
-              "paragraphSpacing": "{typography.paragraphSpacing.base.zero}",
-              "textCase": "{typography.textCase.base.none}",
-              "textDecoration": "{typography.textDecoration.base.none}"
+              "letterSpacing": "{typography.letterSpacing.ui.normal}",
+              "paragraphSpacing": "{typography.paragraphSpacing.base.zero}"
             }
           },
           "section-title": {
             "$type": "typography",
             "$value": {
-              "fontFamily": "{typography.fontFamily.text}",
-              "fontWeight": "{typography.fontWeight.text.mass}",
+              "fontFamily": "{typography.fontFamily.ui}",
+              "fontWeight": "{typography.fontWeight.ui.mass}",
               "lineHeight": "125%",
               "fontSize": "{typography.fontSize.website.section-title}",
               "letterSpacing": "{size.unit.nd05}",
-              "paragraphSpacing": "{typography.paragraphSpacing.base.zero}",
-              "textCase": "{typography.textCase.base.none}",
-              "textDecoration": "{typography.textDecoration.base.none}"
+              "paragraphSpacing": "{typography.paragraphSpacing.base.zero}"
             }
           },
           "section-body": {
             "$type": "typography",
             "$value": {
-              "fontFamily": "{typography.fontFamily.text}",
-              "fontWeight": "{typography.fontWeight.text.normal}",
+              "fontFamily": "{typography.fontFamily.ui}",
+              "fontWeight": "{typography.fontWeight.ui.normal}",
               "lineHeight": "150%",
               "fontSize": "{typography.fontSize.website.section-body}",
-              "letterSpacing": "{typography.letterSpacing.base.zero}",
-              "paragraphSpacing": "{typography.paragraphSpacing.base.zero}",
-              "textCase": "{typography.textCase.base.none}",
-              "textDecoration": "{typography.textDecoration.base.none}"
+              "letterSpacing": "{typography.letterSpacing.ui.normal}",
+              "paragraphSpacing": "{typography.paragraphSpacing.base.zero}"
             }
           },
           "feature-title": {
             "$type": "typography",
             "$value": {
-              "fontFamily": "{typography.fontFamily.text}",
-              "fontWeight": "{typography.fontWeight.text.mass}",
+              "fontFamily": "{typography.fontFamily.ui}",
+              "fontWeight": "{typography.fontWeight.ui.mass}",
               "lineHeight": "150%",
               "fontSize": "{typography.fontSize.website.feature-title}",
-              "letterSpacing": "{typography.letterSpacing.base.zero}",
-              "paragraphSpacing": "{typography.paragraphSpacing.base.zero}",
-              "textCase": "{typography.textCase.base.none}",
-              "textDecoration": "{typography.textDecoration.base.none}"
+              "letterSpacing": "{typography.letterSpacing.ui.mass}",
+              "paragraphSpacing": "{typography.paragraphSpacing.base.zero}"
             }
           },
           "feature-body": {
             "$type": "typography",
             "$value": {
-              "fontFamily": "{typography.fontFamily.text}",
-              "fontWeight": "{typography.fontWeight.text.normal}",
+              "fontFamily": "{typography.fontFamily.ui}",
+              "fontWeight": "{typography.fontWeight.ui.normal}",
               "lineHeight": "150%",
               "fontSize": "{typography.fontSize.website.feature-body}",
-              "letterSpacing": "{typography.letterSpacing.base.zero}",
-              "paragraphSpacing": "{typography.paragraphSpacing.base.zero}",
-              "textCase": "{typography.textCase.base.none}",
-              "textDecoration": "{typography.textDecoration.base.none}"
+              "letterSpacing": "{typography.letterSpacing.ui.normal}",
+              "paragraphSpacing": "{typography.paragraphSpacing.base.zero}"
             }
           },
           "module-title": {
             "$type": "typography",
             "$value": {
-              "fontFamily": "{typography.fontFamily.text}",
-              "fontWeight": "{typography.fontWeight.text.mass}",
+              "fontFamily": "{typography.fontFamily.ui}",
+              "fontWeight": "{typography.fontWeight.ui.mass}",
               "lineHeight": "150%",
               "fontSize": "{typography.fontSize.website.module-title}",
-              "letterSpacing": "{typography.letterSpacing.base.zero}",
-              "paragraphSpacing": "{typography.paragraphSpacing.base.zero}",
-              "textCase": "{typography.textCase.base.none}",
-              "textDecoration": "{typography.textDecoration.base.none}"
+              "letterSpacing": "{typography.letterSpacing.ui.mass}",
+              "paragraphSpacing": "{typography.paragraphSpacing.base.zero}"
             }
           }
         }
@@ -454,7 +598,7 @@
             },
             "hero-body": {
               "$type": "fontSizes",
-              "$value": "{typography.fontSize.text.xlarge}"
+              "$value": "{typography.fontSize.ui.xlarge}"
             },
             "section-title": {
               "$type": "fontSizes",
@@ -462,19 +606,19 @@
             },
             "section-body": {
               "$type": "fontSizes",
-              "$value": "{typography.fontSize.text.xlarge}"
+              "$value": "{typography.fontSize.ui.xlarge}"
             },
             "feature-title": {
               "$type": "fontSizes",
-              "$value": "{typography.fontSize.text.xlarge}"
+              "$value": "{typography.fontSize.ui.xlarge}"
             },
             "feature-body": {
               "$type": "fontSizes",
-              "$value": "{typography.fontSize.text.large}"
+              "$value": "{typography.fontSize.ui.large}"
             },
             "module-title": {
               "$type": "fontSizes",
-              "$value": "{typography.fontSize.text.large}"
+              "$value": "{typography.fontSize.ui.large}"
             }
           }
         }
@@ -483,7 +627,7 @@
         "website": {
           "section-padding-y": {
             "$type": "spacing",
-            "$value": "{space.unit.48}"
+            "$value": "{space.unit.64}"
           },
           "section-padding-x": {
             "$type": "spacing",
@@ -602,7 +746,7 @@
             },
             "hero-body": {
               "$type": "fontSizes",
-              "$value": "{typography.fontSize.text.large}"
+              "$value": "{typography.fontSize.ui.large}"
             },
             "section-title": {
               "$type": "fontSizes",
@@ -610,19 +754,19 @@
             },
             "section-body": {
               "$type": "fontSizes",
-              "$value": "{typography.fontSize.text.large}"
+              "$value": "{typography.fontSize.ui.large}"
             },
             "feature-title": {
               "$type": "fontSizes",
-              "$value": "{typography.fontSize.text.large}"
+              "$value": "{typography.fontSize.ui.large}"
             },
             "feature-body": {
               "$type": "fontSizes",
-              "$value": "{typography.fontSize.text.medium}"
+              "$value": "{typography.fontSize.ui.medium}"
             },
             "module-title": {
               "$type": "fontSizes",
-              "$value": "{typography.fontSize.text.medium}"
+              "$value": "{typography.fontSize.ui.medium}"
             }
           }
         }
@@ -631,7 +775,7 @@
         "website": {
           "section-padding-y": {
             "$type": "spacing",
-            "$value": "{space.unit.64}"
+            "$value": "{space.unit.48}"
           },
           "section-padding-x": {
             "$type": "spacing",
@@ -750,7 +894,7 @@
             },
             "hero-body": {
               "$type": "fontSizes",
-              "$value": "{typography.fontSize.text.large}"
+              "$value": "{typography.fontSize.ui.large}"
             },
             "section-title": {
               "$type": "fontSizes",
@@ -758,19 +902,19 @@
             },
             "section-body": {
               "$type": "fontSizes",
-              "$value": "{typography.fontSize.text.medium}"
+              "$value": "{typography.fontSize.ui.medium}"
             },
             "feature-title": {
               "$type": "fontSizes",
-              "$value": "{typography.fontSize.text.large}"
+              "$value": "{typography.fontSize.ui.large}"
             },
             "feature-body": {
               "$type": "fontSizes",
-              "$value": "{typography.fontSize.text.medium}"
+              "$value": "{typography.fontSize.ui.medium}"
             },
             "module-title": {
               "$type": "fontSizes",
-              "$value": "{typography.fontSize.text.medium}"
+              "$value": "{typography.fontSize.ui.medium}"
             }
           }
         }

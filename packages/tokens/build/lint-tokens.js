@@ -15,6 +15,10 @@
  *              - letter-spacing: no letter spacing is a percentage or in em, which
  *                               Figma variables cannot hold; it is in pixels, with
  *                               or without `px`, or a reference
+ *              - font-weight-family: a set that sets a font family sets all of its
+ *                               weights too, and in each token-set list the weight of
+ *                               a font token and of a text role group belongs to the
+ *                               family that the token takes its family from
  *
  *              Sets that no theme selects are not built, so they are not checked.
  *
@@ -283,13 +287,54 @@ export function lintTokens({ themes, sets }) {
     }
   }
 
+  // font-weight-family: a set that sets a family sets its weights
+  const familyWeights = new Map()
+  for (const { tokens } of Object.values(tokensBySet)) {
+    for (const name of tokens.keys()) {
+      const [group, part, family, weight] = name.split('.')
+      if (group !== 'typography' || part !== 'fontWeight' || family === ROLE_GROUP || !weight)
+        continue
+      if (!familyWeights.has(family)) familyWeights.set(family, new Set())
+      familyWeights.get(family).add(name)
+    }
+  }
+  for (const [set, { tokens }] of Object.entries(tokensBySet)) {
+    for (const name of tokens.keys()) {
+      const [group, part, family] = name.split('.')
+      if (group !== 'typography' || part !== 'fontFamily' || family === ROLE_GROUP) continue
+      const missing = [...(familyWeights.get(family) ?? [])].filter((weight) => !tokens.has(weight))
+      if (missing.length > 0) {
+        report(
+          'font-weight-family',
+          set,
+          name,
+          `sets the family "${family}" without its weights ${missing.join(', ')}`
+        )
+      }
+    }
+  }
+
+  // font-weight-family: the weight of a font token belongs to its family
+  for (const listSets of Object.values(lists)) {
+    /** @type {Map<string, {set: string, token: any}>} */
+    const declared = new Map()
+    for (const set of listSets) {
+      for (const [name, token] of tokensBySet[set].tokens) declared.set(name, { set, token })
+    }
+    for (const mismatch of weightFamilyMismatches(declared)) {
+      if (!once(`weight-family ${mismatch.set} ${mismatch.token} ${mismatch.message}`)) continue
+      report('font-weight-family', mismatch.set, mismatch.token, mismatch.message)
+    }
+  }
+
   const ruleOrder = [
     'same-names',
     'name-format',
     'font-weight',
     'token-type',
     'type-conflict',
-    'letter-spacing'
+    'letter-spacing',
+    'font-weight-family'
   ]
   const setOrder = Object.keys(sets)
   return errors.sort(
@@ -297,6 +342,82 @@ export function lintTokens({ themes, sets }) {
       ruleOrder.indexOf(a.rule) - ruleOrder.indexOf(b.rule) ||
       setOrder.indexOf(a.set) - setOrder.indexOf(b.set)
   )
+}
+
+/** The text role groups, whose family and weight tokens alias a family token. */
+const ROLE_GROUP = 'context'
+
+/**
+ * Returns the family that a font family or font weight reference leads to: the first
+ * `typography.fontFamily.<family>` or `typography.fontWeight.<family>.<weight>` on its way
+ * that is not a text role group. A role group that holds a value of its own, or a reference
+ * to a token that the list does not declare, leads to no family.
+ *
+ * @param {string} name - A token name, such as `typography.fontWeight.context.lead`.
+ * @param {'fontFamily'|'fontWeight'} property
+ * @param {Map<string, {set: string, token: any}>} declared - The tokens of one token-set list.
+ * @returns {string|undefined} e.g. `prose`
+ */
+export function familyOf(name, property, declared) {
+  const seen = new Set()
+  let current = name
+  while (!seen.has(current)) {
+    seen.add(current)
+    const [group, part, family] = current.split('.')
+    if (group !== 'typography' || part !== property || family === undefined) return undefined
+    if (family !== ROLE_GROUP) return family
+    const value = declared.get(current)?.token.$value
+    if (!isReference(value)) return undefined
+    current = value.slice(1, -1)
+  }
+  return undefined
+}
+
+/**
+ * Finds the font tokens and the text role groups of one token-set list whose weight
+ * belongs to another family than their family. A role group is checked once, on its weight
+ * token; a font token whose family and weight both reference role groups is checked
+ * through them.
+ *
+ * @param {Map<string, {set: string, token: any}>} declared - The tokens of one token-set list.
+ * @returns {{set: string, token: string, message: string}[]}
+ */
+export function weightFamilyMismatches(declared) {
+  const mismatches = []
+  const prefix = `typography.fontFamily.${ROLE_GROUP}.`
+  for (const [name] of declared) {
+    if (!name.startsWith(prefix)) continue
+    const weightName = `typography.fontWeight.${ROLE_GROUP}.${name.slice(prefix.length)}`
+    const weight = declared.get(weightName)
+    if (!weight) continue
+    const family = familyOf(name, 'fontFamily', declared)
+    const weightFamily = familyOf(weightName, 'fontWeight', declared)
+    if (family && weightFamily && family !== weightFamily) {
+      mismatches.push({
+        set: weight.set,
+        token: weightName,
+        message: `is a weight of the family "${weightFamily}", but ${name} leads to the family "${family}"`
+      })
+    }
+  }
+  for (const [name, { set, token }] of declared) {
+    if (token.$type !== 'typography' || typeof token.$value !== 'object') continue
+    const { fontFamily, fontWeight } = token.$value
+    if (!isReference(fontFamily) || !isReference(fontWeight)) continue
+    const familyName = fontFamily.slice(1, -1)
+    const weightName = fontWeight.slice(1, -1)
+    if (familyName.startsWith(prefix) && weightName.split('.')[2] === ROLE_GROUP) continue
+    const family = familyOf(familyName, 'fontFamily', declared)
+    const weightFamily = familyOf(weightName, 'fontWeight', declared)
+    if (family && weightFamily && family !== weightFamily) {
+      mismatches.push({
+        set,
+        token: name,
+        message: `has a weight of the family "${weightFamily}" (${weightName}), but its family leads to "${family}"`
+      })
+    }
+  }
+  return mismatches
 }
 
 /**
