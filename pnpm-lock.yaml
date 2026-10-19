@@ -81,11 +81,11 @@ importers:
         specifier: ^3.7.4
         version: 3.7.4
       '@chassis-ui/css':
-        specifier: 0.8.0-next.0
-        version: 0.8.0-next.0(@floating-ui/dom@1.8.0)(postcss-prefix-custom-properties@0.1.0(postcss@8.5.29))(vanilla-calendar-pro@3.4.0)
+        specifier: 0.10.0
+        version: 0.10.0(@floating-ui/dom@1.8.0)(postcss-prefix-custom-properties@0.1.0(postcss@8.5.29))(vanilla-calendar-pro@3.4.0)
       '@chassis-ui/docs':
-        specifier: ^0.8.0
-        version: 0.8.0(@astrojs/markdown-remark@7.3.2)(@chassis-ui/css@0.8.0-next.0(@floating-ui/dom@1.8.0)(postcss-prefix-custom-properties@0.1.0(postcss@8.5.29))(vanilla-calendar-pro@3.4.0))(@pagefind/component-ui@1.5.2)(@shikijs/transformers@4.5.0)(astro@7.3.8(@astrojs/markdown-remark@7.3.2)(@types/node@24.19.1)(esbuild@0.28.2)(sass@1.105.1)(yaml@2.9.1))(html-validate@11.16.2(@vitest/expect@4.1.11)(vitest@5.0.3(@types/node@24.19.1)(vite@8.3.4(@types/node@24.19.1)(esbuild@0.28.2)(sass@1.105.1)(yaml@2.9.1))))(htmlparser2@12.0.0)(rehype-autolink-headings@7.1.0)(sass@1.105.1)(shiki@4.5.0)
+        specifier: ^0.9.0
+        version: 0.9.0(@astrojs/markdown-remark@7.3.2)(@chassis-ui/css@0.10.0(@floating-ui/dom@1.8.0)(postcss-prefix-custom-properties@0.1.0(postcss@8.5.29))(vanilla-calendar-pro@3.4.0))(@pagefind/component-ui@1.5.2)(@shikijs/transformers@4.5.0)(astro@7.3.8(@astrojs/markdown-remark@7.3.2)(@types/node@24.19.1)(esbuild@0.28.2)(sass@1.105.1)(yaml@2.9.1))(html-validate@11.16.2(@vitest/expect@4.1.11)(vitest@5.0.3(@types/node@24.19.1)(vite@8.3.4(@types/node@24.19.1)(esbuild@0.28.2)(sass@1.105.1)(yaml@2.9.1))))(htmlparser2@12.0.0)(rehype-autolink-headings@7.1.0)(sass@1.105.1)(shiki@4.5.0)
       '@chassis-ui/icons':
         specifier: ^0.3.1
         version: 0.3.1
@@ -509,8 +509,8 @@ packages:
     resolution: {integrity: sha512-q/ThtP9gcnEP6xlv7LrY26C2mHqdGBti/MmOVngt/M/oIGYkssmQGxPK9WzBNt2juVcH/vml2WQ+ra8LXYOTaA==}
     engines: {node: ^22.11 || ^24 || >=26}
 
-  '@chassis-ui/css@0.8.0-next.0':
-    resolution: {integrity: sha512-Mt7oUi8tRGV0yio4HGEK63npgfA12Zy/B97uliD7FXr3WmBQ7sVGjG9OqL4P5JMFszPVUGRYzdlJ/YgDPRZYuw==}
+  '@chassis-ui/css@0.10.0':
+    resolution: {integrity: sha512-BnSCJLWxTE+DFYjh7i8iWkSD5yydNzw+1obLGHnvkcGtnScMFkoJ3Kn2yY0wjhf6HgS++dSB7RKbuZ6SAcmeVQ==}
     engines: {node: '>=22'}
     peerDependencies:
       '@floating-ui/dom': ^1.7.6
@@ -523,13 +523,13 @@ packages:
       tailwindcss:
         optional: true
 
-  '@chassis-ui/docs@0.8.0':
-    resolution: {integrity: sha512-x+7xQabg4JqWO39TuqEDorPnqx9xL3o9PG/juH9Gc713JMSBSP8vs+j3HIlbKHLDvUlz55tITJJhB4LoXlC2XA==}
+  '@chassis-ui/docs@0.9.0':
+    resolution: {integrity: sha512-hcXcPXFTLDvX36O4WKeH7VNjP9z9pw0Oq+QQV2j3A4znhF2ZCU+sOwGKtQ2yyewIZB+jT7eSYBX8kDyaYYlJTQ==}
     engines: {node: '>=22.12.0'}
     hasBin: true
     peerDependencies:
       '@astrojs/markdown-remark': ^7.0.0
-      '@chassis-ui/css': '>=0.6.0'
+      '@chassis-ui/css': '>=0.10.0'
       '@pagefind/component-ui': ^1.0.0
       '@shikijs/transformers': ^4.3.1
       astro: ^7.0.0
@@ -1781,6 +1781,9 @@ packages:
 
   argparse@2.0.1:
     resolution: {integrity: sha512-8+9WqebbFzpX9OR+Wa6O29asIogeRMzcGtAINdpMHHyAg10f05aSFVBbcEqGf/PXw1EjAZ+q2/bEBg3DvurK3Q==}
+
+  argparse@3.0.3:
+    resolution: {integrity: sha512-Sn98ftV3KfsO8xfLPHG6oT8y+b0yvbrLgZjgPDXsharNY15tTAjqIsIju4S32nl6/iEUNNE4v+yL2Zhm8ooP3w==}
 
   aria-query@5.3.2:
     resolution: {integrity: sha512-COROpnaoap1E2F000S62r6A60uHZnmlvomhfyT2DlTcrY1OrBKn2UhH7qn5wTC9zMvD0AY7csdPSNwKP+7WiQw==}
@@ -3100,8 +3103,8 @@ packages:
     resolution: {integrity: sha512-SFNOvSJ+Dgf/9An904Yx+CgSlIPCkIpao4qo51lpee25TIRejdH3rhR4EZMGoNx3/TP3O+wzWuiTFl4sqbltzA==}
     hasBin: true
 
-  js-yaml@5.4.2:
-    resolution: {integrity: sha512-m+aqu+LwO1O6sIopafj8HUVl5aawITwZQe/yHpMCKjaWBaA/d07B/QdMb3529REftiU+RMMHL3Vlsw3hON7vWg==}
+  js-yaml@5.5.0:
+    resolution: {integrity: sha512-paNr4LFIFPjeeSmwNYdrb8FafLLG/Cr2Af3GjbsHJ5CxIjH4r0c2emlmRdAtpPAieP1gRVzk6buBbVP5gBMGAg==}
     hasBin: true
 
   jsesc@3.1.0:
@@ -3292,9 +3295,6 @@ packages:
   mdast-util-find-and-replace@3.0.3:
     resolution: {integrity: sha512-xPgpDNl0/OXHsI7TlaIs22lWnH3KlpvZdXG1ET/m/YT2Hhdkx8lJV4kLphE6l9simyM4KPDFBwas08BgEob6Jw==}
 
-  mdast-util-from-markdown@2.0.3:
-    resolution: {integrity: sha512-W4mAWTvSlKvf8L6J+VN9yLSqQ9AOAAvHuoDAmPkz4dHf553m5gVj2ejadHJhoJmcmxEnOv6Pa8XJhpxE93kb8Q==}
-
   mdast-util-from-markdown@2.1.0:
     resolution: {integrity: sha512-KRLgmPaP2H1ul2bpoJkOS+9pAcDAAj9Nu1mqLnh8NLeJG5tlvj42TH80PIGBpROWlRXLk0lDrWNuZCFy/tsB4A==}
 
@@ -3333,9 +3333,6 @@ packages:
 
   mdast-util-to-hast@13.2.1:
     resolution: {integrity: sha512-cctsq2wp5vTsLIcaymblUriiTcZd0CwWtCbLvrOzYCDZoWyMNV8sZ7krj09FSnsiJi3WVsHLM4k6Dq/yaPyCXA==}
-
-  mdast-util-to-markdown@2.1.3:
-    resolution: {integrity: sha512-wgyJtgUkUcdU7zci7uuwc/tzoAhm0TswWhaXuvnWolqug+8jY7bgNkBBL0dYBnHgc/tHL7lCzRdPsdUxUKKBqw==}
 
   mdast-util-to-markdown@2.2.0:
     resolution: {integrity: sha512-2Jn/ADrHFFyyniBMi0bncTbJqU78K3/TEYvzvwrWWzD9MYPUa/Gm4r3nOeKFQg/PDM5BsbDYdc8ackW4NTY6NA==}
@@ -5308,17 +5305,17 @@ snapshots:
       '@changesets/types': 7.0.0
       human-id: 4.2.1
 
-  '@chassis-ui/css@0.8.0-next.0(@floating-ui/dom@1.8.0)(postcss-prefix-custom-properties@0.1.0(postcss@8.5.29))(vanilla-calendar-pro@3.4.0)':
+  '@chassis-ui/css@0.10.0(@floating-ui/dom@1.8.0)(postcss-prefix-custom-properties@0.1.0(postcss@8.5.29))(vanilla-calendar-pro@3.4.0)':
     dependencies:
       '@floating-ui/dom': 1.8.0
       vanilla-calendar-pro: 3.4.0
     optionalDependencies:
       postcss-prefix-custom-properties: 0.1.0(postcss@8.5.29)
 
-  '@chassis-ui/docs@0.8.0(@astrojs/markdown-remark@7.3.2)(@chassis-ui/css@0.8.0-next.0(@floating-ui/dom@1.8.0)(postcss-prefix-custom-properties@0.1.0(postcss@8.5.29))(vanilla-calendar-pro@3.4.0))(@pagefind/component-ui@1.5.2)(@shikijs/transformers@4.5.0)(astro@7.3.8(@astrojs/markdown-remark@7.3.2)(@types/node@24.19.1)(esbuild@0.28.2)(sass@1.105.1)(yaml@2.9.1))(html-validate@11.16.2(@vitest/expect@4.1.11)(vitest@5.0.3(@types/node@24.19.1)(vite@8.3.4(@types/node@24.19.1)(esbuild@0.28.2)(sass@1.105.1)(yaml@2.9.1))))(htmlparser2@12.0.0)(rehype-autolink-headings@7.1.0)(sass@1.105.1)(shiki@4.5.0)':
+  '@chassis-ui/docs@0.9.0(@astrojs/markdown-remark@7.3.2)(@chassis-ui/css@0.10.0(@floating-ui/dom@1.8.0)(postcss-prefix-custom-properties@0.1.0(postcss@8.5.29))(vanilla-calendar-pro@3.4.0))(@pagefind/component-ui@1.5.2)(@shikijs/transformers@4.5.0)(astro@7.3.8(@astrojs/markdown-remark@7.3.2)(@types/node@24.19.1)(esbuild@0.28.2)(sass@1.105.1)(yaml@2.9.1))(html-validate@11.16.2(@vitest/expect@4.1.11)(vitest@5.0.3(@types/node@24.19.1)(vite@8.3.4(@types/node@24.19.1)(esbuild@0.28.2)(sass@1.105.1)(yaml@2.9.1))))(htmlparser2@12.0.0)(rehype-autolink-headings@7.1.0)(sass@1.105.1)(shiki@4.5.0)':
     dependencies:
       '@astrojs/markdown-remark': 7.3.2
-      '@chassis-ui/css': 0.8.0-next.0(@floating-ui/dom@1.8.0)(postcss-prefix-custom-properties@0.1.0(postcss@8.5.29))(vanilla-calendar-pro@3.4.0)
+      '@chassis-ui/css': 0.10.0(@floating-ui/dom@1.8.0)(postcss-prefix-custom-properties@0.1.0(postcss@8.5.29))(vanilla-calendar-pro@3.4.0)
       '@pagefind/component-ui': 1.5.2
       '@shikijs/transformers': 4.5.0
       '@types/hast': 3.0.5
@@ -5328,8 +5325,8 @@ snapshots:
       github-slugger: 2.0.0
       htmlparser2: 12.0.0
       image-size: 2.0.4
-      js-yaml: 5.4.2
-      mdast-util-from-markdown: 2.0.3
+      js-yaml: 5.5.0
+      mdast-util-from-markdown: 2.1.0
       mdast-util-mdx-jsx: 3.2.0
       mdast-util-to-string: 4.0.0
       medium-zoom: 1.1.0
@@ -6468,6 +6465,8 @@ snapshots:
   arg@5.0.2: {}
 
   argparse@2.0.1: {}
+
+  argparse@3.0.3: {}
 
   aria-query@5.3.2: {}
 
@@ -8075,9 +8074,9 @@ snapshots:
     dependencies:
       argparse: 2.0.1
 
-  js-yaml@5.4.2:
+  js-yaml@5.5.0:
     dependencies:
-      argparse: 2.0.1
+      argparse: 3.0.3
 
   jsesc@3.1.0: {}
 
@@ -8230,23 +8229,6 @@ snapshots:
       unist-util-is: 6.0.1
       unist-util-visit-parents: 6.0.2
 
-  mdast-util-from-markdown@2.0.3:
-    dependencies:
-      '@types/mdast': 4.0.4
-      '@types/unist': 3.0.3
-      decode-named-character-reference: 1.3.0
-      devlop: 1.1.0
-      mdast-util-to-string: 4.0.0
-      micromark: 4.0.3
-      micromark-util-decode-numeric-character-reference: 2.0.2
-      micromark-util-decode-string: 2.0.1
-      micromark-util-normalize-identifier: 2.0.1
-      micromark-util-symbol: 2.0.1
-      micromark-util-types: 2.0.3
-      unist-util-stringify-position: 4.0.0
-    transitivePeerDependencies:
-      - supports-color
-
   mdast-util-from-markdown@2.1.0:
     dependencies:
       '@types/mdast': 4.0.4
@@ -8340,8 +8322,8 @@ snapshots:
       '@types/unist': 3.0.3
       ccount: 2.0.1
       devlop: 1.1.0
-      mdast-util-from-markdown: 2.0.3
-      mdast-util-to-markdown: 2.1.3
+      mdast-util-from-markdown: 2.1.0
+      mdast-util-to-markdown: 2.2.0
       parse-entities: 4.0.2
       stringify-entities: 4.0.4
       unist-util-stringify-position: 4.0.0
@@ -8386,20 +8368,6 @@ snapshots:
       unist-util-position: 5.0.0
       unist-util-visit: 5.1.0
       vfile: 6.0.3
-
-  mdast-util-to-markdown@2.1.3:
-    dependencies:
-      '@types/mdast': 4.0.4
-      '@types/unist': 3.0.3
-      longest-streak: 3.1.0
-      mdast-util-phrasing: 4.1.0
-      mdast-util-to-string: 4.0.0
-      micromark-util-character: 2.1.1
-      micromark-util-classify-character: 2.0.1
-      micromark-util-decode-string: 2.0.1
-      micromark-util-html-tag-name: 2.0.1
-      unist-util-visit: 5.1.0
-      zwitch: 2.0.4
 
   mdast-util-to-markdown@2.2.0:
     dependencies:
