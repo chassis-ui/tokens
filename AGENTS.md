@@ -102,8 +102,9 @@ that fail.
   versions only. `develop` reaches it as the same commit, with `git push origin develop:main`,
   when the maintainer releases: no merge commit, nothing merged back, and the ruleset of `main`
   blocks a force push. Check the branch before the first edit of a task.
-- A finished branch is merged locally into `develop` with a merge commit. Do not open a pull
-  request unless asked.
+- A finished branch is merged locally into `develop`. A branch of one commit is
+  fast-forwarded (`git merge --ff-only`), as in the sibling repositories; a feature of several
+  commits gets a merge commit (`git merge --no-ff`). Do not open a pull request unless asked.
 - Never commit, merge or push without being asked, and never merge into `main`. Pushing `main`
   starts the release workflow, which publishes `@chassis-ui/tokens` to npm when the version is
   new.
