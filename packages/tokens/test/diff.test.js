@@ -156,18 +156,24 @@ describe('diffDeclarations', () => {
   })
 })
 
-describe('compareDist', () => {
+// Each test reads two dist/ trees of 9 MB, in about 150 ms alone. On CI it runs while the
+// builds of golden.test.js load the runner, and has taken up to 4.5 s, near the default 5 s.
+describe('compareDist', { timeout: 30_000 }, () => {
   const dirs = []
 
   /**
-   * Copies dist/ twice and applies an edit to the base copy (to recreate the state before a
-   * commit) and to the head copy.
+   * Compares two dist/ trees: a side with edits is a copy of dist/ with them applied (the
+   * base one recreates the state before a commit), a side without is dist/ itself.
    */
   async function trees({ base = {}, head = {} } = {}) {
     const root = await mkdtemp(join(tmpdir(), 'chassis-tokens-diff-'))
     dirs.push(root)
     const result = {}
     for (const [side, edits] of Object.entries({ base, head })) {
+      if (Object.keys(edits).length === 0) {
+        result[side] = DIST_DIR
+        continue
+      }
       const dir = join(root, side)
       await cp(DIST_DIR, dir, { recursive: true })
       for (const [file, edit] of Object.entries(edits)) {
