@@ -2,8 +2,8 @@
 
 <!--
   Do not edit directly, this file was auto-generated.
-  Generated on Sun, 18 Oct 2026 14:44:25 GMT
-  Chassis - Tokens v0.9.0
+  Generated on Tue, 20 Oct 2026 11:13:28 GMT
+  Chassis - Tokens v0.10.0
   Copyright 2026 Ozgur Gunes
   Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
 -->
@@ -2032,6 +2032,8 @@
   <string name="typography_font_family_ui">Inter</string>
   <string name="typography_font_family_prose">@string/typography_font_family_ui</string>
   <string name="typography_font_family_display">Montserrat</string>
+  <string name="typography_font_family_code">Fira Code</string>
+  <string name="typography_font_family_icon">Chassis-Icons</string>
   <string name="typography_font_family_context_jumbo">@string/typography_font_family_display</string>
   <string name="typography_font_family_context_hero">@string/typography_font_family_display</string>
   <string name="typography_font_family_context_heading">@string/typography_font_family_display</string>
@@ -2041,8 +2043,6 @@
   <string name="typography_font_family_context_body">@string/typography_font_family_prose</string>
   <string name="typography_font_family_context_title">@string/typography_font_family_display</string>
   <string name="typography_font_family_context_label">@string/typography_font_family_ui</string>
-  <string name="typography_font_family_code">Fira Code</string>
-  <string name="typography_font_family_icon">Chassis-Icons</string>
   <integer name="typography_font_weight_ui_normal_weight">400</integer>
   <string name="typography_font_weight_ui_normal_style">normal</string>
   <integer name="typography_font_weight_ui_strong_weight">600</integer>
@@ -2079,14 +2079,14 @@
   <string name="typography_font_weight_context_heading_style">normal</string>
   <integer name="typography_font_weight_context_lead_weight">300</integer>
   <string name="typography_font_weight_context_lead_style">normal</string>
-  <integer name="typography_font_weight_context_blockquote_weight">300</integer>
+  <integer name="typography_font_weight_context_blockquote_weight">400</integer>
   <string name="typography_font_weight_context_blockquote_style">italic</string>
   <integer name="typography_font_weight_context_cite_weight">600</integer>
   <string name="typography_font_weight_context_cite_style">normal</string>
-  <integer name="typography_font_weight_context_body_weight">400</integer>
-  <string name="typography_font_weight_context_body_style">normal</string>
   <integer name="typography_font_weight_context_title_weight">600</integer>
   <string name="typography_font_weight_context_title_style">normal</string>
+  <integer name="typography_font_weight_context_body_weight">400</integer>
+  <string name="typography_font_weight_context_body_style">normal</string>
   <integer name="typography_font_weight_context_label_weight">600</integer>
   <string name="typography_font_weight_context_label_style">normal</string>
   <dimen name="typography_font_size_ui_5xlarge">44sp</dimen>
@@ -2159,6 +2159,8 @@
   <dimen name="typography_line_height_prose_small">@dimen/typography_line_height_ui_small</dimen>
   <dimen name="typography_line_height_prose_xsmall">@dimen/typography_line_height_ui_xsmall</dimen>
   <dimen name="typography_line_height_prose_2xsmall">@dimen/typography_line_height_ui_2xsmall</dimen>
+  <dimen name="typography_line_height_context_jumbo">120sp</dimen>
+  <dimen name="typography_line_height_context_hero">80sp</dimen>
   <dimen name="typography_line_height_context_h1">46sp</dimen>
   <dimen name="typography_line_height_context_h2">40sp</dimen>
   <dimen name="typography_line_height_context_h3">32sp</dimen>
@@ -2185,10 +2187,10 @@
   <item name="typography_letter_spacing_ui_strong" type="dimen" format="float">0</item>
   <item name="typography_letter_spacing_ui_mass" type="dimen" format="float">0</item>
   <item name="typography_letter_spacing_ui_elegant" type="dimen" format="float">0</item>
-  <item name="typography_letter_spacing_prose_normal" type="dimen" format="float">@dimen/typography_letter_spacing_ui_normal</item>
-  <item name="typography_letter_spacing_prose_strong" type="dimen" format="float">@dimen/typography_letter_spacing_ui_strong</item>
-  <item name="typography_letter_spacing_prose_mass" type="dimen" format="float">@dimen/typography_letter_spacing_ui_mass</item>
-  <item name="typography_letter_spacing_prose_elegant" type="dimen" format="float">@dimen/typography_letter_spacing_ui_elegant</item>
+  <item name="typography_letter_spacing_prose_normal" type="dimen" format="float">0</item>
+  <item name="typography_letter_spacing_prose_strong" type="dimen" format="float">0</item>
+  <item name="typography_letter_spacing_prose_mass" type="dimen" format="float">0</item>
+  <item name="typography_letter_spacing_prose_elegant" type="dimen" format="float">0</item>
   <item name="typography_letter_spacing_context_jumbo" type="dimen" format="float">-2.5</item>
   <item name="typography_letter_spacing_context_hero" type="dimen" format="float">-1.5</item>
   <item name="typography_letter_spacing_context_h1" type="dimen" format="float">0</item>
@@ -2304,7 +2306,7 @@
   <dimen name="border_radius_tooltip_main">@dimen/border_radius_context_small</dimen>
   <string name="font_context_jumbo_font_family">@string/typography_font_family_context_jumbo</string>
   <integer name="font_context_jumbo_font_weight">700</integer>
-  <dimen name="font_context_jumbo_line_height">120sp</dimen>
+  <dimen name="font_context_jumbo_line_height">@dimen/typography_line_height_context_jumbo</dimen>
   <dimen name="font_context_jumbo_font_size">@dimen/typography_font_size_context_jumbo</dimen>
   <item name="font_context_jumbo_letter_spacing" type="dimen" format="float">-0.026</item>
   <dimen name="font_context_jumbo_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
@@ -2313,7 +2315,7 @@
   <string name="font_context_jumbo_font_style">normal</string>
   <string name="font_context_hero_font_family">@string/typography_font_family_context_hero</string>
   <integer name="font_context_hero_font_weight">700</integer>
-  <dimen name="font_context_hero_line_height">80sp</dimen>
+  <dimen name="font_context_hero_line_height">@dimen/typography_line_height_context_hero</dimen>
   <dimen name="font_context_hero_font_size">@dimen/typography_font_size_context_hero</dimen>
   <item name="font_context_hero_letter_spacing" type="dimen" format="float">-0.0234</item>
   <dimen name="font_context_hero_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
@@ -2384,7 +2386,7 @@
   <string name="font_context_lead_text_decoration">none</string>
   <string name="font_context_lead_font_style">normal</string>
   <string name="font_context_blockquote_font_family">@string/typography_font_family_context_blockquote</string>
-  <integer name="font_context_blockquote_font_weight">300</integer>
+  <integer name="font_context_blockquote_font_weight">400</integer>
   <dimen name="font_context_blockquote_line_height">@dimen/typography_line_height_context_blockquote</dimen>
   <dimen name="font_context_blockquote_font_size">@dimen/typography_font_size_context_blockquote</dimen>
   <item name="font_context_blockquote_letter_spacing" type="dimen" format="float">@dimen/typography_letter_spacing_context_blockquote</item>

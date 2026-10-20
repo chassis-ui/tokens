@@ -4,8 +4,8 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Sun, 18 Oct 2026 13:49:25 GMT
-// Chassis - Tokens v0.9.0
+// Generated on Tue, 20 Oct 2026 11:13:30 GMT
+// Chassis - Tokens v0.10.0
 // Copyright 2026 Ozgur Gunes
 // Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
 
@@ -542,6 +542,8 @@ public enum ChassisTokensNumberLarge {
     public static let TypographyLineHeightProseSmall = CGFloat(20)
     public static let TypographyLineHeightProseXsmall = CGFloat(18)
     public static let TypographyLineHeightProse2xsmall = CGFloat(14)
+    public static let TypographyLineHeightContextJumbo = CGFloat(120)
+    public static let TypographyLineHeightContextHero = CGFloat(80)
     public static let TypographyLineHeightContextH1 = CGFloat(46)
     public static let TypographyLineHeightContextH2 = CGFloat(40)
     public static let TypographyLineHeightContextH3 = CGFloat(32)

@@ -4,8 +4,8 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Sun, 18 Oct 2026 14:44:26 GMT
-// Chassis - Tokens v0.9.0
+// Generated on Tue, 20 Oct 2026 11:13:29 GMT
+// Chassis - Tokens v0.10.0
 // Copyright 2026 Ozgur Gunes
 // Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
 
@@ -2036,6 +2036,8 @@ public enum ChassisTokens {
     public static let TypographyFontFamilyUi = "Inter"
     public static let TypographyFontFamilyProse = TypographyFontFamilyUi
     public static let TypographyFontFamilyDisplay = "Montserrat"
+    public static let TypographyFontFamilyCode = "Fira Code"
+    public static let TypographyFontFamilyIcon = "Chassis-Icons"
     public static let TypographyFontFamilyContextJumbo = TypographyFontFamilyDisplay
     public static let TypographyFontFamilyContextHero = TypographyFontFamilyDisplay
     public static let TypographyFontFamilyContextHeading = TypographyFontFamilyDisplay
@@ -2045,8 +2047,6 @@ public enum ChassisTokens {
     public static let TypographyFontFamilyContextBody = TypographyFontFamilyProse
     public static let TypographyFontFamilyContextTitle = TypographyFontFamilyDisplay
     public static let TypographyFontFamilyContextLabel = TypographyFontFamilyUi
-    public static let TypographyFontFamilyCode = "Fira Code"
-    public static let TypographyFontFamilyIcon = "Chassis-Icons"
     public static let TypographyFontWeightUiNormalWeight = UIFont.Weight.regular
     public static let TypographyFontWeightUiNormalStyle = "normal"
     public static let TypographyFontWeightUiStrongWeight = UIFont.Weight.semibold
@@ -2083,14 +2083,14 @@ public enum ChassisTokens {
     public static let TypographyFontWeightContextHeadingStyle = "normal"
     public static let TypographyFontWeightContextLeadWeight = UIFont.Weight.light
     public static let TypographyFontWeightContextLeadStyle = "normal"
-    public static let TypographyFontWeightContextBlockquoteWeight = UIFont.Weight.light
+    public static let TypographyFontWeightContextBlockquoteWeight = UIFont.Weight.regular
     public static let TypographyFontWeightContextBlockquoteStyle = "italic"
     public static let TypographyFontWeightContextCiteWeight = UIFont.Weight.semibold
     public static let TypographyFontWeightContextCiteStyle = "normal"
-    public static let TypographyFontWeightContextBodyWeight = UIFont.Weight.regular
-    public static let TypographyFontWeightContextBodyStyle = "normal"
     public static let TypographyFontWeightContextTitleWeight = UIFont.Weight.semibold
     public static let TypographyFontWeightContextTitleStyle = "normal"
+    public static let TypographyFontWeightContextBodyWeight = UIFont.Weight.regular
+    public static let TypographyFontWeightContextBodyStyle = "normal"
     public static let TypographyFontWeightContextLabelWeight = UIFont.Weight.semibold
     public static let TypographyFontWeightContextLabelStyle = "normal"
     public static let TypographyFontSizeUi5xlarge = CGFloat(44)
@@ -2163,6 +2163,8 @@ public enum ChassisTokens {
     public static let TypographyLineHeightProseSmall = TypographyLineHeightUiSmall
     public static let TypographyLineHeightProseXsmall = TypographyLineHeightUiXsmall
     public static let TypographyLineHeightProse2xsmall = TypographyLineHeightUi2xsmall
+    public static let TypographyLineHeightContextJumbo = CGFloat(120)
+    public static let TypographyLineHeightContextHero = CGFloat(80)
     public static let TypographyLineHeightContextH1 = CGFloat(46)
     public static let TypographyLineHeightContextH2 = CGFloat(40)
     public static let TypographyLineHeightContextH3 = CGFloat(32)
@@ -2189,10 +2191,10 @@ public enum ChassisTokens {
     public static let TypographyLetterSpacingUiStrong = SizeUnit0
     public static let TypographyLetterSpacingUiMass = SizeUnit0
     public static let TypographyLetterSpacingUiElegant = SizeUnit0
-    public static let TypographyLetterSpacingProseNormal = TypographyLetterSpacingUiNormal
-    public static let TypographyLetterSpacingProseStrong = TypographyLetterSpacingUiStrong
-    public static let TypographyLetterSpacingProseMass = TypographyLetterSpacingUiMass
-    public static let TypographyLetterSpacingProseElegant = TypographyLetterSpacingUiElegant
+    public static let TypographyLetterSpacingProseNormal = SizeUnit0
+    public static let TypographyLetterSpacingProseStrong = SizeUnit0
+    public static let TypographyLetterSpacingProseMass = SizeUnit0
+    public static let TypographyLetterSpacingProseElegant = SizeUnit0
     public static let TypographyLetterSpacingContextJumbo = SizeUnitNd25
     public static let TypographyLetterSpacingContextHero = SizeUnitNd15
     public static let TypographyLetterSpacingContextH1 = SizeUnit0
@@ -2213,10 +2215,10 @@ public enum ChassisTokens {
     public static let TypographyLetterSpacingContextLabelLarge = SizeUnit0
     public static let TypographyLetterSpacingContextLabelMedium = SizeUnit0
     public static let TypographyLetterSpacingContextLabelSmall = SizeUnit0
-    public static let TypographyParagraphSpacingBaseZero = CGFloat(0)
-    public static let TypographyParagraphSpacingBaseSmall = CGFloat(8)
-    public static let TypographyParagraphSpacingBaseMedium = CGFloat(16)
-    public static let TypographyParagraphSpacingBaseLarge = CGFloat(24)
+    public static let TypographyParagraphSpacingBaseZero = SizeUnit0
+    public static let TypographyParagraphSpacingBaseSmall = SizeUnit8
+    public static let TypographyParagraphSpacingBaseMedium = SizeUnit16
+    public static let TypographyParagraphSpacingBaseLarge = SizeUnit24
     public static let BorderRadiusBaseContextZero = DimensionBase0
     public static let BorderRadiusBaseContextXsmall = DimensionBase2
     public static let BorderRadiusBaseContextSmall = DimensionBase4
@@ -2308,7 +2310,7 @@ public enum ChassisTokens {
     public static let BorderRadiusTooltipMain = BorderRadiusContextSmall
     public static let FontContextJumboFontFamily = TypographyFontFamilyContextJumbo
     public static let FontContextJumboFontWeight = UIFont.Weight.bold
-    public static let FontContextJumboLineHeight = CGFloat(120)
+    public static let FontContextJumboLineHeight = TypographyLineHeightContextJumbo
     public static let FontContextJumboFontSize = TypographyFontSizeContextJumbo
     public static let FontContextJumboLetterSpacing = TypographyLetterSpacingContextJumbo
     public static let FontContextJumboParagraphSpacing = TypographyParagraphSpacingBaseZero
@@ -2317,7 +2319,7 @@ public enum ChassisTokens {
     public static let FontContextJumboFontStyle = "normal"
     public static let FontContextHeroFontFamily = TypographyFontFamilyContextHero
     public static let FontContextHeroFontWeight = UIFont.Weight.bold
-    public static let FontContextHeroLineHeight = CGFloat(80)
+    public static let FontContextHeroLineHeight = TypographyLineHeightContextHero
     public static let FontContextHeroFontSize = TypographyFontSizeContextHero
     public static let FontContextHeroLetterSpacing = TypographyLetterSpacingContextHero
     public static let FontContextHeroParagraphSpacing = TypographyParagraphSpacingBaseZero
@@ -2388,7 +2390,7 @@ public enum ChassisTokens {
     public static let FontContextLeadTextDecoration = "none"
     public static let FontContextLeadFontStyle = "normal"
     public static let FontContextBlockquoteFontFamily = TypographyFontFamilyContextBlockquote
-    public static let FontContextBlockquoteFontWeight = UIFont.Weight.light
+    public static let FontContextBlockquoteFontWeight = UIFont.Weight.regular
     public static let FontContextBlockquoteLineHeight = TypographyLineHeightContextBlockquote
     public static let FontContextBlockquoteFontSize = TypographyFontSizeContextBlockquote
     public static let FontContextBlockquoteLetterSpacing = TypographyLetterSpacingContextBlockquote

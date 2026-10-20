@@ -74,8 +74,8 @@ Context tokens name a text style by its role in the content. Each takes its prop
 <CxTable>
 | Token | Font family | Font weight | Font size | Line height | Paragraph spacing |
 | --- | --- | --- | --- | --- | --- |
-| `font.context.jumbo` | `{typography.fontFamily.context.jumbo}` | `{typography.fontWeight.context.jumbo}` | `{typography.fontSize.context.jumbo}` | A percentage | `{typography.paragraphSpacing.base.zero}` |
-| `font.context.hero` | `{typography.fontFamily.context.hero}` | `{typography.fontWeight.context.hero}` | `{typography.fontSize.context.hero}` | A percentage | `{typography.paragraphSpacing.base.zero}` |
+| `font.context.jumbo` | `{typography.fontFamily.context.jumbo}` | `{typography.fontWeight.context.jumbo}` | `{typography.fontSize.context.jumbo}` | `{typography.lineHeight.context.jumbo}` | `{typography.paragraphSpacing.base.zero}` |
+| `font.context.hero` | `{typography.fontFamily.context.hero}` | `{typography.fontWeight.context.hero}` | `{typography.fontSize.context.hero}` | `{typography.lineHeight.context.hero}` | `{typography.paragraphSpacing.base.zero}` |
 | `font.context.h1` | `{typography.fontFamily.context.heading}` | `{typography.fontWeight.context.heading}` | `{typography.fontSize.context.h1}` | `{typography.lineHeight.context.h1}` | `{typography.paragraphSpacing.base.zero}` |
 | `font.context.h2` | `{typography.fontFamily.context.heading}` | `{typography.fontWeight.context.heading}` | `{typography.fontSize.context.h2}` | `{typography.lineHeight.context.h2}` | `{typography.paragraphSpacing.base.zero}` |
 | `font.context.h3` | `{typography.fontFamily.context.heading}` | `{typography.fontWeight.context.heading}` | `{typography.fontSize.context.h3}` | `{typography.lineHeight.context.h3}` | `{typography.paragraphSpacing.base.zero}` |
@@ -96,7 +96,7 @@ Context tokens name a text style by its role in the content. Each takes its prop
 | `font.context.label.small` | `{typography.fontFamily.context.label}` | `{typography.fontWeight.context.label}` | `{typography.fontSize.context.label-small}` | `{typography.lineHeight.context.label-small}` | `{typography.paragraphSpacing.base.zero}` |
 </CxTable>
 
-The headings are named after their HTML elements, so `font.context.h1` is the style of an `h1`. `font.context.jumbo` and `font.context.hero` have no line height token: their line height is a percentage of their font size, so it follows a brand that changes `typography.fontSize.context.jumbo` or `typography.fontSize.context.hero`. `font.context.blockquote` gets the font style `italic` from its weight. The [typography tokens]([[docsref:/design-tokens/typography-tokens#text-roles]]) reference lists the roles and their role groups.
+The headings are named after their HTML elements, so `font.context.h1` is the style of an `h1`. `font.context.blockquote` gets the font style `italic` from its weight. The [typography tokens]([[docsref:/design-tokens/typography-tokens#text-roles]]) reference lists the roles and their role groups.
 
 ## Component tokens
 
@@ -383,13 +383,13 @@ The values in the examples of this section are those of the `chassis` brand in t
 The build writes the map of the web to `main.scss`, on one line. The keys are CSS properties: the paragraph spacing is `margin-bottom`, and the text case is `text-transform`. Every map has the keys `text-transform` and `text-decoration`, and a font token that names no text case or text decoration has `none` for it, on every platform.
 
 ```scss
-$cx-font-context-jumbo: ("font-family": var(--font-family-display), "font-weight": var(--font-weight-display-mass), "font-size": 6rem, "line-height": 1.25em, "font-style": normal, "letter-spacing": -0.15625rem, "margin-bottom": 0rem, "text-transform": none, "text-decoration": none) !default;
+$cx-font-context-jumbo: ("font-family": var(--font-family-display), "font-weight": var(--font-weight-display-mass), "font-size": 6rem, "line-height": var(--line-height-jumbo), "font-style": normal, "letter-spacing": -0.15625rem, "margin-bottom": 0rem, "text-transform": none, "text-decoration": none) !default;
 ```
 
 The `web` platform names the custom properties of Chassis CSS for the family, the weight, the font size, and the line height that a font token references, so its maps work with Chassis CSS only:
 
 - A base token names the properties of its family and step, such as `var(--font-size-ui-md)`, and a component token names those of the base token it references.
-- A context token names the family and the weight that its role group points to in the brand: `var(--font-family-display)` in the example, where the `chassis` brand sets `jumbo` in its display family, and `var(--font-family-ui)` in a brand that keeps the default.
+- A context token names the family and the weight that its role group points to in the brand: `var(--font-family-display)` in the example, where the role group `jumbo` points at the display family, and the property of another family in a brand that points the group at it.
 - A context token names the font size and the line height of its role, without the group and with the short name of the size: `var(--font-size-h1)`, `var(--line-height-title-lg)`.
 - A role whose size references another group, as `jumbo` and `hero` reference `size.unit.*`, prints the size, and a role group that holds a value of its own prints the value.
 
@@ -437,7 +437,7 @@ On Android, `number_large.xml` has the same properties:
 
 The line height and the letter spacing print by rules of their own inside a font token:
 
-- A line height that is a percentage prints in `em` on the web. iOS and Android print a size: that percentage of the font size of the same token.
+- A line height that is a percentage, as in `font.website.*`, prints in `em` on the web. iOS and Android print a size: that percentage of the font size of the same token.
 - The letter spacing is in design pixels, the same at every font size, as in Figma. The web prints it in `rem` and iOS in points. Android prints it in ems of the font size of the same token, which `android:letterSpacing` takes: the `-2.5` of the iOS lines at a font size of `96` is the `-0.026` of the Android lines.
 
 See the [web]([[docsref:/use-in-project/web-applications]]), [iOS]([[docsref:/use-in-project/ios-applications]]), and [Android]([[docsref:/use-in-project/android-applications]]) docs for the files that hold these names.

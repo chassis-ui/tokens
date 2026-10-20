@@ -4,8 +4,8 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Sun, 18 Oct 2026 13:49:24 GMT
-// Chassis - Tokens v0.9.0
+// Generated on Tue, 20 Oct 2026 11:13:29 GMT
+// Chassis - Tokens v0.10.0
 // Copyright 2026 Ozgur Gunes
 // Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
 
@@ -542,6 +542,8 @@ public enum ChassisTokensNumberLarge {
     public static let TypographyLineHeightProseSmall = TypographyLineHeightUiSmall
     public static let TypographyLineHeightProseXsmall = TypographyLineHeightUiXsmall
     public static let TypographyLineHeightProse2xsmall = TypographyLineHeightUi2xsmall
+    public static let TypographyLineHeightContextJumbo = CGFloat(120)
+    public static let TypographyLineHeightContextHero = CGFloat(80)
     public static let TypographyLineHeightContextH1 = CGFloat(46)
     public static let TypographyLineHeightContextH2 = CGFloat(40)
     public static let TypographyLineHeightContextH3 = CGFloat(32)
@@ -568,10 +570,10 @@ public enum ChassisTokensNumberLarge {
     public static let TypographyLetterSpacingUiStrong = SizeUnit0
     public static let TypographyLetterSpacingUiMass = SizeUnit0
     public static let TypographyLetterSpacingUiElegant = SizeUnit0
-    public static let TypographyLetterSpacingProseNormal = TypographyLetterSpacingUiNormal
-    public static let TypographyLetterSpacingProseStrong = TypographyLetterSpacingUiStrong
-    public static let TypographyLetterSpacingProseMass = TypographyLetterSpacingUiMass
-    public static let TypographyLetterSpacingProseElegant = TypographyLetterSpacingUiElegant
+    public static let TypographyLetterSpacingProseNormal = SizeUnit0
+    public static let TypographyLetterSpacingProseStrong = SizeUnit0
+    public static let TypographyLetterSpacingProseMass = SizeUnit0
+    public static let TypographyLetterSpacingProseElegant = SizeUnit0
     public static let TypographyLetterSpacingContextJumbo = SizeUnitNd25
     public static let TypographyLetterSpacingContextHero = SizeUnitNd15
     public static let TypographyLetterSpacingContextH1 = SizeUnit0
@@ -592,10 +594,10 @@ public enum ChassisTokensNumberLarge {
     public static let TypographyLetterSpacingContextLabelLarge = SizeUnit0
     public static let TypographyLetterSpacingContextLabelMedium = SizeUnit0
     public static let TypographyLetterSpacingContextLabelSmall = SizeUnit0
-    public static let TypographyParagraphSpacingBaseZero = CGFloat(0)
-    public static let TypographyParagraphSpacingBaseSmall = CGFloat(8)
-    public static let TypographyParagraphSpacingBaseMedium = CGFloat(16)
-    public static let TypographyParagraphSpacingBaseLarge = CGFloat(24)
+    public static let TypographyParagraphSpacingBaseZero = SizeUnit0
+    public static let TypographyParagraphSpacingBaseSmall = SizeUnit8
+    public static let TypographyParagraphSpacingBaseMedium = SizeUnit16
+    public static let TypographyParagraphSpacingBaseLarge = SizeUnit24
     public static let BorderRadiusBaseContextZero = DimensionBase0
     public static let BorderRadiusBaseContextXsmall = DimensionBase2
     public static let BorderRadiusBaseContextSmall = DimensionBase4
@@ -685,11 +687,11 @@ public enum ChassisTokensNumberLarge {
     public static let BorderRadiusTabLarge = BorderRadiusContextLarge
     public static let BorderRadiusTabSmall = BorderRadiusContextMedium
     public static let BorderRadiusTooltipMain = BorderRadiusContextSmall
-    public static let FontContextJumboLineHeight = CGFloat(120)
+    public static let FontContextJumboLineHeight = TypographyLineHeightContextJumbo
     public static let FontContextJumboFontSize = TypographyFontSizeContextJumbo
     public static let FontContextJumboLetterSpacing = TypographyLetterSpacingContextJumbo
     public static let FontContextJumboParagraphSpacing = TypographyParagraphSpacingBaseZero
-    public static let FontContextHeroLineHeight = CGFloat(80)
+    public static let FontContextHeroLineHeight = TypographyLineHeightContextHero
     public static let FontContextHeroFontSize = TypographyFontSizeContextHero
     public static let FontContextHeroLetterSpacing = TypographyLetterSpacingContextHero
     public static let FontContextHeroParagraphSpacing = TypographyParagraphSpacingBaseZero

@@ -2,7 +2,7 @@
 
 <!--
   Do not edit directly, this file was auto-generated.
-  Generated on Sun, 18 Oct 2026 14:55:58 GMT
+  Generated on Tue, 20 Oct 2026 11:03:13 GMT
   Chassis - Tokens v0.10.0
   Copyright 2026 Ozgur Gunes
   Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
@@ -2032,6 +2032,8 @@
   <string name="typography_font_family_ui">Inter</string>
   <string name="typography_font_family_prose">Inter</string>
   <string name="typography_font_family_display">Montserrat</string>
+  <string name="typography_font_family_code">Fira Code</string>
+  <string name="typography_font_family_icon">Chassis-Icons</string>
   <string name="typography_font_family_context_jumbo">Montserrat</string>
   <string name="typography_font_family_context_hero">Montserrat</string>
   <string name="typography_font_family_context_heading">Montserrat</string>
@@ -2041,8 +2043,6 @@
   <string name="typography_font_family_context_body">Inter</string>
   <string name="typography_font_family_context_title">Montserrat</string>
   <string name="typography_font_family_context_label">Inter</string>
-  <string name="typography_font_family_code">Fira Code</string>
-  <string name="typography_font_family_icon">Chassis-Icons</string>
   <integer name="typography_font_weight_ui_normal_weight">400</integer>
   <string name="typography_font_weight_ui_normal_style">normal</string>
   <integer name="typography_font_weight_ui_strong_weight">600</integer>
@@ -2079,14 +2079,14 @@
   <string name="typography_font_weight_context_heading_style">normal</string>
   <integer name="typography_font_weight_context_lead_weight">300</integer>
   <string name="typography_font_weight_context_lead_style">normal</string>
-  <integer name="typography_font_weight_context_blockquote_weight">300</integer>
+  <integer name="typography_font_weight_context_blockquote_weight">400</integer>
   <string name="typography_font_weight_context_blockquote_style">italic</string>
   <integer name="typography_font_weight_context_cite_weight">600</integer>
   <string name="typography_font_weight_context_cite_style">normal</string>
-  <integer name="typography_font_weight_context_body_weight">400</integer>
-  <string name="typography_font_weight_context_body_style">normal</string>
   <integer name="typography_font_weight_context_title_weight">600</integer>
   <string name="typography_font_weight_context_title_style">normal</string>
+  <integer name="typography_font_weight_context_body_weight">400</integer>
+  <string name="typography_font_weight_context_body_style">normal</string>
   <integer name="typography_font_weight_context_label_weight">600</integer>
   <string name="typography_font_weight_context_label_style">normal</string>
   <dimen name="typography_font_size_ui_5xlarge">44sp</dimen>
@@ -2159,6 +2159,8 @@
   <dimen name="typography_line_height_prose_small">20sp</dimen>
   <dimen name="typography_line_height_prose_xsmall">18sp</dimen>
   <dimen name="typography_line_height_prose_2xsmall">14sp</dimen>
+  <dimen name="typography_line_height_context_jumbo">120sp</dimen>
+  <dimen name="typography_line_height_context_hero">80sp</dimen>
   <dimen name="typography_line_height_context_h1">46sp</dimen>
   <dimen name="typography_line_height_context_h2">40sp</dimen>
   <dimen name="typography_line_height_context_h3">32sp</dimen>
@@ -2384,7 +2386,7 @@
   <string name="font_context_lead_text_decoration">none</string>
   <string name="font_context_lead_font_style">normal</string>
   <string name="font_context_blockquote_font_family">Inter</string>
-  <integer name="font_context_blockquote_font_weight">300</integer>
+  <integer name="font_context_blockquote_font_weight">400</integer>
   <dimen name="font_context_blockquote_line_height">24sp</dimen>
   <dimen name="font_context_blockquote_font_size">16sp</dimen>
   <item name="font_context_blockquote_letter_spacing" type="dimen" format="float">0</item>

@@ -2,8 +2,8 @@
 
 <!--
   Do not edit directly, this file was auto-generated.
-  Generated on Sun, 18 Oct 2026 13:49:22 GMT
-  Chassis - Tokens v0.9.0
+  Generated on Tue, 20 Oct 2026 11:13:28 GMT
+  Chassis - Tokens v0.10.0
   Copyright 2026 Ozgur Gunes
   Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
 -->
@@ -538,6 +538,8 @@
   <dimen name="typography_line_height_prose_small">@dimen/typography_line_height_ui_small</dimen>
   <dimen name="typography_line_height_prose_xsmall">@dimen/typography_line_height_ui_xsmall</dimen>
   <dimen name="typography_line_height_prose_2xsmall">@dimen/typography_line_height_ui_2xsmall</dimen>
+  <dimen name="typography_line_height_context_jumbo">120sp</dimen>
+  <dimen name="typography_line_height_context_hero">80sp</dimen>
   <dimen name="typography_line_height_context_h1">46sp</dimen>
   <dimen name="typography_line_height_context_h2">40sp</dimen>
   <dimen name="typography_line_height_context_h3">32sp</dimen>
@@ -564,10 +566,10 @@
   <item name="typography_letter_spacing_ui_strong" type="dimen" format="float">0</item>
   <item name="typography_letter_spacing_ui_mass" type="dimen" format="float">0</item>
   <item name="typography_letter_spacing_ui_elegant" type="dimen" format="float">0</item>
-  <item name="typography_letter_spacing_prose_normal" type="dimen" format="float">@dimen/typography_letter_spacing_ui_normal</item>
-  <item name="typography_letter_spacing_prose_strong" type="dimen" format="float">@dimen/typography_letter_spacing_ui_strong</item>
-  <item name="typography_letter_spacing_prose_mass" type="dimen" format="float">@dimen/typography_letter_spacing_ui_mass</item>
-  <item name="typography_letter_spacing_prose_elegant" type="dimen" format="float">@dimen/typography_letter_spacing_ui_elegant</item>
+  <item name="typography_letter_spacing_prose_normal" type="dimen" format="float">0</item>
+  <item name="typography_letter_spacing_prose_strong" type="dimen" format="float">0</item>
+  <item name="typography_letter_spacing_prose_mass" type="dimen" format="float">0</item>
+  <item name="typography_letter_spacing_prose_elegant" type="dimen" format="float">0</item>
   <item name="typography_letter_spacing_context_jumbo" type="dimen" format="float">-2.5</item>
   <item name="typography_letter_spacing_context_hero" type="dimen" format="float">-1.5</item>
   <item name="typography_letter_spacing_context_h1" type="dimen" format="float">0</item>
@@ -681,11 +683,11 @@
   <dimen name="border_radius_tab_large">@dimen/border_radius_context_large</dimen>
   <dimen name="border_radius_tab_small">@dimen/border_radius_context_medium</dimen>
   <dimen name="border_radius_tooltip_main">@dimen/border_radius_context_small</dimen>
-  <dimen name="font_context_jumbo_line_height">120sp</dimen>
+  <dimen name="font_context_jumbo_line_height">@dimen/typography_line_height_context_jumbo</dimen>
   <dimen name="font_context_jumbo_font_size">@dimen/typography_font_size_context_jumbo</dimen>
   <item name="font_context_jumbo_letter_spacing" type="dimen" format="float">-0.026</item>
   <dimen name="font_context_jumbo_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>
-  <dimen name="font_context_hero_line_height">80sp</dimen>
+  <dimen name="font_context_hero_line_height">@dimen/typography_line_height_context_hero</dimen>
   <dimen name="font_context_hero_font_size">@dimen/typography_font_size_context_hero</dimen>
   <item name="font_context_hero_letter_spacing" type="dimen" format="float">-0.0234</item>
   <dimen name="font_context_hero_paragraph_spacing">@dimen/typography_paragraph_spacing_base_zero</dimen>

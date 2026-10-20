@@ -3,8 +3,8 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Sun, 18 Oct 2026 13:49:21 GMT
-// Chassis - Tokens v0.9.0
+// Generated on Tue, 20 Oct 2026 11:13:26 GMT
+// Chassis - Tokens v0.10.0
 // Copyright 2026 Ozgur Gunes
 // Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
 
@@ -547,6 +547,8 @@ object ChassisTokensNumberLarge {
     val typographyLineHeightProseSmall get() = 20.sp
     val typographyLineHeightProseXsmall get() = 18.sp
     val typographyLineHeightProse2xsmall get() = 14.sp
+    val typographyLineHeightContextJumbo get() = 120.sp
+    val typographyLineHeightContextHero get() = 80.sp
     val typographyLineHeightContextH1 get() = 46.sp
     val typographyLineHeightContextH2 get() = 40.sp
     val typographyLineHeightContextH3 get() = 32.sp

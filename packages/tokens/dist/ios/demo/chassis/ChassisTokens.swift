@@ -4,7 +4,7 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Sun, 18 Oct 2026 14:55:58 GMT
+// Generated on Tue, 20 Oct 2026 11:03:13 GMT
 // Chassis - Tokens v0.10.0
 // Copyright 2026 Ozgur Gunes
 // Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
@@ -2036,6 +2036,8 @@ public enum ChassisTokens {
     public static let TypographyFontFamilyUi = "Inter"
     public static let TypographyFontFamilyProse = "Inter"
     public static let TypographyFontFamilyDisplay = "Montserrat"
+    public static let TypographyFontFamilyCode = "Fira Code"
+    public static let TypographyFontFamilyIcon = "Chassis-Icons"
     public static let TypographyFontFamilyContextJumbo = "Montserrat"
     public static let TypographyFontFamilyContextHero = "Montserrat"
     public static let TypographyFontFamilyContextHeading = "Montserrat"
@@ -2045,8 +2047,6 @@ public enum ChassisTokens {
     public static let TypographyFontFamilyContextBody = "Inter"
     public static let TypographyFontFamilyContextTitle = "Montserrat"
     public static let TypographyFontFamilyContextLabel = "Inter"
-    public static let TypographyFontFamilyCode = "Fira Code"
-    public static let TypographyFontFamilyIcon = "Chassis-Icons"
     public static let TypographyFontWeightUiNormalWeight = UIFont.Weight.regular
     public static let TypographyFontWeightUiNormalStyle = "normal"
     public static let TypographyFontWeightUiStrongWeight = UIFont.Weight.semibold
@@ -2083,14 +2083,14 @@ public enum ChassisTokens {
     public static let TypographyFontWeightContextHeadingStyle = "normal"
     public static let TypographyFontWeightContextLeadWeight = UIFont.Weight.light
     public static let TypographyFontWeightContextLeadStyle = "normal"
-    public static let TypographyFontWeightContextBlockquoteWeight = UIFont.Weight.light
+    public static let TypographyFontWeightContextBlockquoteWeight = UIFont.Weight.regular
     public static let TypographyFontWeightContextBlockquoteStyle = "italic"
     public static let TypographyFontWeightContextCiteWeight = UIFont.Weight.semibold
     public static let TypographyFontWeightContextCiteStyle = "normal"
-    public static let TypographyFontWeightContextBodyWeight = UIFont.Weight.regular
-    public static let TypographyFontWeightContextBodyStyle = "normal"
     public static let TypographyFontWeightContextTitleWeight = UIFont.Weight.semibold
     public static let TypographyFontWeightContextTitleStyle = "normal"
+    public static let TypographyFontWeightContextBodyWeight = UIFont.Weight.regular
+    public static let TypographyFontWeightContextBodyStyle = "normal"
     public static let TypographyFontWeightContextLabelWeight = UIFont.Weight.semibold
     public static let TypographyFontWeightContextLabelStyle = "normal"
     public static let TypographyFontSizeUi5xlarge = CGFloat(44)
@@ -2163,6 +2163,8 @@ public enum ChassisTokens {
     public static let TypographyLineHeightProseSmall = CGFloat(20)
     public static let TypographyLineHeightProseXsmall = CGFloat(18)
     public static let TypographyLineHeightProse2xsmall = CGFloat(14)
+    public static let TypographyLineHeightContextJumbo = CGFloat(120)
+    public static let TypographyLineHeightContextHero = CGFloat(80)
     public static let TypographyLineHeightContextH1 = CGFloat(46)
     public static let TypographyLineHeightContextH2 = CGFloat(40)
     public static let TypographyLineHeightContextH3 = CGFloat(32)
@@ -2388,7 +2390,7 @@ public enum ChassisTokens {
     public static let FontContextLeadTextDecoration = "none"
     public static let FontContextLeadFontStyle = "normal"
     public static let FontContextBlockquoteFontFamily = "Inter"
-    public static let FontContextBlockquoteFontWeight = UIFont.Weight.light
+    public static let FontContextBlockquoteFontWeight = UIFont.Weight.regular
     public static let FontContextBlockquoteLineHeight = CGFloat(24)
     public static let FontContextBlockquoteFontSize = CGFloat(16)
     public static let FontContextBlockquoteLetterSpacing = CGFloat(0)

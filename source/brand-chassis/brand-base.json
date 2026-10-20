@@ -75,11 +75,11 @@
       },
       "code": {
         "$type": "fontFamilies",
-        "$value": "'Fira Code', Menlo, Monaco, Consolas, 'Courier New', monospace"
+        "$value": "'Fira Code', Menlo, Monaco, Consolas, 'Courier New', ui-monospace, monospace"
       },
       "icon": {
         "$type": "fontFamilies",
-        "$value": "Chassis-Icons"
+        "$value": "'Chassis-Icons'"
       },
       "context": {
         "jumbo": {
@@ -178,13 +178,29 @@
           "$type": "fontWeights",
           "$value": "{typography.fontWeight.display.mass}"
         },
+        "lead": {
+          "$type": "fontWeights",
+          "$value": "{typography.fontWeight.prose.elegant}"
+        },
+        "blockquote": {
+          "$type": "fontWeights",
+          "$value": "{typography.fontWeight.prose.normal} Italic"
+        },
+        "cite": {
+          "$type": "fontWeights",
+          "$value": "{typography.fontWeight.prose.strong}"
+        },
         "title": {
           "$type": "fontWeights",
           "$value": "{typography.fontWeight.display.strong}"
         },
-        "lead": {
+        "body": {
           "$type": "fontWeights",
-          "$value": "{typography.fontWeight.prose.elegant}"
+          "$value": "{typography.fontWeight.prose.normal}"
+        },
+        "label": {
+          "$type": "fontWeights",
+          "$value": "{typography.fontWeight.ui.strong}"
         }
       }
     },

@@ -17,6 +17,10 @@
         "mode-4": {
           "$type": "boolean",
           "$value": "false"
+        },
+        "mode-5": {
+          "$type": "boolean",
+          "$value": "false"
         }
       }
     }
@@ -6523,20 +6527,28 @@
       },
       "display": {
         "$type": "fontFamilies",
-        "$value": "Merriweather, ui-serif, serif"
+        "$value": "'Playfair Display', ui-serif, serif"
+      },
+      "code": {
+        "$type": "fontFamilies",
+        "$value": "'IBM Plex Mono', ui-monospace, monospace"
+      },
+      "icon": {
+        "$type": "fontFamilies",
+        "$value": "'Chassis-Icons'"
       },
       "context": {
         "jumbo": {
           "$type": "fontFamilies",
-          "$value": "{typography.fontFamily.ui}"
+          "$value": "{typography.fontFamily.display}"
         },
         "hero": {
           "$type": "fontFamilies",
-          "$value": "{typography.fontFamily.ui}"
+          "$value": "{typography.fontFamily.display}"
         },
         "heading": {
           "$type": "fontFamilies",
-          "$value": "{typography.fontFamily.ui}"
+          "$value": "{typography.fontFamily.display}"
         },
         "lead": {
           "$type": "fontFamilies",
@@ -6556,20 +6568,12 @@
         },
         "title": {
           "$type": "fontFamilies",
-          "$value": "{typography.fontFamily.ui}"
+          "$value": "{typography.fontFamily.prose}"
         },
         "label": {
           "$type": "fontFamilies",
           "$value": "{typography.fontFamily.ui}"
         }
-      },
-      "code": {
-        "$type": "fontFamilies",
-        "$value": "'IBM Plex Mono', Courier, monospace"
-      },
-      "icon": {
-        "$type": "fontFamilies",
-        "$value": "Chassis-Icons"
       }
     },
     "fontWeight": {
@@ -6640,15 +6644,15 @@
       "context": {
         "jumbo": {
           "$type": "fontWeights",
-          "$value": "{typography.fontWeight.ui.mass}"
+          "$value": "{typography.fontWeight.display.strong}"
         },
         "hero": {
           "$type": "fontWeights",
-          "$value": "{typography.fontWeight.ui.mass}"
+          "$value": "{typography.fontWeight.display.strong}"
         },
         "heading": {
           "$type": "fontWeights",
-          "$value": "{typography.fontWeight.ui.mass}"
+          "$value": "{typography.fontWeight.display.strong}"
         },
         "lead": {
           "$type": "fontWeights",
@@ -6656,19 +6660,19 @@
         },
         "blockquote": {
           "$type": "fontWeights",
-          "$value": "Light Italic"
+          "$value": "{typography.fontWeight.prose.elegant} Italic"
         },
         "cite": {
+          "$type": "fontWeights",
+          "$value": "{typography.fontWeight.prose.strong}"
+        },
+        "title": {
           "$type": "fontWeights",
           "$value": "{typography.fontWeight.prose.strong}"
         },
         "body": {
           "$type": "fontWeights",
           "$value": "{typography.fontWeight.prose.normal}"
-        },
-        "title": {
-          "$type": "fontWeights",
-          "$value": "{typography.fontWeight.ui.strong}"
         },
         "label": {
           "$type": "fontWeights",
@@ -6944,6 +6948,14 @@
         }
       },
       "context": {
+        "jumbo": {
+          "$type": "lineHeights",
+          "$value": "120"
+        },
+        "hero": {
+          "$type": "lineHeights",
+          "$value": "80"
+        },
         "h1": {
           "$type": "lineHeights",
           "$value": "46"
@@ -7060,19 +7072,19 @@
       "prose": {
         "normal": {
           "$type": "letterSpacing",
-          "$value": "{typography.letterSpacing.ui.normal}"
+          "$value": "{size.unit.0}"
         },
         "strong": {
           "$type": "letterSpacing",
-          "$value": "{typography.letterSpacing.ui.strong}"
+          "$value": "{size.unit.0}"
         },
         "mass": {
           "$type": "letterSpacing",
-          "$value": "{typography.letterSpacing.ui.mass}"
+          "$value": "{size.unit.0}"
         },
         "elegant": {
           "$type": "letterSpacing",
-          "$value": "{typography.letterSpacing.ui.elegant}"
+          "$value": "{size.unit.0}"
         }
       },
       "context": {
@@ -7162,19 +7174,19 @@
       "base": {
         "zero": {
           "$type": "paragraphSpacing",
-          "$value": "0"
+          "$value": "{size.unit.0}"
         },
         "small": {
           "$type": "paragraphSpacing",
-          "$value": "8px"
+          "$value": "{size.unit.8}"
         },
         "medium": {
           "$type": "paragraphSpacing",
-          "$value": "16px"
+          "$value": "{size.unit.16}"
         },
         "large": {
           "$type": "paragraphSpacing",
-          "$value": "24px"
+          "$value": "{size.unit.24}"
         }
       }
     }

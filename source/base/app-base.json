@@ -28,7 +28,7 @@
         "$value": {
           "fontFamily": "{typography.fontFamily.context.jumbo}",
           "fontWeight": "{typography.fontWeight.context.jumbo}",
-          "lineHeight": "125%",
+          "lineHeight": "{typography.lineHeight.context.jumbo}",
           "fontSize": "{typography.fontSize.context.jumbo}",
           "letterSpacing": "{typography.letterSpacing.context.jumbo}",
           "paragraphSpacing": "{typography.paragraphSpacing.base.zero}"
@@ -39,7 +39,7 @@
         "$value": {
           "fontFamily": "{typography.fontFamily.context.hero}",
           "fontWeight": "{typography.fontWeight.context.hero}",
-          "lineHeight": "125%",
+          "lineHeight": "{typography.lineHeight.context.hero}",
           "fontSize": "{typography.fontSize.context.hero}",
           "letterSpacing": "{typography.letterSpacing.context.hero}",
           "paragraphSpacing": "{typography.paragraphSpacing.base.zero}"

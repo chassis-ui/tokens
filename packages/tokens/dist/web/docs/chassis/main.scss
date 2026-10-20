@@ -4,7 +4,7 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Sun, 18 Oct 2026 14:55:56 GMT
+// Generated on Tue, 20 Oct 2026 11:03:12 GMT
 // Chassis - Tokens v0.10.0
 // Copyright 2026 Ozgur Gunes
 // Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
@@ -2035,6 +2035,8 @@ $cx-color-table-icon-sort: var(--default-fg-subtle) !default;
 $cx-typography-font-family-ui: 'Inter', system-ui, -apple-system, Helvetica, Arial, sans-serif !default;
 $cx-typography-font-family-prose: 'Inter', system-ui, -apple-system, Helvetica, Arial, sans-serif !default;
 $cx-typography-font-family-display: 'Montserrat', system-ui, -apple-system, Helvetica, Arial, sans-serif !default;
+$cx-typography-font-family-code: 'Fira Code', Menlo, Monaco, Consolas, 'Courier New', ui-monospace, monospace !default;
+$cx-typography-font-family-icon: 'Chassis-Icons' !default;
 $cx-typography-font-family-context-jumbo: var(--font-family-display) !default;
 $cx-typography-font-family-context-hero: var(--font-family-display) !default;
 $cx-typography-font-family-context-heading: var(--font-family-display) !default;
@@ -2044,8 +2046,6 @@ $cx-typography-font-family-context-cite: var(--font-family-prose) !default;
 $cx-typography-font-family-context-body: var(--font-family-prose) !default;
 $cx-typography-font-family-context-title: var(--font-family-display) !default;
 $cx-typography-font-family-context-label: var(--font-family-ui) !default;
-$cx-typography-font-family-code: 'Fira Code', Menlo, Monaco, Consolas, 'Courier New', monospace !default;
-$cx-typography-font-family-icon: Chassis-Icons !default;
 $cx-typography-font-weight-ui-normal-weight: 400 !default;
 $cx-typography-font-weight-ui-normal-style: normal !default;
 $cx-typography-font-weight-ui-strong-weight: 600 !default;
@@ -2082,14 +2082,14 @@ $cx-typography-font-weight-context-heading-weight: var(--font-weight-display-mas
 $cx-typography-font-weight-context-heading-style: normal !default;
 $cx-typography-font-weight-context-lead-weight: var(--font-weight-prose-elegant) !default;
 $cx-typography-font-weight-context-lead-style: normal !default;
-$cx-typography-font-weight-context-blockquote-weight: 300 !default;
+$cx-typography-font-weight-context-blockquote-weight: 400 !default;
 $cx-typography-font-weight-context-blockquote-style: italic !default;
 $cx-typography-font-weight-context-cite-weight: var(--font-weight-prose-strong) !default;
 $cx-typography-font-weight-context-cite-style: normal !default;
-$cx-typography-font-weight-context-body-weight: var(--font-weight-prose-normal) !default;
-$cx-typography-font-weight-context-body-style: normal !default;
 $cx-typography-font-weight-context-title-weight: var(--font-weight-display-strong) !default;
 $cx-typography-font-weight-context-title-style: normal !default;
+$cx-typography-font-weight-context-body-weight: var(--font-weight-prose-normal) !default;
+$cx-typography-font-weight-context-body-style: normal !default;
 $cx-typography-font-weight-context-label-weight: var(--font-weight-ui-strong) !default;
 $cx-typography-font-weight-context-label-style: normal !default;
 $cx-typography-font-size-ui-5xlarge: 2.75rem !default;
@@ -2162,6 +2162,8 @@ $cx-typography-line-height-prose-medium: 1.5em !default;
 $cx-typography-line-height-prose-small: 1.429em !default;
 $cx-typography-line-height-prose-xsmall: 1.5em !default;
 $cx-typography-line-height-prose-2xsmall: 1.4em !default;
+$cx-typography-line-height-context-jumbo: 1.25em !default;
+$cx-typography-line-height-context-hero: 1.25em !default;
 $cx-typography-line-height-context-h1: 1.211em !default;
 $cx-typography-line-height-context-h2: 1.25em !default;
 $cx-typography-line-height-context-h3: 1.231em !default;
@@ -2305,8 +2307,8 @@ $cx-border-radius-tab-medium: var(--border-radius-md) !default;
 $cx-border-radius-tab-large: var(--border-radius-lg) !default;
 $cx-border-radius-tab-small: var(--border-radius-md) !default;
 $cx-border-radius-tooltip-main: var(--border-radius-sm) !default;
-$cx-font-context-jumbo: ("font-family": var(--font-family-display), "font-weight": var(--font-weight-display-mass), "font-size": 6rem, "line-height": 1.25em, "font-style": normal, "letter-spacing": -0.15625rem, "margin-bottom": 0rem, "text-transform": none, "text-decoration": none) !default;
-$cx-font-context-hero: ("font-family": var(--font-family-display), "font-weight": var(--font-weight-display-mass), "font-size": 4rem, "line-height": 1.25em, "font-style": normal, "letter-spacing": -0.09375rem, "margin-bottom": 0rem, "text-transform": none, "text-decoration": none) !default;
+$cx-font-context-jumbo: ("font-family": var(--font-family-display), "font-weight": var(--font-weight-display-mass), "font-size": 6rem, "line-height": var(--line-height-jumbo), "font-style": normal, "letter-spacing": -0.15625rem, "margin-bottom": 0rem, "text-transform": none, "text-decoration": none) !default;
+$cx-font-context-hero: ("font-family": var(--font-family-display), "font-weight": var(--font-weight-display-mass), "font-size": 4rem, "line-height": var(--line-height-hero), "font-style": normal, "letter-spacing": -0.09375rem, "margin-bottom": 0rem, "text-transform": none, "text-decoration": none) !default;
 $cx-font-context-h1: ("font-family": var(--font-family-display), "font-weight": var(--font-weight-display-mass), "font-size": var(--font-size-h1), "line-height": var(--line-height-h1), "font-style": normal, "letter-spacing": 0rem, "margin-bottom": 0rem, "text-transform": none, "text-decoration": none) !default;
 $cx-font-context-h2: ("font-family": var(--font-family-display), "font-weight": var(--font-weight-display-mass), "font-size": var(--font-size-h2), "line-height": var(--line-height-h2), "font-style": normal, "letter-spacing": 0rem, "margin-bottom": 0rem, "text-transform": none, "text-decoration": none) !default;
 $cx-font-context-h3: ("font-family": var(--font-family-display), "font-weight": var(--font-weight-display-mass), "font-size": var(--font-size-h3), "line-height": var(--line-height-h3), "font-style": normal, "letter-spacing": 0rem, "margin-bottom": 0rem, "text-transform": none, "text-decoration": none) !default;
@@ -2314,7 +2316,7 @@ $cx-font-context-h4: ("font-family": var(--font-family-display), "font-weight": 
 $cx-font-context-h5: ("font-family": var(--font-family-display), "font-weight": var(--font-weight-display-mass), "font-size": var(--font-size-h5), "line-height": var(--line-height-h5), "font-style": normal, "letter-spacing": 0rem, "margin-bottom": 0rem, "text-transform": none, "text-decoration": none) !default;
 $cx-font-context-h6: ("font-family": var(--font-family-display), "font-weight": var(--font-weight-display-mass), "font-size": var(--font-size-h6), "line-height": var(--line-height-h6), "font-style": normal, "letter-spacing": 0rem, "margin-bottom": 0rem, "text-transform": none, "text-decoration": none) !default;
 $cx-font-context-lead: ("font-family": var(--font-family-prose), "font-weight": var(--font-weight-prose-elegant), "font-size": var(--font-size-lead), "line-height": var(--line-height-lead), "font-style": normal, "letter-spacing": 0rem, "margin-bottom": 0rem, "text-transform": none, "text-decoration": none) !default;
-$cx-font-context-blockquote: ("font-family": var(--font-family-prose), "font-weight": 300, "font-size": var(--font-size-blockquote), "line-height": var(--line-height-blockquote), "font-style": italic, "letter-spacing": 0rem, "margin-bottom": 0rem, "text-transform": none, "text-decoration": none) !default;
+$cx-font-context-blockquote: ("font-family": var(--font-family-prose), "font-weight": 400, "font-size": var(--font-size-blockquote), "line-height": var(--line-height-blockquote), "font-style": italic, "letter-spacing": 0rem, "margin-bottom": 0rem, "text-transform": none, "text-decoration": none) !default;
 $cx-font-context-cite: ("font-family": var(--font-family-prose), "font-weight": var(--font-weight-prose-strong), "font-size": var(--font-size-cite), "line-height": var(--line-height-cite), "font-style": normal, "letter-spacing": 0rem, "margin-bottom": 0rem, "text-transform": none, "text-decoration": none) !default;
 $cx-font-context-body-large: ("font-family": var(--font-family-prose), "font-weight": var(--font-weight-prose-normal), "font-size": var(--font-size-body-lg), "line-height": var(--line-height-body-lg), "font-style": normal, "letter-spacing": 0rem, "margin-bottom": 1.5rem, "text-transform": none, "text-decoration": none) !default;
 $cx-font-context-body-medium: ("font-family": var(--font-family-prose), "font-weight": var(--font-weight-prose-normal), "font-size": var(--font-size-body-md), "line-height": var(--line-height-body-md), "font-style": normal, "letter-spacing": 0rem, "margin-bottom": 1rem, "text-transform": none, "text-decoration": none) !default;

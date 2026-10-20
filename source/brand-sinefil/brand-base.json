@@ -63,25 +63,57 @@
     "fontFamily": {
       "ui": {
         "$type": "fontFamilies",
-        "$value": "'DM Sans', Inter, system-ui, sans-serif"
+        "$value": "'Geist', system-ui, sans-serif"
       },
       "prose": {
         "$type": "fontFamilies",
-        "$value": "{typography.fontFamily.display}"
+        "$value": "'Lora', ui-serif, serif"
       },
       "display": {
         "$type": "fontFamilies",
-        "$value": "'Source Serif 4','Source Serif Pro', ui-serif, serif"
+        "$value": "{typography.fontFamily.prose}"
       },
       "context": {
+        "jumbo": {
+          "$type": "fontFamilies",
+          "$value": "{typography.fontFamily.display}"
+        },
+        "hero": {
+          "$type": "fontFamilies",
+          "$value": "{typography.fontFamily.display}"
+        },
         "heading": {
           "$type": "fontFamilies",
           "$value": "{typography.fontFamily.display}"
+        },
+        "lead": {
+          "$type": "fontFamilies",
+          "$value": "{typography.fontFamily.prose}"
+        },
+        "blockquote": {
+          "$type": "fontFamilies",
+          "$value": "{typography.fontFamily.prose}"
+        },
+        "cite": {
+          "$type": "fontFamilies",
+          "$value": "{typography.fontFamily.ui}"
+        },
+        "body": {
+          "$type": "fontFamilies",
+          "$value": "{typography.fontFamily.prose}"
+        },
+        "title": {
+          "$type": "fontFamilies",
+          "$value": "{typography.fontFamily.prose}"
+        },
+        "label": {
+          "$type": "fontFamilies",
+          "$value": "{typography.fontFamily.ui}"
         }
       },
       "code": {
         "$type": "fontFamilies",
-        "$value": "'IBM Plex Mono', 'Courier New', Courier, monospace"
+        "$value": "'Cousine', ui-monospace, monospace"
       }
     },
     "fontWeight": {
@@ -118,13 +150,13 @@
         },
         "elegant": {
           "$type": "fontWeights",
-          "$value": "Light"
+          "$value": "Medium"
         }
       },
       "display": {
         "normal": {
           "$type": "fontWeights",
-          "$value": "Regular"
+          "$value": "Medium"
         },
         "strong": {
           "$type": "fontWeights",
@@ -136,7 +168,7 @@
         },
         "elegant": {
           "$type": "fontWeights",
-          "$value": "Light"
+          "$value": "Regular"
         }
       },
       "code": {
@@ -150,13 +182,41 @@
         }
       },
       "context": {
+        "jumbo": {
+          "$type": "fontWeights",
+          "$value": "{typography.fontWeight.display.normal}"
+        },
+        "hero": {
+          "$type": "fontWeights",
+          "$value": "{typography.fontWeight.display.normal}"
+        },
         "heading": {
           "$type": "fontWeights",
-          "$value": "{typography.fontWeight.display.strong}"
+          "$value": "{typography.fontWeight.display.normal}"
+        },
+        "lead": {
+          "$type": "fontWeights",
+          "$value": "{typography.fontWeight.prose.normal}"
         },
         "blockquote": {
           "$type": "fontWeights",
-          "$value": "Light Italic"
+          "$value": "{typography.fontWeight.prose.normal} Italic"
+        },
+        "cite": {
+          "$type": "fontWeights",
+          "$value": "{typography.fontWeight.ui.strong}"
+        },
+        "title": {
+          "$type": "fontWeights",
+          "$value": "{typography.fontWeight.prose.normal}"
+        },
+        "body": {
+          "$type": "fontWeights",
+          "$value": "{typography.fontWeight.prose.normal}"
+        },
+        "label": {
+          "$type": "fontWeights",
+          "$value": "{typography.fontWeight.ui.strong}"
         }
       }
     }

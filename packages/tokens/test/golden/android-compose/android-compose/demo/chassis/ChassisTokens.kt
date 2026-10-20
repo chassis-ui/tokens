@@ -3,8 +3,8 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Sun, 18 Oct 2026 14:44:23 GMT
-// Chassis - Tokens v0.9.0
+// Generated on Tue, 20 Oct 2026 11:13:26 GMT
+// Chassis - Tokens v0.10.0
 // Copyright 2026 Ozgur Gunes
 // Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
 
@@ -2041,6 +2041,8 @@ object ChassisTokens {
     val typographyFontFamilyUi get() = "Inter"
     val typographyFontFamilyProse get() = "Inter"
     val typographyFontFamilyDisplay get() = "Montserrat"
+    val typographyFontFamilyCode get() = "Fira Code"
+    val typographyFontFamilyIcon get() = "Chassis-Icons"
     val typographyFontFamilyContextJumbo get() = "Montserrat"
     val typographyFontFamilyContextHero get() = "Montserrat"
     val typographyFontFamilyContextHeading get() = "Montserrat"
@@ -2050,8 +2052,6 @@ object ChassisTokens {
     val typographyFontFamilyContextBody get() = "Inter"
     val typographyFontFamilyContextTitle get() = "Montserrat"
     val typographyFontFamilyContextLabel get() = "Inter"
-    val typographyFontFamilyCode get() = "Fira Code"
-    val typographyFontFamilyIcon get() = "Chassis-Icons"
     val typographyFontWeightUiNormalWeight get() = FontWeight(400)
     val typographyFontWeightUiNormalStyle get() = "normal"
     val typographyFontWeightUiStrongWeight get() = FontWeight(600)
@@ -2088,14 +2088,14 @@ object ChassisTokens {
     val typographyFontWeightContextHeadingStyle get() = "normal"
     val typographyFontWeightContextLeadWeight get() = FontWeight(300)
     val typographyFontWeightContextLeadStyle get() = "normal"
-    val typographyFontWeightContextBlockquoteWeight get() = FontWeight(300)
+    val typographyFontWeightContextBlockquoteWeight get() = FontWeight(400)
     val typographyFontWeightContextBlockquoteStyle get() = "italic"
     val typographyFontWeightContextCiteWeight get() = FontWeight(600)
     val typographyFontWeightContextCiteStyle get() = "normal"
-    val typographyFontWeightContextBodyWeight get() = FontWeight(400)
-    val typographyFontWeightContextBodyStyle get() = "normal"
     val typographyFontWeightContextTitleWeight get() = FontWeight(600)
     val typographyFontWeightContextTitleStyle get() = "normal"
+    val typographyFontWeightContextBodyWeight get() = FontWeight(400)
+    val typographyFontWeightContextBodyStyle get() = "normal"
     val typographyFontWeightContextLabelWeight get() = FontWeight(600)
     val typographyFontWeightContextLabelStyle get() = "normal"
     val typographyFontSizeUi5xlarge get() = 44.sp
@@ -2168,6 +2168,8 @@ object ChassisTokens {
     val typographyLineHeightProseSmall get() = 20.sp
     val typographyLineHeightProseXsmall get() = 18.sp
     val typographyLineHeightProse2xsmall get() = 14.sp
+    val typographyLineHeightContextJumbo get() = 120.sp
+    val typographyLineHeightContextHero get() = 80.sp
     val typographyLineHeightContextH1 get() = 46.sp
     val typographyLineHeightContextH2 get() = 40.sp
     val typographyLineHeightContextH3 get() = 32.sp
@@ -2393,7 +2395,7 @@ object ChassisTokens {
     val fontContextLeadTextDecoration get() = "none"
     val fontContextLeadFontStyle get() = "normal"
     val fontContextBlockquoteFontFamily get() = "Inter"
-    val fontContextBlockquoteFontWeight get() = FontWeight(300)
+    val fontContextBlockquoteFontWeight get() = FontWeight(400)
     val fontContextBlockquoteLineHeight get() = 24.sp
     val fontContextBlockquoteFontSize get() = 16.sp
     val fontContextBlockquoteLetterSpacing get() = 0.em
