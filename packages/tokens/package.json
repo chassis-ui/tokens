@@ -42,7 +42,6 @@
   "scripts": {
     "aar": "test/native/android/gradlew --project-dir test/native/android :library:aars",
     "build": "node build/build.js",
-    "build:site": "node build/build.js --brand chassis --app docs",
     "clean": "rm -rf dist",
     "diff": "node build/diff.js",
     "lint:source": "node build/lint-tokens.js",

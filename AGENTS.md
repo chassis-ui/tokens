@@ -95,6 +95,10 @@ that fail.
   `packages/tokens/dist/` as written. Copy generated code from `dist/`; do not retype it.
 - Run `pnpm site:lint`, `pnpm site:build` and `pnpm site:lint:html` after editing
   `packages/site/`.
+- The site compiles `@chassis-ui/css` against the published `@chassis-ui/tokens` pinned in its
+  `package.json`, not the workspace package, so a breaking token change does not wait for a
+  css release. Do not set it back to `workspace:*`. Move the pin with a css release that
+  reads the new names.
 
 ## Cautions
 

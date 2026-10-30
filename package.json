@@ -39,9 +39,9 @@
     "node": ">=22.12.0"
   },
   "scripts": {
-    "build": "pnpm tokens:site && pnpm site:build",
+    "build": "pnpm site:build",
     "clean": "pnpm site:clean && pnpm --filter @chassis-ui/tokens clean",
-    "dev": "pnpm vendor && pnpm tokens:site && pnpm --filter chassis-tokens-site dev",
+    "dev": "pnpm vendor && pnpm --filter chassis-tokens-site dev",
     "test": "pnpm tokens:test",
     "test:ci": "pnpm tokens:lint && pnpm tokens:lint:source && pnpm tokens:typecheck && pnpm tokens:test && pnpm tokens:verify && pnpm tokens:verify:presets && pnpm lint:prettier && pnpm site:lint && pnpm check:astro && pnpm site:build && pnpm site:lint:html && pnpm check:pnpm",
     "tokens": "pnpm tokens:build",
@@ -52,7 +52,6 @@
     "tokens:lint:source": "pnpm --filter @chassis-ui/tokens lint:source",
     "tokens:native:android": "pnpm --filter @chassis-ui/tokens native:android",
     "tokens:native:ios": "pnpm --filter @chassis-ui/tokens native:ios",
-    "tokens:site": "pnpm --filter @chassis-ui/tokens build:site",
     "tokens:swift-package": "pnpm --filter @chassis-ui/tokens swift-package",
     "tokens:test": "pnpm --filter @chassis-ui/tokens test",
     "tokens:typecheck": "pnpm --filter @chassis-ui/tokens typecheck",
