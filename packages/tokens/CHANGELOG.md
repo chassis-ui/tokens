@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.11.0
+
+### Minor Changes
+
+- 931bd80: Add motion tokens to every brand: durations under `motion.timing.*` and easings under `motion.easing.*`, each referencing `motion.base.*`, in the main and number files of every platform.
+
+  Durations are `250ms` on the web, `TimeInterval(0.25)` in seconds on iOS and SwiftUI, and integers in milliseconds on Android and Compose. Easings are `cubic-bezier(0.42, 0, 1, 1)` on the web, a tuple of control points on iOS and SwiftUI, `CubicBezierEasing` on Compose and four float resources (`_x_1`, `_y_1`, `_x_2`, `_y_2`) on Android.
+
+  The Compose files now import `androidx.compose.animation.core.CubicBezierEasing`. An app that uses Compose without `androidx.compose.animation:animation-core` on its classpath has to add it.
+
+- bb936d3: Define the transparent primitive colors in the theme group, as Figma now keeps a reference inside a transparent color. `color.primitive.<palette>.transparent` and `t-*` hold `rgba()` of a color of their palette, and they follow a change of the brand in Figma. The base context and shadow colors that referenced them hold the same `rgba()` themselves. The resolved values of `color.primitive.*`, `color.context.*` and `color.shadow.*` stay the same in the built brands.
+
+  The `dim-*` context colors now reference `opacity.context.dim-*`, except `dim-slight` of `default` and `alternate`, which references `opacity.level.05`. `opacity.context.dim-slight` goes from `0.05` to `0.1`, the alpha of the other `dim-slight` colors; those colors keep their values.
+
+  **Breaking:** all 216 `color.base.primitive.<theme>.<palette>.transparent` and `t-*` colors are removed from the main files of every platform and from the Android `res/values/color_base.xml`, such as `$cx-color-base-primitive-light-primary-t-5005`. Use the color of the current theme, `color.primitive.<palette>.t-5005`, from the color files.
+
 ## 0.10.1
 
 ### Patch Changes
