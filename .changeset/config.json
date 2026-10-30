@@ -8,5 +8,6 @@
   "baseBranch": "develop",
   "changedFilePatterns": ["build/**", "dist/**"],
   "updateInternalDependencies": "patch",
+  "bumpVersionsWithWorkspaceProtocolOnly": true,
   "ignore": ["chassis-tokens-site"]
 }
