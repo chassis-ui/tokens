@@ -1,0 +1,11 @@
+# The scratch output of `chassis-tokens verify`
+dist-next/
+
+# Swift Package Manager
+.build/
+.swiftpm/
+Package.resolved
+
+node_modules/
+.DS_Store
+Thumbs.db

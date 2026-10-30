@@ -1,0 +1,322 @@
+{
+  "figma": {
+    "switch": {
+      "brand": {
+        "mode-2": {
+          "$type": "boolean",
+          "$value": "true"
+        }
+      }
+    }
+  },
+  "color": {
+    "base": {
+      "primitive": {
+        "light": {
+          "primary": {
+            "base": {
+              "$type": "color",
+              "$value": "#0094B8"
+            }
+          },
+          "secondary": {
+            "base": {
+              "$type": "color",
+              "$value": "#F55200"
+            }
+          },
+          "neutral": {
+            "base": {
+              "$type": "color",
+              "$value": "#7B878E"
+            }
+          },
+          "danger": {
+            "base": {
+              "$type": "color",
+              "$value": "#D72A1D"
+            }
+          },
+          "success": {
+            "base": {
+              "$type": "color",
+              "$value": "#1A9E4F"
+            }
+          },
+          "warning": {
+            "base": {
+              "$type": "color",
+              "$value": "#F0A205"
+            },
+            "contrast": {
+              "$type": "color",
+              "$value": "{color.base.primitive.light.black.base}"
+            }
+          },
+          "info": {
+            "base": {
+              "$type": "color",
+              "$value": "#3A72E4"
+            }
+          }
+        }
+      }
+    }
+  },
+  "typography": {
+    "fontFamily": {
+      "ui": {
+        "$type": "fontFamilies",
+        "$value": "'Inter', system-ui, -apple-system, Helvetica, Arial, sans-serif"
+      },
+      "display": {
+        "$type": "fontFamilies",
+        "$value": "'Montserrat', system-ui, -apple-system, Helvetica, Arial, sans-serif"
+      },
+      "code": {
+        "$type": "fontFamilies",
+        "$value": "'Fira Code', Menlo, Monaco, Consolas, 'Courier New', ui-monospace, monospace"
+      },
+      "icon": {
+        "$type": "fontFamilies",
+        "$value": "'Chassis-Icons'"
+      },
+      "context": {
+        "jumbo": {
+          "$type": "fontFamilies",
+          "$value": "{typography.fontFamily.display}"
+        },
+        "hero": {
+          "$type": "fontFamilies",
+          "$value": "{typography.fontFamily.display}"
+        },
+        "heading": {
+          "$type": "fontFamilies",
+          "$value": "{typography.fontFamily.display}"
+        },
+        "title": {
+          "$type": "fontFamilies",
+          "$value": "{typography.fontFamily.display}"
+        }
+      }
+    },
+    "fontWeight": {
+      "ui": {
+        "normal": {
+          "$type": "fontWeights",
+          "$value": "Regular"
+        },
+        "strong": {
+          "$type": "fontWeights",
+          "$value": "Semi Bold"
+        },
+        "mass": {
+          "$type": "fontWeights",
+          "$value": "Bold"
+        },
+        "elegant": {
+          "$type": "fontWeights",
+          "$value": "Light"
+        }
+      },
+      "prose": {
+        "normal": {
+          "$type": "fontWeights",
+          "$value": "Regular"
+        },
+        "strong": {
+          "$type": "fontWeights",
+          "$value": "Semi Bold"
+        },
+        "mass": {
+          "$type": "fontWeights",
+          "$value": "Bold"
+        },
+        "elegant": {
+          "$type": "fontWeights",
+          "$value": "Light"
+        }
+      },
+      "display": {
+        "normal": {
+          "$type": "fontWeights",
+          "$value": "Medium"
+        },
+        "strong": {
+          "$type": "fontWeights",
+          "$value": "SemiBold"
+        },
+        "mass": {
+          "$type": "fontWeights",
+          "$value": "Bold"
+        },
+        "elegant": {
+          "$type": "fontWeights",
+          "$value": "Regular"
+        }
+      },
+      "code": {
+        "normal": {
+          "$type": "fontWeights",
+          "$value": "Regular"
+        },
+        "strong": {
+          "$type": "fontWeights",
+          "$value": "Bold"
+        }
+      },
+      "context": {
+        "jumbo": {
+          "$type": "fontWeights",
+          "$value": "{typography.fontWeight.display.mass}"
+        },
+        "hero": {
+          "$type": "fontWeights",
+          "$value": "{typography.fontWeight.display.mass}"
+        },
+        "heading": {
+          "$type": "fontWeights",
+          "$value": "{typography.fontWeight.display.mass}"
+        },
+        "lead": {
+          "$type": "fontWeights",
+          "$value": "{typography.fontWeight.prose.elegant}"
+        },
+        "blockquote": {
+          "$type": "fontWeights",
+          "$value": "{typography.fontWeight.prose.normal} Italic"
+        },
+        "cite": {
+          "$type": "fontWeights",
+          "$value": "{typography.fontWeight.prose.strong}"
+        },
+        "title": {
+          "$type": "fontWeights",
+          "$value": "{typography.fontWeight.display.strong}"
+        },
+        "body": {
+          "$type": "fontWeights",
+          "$value": "{typography.fontWeight.prose.normal}"
+        },
+        "label": {
+          "$type": "fontWeights",
+          "$value": "{typography.fontWeight.ui.strong}"
+        }
+      }
+    },
+    "letterSpacing": {
+      "context": {
+        "jumbo": {
+          "$type": "letterSpacing",
+          "$value": "{size.unit.nd25}"
+        },
+        "hero": {
+          "$type": "letterSpacing",
+          "$value": "{size.unit.nd15}"
+        }
+      }
+    }
+  },
+  "borderRadius": {
+    "base": {
+      "context": {
+        "xsmall": {
+          "$type": "borderRadius",
+          "$value": "{dimension.base.2}"
+        },
+        "small": {
+          "$type": "borderRadius",
+          "$value": "{dimension.base.4}"
+        },
+        "medium": {
+          "$type": "borderRadius",
+          "$value": "{dimension.base.6}"
+        },
+        "large": {
+          "$type": "borderRadius",
+          "$value": "{dimension.base.8}"
+        },
+        "xlarge": {
+          "$type": "borderRadius",
+          "$value": "{dimension.base.12}"
+        },
+        "2xlarge": {
+          "$type": "borderRadius",
+          "$value": "{dimension.base.16}"
+        },
+        "3xlarge": {
+          "$type": "borderRadius",
+          "$value": "{dimension.base.24}"
+        },
+        "4xlarge": {
+          "$type": "borderRadius",
+          "$value": "{dimension.base.32}"
+        }
+      },
+      "badge": {
+        "medium": {
+          "$type": "borderRadius",
+          "$value": "{borderRadius.base.context.full}"
+        },
+        "large": {
+          "$type": "borderRadius",
+          "$value": "{borderRadius.base.context.full}"
+        },
+        "small": {
+          "$type": "borderRadius",
+          "$value": "{borderRadius.base.context.full}"
+        }
+      },
+      "button": {
+        "medium": {
+          "$type": "borderRadius",
+          "$value": "{borderRadius.base.context.medium}"
+        },
+        "large": {
+          "$type": "borderRadius",
+          "$value": "{borderRadius.base.context.medium}"
+        },
+        "small": {
+          "$type": "borderRadius",
+          "$value": "{borderRadius.base.context.medium}"
+        }
+      },
+      "chip": {
+        "medium": {
+          "$type": "borderRadius",
+          "$value": "{borderRadius.base.context.full}"
+        },
+        "large": {
+          "$type": "borderRadius",
+          "$value": "{borderRadius.base.context.full}"
+        },
+        "small": {
+          "$type": "borderRadius",
+          "$value": "{borderRadius.base.context.full}"
+        }
+      },
+      "form-input": {
+        "medium": {
+          "$type": "borderRadius",
+          "$value": "{borderRadius.base.context.medium}"
+        },
+        "large": {
+          "$type": "borderRadius",
+          "$value": "{borderRadius.base.context.medium}"
+        },
+        "small": {
+          "$type": "borderRadius",
+          "$value": "{borderRadius.base.context.medium}"
+        },
+        "floating-blunt": {
+          "$type": "borderRadius",
+          "$value": "{borderRadius.base.context.medium}"
+        },
+        "floating-sharp": {
+          "$type": "borderRadius",
+          "$value": "{borderRadius.base.context.zero}"
+        }
+      }
+    }
+  }
+}

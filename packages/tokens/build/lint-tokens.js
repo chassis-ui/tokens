@@ -23,8 +23,10 @@
  *              Sets that no theme selects are not built, so they are not checked.
  *
  * Usage:
- *   node build/lint-tokens.js [--dir <dir>]
+ *   chassis-tokens lint-source [--cwd <dir>] [--dir <dir>]
  *
+ *   --cwd <dir>  The repository of tokens (default: the nearest folder upward whose
+ *                package.json has a chassis block).
  *   --dir <dir>  The token source directory (default: source, at the root of the repository).
  *
  * @copyright Copyright (c) 2026 Ozgur Gunes
@@ -33,14 +35,12 @@
 
 import { readFile } from 'node:fs/promises'
 import { join } from 'node:path'
-import { fileURLToPath } from 'node:url'
 import { parseArgs } from 'node:util'
 import { permutateThemes } from '@tokens-studio/sd-transforms'
 import StyleDictionary from 'style-dictionary'
 import { splitWeightStyle } from './preprocessor.js'
 import { fontWeightNumber } from './values/shared.js'
-
-const SOURCE_DIR = fileURLToPath(new URL('../../../source', import.meta.url))
+import { isEntry, readRepository, resolveRoot } from './root.js'
 
 /** Theme groups whose options must declare the same names. */
 export const SAME_NAME_GROUPS = ['theme', 'screen']
@@ -58,7 +58,7 @@ const RELATIVE_SIZE = /^-?(\d+(\.\d+)?|\.\d+)(%|em)$/
  * @returns {Promise<{themes: Object[], sets: Object<string, Object>}>}
  * @throws {Error} When a selected set has no file.
  */
-export async function loadSource(dir = SOURCE_DIR) {
+export async function loadSource(dir) {
   const themes = JSON.parse(await readFile(join(dir, '$themes.json'), 'utf8'))
   const sets = {}
   for (const set of selectedSets(themes)) {
@@ -429,9 +429,32 @@ export function formatError({ rule, set, token, message }) {
   return `${set}: ${token} ${message} [${rule}]`
 }
 
-async function main() {
-  const { values } = parseArgs({ options: { dir: { type: 'string', default: SOURCE_DIR } } })
-  const source = await loadSource(values.dir)
+const HELP = `Usage: chassis-tokens lint-source [options]
+
+Checks the token files in source/: equal names across themes and screens, usable names, known
+font weights, typed tokens, no name with two types.
+
+Options:
+  --cwd <dir>  The repository of tokens (default: the nearest folder upward whose package.json
+               has a chassis block)
+  --dir <dir>  The folder of the token files (default: source/ of the repository)
+  --help, -h   Print this help
+`
+
+async function main(args) {
+  const { values } = parseArgs({
+    args,
+    options: {
+      cwd: { type: 'string' },
+      dir: { type: 'string' },
+      help: { type: 'boolean', short: 'h', default: false }
+    }
+  })
+  if (values.help) {
+    console.log(HELP)
+    return
+  }
+  const source = await loadSource(values.dir ?? readRepository(resolveRoot(values.cwd)).source)
   const errors = lintTokens(source)
   const sets = Object.keys(source.sets).length
 
@@ -443,9 +466,15 @@ async function main() {
   console.log(`✅ Token source lint passed: ${sets} token sets`)
 }
 
-if (process.argv[1] === fileURLToPath(import.meta.url)) {
-  main().catch((error) => {
+/**
+ * The command line of the lint: `chassis-tokens lint-source`.
+ * @param {string[]} [argv] - The arguments. Default: `process.argv.slice(2)`.
+ */
+export function cli(argv = process.argv.slice(2)) {
+  main(argv).catch((error) => {
     console.error(`❌ ${error.message}`)
     process.exit(1)
   })
 }
+
+if (isEntry(import.meta.url)) cli()

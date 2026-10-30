@@ -12,8 +12,8 @@ a pnpm workspace in the layout of `chassis-react`:
 ```
 source/          # Tokens Studio token files
 packages/
-  tokens/        # @chassis-ui/tokens, published to npm
-    build/       # the Style Dictionary build (JavaScript with JSDoc types)
+  tokens/        # @chassis-ui/tokens, published to npm, with the chassis-tokens command
+    build/       # the Style Dictionary build and the command (JavaScript with JSDoc types)
     test/        # Vitest tests, fixtures, preset baselines (golden/), native checks (native/)
     dist/        # the build output, committed and published
   site/          # chassis-tokens-site, the Astro documentation site (private)
@@ -29,6 +29,10 @@ Package.swift    # written by `pnpm tokens:swift-package`
 - Run every command from the repository root.
 - `pnpm tokens` builds `dist/`; `--brand`, `--app`, `--platform`, `--theme` and `--screen`
   build a part of it, and `--dry-run` prints the plan.
+- The `pnpm tokens:*` scripts run the `chassis-tokens` command (`packages/tokens/build/cli.js`)
+  on this workspace. The command works on one repository of tokens: `--cwd <dir>`, by default
+  the nearest folder upward whose `package.json` has a `chassis` block. Here `chassis.dist` keeps
+  the output in `packages/tokens/dist/`.
 - `pnpm dev` runs the site at `http://localhost:4322/tokens/`.
 - `pnpm test:ci` runs every check of `.github/workflows/ci.yml` except the changeset check,
   the token diff, the dependency review and the native compiles, in one run, the site build
@@ -55,7 +59,9 @@ that fail.
   with. Change the source or
   the build, write both again with `pnpm tokens:verify:update`, and review the result with
   `pnpm tokens:diff` and `git diff`. The steps are in
-  [CONTRIBUTING.md](.github/CONTRIBUTING.md#changing-tokens).
+  [CONTRIBUTING.md](.github/CONTRIBUTING.md#changing-tokens). `dist/` is built from `source/`,
+  and the baselines from the copy in `test/fixtures/repository/`, which does not follow it: a
+  change to `source/` leaves the baselines alone.
 - **Templates only print.** Platform values (`UIColor(…)`, ARGB colors, `sp` and `dp`, quoting,
   references) come from the pure functions in `build/values/` and the reference policies, which
   run on resolved tokens. Do not encode a value in a template, and do not register an encoder
@@ -71,7 +77,8 @@ that fail.
   for example `Semi Bold` and `SemiBold` are both right in the source. The token collisions
   that Style Dictionary logs in every build are expected too.
 - **Tests use real tokens.** Copy fixtures from `source/` and `dist/`; do not mock
-  Style Dictionary.
+  Style Dictionary. `pnpm test` needs nothing outside `packages/tokens/`: a test that reads the
+  real `source/` or the root `package.json` runs only with `WORKSPACE_DIR` of `test/helpers.js`.
 - **Types are JSDoc.** The build code is JavaScript checked with `checkJs`; do not convert it
   to TypeScript.
 - **Add a changeset** (`pnpm changeset`) to a change in `source/`, `build/` or

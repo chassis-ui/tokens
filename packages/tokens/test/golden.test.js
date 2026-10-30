@@ -1,9 +1,10 @@
 /**
  * @file golden.test.js
- * @description Acceptance test for the build rewrite. Runs the real token build into a
- *              temporary directory and requires every file to match the committed
- *              `dist/`, apart from the timestamp and version header lines. Does the
- *              same for every preset and its baseline in `golden/`.
+ * @description Acceptance test for the build rewrite. Runs the token build of every preset
+ *              on the fixture repository into a temporary directory and requires every file
+ *              to match its baseline in `golden/`, apart from the timestamp and version
+ *              header lines. In the workspace, does the same for the real `source/` and the
+ *              committed `dist/`.
  * @copyright Copyright (c) 2026 Ozgur Gunes
  * @license MIT
  */
@@ -12,14 +13,9 @@ import { mkdtemp, rm } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { afterAll, describe, expect, test } from 'vitest'
-import {
-  DIST_DIR,
-  compareOutput,
-  formatReport,
-  listPresets,
-  presetPaths,
-  runBuild
-} from '../build/verify.js'
+import { readRepository } from '../build/root.js'
+import { compareOutput, formatReport, listPresets, presetPaths, runBuild } from '../build/verify.js'
+import { WORKSPACE_DIR } from './helpers.js'
 
 const presets = await listPresets()
 
@@ -38,10 +34,15 @@ describe('Golden output', () => {
     await Promise.all(outDirs.map((outDir) => rm(outDir, { recursive: true, force: true })))
   })
 
-  test('build reproduces the committed dist/', { timeout: 180_000 }, async () => {
-    const result = await compareOutput(DIST_DIR, await build())
-    expect(result.ok, formatReport(result)).toBe(true)
-  })
+  test.runIf(WORKSPACE_DIR)(
+    'build reproduces the committed dist/',
+    { timeout: 180_000 },
+    async () => {
+      const { dist } = readRepository(WORKSPACE_DIR)
+      const result = await compareOutput(dist, await build({ root: WORKSPACE_DIR }))
+      expect(result.ok, formatReport(result)).toBe(true)
+    }
+  )
 
   test('the presets with a baseline', () => {
     expect(presets).toEqual([
@@ -57,8 +58,8 @@ describe('Golden output', () => {
   })
 
   test.each(presets)('preset %s reproduces its baseline', { timeout: 60_000 }, async (preset) => {
-    const { config, expectedDir } = presetPaths(preset)
-    const result = await compareOutput(expectedDir, await build({ config }))
+    const { root, config, expectedDir } = presetPaths(preset)
+    const result = await compareOutput(expectedDir, await build({ root, config }))
     expect(result.ok, formatReport(result, `golden/${preset}/`)).toBe(true)
     // ios-references also has the color file that follows the appearance and the icon
     // catalog (19 files), and android-references the resource tree with 9 drawables

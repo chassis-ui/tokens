@@ -24,11 +24,24 @@
     "tokens studio",
     "token transform"
   ],
+  "bin": {
+    "chassis-tokens": "build/cli.js"
+  },
   "files": [
+    "build",
     "dist",
+    "test/native/android/build.gradle.kts",
+    "test/native/android/gradle",
+    "test/native/android/gradle.properties",
+    "test/native/android/gradlew",
+    "test/native/android/library/build.gradle.kts",
+    "test/native/android/library/src",
+    "test/native/android/settings.gradle.kts",
+    "README.md",
     "CHANGELOG.md"
   ],
   "exports": {
+    "./build/*": "./build/*",
     "./dist/*": "./dist/*",
     "./package.json": "./package.json"
   },
@@ -41,25 +54,28 @@
   },
   "scripts": {
     "aar": "test/native/android/gradlew --project-dir test/native/android :library:aars",
-    "build": "node build/build.js",
+    "build": "node build/cli.js build",
     "clean": "rm -rf dist",
-    "diff": "node build/diff.js",
-    "lint:source": "node build/lint-tokens.js",
+    "diff": "node build/cli.js diff",
+    "lint:source": "node build/cli.js lint-source",
     "native:android": "test/native/android/gradlew --project-dir test/native/android compileTokens",
     "native:ios": "test/native/ios/check.sh",
-    "swift-package": "node build/swift-package.js",
+    "swift-package": "node build/cli.js swift-package",
     "test": "vitest run --dir test",
     "typecheck": "tsc -p tsconfig.json",
-    "verify": "node build/verify.js",
-    "verify:presets": "node build/verify.js --preset all",
-    "verify:update": "node build/verify.js --update && node build/verify.js --update --preset all"
+    "verify": "node build/cli.js verify",
+    "verify:presets": "node build/cli.js verify --preset all",
+    "verify:update": "node build/cli.js verify --update && node build/cli.js verify --update --preset all",
+    "verify:update:presets": "node build/cli.js verify --update --preset all"
   },
-  "devDependencies": {
+  "dependencies": {
     "@tokens-studio/sd-transforms": "^2.0.3",
-    "@types/node": "^22.20.5",
     "style-dictionary": "^5.7.0",
     "svg2vectordrawable": "^2.9.1",
-    "tinycolor2": "^1.6.0",
+    "tinycolor2": "^1.6.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.5",
     "vitest": "^5.0.5"
   }
 }

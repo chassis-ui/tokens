@@ -36,7 +36,13 @@ The guides for [web](https://chassis-ui.com/tokens/docs/use-in-project/web-appli
 
 ## Your own tokens
 
-Chassis Tokens is meant to be owned and customized: clone the [repository](https://github.com/chassis-ui/tokens), edit the tokens in Tokens Studio, and build your own brands, apps and platforms, including plain SCSS variables for other CSS frameworks, SwiftUI and Jetpack Compose. See the [documentation](https://chassis-ui.com/tokens/docs/getting-started/introduction/).
+Chassis Tokens is meant to be owned and customized. The package has a command, `chassis-tokens`, that builds a repository of your own tokens into your own brands, apps and platforms, including plain SCSS variables for other CSS frameworks, SwiftUI and Jetpack Compose:
+
+```sh
+npx --package @chassis-ui/tokens chassis-tokens init acme-tokens
+```
+
+That writes a `package.json` with the build configuration, a few Tokens Studio files, a README and the workflows of CI and of a release. `chassis-tokens --help` lists the commands: `build`, `verify`, `diff`, `lint-source`, `swift-package` and `init`. See the [documentation](https://chassis-ui.com/tokens/docs/getting-started/introduction/).
 
 ## Changes
 

@@ -55,12 +55,35 @@ The guides for [web](https://chassis-ui.com/tokens/docs/use-in-project/web-appli
 
 The repository is a [pnpm workspace](https://pnpm.io/workspaces) with two packages, in the layout of the other Chassis repositories such as [chassis-react](https://github.com/chassis-ui/react):
 
-| Folder             | Package                          | Contents                                                                |
-| ------------------ | -------------------------------- | ----------------------------------------------------------------------- |
-| `packages/tokens/` | `@chassis-ui/tokens` (published) | `build/` (the Style Dictionary build), `test/`, `dist/`, `CHANGELOG.md` |
-| `packages/site/`   | `chassis-tokens-site` (private)  | The documentation site and its dependencies                             |
+| Folder             | Package                          | Contents                                                                                                 |
+| ------------------ | -------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| `packages/tokens/` | `@chassis-ui/tokens` (published) | `build/` (the Style Dictionary build and the `chassis-tokens` command), `test/`, `dist/`, `CHANGELOG.md` |
+| `packages/site/`   | `chassis-tokens-site` (private)  | The documentation site and its dependencies                                                              |
 
 The root holds the Tokens Studio token files in `source/`, the build configuration in `chassis.build` of `package.json`, the workspace configuration, the lint and format configurations with their dependencies, the CI workflows, the Changesets configuration in `.changeset/`, the repository scripts in `build/` (`sync-version-refs.js`, `release-notes.js`), the assets submodule in `vendor/assets` and the site output in `_site/`. Paths in the sections below (`build/`, `test/`, `dist/`) are relative to `packages/tokens/`; `source/` and the `package.json` of the build configuration are at the root.
+
+## The command
+
+The package has a command, `chassis-tokens`, that builds and checks a repository of tokens: a folder with `source/`, a `package.json` with the `chassis.build` block, and the committed output. A team installs `@chassis-ui/tokens` in a repository of its own tokens and runs it there. The `pnpm tokens:*` scripts of this repository run the same command on this workspace.
+
+| Command                        | What it does                                                | Script here                 |
+| ------------------------------ | ----------------------------------------------------------- | --------------------------- |
+| `chassis-tokens build`         | Builds the tokens into the output folder                    | `pnpm tokens`               |
+| `chassis-tokens verify`        | Checks that a fresh build equals the committed output       | `pnpm tokens:verify`        |
+| `chassis-tokens diff`          | Reports the tokens added, removed and changed in the output | `pnpm tokens:diff`          |
+| `chassis-tokens lint-source`   | Checks the token files in `source/`                         | `pnpm tokens:lint:source`   |
+| `chassis-tokens swift-package` | Writes `Package.swift` from the output                      | `pnpm tokens:swift-package` |
+| `chassis-tokens init [dir]`    | Writes the baseline of a repository of tokens into a folder |                             |
+
+Each command takes `--help`. The native compile checks and the build of the Android libraries are scripts of this workspace for now (`pnpm tokens:native:ios`, `pnpm tokens:native:android`, `pnpm tokens:aar`).
+
+Every command but `init` works on one repository: `--cwd <dir>`, by default the nearest folder upward from the working directory whose `package.json` has a `chassis` block. In a repository of tokens `source/`, `dist/` and `Package.swift` are at its root. `chassis.dist` in that `package.json` moves the output folder: this workspace sets it to `packages/tokens/dist`. The version in the file headers is that of the nearest `package.json` with a version, from the output folder upward.
+
+`chassis-tokens init` writes a `package.json` with the `chassis.build` block and scripts that call the command, a README, a changelog, a CI workflow, a release workflow and a few Tokens Studio files, so that the first build has tokens to build. The release workflow runs on the tag `v<version>`, checks `dist/` against a fresh build, publishes to npm with trusted publishing and attaches the Android libraries, built with the Gradle project that comes with the package. `--brand`, `--app`, `--name` and `--pm` fill it in, `--dry-run` prints the files, and it writes nothing when a file exists unless `--force` is given:
+
+```sh
+npx --package @chassis-ui/tokens chassis-tokens init acme-tokens --brand acme --app site:web mobile:ios,android
+```
 
 ## Development
 
@@ -102,6 +125,7 @@ pnpm tokens --theme light dark --dry-run
 | `--app <apps...>`           | Only these apps, such as `docs demo`                                                                |
 | `--platform <platforms...>` | Only these platforms, such as `web ios android`                                                     |
 | `--screen <screens...>`     | Only these screen sizes, such as `large medium small`                                               |
+| `--cwd <dir>`               | Build this repository of tokens, instead of the one found upward from the working directory         |
 | `--out <dir>`               | Write to another output root instead of `dist`, such as `dist-next`                                 |
 | `--config <file>`           | Read the build configuration from a JSON file instead of `chassis.build` in the root `package.json` |
 | `--clean`                   | Delete the output directory of each selected brand, app and platform before building                |
@@ -152,10 +176,10 @@ pnpm tokens:verify --platform ios
 
 # Compare the dist-next/ of the last run again without building, with the same
 # --platform (from packages/tokens/)
-node build/verify.js --skip-build --platform ios
+node build/cli.js verify --skip-build --platform ios
 ```
 
-The [presets](#presets-for-other-css-frameworks) write nothing into `dist/`. Their reference output is in `test/golden/`, checked by:
+The [presets](#presets-for-other-css-frameworks) write nothing into `dist/`. Their reference output is in `test/golden/`, built from the fixture repository in `test/fixtures/repository/` and not from the real `source/`, so a change to the tokens leaves it alone. It is checked by:
 
 ```sh
 pnpm tokens:verify:presets
@@ -167,12 +191,12 @@ After a change that is meant to change the output, write both references again:
 pnpm tokens:verify:update
 ```
 
-It builds `dist/` and every preset, and writes the files that differ into `dist/` and `test/golden/`; a file that differs in its header lines only is left as it is. It names each file it writes or deletes, and writes nothing when a name appears twice or a reference names nothing. Review the result with `pnpm tokens:diff` and `git diff`.
+It builds `dist/` from `source/` and every preset from the fixture, and writes the files that differ into `dist/` and `test/golden/`; a file that differs in its header lines only is left as it is. It names each file it writes or deletes, and writes nothing when a name appears twice or a reference names nothing. Review the result with `pnpm tokens:diff` and `git diff`. `pnpm tokens:verify:update:presets` writes the baselines only, and needs nothing outside `packages/tokens/`.
 
 ```sh
 # One reference only (from packages/tokens/)
-node build/verify.js --update
-node build/verify.js --update --preset web-px
+node build/cli.js verify --update
+node build/cli.js verify --update --preset web-px
 ```
 
 ### Token Diff Report
@@ -189,11 +213,11 @@ pnpm tokens:diff --base v0.5.3
 
 The report is Markdown. On a pull request, CI writes it to the job summary.
 
-After changing tokens, run `pnpm tokens:verify:update` and commit the updated `dist/` and preset baselines; [CONTRIBUTING.md](.github/CONTRIBUTING.md#changing-tokens) has the steps.
+After changing tokens, run `pnpm tokens:verify:update` and commit the updated `dist/`; [CONTRIBUTING.md](.github/CONTRIBUTING.md#changing-tokens) has the steps.
 
 ### Tests
 
-The tests use real tokens and the committed `dist/`, not mocks of Style Dictionary. They cover the golden check, the build plan, the CLI and platform configurations, the value encoders for iOS, Android and web and their references, the web reference policies, the preprocessor, filters, transforms, token order and the token diff report.
+The tests use real tokens, copied into fixtures, and the committed `dist/`, not mocks of Style Dictionary. They need nothing outside `packages/tokens/`; the few that compare the real `source/` and configuration with `dist/` skip without the workspace. They cover the golden check, the build plan, the command, `init`, the CLI and platform configurations, the value encoders for iOS, Android and web and their references, the web reference policies, the preprocessor, filters, transforms, token order and the token diff report.
 
 ```sh
 pnpm tokens:test
@@ -217,6 +241,9 @@ The build uses [Style Dictionary](https://styledictionary.com) 5.5 and [`@tokens
 
 Key modules in `build/`:
 
+- `cli.js`: The `chassis-tokens` command, a table of the commands below
+- `root.js`: Finds the repository of tokens, its folders and the version of its output
+- `init.js` and `init-templates/`: The baseline of a repository of tokens
 - `build.js`: Build plan (one Style Dictionary instance per token-set list) and CLI
 - `config/`: Platform configurations; the web presets share `webConfig()` from `web.js`
 - `preprocessor.js`: Token preprocessing

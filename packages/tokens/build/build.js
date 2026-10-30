@@ -9,6 +9,7 @@
  */
 
 import { promises } from 'fs'
+import { relative, resolve } from 'path'
 import StyleDictionary from 'style-dictionary'
 import { permutateThemes, register as registerStudio } from '@tokens-studio/sd-transforms'
 import config from './config/index.js'
@@ -20,27 +21,31 @@ import registerIconActions from './icons.js'
 import cxPrep from './preprocessor.js'
 import logger from './logger.js'
 import { THEMES, THEME_COLORS_FILE, writeThemeColors } from './theme-colors.js'
+import { buildVersion, isEntry, readRepository, resolveRoot } from './root.js'
 
-/** The token files, at the root of the repository; the build runs in `packages/tokens/`. */
-const SOURCE_DIR = '../../source'
+/** The token files, relative to the root of the repository, where the build runs. */
+const SOURCE_DIR = 'source'
 
-/** The `package.json` of the workspace, at the root of the repository, with `chassis.build`. */
-const CONFIG_FILE = '../../package.json'
+/** The `package.json` with `chassis.build`, at the root of the repository. */
+const CONFIG_FILE = 'package.json'
 
 const HELP = `
 Chassis Tokens Build System
 
-Usage: node build/build.js [options]
+Usage: chassis-tokens build [options]
 
 Options:
+  --cwd <dir>               The repository of tokens (default: the nearest folder upward
+                            whose package.json has a chassis block)
   --brand <brands...>       Filter by brand(s)
   --app <apps...>           Filter by app(s)
   --platform <platforms...> Filter by platform(s)
   --theme <themes...>       Filter by theme(s)
   --screen <screens...>     Filter by screen(s)
-  --out <dir>               Output root directory (default: dist)
+  --out <dir>               Output root directory (default: dist, or chassis.dist in the
+                            package.json of the repository)
   --config <file>           JSON file to read the build configuration from, instead of
-                            chassis.build in the root package.json
+                            chassis.build in the package.json of the repository
   --clean                   Delete the output directory of each selected brand, app and
                             platform before building; not with --theme or --screen
   --dry-run                 Show builds without executing
@@ -48,34 +53,32 @@ Options:
   --version, -v             Show version
 
 Examples:
-  node build/build.js --brand chassis --platform web
-  node build/build.js --theme light dark --dry-run
-  node build/build.js --brand sinefil --clean
+  chassis-tokens build --brand chassis --platform web
+  chassis-tokens build --theme light dark --dry-run
+  chassis-tokens build --brand sinefil --clean
 `
 
 /**
- * Loads the package version, from the `package.json` of the package, and the build
- * configuration: `chassis.build` of the root `package.json`, or the content of `configFile`.
- * The optional `options` of the configuration hold Style Dictionary options by platform
- * name, e.g. `{ "web-px": { "outputReferences": true } }`.
+ * Loads the version of the output and the build configuration: `chassis.build` of the
+ * repository, or the content of `configFile`. The optional `options` of the configuration
+ * hold Style Dictionary options by platform name, e.g.
+ * `{ "web-px": { "outputReferences": true } }`.
  * @param {string} [configFile] - A JSON file with `brands`, `themes`, `screens`, `apps`
  *   and optionally `options`.
+ * @param {string} [root] - The repository of tokens.
  * @returns {Promise<Object>} The `version` and the `buildOptions`.
  * @throws {Error} When a setting is missing, or `options` names a platform no app uses.
  */
-async function loadConfig(configFile) {
-  const readJson = async (file) => JSON.parse(await promises.readFile(file, 'utf-8'))
-  const { version } = await readJson('package.json')
-  const buildOptions = configFile
-    ? await readJson(configFile)
-    : (await readJson(CONFIG_FILE)).chassis?.build
+async function loadConfig(configFile, root = resolveRoot()) {
+  const { version, build } = readRepository(root)
+  const buildOptions = configFile ? JSON.parse(await promises.readFile(configFile, 'utf-8')) : build
 
   const source = configFile ?? 'package.json'
   if (!buildOptions?.brands || !buildOptions?.themes || !buildOptions?.apps) {
     throw new Error(
       configFile
         ? `Invalid ${configFile}: missing brands, themes or apps`
-        : 'Invalid package.json: missing required chassis.build configuration at the root of the repository'
+        : `Invalid package.json in ${root}: missing required chassis.build configuration at the root of the repository`
     )
   }
   const platforms = Object.values(buildOptions.apps).flat()
@@ -129,8 +132,8 @@ function registerDictionary(version) {
  * `planBuilds` checks the filter values against the configuration.
  * @param {string[]} [args] - The arguments after the script name.
  * @returns {Object} Filters (`brands`, `apps`, `platforms`, `themes`, `screens`), the
- *   output directory (`out`), the configuration file (`config`, when given) and the
- *   flags `clean`, `dryRun`, `help` and `version`.
+ *   repository (`cwd`), the output directory (`out`) and the configuration file (`config`),
+ *   when given, and the flags `clean`, `dryRun`, `help` and `version`.
  */
 function parseArgs(args = process.argv.slice(2)) {
   const options = {
@@ -139,7 +142,6 @@ function parseArgs(args = process.argv.slice(2)) {
     platforms: [],
     themes: [],
     screens: [],
-    out: 'dist',
     clean: args.includes('--clean'),
     dryRun: args.includes('--dry-run'),
     help: args.includes('--help') || args.includes('-h'),
@@ -150,6 +152,15 @@ function parseArgs(args = process.argv.slice(2)) {
   const keys = ['brands', 'apps', 'platforms', 'themes', 'screens']
 
   for (let i = 0; i < args.length; i++) {
+    if (args[i] === '--cwd') {
+      const dir = args[i + 1]
+      if (!dir || dir.startsWith('--')) {
+        throw new Error('--cwd requires a directory')
+      }
+      options.cwd = dir
+      i++
+      continue
+    }
     if (args[i] === '--out') {
       const dir = args[i + 1]
       if (!dir || dir.startsWith('--')) {
@@ -187,7 +198,7 @@ function parseArgs(args = process.argv.slice(2)) {
 /**
  * Checks the filter values against the configuration, so that a mistyped value fails
  * instead of building nothing.
- * @param {Object} buildOptions - `chassis.build` from the root `package.json`.
+ * @param {Object} buildOptions - `chassis.build` of the repository.
  * @param {Object} filters - Filters from `parseArgs`.
  * @throws {Error} When a filter names a brand, app, platform, theme or screen that the
  *   configuration does not have.
@@ -222,7 +233,7 @@ function checkFilters(buildOptions, filters) {
  *
  * @param {Object} sets - Token-set lists by `<brand>_<app>_<theme>[_<screen>]`, as
  *   `permutateThemes` returns them from `source/$themes.json`.
- * @param {Object} buildOptions - `chassis.build` from the root `package.json`.
+ * @param {Object} buildOptions - `chassis.build` of the repository.
  * @param {Object} [filters] - Filters from `parseArgs`; an empty filter selects all.
  * @returns {Object[]} Builds with `brand`, `app`, `key`, `platforms`, `outputs`, the
  *   configured `themes` and `screens`, and `source`, the token files in override order.
@@ -351,26 +362,35 @@ async function processBuild({ key, cfg }) {
 
 /**
  * Main execution function that registers extensions, parses CLI arguments for filtering,
- * plans the builds, and runs each one in turn.
+ * plans the builds, and runs each one in turn. It runs at the root of the repository, because
+ * Style Dictionary reads a token file by a glob, and a path with a bracket in it is no glob of
+ * that path; `--out` and `--config` are relative to the folder the command started in.
  *
  * CLI usage:
- *   node build/build.js --brand chassis --theme light dark --app docs --platform web --screen large small
+ *   chassis-tokens build --brand chassis --theme light dark --app docs --platform web --screen large small
  *
  * All parameters are optional and accept multiple space-separated values.
+ *
+ * @param {string[]} [args] - The arguments after the command.
  */
-async function run() {
+async function run(args) {
   try {
-    const filters = parseArgs()
+    const filters = parseArgs(args)
     if (filters.help) {
       logger.info(HELP)
       return
     }
-
-    const { version, buildOptions } = await loadConfig(filters.config)
     if (filters.version) {
-      logger.info(`v${version}`)
+      logger.info(`v${buildVersion()}`)
       return
     }
+
+    const root = resolveRoot(filters.cwd)
+    const out = filters.out && resolve(filters.out)
+    const configFile = filters.config && resolve(filters.config)
+    const { version, buildOptions } = await loadConfig(configFile, root)
+    process.chdir(root)
+    const outDir = out ?? relative(root, readRepository(root).dist)
 
     const startTime = Date.now()
     let successCount = 0
@@ -382,13 +402,13 @@ async function run() {
     const sets = permutateThemes($themes, { separator: '_' })
     const builds = planBuilds(sets, buildOptions, filters).map((build) => ({
       ...build,
-      cfg: config({ ...build, outDir: filters.out, platformOptions: buildOptions.options })
+      cfg: config({ ...build, outDir, platformOptions: buildOptions.options })
     }))
 
     const cleanDirs = filters.clean ? planClean(builds, filters) : []
 
     if (filters.dryRun) {
-      logger.dryRun(builds, planThemeColors(builds, filters.out), cleanDirs)
+      logger.dryRun(builds, planThemeColors(builds, outDir), cleanDirs)
       return
     }
 
@@ -432,7 +452,15 @@ async function run() {
 // Export for testing
 export { loadConfig, planBuilds, planThemeColors, planClean, parseArgs, CONFIG_FILE, SOURCE_DIR }
 
+/**
+ * The command line of the build: `chassis-tokens build`.
+ * @param {string[]} [argv] - The arguments. Default: `process.argv.slice(2)`.
+ */
+export function cli(argv) {
+  return run(argv)
+}
+
 // Only run if this is the main module (not imported)
-if (import.meta.url === `file://${process.argv[1]}`) {
-  run()
+if (isEntry(import.meta.url)) {
+  cli()
 }

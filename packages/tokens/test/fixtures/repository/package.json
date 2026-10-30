@@ -1,0 +1,32 @@
+{
+  "name": "chassis-tokens-fixture-repository",
+  "version": "0.0.0",
+  "private": true,
+  "description": "A repository of tokens for the preset baselines. source/ is copied from source/ of this repository at 4757b18: the token sets that $themes.json selects, and $themes.json without its Figma references. It does not follow source/.",
+  "chassis": {
+    "build": {
+      "brands": [
+        "chassis",
+        "sinefil"
+      ],
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "screens": [
+        "large",
+        "medium",
+        "small"
+      ],
+      "apps": {
+        "docs": [
+          "web"
+        ],
+        "demo": [
+          "ios",
+          "android"
+        ]
+      }
+    }
+  }
+}

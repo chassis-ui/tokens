@@ -10,16 +10,16 @@ import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { afterAll, describe, expect, test } from 'vitest'
 import { loadConfig, parseArgs } from '../build/build.js'
+import { FIXTURE_DIR } from './helpers.js'
 
 describe('parseArgs', () => {
-  test('selects everything and writes to dist by default', () => {
+  test('selects everything, in the repository and the output it finds, by default', () => {
     expect(parseArgs([])).toEqual({
       brands: [],
       apps: [],
       platforms: [],
       themes: [],
       screens: [],
-      out: 'dist',
       clean: false,
       dryRun: false,
       help: false,
@@ -68,6 +68,21 @@ describe('parseArgs', () => {
       brands: ['chassis']
     })
   })
+
+  test('--cwd takes one directory', () => {
+    expect(parseArgs(['--cwd', 'tokens', '--brand', 'chassis'])).toMatchObject({
+      cwd: 'tokens',
+      brands: ['chassis']
+    })
+    expect(parseArgs([])).not.toHaveProperty('cwd')
+  })
+
+  test.each([[['--cwd']], [['--cwd', '--brand', 'chassis']]])(
+    '--cwd without a directory throws (%j)',
+    (args) => {
+      expect(() => parseArgs(args)).toThrow('--cwd requires a directory')
+    }
+  )
 
   test('--config takes one file', () => {
     expect(parseArgs(['--config', 'test/golden/web-px.json', '--dry-run'])).toMatchObject({
@@ -121,8 +136,8 @@ describe('loadConfig', () => {
     if (dir) await rm(dir, { recursive: true, force: true })
   })
 
-  test('reads chassis.build of the root package.json by default', async () => {
-    const { version, buildOptions } = await loadConfig()
+  test('reads chassis.build of the repository by default', async () => {
+    const { version, buildOptions } = await loadConfig(undefined, FIXTURE_DIR)
     expect(version).toMatch(/^\d+\.\d+\.\d+/)
     expect(buildOptions.apps).toEqual({ docs: ['web'], demo: ['ios', 'android'] })
   })

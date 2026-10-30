@@ -1,0 +1,24 @@
+{
+  "figma": {
+    "switch": {
+      "app": {
+        "mode-2": {
+          "$type": "boolean",
+          "$value": "true"
+        }
+      }
+    }
+  },
+  "color": {
+    "page": {
+      "bg-body": {
+        "$type": "color",
+        "$value": "{color.context.default.bg-even}"
+      },
+      "bg-section": {
+        "$type": "color",
+        "$value": "{color.context.default.bg-main}"
+      }
+    }
+  }
+}

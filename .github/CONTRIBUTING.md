@@ -85,12 +85,13 @@ format. Edit them in Figma with Tokens Studio, synced to this repository with th
    pnpm tokens:verify
    ```
 
-3. Write the preset baselines again, since they are built from the same tokens, and review their
-   difference the same way:
+3. Write `dist/` again and review its difference. The preset baselines stay as they are: they
+   are built from the fixture repository in `packages/tokens/test/fixtures/repository/`, not from
+   `source/`.
 
    ```sh
    pnpm tokens:verify:update
-   git diff packages/tokens/test/golden
+   git diff packages/tokens/dist
    ```
 
    `pnpm tokens:verify:update` builds `dist/` and every preset, and writes the files that differ
@@ -125,7 +126,7 @@ output contract and the known oddities of the output are in
   run on fully resolved tokens. They are not Style Dictionary value transforms, because
   referenced tokens would be encoded before the tokens that reference them.
 - **Tests use real tokens.** Fixtures are copied from `source/` and `dist/`; no test mocks
-  Style Dictionary. See [`packages/tokens/test/README.md`](../packages/tokens/test/README.md) for
+  Style Dictionary, and `pnpm test` needs nothing outside `packages/tokens/`. See [`packages/tokens/test/README.md`](../packages/tokens/test/README.md) for
   the test files, the fixtures and the preset baselines.
 - **Types in JSDoc.** `pnpm tokens:typecheck` runs TypeScript's `checkJs` on `build/` (not yet
   `strict`), with the types Style Dictionary ships and those of Node.js 22, the oldest version
@@ -143,8 +144,8 @@ pnpm tokens:verify
 pnpm tokens:verify:presets
 ```
 
-A change that is meant to change the output also updates `dist/` (`pnpm tokens`), the preset
-baselines (see [Changing tokens](#changing-tokens)) and adds a changeset.
+A change to the build that is meant to change the output also writes `dist/` and the preset
+baselines again (`pnpm tokens:verify:update`) and adds a changeset.
 
 CI compiles the iOS and Android output of your pull request against the real SDKs: the Swift
 files, the asset catalogs and a sample that uses the Swift package with Xcode, and the Android
