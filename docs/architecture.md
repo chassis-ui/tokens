@@ -287,6 +287,7 @@ They are part of the output contract and kept on purpose. Don't fix one without 
 - **`dimension.base.*` is emitted** in the main and number files, though apps use the scales that reference it.
 - **`motion.base.*` is emitted**, with the values of the `motion.timing.*` and `motion.easing.*` tokens that reference it, as `dimension.base.*` is.
 - **`opacity.base.*` is not emitted**, though `dimension.base.*` and the base colors are. With `outputReferences`, an `opacity.context.*` token prints its number, since no file declares the token it references.
+- **Transparent primitive colors have no base token.** Figma keeps a reference inside a transparent color, so `color.primitive.<palette>.transparent` and `t-*` are defined in the theme sets and follow a change of the `brand` Mode. A base context or shadow color cannot reference a theme token, so it holds its own `rgba()` of the palette color.
 - **Two spellings of one weight.** The source spells semi bold `Semi Bold` for Inter and `SemiBold` for other fonts, the style name of each font in Figma. The build maps both to `600`; don't normalize the source, or the fonts break in Figma.
 - **The web presets share the web folder.** `web`, `web-scss`, `web-px` and `web-vw` all write to `dist/web/<app>/<brand>/`, so an app selects one of them.
 - **iOS shadows have a derived radius.** `…Radius` is half the CSS blur, close to Core Animation's `shadowRadius`; the spread has no Core Animation equivalent.

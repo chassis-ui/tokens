@@ -20,7 +20,9 @@ This repo is a pnpm workspace with two packages:
 - [`packages/tokens`](../packages/tokens/) — `@chassis-ui/tokens`, the published package: the
   Style Dictionary build in `build/`, its tests in `test/` and the output in `dist/`.
 - [`packages/site`](../packages/site/) — `chassis-tokens-site`, the Astro documentation site. It
-  is never published to npm.
+  is never published to npm. It takes `@chassis-ui/tokens` from npm at the version pinned in its
+  `package.json`, not from the workspace, so a breaking token change can be released before
+  `@chassis-ui/css` adopts it.
 
 The token files that the build reads are in [`source/`](../source/), at the root of the repo.
 

@@ -38,6 +38,9 @@ Context tokens hold the alpha of a color role, and each references the base toke
 | `opacity.context.icon-subtle` | `{opacity.base.context.icon-subtle}` | Alpha of the `icon-subtle` colors |
 | `opacity.context.icon-slight` | `{opacity.base.context.icon-slight}` | Alpha of the `icon-slight` colors |
 | `opacity.context.cue-slight` | `{opacity.base.context.cue-slight}` | Alpha of the `cue-slight` colors |
+| `opacity.context.dim-main` | `{opacity.base.context.dim-main}` | Alpha of the `dim-main` colors |
+| `opacity.context.dim-subtle` | `{opacity.base.context.dim-subtle}` | Alpha of the `dim-subtle` colors |
+| `opacity.context.dim-slight` | `{opacity.base.context.dim-slight}` | Alpha of the `dim-slight` colors, except in the `default` and `alternate` contexts |
 </CxTable>
 
 ## Usage
@@ -46,12 +49,12 @@ Color tokens reference the opacity tokens, so an app that needs a transparent co
 
 ### Opacity in colors
 
-A transparent color holds `rgba()` with a reference to a color and a reference to an opacity. In `source/base/brand-base.json`, the black of the palette with the alpha of `opacity.level.30` is defined like this:
+A transparent color holds `rgba()` with a reference to a color and a reference to an opacity. In `source/base/theme-base.json`, the black of the palette with the alpha of `opacity.level.30` is defined like this:
 
 ```json
 "t-30": {
   "$type": "color",
-  "$value": "rgba({color.base.primitive.light.black.base}, {opacity.level.30})"
+  "$value": "rgba({color.primitive.black.base}, {opacity.level.30})"
 }
 ```
 
@@ -60,8 +63,8 @@ The build resolves the references and writes the color with its alpha. The color
 <CxTable>
 | Token | Reference |
 | --- | --- |
-| `color.base.primitive.light.black.t-30` | `rgba({color.base.primitive.light.black.base}, {opacity.level.30})` |
-| `color.base.primitive.light.primary.t-5030` | `rgba({color.base.primitive.light.primary.50}, {opacity.level.30})` |
+| `color.primitive.black.t-30` | `rgba({color.primitive.black.base}, {opacity.level.30})` |
+| `color.primitive.primary.t-5030` | `rgba({color.primitive.primary.50}, {opacity.level.30})` |
 | `color.base.context.light.default.fg-subtle` | `rgba({color.base.context.light.default.fg-main}, {opacity.context.fg-subtle})` |
 </CxTable>
 
@@ -69,7 +72,7 @@ The names of the colors state the opacity that they reference:
 
 - **Black and white**: `t-<level>` applies `opacity.level.<level>` to the `base` color, from `t-05` to `t-95`.
 - **The other colors of the palette**: `t-50<level>` applies `opacity.level.<level>` to step `50` of the color, from `t-5005` to `t-5095`.
-- **Context colors**: a subtle or slight color applies an `opacity.context.*` token to a solid color of its group, such as `fg-main`, `icon-main`, or `cue-main`. The `fg-hover` and `fg-press` colors apply `opacity.level.90` in the same way.
+- **Context colors**: a subtle or slight color applies an `opacity.context.*` token to a solid color of its group, such as `fg-main`, `icon-main`, or `cue-main`. The `fg-hover` and `fg-press` colors apply `opacity.level.90` in the same way. A `dim-*` color applies the `opacity.context.dim-*` token of its name to a color of a palette, except `dim-slight` in the `default` and `alternate` contexts, which applies `opacity.level.05`.
 
 `opacity.level.zero` is the alpha of the `transparent` color of each palette color and of the `transparent-color` of each color group.
 

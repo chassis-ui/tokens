@@ -4,7 +4,7 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Fri, 30 Oct 2026 10:52:20 GMT
+// Generated on Fri, 30 Oct 2026 13:45:06 GMT
 // Chassis - Tokens v0.10.1
 // Copyright 2026 Ozgur Gunes
 // Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
@@ -470,7 +470,7 @@ public enum ChassisTokensNumberLarge {
     public static let OpacityContextCueSlight = CGFloat(0.2)
     public static let OpacityContextDimMain = CGFloat(0.7)
     public static let OpacityContextDimSubtle = CGFloat(0.3)
-    public static let OpacityContextDimSlight = CGFloat(0.05)
+    public static let OpacityContextDimSlight = CGFloat(0.1)
     public static let OpacityContextTransparentColor = CGFloat(0)
     public static let TypographyFontSizeUi5xlarge = CGFloat(44)
     public static let TypographyFontSizeUi4xlarge = CGFloat(38)
