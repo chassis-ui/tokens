@@ -50,6 +50,7 @@ jobs:
         with:
           node-version-file: .nvmrc
           registry-url: 'https://registry.npmjs.org'
+          package-manager-cache: false
 
       - name: Install
         run: __INSTALL_CI__
@@ -62,7 +63,7 @@ jobs:
         run: __RUN__ verify
 
       - name: Check Package.swift
-        run: npx chassis-tokens swift-package --check
+        run: __RUN__ swift-package:check
 
       - name: Setup Java
         uses: actions/setup-java@b843ebf9b913146b38da2eaa7aeddf76074ae1ad # v6.1.0

@@ -71,6 +71,8 @@ describe('on a repository of tokens', () => {
     init({
       dir: repository,
       name: 'acme-tokens',
+      repository: 'acme/tokens',
+      author: 'Acme <tokens@acme.test>',
       brands: ['acme'],
       apps: { shop: ['web', 'ios', 'android'] }
     })
@@ -86,7 +88,12 @@ describe('on a repository of tokens', () => {
     const { code, stdout } = run(join(repository, 'source'), 'build')
     expect(code, stdout).toBe(0)
     const text = readFileSync(join(repository, 'dist/web/shop/acme/main.scss'), 'utf8')
-    expect(text).toContain('// Chassis - Tokens v0.1.0')
+    expect(text).toContain('// acme-tokens v0.1.0')
+    expect(text).toContain('// Copyright Acme\n')
+    expect(text).toContain(
+      '// Licensed under MIT (https://github.com/acme/tokens/blob/main/LICENSE)'
+    )
+    expect(text).not.toContain('Chassis')
     expect(text).toContain('$cx-color-brand-primary: #2563eb !default;')
     expect(existsSync(join(repository, 'dist/ios/shop/acme/Color.swift'))).toBe(true)
     expect(existsSync(join(repository, 'dist/android/shop/acme/res/values/color.xml'))).toBe(true)
@@ -105,6 +112,15 @@ describe('on a repository of tokens', () => {
     writeFileSync(main, text)
     expect(failed.code).toBe(1)
     expect(failed.stdout).toContain('differs    web/shop/acme/main.scss')
+  }, 60_000)
+
+  test('verify ignores a version in the headers, under the title of the repository', () => {
+    const file = join(repository, 'package.json')
+    const pkg = readFileSync(file, 'utf8')
+    writeFileSync(file, pkg.replace('"version": "0.1.0"', '"version": "0.2.0-next.1"'))
+    const { code, stdout, stderr } = run(temporary, 'verify', '--cwd', repository)
+    writeFileSync(file, pkg)
+    expect(code, stdout + stderr).toBe(0)
   }, 60_000)
 
   test('--out and --config are relative to the folder the command started in', () => {

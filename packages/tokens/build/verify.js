@@ -45,10 +45,11 @@ export const FIXTURE_DIR = fileURLToPath(new URL('../test/fixtures/repository', 
 const BUILD_SCRIPT = fileURLToPath(new URL('./build.js', import.meta.url))
 
 /**
- * Header lines that change on every build or release, in SCSS/Swift (`// …`)
- * and XML (indented inside `<!-- … -->`) headers.
+ * Header lines that change on every build or release, in SCSS/Swift (`// …`) and XML
+ * (indented inside `<!-- … -->`) headers: the timestamp, and `<title> v<version>`, whose
+ * title each repository sets. A token line has `=`, `<` or `$` before any such ending.
  */
-const HEADER_LINE = /^\s*(\/\/\s*)?(Generated on |Chassis - Tokens v)/
+const HEADER_LINE = /^\s*(\/\/\s*)?(Generated on |[^=<>$]* v\d+\.\d+\.\d+\S*$)/
 
 /**
  * Token name declarations per output format.

@@ -59,18 +59,18 @@ Examples:
 `
 
 /**
- * Loads the version of the output and the build configuration: `chassis.build` of the
+ * Loads the lines of the file headers and the build configuration: `chassis.build` of the
  * repository, or the content of `configFile`. The optional `options` of the configuration
  * hold Style Dictionary options by platform name, e.g.
  * `{ "web-px": { "outputReferences": true } }`.
  * @param {string} [configFile] - A JSON file with `brands`, `themes`, `screens`, `apps`
  *   and optionally `options`.
  * @param {string} [root] - The repository of tokens.
- * @returns {Promise<Object>} The `version` and the `buildOptions`.
+ * @returns {Promise<Object>} The `header` and the `buildOptions`.
  * @throws {Error} When a setting is missing, or `options` names a platform no app uses.
  */
 async function loadConfig(configFile, root = resolveRoot()) {
-  const { version, build } = readRepository(root)
+  const { header, build } = readRepository(root)
   const buildOptions = configFile ? JSON.parse(await promises.readFile(configFile, 'utf-8')) : build
 
   const source = configFile ?? 'package.json'
@@ -93,15 +93,15 @@ async function loadConfig(configFile, root = resolveRoot()) {
       throw new Error(`Invalid ${source}: ${error.message}`, { cause: error })
     }
   }
-  return { version, buildOptions }
+  return { header, buildOptions }
 }
 
 /**
  * Registers all necessary extensions for Style Dictionary, including
  * preprocessors, filters, transforms, formats, and file headers.
- * @param {string} version - The package version, printed in every file header.
+ * @param {string[]} header - The lines of the repository in every file header.
  */
-function registerDictionary(version) {
+function registerDictionary(header) {
   registerStudio(StyleDictionary, {
     'ts/color/modifiers': { format: 'hex' }
   })
@@ -118,12 +118,7 @@ function registerDictionary(version) {
 
   StyleDictionary.registerFileHeader({
     name: 'cxFileHeader',
-    fileHeader: async (defaultMessages = []) => [
-      ...defaultMessages,
-      `Chassis - Tokens v${version}`,
-      `Copyright 2026 Ozgur Gunes`,
-      `Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)`
-    ]
+    fileHeader: async (defaultMessages = []) => [...defaultMessages, ...header]
   })
 }
 
@@ -388,7 +383,7 @@ async function run(args) {
     const root = resolveRoot(filters.cwd)
     const out = filters.out && resolve(filters.out)
     const configFile = filters.config && resolve(filters.config)
-    const { version, buildOptions } = await loadConfig(configFile, root)
+    const { header, buildOptions } = await loadConfig(configFile, root)
     process.chdir(root)
     const outDir = out ?? relative(root, readRepository(root).dist)
 
@@ -396,7 +391,7 @@ async function run(args) {
     let successCount = 0
     let errorCount = 0
 
-    registerDictionary(version)
+    registerDictionary(header)
 
     const $themes = JSON.parse(await promises.readFile(`${SOURCE_DIR}/$themes.json`, 'utf-8'))
     const sets = permutateThemes($themes, { separator: '_' })

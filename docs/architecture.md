@@ -38,6 +38,8 @@ theme-colors.js     Color.swift, from the light and dark color files
 
 `resolveRoot` in `root.js` finds the repository of every command but `init`: `--cwd <dir>` as it is, else the nearest folder upward from the working directory whose `package.json` has a `chassis` block, as in the assets build. `readRepository` reads what the commands need from it: `source/` at its root, the output folder, `dist/` at its root unless `chassis.dist` names another, `chassis.build`, and the version in the file headers, of the nearest `package.json` with a version from the output folder upward. This workspace sets `chassis.dist` to `packages/tokens/dist` and has no version at its root, so its output and its headers stay what they were; the setting goes when `dist/` leaves the package ([D6](decisions.md)).
 
+The other lines of a file header are the repository's too (`headerLines`): `<title> v<version>`, the title being `chassis.title` or the `name` of its `package.json`; `chassis.copyright` or `Copyright <author>`; and `Licensed under <license>`, with a link from `repository`. A line with nothing to say is left out. This workspace sets `chassis.title` and `chassis.copyright` to the text its files have always had. `pnpm tokens:verify` ignores the title and version line under any title.
+
 The build changes its working directory to the root before it reads a token file, and `--out` and `--config` are made absolute first. Style Dictionary reads every source path as a glob, so a path to a repository with a bracket in it would match nothing, while `source/<set>.json` always does.
 
 ### Platform values are encoded after resolution, in pure functions

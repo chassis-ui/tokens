@@ -60,27 +60,71 @@ export function buildVersion() {
 }
 
 /**
+ * The web address of a repository, from any form of the `repository` field or a git remote:
+ * `owner/name`, `git+https://host/owner/name.git`, `git@host:owner/name.git`. Credentials in
+ * the address are left out.
+ * @param {string|{url: string}} [repository]
+ * @returns {string|undefined} `https://host/owner/name`, or `undefined` when it cannot be read.
+ */
+export function repositoryWebUrl(repository) {
+  const value = (typeof repository === 'string' ? repository : repository?.url)?.trim()
+  if (!value) return undefined
+  const shorthand = value.replace(/^github:/, '').match(/^[\w.-]+\/[\w.-]+$/)
+  if (shorthand) return `https://github.com/${shorthand[0].replace(/\.git$/, '')}`
+  const match =
+    value.match(
+      /^(?:git\+)?(?:https?|ssh|git):\/\/(?:[^@/]+@)?([^/:]+)(?::\d+)?\/(.+?)(?:\.git)?\/?$/
+    ) ?? value.match(/^[^@/]+@([^/:]+):(.+?)(?:\.git)?\/?$/)
+  return match ? `https://${match[1]}/${match[2]}` : undefined
+}
+
+/**
+ * The lines of a repository in the header of every file it builds: its title and version, the
+ * copyright and the license. `chassis.title` and `chassis.copyright` set the first two, by
+ * default the name of the package and its author; a line with nothing to say is left out.
+ * @param {Object} pkg - The `package.json` of the repository.
+ * @param {string} version - The version of the output.
+ * @returns {string[]}
+ */
+export function headerLines(pkg, version) {
+  const title = pkg.chassis?.title ?? pkg.name ?? 'Tokens'
+  const author = (typeof pkg.author === 'string' ? pkg.author : pkg.author?.name)
+    ?.replace(/\s*[<(].*$/, '')
+    .trim()
+  const copyright = pkg.chassis?.copyright ?? (author ? `Copyright ${author}` : undefined)
+  const web = repositoryWebUrl(pkg.repository)
+  const licenseUrl = web?.startsWith('https://github.com/') ? `${web}/blob/main/LICENSE` : web
+  const license =
+    pkg.license && `Licensed under ${pkg.license}${licenseUrl ? ` (${licenseUrl})` : ''}`
+  return [`${title} v${version}`, copyright, license].filter(Boolean)
+}
+
+/**
  * Reads a repository of tokens. The version is the one its output is published under: of the
  * nearest `package.json` with a version, from the output folder upward to the root, so that
  * a workspace whose root has no version and whose output is in a package names that package.
  * @param {string} root - From `resolveRoot`.
- * @returns {{root: string, source: string, dist: string, version: string, build: Object}}
- *   Absolute folders, the version and `chassis.build`. Without any version, that of the build.
+ * @returns {{root: string, source: string, dist: string, version: string, build: Object,
+ *   header: string[]}} Absolute folders, the version, `chassis.build` and the lines of the file
+ *   headers. Without any version, that of the build.
  */
 export function readRepository(root) {
-  const { chassis } = readPackage(root) ?? {}
+  const pkg = readPackage(root) ?? {}
+  const { chassis } = pkg
   const dist = resolve(root, chassis?.dist ?? DEFAULT_DIST)
   let version
   for (let dir = dirname(dist); !version; dir = dirname(dir)) {
     version = readPackage(dir)?.version
     if (dir === root || dir === dirname(dir)) break
   }
+  version ??= buildVersion()
   return {
     root,
     source: join(root, 'source'),
     dist,
-    version: version ?? buildVersion(),
-    build: chassis?.build
+    version,
+    build: chassis?.build,
+    header: headerLines(pkg, version)
   }
 }
 

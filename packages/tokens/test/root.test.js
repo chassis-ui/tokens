@@ -11,7 +11,15 @@ import { spawnSync } from 'node:child_process'
 import { tmpdir } from 'node:os'
 import { join, resolve } from 'node:path'
 import { afterAll, describe, expect, test } from 'vitest'
-import { buildVersion, findRoot, isEntry, readRepository, resolveRoot } from '../build/root.js'
+import {
+  buildVersion,
+  findRoot,
+  headerLines,
+  isEntry,
+  readRepository,
+  repositoryWebUrl,
+  resolveRoot
+} from '../build/root.js'
 import { CLI, FIXTURE_DIR, PACKAGE_DIR, WORKSPACE_DIR } from './helpers.js'
 
 const temporary = realpathSync(mkdtempSync(join(tmpdir(), 'chassis-tokens-root-')))
@@ -76,7 +84,8 @@ describe('readRepository', () => {
       source: join(dir, 'source'),
       dist: join(dir, 'dist'),
       version: '1.2.3',
-      build: { brands: ['a'] }
+      build: { brands: ['a'] },
+      header: ['Tokens v1.2.3']
     })
   })
 
@@ -102,6 +111,67 @@ describe('readRepository', () => {
       dist: join(PACKAGE_DIR, 'dist'),
       version: buildVersion()
     })
+  })
+})
+
+describe('repositoryWebUrl', () => {
+  test.each([
+    ['owner/name', 'https://github.com/owner/name'],
+    ['github:owner/name', 'https://github.com/owner/name'],
+    ['git+https://github.com/owner/name.git', 'https://github.com/owner/name'],
+    ['https://gitlab.test/group/sub/name.git', 'https://gitlab.test/group/sub/name'],
+    ['https://user:secret@github.com/owner/name.git', 'https://github.com/owner/name'],
+    ['git@github.com:owner/name.git', 'https://github.com/owner/name'],
+    ['ssh://git@host.test:22/owner/name.git', 'https://host.test/owner/name'],
+    [{ url: 'git+https://github.com/owner/name.git' }, 'https://github.com/owner/name']
+  ])('reads %j', (value, url) => {
+    expect(repositoryWebUrl(value)).toBe(url)
+  })
+
+  test.each([[undefined], [''], ['not an address'], ['/a/local/path']])('not %j', (value) => {
+    expect(repositoryWebUrl(value)).toBeUndefined()
+  })
+})
+
+describe('headerLines', () => {
+  test('takes the title, the author, the license and its link from package.json', () => {
+    const pkg = {
+      name: '@acme/tokens',
+      author: 'Acme Inc <a@acme.test> (https://acme.test)',
+      license: 'Apache-2.0',
+      repository: { type: 'git', url: 'git+https://github.com/acme/tokens.git' }
+    }
+    expect(headerLines(pkg, '1.0.0')).toEqual([
+      '@acme/tokens v1.0.0',
+      'Copyright Acme Inc',
+      'Licensed under Apache-2.0 (https://github.com/acme/tokens/blob/main/LICENSE)'
+    ])
+  })
+
+  test('chassis.title and chassis.copyright come first', () => {
+    const chassis = { title: 'Acme - Tokens', copyright: 'Copyright 2020 Acme' }
+    expect(headerLines({ name: 'x', author: 'y', chassis }, '1.0.0')).toEqual([
+      'Acme - Tokens v1.0.0',
+      'Copyright 2020 Acme'
+    ])
+  })
+
+  test('leaves out what is not known, and links only a repository of another host', () => {
+    expect(headerLines({ license: 'MIT' }, '1.0.0')).toEqual([
+      'Tokens v1.0.0',
+      'Licensed under MIT'
+    ])
+    expect(headerLines({ license: 'MIT', repository: 'https://host.test/a/b' }, '1.0.0')).toContain(
+      'Licensed under MIT (https://host.test/a/b)'
+    )
+  })
+
+  test.runIf(WORKSPACE_DIR)('in this workspace, the text of the committed dist/', () => {
+    expect(readRepository(WORKSPACE_DIR).header).toEqual([
+      `Chassis - Tokens v${buildVersion()}`,
+      'Copyright 2026 Ozgur Gunes',
+      'Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)'
+    ])
   })
 })
 

@@ -137,8 +137,8 @@ describe('loadConfig', () => {
   })
 
   test('reads chassis.build of the repository by default', async () => {
-    const { version, buildOptions } = await loadConfig(undefined, FIXTURE_DIR)
-    expect(version).toMatch(/^\d+\.\d+\.\d+/)
+    const { header, buildOptions } = await loadConfig(undefined, FIXTURE_DIR)
+    expect(header[0]).toBe('Chassis - Tokens v0.0.0')
     expect(buildOptions.apps).toEqual({ docs: ['web'], demo: ['ios', 'android'] })
   })
 

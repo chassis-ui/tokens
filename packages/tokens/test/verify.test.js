@@ -13,6 +13,42 @@ import { dirname, join } from 'node:path'
 import { afterAll, describe, expect, test } from 'vitest'
 import { compareOutput, formatReport, updateReference } from '../build/verify.js'
 
+describe('header lines', () => {
+  const dirs = []
+
+  afterAll(async () => {
+    await Promise.all(dirs.map((dir) => rm(dir, { recursive: true, force: true })))
+  })
+
+  /** Compares two versions of one file, and returns the number of lines that differ. */
+  async function differing(expected, actual) {
+    const root = await mkdtemp(join(tmpdir(), 'chassis-tokens-header-'))
+    dirs.push(root)
+    for (const [side, text] of Object.entries({ expected, actual })) {
+      await mkdir(join(root, side))
+      await writeFile(join(root, side, 'a.scss'), text)
+    }
+    const { differing } = await compareOutput(join(root, 'expected'), join(root, 'actual'))
+    return differing[0]?.count ?? 0
+  }
+
+  test.each([
+    ['// Chassis - Tokens v0.6.0', '// Chassis - Tokens v0.7.0'],
+    ['// @acme/tokens v1.0.0', '// @acme/tokens v2.0.0-next.1'],
+    ['    Acme: tokens v1.0.0', '    Acme: tokens v1.0.1']
+  ])('ignores %s against %s', async (expected, actual) => {
+    expect(await differing(expected, actual)).toBe(0)
+  })
+
+  test.each([
+    ['$cx-a: "v1.0.0" !default;', '$cx-a: "v2.0.0" !default;'],
+    ['public static let A = "x v1.0.0', 'public static let A = "x v2.0.0'],
+    ['<string name="a">x v1.0.0', '<string name="a">x v2.0.0']
+  ])('compares the token line %s', async (expected, actual) => {
+    expect(await differing(expected, actual)).toBe(1)
+  })
+})
+
 describe('undeclared references', () => {
   const dirs = []
 

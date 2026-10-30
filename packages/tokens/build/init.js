@@ -16,11 +16,20 @@
  * @license MIT
  */
 
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
+import { execFileSync } from 'node:child_process'
+import {
+  existsSync,
+  mkdirSync,
+  readdirSync,
+  readFileSync,
+  realpathSync,
+  writeFileSync
+} from 'node:fs'
+import { homedir } from 'node:os'
 import { basename, dirname, join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { PLATFORM_NAMES } from './config/index.js'
-import { buildVersion, isEntry } from './root.js'
+import { buildVersion, isEntry, repositoryWebUrl } from './root.js'
 
 /** The folder of the templates. */
 const TEMPLATES = fileURLToPath(new URL('./init-templates/', import.meta.url))
@@ -33,13 +42,18 @@ export const FIRST_VERSION = '0.1.0'
 
 /** The package managers of `--pm`, with the commands the templates name. */
 export const PACKAGE_MANAGERS = {
-  // The install of the workflows is the plain one: a new repository has no lockfile until its
-  // first install is committed, and `npm ci` and `--frozen-lockfile` fail without one. With a
-  // lockfile, pnpm freezes it in CI by itself
-  npm: { install: 'npm install', ci: 'npm install', run: 'npm run', setup: '' },
+  // The install of the workflows is frozen, so the first install has to commit its lockfile
+  npm: {
+    install: 'npm install',
+    ci: 'npm ci',
+    run: 'npm run',
+    lockfile: 'package-lock.json',
+    setup: ''
+  },
   pnpm: {
     install: 'pnpm install',
-    ci: 'pnpm install',
+    ci: 'pnpm install --frozen-lockfile',
+    lockfile: 'pnpm-lock.yaml',
     run: 'pnpm',
     setup: [
       '      - name: Setup pnpm',
@@ -53,7 +67,10 @@ export const PACKAGE_MANAGERS = {
 }
 
 /** The brand and the app a repository starts with, when none is given. */
-export const DEFAULTS = { brands: ['main'], apps: { site: ['web'] }, pm: 'npm' }
+export const DEFAULTS = { brands: ['main'], apps: { site: ['web'] }, pm: 'npm', license: 'MIT' }
+
+/** The folder of the token files, which init writes only when it holds none. */
+const SOURCE_DIR = 'source'
 
 /** The themes and the screens of a new repository. */
 const THEMES = ['light', 'dark']
@@ -71,9 +88,53 @@ const NAME_RE = /^[a-z0-9]+(-[a-z0-9]+)*$/
  *   platforms. Default `{ site: ['web'] }`.
  * @property {'npm' | 'pnpm'} [pm] - The package manager the README and the workflows name.
  *   Default `npm`.
- * @property {boolean} [force] - Write over a file that exists.
+ * @property {string} [repository] - The repository: `owner/name`, or an address. Default: the
+ *   `origin` remote of the folder, when it is the root of a git repository.
+ * @property {string} [license] - The license. Default `MIT`.
+ * @property {string} [author] - The author. Default: `user.name` of the git configuration.
+ * @property {boolean} [force] - Write over a file that exists, but never a token file.
  * @property {boolean} [dryRun] - Print the files, write nothing.
  */
+
+/**
+ * Reads what git knows of a folder: the author, by name only since a package publishes it, and
+ * the `origin` remote, when the folder is the root of a repository and not a folder inside one.
+ * @param {string} dir
+ * @returns {{repository?: string, author?: string}} Without what git does not know.
+ */
+export function gitDefaults(dir) {
+  const inDir = existsSync(dir)
+  const git = (cwd, ...args) => {
+    try {
+      const output = execFileSync('git', args, { cwd, stdio: ['ignore', 'pipe', 'ignore'] })
+      return output.toString().trim() || undefined
+    } catch {
+      return undefined
+    }
+  }
+  const author = git(inDir ? dir : homedir(), 'config', 'user.name')
+  const top = inDir ? git(dir, 'rev-parse', '--show-toplevel') : undefined
+  const isRoot = top !== undefined && top === realpathSync(dir)
+  const repository = isRoot ? git(dir, 'remote', 'get-url', 'origin') : undefined
+  return {
+    ...(author && { author }),
+    ...(repositoryWebUrl(repository) && { repository })
+  }
+}
+
+/**
+ * Lists the files a folder of token files already holds, without dotfiles.
+ * @param {string} dir - The folder of the repository.
+ * @returns {string[]} Paths relative to `dir`.
+ */
+function existingSource(dir) {
+  const source = join(dir, SOURCE_DIR)
+  if (!existsSync(source)) return []
+  return readdirSync(source, { recursive: true, withFileTypes: true })
+    .filter((entry) => entry.isFile() && !entry.name.startsWith('.'))
+    .map((entry) => join(entry.parentPath, entry.name).slice(dir.length + 1))
+    .sort()
+}
 
 /**
  * Checks a brand or app name.
@@ -191,6 +252,10 @@ export function planFiles(options = {}) {
       `Unknown package manager ${pm}. One of ${Object.keys(PACKAGE_MANAGERS).join(', ')}`
     )
   }
+  const repository = options.repository && repositoryWebUrl(options.repository)
+  if (options.repository && !repository) {
+    throw new Error(`A repository is owner/name or an address: ${options.repository}`)
+  }
   const commands = PACKAGE_MANAGERS[pm]
   const values = {
     NAME: name,
@@ -198,6 +263,7 @@ export function planFiles(options = {}) {
     INSTALL: commands.install,
     INSTALL_CI: commands.ci,
     RUN: commands.run,
+    PM: pm,
     PNPM_SETUP: commands.setup
   }
   const template = (file) => render(readFileSync(join(TEMPLATES, file), 'utf8'), values)
@@ -208,6 +274,9 @@ export function planFiles(options = {}) {
     version: FIRST_VERSION,
     description: `The design tokens of ${name}, built with @chassis-ui/tokens`,
     type: 'module',
+    ...(repository && { repository: { type: 'git', url: `git+${repository}.git` } }),
+    license: options.license || DEFAULTS.license,
+    ...(options.author && { author: options.author }),
     files: ['dist', 'CHANGELOG.md'],
     exports: { './dist/*': './dist/*', './package.json': './package.json' },
     publishConfig: { access: 'public' },
@@ -217,7 +286,8 @@ export function planFiles(options = {}) {
       lint: 'chassis-tokens lint-source',
       verify: 'chassis-tokens verify',
       diff: 'chassis-tokens diff',
-      'swift-package': 'chassis-tokens swift-package'
+      'swift-package': 'chassis-tokens swift-package',
+      'swift-package:check': 'chassis-tokens swift-package --check'
     },
     engines: { node: '>=22.12.0' },
     devDependencies: { '@chassis-ui/tokens': `^${buildVersion()}` }
@@ -232,27 +302,38 @@ export function planFiles(options = {}) {
     ['.github/workflows/ci.yml', template('workflows/ci.yml')],
     ['.github/workflows/release.yml', template('workflows/release.yml')],
     ...Object.entries(starterSource(brands, Object.keys(apps))).map(
-      ([file, content]) => /** @type {[string, string]} */ ([`source/${file}`, json(content)])
+      ([file, content]) =>
+        /** @type {[string, string]} */ ([`${SOURCE_DIR}/${file}`, json(content)])
     )
   ])
 }
 
 /**
- * Writes the baseline of a repository of tokens.
+ * Writes the baseline of a repository of tokens. A folder that holds token files keeps them,
+ * with or without `force`, and gets no starter tokens: a sync from Figma wrote them, and a
+ * starter set among them would be built with them.
  * @param {InitOptions} [options]
- * @returns {{ dir: string, files: string[], existing: string[], written: boolean }} The
- *   folder, the files relative to it, the ones of them that existed before, and whether they
- *   were written (not on a dry run).
+ * @returns {{ dir: string, files: string[], existing: string[], kept: string[],
+ *   packageJson: Object, written: boolean }} The folder, the files relative to it, the ones of
+ *   them that existed before, the token files it left alone, the `package.json` it plans, and
+ *   whether the files were written (not on a dry run).
  * @throws {Error} When a file exists and neither `force` nor `dryRun` is given, or on an
  *   option that is not accepted. Nothing is written then.
  */
 export function init(options = {}) {
   const dir = resolve(options.dir || '.')
-  const plan = planFiles({ ...options, dir })
+  const plan = planFiles({ ...gitDefaults(dir), ...options, dir })
+  const kept = existingSource(dir)
+  if (kept.length > 0) {
+    for (const file of plan.keys()) {
+      if (file.startsWith(`${SOURCE_DIR}/`)) plan.delete(file)
+    }
+  }
   const files = [...plan.keys()]
+  const packageJson = JSON.parse(plan.get('package.json'))
 
   const existing = files.filter((file) => existsSync(join(dir, file)))
-  if (options.dryRun) return { dir, files, existing, written: false }
+  if (options.dryRun) return { dir, files, existing, kept, packageJson, written: false }
   if (existing.length > 0 && !options.force) {
     throw new Error(
       `Files to write exist in ${dir}: ${existing.join(', ')}. --force writes over them`
@@ -264,7 +345,7 @@ export function init(options = {}) {
     mkdirSync(dirname(target), { recursive: true })
     writeFileSync(target, content)
   }
-  return { dir, files, existing, written: true }
+  return { dir, files, existing, kept, packageJson, written: true }
 }
 
 const HELP = `Usage: chassis-tokens init [dir] [options]
@@ -272,7 +353,8 @@ const HELP = `Usage: chassis-tokens init [dir] [options]
 Writes the baseline of a repository of tokens into dir, the working directory by default:
 package.json with the chassis.build block and the scripts, .gitignore, .nvmrc, README.md,
 CHANGELOG.md, a CI and a release workflow, and Tokens Studio files in source/ for the first
-build. Writes nothing when a file exists.
+build. Writes nothing when a file exists. A source/ that holds files is never written to, with
+or without --force: it is kept, and chassis.build has to follow its $themes.json.
 
 Options:
   --name <name>          The package name, default the name of the folder
@@ -280,7 +362,11 @@ Options:
   --app <name:platforms> An app and its platforms, such as docs:web or mobile:ios,android,
                          one or more times; default site:web. Platforms: ${PLATFORM_NAMES.join(', ')}
   --pm <npm|pnpm>        The package manager the README and the workflows name, default npm
-  --force                Write over the files that exist
+  --repository <repo>    The repository, owner/name or an address; default the origin remote
+                         of the folder, or left out
+  --license <license>    The license, default MIT
+  --author <author>      The author; default user.name of git, or left out
+  --force                Write over the files that exist, but never a token file
   --dry-run              Print the files, write nothing
   --help, -h             Print this help
 `
@@ -308,6 +394,10 @@ export function parseInitArgs(argv) {
       options.force = true
     } else if (arg === '--dry-run') {
       options.dryRun = true
+    } else if (['--repository', '--license', '--author'].includes(arg)) {
+      const { list, i: next } = values(i)
+      options[arg.slice(2)] = list.join(' ')
+      i = next
     } else if (arg === '--name' || arg === '--pm') {
       const { list, i: next } = values(i)
       if (list.length > 1) throw new Error(`${arg} takes one value`)
@@ -358,11 +448,20 @@ export function cli(argv = process.argv.slice(2)) {
     return
   }
   try {
-    const { files, existing, written } = init(options)
+    const { files, existing, kept, packageJson, written } = init(options)
     const shown = options.dir || '.'
     for (const file of files) {
       console.log(`📄 ${file}${!written && existing.includes(file) ? ' (exists)' : ''}`)
     }
+    if (kept.length > 0) {
+      console.log(
+        `🔒 Kept ${SOURCE_DIR}/ with its ${kept.length} files, and wrote no starter tokens: keep chassis.build in step with its $themes.json`
+      )
+    }
+    const { repository, license, author } = packageJson
+    console.log(
+      `🏷️  repository: ${repository?.url ?? 'none'}, license: ${license}, author: ${author ?? 'none'}`
+    )
     if (!written) {
       console.log(
         `\n🔍 Dry run: ${files.length} files to write in ${shown}${existing.length > 0 ? `, ${existing.length} of them exist` : ''}`
@@ -373,6 +472,7 @@ export function cli(argv = process.argv.slice(2)) {
     console.log(`\n✅ ${files.length} files in ${shown}\n\nNext:`)
     if (shown !== '.') console.log(`  cd ${shown}`)
     console.log(`  git init\n  ${run.install}\n  ${run.run} build`)
+    console.log(`  git add . (with ${run.lockfile}, which the workflows install from)`)
   } catch (error) {
     console.error(`❌ ${error.message}`)
     process.exit(1)

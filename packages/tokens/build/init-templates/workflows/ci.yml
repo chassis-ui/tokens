@@ -27,6 +27,7 @@ jobs:
         uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version-file: .nvmrc
+          cache: __PM__
 
       - name: Install
         run: __INSTALL_CI__
@@ -39,4 +40,4 @@ jobs:
         run: __RUN__ verify
 
       - name: Check Package.swift
-        run: npx chassis-tokens swift-package --check
+        run: __RUN__ swift-package:check
