@@ -3,14 +3,15 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Tue, 20 Oct 2026 11:13:27 GMT
-// Chassis - Tokens v0.10.0
+// Generated on Fri, 30 Oct 2026 10:52:23 GMT
+// Chassis - Tokens v0.10.1
 // Copyright 2026 Ozgur Gunes
 // Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
 
 
 package chassis.tokens
 
+import androidx.compose.animation.core.CubicBezierEasing
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -692,6 +693,54 @@ object ChassisTokensNumberMedium {
     val borderRadiusTabLarge get() = 8.dp
     val borderRadiusTabSmall get() = 6.dp
     val borderRadiusTooltipMain get() = 4.dp
+    val motionBaseTimingContext2xsmall get() = 100
+    val motionBaseTimingContextXsmall get() = 150
+    val motionBaseTimingContextSmall get() = 200
+    val motionBaseTimingContextMedium get() = 250
+    val motionBaseTimingContextLarge get() = 300
+    val motionBaseTimingContextXlarge get() = 500
+    val motionBaseTimingContext2xlarge get() = 750
+    val motionBaseTimingContext3xlarge get() = 1000
+    val motionBaseTimingCarouselDuration get() = 5000
+    val motionBaseTimingCarouselTransition get() = 250
+    val motionBaseTimingDropdownTransition get() = 150
+    val motionBaseTimingPageTransition get() = 250
+    val motionBaseTimingSkeletonTransition get() = 1000
+    val motionBaseTimingSpinnerTransition get() = 500
+    val motionBaseEasingContextDefault get() = CubicBezierEasing(0f, 0f, 1f, 1f)
+    val motionBaseEasingContextLinear get() = CubicBezierEasing(0f, 0f, 1f, 1f)
+    val motionBaseEasingContextEaseIn get() = CubicBezierEasing(0.42f, 0f, 1f, 1f)
+    val motionBaseEasingContextEaseOut get() = CubicBezierEasing(0f, 0f, 0.58f, 1f)
+    val motionBaseEasingContextEaseInAndOut get() = CubicBezierEasing(0.42f, 0f, 0.58f, 1f)
+    val motionBaseEasingCarouselTransition get() = CubicBezierEasing(0f, 0f, 1f, 1f)
+    val motionBaseEasingPageTransition get() = CubicBezierEasing(0f, 0f, 1f, 1f)
+    val motionBaseEasingDropdownTransition get() = CubicBezierEasing(0f, 0f, 1f, 1f)
+    val motionBaseEasingSpinnerTransition get() = CubicBezierEasing(0f, 0f, 1f, 1f)
+    val motionBaseEasingSkeletonTransition get() = CubicBezierEasing(0f, 0f, 1f, 1f)
+    val motionTimingContext2xsmall get() = 100
+    val motionTimingContextXsmall get() = 150
+    val motionTimingContextSmall get() = 200
+    val motionTimingContextMedium get() = 250
+    val motionTimingContextLarge get() = 300
+    val motionTimingContextXlarge get() = 500
+    val motionTimingContext2xlarge get() = 750
+    val motionTimingContext3xlarge get() = 1000
+    val motionTimingCarouselDuration get() = 5000
+    val motionTimingCarouselTransition get() = 250
+    val motionTimingDropdownTransition get() = 150
+    val motionTimingPageTransition get() = 250
+    val motionTimingSkeletonTransition get() = 1000
+    val motionTimingSpinnerTransition get() = 500
+    val motionEasingContextDefault get() = CubicBezierEasing(0f, 0f, 1f, 1f)
+    val motionEasingContextLinear get() = CubicBezierEasing(0f, 0f, 1f, 1f)
+    val motionEasingContextEaseIn get() = CubicBezierEasing(0.42f, 0f, 1f, 1f)
+    val motionEasingContextEaseOut get() = CubicBezierEasing(0f, 0f, 0.58f, 1f)
+    val motionEasingContextEaseInAndOut get() = CubicBezierEasing(0.42f, 0f, 0.58f, 1f)
+    val motionEasingCarouselTransition get() = CubicBezierEasing(0f, 0f, 1f, 1f)
+    val motionEasingPageTransition get() = CubicBezierEasing(0f, 0f, 1f, 1f)
+    val motionEasingDropdownTransition get() = CubicBezierEasing(0f, 0f, 1f, 1f)
+    val motionEasingSpinnerTransition get() = CubicBezierEasing(0f, 0f, 1f, 1f)
+    val motionEasingSkeletonTransition get() = CubicBezierEasing(0f, 0f, 1f, 1f)
     val fontContextJumboLineHeight get() = 120.sp
     val fontContextJumboFontSize get() = 96.sp
     val fontContextJumboLetterSpacing get() = (-0.026).em

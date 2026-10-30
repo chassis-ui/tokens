@@ -58,6 +58,7 @@ android {
 
 dependencies {
   implementation(platform(libs.compose.bom))
+  implementation(libs.compose.animation.core)
   implementation(libs.compose.ui)
 }
 

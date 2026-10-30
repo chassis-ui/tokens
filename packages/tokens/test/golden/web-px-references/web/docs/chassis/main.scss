@@ -4,8 +4,8 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Tue, 20 Oct 2026 11:13:33 GMT
-// Chassis - Tokens v0.10.0
+// Generated on Fri, 30 Oct 2026 10:52:28 GMT
+// Chassis - Tokens v0.10.1
 // Copyright 2026 Ozgur Gunes
 // Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
 
@@ -2307,6 +2307,54 @@ $cx-border-radius-tab-medium: $cx-border-radius-context-medium !default;
 $cx-border-radius-tab-large: $cx-border-radius-context-large !default;
 $cx-border-radius-tab-small: $cx-border-radius-context-medium !default;
 $cx-border-radius-tooltip-main: $cx-border-radius-context-small !default;
+$cx-motion-base-timing-context-2xsmall: 100ms !default;
+$cx-motion-base-timing-context-xsmall: 150ms !default;
+$cx-motion-base-timing-context-small: 200ms !default;
+$cx-motion-base-timing-context-medium: 250ms !default;
+$cx-motion-base-timing-context-large: 300ms !default;
+$cx-motion-base-timing-context-xlarge: 500ms !default;
+$cx-motion-base-timing-context-2xlarge: 750ms !default;
+$cx-motion-base-timing-context-3xlarge: 1000ms !default;
+$cx-motion-base-timing-carousel-duration: 5000ms !default;
+$cx-motion-base-timing-carousel-transition: 250ms !default;
+$cx-motion-base-timing-dropdown-transition: 150ms !default;
+$cx-motion-base-timing-page-transition: 250ms !default;
+$cx-motion-base-timing-skeleton-transition: 1000ms !default;
+$cx-motion-base-timing-spinner-transition: 500ms !default;
+$cx-motion-base-easing-context-default: cubic-bezier(0, 0, 1, 1) !default;
+$cx-motion-base-easing-context-linear: cubic-bezier(0, 0, 1, 1) !default;
+$cx-motion-base-easing-context-ease-in: cubic-bezier(0.42, 0, 1, 1) !default;
+$cx-motion-base-easing-context-ease-out: cubic-bezier(0, 0, 0.58, 1) !default;
+$cx-motion-base-easing-context-ease-in-and-out: cubic-bezier(0.42, 0, 0.58, 1) !default;
+$cx-motion-base-easing-carousel-transition: cubic-bezier(0, 0, 1, 1) !default;
+$cx-motion-base-easing-page-transition: cubic-bezier(0, 0, 1, 1) !default;
+$cx-motion-base-easing-dropdown-transition: cubic-bezier(0, 0, 1, 1) !default;
+$cx-motion-base-easing-spinner-transition: cubic-bezier(0, 0, 1, 1) !default;
+$cx-motion-base-easing-skeleton-transition: cubic-bezier(0, 0, 1, 1) !default;
+$cx-motion-timing-context-2xsmall: 100ms !default;
+$cx-motion-timing-context-xsmall: 150ms !default;
+$cx-motion-timing-context-small: 200ms !default;
+$cx-motion-timing-context-medium: 250ms !default;
+$cx-motion-timing-context-large: 300ms !default;
+$cx-motion-timing-context-xlarge: 500ms !default;
+$cx-motion-timing-context-2xlarge: 750ms !default;
+$cx-motion-timing-context-3xlarge: 1000ms !default;
+$cx-motion-timing-carousel-duration: 5000ms !default;
+$cx-motion-timing-carousel-transition: 250ms !default;
+$cx-motion-timing-dropdown-transition: 150ms !default;
+$cx-motion-timing-page-transition: 250ms !default;
+$cx-motion-timing-skeleton-transition: 1000ms !default;
+$cx-motion-timing-spinner-transition: 500ms !default;
+$cx-motion-easing-context-default: cubic-bezier(0, 0, 1, 1) !default;
+$cx-motion-easing-context-linear: cubic-bezier(0, 0, 1, 1) !default;
+$cx-motion-easing-context-ease-in: cubic-bezier(0.42, 0, 1, 1) !default;
+$cx-motion-easing-context-ease-out: cubic-bezier(0, 0, 0.58, 1) !default;
+$cx-motion-easing-context-ease-in-and-out: cubic-bezier(0.42, 0, 0.58, 1) !default;
+$cx-motion-easing-carousel-transition: cubic-bezier(0, 0, 1, 1) !default;
+$cx-motion-easing-page-transition: cubic-bezier(0, 0, 1, 1) !default;
+$cx-motion-easing-dropdown-transition: cubic-bezier(0, 0, 1, 1) !default;
+$cx-motion-easing-spinner-transition: cubic-bezier(0, 0, 1, 1) !default;
+$cx-motion-easing-skeleton-transition: cubic-bezier(0, 0, 1, 1) !default;
 $cx-font-context-jumbo: ("font-family": $cx-typography-font-family-context-jumbo, "font-weight": $cx-typography-font-weight-context-jumbo-weight, "font-size": $cx-typography-font-size-context-jumbo, "line-height": $cx-typography-line-height-context-jumbo, "font-style": $cx-typography-font-weight-context-jumbo-style, "letter-spacing": -2.5px, "margin-bottom": 0px, "text-transform": none, "text-decoration": none) !default;
 $cx-font-context-hero: ("font-family": $cx-typography-font-family-context-hero, "font-weight": $cx-typography-font-weight-context-hero-weight, "font-size": $cx-typography-font-size-context-hero, "line-height": $cx-typography-line-height-context-hero, "font-style": $cx-typography-font-weight-context-hero-style, "letter-spacing": -1.5px, "margin-bottom": 0px, "text-transform": none, "text-decoration": none) !default;
 $cx-font-context-h1: ("font-family": $cx-typography-font-family-context-heading, "font-weight": $cx-typography-font-weight-context-heading-weight, "font-size": $cx-typography-font-size-context-h1, "line-height": $cx-typography-line-height-context-h1, "font-style": $cx-typography-font-weight-context-heading-style, "letter-spacing": 0px, "margin-bottom": 0px, "text-transform": none, "text-decoration": none) !default;

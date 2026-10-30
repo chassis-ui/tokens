@@ -350,3 +350,60 @@ export function gradientParts(token) {
     ])
   ]
 }
+
+/**
+ * Returns a duration in milliseconds. The source writes durations without a unit, which
+ * means milliseconds.
+ *
+ * @param {Object} token - A resolved token of type `duration`.
+ * @returns {number} e.g. `250`
+ * @throws {Error} When the value is not a duration.
+ */
+export function durationMilliseconds(token) {
+  const match = String(token.$value)
+    .trim()
+    .match(/^(\d*\.?\d+)(ms|s)?$/)
+  if (!match) throw new Error(`${token.path.join('.')}: "${token.$value}" is not a duration`)
+  const [, number, unit] = match
+  return unit === 's' ? Number((Number(number) * 1000).toFixed(3)) : Number(number)
+}
+
+/**
+ * Returns the control points of a cubic Bézier easing.
+ *
+ * @param {Object} token - A resolved token of type `cubicBezier`, whose value is a
+ *   comma-separated string or an array.
+ * @returns {number[]} `x1`, `y1`, `x2` and `y2`, e.g. `[0.42, 0, 0.58, 1]`
+ * @throws {Error} When the value is not four numbers, or `x1` or `x2` is outside 0 to 1.
+ */
+export function cubicBezierPoints(token) {
+  const points = String(token.$value)
+    .split(',')
+    .map((point) => (point.trim() === '' ? NaN : Number(point)))
+  const [x1, , x2] = points
+  if (points.length !== 4 || points.some(isNaN) || x1 < 0 || x1 > 1 || x2 < 0 || x2 > 1) {
+    throw new Error(`${token.path.join('.')}: "${token.$value}" is not a cubic Bézier curve`)
+  }
+  return points
+}
+
+/**
+ * Returns a cubic Bézier easing as the parts of a platform without a value for one: a
+ * number per control point. The parts have no references, as they have no tokens to name.
+ *
+ * @param {Object} token - A resolved token of type `cubicBezier`.
+ * @returns {Object[]} `{ segments, path, $type, $value, original }` per part, in the order
+ *   `x1`, `y1`, `x2`, `y2`.
+ */
+export function cubicBezierParts(token) {
+  return cubicBezierPoints(token).map(($value, index) => {
+    const segments = [['x1', 'y1', 'x2', 'y2'][index]]
+    return {
+      segments,
+      path: [...token.path, ...segments],
+      $type: 'number',
+      $value,
+      original: { $value }
+    }
+  })
+}

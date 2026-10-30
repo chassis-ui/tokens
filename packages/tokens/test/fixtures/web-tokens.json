@@ -82,6 +82,26 @@
         "$value": 400
       },
       "expected": "400"
+    },
+    {
+      "case": "duration in milliseconds",
+      "token": {
+        "name": "cx-motion-timing-context-medium",
+        "path": ["motion", "timing", "context", "medium"],
+        "$type": "duration",
+        "$value": "250"
+      },
+      "expected": "250ms"
+    },
+    {
+      "case": "easing as a CSS function",
+      "token": {
+        "name": "cx-motion-easing-context-ease-in",
+        "path": ["motion", "easing", "context", "ease-in"],
+        "$type": "cubicBezier",
+        "$value": "0.42, 0, 1, 1"
+      },
+      "expected": "cubic-bezier(0.42, 0, 1, 1)"
     }
   ],
   "remSize": [

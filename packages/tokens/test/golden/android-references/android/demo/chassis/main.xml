@@ -2,8 +2,8 @@
 
 <!--
   Do not edit directly, this file was auto-generated.
-  Generated on Tue, 20 Oct 2026 11:13:28 GMT
-  Chassis - Tokens v0.10.0
+  Generated on Fri, 30 Oct 2026 10:52:23 GMT
+  Chassis - Tokens v0.10.1
   Copyright 2026 Ozgur Gunes
   Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
 -->
@@ -2304,6 +2304,114 @@
   <dimen name="border_radius_tab_large">@dimen/border_radius_context_large</dimen>
   <dimen name="border_radius_tab_small">@dimen/border_radius_context_medium</dimen>
   <dimen name="border_radius_tooltip_main">@dimen/border_radius_context_small</dimen>
+  <integer name="motion_base_timing_context_2xsmall">100</integer>
+  <integer name="motion_base_timing_context_xsmall">150</integer>
+  <integer name="motion_base_timing_context_small">200</integer>
+  <integer name="motion_base_timing_context_medium">250</integer>
+  <integer name="motion_base_timing_context_large">300</integer>
+  <integer name="motion_base_timing_context_xlarge">500</integer>
+  <integer name="motion_base_timing_context_2xlarge">750</integer>
+  <integer name="motion_base_timing_context_3xlarge">1000</integer>
+  <integer name="motion_base_timing_carousel_duration">5000</integer>
+  <integer name="motion_base_timing_carousel_transition">@integer/motion_base_timing_context_medium</integer>
+  <integer name="motion_base_timing_dropdown_transition">@integer/motion_base_timing_context_xsmall</integer>
+  <integer name="motion_base_timing_page_transition">@integer/motion_base_timing_context_medium</integer>
+  <integer name="motion_base_timing_skeleton_transition">@integer/motion_base_timing_context_3xlarge</integer>
+  <integer name="motion_base_timing_spinner_transition">@integer/motion_base_timing_context_xlarge</integer>
+  <item name="motion_base_easing_context_default_x_1" type="dimen" format="float">0</item>
+  <item name="motion_base_easing_context_default_y_1" type="dimen" format="float">0</item>
+  <item name="motion_base_easing_context_default_x_2" type="dimen" format="float">1</item>
+  <item name="motion_base_easing_context_default_y_2" type="dimen" format="float">1</item>
+  <item name="motion_base_easing_context_linear_x_1" type="dimen" format="float">0</item>
+  <item name="motion_base_easing_context_linear_y_1" type="dimen" format="float">0</item>
+  <item name="motion_base_easing_context_linear_x_2" type="dimen" format="float">1</item>
+  <item name="motion_base_easing_context_linear_y_2" type="dimen" format="float">1</item>
+  <item name="motion_base_easing_context_ease_in_x_1" type="dimen" format="float">0.42</item>
+  <item name="motion_base_easing_context_ease_in_y_1" type="dimen" format="float">0</item>
+  <item name="motion_base_easing_context_ease_in_x_2" type="dimen" format="float">1</item>
+  <item name="motion_base_easing_context_ease_in_y_2" type="dimen" format="float">1</item>
+  <item name="motion_base_easing_context_ease_out_x_1" type="dimen" format="float">0</item>
+  <item name="motion_base_easing_context_ease_out_y_1" type="dimen" format="float">0</item>
+  <item name="motion_base_easing_context_ease_out_x_2" type="dimen" format="float">0.58</item>
+  <item name="motion_base_easing_context_ease_out_y_2" type="dimen" format="float">1</item>
+  <item name="motion_base_easing_context_ease_in_and_out_x_1" type="dimen" format="float">0.42</item>
+  <item name="motion_base_easing_context_ease_in_and_out_y_1" type="dimen" format="float">0</item>
+  <item name="motion_base_easing_context_ease_in_and_out_x_2" type="dimen" format="float">0.58</item>
+  <item name="motion_base_easing_context_ease_in_and_out_y_2" type="dimen" format="float">1</item>
+  <item name="motion_base_easing_carousel_transition_x_1" type="dimen" format="float">0</item>
+  <item name="motion_base_easing_carousel_transition_y_1" type="dimen" format="float">0</item>
+  <item name="motion_base_easing_carousel_transition_x_2" type="dimen" format="float">1</item>
+  <item name="motion_base_easing_carousel_transition_y_2" type="dimen" format="float">1</item>
+  <item name="motion_base_easing_page_transition_x_1" type="dimen" format="float">0</item>
+  <item name="motion_base_easing_page_transition_y_1" type="dimen" format="float">0</item>
+  <item name="motion_base_easing_page_transition_x_2" type="dimen" format="float">1</item>
+  <item name="motion_base_easing_page_transition_y_2" type="dimen" format="float">1</item>
+  <item name="motion_base_easing_dropdown_transition_x_1" type="dimen" format="float">0</item>
+  <item name="motion_base_easing_dropdown_transition_y_1" type="dimen" format="float">0</item>
+  <item name="motion_base_easing_dropdown_transition_x_2" type="dimen" format="float">1</item>
+  <item name="motion_base_easing_dropdown_transition_y_2" type="dimen" format="float">1</item>
+  <item name="motion_base_easing_spinner_transition_x_1" type="dimen" format="float">0</item>
+  <item name="motion_base_easing_spinner_transition_y_1" type="dimen" format="float">0</item>
+  <item name="motion_base_easing_spinner_transition_x_2" type="dimen" format="float">1</item>
+  <item name="motion_base_easing_spinner_transition_y_2" type="dimen" format="float">1</item>
+  <item name="motion_base_easing_skeleton_transition_x_1" type="dimen" format="float">0</item>
+  <item name="motion_base_easing_skeleton_transition_y_1" type="dimen" format="float">0</item>
+  <item name="motion_base_easing_skeleton_transition_x_2" type="dimen" format="float">1</item>
+  <item name="motion_base_easing_skeleton_transition_y_2" type="dimen" format="float">1</item>
+  <integer name="motion_timing_context_2xsmall">@integer/motion_base_timing_context_2xsmall</integer>
+  <integer name="motion_timing_context_xsmall">@integer/motion_base_timing_context_xsmall</integer>
+  <integer name="motion_timing_context_small">@integer/motion_base_timing_context_small</integer>
+  <integer name="motion_timing_context_medium">@integer/motion_base_timing_context_medium</integer>
+  <integer name="motion_timing_context_large">@integer/motion_base_timing_context_large</integer>
+  <integer name="motion_timing_context_xlarge">@integer/motion_base_timing_context_xlarge</integer>
+  <integer name="motion_timing_context_2xlarge">@integer/motion_base_timing_context_2xlarge</integer>
+  <integer name="motion_timing_context_3xlarge">@integer/motion_base_timing_context_3xlarge</integer>
+  <integer name="motion_timing_carousel_duration">@integer/motion_base_timing_carousel_duration</integer>
+  <integer name="motion_timing_carousel_transition">@integer/motion_base_timing_carousel_transition</integer>
+  <integer name="motion_timing_dropdown_transition">@integer/motion_base_timing_dropdown_transition</integer>
+  <integer name="motion_timing_page_transition">@integer/motion_base_timing_page_transition</integer>
+  <integer name="motion_timing_skeleton_transition">@integer/motion_base_timing_skeleton_transition</integer>
+  <integer name="motion_timing_spinner_transition">@integer/motion_base_timing_spinner_transition</integer>
+  <item name="motion_easing_context_default_x_1" type="dimen" format="float">0</item>
+  <item name="motion_easing_context_default_y_1" type="dimen" format="float">0</item>
+  <item name="motion_easing_context_default_x_2" type="dimen" format="float">1</item>
+  <item name="motion_easing_context_default_y_2" type="dimen" format="float">1</item>
+  <item name="motion_easing_context_linear_x_1" type="dimen" format="float">0</item>
+  <item name="motion_easing_context_linear_y_1" type="dimen" format="float">0</item>
+  <item name="motion_easing_context_linear_x_2" type="dimen" format="float">1</item>
+  <item name="motion_easing_context_linear_y_2" type="dimen" format="float">1</item>
+  <item name="motion_easing_context_ease_in_x_1" type="dimen" format="float">0.42</item>
+  <item name="motion_easing_context_ease_in_y_1" type="dimen" format="float">0</item>
+  <item name="motion_easing_context_ease_in_x_2" type="dimen" format="float">1</item>
+  <item name="motion_easing_context_ease_in_y_2" type="dimen" format="float">1</item>
+  <item name="motion_easing_context_ease_out_x_1" type="dimen" format="float">0</item>
+  <item name="motion_easing_context_ease_out_y_1" type="dimen" format="float">0</item>
+  <item name="motion_easing_context_ease_out_x_2" type="dimen" format="float">0.58</item>
+  <item name="motion_easing_context_ease_out_y_2" type="dimen" format="float">1</item>
+  <item name="motion_easing_context_ease_in_and_out_x_1" type="dimen" format="float">0.42</item>
+  <item name="motion_easing_context_ease_in_and_out_y_1" type="dimen" format="float">0</item>
+  <item name="motion_easing_context_ease_in_and_out_x_2" type="dimen" format="float">0.58</item>
+  <item name="motion_easing_context_ease_in_and_out_y_2" type="dimen" format="float">1</item>
+  <item name="motion_easing_carousel_transition_x_1" type="dimen" format="float">0</item>
+  <item name="motion_easing_carousel_transition_y_1" type="dimen" format="float">0</item>
+  <item name="motion_easing_carousel_transition_x_2" type="dimen" format="float">1</item>
+  <item name="motion_easing_carousel_transition_y_2" type="dimen" format="float">1</item>
+  <item name="motion_easing_page_transition_x_1" type="dimen" format="float">0</item>
+  <item name="motion_easing_page_transition_y_1" type="dimen" format="float">0</item>
+  <item name="motion_easing_page_transition_x_2" type="dimen" format="float">1</item>
+  <item name="motion_easing_page_transition_y_2" type="dimen" format="float">1</item>
+  <item name="motion_easing_dropdown_transition_x_1" type="dimen" format="float">0</item>
+  <item name="motion_easing_dropdown_transition_y_1" type="dimen" format="float">0</item>
+  <item name="motion_easing_dropdown_transition_x_2" type="dimen" format="float">1</item>
+  <item name="motion_easing_dropdown_transition_y_2" type="dimen" format="float">1</item>
+  <item name="motion_easing_spinner_transition_x_1" type="dimen" format="float">0</item>
+  <item name="motion_easing_spinner_transition_y_1" type="dimen" format="float">0</item>
+  <item name="motion_easing_spinner_transition_x_2" type="dimen" format="float">1</item>
+  <item name="motion_easing_spinner_transition_y_2" type="dimen" format="float">1</item>
+  <item name="motion_easing_skeleton_transition_x_1" type="dimen" format="float">0</item>
+  <item name="motion_easing_skeleton_transition_y_1" type="dimen" format="float">0</item>
+  <item name="motion_easing_skeleton_transition_x_2" type="dimen" format="float">1</item>
+  <item name="motion_easing_skeleton_transition_y_2" type="dimen" format="float">1</item>
   <string name="font_context_jumbo_font_family">@string/typography_font_family_context_jumbo</string>
   <integer name="font_context_jumbo_font_weight">700</integer>
   <dimen name="font_context_jumbo_line_height">@dimen/typography_line_height_context_jumbo</dimen>

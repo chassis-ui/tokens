@@ -1,7 +1,7 @@
 /**
  * @file compose.js
  * @description Encodes resolved tokens as Kotlin values for Jetpack Compose: `Color`,
- *              `.dp`, `.sp`, `.em`, `Float`, `FontWeight` and string literals. The values
+ *              `.dp`, `.sp`, `.em`, `Float`, `FontWeight`, `CubicBezierEasing` and string literals. The values
  *              are the ones of `values/android.js`, in Kotlin; references follow the
  *              Android rule.
  *
@@ -10,7 +10,7 @@
  */
 
 import { encodeValue, reference as referenceAndroid, resourceKind } from './android.js'
-import { fontWeightNumber } from './shared.js'
+import { cubicBezierPoints, fontWeightNumber } from './shared.js'
 
 /**
  * A Kotlin number, in parentheses when it is negative, so a unit extension such as `.dp`
@@ -51,6 +51,10 @@ export function encode(token, context = {}) {
   const kind = resourceKind(token)
   if (token.$type === 'fontWeight') {
     return `FontWeight(${fontWeightNumber(token)})`
+  }
+  if (token.$type === 'cubicBezier') {
+    const points = cubicBezierPoints(token).map((point) => `${point}f`)
+    return `CubicBezierEasing(${points.join(', ')})`
   }
   const value = encodeValue(token, context)
   if (kind === 'color') {

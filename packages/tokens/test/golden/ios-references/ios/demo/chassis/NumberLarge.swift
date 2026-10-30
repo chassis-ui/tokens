@@ -4,8 +4,8 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Tue, 20 Oct 2026 11:13:29 GMT
-// Chassis - Tokens v0.10.0
+// Generated on Fri, 30 Oct 2026 10:52:25 GMT
+// Chassis - Tokens v0.10.1
 // Copyright 2026 Ozgur Gunes
 // Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
 
@@ -687,6 +687,54 @@ public enum ChassisTokensNumberLarge {
     public static let BorderRadiusTabLarge = BorderRadiusContextLarge
     public static let BorderRadiusTabSmall = BorderRadiusContextMedium
     public static let BorderRadiusTooltipMain = BorderRadiusContextSmall
+    public static let MotionBaseTimingContext2xsmall = TimeInterval(0.1)
+    public static let MotionBaseTimingContextXsmall = TimeInterval(0.15)
+    public static let MotionBaseTimingContextSmall = TimeInterval(0.2)
+    public static let MotionBaseTimingContextMedium = TimeInterval(0.25)
+    public static let MotionBaseTimingContextLarge = TimeInterval(0.3)
+    public static let MotionBaseTimingContextXlarge = TimeInterval(0.5)
+    public static let MotionBaseTimingContext2xlarge = TimeInterval(0.75)
+    public static let MotionBaseTimingContext3xlarge = TimeInterval(1)
+    public static let MotionBaseTimingCarouselDuration = TimeInterval(5)
+    public static let MotionBaseTimingCarouselTransition = MotionBaseTimingContextMedium
+    public static let MotionBaseTimingDropdownTransition = MotionBaseTimingContextXsmall
+    public static let MotionBaseTimingPageTransition = MotionBaseTimingContextMedium
+    public static let MotionBaseTimingSkeletonTransition = MotionBaseTimingContext3xlarge
+    public static let MotionBaseTimingSpinnerTransition = MotionBaseTimingContextXlarge
+    public static let MotionBaseEasingContextDefault = (x1: 0.0, y1: 0.0, x2: 1.0, y2: 1.0)
+    public static let MotionBaseEasingContextLinear = (x1: 0.0, y1: 0.0, x2: 1.0, y2: 1.0)
+    public static let MotionBaseEasingContextEaseIn = (x1: 0.42, y1: 0.0, x2: 1.0, y2: 1.0)
+    public static let MotionBaseEasingContextEaseOut = (x1: 0.0, y1: 0.0, x2: 0.58, y2: 1.0)
+    public static let MotionBaseEasingContextEaseInAndOut = (x1: 0.42, y1: 0.0, x2: 0.58, y2: 1.0)
+    public static let MotionBaseEasingCarouselTransition = MotionBaseEasingContextDefault
+    public static let MotionBaseEasingPageTransition = MotionBaseEasingContextDefault
+    public static let MotionBaseEasingDropdownTransition = MotionBaseEasingContextDefault
+    public static let MotionBaseEasingSpinnerTransition = MotionBaseEasingContextDefault
+    public static let MotionBaseEasingSkeletonTransition = MotionBaseEasingContextDefault
+    public static let MotionTimingContext2xsmall = MotionBaseTimingContext2xsmall
+    public static let MotionTimingContextXsmall = MotionBaseTimingContextXsmall
+    public static let MotionTimingContextSmall = MotionBaseTimingContextSmall
+    public static let MotionTimingContextMedium = MotionBaseTimingContextMedium
+    public static let MotionTimingContextLarge = MotionBaseTimingContextLarge
+    public static let MotionTimingContextXlarge = MotionBaseTimingContextXlarge
+    public static let MotionTimingContext2xlarge = MotionBaseTimingContext2xlarge
+    public static let MotionTimingContext3xlarge = MotionBaseTimingContext3xlarge
+    public static let MotionTimingCarouselDuration = MotionBaseTimingCarouselDuration
+    public static let MotionTimingCarouselTransition = MotionBaseTimingCarouselTransition
+    public static let MotionTimingDropdownTransition = MotionBaseTimingDropdownTransition
+    public static let MotionTimingPageTransition = MotionBaseTimingPageTransition
+    public static let MotionTimingSkeletonTransition = MotionBaseTimingSkeletonTransition
+    public static let MotionTimingSpinnerTransition = MotionBaseTimingSpinnerTransition
+    public static let MotionEasingContextDefault = MotionBaseEasingContextDefault
+    public static let MotionEasingContextLinear = MotionBaseEasingContextLinear
+    public static let MotionEasingContextEaseIn = MotionBaseEasingContextEaseIn
+    public static let MotionEasingContextEaseOut = MotionBaseEasingContextEaseOut
+    public static let MotionEasingContextEaseInAndOut = MotionBaseEasingContextEaseInAndOut
+    public static let MotionEasingCarouselTransition = MotionBaseEasingCarouselTransition
+    public static let MotionEasingPageTransition = MotionBaseEasingPageTransition
+    public static let MotionEasingDropdownTransition = MotionBaseEasingDropdownTransition
+    public static let MotionEasingSpinnerTransition = MotionBaseEasingSpinnerTransition
+    public static let MotionEasingSkeletonTransition = MotionBaseEasingSkeletonTransition
     public static let FontContextJumboLineHeight = TypographyLineHeightContextJumbo
     public static let FontContextJumboFontSize = TypographyFontSizeContextJumbo
     public static let FontContextJumboLetterSpacing = TypographyLetterSpacingContextJumbo

@@ -9,7 +9,7 @@
  */
 
 import { encode, partName, reference, resourceTag } from '../values/android.js'
-import { gradientParts, isGradient } from '../values/shared.js'
+import { cubicBezierParts, gradientParts, isGradient } from '../values/shared.js'
 import { encodingContext, firstReferencedToken } from './references.js'
 
 /**
@@ -31,11 +31,17 @@ export default (opts) => {
     return reference(token, target, context, target && encodingContext(target, dictionary.tokens))
   }
 
-  // A gradient prints as its parts; other tokens print as they are
-  const printedTokens = (token) =>
-    isGradient(token)
-      ? gradientParts(token).map((part) => ({ ...part, name: partName(token, part.segments) }))
+  // A gradient or an easing prints as its parts; other tokens print as they are
+  const printedTokens = (token) => {
+    const parts = isGradient(token)
+      ? gradientParts(token)
+      : token.$type === 'cubicBezier'
+        ? cubicBezierParts(token)
+        : undefined
+    return parts
+      ? parts.map((part) => ({ ...part, name: partName(token, part.segments) }))
       : [token]
+  }
 
   const tokenToLine = (token) => {
     const { tag, attributes } = resourceTag(token)

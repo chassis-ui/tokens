@@ -15,6 +15,7 @@
  * The Compose names the values use.
  */
 const IMPORTS = [
+  'androidx.compose.animation.core.CubicBezierEasing',
   'androidx.compose.ui.graphics.Color',
   'androidx.compose.ui.text.font.FontWeight',
   'androidx.compose.ui.unit.dp',

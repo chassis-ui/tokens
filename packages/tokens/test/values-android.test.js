@@ -9,6 +9,7 @@
 
 import { readFileSync } from 'node:fs'
 import { afterEach, describe, expect, test, vi } from 'vitest'
+import { cubicBezierParts } from '../build/values/shared.js'
 import {
   encode,
   escapeString,
@@ -83,6 +84,24 @@ describe('Android encode and resourceType', () => {
 
     expect(resourceType(token)).toBe('string')
     expect(encode(token)).toBe('dropShadow')
+  })
+})
+
+describe('Android easing parts', () => {
+  test('are float items named after the control points', () => {
+    const { token } = fixture.easing
+    const parts = cubicBezierParts(token)
+
+    expect(parts.map((part) => partName(token, part.segments))).toEqual([
+      'MotionEasingContextEaseIn_x_1',
+      'MotionEasingContextEaseIn_y_1',
+      'MotionEasingContextEaseIn_x_2',
+      'MotionEasingContextEaseIn_y_2'
+    ])
+    expect(parts.map((part) => encode(part))).toEqual(['0.42', '0', '1', '1'])
+    expect(parts.map((part) => resourceTag(part).attributes)).toEqual(
+      parts.map(() => ' type="dimen" format="float"')
+    )
   })
 })
 

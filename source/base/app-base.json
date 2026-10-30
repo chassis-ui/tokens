@@ -4433,5 +4433,131 @@
         "$value": "{shadow.context.none}"
       }
     }
+  },
+  "motion": {
+    "timing": {
+      "context": {
+        "2xsmall": {
+          "$type": "duration",
+          "$value": "{motion.base.timing.context.2xsmall}"
+        },
+        "xsmall": {
+          "$type": "duration",
+          "$value": "{motion.base.timing.context.xsmall}"
+        },
+        "small": {
+          "$type": "duration",
+          "$value": "{motion.base.timing.context.small}"
+        },
+        "medium": {
+          "$type": "duration",
+          "$value": "{motion.base.timing.context.medium}"
+        },
+        "large": {
+          "$type": "duration",
+          "$value": "{motion.base.timing.context.large}"
+        },
+        "xlarge": {
+          "$type": "duration",
+          "$value": "{motion.base.timing.context.xlarge}"
+        },
+        "2xlarge": {
+          "$type": "duration",
+          "$value": "{motion.base.timing.context.2xlarge}"
+        },
+        "3xlarge": {
+          "$type": "duration",
+          "$value": "{motion.base.timing.context.3xlarge}"
+        }
+      },
+      "carousel": {
+        "duration": {
+          "$type": "duration",
+          "$value": "{motion.base.timing.carousel.duration}"
+        },
+        "transition": {
+          "$type": "duration",
+          "$value": "{motion.base.timing.carousel.transition}"
+        }
+      },
+      "dropdown": {
+        "transition": {
+          "$type": "duration",
+          "$value": "{motion.base.timing.dropdown.transition}"
+        }
+      },
+      "page": {
+        "transition": {
+          "$type": "duration",
+          "$value": "{motion.base.timing.page.transition}"
+        }
+      },
+      "skeleton": {
+        "transition": {
+          "$type": "duration",
+          "$value": "{motion.base.timing.skeleton.transition}"
+        }
+      },
+      "spinner": {
+        "transition": {
+          "$type": "duration",
+          "$value": "{motion.base.timing.spinner.transition}"
+        }
+      }
+    },
+    "easing": {
+      "context": {
+        "default": {
+          "$type": "cubicBezier",
+          "$value": "{motion.base.easing.context.default}"
+        },
+        "linear": {
+          "$type": "cubicBezier",
+          "$value": "{motion.base.easing.context.linear}"
+        },
+        "ease-in": {
+          "$type": "cubicBezier",
+          "$value": "{motion.base.easing.context.ease-in}"
+        },
+        "ease-out": {
+          "$type": "cubicBezier",
+          "$value": "{motion.base.easing.context.ease-out}"
+        },
+        "ease-in-and-out": {
+          "$type": "cubicBezier",
+          "$value": "{motion.base.easing.context.ease-in-and-out}"
+        }
+      },
+      "carousel": {
+        "transition": {
+          "$type": "cubicBezier",
+          "$value": "{motion.base.easing.carousel.transition}"
+        }
+      },
+      "page": {
+        "transition": {
+          "$type": "cubicBezier",
+          "$value": "{motion.base.easing.page.transition}"
+        }
+      },
+      "dropdown": {
+        "transition": {
+          "$type": "cubicBezier",
+          "$value": "{motion.base.easing.dropdown.transition}"
+        }
+      },
+      "spinner": {
+        "transition": {
+          "$type": "cubicBezier",
+          "$value": "{motion.base.easing.spinner.transition}"
+        }
+      },
+      "skeleton": {
+        "transition": {
+          "$type": "cubicBezier",
+          "$value": "{motion.base.easing.skeleton.transition}"
+        }
+      }
+    }
   }
 }

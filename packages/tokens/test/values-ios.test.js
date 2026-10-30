@@ -47,6 +47,12 @@ describe('iOS encode', () => {
   })
 })
 
+describe('iOS motion', () => {
+  test('prints an easing as a tuple of control points', () => {
+    expect(encode(fixture.easing.token)).toBe(fixture.easing.ios)
+  })
+})
+
 describe('iOS reference', () => {
   const caseNamed = (label) => structuredClone(fixture.iosReferences.find((c) => c.case === label))
 

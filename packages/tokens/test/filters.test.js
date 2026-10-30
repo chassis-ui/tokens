@@ -30,6 +30,13 @@ describe('filters', () => {
     }
   })
 
+  test('emit durations and easings in the main and number files', () => {
+    for (const $type of ['duration', 'cubicBezier']) {
+      const token = { path: ['motion', 'timing', 'context', 'medium'], $type }
+      expect(matchingFilters(token)).toEqual(['cx/allTokens', 'cx/numberTokens'])
+    }
+  })
+
   test('emit the color parts of every shadow in the main and color files', () => {
     // The mobile platforms expand shadows; each layer's color is a color token
     for (const group of ['context', 'elevation', 'button']) {

@@ -11,6 +11,8 @@
 
 import { tokenTypes } from '../utils.js'
 import {
+  cubicBezierPoints,
+  durationMilliseconds,
   firstFontFamily,
   fontWeightNumber,
   isBaseColor,
@@ -89,6 +91,22 @@ export function fontWeightConstant(token) {
 }
 
 /**
+ * Formats an easing as its control points, which `CAMediaTimingFunction`,
+ * `UIViewPropertyAnimator` and SwiftUI's `Animation.timingCurve` take. A tuple of doubles,
+ * because a `CAMediaTimingFunction` is not `Sendable` and Swift 6 rejects a `static let` of
+ * one, and a tuple of integer literals would be a tuple of `Int`.
+ *
+ * @param {Object} token - A resolved token of type `cubicBezier`.
+ * @returns {string} e.g. `(x1: 0.42, y1: 0.0, x2: 1.0, y2: 1.0)`
+ */
+function encodeEasing(token) {
+  const [x1, y1, x2, y2] = cubicBezierPoints(token).map((point) =>
+    Number.isInteger(point) ? point.toFixed(1) : String(point)
+  )
+  return `(x1: ${x1}, y1: ${y1}, x2: ${x2}, y2: ${y2})`
+}
+
+/**
  * Encodes a resolved token as the right-hand side of a Swift `static let`.
  *
  * @param {Object} token - A resolved token with `$type`, `$value` and `path`.
@@ -101,6 +119,12 @@ export function encode(token, context = {}) {
 
   if (type === 'color') {
     return encodeColor(token)
+  }
+  if (type === 'duration') {
+    return `TimeInterval(${Number((durationMilliseconds(token) / 1000).toFixed(6))})`
+  }
+  if (type === 'cubicBezier') {
+    return encodeEasing(token)
   }
   if (token.path[1] === 'letterSpacing') {
     return `CGFloat(${letterSpacingNumber(token)})`

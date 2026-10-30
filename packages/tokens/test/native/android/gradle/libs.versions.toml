@@ -8,6 +8,7 @@ compose-bom = "2026.09.00"
 [libraries]
 kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 compose-bom = { module = "androidx.compose:compose-bom", version.ref = "compose-bom" }
+compose-animation-core = { module = "androidx.compose.animation:animation-core" }
 compose-ui = { module = "androidx.compose.ui:ui" }
 
 [plugins]

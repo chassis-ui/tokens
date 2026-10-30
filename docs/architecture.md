@@ -149,7 +149,7 @@ The repository root also has `Package.swift`, written by `build/swift-package.js
 | `cx/allTokens`       | main                                | every emitted type, without the colors under `color.primitive`, `color.context`, `color.utility` and `gradient.primitive`, and without `opacity.base.*` |
 | `cx/stringTokens`    | string                              | asset, content, fontFamily, fontStyle, fontWeight, string, text, textCase, textDecoration, type                                                         |
 | `cx/themeTokens`     | color files                         | colors, without `path[1]` `base` or `utility`, and shadows                                                                                              |
-| `cx/numberTokens`    | number files                        | duration, letterSpacing, number, opacity without `opacity.base.*`, and the size group: dimension, fontSize, lineHeight, paragraphSpacing                |
+| `cx/numberTokens`    | number files                        | cubicBezier, duration, letterSpacing, number, opacity without `opacity.base.*`, and the size group: dimension, fontSize, lineHeight, paragraphSpacing   |
 | `cx/baseColorTokens` | Android `res/values/color_base.xml` | colors whose `path[1]` is `base`                                                                                                                        |
 
 The type groups are in `utils.js`. Tokens typed `boolean` or `other` are never emitted, and neither are the groups that exist for Figma only, `figma.*` (mode switches and the frame sizes of the Figma files) and `bg-blur.*` (background blur effects); every filter leaves them out (`figmaOnlyGroups` in `filters.js`). `dimension.base.*` is emitted in the main and number files on purpose: other sizes reference it, and with `outputReferences` they name it. `opacity.base.*` is not emitted (`isBaseOpacity` in `filters.js`): it holds the alphas of the color roles that a brand sets, `opacity.context.*` references them one to one, and apps use those.
@@ -169,6 +169,8 @@ SCSS with the prefix `cx`: the header line `$prefix: cx- !default;`, then one `$
 - **Shadows**: `x y blur spread color`, with ` inset` for inner shadows, layers joined with `, `, sizes in rem. `main.scss` has the shadows with the colors of the first theme, and `color-<theme>.scss` every shadow with the colors of its theme.
 - **Font weights**: numbers (`400`). Font families: the whole list, as written.
 - **Assets**: in double quotes.
+- **Durations**: in milliseconds with `ms` (`250ms`). The source writes them without a unit, which means milliseconds.
+- **Easings**: `cubic-bezier(0.42, 0, 1, 1)`. A value that is not four numbers, or an `x` outside 0 to 1, fails the build on every platform.
 - **Typography**: a Sass map with the keys `font-family`, `font-weight`, `font-size`, `line-height`, `font-style`, `letter-spacing`, `margin-bottom`, `text-transform`, `text-decoration`, in this order. A token that names no text case or text decoration has `none` for it (see the preprocessor above).
 
 #### `var(--…)` references of the Chassis CSS format
@@ -202,6 +204,8 @@ The short scale names are `4xs`, `3xs`, `2xs`, `xs`, `sm`, `md`, `lg`, `xl` and 
 
 - **Colors**: `UIColor(red: 0.098, green: 0.106, blue: 0.110, alpha: 1)`, three decimals per channel, the alpha as it is. A value that is not a color prints as it is, with a warning.
 - **Numbers and sizes**: `CGFloat(16)`, in points. A line height in percent is that percentage of the font size of the same typography token, three decimals (`125%` of `96` is `CGFloat(120)`). Letter spacing is in points (`CGFloat(-0.5)`); a percentage in a typography token is that percentage of its font size.
+- **Durations**: `TimeInterval(0.25)`, in seconds, which UIKit and SwiftUI animations take.
+- **Easings**: a tuple of doubles, `(x1: 0.42, y1: 0.0, x2: 1.0, y2: 1.0)`, the control points that `CAMediaTimingFunction` and `Animation.timingCurve` take. A `CAMediaTimingFunction` is not `Sendable`, so Swift 6 rejects a `static let` of one.
 - **Font families**: the first family of the list, without quotes, in double quotes (`"Inter"`).
 - **Font weights**: `UIFont.Weight.<name>`, from the weight number of the web's map rounded to the nearest hundred from 100 to 900: `ultraLight`, `thin`, `light`, `regular`, `medium`, `semibold`, `bold`, `heavy`, `black`. An unknown weight fails the build.
 - **Other strings**: in double quotes, including the SVG text of the icons.
@@ -216,23 +220,24 @@ The short scale names are `4xs`, `3xs`, `2xs`, `xs`, `sm`, `md`, `lg`, `xl` and 
 
 `<resources>` with one element per token, snake_case names, expanded as on iOS. The element comes from the type, in this order:
 
-| Tokens                                                                                      | Element                              | Example                 |
-| ------------------------------------------------------------------------------------------- | ------------------------------------ | ----------------------- |
-| opacity, letter spacing (type, or `path[1]` `letterSpacing`), gradient angles and positions | `<item type="dimen" format="float">` | `0.4`                   |
-| font weights                                                                                | `<integer>`, 100 to 900              | `400`                   |
-| colors                                                                                      | `<color>`, ARGB hex                  | `#80191b1c`             |
-| other numbers                                                                               | `<integer>`                          | `12` (`grid.columns.*`) |
-| sizes                                                                                       | `<dimen>`                            | `16dp`, `22sp`          |
-| everything else                                                                             | `<string>`                           | `Inter`                 |
+| Tokens                                                                                                             | Element                              | Example                 |
+| ------------------------------------------------------------------------------------------------------------------ | ------------------------------------ | ----------------------- |
+| opacity, letter spacing (type, or `path[1]` `letterSpacing`), gradient angles and positions, easing control points | `<item type="dimen" format="float">` | `0.4`                   |
+| font weights                                                                                                       | `<integer>`, 100 to 900              | `400`                   |
+| colors                                                                                                             | `<color>`, ARGB hex                  | `#80191b1c`             |
+| other numbers, durations in milliseconds                                                                           | `<integer>`                          | `12` (`grid.columns.*`) |
+| sizes                                                                                                              | `<dimen>`                            | `16dp`, `22sp`          |
+| everything else                                                                                                    | `<string>`                           | `Inter`                 |
 
 - **`sp`** when the last path segment is `fontSize`, `lineHeight` or `paragraphSpacing`, the type is `fontSize` or `lineHeight`, or `path[1]` is `paragraphSpacing`; **`dp`** for other sizes. A line height in percent is converted as on iOS (`120sp`).
 - **Letter spacing** of a typography token is in ems of its font size, four decimals (`-0.0052`), which `android:letterSpacing` takes; the letter spacing scale (`typography.letterSpacing.*`) has no font size and keeps its pixel number.
 - **Strings** are escaped: `&`, `<` and `>` become entities, `\`, `'` and `"` get a backslash, and so does a leading `@` or `?`.
 - **Gradients**: as on iOS, `<name>_angle`, `<name>_stop_<n>_color` and `<name>_stop_<n>_position`.
+- **Easings**: print as parts, `<name>_x_1`, `<name>_y_1`, `<name>_x_2` and `<name>_y_2`, the arguments of `PathInterpolator`. The parts print their numbers with `outputReferences` too.
 
 The `res/` tree has the strings and the base colors in `values`, the colors of the first theme in `values` and of `dark` in `values-night`, and each screen's numbers in the folder of its qualifier. Other themes have only their flat file.
 
-**Compose** (`android-compose`): one Kotlin `object` per file with a getter per token, camelCase names and the Android values: `Color(0xFFFFFFFF)`, `16.dp`, `22.sp`, `FontWeight(400)`, `0.4f` for float items, `(-0.0052).em` for the letter spacing of a typography token, and Kotlin string literals.
+**Compose** (`android-compose`): one Kotlin `object` per file with a getter per token, camelCase names and the Android values: `Color(0xFFFFFFFF)`, `16.dp`, `22.sp`, `FontWeight(400)`, `0.4f` for float items, `(-0.0052).em` for the letter spacing of a typography token, `CubicBezierEasing(0.42f, 0f, 1f, 1f)` for easings, which needs `androidx.compose.animation:animation-core`, and Kotlin string literals.
 
 ### References with `outputReferences`
 
@@ -280,11 +285,12 @@ They are part of the output contract and kept on purpose. Don't fix one without 
 - **Letter spacing has different units per platform, for the same pixels.** The web prints the size unit, iOS points, Android and Compose ems of the font size, which `android:letterSpacing` takes. The letter spacing scale keeps its pixel number on iOS and Android, because it has no font size.
 - **Icons are in the string files too.** The SVG text of each icon is a string constant or resource next to its asset; on Android it is escaped.
 - **`dimension.base.*` is emitted** in the main and number files, though apps use the scales that reference it.
+- **`motion.base.*` is emitted**, with the values of the `motion.timing.*` and `motion.easing.*` tokens that reference it, as `dimension.base.*` is.
 - **`opacity.base.*` is not emitted**, though `dimension.base.*` and the base colors are. With `outputReferences`, an `opacity.context.*` token prints its number, since no file declares the token it references.
 - **Two spellings of one weight.** The source spells semi bold `Semi Bold` for Inter and `SemiBold` for other fonts, the style name of each font in Figma. The build maps both to `600`; don't normalize the source, or the fonts break in Figma.
 - **The web presets share the web folder.** `web`, `web-scss`, `web-px` and `web-vw` all write to `dist/web/<app>/<brand>/`, so an app selects one of them.
 - **iOS shadows have a derived radius.** `…Radius` is half the CSS blur, close to Core Animation's `shadowRadius`; the spread has no Core Animation equivalent.
-- **Unused token sets.** 8 token sets are selected by no theme and never built; `brand-demo-a/app-base` still uses the format before DTCG. The `brand` group also has options (`default`, `demo-a`, `demo-b`) that the configuration does not build.
+- **Unused token sets.** 7 token sets are selected by no theme and never built; `brand-demo-a/app-base` still uses the format before DTCG. The `brand` group also has options (`default`, `demo-a`, `demo-b`) that the configuration does not build.
 
 ## History
 

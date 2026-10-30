@@ -10,7 +10,7 @@
  */
 
 import { removeTrailingZeros } from '../utils.js'
-import { letterSpacingFraction } from './shared.js'
+import { cubicBezierPoints, durationMilliseconds, letterSpacingFraction } from './shared.js'
 
 /**
  * Converts each space-separated px value to a unit, without rounding. Values already in
@@ -235,6 +235,12 @@ export function encode(token, { resolveReference, basePxFontSize, sizeUnit }) {
   }
   if (type === 'asset') {
     return `"${value}"`
+  }
+  if (type === 'duration') {
+    return `${durationMilliseconds(token)}ms`
+  }
+  if (type === 'cubicBezier') {
+    return `cubic-bezier(${cubicBezierPoints(token).join(', ')})`
   }
   return String(value)
 }

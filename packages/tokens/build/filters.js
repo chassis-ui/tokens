@@ -46,6 +46,7 @@ const fileFilters = {
   // base opacities.
   'cx/allTokens': (token) =>
     (tokenTypes.color.includes(token.$type) && !isPaletteColor(token)) ||
+    tokenTypes.easing.includes(token.$type) ||
     tokenTypes.font.includes(token.$type) ||
     tokenTypes.gradient.includes(token.$type) ||
     (tokenTypes.number.includes(token.$type) && !isBaseOpacity(token)) ||
@@ -64,9 +65,12 @@ const fileFilters = {
     (tokenTypes.color.includes(token.$type) && !['base', 'utility'].includes(token.path[1])) ||
     tokenTypes.shadow.includes(token.$type),
 
-  // Numbers and sizes, which change with the screen, without the base opacities.
+  // Numbers and sizes, which change with the screen, without the base opacities, and the
+  // easings, next to the durations they are used with.
   'cx/numberTokens': (token) =>
-    (tokenTypes.number.includes(token.$type) || tokenTypes.size.includes(token.$type)) &&
+    (tokenTypes.easing.includes(token.$type) ||
+      tokenTypes.number.includes(token.$type) ||
+      tokenTypes.size.includes(token.$type)) &&
     !isBaseOpacity(token),
 
   // Strings, font names and assets.

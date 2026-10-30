@@ -1,8 +1,8 @@
 /**
  * @file values-shared.test.js
- * @description Tests for the gradient helpers the iOS and Android encoders share, using
- *              gradient tokens from the real build and CSS gradient forms the tokens may
- *              use.
+ * @description Tests for the helpers the encoders share, using gradient and easing tokens
+ *              from the real build, CSS gradient forms the tokens may use, and duration
+ *              and easing forms.
  * @copyright Copyright (c) 2026 Ozgur Gunes
  * @license MIT
  */
@@ -10,6 +10,9 @@
 import { readFileSync } from 'node:fs'
 import { describe, expect, test } from 'vitest'
 import {
+  cubicBezierParts,
+  cubicBezierPoints,
+  durationMilliseconds,
   gradientParts,
   isGradient,
   parseColor,
@@ -21,6 +24,56 @@ const fixture = JSON.parse(
 )
 const gradientCase = (label) =>
   structuredClone(fixture.gradients.cases.find((c) => c.case === label).token)
+
+describe('durationMilliseconds', () => {
+  const duration = ($value) => ({ path: ['motion', 'timing'], $value })
+
+  test.each([
+    ['250', 250],
+    [250, 250],
+    ['250ms', 250],
+    ['0.25s', 250]
+  ])('reads %s', (value, expected) => {
+    expect(durationMilliseconds(duration(value))).toBe(expected)
+  })
+
+  test.each(['', 'fast', '-100', '100px'])('fails on "%s"', (value) => {
+    expect(() => durationMilliseconds(duration(value))).toThrow(
+      `motion.timing: "${value}" is not a duration`
+    )
+  })
+})
+
+describe('cubicBezierPoints', () => {
+  const easing = ($value) => ({ path: ['motion', 'easing'], $value })
+
+  test('reads the source form', () => {
+    expect(cubicBezierPoints(fixture.easing.token)).toEqual([0.42, 0, 1, 1])
+  })
+
+  test('reads an array and a y outside 0 to 1, which overshoots', () => {
+    expect(cubicBezierPoints(easing([0.3, 1.5, 0.6, -0.5]))).toEqual([0.3, 1.5, 0.6, -0.5])
+  })
+
+  test.each(['', '0, 1, 0', '0, 1, 0, 1, 1', '0, , 0, 1', 'ease', '-0.1, 0, 1, 1', '0, 0, 1.1, 1'])(
+    'fails on "%s"',
+    (value) => {
+      expect(() => cubicBezierPoints(easing(value))).toThrow('is not a cubic Bézier curve')
+    }
+  )
+})
+
+describe('cubicBezierParts', () => {
+  test('returns a number per control point, without references', () => {
+    const parts = cubicBezierParts(fixture.easing.token)
+
+    expect(parts.map((part) => part.segments[0])).toEqual(['x1', 'y1', 'x2', 'y2'])
+    expect(parts.map((part) => part.$value)).toEqual([0.42, 0, 1, 1])
+    expect(parts[0].path).toEqual(['motion', 'easing', 'context', 'ease-in', 'x1'])
+    expect(parts[0].$type).toBe('number')
+    expect(parts[0].original.$value).toBe(0.42)
+  })
+})
 
 describe('isGradient', () => {
   test('is true for a color token holding a gradient', () => {

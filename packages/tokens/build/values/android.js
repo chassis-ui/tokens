@@ -11,6 +11,7 @@
 
 import { tokenTypes } from '../utils.js'
 import {
+  durationMilliseconds,
   firstFontFamily,
   fontWeightNumber,
   isBaseColor,
@@ -40,10 +41,10 @@ const RESOURCE_KINDS = {
 const FLOAT_TYPES = ['opacity', 'letterSpacing']
 
 /**
- * Number parts of a gradient (`gradientParts`), which are floats: an angle in degrees and
- * stop positions from 0 to 1.
+ * Number parts that are floats: of a gradient (`gradientParts`), an angle in degrees and
+ * stop positions from 0 to 1, and of an easing (`cubicBezierParts`), its control points.
  */
-const FLOAT_PARTS = ['angle', 'position']
+const FLOAT_PARTS = ['angle', 'position', 'x1', 'y1', 'x2', 'y2']
 
 /**
  * Size keys and types that use scale-independent pixels.
@@ -168,6 +169,9 @@ export function encodeValue(token, context = {}) {
   }
   if (type === 'fontWeight') {
     return `${fontWeightNumber(token)}`
+  }
+  if (type === 'duration') {
+    return `${Math.round(durationMilliseconds(token))}`
   }
   if (
     SP_KEYS.includes(path[path.length - 1]) ||

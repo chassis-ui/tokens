@@ -1,5 +1,5 @@
 {
-  "source": "Resolved chassis/demo tokens from the SD 4.4 build and the matching committed dist lines, extracted 2026-09-27. \"androidReferences\" holds tokens of the SD 5.5 build with outputReferences, the first token of the same file that each references, and the matching lines of build/tokens/test/golden/android-references/. \"iosReferences\" holds the same for the iOS build with outputReferences and build/tokens/test/golden/ios-references/. \"context\" holds the font size part that the templates pass for line height and letter spacing parts, and \"typographyParts\" holds such parts with the lines of dist/; both were captured from the build and the expected lines updated in Phase 13 (2026-09-27). Font weight cases were updated from dist/ in Phase 14. \"gradients\" holds two gradient tokens of color_light with the lines of dist/ and of the reference baselines, and the colors their stops reference, captured in Phase 15. \"themeColors\" holds constants of ColorLight.swift and ColorDark.swift (dist/ and the ios-references baseline) with their values and printed forms, copied in Phase 18. \"shadowParts\" holds expanded box shadow tokens of the iOS build with their Tokens Studio extensions, captured in Phase 22.",
+  "source": "Resolved chassis/demo tokens from the SD 4.4 build and the matching committed dist lines, extracted 2026-09-27. \"androidReferences\" holds tokens of the SD 5.5 build with outputReferences, the first token of the same file that each references, and the matching lines of build/tokens/test/golden/android-references/. \"iosReferences\" holds the same for the iOS build with outputReferences and build/tokens/test/golden/ios-references/. \"context\" holds the font size part that the templates pass for line height and letter spacing parts, and \"typographyParts\" holds such parts with the lines of dist/; both were captured from the build and the expected lines updated in Phase 13 (2026-09-27). Font weight cases were updated from dist/ in Phase 14. \"gradients\" holds two gradient tokens of color_light with the lines of dist/ and of the reference baselines, and the colors their stops reference, captured in Phase 15. \"themeColors\" holds constants of ColorLight.swift and ColorDark.swift (dist/ and the ios-references baseline) with their values and printed forms, copied in Phase 18. \"shadowParts\" holds expanded box shadow tokens of the iOS build with their Tokens Studio extensions, captured in Phase 22. Motion cases and \"easing\" were copied from source/base/brand-base.json and the lines of dist/ and the preset baselines when the motion tokens were added.",
   "ios": [
     {
       "case": "dimension becomes CGFloat",
@@ -246,6 +246,16 @@
       "context": {
         "fontSize": "96px"
       }
+    },
+    {
+      "case": "duration is a TimeInterval in seconds",
+      "token": {
+        "name": "MotionTimingContextMedium",
+        "path": ["motion", "timing", "context", "medium"],
+        "$type": "duration",
+        "$value": "250"
+      },
+      "expected": "TimeInterval(0.25)"
     }
   ],
   "android": [
@@ -565,6 +575,19 @@
       "expected": {
         "element": "dimen",
         "value": "0.5dp"
+      }
+    },
+    {
+      "case": "duration is an integer in milliseconds",
+      "token": {
+        "name": "motion_timing_context_medium",
+        "path": ["motion", "timing", "context", "medium"],
+        "$type": "duration",
+        "$value": "250"
+      },
+      "expected": {
+        "element": "integer",
+        "value": "250"
       }
     }
   ],
@@ -1522,5 +1545,15 @@
         }
       }
     }
-  ]
+  ],
+  "easing": {
+    "token": {
+      "name": "MotionEasingContextEaseIn",
+      "path": ["motion", "easing", "context", "ease-in"],
+      "$type": "cubicBezier",
+      "$value": "0.42, 0, 1, 1"
+    },
+    "ios": "(x1: 0.42, y1: 0.0, x2: 1.0, y2: 1.0)",
+    "compose": "CubicBezierEasing(0.42f, 0f, 1f, 1f)"
+  }
 }

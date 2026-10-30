@@ -12,6 +12,7 @@
  */
 export const tokenTypes = {
   color: ['color'],
+  easing: ['cubicBezier'],
   font: [
     'fontFamily',
     'fontSize',

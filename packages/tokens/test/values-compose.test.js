@@ -31,6 +31,12 @@ const kotlin = ({ element, value }, token, context) => {
   return null
 }
 
+describe('Compose motion', () => {
+  test('prints an easing as a CubicBezierEasing', () => {
+    expect(encode(fixture.easing.token)).toBe(fixture.easing.compose)
+  })
+})
+
 describe('Compose encode', () => {
   const cases = fixture.android.filter(({ expected }) => expected.element !== 'string')
 

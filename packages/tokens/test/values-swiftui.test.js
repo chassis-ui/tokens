@@ -24,6 +24,12 @@ const swiftui = (uikit) =>
     )
     .replace(/^UIFont\.Weight\./, 'Font.Weight.')
 
+describe('SwiftUI motion', () => {
+  test('prints an easing as the UIKit tuple of control points', () => {
+    expect(encode(fixture.easing.token)).toBe(fixture.easing.ios)
+  })
+})
+
 describe('SwiftUI encode', () => {
   test.each(fixture.ios)('$case ($token.name)', ({ token, context, expected }) => {
     expect(encode(token, context)).toBe(swiftui(expected))
