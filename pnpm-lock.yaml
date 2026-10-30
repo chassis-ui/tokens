@@ -136,13 +136,10 @@ importers:
         version: 3.4.0
 
   packages/tokens:
-    devDependencies:
+    dependencies:
       '@tokens-studio/sd-transforms':
         specifier: ^2.0.3
         version: 2.0.3(style-dictionary@5.7.0)
-      '@types/node':
-        specifier: ^22.20.5
-        version: 22.20.5
       style-dictionary:
         specifier: ^5.7.0
         version: 5.7.0
@@ -152,6 +149,10 @@ importers:
       tinycolor2:
         specifier: ^1.6.0
         version: 1.6.0
+    devDependencies:
+      '@types/node':
+        specifier: ^22.20.5
+        version: 22.20.5
       vitest:
         specifier: ^5.0.5
         version: 5.0.5(@types/node@22.20.5)(vite@8.3.5(@types/node@22.20.5)(esbuild@0.28.2)(sass@1.106.1)(yaml@2.9.1))

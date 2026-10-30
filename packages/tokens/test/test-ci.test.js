@@ -2,19 +2,16 @@
  * @file test-ci.test.js
  * @description Tests that `pnpm test:ci` in the root `package.json` runs every script the CI
  *              workflow runs. A check added to `.github/workflows/ci.yml` and not to `test:ci`
- *              makes a local pass say less than it claims.
+ *              makes a local pass say less than it claims. Both files are in the workspace, so
+ *              the test skips without one.
  * @copyright Copyright (c) 2026 Ozgur Gunes
  * @license MIT
  */
 
 import { readFileSync } from 'node:fs'
 import { join } from 'node:path'
-import { fileURLToPath } from 'node:url'
 import { describe, expect, test } from 'vitest'
-
-const repositoryDir = fileURLToPath(new URL('../../..', import.meta.url))
-const { scripts } = JSON.parse(readFileSync(join(repositoryDir, 'package.json'), 'utf8'))
-const workflow = readFileSync(join(repositoryDir, '.github/workflows/ci.yml'), 'utf8')
+import { WORKSPACE_DIR } from './helpers.js'
 
 // What CI runs and `test:ci` does not, with the reason
 const NOT_LOCAL = {
@@ -22,11 +19,18 @@ const NOT_LOCAL = {
   audit: 'reports only; `check:pnpm` is the audit that fails the job'
 }
 
-// The scripts of the steps that are one command: `run: pnpm tokens:lint`
-const ciScripts = [...workflow.matchAll(/^\s+run: pnpm ([a-z][\w:-]*)/gm)].map((match) => match[1])
-const localScripts = scripts['test:ci'].split(' && ').map((command) => command.replace('pnpm ', ''))
+describe.runIf(WORKSPACE_DIR)('pnpm test:ci', () => {
+  const read = (file) => readFileSync(join(WORKSPACE_DIR, file), 'utf8')
+  const scripts = WORKSPACE_DIR ? JSON.parse(read('package.json')).scripts : {}
+  const workflow = WORKSPACE_DIR ? read('.github/workflows/ci.yml') : ''
+  // The scripts of the steps that are one command: `run: pnpm tokens:lint`
+  const ciScripts = [...workflow.matchAll(/^\s+run: pnpm ([a-z][\w:-]*)/gm)].map(
+    (match) => match[1]
+  )
+  const localScripts = (scripts['test:ci'] ?? '')
+    .split(' && ')
+    .map((command) => command.replace('pnpm ', ''))
 
-describe('pnpm test:ci', () => {
   test('finds the steps of the workflow', () => {
     expect(ciScripts).toContain('tokens:verify')
     expect(ciScripts.length).toBeGreaterThanOrEqual(12)

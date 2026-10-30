@@ -9,30 +9,43 @@
  *              them reports nothing. The report is Markdown, for a CI job summary.
  *
  * Usage:
- *   node build/diff.js [--base <ref|dir>] [--head <ref|dir>]
+ *   chassis-tokens diff [--cwd <dir>] [--base <ref|dir>] [--head <ref|dir>]
  *
- *   --base <ref|dir>  The `dist/` to compare against: a directory, or a git ref whose
- *                     `packages/tokens/dist/` (or `dist/`, before the workspace split) is
- *                     read (default: main).
- *   --head <ref|dir>  The `dist/` to report on (default: this package's `dist/`).
+ *   --cwd <dir>       The repository of tokens (default: the nearest folder upward whose
+ *                     package.json has a chassis block).
+ *   --base <ref|dir>  The `dist/` to compare against: a directory, or a git ref whose output
+ *                     folder (or `dist/`, before the workspace split) is read (default: main).
+ *   --head <ref|dir>  The `dist/` to report on (default: the output of the repository).
  *
  * @copyright Copyright (c) 2026 Ozgur Gunes
  * @license MIT
  */
 
 import { execFile } from 'node:child_process'
+import { realpathSync } from 'node:fs'
 import { mkdtemp, readdir, readFile, rm, stat } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { extname, join, relative, sep } from 'node:path'
-import { fileURLToPath } from 'node:url'
 import { parseArgs, promisify } from 'node:util'
+import { isEntry, readRepository, resolveRoot } from './root.js'
 
 const execFileAsync = promisify(execFile)
 
-const DIST_DIR = fileURLToPath(new URL('../dist', import.meta.url))
+/** Where `dist/` is in a commit from before the workspace split. */
+const OLD_DIST_PATH = 'dist'
 
-/** Where `dist/` is in a commit: after the workspace split, then before it. */
-const DIST_PATHS = ['packages/tokens/dist', 'dist']
+const HELP = `Usage: chassis-tokens diff [options]
+
+Reports, by platform and file, the token names added, removed and changed in value between
+two outputs, in Markdown.
+
+Options:
+  --cwd <dir>       The repository of tokens (default: the nearest folder upward whose
+                    package.json has a chassis block)
+  --base <ref|dir>  The output to compare against: a folder, or a git ref (default: main)
+  --head <ref|dir>  The output to report on (default: the output of the repository)
+  --help, -h        Print this help
+`
 
 /** Items listed per category and file; the rest are counted. */
 const MAX_LISTED = 25
@@ -307,14 +320,19 @@ async function isDirectory(path) {
 /**
  * Extracts `dist/` of a git ref into a temporary directory.
  * @param {string} ref
+ * @param {{root: string, dist: string}} repository - From `readRepository`.
  * @returns {Promise<string>} The directory; the caller removes it
  */
-async function extractRef(ref) {
-  const git = (...args) => execFileAsync('git', args, { maxBuffer: 256 * 1024 * 1024 })
-  const { stdout: top } = await git('rev-parse', '--show-toplevel')
+async function extractRef(ref, { root, dist }) {
+  const { stdout: top } = await execFileAsync('git', ['rev-parse', '--show-toplevel'], {
+    cwd: root
+  })
   const cwd = top.trim()
+  // By the real path, which is what git prints
+  const current = relative(cwd, join(realpathSync(root), relative(root, dist)))
+  const paths = [...new Set([current, OLD_DIST_PATH])]
 
-  for (const path of DIST_PATHS) {
+  for (const path of paths) {
     const { stdout } = await execFileAsync('git', ['ls-tree', '-d', '--name-only', ref, path], {
       cwd
     })
@@ -339,37 +357,51 @@ async function extractRef(ref) {
     return dir
   }
 
-  throw new Error(`${ref} has no ${DIST_PATHS.join('/ or ')}/`)
+  throw new Error(`${ref} has no ${paths.join('/ or ')}/`)
 }
 
-async function resolveSide(value, temporary) {
+async function resolveSide(value, temporary, repository) {
   if (await isDirectory(value)) return value
-  const dir = await extractRef(value)
+  const dir = await extractRef(value, repository)
   temporary.push(dir)
   return dir
 }
 
-async function main() {
+async function main(args) {
   const { values } = parseArgs({
+    args,
     options: {
+      cwd: { type: 'string' },
+      help: { type: 'boolean', short: 'h', default: false },
       base: { type: 'string', default: 'main' },
-      head: { type: 'string', default: DIST_DIR }
+      head: { type: 'string' }
     }
   })
+  if (values.help) {
+    console.log(HELP)
+    return
+  }
 
+  const repository = readRepository(resolveRoot(values.cwd))
   const temporary = []
   try {
-    const baseDir = await resolveSide(values.base, temporary)
-    const headDir = await resolveSide(values.head, temporary)
+    const baseDir = await resolveSide(values.base, temporary, repository)
+    const headDir = await resolveSide(values.head ?? repository.dist, temporary, repository)
     process.stdout.write(formatReport(await compareDist(baseDir, headDir)))
   } finally {
     await Promise.all(temporary.map((dir) => rm(dir, { recursive: true, force: true })))
   }
 }
 
-if (process.argv[1] === fileURLToPath(import.meta.url)) {
-  main().catch((error) => {
+/**
+ * The command line of the report: `chassis-tokens diff`.
+ * @param {string[]} [argv] - The arguments. Default: `process.argv.slice(2)`.
+ */
+export function cli(argv = process.argv.slice(2)) {
+  main(argv).catch((error) => {
     console.error(`❌ ${error.message}`)
     process.exit(1)
   })
 }
+
+if (isEntry(import.meta.url)) cli()

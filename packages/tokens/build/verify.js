@@ -5,16 +5,20 @@
  *              version header lines. Also fails when a token name appears twice in
  *              one file, because Sass rejects duplicate `$cx-*` variables, and when a
  *              reference names nothing the output declares. With
- *              `--preset`, builds a preset that writes nothing into `dist/` and
- *              compares it with its baseline in `test/golden/`. With `--update`,
- *              writes the files that differ into the reference instead of failing.
+ *              `--preset`, builds a preset that writes nothing into `dist/` from the
+ *              fixture repository in `test/fixtures/` and compares it with its baseline
+ *              in `test/golden/`. With `--update`, writes the files that differ into the
+ *              reference instead of failing.
  *
  * Usage:
- *   node build/verify.js [--out <dir>] [--platform <name>] [--skip-build]
- *   node build/verify.js --preset <name> [--out <dir>] [--skip-build]
- *   node build/verify.js --update [--preset <name>] [--out <dir>]
+ *   chassis-tokens verify [--cwd <dir>] [--out <dir>] [--platform <name>] [--skip-build]
+ *   chassis-tokens verify --preset <name> [--out <dir>] [--skip-build]
+ *   chassis-tokens verify --update [--preset <name>] [--out <dir>]
  *
- *   --out <dir>        Scratch output directory (default: dist-next). Deleted before the build.
+ *   --cwd <dir>        The repository of tokens (default: the nearest folder upward whose
+ *                      package.json has a chassis block). Not with `--preset`.
+ *   --out <dir>        Scratch output directory (default: dist-next beside the output, or in
+ *                      this package with `--preset`). Deleted before the build.
  *   --platform <name>  Build and compare one platform only; repeat or comma-separate for more.
  *   --preset <name>    Check a preset against its baseline; repeat or comma-separate for
  *                      more, or `all` for every preset.
@@ -32,17 +36,20 @@ import { copyFile, mkdir, readdir, readFile, rm } from 'node:fs/promises'
 import { basename, dirname, extname, isAbsolute, join, relative, resolve, sep } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { parseArgs } from 'node:util'
+import { isEntry, readRepository, resolveRoot, shownPath } from './root.js'
 
-export const ROOT_DIR = fileURLToPath(new URL('../', import.meta.url))
-export const DIST_DIR = join(ROOT_DIR, 'dist')
+const PACKAGE_DIR = fileURLToPath(new URL('../', import.meta.url))
 export const GOLDEN_DIR = fileURLToPath(new URL('../test/golden', import.meta.url))
+/** The repository of tokens that the preset baselines are built from. */
+export const FIXTURE_DIR = fileURLToPath(new URL('../test/fixtures/repository', import.meta.url))
 const BUILD_SCRIPT = fileURLToPath(new URL('./build.js', import.meta.url))
 
 /**
- * Header lines that change on every build or release, in SCSS/Swift (`// …`)
- * and XML (indented inside `<!-- … -->`) headers.
+ * Header lines that change on every build or release, in SCSS/Swift (`// …`) and XML
+ * (indented inside `<!-- … -->`) headers: the timestamp, and `<title> v<version>`, whose
+ * title each repository sets. A token line has `=`, `<` or `$` before any such ending.
  */
-const HEADER_LINE = /^\s*(\/\/\s*)?(Generated on |Chassis - Tokens v)/
+const HEADER_LINE = /^\s*(\/\/\s*)?(Generated on |[^=<>$]* v\d+\.\d+\.\d+\S*$)/
 
 /**
  * Token name declarations per output format.
@@ -54,6 +61,25 @@ const NAME_PATTERNS = {
 }
 
 const MAX_REPORTED_LINES = 5
+
+const HELP = `Usage: chassis-tokens verify [options]
+
+Builds the tokens into a scratch folder and compares every file with the committed output,
+ignoring the timestamp and version header lines.
+
+Options:
+  --cwd <dir>        The repository of tokens (default: the nearest folder upward whose
+                     package.json has a chassis block)
+  --out <dir>        Scratch output folder, deleted before the build (default: dist-next
+                     beside the output)
+  --platform <name>  Build and compare one platform only; repeat or comma-separate for more
+  --skip-build       Compare an existing output folder without building
+  --update           Write the files that differ into the committed output instead of failing
+  --preset <name>    In a checkout of @chassis-ui/tokens: check a preset against its baseline
+                     in test/golden/, built from test/fixtures/repository/; repeat or
+                     comma-separate for more, or all for every preset
+  --help, -h         Print this help
+`
 
 /**
  * References in values, and the declarations they need. An Android `@type/name` needs a
@@ -299,10 +325,14 @@ export async function updateReference(expectedDir, actualDir) {
 }
 
 /**
- * Lists the presets that have a baseline: every `<name>.json` in the golden directory.
+ * Lists the presets that have a baseline: every `<name>.json` in the golden directory. The
+ * published package has no tests, and so no presets to list.
  */
 export async function listPresets() {
-  const entries = await readdir(GOLDEN_DIR)
+  const entries = await readdir(GOLDEN_DIR).catch((error) => {
+    if (error.code === 'ENOENT') return []
+    throw error
+  })
   return entries
     .filter((entry) => extname(entry) === '.json')
     .map((entry) => basename(entry, '.json'))
@@ -310,47 +340,52 @@ export async function listPresets() {
 }
 
 /**
- * Returns the build configuration file and the baseline directory of a preset.
+ * Returns the repository, the build configuration file and the baseline directory of a preset.
  */
 export function presetPaths(preset) {
-  return { config: join(GOLDEN_DIR, `${preset}.json`), expectedDir: join(GOLDEN_DIR, preset) }
+  return {
+    root: FIXTURE_DIR,
+    config: join(GOLDEN_DIR, `${preset}.json`),
+    expectedDir: join(GOLDEN_DIR, preset)
+  }
 }
 
 /**
  * Throws when deleting `outDir` would delete a reference output or the repo.
  */
-function assertSafeOutDir(outDir) {
-  for (const reference of [DIST_DIR, GOLDEN_DIR]) {
+function assertSafeOutDir(outDir, distDir) {
+  for (const reference of [distDir, GOLDEN_DIR]) {
     const toReference = relative(outDir, reference)
     const contains =
       toReference === '' || (!toReference.startsWith('..') && !isAbsolute(toReference))
     if (contains) {
       throw new Error(
-        `Refusing to use ${outDir}: it is or contains the reference ${relative(ROOT_DIR, reference)}/`
+        `Refusing to use ${outDir}: it is or contains the reference ${shownPath(reference)}/`
       )
     }
   }
 }
 
 /**
- * Deletes `outDir`, then runs the token build into it from the repo root.
+ * Deletes `outDir`, then runs the token build of a repository of tokens into it.
  *
  * @param {string} outDir - Absolute output directory.
  * @param {Object} [options]
+ * @param {string} [options.root] - The repository. Default: the one `resolveRoot` finds.
  * @param {string[]} [options.platforms] - Passed to the build as `--platform`.
  * @param {string} [options.config] - Passed to the build as `--config`.
  * @returns {Promise<{ code: number, output: string }>} Exit code and combined build output.
  */
-export async function runBuild(outDir, { platforms = [], config } = {}) {
-  assertSafeOutDir(outDir)
+export async function runBuild(outDir, { root = resolveRoot(), platforms = [], config } = {}) {
+  assertSafeOutDir(outDir, readRepository(root).dist)
   await rm(outDir, { recursive: true, force: true })
 
-  const args = [BUILD_SCRIPT, '--out', outDir]
+  const args = [BUILD_SCRIPT, '--cwd', root, '--out', outDir]
   if (platforms.length > 0) args.push('--platform', ...platforms)
   if (config) args.push('--config', config)
 
   return new Promise((resolvePromise, reject) => {
-    const child = spawn(process.execPath, args, { cwd: ROOT_DIR })
+    const child = spawn(process.execPath, args, { cwd: root })
     const chunks = []
     child.stdout.on('data', (chunk) => chunks.push(chunk))
     child.stderr.on('data', (chunk) => chunks.push(chunk))
@@ -363,6 +398,7 @@ export async function runBuild(outDir, { platforms = [], config } = {}) {
  * Builds into `outDir` unless `skipBuild` is set, then compares it with `expectedDir`.
  *
  * @param {Object} options
+ * @param {string} options.root - The repository of tokens.
  * @param {string} options.expectedDir - The reference output.
  * @param {string} options.outDir - The scratch output directory.
  * @param {string[]} options.platforms - Platforms to build and compare; empty for all.
@@ -370,22 +406,22 @@ export async function runBuild(outDir, { platforms = [], config } = {}) {
  * @param {boolean} options.skipBuild - Compare `outDir` without building.
  * @returns {Promise<boolean>} Whether the output matches.
  */
-async function check({ expectedDir, outDir, platforms, config, skipBuild }) {
+async function check({ root, expectedDir, outDir, platforms, config, skipBuild }) {
   if (!skipBuild) {
     const started = Date.now()
-    const build = await runBuild(outDir, { platforms, config })
+    const build = await runBuild(outDir, { root, platforms, config })
     if (build.code !== 0) {
       console.error(build.output.split('\n').slice(-40).join('\n'))
       console.error(`❌ Build failed with exit code ${build.code}`)
       return false
     }
     console.log(
-      `Built into ${relative(ROOT_DIR, outDir)}/ in ${((Date.now() - started) / 1000).toFixed(1)}s`
+      `Built into ${shownPath(outDir)}/ in ${((Date.now() - started) / 1000).toFixed(1)}s`
     )
   }
 
   const result = await compareOutput(expectedDir, outDir, { platforms })
-  console.log(formatReport(result, `${relative(ROOT_DIR, expectedDir)}/`))
+  console.log(formatReport(result, `${shownPath(expectedDir)}/`))
   return result.ok
 }
 
@@ -394,20 +430,21 @@ async function check({ expectedDir, outDir, platforms, config, skipBuild }) {
  * `outDir`.
  *
  * @param {Object} options
+ * @param {string} options.root - The repository of tokens.
  * @param {string} options.expectedDir - The reference output to write again.
  * @param {string} options.outDir - The scratch output directory.
  * @param {string} [options.config] - A preset's build configuration file.
  * @returns {Promise<boolean>} Whether the reference now matches the build.
  */
-async function update({ expectedDir, outDir, config }) {
-  const build = await runBuild(outDir, { config })
+async function update({ root, expectedDir, outDir, config }) {
+  const build = await runBuild(outDir, { root, config })
   if (build.code !== 0) {
     console.error(build.output.split('\n').slice(-40).join('\n'))
     console.error(`❌ Build failed with exit code ${build.code}`)
     return false
   }
 
-  const reference = `${relative(ROOT_DIR, expectedDir)}/`
+  const reference = `${shownPath(expectedDir)}/`
   const { ok, written, deleted, result } = await updateReference(expectedDir, outDir)
   if (!ok) {
     console.error(formatReport({ ...result, missing: [], extra: [], differing: [] }, reference))
@@ -426,18 +463,24 @@ async function update({ expectedDir, outDir, config }) {
   return true
 }
 
-async function main() {
+async function main(args) {
   const { values } = parseArgs({
+    args,
     options: {
-      out: { type: 'string', default: 'dist-next' },
+      cwd: { type: 'string' },
+      help: { type: 'boolean', short: 'h', default: false },
+      out: { type: 'string' },
       platform: { type: 'string', multiple: true, default: [] },
       preset: { type: 'string', multiple: true, default: [] },
       'skip-build': { type: 'boolean', default: false },
       update: { type: 'boolean', default: false }
     }
   })
+  if (values.help) {
+    console.log(HELP)
+    return
+  }
   const list = (items) => items.flatMap((value) => value.split(',')).filter(Boolean)
-  const outDir = resolve(ROOT_DIR, values.out)
   const skipBuild = values['skip-build']
   const platforms = list(values.platform)
   let presets = list(values.preset)
@@ -449,11 +492,23 @@ async function main() {
     values.update ? update(options) : check({ ...options, platforms, skipBuild })
 
   if (presets.length === 0) {
-    const ok = await run({ expectedDir: DIST_DIR, outDir })
+    const root = resolveRoot(values.cwd)
+    const { dist } = readRepository(root)
+    const outDir = values.out ? resolve(values.out) : join(dirname(dist), 'dist-next')
+    const ok = await run({ root, expectedDir: dist, outDir })
     process.exit(ok ? 0 : 1)
   }
 
+  if (values.cwd) {
+    throw new Error('--preset takes no --cwd: the presets build from their fixture repository')
+  }
+  const outDir = resolve(values.out ?? join(PACKAGE_DIR, 'dist-next'))
   const known = await listPresets()
+  if (known.length === 0) {
+    throw new Error(
+      'The preset baselines are in a checkout of @chassis-ui/tokens, not in the package'
+    )
+  }
   if (presets.includes('all')) presets = known
   const unknown = presets.filter((preset) => !known.includes(preset))
   if (unknown.length > 0) {
@@ -471,9 +526,15 @@ async function main() {
   process.exit(ok ? 0 : 1)
 }
 
-if (process.argv[1] === fileURLToPath(import.meta.url)) {
-  main().catch((error) => {
+/**
+ * The command line of the check: `chassis-tokens verify`.
+ * @param {string[]} [argv] - The arguments. Default: `process.argv.slice(2)`.
+ */
+export function cli(argv = process.argv.slice(2)) {
+  main(argv).catch((error) => {
     console.error(error.message)
     process.exit(1)
   })
 }
+
+if (isEntry(import.meta.url)) cli()

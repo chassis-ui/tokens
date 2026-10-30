@@ -1,0 +1,154 @@
+[
+  {
+    "id": "8a40860ffe6b1a02797599b544f005ac4451e6c9",
+    "name": "default",
+    "group": "brand",
+    "selectedTokenSets": {
+      "base/metric-source": "source",
+      "base/metric-base": "source",
+      "base/brand-base": "enabled",
+      "base/brand-default": "enabled"
+    }
+  },
+  {
+    "id": "95e65f2cc9a0c7a3b883f9b7db0b5deb8bd4271a",
+    "name": "chassis",
+    "group": "brand",
+    "selectedTokenSets": {
+      "base/metric-source": "source",
+      "base/metric-base": "source",
+      "base/brand-base": "enabled",
+      "brand-chassis/brand-base": "enabled"
+    }
+  },
+  {
+    "id": "eb50659f7aae0533f750bbb36334a0c1fecc93c3",
+    "name": "sinefil",
+    "group": "brand",
+    "selectedTokenSets": {
+      "base/metric-source": "source",
+      "base/metric-base": "source",
+      "base/brand-base": "enabled",
+      "brand-sinefil/brand-base": "enabled"
+    }
+  },
+  {
+    "id": "424fee6b46baa5e3099861dea78c7675b5f5c43d",
+    "name": "demo-a",
+    "group": "brand",
+    "selectedTokenSets": {
+      "base/metric-source": "source",
+      "base/metric-base": "source",
+      "base/brand-base": "enabled",
+      "brand-demo-a/brand-base": "enabled"
+    }
+  },
+  {
+    "id": "2a986bb01ae7e556f761137a3bb7bca3a1004a73",
+    "name": "demo-b",
+    "group": "brand",
+    "selectedTokenSets": {
+      "base/metric-source": "source",
+      "base/metric-base": "source",
+      "base/brand-base": "enabled",
+      "brand-demo-b/brand-base": "enabled"
+    }
+  },
+  {
+    "id": "7f6467f47d71c17ddf6d3e2eccead159671d9ac8",
+    "name": "docs",
+    "group": "app",
+    "selectedTokenSets": {
+      "base/metric-source": "source",
+      "base/metric-base": "enabled",
+      "base/brand-base": "source",
+      "base/theme-base": "source",
+      "base/app-base": "enabled",
+      "base/app-docs": "enabled"
+    }
+  },
+  {
+    "id": "43a15af07b39fa6b5be11ce8c41f769957f7f7f3",
+    "name": "demo",
+    "group": "app",
+    "selectedTokenSets": {
+      "base/metric-source": "source",
+      "base/metric-base": "enabled",
+      "base/brand-base": "source",
+      "base/theme-base": "source",
+      "base/app-base": "enabled",
+      "base/app-demo": "enabled"
+    }
+  },
+  {
+    "id": "be120f763d44f432102213ddb3bb2abedc925b81",
+    "name": "light",
+    "group": "theme",
+    "selectedTokenSets": {
+      "base/metric-source": "source",
+      "base/metric-base": "source",
+      "base/effect-base": "enabled",
+      "base/brand-base": "source",
+      "base/theme-base": "enabled",
+      "base/theme-light": "enabled"
+    }
+  },
+  {
+    "id": "6219ffaec815a0b8a4662208157bef8b2afca437",
+    "name": "dark",
+    "group": "theme",
+    "selectedTokenSets": {
+      "base/metric-source": "source",
+      "base/metric-base": "source",
+      "base/effect-base": "enabled",
+      "base/brand-base": "source",
+      "base/theme-base": "enabled",
+      "base/theme-dark": "enabled"
+    }
+  },
+  {
+    "id": "2694097e54873ec93ae7689d98ef62497f11db27",
+    "name": "large",
+    "group": "screen",
+    "selectedTokenSets": {
+      "base/app-base": "source",
+      "base/brand-base": "source",
+      "base/metric-base": "source",
+      "base/metric-source": "source",
+      "base/effect-base": "source",
+      "base/theme-base": "source",
+      "screen-website/screen-base": "enabled",
+      "screen-website/screen-large": "enabled"
+    }
+  },
+  {
+    "id": "32c23b2cdcbf7d167df21aa2141dc5a1c3468916",
+    "name": "medium",
+    "group": "screen",
+    "selectedTokenSets": {
+      "base/app-base": "source",
+      "base/brand-base": "source",
+      "base/metric-base": "source",
+      "base/metric-source": "source",
+      "base/effect-base": "source",
+      "base/theme-base": "source",
+      "screen-website/screen-base": "enabled",
+      "screen-website/screen-medium": "enabled"
+    }
+  },
+  {
+    "id": "9b25cacaddd36c3b9ecfb76ffe0e61f2dd5bede5",
+    "name": "small",
+    "group": "screen",
+    "selectedTokenSets": {
+      "base/app-base": "source",
+      "base/brand-base": "source",
+      "base/metric-base": "source",
+      "base/metric-source": "source",
+      "base/effect-base": "source",
+      "base/theme-base": "source",
+      "screen-website/screen-base": "enabled",
+      "screen-website/screen-small": "enabled"
+    }
+  }
+]

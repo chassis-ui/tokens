@@ -1,7 +1,8 @@
 /**
  * @file lint-tokens.test.js
- * @description Tests for the token source lint, on the real `source/` and on token sets
- *              copied from it (`fixtures/lint-tokens.json`), with one broken copy per rule.
+ * @description Tests for the token source lint, on the fixture repository and on token sets
+ *              copied from `source/` (`fixtures/lint-tokens.json`), with one broken copy per
+ *              rule.
  * @copyright Copyright (c) 2026 Ozgur Gunes
  * @license MIT
  */
@@ -12,6 +13,7 @@ import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { afterAll, describe, expect, test } from 'vitest'
 import { formatError, lintTokens, loadSource, readTokens } from '../build/lint-tokens.js'
+import { FIXTURE_DIR } from './helpers.js'
 
 const fixture = JSON.parse(
   readFileSync(new URL('./fixtures/lint-tokens.json', import.meta.url), 'utf8')
@@ -31,9 +33,9 @@ function lintWith(edit) {
   return lintTokens(source)
 }
 
-describe('the real token source', () => {
+describe('a whole token source', () => {
   test('passes', async () => {
-    const source = await loadSource()
+    const source = await loadSource(join(FIXTURE_DIR, 'source'))
     expect(Object.keys(source.sets).length).toBe(19)
     expect(lintTokens(source)).toEqual([])
   })

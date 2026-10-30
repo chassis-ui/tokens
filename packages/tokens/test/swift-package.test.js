@@ -1,7 +1,7 @@
 /**
  * @file swift-package.test.js
- * @description Tests for the Swift package manifest at the root of the repository: its
- *              libraries follow the build configuration and the built folders of `dist/`.
+ * @description Tests for the Swift package manifest at the root of a repository of tokens:
+ *              its libraries follow the build configuration and the built folders of `dist/`.
  * @copyright Copyright (c) 2026 Ozgur Gunes
  * @license MIT
  */
@@ -9,28 +9,30 @@
 import { mkdirSync, mkdtempSync, readFileSync, readdirSync, rmSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
-import { fileURLToPath } from 'node:url'
 import { afterAll, describe, expect, test } from 'vitest'
+import { readRepository } from '../build/root.js'
 import { MANIFEST, swiftLibraries, swiftPackage } from '../build/swift-package.js'
-
-const repositoryDir = fileURLToPath(new URL('../../..', import.meta.url))
-const { build } = JSON.parse(readFileSync(join(repositoryDir, 'package.json'), 'utf8')).chassis
+import { WORKSPACE_DIR } from './helpers.js'
 
 const temporary = mkdtempSync(join(tmpdir(), 'swift-package-'))
 afterAll(() => rmSync(temporary, { recursive: true }))
 
 /** Makes the built folders of a configuration in a temporary package folder. */
 function builtFolders(name, folders) {
-  const dir = join(temporary, name, 'packages', 'tokens')
-  for (const folder of folders) mkdirSync(join(dir, 'dist', folder), { recursive: true })
-  return { packageDir: dir, repositoryDir: join(temporary, name) }
+  const distDir = join(temporary, name, 'packages', 'tokens', 'dist')
+  for (const folder of folders) mkdirSync(join(distDir, folder), { recursive: true })
+  return { distDir, repositoryDir: join(temporary, name) }
 }
 
-describe('the libraries of the real configuration', () => {
-  const libraries = swiftLibraries(build)
+describe.runIf(WORKSPACE_DIR)('the libraries of the real configuration', () => {
+  const repositoryDir = WORKSPACE_DIR
+  const libraries = () => {
+    const { build, dist } = readRepository(WORKSPACE_DIR)
+    return swiftLibraries(build, { distDir: dist, repositoryDir })
+  }
 
   test('one for every brand of the app with an iOS platform', () => {
-    expect(libraries).toEqual([
+    expect(libraries()).toEqual([
       {
         name: 'ChassisTokensDemoChassis',
         path: 'packages/tokens/dist/ios/demo/chassis',
@@ -45,7 +47,7 @@ describe('the libraries of the real configuration', () => {
   })
 
   test('each folder holds Swift files, and no type named like its library', () => {
-    for (const { name, path } of libraries) {
+    for (const { name, path } of libraries()) {
       const files = readdirSync(join(repositoryDir, path)).filter((file) => file.endsWith('.swift'))
       expect(files).toHaveLength(8)
       // A type named like its module hides the module in qualified names
@@ -59,7 +61,7 @@ describe('the libraries of the real configuration', () => {
   test('the committed manifest is the manifest of the configuration', () => {
     const committed = readFileSync(join(repositoryDir, MANIFEST), 'utf8')
     // If this fails, run `pnpm tokens:swift-package`
-    expect(committed).toBe(swiftPackage(libraries))
+    expect(committed).toBe(swiftPackage(libraries()))
   })
 })
 

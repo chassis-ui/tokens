@@ -1,0 +1,119 @@
+name: Release
+
+# On a tag v<version>, checks the committed dist/ against a fresh build, publishes the package
+# to npm and creates the GitHub release of the tag, with the Android library of every app and
+# brand attached: chassis-tokens-<app>-<brand>-<version>.aar. The tag has to be the version of
+# package.json, and Swift Package Manager resolves it as the version of the Swift package.
+# Written by `chassis-tokens init`.
+#
+# npm trusted publishing: the package trusts this workflow file of this repository, so no npm
+# token is needed, and every version has provenance. Renaming this file breaks publishing until
+# the trusted publisher on npmjs.com is updated to match.
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: read
+
+# Never cancel a run that may be publishing
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: write # to create the GitHub release
+      id-token: write # for npm trusted publishing and provenance
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Check the tag against the version
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          if [ "$GITHUB_REF_NAME" != "v$VERSION" ]; then
+            echo "::error::The tag $GITHUB_REF_NAME is not the version of package.json, v$VERSION"
+            exit 1
+          fi
+
+      # __PNPM_SETUP__
+      # .nvmrc holds Node.js 24, whose npm 11 trusted publishing needs (11.5.1 or later)
+      - name: Setup Node.js
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version-file: .nvmrc
+          registry-url: 'https://registry.npmjs.org'
+          package-manager-cache: false
+
+      - name: Install
+        run: __INSTALL_CI__
+
+      - name: Lint source
+        run: __RUN__ lint
+
+      # Fails when the committed dist/ differs from a fresh build of source/
+      - name: Verify dist/
+        run: __RUN__ verify
+
+      - name: Check Package.swift
+        run: __RUN__ swift-package:check
+
+      - name: Setup Java
+        uses: actions/setup-java@b843ebf9b913146b38da2eaa7aeddf76074ae1ad # v6.1.0
+        with:
+          distribution: temurin
+          java-version: 21
+
+      # Checks the Gradle wrapper against Gradle's checksums. No cache: a release builds from
+      # the published packages only
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@3f5f9adaf7d9fecd50b5935e54106014257a94e6 # v6.4.0
+        with:
+          cache-disabled: true
+
+      # Before publishing, so a version whose Android libraries do not build is not published.
+      # The Gradle project comes with @chassis-ui/tokens, and tokensRoot points it at dist/ here
+      - name: Build the Android libraries
+        run: |
+          mkdir -p "$RUNNER_TEMP/aars"
+          if [ -d dist/android ]; then
+            ANDROID_PROJECT=node_modules/@chassis-ui/tokens/test/native/android
+            sh "$ANDROID_PROJECT/gradlew" --project-dir "$ANDROID_PROJECT" :library:aars \
+              -PtokensRoot="$PWD"
+            cp "$ANDROID_PROJECT"/library/build/aars/*.aar "$RUNNER_TEMP/aars/"
+          fi
+
+      # A tag with a prerelease part, such as v0.2.0-next.0, goes to the dist-tag next
+      - name: Publish to npm
+        run: |
+          case "$GITHUB_REF_NAME" in
+            *-*) DIST_TAG=next ;;
+            *) DIST_TAG=latest ;;
+          esac
+
+          npm publish --provenance --access public --tag "$DIST_TAG"
+
+      # Such a tag is also marked as a prerelease and does not become the latest release. The
+      # notes are generated from the commits; the changelog is in CHANGELOG.md
+      - name: Create the GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          case "$GITHUB_REF_NAME" in
+            *-*) FLAGS=(--prerelease --latest=false) ;;
+            *) FLAGS=(--latest) ;;
+          esac
+
+          shopt -s nullglob
+          gh release create "$GITHUB_REF_NAME" \
+            "$RUNNER_TEMP"/aars/*.aar \
+            --title "$GITHUB_REF_NAME" \
+            --generate-notes \
+            "${FLAGS[@]}"

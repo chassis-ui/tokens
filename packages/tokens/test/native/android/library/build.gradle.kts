@@ -1,7 +1,8 @@
 // The Android library of every app and brand: the res/ tree of dist/android/<app>/<brand>
 // as an AAR. `./gradlew :library:aars` writes them to library/build/aars/, named
 // chassis-tokens-<app>-<brand>-<version>.aar, and the release workflow attaches them to the
-// GitHub release. One product flavor per library.
+// GitHub release. One product flavor per library. In this repository the output is in
+// packages/tokens/dist/; in a repository of tokens, with -PtokensRoot, in dist/ at its root.
 
 import com.android.build.api.artifact.SingleArtifact
 import groovy.json.JsonSlurper
@@ -21,8 +22,10 @@ fun camelCase(words: List<String>): String =
     .joinToString("") { word -> word.replaceFirstChar { it.uppercase() } }
     .replaceFirstChar { it.lowercase() }
 
-// packages/tokens
-val packageDir: File = rootDir.resolve("../../..").canonicalFile
+// packages/tokens, or the repository of tokens that -PtokensRoot=<dir> names
+val packageDir: File =
+  providers.gradleProperty("tokensRoot").map(::File).orNull?.canonicalFile
+    ?: rootDir.resolve("../../..").canonicalFile
 val tokensVersion = (JsonSlurper().parse(packageDir.resolve("package.json")) as Map<*, *>)["version"]
 
 val libraries: List<Library> =

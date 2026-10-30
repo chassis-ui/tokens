@@ -1,22 +1,23 @@
 /**
  * @file build.test.js
- * @description Tests for the build plan, using the real configuration of the root package.json,
- *              source/$themes.json and the files of the committed dist/.
+ * @description Tests for the build plan, on the configuration and source/$themes.json of the
+ *              fixture repository. In the workspace, the plan of the real configuration is
+ *              compared with the files of the committed dist/.
  * @copyright Copyright (c) 2026 Ozgur Gunes
  * @license MIT
  */
 
 import { readdirSync, readFileSync } from 'node:fs'
 import { join, relative } from 'node:path'
-import { fileURLToPath } from 'node:url'
 import StyleDictionary from 'style-dictionary'
 import { permutateThemes } from '@tokens-studio/sd-transforms'
 import { describe, expect, test } from 'vitest'
 import { planBuilds, planThemeColors, planClean, CONFIG_FILE, SOURCE_DIR } from '../build/build.js'
 import config from '../build/config/index.js'
+import { FIXTURE_DIR, PACKAGE_DIR, WORKSPACE_DIR } from './helpers.js'
 
-const ROOT = fileURLToPath(new URL('../', import.meta.url))
-const read = (path) => JSON.parse(readFileSync(join(ROOT, path), 'utf8'))
+const readFrom = (root, path) => JSON.parse(readFileSync(join(root, path), 'utf8'))
+const read = (path) => readFrom(FIXTURE_DIR, path)
 const buildOptions = read(CONFIG_FILE).chassis.build
 const $themes = read(`${SOURCE_DIR}/$themes.json`)
 const sets = permutateThemes($themes, { separator: '_' })
@@ -34,39 +35,59 @@ function destinations(builds) {
     .sort()
 }
 
-const distFiles = readdirSync(join(ROOT, 'dist'), { recursive: true, withFileTypes: true })
-  .filter((entry) => entry.isFile() && !entry.name.startsWith('.'))
-  .map((entry) => relative(ROOT, join(entry.parentPath, entry.name)))
-  .sort()
-
-describe('planBuilds', () => {
-  const builds = planBuilds(sets, buildOptions)
+describe.runIf(WORKSPACE_DIR)('the plan of the real configuration', () => {
+  const distFiles = () =>
+    readdirSync(join(PACKAGE_DIR, 'dist'), { recursive: true, withFileTypes: true })
+      .filter((entry) => entry.isFile() && !entry.name.startsWith('.'))
+      .map((entry) => relative(PACKAGE_DIR, join(entry.parentPath, entry.name)))
+      .sort()
+  const realPlan = (filters) =>
+    planBuilds(
+      permutateThemes(readFrom(WORKSPACE_DIR, `${SOURCE_DIR}/$themes.json`), { separator: '_' }),
+      readFrom(WORKSPACE_DIR, CONFIG_FILE).chassis.build,
+      filters
+    )
 
   // The icon actions write files whose names come from the icon tokens
   const isIconFile = (file) => file.includes('/Icons.xcassets/') || file.includes('/res/drawable/')
 
   test('writes exactly the files of dist/', () => {
-    expect(distFiles).toHaveLength(114)
+    const builds = realPlan()
+    expect(distFiles()).toHaveLength(114)
     expect([...destinations(builds), ...planThemeColors(builds, 'dist')].sort()).toEqual(
-      distFiles.filter((file) => !isIconFile(file))
+      distFiles().filter((file) => !isIconFile(file))
     )
+  })
+
+  test.each([
+    [{ brands: ['sinefil'] }],
+    [{ apps: ['docs'] }],
+    [{ platforms: ['android'] }],
+    [{ themes: ['dark'] }],
+    [{ screens: ['small'] }]
+  ])('%o writes files of dist/', (filters) => {
+    expect(distFiles()).toEqual(expect.arrayContaining(destinations(realPlan(filters))))
   })
 
   test('writes the icons of each brand as iOS image sets and Android drawables', () => {
     for (const brand of ['chassis', 'sinefil']) {
-      const swift = readFileSync(join(ROOT, `dist/ios/demo/${brand}/String.swift`), 'utf8')
+      const swift = readFileSync(join(PACKAGE_DIR, `dist/ios/demo/${brand}/String.swift`), 'utf8')
       const icons = [...swift.matchAll(/static let (Icon\w+) = "<svg/g)].map(([, name]) => name)
       expect(icons).toHaveLength(9)
-      const sets = distFiles.filter((file) =>
+      const sets = distFiles().filter((file) =>
         file.startsWith(`dist/ios/demo/${brand}/Icons.xcassets/`)
       )
       expect(sets).toHaveLength(1 + icons.length * 2)
-      const drawables = distFiles.filter((file) =>
+      const drawables = distFiles().filter((file) =>
         file.startsWith(`dist/android/demo/${brand}/res/drawable/`)
       )
       expect(drawables).toHaveLength(icons.length)
     }
   })
+})
+
+describe('planBuilds', () => {
+  const builds = planBuilds(sets, buildOptions)
 
   test('writes an iOS color file that follows the appearance for each brand', () => {
     expect(planThemeColors(builds, 'dist')).toEqual([
@@ -193,10 +214,8 @@ describe('planBuilds with filters', () => {
     [{ platforms: ['android'] }, 28],
     [{ themes: ['dark'] }, 48],
     [{ screens: ['small'] }, 40]
-  ])('%o writes %i files of dist/', (filters, count) => {
-    const files = destinations(plan(filters))
-    expect(files).toHaveLength(count)
-    expect(distFiles).toEqual(expect.arrayContaining(files))
+  ])('%o writes %i files', (filters, count) => {
+    expect(destinations(plan(filters))).toHaveLength(count)
   })
 
   test('builds only the selected files', () => {
@@ -269,7 +288,7 @@ describe('token-set order', () => {
     expect(chassisBase).not.toBe(brandBase)
 
     const sd = new StyleDictionary({
-      source: build.source.map((file) => join(ROOT, file)),
+      source: build.source.map((file) => join(FIXTURE_DIR, file)),
       log: { verbosity: 'silent', warnings: 'disabled' }
     })
     await sd.hasInitialized

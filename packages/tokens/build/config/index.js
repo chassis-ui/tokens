@@ -25,6 +25,9 @@ const platformConfigs = {
   'android-compose': androidCompose
 }
 
+/** The platforms an app can select in `chassis.build.apps`. */
+export const PLATFORM_NAMES = Object.keys(platformConfigs)
+
 /**
  * Returns the Style Dictionary configuration for one token-set list: one platform per
  * target platform of the app, each writing the files of every output.

@@ -182,7 +182,7 @@ jobs:
   # What the pull request does to the tokens, in the job summary: the names added, removed,
   # renamed and changed in each dist/ file. It compares the committed dist/ of the test merge
   # commit with that of its first parent, the base branch; the Tokens job checks that both
-  # equal a fresh build. Needs no install: build/diff.js uses Node.js only.
+  # equal a fresh build. Needs no install: the diff command uses Node.js only.
   token-diff:
     name: Token Diff
     if: github.event_name == 'pull_request'
@@ -205,7 +205,7 @@ jobs:
 
       - name: Token diff report
         run: |
-          node packages/tokens/build/diff.js --base HEAD^1 > "$RUNNER_TEMP/token-diff.md"
+          node packages/tokens/build/cli.js diff --base HEAD^1 > "$RUNNER_TEMP/token-diff.md"
           cat "$RUNNER_TEMP/token-diff.md" >> "$GITHUB_STEP_SUMMARY"
           cat "$RUNNER_TEMP/token-diff.md"
 

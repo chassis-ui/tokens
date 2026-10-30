@@ -10,6 +10,9 @@
   "author": "Ozgur Gunes <o.gunes@gmail.com>",
   "license": "MIT",
   "chassis": {
+    "title": "Chassis - Tokens",
+    "copyright": "Copyright 2026 Ozgur Gunes",
+    "dist": "packages/tokens/dist",
     "build": {
       "brands": [
         "chassis",
@@ -58,6 +61,7 @@
     "tokens:verify": "pnpm --filter @chassis-ui/tokens verify",
     "tokens:verify:presets": "pnpm --filter @chassis-ui/tokens verify:presets",
     "tokens:verify:update": "pnpm --filter @chassis-ui/tokens verify:update",
+    "tokens:verify:update:presets": "pnpm --filter @chassis-ui/tokens verify:update:presets",
     "site": "pnpm site:build && pnpm site:lint",
     "site:build": "pnpm vendor && pnpm --filter chassis-tokens-site build && pnpm site:pagefind",
     "site:clean": "rm -rf _site && pnpm --filter chassis-tokens-site clean",
