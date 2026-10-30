@@ -50,9 +50,6 @@ export default defineConfig({
           // `node_modules`, the one `package.json` names. The framework fallback
           // `_chassis-tokens.scss` in `@chassis-ui/css` forwards `@chassis-ui/tokens/dist/...`,
           // which would otherwise resolve to the version that `@chassis-ui/css` depends on.
-          // The site names the published 0.9.0 until a release of `@chassis-ui/css` reads the
-          // typography names of 0.10 (`ui`, `prose`, `font.context.h1`); then it goes back to
-          // `workspace:*`.
           importers: [
             {
               findFileUrl(url: string) {
