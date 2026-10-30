@@ -34,57 +34,9 @@
               "$type": "color",
               "$value": "#000000"
             },
-            "transparent": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.black.base}, {opacity.level.zero})"
-            },
             "contrast": {
               "$type": "color",
               "$value": "{color.base.primitive.light.white.base}"
-            },
-            "t-05": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.black.base}, {opacity.level.05})"
-            },
-            "t-10": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.black.base}, {opacity.level.10})"
-            },
-            "t-20": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.black.base}, {opacity.level.20})"
-            },
-            "t-30": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.black.base}, {opacity.level.30})"
-            },
-            "t-40": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.black.base}, {opacity.level.40})"
-            },
-            "t-50": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.black.base}, {opacity.level.50})"
-            },
-            "t-60": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.black.base}, {opacity.level.60})"
-            },
-            "t-70": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.black.base}, {opacity.level.70})"
-            },
-            "t-80": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.black.base}, {opacity.level.80})"
-            },
-            "t-90": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.black.base}, {opacity.level.90})"
-            },
-            "t-95": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.black.base}, {opacity.level.95})"
             }
           },
           "white": {
@@ -92,57 +44,9 @@
               "$type": "color",
               "$value": "#ffffff"
             },
-            "transparent": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.white.base}, {opacity.level.zero})"
-            },
             "contrast": {
               "$type": "color",
               "$value": "{color.base.primitive.light.black.base}"
-            },
-            "t-05": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.white.base}, {opacity.level.05})"
-            },
-            "t-10": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.white.base}, {opacity.level.10})"
-            },
-            "t-20": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.white.base}, {opacity.level.20})"
-            },
-            "t-30": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.white.base}, {opacity.level.30})"
-            },
-            "t-40": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.white.base}, {opacity.level.40})"
-            },
-            "t-50": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.white.base}, {opacity.level.50})"
-            },
-            "t-60": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.white.base}, {opacity.level.60})"
-            },
-            "t-70": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.white.base}, {opacity.level.70})"
-            },
-            "t-80": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.white.base}, {opacity.level.80})"
-            },
-            "t-90": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.white.base}, {opacity.level.90})"
-            },
-            "t-95": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.white.base}, {opacity.level.95})"
             }
           },
           "primary": {
@@ -284,57 +188,9 @@
               "$type": "color",
               "$value": "#1273E0"
             },
-            "transparent": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.primary.base}, {opacity.level.zero})"
-            },
             "contrast": {
               "$type": "color",
               "$value": "{color.base.primitive.light.white.base}"
-            },
-            "t-5005": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.primary.50}, {opacity.level.05})"
-            },
-            "t-5010": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.primary.50}, {opacity.level.10})"
-            },
-            "t-5020": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.primary.50}, {opacity.level.20})"
-            },
-            "t-5030": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.primary.50}, {opacity.level.30})"
-            },
-            "t-5040": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.primary.50}, {opacity.level.40})"
-            },
-            "t-5050": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.primary.50}, {opacity.level.50})"
-            },
-            "t-5060": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.primary.50}, {opacity.level.60})"
-            },
-            "t-5070": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.primary.50}, {opacity.level.70})"
-            },
-            "t-5080": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.primary.50}, {opacity.level.80})"
-            },
-            "t-5090": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.primary.50}, {opacity.level.90})"
-            },
-            "t-5095": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.primary.50}, {opacity.level.95})"
             }
           },
           "secondary": {
@@ -476,57 +332,9 @@
               "$type": "color",
               "$value": "#D115C5"
             },
-            "transparent": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.secondary.base}, {opacity.level.zero})"
-            },
             "contrast": {
               "$type": "color",
               "$value": "{color.base.primitive.light.white.base}"
-            },
-            "t-5005": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.secondary.50}, {opacity.level.05})"
-            },
-            "t-5010": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.secondary.50}, {opacity.level.10})"
-            },
-            "t-5020": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.secondary.50}, {opacity.level.20})"
-            },
-            "t-5030": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.secondary.50}, {opacity.level.30})"
-            },
-            "t-5040": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.secondary.50}, {opacity.level.40})"
-            },
-            "t-5050": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.secondary.50}, {opacity.level.50})"
-            },
-            "t-5060": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.secondary.50}, {opacity.level.60})"
-            },
-            "t-5070": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.secondary.50}, {opacity.level.70})"
-            },
-            "t-5080": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.secondary.50}, {opacity.level.80})"
-            },
-            "t-5090": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.secondary.50}, {opacity.level.90})"
-            },
-            "t-5095": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.secondary.50}, {opacity.level.95})"
             }
           },
           "neutral": {
@@ -668,57 +476,9 @@
               "$type": "color",
               "$value": "#757575"
             },
-            "transparent": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.neutral.base}, {opacity.level.zero})"
-            },
             "contrast": {
               "$type": "color",
               "$value": "{color.base.primitive.light.white.base}"
-            },
-            "t-5005": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.neutral.50}, {opacity.level.05})"
-            },
-            "t-5010": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.neutral.50}, {opacity.level.10})"
-            },
-            "t-5020": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.neutral.50}, {opacity.level.20})"
-            },
-            "t-5030": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.neutral.50}, {opacity.level.30})"
-            },
-            "t-5040": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.neutral.50}, {opacity.level.40})"
-            },
-            "t-5050": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.neutral.50}, {opacity.level.50})"
-            },
-            "t-5060": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.neutral.50}, {opacity.level.60})"
-            },
-            "t-5070": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.neutral.50}, {opacity.level.70})"
-            },
-            "t-5080": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.neutral.50}, {opacity.level.80})"
-            },
-            "t-5090": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.neutral.50}, {opacity.level.90})"
-            },
-            "t-5095": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.neutral.50}, {opacity.level.95})"
             }
           },
           "danger": {
@@ -860,57 +620,9 @@
               "$type": "color",
               "$value": "#E02D12"
             },
-            "transparent": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.danger.base}, {opacity.level.zero})"
-            },
             "contrast": {
               "$type": "color",
               "$value": "{color.base.primitive.light.white.base}"
-            },
-            "t-5005": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.danger.50}, {opacity.level.05})"
-            },
-            "t-5010": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.danger.50}, {opacity.level.10})"
-            },
-            "t-5020": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.danger.50}, {opacity.level.20})"
-            },
-            "t-5030": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.danger.50}, {opacity.level.30})"
-            },
-            "t-5040": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.danger.50}, {opacity.level.40})"
-            },
-            "t-5050": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.danger.50}, {opacity.level.50})"
-            },
-            "t-5060": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.danger.50}, {opacity.level.60})"
-            },
-            "t-5070": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.danger.50}, {opacity.level.70})"
-            },
-            "t-5080": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.danger.50}, {opacity.level.80})"
-            },
-            "t-5090": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.danger.50}, {opacity.level.90})"
-            },
-            "t-5095": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.danger.50}, {opacity.level.95})"
             }
           },
           "success": {
@@ -1052,57 +764,9 @@
               "$type": "color",
               "$value": "#0B8A0B"
             },
-            "transparent": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.success.base}, {opacity.level.zero})"
-            },
             "contrast": {
               "$type": "color",
               "$value": "{color.base.primitive.light.white.base}"
-            },
-            "t-5005": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.success.50}, {opacity.level.05})"
-            },
-            "t-5010": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.success.50}, {opacity.level.10})"
-            },
-            "t-5020": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.success.50}, {opacity.level.20})"
-            },
-            "t-5030": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.success.50}, {opacity.level.30})"
-            },
-            "t-5040": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.success.50}, {opacity.level.40})"
-            },
-            "t-5050": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.success.50}, {opacity.level.50})"
-            },
-            "t-5060": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.success.50}, {opacity.level.60})"
-            },
-            "t-5070": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.success.50}, {opacity.level.70})"
-            },
-            "t-5080": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.success.50}, {opacity.level.80})"
-            },
-            "t-5090": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.success.50}, {opacity.level.90})"
-            },
-            "t-5095": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.success.50}, {opacity.level.95})"
             }
           },
           "warning": {
@@ -1244,57 +908,9 @@
               "$type": "color",
               "$value": "#996E09"
             },
-            "transparent": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.warning.base}, {opacity.level.zero})"
-            },
             "contrast": {
               "$type": "color",
               "$value": "{color.base.primitive.light.white.base}"
-            },
-            "t-5005": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.warning.50}, {opacity.level.05})"
-            },
-            "t-5010": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.warning.50}, {opacity.level.10})"
-            },
-            "t-5020": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.warning.50}, {opacity.level.20})"
-            },
-            "t-5030": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.warning.50}, {opacity.level.30})"
-            },
-            "t-5040": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.warning.50}, {opacity.level.40})"
-            },
-            "t-5050": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.warning.50}, {opacity.level.50})"
-            },
-            "t-5060": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.warning.50}, {opacity.level.60})"
-            },
-            "t-5070": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.warning.50}, {opacity.level.70})"
-            },
-            "t-5080": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.warning.50}, {opacity.level.80})"
-            },
-            "t-5090": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.warning.50}, {opacity.level.90})"
-            },
-            "t-5095": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.warning.50}, {opacity.level.95})"
             }
           },
           "info": {
@@ -1436,57 +1052,9 @@
               "$type": "color",
               "$value": "#098294"
             },
-            "transparent": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.info.base}, {opacity.level.zero})"
-            },
             "contrast": {
               "$type": "color",
               "$value": "{color.base.primitive.light.white.base}"
-            },
-            "t-5005": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.info.50}, {opacity.level.05})"
-            },
-            "t-5010": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.info.50}, {opacity.level.10})"
-            },
-            "t-5020": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.info.50}, {opacity.level.20})"
-            },
-            "t-5030": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.info.50}, {opacity.level.30})"
-            },
-            "t-5040": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.info.50}, {opacity.level.40})"
-            },
-            "t-5050": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.info.50}, {opacity.level.50})"
-            },
-            "t-5060": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.info.50}, {opacity.level.60})"
-            },
-            "t-5070": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.info.50}, {opacity.level.70})"
-            },
-            "t-5080": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.info.50}, {opacity.level.80})"
-            },
-            "t-5090": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.info.50}, {opacity.level.90})"
-            },
-            "t-5095": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.light.info.50}, {opacity.level.95})"
             }
           }
         },
@@ -1496,57 +1064,9 @@
               "$type": "color",
               "$value": "{color.base.primitive.light.black.base}"
             },
-            "transparent": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.black.base}, {opacity.level.zero})"
-            },
             "contrast": {
               "$type": "color",
               "$value": "{color.base.primitive.light.black.contrast}"
-            },
-            "t-05": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.black.base}, {opacity.level.05})"
-            },
-            "t-10": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.black.base}, {opacity.level.10})"
-            },
-            "t-20": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.black.base}, {opacity.level.20})"
-            },
-            "t-30": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.black.base}, {opacity.level.30})"
-            },
-            "t-40": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.black.base}, {opacity.level.40})"
-            },
-            "t-50": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.black.base}, {opacity.level.50})"
-            },
-            "t-60": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.black.base}, {opacity.level.60})"
-            },
-            "t-70": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.black.base}, {opacity.level.70})"
-            },
-            "t-80": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.black.base}, {opacity.level.80})"
-            },
-            "t-90": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.black.base}, {opacity.level.90})"
-            },
-            "t-95": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.black.base}, {opacity.level.95})"
             }
           },
           "white": {
@@ -1554,57 +1074,9 @@
               "$type": "color",
               "$value": "{color.base.primitive.light.white.base}"
             },
-            "transparent": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.white.base}, {opacity.level.zero})"
-            },
             "contrast": {
               "$type": "color",
               "$value": "{color.base.primitive.light.white.contrast}"
-            },
-            "t-05": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.white.base}, {opacity.level.05})"
-            },
-            "t-10": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.white.base}, {opacity.level.10})"
-            },
-            "t-20": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.white.base}, {opacity.level.20})"
-            },
-            "t-30": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.white.base}, {opacity.level.30})"
-            },
-            "t-40": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.white.base}, {opacity.level.40})"
-            },
-            "t-50": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.white.base}, {opacity.level.50})"
-            },
-            "t-60": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.white.base}, {opacity.level.60})"
-            },
-            "t-70": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.white.base}, {opacity.level.70})"
-            },
-            "t-80": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.white.base}, {opacity.level.80})"
-            },
-            "t-90": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.white.base}, {opacity.level.90})"
-            },
-            "t-95": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.white.base}, {opacity.level.95})"
             }
           },
           "primary": {
@@ -1746,57 +1218,9 @@
               "$type": "color",
               "$value": "{color.base.primitive.light.primary.base}"
             },
-            "transparent": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.primary.base}, {opacity.level.zero})"
-            },
             "contrast": {
               "$type": "color",
               "$value": "{color.base.primitive.light.primary.contrast}"
-            },
-            "t-5005": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.primary.50}, {opacity.level.05})"
-            },
-            "t-5010": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.primary.50}, {opacity.level.10})"
-            },
-            "t-5020": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.primary.50}, {opacity.level.20})"
-            },
-            "t-5030": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.primary.50}, {opacity.level.30})"
-            },
-            "t-5040": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.primary.50}, {opacity.level.40})"
-            },
-            "t-5050": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.primary.50}, {opacity.level.50})"
-            },
-            "t-5060": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.primary.50}, {opacity.level.60})"
-            },
-            "t-5070": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.primary.50}, {opacity.level.70})"
-            },
-            "t-5080": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.primary.50}, {opacity.level.80})"
-            },
-            "t-5090": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.primary.50}, {opacity.level.90})"
-            },
-            "t-5095": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.primary.50}, {opacity.level.95})"
             }
           },
           "secondary": {
@@ -1938,57 +1362,9 @@
               "$type": "color",
               "$value": "{color.base.primitive.light.secondary.base}"
             },
-            "transparent": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.secondary.base}, {opacity.level.zero})"
-            },
             "contrast": {
               "$type": "color",
               "$value": "{color.base.primitive.light.secondary.contrast}"
-            },
-            "t-5005": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.secondary.50}, {opacity.level.05})"
-            },
-            "t-5010": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.secondary.50}, {opacity.level.10})"
-            },
-            "t-5020": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.secondary.50}, {opacity.level.20})"
-            },
-            "t-5030": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.secondary.50}, {opacity.level.30})"
-            },
-            "t-5040": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.secondary.50}, {opacity.level.40})"
-            },
-            "t-5050": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.secondary.50}, {opacity.level.50})"
-            },
-            "t-5060": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.secondary.50}, {opacity.level.60})"
-            },
-            "t-5070": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.secondary.50}, {opacity.level.70})"
-            },
-            "t-5080": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.secondary.50}, {opacity.level.80})"
-            },
-            "t-5090": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.secondary.50}, {opacity.level.90})"
-            },
-            "t-5095": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.secondary.50}, {opacity.level.95})"
             }
           },
           "neutral": {
@@ -2130,57 +1506,9 @@
               "$type": "color",
               "$value": "{color.base.primitive.light.neutral.base}"
             },
-            "transparent": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.neutral.base}, {opacity.level.zero})"
-            },
             "contrast": {
               "$type": "color",
               "$value": "{color.base.primitive.light.neutral.contrast}"
-            },
-            "t-5005": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.neutral.50}, {opacity.level.05})"
-            },
-            "t-5010": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.neutral.50}, {opacity.level.10})"
-            },
-            "t-5020": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.neutral.50}, {opacity.level.20})"
-            },
-            "t-5030": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.neutral.50}, {opacity.level.30})"
-            },
-            "t-5040": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.neutral.50}, {opacity.level.40})"
-            },
-            "t-5050": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.neutral.50}, {opacity.level.50})"
-            },
-            "t-5060": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.neutral.50}, {opacity.level.60})"
-            },
-            "t-5070": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.neutral.50}, {opacity.level.70})"
-            },
-            "t-5080": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.neutral.50}, {opacity.level.80})"
-            },
-            "t-5090": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.neutral.50}, {opacity.level.90})"
-            },
-            "t-5095": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.neutral.50}, {opacity.level.95})"
             }
           },
           "danger": {
@@ -2322,57 +1650,9 @@
               "$type": "color",
               "$value": "{color.base.primitive.light.danger.base}"
             },
-            "transparent": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.danger.base}, {opacity.level.zero})"
-            },
             "contrast": {
               "$type": "color",
               "$value": "{color.base.primitive.light.danger.contrast}"
-            },
-            "t-5005": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.danger.50}, {opacity.level.05})"
-            },
-            "t-5010": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.danger.50}, {opacity.level.10})"
-            },
-            "t-5020": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.danger.50}, {opacity.level.20})"
-            },
-            "t-5030": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.danger.50}, {opacity.level.30})"
-            },
-            "t-5040": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.danger.50}, {opacity.level.40})"
-            },
-            "t-5050": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.danger.50}, {opacity.level.50})"
-            },
-            "t-5060": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.danger.50}, {opacity.level.60})"
-            },
-            "t-5070": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.danger.50}, {opacity.level.70})"
-            },
-            "t-5080": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.danger.50}, {opacity.level.80})"
-            },
-            "t-5090": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.danger.50}, {opacity.level.90})"
-            },
-            "t-5095": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.danger.50}, {opacity.level.95})"
             }
           },
           "success": {
@@ -2514,57 +1794,9 @@
               "$type": "color",
               "$value": "{color.base.primitive.light.success.base}"
             },
-            "transparent": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.success.base}, {opacity.level.zero})"
-            },
             "contrast": {
               "$type": "color",
               "$value": "{color.base.primitive.light.success.contrast}"
-            },
-            "t-5005": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.success.50}, {opacity.level.05})"
-            },
-            "t-5010": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.success.50}, {opacity.level.10})"
-            },
-            "t-5020": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.success.50}, {opacity.level.20})"
-            },
-            "t-5030": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.success.50}, {opacity.level.30})"
-            },
-            "t-5040": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.success.50}, {opacity.level.40})"
-            },
-            "t-5050": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.success.50}, {opacity.level.50})"
-            },
-            "t-5060": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.success.50}, {opacity.level.60})"
-            },
-            "t-5070": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.success.50}, {opacity.level.70})"
-            },
-            "t-5080": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.success.50}, {opacity.level.80})"
-            },
-            "t-5090": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.success.50}, {opacity.level.90})"
-            },
-            "t-5095": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.success.50}, {opacity.level.95})"
             }
           },
           "warning": {
@@ -2706,57 +1938,9 @@
               "$type": "color",
               "$value": "{color.base.primitive.light.warning.base}"
             },
-            "transparent": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.warning.base}, {opacity.level.zero})"
-            },
             "contrast": {
               "$type": "color",
               "$value": "{color.base.primitive.light.warning.contrast}"
-            },
-            "t-5005": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.warning.50}, {opacity.level.05})"
-            },
-            "t-5010": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.warning.50}, {opacity.level.10})"
-            },
-            "t-5020": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.warning.50}, {opacity.level.20})"
-            },
-            "t-5030": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.warning.50}, {opacity.level.30})"
-            },
-            "t-5040": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.warning.50}, {opacity.level.40})"
-            },
-            "t-5050": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.warning.50}, {opacity.level.50})"
-            },
-            "t-5060": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.warning.50}, {opacity.level.60})"
-            },
-            "t-5070": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.warning.50}, {opacity.level.70})"
-            },
-            "t-5080": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.warning.50}, {opacity.level.80})"
-            },
-            "t-5090": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.warning.50}, {opacity.level.90})"
-            },
-            "t-5095": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.warning.50}, {opacity.level.95})"
             }
           },
           "info": {
@@ -2898,57 +2082,9 @@
               "$type": "color",
               "$value": "{color.base.primitive.light.info.base}"
             },
-            "transparent": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.info.base}, {opacity.level.zero})"
-            },
             "contrast": {
               "$type": "color",
               "$value": "{color.base.primitive.light.info.contrast}"
-            },
-            "t-5005": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.info.50}, {opacity.level.05})"
-            },
-            "t-5010": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.info.50}, {opacity.level.10})"
-            },
-            "t-5020": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.info.50}, {opacity.level.20})"
-            },
-            "t-5030": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.info.50}, {opacity.level.30})"
-            },
-            "t-5040": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.info.50}, {opacity.level.40})"
-            },
-            "t-5050": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.info.50}, {opacity.level.50})"
-            },
-            "t-5060": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.info.50}, {opacity.level.60})"
-            },
-            "t-5070": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.info.50}, {opacity.level.70})"
-            },
-            "t-5080": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.info.50}, {opacity.level.80})"
-            },
-            "t-5090": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.info.50}, {opacity.level.90})"
-            },
-            "t-5095": {
-              "$type": "color",
-              "$value": "rgba({color.base.primitive.dark.info.50}, {opacity.level.95})"
             }
           }
         }
@@ -3070,15 +2206,15 @@
             },
             "dim-main": {
               "$type": "color",
-              "$value": "{color.base.primitive.light.black.t-70}"
+              "$value": "rgba({color.base.primitive.light.black.base}, {opacity.context.dim-main})"
             },
             "dim-subtle": {
               "$type": "color",
-              "$value": "{color.base.primitive.light.black.t-30}"
+              "$value": "rgba({color.base.primitive.light.black.base}, {opacity.context.dim-subtle})"
             },
             "dim-slight": {
               "$type": "color",
-              "$value": "{color.base.primitive.light.black.t-05}"
+              "$value": "rgba({color.base.primitive.light.black.base}, {opacity.level.05})"
             },
             "bg-idle": {
               "$type": "color",
@@ -3228,15 +2364,15 @@
             },
             "dim-main": {
               "$type": "color",
-              "$value": "{color.base.primitive.light.white.t-70}"
+              "$value": "rgba({color.base.primitive.light.white.base}, {opacity.context.dim-main})"
             },
             "dim-subtle": {
               "$type": "color",
-              "$value": "{color.base.primitive.light.white.t-30}"
+              "$value": "rgba({color.base.primitive.light.white.base}, {opacity.context.dim-subtle})"
             },
             "dim-slight": {
               "$type": "color",
-              "$value": "{color.base.primitive.light.white.t-05}"
+              "$value": "rgba({color.base.primitive.light.white.base}, {opacity.level.05})"
             },
             "bg-idle": {
               "$type": "color",
@@ -3290,11 +2426,11 @@
             },
             "fg-subtle": {
               "$type": "color",
-              "$value": "{color.base.primitive.light.black.t-50}"
+              "$value": "rgba({color.base.primitive.light.black.base}, {opacity.level.50})"
             },
             "fg-slight": {
               "$type": "color",
-              "$value": "{color.base.primitive.light.black.t-30}"
+              "$value": "rgba({color.base.primitive.light.black.base}, {opacity.level.30})"
             },
             "fg-active": {
               "$type": "color",
@@ -3314,15 +2450,15 @@
             },
             "bg-main": {
               "$type": "color",
-              "$value": "{color.base.primitive.light.black.t-05}"
+              "$value": "rgba({color.base.primitive.light.black.base}, {opacity.level.05})"
             },
             "bg-even": {
               "$type": "color",
-              "$value": "{color.base.primitive.light.black.t-10}"
+              "$value": "rgba({color.base.primitive.light.black.base}, {opacity.level.10})"
             },
             "bg-evident": {
               "$type": "color",
-              "$value": "{color.base.primitive.light.black.t-20}"
+              "$value": "rgba({color.base.primitive.light.black.base}, {opacity.level.20})"
             },
             "bg-active": {
               "$type": "color",
@@ -3330,7 +2466,7 @@
             },
             "bg-inverse": {
               "$type": "color",
-              "$value": "{color.base.primitive.light.black.t-90}"
+              "$value": "rgba({color.base.primitive.light.black.base}, {opacity.level.90})"
             },
             "bg-solid": {
               "$type": "color",
@@ -3338,11 +2474,11 @@
             },
             "bg-highlight": {
               "$type": "color",
-              "$value": "{color.base.primitive.light.black.t-20}"
+              "$value": "rgba({color.base.primitive.light.black.base}, {opacity.level.20})"
             },
             "border-main": {
               "$type": "color",
-              "$value": "{color.base.primitive.light.black.t-30}"
+              "$value": "rgba({color.base.primitive.light.black.base}, {opacity.level.30})"
             },
             "border-subtle": {
               "$type": "color",
@@ -3374,7 +2510,7 @@
             },
             "link-hover": {
               "$type": "color",
-              "$value": "{color.base.primitive.light.black.t-90}"
+              "$value": "rgba({color.base.primitive.light.black.base}, {opacity.level.90})"
             },
             "link-active": {
               "$type": "color",
@@ -3382,19 +2518,19 @@
             },
             "link-visited": {
               "$type": "color",
-              "$value": "{color.base.primitive.light.black.t-60}"
+              "$value": "rgba({color.base.primitive.light.black.base}, {opacity.level.60})"
             },
             "dim-main": {
               "$type": "color",
-              "$value": "{color.base.primitive.light.black.t-70}"
+              "$value": "rgba({color.base.primitive.light.black.base}, {opacity.context.dim-main})"
             },
             "dim-subtle": {
               "$type": "color",
-              "$value": "{color.base.primitive.light.black.t-30}"
+              "$value": "rgba({color.base.primitive.light.black.base}, {opacity.context.dim-subtle})"
             },
             "dim-slight": {
               "$type": "color",
-              "$value": "{color.base.primitive.light.black.t-10}"
+              "$value": "rgba({color.base.primitive.light.black.base}, {opacity.context.dim-slight})"
             },
             "bg-idle": {
               "$type": "color",
@@ -3402,15 +2538,15 @@
             },
             "bg-hover": {
               "$type": "color",
-              "$value": "{color.base.primitive.light.black.t-90}"
+              "$value": "rgba({color.base.primitive.light.black.base}, {opacity.level.90})"
             },
             "bg-press": {
               "$type": "color",
-              "$value": "{color.base.primitive.light.black.t-95}"
+              "$value": "rgba({color.base.primitive.light.black.base}, {opacity.level.95})"
             },
             "bg-disabled": {
               "$type": "color",
-              "$value": "{color.base.primitive.light.black.t-20}"
+              "$value": "rgba({color.base.primitive.light.black.base}, {opacity.level.20})"
             },
             "fg-idle": {
               "$type": "color",
@@ -3448,11 +2584,11 @@
             },
             "fg-subtle": {
               "$type": "color",
-              "$value": "{color.base.primitive.light.white.t-50}"
+              "$value": "rgba({color.base.primitive.light.white.base}, {opacity.level.50})"
             },
             "fg-slight": {
               "$type": "color",
-              "$value": "{color.base.primitive.light.white.t-30}"
+              "$value": "rgba({color.base.primitive.light.white.base}, {opacity.level.30})"
             },
             "fg-active": {
               "$type": "color",
@@ -3472,15 +2608,15 @@
             },
             "bg-main": {
               "$type": "color",
-              "$value": "{color.base.primitive.light.white.t-05}"
+              "$value": "rgba({color.base.primitive.light.white.base}, {opacity.level.05})"
             },
             "bg-even": {
               "$type": "color",
-              "$value": "{color.base.primitive.light.white.t-10}"
+              "$value": "rgba({color.base.primitive.light.white.base}, {opacity.level.10})"
             },
             "bg-evident": {
               "$type": "color",
-              "$value": "{color.base.primitive.light.white.t-20}"
+              "$value": "rgba({color.base.primitive.light.white.base}, {opacity.level.20})"
             },
             "bg-active": {
               "$type": "color",
@@ -3488,7 +2624,7 @@
             },
             "bg-inverse": {
               "$type": "color",
-              "$value": "{color.base.primitive.light.white.t-95}"
+              "$value": "rgba({color.base.primitive.light.white.base}, {opacity.level.95})"
             },
             "bg-solid": {
               "$type": "color",
@@ -3496,11 +2632,11 @@
             },
             "bg-highlight": {
               "$type": "color",
-              "$value": "{color.base.primitive.light.white.t-20}"
+              "$value": "rgba({color.base.primitive.light.white.base}, {opacity.level.20})"
             },
             "border-main": {
               "$type": "color",
-              "$value": "{color.base.primitive.light.white.t-30}"
+              "$value": "rgba({color.base.primitive.light.white.base}, {opacity.level.30})"
             },
             "border-subtle": {
               "$type": "color",
@@ -3532,7 +2668,7 @@
             },
             "link-hover": {
               "$type": "color",
-              "$value": "{color.base.primitive.light.white.t-90}"
+              "$value": "rgba({color.base.primitive.light.white.base}, {opacity.level.90})"
             },
             "link-active": {
               "$type": "color",
@@ -3540,19 +2676,19 @@
             },
             "link-visited": {
               "$type": "color",
-              "$value": "{color.base.primitive.light.white.t-60}"
+              "$value": "rgba({color.base.primitive.light.white.base}, {opacity.level.60})"
             },
             "dim-main": {
               "$type": "color",
-              "$value": "{color.base.primitive.light.white.t-70}"
+              "$value": "rgba({color.base.primitive.light.white.base}, {opacity.context.dim-main})"
             },
             "dim-subtle": {
               "$type": "color",
-              "$value": "{color.base.primitive.light.white.t-30}"
+              "$value": "rgba({color.base.primitive.light.white.base}, {opacity.context.dim-subtle})"
             },
             "dim-slight": {
               "$type": "color",
-              "$value": "{color.base.primitive.light.white.t-10}"
+              "$value": "rgba({color.base.primitive.light.white.base}, {opacity.context.dim-slight})"
             },
             "bg-idle": {
               "$type": "color",
@@ -3560,15 +2696,15 @@
             },
             "bg-hover": {
               "$type": "color",
-              "$value": "{color.base.primitive.light.white.t-90}"
+              "$value": "rgba({color.base.primitive.light.white.base}, {opacity.level.90})"
             },
             "bg-press": {
               "$type": "color",
-              "$value": "{color.base.primitive.light.white.t-95}"
+              "$value": "rgba({color.base.primitive.light.white.base}, {opacity.level.95})"
             },
             "bg-disabled": {
               "$type": "color",
-              "$value": "{color.base.primitive.light.white.t-20}"
+              "$value": "rgba({color.base.primitive.light.white.base}, {opacity.level.20})"
             },
             "fg-idle": {
               "$type": "color",
@@ -3702,15 +2838,15 @@
             },
             "dim-main": {
               "$type": "color",
-              "$value": "{color.base.primitive.light.primary.t-5070}"
+              "$value": "rgba({color.base.primitive.light.primary.50}, {opacity.context.dim-main})"
             },
             "dim-subtle": {
               "$type": "color",
-              "$value": "{color.base.primitive.light.primary.t-5030}"
+              "$value": "rgba({color.base.primitive.light.primary.50}, {opacity.context.dim-subtle})"
             },
             "dim-slight": {
               "$type": "color",
-              "$value": "{color.base.primitive.light.primary.t-5010}"
+              "$value": "rgba({color.base.primitive.light.primary.50}, {opacity.context.dim-slight})"
             },
             "bg-idle": {
               "$type": "color",
@@ -3860,15 +2996,15 @@
             },
             "dim-main": {
               "$type": "color",
-              "$value": "{color.base.primitive.light.secondary.t-5070}"
+              "$value": "rgba({color.base.primitive.light.secondary.50}, {opacity.context.dim-main})"
             },
             "dim-subtle": {
               "$type": "color",
-              "$value": "{color.base.primitive.light.secondary.t-5030}"
+              "$value": "rgba({color.base.primitive.light.secondary.50}, {opacity.context.dim-subtle})"
             },
             "dim-slight": {
               "$type": "color",
-              "$value": "{color.base.primitive.light.secondary.t-5010}"
+              "$value": "rgba({color.base.primitive.light.secondary.50}, {opacity.context.dim-slight})"
             },
             "bg-idle": {
               "$type": "color",
@@ -4018,15 +3154,15 @@
             },
             "dim-main": {
               "$type": "color",
-              "$value": "{color.base.primitive.light.neutral.t-5070}"
+              "$value": "rgba({color.base.primitive.light.neutral.50}, {opacity.context.dim-main})"
             },
             "dim-subtle": {
               "$type": "color",
-              "$value": "{color.base.primitive.light.neutral.t-5030}"
+              "$value": "rgba({color.base.primitive.light.neutral.50}, {opacity.context.dim-subtle})"
             },
             "dim-slight": {
               "$type": "color",
-              "$value": "{color.base.primitive.light.neutral.t-5010}"
+              "$value": "rgba({color.base.primitive.light.neutral.50}, {opacity.context.dim-slight})"
             },
             "bg-idle": {
               "$type": "color",
@@ -4176,15 +3312,15 @@
             },
             "dim-main": {
               "$type": "color",
-              "$value": "{color.base.primitive.light.danger.t-5070}"
+              "$value": "rgba({color.base.primitive.light.danger.50}, {opacity.context.dim-main})"
             },
             "dim-subtle": {
               "$type": "color",
-              "$value": "{color.base.primitive.light.danger.t-5030}"
+              "$value": "rgba({color.base.primitive.light.danger.50}, {opacity.context.dim-subtle})"
             },
             "dim-slight": {
               "$type": "color",
-              "$value": "{color.base.primitive.light.danger.t-5010}"
+              "$value": "rgba({color.base.primitive.light.danger.50}, {opacity.context.dim-slight})"
             },
             "bg-idle": {
               "$type": "color",
@@ -4334,15 +3470,15 @@
             },
             "dim-main": {
               "$type": "color",
-              "$value": "{color.base.primitive.light.success.t-5070}"
+              "$value": "rgba({color.base.primitive.light.success.50}, {opacity.context.dim-main})"
             },
             "dim-subtle": {
               "$type": "color",
-              "$value": "{color.base.primitive.light.success.t-5030}"
+              "$value": "rgba({color.base.primitive.light.success.50}, {opacity.context.dim-subtle})"
             },
             "dim-slight": {
               "$type": "color",
-              "$value": "{color.base.primitive.light.success.t-5010}"
+              "$value": "rgba({color.base.primitive.light.success.50}, {opacity.context.dim-slight})"
             },
             "bg-idle": {
               "$type": "color",
@@ -4492,15 +3628,15 @@
             },
             "dim-main": {
               "$type": "color",
-              "$value": "{color.base.primitive.light.warning.t-5070}"
+              "$value": "rgba({color.base.primitive.light.warning.50}, {opacity.context.dim-main})"
             },
             "dim-subtle": {
               "$type": "color",
-              "$value": "{color.base.primitive.light.warning.t-5030}"
+              "$value": "rgba({color.base.primitive.light.warning.50}, {opacity.context.dim-subtle})"
             },
             "dim-slight": {
               "$type": "color",
-              "$value": "{color.base.primitive.light.warning.t-5010}"
+              "$value": "rgba({color.base.primitive.light.warning.50}, {opacity.context.dim-slight})"
             },
             "bg-idle": {
               "$type": "color",
@@ -4650,15 +3786,15 @@
             },
             "dim-main": {
               "$type": "color",
-              "$value": "{color.base.primitive.light.info.t-5070}"
+              "$value": "rgba({color.base.primitive.light.info.50}, {opacity.context.dim-main})"
             },
             "dim-subtle": {
               "$type": "color",
-              "$value": "{color.base.primitive.light.info.t-5030}"
+              "$value": "rgba({color.base.primitive.light.info.50}, {opacity.context.dim-subtle})"
             },
             "dim-slight": {
               "$type": "color",
-              "$value": "{color.base.primitive.light.info.t-5010}"
+              "$value": "rgba({color.base.primitive.light.info.50}, {opacity.context.dim-slight})"
             },
             "bg-idle": {
               "$type": "color",
@@ -4810,15 +3946,15 @@
             },
             "dim-main": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.white.t-70}"
+              "$value": "rgba({color.base.primitive.dark.white.base}, {opacity.context.dim-main})"
             },
             "dim-subtle": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.white.t-30}"
+              "$value": "rgba({color.base.primitive.dark.white.base}, {opacity.context.dim-subtle})"
             },
             "dim-slight": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.white.t-05}"
+              "$value": "rgba({color.base.primitive.dark.white.base}, {opacity.level.05})"
             },
             "bg-idle": {
               "$type": "color",
@@ -4968,15 +4104,15 @@
             },
             "dim-main": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.black.t-70}"
+              "$value": "rgba({color.base.primitive.dark.black.base}, {opacity.context.dim-main})"
             },
             "dim-subtle": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.black.t-30}"
+              "$value": "rgba({color.base.primitive.dark.black.base}, {opacity.context.dim-subtle})"
             },
             "dim-slight": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.black.t-05}"
+              "$value": "rgba({color.base.primitive.dark.black.base}, {opacity.level.05})"
             },
             "bg-idle": {
               "$type": "color",
@@ -5030,11 +4166,11 @@
             },
             "fg-subtle": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.black.t-50}"
+              "$value": "rgba({color.base.primitive.dark.black.base}, {opacity.level.50})"
             },
             "fg-slight": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.black.t-30}"
+              "$value": "rgba({color.base.primitive.dark.black.base}, {opacity.level.30})"
             },
             "fg-active": {
               "$type": "color",
@@ -5054,15 +4190,15 @@
             },
             "bg-main": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.black.t-10}"
+              "$value": "rgba({color.base.primitive.dark.black.base}, {opacity.level.10})"
             },
             "bg-even": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.black.t-20}"
+              "$value": "rgba({color.base.primitive.dark.black.base}, {opacity.level.20})"
             },
             "bg-evident": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.black.t-30}"
+              "$value": "rgba({color.base.primitive.dark.black.base}, {opacity.level.30})"
             },
             "bg-active": {
               "$type": "color",
@@ -5070,7 +4206,7 @@
             },
             "bg-inverse": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.black.t-90}"
+              "$value": "rgba({color.base.primitive.dark.black.base}, {opacity.level.90})"
             },
             "bg-solid": {
               "$type": "color",
@@ -5078,11 +4214,11 @@
             },
             "bg-highlight": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.black.t-20}"
+              "$value": "rgba({color.base.primitive.dark.black.base}, {opacity.level.20})"
             },
             "border-main": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.black.t-30}"
+              "$value": "rgba({color.base.primitive.dark.black.base}, {opacity.level.30})"
             },
             "border-subtle": {
               "$type": "color",
@@ -5114,7 +4250,7 @@
             },
             "link-hover": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.black.t-90}"
+              "$value": "rgba({color.base.primitive.dark.black.base}, {opacity.level.90})"
             },
             "link-active": {
               "$type": "color",
@@ -5122,19 +4258,19 @@
             },
             "link-visited": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.black.t-60}"
+              "$value": "rgba({color.base.primitive.dark.black.base}, {opacity.level.60})"
             },
             "dim-main": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.black.t-70}"
+              "$value": "rgba({color.base.primitive.dark.black.base}, {opacity.context.dim-main})"
             },
             "dim-subtle": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.black.t-30}"
+              "$value": "rgba({color.base.primitive.dark.black.base}, {opacity.context.dim-subtle})"
             },
             "dim-slight": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.black.t-10}"
+              "$value": "rgba({color.base.primitive.dark.black.base}, {opacity.context.dim-slight})"
             },
             "bg-idle": {
               "$type": "color",
@@ -5142,15 +4278,15 @@
             },
             "bg-hover": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.black.t-90}"
+              "$value": "rgba({color.base.primitive.dark.black.base}, {opacity.level.90})"
             },
             "bg-press": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.black.t-95}"
+              "$value": "rgba({color.base.primitive.dark.black.base}, {opacity.level.95})"
             },
             "bg-disabled": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.black.t-20}"
+              "$value": "rgba({color.base.primitive.dark.black.base}, {opacity.level.20})"
             },
             "fg-idle": {
               "$type": "color",
@@ -5188,11 +4324,11 @@
             },
             "fg-subtle": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.white.t-50}"
+              "$value": "rgba({color.base.primitive.dark.white.base}, {opacity.level.50})"
             },
             "fg-slight": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.white.t-30}"
+              "$value": "rgba({color.base.primitive.dark.white.base}, {opacity.level.30})"
             },
             "fg-active": {
               "$type": "color",
@@ -5212,15 +4348,15 @@
             },
             "bg-main": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.white.t-10}"
+              "$value": "rgba({color.base.primitive.dark.white.base}, {opacity.level.10})"
             },
             "bg-even": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.white.t-20}"
+              "$value": "rgba({color.base.primitive.dark.white.base}, {opacity.level.20})"
             },
             "bg-evident": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.white.t-30}"
+              "$value": "rgba({color.base.primitive.dark.white.base}, {opacity.level.30})"
             },
             "bg-active": {
               "$type": "color",
@@ -5228,7 +4364,7 @@
             },
             "bg-inverse": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.white.t-95}"
+              "$value": "rgba({color.base.primitive.dark.white.base}, {opacity.level.95})"
             },
             "bg-solid": {
               "$type": "color",
@@ -5236,11 +4372,11 @@
             },
             "bg-highlight": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.white.t-20}"
+              "$value": "rgba({color.base.primitive.dark.white.base}, {opacity.level.20})"
             },
             "border-main": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.white.t-30}"
+              "$value": "rgba({color.base.primitive.dark.white.base}, {opacity.level.30})"
             },
             "border-subtle": {
               "$type": "color",
@@ -5272,7 +4408,7 @@
             },
             "link-hover": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.white.t-90}"
+              "$value": "rgba({color.base.primitive.dark.white.base}, {opacity.level.90})"
             },
             "link-active": {
               "$type": "color",
@@ -5280,19 +4416,19 @@
             },
             "link-visited": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.white.t-60}"
+              "$value": "rgba({color.base.primitive.dark.white.base}, {opacity.level.60})"
             },
             "dim-main": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.white.t-70}"
+              "$value": "rgba({color.base.primitive.dark.white.base}, {opacity.context.dim-main})"
             },
             "dim-subtle": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.white.t-30}"
+              "$value": "rgba({color.base.primitive.dark.white.base}, {opacity.context.dim-subtle})"
             },
             "dim-slight": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.white.t-10}"
+              "$value": "rgba({color.base.primitive.dark.white.base}, {opacity.context.dim-slight})"
             },
             "bg-idle": {
               "$type": "color",
@@ -5300,15 +4436,15 @@
             },
             "bg-hover": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.white.t-90}"
+              "$value": "rgba({color.base.primitive.dark.white.base}, {opacity.level.90})"
             },
             "bg-press": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.white.t-95}"
+              "$value": "rgba({color.base.primitive.dark.white.base}, {opacity.level.95})"
             },
             "bg-disabled": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.white.t-20}"
+              "$value": "rgba({color.base.primitive.dark.white.base}, {opacity.level.20})"
             },
             "fg-idle": {
               "$type": "color",
@@ -5442,15 +4578,15 @@
             },
             "dim-main": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.primary.t-5070}"
+              "$value": "rgba({color.base.primitive.dark.primary.50}, {opacity.context.dim-main})"
             },
             "dim-subtle": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.primary.t-5030}"
+              "$value": "rgba({color.base.primitive.dark.primary.50}, {opacity.context.dim-subtle})"
             },
             "dim-slight": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.primary.t-5010}"
+              "$value": "rgba({color.base.primitive.dark.primary.50}, {opacity.context.dim-slight})"
             },
             "bg-idle": {
               "$type": "color",
@@ -5600,15 +4736,15 @@
             },
             "dim-main": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.secondary.t-5070}"
+              "$value": "rgba({color.base.primitive.dark.secondary.50}, {opacity.context.dim-main})"
             },
             "dim-subtle": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.secondary.t-5030}"
+              "$value": "rgba({color.base.primitive.dark.secondary.50}, {opacity.context.dim-subtle})"
             },
             "dim-slight": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.secondary.t-5010}"
+              "$value": "rgba({color.base.primitive.dark.secondary.50}, {opacity.context.dim-slight})"
             },
             "bg-idle": {
               "$type": "color",
@@ -5758,15 +4894,15 @@
             },
             "dim-main": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.neutral.t-5070}"
+              "$value": "rgba({color.base.primitive.dark.neutral.50}, {opacity.context.dim-main})"
             },
             "dim-subtle": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.neutral.t-5030}"
+              "$value": "rgba({color.base.primitive.dark.neutral.50}, {opacity.context.dim-subtle})"
             },
             "dim-slight": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.neutral.t-5010}"
+              "$value": "rgba({color.base.primitive.dark.neutral.50}, {opacity.context.dim-slight})"
             },
             "bg-idle": {
               "$type": "color",
@@ -5916,15 +5052,15 @@
             },
             "dim-main": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.danger.t-5070}"
+              "$value": "rgba({color.base.primitive.dark.danger.50}, {opacity.context.dim-main})"
             },
             "dim-subtle": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.danger.t-5030}"
+              "$value": "rgba({color.base.primitive.dark.danger.50}, {opacity.context.dim-subtle})"
             },
             "dim-slight": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.danger.t-5010}"
+              "$value": "rgba({color.base.primitive.dark.danger.50}, {opacity.context.dim-slight})"
             },
             "bg-idle": {
               "$type": "color",
@@ -6074,15 +5210,15 @@
             },
             "dim-main": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.success.t-5070}"
+              "$value": "rgba({color.base.primitive.dark.success.50}, {opacity.context.dim-main})"
             },
             "dim-subtle": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.success.t-5030}"
+              "$value": "rgba({color.base.primitive.dark.success.50}, {opacity.context.dim-subtle})"
             },
             "dim-slight": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.success.t-5010}"
+              "$value": "rgba({color.base.primitive.dark.success.50}, {opacity.context.dim-slight})"
             },
             "bg-idle": {
               "$type": "color",
@@ -6232,15 +5368,15 @@
             },
             "dim-main": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.warning.t-5070}"
+              "$value": "rgba({color.base.primitive.dark.warning.50}, {opacity.context.dim-main})"
             },
             "dim-subtle": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.warning.t-5030}"
+              "$value": "rgba({color.base.primitive.dark.warning.50}, {opacity.context.dim-subtle})"
             },
             "dim-slight": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.warning.t-5010}"
+              "$value": "rgba({color.base.primitive.dark.warning.50}, {opacity.context.dim-slight})"
             },
             "bg-idle": {
               "$type": "color",
@@ -6390,15 +5526,15 @@
             },
             "dim-main": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.info.t-5070}"
+              "$value": "rgba({color.base.primitive.dark.info.50}, {opacity.context.dim-main})"
             },
             "dim-subtle": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.info.t-5030}"
+              "$value": "rgba({color.base.primitive.dark.info.50}, {opacity.context.dim-subtle})"
             },
             "dim-slight": {
               "$type": "color",
-              "$value": "{color.base.primitive.dark.info.t-5010}"
+              "$value": "rgba({color.base.primitive.dark.info.50}, {opacity.context.dim-slight})"
             },
             "bg-idle": {
               "$type": "color",
@@ -6439,77 +5575,77 @@
         "light": {
           "default": {
             "$type": "color",
-            "$value": "{color.base.primitive.light.black.t-10}"
+            "$value": "rgba({color.base.primitive.light.black.base}, {opacity.level.10})"
           },
           "alternate": {
             "$type": "color",
-            "$value": "{color.base.primitive.light.black.t-20}"
+            "$value": "rgba({color.base.primitive.light.black.base}, {opacity.level.20})"
           },
           "primary": {
             "$type": "color",
-            "$value": "{color.base.primitive.light.primary.t-5040}"
+            "$value": "rgba({color.base.primitive.light.primary.50}, {opacity.level.40})"
           },
           "secondary": {
             "$type": "color",
-            "$value": "{color.base.primitive.light.secondary.t-5040}"
+            "$value": "rgba({color.base.primitive.light.secondary.50}, {opacity.level.40})"
           },
           "neutral": {
             "$type": "color",
-            "$value": "{color.base.primitive.light.neutral.t-5040}"
+            "$value": "rgba({color.base.primitive.light.neutral.50}, {opacity.level.40})"
           },
           "danger": {
             "$type": "color",
-            "$value": "{color.base.primitive.light.danger.t-5040}"
+            "$value": "rgba({color.base.primitive.light.danger.50}, {opacity.level.40})"
           },
           "success": {
             "$type": "color",
-            "$value": "{color.base.primitive.light.success.t-5040}"
+            "$value": "rgba({color.base.primitive.light.success.50}, {opacity.level.40})"
           },
           "warning": {
             "$type": "color",
-            "$value": "{color.base.primitive.light.warning.t-5040}"
+            "$value": "rgba({color.base.primitive.light.warning.50}, {opacity.level.40})"
           },
           "info": {
             "$type": "color",
-            "$value": "{color.base.primitive.light.info.t-5040}"
+            "$value": "rgba({color.base.primitive.light.info.50}, {opacity.level.40})"
           }
         },
         "dark": {
           "default": {
             "$type": "color",
-            "$value": "{color.base.primitive.dark.black.t-40}"
+            "$value": "rgba({color.base.primitive.dark.black.base}, {opacity.level.40})"
           },
           "alternate": {
             "$type": "color",
-            "$value": "{color.base.primitive.dark.black.t-60}"
+            "$value": "rgba({color.base.primitive.dark.black.base}, {opacity.level.60})"
           },
           "primary": {
             "$type": "color",
-            "$value": "{color.base.primitive.dark.primary.t-5040}"
+            "$value": "rgba({color.base.primitive.dark.primary.50}, {opacity.level.40})"
           },
           "secondary": {
             "$type": "color",
-            "$value": "{color.base.primitive.dark.secondary.t-5040}"
+            "$value": "rgba({color.base.primitive.dark.secondary.50}, {opacity.level.40})"
           },
           "neutral": {
             "$type": "color",
-            "$value": "{color.base.primitive.dark.neutral.t-5040}"
+            "$value": "rgba({color.base.primitive.dark.neutral.50}, {opacity.level.40})"
           },
           "danger": {
             "$type": "color",
-            "$value": "{color.base.primitive.dark.danger.t-5040}"
+            "$value": "rgba({color.base.primitive.dark.danger.50}, {opacity.level.40})"
           },
           "success": {
             "$type": "color",
-            "$value": "{color.base.primitive.dark.success.t-5040}"
+            "$value": "rgba({color.base.primitive.dark.success.50}, {opacity.level.40})"
           },
           "warning": {
             "$type": "color",
-            "$value": "{color.base.primitive.dark.warning.t-5040}"
+            "$value": "rgba({color.base.primitive.dark.warning.50}, {opacity.level.40})"
           },
           "info": {
             "$type": "color",
-            "$value": "{color.base.primitive.dark.info.t-5040}"
+            "$value": "rgba({color.base.primitive.dark.info.50}, {opacity.level.40})"
           }
         }
       }
@@ -7414,7 +6550,7 @@
         },
         "dim-slight": {
           "$type": "opacity",
-          "$value": "0.05"
+          "$value": "0.1"
         },
         "transparent-color": {
           "$type": "opacity",

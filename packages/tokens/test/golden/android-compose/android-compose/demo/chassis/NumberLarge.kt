@@ -3,7 +3,7 @@
 //
 
 // Do not edit directly, this file was auto-generated.
-// Generated on Fri, 30 Oct 2026 10:52:22 GMT
+// Generated on Fri, 30 Oct 2026 11:55:42 GMT
 // Chassis - Tokens v0.10.1
 // Copyright 2026 Ozgur Gunes
 // Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
@@ -476,7 +476,7 @@ object ChassisTokensNumberLarge {
     val opacityContextCueSlight get() = 0.2f
     val opacityContextDimMain get() = 0.7f
     val opacityContextDimSubtle get() = 0.3f
-    val opacityContextDimSlight get() = 0.05f
+    val opacityContextDimSlight get() = 0.1f
     val opacityContextTransparentColor get() = 0f
     val typographyFontSizeUi5xlarge get() = 44.sp
     val typographyFontSizeUi4xlarge get() = 38.sp

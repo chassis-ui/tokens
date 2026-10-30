@@ -210,56 +210,8 @@
               "$value": "{color.base.primitive.light.black.base}",
               "$type": "color"
             },
-            "transparent": {
-              "$value": "rgba({color.base.primitive.light.secondary.base}, 0)",
-              "$type": "color"
-            },
             "contrast": {
               "$value": "{color.base.primitive.light.black.contrast}",
-              "$type": "color"
-            },
-            "t-5005": {
-              "$value": "rgba({color.base.primitive.light.secondary.base}, {opacity.level.05})",
-              "$type": "color"
-            },
-            "t-5010": {
-              "$value": "rgba({color.base.primitive.light.secondary.base}, {opacity.level.10})",
-              "$type": "color"
-            },
-            "t-5020": {
-              "$value": "rgba({color.base.primitive.light.secondary.base}, {opacity.level.20})",
-              "$type": "color"
-            },
-            "t-5030": {
-              "$value": "rgba({color.base.primitive.light.secondary.base}, {opacity.level.30})",
-              "$type": "color"
-            },
-            "t-5040": {
-              "$value": "rgba({color.base.primitive.light.secondary.base}, {opacity.level.40})",
-              "$type": "color"
-            },
-            "t-5050": {
-              "$value": "rgba({color.base.primitive.light.secondary.base}, {opacity.level.50})",
-              "$type": "color"
-            },
-            "t-5060": {
-              "$value": "rgba({color.base.primitive.light.secondary.base}, {opacity.level.60})",
-              "$type": "color"
-            },
-            "t-5070": {
-              "$value": "rgba({color.base.primitive.light.secondary.base}, {opacity.level.70})",
-              "$type": "color"
-            },
-            "t-5080": {
-              "$value": "rgba({color.base.primitive.light.secondary.base}, {opacity.level.80})",
-              "$type": "color"
-            },
-            "t-5090": {
-              "$value": "rgba({color.base.primitive.light.secondary.base}, {opacity.level.90})",
-              "$type": "color"
-            },
-            "t-5095": {
-              "$value": "rgba({color.base.primitive.light.secondary.base}, {opacity.level.95})",
               "$type": "color"
             }
           },
@@ -698,6 +650,14 @@
               "$type": "color",
               "$value": "rgba({color.base.context.dark.default.fg-main}, {opacity.context.fg-slight})"
             }
+          }
+        }
+      },
+      "shadow": {
+        "light": {
+          "secondary": {
+            "$type": "color",
+            "$value": "rgba({color.base.primitive.light.secondary.base}, {opacity.level.40})"
           }
         }
       }

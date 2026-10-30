@@ -43,7 +43,7 @@ The token sets of these groups are in `source/base/`.
 | `color.<component>.*` | Component | Colors of the parts of a component | `app-base.json`, `app-demo.json` |
 </CxTable>
 
-`theme-base.json` references the light base tokens, and `theme-dark.json` replaces these references with the dark ones. See the [Tokens Studio]([[docsref:/getting-started/tokens-studio]]) guide for the token sets and the groups that select them.
+`theme-base.json` references the light base tokens, and `theme-dark.json` replaces these references with the dark ones. The [transparency colors](#transparency-colors) are defined in `theme-base.json` alone. See the [Tokens Studio]([[docsref:/getting-started/tokens-studio]]) guide for the token sets and the groups that select them.
 
 ## Base tokens
 
@@ -51,13 +51,12 @@ Base tokens hold the colors of every theme at once, under `color.base.primitive`
 
 ### Palettes
 
-A palette is a group of colors that are derived from one base color. The palettes are `black`, `white`, `primary`, `secondary`, `neutral`, `danger`, `success`, `warning`, and `info`. Next to its base color, every palette has a contrast color and a transparent color.
+A palette is a group of colors that are derived from one base color. The palettes are `black`, `white`, `primary`, `secondary`, `neutral`, `danger`, `success`, `warning`, and `info`. Next to its base color, every palette has a contrast color.
 
 <CxTable>
 | Token | Reference | Purpose |
 | --- | --- | --- |
 | `color.base.primitive.light.primary.base` | None, the brand sets the color | Base color of the palette |
-| `color.base.primitive.light.primary.transparent` | `rgba({color.base.primitive.light.primary.base}, {opacity.level.zero})` | Base color with no opacity, the first stop of the gradients |
 | `color.base.primitive.light.primary.contrast` | `{color.base.primitive.light.white.base}` | Text and icons on the base color |
 </CxTable>
 
@@ -85,31 +84,9 @@ Shades are lighter and darker steps of the base color, named from `05` for the l
 
 The shades of the other palettes have the same names and the same modifiers, such as `color.base.primitive.light.danger.60`.
 
-### Transparency colors
-
-Transparency colors are a color of the palette with an [opacity token]([[docsref:/design-tokens/opacity-tokens]]) as its alpha value. Their name holds the shade and the opacity level: `t-5020` is shade `50` with `opacity.level.20`. Every palette with shades has the transparency colors of its shade `50`.
-
-<CxTable>
-| Token | Reference |
-| --- | --- |
-| `color.base.primitive.light.primary.t-5005` | `rgba({color.base.primitive.light.primary.50}, {opacity.level.05})` |
-| `color.base.primitive.light.primary.t-5010` | `rgba({color.base.primitive.light.primary.50}, {opacity.level.10})` |
-| `color.base.primitive.light.primary.t-5020` | `rgba({color.base.primitive.light.primary.50}, {opacity.level.20})` |
-| `color.base.primitive.light.primary.t-5030` | `rgba({color.base.primitive.light.primary.50}, {opacity.level.30})` |
-| `color.base.primitive.light.primary.t-5040` | `rgba({color.base.primitive.light.primary.50}, {opacity.level.40})` |
-| `color.base.primitive.light.primary.t-5050` | `rgba({color.base.primitive.light.primary.50}, {opacity.level.50})` |
-| `color.base.primitive.light.primary.t-5060` | `rgba({color.base.primitive.light.primary.50}, {opacity.level.60})` |
-| `color.base.primitive.light.primary.t-5070` | `rgba({color.base.primitive.light.primary.50}, {opacity.level.70})` |
-| `color.base.primitive.light.primary.t-5080` | `rgba({color.base.primitive.light.primary.50}, {opacity.level.80})` |
-| `color.base.primitive.light.primary.t-5090` | `rgba({color.base.primitive.light.primary.50}, {opacity.level.90})` |
-| `color.base.primitive.light.primary.t-5095` | `rgba({color.base.primitive.light.primary.50}, {opacity.level.95})` |
-</CxTable>
-
-The `black` and `white` palettes have no shades, so their transparency colors are named by the opacity level only, from `t-05` to `t-95`: `color.base.primitive.light.black.t-50` is the base color of `black` with `opacity.level.50`.
-
 ### Base context colors
 
-`color.base.context.<theme>.<context>.<role>` assigns a color of a palette to each role of each context, once per theme. The roles are those of the [context tokens](#context-tokens). A role references a shade, a transparency color, or another role of its context, alone or with an opacity token as its alpha value.
+`color.base.context.<theme>.<context>.<role>` assigns a color of a palette to each role of each context, once per theme. The roles are those of the [context tokens](#context-tokens). A role references a color of a palette or another role of its context, alone or with an opacity token as its alpha value.
 
 <CxTable>
 | Token | Reference |
@@ -117,34 +94,57 @@ The `black` and `white` palettes have no shades, so their transparency colors ar
 | `color.base.context.light.default.fg-main` | `{color.base.primitive.light.neutral.90}` |
 | `color.base.context.light.default.fg-subtle` | `rgba({color.base.context.light.default.fg-main}, {opacity.context.fg-subtle})` |
 | `color.base.context.light.default.bg-main` | `{color.base.primitive.light.white.base}` |
-| `color.base.context.light.default.dim-main` | `{color.base.primitive.light.black.t-70}` |
+| `color.base.context.light.default.dim-main` | `rgba({color.base.primitive.light.black.base}, {opacity.context.dim-main})` |
 | `color.base.context.light.default.fg-idle` | `{color.base.context.light.default.fg-main}` |
 | `color.base.context.light.danger.fg-main` | `{color.base.primitive.light.danger.60}` |
 | `color.base.context.dark.default.fg-main` | `{color.base.primitive.dark.neutral.10}` |
 | `color.base.context.dark.default.fg-subtle` | `rgba({color.base.context.dark.default.fg-main}, {opacity.context.fg-subtle})` |
 | `color.base.context.dark.default.bg-main` | `{color.base.primitive.dark.neutral.95}` |
-| `color.base.context.dark.default.dim-main` | `{color.base.primitive.dark.white.t-70}` |
+| `color.base.context.dark.default.dim-main` | `rgba({color.base.primitive.dark.white.base}, {opacity.context.dim-main})` |
 | `color.base.context.dark.default.fg-idle` | `{color.base.context.dark.default.fg-main}` |
 | `color.base.context.dark.danger.fg-main` | `{color.base.primitive.dark.danger.30}` |
 </CxTable>
 
-`color.base.shadow.<theme>.<context>` holds the shadow color of a context in the same way. The shadow colors of `default` and `alternate` reference transparency colors of the `black` palette, and those of `primary`, `secondary`, `neutral`, `danger`, `success`, `warning`, and `info` reference `t-5040` of their palette.
+`color.base.shadow.<theme>.<context>` holds the shadow color of a context in the same way. The shadow colors of `default` and `alternate` apply an opacity level to the base color of the `black` palette, and those of `primary`, `secondary`, `neutral`, `danger`, `success`, `warning`, and `info` apply `opacity.level.40` to shade `50` of their palette.
 
 ## Primitive colors
 
-Primitive colors are the palettes of the current theme. Each `color.primitive.<palette>.<name>` references the base token of the same name: `color.base.primitive.light.*` in the light theme and `color.base.primitive.dark.*` in the dark theme.
+Primitive colors are the palettes of the current theme. Each `color.primitive.<palette>.<name>` references the base token of the same name, `color.base.primitive.light.*` in the light theme and `color.base.primitive.dark.*` in the dark theme, except the transparency colors, which have no base token.
 
 <CxTable>
 | Token | Reference |
 | --- | --- |
 | `color.primitive.primary.50` | `{color.base.primitive.<theme>.primary.50}` |
 | `color.primitive.primary.base` | `{color.base.primitive.<theme>.primary.base}` |
-| `color.primitive.primary.transparent` | `{color.base.primitive.<theme>.primary.transparent}` |
 | `color.primitive.primary.contrast` | `{color.base.primitive.<theme>.primary.contrast}` |
-| `color.primitive.primary.t-5050` | `{color.base.primitive.<theme>.primary.t-5050}` |
 </CxTable>
 
-The names after the palette are those of the base tokens: `base`, `contrast`, `transparent`, the shades, and the transparency colors.
+The names after the palette are those of the base tokens, `base`, `contrast`, and the shades, and the transparency colors.
+
+### Transparency colors
+
+Transparency colors are a color of the palette with an [opacity token]([[docsref:/design-tokens/opacity-tokens]]) as its alpha value. Their name holds the shade and the opacity level: `t-5020` is shade `50` with `opacity.level.20`. Every palette with shades has the transparency colors of its shade `50`, and a `transparent` color, its base color with `opacity.level.zero`, the first stop of the gradients.
+
+<CxTable>
+| Token | Reference |
+| --- | --- |
+| `color.primitive.primary.transparent` | `rgba({color.primitive.primary.base}, {opacity.level.zero})` |
+| `color.primitive.primary.t-5005` | `rgba({color.primitive.primary.50}, {opacity.level.05})` |
+| `color.primitive.primary.t-5010` | `rgba({color.primitive.primary.50}, {opacity.level.10})` |
+| `color.primitive.primary.t-5020` | `rgba({color.primitive.primary.50}, {opacity.level.20})` |
+| `color.primitive.primary.t-5030` | `rgba({color.primitive.primary.50}, {opacity.level.30})` |
+| `color.primitive.primary.t-5040` | `rgba({color.primitive.primary.50}, {opacity.level.40})` |
+| `color.primitive.primary.t-5050` | `rgba({color.primitive.primary.50}, {opacity.level.50})` |
+| `color.primitive.primary.t-5060` | `rgba({color.primitive.primary.50}, {opacity.level.60})` |
+| `color.primitive.primary.t-5070` | `rgba({color.primitive.primary.50}, {opacity.level.70})` |
+| `color.primitive.primary.t-5080` | `rgba({color.primitive.primary.50}, {opacity.level.80})` |
+| `color.primitive.primary.t-5090` | `rgba({color.primitive.primary.50}, {opacity.level.90})` |
+| `color.primitive.primary.t-5095` | `rgba({color.primitive.primary.50}, {opacity.level.95})` |
+</CxTable>
+
+The `black` and `white` palettes have no shades, so their transparency colors are named by the opacity level only, from `t-05` to `t-95`: `color.primitive.black.t-50` is the base color of `black` with `opacity.level.50`.
+
+`theme-base.json` defines these colors once. In the dark theme, `theme-dark.json` replaces the colors that they reference, so they follow the dark palette.
 
 ### Gradients
 
