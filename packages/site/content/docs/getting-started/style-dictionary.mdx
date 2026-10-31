@@ -8,11 +8,11 @@ toc: true
 
 ## Introduction
 
-Chassis Tokens builds its tokens with [Style Dictionary](https://styledictionary.com) 5 and [`@tokens-studio/sd-transforms`](https://github.com/tokens-studio/sd-transforms) 2. The build reads the token sets that Tokens Studio writes to `source/`, and writes SCSS, Swift, Android resources, and Kotlin to `packages/tokens/dist/`.
+Chassis Tokens builds its tokens with [Style Dictionary](https://styledictionary.com) 5 and [`@tokens-studio/sd-transforms`](https://github.com/tokens-studio/sd-transforms) 2. The build reads the token sets that Tokens Studio writes to `source/` of a repository of tokens, and writes SCSS, Swift, Android resources, and Kotlin to `dist/` of that repository.
 
 This page is the reference of the build for a team that builds its own tokens: how to run and configure the build, which platforms and presets it has, which files it writes, and which transforms, filters, and formats it registers. [docs/architecture.md]([[config:repo]]/blob/main/docs/architecture.md) explains why the build works this way and holds the full output contract.
 
-The build and its output are in `packages/tokens/`, the folder of the published package. Paths on this page that start with `build/`, `dist/`, or `test/` are relative to that folder. The token sets, in `source/`, and the build options, in `package.json`, are at the root of the repository.
+The build is in the package `@chassis-ui/tokens`, whose command is `chassis-tokens`. Paths on this page that start with `source/`, `dist/`, or `Package.swift` are relative to the repository of tokens, and paths that start with `build/` are relative to the package. The examples use the token sets and the build options of [chassis-ui/website-tokens](https://github.com/chassis-ui/website-tokens), the repository of tokens of the Chassis sites and apps, and the page calls them committed.
 
 The generated code on this page shows the format of each platform. Its values are those of the `chassis` brand in the current version, and differ in other brands.
 
@@ -30,29 +30,20 @@ Platform values such as `UIColor(…)`, ARGB hex colors, and sizes in `dp` are e
 
 ## Prerequisites
 
-The build runs in a clone of the repository. It needs:
+The build runs in a repository of tokens, with `@chassis-ui/tokens` installed in it. It needs:
 
 - Node.js 22 or later
-- pnpm
-- The dependencies of the workspace
 - Token sets in `source/`, with the `$themes.json` that Tokens Studio writes; see [Tokens Studio]([[docsref:/getting-started/tokens-studio]])
+- A `package.json` with the `chassis.build` block; see [Build options](#build-options)
 
-Clone the repository and install the dependencies:
-
-```bash
-git clone [[config:repo]].git chassis-tokens
-cd chassis-tokens
-pnpm install
-```
-
-To install the tokens package without the dependencies of the documentation site, run `pnpm install --filter @chassis-ui/tokens` instead. [Quick Start]([[docsref:/getting-started/quick-start]]) covers the setup in more detail.
+`chassis-tokens init` writes such a repository, and [Quick Start]([[docsref:/getting-started/quick-start]]) covers the setup.
 
 ## Run the build
 
-Run the commands of this page from the repository root. Without options, the build writes the files of every brand, theme, app, platform, and screen of the [build options](#build-options):
+Run the commands of this page from the root of the repository of tokens. The command finds it from the working directory, as the nearest folder upward whose `package.json` has a `chassis` block; `--cwd <dir>` names another. Without options, the build writes the files of every brand, theme, app, platform, and screen of the [build options](#build-options):
 
 ```bash
-pnpm tokens
+npx chassis-tokens build
 ```
 
 The files go to `dist/<platform>/<app>/<brand>/`. The build runs Style Dictionary once per brand, app, and token-set list.
@@ -80,9 +71,9 @@ The options select a part of the build, change where the build reads and writes,
 The options from `--brand` to `--screen` are filters. Each takes one or more values separated by spaces, and you can combine them:
 
 ```bash
-pnpm tokens --brand chassis
-pnpm tokens --app docs --platform web
-pnpm tokens --brand sinefil --platform ios android --screen large small
+npx chassis-tokens build --brand chassis
+npx chassis-tokens build --app docs --platform web
+npx chassis-tokens build --brand sinefil --platform ios android --screen large small
 ```
 
 `--theme` and `--screen` limit the color and number files only: every build of a brand, an app, and a platform writes the main and string files. The iOS file `Color.swift` needs the color files of both themes, so a build with `--theme light` does not write it.
@@ -90,24 +81,24 @@ pnpm tokens --brand sinefil --platform ios android --screen large small
 The build writes files but deletes none. When you remove a screen, a theme or an icon, its files stay in `dist/` until you delete them. `--clean` deletes the folder `dist/<platform>/<app>/<brand>/` of each selected build before it builds. You cannot combine it with `--theme` or `--screen`, which rebuild only some files of a folder:
 
 ```bash
-pnpm tokens --clean
-pnpm tokens --brand sinefil --clean
+npx chassis-tokens build --clean
+npx chassis-tokens build --brand sinefil --clean
 ```
 
-`--config` and `--out` take paths relative to `packages/tokens/`. The file of `--config` holds the keys of `chassis.build` at its top level. This command builds the `web-px` preset into `dist-next/` and leaves `dist/` as it is:
+`--config` and `--out` take paths relative to the working directory. The file of `--config` holds the keys of `chassis.build` at its top level. With `web-px.json` listing an app with the `web-px` preset, this command builds it into `dist-next/` and leaves `dist/` as it is:
 
 ```bash
-pnpm tokens --config test/golden/web-px.json --out dist-next
+npx chassis-tokens build --config web-px.json --out dist-next
 ```
 
-Set `DEBUG=1` before a command, as in `DEBUG=1 pnpm tokens --brand chassis`, to print the stack trace of an error.
+Set `DEBUG=1` before a command, as in `DEBUG=1 npx chassis-tokens build --brand chassis`, to print the stack trace of an error.
 
 ### Dry run
 
 A dry run shows what a set of options or filters selects before you build. It writes nothing.
 
 ```bash
-pnpm tokens --brand chassis --app docs --dry-run
+npx chassis-tokens build --brand chassis --app docs --dry-run
 ```
 
 The build prints each token-set list with the files it writes:
@@ -123,7 +114,7 @@ The lists of the other screens follow, each with its number file.
 
 ## Build options
 
-The token system is built on three core groups, `brand`, `theme`, and `app`, and on an optional fourth group, `screen`. The build options name the options of each group that the build writes, and the platforms of each app. The committed build options are in `chassis.build` of the root `package.json`:
+The token system is built on three core groups, `brand`, `theme`, and `app`, and on an optional fourth group, `screen`. The build options name the options of each group that the build writes, and the platforms of each app. The committed build options, in `chassis.build` of `package.json`:
 
 ```json
 "chassis": {
@@ -149,13 +140,13 @@ The token system is built on three core groups, `brand`, `theme`, and `app`, and
 | `options` | No | Style Dictionary options by platform name; see [Platform options](#platform-options) |
 </CxTable>
 
-The names in the block are the committed configuration, not the system. The build writes only what the keys list, so to build a brand, a theme, or an app of your own, add its name to the key of its group and give it token sets in `source/$themes.json`.
+The names in the block are the configuration of website-tokens, not the system. The build writes only what the keys list, so to build a brand, a theme, or an app of your own, add its name to the key of its group and give it token sets in `source/$themes.json`.
 
 To build without screens, set `screens` to `[]` or leave the key out. The build then writes one number file with no screen in its name, with the values of the first screen in `source/$themes.json`, or of no screen when it has no `screen` group: `number.scss` on the web, `Number.swift` on iOS, and `number.xml` with `res/values/number.xml` on Android.
 
 ### Token-set lists
 
-A token-set list is the list of token sets that one run of Style Dictionary reads. The build combines one option of each group of `source/$themes.json` into a list named `<brand>_<app>_<theme>_<screen>`, or `<brand>_<app>_<theme>` when `source/$themes.json` has no `screen` group. `chassis_docs_light_large` is a list of the committed configuration. Every name in the build options must be an option of its group.
+A token-set list is the list of token sets that one run of Style Dictionary reads. The build combines one option of each group of `source/$themes.json` into a list named `<brand>_<app>_<theme>_<screen>`, or `<brand>_<app>_<theme>` when `source/$themes.json` has no `screen` group. `chassis_docs_light_large` is a list of the configuration of website-tokens. Every name in the build options must be an option of its group.
 
 The files of a brand and an app that need the same token sets share one list:
 
@@ -169,7 +160,7 @@ The files of a brand and an app that need the same token sets share one list:
 
 A list holds its token sets in the order of `source/$themes.json`, so a later token set overrides an earlier one, as in Tokens Studio. Style Dictionary reports these overrides as token collisions in every build; they are expected.
 
-Chassis Tokens is meant to be owned and customized, so you can add a group of your own. A new group adds a segment to the name of every token-set list. `planBuilds` in `packages/tokens/build/build.js` makes that name from the brand, the app, the theme, and the screen, and decides which files each list writes, so a new group needs a change there.
+Chassis Tokens is meant to be owned and customized, so you can add a group of your own. A new group adds a segment to the name of every token-set list. `planBuilds` in `build/build.js` of the package makes that name from the brand, the app, the theme, and the screen, and decides which files each list writes, so a new group needs a change there, in a fork of the builder.
 
 ### Platform options
 
@@ -219,11 +210,11 @@ The [formats](#formats) hold the value rules of each platform. The guides for [w
 
 ## Presets
 
-A preset is a platform for a team that owns its tokens and does not use Chassis CSS, UIKit, or Android resources. Select a preset by its name in `chassis.build.apps`. The committed `dist/` holds no preset output; the output of each preset for the `chassis` brand is in `test/golden/`.
+A preset is a platform for a team that owns its tokens and does not use Chassis CSS, UIKit, or Android resources. Select a preset by its name in `chassis.build.apps`. The committed `dist/` holds no preset output; the output of each preset for the `chassis` brand is in `packages/tokens/test/golden/` of [the repository of the builder]([[config:repo]]).
 
 ### Presets for other CSS frameworks
 
-The `web` platform prints the custom properties of [Chassis CSS](https://github.com/chassis-ui/css), such as `var(--default-fg-main)`, so its SCSS works only with Chassis CSS. The presets `web-scss`, `web-px`, and `web-vw` print resolved values in the unit of their name. In `chassis.build` of the root `package.json`:
+The `web` platform prints the custom properties of [Chassis CSS](https://github.com/chassis-ui/css), such as `var(--default-fg-main)`, so its SCSS works only with Chassis CSS. The presets `web-scss`, `web-px`, and `web-vw` print resolved values in the unit of their name. In `chassis.build` of `package.json`:
 
 ```json
 "apps": {
@@ -233,11 +224,11 @@ The `web` platform prints the custom properties of [Chassis CSS](https://github.
 
 The build then writes every value resolved, with sizes in pixels; [cx/scss-variables](#cxscss-variables) shows the format. The web platforms write the same file names to the same folder, `dist/web/<app>/<brand>/`, so give an app one of them. Line heights are in `em` in every unit, and letter spacing is in the unit of the other sizes.
 
-Each preset is a file of `packages/tokens/build/config/` that calls `webConfig({ unit, format })` of `web.js`. You can edit these files as any other platform file.
+Each preset is a file of `build/config/` of the package that calls `webConfig({ unit, format })` of `web.js`.
 
 ### SwiftUI and Compose presets
 
-The presets `ios-swiftui` and `android-compose` write the tokens for apps that use SwiftUI or Jetpack Compose. Select them next to, or instead of, `ios` and `android`. In `chassis.build` of the root `package.json`:
+The presets `ios-swiftui` and `android-compose` write the tokens for apps that use SwiftUI or Jetpack Compose. Select them next to, or instead of, `ios` and `android`. In `chassis.build` of `package.json`:
 
 ```json
 "apps": { "demo": ["ios-swiftui", "android-compose"] },
@@ -275,7 +266,7 @@ On iOS, each file declares a caseless `public enum`, so all files fit in one mod
     public static let ColorContextDefaultFgMain = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.922, green: 0.929, blue: 0.933, alpha: 1) : UIColor(red: 0.098, green: 0.106, blue: 0.110, alpha: 1) }
 ```
 
-`Package.swift` at the repository root declares one Swift library per brand of every app with an iOS platform. Run `pnpm tokens:swift-package` after you change the brands or apps.
+`Package.swift` at the root of the repository of tokens declares one Swift library per brand of every app with an iOS platform. Run `npx chassis-tokens swift-package` after you change the brands or apps; with `--check` it writes nothing and fails while the manifest differs from the configuration.
 
 On Android, the `res/` tree holds the same resources as the flat files, in the folders that Android selects by itself:
 
@@ -298,7 +289,7 @@ An icon is an `asset` token whose value is an SVG document, such as `icon.accord
 
 By default every token prints its resolved value. With `outputReferences`, a token that references another token prints the name of that token, wherever the result compiles and keeps the value. The `web` platform ignores the option: it prints the custom properties of Chassis CSS in every build.
 
-Set the option per platform. In `chassis.build` of the root `package.json`:
+Set the option per platform. In `chassis.build` of `package.json`:
 
 ```json
 "apps": { "docs": ["web-px"], "demo": ["ios", "android"] },
@@ -356,7 +347,7 @@ These commands check the token source and the output of the build. Run the sourc
 The source lint finds mistakes that the build accepts. It reads the token sets that `source/$themes.json` selects:
 
 ```bash
-pnpm tokens:lint:source
+npx chassis-tokens lint-source
 ```
 
 The lint fails, and names the token set and the token, when:
@@ -373,20 +364,20 @@ The lint fails, and names the token set and the token, when:
 The golden check compares a fresh build with the committed `dist/`. It builds into `dist-next/` and never writes to `dist/`:
 
 ```bash
-pnpm tokens:verify
+npx chassis-tokens verify
 ```
 
-The check ignores the timestamp and version lines of the file headers. It also fails when a name appears twice in one file, and when a reference names nothing that the output declares. Add `--platform ios` to build and check one platform. After you change tokens or build options, run `pnpm tokens` and commit the updated `dist/`.
+The check ignores the timestamp and version lines of the file headers. It also fails when a name appears twice in one file, and when a reference names nothing that the output declares. Add `--platform ios` to build and check one platform. After you change tokens or build options, run `npx chassis-tokens build` and commit the updated `dist/`.
 
 ### Token diff report
 
 The diff report lists what a change does to the tokens of each file: the names added, removed, renamed, and changed in value. It marks removed and renamed names as breaking.
 
 ```bash
-pnpm tokens:diff
+npx chassis-tokens diff
 ```
 
-The report compares the working `dist/` with the `dist/` of `main`. Add `--base` with a branch, a tag, or a commit, as in `pnpm tokens:diff --base v0.5.3`, to compare with another one.
+The report compares the working `dist/` with the `dist/` of `main`. Add `--base` with a branch, a tag, or a commit, as in `npx chassis-tokens diff --base v0.1.0`, to compare with another one.
 
 ## Preprocessor
 
@@ -399,7 +390,7 @@ The preprocessor `cx/global` prepares the tokens of every build before the trans
 
 ## Transforms
 
-Transforms run before the references are resolved. Each platform lists its transforms in its file of `packages/tokens/build/config/`; no platform uses a transform group.
+Transforms run before the references are resolved. Each platform lists its transforms in its file of `build/config/`; no platform uses a transform group.
 
 <CxTable>
 | Transform | Platforms | Effect |
@@ -414,7 +405,7 @@ Transforms run before the references are resolved. Each platform lists its trans
 | `ts/typography/fontWeight` | Web platforms | Turns the name of a font weight into its number |
 </CxTable>
 
-The name transforms come from Style Dictionary and the `ts/` transforms from `@tokens-studio/sd-transforms`. The build registers the `cx/` transforms in `packages/tokens/build/transforms.js`, all for the web platforms:
+The name transforms come from Style Dictionary and the `ts/` transforms from `@tokens-studio/sd-transforms`. The build registers the `cx/` transforms in `build/transforms.js`, all for the web platforms:
 
 <CxTable>
 | Transform | Platforms | Tokens | Effect |
@@ -425,7 +416,7 @@ The name transforms come from Style Dictionary and the `ts/` transforms from `@t
 | `cx/shadow/web` | Web platforms | Shadows | Joins the parts of each layer into a CSS `box-shadow` |
 </CxTable>
 
-Sizes are the tokens typed `dimension`, `fontSize`, `lineHeight`, or `paragraphSpacing`. `basePxFontSize` is an option of the platform, which `packages/tokens/build/config/web.js` sets to `16`. `dimension.base.05` holds half a design pixel, and `size.unit.05` references it. With `cx/size/rem`, the build writes in `main.scss`:
+Sizes are the tokens typed `dimension`, `fontSize`, `lineHeight`, or `paragraphSpacing`. `basePxFontSize` is an option of the platform, which `build/config/web.js` sets to `16`. `dimension.base.05` holds half a design pixel, and `size.unit.05` references it. With `cx/size/rem`, the build writes in `main.scss`:
 
 ```scss
 $cx-dimension-base-05: 0.03125rem !default;
@@ -458,7 +449,7 @@ Gradients are typed `color`, so `gradient.primitive.*` is in the color files and
 
 ## Formats
 
-A format prints one kind of file. Every format starts a file with a header that holds the build time, the version of the package, and the license, and prints the tokens in source order.
+A format prints one kind of file. Every format starts a file with a header that holds the build time, the title and the version of the repository of tokens, its copyright, and its license, and prints the tokens in source order.
 
 ### cx/scss-chassis-css
 
@@ -610,11 +601,11 @@ A build with `outputReferences` fails with `No file declares a variable for`, fo
 
 ### Unknown font weight
 
-A build of an iOS or Android platform fails with `Unknown font weight "Extra Heavy" in typography.fontWeight.ui.strong.weight`. The build knows the weight names of `ts/typography/fontWeight`, and ignores case, spaces, and hyphens in them. Use one of these names in the token; `pnpm tokens:lint:source` finds the token before the build.
+A build of an iOS or Android platform fails with `Unknown font weight "Extra Heavy" in typography.fontWeight.ui.strong.weight`. The build knows the weight names of `ts/typography/fontWeight`, and ignores case, spaces, and hyphens in them. Use one of these names in the token; `npx chassis-tokens lint-source` finds the token before the build.
 
 ### Golden check failed
 
-`pnpm tokens:verify` prints `Golden check failed against dist/` and the first differing lines of each file. The committed `dist/` is older than the tokens or the build options. Run `pnpm tokens`, review the changes with `pnpm tokens:diff`, and commit `dist/`.
+`npx chassis-tokens verify` prints `Golden check failed against dist/` and the first differing lines of each file. The committed `dist/` is older than the tokens or the build options. Run `npx chassis-tokens build`, review the changes with `npx chassis-tokens diff`, and commit `dist/`.
 
 ## Next steps
 

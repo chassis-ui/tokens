@@ -1,6 +1,6 @@
 ---
 title: Quick Start Guide
-description: Install the published Chassis Tokens in a web, iOS or Android project, or fork the repository, change the token sets and build your own.
+description: Install the published Chassis tokens in a web, iOS or Android project, or make a repository of tokens with the chassis-tokens command and build your own.
 toc: true
 ---
 
@@ -8,7 +8,7 @@ toc: true
 
 ## Introduction
 
-This guide takes the shortest way from nothing to tokens in a project, and there are two of them. To use the tokens as they are published, with the brands of the committed configuration, follow [Use the published tokens](#use-the-published-tokens). To own the tokens, with your brands, themes, apps and platforms, follow [Build your own tokens](#build-your-own-tokens).
+This guide takes the shortest way from nothing to tokens in a project, and there are two of them. To use the tokens as they are published, with the brands of the Chassis sites and apps, follow [Use the published tokens](#use-the-published-tokens). To own the tokens, with your brands, themes, apps and platforms, follow [Build your own tokens](#build-your-own-tokens).
 
 ## Prerequisites
 
@@ -17,24 +17,24 @@ What you need depends on the way you take.
 - **Web**: a project with Sass and a package manager for npm packages.
 - **iOS**: an app that targets iOS 13 or later and uses Swift Package Manager.
 - **Android**: a module with a minimum SDK of 21 or later.
-- **Your own tokens**: Git, Node.js 22 or later and pnpm. The root `package.json` names the version of pnpm in `packageManager`, and `corepack enable` installs it.
+- **Your own tokens**: Git, Node.js 22 or later and a package manager for npm packages.
 
 ## Use the published tokens
 
-The published tokens are the files of `packages/tokens/dist/` in version [[config:currentVersion]], built from the committed configuration: the app `docs` for the web, and the app `demo` for iOS and Android, each for the brands `chassis` and `sinefil`. The examples use the brand `chassis`.
+The published tokens are the files of `dist/` in [chassis-ui/website-tokens](https://github.com/chassis-ui/website-tokens): the app `docs` for the web, and the app `demo` for iOS and Android, each for the brands `chassis` and `sinefil`. The examples use the brand `chassis`.
 
 ### Web
 
 The npm package holds the SCSS files of each brand in `dist/web/docs/<brand>/`. Install it in your project:
 
 ```bash
-npm install @chassis-ui/tokens
+npm install @chassis-ui/website-tokens
 ```
 
 Use `main.scss` with `@use` and read a token as a variable of the module:
 
 ```scss
-@use '@chassis-ui/tokens/dist/web/docs/chassis/main' as tokens;
+@use '@chassis-ui/website-tokens/dist/web/docs/chassis/main' as tokens;
 
 .card {
   padding: tokens.$cx-space-context-medium;
@@ -51,7 +51,7 @@ The [web guide]([[docsref:/use-in-project/web-applications]]) covers the other f
 
 ### iOS
 
-The Swift package holds one library per app and brand, such as `ChassisTokensDemoChassis` for the app `demo` and the brand `chassis`. Add the package `[[config:repo]].git` to your app with Swift Package Manager, and add the library of your brand to your target.
+The Swift package holds one library per app and brand, such as `ChassisTokensDemoChassis` for the app `demo` and the brand `chassis`. Add the package `https://github.com/chassis-ui/website-tokens.git` to your app with Swift Package Manager, and add the library of your brand to your target.
 
 Use the constants of the types `ChassisTokens` and `ChassisTokensColor`:
 
@@ -69,13 +69,13 @@ The colors of `ChassisTokensColor` follow the light and dark appearance. The [iO
 
 ### Android
 
-The Android library holds the resource tree of one brand. Download `chassis-tokens-demo-chassis-[[config:currentVersion]].aar` from the [GitHub release]([[config:repo]]/releases) and copy it to the `libs/` folder of your module.
+The Android library holds the resource tree of one brand. Download `chassis-tokens-demo-chassis-<version>.aar` of the latest release from the [GitHub release](https://github.com/chassis-ui/website-tokens/releases) and copy it to the `libs/` folder of your module.
 
 Add the file to the dependencies in the `build.gradle.kts` of the module:
 
 ```kotlin
 dependencies {
-  implementation(files("libs/chassis-tokens-demo-chassis-[[config:currentVersion]].aar"))
+  implementation(files("libs/chassis-tokens-demo-chassis-<version>.aar"))
 }
 ```
 
@@ -95,60 +95,61 @@ The library holds the colors of the dark theme in `values-night`, so a color fol
 
 ## Build your own tokens
 
-Chassis Tokens is meant to be owned and customized: you fork the repository, change the token sets, name your brands, themes and apps in `chassis.build`, and build. The token system is built on three core groups, `brand`, `theme` and `app`, and the optional group `screen`; the [introduction]([[docsref:/getting-started/introduction]]) describes them. The repository is a pnpm workspace, and every command runs from its root.
+Chassis Tokens is meant to be owned and customized: you make a repository of tokens, change its token sets, name your brands, themes and apps in `chassis.build`, and build it with the `chassis-tokens` command. The token system is built on three core groups, `brand`, `theme` and `app`, and the optional group `screen`; the [introduction]([[docsref:/getting-started/introduction]]) describes them.
 
 ### Set up the repository
 
-Fork the [repository]([[config:repo]]) on GitHub, clone your fork and install the dependencies:
+`chassis-tokens init` writes a repository of tokens into a new folder: a `package.json` with the `chassis.build` block and scripts, a README, a changelog, the workflows of CI and of a release, and a few token sets so that the first build has something to build. `--brand` and `--app` name what it starts with, and `--app` gives each app its platforms:
 
 ```bash
-git clone https://github.com/<account>/tokens.git chassis-tokens
-cd chassis-tokens
-pnpm install
+npx --package @chassis-ui/tokens chassis-tokens init acme-tokens --brand acme --app site:web mobile:ios,android
+cd acme-tokens
+git init
+npm install
 ```
 
-To leave out the dependencies of the documentation site, run `pnpm install --filter @chassis-ui/tokens` in place of `pnpm install`.
+`@chassis-ui/tokens` is now a development dependency, and every command runs from the root of the repository. To start from the whole token system of the Chassis sites and apps instead of the few starter tokens, copy `source/` of [chassis-ui/website-tokens](https://github.com/chassis-ui/website-tokens) into the folder before you run `init`, which keeps a `source/` that holds files and writes no starter tokens.
 
 Check the setup with a dry run, which prints the builds and the files of each and writes nothing:
 
 ```bash
-pnpm tokens --dry-run
+npx chassis-tokens build --dry-run
 ```
 
-The plan of the committed configuration starts with the web files of the brand `chassis`:
+The plan starts with the web files of the brand:
 
 ```text
-  • chassis_docs_light_large
-      dist/web/docs/chassis/: main.scss, string.scss, color-light.scss, number-large.scss
-  • chassis_docs_dark_large
-      dist/web/docs/chassis/: color-dark.scss
+  • acme_site_light_large
+      dist/web/site/acme/: main.scss, string.scss, color-light.scss, number-large.scss
+  • acme_site_dark_large
+      dist/web/site/acme/: color-dark.scss
 ```
 
 ### Change the tokens
 
-The token sets are the JSON files of `source/`, in Tokens Studio format. Edit them in Figma with Tokens Studio, synced to your fork with the file path `source`, or edit the JSON files directly. A brand of your own is an option of the `brand` group with its own token set, as `brand-sinefil/brand-base.json` is for `sinefil`. The [Tokens Studio guide]([[docsref:/getting-started/tokens-studio]]) describes the token sets and the groups.
+The token sets are the JSON files of `source/`, in Tokens Studio format. Edit them in Figma with Tokens Studio, synced to your repository with the file path `source`, or edit the JSON files directly. A brand is an option of the `brand` group with its own token set, as `brand-acme.json` is for `acme`. The [Tokens Studio guide]([[docsref:/getting-started/tokens-studio]]) describes the token sets and the groups.
 
 Lint the token sets before you build:
 
 ```bash
-pnpm tokens:lint:source
+npx chassis-tokens lint-source
 ```
 
 The lint names the token set and the token of each mistake that the build would accept, such as a token that one screen declares and another does not.
 
 ### Configure the build
 
-The build writes only what `chassis.build` lists. The committed configuration, in `chassis.build` of the root `package.json`:
+The build writes only what `chassis.build` lists. The block that `init` wrote, in `package.json`:
 
 ```json
 "chassis": {
   "build": {
-    "brands": ["chassis", "sinefil"],
+    "brands": ["acme"],
     "themes": ["light", "dark"],
     "screens": ["large", "medium", "small"],
     "apps": {
-      "docs": ["web"],
-      "demo": ["ios", "android"]
+      "site": ["web"],
+      "mobile": ["ios", "android"]
     }
   }
 }
@@ -173,28 +174,28 @@ A platform is `web`, `ios`, `android` or a preset: `web-scss`, `web-px` and `web
 Build the tokens of the configuration:
 
 ```bash
-pnpm tokens
+npx chassis-tokens build
 ```
 
-The build writes the files of every app and brand to `packages/tokens/dist/<platform>/<app>/<brand>/`. Filters build a part of the configuration, and you can combine them:
+The build writes the files of every app and brand to `dist/<platform>/<app>/<brand>/`. Filters build a part of the configuration, and you can combine them:
 
 ```bash
-pnpm tokens --brand chassis --platform web
+npx chassis-tokens build --brand acme --platform web
 ```
 
 After a change to the brands or apps of `chassis.build`, write the manifest of the Swift package again, which has one library for every app and brand with an iOS platform:
 
 ```bash
-pnpm tokens:swift-package
+npx chassis-tokens swift-package
 ```
 
-Review what the change does to the token names and values, compared with the `main` branch, and commit `dist/` with your change:
+Review what the change does to the token names and values, compared with the `main` branch, and commit `dist/` with your change. A first build has no `main` to compare with:
 
 ```bash
-pnpm tokens:diff
+npx chassis-tokens diff
 ```
 
-Your apps take the files from the folders of `dist/`: the SCSS files of `dist/web/<app>/<brand>/`, the Swift files and `Icons.xcassets` of `dist/ios/<app>/<brand>/`, and `dist/android/<app>/<brand>/res` as a resource folder. The platform guides describe each.
+Your apps take the files from the folders of `dist/`: the SCSS files of `dist/web/<app>/<brand>/`, the Swift files and `Icons.xcassets` of `dist/ios/<app>/<brand>/`, and `dist/android/<app>/<brand>/res` as a resource folder. The workflow that `init` wrote publishes a tag `v<version>` to npm and attaches the Android libraries to its release, and the repository at that tag is the Swift package. The platform guides describe each.
 
 ## Troubleshooting
 

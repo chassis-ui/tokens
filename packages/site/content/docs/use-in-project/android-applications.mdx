@@ -33,11 +33,11 @@ The type of a token decides the kind of its resource. Sizes are in `dp` or `sp`,
 | Font families, other strings and the SVG text of icons | `<string>`, escaped |
 </CxTable>
 
-The resources work in layouts, in Kotlin and in Jetpack Compose. The `android-compose` preset writes Kotlin objects with Compose values; you build it from the repository, as [Compose values](#compose-values) describes.
+The resources work in layouts, in Kotlin and in Jetpack Compose. The `android-compose` preset writes Kotlin objects with Compose values; you build it in a repository of your own, as [Compose values](#compose-values) describes.
 
 ## Generated files
 
-The build writes one folder for each brand and app, `dist/android/<app>/<brand>/`, with the colors of each theme and the numbers of each screen in files of their own. The committed configuration builds the Android app `demo` for the brands `chassis` and `sinefil`, with the themes `light` and `dark` and the screens `large`, `medium` and `small`. The `res/` folder is a resource tree that an app uses as it is:
+The build writes one folder for each brand and app, `dist/android/<app>/<brand>/`, with the colors of each theme and the numbers of each screen in files of their own. The configuration of website-tokens builds the Android app `demo` for the brands `chassis` and `sinefil`, with the themes `light` and `dark` and the screens `large`, `medium` and `small`. The `res/` folder is a resource tree that an app uses as it is:
 
 <CxTable>
 | File | Contents |
@@ -57,8 +57,8 @@ Next to the tree, the build writes the same resources as flat files, for a proje
 | --- | --- |
 | `main.xml` | Every token except the theme colors, with the component colors of the first theme and the sizes of the first screen |
 | `string.xml` | The resources of `res/values/string.xml` |
-| `color_<theme>.xml` | The theme colors of one theme. `color_light.xml` and `color_dark.xml` in the committed configuration |
-| `number_<screen>.xml` | The numbers of one screen. `number_large.xml`, `number_medium.xml` and `number_small.xml` in the committed configuration |
+| `color_<theme>.xml` | The theme colors of one theme. `color_light.xml` and `color_dark.xml` in the configuration of website-tokens |
+| `number_<screen>.xml` | The numbers of one screen. `number_large.xml`, `number_medium.xml` and `number_small.xml` in the configuration of website-tokens |
 </CxTable>
 
 <Callout type="warning">
@@ -67,17 +67,17 @@ Next to the tree, the build writes the same resources as flat files, for a proje
 
 ## Installation
 
-Install the Android library to use the tokens as they are. The same resources are in the npm package, and a build from the repository writes them for your own tokens.
+Install the Android library to use the tokens as they are. The same resources are in the npm package, and the `chassis-tokens` command builds them for your own tokens.
 
 ### Android library
 
-Every [release]([[config:repo]]/releases) has the resource tree of each app and brand as an Android library, named `chassis-tokens-<app>-<brand>-<version>.aar`: `chassis-tokens-demo-chassis-[[config:currentVersion]].aar` and `chassis-tokens-demo-sinefil-[[config:currentVersion]].aar` in the committed configuration. The library needs Android 5.0 (API 21) or later and has no dependencies.
+Every [release of website-tokens](https://github.com/chassis-ui/website-tokens/releases) has the resource tree of each app and brand as an Android library, named `chassis-tokens-<app>-<brand>-<version>.aar`: `chassis-tokens-demo-chassis-<version>.aar` and `chassis-tokens-demo-sinefil-<version>.aar` in the configuration of website-tokens. The library needs Android 5.0 (API 21) or later and has no dependencies.
 
 Download the library of your brand into `app/libs/` and add it to `app/build.gradle.kts`:
 
 ```kotlin
 dependencies {
-    implementation(files("libs/chassis-tokens-demo-chassis-[[config:currentVersion]].aar"))
+    implementation(files("libs/chassis-tokens-demo-chassis-<version>.aar"))
 }
 ```
 
@@ -85,40 +85,39 @@ Layouts use the resources of the library like those of the app, such as `@color/
 
 ### Files from npm
 
-The npm package `@chassis-ui/tokens` holds the same resource tree, for a project that installs its dependencies with npm:
+The npm package `@chassis-ui/website-tokens` holds the same resource tree, for a project that installs its dependencies with npm:
 
 ```bash
-npm install @chassis-ui/tokens
+npm install @chassis-ui/website-tokens
 ```
 
 Add the `res/` folder to the resources of the app module in `app/build.gradle.kts`. Gradle merges it with the resources of the app, which are then in the `R` class of the app. This path is for a `node_modules` folder at the root of the project:
 
 ```kotlin
 android {
-    sourceSets["main"].res.srcDir("../node_modules/@chassis-ui/tokens/dist/android/demo/chassis/res")
+    sourceSets["main"].res.srcDir("../node_modules/@chassis-ui/website-tokens/dist/android/demo/chassis/res")
 }
 ```
 
-### Build from source
+### Your own tokens
 
-The repository holds the token sets and the build, for a team that changes the tokens, adds a brand, a theme or an app, or needs a preset. Add it to your project, for example as a Git submodule. The build needs Node.js 22 or later and pnpm:
+A repository of tokens holds the token sets, the build configuration and the output, for a team that changes the tokens, adds a brand, a theme or an app, or needs a preset. `chassis-tokens init` writes one, with the builder `@chassis-ui/tokens` as a development dependency. The build needs Node.js 22 or later:
 
 ```bash
-git submodule add [[config:repo]].git vendor/chassis-tokens
-cd vendor/chassis-tokens
-pnpm install --filter @chassis-ui/tokens
-pnpm tokens --brand chassis --app demo --platform android
+npx --package @chassis-ui/tokens chassis-tokens init acme-tokens --brand acme --app mobile:android
+cd acme-tokens
+npm install
+npx chassis-tokens build
 ```
 
-The build writes the files to `vendor/chassis-tokens/packages/tokens/dist/android/demo/chassis/`. The repository commits `dist/`, so the files of the committed configuration are there before the first build. Add the `res/` folder of that path to the app module as a resource folder, as in [Files from npm](#files-from-npm).
+The build writes the files to `dist/android/mobile/acme/`. The repository commits `dist/`, so a project that adds it, for example as a Git submodule, has the files without a build. To start from the token sets of the Chassis sites and apps, fork [chassis-ui/website-tokens](https://github.com/chassis-ui/website-tokens) instead. Add the `res/` folder of that path to the app module as a resource folder, as in [Files from npm](#files-from-npm).
 
-To build the tokens of your own app, add it to `chassis.build.apps` in the root `package.json` and give it token sets in `source/$themes.json`. The [Style Dictionary guide]([[docsref:/getting-started/style-dictionary#build-options]]) describes the build options.
-
-To install your own tokens as Android libraries, build the library of every `res/` tree in `dist/android/`. The command needs a JDK and the Android SDK, and writes to `packages/tokens/test/native/android/library/build/aars/`:
+To install your own tokens as Android libraries, build the library of every `res/` tree in `dist/android/`, with the Gradle project that comes with `@chassis-ui/tokens`. The release workflow that `init` writes does this and attaches them to the GitHub release. The command needs a JDK and the Android SDK, and writes to `library/build/aars/` of that project:
 
 ```bash
-pnpm tokens
-pnpm tokens:aar
+npx chassis-tokens build
+ANDROID_PROJECT=node_modules/@chassis-ui/tokens/test/native/android
+sh "$ANDROID_PROJECT/gradlew" --project-dir "$ANDROID_PROJECT" :library:aars -PtokensRoot="$PWD"
 ```
 
 ## Basic usage
@@ -197,7 +196,7 @@ fun Card(text: String) {
 
 ## Themes
 
-The color files of the themes declare the same resources, each with the colors of its theme. The committed configuration has the themes `light` and `dark`. The resource tree has the colors of the first configured theme in `res/values/color.xml` and those of the `dark` theme in `res/values-night/color.xml`. The build writes to `res/values/color.xml`:
+The color files of the themes declare the same resources, each with the colors of its theme. The configuration of website-tokens has the themes `light` and `dark`. The resource tree has the colors of the first configured theme in `res/values/color.xml` and those of the `dark` theme in `res/values-night/color.xml`. The build writes to `res/values/color.xml`:
 
 ```xml
   <color name="color_context_default_bg_main">#ffffffff</color>
@@ -209,7 +208,7 @@ The color files of the themes declare the same resources, each with the colors o
 
 The `screen` group is optional. A configuration without screens, with `screens` empty or left out of `chassis.build`, writes one number file without a screen suffix, `number.xml`, with the values of the first screen in `$themes.json`, and a resource tree without screen folders: its numbers are in `res/values/number.xml`.
 
-The committed configuration has the screens `large`, `medium` and `small`. The resource tree has the numbers of each screen in its own folder, under the same names: the `small` screen in `values`, the `medium` screen in `values-sw600dp` and the `large` screen in `values-sw840dp`. Android picks the folder by the smallest width of the screen. In the current tokens, the resources that differ between screens belong to the `website` groups, such as `@dimen/size_website_section_icon`. [Screen folders](#screen-folders) describes how to change the folders.
+The configuration of website-tokens has the screens `large`, `medium` and `small`. The resource tree has the numbers of each screen in its own folder, under the same names: the `small` screen in `values`, the `medium` screen in `values-sw600dp` and the `large` screen in `values-sw840dp`. Android picks the folder by the smallest width of the screen. In the current tokens, the resources that differ between screens belong to the `website` groups, such as `@dimen/size_website_section_icon`. [Screen folders](#screen-folders) describes how to change the folders.
 
 A layout names the resource, and Android takes it from the folder of the screen:
 
@@ -308,11 +307,11 @@ In views, set `app:srcCompat="@drawable/icon_chip_remove"` and `app:tint` on an 
 
 ## Build options
 
-Build options change what the generated files hold, so they need a [build from the repository](#build-from-source). Set them in `chassis.build` of the root `package.json`.
+Build options change what the generated files hold, so they need a [repository of your own](#your-own-tokens). Set them in `chassis.build` of `package.json`.
 
 ### Compose values
 
-The `android-compose` preset writes Kotlin objects with Compose values to `dist/android-compose/<app>/<brand>/`, in the package `chassis.tokens` or the package that `packageName` names. In `chassis.build` of the root `package.json`:
+The `android-compose` preset writes Kotlin objects with Compose values to `dist/android-compose/<app>/<brand>/`, in the package `chassis.tokens` or the package that `packageName` names. In `chassis.build` of `package.json`:
 
 ```json
 "apps": {
@@ -336,7 +335,7 @@ A font weight is a `FontWeight`, and the letter spacing of a typography token is
 
 ### Screen folders
 
-`options.android.screens` maps each screen to the qualifier of its folder, with `""` for the default `values` folder. Without the option, the build puts the screen `small` into `values`, `medium` into `values-sw600dp` and `large` into `values-sw840dp`, the width classes of Material Design. In `chassis.build` of the root `package.json`:
+`options.android.screens` maps each screen to the qualifier of its folder, with `""` for the default `values` folder. Without the option, the build puts the screen `small` into `values`, `medium` into `values-sw600dp` and `large` into `values-sw840dp`, the width classes of Material Design. In `chassis.build` of `package.json`:
 
 ```json
 "options": {
@@ -350,7 +349,7 @@ Every screen needs a folder, and exactly one screen goes into the default folder
 
 ### outputReferences
 
-With `outputReferences`, a resource holds a reference to the resource of the token it references. In `chassis.build` of the root `package.json`:
+With `outputReferences`, a resource holds a reference to the resource of the token it references. In `chassis.build` of `package.json`:
 
 ```json
 "options": {
@@ -369,7 +368,7 @@ The value of every resource is the same with and without the option. A resource 
 
 ## Continuous integration
 
-With the Android library in `app/libs/`, a workflow needs no step for the tokens. With the repository as a submodule, check out the submodules; `dist/` is committed, so the files are there. To build the tokens in the workflow, set up Node.js 22 or later and pnpm, and build before the app:
+With the Android library in `app/libs/`, a workflow needs no step for the tokens. With a repository of tokens as a submodule, check out the submodules; `dist/` is committed, so the files are there. To build the tokens in the workflow, set up Node.js 22 or later, and build before the app:
 
 ```yaml
 name: Build
@@ -384,19 +383,15 @@ jobs:
         with:
           submodules: recursive
 
-      - uses: pnpm/action-setup@v6
-        with:
-          package_json_file: vendor/chassis-tokens/package.json
-
       - uses: actions/setup-node@v5
         with:
           node-version: 22
 
       - name: Build tokens
-        working-directory: vendor/chassis-tokens
+        working-directory: vendor/acme-tokens
         run: |
-          pnpm install --filter @chassis-ui/tokens
-          pnpm tokens --brand chassis --app demo --platform android
+          npm ci
+          npx chassis-tokens build --platform android
 
       - uses: actions/setup-java@v6
         with:
