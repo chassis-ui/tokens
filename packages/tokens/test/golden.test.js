@@ -3,8 +3,8 @@
  * @description Acceptance test for the build rewrite. Runs the token build of every preset
  *              on the fixture repository into a temporary directory and requires every file
  *              to match its baseline in `golden/`, apart from the timestamp and version
- *              header lines. In the workspace, does the same for the real `source/` and the
- *              committed `dist/`.
+ *              header lines. With the `vendor/tokens` submodule, does the same for its `source/`
+ *              and its committed `dist/`.
  * @copyright Copyright (c) 2026 Ozgur Gunes
  * @license MIT
  */
@@ -15,7 +15,7 @@ import { join } from 'node:path'
 import { afterAll, describe, expect, test } from 'vitest'
 import { readRepository } from '../build/root.js'
 import { compareOutput, formatReport, listPresets, presetPaths, runBuild } from '../build/verify.js'
-import { WORKSPACE_DIR } from './helpers.js'
+import { TOKENS_DIR } from './helpers.js'
 
 const presets = await listPresets()
 
@@ -34,20 +34,17 @@ describe('Golden output', () => {
     await Promise.all(outDirs.map((outDir) => rm(outDir, { recursive: true, force: true })))
   })
 
-  test.runIf(WORKSPACE_DIR)(
-    'build reproduces the committed dist/',
-    { timeout: 180_000 },
-    async () => {
-      const { dist } = readRepository(WORKSPACE_DIR)
-      const result = await compareOutput(dist, await build({ root: WORKSPACE_DIR }))
-      expect(result.ok, formatReport(result)).toBe(true)
-    }
-  )
+  test.runIf(TOKENS_DIR)('build reproduces the committed dist/', { timeout: 180_000 }, async () => {
+    const { dist } = readRepository(TOKENS_DIR)
+    const result = await compareOutput(dist, await build({ root: TOKENS_DIR }))
+    expect(result.ok, formatReport(result)).toBe(true)
+  })
 
   test('the presets with a baseline', () => {
     expect(presets).toEqual([
       'android-compose',
       'android-references',
+      'default',
       'ios-references',
       'ios-swiftui',
       'web-px',
@@ -63,7 +60,8 @@ describe('Golden output', () => {
     expect(result.ok, formatReport(result, `golden/${preset}/`)).toBe(true)
     // ios-references also has the color file that follows the appearance and the icon
     // catalog (19 files), and android-references the resource tree with 9 drawables
-    const files = { 'ios-references': 27, 'android-references': 23 }
+    // default has the web, iOS and Android files of one brand (57)
+    const files = { 'ios-references': 27, 'android-references': 23, default: 57 }
     expect(result.compared).toBe(files[preset] ?? 7)
   })
 })

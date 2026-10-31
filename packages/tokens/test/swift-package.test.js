@@ -12,7 +12,7 @@ import { join } from 'node:path'
 import { afterAll, describe, expect, test } from 'vitest'
 import { readRepository } from '../build/root.js'
 import { MANIFEST, swiftLibraries, swiftPackage } from '../build/swift-package.js'
-import { WORKSPACE_DIR } from './helpers.js'
+import { TOKENS_DIR } from './helpers.js'
 
 const temporary = mkdtempSync(join(tmpdir(), 'swift-package-'))
 afterAll(() => rmSync(temporary, { recursive: true }))
@@ -24,10 +24,10 @@ function builtFolders(name, folders) {
   return { distDir, repositoryDir: join(temporary, name) }
 }
 
-describe.runIf(WORKSPACE_DIR)('the libraries of the real configuration', () => {
-  const repositoryDir = WORKSPACE_DIR
+describe.runIf(TOKENS_DIR)('the libraries of the real configuration', () => {
+  const repositoryDir = TOKENS_DIR
   const libraries = () => {
-    const { build, dist } = readRepository(WORKSPACE_DIR)
+    const { build, dist } = readRepository(TOKENS_DIR)
     return swiftLibraries(build, { distDir: dist, repositoryDir })
   }
 
@@ -35,12 +35,12 @@ describe.runIf(WORKSPACE_DIR)('the libraries of the real configuration', () => {
     expect(libraries()).toEqual([
       {
         name: 'ChassisTokensDemoChassis',
-        path: 'packages/tokens/dist/ios/demo/chassis',
+        path: 'dist/ios/demo/chassis',
         resources: ['Icons.xcassets']
       },
       {
         name: 'ChassisTokensDemoSinefil',
-        path: 'packages/tokens/dist/ios/demo/sinefil',
+        path: 'dist/ios/demo/sinefil',
         resources: ['Icons.xcassets']
       }
     ])

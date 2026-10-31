@@ -1,10 +1,10 @@
 ---
 title: Welcome to Chassis Tokens
-description: Chassis Tokens holds the design tokens of the Chassis Design System in Tokens Studio format and builds them into SCSS, Swift and Android resources.
+description: Chassis Tokens is the builder of design tokens of the Chassis Design System. It turns a repository of Tokens Studio files into SCSS, Swift and Android resources.
 toc: true
 sections:
   - title: Quick Start
-    description: Install the published tokens in a web, iOS or Android project, or fork the repository and build your own.
+    description: Install the published tokens in a web, iOS or Android project, or make a repository of your own tokens and build them.
     slug: quick-start
   - title: Tokens Studio
     description: The token sets, the groups that select them, and how to change tokens in Tokens Studio.
@@ -24,18 +24,21 @@ aliases:
 
 ## Introduction
 
-Chassis Tokens holds the design tokens of the Chassis Design System and the build that turns them into files for the web, iOS and Android. The tokens are JSON files in [Tokens Studio](https://tokens.studio) format, synced with Figma. The build uses [Style Dictionary](https://styledictionary.com) and writes SCSS variables, Swift constants and Android resources.
+Chassis Tokens turns design tokens into files for the web, iOS and Android. The work is split over two kinds of repository, so that a team owns its tokens and shares the build:
 
-The output is committed to the repository and published, so you can install the tokens without building them. [Chassis CSS](https://github.com/chassis-ui/css) is built on the web output.
+- **The builder.** `@chassis-ui/tokens` is an npm package with the `chassis-tokens` command, which uses [Style Dictionary](https://styledictionary.com) to write SCSS variables, Swift constants and Android resources. It holds no tokens of its own.
+- **A repository of tokens.** It holds the token sets in `source/`, JSON files in [Tokens Studio](https://tokens.studio) format synced with Figma, the `chassis.build` block of its `package.json`, and the committed `dist/` and `Package.swift`. `chassis-tokens init` writes one, and the builder is a development dependency of it.
 
-You can also own the tokens: fork the repository, change the token sets, and build your own brands, themes, apps and platforms. The [quick start]([[docsref:/getting-started/quick-start]]) covers both ways.
+[chassis-ui/website-tokens](https://github.com/chassis-ui/website-tokens) is the repository of tokens of the Chassis sites and apps, published as `@chassis-ui/website-tokens`, so you can install those tokens without building them. [Chassis CSS](https://github.com/chassis-ui/css) is built on its web output.
+
+You can also own the tokens: make a repository of your own and build your own brands, themes, apps and platforms. The [quick start]([[docsref:/getting-started/quick-start]]) covers both ways. The token sets, options and names on this page are those of website-tokens.
 
 ## Token sets
 
 A token set is one JSON file of `source/`, such as `base/theme-base.json`. `source/$themes.json` sorts the token sets into groups, and each option of a group selects the token sets that hold its tokens. The token system is built on three core groups, `brand`, `theme` and `app`. `screen` is an optional fourth group.
 
 <CxTable>
-| Group | Token sets of an option hold | Options of the committed configuration |
+| Group | Token sets of an option hold | Options of website-tokens |
 | --- | --- | --- |
 | `brand` | The palette, the font families and weights, and the base border radius | `chassis`, `sinefil` |
 | `theme` | The primitive and context colors, and the shadows | `light`, `dark` |
@@ -45,7 +48,7 @@ A token set is one JSON file of `source/`, such as `base/theme-base.json`. `sour
 
 One option of each group makes a list of token sets, named `<brand>_<app>_<theme>_<screen>`, such as `chassis_docs_light_large`. A token set overrides the tokens of the sets before it in the list, as in Tokens Studio: the `dark` theme selects `base/theme-base.json` and then `base/theme-dark.json`, whose colors replace those of the first.
 
-The options in the table are examples, and the groups are yours to change when you own the tokens. To remove the `screen` group, remove it from `$themes.json`, and set `screens` to `[]` or leave the key out of `chassis.build`. A group of your own also needs a change to `planBuilds` in `packages/tokens/build/build.js`, which makes the name of a list from the brand, the app, the theme and the screen.
+The options in the table are examples, and the groups are yours to change when you own the tokens. To remove the `screen` group, remove it from `$themes.json`, and set `screens` to `[]` or leave the key out of `chassis.build`. A group of your own also needs a change to `planBuilds` in `build/build.js` of the builder, which makes the name of a list from the brand, the app, the theme and the screen.
 
 The [Tokens Studio guide]([[docsref:/getting-started/tokens-studio]]) describes the token sets and how to change them, and the [Figma Variables guide]([[docsref:/getting-started/figma-variables]]) how they become Variables in Figma.
 
@@ -65,9 +68,9 @@ The pages of the token categories, such as the [space tokens]([[docsref:/design-
 
 ## Build output
 
-The build reads `chassis.build` of the root `package.json`, which lists the brands, themes, screens and apps to build, and the platforms of each app. The committed configuration builds the brands `chassis` and `sinefil`, the app `docs` for the `web` platform, and the app `demo` for the `ios` and `android` platforms. An option of `$themes.json` that the configuration does not list is not built.
+The build reads `chassis.build` of the `package.json` of the repository of tokens, which lists the brands, themes, screens and apps to build, and the platforms of each app. The configuration of website-tokens builds the brands `chassis` and `sinefil`, the app `docs` for the `web` platform, and the app `demo` for the `ios` and `android` platforms. An option of `$themes.json` that the configuration does not list is not built.
 
-Every app and brand gets one folder per platform, `packages/tokens/dist/<platform>/<app>/<brand>/`.
+Every app and brand gets one folder per platform, `dist/<platform>/<app>/<brand>/`, at the root of the repository of tokens.
 
 <CxTable>
 | Platform | Folder | Files |
@@ -87,26 +90,27 @@ A token keeps its name on every platform, in the spelling of the platform, and i
 | Android | `@dimen/space_context_medium` | A `<dimen>` in `dp` |
 </CxTable>
 
-The `web` platform writes SCSS for Chassis CSS: `$cx-color-accordion-item-fg-color` is `var(--default-fg-main)`, the custom property that Chassis CSS generates for `color.context.default.fg-main`. The presets `web-scss`, `web-px` and `web-vw` write SCSS variables without custom properties for other CSS frameworks, and the presets `ios-swiftui` and `android-compose` write SwiftUI and Jetpack Compose values. No preset is part of the committed configuration; you select one when you build your own tokens. The [Style Dictionary guide]([[docsref:/getting-started/style-dictionary]]) is the reference of the build.
+The `web` platform writes SCSS for Chassis CSS: `$cx-color-accordion-item-fg-color` is `var(--default-fg-main)`, the custom property that Chassis CSS generates for `color.context.default.fg-main`. The presets `web-scss`, `web-px` and `web-vw` write SCSS variables without custom properties for other CSS frameworks, and the presets `ios-swiftui` and `android-compose` write SwiftUI and Jetpack Compose values. No preset is part of the configuration of website-tokens; you select one when you build your own tokens. The [Style Dictionary guide]([[docsref:/getting-started/style-dictionary]]) is the reference of the build.
 
 ## Packages
 
-An npm package, a Swift package and an Android library hold the files of `packages/tokens/dist/`, built from the committed configuration. The current version is [[config:currentVersion]].
+The builder is an npm package, and the tokens of the Chassis sites and apps are three packages of website-tokens. The builder is at version [[config:currentVersion]], and the [releases of website-tokens](https://github.com/chassis-ui/website-tokens/releases) name their own versions. A repository of your own publishes the same three kinds of package, under a name of your own.
 
 <CxTable>
 | Package | Name | Contents |
 | --- | --- | --- |
-| npm package | `@chassis-ui/tokens` | All of `dist/`: the web, iOS and Android folders of every brand |
-| Swift package | `[[config:repo]].git`, with one library per app and brand, such as `ChassisTokensDemoChassis` | The Swift files and the icons of `dist/ios/<app>/<brand>/` |
-| Android library | `chassis-tokens-<app>-<brand>-<version>.aar`, attached to the [GitHub release]([[config:repo]]/releases) | The `res/` tree of `dist/android/<app>/<brand>/` |
+| The builder, on npm | `@chassis-ui/tokens` | The `chassis-tokens` command and the Gradle project of the Android libraries |
+| Tokens, on npm | `@chassis-ui/website-tokens` | All of `dist/`: the web, iOS and Android folders of every brand |
+| Swift package | `https://github.com/chassis-ui/website-tokens.git`, with one library per app and brand, such as `ChassisTokensDemoChassis` | The Swift files and the icons of `dist/ios/<app>/<brand>/` |
+| Android library | `chassis-tokens-<app>-<brand>-<version>.aar`, attached to the [GitHub release](https://github.com/chassis-ui/website-tokens/releases) | The `res/` tree of `dist/android/<app>/<brand>/` |
 </CxTable>
 
 ## Roadmap
 
-Seasonal and high-contrast themes are planned. Output in other formats, such as JavaScript and JSON, is planned as well. The [changelog]([[config:repo]]/blob/main/packages/tokens/CHANGELOG.md) names what each release adds.
+Seasonal and high-contrast themes are planned. Output in other formats, such as JavaScript and JSON, is planned as well. The [changelog of the builder]([[config:repo]]/blob/main/packages/tokens/CHANGELOG.md) and the [changelog of website-tokens](https://github.com/chassis-ui/website-tokens/blob/main/CHANGELOG.md) name what each release adds.
 
 ## Next steps
 
-- The [quick start]([[docsref:/getting-started/quick-start]]) installs the tokens in a project and builds them from a fork.
+- The [quick start]([[docsref:/getting-started/quick-start]]) installs the tokens in a project and makes a repository of your own.
 - The [web]([[docsref:/use-in-project/web-applications]]), [iOS]([[docsref:/use-in-project/ios-applications]]) and [Android]([[docsref:/use-in-project/android-applications]]) guides cover the files, themes and screen sizes of each platform.
-- The source is in the [repository on GitHub]([[config:repo]]).
+- The builder is in the [repository of Chassis Tokens]([[config:repo]]), and the tokens in [chassis-ui/website-tokens](https://github.com/chassis-ui/website-tokens).

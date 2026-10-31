@@ -1,19 +1,21 @@
 /**
  * @file filters.test.js
  * @description Tests for the file filters, using resolved tokens from the real build and
- *              which files of the committed dist/ declare them.
+ *              which files of the output declare them, in the `default` baseline in `golden/`.
  * @copyright Copyright (c) 2026 Ozgur Gunes
  * @license MIT
  */
 
 import { readFileSync } from 'node:fs'
+import { join } from 'node:path'
 import { describe, expect, test } from 'vitest'
 import registerFilters, { figmaOnlyGroups, filters } from '../build/filters.js'
+import { DIST_DIR } from './helpers.js'
 
 const fixture = JSON.parse(
   readFileSync(new URL('./fixtures/filter-tokens.json', import.meta.url), 'utf8')
 )
-const dist = (file) => readFileSync(new URL(`../dist/${file}`, import.meta.url), 'utf8')
+const dist = (file) => readFileSync(join(DIST_DIR, file), 'utf8')
 const matchingFilters = (token) => Object.keys(filters).filter((name) => filters[name](token))
 
 describe('filters', () => {
@@ -79,7 +81,7 @@ describe('filters', () => {
     }
   })
 
-  test('put the shadow color parts of the committed main files next to their other parts', () => {
+  test('put the shadow color parts of the main files next to their other parts', () => {
     const swift = dist('ios/demo/chassis/ChassisTokens.swift')
     const xml = dist('android/demo/chassis/main.xml')
     expect(swift).toMatch(/static let ShadowContextSmall1Blur = /)
@@ -88,7 +90,7 @@ describe('filters', () => {
     expect(swift).not.toMatch(/Figma|BgBlur/)
   })
 
-  test('put the context opacities into the committed files, without the base opacities', () => {
+  test('put the context opacities into the files, without the base opacities', () => {
     for (const file of ['web/docs/chassis/main.scss', 'web/docs/chassis/number-large.scss']) {
       expect(dist(file)).toMatch(/^\$cx-opacity-context-fg-a11y: /m)
       expect(dist(file)).not.toMatch(/opacity-base/)

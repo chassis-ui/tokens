@@ -34,13 +34,13 @@ The token system is built on three core groups, `brand`, `theme`, and `app`, and
 
 The `website` groups of `size.*`, `space.*`, `typography.fontSize.*`, and `font.*` belong to the `screen` Collection, not to `app` or `brand`. Every Collection also holds the [visibility switches](#visibility-switches) of its group, `figma.switch.<group>.*`.
 
-The Modes depend on the options of your `$themes.json`. In the committed configuration, for example, the `theme` Collection has the Modes `light` and `dark`, and the `screen` Collection has the Modes `large`, `medium`, and `small`. Every option becomes a Mode, including an option that the build does not write because `chassis.build` of the root `package.json` does not list it.
+The Modes depend on the options of your `$themes.json`. In the configuration of website-tokens, for example, the `theme` Collection has the Modes `light` and `dark`, and the `screen` Collection has the Modes `large`, `medium`, and `small`. Every option becomes a Mode, including an option that the build does not write because `chassis.build` of `package.json` does not list it.
 
 The groups can change with your project. Without a `screen` group in `$themes.json`, Figma gets no `screen` Collection, and a group that you add becomes a Collection of its own. The build must follow such a change: see the [build options]([[docsref:/getting-started/style-dictionary#build-options]]) of the Style Dictionary guide.
 
 ### Aliases
 
-A Variable whose token references a token of another Collection is an alias of that Variable, so a Mode of one Collection changes the Variables of another. The fill of the primary button runs through the Collections of the three core groups, shown here with the themes of the committed configuration:
+A Variable whose token references a token of another Collection is an alias of that Variable, so a Mode of one Collection changes the Variables of another. The fill of the primary button runs through the Collections of the three core groups, shown here with the themes of the configuration of website-tokens:
 
 ```text
 color.button.primary.bg-idle                        app
@@ -171,11 +171,11 @@ Because these Variables are [aliases](#aliases), one button follows the Modes of
 
 ### Visibility switches
 
-Switches are Boolean Variables that show or hide a layer according to the Mode. Each switch `figma.switch.<group>.mode-<n>` is `true` in one option of its group and `false` in every other option, because the token set of the option sets its own switch. In the committed configuration, for example, `figma.switch.theme.mode-1` is `true` in the `light` Mode and `figma.switch.theme.mode-2` in the `dark` Mode.
+Switches are Boolean Variables that show or hide a layer according to the Mode. Each switch `figma.switch.<group>.mode-<n>` is `true` in one option of its group and `false` in every other option, because the token set of the option sets its own switch. In the configuration of website-tokens, for example, `figma.switch.theme.mode-1` is `true` in the `light` Mode and `figma.switch.theme.mode-2` in the `dark` Mode.
 
 A group can hold more switches than it has options, such as `figma.switch.theme.mode-3`; a switch without an option is `false` in every Mode. For an option that you add, set the next switch to `true` in the token set of the option.
 
-Bind a switch to the visibility of a layer, and nest layers to combine two groups. This example uses the brands and the themes of the committed configuration, where the `chassis` brand sets `figma.switch.brand.mode-2` and the `sinefil` brand sets `figma.switch.brand.mode-3`:
+Bind a switch to the visibility of a layer, and nest layers to combine two groups. This example uses the brands and the themes of the configuration of website-tokens, where the `chassis` brand sets `figma.switch.brand.mode-2` and the `sinefil` brand sets `figma.switch.brand.mode-3`:
 
 ```text
 Header
@@ -219,7 +219,7 @@ Figma does not list a Variable when you set a property of a layer. Either the [s
 
 ### Value does not change
 
-A layer keeps its value when you switch a Mode. The layer has a fixed value instead of a Variable, or the Variable has the same value in both Modes: between the `docs` and `demo` Modes of the `app` Collection in the committed configuration, only `color.page.bg-body` and the switches `figma.switch.app.*` differ. Select the layer, check that the property shows a Variable, and switch the Mode of the Collection that holds the difference.
+A layer keeps its value when you switch a Mode. The layer has a fixed value instead of a Variable, or the Variable has the same value in both Modes: between the `docs` and `demo` Modes of the `app` Collection in the configuration of website-tokens, only `color.page.bg-body` and the switches `figma.switch.app.*` differ. Select the layer, check that the property shows a Variable, and switch the Mode of the Collection that holds the difference.
 
 ### Library update missing
 

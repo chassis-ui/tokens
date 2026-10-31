@@ -7,12 +7,14 @@
  */
 
 import { readFileSync } from 'node:fs'
+import { join } from 'node:path'
 import { checkAndEvaluateMath } from '@tokens-studio/sd-transforms'
 import { describe, expect, test } from 'vitest'
 import web, { MATH_FRACTION_DIGITS } from '../build/config/web.js'
 import webPx from '../build/config/web-px.js'
 import webVw from '../build/config/web-vw.js'
 import registerTransforms, { transforms } from '../build/transforms.js'
+import { DIST_DIR } from './helpers.js'
 
 const read = (file) => JSON.parse(readFileSync(new URL(file, import.meta.url), 'utf8'))
 const webTokens = read('./fixtures/web-tokens.json')
@@ -84,11 +86,8 @@ describe('ts/resolveMath on the web', () => {
     expect(resolveMath(platform, '0.1rem*3')).toBe('0.3rem')
   })
 
-  test('prints a size and a size that references it alike in the committed main.scss', () => {
-    const main = readFileSync(
-      new URL('../dist/web/docs/chassis/main.scss', import.meta.url),
-      'utf8'
-    )
+  test('prints a size and a size that references it alike in main.scss', () => {
+    const main = readFileSync(join(DIST_DIR, 'web/docs/chassis/main.scss'), 'utf8')
     const value = (name) => main.match(new RegExp(`^\\$cx-${name}: (.+) !default;$`, 'm'))[1]
     expect(value('dimension-base-05')).toBe('0.03125rem')
     expect(value('size-unit-05')).toBe('0.03125rem')

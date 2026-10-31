@@ -19,12 +19,14 @@ fun camelCase(words: List<String>): String =
     .joinToString("") { word -> word.replaceFirstChar { it.uppercase() } }
     .replaceFirstChar { it.lowercase() }
 
-// packages/tokens
-val packageDir: File = rootDir.resolve("../../..").canonicalFile
-val tokensVersion = (JsonSlurper().parse(packageDir.resolve("package.json")) as Map<*, *>)["version"]
+// The repository of tokens that -PtokensRoot=<dir> names
+val tokensRoot: File =
+  providers.gradleProperty("tokensRoot").map(::File).orNull?.canonicalFile
+    ?: error("Name the repository of tokens with -PtokensRoot=<absolute path>")
+val tokensVersion = (JsonSlurper().parse(tokensRoot.resolve("package.json")) as Map<*, *>)["version"]
 
 val libraries: List<Library> =
-  folders(packageDir.resolve("dist/android")).flatMap { app ->
+  folders(tokensRoot.resolve("dist/android")).flatMap { app ->
     folders(app)
       .filter { brand -> brand.resolve("res").isDirectory }
       .map { brand ->
@@ -57,6 +59,11 @@ dependencies {
   libraries.forEach {
     add("${it.flavor}Implementation", files(aars.resolve(it.file)).builtBy(":library:aars"))
   }
+}
+
+// A task that reads the runtime classpath when it runs does not always get the dependency above
+tasks.matching { it.name.endsWith("NavigationResources") }.configureEach {
+  dependsOn(":library:aars")
 }
 
 val compileTokens =

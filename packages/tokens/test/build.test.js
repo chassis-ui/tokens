@@ -14,7 +14,7 @@ import { permutateThemes } from '@tokens-studio/sd-transforms'
 import { describe, expect, test } from 'vitest'
 import { planBuilds, planThemeColors, planClean, CONFIG_FILE, SOURCE_DIR } from '../build/build.js'
 import config from '../build/config/index.js'
-import { FIXTURE_DIR, PACKAGE_DIR, WORKSPACE_DIR } from './helpers.js'
+import { FIXTURE_DIR, TOKENS_DIR } from './helpers.js'
 
 const readFrom = (root, path) => JSON.parse(readFileSync(join(root, path), 'utf8'))
 const read = (path) => readFrom(FIXTURE_DIR, path)
@@ -35,16 +35,16 @@ function destinations(builds) {
     .sort()
 }
 
-describe.runIf(WORKSPACE_DIR)('the plan of the real configuration', () => {
+describe.runIf(TOKENS_DIR)('the plan of the real configuration', () => {
   const distFiles = () =>
-    readdirSync(join(PACKAGE_DIR, 'dist'), { recursive: true, withFileTypes: true })
+    readdirSync(join(TOKENS_DIR, 'dist'), { recursive: true, withFileTypes: true })
       .filter((entry) => entry.isFile() && !entry.name.startsWith('.'))
-      .map((entry) => relative(PACKAGE_DIR, join(entry.parentPath, entry.name)))
+      .map((entry) => relative(TOKENS_DIR, join(entry.parentPath, entry.name)))
       .sort()
   const realPlan = (filters) =>
     planBuilds(
-      permutateThemes(readFrom(WORKSPACE_DIR, `${SOURCE_DIR}/$themes.json`), { separator: '_' }),
-      readFrom(WORKSPACE_DIR, CONFIG_FILE).chassis.build,
+      permutateThemes(readFrom(TOKENS_DIR, `${SOURCE_DIR}/$themes.json`), { separator: '_' }),
+      readFrom(TOKENS_DIR, CONFIG_FILE).chassis.build,
       filters
     )
 
@@ -71,7 +71,7 @@ describe.runIf(WORKSPACE_DIR)('the plan of the real configuration', () => {
 
   test('writes the icons of each brand as iOS image sets and Android drawables', () => {
     for (const brand of ['chassis', 'sinefil']) {
-      const swift = readFileSync(join(PACKAGE_DIR, `dist/ios/demo/${brand}/String.swift`), 'utf8')
+      const swift = readFileSync(join(TOKENS_DIR, `dist/ios/demo/${brand}/String.swift`), 'utf8')
       const icons = [...swift.matchAll(/static let (Icon\w+) = "<svg/g)].map(([, name]) => name)
       expect(icons).toHaveLength(9)
       const sets = distFiles().filter((file) =>

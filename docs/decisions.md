@@ -69,4 +69,4 @@ All are decided. "The maintainer" took the decision on a proposal of a session.
   `dist/`. Third, the consumers move, `@chassis-ui/css` first and the sites, packages and
   examples after its release. Fourth, this package drops `dist/`, vendors website-tokens,
   runs CI on it, and the site is written again for two repositories. Fifth, the management
-  features of D4 and D5. The maintainer, 2026-10-30.
+  features of D4 and D5. The maintainer, 2026-10-30. Note: step four is done, 2026-10-31.

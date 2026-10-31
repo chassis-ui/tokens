@@ -20,7 +20,7 @@ import {
   repositoryWebUrl,
   resolveRoot
 } from '../build/root.js'
-import { CLI, FIXTURE_DIR, PACKAGE_DIR, WORKSPACE_DIR } from './helpers.js'
+import { CLI, FIXTURE_DIR, PACKAGE_DIR, TOKENS_DIR } from './helpers.js'
 
 const temporary = realpathSync(mkdtempSync(join(tmpdir(), 'chassis-tokens-root-')))
 afterAll(() => rmSync(temporary, { recursive: true }))
@@ -105,11 +105,10 @@ describe('readRepository', () => {
     expect(readRepository(join(parent, 'repo')).version).toBe(buildVersion())
   })
 
-  test.runIf(WORKSPACE_DIR)('in this workspace, the output stays in this package', () => {
-    expect(readRepository(WORKSPACE_DIR)).toMatchObject({
-      source: join(WORKSPACE_DIR, 'source'),
-      dist: join(PACKAGE_DIR, 'dist'),
-      version: buildVersion()
+  test.runIf(TOKENS_DIR)('in the vendored repository, the output is at its root', () => {
+    expect(readRepository(TOKENS_DIR)).toMatchObject({
+      source: join(TOKENS_DIR, 'source'),
+      dist: join(TOKENS_DIR, 'dist')
     })
   })
 })
@@ -166,11 +165,12 @@ describe('headerLines', () => {
     )
   })
 
-  test.runIf(WORKSPACE_DIR)('in this workspace, the text of the committed dist/', () => {
-    expect(readRepository(WORKSPACE_DIR).header).toEqual([
-      `Chassis - Tokens v${buildVersion()}`,
+  test.runIf(TOKENS_DIR)('in the vendored repository, the text of its committed dist/', () => {
+    const { header, version } = readRepository(TOKENS_DIR)
+    expect(header).toEqual([
+      `Chassis - Tokens v${version}`,
       'Copyright 2026 Ozgur Gunes',
-      'Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)'
+      'Licensed under MIT (https://github.com/chassis-ui/website-tokens/blob/main/LICENSE)'
     ])
   })
 })

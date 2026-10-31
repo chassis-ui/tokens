@@ -4,14 +4,16 @@
 # alone have no iOS SDK and no asset compiler, so this needs Xcode; CI runs it on a macOS
 # runner.
 #
-#   test/native/ios/check.sh [swift] [assets] [package]
+#   test/native/ios/check.sh <repository> [swift] [assets] [package]
 #
-#   swift    Type-checks the Swift files of every output folder under dist/ and
+#   <repository>  The repository of tokens, with dist/ and Package.swift at its root.
+#
+#   swift    Type-checks the Swift files of every output folder under its dist/ and
 #            test/golden/, each folder as one module, in the Swift 5 and the Swift 6
 #            language mode.
 #   assets   Compiles every asset catalog with actool and checks that the compiled catalog
 #            holds every image set.
-#   package  Reads the Package.swift at the root of the repository and builds the sample
+#   package  Reads the Package.swift of the repository and builds the sample
 #            in test/native/ios/sample/, which depends on its libraries and reads their
 #            tokens, for the iOS simulator.
 #
@@ -20,7 +22,6 @@
 set -euo pipefail
 
 package_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/../../.." && pwd)"
-repository_root="$(cd "$package_root/../.." && pwd)"
 sample="$package_root/test/native/ios/sample"
 
 sdk_name=iphonesimulator
@@ -34,6 +35,12 @@ fail() {
   exit 1
 }
 
+if [ $# -eq 0 ] || [ ! -d "$1/dist" ]; then
+  fail "the first argument is a repository of tokens with dist/ at its root"
+fi
+repository_root="$(cd "$1" && pwd)"
+shift
+
 if ! sdk_path="$(xcrun --sdk "$sdk_name" --show-sdk-path 2>/dev/null)"; then
   fail "no $sdk_name SDK: install Xcode and select it with xcode-select"
 fi
@@ -43,15 +50,15 @@ trap 'rm -rf "$work"' EXIT
 
 cd "$package_root"
 
-# Folders of dist/ and test/golden/ that hold files with the given name pattern
+# Folders of the output and test/golden/ that hold files with the given name pattern
 folders_with() {
-  find dist test/golden -name "$1" -exec dirname {} \; | sort -u
+  find "$repository_root/dist" test/golden -name "$1" -exec dirname {} \; | sort -u
 }
 
 check_swift() {
   local folders folder mode count
   folders="$(folders_with '*.swift')"
-  [ -n "$folders" ] || fail 'no Swift files in dist/ or test/golden/'
+  [ -n "$folders" ] || fail "no Swift files in $repository_root/dist or test/golden/"
 
   while IFS= read -r folder; do
     count="$(find "$folder" -maxdepth 1 -name '*.swift' | wc -l | tr -d ' ')"
@@ -66,8 +73,8 @@ check_swift() {
 
 check_assets() {
   local catalogs catalog output info image_set name index=0
-  catalogs="$(find dist test/golden -type d -name '*.xcassets' | sort)"
-  [ -n "$catalogs" ] || fail 'no asset catalog in dist/ or test/golden/'
+  catalogs="$(find "$repository_root/dist" test/golden -type d -name '*.xcassets' | sort)"
+  [ -n "$catalogs" ] || fail "no asset catalog in $repository_root/dist or test/golden/"
 
   while IFS= read -r catalog; do
     index=$((index + 1))

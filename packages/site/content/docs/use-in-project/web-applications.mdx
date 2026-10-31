@@ -20,62 +20,62 @@ $cx-color-accordion-item-fg-color: var(--default-fg-main) !default;
 What a variable holds depends on the platform that built the files:
 
 - The default `web` platform is made for [Chassis CSS](https://github.com/chassis-ui/css). Component tokens and typography maps hold custom properties that Chassis CSS defines, such as `var(--default-fg-main)`. The npm package holds this output.
-- The presets `web-scss`, `web-px` and `web-vw` hold resolved values, for a project with another CSS framework. No package holds them; you build them from the repository, as [Presets](#presets) describes.
+- The presets `web-scss`, `web-px` and `web-vw` hold resolved values, for a project with another CSS framework. No package holds them; you build them in a repository of your own, as [Presets](#presets) describes.
 
 The examples of this page use the default output and say where a preset differs.
 
 ## Generated files
 
-The build writes one folder for each brand and app, `dist/web/<app>/<brand>/`, with one color file per theme and one number file per screen. The committed configuration builds the web app `docs` for the brands `chassis` and `sinefil`, with the themes `light` and `dark` and the screens `large`, `medium` and `small`.
+The build writes one folder for each brand and app, `dist/web/<app>/<brand>/`, with one color file per theme and one number file per screen. The configuration of website-tokens builds the web app `docs` for the brands `chassis` and `sinefil`, with the themes `light` and `dark` and the screens `large`, `medium` and `small`.
 
 <CxTable>
 | File | Contents |
 | --- | --- |
 | `main.scss` | Every token except the theme colors: base and component colors, sizes, spacing, border radii and widths, opacities, typography maps, shadows, strings and icons. Component colors are those of the first theme, sizes those of the first screen |
 | `string.scss` | Font families, font weights and styles, text cases and decorations, and the SVG text of the icons |
-| `color-<theme>.scss` | The theme colors of one theme: context, primitive and component colors, and gradients. `color-light.scss` and `color-dark.scss` in the committed configuration |
-| `number-<screen>.scss` | Sizes, spacing, border radii and widths, font sizes, line heights and opacities of one screen. `number-large.scss`, `number-medium.scss` and `number-small.scss` in the committed configuration |
+| `color-<theme>.scss` | The theme colors of one theme: context, primitive and component colors, and gradients. `color-light.scss` and `color-dark.scss` in the configuration of website-tokens |
+| `number-<screen>.scss` | Sizes, spacing, border radii and widths, font sizes, line heights and opacities of one screen. `number-large.scss`, `number-medium.scss` and `number-small.scss` in the configuration of website-tokens |
 </CxTable>
 
 The file that declares a variable decides what a stylesheet loads. The theme colors are in the color files by design: context colors (`$cx-color-context-*`), primitive colors and gradients are there only. Typography maps (`$cx-font-*`) and shadows (`$cx-shadow-*`) are in `main.scss` only. Component colors are in `main.scss` and in each color file, and sizes are in `main.scss` and in each number file. Every file declares `$prefix`, which holds the text `cx-`; changing it does not rename the variables.
 
 ## Installation
 
-Install the npm package to use the tokens as they are. Build them from the repository to change them or to use a preset.
+Install the npm package to use the tokens of the Chassis sites and apps as they are. Build your own in a repository of tokens to change them or to use a preset.
 
 ### npm package
 
-The package `@chassis-ui/tokens` holds the files of `dist/`. Install it together with a Sass compiler, such as `sass`:
+The package `@chassis-ui/website-tokens` holds the files of `dist/` of [chassis-ui/website-tokens](https://github.com/chassis-ui/website-tokens). Install it together with a Sass compiler, such as `sass`:
 
 ```bash
-npm install @chassis-ui/tokens
+npm install @chassis-ui/website-tokens
 npm install --save-dev sass
 ```
 
-The web files are in `node_modules/@chassis-ui/tokens/dist/web/docs/<brand>/`. The package exports only the paths under `@chassis-ui/tokens/dist/` and its `package.json`.
+The web files are in `node_modules/@chassis-ui/website-tokens/dist/web/docs/<brand>/`. The package exports only the paths under `@chassis-ui/website-tokens/dist/` and its `package.json`.
 
-### Build from source
+### Your own tokens
 
-The repository holds the token sets and the build, for a team that changes the tokens, adds a brand, a theme or an app, or needs a preset. Add it to your project, for example as a Git submodule. The build needs Node.js 22 or later and pnpm:
+A repository of tokens holds the token sets, the build configuration and the output, for a team that changes the tokens, adds a brand, a theme or an app, or needs a preset. `chassis-tokens init` writes one, with the builder `@chassis-ui/tokens` as a development dependency. The build needs Node.js 22 or later:
 
 ```bash
-git submodule add [[config:repo]].git vendor/chassis-tokens
-cd vendor/chassis-tokens
-pnpm install --filter @chassis-ui/tokens
-pnpm tokens --brand chassis --app docs --platform web
+npx --package @chassis-ui/tokens chassis-tokens init acme-tokens --brand acme --app site:web
+cd acme-tokens
+npm install
+npx chassis-tokens build
 ```
 
-The build writes the files to `vendor/chassis-tokens/packages/tokens/dist/web/docs/chassis/`. The repository commits `dist/`, so the files of the committed configuration are there before the first build.
+The build writes the files to `dist/web/site/acme/`. The repository commits `dist/`, so a project that adds it, for example as a Git submodule, has the files without a build. To start from the token sets of the Chassis sites and apps, fork [chassis-ui/website-tokens](https://github.com/chassis-ui/website-tokens) instead.
 
-To build the tokens of your own app, add it to `chassis.build.apps` in the root `package.json` and give it token sets in `source/$themes.json`. The [Style Dictionary guide]([[docsref:/getting-started/style-dictionary#build-options]]) describes the build options.
+To build the tokens of your own app, add it to `chassis.build.apps` in `package.json` and give it token sets in `source/$themes.json`. The [Style Dictionary guide]([[docsref:/getting-started/style-dictionary#build-options]]) describes the build options.
 
 ## Basic usage
 
 Load a file as a Sass module with `@use` and give it a namespace. This stylesheet reads sizes from `main.scss` and context colors from `color-light.scss`:
 
 ```scss
-@use "@chassis-ui/tokens/dist/web/docs/chassis/main" as tokens;
-@use "@chassis-ui/tokens/dist/web/docs/chassis/color-light" as color;
+@use "@chassis-ui/website-tokens/dist/web/docs/chassis/main" as tokens;
+@use "@chassis-ui/website-tokens/dist/web/docs/chassis/color-light" as color;
 
 .card {
   padding: tokens.$cx-space-context-medium;
@@ -92,7 +92,7 @@ Sass writes the value of each variable into the rule: sizes in `rem` and colors 
 In the default output, a component token that references a context or primitive token holds the custom property of that token, and every typography map holds custom properties. Use these variables on a page that loads Chassis CSS, which defines the properties:
 
 ```scss
-@use "@chassis-ui/tokens/dist/web/docs/chassis/main" as tokens;
+@use "@chassis-ui/website-tokens/dist/web/docs/chassis/main" as tokens;
 
 .accordion-item {
   color: tokens.$cx-color-accordion-item-fg-color;
@@ -124,7 +124,7 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
-        additionalData: `@use "@chassis-ui/tokens/dist/web/docs/chassis/main" as tokens;\n`
+        additionalData: `@use "@chassis-ui/website-tokens/dist/web/docs/chassis/main" as tokens;\n`
       }
     }
   }
@@ -136,9 +136,9 @@ export default defineConfig({
 A partial that forwards the token files gives the components of a project one file to load. `main.scss` shares `$prefix` and the component colors with the color files, so forward one file as it is and the others with a prefix. Add `styles/_tokens.scss`:
 
 ```scss
-@forward "@chassis-ui/tokens/dist/web/docs/chassis/main";
-@forward "@chassis-ui/tokens/dist/web/docs/chassis/color-light" as light-*;
-@forward "@chassis-ui/tokens/dist/web/docs/chassis/color-dark" as dark-*;
+@forward "@chassis-ui/website-tokens/dist/web/docs/chassis/main";
+@forward "@chassis-ui/website-tokens/dist/web/docs/chassis/color-light" as light-*;
+@forward "@chassis-ui/website-tokens/dist/web/docs/chassis/color-dark" as dark-*;
 ```
 
 Use it in a component, here `components/card.scss`. The prefix follows the `$`:
@@ -155,11 +155,11 @@ Use it in a component, here `components/card.scss`. The prefix follows the `$`:
 
 ## Themes
 
-The color files of the themes declare the same variables, each with the colors of its theme. The committed configuration has the themes `light` and `dark`, so the examples load `color-light.scss` and `color-dark.scss`. Load each file with its own namespace and write the colors as custom properties under the selectors of your themes. This example uses a `data-theme` attribute:
+The color files of the themes declare the same variables, each with the colors of its theme. The configuration of website-tokens has the themes `light` and `dark`, so the examples load `color-light.scss` and `color-dark.scss`. Load each file with its own namespace and write the colors as custom properties under the selectors of your themes. This example uses a `data-theme` attribute:
 
 ```scss
-@use "@chassis-ui/tokens/dist/web/docs/chassis/color-light" as light;
-@use "@chassis-ui/tokens/dist/web/docs/chassis/color-dark" as dark;
+@use "@chassis-ui/website-tokens/dist/web/docs/chassis/color-light" as light;
+@use "@chassis-ui/website-tokens/dist/web/docs/chassis/color-dark" as dark;
 
 :root {
   --app-bg: #{light.$cx-color-context-default-bg-main};
@@ -182,8 +182,8 @@ To write a group of tokens at once, loop over the variables of a module with `me
 ```scss
 @use "sass:meta";
 @use "sass:string";
-@use "@chassis-ui/tokens/dist/web/docs/chassis/color-light" as light;
-@use "@chassis-ui/tokens/dist/web/docs/chassis/color-dark" as dark;
+@use "@chassis-ui/website-tokens/dist/web/docs/chassis/color-light" as light;
+@use "@chassis-ui/website-tokens/dist/web/docs/chassis/color-dark" as dark;
 
 @mixin context-colors($module) {
   @each $name, $value in meta.module-variables($module) {
@@ -206,14 +206,14 @@ To write a group of tokens at once, loop over the variables of a module with `me
 
 The `screen` group is optional. A configuration without screens, with `screens` empty or left out of `chassis.build`, writes one number file without a screen suffix, `number.scss`, with the values of the first screen in `$themes.json`.
 
-The committed configuration has the screens `large`, `medium` and `small`. Each number file declares the same variables with the values of one screen, and `main.scss` has the values of the first screen, `large`. In the current tokens, the variables that differ between screens belong to the `website` groups: `$cx-size-website-*`, `$cx-space-website-*` and `$cx-typography-font-size-website-*`.
+The configuration of website-tokens has the screens `large`, `medium` and `small`. Each number file declares the same variables with the values of one screen, and `main.scss` has the values of the first screen, `large`. In the current tokens, the variables that differ between screens belong to the `website` groups: `$cx-size-website-*`, `$cx-space-website-*` and `$cx-typography-font-size-website-*`.
 
 Load the number files with their own namespaces and use them in media queries. The tokens do not tie a screen to a width. This example takes the widths from the grid tokens `$cx-grid-breakpoint-large` and `$cx-grid-breakpoint-medium`, which is a choice of the project:
 
 ```scss
-@use "@chassis-ui/tokens/dist/web/docs/chassis/number-large" as large;
-@use "@chassis-ui/tokens/dist/web/docs/chassis/number-medium" as medium;
-@use "@chassis-ui/tokens/dist/web/docs/chassis/number-small" as small;
+@use "@chassis-ui/website-tokens/dist/web/docs/chassis/number-large" as large;
+@use "@chassis-ui/website-tokens/dist/web/docs/chassis/number-medium" as medium;
+@use "@chassis-ui/website-tokens/dist/web/docs/chassis/number-small" as small;
 
 .section-icon {
   width: large.$cx-size-website-section-icon;
@@ -244,7 +244,7 @@ A map is not a CSS value. Write all of its properties with `@each`, or read one 
 
 ```scss
 @use "sass:map";
-@use "@chassis-ui/tokens/dist/web/docs/chassis/main" as tokens;
+@use "@chassis-ui/website-tokens/dist/web/docs/chassis/main" as tokens;
 
 @mixin text-style($style) {
   @each $property, $value in $style {
@@ -274,7 +274,7 @@ $cx-shadow-context-small: 0rem 0.125rem 0.5rem -0.125rem rgba(0, 0, 0, 0.1), 0re
 Use the variable as the value of `box-shadow`:
 
 ```scss
-@use "@chassis-ui/tokens/dist/web/docs/chassis/main" as tokens;
+@use "@chassis-ui/website-tokens/dist/web/docs/chassis/main" as tokens;
 
 .card {
   box-shadow: tokens.$cx-shadow-context-small;
@@ -294,7 +294,7 @@ $cx-gradient-primitive-black-l-000: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, #
 Use the variable as a background image:
 
 ```scss
-@use "@chassis-ui/tokens/dist/web/docs/chassis/color-light" as color;
+@use "@chassis-ui/website-tokens/dist/web/docs/chassis/color-light" as color;
 
 .fade {
   background-image: color.$cx-gradient-primitive-black-l-000;
@@ -307,7 +307,7 @@ An icon token is a string on the web: a variable of `string.scss` and `main.scss
 
 ```scss
 @use "sass:string";
-@use "@chassis-ui/tokens/dist/web/docs/chassis/main" as tokens;
+@use "@chassis-ui/website-tokens/dist/web/docs/chassis/main" as tokens;
 
 @function replace($text, $search, $with) {
   $index: string.index($text, $search);
@@ -333,7 +333,7 @@ An icon token is a string on the web: a variable of `string.scss` and `main.scss
 
 ## Build options
 
-Build options change what the generated files hold, so they need a [build from the repository](#build-from-source). Set them in `chassis.build` of the root `package.json`.
+Build options change what the generated files hold, so they need a [repository of your own](#your-own-tokens). Set them in `chassis.build` of `package.json`.
 
 ### Presets
 
@@ -348,7 +348,7 @@ A preset is a web platform for a project that does not load Chassis CSS: every v
 | `web-vw` | Resolved | `vw`, 16 pixels are `1vw` |
 </CxTable>
 
-In `chassis.build` of the root `package.json`:
+In `chassis.build` of `package.json`:
 
 ```json
 "apps": {
@@ -366,7 +366,7 @@ The [Style Dictionary guide]([[docsref:/getting-started/style-dictionary#presets
 
 ### outputReferences
 
-With `outputReferences`, a variable of a preset holds the variable of the token it references, where the default output holds a custom property. Shadows keep their values. The option changes nothing on the `web` platform. In `chassis.build` of the root `package.json`:
+With `outputReferences`, a variable of a preset holds the variable of the token it references, where the default output holds a custom property. Shadows keep their values. The option changes nothing on the `web` platform. In `chassis.build` of `package.json`:
 
 ```json
 "apps": { "docs": ["web-px"] },
@@ -383,8 +383,8 @@ $cx-border-radius-accordion-main: $cx-border-radius-context-medium !default;
 The color tokens of such a `main.scss` reference variables of the color files, and a Sass module does not see the variables of another module. Load `main.scss` with `@import` after one color file; the color and number files still load with `@use`:
 
 ```scss
-@import "../vendor/chassis-tokens/packages/tokens/dist/web/docs/chassis/color-light";
-@import "../vendor/chassis-tokens/packages/tokens/dist/web/docs/chassis/main";
+@import "../vendor/acme-tokens/dist/web/site/acme/color-light";
+@import "../vendor/acme-tokens/dist/web/site/acme/main";
 
 .accordion-item {
   color: $cx-color-accordion-item-fg-color;
@@ -393,7 +393,7 @@ The color tokens of such a `main.scss` reference variables of the color files, a
 
 ## Continuous integration
 
-With the npm package, the tokens are installed with the other dependencies of the project, and a workflow needs no step for them. With the repository as a submodule, check out the submodules; `dist/` is committed, so the files are there. To build the tokens in the workflow, set up Node.js 22 or later and pnpm, and build before the stylesheets:
+With the npm package, the tokens are installed with the other dependencies of the project, and a workflow needs no step for them. With a repository of tokens as a submodule, check out the submodules; `dist/` is committed, so the files are there. To build the tokens in the workflow, set up Node.js 22 or later, and build before the stylesheets:
 
 ```yaml
 name: Build
@@ -408,19 +408,15 @@ jobs:
         with:
           submodules: recursive
 
-      - uses: pnpm/action-setup@v6
-        with:
-          package_json_file: vendor/chassis-tokens/package.json
-
       - uses: actions/setup-node@v5
         with:
           node-version: 22
 
       - name: Build tokens
-        working-directory: vendor/chassis-tokens
+        working-directory: vendor/acme-tokens
         run: |
-          pnpm install --filter @chassis-ui/tokens
-          pnpm tokens --brand chassis --app docs --platform web
+          npm ci
+          npx chassis-tokens build --platform web
 
       - name: Build site
         run: |

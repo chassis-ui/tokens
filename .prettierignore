@@ -2,7 +2,6 @@
 *.scss
 packages/site/config.yml
 packages/site/src/assets
-/source
 packages/tokens/test/fixtures/repository/source
 # Templates: __NAME__ outside a code span is a placeholder, not bold text
 packages/tokens/build/init-templates/*.md

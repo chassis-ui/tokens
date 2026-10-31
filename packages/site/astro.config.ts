@@ -1,4 +1,3 @@
-import path from 'node:path'
 import { defineConfig } from 'astro/config'
 import { loadConfig } from '@chassis-ui/docs'
 import { chassisDocs } from '@chassis-ui/docs/integration'
@@ -46,20 +45,6 @@ export default defineConfig({
           // The integration adds the fallback `_chassis-tokens.scss` of `@chassis-ui/css`.
           // Custom override `_chassis-tokens.scss` if present in `src/scss`
           // loadPaths: [path.resolve(import.meta.dirname, 'src/scss')],
-          // Resolve `@chassis-ui/tokens/...` imports to the version in the site's own
-          // `node_modules`, the one `package.json` names. The framework fallback
-          // `_chassis-tokens.scss` in `@chassis-ui/css` forwards `@chassis-ui/tokens/dist/...`,
-          // which would otherwise resolve to the version that `@chassis-ui/css` depends on.
-          importers: [
-            {
-              findFileUrl(url: string) {
-                if (!url.startsWith('@chassis-ui/tokens/')) return null
-                const subPath = url.slice('@chassis-ui/tokens/'.length)
-                const rootDir = path.resolve(import.meta.dirname, 'node_modules/@chassis-ui/tokens')
-                return new URL('file://' + rootDir + '/' + subPath)
-              }
-            }
-          ]
         }
       }
     }

@@ -8,6 +8,8 @@ toc: true
 
 ## Introduction
 
+The token sets and the configuration that this page names, and calls committed, are those of [chassis-ui/website-tokens](https://github.com/chassis-ui/website-tokens), the repository of tokens of the Chassis sites and apps.
+
 Typography tokens hold the single properties of a text style. Each property has a group under `typography.*`: `fontFamily`, `fontWeight`, `fontSize`, `lineHeight`, `letterSpacing`, and `paragraphSpacing`. The [font tokens]([[docsref:/design-tokens/font-tokens]]) combine these properties into text styles. Text case and text decoration have no typography tokens, and no font token names one.
 
 The font families are named by their job, not by their typeface: `ui` for components, `prose` for reading content, `display` for display text, `code` for code, and `icon` for the icon font. A brand chooses the typeface of each job. `ui` and `prose` have a full scale of sizes, line heights, weights, and letter spacing, and `code` has a short one. `display` has weights only: text reaches it through a [text role](#text-roles), not through a scale.
@@ -16,7 +18,7 @@ The font families are named by their job, not by their typeface: `ui` for compon
 
 Typography tokens have no levels. The scales of `ui` and `code` hold values of their own. The sizes and line heights of `prose` reference those of `ui` step by step, so a reading font has the sizes of `ui`. Its weights and its letter spacing hold values of their own, because a weight belongs to its typeface. The `context` group holds the text roles, such as `h1`, `lead`, and `title-large`. Each role holds its own font size, line height, and letter spacing, and each role group, such as `heading` or `title`, references a family and a weight. The `font.*` tokens are the next step: they reference the typography tokens property by property.
 
-A brand gives the text its character by overriding the font families and the font weights in its own token set. It moves a role group to another family by overriding the family and the weight of that group, and it retunes a role by overriding its size, line height, or letter spacing. Where the token system has the optional `screen` group, each screen has a token set that holds `typography.fontSize.website.*`. No theme and no app of the committed configuration overrides a typography token.
+A brand gives the text its character by overriding the font families and the font weights in its own token set. It moves a role group to another family by overriding the family and the weight of that group, and it retunes a role by overriding its size, line height, or letter spacing. Where the token system has the optional `screen` group, each screen has a token set that holds `typography.fontSize.website.*`. No theme and no app of the configuration of website-tokens overrides a typography token.
 
 <CxTable>
 | Tokens | Token set |
@@ -68,7 +70,7 @@ The value of a font weight token is the style name that the font has in Figma. A
 
 Fonts spell their style names in their own way, so the same weight can be written with or without a space in two token sets. The build reads both spellings as the same weight.
 
-A weight belongs to the typeface of its family. The weights of `prose` hold the style names of the reading font, and those of `ui` the style names of the font of components, so a reading font can have a weight that the font of components lacks, even where `typography.fontFamily.prose` references `{typography.fontFamily.ui}`. A brand that sets a family sets its weights in the same token set, and every font token and role group takes its weight from the family that it takes its family from. `pnpm tokens:lint:source` fails on a family set without its weights, and on a weight of another family.
+A weight belongs to the typeface of its family. The weights of `prose` hold the style names of the reading font, and those of `ui` the style names of the font of components, so a reading font can have a weight that the font of components lacks, even where `typography.fontFamily.prose` references `{typography.fontFamily.ui}`. A brand that sets a family sets its weights in the same token set, and every font token and role group takes its weight from the family that it takes its family from. `chassis-tokens lint-source` fails on a family set without its weights, and on a weight of another family.
 
 The `context` group holds one weight per role group, which every role of the group shares. Each references a weight of the family of its group, so it follows the brand.
 
@@ -141,7 +143,7 @@ Letter spacing tokens hold the space between letters in design pixels, the unit 
 | `typography.letterSpacing.prose.elegant` | `{size.unit.0}` |
 </CxTable>
 
-The `context` group holds one letter spacing per text role, under the name of the role, such as `typography.letterSpacing.context.title-large`. Each references `{size.unit.0}` in `source/base/brand-base.json`. A brand tightens the letters of a role by referencing a negative step of the size scale, as the `chassis` brand does for `jumbo` and `hero`, and `font.website.hero-title` and `font.website.section-title` do with `{size.unit.n1}` and `{size.unit.nd05}`. Figma variables cannot hold a percentage, so `pnpm tokens:lint:source` fails on a letter spacing in percent or in `em`.
+The `context` group holds one letter spacing per text role, under the name of the role, such as `typography.letterSpacing.context.title-large`. Each references `{size.unit.0}` in `source/base/brand-base.json`. A brand tightens the letters of a role by referencing a negative step of the size scale, as the `chassis` brand does for `jumbo` and `hero`, and `font.website.hero-title` and `font.website.section-title` do with `{size.unit.n1}` and `{size.unit.nd05}`. Figma variables cannot hold a percentage, so `chassis-tokens lint-source` fails on a letter spacing in percent or in `em`.
 
 ## Paragraph spacing
 
@@ -226,7 +228,7 @@ The two tokens change every role of the group: `font.context.title.large`, `font
 
 Retune a role by overriding its own tokens: `typography.fontSize.context.h2` and `typography.lineHeight.context.h2` change `font.context.h2` only, and `typography.letterSpacing.context.hero` tightens `font.context.hero`. No font token has to change.
 
-Write a font weight as the font names it in Figma, and keep that spelling. `pnpm tokens:lint:source` reports a weight that the build does not know.
+Write a font weight as the font names it in Figma, and keep that spelling. `chassis-tokens lint-source` reports a weight that the build does not know.
 
 ## Platform output
 

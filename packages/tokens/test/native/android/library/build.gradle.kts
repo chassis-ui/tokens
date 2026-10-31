@@ -1,8 +1,8 @@
 // The Android library of every app and brand: the res/ tree of dist/android/<app>/<brand>
 // as an AAR. `./gradlew :library:aars` writes them to library/build/aars/, named
 // chassis-tokens-<app>-<brand>-<version>.aar, and the release workflow attaches them to the
-// GitHub release. One product flavor per library. In this repository the output is in
-// packages/tokens/dist/; in a repository of tokens, with -PtokensRoot, in dist/ at its root.
+// GitHub release of a repository of tokens, whose absolute path -PtokensRoot=<dir> names. One
+// product flavor per library.
 
 import com.android.build.api.artifact.SingleArtifact
 import groovy.json.JsonSlurper
@@ -22,14 +22,13 @@ fun camelCase(words: List<String>): String =
     .joinToString("") { word -> word.replaceFirstChar { it.uppercase() } }
     .replaceFirstChar { it.lowercase() }
 
-// packages/tokens, or the repository of tokens that -PtokensRoot=<dir> names
-val packageDir: File =
+val tokensRoot: File =
   providers.gradleProperty("tokensRoot").map(::File).orNull?.canonicalFile
-    ?: rootDir.resolve("../../..").canonicalFile
-val tokensVersion = (JsonSlurper().parse(packageDir.resolve("package.json")) as Map<*, *>)["version"]
+    ?: error("Name the repository of tokens with -PtokensRoot=<absolute path>")
+val tokensVersion = (JsonSlurper().parse(tokensRoot.resolve("package.json")) as Map<*, *>)["version"]
 
 val libraries: List<Library> =
-  folders(packageDir.resolve("dist/android")).flatMap { app ->
+  folders(tokensRoot.resolve("dist/android")).flatMap { app ->
     folders(app)
       .filter { brand -> brand.resolve("res").isDirectory }
       .map { brand ->
@@ -37,7 +36,7 @@ val libraries: List<Library> =
       }
   }
 
-check(libraries.isNotEmpty()) { "No Android resource tree in $packageDir/dist" }
+check(libraries.isNotEmpty()) { "No Android resource tree in $tokensRoot/dist" }
 
 android {
   // The package of the R class, and of the Compose objects of the android-compose platform

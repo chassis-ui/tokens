@@ -12,5 +12,11 @@ minimumReleaseAgeExclude:
 # postcss-selector-parser 6. GHSA-rj75-hqrm-r3gf is fixed in 7.1.6 only, the version stylelint
 # itself already runs on, and the plugin reports the same warnings with it. Remove this once the
 # Bootstrap config takes a plugin that asks for 7.
+#
+# style-dictionary 5.7.1 reads glob through @bundled-es-modules/glob 13.0.6, which asks for glob 13.
+# GHSA-3g3m-2fjr-6pw4 is fixed in glob 14.0.2 and GHSA-g3hv-75wg-m249 in minimatch 11.0.1, which glob
+# 14 brings with it. An override reaches this workspace only, not an app that installs the package.
+# Remove this once style-dictionary or @bundled-es-modules/glob asks for glob 14.
 overrides:
   '@stylistic/stylelint-plugin>postcss-selector-parser': ^7.1.6
+  '@bundled-es-modules/glob>glob': ^14.0.2

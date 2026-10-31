@@ -1,6 +1,6 @@
 ---
 title: Tokens Studio
-description: How Chassis Tokens arranges its token sets and groups in Tokens Studio, how to connect the plugin to the repository, and how to add a brand.
+description: How a repository of tokens arranges its token sets and groups in Tokens Studio, how to connect the plugin to the repository, and how to add a brand.
 toc: true
 ---
 
@@ -8,9 +8,9 @@ toc: true
 
 ## Introduction
 
-Chassis Tokens keeps its design tokens as [Tokens Studio](https://tokens.studio) files in `source/`. Tokens Studio is a Figma plugin that edits these files, syncs them with the Git repository, and exports them to Figma. The build reads the same files, so Figma and the code of every platform get their values from one place.
+A repository of tokens keeps its design tokens as [Tokens Studio](https://tokens.studio) files in `source/`. Tokens Studio is a Figma plugin that edits these files, syncs them with the Git repository, and exports them to Figma. The `chassis-tokens` command reads the same files, so Figma and the code of every platform get their values from one place.
 
-This guide connects the plugin to the repository, describes the token sets and the groups that select them, and adds a brand.
+This guide connects the plugin to a repository, describes the token sets and the groups that select them, and adds a brand. Its examples come from [chassis-ui/website-tokens](https://github.com/chassis-ui/website-tokens), the repository of tokens of the Chassis sites and apps, and it calls its token sets and options committed.
 
 ## Prerequisites
 
@@ -18,8 +18,8 @@ The plugin needs access to Figma and to the repository, and the build needs Node
 
 - The Tokens Studio plugin from the [Figma Community](https://www.figma.com/community/plugin/843461159747178978/Tokens-Studio-for-Figma), with a Pro license. Chassis Tokens stores its token sets in several files and selects them with the themes of Tokens Studio, and both features belong to the [Pro plan](https://tokens.studio/pricing).
 - A Figma account with edit access to the file in which you run the plugin.
-- A clone or a fork of the [Chassis Tokens repository]([[config:repo]]) on GitHub, and a personal access token of GitHub that can read it. To push changes from the plugin, the token needs write access.
-- Node.js 22 or later and pnpm, to lint and build the tokens after a change.
+- A repository of tokens on GitHub, your own or a fork of [chassis-ui/website-tokens](https://github.com/chassis-ui/website-tokens), and a personal access token of GitHub that can read it. To push changes from the plugin, the token needs write access.
+- Node.js 22 or later, with `@chassis-ui/tokens` installed in the repository, to lint and build the tokens after a change.
 
 ## Connect the repository
 
@@ -28,7 +28,7 @@ Tokens Studio reads and writes the token sets through a sync provider, which nam
 1. Open Tokens Studio in a Figma file and go to **Settings**.
 2. Click **Add new sync provider** and choose **GitHub**.
 3. Enter a name for the provider and your personal access token.
-4. Enter the repository, `chassis-ui/tokens` or `<owner>/<repository>` for your fork.
+4. Enter the repository, `chassis-ui/website-tokens` or `<owner>/<repository>` for your own.
 5. Enter the branch, `main` or the branch you work on.
 6. Enter the file path, `source`.
 7. Save the provider, return to the **Tokens** tab, and pull the tokens from the repository.
@@ -98,7 +98,7 @@ The build does not tell the two statuses apart. `base/metric-source` is a `sourc
 
 ### Selected sets
 
-The build and `pnpm tokens:lint:source` read the token sets that an option of `$themes.json` selects, with either status. A set that no option selects takes no part in a design or in the output until you add it to an option.
+The build and `npx chassis-tokens lint-source` read the token sets that an option of `$themes.json` selects, with either status. A set that no option selects takes no part in a design or in the output until you add it to an option.
 
 The folders hold such sets next to the selected ones: `base/metric-rem` and the `app-*` and `metric-*` sets of the brand folders, such as `brand-chassis/app-base`.
 
@@ -117,7 +117,7 @@ The token system is built on three core groups, `brand`, `theme`, and `app`. `sc
 | `screen`, optional | The tokens that differ per screen size | `large`, `medium`, `small` |
 </CxTable>
 
-The options are the committed ones, and you can add your own. The build writes files for the names in `chassis.build` of the root `package.json`. The committed configuration names the brands `chassis` and `sinefil`, and every committed theme, app, and screen; the brands `default`, `demo-a`, and `demo-b` are options in Tokens Studio only.
+The options are the committed ones, and you can add your own. The build writes files for the names in `chassis.build` of `package.json`. The configuration of website-tokens names the brands `chassis` and `sinefil`, and every committed theme, app, and screen; the brands `default`, `demo-a`, and `demo-b` are options in Tokens Studio only.
 
 ### Brand group
 
@@ -149,7 +149,7 @@ The options of the `theme` group select the colors of a theme, and the shadows o
 | `base/theme-<theme>` | `enabled` |
 </CxTable>
 
-`base/theme-base` holds the references of the `light` theme: `color.context.primary.bg-hover` references `{color.base.context.light.primary.bg-hover}` there. `base/theme-dark` overrides the token with `{color.base.context.dark.primary.bg-hover}`. The options of the group must declare the same names, which `pnpm tokens:lint:source` checks.
+`base/theme-base` holds the references of the `light` theme: `color.context.primary.bg-hover` references `{color.base.context.light.primary.bg-hover}` there. `base/theme-dark` overrides the token with `{color.base.context.dark.primary.bg-hover}`. The options of the group must declare the same names, which `npx chassis-tokens lint-source` checks.
 
 ### App group
 
@@ -185,7 +185,7 @@ The options of the optional `screen` group select the tokens whose value depends
 | `screen-website/screen-<screen>` | `enabled` |
 </CxTable>
 
-`screen-website/screen-base` holds the composite tokens `font.website.*`, and the set of each screen holds the tokens that they reference, `typography.fontSize.website.*`, next to `space.website.*` and `size.website.*`. The options of the group must declare the same names: `pnpm tokens:lint:source` fails when the set of one screen lacks a token of the others.
+`screen-website/screen-base` holds the composite tokens `font.website.*`, and the set of each screen holds the tokens that they reference, `typography.fontSize.website.*`, next to `space.website.*` and `size.website.*`. The options of the group must declare the same names: `npx chassis-tokens lint-source` fails when the set of one screen lacks a token of the others.
 
 ### Change the groups
 
@@ -194,12 +194,12 @@ Chassis Tokens is meant to be owned and customized, so the groups are yours to c
 To remove the `screen` group:
 
 1. Remove the options of the `screen` group from `$themes.json`.
-2. Set `chassis.build.screens` to `[]`, or remove the key, in the root `package.json`.
+2. Set `chassis.build.screens` to `[]`, or remove the key, in `package.json`.
 3. Move the tokens of the screen sets that you still need to a set of another group, such as `base/app-base`.
 
 The build then names the lists `<brand>_<app>_<theme>` and writes one number file without the name of a screen: `number.scss`, `Number.swift`, and `number.xml`.
 
-In Tokens Studio, a group of your own is a group like the committed ones. The build needs a change: `planBuilds` in `packages/tokens/build/build.js` makes the name of a list from the brand, the app, the theme, and the screen, and `chassis.build` has no key for another group. Until you change both, the build stops with `No token sets for …`, because the option of the new group is a part of every list name.
+In Tokens Studio, a group of your own is a group like the committed ones. The build needs a change: `planBuilds` in `build/build.js` of `@chassis-ui/tokens` makes the name of a list from the brand, the app, the theme, and the screen, and `chassis.build` has no key for another group. Until you change both, the build stops with `No token sets for …`, because the option of the new group is a part of every list name.
 
 ## Brand tokens
 
@@ -296,7 +296,7 @@ size.button.medium-icon             <category>.<component>.<size>-<part>
 space.button.medium-padding-x       <category>.<component>.<size>-<part>
 ```
 
-The build joins the segments to the name of each platform: `color.button.primary.bg-hover` is `$cx-color-button-primary-bg-hover` on the web, `ColorButtonPrimaryBgHover` on iOS, and `color_button_primary_bg_hover` on Android. A segment holds letters, digits, and single hyphens, and a name starts with a letter. `pnpm tokens:lint:source` fails on other characters and on two names that become the same platform name.
+The build joins the segments to the name of each platform: `color.button.primary.bg-hover` is `$cx-color-button-primary-bg-hover` on the web, `ColorButtonPrimaryBgHover` on iOS, and `color_button_primary_bg_hover` on Android. A segment holds letters, digits, and single hyphens, and a name starts with a letter. `npx chassis-tokens lint-source` fails on other characters and on two names that become the same platform name.
 
 <Callout type="warning">
 Token names are the public API of the package. Renaming or removing a token breaks every app that uses it.
@@ -378,7 +378,7 @@ With the token set written, the steps are:
    }
    ```
 
-3. Add the name of the option to `chassis.build.brands` in the root `package.json`:
+3. Add the name of the option to `chassis.build.brands` in `package.json`:
 
    ```json
    "chassis": {
@@ -391,9 +391,9 @@ With the token set written, the steps are:
 4. Lint the source, build, and review the changes of the output:
 
    ```bash
-   pnpm tokens:lint:source
-   pnpm tokens
-   pnpm tokens:diff
+   npx chassis-tokens lint-source
+   npx chassis-tokens build
+   npx chassis-tokens diff
    ```
 
    With the configured apps, the build writes `dist/web/docs/<brand>/`, `dist/ios/demo/<brand>/`, and `dist/android/demo/<brand>/`.
@@ -401,12 +401,12 @@ With the token set written, the steps are:
 5. Write the Swift package manifest again, which has one library for every app and brand with an iOS platform:
 
    ```bash
-   pnpm tokens:swift-package
+   npx chassis-tokens swift-package
    ```
 
-   `pnpm tokens:test` fails while `Package.swift` differs from the configuration. The Android libraries need no such step.
+   `npx chassis-tokens swift-package --check` fails while `Package.swift` differs from the configuration. The Android libraries need no such step.
 
-An app or a screen follows the same steps with its own group and with `chassis.build.apps` or `chassis.build.screens`. A screen of an app with the `android` platform also needs a resource folder in `chassis.build.options.android.screens`. The tokens of a new component need no set and no option: add them to `base/app-base`, which every committed app enables. [Changing tokens]([[config:repo]]/blob/main/.github/CONTRIBUTING.md#changing-tokens) in the contributing guide lists what a pull request with a token change needs.
+An app or a screen follows the same steps with its own group and with `chassis.build.apps` or `chassis.build.screens`. A screen of an app with the `android` platform also needs a resource folder in `chassis.build.options.android.screens`. The tokens of a new component need no set and no option: add them to `base/app-base`, which every committed app enables. The [README of website-tokens](https://github.com/chassis-ui/website-tokens#readme) lists what a change to its tokens needs.
 
 ## Sync to Figma
 
@@ -416,11 +416,11 @@ The [Figma Variables guide]([[docsref:/getting-started/figma-variables]]) covers
 
 ## Troubleshooting
 
-The lint and the build name the token set and the token of a mistake in the source. Run `pnpm tokens:lint:source` after every pull or edit, before the build.
+The lint and the build name the token set and the token of a mistake in the source. Run `npx chassis-tokens lint-source` after every pull or edit, before the build.
 
 ### No token sets
 
-The build stops with `No token sets for <brand>_docs_light_large in source/$themes.json`. `chassis.build` names a brand, an app, a theme, or a screen that is not an option of its group in `$themes.json`. Add the option, or write the name in the root `package.json` as the option spells it.
+The build stops with `No token sets for <brand>_docs_light_large in source/$themes.json`. `chassis.build` names a brand, an app, a theme, or a screen that is not an option of its group in `$themes.json`. Add the option, or write the name in `package.json` as the option spells it.
 
 ### Token missing in a screen
 
