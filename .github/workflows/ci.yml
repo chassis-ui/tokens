@@ -26,6 +26,9 @@ concurrency:
 jobs:
   # The ruleset of `main` requires Tokens (Node 22), Tokens (Node 24) and Site by these names,
   # and release.yml reads them and the two native jobs. Rename a job in all three places.
+  #
+  # The build and its checks on the fixture of the package, and on the tokens of the
+  # vendor/tokens submodule, chassis-ui/website-tokens, which this checkout pins.
   tokens:
     name: Tokens (Node ${{ matrix.node }})
     runs-on: ubuntu-latest
@@ -38,6 +41,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
+          submodules: true
           persist-credentials: false
 
       - name: Setup pnpm
@@ -57,7 +61,8 @@ jobs:
       - name: Lint
         run: pnpm tokens:lint
 
-      # Mistakes in source/ that the build would accept, named by token set and token
+      # Mistakes in vendor/tokens/source/ that the build would accept, named by token set and
+      # token
       - name: Lint token source
         run: pnpm tokens:lint:source
 
@@ -68,7 +73,8 @@ jobs:
       - name: Test
         run: pnpm tokens:test
 
-      # Fails when the committed dist/ differs from a fresh build of tokens/
+      # Fails when the committed dist/ of vendor/tokens differs from a fresh build of its
+      # source/ with the build of this checkout
       - name: Verify dist/
         run: pnpm tokens:verify
 
@@ -106,19 +112,18 @@ jobs:
       - name: Astro check
         run: pnpm check:astro
 
-      # The same build as Vercel: syncs and builds vendor/assets, then Astro and Pagefind
+      # The same build as Vercel: checks out the submodules, builds vendor/assets, then Astro
+      # and Pagefind
       - name: Build
         run: pnpm site:build
 
       - name: Validate HTML
         run: pnpm site:lint:html
 
-  # A change to source, packages/tokens/build or packages/tokens/dist needs a changeset;
-  # `pnpm changeset --empty` adds one that releases nothing. Changesets checks build and dist
-  # (changedFilePatterns in .changeset/config.json). It matches files inside a package only, so
-  # the step checks source, at the root, by itself. A pull request is compared with its base
-  # branch, a push to develop with the tip it replaced. The version commit consumes the
-  # changesets, so a push that changes the version is skipped.
+  # A change to packages/tokens/build needs a changeset; `pnpm changeset --empty` adds one that
+  # releases nothing. Changesets checks it (changedFilePatterns in .changeset/config.json). A
+  # pull request is compared with its base branch, a push to develop with the tip it replaced.
+  # The version commit consumes the changesets, so a push that changes the version is skipped.
   changeset:
     name: Changeset
     # A manual run has nothing to compare with
@@ -170,19 +175,13 @@ jobs:
             SINCE="$BEFORE"
           fi
 
-          # Changesets does not see source/, which is outside the package
-          if [ -n "$(git diff --name-only "$SINCE...HEAD" -- source)" ] &&
-            [ -z "$(git diff --name-only --diff-filter=A "$SINCE...HEAD" -- '.changeset/*.md')" ]; then
-            echo "::error::source/ changed but no changeset was added. Run \`pnpm changeset\`, or \`pnpm changeset --empty\` if the change releases nothing."
-            exit 1
-          fi
-
           pnpm changeset status --since "$SINCE"
 
   # What the pull request does to the tokens, in the job summary: the names added, removed,
-  # renamed and changed in each dist/ file. It compares the committed dist/ of the test merge
-  # commit with that of its first parent, the base branch; the Tokens job checks that both
-  # equal a fresh build. Needs no install: the diff command uses Node.js only.
+  # renamed and changed in each dist/ file. When the pull request moves the vendor/tokens pointer,
+  # it compares the committed dist/ of the commit the test merge commit names with that of the
+  # commit its first parent, the base branch, names; the Tokens job checks that the new one
+  # equals a fresh build. Needs no install: the diff command uses Node.js only.
   token-diff:
     name: Token Diff
     if: github.event_name == 'pull_request'
@@ -205,7 +204,18 @@ jobs:
 
       - name: Token diff report
         run: |
-          node packages/tokens/build/cli.js diff --base HEAD^1 > "$RUNNER_TEMP/token-diff.md"
+          BASE=$(git rev-parse --verify --quiet HEAD^1:vendor/tokens || true)
+          HEAD=$(git rev-parse HEAD:vendor/tokens)
+
+          if [ "$BASE" = "$HEAD" ]; then
+            echo "No change to the tokens" > "$RUNNER_TEMP/token-diff.md"
+          elif [ -z "$BASE" ]; then
+            echo "The base branch has no vendor/tokens to compare with" > "$RUNNER_TEMP/token-diff.md"
+          else
+            git submodule update --init vendor/tokens
+            node packages/tokens/build/cli.js diff --cwd vendor/tokens --base "$BASE" > "$RUNNER_TEMP/token-diff.md"
+          fi
+
           cat "$RUNNER_TEMP/token-diff.md" >> "$GITHUB_STEP_SUMMARY"
           cat "$RUNNER_TEMP/token-diff.md"
 
@@ -256,12 +266,12 @@ jobs:
           fail-on-severity: moderate
 
   # Whether the native jobs run. A pull request and a push to develop run them only when they
-  # change the token source, the build, the output, the preset baselines or the checks
+  # move the vendor/tokens pointer or change the build, the preset baselines or the checks
   # themselves, because macOS minutes cost ten times Linux minutes. A pull request is compared
   # with its base branch, a push to develop with the tip it replaced. A manual run always
   # runs them. release.yml publishes a commit only when both passed on it: the version commit
-  # changes dist/ and package.json, so they run on it by themselves, and a commit pushed on
-  # top of it that does not change these paths needs a manual run.
+  # changes package.json, so they run on it by themselves, and a commit pushed on top of it
+  # that does not change these paths needs a manual run.
   native-changes:
     name: Native Changes
     runs-on: ubuntu-latest
@@ -299,26 +309,25 @@ jobs:
           fi
 
           changed=$(git diff --name-only "$SINCE" HEAD -- \
-            source \
+            vendor/tokens \
+            .gitmodules \
             packages/tokens/build \
-            packages/tokens/dist \
             packages/tokens/test/golden \
             packages/tokens/test/native \
             packages/tokens/package.json \
-            Package.swift \
             .github/workflows/ci.yml)
 
           if [ -n "$changed" ]; then
             echo "$changed"
             echo "native=true" >> "$GITHUB_OUTPUT"
           else
-            echo "No change to the tokens, the build, the output or the native checks"
+            echo "No change to the tokens, the build or the native checks"
             echo "native=false" >> "$GITHUB_OUTPUT"
           fi
 
-  # The Swift files against the iOS simulator SDK (UIKit and SwiftUI), the asset catalogs
-  # with actool, and a sample that depends on the libraries of Package.swift and reads
-  # their tokens. Needs no install: a shell script
+  # The Swift files of vendor/tokens and the baselines against the iOS simulator SDK (UIKit and
+  # SwiftUI), the asset catalogs with actool, and a sample that depends on the libraries of the
+  # Package.swift of vendor/tokens and reads their tokens. Needs no install: a shell script
   native-ios:
     name: Native iOS
     needs: native-changes
@@ -329,15 +338,16 @@ jobs:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
+          submodules: true
           persist-credentials: false
 
       - name: Compile the iOS output
-        run: packages/tokens/test/native/ios/check.sh
+        run: packages/tokens/test/native/ios/check.sh vendor/tokens
 
-  # The Android resources, compiled and linked against android.jar, the Compose objects
-  # against Jetpack Compose, and a sample app that depends on the Android libraries of the
-  # release and reads their resources, with the Gradle project of test/native/android. The
-  # runner has the Android SDK
+  # The Android resources of vendor/tokens and the baselines, compiled and linked against
+  # android.jar, the Compose objects against Jetpack Compose, and a sample app that depends on
+  # the Android libraries and reads their resources, with the Gradle project of
+  # test/native/android. The runner has the Android SDK
   native-android:
     name: Native Android
     needs: native-changes
@@ -348,6 +358,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
+          submodules: true
           persist-credentials: false
 
       - name: Setup Java
@@ -365,4 +376,4 @@ jobs:
 
       - name: Compile the Android output
         working-directory: packages/tokens/test/native/android
-        run: ./gradlew compileTokens
+        run: ./gradlew compileTokens -PtokensRoot="$GITHUB_WORKSPACE/vendor/tokens"

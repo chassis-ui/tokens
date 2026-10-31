@@ -4,12 +4,12 @@
 
 ## Why
 
-<!-- The problem this solves. For a token or output change, which apps or platforms need it. -->
+<!-- The problem this solves. For an output change, which apps or platforms need it. -->
 
 ## How to check it
 
 <!--
-The quickest way for a reviewer to see it: the tokens and files to look at in `dist/`, a docs
+The quickest way for a reviewer to see it: a preset baseline to look at in `test/golden/`, a docs
 page, or the test that fails without the change.
 -->
 
@@ -20,10 +20,10 @@ behind each of these.
 
 - [ ] `pnpm tokens:lint`, `pnpm tokens:lint:source`, `pnpm tokens:typecheck`, `pnpm tokens:test`, `pnpm tokens:verify` and `pnpm tokens:verify:presets`
       pass locally
-- [ ] **`dist/` rebuilt** with `pnpm tokens` and committed, and the preset baselines written again,
-      if tokens or the build changed the output
+- [ ] **The preset baselines written again** with `pnpm tokens:verify:update:presets`, if the build
+      changed the output
 - [ ] **Changeset** (`pnpm changeset`) if the published package changed, saying what an app has
-      to change; an empty one (`pnpm changeset --empty`) if `source/`, `build/` or `dist/` changed
+      to change; an empty one (`pnpm changeset --empty`) if `build/` changed
       but nothing is released
 - [ ] The **Native iOS** and **Native Android** checks of CI pass, if the iOS or Android output
       changed

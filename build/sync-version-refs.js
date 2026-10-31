@@ -3,11 +3,9 @@
 /*!
  * Version Reference Sync Script
  *
- * Copies the version of @chassis-ui/tokens into the places that show it but are not part of the
- * workspace's dependency graph, so `changeset version` cannot update them:
- * packages/site/config.yml's `currentVersion`, and the `Chassis - Tokens v…` header of the files
- * in packages/tokens/dist/, which it updates by rebuilding dist/ when a header names another
- * version. A version step that bumps nothing (only empty changesets) leaves dist/ as it is.
+ * Copies the version of @chassis-ui/tokens into the place that shows it but is not part of the
+ * workspace's dependency graph, so `changeset version` cannot update it:
+ * packages/site/config.yml's `currentVersion`.
  *
  * Runs as part of `pnpm changeset:version`, after `changeset version` has bumped
  * packages/tokens/package.json, which is the source of the version.
@@ -16,12 +14,8 @@
  * Licensed under MIT
  */
 
-import { execFileSync } from 'node:child_process'
 import fs from 'node:fs/promises'
 import path from 'node:path'
-
-const DIST_DIR = 'packages/tokens/dist'
-const HEADER_RE = /Chassis - Tokens v(\S+)/
 
 const SEMVER_RE = /^\d+\.\d+\.\d+(?:-[0-9A-Za-z-.]+)?$/
 
@@ -60,48 +54,15 @@ async function syncSiteConfig(version) {
   return true
 }
 
-/**
- * Rebuilds dist/ when the header of one of its files names another version
- * @param {string} version - The package version
- * @returns {Promise<boolean>} True if dist/ was rebuilt
- */
-async function syncDistHeaders(version) {
-  const files = await fs.readdir(DIST_DIR, { recursive: true, withFileTypes: true })
-  let stale = 0
-
-  for (const file of files) {
-    if (!file.isFile()) {
-      continue
-    }
-
-    const match = HEADER_RE.exec(await fs.readFile(path.join(file.parentPath, file.name), 'utf8'))
-
-    if (match && match[1] !== version) {
-      stale++
-    }
-  }
-
-  if (stale === 0) {
-    return false
-  }
-
-  console.log(`🔨 ${stale} files in ${DIST_DIR} name another version, rebuilding dist/`)
-  execFileSync('pnpm', ['tokens:build'], { stdio: 'inherit' })
-  return true
-}
-
 async function main() {
   const version = await readTokensVersion()
   console.log(`🔄 Syncing version references to v${version}`)
 
-  const results = [await syncSiteConfig(version), await syncDistHeaders(version)]
-  const updatedCount = results.filter(Boolean).length
+  const updated = await syncSiteConfig(version)
 
-  console.log(
-    updatedCount > 0
-      ? `✅ Synced ${updatedCount} of ${results.length} references`
-      : 'ℹ️  Already in sync, nothing to update'
-  )
+  if (!updated) {
+    console.log('ℹ️  Already in sync, nothing to update')
+  }
 }
 
 main().catch((error) => {
