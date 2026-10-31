@@ -1,7 +1,7 @@
 {
   "name": "@chassis-ui/tokens",
   "version": "0.12.0",
-  "description": "Design tokens for the Chassis Design System, built from Tokens Studio into SCSS, Swift, SwiftUI, Android resources and Jetpack Compose",
+  "description": "The builder of design tokens for the Chassis Design System: the chassis-tokens command, which builds a repository of Tokens Studio files into SCSS, Swift, SwiftUI, Android resources and Jetpack Compose",
   "type": "module",
   "repository": {
     "type": "git",
@@ -29,7 +29,6 @@
   },
   "files": [
     "build",
-    "dist",
     "test/native/android/build.gradle.kts",
     "test/native/android/gradle",
     "test/native/android/gradle.properties",
@@ -42,7 +41,6 @@
   ],
   "exports": {
     "./build/*": "./build/*",
-    "./dist/*": "./dist/*",
     "./package.json": "./package.json"
   },
   "engines": {
@@ -53,19 +51,10 @@
     "access": "public"
   },
   "scripts": {
-    "aar": "test/native/android/gradlew --project-dir test/native/android :library:aars",
-    "build": "node build/cli.js build",
-    "clean": "rm -rf dist",
-    "diff": "node build/cli.js diff",
-    "lint:source": "node build/cli.js lint-source",
-    "native:android": "test/native/android/gradlew --project-dir test/native/android compileTokens",
-    "native:ios": "test/native/ios/check.sh",
-    "swift-package": "node build/cli.js swift-package",
+    "clean": "rm -rf dist-next",
     "test": "vitest run --dir test",
     "typecheck": "tsc -p tsconfig.json",
-    "verify": "node build/cli.js verify",
     "verify:presets": "node build/cli.js verify --preset all",
-    "verify:update": "node build/cli.js verify --update && node build/cli.js verify --update --preset all",
     "verify:update:presets": "node build/cli.js verify --update --preset all"
   },
   "dependencies": {

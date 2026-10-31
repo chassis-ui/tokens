@@ -9,58 +9,29 @@
   },
   "author": "Ozgur Gunes <o.gunes@gmail.com>",
   "license": "MIT",
-  "chassis": {
-    "title": "Chassis - Tokens",
-    "copyright": "Copyright 2026 Ozgur Gunes",
-    "dist": "packages/tokens/dist",
-    "build": {
-      "brands": [
-        "chassis",
-        "sinefil"
-      ],
-      "themes": [
-        "light",
-        "dark"
-      ],
-      "screens": [
-        "large",
-        "medium",
-        "small"
-      ],
-      "apps": {
-        "docs": [
-          "web"
-        ],
-        "demo": [
-          "ios",
-          "android"
-        ]
-      }
-    }
-  },
   "engines": {
     "node": ">=22.12.0"
   },
   "scripts": {
     "build": "pnpm site:build",
-    "clean": "pnpm site:clean && pnpm --filter @chassis-ui/tokens clean",
+    "clean": "pnpm site:clean && pnpm --filter @chassis-ui/tokens clean && rm -rf vendor/tokens/dist-next",
     "dev": "pnpm vendor && pnpm --filter chassis-tokens-site dev",
     "test": "pnpm tokens:test",
     "test:ci": "pnpm tokens:lint && pnpm tokens:lint:source && pnpm tokens:typecheck && pnpm tokens:test && pnpm tokens:verify && pnpm tokens:verify:presets && pnpm lint:prettier && pnpm site:lint && pnpm check:astro && pnpm site:build && pnpm site:lint:html && pnpm check:pnpm",
     "tokens": "pnpm tokens:build",
-    "tokens:aar": "pnpm --filter @chassis-ui/tokens aar",
-    "tokens:build": "pnpm --filter @chassis-ui/tokens build",
-    "tokens:diff": "pnpm --silent --filter @chassis-ui/tokens diff",
+    "tokens:aar": "packages/tokens/test/native/android/gradlew --project-dir packages/tokens/test/native/android :library:aars -PtokensRoot=\"$PWD/vendor/tokens\"",
+    "tokens:build": "node packages/tokens/build/cli.js build --cwd vendor/tokens",
+    "tokens:diff": "node packages/tokens/build/cli.js diff --cwd vendor/tokens --base origin/main",
     "tokens:lint": "eslint --cache --cache-location .cache/.eslintcache packages/tokens/build packages/tokens/test",
-    "tokens:lint:source": "pnpm --filter @chassis-ui/tokens lint:source",
-    "tokens:native:android": "pnpm --filter @chassis-ui/tokens native:android",
-    "tokens:native:ios": "pnpm --filter @chassis-ui/tokens native:ios",
-    "tokens:swift-package": "pnpm --filter @chassis-ui/tokens swift-package",
+    "tokens:lint:source": "node packages/tokens/build/cli.js lint-source --cwd vendor/tokens",
+    "tokens:native:android": "packages/tokens/test/native/android/gradlew --project-dir packages/tokens/test/native/android compileTokens -PtokensRoot=\"$PWD/vendor/tokens\"",
+    "tokens:native:ios": "packages/tokens/test/native/ios/check.sh vendor/tokens",
+    "tokens:swift-package": "node packages/tokens/build/cli.js swift-package --cwd vendor/tokens",
     "tokens:test": "pnpm --filter @chassis-ui/tokens test",
     "tokens:typecheck": "pnpm --filter @chassis-ui/tokens typecheck",
-    "tokens:verify": "pnpm --filter @chassis-ui/tokens verify",
+    "tokens:verify": "node packages/tokens/build/cli.js verify --cwd vendor/tokens",
     "tokens:verify:presets": "pnpm --filter @chassis-ui/tokens verify:presets",
-    "tokens:verify:update": "pnpm --filter @chassis-ui/tokens verify:update",
+    "tokens:verify:update": "node packages/tokens/build/cli.js verify --update --cwd vendor/tokens && pnpm tokens:verify:update:presets",
     "tokens:verify:update:presets": "pnpm --filter @chassis-ui/tokens verify:update:presets",
     "site": "pnpm site:build && pnpm site:lint",
     "site:build": "pnpm vendor && pnpm --filter chassis-tokens-site build && pnpm site:pagefind",
@@ -80,7 +51,7 @@
     "changeset": "changeset",
     "changeset:version": "changeset version && node build/sync-version-refs.js",
     "sync-submodules": "pnpm --filter chassis-tokens-site exec chassis-docs sync-submodules --subset latin --subset latin-ext --subset symbols2 --split",
-    "vendor": "pnpm --filter chassis-tokens-site exec chassis-docs vendor --subset latin --subset latin-ext --subset symbols2 --split"
+    "vendor": "git submodule update --init vendor/tokens && pnpm --filter chassis-tokens-site exec chassis-docs vendor --subset latin --subset latin-ext --subset symbols2 --split"
   },
   "devDependencies": {
     "@changesets/cli": "^3.0.3",

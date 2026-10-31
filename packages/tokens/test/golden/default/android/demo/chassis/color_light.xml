@@ -1,0 +1,1611 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Do not edit directly, this file was auto-generated.
+  Generated on Sat, 31 Oct 2026 12:11:48 GMT
+  Chassis - Tokens v0.0.0
+  Copyright 2026 Ozgur Gunes
+  Licensed under MIT (https://github.com/chassis-ui/tokens/blob/main/LICENSE)
+-->
+
+<resources>
+  <color name="color_context_default_base_color">#ff000000</color>
+  <color name="color_context_default_contrast_color">#ffffffff</color>
+  <color name="color_context_default_transparent_color">#00000000</color>
+  <color name="color_context_default_fg_main">#ff191b1c</color>
+  <color name="color_context_default_fg_subtle">#99191b1c</color>
+  <color name="color_context_default_fg_slight">#40191b1c</color>
+  <color name="color_context_default_fg_active">#ffffffff</color>
+  <color name="color_context_default_fg_inverse">#ffebedee</color>
+  <color name="color_context_default_fg_solid">#ff000000</color>
+  <color name="color_context_default_fg_highlight">#ff006f8a</color>
+  <color name="color_context_default_bg_main">#ffffffff</color>
+  <color name="color_context_default_bg_even">#fff6f7f7</color>
+  <color name="color_context_default_bg_evident">#ffebedee</color>
+  <color name="color_context_default_bg_active">#ff0094b8</color>
+  <color name="color_context_default_bg_inverse">#ff191b1c</color>
+  <color name="color_context_default_bg_solid">#ffebedee</color>
+  <color name="color_context_default_bg_highlight">#ffd9eff4</color>
+  <color name="color_context_default_border_main">#ff9ca5aa</color>
+  <color name="color_context_default_border_subtle">#26191b1c</color>
+  <color name="color_context_default_icon_main">#ff0094b8</color>
+  <color name="color_context_default_icon_subtle">#80191b1c</color>
+  <color name="color_context_default_icon_slight">#330094b8</color>
+  <color name="color_context_default_cue_main">#ff0094b8</color>
+  <color name="color_context_default_cue_slight">#330094b8</color>
+  <color name="color_context_default_link_main">#ff0094b8</color>
+  <color name="color_context_default_link_hover">#ff40afca</color>
+  <color name="color_context_default_link_active">#ffd72a1d</color>
+  <color name="color_context_default_link_visited">#ff006f8a</color>
+  <color name="color_context_default_dim_main">#b3000000</color>
+  <color name="color_context_default_dim_subtle">#4d000000</color>
+  <color name="color_context_default_dim_slight">#0d000000</color>
+  <color name="color_context_default_fg_idle">#ff191b1c</color>
+  <color name="color_context_default_fg_hover">#e6191b1c</color>
+  <color name="color_context_default_fg_press">#e6191b1c</color>
+  <color name="color_context_default_fg_disabled">#40191b1c</color>
+  <color name="color_context_default_bg_idle">#ffffffff</color>
+  <color name="color_context_default_bg_hover">#fff6f7f7</color>
+  <color name="color_context_default_bg_press">#ffebedee</color>
+  <color name="color_context_default_bg_disabled">#ffd7dbdd</color>
+  <color name="color_context_alternate_base_color">#ffffffff</color>
+  <color name="color_context_alternate_contrast_color">#ff000000</color>
+  <color name="color_context_alternate_transparent_color">#00ffffff</color>
+  <color name="color_context_alternate_fg_main">#ffebedee</color>
+  <color name="color_context_alternate_fg_subtle">#99ebedee</color>
+  <color name="color_context_alternate_fg_slight">#40ebedee</color>
+  <color name="color_context_alternate_fg_active">#ffffffff</color>
+  <color name="color_context_alternate_fg_inverse">#ff191b1c</color>
+  <color name="color_context_alternate_fg_solid">#ffffffff</color>
+  <color name="color_context_alternate_fg_highlight">#ffb3dfea</color>
+  <color name="color_context_alternate_bg_main">#ff25292b</color>
+  <color name="color_context_alternate_bg_even">#ff191b1c</color>
+  <color name="color_context_alternate_bg_evident">#ff121415</color>
+  <color name="color_context_alternate_bg_active">#ff0094b8</color>
+  <color name="color_context_alternate_bg_inverse">#ffebedee</color>
+  <color name="color_context_alternate_bg_solid">#ff121415</color>
+  <color name="color_context_alternate_bg_highlight">#ff002c37</color>
+  <color name="color_context_alternate_border_main">#ff5c656b</color>
+  <color name="color_context_alternate_border_subtle">#26ebedee</color>
+  <color name="color_context_alternate_icon_main">#ff0094b8</color>
+  <color name="color_context_alternate_icon_subtle">#80ebedee</color>
+  <color name="color_context_alternate_icon_slight">#330094b8</color>
+  <color name="color_context_alternate_cue_main">#ff0094b8</color>
+  <color name="color_context_alternate_cue_slight">#330094b8</color>
+  <color name="color_context_alternate_link_main">#ff80cadc</color>
+  <color name="color_context_alternate_link_hover">#ffb3dfea</color>
+  <color name="color_context_alternate_link_active">#ffeb958e</color>
+  <color name="color_context_alternate_link_visited">#ff40afca</color>
+  <color name="color_context_alternate_dim_main">#b3ffffff</color>
+  <color name="color_context_alternate_dim_subtle">#4dffffff</color>
+  <color name="color_context_alternate_dim_slight">#0dffffff</color>
+  <color name="color_context_alternate_fg_idle">#ffebedee</color>
+  <color name="color_context_alternate_fg_hover">#e6ebedee</color>
+  <color name="color_context_alternate_fg_press">#e6ebedee</color>
+  <color name="color_context_alternate_fg_disabled">#40ebedee</color>
+  <color name="color_context_alternate_bg_idle">#ff25292b</color>
+  <color name="color_context_alternate_bg_hover">#ff191b1c</color>
+  <color name="color_context_alternate_bg_press">#ff121415</color>
+  <color name="color_context_alternate_bg_disabled">#ff25292b</color>
+  <color name="color_context_primary_base_color">#ff0094b8</color>
+  <color name="color_context_primary_contrast_color">#ffffffff</color>
+  <color name="color_context_primary_transparent_color">#000094b8</color>
+  <color name="color_context_primary_fg_main">#ff006f8a</color>
+  <color name="color_context_primary_fg_subtle">#b3006f8a</color>
+  <color name="color_context_primary_fg_slight">#40006f8a</color>
+  <color name="color_context_primary_fg_active">#ffffffff</color>
+  <color name="color_context_primary_fg_inverse">#ffd9eff4</color>
+  <color name="color_context_primary_fg_solid">#ffffffff</color>
+  <color name="color_context_primary_fg_highlight">#ff004a5c</color>
+  <color name="color_context_primary_bg_main">#ffedf8fa</color>
+  <color name="color_context_primary_bg_even">#ffd9eff4</color>
+  <color name="color_context_primary_bg_evident">#ffb3dfea</color>
+  <color name="color_context_primary_bg_active">#ff0094b8</color>
+  <color name="color_context_primary_bg_inverse">#ff001e25</color>
+  <color name="color_context_primary_bg_solid">#ff0094b8</color>
+  <color name="color_context_primary_bg_highlight">#ff80cadc</color>
+  <color name="color_context_primary_border_main">#ff40afca</color>
+  <color name="color_context_primary_border_subtle">#26006f8a</color>
+  <color name="color_context_primary_icon_main">#ff0094b8</color>
+  <color name="color_context_primary_icon_subtle">#80006f8a</color>
+  <color name="color_context_primary_icon_slight">#330094b8</color>
+  <color name="color_context_primary_cue_main">#ff0094b8</color>
+  <color name="color_context_primary_cue_slight">#330094b8</color>
+  <color name="color_context_primary_link_main">#ff0094b8</color>
+  <color name="color_context_primary_link_hover">#ff40afca</color>
+  <color name="color_context_primary_link_active">#ff0094b8</color>
+  <color name="color_context_primary_link_visited">#ff006f8a</color>
+  <color name="color_context_primary_dim_main">#b30094b8</color>
+  <color name="color_context_primary_dim_subtle">#4d0094b8</color>
+  <color name="color_context_primary_dim_slight">#1a0094b8</color>
+  <color name="color_context_primary_fg_idle">#ffffffff</color>
+  <color name="color_context_primary_fg_hover">#e6ffffff</color>
+  <color name="color_context_primary_fg_press">#e6ffffff</color>
+  <color name="color_context_primary_fg_disabled">#40ffffff</color>
+  <color name="color_context_primary_bg_idle">#ff0094b8</color>
+  <color name="color_context_primary_bg_hover">#ff40afca</color>
+  <color name="color_context_primary_bg_press">#ff006f8a</color>
+  <color name="color_context_primary_bg_disabled">#ffb3dfea</color>
+  <color name="color_context_secondary_base_color">#fff55200</color>
+  <color name="color_context_secondary_contrast_color">#ffffffff</color>
+  <color name="color_context_secondary_transparent_color">#00f55200</color>
+  <color name="color_context_secondary_fg_main">#ffb83e00</color>
+  <color name="color_context_secondary_fg_subtle">#b3b83e00</color>
+  <color name="color_context_secondary_fg_slight">#40b83e00</color>
+  <color name="color_context_secondary_fg_active">#ffffffff</color>
+  <color name="color_context_secondary_fg_inverse">#fffee5d9</color>
+  <color name="color_context_secondary_fg_solid">#ffffffff</color>
+  <color name="color_context_secondary_fg_highlight">#ff7b2900</color>
+  <color name="color_context_secondary_bg_main">#fffef3ed</color>
+  <color name="color_context_secondary_bg_even">#fffee5d9</color>
+  <color name="color_context_secondary_bg_evident">#fffccbb3</color>
+  <color name="color_context_secondary_bg_active">#fff55200</color>
+  <color name="color_context_secondary_bg_inverse">#ff311000</color>
+  <color name="color_context_secondary_bg_solid">#fff55200</color>
+  <color name="color_context_secondary_bg_highlight">#fffaa980</color>
+  <color name="color_context_secondary_border_main">#fff87d40</color>
+  <color name="color_context_secondary_border_subtle">#26b83e00</color>
+  <color name="color_context_secondary_icon_main">#fff55200</color>
+  <color name="color_context_secondary_icon_subtle">#80b83e00</color>
+  <color name="color_context_secondary_icon_slight">#33f55200</color>
+  <color name="color_context_secondary_cue_main">#fff55200</color>
+  <color name="color_context_secondary_cue_slight">#33f55200</color>
+  <color name="color_context_secondary_link_main">#fff55200</color>
+  <color name="color_context_secondary_link_hover">#fff87d40</color>
+  <color name="color_context_secondary_link_active">#fff55200</color>
+  <color name="color_context_secondary_link_visited">#ffb83e00</color>
+  <color name="color_context_secondary_dim_main">#b3f55200</color>
+  <color name="color_context_secondary_dim_subtle">#4df55200</color>
+  <color name="color_context_secondary_dim_slight">#1af55200</color>
+  <color name="color_context_secondary_fg_idle">#ffffffff</color>
+  <color name="color_context_secondary_fg_hover">#e6ffffff</color>
+  <color name="color_context_secondary_fg_press">#e6ffffff</color>
+  <color name="color_context_secondary_fg_disabled">#40ffffff</color>
+  <color name="color_context_secondary_bg_idle">#fff55200</color>
+  <color name="color_context_secondary_bg_hover">#fff87d40</color>
+  <color name="color_context_secondary_bg_press">#ffb83e00</color>
+  <color name="color_context_secondary_bg_disabled">#fffccbb3</color>
+  <color name="color_context_neutral_base_color">#ff7b878e</color>
+  <color name="color_context_neutral_contrast_color">#ffffffff</color>
+  <color name="color_context_neutral_transparent_color">#007b878e</color>
+  <color name="color_context_neutral_fg_main">#ff5c656b</color>
+  <color name="color_context_neutral_fg_subtle">#b35c656b</color>
+  <color name="color_context_neutral_fg_slight">#405c656b</color>
+  <color name="color_context_neutral_fg_active">#ffffffff</color>
+  <color name="color_context_neutral_fg_inverse">#ffebedee</color>
+  <color name="color_context_neutral_fg_solid">#ffffffff</color>
+  <color name="color_context_neutral_fg_highlight">#ff3e4447</color>
+  <color name="color_context_neutral_bg_main">#fff6f7f7</color>
+  <color name="color_context_neutral_bg_even">#ffebedee</color>
+  <color name="color_context_neutral_bg_evident">#ffd7dbdd</color>
+  <color name="color_context_neutral_bg_active">#ff7b878e</color>
+  <color name="color_context_neutral_bg_inverse">#ff191b1c</color>
+  <color name="color_context_neutral_bg_solid">#ff7b878e</color>
+  <color name="color_context_neutral_bg_highlight">#ffbdc3c7</color>
+  <color name="color_context_neutral_border_main">#ff9ca5aa</color>
+  <color name="color_context_neutral_border_subtle">#265c656b</color>
+  <color name="color_context_neutral_icon_main">#ff7b878e</color>
+  <color name="color_context_neutral_icon_subtle">#805c656b</color>
+  <color name="color_context_neutral_icon_slight">#337b878e</color>
+  <color name="color_context_neutral_cue_main">#ff7b878e</color>
+  <color name="color_context_neutral_cue_slight">#337b878e</color>
+  <color name="color_context_neutral_link_main">#ff7b878e</color>
+  <color name="color_context_neutral_link_hover">#ff9ca5aa</color>
+  <color name="color_context_neutral_link_active">#ff7b878e</color>
+  <color name="color_context_neutral_link_visited">#ff5c656b</color>
+  <color name="color_context_neutral_dim_main">#b37b878e</color>
+  <color name="color_context_neutral_dim_subtle">#4d7b878e</color>
+  <color name="color_context_neutral_dim_slight">#1a7b878e</color>
+  <color name="color_context_neutral_fg_idle">#ffffffff</color>
+  <color name="color_context_neutral_fg_hover">#e6ffffff</color>
+  <color name="color_context_neutral_fg_press">#e6ffffff</color>
+  <color name="color_context_neutral_fg_disabled">#40ffffff</color>
+  <color name="color_context_neutral_bg_idle">#ff7b878e</color>
+  <color name="color_context_neutral_bg_hover">#ff9ca5aa</color>
+  <color name="color_context_neutral_bg_press">#ff5c656b</color>
+  <color name="color_context_neutral_bg_disabled">#ffd7dbdd</color>
+  <color name="color_context_danger_base_color">#ffd72a1d</color>
+  <color name="color_context_danger_contrast_color">#ffffffff</color>
+  <color name="color_context_danger_transparent_color">#00d72a1d</color>
+  <color name="color_context_danger_fg_main">#ffa12016</color>
+  <color name="color_context_danger_fg_subtle">#b3a12016</color>
+  <color name="color_context_danger_fg_slight">#40a12016</color>
+  <color name="color_context_danger_fg_active">#ffffffff</color>
+  <color name="color_context_danger_fg_inverse">#fff9dfdd</color>
+  <color name="color_context_danger_fg_solid">#ffffffff</color>
+  <color name="color_context_danger_fg_highlight">#ff6c150f</color>
+  <color name="color_context_danger_bg_main">#fffcf0ef</color>
+  <color name="color_context_danger_bg_even">#fff9dfdd</color>
+  <color name="color_context_danger_bg_evident">#fff3bfbb</color>
+  <color name="color_context_danger_bg_active">#ffd72a1d</color>
+  <color name="color_context_danger_bg_inverse">#ff2b0806</color>
+  <color name="color_context_danger_bg_solid">#ffd72a1d</color>
+  <color name="color_context_danger_bg_highlight">#ffeb958e</color>
+  <color name="color_context_danger_border_main">#ffe15f56</color>
+  <color name="color_context_danger_border_subtle">#26a12016</color>
+  <color name="color_context_danger_icon_main">#ffd72a1d</color>
+  <color name="color_context_danger_icon_subtle">#80a12016</color>
+  <color name="color_context_danger_icon_slight">#33d72a1d</color>
+  <color name="color_context_danger_cue_main">#ffd72a1d</color>
+  <color name="color_context_danger_cue_slight">#33d72a1d</color>
+  <color name="color_context_danger_link_main">#ffd72a1d</color>
+  <color name="color_context_danger_link_hover">#ffe15f56</color>
+  <color name="color_context_danger_link_active">#ffd72a1d</color>
+  <color name="color_context_danger_link_visited">#ffa12016</color>
+  <color name="color_context_danger_dim_main">#b3d72a1d</color>
+  <color name="color_context_danger_dim_subtle">#4dd72a1d</color>
+  <color name="color_context_danger_dim_slight">#1ad72a1d</color>
+  <color name="color_context_danger_fg_idle">#ffffffff</color>
+  <color name="color_context_danger_fg_hover">#e6ffffff</color>
+  <color name="color_context_danger_fg_press">#e6ffffff</color>
+  <color name="color_context_danger_fg_disabled">#40ffffff</color>
+  <color name="color_context_danger_bg_idle">#ffd72a1d</color>
+  <color name="color_context_danger_bg_hover">#ffe15f56</color>
+  <color name="color_context_danger_bg_press">#ffa12016</color>
+  <color name="color_context_danger_bg_disabled">#fff3bfbb</color>
+  <color name="color_context_success_base_color">#ff1a9e4f</color>
+  <color name="color_context_success_contrast_color">#ffffffff</color>
+  <color name="color_context_success_transparent_color">#001a9e4f</color>
+  <color name="color_context_success_fg_main">#ff14773b</color>
+  <color name="color_context_success_fg_subtle">#b314773b</color>
+  <color name="color_context_success_fg_slight">#4014773b</color>
+  <color name="color_context_success_fg_inverse">#ffddf0e5</color>
+  <color name="color_context_success_fg_active">#ffffffff</color>
+  <color name="color_context_success_fg_solid">#ffffffff</color>
+  <color name="color_context_success_fg_highlight">#ff0d4f28</color>
+  <color name="color_context_success_bg_main">#ffeff8f3</color>
+  <color name="color_context_success_bg_even">#ffddf0e5</color>
+  <color name="color_context_success_bg_evident">#ffbae2ca</color>
+  <color name="color_context_success_bg_active">#ff1a9e4f</color>
+  <color name="color_context_success_bg_inverse">#ff052010</color>
+  <color name="color_context_success_bg_solid">#ff1a9e4f</color>
+  <color name="color_context_success_bg_highlight">#ff8dcfa7</color>
+  <color name="color_context_success_border_main">#ff53b67b</color>
+  <color name="color_context_success_border_subtle">#2614773b</color>
+  <color name="color_context_success_icon_main">#ff1a9e4f</color>
+  <color name="color_context_success_icon_subtle">#8014773b</color>
+  <color name="color_context_success_icon_slight">#331a9e4f</color>
+  <color name="color_context_success_cue_main">#ff1a9e4f</color>
+  <color name="color_context_success_cue_slight">#331a9e4f</color>
+  <color name="color_context_success_link_main">#ff1a9e4f</color>
+  <color name="color_context_success_link_hover">#ff53b67b</color>
+  <color name="color_context_success_link_active">#ff1a9e4f</color>
+  <color name="color_context_success_link_visited">#ff14773b</color>
+  <color name="color_context_success_dim_main">#b31a9e4f</color>
+  <color name="color_context_success_dim_subtle">#4d1a9e4f</color>
+  <color name="color_context_success_dim_slight">#1a1a9e4f</color>
+  <color name="color_context_success_fg_idle">#ffffffff</color>
+  <color name="color_context_success_fg_hover">#e6ffffff</color>
+  <color name="color_context_success_fg_press">#e6ffffff</color>
+  <color name="color_context_success_fg_disabled">#40ffffff</color>
+  <color name="color_context_success_bg_idle">#ff1a9e4f</color>
+  <color name="color_context_success_bg_hover">#ff53b67b</color>
+  <color name="color_context_success_bg_press">#ff14773b</color>
+  <color name="color_context_success_bg_disabled">#ffbae2ca</color>
+  <color name="color_context_warning_base_color">#fff0a205</color>
+  <color name="color_context_warning_contrast_color">#ff000000</color>
+  <color name="color_context_warning_transparent_color">#00f0a205</color>
+  <color name="color_context_warning_fg_main">#ffb47a04</color>
+  <color name="color_context_warning_fg_subtle">#b3b47a04</color>
+  <color name="color_context_warning_fg_slight">#40b47a04</color>
+  <color name="color_context_warning_fg_active">#ff000000</color>
+  <color name="color_context_warning_fg_inverse">#fffdf1da</color>
+  <color name="color_context_warning_fg_solid">#ff000000</color>
+  <color name="color_context_warning_fg_highlight">#ff785103</color>
+  <color name="color_context_warning_bg_main">#fffef8ee</color>
+  <color name="color_context_warning_bg_even">#fffdf1da</color>
+  <color name="color_context_warning_bg_evident">#fffbe3b4</color>
+  <color name="color_context_warning_bg_active">#fff0a205</color>
+  <color name="color_context_warning_bg_inverse">#ff302001</color>
+  <color name="color_context_warning_bg_solid">#fff0a205</color>
+  <color name="color_context_warning_bg_highlight">#fff8d182</color>
+  <color name="color_context_warning_border_main">#fff4b944</color>
+  <color name="color_context_warning_border_subtle">#26b47a04</color>
+  <color name="color_context_warning_icon_main">#fff0a205</color>
+  <color name="color_context_warning_icon_subtle">#80b47a04</color>
+  <color name="color_context_warning_icon_slight">#33f0a205</color>
+  <color name="color_context_warning_cue_main">#fff0a205</color>
+  <color name="color_context_warning_cue_slight">#33f0a205</color>
+  <color name="color_context_warning_link_main">#fff0a205</color>
+  <color name="color_context_warning_link_hover">#fff4b944</color>
+  <color name="color_context_warning_link_active">#fff0a205</color>
+  <color name="color_context_warning_link_visited">#ffb47a04</color>
+  <color name="color_context_warning_dim_main">#b3f0a205</color>
+  <color name="color_context_warning_dim_subtle">#4df0a205</color>
+  <color name="color_context_warning_dim_slight">#1af0a205</color>
+  <color name="color_context_warning_fg_idle">#ff000000</color>
+  <color name="color_context_warning_fg_hover">#e6000000</color>
+  <color name="color_context_warning_fg_press">#e6000000</color>
+  <color name="color_context_warning_fg_disabled">#40000000</color>
+  <color name="color_context_warning_bg_idle">#fff0a205</color>
+  <color name="color_context_warning_bg_hover">#fff4b944</color>
+  <color name="color_context_warning_bg_press">#ffb47a04</color>
+  <color name="color_context_warning_bg_disabled">#fffbe3b4</color>
+  <color name="color_context_info_base_color">#ff3a72e4</color>
+  <color name="color_context_info_contrast_color">#ffffffff</color>
+  <color name="color_context_info_transparent_color">#003a72e4</color>
+  <color name="color_context_info_fg_main">#ff2c56ab</color>
+  <color name="color_context_info_fg_subtle">#b32c56ab</color>
+  <color name="color_context_info_fg_slight">#402c56ab</color>
+  <color name="color_context_info_fg_active">#ffffffff</color>
+  <color name="color_context_info_fg_inverse">#ffe1eafb</color>
+  <color name="color_context_info_fg_solid">#ffffffff</color>
+  <color name="color_context_info_fg_highlight">#ff1d3972</color>
+  <color name="color_context_info_bg_main">#fff1f5fd</color>
+  <color name="color_context_info_bg_even">#ffe1eafb</color>
+  <color name="color_context_info_bg_evident">#ffc4d5f7</color>
+  <color name="color_context_info_bg_active">#ff3a72e4</color>
+  <color name="color_context_info_bg_inverse">#ff0c172e</color>
+  <color name="color_context_info_bg_solid">#ff3a72e4</color>
+  <color name="color_context_info_bg_highlight">#ff9db9f2</color>
+  <color name="color_context_info_border_main">#ff6b95eb</color>
+  <color name="color_context_info_border_subtle">#262c56ab</color>
+  <color name="color_context_info_icon_main">#ff3a72e4</color>
+  <color name="color_context_info_icon_subtle">#802c56ab</color>
+  <color name="color_context_info_icon_slight">#333a72e4</color>
+  <color name="color_context_info_cue_main">#ff3a72e4</color>
+  <color name="color_context_info_cue_slight">#333a72e4</color>
+  <color name="color_context_info_link_main">#ff3a72e4</color>
+  <color name="color_context_info_link_hover">#ff6b95eb</color>
+  <color name="color_context_info_link_active">#ff3a72e4</color>
+  <color name="color_context_info_link_visited">#ff2c56ab</color>
+  <color name="color_context_info_dim_main">#b33a72e4</color>
+  <color name="color_context_info_dim_subtle">#4d3a72e4</color>
+  <color name="color_context_info_dim_slight">#1a3a72e4</color>
+  <color name="color_context_info_fg_idle">#ffffffff</color>
+  <color name="color_context_info_fg_hover">#e6ffffff</color>
+  <color name="color_context_info_fg_press">#e6ffffff</color>
+  <color name="color_context_info_fg_disabled">#40ffffff</color>
+  <color name="color_context_info_bg_idle">#ff3a72e4</color>
+  <color name="color_context_info_bg_hover">#ff6b95eb</color>
+  <color name="color_context_info_bg_press">#ff2c56ab</color>
+  <color name="color_context_info_bg_disabled">#ffc4d5f7</color>
+  <color name="color_context_black_base_color">#ff000000</color>
+  <color name="color_context_black_contrast_color">#ffffffff</color>
+  <color name="color_context_black_transparent_color">#00000000</color>
+  <color name="color_context_black_fg_main">#ff000000</color>
+  <color name="color_context_black_fg_subtle">#80000000</color>
+  <color name="color_context_black_fg_slight">#4d000000</color>
+  <color name="color_context_black_fg_active">#ffffffff</color>
+  <color name="color_context_black_fg_inverse">#ffffffff</color>
+  <color name="color_context_black_fg_solid">#ffffffff</color>
+  <color name="color_context_black_fg_highlight">#ff000000</color>
+  <color name="color_context_black_bg_main">#0d000000</color>
+  <color name="color_context_black_bg_even">#1a000000</color>
+  <color name="color_context_black_bg_evident">#33000000</color>
+  <color name="color_context_black_bg_active">#ff000000</color>
+  <color name="color_context_black_bg_inverse">#e6000000</color>
+  <color name="color_context_black_bg_solid">#ff000000</color>
+  <color name="color_context_black_bg_highlight">#33000000</color>
+  <color name="color_context_black_border_main">#4d000000</color>
+  <color name="color_context_black_border_subtle">#26000000</color>
+  <color name="color_context_black_icon_main">#ff000000</color>
+  <color name="color_context_black_icon_subtle">#80000000</color>
+  <color name="color_context_black_icon_slight">#33000000</color>
+  <color name="color_context_black_cue_main">#ff000000</color>
+  <color name="color_context_black_cue_slight">#33000000</color>
+  <color name="color_context_black_link_main">#ff000000</color>
+  <color name="color_context_black_link_hover">#e6000000</color>
+  <color name="color_context_black_link_active">#ffd72a1d</color>
+  <color name="color_context_black_link_visited">#99000000</color>
+  <color name="color_context_black_dim_main">#b3000000</color>
+  <color name="color_context_black_dim_subtle">#4d000000</color>
+  <color name="color_context_black_dim_slight">#1a000000</color>
+  <color name="color_context_black_fg_idle">#ffffffff</color>
+  <color name="color_context_black_fg_hover">#e6ffffff</color>
+  <color name="color_context_black_fg_press">#e6ffffff</color>
+  <color name="color_context_black_fg_disabled">#40ffffff</color>
+  <color name="color_context_black_bg_idle">#ff000000</color>
+  <color name="color_context_black_bg_hover">#e6000000</color>
+  <color name="color_context_black_bg_press">#f2000000</color>
+  <color name="color_context_black_bg_disabled">#33000000</color>
+  <color name="color_context_white_base_color">#ffffffff</color>
+  <color name="color_context_white_contrast_color">#ff000000</color>
+  <color name="color_context_white_transparent_color">#00ffffff</color>
+  <color name="color_context_white_fg_main">#ffffffff</color>
+  <color name="color_context_white_fg_subtle">#80ffffff</color>
+  <color name="color_context_white_fg_slight">#4dffffff</color>
+  <color name="color_context_white_fg_active">#ff000000</color>
+  <color name="color_context_white_fg_inverse">#ff000000</color>
+  <color name="color_context_white_fg_solid">#ff000000</color>
+  <color name="color_context_white_fg_highlight">#ffffffff</color>
+  <color name="color_context_white_bg_main">#0dffffff</color>
+  <color name="color_context_white_bg_even">#1affffff</color>
+  <color name="color_context_white_bg_evident">#33ffffff</color>
+  <color name="color_context_white_bg_active">#ffffffff</color>
+  <color name="color_context_white_bg_inverse">#f2ffffff</color>
+  <color name="color_context_white_bg_solid">#ffffffff</color>
+  <color name="color_context_white_bg_highlight">#33ffffff</color>
+  <color name="color_context_white_border_main">#4dffffff</color>
+  <color name="color_context_white_border_subtle">#26ffffff</color>
+  <color name="color_context_white_icon_main">#ffffffff</color>
+  <color name="color_context_white_icon_subtle">#80ffffff</color>
+  <color name="color_context_white_icon_slight">#33ffffff</color>
+  <color name="color_context_white_cue_main">#ffffffff</color>
+  <color name="color_context_white_cue_slight">#33ffffff</color>
+  <color name="color_context_white_link_main">#ffffffff</color>
+  <color name="color_context_white_link_hover">#e6ffffff</color>
+  <color name="color_context_white_link_active">#ffd72a1d</color>
+  <color name="color_context_white_link_visited">#99ffffff</color>
+  <color name="color_context_white_dim_main">#b3ffffff</color>
+  <color name="color_context_white_dim_subtle">#4dffffff</color>
+  <color name="color_context_white_dim_slight">#1affffff</color>
+  <color name="color_context_white_fg_idle">#ff000000</color>
+  <color name="color_context_white_fg_hover">#e6000000</color>
+  <color name="color_context_white_fg_press">#e6000000</color>
+  <color name="color_context_white_fg_disabled">#40000000</color>
+  <color name="color_context_white_bg_idle">#ffffffff</color>
+  <color name="color_context_white_bg_hover">#e6ffffff</color>
+  <color name="color_context_white_bg_press">#f2ffffff</color>
+  <color name="color_context_white_bg_disabled">#33ffffff</color>
+  <color name="color_primitive_primary_10">#ffd9eff4</color>
+  <color name="color_primitive_primary_20">#ffb3dfea</color>
+  <color name="color_primitive_primary_30">#ff80cadc</color>
+  <color name="color_primitive_primary_40">#ff40afca</color>
+  <color name="color_primitive_primary_50">#ff0094b8</color>
+  <color name="color_primitive_primary_60">#ff006f8a</color>
+  <color name="color_primitive_primary_70">#ff004a5c</color>
+  <color name="color_primitive_primary_80">#ff002c37</color>
+  <color name="color_primitive_primary_90">#ff001e25</color>
+  <color name="color_primitive_primary_95">#ff00161c</color>
+  <color name="color_primitive_primary_base">#ff0094b8</color>
+  <color name="color_primitive_primary_transparent">#000094b8</color>
+  <color name="color_primitive_primary_contrast">#ffffffff</color>
+  <color name="color_primitive_primary_05">#ffedf8fa</color>
+  <color name="color_primitive_primary_t_5005">#0d0094b8</color>
+  <color name="color_primitive_primary_t_5010">#1a0094b8</color>
+  <color name="color_primitive_primary_t_5020">#330094b8</color>
+  <color name="color_primitive_primary_t_5030">#4d0094b8</color>
+  <color name="color_primitive_primary_t_5040">#660094b8</color>
+  <color name="color_primitive_primary_t_5050">#800094b8</color>
+  <color name="color_primitive_primary_t_5060">#990094b8</color>
+  <color name="color_primitive_primary_t_5070">#b30094b8</color>
+  <color name="color_primitive_primary_t_5080">#cc0094b8</color>
+  <color name="color_primitive_primary_t_5090">#e60094b8</color>
+  <color name="color_primitive_primary_t_5095">#f20094b8</color>
+  <color name="color_primitive_secondary_10">#fffee5d9</color>
+  <color name="color_primitive_secondary_20">#fffccbb3</color>
+  <color name="color_primitive_secondary_30">#fffaa980</color>
+  <color name="color_primitive_secondary_40">#fff87d40</color>
+  <color name="color_primitive_secondary_50">#fff55200</color>
+  <color name="color_primitive_secondary_60">#ffb83e00</color>
+  <color name="color_primitive_secondary_70">#ff7b2900</color>
+  <color name="color_primitive_secondary_80">#ff4a1900</color>
+  <color name="color_primitive_secondary_90">#ff311000</color>
+  <color name="color_primitive_secondary_95">#ff250c00</color>
+  <color name="color_primitive_secondary_base">#fff55200</color>
+  <color name="color_primitive_secondary_transparent">#00f55200</color>
+  <color name="color_primitive_secondary_contrast">#ffffffff</color>
+  <color name="color_primitive_secondary_05">#fffef3ed</color>
+  <color name="color_primitive_secondary_t_5005">#0df55200</color>
+  <color name="color_primitive_secondary_t_5010">#1af55200</color>
+  <color name="color_primitive_secondary_t_5020">#33f55200</color>
+  <color name="color_primitive_secondary_t_5030">#4df55200</color>
+  <color name="color_primitive_secondary_t_5040">#66f55200</color>
+  <color name="color_primitive_secondary_t_5050">#80f55200</color>
+  <color name="color_primitive_secondary_t_5060">#99f55200</color>
+  <color name="color_primitive_secondary_t_5070">#b3f55200</color>
+  <color name="color_primitive_secondary_t_5080">#ccf55200</color>
+  <color name="color_primitive_secondary_t_5090">#e6f55200</color>
+  <color name="color_primitive_secondary_t_5095">#f2f55200</color>
+  <color name="color_primitive_neutral_10">#ffebedee</color>
+  <color name="color_primitive_neutral_20">#ffd7dbdd</color>
+  <color name="color_primitive_neutral_30">#ffbdc3c7</color>
+  <color name="color_primitive_neutral_40">#ff9ca5aa</color>
+  <color name="color_primitive_neutral_50">#ff7b878e</color>
+  <color name="color_primitive_neutral_60">#ff5c656b</color>
+  <color name="color_primitive_neutral_70">#ff3e4447</color>
+  <color name="color_primitive_neutral_80">#ff25292b</color>
+  <color name="color_primitive_neutral_90">#ff191b1c</color>
+  <color name="color_primitive_neutral_95">#ff121415</color>
+  <color name="color_primitive_neutral_base">#ff7b878e</color>
+  <color name="color_primitive_neutral_transparent">#007b878e</color>
+  <color name="color_primitive_neutral_contrast">#ffffffff</color>
+  <color name="color_primitive_neutral_05">#fff6f7f7</color>
+  <color name="color_primitive_neutral_t_5005">#0d7b878e</color>
+  <color name="color_primitive_neutral_t_5010">#1a7b878e</color>
+  <color name="color_primitive_neutral_t_5020">#337b878e</color>
+  <color name="color_primitive_neutral_t_5030">#4d7b878e</color>
+  <color name="color_primitive_neutral_t_5040">#667b878e</color>
+  <color name="color_primitive_neutral_t_5050">#807b878e</color>
+  <color name="color_primitive_neutral_t_5060">#997b878e</color>
+  <color name="color_primitive_neutral_t_5070">#b37b878e</color>
+  <color name="color_primitive_neutral_t_5080">#cc7b878e</color>
+  <color name="color_primitive_neutral_t_5090">#e67b878e</color>
+  <color name="color_primitive_neutral_t_5095">#f27b878e</color>
+  <color name="color_primitive_danger_10">#fff9dfdd</color>
+  <color name="color_primitive_danger_20">#fff3bfbb</color>
+  <color name="color_primitive_danger_30">#ffeb958e</color>
+  <color name="color_primitive_danger_40">#ffe15f56</color>
+  <color name="color_primitive_danger_50">#ffd72a1d</color>
+  <color name="color_primitive_danger_60">#ffa12016</color>
+  <color name="color_primitive_danger_70">#ff6c150f</color>
+  <color name="color_primitive_danger_80">#ff410d09</color>
+  <color name="color_primitive_danger_90">#ff2b0806</color>
+  <color name="color_primitive_danger_95">#ff200604</color>
+  <color name="color_primitive_danger_base">#ffd72a1d</color>
+  <color name="color_primitive_danger_transparent">#00d72a1d</color>
+  <color name="color_primitive_danger_contrast">#ffffffff</color>
+  <color name="color_primitive_danger_05">#fffcf0ef</color>
+  <color name="color_primitive_danger_t_5005">#0dd72a1d</color>
+  <color name="color_primitive_danger_t_5010">#1ad72a1d</color>
+  <color name="color_primitive_danger_t_5020">#33d72a1d</color>
+  <color name="color_primitive_danger_t_5030">#4dd72a1d</color>
+  <color name="color_primitive_danger_t_5040">#66d72a1d</color>
+  <color name="color_primitive_danger_t_5050">#80d72a1d</color>
+  <color name="color_primitive_danger_t_5060">#99d72a1d</color>
+  <color name="color_primitive_danger_t_5070">#b3d72a1d</color>
+  <color name="color_primitive_danger_t_5080">#ccd72a1d</color>
+  <color name="color_primitive_danger_t_5090">#e6d72a1d</color>
+  <color name="color_primitive_danger_t_5095">#f2d72a1d</color>
+  <color name="color_primitive_success_10">#ffddf0e5</color>
+  <color name="color_primitive_success_20">#ffbae2ca</color>
+  <color name="color_primitive_success_30">#ff8dcfa7</color>
+  <color name="color_primitive_success_40">#ff53b67b</color>
+  <color name="color_primitive_success_50">#ff1a9e4f</color>
+  <color name="color_primitive_success_60">#ff14773b</color>
+  <color name="color_primitive_success_70">#ff0d4f28</color>
+  <color name="color_primitive_success_80">#ff082f18</color>
+  <color name="color_primitive_success_90">#ff052010</color>
+  <color name="color_primitive_success_95">#ff04180c</color>
+  <color name="color_primitive_success_base">#ff1a9e4f</color>
+  <color name="color_primitive_success_transparent">#001a9e4f</color>
+  <color name="color_primitive_success_contrast">#ffffffff</color>
+  <color name="color_primitive_success_05">#ffeff8f3</color>
+  <color name="color_primitive_success_t_5005">#0d1a9e4f</color>
+  <color name="color_primitive_success_t_5010">#1a1a9e4f</color>
+  <color name="color_primitive_success_t_5020">#331a9e4f</color>
+  <color name="color_primitive_success_t_5030">#4d1a9e4f</color>
+  <color name="color_primitive_success_t_5040">#661a9e4f</color>
+  <color name="color_primitive_success_t_5050">#801a9e4f</color>
+  <color name="color_primitive_success_t_5060">#991a9e4f</color>
+  <color name="color_primitive_success_t_5070">#b31a9e4f</color>
+  <color name="color_primitive_success_t_5080">#cc1a9e4f</color>
+  <color name="color_primitive_success_t_5090">#e61a9e4f</color>
+  <color name="color_primitive_success_t_5095">#f21a9e4f</color>
+  <color name="color_primitive_warning_10">#fffdf1da</color>
+  <color name="color_primitive_warning_20">#fffbe3b4</color>
+  <color name="color_primitive_warning_30">#fff8d182</color>
+  <color name="color_primitive_warning_40">#fff4b944</color>
+  <color name="color_primitive_warning_50">#fff0a205</color>
+  <color name="color_primitive_warning_60">#ffb47a04</color>
+  <color name="color_primitive_warning_70">#ff785103</color>
+  <color name="color_primitive_warning_80">#ff483102</color>
+  <color name="color_primitive_warning_90">#ff302001</color>
+  <color name="color_primitive_warning_95">#ff241801</color>
+  <color name="color_primitive_warning_base">#fff0a205</color>
+  <color name="color_primitive_warning_transparent">#00f0a205</color>
+  <color name="color_primitive_warning_contrast">#ff000000</color>
+  <color name="color_primitive_warning_05">#fffef8ee</color>
+  <color name="color_primitive_warning_t_5005">#0df0a205</color>
+  <color name="color_primitive_warning_t_5010">#1af0a205</color>
+  <color name="color_primitive_warning_t_5020">#33f0a205</color>
+  <color name="color_primitive_warning_t_5030">#4df0a205</color>
+  <color name="color_primitive_warning_t_5040">#66f0a205</color>
+  <color name="color_primitive_warning_t_5050">#80f0a205</color>
+  <color name="color_primitive_warning_t_5060">#99f0a205</color>
+  <color name="color_primitive_warning_t_5070">#b3f0a205</color>
+  <color name="color_primitive_warning_t_5080">#ccf0a205</color>
+  <color name="color_primitive_warning_t_5090">#e6f0a205</color>
+  <color name="color_primitive_warning_t_5095">#f2f0a205</color>
+  <color name="color_primitive_info_10">#ffe1eafb</color>
+  <color name="color_primitive_info_20">#ffc4d5f7</color>
+  <color name="color_primitive_info_30">#ff9db9f2</color>
+  <color name="color_primitive_info_40">#ff6b95eb</color>
+  <color name="color_primitive_info_50">#ff3a72e4</color>
+  <color name="color_primitive_info_60">#ff2c56ab</color>
+  <color name="color_primitive_info_70">#ff1d3972</color>
+  <color name="color_primitive_info_80">#ff112244</color>
+  <color name="color_primitive_info_90">#ff0c172e</color>
+  <color name="color_primitive_info_95">#ff091122</color>
+  <color name="color_primitive_info_base">#ff3a72e4</color>
+  <color name="color_primitive_info_transparent">#003a72e4</color>
+  <color name="color_primitive_info_contrast">#ffffffff</color>
+  <color name="color_primitive_info_05">#fff1f5fd</color>
+  <color name="color_primitive_info_t_5005">#0d3a72e4</color>
+  <color name="color_primitive_info_t_5010">#1a3a72e4</color>
+  <color name="color_primitive_info_t_5020">#333a72e4</color>
+  <color name="color_primitive_info_t_5030">#4d3a72e4</color>
+  <color name="color_primitive_info_t_5040">#663a72e4</color>
+  <color name="color_primitive_info_t_5050">#803a72e4</color>
+  <color name="color_primitive_info_t_5060">#993a72e4</color>
+  <color name="color_primitive_info_t_5070">#b33a72e4</color>
+  <color name="color_primitive_info_t_5080">#cc3a72e4</color>
+  <color name="color_primitive_info_t_5090">#e63a72e4</color>
+  <color name="color_primitive_info_t_5095">#f23a72e4</color>
+  <color name="color_primitive_black_base">#ff000000</color>
+  <color name="color_primitive_black_transparent">#00000000</color>
+  <color name="color_primitive_black_contrast">#ffffffff</color>
+  <color name="color_primitive_black_t_05">#0d000000</color>
+  <color name="color_primitive_black_t_10">#1a000000</color>
+  <color name="color_primitive_black_t_20">#33000000</color>
+  <color name="color_primitive_black_t_30">#4d000000</color>
+  <color name="color_primitive_black_t_40">#66000000</color>
+  <color name="color_primitive_black_t_50">#80000000</color>
+  <color name="color_primitive_black_t_60">#99000000</color>
+  <color name="color_primitive_black_t_70">#b3000000</color>
+  <color name="color_primitive_black_t_80">#cc000000</color>
+  <color name="color_primitive_black_t_90">#e6000000</color>
+  <color name="color_primitive_black_t_95">#f2000000</color>
+  <color name="color_primitive_white_base">#ffffffff</color>
+  <color name="color_primitive_white_transparent">#00ffffff</color>
+  <color name="color_primitive_white_contrast">#ff000000</color>
+  <color name="color_primitive_white_t_05">#0dffffff</color>
+  <color name="color_primitive_white_t_10">#1affffff</color>
+  <color name="color_primitive_white_t_20">#33ffffff</color>
+  <color name="color_primitive_white_t_30">#4dffffff</color>
+  <color name="color_primitive_white_t_40">#66ffffff</color>
+  <color name="color_primitive_white_t_50">#80ffffff</color>
+  <color name="color_primitive_white_t_60">#99ffffff</color>
+  <color name="color_primitive_white_t_70">#b3ffffff</color>
+  <color name="color_primitive_white_t_80">#ccffffff</color>
+  <color name="color_primitive_white_t_90">#e6ffffff</color>
+  <color name="color_primitive_white_t_95">#f2ffffff</color>
+  <color name="color_shadow_default">#1a000000</color>
+  <color name="color_shadow_alternate">#33000000</color>
+  <color name="color_shadow_primary">#660094b8</color>
+  <color name="color_shadow_secondary">#66f55200</color>
+  <color name="color_shadow_neutral">#667b878e</color>
+  <color name="color_shadow_danger">#66d72a1d</color>
+  <color name="color_shadow_success">#661a9e4f</color>
+  <color name="color_shadow_warning">#66f0a205</color>
+  <color name="color_shadow_info">#663a72e4</color>
+  <color name="color_accordion_item_fg_color">#ff191b1c</color>
+  <color name="color_accordion_item_bg_color">#ffffffff</color>
+  <color name="color_accordion_title_fg_idle">#ff191b1c</color>
+  <color name="color_accordion_title_bg_idle">#ffffffff</color>
+  <color name="color_accordion_title_fg_active">#ff191b1c</color>
+  <color name="color_accordion_title_bg_active">#ffffffff</color>
+  <color name="color_accordion_indicator_idle">#ff191b1c</color>
+  <color name="color_accordion_indicator_active">#ff0094b8</color>
+  <color name="color_accordion_border_main">#26191b1c</color>
+  <color name="color_button_default_fg_idle">#ff191b1c</color>
+  <color name="color_button_default_fg_disabled">#40191b1c</color>
+  <color name="color_button_default_fg_hover">#e6191b1c</color>
+  <color name="color_button_default_fg_press">#e6191b1c</color>
+  <color name="color_button_default_bg_idle">#ffffffff</color>
+  <color name="color_button_default_bg_disabled">#ffd7dbdd</color>
+  <color name="color_button_default_bg_hover">#fff6f7f7</color>
+  <color name="color_button_default_bg_press">#ffebedee</color>
+  <color name="color_button_default_border_idle">#ff9ca5aa</color>
+  <color name="color_button_default_border_disabled">#00000000</color>
+  <color name="color_button_default_border_hover">#ff9ca5aa</color>
+  <color name="color_button_default_border_press">#ff191b1c</color>
+  <color name="color_button_alternate_fg_idle">#ffebedee</color>
+  <color name="color_button_alternate_fg_disabled">#40ebedee</color>
+  <color name="color_button_alternate_fg_hover">#e6ebedee</color>
+  <color name="color_button_alternate_fg_press">#e6ebedee</color>
+  <color name="color_button_alternate_bg_idle">#ff25292b</color>
+  <color name="color_button_alternate_bg_disabled">#ff25292b</color>
+  <color name="color_button_alternate_bg_hover">#ff191b1c</color>
+  <color name="color_button_alternate_bg_press">#ff121415</color>
+  <color name="color_button_alternate_border_idle">#ff5c656b</color>
+  <color name="color_button_alternate_border_disabled">#00ffffff</color>
+  <color name="color_button_alternate_border_hover">#ff5c656b</color>
+  <color name="color_button_alternate_border_press">#ffebedee</color>
+  <color name="color_button_black_fg_idle">#ffffffff</color>
+  <color name="color_button_black_fg_disabled">#40ffffff</color>
+  <color name="color_button_black_fg_hover">#e6ffffff</color>
+  <color name="color_button_black_fg_press">#e6ffffff</color>
+  <color name="color_button_black_bg_idle">#ff000000</color>
+  <color name="color_button_black_bg_disabled">#33000000</color>
+  <color name="color_button_black_bg_hover">#e6000000</color>
+  <color name="color_button_black_bg_press">#f2000000</color>
+  <color name="color_button_black_border_idle">#00000000</color>
+  <color name="color_button_black_border_disabled">#00000000</color>
+  <color name="color_button_black_border_hover">#00000000</color>
+  <color name="color_button_black_border_press">#00000000</color>
+  <color name="color_button_white_fg_idle">#ff000000</color>
+  <color name="color_button_white_fg_disabled">#40000000</color>
+  <color name="color_button_white_fg_hover">#e6000000</color>
+  <color name="color_button_white_fg_press">#e6000000</color>
+  <color name="color_button_white_bg_idle">#ffffffff</color>
+  <color name="color_button_white_bg_disabled">#33ffffff</color>
+  <color name="color_button_white_bg_hover">#e6ffffff</color>
+  <color name="color_button_white_bg_press">#f2ffffff</color>
+  <color name="color_button_white_border_idle">#00ffffff</color>
+  <color name="color_button_white_border_disabled">#00ffffff</color>
+  <color name="color_button_white_border_hover">#00ffffff</color>
+  <color name="color_button_white_border_press">#00ffffff</color>
+  <color name="color_button_primary_fg_idle">#ffffffff</color>
+  <color name="color_button_primary_fg_disabled">#40ffffff</color>
+  <color name="color_button_primary_fg_hover">#e6ffffff</color>
+  <color name="color_button_primary_fg_press">#e6ffffff</color>
+  <color name="color_button_primary_bg_idle">#ff0094b8</color>
+  <color name="color_button_primary_bg_disabled">#ffb3dfea</color>
+  <color name="color_button_primary_bg_hover">#ff40afca</color>
+  <color name="color_button_primary_bg_press">#ff006f8a</color>
+  <color name="color_button_primary_border_idle">#000094b8</color>
+  <color name="color_button_primary_border_disabled">#000094b8</color>
+  <color name="color_button_primary_border_hover">#000094b8</color>
+  <color name="color_button_primary_border_press">#000094b8</color>
+  <color name="color_button_secondary_fg_idle">#ffffffff</color>
+  <color name="color_button_secondary_fg_disabled">#40ffffff</color>
+  <color name="color_button_secondary_fg_hover">#e6ffffff</color>
+  <color name="color_button_secondary_fg_press">#e6ffffff</color>
+  <color name="color_button_secondary_bg_idle">#fff55200</color>
+  <color name="color_button_secondary_bg_disabled">#fffccbb3</color>
+  <color name="color_button_secondary_bg_hover">#fff87d40</color>
+  <color name="color_button_secondary_bg_press">#ffb83e00</color>
+  <color name="color_button_secondary_border_idle">#00f55200</color>
+  <color name="color_button_secondary_border_disabled">#00f55200</color>
+  <color name="color_button_secondary_border_hover">#00f55200</color>
+  <color name="color_button_secondary_border_press">#00f55200</color>
+  <color name="color_button_neutral_fg_idle">#ffffffff</color>
+  <color name="color_button_neutral_fg_disabled">#40ffffff</color>
+  <color name="color_button_neutral_fg_hover">#e6ffffff</color>
+  <color name="color_button_neutral_fg_press">#e6ffffff</color>
+  <color name="color_button_neutral_bg_idle">#ff7b878e</color>
+  <color name="color_button_neutral_bg_disabled">#ffd7dbdd</color>
+  <color name="color_button_neutral_bg_hover">#ff9ca5aa</color>
+  <color name="color_button_neutral_bg_press">#ff5c656b</color>
+  <color name="color_button_neutral_border_idle">#007b878e</color>
+  <color name="color_button_neutral_border_disabled">#007b878e</color>
+  <color name="color_button_neutral_border_hover">#007b878e</color>
+  <color name="color_button_neutral_border_press">#007b878e</color>
+  <color name="color_button_danger_fg_idle">#ffffffff</color>
+  <color name="color_button_danger_fg_disabled">#40ffffff</color>
+  <color name="color_button_danger_fg_hover">#e6ffffff</color>
+  <color name="color_button_danger_fg_press">#e6ffffff</color>
+  <color name="color_button_danger_bg_idle">#ffd72a1d</color>
+  <color name="color_button_danger_bg_disabled">#fff3bfbb</color>
+  <color name="color_button_danger_bg_hover">#ffe15f56</color>
+  <color name="color_button_danger_bg_press">#ffa12016</color>
+  <color name="color_button_danger_border_idle">#00d72a1d</color>
+  <color name="color_button_danger_border_disabled">#00d72a1d</color>
+  <color name="color_button_danger_border_hover">#00d72a1d</color>
+  <color name="color_button_danger_border_press">#00d72a1d</color>
+  <color name="color_button_success_fg_idle">#ffffffff</color>
+  <color name="color_button_success_fg_disabled">#40ffffff</color>
+  <color name="color_button_success_fg_hover">#e6ffffff</color>
+  <color name="color_button_success_fg_press">#e6ffffff</color>
+  <color name="color_button_success_bg_idle">#ff1a9e4f</color>
+  <color name="color_button_success_bg_disabled">#ffbae2ca</color>
+  <color name="color_button_success_bg_hover">#ff53b67b</color>
+  <color name="color_button_success_bg_press">#ff14773b</color>
+  <color name="color_button_success_border_idle">#001a9e4f</color>
+  <color name="color_button_success_border_disabled">#001a9e4f</color>
+  <color name="color_button_success_border_hover">#001a9e4f</color>
+  <color name="color_button_success_border_press">#001a9e4f</color>
+  <color name="color_button_warning_fg_idle">#ff000000</color>
+  <color name="color_button_warning_fg_disabled">#40000000</color>
+  <color name="color_button_warning_fg_hover">#e6000000</color>
+  <color name="color_button_warning_fg_press">#e6000000</color>
+  <color name="color_button_warning_bg_idle">#fff0a205</color>
+  <color name="color_button_warning_bg_disabled">#fffbe3b4</color>
+  <color name="color_button_warning_bg_hover">#fff4b944</color>
+  <color name="color_button_warning_bg_press">#ffb47a04</color>
+  <color name="color_button_warning_border_idle">#00f0a205</color>
+  <color name="color_button_warning_border_disabled">#00f0a205</color>
+  <color name="color_button_warning_border_hover">#00f0a205</color>
+  <color name="color_button_warning_border_press">#00f0a205</color>
+  <color name="color_button_info_fg_idle">#ffffffff</color>
+  <color name="color_button_info_fg_disabled">#40ffffff</color>
+  <color name="color_button_info_fg_hover">#e6ffffff</color>
+  <color name="color_button_info_fg_press">#e6ffffff</color>
+  <color name="color_button_info_bg_idle">#ff3a72e4</color>
+  <color name="color_button_info_bg_disabled">#ffc4d5f7</color>
+  <color name="color_button_info_bg_hover">#ff6b95eb</color>
+  <color name="color_button_info_bg_press">#ff2c56ab</color>
+  <color name="color_button_info_border_idle">#003a72e4</color>
+  <color name="color_button_info_border_disabled">#003a72e4</color>
+  <color name="color_button_info_border_hover">#003a72e4</color>
+  <color name="color_button_info_border_press">#003a72e4</color>
+  <color name="color_datepicker_fg_idle">#ff191b1c</color>
+  <color name="color_datepicker_bg_idle">#00000000</color>
+  <color name="color_datepicker_fg_hover">#ff191b1c</color>
+  <color name="color_datepicker_bg_hover">#fff6f7f7</color>
+  <color name="color_datepicker_fg_press">#ff191b1c</color>
+  <color name="color_datepicker_bg_press">#ffebedee</color>
+  <color name="color_datepicker_fg_active">#ffffffff</color>
+  <color name="color_datepicker_bg_active">#ff0094b8</color>
+  <color name="color_datepicker_fg_range">#ff191b1c</color>
+  <color name="color_datepicker_bg_range">#ffd9eff4</color>
+  <color name="color_datepicker_fg_today">#ff0094b8</color>
+  <color name="color_datepicker_bg_today">#00000000</color>
+  <color name="color_datepicker_fg_weekend">#99191b1c</color>
+  <color name="color_datepicker_bg_weekend">#00000000</color>
+  <color name="color_datepicker_fg_outside">#40191b1c</color>
+  <color name="color_datepicker_bg_outside">#00000000</color>
+  <color name="color_datepicker_fg_main">#ff191b1c</color>
+  <color name="color_datepicker_bg_main">#ffffffff</color>
+  <color name="color_datepicker_border_main">#00000000</color>
+  <color name="color_datepicker_border_subtle">#26191b1c</color>
+  <color name="color_dropdown_fg_idle">#ff191b1c</color>
+  <color name="color_dropdown_bg_idle">#00000000</color>
+  <color name="color_dropdown_icon_idle">#ff0094b8</color>
+  <color name="color_dropdown_fg_hover">#ff006f8a</color>
+  <color name="color_dropdown_bg_hover">#ffd9eff4</color>
+  <color name="color_dropdown_icon_hover">#ff006f8a</color>
+  <color name="color_dropdown_fg_active">#ffffffff</color>
+  <color name="color_dropdown_bg_active">#ff0094b8</color>
+  <color name="color_dropdown_icon_active">#ffffffff</color>
+  <color name="color_dropdown_fg_disabled">#40191b1c</color>
+  <color name="color_dropdown_bg_disabled">#00000000</color>
+  <color name="color_dropdown_icon_disabled">#330094b8</color>
+  <color name="color_dropdown_fg_header">#99191b1c</color>
+  <color name="color_dropdown_bg_header">#00000000</color>
+  <color name="color_dropdown_fg_main">#ff191b1c</color>
+  <color name="color_dropdown_bg_main">#ffffffff</color>
+  <color name="color_dropdown_border_main">#00000000</color>
+  <color name="color_dropdown_border_subtle">#26191b1c</color>
+  <color name="color_form_input_idle_bg_regular">#ffffffff</color>
+  <color name="color_form_input_idle_bg_floating">#fff6f7f7</color>
+  <color name="color_form_input_idle_border">#ff9ca5aa</color>
+  <color name="color_form_input_idle_fg_active">#ff191b1c</color>
+  <color name="color_form_input_idle_fg_inactive">#99191b1c</color>
+  <color name="color_form_input_idle_caret">#ff191b1c</color>
+  <color name="color_form_input_idle_help">#ff191b1c</color>
+  <color name="color_form_input_focus_bg_regular">#ffffffff</color>
+  <color name="color_form_input_focus_bg_floating">#fff6f7f7</color>
+  <color name="color_form_input_focus_border">#ff0094b8</color>
+  <color name="color_form_input_focus_fg_active">#ff191b1c</color>
+  <color name="color_form_input_focus_fg_inactive">#99191b1c</color>
+  <color name="color_form_input_focus_caret">#ff191b1c</color>
+  <color name="color_form_input_focus_help">#ff0094b8</color>
+  <color name="color_form_input_error_bg_regular">#ffffffff</color>
+  <color name="color_form_input_error_bg_floating">#fff6f7f7</color>
+  <color name="color_form_input_error_border">#ffd72a1d</color>
+  <color name="color_form_input_error_fg_active">#ff191b1c</color>
+  <color name="color_form_input_error_fg_inactive">#99191b1c</color>
+  <color name="color_form_input_error_caret">#ff191b1c</color>
+  <color name="color_form_input_error_help">#ffa12016</color>
+  <color name="color_form_input_success_bg_regular">#ffffffff</color>
+  <color name="color_form_input_success_bg_floating">#fff6f7f7</color>
+  <color name="color_form_input_success_border">#ff1a9e4f</color>
+  <color name="color_form_input_success_fg_active">#ff191b1c</color>
+  <color name="color_form_input_success_fg_inactive">#99191b1c</color>
+  <color name="color_form_input_success_caret">#ff191b1c</color>
+  <color name="color_form_input_success_help">#ff14773b</color>
+  <color name="color_form_input_disabled_bg_regular">#ffd7dbdd</color>
+  <color name="color_form_input_disabled_bg_floating">#ffd7dbdd</color>
+  <color name="color_form_input_disabled_border">#40191b1c</color>
+  <color name="color_form_input_disabled_fg_active">#99191b1c</color>
+  <color name="color_form_input_disabled_fg_inactive">#40191b1c</color>
+  <color name="color_form_input_disabled_caret">#40191b1c</color>
+  <color name="color_form_input_disabled_help">#40191b1c</color>
+  <color name="color_list_icon">#ff0094b8</color>
+  <color name="color_list_disclosure">#99191b1c</color>
+  <color name="color_map_marker_bg">#ff0094b8</color>
+  <color name="color_map_marker_fg">#ffffffff</color>
+  <color name="color_map_path_ride">#ff0094b8</color>
+  <color name="color_map_path_walk">#ff7b878e</color>
+  <color name="color_map_point_active">#ff0094b8</color>
+  <color name="color_map_point_inactive">#337b878e</color>
+  <color name="color_map_trip_start">#ff1a9e4f</color>
+  <color name="color_map_trip_stop">#ffd72a1d</color>
+  <color name="color_message_bg_chat">#ffebedee</color>
+  <color name="color_message_fg_form">#ff0094b8</color>
+  <color name="color_message_bg_form">#fff6f7f7</color>
+  <color name="color_message_fg_received">#ff191b1c</color>
+  <color name="color_message_bg_received">#ffffffff</color>
+  <color name="color_message_fg_sent">#ff191b1c</color>
+  <color name="color_message_bg_sent">#ffd9eff4</color>
+  <color name="color_message_fg_embed">#ff191b1c</color>
+  <color name="color_message_bg_embed">#0d000000</color>
+  <color name="color_message_fg_status">#ff191b1c</color>
+  <color name="color_message_bg_status">#0d000000</color>
+  <color name="color_page_bg_body">#fff6f7f7</color>
+  <color name="color_page_bg_section">#ffffffff</color>
+  <color name="color_pagination_dot_idle">#40191b1c</color>
+  <color name="color_pagination_dot_active">#ff191b1c</color>
+  <color name="color_progress_fg_past">#ffffffff</color>
+  <color name="color_progress_bg_past">#ff000000</color>
+  <color name="color_progress_border_past">#ff000000</color>
+  <color name="color_progress_fg_current">#ffffffff</color>
+  <color name="color_progress_bg_current">#ff0094b8</color>
+  <color name="color_progress_border_current">#ff0094b8</color>
+  <color name="color_progress_fg_next">#ff191b1c</color>
+  <color name="color_progress_bg_next">#ffebedee</color>
+  <color name="color_progress_border_next">#ffebedee</color>
+  <color name="color_section_fg_large">#ff191b1c</color>
+  <color name="color_section_fg_medium">#ff191b1c</color>
+  <color name="color_section_fg_small">#ff191b1c</color>
+  <color name="color_section_icon_large">#ff0094b8</color>
+  <color name="color_section_icon_medium">#ff0094b8</color>
+  <color name="color_section_icon_small">#ff0094b8</color>
+  <color name="color_segment_bg_bar">#0d000000</color>
+  <color name="color_segment_bg_idle">#00000000</color>
+  <color name="color_segment_fg_idle">#ff191b1c</color>
+  <color name="color_segment_bg_active">#ffffffff</color>
+  <color name="color_segment_fg_active">#ff191b1c</color>
+  <color name="color_table_fg_head">#ff191b1c</color>
+  <color name="color_table_fg_data">#ff191b1c</color>
+  <color name="color_table_bg_head">#ffebedee</color>
+  <color name="color_table_bg_data">#ffffffff</color>
+  <color name="color_table_bg_alt">#fff6f7f7</color>
+  <color name="color_table_bg_hover">#0d000000</color>
+  <color name="color_table_bg_active">#ffd9eff4</color>
+  <color name="color_table_bg_edit">#fffdf1da</color>
+  <color name="color_table_cue_active">#ff0094b8</color>
+  <color name="color_table_border_main">#26191b1c</color>
+  <color name="color_table_icon_sort">#99191b1c</color>
+  <item name="gradient_primitive_black_l_000_angle" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_black_l_000_stop_1_color">#00000000</color>
+  <item name="gradient_primitive_black_l_000_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_black_l_000_stop_2_color">#ff000000</color>
+  <item name="gradient_primitive_black_l_000_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_black_l_045_angle" type="dimen" format="float">45</item>
+  <color name="gradient_primitive_black_l_045_stop_1_color">#00000000</color>
+  <item name="gradient_primitive_black_l_045_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_black_l_045_stop_2_color">#ff000000</color>
+  <item name="gradient_primitive_black_l_045_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_black_l_090_angle" type="dimen" format="float">90</item>
+  <color name="gradient_primitive_black_l_090_stop_1_color">#00000000</color>
+  <item name="gradient_primitive_black_l_090_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_black_l_090_stop_2_color">#ff000000</color>
+  <item name="gradient_primitive_black_l_090_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_black_l_135_angle" type="dimen" format="float">135</item>
+  <color name="gradient_primitive_black_l_135_stop_1_color">#00000000</color>
+  <item name="gradient_primitive_black_l_135_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_black_l_135_stop_2_color">#ff000000</color>
+  <item name="gradient_primitive_black_l_135_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_black_l_180_angle" type="dimen" format="float">180</item>
+  <color name="gradient_primitive_black_l_180_stop_1_color">#00000000</color>
+  <item name="gradient_primitive_black_l_180_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_black_l_180_stop_2_color">#ff000000</color>
+  <item name="gradient_primitive_black_l_180_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_black_l_225_angle" type="dimen" format="float">225</item>
+  <color name="gradient_primitive_black_l_225_stop_1_color">#00000000</color>
+  <item name="gradient_primitive_black_l_225_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_black_l_225_stop_2_color">#ff000000</color>
+  <item name="gradient_primitive_black_l_225_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_black_l_270_angle" type="dimen" format="float">270</item>
+  <color name="gradient_primitive_black_l_270_stop_1_color">#00000000</color>
+  <item name="gradient_primitive_black_l_270_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_black_l_270_stop_2_color">#ff000000</color>
+  <item name="gradient_primitive_black_l_270_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_black_l_315_angle" type="dimen" format="float">315</item>
+  <color name="gradient_primitive_black_l_315_stop_1_color">#00000000</color>
+  <item name="gradient_primitive_black_l_315_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_black_l_315_stop_2_color">#ff000000</color>
+  <item name="gradient_primitive_black_l_315_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_white_l_000_angle" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_white_l_000_stop_1_color">#00ffffff</color>
+  <item name="gradient_primitive_white_l_000_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_white_l_000_stop_2_color">#ffffffff</color>
+  <item name="gradient_primitive_white_l_000_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_white_l_045_angle" type="dimen" format="float">45</item>
+  <color name="gradient_primitive_white_l_045_stop_1_color">#00ffffff</color>
+  <item name="gradient_primitive_white_l_045_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_white_l_045_stop_2_color">#ffffffff</color>
+  <item name="gradient_primitive_white_l_045_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_white_l_090_angle" type="dimen" format="float">90</item>
+  <color name="gradient_primitive_white_l_090_stop_1_color">#00ffffff</color>
+  <item name="gradient_primitive_white_l_090_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_white_l_090_stop_2_color">#ffffffff</color>
+  <item name="gradient_primitive_white_l_090_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_white_l_135_angle" type="dimen" format="float">135</item>
+  <color name="gradient_primitive_white_l_135_stop_1_color">#00ffffff</color>
+  <item name="gradient_primitive_white_l_135_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_white_l_135_stop_2_color">#ffffffff</color>
+  <item name="gradient_primitive_white_l_135_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_white_l_180_angle" type="dimen" format="float">180</item>
+  <color name="gradient_primitive_white_l_180_stop_1_color">#00ffffff</color>
+  <item name="gradient_primitive_white_l_180_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_white_l_180_stop_2_color">#ffffffff</color>
+  <item name="gradient_primitive_white_l_180_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_white_l_225_angle" type="dimen" format="float">225</item>
+  <color name="gradient_primitive_white_l_225_stop_1_color">#00ffffff</color>
+  <item name="gradient_primitive_white_l_225_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_white_l_225_stop_2_color">#ffffffff</color>
+  <item name="gradient_primitive_white_l_225_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_white_l_270_angle" type="dimen" format="float">270</item>
+  <color name="gradient_primitive_white_l_270_stop_1_color">#00ffffff</color>
+  <item name="gradient_primitive_white_l_270_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_white_l_270_stop_2_color">#ffffffff</color>
+  <item name="gradient_primitive_white_l_270_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_white_l_315_angle" type="dimen" format="float">315</item>
+  <color name="gradient_primitive_white_l_315_stop_1_color">#00ffffff</color>
+  <item name="gradient_primitive_white_l_315_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_white_l_315_stop_2_color">#ffffffff</color>
+  <item name="gradient_primitive_white_l_315_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_primary_l_50_000_angle" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_primary_l_50_000_stop_1_color">#000094b8</color>
+  <item name="gradient_primitive_primary_l_50_000_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_primary_l_50_000_stop_2_color">#ff0094b8</color>
+  <item name="gradient_primitive_primary_l_50_000_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_primary_l_50_045_angle" type="dimen" format="float">45</item>
+  <color name="gradient_primitive_primary_l_50_045_stop_1_color">#000094b8</color>
+  <item name="gradient_primitive_primary_l_50_045_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_primary_l_50_045_stop_2_color">#ff0094b8</color>
+  <item name="gradient_primitive_primary_l_50_045_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_primary_l_50_090_angle" type="dimen" format="float">90</item>
+  <color name="gradient_primitive_primary_l_50_090_stop_1_color">#000094b8</color>
+  <item name="gradient_primitive_primary_l_50_090_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_primary_l_50_090_stop_2_color">#ff0094b8</color>
+  <item name="gradient_primitive_primary_l_50_090_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_primary_l_50_135_angle" type="dimen" format="float">135</item>
+  <color name="gradient_primitive_primary_l_50_135_stop_1_color">#000094b8</color>
+  <item name="gradient_primitive_primary_l_50_135_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_primary_l_50_135_stop_2_color">#ff0094b8</color>
+  <item name="gradient_primitive_primary_l_50_135_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_primary_l_50_180_angle" type="dimen" format="float">180</item>
+  <color name="gradient_primitive_primary_l_50_180_stop_1_color">#000094b8</color>
+  <item name="gradient_primitive_primary_l_50_180_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_primary_l_50_180_stop_2_color">#ff0094b8</color>
+  <item name="gradient_primitive_primary_l_50_180_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_primary_l_50_225_angle" type="dimen" format="float">225</item>
+  <color name="gradient_primitive_primary_l_50_225_stop_1_color">#000094b8</color>
+  <item name="gradient_primitive_primary_l_50_225_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_primary_l_50_225_stop_2_color">#ff0094b8</color>
+  <item name="gradient_primitive_primary_l_50_225_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_primary_l_50_270_angle" type="dimen" format="float">270</item>
+  <color name="gradient_primitive_primary_l_50_270_stop_1_color">#000094b8</color>
+  <item name="gradient_primitive_primary_l_50_270_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_primary_l_50_270_stop_2_color">#ff0094b8</color>
+  <item name="gradient_primitive_primary_l_50_270_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_primary_l_50_315_angle" type="dimen" format="float">315</item>
+  <color name="gradient_primitive_primary_l_50_315_stop_1_color">#000094b8</color>
+  <item name="gradient_primitive_primary_l_50_315_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_primary_l_50_315_stop_2_color">#ff0094b8</color>
+  <item name="gradient_primitive_primary_l_50_315_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_secondary_l_50_000_angle" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_secondary_l_50_000_stop_1_color">#00f55200</color>
+  <item name="gradient_primitive_secondary_l_50_000_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_secondary_l_50_000_stop_2_color">#fff55200</color>
+  <item name="gradient_primitive_secondary_l_50_000_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_secondary_l_50_045_angle" type="dimen" format="float">45</item>
+  <color name="gradient_primitive_secondary_l_50_045_stop_1_color">#00f55200</color>
+  <item name="gradient_primitive_secondary_l_50_045_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_secondary_l_50_045_stop_2_color">#fff55200</color>
+  <item name="gradient_primitive_secondary_l_50_045_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_secondary_l_50_090_angle" type="dimen" format="float">90</item>
+  <color name="gradient_primitive_secondary_l_50_090_stop_1_color">#00f55200</color>
+  <item name="gradient_primitive_secondary_l_50_090_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_secondary_l_50_090_stop_2_color">#fff55200</color>
+  <item name="gradient_primitive_secondary_l_50_090_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_secondary_l_50_135_angle" type="dimen" format="float">135</item>
+  <color name="gradient_primitive_secondary_l_50_135_stop_1_color">#00f55200</color>
+  <item name="gradient_primitive_secondary_l_50_135_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_secondary_l_50_135_stop_2_color">#fff55200</color>
+  <item name="gradient_primitive_secondary_l_50_135_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_secondary_l_50_180_angle" type="dimen" format="float">180</item>
+  <color name="gradient_primitive_secondary_l_50_180_stop_1_color">#00f55200</color>
+  <item name="gradient_primitive_secondary_l_50_180_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_secondary_l_50_180_stop_2_color">#fff55200</color>
+  <item name="gradient_primitive_secondary_l_50_180_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_secondary_l_50_225_angle" type="dimen" format="float">225</item>
+  <color name="gradient_primitive_secondary_l_50_225_stop_1_color">#00f55200</color>
+  <item name="gradient_primitive_secondary_l_50_225_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_secondary_l_50_225_stop_2_color">#fff55200</color>
+  <item name="gradient_primitive_secondary_l_50_225_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_secondary_l_50_270_angle" type="dimen" format="float">270</item>
+  <color name="gradient_primitive_secondary_l_50_270_stop_1_color">#00f55200</color>
+  <item name="gradient_primitive_secondary_l_50_270_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_secondary_l_50_270_stop_2_color">#fff55200</color>
+  <item name="gradient_primitive_secondary_l_50_270_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_secondary_l_50_315_angle" type="dimen" format="float">315</item>
+  <color name="gradient_primitive_secondary_l_50_315_stop_1_color">#00f55200</color>
+  <item name="gradient_primitive_secondary_l_50_315_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_secondary_l_50_315_stop_2_color">#fff55200</color>
+  <item name="gradient_primitive_secondary_l_50_315_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_neutral_l_50_000_angle" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_neutral_l_50_000_stop_1_color">#007b878e</color>
+  <item name="gradient_primitive_neutral_l_50_000_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_neutral_l_50_000_stop_2_color">#ff7b878e</color>
+  <item name="gradient_primitive_neutral_l_50_000_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_neutral_l_50_045_angle" type="dimen" format="float">45</item>
+  <color name="gradient_primitive_neutral_l_50_045_stop_1_color">#007b878e</color>
+  <item name="gradient_primitive_neutral_l_50_045_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_neutral_l_50_045_stop_2_color">#ff7b878e</color>
+  <item name="gradient_primitive_neutral_l_50_045_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_neutral_l_50_090_angle" type="dimen" format="float">90</item>
+  <color name="gradient_primitive_neutral_l_50_090_stop_1_color">#007b878e</color>
+  <item name="gradient_primitive_neutral_l_50_090_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_neutral_l_50_090_stop_2_color">#ff7b878e</color>
+  <item name="gradient_primitive_neutral_l_50_090_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_neutral_l_50_135_angle" type="dimen" format="float">135</item>
+  <color name="gradient_primitive_neutral_l_50_135_stop_1_color">#007b878e</color>
+  <item name="gradient_primitive_neutral_l_50_135_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_neutral_l_50_135_stop_2_color">#ff7b878e</color>
+  <item name="gradient_primitive_neutral_l_50_135_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_neutral_l_50_180_angle" type="dimen" format="float">180</item>
+  <color name="gradient_primitive_neutral_l_50_180_stop_1_color">#007b878e</color>
+  <item name="gradient_primitive_neutral_l_50_180_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_neutral_l_50_180_stop_2_color">#ff7b878e</color>
+  <item name="gradient_primitive_neutral_l_50_180_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_neutral_l_50_225_angle" type="dimen" format="float">225</item>
+  <color name="gradient_primitive_neutral_l_50_225_stop_1_color">#007b878e</color>
+  <item name="gradient_primitive_neutral_l_50_225_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_neutral_l_50_225_stop_2_color">#ff7b878e</color>
+  <item name="gradient_primitive_neutral_l_50_225_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_neutral_l_50_270_angle" type="dimen" format="float">270</item>
+  <color name="gradient_primitive_neutral_l_50_270_stop_1_color">#007b878e</color>
+  <item name="gradient_primitive_neutral_l_50_270_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_neutral_l_50_270_stop_2_color">#ff7b878e</color>
+  <item name="gradient_primitive_neutral_l_50_270_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_neutral_l_50_315_angle" type="dimen" format="float">315</item>
+  <color name="gradient_primitive_neutral_l_50_315_stop_1_color">#007b878e</color>
+  <item name="gradient_primitive_neutral_l_50_315_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_neutral_l_50_315_stop_2_color">#ff7b878e</color>
+  <item name="gradient_primitive_neutral_l_50_315_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_danger_l_50_000_angle" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_danger_l_50_000_stop_1_color">#00d72a1d</color>
+  <item name="gradient_primitive_danger_l_50_000_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_danger_l_50_000_stop_2_color">#ffd72a1d</color>
+  <item name="gradient_primitive_danger_l_50_000_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_danger_l_50_045_angle" type="dimen" format="float">45</item>
+  <color name="gradient_primitive_danger_l_50_045_stop_1_color">#00d72a1d</color>
+  <item name="gradient_primitive_danger_l_50_045_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_danger_l_50_045_stop_2_color">#ffd72a1d</color>
+  <item name="gradient_primitive_danger_l_50_045_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_danger_l_50_090_angle" type="dimen" format="float">90</item>
+  <color name="gradient_primitive_danger_l_50_090_stop_1_color">#00d72a1d</color>
+  <item name="gradient_primitive_danger_l_50_090_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_danger_l_50_090_stop_2_color">#ffd72a1d</color>
+  <item name="gradient_primitive_danger_l_50_090_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_danger_l_50_135_angle" type="dimen" format="float">135</item>
+  <color name="gradient_primitive_danger_l_50_135_stop_1_color">#00d72a1d</color>
+  <item name="gradient_primitive_danger_l_50_135_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_danger_l_50_135_stop_2_color">#ffd72a1d</color>
+  <item name="gradient_primitive_danger_l_50_135_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_danger_l_50_180_angle" type="dimen" format="float">180</item>
+  <color name="gradient_primitive_danger_l_50_180_stop_1_color">#00d72a1d</color>
+  <item name="gradient_primitive_danger_l_50_180_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_danger_l_50_180_stop_2_color">#ffd72a1d</color>
+  <item name="gradient_primitive_danger_l_50_180_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_danger_l_50_225_angle" type="dimen" format="float">225</item>
+  <color name="gradient_primitive_danger_l_50_225_stop_1_color">#00d72a1d</color>
+  <item name="gradient_primitive_danger_l_50_225_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_danger_l_50_225_stop_2_color">#ffd72a1d</color>
+  <item name="gradient_primitive_danger_l_50_225_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_danger_l_50_270_angle" type="dimen" format="float">270</item>
+  <color name="gradient_primitive_danger_l_50_270_stop_1_color">#00d72a1d</color>
+  <item name="gradient_primitive_danger_l_50_270_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_danger_l_50_270_stop_2_color">#ffd72a1d</color>
+  <item name="gradient_primitive_danger_l_50_270_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_danger_l_50_315_angle" type="dimen" format="float">315</item>
+  <color name="gradient_primitive_danger_l_50_315_stop_1_color">#00d72a1d</color>
+  <item name="gradient_primitive_danger_l_50_315_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_danger_l_50_315_stop_2_color">#ffd72a1d</color>
+  <item name="gradient_primitive_danger_l_50_315_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_success_l_50_000_angle" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_success_l_50_000_stop_1_color">#001a9e4f</color>
+  <item name="gradient_primitive_success_l_50_000_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_success_l_50_000_stop_2_color">#ff1a9e4f</color>
+  <item name="gradient_primitive_success_l_50_000_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_success_l_50_045_angle" type="dimen" format="float">45</item>
+  <color name="gradient_primitive_success_l_50_045_stop_1_color">#001a9e4f</color>
+  <item name="gradient_primitive_success_l_50_045_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_success_l_50_045_stop_2_color">#ff1a9e4f</color>
+  <item name="gradient_primitive_success_l_50_045_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_success_l_50_090_angle" type="dimen" format="float">90</item>
+  <color name="gradient_primitive_success_l_50_090_stop_1_color">#001a9e4f</color>
+  <item name="gradient_primitive_success_l_50_090_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_success_l_50_090_stop_2_color">#ff1a9e4f</color>
+  <item name="gradient_primitive_success_l_50_090_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_success_l_50_135_angle" type="dimen" format="float">135</item>
+  <color name="gradient_primitive_success_l_50_135_stop_1_color">#001a9e4f</color>
+  <item name="gradient_primitive_success_l_50_135_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_success_l_50_135_stop_2_color">#ff1a9e4f</color>
+  <item name="gradient_primitive_success_l_50_135_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_success_l_50_180_angle" type="dimen" format="float">180</item>
+  <color name="gradient_primitive_success_l_50_180_stop_1_color">#001a9e4f</color>
+  <item name="gradient_primitive_success_l_50_180_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_success_l_50_180_stop_2_color">#ff1a9e4f</color>
+  <item name="gradient_primitive_success_l_50_180_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_success_l_50_225_angle" type="dimen" format="float">225</item>
+  <color name="gradient_primitive_success_l_50_225_stop_1_color">#001a9e4f</color>
+  <item name="gradient_primitive_success_l_50_225_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_success_l_50_225_stop_2_color">#ff1a9e4f</color>
+  <item name="gradient_primitive_success_l_50_225_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_success_l_50_270_angle" type="dimen" format="float">270</item>
+  <color name="gradient_primitive_success_l_50_270_stop_1_color">#001a9e4f</color>
+  <item name="gradient_primitive_success_l_50_270_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_success_l_50_270_stop_2_color">#ff1a9e4f</color>
+  <item name="gradient_primitive_success_l_50_270_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_success_l_50_315_angle" type="dimen" format="float">315</item>
+  <color name="gradient_primitive_success_l_50_315_stop_1_color">#001a9e4f</color>
+  <item name="gradient_primitive_success_l_50_315_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_success_l_50_315_stop_2_color">#ff1a9e4f</color>
+  <item name="gradient_primitive_success_l_50_315_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_warning_l_50_000_angle" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_warning_l_50_000_stop_1_color">#00f0a205</color>
+  <item name="gradient_primitive_warning_l_50_000_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_warning_l_50_000_stop_2_color">#fff0a205</color>
+  <item name="gradient_primitive_warning_l_50_000_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_warning_l_50_045_angle" type="dimen" format="float">45</item>
+  <color name="gradient_primitive_warning_l_50_045_stop_1_color">#00f0a205</color>
+  <item name="gradient_primitive_warning_l_50_045_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_warning_l_50_045_stop_2_color">#fff0a205</color>
+  <item name="gradient_primitive_warning_l_50_045_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_warning_l_50_090_angle" type="dimen" format="float">90</item>
+  <color name="gradient_primitive_warning_l_50_090_stop_1_color">#00f0a205</color>
+  <item name="gradient_primitive_warning_l_50_090_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_warning_l_50_090_stop_2_color">#fff0a205</color>
+  <item name="gradient_primitive_warning_l_50_090_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_warning_l_50_135_angle" type="dimen" format="float">135</item>
+  <color name="gradient_primitive_warning_l_50_135_stop_1_color">#00f0a205</color>
+  <item name="gradient_primitive_warning_l_50_135_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_warning_l_50_135_stop_2_color">#fff0a205</color>
+  <item name="gradient_primitive_warning_l_50_135_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_warning_l_50_180_angle" type="dimen" format="float">180</item>
+  <color name="gradient_primitive_warning_l_50_180_stop_1_color">#00f0a205</color>
+  <item name="gradient_primitive_warning_l_50_180_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_warning_l_50_180_stop_2_color">#fff0a205</color>
+  <item name="gradient_primitive_warning_l_50_180_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_warning_l_50_225_angle" type="dimen" format="float">225</item>
+  <color name="gradient_primitive_warning_l_50_225_stop_1_color">#00f0a205</color>
+  <item name="gradient_primitive_warning_l_50_225_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_warning_l_50_225_stop_2_color">#fff0a205</color>
+  <item name="gradient_primitive_warning_l_50_225_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_warning_l_50_270_angle" type="dimen" format="float">270</item>
+  <color name="gradient_primitive_warning_l_50_270_stop_1_color">#00f0a205</color>
+  <item name="gradient_primitive_warning_l_50_270_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_warning_l_50_270_stop_2_color">#fff0a205</color>
+  <item name="gradient_primitive_warning_l_50_270_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_warning_l_50_315_angle" type="dimen" format="float">315</item>
+  <color name="gradient_primitive_warning_l_50_315_stop_1_color">#00f0a205</color>
+  <item name="gradient_primitive_warning_l_50_315_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_warning_l_50_315_stop_2_color">#fff0a205</color>
+  <item name="gradient_primitive_warning_l_50_315_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_info_l_50_000_angle" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_info_l_50_000_stop_1_color">#003a72e4</color>
+  <item name="gradient_primitive_info_l_50_000_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_info_l_50_000_stop_2_color">#ff3a72e4</color>
+  <item name="gradient_primitive_info_l_50_000_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_info_l_50_045_angle" type="dimen" format="float">45</item>
+  <color name="gradient_primitive_info_l_50_045_stop_1_color">#003a72e4</color>
+  <item name="gradient_primitive_info_l_50_045_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_info_l_50_045_stop_2_color">#ff3a72e4</color>
+  <item name="gradient_primitive_info_l_50_045_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_info_l_50_090_angle" type="dimen" format="float">90</item>
+  <color name="gradient_primitive_info_l_50_090_stop_1_color">#003a72e4</color>
+  <item name="gradient_primitive_info_l_50_090_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_info_l_50_090_stop_2_color">#ff3a72e4</color>
+  <item name="gradient_primitive_info_l_50_090_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_info_l_50_135_angle" type="dimen" format="float">135</item>
+  <color name="gradient_primitive_info_l_50_135_stop_1_color">#003a72e4</color>
+  <item name="gradient_primitive_info_l_50_135_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_info_l_50_135_stop_2_color">#ff3a72e4</color>
+  <item name="gradient_primitive_info_l_50_135_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_info_l_50_180_angle" type="dimen" format="float">180</item>
+  <color name="gradient_primitive_info_l_50_180_stop_1_color">#003a72e4</color>
+  <item name="gradient_primitive_info_l_50_180_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_info_l_50_180_stop_2_color">#ff3a72e4</color>
+  <item name="gradient_primitive_info_l_50_180_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_info_l_50_225_angle" type="dimen" format="float">225</item>
+  <color name="gradient_primitive_info_l_50_225_stop_1_color">#003a72e4</color>
+  <item name="gradient_primitive_info_l_50_225_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_info_l_50_225_stop_2_color">#ff3a72e4</color>
+  <item name="gradient_primitive_info_l_50_225_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_info_l_50_270_angle" type="dimen" format="float">270</item>
+  <color name="gradient_primitive_info_l_50_270_stop_1_color">#003a72e4</color>
+  <item name="gradient_primitive_info_l_50_270_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_info_l_50_270_stop_2_color">#ff3a72e4</color>
+  <item name="gradient_primitive_info_l_50_270_stop_2_position" type="dimen" format="float">1</item>
+  <item name="gradient_primitive_info_l_50_315_angle" type="dimen" format="float">315</item>
+  <color name="gradient_primitive_info_l_50_315_stop_1_color">#003a72e4</color>
+  <item name="gradient_primitive_info_l_50_315_stop_1_position" type="dimen" format="float">0</item>
+  <color name="gradient_primitive_info_l_50_315_stop_2_color">#ff3a72e4</color>
+  <item name="gradient_primitive_info_l_50_315_stop_2_position" type="dimen" format="float">1</item>
+  <color name="shadow_context_none_color">#00000000</color>
+  <color name="shadow_context_small_1_color">#1a000000</color>
+  <color name="shadow_context_small_2_color">#1a000000</color>
+  <color name="shadow_context_medium_1_color">#1a000000</color>
+  <color name="shadow_context_medium_2_color">#1a000000</color>
+  <color name="shadow_context_large_1_color">#1a000000</color>
+  <color name="shadow_context_large_2_color">#1a000000</color>
+  <color name="shadow_context_inset_color">#1a000000</color>
+  <color name="shadow_context_idle_color">#00000000</color>
+  <color name="shadow_context_disabled_color">#00000000</color>
+  <color name="shadow_context_hover_1_color">#1a000000</color>
+  <color name="shadow_context_hover_2_color">#1a000000</color>
+  <color name="shadow_context_press_1_color">#1a000000</color>
+  <color name="shadow_context_press_2_color">#1a000000</color>
+  <color name="shadow_context_focus_color">#ff0094b8</color>
+  <color name="shadow_context_highlight_color">#ff0094b8</color>
+  <color name="shadow_alert_main_1_color">#1a000000</color>
+  <color name="shadow_alert_main_2_color">#1a000000</color>
+  <color name="shadow_button_idle_color">#00000000</color>
+  <color name="shadow_button_hover_color">#00000000</color>
+  <color name="shadow_button_press_color">#00000000</color>
+  <color name="shadow_button_disabled_color">#00000000</color>
+  <color name="shadow_card_main_1_color">#1a000000</color>
+  <color name="shadow_card_main_2_color">#1a000000</color>
+  <color name="shadow_datepicker_main_1_color">#1a000000</color>
+  <color name="shadow_datepicker_main_2_color">#1a000000</color>
+  <color name="shadow_dropdown_main_1_color">#1a000000</color>
+  <color name="shadow_dropdown_main_2_color">#1a000000</color>
+  <color name="shadow_form_input_main_color">#00000000</color>
+  <color name="shadow_nav_top_main_1_color">#1a000000</color>
+  <color name="shadow_nav_top_main_2_color">#1a000000</color>
+  <color name="shadow_message_main_1_color">#1a000000</color>
+  <color name="shadow_message_main_2_color">#1a000000</color>
+  <color name="shadow_modal_main_1_color">#1a000000</color>
+  <color name="shadow_modal_main_2_color">#1a000000</color>
+  <color name="shadow_section_main_1_color">#1a000000</color>
+  <color name="shadow_section_main_2_color">#1a000000</color>
+  <color name="shadow_nav_left_main_1_color">#33000000</color>
+  <color name="shadow_nav_left_main_2_color">#1a000000</color>
+  <color name="shadow_segment_item_1_color">#1a000000</color>
+  <color name="shadow_segment_item_2_color">#1a000000</color>
+  <color name="shadow_table_main_color">#00000000</color>
+  <color name="shadow_elevation_default_10_1_color">#1a000000</color>
+  <color name="shadow_elevation_default_10_2_color">#1a000000</color>
+  <color name="shadow_elevation_default_20_1_color">#1a000000</color>
+  <color name="shadow_elevation_default_20_2_color">#1a000000</color>
+  <color name="shadow_elevation_default_30_1_color">#1a000000</color>
+  <color name="shadow_elevation_default_30_2_color">#1a000000</color>
+  <color name="shadow_elevation_default_40_1_color">#1a000000</color>
+  <color name="shadow_elevation_default_40_2_color">#1a000000</color>
+  <color name="shadow_elevation_default_50_1_color">#1a000000</color>
+  <color name="shadow_elevation_default_50_2_color">#1a000000</color>
+  <color name="shadow_elevation_default_60_1_color">#1a000000</color>
+  <color name="shadow_elevation_default_60_2_color">#1a000000</color>
+  <color name="shadow_elevation_default_70_1_color">#1a000000</color>
+  <color name="shadow_elevation_default_70_2_color">#1a000000</color>
+  <color name="shadow_elevation_default_80_1_color">#1a000000</color>
+  <color name="shadow_elevation_default_80_2_color">#1a000000</color>
+  <color name="shadow_elevation_default_90_1_color">#1a000000</color>
+  <color name="shadow_elevation_default_90_2_color">#1a000000</color>
+  <color name="shadow_elevation_default_95_1_color">#1a000000</color>
+  <color name="shadow_elevation_default_95_2_color">#1a000000</color>
+  <color name="shadow_elevation_default_05_1_color">#1a000000</color>
+  <color name="shadow_elevation_default_05_2_color">#1a000000</color>
+  <color name="shadow_elevation_alternate_10_1_color">#33000000</color>
+  <color name="shadow_elevation_alternate_10_2_color">#33000000</color>
+  <color name="shadow_elevation_alternate_20_1_color">#33000000</color>
+  <color name="shadow_elevation_alternate_20_2_color">#33000000</color>
+  <color name="shadow_elevation_alternate_30_1_color">#33000000</color>
+  <color name="shadow_elevation_alternate_30_2_color">#33000000</color>
+  <color name="shadow_elevation_alternate_40_1_color">#33000000</color>
+  <color name="shadow_elevation_alternate_40_2_color">#33000000</color>
+  <color name="shadow_elevation_alternate_50_1_color">#33000000</color>
+  <color name="shadow_elevation_alternate_50_2_color">#33000000</color>
+  <color name="shadow_elevation_alternate_60_1_color">#33000000</color>
+  <color name="shadow_elevation_alternate_60_2_color">#33000000</color>
+  <color name="shadow_elevation_alternate_70_1_color">#33000000</color>
+  <color name="shadow_elevation_alternate_70_2_color">#33000000</color>
+  <color name="shadow_elevation_alternate_80_1_color">#33000000</color>
+  <color name="shadow_elevation_alternate_80_2_color">#33000000</color>
+  <color name="shadow_elevation_alternate_90_1_color">#33000000</color>
+  <color name="shadow_elevation_alternate_90_2_color">#33000000</color>
+  <color name="shadow_elevation_alternate_95_1_color">#33000000</color>
+  <color name="shadow_elevation_alternate_95_2_color">#33000000</color>
+  <color name="shadow_elevation_alternate_05_1_color">#33000000</color>
+  <color name="shadow_elevation_alternate_05_2_color">#33000000</color>
+  <color name="shadow_elevation_primary_10_1_color">#1a000000</color>
+  <color name="shadow_elevation_primary_10_2_color">#1a000000</color>
+  <color name="shadow_elevation_primary_10_3_color">#660094b8</color>
+  <color name="shadow_elevation_primary_20_1_color">#1a000000</color>
+  <color name="shadow_elevation_primary_20_2_color">#1a000000</color>
+  <color name="shadow_elevation_primary_20_3_color">#660094b8</color>
+  <color name="shadow_elevation_primary_30_1_color">#1a000000</color>
+  <color name="shadow_elevation_primary_30_2_color">#1a000000</color>
+  <color name="shadow_elevation_primary_30_3_color">#660094b8</color>
+  <color name="shadow_elevation_primary_40_1_color">#1a000000</color>
+  <color name="shadow_elevation_primary_40_2_color">#1a000000</color>
+  <color name="shadow_elevation_primary_40_3_color">#660094b8</color>
+  <color name="shadow_elevation_primary_50_1_color">#1a000000</color>
+  <color name="shadow_elevation_primary_50_2_color">#1a000000</color>
+  <color name="shadow_elevation_primary_50_3_color">#660094b8</color>
+  <color name="shadow_elevation_primary_60_1_color">#1a000000</color>
+  <color name="shadow_elevation_primary_60_2_color">#1a000000</color>
+  <color name="shadow_elevation_primary_60_3_color">#660094b8</color>
+  <color name="shadow_elevation_primary_70_1_color">#1a000000</color>
+  <color name="shadow_elevation_primary_70_2_color">#1a000000</color>
+  <color name="shadow_elevation_primary_70_3_color">#660094b8</color>
+  <color name="shadow_elevation_primary_80_1_color">#1a000000</color>
+  <color name="shadow_elevation_primary_80_2_color">#1a000000</color>
+  <color name="shadow_elevation_primary_80_3_color">#660094b8</color>
+  <color name="shadow_elevation_primary_90_1_color">#1a000000</color>
+  <color name="shadow_elevation_primary_90_2_color">#1a000000</color>
+  <color name="shadow_elevation_primary_90_3_color">#660094b8</color>
+  <color name="shadow_elevation_primary_95_1_color">#1a000000</color>
+  <color name="shadow_elevation_primary_95_2_color">#1a000000</color>
+  <color name="shadow_elevation_primary_95_3_color">#660094b8</color>
+  <color name="shadow_elevation_primary_05_1_color">#1a000000</color>
+  <color name="shadow_elevation_primary_05_2_color">#1a000000</color>
+  <color name="shadow_elevation_primary_05_3_color">#660094b8</color>
+  <color name="shadow_elevation_secondary_10_1_color">#1a000000</color>
+  <color name="shadow_elevation_secondary_10_2_color">#1a000000</color>
+  <color name="shadow_elevation_secondary_10_3_color">#66f55200</color>
+  <color name="shadow_elevation_secondary_20_1_color">#1a000000</color>
+  <color name="shadow_elevation_secondary_20_2_color">#1a000000</color>
+  <color name="shadow_elevation_secondary_20_3_color">#66f55200</color>
+  <color name="shadow_elevation_secondary_30_1_color">#1a000000</color>
+  <color name="shadow_elevation_secondary_30_2_color">#1a000000</color>
+  <color name="shadow_elevation_secondary_30_3_color">#66f55200</color>
+  <color name="shadow_elevation_secondary_40_1_color">#1a000000</color>
+  <color name="shadow_elevation_secondary_40_2_color">#1a000000</color>
+  <color name="shadow_elevation_secondary_40_3_color">#66f55200</color>
+  <color name="shadow_elevation_secondary_50_1_color">#1a000000</color>
+  <color name="shadow_elevation_secondary_50_2_color">#1a000000</color>
+  <color name="shadow_elevation_secondary_50_3_color">#66f55200</color>
+  <color name="shadow_elevation_secondary_60_1_color">#1a000000</color>
+  <color name="shadow_elevation_secondary_60_2_color">#1a000000</color>
+  <color name="shadow_elevation_secondary_60_3_color">#66f55200</color>
+  <color name="shadow_elevation_secondary_70_1_color">#1a000000</color>
+  <color name="shadow_elevation_secondary_70_2_color">#1a000000</color>
+  <color name="shadow_elevation_secondary_70_3_color">#66f55200</color>
+  <color name="shadow_elevation_secondary_80_1_color">#1a000000</color>
+  <color name="shadow_elevation_secondary_80_2_color">#1a000000</color>
+  <color name="shadow_elevation_secondary_80_3_color">#66f55200</color>
+  <color name="shadow_elevation_secondary_90_1_color">#1a000000</color>
+  <color name="shadow_elevation_secondary_90_2_color">#1a000000</color>
+  <color name="shadow_elevation_secondary_90_3_color">#66f55200</color>
+  <color name="shadow_elevation_secondary_95_1_color">#1a000000</color>
+  <color name="shadow_elevation_secondary_95_2_color">#1a000000</color>
+  <color name="shadow_elevation_secondary_95_3_color">#66f55200</color>
+  <color name="shadow_elevation_secondary_05_1_color">#1a000000</color>
+  <color name="shadow_elevation_secondary_05_2_color">#1a000000</color>
+  <color name="shadow_elevation_secondary_05_3_color">#66f55200</color>
+  <color name="shadow_elevation_neutral_10_1_color">#1a000000</color>
+  <color name="shadow_elevation_neutral_10_2_color">#1a000000</color>
+  <color name="shadow_elevation_neutral_10_3_color">#667b878e</color>
+  <color name="shadow_elevation_neutral_20_1_color">#1a000000</color>
+  <color name="shadow_elevation_neutral_20_2_color">#1a000000</color>
+  <color name="shadow_elevation_neutral_20_3_color">#667b878e</color>
+  <color name="shadow_elevation_neutral_30_1_color">#1a000000</color>
+  <color name="shadow_elevation_neutral_30_2_color">#1a000000</color>
+  <color name="shadow_elevation_neutral_30_3_color">#667b878e</color>
+  <color name="shadow_elevation_neutral_40_1_color">#1a000000</color>
+  <color name="shadow_elevation_neutral_40_2_color">#1a000000</color>
+  <color name="shadow_elevation_neutral_40_3_color">#667b878e</color>
+  <color name="shadow_elevation_neutral_50_1_color">#1a000000</color>
+  <color name="shadow_elevation_neutral_50_2_color">#1a000000</color>
+  <color name="shadow_elevation_neutral_50_3_color">#667b878e</color>
+  <color name="shadow_elevation_neutral_60_1_color">#1a000000</color>
+  <color name="shadow_elevation_neutral_60_2_color">#1a000000</color>
+  <color name="shadow_elevation_neutral_60_3_color">#667b878e</color>
+  <color name="shadow_elevation_neutral_70_1_color">#1a000000</color>
+  <color name="shadow_elevation_neutral_70_2_color">#1a000000</color>
+  <color name="shadow_elevation_neutral_70_3_color">#667b878e</color>
+  <color name="shadow_elevation_neutral_80_1_color">#1a000000</color>
+  <color name="shadow_elevation_neutral_80_2_color">#1a000000</color>
+  <color name="shadow_elevation_neutral_80_3_color">#667b878e</color>
+  <color name="shadow_elevation_neutral_90_1_color">#1a000000</color>
+  <color name="shadow_elevation_neutral_90_2_color">#1a000000</color>
+  <color name="shadow_elevation_neutral_90_3_color">#667b878e</color>
+  <color name="shadow_elevation_neutral_95_1_color">#1a000000</color>
+  <color name="shadow_elevation_neutral_95_2_color">#1a000000</color>
+  <color name="shadow_elevation_neutral_95_3_color">#667b878e</color>
+  <color name="shadow_elevation_neutral_05_1_color">#1a000000</color>
+  <color name="shadow_elevation_neutral_05_2_color">#1a000000</color>
+  <color name="shadow_elevation_neutral_05_3_color">#667b878e</color>
+  <color name="shadow_elevation_danger_10_1_color">#1a000000</color>
+  <color name="shadow_elevation_danger_10_2_color">#1a000000</color>
+  <color name="shadow_elevation_danger_10_3_color">#66d72a1d</color>
+  <color name="shadow_elevation_danger_20_1_color">#1a000000</color>
+  <color name="shadow_elevation_danger_20_2_color">#1a000000</color>
+  <color name="shadow_elevation_danger_20_3_color">#66d72a1d</color>
+  <color name="shadow_elevation_danger_30_1_color">#1a000000</color>
+  <color name="shadow_elevation_danger_30_2_color">#1a000000</color>
+  <color name="shadow_elevation_danger_30_3_color">#66d72a1d</color>
+  <color name="shadow_elevation_danger_40_1_color">#1a000000</color>
+  <color name="shadow_elevation_danger_40_2_color">#1a000000</color>
+  <color name="shadow_elevation_danger_40_3_color">#66d72a1d</color>
+  <color name="shadow_elevation_danger_50_1_color">#1a000000</color>
+  <color name="shadow_elevation_danger_50_2_color">#1a000000</color>
+  <color name="shadow_elevation_danger_50_3_color">#66d72a1d</color>
+  <color name="shadow_elevation_danger_60_1_color">#1a000000</color>
+  <color name="shadow_elevation_danger_60_2_color">#1a000000</color>
+  <color name="shadow_elevation_danger_60_3_color">#66d72a1d</color>
+  <color name="shadow_elevation_danger_70_1_color">#1a000000</color>
+  <color name="shadow_elevation_danger_70_2_color">#1a000000</color>
+  <color name="shadow_elevation_danger_70_3_color">#66d72a1d</color>
+  <color name="shadow_elevation_danger_80_1_color">#1a000000</color>
+  <color name="shadow_elevation_danger_80_2_color">#1a000000</color>
+  <color name="shadow_elevation_danger_80_3_color">#66d72a1d</color>
+  <color name="shadow_elevation_danger_90_1_color">#1a000000</color>
+  <color name="shadow_elevation_danger_90_2_color">#1a000000</color>
+  <color name="shadow_elevation_danger_90_3_color">#66d72a1d</color>
+  <color name="shadow_elevation_danger_95_1_color">#1a000000</color>
+  <color name="shadow_elevation_danger_95_2_color">#1a000000</color>
+  <color name="shadow_elevation_danger_95_3_color">#66d72a1d</color>
+  <color name="shadow_elevation_danger_05_1_color">#1a000000</color>
+  <color name="shadow_elevation_danger_05_2_color">#1a000000</color>
+  <color name="shadow_elevation_danger_05_3_color">#66d72a1d</color>
+  <color name="shadow_elevation_success_10_1_color">#1a000000</color>
+  <color name="shadow_elevation_success_10_2_color">#1a000000</color>
+  <color name="shadow_elevation_success_10_3_color">#661a9e4f</color>
+  <color name="shadow_elevation_success_20_1_color">#1a000000</color>
+  <color name="shadow_elevation_success_20_2_color">#1a000000</color>
+  <color name="shadow_elevation_success_20_3_color">#661a9e4f</color>
+  <color name="shadow_elevation_success_30_1_color">#1a000000</color>
+  <color name="shadow_elevation_success_30_2_color">#1a000000</color>
+  <color name="shadow_elevation_success_30_3_color">#661a9e4f</color>
+  <color name="shadow_elevation_success_40_1_color">#1a000000</color>
+  <color name="shadow_elevation_success_40_2_color">#1a000000</color>
+  <color name="shadow_elevation_success_40_3_color">#661a9e4f</color>
+  <color name="shadow_elevation_success_50_1_color">#1a000000</color>
+  <color name="shadow_elevation_success_50_2_color">#1a000000</color>
+  <color name="shadow_elevation_success_50_3_color">#661a9e4f</color>
+  <color name="shadow_elevation_success_60_1_color">#1a000000</color>
+  <color name="shadow_elevation_success_60_2_color">#1a000000</color>
+  <color name="shadow_elevation_success_60_3_color">#661a9e4f</color>
+  <color name="shadow_elevation_success_70_1_color">#1a000000</color>
+  <color name="shadow_elevation_success_70_2_color">#1a000000</color>
+  <color name="shadow_elevation_success_70_3_color">#661a9e4f</color>
+  <color name="shadow_elevation_success_80_1_color">#1a000000</color>
+  <color name="shadow_elevation_success_80_2_color">#1a000000</color>
+  <color name="shadow_elevation_success_80_3_color">#661a9e4f</color>
+  <color name="shadow_elevation_success_90_1_color">#1a000000</color>
+  <color name="shadow_elevation_success_90_2_color">#1a000000</color>
+  <color name="shadow_elevation_success_90_3_color">#661a9e4f</color>
+  <color name="shadow_elevation_success_95_1_color">#1a000000</color>
+  <color name="shadow_elevation_success_95_2_color">#1a000000</color>
+  <color name="shadow_elevation_success_95_3_color">#661a9e4f</color>
+  <color name="shadow_elevation_success_05_1_color">#1a000000</color>
+  <color name="shadow_elevation_success_05_2_color">#1a000000</color>
+  <color name="shadow_elevation_success_05_3_color">#661a9e4f</color>
+  <color name="shadow_elevation_warning_10_1_color">#1a000000</color>
+  <color name="shadow_elevation_warning_10_2_color">#1a000000</color>
+  <color name="shadow_elevation_warning_10_3_color">#66f0a205</color>
+  <color name="shadow_elevation_warning_20_1_color">#1a000000</color>
+  <color name="shadow_elevation_warning_20_2_color">#1a000000</color>
+  <color name="shadow_elevation_warning_20_3_color">#66f0a205</color>
+  <color name="shadow_elevation_warning_30_1_color">#1a000000</color>
+  <color name="shadow_elevation_warning_30_2_color">#1a000000</color>
+  <color name="shadow_elevation_warning_30_3_color">#66f0a205</color>
+  <color name="shadow_elevation_warning_40_1_color">#1a000000</color>
+  <color name="shadow_elevation_warning_40_2_color">#1a000000</color>
+  <color name="shadow_elevation_warning_40_3_color">#66f0a205</color>
+  <color name="shadow_elevation_warning_50_1_color">#1a000000</color>
+  <color name="shadow_elevation_warning_50_2_color">#1a000000</color>
+  <color name="shadow_elevation_warning_50_3_color">#66f0a205</color>
+  <color name="shadow_elevation_warning_60_1_color">#1a000000</color>
+  <color name="shadow_elevation_warning_60_2_color">#1a000000</color>
+  <color name="shadow_elevation_warning_60_3_color">#66f0a205</color>
+  <color name="shadow_elevation_warning_70_1_color">#1a000000</color>
+  <color name="shadow_elevation_warning_70_2_color">#1a000000</color>
+  <color name="shadow_elevation_warning_70_3_color">#66f0a205</color>
+  <color name="shadow_elevation_warning_80_1_color">#1a000000</color>
+  <color name="shadow_elevation_warning_80_2_color">#1a000000</color>
+  <color name="shadow_elevation_warning_80_3_color">#66f0a205</color>
+  <color name="shadow_elevation_warning_90_1_color">#1a000000</color>
+  <color name="shadow_elevation_warning_90_2_color">#1a000000</color>
+  <color name="shadow_elevation_warning_90_3_color">#66f0a205</color>
+  <color name="shadow_elevation_warning_95_1_color">#1a000000</color>
+  <color name="shadow_elevation_warning_95_2_color">#1a000000</color>
+  <color name="shadow_elevation_warning_95_3_color">#66f0a205</color>
+  <color name="shadow_elevation_warning_05_1_color">#1a000000</color>
+  <color name="shadow_elevation_warning_05_2_color">#1a000000</color>
+  <color name="shadow_elevation_warning_05_3_color">#66f0a205</color>
+  <color name="shadow_elevation_info_10_1_color">#1a000000</color>
+  <color name="shadow_elevation_info_10_2_color">#1a000000</color>
+  <color name="shadow_elevation_info_10_3_color">#663a72e4</color>
+  <color name="shadow_elevation_info_20_1_color">#1a000000</color>
+  <color name="shadow_elevation_info_20_2_color">#1a000000</color>
+  <color name="shadow_elevation_info_20_3_color">#663a72e4</color>
+  <color name="shadow_elevation_info_30_1_color">#1a000000</color>
+  <color name="shadow_elevation_info_30_2_color">#1a000000</color>
+  <color name="shadow_elevation_info_30_3_color">#663a72e4</color>
+  <color name="shadow_elevation_info_40_1_color">#1a000000</color>
+  <color name="shadow_elevation_info_40_2_color">#1a000000</color>
+  <color name="shadow_elevation_info_40_3_color">#663a72e4</color>
+  <color name="shadow_elevation_info_50_1_color">#1a000000</color>
+  <color name="shadow_elevation_info_50_2_color">#1a000000</color>
+  <color name="shadow_elevation_info_50_3_color">#663a72e4</color>
+  <color name="shadow_elevation_info_60_1_color">#1a000000</color>
+  <color name="shadow_elevation_info_60_2_color">#1a000000</color>
+  <color name="shadow_elevation_info_60_3_color">#663a72e4</color>
+  <color name="shadow_elevation_info_70_1_color">#1a000000</color>
+  <color name="shadow_elevation_info_70_2_color">#1a000000</color>
+  <color name="shadow_elevation_info_70_3_color">#663a72e4</color>
+  <color name="shadow_elevation_info_80_1_color">#1a000000</color>
+  <color name="shadow_elevation_info_80_2_color">#1a000000</color>
+  <color name="shadow_elevation_info_80_3_color">#663a72e4</color>
+  <color name="shadow_elevation_info_90_1_color">#1a000000</color>
+  <color name="shadow_elevation_info_90_2_color">#1a000000</color>
+  <color name="shadow_elevation_info_90_3_color">#663a72e4</color>
+  <color name="shadow_elevation_info_95_1_color">#1a000000</color>
+  <color name="shadow_elevation_info_95_2_color">#1a000000</color>
+  <color name="shadow_elevation_info_95_3_color">#663a72e4</color>
+  <color name="shadow_elevation_info_05_1_color">#1a000000</color>
+  <color name="shadow_elevation_info_05_2_color">#1a000000</color>
+  <color name="shadow_elevation_info_05_3_color">#663a72e4</color>
+  <color name="shadow_glow_default_color">#ff191b1c</color>
+  <color name="shadow_glow_alternate_color">#ffebedee</color>
+  <color name="shadow_glow_black_color">#ff000000</color>
+  <color name="shadow_glow_white_color">#ffffffff</color>
+  <color name="shadow_glow_primary_color">#ff0094b8</color>
+  <color name="shadow_glow_secondary_color">#fff55200</color>
+  <color name="shadow_glow_neutral_color">#ff7b878e</color>
+  <color name="shadow_glow_danger_color">#ffd72a1d</color>
+  <color name="shadow_glow_success_color">#ff1a9e4f</color>
+  <color name="shadow_glow_warning_color">#fff0a205</color>
+  <color name="shadow_glow_info_color">#ff3a72e4</color>
+</resources>

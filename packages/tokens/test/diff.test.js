@@ -1,6 +1,7 @@
 /**
  * @file diff.test.js
- * @description Tests for the token diff report, on files of the committed `dist/`. The
+ * @description Tests for the token diff report, on the files of the `default` baseline in
+ *              `golden/`, the output of the default platforms. The
  *              changes are those of real commits: the `headers-gap` rename (16a5317), the
  *              font weights of Phase 14, the shadow radius of Phase 22 and the icon assets
  *              of Phase 21, applied to copies of the current files.
@@ -11,7 +12,6 @@
 import { cp, mkdir, mkdtemp, readdir, readFile, rm, writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { dirname, join, relative, sep } from 'node:path'
-import { fileURLToPath } from 'node:url'
 import { afterAll, describe, expect, test } from 'vitest'
 import {
   compareDist,
@@ -20,8 +20,7 @@ import {
   isDeclarationFile,
   parseDeclarations
 } from '../build/diff.js'
-
-const DIST_DIR = fileURLToPath(new URL('../dist', import.meta.url))
+import { DIST_DIR } from './helpers.js'
 
 const SCSS_SMALL = 'web/docs/chassis/number-small.scss'
 const SWIFT_SMALL = 'ios/demo/chassis/NumberSmall.swift'
@@ -47,7 +46,7 @@ const readDist = (file) => readFile(join(DIST_DIR, file), 'utf8')
 describe('parseDeclarations', () => {
   test('reads every declaration of every dist/ file', async () => {
     const files = (await listDist()).filter(isDeclarationFile)
-    expect(files.length).toBeGreaterThan(50)
+    expect(files.length).toBeGreaterThan(25)
     for (const file of files) {
       const text = await readDist(file)
       const expected = text.match(NAME_PATTERNS[file.slice(file.lastIndexOf('.'))])?.length ?? 0
@@ -91,7 +90,7 @@ describe('isDeclarationFile', () => {
   test('SCSS, Swift and Android values files hold declarations; icon assets do not', async () => {
     const files = await listDist()
     const assets = files.filter((file) => !isDeclarationFile(file))
-    expect(assets.length).toBe(56)
+    expect(assets.length).toBe(28)
     expect(assets.every((file) => /\/(res\/drawable|Icons\.xcassets)\//.test(file))).toBe(true)
     expect(isDeclarationFile('android/demo/chassis/res/values-night/color.xml')).toBe(true)
     expect(isDeclarationFile(DRAWABLE)).toBe(false)

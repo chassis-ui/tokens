@@ -41,9 +41,14 @@ fun camelCase(words: List<String>): String =
 // packages/tokens
 val packageDir: File = rootDir.resolve("../../..").canonicalFile
 
+// The repository of tokens that -PtokensRoot=<dir> names
+val tokensRoot: File =
+  providers.gradleProperty("tokensRoot").map(::File).orNull?.canonicalFile
+    ?: error("Name the repository of tokens with -PtokensRoot=<absolute path>")
+
 // The platform folders, each with the first word of its flavor names
 val platforms: List<Pair<String, File>> =
-  listOf("dist" to packageDir.resolve("dist/android")) +
+  listOf("dist" to tokensRoot.resolve("dist/android")) +
     folders(packageDir.resolve("test/golden")).map { it.name to it.resolve("android") }
 
 val checks: List<Check> =

@@ -21,8 +21,9 @@ rootProject.name = "chassis-tokens-native"
 
 include(":library")
 
-// With -PtokensRoot=<dir>, the release of a repository of tokens, which builds its Android
-// libraries from the Gradle project of the installed package: the checks are not there
-if (!providers.gradleProperty("tokensRoot").isPresent) {
-  include(":resources", ":compose", ":sample")
-}
+// -PtokensRoot=<dir> names the repository of tokens to read. The release of a repository of
+// tokens builds its Android libraries from the Gradle project of the installed package, where
+// the checks are not
+listOf("resources", "compose", "sample")
+  .filter { settingsDir.resolve(it).isDirectory }
+  .forEach { include(":$it") }

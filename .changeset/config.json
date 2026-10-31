@@ -6,7 +6,7 @@
   "linked": [],
   "access": "public",
   "baseBranch": "develop",
-  "changedFilePatterns": ["build/**", "dist/**"],
+  "changedFilePatterns": ["build/**"],
   "updateInternalDependencies": "patch",
   "bumpVersionsWithWorkspaceProtocolOnly": true,
   "ignore": ["chassis-tokens-site"]
