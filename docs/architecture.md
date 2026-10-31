@@ -1,8 +1,8 @@
 # Chassis Tokens architecture
 
-How the token build of `@chassis-ui/tokens` works, why it is built this way, and what it promises to write. It is for contributors who change the build in `packages/tokens/build/` or the output in `packages/tokens/dist/`. How to set up the repository, run the checks and open a pull request is in [CONTRIBUTING.md](../.github/CONTRIBUTING.md).
+How the token build of `@chassis-ui/tokens` works, why it is built this way, and what it promises to write. It is for contributors who change the build in `packages/tokens/build/`. How to set up the repository, run the checks and open a pull request is in [CONTRIBUTING.md](../.github/CONTRIBUTING.md).
 
-Paths below are relative to `packages/tokens/` unless they start with the repository root. `source/`, the folder of the token files, and the `package.json` with the build configuration are at the root.
+`build/` and `test/` below are relative to `packages/tokens/`. `source/`, `dist/`, `Package.swift` and the `package.json` with the build configuration are those of a repository of tokens; the numbers and names of this document are those of chassis-ui/website-tokens, the `vendor/tokens` submodule of this checkout ([D2](decisions.md)).
 
 The build is the command `chassis-tokens` (`build/cli.js`), which works on one repository of tokens, so nothing in it assumes this workspace. See [the repository of a run](#the-repository-of-a-run).
 
@@ -36,9 +36,9 @@ theme-colors.js     Color.swift, from the light and dark color files
 
 ### The repository of a run
 
-`resolveRoot` in `root.js` finds the repository of every command but `init`: `--cwd <dir>` as it is, else the nearest folder upward from the working directory whose `package.json` has a `chassis` block, as in the assets build. `readRepository` reads what the commands need from it: `source/` at its root, the output folder, `dist/` at its root unless `chassis.dist` names another, `chassis.build`, and the version in the file headers, of the nearest `package.json` with a version from the output folder upward. This workspace sets `chassis.dist` to `packages/tokens/dist` and has no version at its root, so its output and its headers stay what they were; the setting goes when `dist/` leaves the package ([D6](decisions.md)).
+`resolveRoot` in `root.js` finds the repository of every command but `init`: `--cwd <dir>` as it is, else the nearest folder upward from the working directory whose `package.json` has a `chassis` block, as in the assets build. `readRepository` reads what the commands need from it: `source/` at its root, the output folder, `dist/` at its root unless `chassis.dist` names another, `chassis.build`, and the version in the file headers, of the nearest `package.json` with a version from the output folder upward. The root of this workspace has no `chassis` block: it is no repository of tokens, and its scripts name `vendor/tokens` with `--cwd`.
 
-The other lines of a file header are the repository's too (`headerLines`): `<title> v<version>`, the title being `chassis.title` or the `name` of its `package.json`; `chassis.copyright` or `Copyright <author>`; and `Licensed under <license>`, with a link from `repository`. A line with nothing to say is left out. This workspace sets `chassis.title` and `chassis.copyright` to the text its files have always had. `pnpm tokens:verify` ignores the title and version line under any title.
+The other lines of a file header are the repository's too (`headerLines`): `<title> v<version>`, the title being `chassis.title` or the `name` of its `package.json`; `chassis.copyright` or `Copyright <author>`; and `Licensed under <license>`, with a link from `repository`. A line with nothing to say is left out. website-tokens sets `chassis.title` and `chassis.copyright` to the text these files have always had. `pnpm tokens:verify` ignores the title and version line under any title.
 
 The build changes its working directory to the root before it reads a token file, and `--out` and `--config` are made absolute first. Style Dictionary reads every source path as a glob, so a path to a repository with a bracket in it would match nothing, while `source/<set>.json` always does.
 
@@ -103,11 +103,13 @@ The light and dark color files come from two instances, so no format sees both t
 
 ### The committed `dist/` is the reference
 
-`dist/` is committed and published. `pnpm tokens:verify` builds into `dist-next/` and compares every file with `dist/`, ignoring only the header lines with the timestamp and the version, so any change to the build that changes the output fails until `dist/` is rebuilt and the change is reviewed. The presets write nothing into `dist/`, so their reference output is committed in `test/golden/<preset>/` and checked by `pnpm tokens:verify:presets`. They build from `test/fixtures/repository/`, a copy of the tokens that does not follow `source/`: a baseline changes when the build changes, not when a token does, and the check needs nothing outside the package. `pnpm tokens:verify:update` writes both references again after a change that is meant to change the output.
+A repository of tokens commits and publishes its `dist/`. `chassis-tokens verify` builds into `dist-next/` and compares every file with `dist/`, ignoring only the header lines with the timestamp and the version, so any change to the tokens or the build that changes the output fails until `dist/` is rebuilt and the change is reviewed. Here `pnpm tokens:verify` runs it on `vendor/tokens`, with the build of this checkout, so that a change to the build meets real tokens before it is released.
+
+The package holds no tokens, so its own reference output is committed in `test/golden/<preset>/` and checked by `pnpm tokens:verify:presets`: every preset, and `default`, the default platforms for one brand. They build from `test/fixtures/repository/`, a copy of the tokens that does not follow `vendor/tokens`: a baseline changes when the build changes, not when a token does, and the check needs nothing outside the package. `pnpm tokens:verify:update:presets` writes them again after a change that is meant to change the output, and `pnpm tokens:verify:update` also writes `vendor/tokens/dist/`, for a commit in website-tokens.
 
 ## Configuration
 
-`chassis.build` in the `package.json` of the repository, here the root:
+`chassis.build` in the `package.json` of the repository, here of `vendor/tokens`:
 
 | Key       | Current value                           | Meaning                                                                        |
 | --------- | --------------------------------------- | ------------------------------------------------------------------------------ |
@@ -150,7 +152,7 @@ Every output folder is `dist/<platform>/<app>/<brand>/`. With the current config
 
 The iOS files declare `ChassisTokens` (in `ChassisTokens.swift`) and `ChassisTokens<File>` in the others (`ChassisTokensString`, `ChassisTokensColorLight`, `ChassisTokensNumberLarge`, `ChassisTokensColor`), each a caseless `public enum`, so all of them can be in one module. The SwiftUI and Compose files have the same names and types (`.kt` for Compose), without `Color.swift` and icons.
 
-The repository root also has `Package.swift`, written by `chassis-tokens swift-package` from `chassis.build`: one Swift library per brand of every app with an iOS platform, `ChassisTokens<App><Brand>` (and `…SwiftUI` for `ios-swiftui`), on the output folder, with the icon catalog as a resource. The release attaches an Android library per `res/` tree, `chassis-tokens-<app>-<brand>-<version>.aar`, built by the `library` module of `test/native/android/`.
+The root of a repository of tokens also has `Package.swift`, written by `chassis-tokens swift-package` from `chassis.build`: one Swift library per brand of every app with an iOS platform, `ChassisTokens<App><Brand>` (and `…SwiftUI` for `ios-swiftui`), on the output folder, with the icon catalog as a resource. The release of a repository of tokens attaches an Android library per `res/` tree, `chassis-tokens-<app>-<brand>-<version>.aar`, built by the `library` module of `test/native/android/` of this package.
 
 ### Filters
 
@@ -270,20 +272,20 @@ An icon is an `asset` token whose value is an SVG document. It stays a string to
 
 ## Checks
 
-| Command                      | Checks                                                                                                                                                               |
-| ---------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `pnpm tokens:lint:source`    | `source/`: equal names across themes and screens, usable names, known font weights, typed tokens, no name with two types (`build/lint-tokens.js`)                    |
-| `pnpm tokens:lint`           | ESLint on `build/` and `test/`                                                                                                                                       |
-| `pnpm tokens:typecheck`      | TypeScript `checkJs` on `build/`                                                                                                                                     |
-| `pnpm tokens:test`           | Vitest, on real tokens in fixtures and the committed `dist/`; in the workspace, also the golden check of `dist/` and that `Package.swift` matches `chassis.build`    |
-| `pnpm tokens:verify`         | A fresh build equals `dist/`; no name twice in one file; every reference names something the output declares                                                         |
-| `pnpm tokens:verify:presets` | Each preset, built from `test/fixtures/repository/`, equals its baseline in `test/golden/`                                                                           |
-| `pnpm tokens:verify:update`  | Not a check: writes the files of `dist/` and of the baselines that differ from a fresh build                                                                         |
-| `pnpm tokens:diff`           | Not a check: the names added, removed, renamed and changed in each `dist/` file against another ref; CI writes it to the pull request's summary                      |
-| `pnpm tokens:native:ios`     | The Swift files against the iOS simulator SDK, the asset catalogs with `actool`, and a sample that uses the Swift package (needs Xcode)                              |
-| `pnpm tokens:native:android` | The Android resources against `android.jar`, the Compose objects against Compose, and a sample app that uses the Android libraries (needs a JDK and the Android SDK) |
+| Command                      | Checks                                                                                                                                                                                                   |
+| ---------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `pnpm tokens:lint:source`    | `vendor/tokens/source/`: equal names across themes and screens, usable names, known font weights, typed tokens, no name with two types (`build/lint-tokens.js`)                                          |
+| `pnpm tokens:lint`           | ESLint on `build/` and `test/`                                                                                                                                                                           |
+| `pnpm tokens:typecheck`      | TypeScript `checkJs` on `build/`                                                                                                                                                                         |
+| `pnpm tokens:test`           | Vitest, on real tokens in fixtures and the `default` baseline; with the submodule, also the golden check of `vendor/tokens/dist/` and that its `Package.swift` matches `chassis.build`                   |
+| `pnpm tokens:verify`         | A fresh build of `vendor/tokens` equals its `dist/`; no name twice in one file; every reference names something the output declares                                                                      |
+| `pnpm tokens:verify:presets` | Each baseline, built from `test/fixtures/repository/`, equals its baseline in `test/golden/`                                                                                                             |
+| `pnpm tokens:verify:update`  | Not a check: writes the files of `vendor/tokens/dist/` and of the baselines that differ from a fresh build                                                                                               |
+| `pnpm tokens:diff`           | Not a check: the names added, removed, renamed and changed in each `vendor/tokens/dist/` file against another ref; CI writes it to the pull request's summary between the two commits of a moved pointer |
+| `pnpm tokens:native:ios`     | The Swift files against the iOS simulator SDK, the asset catalogs with `actool`, and a sample that uses the Swift package (needs Xcode)                                                                  |
+| `pnpm tokens:native:android` | The Android resources against `android.jar`, the Compose objects against Compose, and a sample app that uses the Android libraries (needs a JDK and the Android SDK)                                     |
 
-[`test/README.md`](../packages/tokens/test/README.md) describes the tests, fixtures, baselines and native checks. CI runs all of these on pull requests; the native jobs only when the tokens, the build or the output change.
+[`test/README.md`](../packages/tokens/test/README.md) describes the tests, fixtures, baselines and native checks. CI runs all of these on pull requests; the native jobs only when the pointer of `vendor/tokens`, the build or the baselines change.
 
 ## Known oddities
 
@@ -306,3 +308,5 @@ They are part of the output contract and kept on purpose. Don't fix one without 
 ## History
 
 The build was rewritten in 2026 from Style Dictionary 4 templates that encoded values while printing, in phases committed as `rewrite(phase N): …` (`git log --grep 'rewrite(phase'`). The plan that guided it, with the measurements and the result of every phase, is in the history of `docs/rewrite-plan.md`, deleted after the last phase; the last version is at commit `b9cbab6`.
+
+On 2026-10-30 and 2026-10-31 the repository was split into this builder and the repository of tokens chassis-ui/website-tokens, by the decisions in [decisions.md](decisions.md). `source/`, `dist/` and `Package.swift` left this repository in step four of D6; their history is in website-tokens, and before that here up to the commit of version 0.12.0.
