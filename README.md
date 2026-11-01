@@ -58,7 +58,7 @@ The guides for [web](https://chassis-ui.com/tokens/docs/use-in-project/web-appli
 
 ## Repository Layout
 
-The repository is a [pnpm workspace](https://pnpm.io/workspaces) with two packages, in the layout of the other Chassis repositories such as [chassis-react](https://github.com/chassis-ui/react):
+The repository is a [pnpm workspace](https://pnpm.io/workspaces) with two packages, in the layout of the other Chassis repositories such as [chassis-ui/react](https://github.com/chassis-ui/react):
 
 | Folder             | Package                          | Contents                                                                                        |
 | ------------------ | -------------------------------- | ----------------------------------------------------------------------------------------------- |
@@ -95,8 +95,8 @@ npx --package @chassis-ui/tokens chassis-tokens init acme-tokens --brand acme --
 You need Node.js 22 or later and pnpm. Clone the repository, install the dependencies and check out the submodules; run every command from the root:
 
 ```sh
-git clone https://github.com/chassis-ui/tokens.git chassis-tokens
-cd chassis-tokens
+git clone https://github.com/chassis-ui/tokens.git
+cd tokens
 pnpm install
 pnpm vendor
 ```
@@ -415,16 +415,16 @@ Releases use [Changesets](https://changesets.dev). A maintainer runs `pnpm chang
 
 This project is part of the Chassis Design System's multi-repository architecture:
 
-| Project                                                                | Description                                                  |
-| ---------------------------------------------------------------------- | ------------------------------------------------------------ |
-| [chassis-website](https://github.com/chassis-ui/website)               | Main website and shared documentation package                |
-| [chassis-css](https://github.com/chassis-ui/css)                       | CSS framework and component library                          |
-| [chassis-react](https://github.com/chassis-ui/react)                   | React component library                                      |
-| **chassis-tokens**                                                     | **Design token generation and management (this repository)** |
-| [chassis-website-tokens](https://github.com/chassis-ui/website-tokens) | The design tokens of the Chassis sites and apps              |
-| [chassis-icons](https://github.com/chassis-ui/icons)                   | Icon library and build toolkit                               |
-| [chassis-assets](https://github.com/chassis-ui/assets)                 | Multi-platform asset management                              |
-| [chassis-figma](https://github.com/chassis-ui/figma)                   | Figma component documentation                                |
+| Project                                                                   | Description                                                  |
+| ------------------------------------------------------------------------- | ------------------------------------------------------------ |
+| [chassis-ui/website](https://github.com/chassis-ui/website)               | Main website and shared documentation package                |
+| [chassis-ui/css](https://github.com/chassis-ui/css)                       | CSS framework and component library                          |
+| [chassis-ui/react](https://github.com/chassis-ui/react)                   | React component library                                      |
+| **chassis-ui/tokens**                                                     | **Design token generation and management (this repository)** |
+| [chassis-ui/website-tokens](https://github.com/chassis-ui/website-tokens) | The design tokens of the Chassis sites and apps              |
+| [chassis-ui/icons](https://github.com/chassis-ui/icons)                   | Icon library and build toolkit                               |
+| [chassis-ui/assets](https://github.com/chassis-ui/assets)                 | Multi-platform asset management                              |
+| [chassis-ui/figma](https://github.com/chassis-ui/figma)                   | Figma component documentation                                |
 
 All documentation sites share the `@chassis-ui/docs` package for consistent layouts, components, and styling.
 

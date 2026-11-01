@@ -10,7 +10,7 @@ System and of any team that adopts it: the `chassis-tokens` command builds a rep
 Studio files into SCSS, Swift, SwiftUI, Android resources and Jetpack Compose, with Style
 Dictionary 5. The tokens of the Chassis sites and apps are in a repository of their own,
 `chassis-ui/website-tokens` ([D2](docs/decisions.md)), which this repository vendors as a submodule
-to build and to check. It is a pnpm workspace in the layout of `chassis-react`:
+to build and to check. It is a pnpm workspace in the layout of `chassis-ui/react`:
 
 ```
 package.json     # the commands; the tokens:* scripts run the build on vendor/tokens
@@ -136,6 +136,8 @@ diff`. A change to the tokens belongs in chassis-ui/website-tokens, and reaches 
   hand.
 - `@chassis-ui/docs` and the other Chassis packages are separate repositories. Report a bug
   in one of them there; do not work around it here.
+- Name a sibling by its GitHub repository, as in `chassis-ui/css`. Never by a local folder
+  name or a relative path: those differ per contributor.
 - Commits follow `<type>(<scope>): <description>`, as described in
   [CONTRIBUTING.md](.github/CONTRIBUTING.md#branch-and-commit-conventions).
 

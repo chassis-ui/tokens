@@ -10,8 +10,8 @@ You need Node.js 22 or later and pnpm (the version in `packageManager` of the ro
 `package.json`; `corepack enable` picks it up).
 
 ```sh
-git clone https://github.com/chassis-ui/tokens.git chassis-tokens
-cd chassis-tokens
+git clone https://github.com/chassis-ui/tokens.git
+cd tokens
 pnpm install
 pnpm vendor
 ```
