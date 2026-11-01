@@ -1,9 +1,11 @@
 name: Release
 
-# On a tag v<version>, checks the committed dist/ against a fresh build, publishes the package
-# to npm and creates the GitHub release of the tag, with the Android library of every app and
-# brand attached: chassis-tokens-<app>-<brand>-<version>.aar. The tag has to be the version of
-# package.json, and Swift Package Manager resolves it as the version of the Swift package.
+# On a push to main, releases the version in package.json when it has no tag v<version> yet:
+# checks the committed dist/ against a fresh build, publishes the package to npm and creates the
+# tag and its GitHub release, with the Android library of every app and brand attached:
+# chassis-tokens-<app>-<brand>-<version>.aar, and one zip per platform, app and brand:
+# <name>-<platform>-<app>-<brand>-<version>.zip. A push that does not change the version
+# releases nothing. Swift Package Manager resolves the tag as the version of the Swift package.
 # Written by `chassis-tokens init`.
 #
 # npm trusted publishing: the package trusts this workflow file of this repository, so no npm
@@ -11,7 +13,7 @@ name: Release
 # the trusted publisher on npmjs.com is updated to match.
 on:
   push:
-    tags: ['v*']
+    branches: [main]
 
 permissions:
   contents: read
@@ -22,26 +24,59 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  release:
-    name: Release
+  detect:
+    name: Detect Version
     runs-on: ubuntu-latest
-    timeout-minutes: 20
-    permissions:
-      contents: write # to create the GitHub release
-      id-token: write # for npm trusted publishing and provenance
+    timeout-minutes: 5
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+      release: ${{ steps.version.outputs.release }}
+      publish: ${{ steps.version.outputs.publish }}
     steps:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
 
-      - name: Check the tag against the version
+      # A release that failed makes no tag, so the next push tries again. npm may have the
+      # version by then, when only the last step failed
+      - name: Check whether the version has a tag, and whether npm has it
+        id: version
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
+          NAME=$(node -p "require('./package.json').name")
           VERSION=$(node -p "require('./package.json').version")
-          if [ "$GITHUB_REF_NAME" != "v$VERSION" ]; then
-            echo "::error::The tag $GITHUB_REF_NAME is not the version of package.json, v$VERSION"
-            exit 1
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+
+          if gh api "repos/$GITHUB_REPOSITORY/git/ref/tags/v$VERSION" --silent 2>/dev/null; then
+            echo "release=false" >> "$GITHUB_OUTPUT"
+            echo "The tag v$VERSION exists: nothing to release"
+          else
+            echo "release=true" >> "$GITHUB_OUTPUT"
+            echo "Releasing v$VERSION"
           fi
+
+          if npm view "$NAME@$VERSION" version 2>/dev/null | grep -qxF "$VERSION"; then
+            echo "publish=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "publish=true" >> "$GITHUB_OUTPUT"
+          fi
+
+  release:
+    name: Release
+    needs: detect
+    if: needs.detect.outputs.release == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: write # to create the tag and the GitHub release
+      id-token: write # for npm trusted publishing and provenance
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
 
       # __PNPM_SETUP__
       # .nvmrc holds Node.js 24, whose npm 11 trusted publishing needs (11.5.1 or later)
@@ -90,30 +125,41 @@ jobs:
             cp "$ANDROID_PROJECT"/library/build/aars/*.aar "$RUNNER_TEMP/aars/"
           fi
 
-      # A tag with a prerelease part, such as v0.2.0-next.0, goes to the dist-tag next
+      # Before publishing, so a version whose archives cannot be written is not published.
+      # The package holds only the files of `files` in package.json
+      - name: Write the archives
+        run: __RUN__ archive
+
+      # A version with a prerelease part, such as 0.2.0-next.0, goes to the dist-tag next
       - name: Publish to npm
+        if: needs.detect.outputs.publish == 'true'
+        env:
+          VERSION: ${{ needs.detect.outputs.version }}
         run: |
-          case "$GITHUB_REF_NAME" in
+          case "$VERSION" in
             *-*) DIST_TAG=next ;;
             *) DIST_TAG=latest ;;
           esac
 
           npm publish --provenance --access public --tag "$DIST_TAG"
 
-      # Such a tag is also marked as a prerelease and does not become the latest release. The
+      # Such a version is also marked as a prerelease and does not become the latest release. The
       # notes are generated from the commits; the changelog is in CHANGELOG.md
-      - name: Create the GitHub release
+      - name: Create the tag and the GitHub release
         env:
           GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ needs.detect.outputs.version }}
         run: |
-          case "$GITHUB_REF_NAME" in
+          case "$VERSION" in
             *-*) FLAGS=(--prerelease --latest=false) ;;
             *) FLAGS=(--latest) ;;
           esac
 
           shopt -s nullglob
-          gh release create "$GITHUB_REF_NAME" \
+          gh release create "v$VERSION" \
             "$RUNNER_TEMP"/aars/*.aar \
-            --title "$GITHUB_REF_NAME" \
+            archives/*.zip \
+            --target "$GITHUB_SHA" \
+            --title "v$VERSION" \
             --generate-notes \
             "${FLAGS[@]}"

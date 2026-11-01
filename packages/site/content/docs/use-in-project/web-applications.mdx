@@ -54,6 +54,10 @@ npm install --save-dev sass
 
 The web files are in `node_modules/@chassis-ui/website-tokens/dist/web/docs/<brand>/`. The package exports only the paths under `@chassis-ui/website-tokens/dist/` and its `package.json`.
 
+### Release archive
+
+Every [release of website-tokens](https://github.com/chassis-ui/website-tokens/releases) after v0.1.0 has one archive per platform, app and brand attached, `website-tokens-web-docs-<brand>-<version>.zip`, for a project that takes the files of one brand and installs no package. It unpacks to the SCSS files. GitHub records the SHA-256 digest of each archive on the release, so a build script can check what it downloads.
+
 ### Your own tokens
 
 A repository of tokens holds the token sets, the build configuration and the output, for a team that changes the tokens, adds a brand, a theme or an app, or needs a preset. `chassis-tokens init` writes one, with the builder `@chassis-ui/tokens` as a development dependency. The build needs Node.js 22 or later:

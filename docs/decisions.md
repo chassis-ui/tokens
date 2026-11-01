@@ -70,3 +70,20 @@ All are decided. "The maintainer" took the decision on a proposal of a session.
   examples after its release. Fourth, this package drops `dist/`, vendors website-tokens,
   runs CI on it, and the site is written again for two repositories. Fifth, the management
   features of D4 and D5. The maintainer, 2026-10-30. Note: step four is done, 2026-10-31.
+- **D7. How does a native app take the tokens of one brand without a package?** From a zip per
+  platform, app and brand on the GitHub release, written by `chassis-tokens archive`, as
+  `chassis-assets archive` does for the assets of a repository, under the same form of name. An app
+  then takes its tokens and its assets the same way, by a repository, a version and a file name,
+  checked against the digest of the release, with no npm package holding the output of every
+  platform. npm stays for the web, and the Swift package and the Android libraries stay for the
+  projects that install them. `archives/` is not committed. The maintainer, 2026-11-01.
+- **D8. What starts the release of a repository of tokens?** A push to `main` with a new version,
+  in place of the tag of D3, as in a repository of assets. The `release.yml` that `init` writes
+  reads the version of `package.json`, and when it has no tag `v<version>` it verifies, publishes,
+  and creates the tag and the GitHub release with the Android libraries and the archives. Swift
+  Package Manager resolves that tag as before. A release that fails makes no tag, so the next push
+  tries again, and leaves out the publish when npm has the version. Raising the version is the
+  deliberate step: changes still reach `main` without a release. The first push of a new repository
+  tries to release the version `init` writes, and fails at the publish, with no tag, until npm
+  trusts the repository. A tag pushed by hand ends the release of its version. The maintainer,
+  2026-11-01.

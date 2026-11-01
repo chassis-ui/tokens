@@ -26,7 +26,7 @@ function run(cwd, ...args) {
   return { code: result.status, stdout: result.stdout, stderr: result.stderr }
 }
 
-const COMMANDS = ['build', 'verify', 'diff', 'lint-source', 'swift-package', 'init']
+const COMMANDS = ['build', 'verify', 'diff', 'lint-source', 'swift-package', 'archive', 'init']
 
 describe('chassis-tokens', () => {
   test('names every command in its help', () => {

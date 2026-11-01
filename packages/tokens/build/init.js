@@ -2,7 +2,7 @@
  * @file init.js
  * @description Writes the baseline of a repository of tokens into a folder: a `package.json`
  *              with the `chassis.build` block, the scripts and a development dependency on
- *              this package, a README, a changelog, a CI workflow, a tag-driven release workflow
+ *              this package, a README, a changelog, a CI workflow, a release workflow
  *              and a few Tokens Studio files, so that the first build has tokens to build. The
  *              templates are in `init-templates/` beside this module, and the few values that
  *              differ by repository are filled in: the name, the package manager and its
@@ -287,7 +287,8 @@ export function planFiles(options = {}) {
       verify: 'chassis-tokens verify',
       diff: 'chassis-tokens diff',
       'swift-package': 'chassis-tokens swift-package',
-      'swift-package:check': 'chassis-tokens swift-package --check'
+      'swift-package:check': 'chassis-tokens swift-package --check',
+      archive: 'chassis-tokens archive'
     },
     engines: { node: '>=22.12.0' },
     devDependencies: { '@chassis-ui/tokens': `^${buildVersion()}` }

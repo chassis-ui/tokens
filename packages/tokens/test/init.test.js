@@ -86,7 +86,8 @@ describe('init', () => {
       verify: 'chassis-tokens verify',
       diff: 'chassis-tokens diff',
       'swift-package': 'chassis-tokens swift-package',
-      'swift-package:check': 'chassis-tokens swift-package --check'
+      'swift-package:check': 'chassis-tokens swift-package --check',
+      archive: 'chassis-tokens archive'
     })
     expect(pkg.devDependencies).toEqual({ '@chassis-ui/tokens': `^${buildVersion()}` })
   })
@@ -142,14 +143,18 @@ describe('init', () => {
       expect(plan.get('.github/workflows/ci.yml')).toContain(`cache: ${pm}\n`)
       const release = plan.get('.github/workflows/release.yml')
       expect(release).toContain('package-manager-cache: false')
+      expect(release).toContain(`run: ${run} archive\n`)
+      expect(release).toContain('archives/*.zip')
+      expect(plan.get('.gitignore')).toContain('archives/\n')
       expect(release).not.toContain('cache: pnpm')
       expect(plan.get('README.md')).not.toContain('npx')
     }
   })
 
-  test('the release steps of the README build, verify, commit and tag, in that order', () => {
+  test('the release steps of the README build, verify, commit and push, in that order', () => {
     const readme = planFiles({ dir: 'x', pm: 'pnpm' }).get('README.md')
-    const steps = ['2. `pnpm build`', '3. `pnpm verify`', '4. Commit', 'git tag v0.1.0']
+    expect(readme).not.toContain('git tag')
+    const steps = ['2. `pnpm build`', '3. `pnpm verify`', '4. Commit', 'git push origin main']
     const order = steps.map((step) => readme.indexOf(step))
     expect(order[0]).toBeGreaterThan(-1)
     expect(order).toEqual([...order].sort((a, b) => a - b))
@@ -162,10 +167,15 @@ describe('init', () => {
     expect(plan.get('.github/workflows/ci.yml')).toContain('run: npm run verify')
   })
 
-  test('the release runs on a tag, verifies dist/, publishes and attaches the libraries', () => {
+  test('a new version on main verifies dist/, publishes and creates the tag and the release', () => {
     const release = planFiles({ dir: 'x' }).get('.github/workflows/release.yml')
-    expect(release).toContain("tags: ['v*']")
-    expect(release).toContain('The tag $GITHUB_REF_NAME is not the version')
+    expect(release).toContain('branches: [main]')
+    expect(release).not.toContain('tags:')
+    expect(release).toContain('git/ref/tags/v$VERSION')
+    expect(release).toContain("if: needs.detect.outputs.release == 'true'")
+    expect(release).toContain("if: needs.detect.outputs.publish == 'true'")
+    expect(release).toContain('gh release create "v$VERSION"')
+    expect(release).toContain('--target "$GITHUB_SHA"')
     expect(release).toContain('id-token: write')
     expect(release).toContain('npm publish --provenance')
     expect(release).toContain('"$RUNNER_TEMP"/aars/*.aar')

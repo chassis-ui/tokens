@@ -22,6 +22,10 @@ export const COMMANDS = {
   },
   'lint-source': { module: './lint-tokens.js', about: 'Check the token files in source/' },
   'swift-package': { module: './swift-package.js', about: 'Write Package.swift from the output' },
+  archive: {
+    module: './archive.js',
+    about: 'Write one zip per platform, app and brand of the output'
+  },
   init: { module: './init.js', about: 'Write the baseline of a repository of tokens into a folder' }
 }
 

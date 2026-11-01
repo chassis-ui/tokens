@@ -67,7 +67,7 @@ Next to the tree, the build writes the same resources as flat files, for a proje
 
 ## Installation
 
-Install the Android library to use the tokens as they are. The same resources are in the npm package, and the `chassis-tokens` command builds them for your own tokens.
+Install the Android library to use the tokens as they are. The same resources are in the archive of a release and in the npm package, and the `chassis-tokens` command builds them for your own tokens.
 
 ### Android library
 
@@ -82,6 +82,10 @@ dependencies {
 ```
 
 Layouts use the resources of the library like those of the app, such as `@color/color_context_default_bg_main`. In Kotlin, the resources are in the `R` class of the library, `chassis.tokens.R`.
+
+### Release archive
+
+Every [release of website-tokens](https://github.com/chassis-ui/website-tokens/releases) after v0.1.0 has one archive per platform, app and brand attached, `website-tokens-android-demo-<brand>-<version>.zip`, for a project that takes the files of one brand and installs no library. It unpacks to the XML files and the `res/` tree. Use `res/` as a resource folder of your module. GitHub records the SHA-256 digest of each archive on the release, so a build script can check what it downloads.
 
 ### Files from npm
 

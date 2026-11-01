@@ -1,6 +1,9 @@
 # The scratch output of `chassis-tokens verify`
 dist-next/
 
+# The archives of a release, from `chassis-tokens archive`
+archives/
+
 # Swift Package Manager
 .build/
 .swiftpm/

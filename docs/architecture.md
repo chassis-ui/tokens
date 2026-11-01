@@ -154,6 +154,8 @@ The iOS files declare `ChassisTokens` (in `ChassisTokens.swift`) and `ChassisTok
 
 The root of a repository of tokens also has `Package.swift`, written by `chassis-tokens swift-package` from `chassis.build`: one Swift library per brand of every app with an iOS platform, `ChassisTokens<App><Brand>` (and `…SwiftUI` for `ios-swiftui`), on the output folder, with the icon catalog as a resource. The release of a repository of tokens attaches an Android library per `res/` tree, `chassis-tokens-<app>-<brand>-<version>.aar`, built by the `library` module of `test/native/android/` of this package.
 
+The release also attaches one zip per platform, app and brand, written by `chassis-tokens archive`: `<name>-<platform>-<app>-<brand>-<version>.zip`, with the content of `dist/<platform>/<app>/<brand>/` at its top level and `<name>` the name of `package.json` without its scope. Each zip has the digest GitHub records for a release file, so a project that takes one brand can check it and needs no package manager (D7).
+
 ### Filters
 
 | Filter               | Files                               | Tokens                                                                                                                                                  |

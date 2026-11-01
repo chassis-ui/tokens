@@ -195,7 +195,7 @@ Review what the change does to the token names and values, compared with the `ma
 npx chassis-tokens diff
 ```
 
-Your apps take the files from the folders of `dist/`: the SCSS files of `dist/web/<app>/<brand>/`, the Swift files and `Icons.xcassets` of `dist/ios/<app>/<brand>/`, and `dist/android/<app>/<brand>/res` as a resource folder. The workflow that `init` wrote publishes a tag `v<version>` to npm and attaches the Android libraries to its release, and the repository at that tag is the Swift package. The platform guides describe each.
+Your apps take the files from the folders of `dist/`: the SCSS files of `dist/web/<app>/<brand>/`, the Swift files and `Icons.xcassets` of `dist/ios/<app>/<brand>/`, and `dist/android/<app>/<brand>/res` as a resource folder. The workflow that `init` wrote releases a new version when you push it to `main`: it publishes to npm and creates the tag `v<version>` and its release, with the Android libraries and one archive per platform, app and brand attached, and the repository at that tag is the Swift package. A push whose version has a tag releases nothing. The platform guides describe each.
 
 ## Troubleshooting
 

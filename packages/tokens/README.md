@@ -13,7 +13,7 @@ npm install
 npm run build
 ```
 
-That writes a `package.json` with the build configuration, a few Tokens Studio files, a README and the workflows of CI and of a release. `chassis-tokens --help` lists the commands: `build`, `verify`, `diff`, `lint-source`, `swift-package` and `init`. See the [documentation](https://chassis-ui.com/tokens/docs/getting-started/introduction/).
+That writes a `package.json` with the build configuration, a few Tokens Studio files, a README and the workflows of CI and of a release. `chassis-tokens --help` lists the commands: `build`, `verify`, `diff`, `lint-source`, `swift-package`, `archive` and `init`. See the [documentation](https://chassis-ui.com/tokens/docs/getting-started/introduction/).
 
 ## The tokens of the Chassis sites
 
