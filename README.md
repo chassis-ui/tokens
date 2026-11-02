@@ -65,7 +65,7 @@ The repository is a [pnpm workspace](https://pnpm.io/workspaces) with two packag
 | `packages/tokens/` | `@chassis-ui/tokens` (published) | `build/` (the Style Dictionary build and the `chassis-tokens` command), `test/`, `CHANGELOG.md` |
 | `packages/site/`   | `chassis-tokens-site` (private)  | The documentation site and its dependencies                                                     |
 
-The root holds the `vendor/tokens` submodule, a checkout of chassis-ui/website-tokens with `source/`, `chassis.build`, `dist/` and `Package.swift`, on which the root scripts run the build of this checkout; the assets submodule in `vendor/assets`; the workspace configuration, the lint and format configurations with their dependencies, the CI workflows, the Changesets configuration in `.changeset/`, the repository scripts in `build/` (`sync-version-refs.js`, `release-notes.js`) and the site output in `_site/`. In the sections below, `build/` and `test/` are relative to `packages/tokens/`, and `source/` and `dist/` to the repository of tokens, `vendor/tokens` in this checkout.
+The root holds the `vendor/tokens` submodule, a checkout of chassis-ui/website-tokens with `source/`, `chassis.build`, `dist/` and `Package.swift`, on which the root scripts run the build of this checkout; the pin of the assets of the site in `vendor/assets.json`, a release of chassis-ui/website-assets that `pnpm vendor` unpacks into `vendor/assets`, which is not committed; the workspace configuration, the lint and format configurations with their dependencies, the CI workflows, the Changesets configuration in `.changeset/`, the repository scripts in `build/` (`sync-version-refs.js`, `release-notes.js`) and the site output in `_site/`. In the sections below, `build/` and `test/` are relative to `packages/tokens/`, and `source/` and `dist/` to the repository of tokens, `vendor/tokens` in this checkout.
 
 ## The command
 
@@ -94,7 +94,7 @@ npx --package @chassis-ui/tokens chassis-tokens init acme-tokens --brand acme --
 
 ## Development
 
-You need Node.js 22 or later and pnpm. Clone the repository, install the dependencies and check out the submodules; run every command from the root:
+You need Node.js 22 or later and pnpm. Clone the repository, install the dependencies, check out the `vendor/tokens` submodule and unpack the assets of the site; run every command from the root:
 
 ```sh
 git clone https://github.com/chassis-ui/tokens.git
@@ -103,7 +103,7 @@ pnpm install
 pnpm vendor
 ```
 
-`pnpm test` needs no submodule. `git submodule update --init vendor/tokens` is enough for the `tokens:*` scripts on the real tokens, and `pnpm vendor` also builds `vendor/assets`, for the site.
+`pnpm test` needs no submodule. `git submodule update --init vendor/tokens` is enough for the `tokens:*` scripts on the real tokens, and `pnpm vendor` also unpacks the archive that `vendor/assets.json` pins into `vendor/assets`, for the site. `pnpm sync-assets` moves the pin to the latest release of chassis-ui/website-assets.
 
 To work on the tokens without the site's dependencies, install only the tokens package (and the root's lint tools):
 
@@ -384,10 +384,10 @@ Each platform file in `build/config/` can also be edited directly; `web-px.js`, 
 The documentation site in `packages/site/` is built with [Astro](https://astro.build/) and the shared `@chassis-ui/docs` package. It covers the token categories, the Tokens Studio and Style Dictionary setup, and guides for web, iOS and Android projects. Its pages are in `packages/site/content/`. It compiles `@chassis-ui/css` against the published `@chassis-ui/website-tokens` pinned in its `package.json`, not `vendor/tokens`.
 
 ```sh
-# Check out the submodules, build the assets of the site and run it at http://localhost:4322/tokens/
+# Check out vendor/tokens, unpack the assets of the site and run it at http://localhost:4322/tokens/
 pnpm dev
 
-# Check out the submodules, build the assets and the site into _site/
+# Check out vendor/tokens, unpack the assets and build the site into _site/
 pnpm build
 
 # Build the site only
@@ -398,7 +398,7 @@ pnpm site:build
 
 Every pull request and every push to `develop` runs `.github/workflows/ci.yml`:
 
-- **Tokens** (Node.js 22 and 24), with the submodules checked out: `tokens:lint`, `tokens:lint:source`, `tokens:typecheck`, `tokens:test`, `tokens:verify`, `tokens:verify:presets`
+- **Tokens** (Node.js 22 and 24), with the `vendor/tokens` submodule checked out: `tokens:lint`, `tokens:lint:source`, `tokens:typecheck`, `tokens:test`, `tokens:verify`, `tokens:verify:presets`
 - **Site**: `lint:prettier` (the whole repository), `site:lint`, `check:astro`, `site:build`, `site:lint:html`
 - **Audit**: `pnpm check:pnpm`, which is `pnpm audit --prod` for moderate advisories and above in what the package installs, and a report of `pnpm audit` on every dependency, which does not fail the job
 - **Dependency Review**: on a pull request, fails when it adds a dependency with a known vulnerability of moderate severity or above

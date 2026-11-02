@@ -16,7 +16,7 @@ pnpm install
 pnpm vendor
 ```
 
-`pnpm vendor` checks out the submodules and builds the assets of the site. The tests need neither; `git submodule update --init vendor/tokens` is enough for the `tokens:*` scripts.
+`pnpm vendor` checks out the `vendor/tokens` submodule and unpacks the assets of the site. The tests need neither; `git submodule update --init vendor/tokens` is enough for the `tokens:*` scripts.
 
 This repo is a pnpm workspace with two packages:
 
@@ -31,9 +31,9 @@ The token files that the build reads are in the `vendor/tokens` submodule, a che
 `pnpm tokens:*` scripts run the build of this checkout with `--cwd vendor/tokens`.
 
 The root also holds the lint and format configurations, the repository scripts in `build/`, the
-assets submodule in `vendor/assets` (the site needs it; `pnpm dev` and `pnpm site:build` check
-it out at the pinned commit and build it, and `pnpm sync-submodules` moves the pin to the latest
-`app/docs`) and the CI workflows. Run every command from the root.
+pin of the assets in `vendor/assets.json` (the site needs them; `pnpm dev` and `pnpm site:build`
+unpack the archive of the pinned release of chassis-ui/website-assets into `vendor/assets`, which
+is not committed, and `pnpm sync-assets` moves the pin to the latest release) and the CI workflows. Run every command from the root.
 
 To work on the tokens only, install the tokens package and the root's lint tools without the
 site's dependencies:

@@ -15,7 +15,7 @@ to build and to check. It is a pnpm workspace in the layout of `chassis-ui/react
 ```
 package.json     # the commands; the tokens:* scripts run the build on vendor/tokens
 vendor/tokens    # git submodule of chassis-ui/website-tokens: source/, chassis.build, dist/, Package.swift
-vendor/assets    # git submodule of chassis-ui/assets
+vendor/assets    # not committed: the release of chassis-ui/website-assets that vendor/assets.json pins
 packages/
   tokens/        # @chassis-ui/tokens, published to npm, with the chassis-tokens command
     build/       # the Style Dictionary build and the command (JavaScript with JSDoc types)
@@ -32,9 +32,11 @@ A repository of tokens, such as `vendor/tokens`, holds `source/`, a `package.jso
 
 - Package manager: **pnpm**, with Node.js 22 or later. Do not use npm or yarn.
 - Run every command from the repository root.
-- `pnpm vendor` checks out the submodules and builds the assets of the site. Without it
-  `vendor/tokens/` is empty and the `tokens:*` scripts that read it fail; `pnpm test` needs no
-  submodule.
+- `pnpm vendor` checks out the `vendor/tokens` submodule and unpacks into `vendor/assets/` the
+  archive of the assets that `vendor/assets.json` pins. Without it `vendor/tokens/` is empty and
+  the `tokens:*` scripts that read it fail; `pnpm test` needs no submodule.
+- `pnpm sync-assets` moves `vendor/assets.json` to a release of chassis-ui/website-assets, the
+  latest without `--version`. It writes the names and digests; do not edit them by hand.
 - `pnpm tokens` builds `vendor/tokens/dist/`; `--brand`, `--app`, `--platform`, `--theme` and
   `--screen` build a part of it, and `--dry-run` prints the plan.
 - The `pnpm tokens:*` scripts run the `chassis-tokens` command (`packages/tokens/build/cli.js`)
@@ -130,8 +132,8 @@ diff`. A change to the tokens belongs in chassis-ui/website-tokens, and reaches 
   starts the release workflow, which publishes `@chassis-ui/tokens` to npm when the version is
   new.
 - Do not edit generated or fetched files: `_site/`, `dist-next/`, `.cache/`, `.build/`,
-  `node_modules/`, `vendor/assets` and `vendor/tokens` (submodules; changes belong in
-  `chassis-ui/assets` and `chassis-ui/website-tokens`).
+  `node_modules/`, `vendor/assets` and `vendor/tokens` (changes belong in
+  `chassis-ui/website-assets` and `chassis-ui/website-tokens`).
 - The version references are written by a script (`pnpm changeset:version`). Do not edit them by
   hand.
 - `@chassis-ui/docs` and the other Chassis packages are separate repositories. Report a bug

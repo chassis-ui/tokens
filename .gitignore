@@ -13,6 +13,7 @@ packages/tokens/test/native/android/local.properties
 packages/tokens/test/native/android/**/build
 
 # Site
+vendor/assets
 _site
 .astro
 packages/site/dist

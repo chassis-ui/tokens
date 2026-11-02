@@ -112,8 +112,8 @@ jobs:
       - name: Astro check
         run: pnpm check:astro
 
-      # The same build as Vercel: checks out the submodules, builds vendor/assets, then Astro
-      # and Pagefind
+      # The same build as Vercel: checks out vendor/tokens, unpacks the archive of the assets
+      # that vendor/assets.json pins, then Astro and Pagefind
       - name: Build
         run: pnpm site:build
 

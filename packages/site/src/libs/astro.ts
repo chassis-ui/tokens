@@ -9,6 +9,7 @@ import {
   getChassisCSSFsPath,
   getChassisIconsFsPath
 } from '@chassis-ui/docs'
+import { writeBrandCSS } from '@chassis-ui/docs/integration'
 import type { ChassisConfig } from '@chassis-ui/docs/schema'
 
 // Static file paths that will be aliased (copied) to a different destination path.
@@ -57,6 +58,7 @@ export function chassis({
           copyStatic(path.join(root, 'static'), publicDir)
           copyChassisAssets(root, publicDir)
           copyChassisCSS(root, publicDir)
+          writeBrandCSS({ root, destination: path.join(publicDir, 'static') })
           copyChassisIcons(root, publicDir)
           aliasStatic(root, publicDir)
           copyPagefindIndex(outDir, publicDir)
