@@ -87,3 +87,18 @@ All are decided. "The maintainer" took the decision on a proposal of a session.
   tries to release the version `init` writes, and fails at the publish, with no tag, until npm
   trusts the repository. A tag pushed by hand ends the release of its version. The maintainer,
   2026-11-01.
+- **D9. How is a release named, and what is its text?** Every file of a release starts with the
+  name of the repository, the name of `package.json` without its scope: the zips, and the Android
+  libraries since this entry, `<name>-android-<app>-<brand>-<version>.aar` in place of
+  `chassis-tokens-<app>-<brand>-<version>.aar`, which named this package in the repository of any
+  team. The Swift names stay: an app imports them in its code. The text of the GitHub release is
+  the entry of its version in `CHANGELOG.md`, with `chassis-tokens release-notes`, in CI and first
+  in the release, so a version without an entry fails and is not published: `--generate-notes`
+  wrote only a link, as these repositories push to `main` and it lists pull requests. The release
+  of this package has the title `v<version>`, as chassis-ui/assets. The maintainer, 2026-11-02.
+- **D10. How does a repository made earlier take what `init` writes now?** With `init --check`,
+  which reports what differs, and `init --only <file…>`, which writes those files. `package.json`
+  and `CHANGELOG.md` are never written over, as the token files were not. `init` also writes
+  `AGENTS.md` and `CLAUDE.md`, since a release follows from a push; they guide, and D9 enforces.
+  chassis-ui/assets has the same commands by its own decision, and no check compares the two.
+  The maintainer, 2026-11-02.

@@ -26,6 +26,10 @@ export const COMMANDS = {
     module: './archive.js',
     about: 'Write one zip per platform, app and brand of the output'
   },
+  'release-notes': {
+    module: './release-notes.js',
+    about: 'Print the changelog entry of a version, and fail without one'
+  },
   init: { module: './init.js', about: 'Write the baseline of a repository of tokens into a folder' }
 }
 

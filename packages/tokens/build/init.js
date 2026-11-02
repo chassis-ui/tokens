@@ -2,15 +2,19 @@
  * @file init.js
  * @description Writes the baseline of a repository of tokens into a folder: a `package.json`
  *              with the `chassis.build` block, the scripts and a development dependency on
- *              this package, a README, a changelog, a CI workflow, a release workflow
- *              and a few Tokens Studio files, so that the first build has tokens to build. The
+ *              this package, a README, a changelog, the instructions for agents, a CI workflow, a
+ *              release workflow and a few Tokens Studio files, so that the first build has tokens to build. The
  *              templates are in `init-templates/` beside this module, and the few values that
  *              differ by repository are filled in: the name, the package manager and its
  *              commands.
  *
  *              The command writes outside the output folder, the one that does, so it writes
  *              nothing when a file it would write exists, unless `--force` is given, and
- *              `--dry-run` only prints the files.
+ *              `--dry-run` only prints the files. The files that hold the data of a repository are
+ *              never written over, with or without `--force`.
+ *
+ *              A repository made earlier takes what changed with `--check`, which reports where it
+ *              differs from what this version writes, and `--only <file…>`, which writes those files.
  *
  * @copyright Copyright (c) 2026 Ozgur Gunes
  * @license MIT
@@ -69,6 +73,12 @@ export const PACKAGE_MANAGERS = {
 /** The brand and the app a repository starts with, when none is given. */
 export const DEFAULTS = { brands: ['main'], apps: { site: ['web'] }, pm: 'npm', license: 'MIT' }
 
+/** The files that hold the data of a repository: written when missing, never over one. */
+export const DATA_FILES = ['package.json', 'CHANGELOG.md']
+
+/** The files a repository makes its own: `--check` asks only that they exist. */
+const OWN_FILES = [...DATA_FILES, 'README.md']
+
 /** The folder of the token files, which init writes only when it holds none. */
 const SOURCE_DIR = 'source'
 
@@ -83,6 +93,7 @@ const NAME_RE = /^[a-z0-9]+(-[a-z0-9]+)*$/
  * @typedef {object} InitOptions
  * @property {string} [dir] - The folder to write into. Default: the working directory.
  * @property {string} [name] - The name of the package. Default: the name of the folder.
+ * @property {string} [version] - The version of the first entry of the changelog. Default `0.1.0`.
  * @property {string[]} [brands] - The brands of `chassis.build`. Default `['main']`.
  * @property {Record<string, string[]>} [apps] - The apps of `chassis.build`, each with its
  *   platforms. Default `{ site: ['web'] }`.
@@ -92,7 +103,9 @@ const NAME_RE = /^[a-z0-9]+(-[a-z0-9]+)*$/
  *   `origin` remote of the folder, when it is the root of a git repository.
  * @property {string} [license] - The license. Default `MIT`.
  * @property {string} [author] - The author. Default: `user.name` of the git configuration.
- * @property {boolean} [force] - Write over a file that exists, but never a token file.
+ * @property {string[]} [only] - Write these files of the plan only.
+ * @property {boolean} [force] - Write over a file that exists, but never a token file or one of
+ *   `DATA_FILES`.
  * @property {boolean} [dryRun] - Print the files, write nothing.
  */
 
@@ -119,6 +132,29 @@ export function gitDefaults(dir) {
   return {
     ...(author && { author }),
     ...(repositoryWebUrl(repository) && { repository })
+  }
+}
+
+/**
+ * What a folder that already holds a repository says of itself: its name and version in
+ * `package.json`, and the package manager of its lockfile.
+ * @param {string} dir
+ * @returns {{name?: string, version?: string, pm?: 'npm' | 'pnpm'}}
+ */
+export function repositoryDefaults(dir) {
+  let pkg = {}
+  try {
+    pkg = JSON.parse(readFileSync(join(dir, 'package.json'), 'utf8'))
+  } catch {
+    // No package.json here, or one that cannot be read: nothing to say
+  }
+  const lockfile = Object.keys(PACKAGE_MANAGERS).find((pm) =>
+    existsSync(join(dir, PACKAGE_MANAGERS[pm].lockfile))
+  )
+  return {
+    ...(typeof pkg.name === 'string' && { name: pkg.name }),
+    ...(typeof pkg.version === 'string' && { version: pkg.version }),
+    ...(lockfile && { pm: /** @type {'npm' | 'pnpm'} */ (lockfile) })
   }
 }
 
@@ -259,7 +295,7 @@ export function planFiles(options = {}) {
   const commands = PACKAGE_MANAGERS[pm]
   const values = {
     NAME: name,
-    VERSION: FIRST_VERSION,
+    VERSION: options.version || FIRST_VERSION,
     INSTALL: commands.install,
     INSTALL_CI: commands.ci,
     RUN: commands.run,
@@ -288,7 +324,8 @@ export function planFiles(options = {}) {
       diff: 'chassis-tokens diff',
       'swift-package': 'chassis-tokens swift-package',
       'swift-package:check': 'chassis-tokens swift-package --check',
-      archive: 'chassis-tokens archive'
+      archive: 'chassis-tokens archive',
+      'release-notes': 'chassis-tokens release-notes'
     },
     engines: { node: '>=22.12.0' },
     devDependencies: { '@chassis-ui/tokens': `^${buildVersion()}` }
@@ -300,6 +337,8 @@ export function planFiles(options = {}) {
     ['.nvmrc', `${NODE_VERSION}\n`],
     ['README.md', template('README.md')],
     ['CHANGELOG.md', template('CHANGELOG.md')],
+    ['AGENTS.md', template('AGENTS.md')],
+    ['CLAUDE.md', template('CLAUDE.md')],
     ['.github/workflows/ci.yml', template('workflows/ci.yml')],
     ['.github/workflows/release.yml', template('workflows/release.yml')],
     ...Object.entries(starterSource(brands, Object.keys(apps))).map(
@@ -310,31 +349,56 @@ export function planFiles(options = {}) {
 }
 
 /**
+ * The plan of a folder: the options over what the folder and git say of it, and the files of
+ * `only`.
+ * @param {InitOptions} options
+ * @param {string} dir
+ * @returns {Map<string, string>}
+ * @throws {Error} As `planFiles`, or when `only` names a file init does not write.
+ */
+function planFor(options, dir) {
+  const plan = planFiles({ ...gitDefaults(dir), ...repositoryDefaults(dir), ...options, dir })
+  if (!options.only?.length) return plan
+  for (const file of options.only) {
+    if (!plan.has(file)) {
+      throw new Error(`init does not write ${file}. It writes ${[...plan.keys()].join(', ')}`)
+    }
+  }
+  return new Map([...plan].filter(([file]) => options.only?.includes(file)))
+}
+
+/**
  * Writes the baseline of a repository of tokens. A folder that holds token files keeps them,
  * with or without `force`, and gets no starter tokens: a sync from Figma wrote them, and a
- * starter set among them would be built with them.
+ * starter set among them would be built with them. A file of `DATA_FILES` that exists stays with
+ * `force`.
  * @param {InitOptions} [options]
  * @returns {{ dir: string, files: string[], existing: string[], kept: string[],
- *   packageJson: Object, written: boolean }} The folder, the files relative to it, the ones of
- *   them that existed before, the token files it left alone, the `package.json` it plans, and
- *   whether the files were written (not on a dry run).
+ *   keptData: string[], packageJson: Object | undefined, written: boolean }} The folder, the files
+ *   relative to it, the ones of them that existed before, the token files it left alone, the data
+ *   files `force` left alone, the `package.json` it plans, and whether the files were written (not
+ *   on a dry run).
  * @throws {Error} When a file exists and neither `force` nor `dryRun` is given, or on an
  *   option that is not accepted. Nothing is written then.
  */
 export function init(options = {}) {
   const dir = resolve(options.dir || '.')
-  const plan = planFiles({ ...gitDefaults(dir), ...options, dir })
+  const plan = planFor(options, dir)
   const kept = existingSource(dir)
   if (kept.length > 0) {
     for (const file of plan.keys()) {
       if (file.startsWith(`${SOURCE_DIR}/`)) plan.delete(file)
     }
   }
+  const packageJson = plan.has('package.json') ? JSON.parse(plan.get('package.json')) : undefined
+  const keptData = options.force
+    ? DATA_FILES.filter((file) => plan.has(file) && existsSync(join(dir, file)))
+    : []
+  for (const file of keptData) plan.delete(file)
   const files = [...plan.keys()]
-  const packageJson = JSON.parse(plan.get('package.json'))
 
   const existing = files.filter((file) => existsSync(join(dir, file)))
-  if (options.dryRun) return { dir, files, existing, kept, packageJson, written: false }
+  if (options.dryRun) return { dir, files, existing, kept, keptData, packageJson, written: false }
   if (existing.length > 0 && !options.force) {
     throw new Error(
       `Files to write exist in ${dir}: ${existing.join(', ')}. --force writes over them`
@@ -346,16 +410,46 @@ export function init(options = {}) {
     mkdirSync(dirname(target), { recursive: true })
     writeFileSync(target, content)
   }
-  return { dir, files, existing, kept, packageJson, written: true }
+  return { dir, files, existing, kept, keptData, packageJson, written: true }
+}
+
+/**
+ * Where a repository differs from what this version of init writes. A file of a repository's own
+ * only has to exist, the token files are not looked at, and of `package.json` the scripts of the
+ * plan have to be there.
+ * @param {InitOptions} [options]
+ * @returns {{ missing: string[], differs: string[], scripts: string[] }}
+ */
+export function checkBaseline(options = {}) {
+  const dir = resolve(options.dir || '.')
+  const plan = planFor(options, dir)
+  /** @type {{ missing: string[], differs: string[], scripts: string[] }} */
+  const report = { missing: [], differs: [], scripts: [] }
+  for (const [file, content] of plan) {
+    if (file.startsWith(`${SOURCE_DIR}/`)) continue
+    const target = join(dir, file)
+    if (!existsSync(target)) report.missing.push(file)
+    else if (!OWN_FILES.includes(file) && readFileSync(target, 'utf8') !== content) {
+      report.differs.push(file)
+    }
+  }
+  if (plan.has('package.json') && existsSync(join(dir, 'package.json'))) {
+    const pkg = JSON.parse(readFileSync(join(dir, 'package.json'), 'utf8'))
+    report.scripts = Object.keys(JSON.parse(plan.get('package.json')).scripts).filter(
+      (script) => !pkg.scripts?.[script]
+    )
+  }
+  return report
 }
 
 const HELP = `Usage: chassis-tokens init [dir] [options]
 
 Writes the baseline of a repository of tokens into dir, the working directory by default:
 package.json with the chassis.build block and the scripts, .gitignore, .nvmrc, README.md,
-CHANGELOG.md, a CI and a release workflow, and Tokens Studio files in source/ for the first
-build. Writes nothing when a file exists. A source/ that holds files is never written to, with
-or without --force: it is kept, and chassis.build has to follow its $themes.json.
+CHANGELOG.md, AGENTS.md, CLAUDE.md, a CI and a release workflow, and Tokens Studio files in
+source/ for the first build. Writes nothing when a file exists. A source/ that holds files is
+never written to, with or without --force: it is kept, and chassis.build has to follow its
+$themes.json. package.json and CHANGELOG.md are never written over either.
 
 Options:
   --name <name>          The package name, default the name of the folder
@@ -367,7 +461,11 @@ Options:
                          of the folder, or left out
   --license <license>    The license, default MIT
   --author <author>      The author; default user.name of git, or left out
-  --force                Write over the files that exist, but never a token file
+  --only <file…>         Write these files only, for a repository made earlier
+  --check                Report where the repository differs from what this version writes,
+                         and exit 1 when it does. Writes nothing
+  --force                Write over the files that exist, but never a token file, package.json
+                         or CHANGELOG.md
   --dry-run              Print the files, write nothing
   --help, -h             Print this help
 `
@@ -375,11 +473,11 @@ Options:
 /**
  * Parses the arguments of the command.
  * @param {string[]} argv
- * @returns {InitOptions & { help: boolean }}
+ * @returns {InitOptions & { help: boolean, check?: boolean }}
  * @throws {Error} On an unknown option, or an option without its value.
  */
 export function parseInitArgs(argv) {
-  /** @type {InitOptions & { help: boolean }} */
+  /** @type {InitOptions & { help: boolean, check?: boolean }} */
   const options = { brands: [], apps: {}, help: false }
   const values = (i) => {
     const list = []
@@ -395,6 +493,12 @@ export function parseInitArgs(argv) {
       options.force = true
     } else if (arg === '--dry-run') {
       options.dryRun = true
+    } else if (arg === '--check') {
+      options.check = true
+    } else if (arg === '--only') {
+      const { list, i: next } = values(i)
+      options.only = [...(options.only ?? []), ...list]
+      i = next
     } else if (['--repository', '--license', '--author'].includes(arg)) {
       const { list, i: next } = values(i)
       options[arg.slice(2)] = list.join(' ')
@@ -448,8 +552,26 @@ export function cli(argv = process.argv.slice(2)) {
     console.log(HELP)
     return
   }
+  if (options.check) {
+    try {
+      const { missing, differs, scripts } = checkBaseline(options)
+      for (const file of missing) console.log(`➕ ${file}: missing`)
+      for (const file of differs) console.log(`✏️  ${file}: differs`)
+      for (const script of scripts) console.log(`➕ package.json: no script ${script}`)
+      if (missing.length + differs.length + scripts.length === 0) {
+        console.log(`✅ The repository has what this version of init writes`)
+        return
+      }
+      console.log(`\nchassis-tokens init --only <file…> writes a missing file, and with --force`)
+      console.log(`one that differs. A repository may differ on purpose.`)
+      process.exit(1)
+    } catch (error) {
+      console.error(`❌ ${error.message}`)
+      process.exit(1)
+    }
+  }
   try {
-    const { files, existing, kept, packageJson, written } = init(options)
+    const { files, existing, kept, keptData, packageJson, written } = init(options)
     const shown = options.dir || '.'
     for (const file of files) {
       console.log(`📄 ${file}${!written && existing.includes(file) ? ' (exists)' : ''}`)
@@ -459,14 +581,21 @@ export function cli(argv = process.argv.slice(2)) {
         `🔒 Kept ${SOURCE_DIR}/ with its ${kept.length} files, and wrote no starter tokens: keep chassis.build in step with its $themes.json`
       )
     }
-    const { repository, license, author } = packageJson
-    console.log(
-      `🏷️  repository: ${repository?.url ?? 'none'}, license: ${license}, author: ${author ?? 'none'}`
-    )
+    for (const file of keptData) console.log(`🔒 Kept ${file}: it holds the data of the repository`)
+    if (packageJson) {
+      const { repository, license, author } = packageJson
+      console.log(
+        `🏷️  repository: ${repository?.url ?? 'none'}, license: ${license}, author: ${author ?? 'none'}`
+      )
+    }
     if (!written) {
       console.log(
         `\n🔍 Dry run: ${files.length} files to write in ${shown}${existing.length > 0 ? `, ${existing.length} of them exist` : ''}`
       )
+      return
+    }
+    if (options.only?.length) {
+      console.log(`\n✅ ${files.length} files in ${shown}`)
       return
     }
     const run = PACKAGE_MANAGERS[options.pm || DEFAULTS.pm]

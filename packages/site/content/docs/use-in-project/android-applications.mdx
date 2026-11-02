@@ -71,13 +71,13 @@ Install the Android library to use the tokens as they are. The same resources ar
 
 ### Android library
 
-Every [release of website-tokens](https://github.com/chassis-ui/website-tokens/releases) has the resource tree of each app and brand as an Android library, named `chassis-tokens-<app>-<brand>-<version>.aar`: `chassis-tokens-demo-chassis-<version>.aar` and `chassis-tokens-demo-sinefil-<version>.aar` in the configuration of website-tokens. The library needs Android 5.0 (API 21) or later and has no dependencies.
+Every [release of website-tokens](https://github.com/chassis-ui/website-tokens/releases) has the resource tree of each app and brand as an Android library, named `website-tokens-android-<app>-<brand>-<version>.aar`: `website-tokens-android-demo-chassis-<version>.aar` and `website-tokens-android-demo-sinefil-<version>.aar` in the configuration of website-tokens. The library needs Android 5.0 (API 21) or later and has no dependencies.
 
 Download the library of your brand into `app/libs/` and add it to `app/build.gradle.kts`:
 
 ```kotlin
 dependencies {
-    implementation(files("libs/chassis-tokens-demo-chassis-<version>.aar"))
+    implementation(files("libs/website-tokens-android-demo-chassis-<version>.aar"))
 }
 ```
 

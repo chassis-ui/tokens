@@ -1,6 +1,7 @@
 // The Android library of every app and brand: the res/ tree of dist/android/<app>/<brand>
 // as an AAR. `./gradlew :library:aars` writes them to library/build/aars/, named
-// chassis-tokens-<app>-<brand>-<version>.aar, and the release workflow attaches them to the
+// <name>-android-<app>-<brand>-<version>.aar, <name> being the name of the package.json of the
+// repository without its scope, as in its zips, and the release workflow attaches them to the
 // GitHub release of a repository of tokens, whose absolute path -PtokensRoot=<dir> names. One
 // product flavor per library.
 
@@ -25,7 +26,9 @@ fun camelCase(words: List<String>): String =
 val tokensRoot: File =
   providers.gradleProperty("tokensRoot").map(::File).orNull?.canonicalFile
     ?: error("Name the repository of tokens with -PtokensRoot=<absolute path>")
-val tokensVersion = (JsonSlurper().parse(tokensRoot.resolve("package.json")) as Map<*, *>)["version"]
+val tokensPackage = JsonSlurper().parse(tokensRoot.resolve("package.json")) as Map<*, *>
+val tokensName = (tokensPackage["name"] as String).substringAfter('/')
+val tokensVersion = tokensPackage["version"]
 
 val libraries: List<Library> =
   folders(tokensRoot.resolve("dist/android")).flatMap { app ->
@@ -70,7 +73,7 @@ androidComponents {
     variant.sources.res?.addStaticSourceDirectory(library.tree.path)
     aars.configure {
       from(variant.artifacts.get(SingleArtifact.AAR)) {
-        rename { "chassis-tokens-${library.app}-${library.brand}-$tokensVersion.aar" }
+        rename { "$tokensName-android-${library.app}-${library.brand}-$tokensVersion.aar" }
       }
     }
   }

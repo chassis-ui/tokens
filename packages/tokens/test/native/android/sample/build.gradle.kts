@@ -23,7 +23,9 @@ fun camelCase(words: List<String>): String =
 val tokensRoot: File =
   providers.gradleProperty("tokensRoot").map(::File).orNull?.canonicalFile
     ?: error("Name the repository of tokens with -PtokensRoot=<absolute path>")
-val tokensVersion = (JsonSlurper().parse(tokensRoot.resolve("package.json")) as Map<*, *>)["version"]
+val tokensPackage = JsonSlurper().parse(tokensRoot.resolve("package.json")) as Map<*, *>
+val tokensName = (tokensPackage["name"] as String).substringAfter('/')
+val tokensVersion = tokensPackage["version"]
 
 val libraries: List<Library> =
   folders(tokensRoot.resolve("dist/android")).flatMap { app ->
@@ -32,7 +34,7 @@ val libraries: List<Library> =
       .map { brand ->
         Library(
           camelCase(listOf(app.name, brand.name)),
-          "chassis-tokens-${app.name}-${brand.name}-$tokensVersion.aar"
+          "$tokensName-android-${app.name}-${brand.name}-$tokensVersion.aar"
         )
       }
   }

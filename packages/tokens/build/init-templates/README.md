@@ -52,10 +52,10 @@ the workflow makes the tag. The first push releases the version that `init` wrot
 3. `__RUN__ verify`.
 4. Commit all of it, then `git push origin main`.
 
-The release workflow checks `dist/` against a fresh build, publishes the package to npm with
-trusted publishing, and creates the tag `v<version>` and its GitHub release, with one Android
-library per app and brand, `chassis-tokens-<app>-<brand>-<version>.aar`, and one zip per platform,
-app and brand, `<name>-<platform>-<app>-<brand>-<version>.zip`. The Swift package is the repository
+The release workflow stops when `CHANGELOG.md` has no entry for the version. It checks `dist/` against a fresh build, publishes the package to npm with
+trusted publishing, and creates the tag `v<version>` and its GitHub release, whose body is the entry of the version, with one Android
+library per app and brand, `<name>-android-<app>-<brand>-<version>.aar`, and one zip per platform,
+app and brand, `<name>-<platform>-<app>-<brand>-<version>.zip`. `<name>` is the name of `package.json` without its scope. The Swift package is the repository
 at the tag. A push whose version has a tag releases nothing, and a release that fails makes no
 tag, so the next push tries again.
 
@@ -63,6 +63,9 @@ Before the first push to `main`, check that `repository` in `package.json` names
 which npm compares with the provenance of the release and the file headers link to, add a
 `LICENSE` file for the `license` of `package.json`, and add this repository and `release.yml`
 as the trusted publisher of the package on npmjs.com.
+
+`chassis-tokens init --check` reports where this repository differs from what the current
+`chassis-tokens init` writes, and `chassis-tokens init --only <file…>` writes those files.
 
 ## Documentation
 

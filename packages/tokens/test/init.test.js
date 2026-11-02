@@ -11,7 +11,15 @@ import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { afterAll, beforeAll, describe, expect, test, vi } from 'vitest'
-import { DEFAULTS, gitDefaults, init, parseApp, parseInitArgs, planFiles } from '../build/init.js'
+import {
+  checkBaseline,
+  DEFAULTS,
+  gitDefaults,
+  init,
+  parseApp,
+  parseInitArgs,
+  planFiles
+} from '../build/init.js'
 import { lintTokens, loadSource } from '../build/lint-tokens.js'
 import { buildVersion } from '../build/root.js'
 import { CLI, PACKAGE_DIR } from './helpers.js'
@@ -39,6 +47,8 @@ const FILES = [
   '.nvmrc',
   'README.md',
   'CHANGELOG.md',
+  'AGENTS.md',
+  'CLAUDE.md',
   '.github/workflows/ci.yml',
   '.github/workflows/release.yml',
   'source/$themes.json',
@@ -87,7 +97,8 @@ describe('init', () => {
       diff: 'chassis-tokens diff',
       'swift-package': 'chassis-tokens swift-package',
       'swift-package:check': 'chassis-tokens swift-package --check',
-      archive: 'chassis-tokens archive'
+      archive: 'chassis-tokens archive',
+      'release-notes': 'chassis-tokens release-notes'
     })
     expect(pkg.devDependencies).toEqual({ '@chassis-ui/tokens': `^${buildVersion()}` })
   })
@@ -158,6 +169,68 @@ describe('init', () => {
     const order = steps.map((step) => readme.indexOf(step))
     expect(order[0]).toBeGreaterThan(-1)
     expect(order).toEqual([...order].sort((a, b) => a - b))
+  })
+
+  test('the changelog gates CI and comes first in the release, whose body it is', () => {
+    const plan = planFiles({ dir: 'x', pm: 'pnpm' })
+    expect(plan.get('.github/workflows/ci.yml')).toContain('run: pnpm release-notes')
+    const release = plan.get('.github/workflows/release.yml')
+    expect(release).toContain('--notes-file "$RUNNER_TEMP/release-notes.md"')
+    expect(release).not.toContain('--generate-notes')
+    expect(release.indexOf('chassis-tokens release-notes')).toBeLessThan(
+      release.indexOf('run: pnpm lint')
+    )
+    expect(release).toContain('<name>-android-<app>-<brand>-<version>.aar')
+    expect(plan.get('AGENTS.md')).toContain('`pnpm verify`')
+    expect(plan.get('CLAUDE.md')).toBe('@AGENTS.md\n')
+  })
+
+  test('--force never writes over the files that hold the data of a repository', () => {
+    const dir = join(temporary, 'data-kept')
+    mkdirSync(dir)
+    writeFileSync(join(dir, 'package.json'), '{"name":"mine","version":"3.1.0"}\n')
+    writeFileSync(join(dir, 'CHANGELOG.md'), 'mine\n')
+    const result = init({ dir, force: true })
+    expect(result.keptData).toEqual(['package.json', 'CHANGELOG.md'])
+    expect(read(dir, 'package.json')).toContain('"mine"')
+    expect(read(dir, 'CHANGELOG.md')).toBe('mine\n')
+    expect(read(dir, 'AGENTS.md')).toContain('mine holds design tokens')
+  })
+
+  test('--only writes the files it names, for a repository made earlier', () => {
+    const dir = join(temporary, 'only')
+    mkdirSync(dir)
+    writeFileSync(join(dir, 'package.json'), '{"name":"mine","version":"3.1.0"}\n')
+    writeFileSync(join(dir, 'pnpm-lock.yaml'), '\n')
+    expect(init({ dir, only: ['AGENTS.md', 'CHANGELOG.md'] }).files).toEqual([
+      'CHANGELOG.md',
+      'AGENTS.md'
+    ])
+    expect(read(dir, 'CHANGELOG.md')).toContain('## [3.1.0]')
+    expect(read(dir, 'AGENTS.md')).toContain('`pnpm verify`')
+    expect(existsSync(join(dir, 'README.md'))).toBe(false)
+    expect(() => init({ dir, only: ['AGENTS.md'] })).toThrow('Files to write exist')
+    expect(() => init({ dir, only: ['nope.md'] })).toThrow('init does not write nope.md')
+  })
+
+  test('--check reports what is missing or differs, and lets a README be its own', () => {
+    const dir = join(temporary, 'checked')
+    init({ dir })
+    expect(checkBaseline({ dir })).toEqual({ missing: [], differs: [], scripts: [] })
+    writeFileSync(join(dir, 'README.md'), 'mine')
+    writeFileSync(join(dir, '.gitignore'), 'mine')
+    rmSync(join(dir, 'AGENTS.md'))
+    const pkg = JSON.parse(read(dir, 'package.json'))
+    delete pkg.scripts['release-notes']
+    writeFileSync(join(dir, 'package.json'), JSON.stringify(pkg))
+    expect(checkBaseline({ dir })).toEqual({
+      missing: ['AGENTS.md'],
+      differs: ['.gitignore'],
+      scripts: ['release-notes']
+    })
+    const result = spawnSync(process.execPath, [CLI, 'init', dir, '--check'], { encoding: 'utf8' })
+    expect(result.status).toBe(1)
+    expect(result.stdout).toContain('AGENTS.md: missing')
   })
 
   test('with npm, the workflows have no pnpm step', () => {

@@ -51,6 +51,7 @@
     "check:pnpm": "pnpm audit --prod --audit-level moderate",
     "changeset": "changeset",
     "changeset:version": "changeset version && node build/sync-version-refs.js",
+    "release:notes": "node packages/tokens/build/cli.js release-notes --cwd packages/tokens",
     "sync-submodules": "pnpm --filter chassis-tokens-site exec chassis-docs sync-submodules --subset latin --subset latin-ext --subset symbols2 --split",
     "vendor": "git submodule update --init vendor/tokens && pnpm --filter chassis-tokens-site exec chassis-docs vendor --subset latin --subset latin-ext --subset symbols2 --split"
   },

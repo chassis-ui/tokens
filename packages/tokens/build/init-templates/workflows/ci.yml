@@ -1,6 +1,6 @@
 name: CI
 
-# On a push and on a pull request: the source lint, a fresh build against the committed dist/
+# On a push and on a pull request: the changelog, the source lint, a fresh build against the committed dist/
 # and the Swift package, with the commands of @chassis-ui/tokens. Written by
 # `chassis-tokens init`.
 on:
@@ -31,6 +31,10 @@ jobs:
 
       - name: Install
         run: __INSTALL_CI__
+
+      # Fails when the version of package.json has no entry in CHANGELOG.md
+      - name: Check the changelog
+        run: __RUN__ release-notes
 
       - name: Lint source
         run: __RUN__ lint

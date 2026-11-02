@@ -2,9 +2,9 @@ name: Release
 
 # On a push to main, releases the version in package.json when it has no tag v<version> yet:
 # checks the committed dist/ against a fresh build, publishes the package to npm and creates the
-# tag and its GitHub release, with the Android library of every app and brand attached:
-# chassis-tokens-<app>-<brand>-<version>.aar, and one zip per platform, app and brand:
-# <name>-<platform>-<app>-<brand>-<version>.zip. A push that does not change the version
+# tag and its GitHub release, whose body is the entry of the version in CHANGELOG.md, with the
+# Android library of every app and brand attached: <name>-android-<app>-<brand>-<version>.aar, and
+# one zip per platform, app and brand: <name>-<platform>-<app>-<brand>-<version>.zip. A push that does not change the version
 # releases nothing. Swift Package Manager resolves the tag as the version of the Swift package.
 # Written by `chassis-tokens init`.
 #
@@ -90,6 +90,11 @@ jobs:
       - name: Install
         run: __INSTALL_CI__
 
+      # Before anything else, so a version without a changelog entry is not released. The command
+      # itself and not its script: the package manager prints a line of its own before a script
+      - name: Release notes
+        run: node_modules/.bin/chassis-tokens release-notes > "$RUNNER_TEMP/release-notes.md"
+
       - name: Lint source
         run: __RUN__ lint
 
@@ -143,8 +148,7 @@ jobs:
 
           npm publish --provenance --access public --tag "$DIST_TAG"
 
-      # Such a version is also marked as a prerelease and does not become the latest release. The
-      # notes are generated from the commits; the changelog is in CHANGELOG.md
+      # Such a version is also marked as a prerelease and does not become the latest release
       - name: Create the tag and the GitHub release
         env:
           GH_TOKEN: ${{ github.token }}
@@ -161,5 +165,5 @@ jobs:
             archives/*.zip \
             --target "$GITHUB_SHA" \
             --title "v$VERSION" \
-            --generate-notes \
+            --notes-file "$RUNNER_TEMP/release-notes.md" \
             "${FLAGS[@]}"
