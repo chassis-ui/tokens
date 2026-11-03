@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.16.0
+
+### Minor Changes
+
+- `chassis-tokens init` writes the token sets of the Chassis token system in place of the seven starter sets: `source/base/` with the sets of every brand, app and theme, `source/brand-<brand>/brand-base.json` for each brand, and `$themes.json` with the groups `brand`, `app` and `theme` and a Figma mode per option. A new repository builds every name that Chassis CSS reads. It has no `screen` group and no `screens` in `chassis.build`, so the build writes one number file; a repository adds the group to have one per screen. `--app base:…` is refused, as `base/app-base.json` is a set of the system. No file of `dist/` is added, removed or renamed, and a repository made earlier changes nothing: `init` never writes over its token sets.
+- **Breaking.** The code of the package moved from `build/` to `lib/`, and the export `./build/*` became `./lib/*`: `lib/cli.js` is the command, `lib/build/` the Style Dictionary build, `lib/commands/` one module per command on a repository, and `lib/root.js`, `lib/logger.js` and `lib/utils.js` the shared modules. What `init` writes moved from `build/init-templates/` to `templates/`. A project that imports a module of the package by its path changes `@chassis-ui/tokens/build/<module>` to `@chassis-ui/tokens/lib/<module>`, with `build/` or `commands/` added for a module of the build or a command. Nothing in `dist/` of a repository of tokens changes.
+
+### Patch Changes
+
+- `chassis-tokens diff` says when the repository has no git repository or no `main` branch, and names `--base`, in place of the error of git. `swift-package --check` says when `Package.swift` has not been written yet, and its messages name `chassis-tokens swift-package` rather than a script of the builder's workspace. The help of `lint-source` lists all of its rules, and the help of `archive` says that `--to` is relative to the repository. `init` lists `swift-package` among the next steps when an app has an iOS platform, aligns the tables of the README and `AGENTS.md` it writes for either package manager, writes the `release-notes`, `swift-package:check` and `archive` rows that those tables lacked, and no longer reports the token files it kept on an `--only` write of other files. Nothing in `dist/` changes.
+
 ## 0.15.0
 
 ### Minor Changes
