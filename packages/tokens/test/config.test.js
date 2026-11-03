@@ -6,7 +6,7 @@
  */
 
 import { describe, expect, test } from 'vitest'
-import config from '../build/config/index.js'
+import config from '../lib/build/config/index.js'
 
 const outputs = [
   { kind: 'base' },

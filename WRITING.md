@@ -125,7 +125,7 @@ The project has one word for each concept. Using a synonym makes the reader wond
 | preset                          | A platform for adopters: `web-scss`, `web-px`, `web-vw`, `ios-swiftui`, `android-compose`                                | variant, flavor                                                     |
 | token set                       | One JSON file of `source/`                                                                                               | token file, collection                                              |
 | base, context, component tokens | The three token levels (see [§10](#10-standard-section-order))                                                           | semantic, alias, global tokens                                      |
-| the build                       | The Style Dictionary build in `packages/tokens/build/`                                                                   | the pipeline, the generator, the script                             |
+| the build                       | The Style Dictionary build in `packages/tokens/lib/build/`                                                               | the pipeline, the generator, the script                             |
 
 **Three core groups and an optional one.** The token system is built on three groups: `brand`, `theme`, and `app`. `screen` is an optional fourth group. Chassis Tokens is meant to be owned and customized, so an adopter can remove the `screen` group or add a group of their own. Write about the groups in this way: name the three core groups first, call `screen` optional, and don't present the committed options (`chassis`, `light`, `docs`, `large`) as the only ones.
 

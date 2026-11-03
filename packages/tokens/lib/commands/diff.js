@@ -27,7 +27,7 @@ import { mkdtemp, readdir, readFile, rm, stat } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { extname, join, relative, sep } from 'node:path'
 import { parseArgs, promisify } from 'node:util'
-import { isEntry, readRepository, resolveRoot } from './root.js'
+import { isEntry, readRepository, resolveRoot } from '../root.js'
 
 const execFileAsync = promisify(execFile)
 

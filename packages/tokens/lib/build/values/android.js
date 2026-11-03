@@ -9,7 +9,7 @@
  * @license MIT
  */
 
-import { tokenTypes } from '../utils.js'
+import { tokenTypes } from '../../utils.js'
 import {
   durationMilliseconds,
   firstFontFamily,

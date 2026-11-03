@@ -11,7 +11,7 @@ import { mkdir, mkdtemp, readFile, readdir, rm, writeFile } from 'node:fs/promis
 import { tmpdir } from 'node:os'
 import { dirname, join } from 'node:path'
 import { afterAll, describe, expect, test } from 'vitest'
-import { compareOutput, formatReport, updateReference } from '../build/verify.js'
+import { compareOutput, formatReport, updateReference } from '../lib/commands/verify.js'
 
 describe('header lines', () => {
   const dirs = []

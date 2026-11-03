@@ -103,7 +103,7 @@ All are decided. "The maintainer" took the decision on a proposal of a session.
   chassis-ui/assets has the same commands by its own decision, and no check compares the two.
   The maintainer, 2026-11-02.
 - **D11. What token sets does `init` write?** The token sets of the Chassis token system, which
-  this package ships in `build/init-templates/source/base/`, with the groups `brand`, `app` and
+  this package ships in `templates/source/base/`, with the groups `brand`, `app` and
   `theme`, and no `screen` group: screens are an option a repository adds. They were taken once
   from the repository of tokens of the Chassis sites, which from then on is one repository of
   tokens among others. `init` writes them once, and they are the repository's: no later version

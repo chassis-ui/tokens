@@ -13,8 +13,14 @@ import { mkdtemp, rm } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { afterAll, describe, expect, test } from 'vitest'
-import { readRepository } from '../build/root.js'
-import { compareOutput, formatReport, listPresets, presetPaths, runBuild } from '../build/verify.js'
+import { readRepository } from '../lib/root.js'
+import {
+  compareOutput,
+  formatReport,
+  listPresets,
+  presetPaths,
+  runBuild
+} from '../lib/commands/verify.js'
 import { TOKENS_DIR } from './helpers.js'
 
 const presets = await listPresets()

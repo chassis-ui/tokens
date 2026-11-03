@@ -8,8 +8,8 @@
 
 import { readFileSync } from 'node:fs'
 import { describe, expect, test } from 'vitest'
-import { encode, partName, reference } from '../build/values/swiftui.js'
-import * as ios from '../build/values/ios.js'
+import { encode, partName, reference } from '../lib/build/values/swiftui.js'
+import * as ios from '../lib/build/values/ios.js'
 
 const fixture = JSON.parse(
   readFileSync(new URL('./fixtures/mobile-tokens.json', import.meta.url), 'utf8')

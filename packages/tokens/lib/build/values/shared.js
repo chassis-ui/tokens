@@ -9,7 +9,7 @@
 
 import { transformFontWeight } from '@tokens-studio/sd-transforms'
 import Color from 'tinycolor2'
-import { tokenTypes } from '../utils.js'
+import { tokenTypes } from '../../utils.js'
 
 /**
  * A size value without math: at most a leading sign or operator, then no operator.

@@ -24,7 +24,7 @@ import { tmpdir } from 'node:os'
 import { join, relative } from 'node:path'
 import { inflateRawSync } from 'node:zlib'
 import { afterAll, describe, expect, test } from 'vitest'
-import { archive, archivePrefix, crc32, dosDateTime, zipFolder } from '../build/archive.js'
+import { archive, archivePrefix, crc32, dosDateTime, zipFolder } from '../lib/commands/archive.js'
 import { CLI, DIST_DIR } from './helpers.js'
 
 const temporary = realpathSync(mkdtempSync(join(tmpdir(), 'chassis-tokens-archive-')))

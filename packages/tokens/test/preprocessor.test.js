@@ -7,7 +7,7 @@
 
 import { readFileSync } from 'node:fs'
 import { describe, test, expect, beforeEach } from 'vitest'
-import preprocess from '../build/preprocessor.js'
+import preprocess from '../lib/build/preprocessor.js'
 
 const fixture = JSON.parse(
   readFileSync(new URL('./fixtures/preprocessor-tokens.json', import.meta.url), 'utf8')
@@ -263,7 +263,7 @@ describe('Token Preprocessor', () => {
   let preprocessorModule
 
   beforeEach(async () => {
-    preprocessorModule = await import('../build/preprocessor.js')
+    preprocessorModule = await import('../lib/build/preprocessor.js')
   })
 
   describe('Module Structure', () => {

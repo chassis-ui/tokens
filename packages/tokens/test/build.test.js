@@ -12,8 +12,14 @@ import { join, relative } from 'node:path'
 import StyleDictionary from 'style-dictionary'
 import { permutateThemes } from '@tokens-studio/sd-transforms'
 import { describe, expect, test } from 'vitest'
-import { planBuilds, planThemeColors, planClean, CONFIG_FILE, SOURCE_DIR } from '../build/build.js'
-import config from '../build/config/index.js'
+import {
+  planBuilds,
+  planThemeColors,
+  planClean,
+  CONFIG_FILE,
+  SOURCE_DIR
+} from '../lib/build/build.js'
+import config from '../lib/build/config/index.js'
 import { FIXTURE_DIR, TOKENS_DIR } from './helpers.js'
 
 const readFrom = (root, path) => JSON.parse(readFileSync(join(root, path), 'utf8'))

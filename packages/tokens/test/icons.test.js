@@ -8,8 +8,8 @@
 
 import { readFileSync } from 'node:fs'
 import { describe, expect, test } from 'vitest'
-import { androidDrawable, iconTokens, iosCatalog, iosImageSet } from '../build/icons.js'
-import config from '../build/config/index.js'
+import { androidDrawable, iconTokens, iosCatalog, iosImageSet } from '../lib/build/icons.js'
+import config from '../lib/build/config/index.js'
 
 const fixture = JSON.parse(
   readFileSync(new URL('./fixtures/mobile-tokens.json', import.meta.url), 'utf8')

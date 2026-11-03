@@ -149,7 +149,7 @@ jobs:
       - name: Release notes
         env:
           VERSION: ${{ needs.detect.outputs.version }}
-        run: node packages/tokens/build/cli.js release-notes "$VERSION" --cwd packages/tokens > "$RUNNER_TEMP/release-notes.md"
+        run: node packages/tokens/lib/cli.js release-notes "$VERSION" --cwd packages/tokens > "$RUNNER_TEMP/release-notes.md"
 
       - name: Publish to npm
         working-directory: packages/tokens

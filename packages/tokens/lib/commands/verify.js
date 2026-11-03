@@ -36,13 +36,13 @@ import { copyFile, mkdir, readdir, readFile, rm } from 'node:fs/promises'
 import { basename, dirname, extname, isAbsolute, join, relative, resolve, sep } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { parseArgs } from 'node:util'
-import { isEntry, readRepository, resolveRoot, shownPath } from './root.js'
+import { isEntry, readRepository, resolveRoot, shownPath } from '../root.js'
 
-const PACKAGE_DIR = fileURLToPath(new URL('../', import.meta.url))
-export const GOLDEN_DIR = fileURLToPath(new URL('../test/golden', import.meta.url))
+const PACKAGE_DIR = fileURLToPath(new URL('../../', import.meta.url))
+export const GOLDEN_DIR = fileURLToPath(new URL('../../test/golden', import.meta.url))
 /** The repository of tokens that the preset baselines are built from. */
-export const FIXTURE_DIR = fileURLToPath(new URL('../test/fixtures/repository', import.meta.url))
-const BUILD_SCRIPT = fileURLToPath(new URL('./build.js', import.meta.url))
+export const FIXTURE_DIR = fileURLToPath(new URL('../../test/fixtures/repository', import.meta.url))
+const BUILD_SCRIPT = fileURLToPath(new URL('../build/build.js', import.meta.url))
 
 /**
  * Header lines that change on every build or release, in SCSS/Swift (`// …`) and XML

@@ -10,8 +10,8 @@ import { mkdirSync, mkdtempSync, readFileSync, readdirSync, rmSync } from 'node:
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { afterAll, describe, expect, test } from 'vitest'
-import { readRepository } from '../build/root.js'
-import { MANIFEST, swiftLibraries, swiftPackage } from '../build/swift-package.js'
+import { readRepository } from '../lib/root.js'
+import { MANIFEST, swiftLibraries, swiftPackage } from '../lib/commands/swift-package.js'
 import { TOKENS_DIR } from './helpers.js'
 
 const temporary = mkdtempSync(join(tmpdir(), 'swift-package-'))

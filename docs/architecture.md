@@ -1,10 +1,10 @@
 # Chassis Tokens architecture
 
-How the token build of `@chassis-ui/tokens` works, why it is built this way, and what it promises to write. It is for contributors who change the build in `packages/tokens/build/`. How to set up the repository, run the checks and open a pull request is in [CONTRIBUTING.md](../.github/CONTRIBUTING.md).
+How the token build of `@chassis-ui/tokens` works, why it is built this way, and what it promises to write. It is for contributors who change the build in `packages/tokens/lib/`. How to set up the repository, run the checks and open a pull request is in [CONTRIBUTING.md](../.github/CONTRIBUTING.md).
 
-`build/` and `test/` below are relative to `packages/tokens/`. `source/`, `dist/`, `Package.swift` and the `package.json` with the build configuration are those of a repository of tokens; the numbers and names of this document are those of the tokens of the Chassis sites, the `vendor/tokens` submodule of this checkout ([D2](decisions.md)). A repository that `init` writes has the groups `brand`, `app` and `theme` and no screens ([D11](decisions.md)).
+`lib/`, `templates/` and `test/` below are relative to `packages/tokens/`; the build is `lib/build/` and the commands on a repository are `lib/commands/`. `source/`, `dist/`, `Package.swift` and the `package.json` with the build configuration are those of a repository of tokens; the numbers and names of this document are those of the tokens of the Chassis sites, the `vendor/tokens` submodule of this checkout ([D2](decisions.md)). A repository that `init` writes has the groups `brand`, `app` and `theme` and no screens ([D11](decisions.md)).
 
-The build is the command `chassis-tokens` (`build/cli.js`), which works on one repository of tokens, so nothing in it assumes this workspace. See [the repository of a run](#the-repository-of-a-run).
+The build is the command `chassis-tokens` (`lib/cli.js`), which works on one repository of tokens, so nothing in it assumes this workspace. See [the repository of a run](#the-repository-of-a-run).
 
 ## The build in one picture
 
@@ -276,9 +276,9 @@ An icon is an `asset` token whose value is an SVG document. It stays a string to
 
 | Command                      | Checks                                                                                                                                                                                                   |
 | ---------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `pnpm tokens:lint:source`    | `vendor/tokens/source/`: equal names across themes and screens, usable names, known font weights, typed tokens, no name with two types (`build/lint-tokens.js`)                                          |
-| `pnpm tokens:lint`           | ESLint on `build/` and `test/`                                                                                                                                                                           |
-| `pnpm tokens:typecheck`      | TypeScript `checkJs` on `build/`                                                                                                                                                                         |
+| `pnpm tokens:lint:source`    | `vendor/tokens/source/`: equal names across themes and screens, usable names, known font weights, typed tokens, no name with two types (`lib/commands/lint-tokens.js`)                                   |
+| `pnpm tokens:lint`           | ESLint on `lib/` and `test/`                                                                                                                                                                             |
+| `pnpm tokens:typecheck`      | TypeScript `checkJs` on `lib/`                                                                                                                                                                           |
 | `pnpm tokens:test`           | Vitest, on real tokens in fixtures and the `default` baseline; with the submodule, also the golden check of `vendor/tokens/dist/` and that its `Package.swift` matches `chassis.build`                   |
 | `pnpm tokens:verify`         | A fresh build of `vendor/tokens` equals its `dist/`; no name twice in one file; every reference names something the output declares                                                                      |
 | `pnpm tokens:verify:presets` | Each baseline, built from `test/fixtures/repository/`, equals its baseline in `test/golden/`                                                                                                             |
@@ -311,4 +311,4 @@ They are part of the output contract and kept on purpose. Don't fix one without 
 
 The build was rewritten in 2026 from Style Dictionary 4 templates that encoded values while printing, in phases committed as `rewrite(phase N): …` (`git log --grep 'rewrite(phase'`). The plan that guided it, with the measurements and the result of every phase, is in the history of `docs/rewrite-plan.md`, deleted after the last phase; the last version is at commit `b9cbab6`.
 
-On 2026-10-30 and 2026-10-31 the repository was split into this builder and the repository of tokens of the Chassis sites, by the decisions in [decisions.md](decisions.md). `source/`, `dist/` and `Package.swift` left this repository in step four of D6; their history is in that repository, and before that here up to the commit of version 0.12.0. On 2026-11-03 the base token sets came back as the token system that `init` writes, in `build/init-templates/source/` (D11).
+On 2026-10-30 and 2026-10-31 the repository was split into this builder and the repository of tokens of the Chassis sites, by the decisions in [decisions.md](decisions.md). `source/`, `dist/` and `Package.swift` left this repository in step four of D6; their history is in that repository, and before that here up to the commit of version 0.12.0. On 2026-11-03 the base token sets came back as the token system that `init` writes, in `templates/source/` (D11).

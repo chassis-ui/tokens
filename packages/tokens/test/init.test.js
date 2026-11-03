@@ -19,9 +19,9 @@ import {
   parseApp,
   parseInitArgs,
   planFiles
-} from '../build/init.js'
-import { lintTokens, loadSource } from '../build/lint-tokens.js'
-import { buildVersion } from '../build/root.js'
+} from '../lib/commands/init.js'
+import { lintTokens, loadSource } from '../lib/commands/lint-tokens.js'
+import { buildVersion } from '../lib/root.js'
 import { CLI, PACKAGE_DIR } from './helpers.js'
 
 const temporary = mkdtempSync(join(tmpdir(), 'chassis-tokens-init-'))

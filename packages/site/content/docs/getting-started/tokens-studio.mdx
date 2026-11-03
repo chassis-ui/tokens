@@ -191,7 +191,7 @@ Without a `screen` group, as `init` writes the repository, the build names the l
 
 The build then names the lists `<brand>_<app>_<theme>_<screen>` and writes one number file per screen, such as `number-large.scss`, `NumberLarge.swift`, and `number_large.xml`.
 
-In Tokens Studio, a group of your own is a group like the others. The build needs a change: `planBuilds` in `build/build.js` of `@chassis-ui/tokens` makes the name of a list from the brand, the app, the theme, and the screen, and `chassis.build` has no key for another group. Until you change both, the build stops with `No token sets for …`, because the option of the new group is a part of every list name.
+In Tokens Studio, a group of your own is a group like the others. The build needs a change: `planBuilds` in `lib/build/build.js` of `@chassis-ui/tokens` makes the name of a list from the brand, the app, the theme, and the screen, and `chassis.build` has no key for another group. Until you change both, the build stops with `No token sets for …`, because the option of the new group is a part of every list name.
 
 ## Brand tokens
 

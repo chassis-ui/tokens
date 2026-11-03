@@ -11,7 +11,7 @@
  *              holds up to 65,535 files of up to 4 GB, which no output of tokens reaches.
  *
  * Usage:
- *   node build/archive.js [--to <dir>] [--prefix <name>] [--release <version>]
+ *   node lib/commands/archive.js [--to <dir>] [--prefix <name>] [--release <version>]
  *
  * @copyright Copyright (c) 2026 Ozgur Gunes
  * @license MIT
@@ -21,7 +21,7 @@ import { mkdirSync, readFileSync, readdirSync, rmSync, statSync, writeFileSync }
 import { join, relative, resolve, sep } from 'node:path'
 import { parseArgs } from 'node:util'
 import { deflateRawSync } from 'node:zlib'
-import { isEntry, readRepository, resolveRoot } from './root.js'
+import { isEntry, readRepository, resolveRoot } from '../root.js'
 
 /** The folder the archives are written to, under the root, unless `--to` names one. */
 export const ARCHIVES_DIR = 'archives'

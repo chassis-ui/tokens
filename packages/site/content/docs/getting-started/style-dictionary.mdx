@@ -12,7 +12,7 @@ Chassis Tokens builds its tokens with [Style Dictionary](https://styledictionary
 
 This page is the reference of the build for a team that builds its own tokens: how to run and configure the build, which platforms and presets it has, which files it writes, and which transforms, filters, and formats it registers. [docs/architecture.md]([[config:repo]]/blob/main/docs/architecture.md) explains why the build works this way and holds the full output contract.
 
-The build is in the package `@chassis-ui/tokens`, whose command is `chassis-tokens`. Paths on this page that start with `source/`, `dist/`, or `Package.swift` are relative to the repository of tokens, and paths that start with `build/` are relative to the package. The examples use the token sets that `chassis-tokens init` writes, with the brands `acme` and `globex`, the web app `site`, and the iOS and Android app `mobile`.
+The build is in the package `@chassis-ui/tokens`, whose command is `chassis-tokens`. Paths on this page that start with `source/`, `dist/`, or `Package.swift` are relative to the repository of tokens, and paths that start with `lib/` are relative to the package. The examples use the token sets that `chassis-tokens init` writes, with the brands `acme` and `globex`, the web app `site`, and the iOS and Android app `mobile`.
 
 The generated code on this page shows the format of each platform. Its values are those of the token sets that `init` writes, and a brand that overrides a token has its own.
 
@@ -159,7 +159,7 @@ The files of a brand and an app that need the same token sets share one list:
 
 A list holds its token sets in the order of `source/$themes.json`, so a later token set overrides an earlier one, as in Tokens Studio. Style Dictionary reports these overrides as token collisions in every build; they are expected.
 
-Chassis Tokens is meant to be owned and customized, so you can add a group of your own. A new group adds a segment to the name of every token-set list. `planBuilds` in `build/build.js` of the package makes that name from the brand, the app, the theme, and the screen, and decides which files each list writes, so a new group needs a change there, in a fork of the builder.
+Chassis Tokens is meant to be owned and customized, so you can add a group of your own. A new group adds a segment to the name of every token-set list. `planBuilds` in `lib/build/build.js` of the package makes that name from the brand, the app, the theme, and the screen, and decides which files each list writes, so a new group needs a change there, in a fork of the builder.
 
 ### Platform options
 
@@ -223,7 +223,7 @@ The `web` platform prints the custom properties of [Chassis CSS](https://github.
 
 The build then writes every value resolved, with sizes in pixels; [cx/scss-variables](#cxscss-variables) shows the format. The web platforms write the same file names to the same folder, `dist/web/<app>/<brand>/`, so give an app one of them. Line heights are in `em` in every unit, and letter spacing is in the unit of the other sizes.
 
-Each preset is a file of `build/config/` of the package that calls `webConfig({ unit, format })` of `web.js`.
+Each preset is a file of `lib/build/config/` of the package that calls `webConfig({ unit, format })` of `web.js`.
 
 ### SwiftUI and Compose presets
 
@@ -389,7 +389,7 @@ The preprocessor `cx/global` prepares the tokens of every build before the trans
 
 ## Transforms
 
-Transforms run before the references are resolved. Each platform lists its transforms in its file of `build/config/`; no platform uses a transform group.
+Transforms run before the references are resolved. Each platform lists its transforms in its file of `lib/build/config/`; no platform uses a transform group.
 
 <CxTable>
 | Transform | Platforms | Effect |
@@ -404,7 +404,7 @@ Transforms run before the references are resolved. Each platform lists its trans
 | `ts/typography/fontWeight` | Web platforms | Turns the name of a font weight into its number |
 </CxTable>
 
-The name transforms come from Style Dictionary and the `ts/` transforms from `@tokens-studio/sd-transforms`. The build registers the `cx/` transforms in `build/transforms.js`, all for the web platforms:
+The name transforms come from Style Dictionary and the `ts/` transforms from `@tokens-studio/sd-transforms`. The build registers the `cx/` transforms in `lib/build/transforms.js`, all for the web platforms:
 
 <CxTable>
 | Transform | Platforms | Tokens | Effect |
@@ -415,7 +415,7 @@ The name transforms come from Style Dictionary and the `ts/` transforms from `@t
 | `cx/shadow/web` | Web platforms | Shadows | Joins the parts of each layer into a CSS `box-shadow` |
 </CxTable>
 
-Sizes are the tokens typed `dimension`, `fontSize`, `lineHeight`, or `paragraphSpacing`. `basePxFontSize` is an option of the platform, which `build/config/web.js` sets to `16`. `dimension.base.05` holds half a design pixel, and `size.unit.05` references it. With `cx/size/rem`, the build writes in `main.scss`:
+Sizes are the tokens typed `dimension`, `fontSize`, `lineHeight`, or `paragraphSpacing`. `basePxFontSize` is an option of the platform, which `lib/build/config/web.js` sets to `16`. `dimension.base.05` holds half a design pixel, and `size.unit.05` references it. With `cx/size/rem`, the build writes in `main.scss`:
 
 ```scss
 $cx-dimension-base-05: 0.03125rem !default;
@@ -592,7 +592,7 @@ The build stops with `no Android resource qualifier for the screens large; set t
 
 ### Broken reference
 
-A build fails with `Some token references (1) could not be found.` A token references a token that is not in the token sets of the list, because of a misspelled path or a token set that the option of `source/$themes.json` does not select. To list the references, add `verbosity: 'verbose'` to `log` in `packages/tokens/build/config/index.js` and build again.
+A build fails with `Some token references (1) could not be found.` A token references a token that is not in the token sets of the list, because of a misspelled path or a token set that the option of `source/$themes.json` does not select. To list the references, add `verbosity: 'verbose'` to `log` in `packages/tokens/lib/build/config/index.js` and build again.
 
 ### Undeclared SCSS variable
 

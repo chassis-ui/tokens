@@ -11,7 +11,7 @@ describe('Utils Module', () => {
   let utilsModule
 
   beforeEach(async () => {
-    utilsModule = await import('../build/utils.js')
+    utilsModule = await import('../lib/utils.js')
   })
 
   describe('tokenTypes', () => {

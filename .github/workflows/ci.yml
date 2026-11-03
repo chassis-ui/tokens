@@ -66,7 +66,7 @@ jobs:
       - name: Lint token source
         run: pnpm tokens:lint:source
 
-      # checkJs on build/ with the types of Style Dictionary and Node.js 22
+      # checkJs on lib/ with the types of Style Dictionary and Node.js 22
       - name: Type check
         run: pnpm tokens:typecheck
 
@@ -120,10 +120,11 @@ jobs:
       - name: Validate HTML
         run: pnpm site:lint:html
 
-  # A change to packages/tokens/build needs a changeset; `pnpm changeset --empty` adds one that
-  # releases nothing. Changesets checks it (changedFilePatterns in .changeset/config.json). A
-  # pull request is compared with its base branch, a push to develop with the tip it replaced.
-  # The version commit consumes the changesets, so a push that changes the version is skipped.
+  # A change to packages/tokens/lib or packages/tokens/templates needs a changeset; `pnpm
+  # changeset --empty` adds one that releases nothing. Changesets checks it (changedFilePatterns
+  # in .changeset/config.json). A pull request is compared with its base branch, a push to
+  # develop with the tip it replaced. The version commit consumes the changesets, so a push that
+  # changes the version is skipped.
   changeset:
     name: Changeset
     # A manual run has nothing to compare with
@@ -213,7 +214,7 @@ jobs:
             echo "The base branch has no vendor/tokens to compare with" > "$RUNNER_TEMP/token-diff.md"
           else
             git submodule update --init vendor/tokens
-            node packages/tokens/build/cli.js diff --cwd vendor/tokens --base "$BASE" > "$RUNNER_TEMP/token-diff.md"
+            node packages/tokens/lib/cli.js diff --cwd vendor/tokens --base "$BASE" > "$RUNNER_TEMP/token-diff.md"
           fi
 
           cat "$RUNNER_TEMP/token-diff.md" >> "$GITHUB_STEP_SUMMARY"
@@ -311,7 +312,8 @@ jobs:
           changed=$(git diff --name-only "$SINCE" HEAD -- \
             vendor/tokens \
             .gitmodules \
-            packages/tokens/build \
+            packages/tokens/lib \
+            packages/tokens/templates \
             packages/tokens/test/golden \
             packages/tokens/test/native \
             packages/tokens/package.json \

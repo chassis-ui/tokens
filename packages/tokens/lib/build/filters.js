@@ -8,7 +8,7 @@
  * @license MIT
  */
 
-import { tokenTypes } from './utils.js'
+import { tokenTypes } from '../utils.js'
 
 /**
  * Top-level groups that exist for Figma only and are never emitted: `figma` holds the

@@ -1,6 +1,6 @@
 /**
  * @file root.test.js
- * @description `build/root.js`: the repository of tokens, found from a folder upward or given,
+ * @description `lib/root.js`: the repository of tokens, found from a folder upward or given,
  *              its folders and the version of its output.
  * @copyright Copyright (c) 2026 Ozgur Gunes
  * @license MIT
@@ -19,7 +19,7 @@ import {
   readRepository,
   repositoryWebUrl,
   resolveRoot
-} from '../build/root.js'
+} from '../lib/root.js'
 import { CLI, FIXTURE_DIR, PACKAGE_DIR, TOKENS_DIR } from './helpers.js'
 
 const temporary = realpathSync(mkdtempSync(join(tmpdir(), 'chassis-tokens-root-')))
@@ -177,15 +177,19 @@ describe('headerLines', () => {
 
 describe('isEntry', () => {
   test('a module that is imported is not the entry', () => {
-    expect(isEntry(new URL('../build/root.js', import.meta.url).href)).toBe(false)
+    expect(isEntry(new URL('../lib/root.js', import.meta.url).href)).toBe(false)
   })
 
   test('a command started through a link to its folder runs', () => {
     const link = join(temporary, 'link')
-    symlinkSync(join(PACKAGE_DIR, 'build'), link)
-    const result = spawnSync(process.execPath, [join(link, 'swift-package.js'), '--help'], {
-      encoding: 'utf8'
-    })
+    symlinkSync(join(PACKAGE_DIR, 'lib'), link)
+    const result = spawnSync(
+      process.execPath,
+      [join(link, 'commands', 'swift-package.js'), '--help'],
+      {
+        encoding: 'utf8'
+      }
+    )
     expect(result.status).toBe(0)
     expect(result.stdout).toContain('Usage: chassis-tokens swift-package')
   })

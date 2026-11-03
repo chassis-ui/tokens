@@ -17,7 +17,7 @@ import {
   collectThemeColors,
   combineThemeColors,
   writeThemeColors
-} from '../build/theme-colors.js'
+} from '../lib/build/theme-colors.js'
 
 const fixture = JSON.parse(
   readFileSync(new URL('./fixtures/mobile-tokens.json', import.meta.url), 'utf8')

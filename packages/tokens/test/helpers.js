@@ -12,11 +12,11 @@
 import { readFileSync } from 'node:fs'
 import { join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { GOLDEN_DIR } from '../build/verify.js'
-export { FIXTURE_DIR } from '../build/verify.js'
+import { GOLDEN_DIR } from '../lib/commands/verify.js'
+export { FIXTURE_DIR } from '../lib/commands/verify.js'
 
 export const PACKAGE_DIR = resolve(fileURLToPath(new URL('..', import.meta.url)))
-export const CLI = resolve(PACKAGE_DIR, 'build/cli.js')
+export const CLI = resolve(PACKAGE_DIR, 'lib/cli.js')
 
 /** The output of the default platforms for one brand, built from `FIXTURE_DIR`. */
 export const DIST_DIR = join(GOLDEN_DIR, 'default')

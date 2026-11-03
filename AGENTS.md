@@ -20,8 +20,10 @@ vendor/tokens    # git submodule, the tokens of the Chassis sites: source/, chas
 vendor/assets    # not committed: the release of the Chassis site assets that vendor/assets.json pins
 packages/
   tokens/        # @chassis-ui/tokens, published to npm, with the chassis-tokens command
-    build/       # the Style Dictionary build and the command (JavaScript with JSDoc types);
-                 # init-templates/source/ is the token system that init writes
+    lib/         # the chassis-tokens command (JavaScript with JSDoc types): cli.js, the shared
+                 # modules, build/ (the Style Dictionary build) and commands/ (one module per
+                 # command on a repository)
+    templates/   # what init writes; source/base/ is the token system
     test/        # Vitest tests, fixtures, preset baselines (golden/), native checks (native/)
   site/          # chassis-tokens-site, the Astro documentation site (private)
 build/           # repository scripts (version references, release notes)
@@ -42,7 +44,7 @@ A repository of tokens, such as `vendor/tokens`, holds `source/`, a `package.jso
   latest without `--version`. It writes the names and digests; do not edit them by hand.
 - `pnpm tokens` builds `vendor/tokens/dist/`; `--brand`, `--app`, `--platform`, `--theme` and
   `--screen` build a part of it, and `--dry-run` prints the plan.
-- The `pnpm tokens:*` scripts run the `chassis-tokens` command (`packages/tokens/build/cli.js`)
+- The `pnpm tokens:*` scripts run the `chassis-tokens` command (`packages/tokens/lib/cli.js`)
   of this checkout with `--cwd vendor/tokens`. The command works on one repository of tokens:
   `--cwd <dir>`, by default the nearest folder upward whose `package.json` has a `chassis` block.
   The root of this workspace has none.
@@ -56,13 +58,13 @@ A repository of tokens, such as `vendor/tokens`, holds `source/`, a `package.jso
 Run the checks of the area you changed, or `pnpm test:ci` for all of them, and report the ones
 that fail.
 
-| Area changed                             | Run                                                                                                                 |
-| ---------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
-| `packages/tokens/build/` or `test/`      | `pnpm tokens:lint`, `pnpm tokens:typecheck`, `pnpm tokens:test`, `pnpm tokens:verify`, `pnpm tokens:verify:presets` |
-| The pin of `vendor/tokens`               | `pnpm tokens:lint:source`, `pnpm tokens:verify`, `pnpm tokens:diff`, then the row above                             |
-| `packages/site/`                         | `pnpm site:lint`, `pnpm check:astro`, `pnpm site:build`, `pnpm site:lint:html`                                      |
-| Any Markdown, JSON or configuration file | `pnpm lint:prettier`                                                                                                |
-| `.github/workflows/ci.yml`               | `pnpm tokens:test`: a script that a step of `ci.yml` runs is part of `test:ci` in the root `package.json`           |
+| Area changed                                    | Run                                                                                                                 |
+| ----------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| `packages/tokens/lib/`, `templates/` or `test/` | `pnpm tokens:lint`, `pnpm tokens:typecheck`, `pnpm tokens:test`, `pnpm tokens:verify`, `pnpm tokens:verify:presets` |
+| The pin of `vendor/tokens`                      | `pnpm tokens:lint:source`, `pnpm tokens:verify`, `pnpm tokens:diff`, then the row above                             |
+| `packages/site/`                                | `pnpm site:lint`, `pnpm check:astro`, `pnpm site:build`, `pnpm site:lint:html`                                      |
+| Any Markdown, JSON or configuration file        | `pnpm lint:prettier`                                                                                                |
+| `.github/workflows/ci.yml`                      | `pnpm tokens:test`: a script that a step of `ci.yml` runs is part of `test:ci` in the root `package.json`           |
 
 ## Rules
 
@@ -77,13 +79,13 @@ diff`. A change to the tokens of the Chassis sites belongs in their repository, 
   in `test/fixtures/repository/`, which does not follow `vendor/tokens`: a change to the tokens
   leaves them alone.
 - **Templates only print.** Platform values (`UIColor(…)`, ARGB colors, `sp` and `dp`, quoting,
-  references) come from the pure functions in `build/values/` and the reference policies, which
+  references) come from the pure functions in `lib/build/values/` and the reference policies, which
   run on resolved tokens. Do not encode a value in a template, and do not register an encoder
   as a Style Dictionary value transform: it breaks every token that references another.
 - **Token names, file names and formats are the public API.** Renaming or removing one breaks
   the apps that use it. While the version is `0.x` this is a minor bump whose changeset says
   that it breaks.
-- **The token system in `build/init-templates/source/` is written once.** `init` writes it into a
+- **The token system in `templates/source/base/` is written once.** `init` writes it into a
   new repository, and never over the token sets of one. A change to it reaches only the
   repositories made after the release; a structural change that existing repositories need is a
   migration they choose, which changes structure and never values.
@@ -100,7 +102,7 @@ diff`. A change to the tokens of the Chassis sites belongs in their repository, 
   and one that reads `vendor/tokens` only with `TOKENS_DIR`.
 - **Types are JSDoc.** The build code is JavaScript checked with `checkJs`; do not convert it
   to TypeScript.
-- **Add a changeset** (`pnpm changeset`) to a change in `build/`, and an empty one
+- **Add a changeset** (`pnpm changeset`) to a change in `lib/` or `templates/`, and an empty one
   (`pnpm changeset --empty`) when it releases nothing.
 - **Do not install Xcode, a JDK or the Android SDK**, and do not make a local check need them.
   CI compiles the native output. Run `pnpm tokens:native:ios` and `pnpm tokens:native:android`
@@ -118,7 +120,7 @@ diff`. A change to the tokens of the Chassis sites belongs in their repository, 
 - **The guide is the reference, not the existing pages.** Most pages are older than the guide
   and break its rules. Do not copy a convention from a page.
 - Every token name and value in a page must exist in the token system,
-  `packages/tokens/build/init-templates/source/`, or in a build of a repository that `init`
+  `packages/tokens/templates/source/`, or in a build of a repository that `init`
   writes, as written. Copy generated code from such a build; do not retype it. Pages speak of the
   builder and of a repository of tokens, not of this checkout: a command in a page is
   `npx chassis-tokens <command>`, not a `pnpm tokens:*` script.

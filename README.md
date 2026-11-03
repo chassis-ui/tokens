@@ -39,12 +39,12 @@ npm run build
 
 The repository is a [pnpm workspace](https://pnpm.io/workspaces) with two packages, in the layout of the other Chassis repositories such as [chassis-ui/react](https://github.com/chassis-ui/react):
 
-| Folder             | Package                          | Contents                                                                                                                                            |
-| ------------------ | -------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `packages/tokens/` | `@chassis-ui/tokens` (published) | `build/` (the Style Dictionary build, the `chassis-tokens` command and the token system in `build/init-templates/source/`), `test/`, `CHANGELOG.md` |
-| `packages/site/`   | `chassis-tokens-site` (private)  | The documentation site and its dependencies                                                                                                         |
+| Folder             | Package                          | Contents                                                                                                                                                                                                     |
+| ------------------ | -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `packages/tokens/` | `@chassis-ui/tokens` (published) | `lib/` (the `chassis-tokens` command, the Style Dictionary build and the commands on a repository), `templates/` (what `init` writes, the token system in `templates/source/base/`), `test/`, `CHANGELOG.md` |
+| `packages/site/`   | `chassis-tokens-site` (private)  | The documentation site and its dependencies                                                                                                                                                                  |
 
-The root holds the `vendor/tokens` submodule, a checkout of the tokens of the Chassis sites with `source/`, `chassis.build`, `dist/` and `Package.swift`, on which the root scripts run the build of this checkout; the pin of the assets of the site in `vendor/assets.json`, a release of the assets of the Chassis sites that `pnpm vendor` unpacks into `vendor/assets`, which is not committed; the workspace configuration, the lint and format configurations with their dependencies, the CI workflows, the Changesets configuration in `.changeset/`, the repository scripts in `build/` (`sync-version-refs.js`, `release-notes.js`) and the site output in `_site/`. In the sections below, `build/` and `test/` are relative to `packages/tokens/`, and `source/` and `dist/` to the repository of tokens, `vendor/tokens` in this checkout.
+The root holds the `vendor/tokens` submodule, a checkout of the tokens of the Chassis sites with `source/`, `chassis.build`, `dist/` and `Package.swift`, on which the root scripts run the build of this checkout; the pin of the assets of the site in `vendor/assets.json`, a release of the assets of the Chassis sites that `pnpm vendor` unpacks into `vendor/assets`, which is not committed; the workspace configuration, the lint and format configurations with their dependencies, the CI workflows, the Changesets configuration in `.changeset/`, the repository scripts in `build/` (`sync-version-refs.js`, `release-notes.js`) and the site output in `_site/`. In the sections below, `lib/`, `templates/` and `test/` are relative to `packages/tokens/`, and `source/` and `dist/` to the repository of tokens, `vendor/tokens` in this checkout.
 
 ## The command
 
@@ -90,7 +90,7 @@ To work on the tokens without the site's dependencies, install only the tokens p
 pnpm install --filter @chassis-ui/tokens
 ```
 
-[CONTRIBUTING.md](.github/CONTRIBUTING.md) describes how to change the build and the site, and what a pull request needs. A change to the token system that `init` writes is made in `packages/tokens/build/init-templates/source/`. A change to the tokens of the Chassis sites is made in their own repository, and reaches this one by moving the `vendor/tokens` pointer.
+[CONTRIBUTING.md](.github/CONTRIBUTING.md) describes how to change the build and the site, and what a pull request needs. A change to the token system that `init` writes is made in `packages/tokens/templates/source/`. A change to the tokens of the Chassis sites is made in their own repository, and reaches this one by moving the `vendor/tokens` pointer.
 
 ### Build the Tokens
 
@@ -183,7 +183,7 @@ It builds every preset from the fixture and writes the files that differ into `t
 
 ```sh
 # One baseline only
-node packages/tokens/build/cli.js verify --update --preset web-px
+node packages/tokens/lib/cli.js verify --update --preset web-px
 ```
 
 ### Token Diff Report
@@ -224,11 +224,17 @@ The build uses [Style Dictionary](https://styledictionary.com) 5.5 and [`@tokens
 2. **Transform**: Style Dictionary transforms only what is safe before references are resolved: names, math, color modifiers, `rem` sizes and CSS shadows.
 3. **Format**: The formats print one line per resolved token. Platform values (`UIColor(…)`, ARGB colors, `sp`/`dp`, quoting, `em`, `var(--…)`, `$…`, `@type/…` and Swift constant references) come from pure functions in `values/` and the web reference policies, which run after resolution.
 
-Key modules in `build/`:
+The code is in `lib/`: the command, the shared modules, the build in `lib/build/` and the commands on a repository in `lib/commands/`. What `init` writes is in `templates/`.
+
+Key modules of `lib/`:
 
 - `cli.js`: The `chassis-tokens` command, a table of the commands below
 - `root.js`: Finds the repository of tokens, its folders and the version of its output
-- `init.js` and `init-templates/`: The baseline of a repository of tokens
+- `logger.js`: Logging
+- `utils.js`: Token type groups and number formatting
+
+The build, `lib/build/`:
+
 - `build.js`: Build plan (one Style Dictionary instance per token-set list) and CLI
 - `config/`: Platform configurations; the web presets share `webConfig()` from `web.js`
 - `preprocessor.js`: Token preprocessing
@@ -241,9 +247,12 @@ Key modules in `build/`:
 - `scss-var-policy.js`: The values and `$…` names of the SCSS variables format
 - `icons.js`: The icon assets, an Xcode asset catalog and Android vector drawables, written by Style Dictionary actions from the SVG icon tokens
 - `theme-colors.js`: The iOS `Color.swift` whose colors follow the appearance, written after the builds from the light and dark color files
+
+The commands on a repository, `lib/commands/`:
+
+- `init.js`: The baseline of a repository of tokens, from `templates/`
 - `verify.js`: Golden check against the committed output of a repository and the preset baselines
-- `logger.js`: Logging
-- `utils.js`: Token type groups and number formatting
+- `diff.js`, `lint-tokens.js`, `swift-package.js`, `archive.js` and `release-notes.js`: The commands of the same names (`lint-source` for `lint-tokens.js`)
 
 [docs/architecture.md](docs/architecture.md) explains why the build works this way, and lists the output contract, the rules of every platform and the known oddities of the output.
 
@@ -355,7 +364,7 @@ public static let ColorAccordionItemFgColor = ColorContextDefaultFgMain
 
 iOS and Android follow the same rule: a token names a constant or resource of its own file only when that one has the same type and value. Base colors and sizes computed with math print their values. A Swift constant cannot name one of another file.
 
-Each platform file in `build/config/` can also be edited directly; `web-px.js`, `web-vw.js` and `web-scss.js` each call `webConfig({ unit, format })` from `web.js`.
+Each platform file in `lib/build/config/` can also be edited directly; `web-px.js`, `web-vw.js` and `web-scss.js` each call `webConfig({ unit, format })` from `web.js`.
 
 ## Documentation Site
 
@@ -381,13 +390,13 @@ Every pull request and every push to `develop` runs `.github/workflows/ci.yml`:
 - **Audit**: `pnpm check:pnpm`, which is `pnpm audit --prod` for moderate advisories and above in what the package installs, and a report of `pnpm audit` on every dependency, which does not fail the job
 - **Dependency Review**: on a pull request, fails when it adds a dependency with a known vulnerability of moderate severity or above
 - **Token Diff**: on a pull request that moves the `vendor/tokens` pointer, the [token diff report](#token-diff-report) between the two commits, in the job summary
-- **Changeset**: a pull request that changes `packages/tokens/build/` must add a changeset (`pnpm changeset`)
+- **Changeset**: a pull request that changes `packages/tokens/lib/` or `packages/tokens/templates/` must add a changeset (`pnpm changeset`)
 - **Native iOS** (macOS, Xcode): every Swift file of `vendor/tokens/dist/` and of the preset baselines type-checked against the iOS simulator SDK, the asset catalogs compiled with `actool`, and a sample built that depends on the libraries of the `Package.swift` of `vendor/tokens` and reads their tokens
 - **Native Android**: the resources of `vendor/tokens/dist/` and of the preset baselines compiled and linked against the Android SDK, the Compose objects compiled against Jetpack Compose, and a sample app built that depends on the Android libraries and reads their resources, with the Gradle project in `test/native/android/`
 
 `pnpm test:ci` runs the Tokens, Site and Audit checks locally in one command, without the report of `pnpm audit`.
 
-The two native jobs run on a pull request or a push to `develop` only when it moves the `vendor/tokens` pointer or changes `build/`, the preset baselines or the checks themselves, and on every manual run of the workflow. A release needs both to have passed on its commit: the version commit changes `packages/tokens/package.json`, so they run on it by themselves, and a manual run does it for any other commit. See [Native compile checks](packages/tokens/test/README.md#native-compile-checks).
+The two native jobs run on a pull request or a push to `develop` only when it moves the `vendor/tokens` pointer or changes `lib/`, `templates/`, the preset baselines or the checks themselves, and on every manual run of the workflow. A release needs both to have passed on its commit: the version commit changes `packages/tokens/package.json`, so they run on it by themselves, and a manual run does it for any other commit. See [Native compile checks](packages/tokens/test/README.md#native-compile-checks).
 
 Releases use [Changesets](https://changesets.dev). A maintainer runs `pnpm changeset:version` on `develop`, which bumps the version and writes the CHANGELOG, and pushes the commit to `develop`, then to `main`. The checks run once, on `develop`. Pushing `main` runs `.github/workflows/release.yml`, which reads the results of those checks on the commit and stops unless they passed, the two native jobs included, publishes `@chassis-ui/tokens` to npm with trusted publishing and provenance, and creates a GitHub release from the CHANGELOG entry. The tag `v<version>` is the version of the package, not a Swift package: the Swift package and the Android libraries are released by each repository of tokens. See [Releases](.github/CONTRIBUTING.md#releases). Dependabot opens weekly pull requests for npm packages, GitHub Actions and the Gradle project of the native checks; the actions are pinned to commit SHAs.
 

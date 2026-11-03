@@ -38,9 +38,9 @@ import { join } from 'node:path'
 import { parseArgs } from 'node:util'
 import { permutateThemes } from '@tokens-studio/sd-transforms'
 import StyleDictionary from 'style-dictionary'
-import { splitWeightStyle } from './preprocessor.js'
-import { fontWeightNumber } from './values/shared.js'
-import { isEntry, readRepository, resolveRoot } from './root.js'
+import { splitWeightStyle } from '../build/preprocessor.js'
+import { fontWeightNumber } from '../build/values/shared.js'
+import { isEntry, readRepository, resolveRoot } from '../root.js'
 
 /** Theme groups whose options must declare the same names. */
 export const SAME_NAME_GROUPS = ['theme', 'screen']

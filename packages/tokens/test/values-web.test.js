@@ -19,7 +19,7 @@ import {
   resolvedTypographyMap,
   typographyMap,
   vwSize
-} from '../build/values/web.js'
+} from '../lib/build/values/web.js'
 
 const fixture = JSON.parse(
   readFileSync(new URL('./fixtures/web-tokens.json', import.meta.url), 'utf8')

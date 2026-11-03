@@ -14,23 +14,32 @@ import { buildVersion } from './root.js'
 
 /** The commands, each with the module that runs it. */
 export const COMMANDS = {
-  build: { module: './build.js', about: 'Build the tokens into the output folder' },
-  verify: { module: './verify.js', about: 'Check that a fresh build equals the committed output' },
+  build: { module: './build/build.js', about: 'Build the tokens into the output folder' },
+  verify: {
+    module: './commands/verify.js',
+    about: 'Check that a fresh build equals the committed output'
+  },
   diff: {
-    module: './diff.js',
+    module: './commands/diff.js',
     about: 'Report the tokens added, removed and changed in the output'
   },
-  'lint-source': { module: './lint-tokens.js', about: 'Check the token files in source/' },
-  'swift-package': { module: './swift-package.js', about: 'Write Package.swift from the output' },
+  'lint-source': { module: './commands/lint-tokens.js', about: 'Check the token files in source/' },
+  'swift-package': {
+    module: './commands/swift-package.js',
+    about: 'Write Package.swift from the output'
+  },
   archive: {
-    module: './archive.js',
+    module: './commands/archive.js',
     about: 'Write one zip per platform, app and brand of the output'
   },
   'release-notes': {
-    module: './release-notes.js',
+    module: './commands/release-notes.js',
     about: 'Print the changelog entry of a version, and fail without one'
   },
-  init: { module: './init.js', about: 'Write the baseline of a repository of tokens into a folder' }
+  init: {
+    module: './commands/init.js',
+    about: 'Write the baseline of a repository of tokens into a folder'
+  }
 }
 
 export const HELP = `Usage: chassis-tokens <command> [options]

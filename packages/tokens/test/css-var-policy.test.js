@@ -17,12 +17,12 @@ import {
   roleName,
   roleValueGroups,
   webValue
-} from '../build/css-var-policy.js'
+} from '../lib/build/css-var-policy.js'
 import {
   MAX_HOPS,
   printsReference as printsReferenceIn,
   referenceTargets
-} from '../build/reference-policy.js'
+} from '../lib/build/reference-policy.js'
 
 const fixture = JSON.parse(
   readFileSync(new URL('./fixtures/css-var-tokens.json', import.meta.url), 'utf8')

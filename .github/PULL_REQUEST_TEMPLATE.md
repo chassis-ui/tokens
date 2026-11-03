@@ -23,7 +23,7 @@ behind each of these.
 - [ ] **The preset baselines written again** with `pnpm tokens:verify:update:presets`, if the build
       changed the output
 - [ ] **Changeset** (`pnpm changeset`) if the published package changed, saying what an app has
-      to change; an empty one (`pnpm changeset --empty`) if `build/` changed
+      to change; an empty one (`pnpm changeset --empty`) if `lib/` or `templates/` changed
       but nothing is released
 - [ ] The **Native iOS** and **Native Android** checks of CI pass, if the iOS or Android output
       changed

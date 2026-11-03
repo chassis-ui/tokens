@@ -5,7 +5,7 @@
  *              this package, a README, a changelog, the instructions for agents, a CI workflow, a
  *              release workflow, and the token sets of the Chassis token system in Tokens Studio
  *              files, with the groups `brand`, `app` and `theme`. The templates are in
- *              `init-templates/` beside this module, and the few values that differ by
+ *              `templates/` of the package, and the few values that differ by
  *              repository are filled in: the name, the package manager and its commands, and
  *              the options of the groups. The token sets are written once: from then on they
  *              are the repository's, and no later version of the package writes over them.
@@ -34,11 +34,11 @@ import {
 import { homedir } from 'node:os'
 import { basename, dirname, join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { PLATFORM_NAMES } from './config/index.js'
-import { buildVersion, isEntry, repositoryWebUrl } from './root.js'
+import { PLATFORM_NAMES } from '../build/config/index.js'
+import { buildVersion, isEntry, repositoryWebUrl } from '../root.js'
 
 /** The folder of the templates. */
-const TEMPLATES = fileURLToPath(new URL('./init-templates/', import.meta.url))
+const TEMPLATES = fileURLToPath(new URL('../../templates/', import.meta.url))
 
 /** The version of Node.js written to `.nvmrc`. Trusted publishing needs its npm 11. */
 export const NODE_VERSION = '24'
@@ -251,7 +251,7 @@ function modeSwitch(group, count, on) {
 
 /**
  * The Tokens Studio files of a new repository, by path under `source/`: the base token sets of
- * the system from `init-templates/source/base/`, with the Figma mode switches of the brands, apps
+ * the system from `templates/source/base/`, with the Figma mode switches of the brands, apps
  * and themes given, one set per brand and per app for its own values, and `$themes.json` with
  * the groups `brand`, `app` and `theme`. A repository owns these files once they are written.
  * @param {string[]} brands

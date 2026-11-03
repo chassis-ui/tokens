@@ -12,7 +12,7 @@ import { mkdtemp, rm, writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { afterAll, describe, expect, test } from 'vitest'
-import { formatError, lintTokens, loadSource, readTokens } from '../build/lint-tokens.js'
+import { formatError, lintTokens, loadSource, readTokens } from '../lib/commands/lint-tokens.js'
 import { FIXTURE_DIR } from './helpers.js'
 
 const fixture = JSON.parse(

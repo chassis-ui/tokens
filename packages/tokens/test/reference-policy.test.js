@@ -9,7 +9,7 @@
 
 import { readFileSync } from 'node:fs'
 import { describe, expect, test } from 'vitest'
-import { referencingGroups as cssVarGroups } from '../build/css-var-policy.js'
+import { referencingGroups as cssVarGroups } from '../lib/build/css-var-policy.js'
 import {
   aliasPath,
   followAliases,
@@ -20,8 +20,8 @@ import {
   referenceTarget,
   referenceTargets,
   startsWith
-} from '../build/reference-policy.js'
-import { referencingGroups as scssVarGroups } from '../build/scss-var-policy.js'
+} from '../lib/build/reference-policy.js'
+import { referencingGroups as scssVarGroups } from '../lib/build/scss-var-policy.js'
 
 const fixture = JSON.parse(
   readFileSync(new URL('./fixtures/css-var-tokens.json', import.meta.url), 'utf8')

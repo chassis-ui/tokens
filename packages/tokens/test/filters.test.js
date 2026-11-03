@@ -9,7 +9,7 @@
 import { readFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { describe, expect, test } from 'vitest'
-import registerFilters, { figmaOnlyGroups, filters } from '../build/filters.js'
+import registerFilters, { figmaOnlyGroups, filters } from '../lib/build/filters.js'
 import { DIST_DIR } from './helpers.js'
 
 const fixture = JSON.parse(
@@ -125,7 +125,7 @@ describe('filters', () => {
 
   test('are the four filters the configs use', () => {
     const configs = ['web', 'ios', 'android'].map((platform) =>
-      readFileSync(new URL(`../build/config/${platform}.js`, import.meta.url), 'utf8')
+      readFileSync(new URL(`../lib/build/config/${platform}.js`, import.meta.url), 'utf8')
     )
     const used = new Set(configs.flatMap((text) => text.match(/cx\/\w+Tokens/g)))
     expect(Object.keys(filters).sort()).toEqual([...used].sort())

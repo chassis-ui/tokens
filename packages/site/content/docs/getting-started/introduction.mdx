@@ -46,7 +46,7 @@ A token set is one JSON file of `source/`, such as `base/theme-base.json`. `sour
 
 One option of each group makes a list of token sets, named `<brand>_<app>_<theme>`, such as `acme_site_light`, and `<brand>_<app>_<theme>_<screen>` with a `screen` group. A token set overrides the tokens of the sets before it in the list, as in Tokens Studio: the `dark` theme selects `base/theme-base.json` and then `base/theme-dark.json`, whose colors replace those of the first.
 
-The options are yours to change. To add the `screen` group, add it to `$themes.json` in Tokens Studio and list its options in `screens` of `chassis.build`; the [Style Dictionary guide]([[docsref:/getting-started/style-dictionary]]) describes the files it adds. A group of your own also needs a change to `planBuilds` in `build/build.js` of the builder, which makes the name of a list from the brand, the app, the theme and the screen.
+The options are yours to change. To add the `screen` group, add it to `$themes.json` in Tokens Studio and list its options in `screens` of `chassis.build`; the [Style Dictionary guide]([[docsref:/getting-started/style-dictionary]]) describes the files it adds. A group of your own also needs a change to `planBuilds` in `lib/build/build.js` of the builder, which makes the name of a list from the brand, the app, the theme and the screen.
 
 The [Tokens Studio guide]([[docsref:/getting-started/tokens-studio]]) describes the token sets and how to change them, and the [Figma Variables guide]([[docsref:/getting-started/figma-variables]]) how they become Variables in Figma.
 

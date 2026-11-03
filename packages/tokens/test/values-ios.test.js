@@ -9,7 +9,7 @@
 
 import { readFileSync } from 'node:fs'
 import { afterEach, describe, expect, test, vi } from 'vitest'
-import { derivedConstants, encode, partName, reference } from '../build/values/ios.js'
+import { derivedConstants, encode, partName, reference } from '../lib/build/values/ios.js'
 
 const fixture = JSON.parse(
   readFileSync(new URL('./fixtures/mobile-tokens.json', import.meta.url), 'utf8')

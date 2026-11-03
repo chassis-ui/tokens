@@ -31,7 +31,7 @@ describe('Logger Module', () => {
 
     // Force module reload to respect new env
     vi.resetModules()
-    loggerModule = await import('../build/logger.js')
+    loggerModule = await import('../lib/logger.js')
   })
 
   afterEach(() => {
@@ -73,7 +73,7 @@ describe('Logger Module', () => {
     test('should log stack trace with DEBUG', async () => {
       process.env.DEBUG = '1'
       vi.resetModules()
-      const debugLogger = await import('../build/logger.js')
+      const debugLogger = await import('../lib/logger.js')
 
       const error = new Error('Debug error')
       error.stack = 'Error: Debug error\n    at test.js:1:1'
@@ -111,7 +111,7 @@ describe('Logger Module', () => {
     test('should log debug messages with DEBUG env', async () => {
       process.env.DEBUG = '1'
       vi.resetModules()
-      const debugLogger = await import('../build/logger.js')
+      const debugLogger = await import('../lib/logger.js')
 
       debugLogger.default.debug('Debug message')
 

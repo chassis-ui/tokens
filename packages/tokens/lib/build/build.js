@@ -19,9 +19,9 @@ import registerTransforms from './transforms.js'
 import registerFormats from './formats.js'
 import registerIconActions from './icons.js'
 import cxPrep from './preprocessor.js'
-import logger from './logger.js'
+import logger from '../logger.js'
 import { THEMES, THEME_COLORS_FILE, writeThemeColors } from './theme-colors.js'
-import { buildVersion, isEntry, readRepository, resolveRoot } from './root.js'
+import { buildVersion, isEntry, readRepository, resolveRoot } from '../root.js'
 
 /** The token files, relative to the root of the repository, where the build runs. */
 const SOURCE_DIR = 'source'

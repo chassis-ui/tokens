@@ -10,8 +10,8 @@
 
 import { readFileSync } from 'node:fs'
 import { describe, expect, test } from 'vitest'
-import { webValue } from '../build/css-var-policy.js'
-import { scssValue } from '../build/scss-var-policy.js'
+import { webValue } from '../lib/build/css-var-policy.js'
+import { scssValue } from '../lib/build/scss-var-policy.js'
 
 const fixture = JSON.parse(
   readFileSync(new URL('./fixtures/scss-var-tokens.json', import.meta.url), 'utf8')

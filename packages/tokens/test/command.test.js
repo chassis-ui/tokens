@@ -13,8 +13,8 @@ import { writeFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { afterAll, beforeAll, describe, expect, test } from 'vitest'
-import { init } from '../build/init.js'
-import { buildVersion } from '../build/root.js'
+import { init } from '../lib/commands/init.js'
+import { buildVersion } from '../lib/root.js'
 import { CLI, FIXTURE_DIR, PACKAGE_DIR } from './helpers.js'
 
 const temporary = realpathSync(mkdtempSync(join(tmpdir(), 'chassis-tokens-command-')))

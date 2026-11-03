@@ -9,7 +9,7 @@
 
 import { readFileSync } from 'node:fs'
 import { describe, expect, test } from 'vitest'
-import { encode, kotlinString, partName, reference } from '../build/values/compose.js'
+import { encode, kotlinString, partName, reference } from '../lib/build/values/compose.js'
 
 const fixture = JSON.parse(
   readFileSync(new URL('./fixtures/mobile-tokens.json', import.meta.url), 'utf8')

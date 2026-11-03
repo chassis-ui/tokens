@@ -9,7 +9,7 @@
  * @license MIT
  */
 
-import { removeTrailingZeros } from '../utils.js'
+import { removeTrailingZeros } from '../../utils.js'
 import { cubicBezierPoints, durationMilliseconds, letterSpacingFraction } from './shared.js'
 
 /**

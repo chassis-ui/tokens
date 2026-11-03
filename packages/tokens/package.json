@@ -25,10 +25,11 @@
     "token transform"
   ],
   "bin": {
-    "chassis-tokens": "build/cli.js"
+    "chassis-tokens": "lib/cli.js"
   },
   "files": [
-    "build",
+    "lib",
+    "templates",
     "test/native/android/build.gradle.kts",
     "test/native/android/gradle",
     "test/native/android/gradle.properties",
@@ -40,7 +41,7 @@
     "CHANGELOG.md"
   ],
   "exports": {
-    "./build/*": "./build/*",
+    "./lib/*": "./lib/*",
     "./package.json": "./package.json"
   },
   "engines": {
@@ -54,8 +55,8 @@
     "clean": "rm -rf dist-next",
     "test": "vitest run --dir test",
     "typecheck": "tsc -p tsconfig.json",
-    "verify:presets": "node build/cli.js verify --preset all",
-    "verify:update:presets": "node build/cli.js verify --update --preset all"
+    "verify:presets": "node lib/cli.js verify --preset all",
+    "verify:update:presets": "node lib/cli.js verify --update --preset all"
   },
   "dependencies": {
     "@tokens-studio/sd-transforms": "^2.0.3",

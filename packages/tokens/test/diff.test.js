@@ -19,7 +19,7 @@ import {
   formatReport,
   isDeclarationFile,
   parseDeclarations
-} from '../build/diff.js'
+} from '../lib/commands/diff.js'
 import { DIST_DIR } from './helpers.js'
 
 const SCSS_SMALL = 'web/docs/chassis/number-small.scss'

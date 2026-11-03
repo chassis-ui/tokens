@@ -9,7 +9,7 @@ import { mkdtemp, rm, writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { afterAll, describe, expect, test } from 'vitest'
-import { loadConfig, parseArgs } from '../build/build.js'
+import { loadConfig, parseArgs } from '../lib/build/build.js'
 import { FIXTURE_DIR } from './helpers.js'
 
 describe('parseArgs', () => {

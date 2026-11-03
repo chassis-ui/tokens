@@ -8,15 +8,15 @@
 
 import { readFileSync } from 'node:fs'
 import { describe, expect, test } from 'vitest'
-import { inSourceOrder } from '../build/formats.js'
-import { scssValue } from '../build/scss-var-policy.js'
-import scssTemplate from '../build/templates/scss.template.js'
-import androidTemplate from '../build/templates/android-resources.template.js'
-import iosTemplate, { swiftConstants } from '../build/templates/ios-swift-class.template.js'
-import composeTemplate from '../build/templates/compose-object.template.js'
-import { tokenConstants } from '../build/templates/constants.js'
-import * as swiftuiValues from '../build/values/swiftui.js'
-import * as composeValues from '../build/values/compose.js'
+import { inSourceOrder } from '../lib/build/formats.js'
+import { scssValue } from '../lib/build/scss-var-policy.js'
+import scssTemplate from '../lib/build/templates/scss.template.js'
+import androidTemplate from '../lib/build/templates/android-resources.template.js'
+import iosTemplate, { swiftConstants } from '../lib/build/templates/ios-swift-class.template.js'
+import composeTemplate from '../lib/build/templates/compose-object.template.js'
+import { tokenConstants } from '../lib/build/templates/constants.js'
+import * as swiftuiValues from '../lib/build/values/swiftui.js'
+import * as composeValues from '../lib/build/values/compose.js'
 
 /**
  * A token as the formats see it, reduced to what the order needs.

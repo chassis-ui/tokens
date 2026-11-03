@@ -9,7 +9,7 @@
 
 import { readFileSync } from 'node:fs'
 import { afterEach, describe, expect, test, vi } from 'vitest'
-import { cubicBezierParts } from '../build/values/shared.js'
+import { cubicBezierParts } from '../lib/build/values/shared.js'
 import {
   encode,
   escapeString,
@@ -18,7 +18,7 @@ import {
   resourceKind,
   resourceTag,
   resourceType
-} from '../build/values/android.js'
+} from '../lib/build/values/android.js'
 
 const fixture = JSON.parse(
   readFileSync(new URL('./fixtures/mobile-tokens.json', import.meta.url), 'utf8')

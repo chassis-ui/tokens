@@ -6,7 +6,7 @@
  *              manifest is committed, and a test compares it with the configuration.
  *
  * Usage:
- *   node build/swift-package.js [--check]
+ *   node lib/commands/swift-package.js [--check]
  *
  *   --check  Write nothing; fail when the manifest differs from the configuration.
  *
@@ -18,8 +18,8 @@ import { existsSync } from 'node:fs'
 import { readFile, writeFile } from 'node:fs/promises'
 import { join, relative } from 'node:path'
 import { parseArgs } from 'node:util'
-import { IOS_CATALOG } from './icons.js'
-import { isEntry, readRepository, resolveRoot } from './root.js'
+import { IOS_CATALOG } from '../build/icons.js'
+import { isEntry, readRepository, resolveRoot } from '../root.js'
 
 export const MANIFEST = 'Package.swift'
 export const PACKAGE_NAME = 'ChassisTokens'

@@ -7,7 +7,7 @@
  * @license MIT
  */
 
-import { tokenTypes } from './utils.js'
+import { tokenTypes } from '../utils.js'
 import { cssShadow, pxSize, remSize, vwSize } from './values/web.js'
 
 /**

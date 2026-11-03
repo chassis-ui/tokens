@@ -11,7 +11,7 @@ import { mkdtempSync, rmSync, writeFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { afterAll, describe, expect, test } from 'vitest'
-import { releaseNotes } from '../build/release-notes.js'
+import { releaseNotes } from '../lib/commands/release-notes.js'
 import { CLI } from './helpers.js'
 
 const temporary = mkdtempSync(join(tmpdir(), 'chassis-tokens-notes-'))

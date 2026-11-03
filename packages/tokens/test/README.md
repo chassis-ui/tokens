@@ -1,6 +1,6 @@
 # Token build tests
 
-Tests for the token build in `build/` of the `@chassis-ui/tokens` package (`packages/tokens/` in the repository). Paths below are relative to that folder. Run them from the repository root:
+Tests for the token build in `lib/` of the `@chassis-ui/tokens` package (`packages/tokens/` in the repository). Paths below are relative to that folder. Run them from the repository root:
 
 ```sh
 pnpm tokens:test
@@ -80,7 +80,7 @@ When tokens change, the fixtures stay valid: they hold their own copies. When th
 Check one preset (from `packages/tokens/`), or all (from the repository root):
 
 ```sh
-node build/cli.js verify --preset web-px
+node lib/cli.js verify --preset web-px
 pnpm tokens:verify:presets
 ```
 
@@ -143,12 +143,12 @@ pnpm tokens:verify:update:presets
 Only the files that differ are written; a file that differs in its header lines only is left as it is. Write one baseline again, or a new one, from `packages/tokens/`:
 
 ```sh
-node build/cli.js verify --update --preset web-px
+node lib/cli.js verify --update --preset web-px
 ```
 
 ## Native compile checks
 
-`native/` compiles the iOS and Android output of a repository of tokens and of the baselines against the real SDKs. CI runs both checks (the **Native iOS** and **Native Android** jobs) on `vendor/tokens`, on a pull request or a push to `develop` that moves its pointer or changes `build/`, the baselines, the checks or `package.json` of this package, which the version commit of every release does, and on every manual run of the workflow, so nobody has to install an SDK to contribute. Both checks find the output folders themselves: every folder of its `dist/` and of the baselines in `golden/` with files of the platform, so a new brand, app or preset baseline is checked without a change here.
+`native/` compiles the iOS and Android output of a repository of tokens and of the baselines against the real SDKs. CI runs both checks (the **Native iOS** and **Native Android** jobs) on `vendor/tokens`, on a pull request or a push to `develop` that moves its pointer or changes `lib/`, `templates/`, the baselines, the checks or `package.json` of this package, which the version commit of every release does, and on every manual run of the workflow, so nobody has to install an SDK to contribute. Both checks find the output folders themselves: every folder of its `dist/` and of the baselines in `golden/` with files of the platform, so a new brand, app or preset baseline is checked without a change here.
 
 ### iOS
 

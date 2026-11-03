@@ -21,8 +21,9 @@ pnpm vendor
 This repo is a pnpm workspace with two packages:
 
 - [`packages/tokens`](../packages/tokens/) — `@chassis-ui/tokens`, the published package: the
-  Style Dictionary build in `build/`, the token system that `init` writes in
-  `build/init-templates/source/`, and the tests in `test/`.
+  `chassis-tokens` command, the Style Dictionary build and the commands on a repository in
+  `lib/`, what `init` writes in `templates/` (the token system in `templates/source/base/`),
+  and the tests in `test/`.
 - [`packages/site`](../packages/site/) — `chassis-tokens-site`, the Astro documentation site. It
   is never published to npm. It takes the published tokens of the Chassis sites and `@chassis-ui/css` from npm at the versions in its
   `package.json`, not from `vendor/tokens`.
@@ -61,7 +62,7 @@ Branch names aren't templated; name yours descriptively (for example `fix/androi
 
 ## Changing tokens
 
-The token system that `init` writes is in `packages/tokens/build/init-templates/source/`. A change to it reaches the repositories that `init` writes after its release, and never one made earlier; it takes a changeset like a change to the build, and `pnpm tokens:test` builds and lints a repository written with it.
+The token system that `init` writes is in `packages/tokens/templates/source/`. A change to it reaches the repositories that `init` writes after its release, and never one made earlier; it takes a changeset like a change to the build, and `pnpm tokens:test` builds and lints a repository written with it.
 
 The tokens of the Chassis sites and apps are a repository of tokens of their own, the URL of `vendor/tokens` in `.gitmodules`, with its own changelog and releases; its README has the steps. Do not edit `vendor/tokens/` from here: it is a checkout of that repository. A new commit there reaches this one by moving the pointer:
 
@@ -80,19 +81,19 @@ A change to the build that changes the output of the default platforms fails `pn
 
 ## Changing the build
 
-The build in `packages/tokens/build/` follows three rules; please keep them. The reasons, the
+The build in `packages/tokens/lib/` follows three rules; please keep them. The reasons, the
 output contract and the known oddities of the output are in
 [docs/architecture.md](../docs/architecture.md).
 
 - **Templates only print.** Platform values (`UIColor(…)`, ARGB colors, `sp` and `dp`, quoting,
-  references) come from pure functions in `build/values/` and the web reference policies, which
+  references) come from pure functions in `lib/build/values/` and the web reference policies, which
   run on fully resolved tokens. They are not Style Dictionary value transforms, because
   referenced tokens would be encoded before the tokens that reference them.
 - **Tests use real tokens.** Fixtures are copied from the `source/` and `dist/` of a repository
   of tokens; no test mocks Style Dictionary, and `pnpm test` needs nothing outside
   `packages/tokens/`, no submodule included. See [`packages/tokens/test/README.md`](../packages/tokens/test/README.md) for
   the test files, the fixtures and the preset baselines.
-- **Types in JSDoc.** `pnpm tokens:typecheck` runs TypeScript's `checkJs` on `build/` (not yet
+- **Types in JSDoc.** `pnpm tokens:typecheck` runs TypeScript's `checkJs` on `lib/` (not yet
   `strict`), with the types Style Dictionary ships and those of Node.js 22, the oldest version
   the package supports. Describe parameters and return values with JSDoc, as the existing code
   does.
@@ -158,7 +159,7 @@ pnpm site:lint:html
   that `test:ci` doesn't.
 - **A changeset** for anything that changes the published package: file names, formats, the
   output of a platform or the package contents. CI fails a pull request or a push to `develop`
-  that changes `build/` without one; for such a change that releases
+  that changes `lib/` or `templates/` without one; for such a change that releases
   nothing, such as a build refactor with the same output, add an empty changeset. A pull request
   that only touches the site, the docs, the tests or the tooling doesn't need one.
 - **The written baselines** with any change to the build that changes the output.
