@@ -7,8 +7,8 @@ breaks without being told; the README explains the rest.
 
 __NAME__ holds design tokens in the Tokens Studio format, in `source/`, synced with Figma. They
 are built with [`@chassis-ui/tokens`](https://www.npmjs.com/package/@chassis-ui/tokens) into
-`dist/<platform>/<app>/<brand>/`. `chassis.build` in `package.json` lists the brands, the themes,
-the screens and the apps.
+`dist/<platform>/<app>/<brand>/`. `chassis.build` in `package.json` lists the brands, the themes
+and the apps.
 
 ## Commands
 
@@ -29,8 +29,7 @@ Once, with Node.js 22.12 or later: `__INSTALL__`.
   of `__RUN__ build` and `__RUN__ swift-package`. Commit them with the change to `source/`.
 - **`source/` follows Figma.** A sync from Figma writes these files, so a change that belongs in
   the design is made there. `$themes.json` and `$metadata.json` are written by Tokens Studio.
-- **Keep `chassis.build` in step with `$themes.json`.** A brand, an app, a theme or a screen is
-  in both.
+- **Keep `chassis.build` in step with `$themes.json`.** A brand, an app or a theme is in both.
 - **The names in `dist/` are public.** Apps read them by name, and a removed or renamed token
   stops them compiling. `__RUN__ diff` names such a change, and the changelog says so.
 

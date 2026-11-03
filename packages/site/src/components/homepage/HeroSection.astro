@@ -29,7 +29,7 @@ import Icon from '@chassis-ui/docs/shortcodes/Icon.astro'
         noToolbar
         containerClass="md:mx-auto md:mw-100"
         lang="bash"
-        code="npx --package @chassis-ui/tokens chassis-tokens init acme-tokens"
+        code="npx @chassis-ui/tokens init acme-tokens"
       />
       <!-- Buttons -->
       <div class="d-grid md:d-flex gap-md md:justify-content-center flex-wrap">
@@ -47,7 +47,10 @@ import Icon from '@chassis-ui/docs/shortcodes/Icon.astro'
       <p class="fg-subtle mb-0 text-center font-md">
         Currently <strong>v{getConfig().currentVersion}</strong>
         <span class="px-2xs">&middot;</span>
-        <a href={getConfig().repo + '/blob/main/CHANGELOG.md'} class="link-secondary text-nowrap">
+        <a
+          href={getConfig().repo + '/blob/main/packages/tokens/CHANGELOG.md'}
+          class="link-secondary text-nowrap"
+        >
           Changes
         </a>
       </p>

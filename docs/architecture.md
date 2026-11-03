@@ -2,7 +2,7 @@
 
 How the token build of `@chassis-ui/tokens` works, why it is built this way, and what it promises to write. It is for contributors who change the build in `packages/tokens/build/`. How to set up the repository, run the checks and open a pull request is in [CONTRIBUTING.md](../.github/CONTRIBUTING.md).
 
-`build/` and `test/` below are relative to `packages/tokens/`. `source/`, `dist/`, `Package.swift` and the `package.json` with the build configuration are those of a repository of tokens; the numbers and names of this document are those of chassis-ui/website-tokens, the `vendor/tokens` submodule of this checkout ([D2](decisions.md)).
+`build/` and `test/` below are relative to `packages/tokens/`. `source/`, `dist/`, `Package.swift` and the `package.json` with the build configuration are those of a repository of tokens; the numbers and names of this document are those of the tokens of the Chassis sites, the `vendor/tokens` submodule of this checkout ([D2](decisions.md)). A repository that `init` writes has the groups `brand`, `app` and `theme` and no screens ([D11](decisions.md)).
 
 The build is the command `chassis-tokens` (`build/cli.js`), which works on one repository of tokens, so nothing in it assumes this workspace. See [the repository of a run](#the-repository-of-a-run).
 
@@ -38,7 +38,7 @@ theme-colors.js     Color.swift, from the light and dark color files
 
 `resolveRoot` in `root.js` finds the repository of every command but `init`: `--cwd <dir>` as it is, else the nearest folder upward from the working directory whose `package.json` has a `chassis` block, as in the assets build. `readRepository` reads what the commands need from it: `source/` at its root, the output folder, `dist/` at its root unless `chassis.dist` names another, `chassis.build`, and the version in the file headers, of the nearest `package.json` with a version from the output folder upward. The root of this workspace has no `chassis` block: it is no repository of tokens, and its scripts name `vendor/tokens` with `--cwd`.
 
-The other lines of a file header are the repository's too (`headerLines`): `<title> v<version>`, the title being `chassis.title` or the `name` of its `package.json`; `chassis.copyright` or `Copyright <author>`; and `Licensed under <license>`, with a link from `repository`. A line with nothing to say is left out. website-tokens sets `chassis.title` and `chassis.copyright` to the text these files have always had. `pnpm tokens:verify` ignores the title and version line under any title.
+The other lines of a file header are the repository's too (`headerLines`): `<title> v<version>`, the title being `chassis.title` or the `name` of its `package.json`; `chassis.copyright` or `Copyright <author>`; and `Licensed under <license>`, with a link from `repository`. A line with nothing to say is left out. The repository of `vendor/tokens` sets `chassis.title` and `chassis.copyright` to the text these files have always had. `pnpm tokens:verify` ignores the title and version line under any title.
 
 The build changes its working directory to the root before it reads a token file, and `--out` and `--config` are made absolute first. Style Dictionary reads every source path as a glob, so a path to a repository with a bracket in it would match nothing, while `source/<set>.json` always does.
 
@@ -105,21 +105,21 @@ The light and dark color files come from two instances, so no format sees both t
 
 A repository of tokens commits and publishes its `dist/`. `chassis-tokens verify` builds into `dist-next/` and compares every file with `dist/`, ignoring only the header lines with the timestamp and the version, so any change to the tokens or the build that changes the output fails until `dist/` is rebuilt and the change is reviewed. Here `pnpm tokens:verify` runs it on `vendor/tokens`, with the build of this checkout, so that a change to the build meets real tokens before it is released.
 
-The package holds no tokens, so its own reference output is committed in `test/golden/<preset>/` and checked by `pnpm tokens:verify:presets`: every preset, and `default`, the default platforms for one brand. They build from `test/fixtures/repository/`, a copy of the tokens that does not follow `vendor/tokens`: a baseline changes when the build changes, not when a token does, and the check needs nothing outside the package. `pnpm tokens:verify:update:presets` writes them again after a change that is meant to change the output, and `pnpm tokens:verify:update` also writes `vendor/tokens/dist/`, for a commit in website-tokens.
+The package builds no tokens of its own, so its reference output is committed in `test/golden/<preset>/` and checked by `pnpm tokens:verify:presets`: every preset, and `default`, the default platforms for one brand. They build from `test/fixtures/repository/`, a copy of the tokens that does not follow `vendor/tokens`: a baseline changes when the build changes, not when a token does, and the check needs nothing outside the package. `pnpm tokens:verify:update:presets` writes them again after a change that is meant to change the output, and `pnpm tokens:verify:update` also writes `vendor/tokens/dist/`, for a commit in the repository of `vendor/tokens`.
 
 ## Configuration
 
-`chassis.build` in the `package.json` of the repository, here of `vendor/tokens`:
+`chassis.build` in the `package.json` of the repository, here as `init` writes it for the example of the quick start:
 
-| Key       | Current value                           | Meaning                                                                        |
-| --------- | --------------------------------------- | ------------------------------------------------------------------------------ |
-| `brands`  | `chassis`, `sinefil`                    | Options of the `brand` group in `source/$themes.json` to build                 |
-| `themes`  | `light`, `dark`                         | Options of the `theme` group; the first is the default                         |
-| `screens` | `large`, `medium`, `small`              | Options of the `screen` group; the first is the default                        |
-| `apps`    | `docs`: `web`; `demo`: `ios`, `android` | Options of the `app` group, each with its platforms                            |
-| `options` | none                                    | Style Dictionary options by platform name, merged into that platform's options |
+| Key       | Current value                             | Meaning                                                                        |
+| --------- | ----------------------------------------- | ------------------------------------------------------------------------------ |
+| `brands`  | `acme`, `globex`                          | Options of the `brand` group in `source/$themes.json` to build                 |
+| `themes`  | `light`, `dark`                           | Options of the `theme` group; the first is the default                         |
+| `screens` | none                                      | Optional: options of the `screen` group; the first is the default              |
+| `apps`    | `site`: `web`; `mobile`: `ios`, `android` | Options of the `app` group, each with its platforms                            |
+| `options` | none                                      | Style Dictionary options by platform name, merged into that platform's options |
 
-`source/$themes.json` has four groups: `brand` (`default`, `chassis`, `sinefil`, `demo-a`, `demo-b`), `app` (`docs`, `demo`), `theme` and `screen`. `permutateThemes` names each token-set list `<brand>_<app>_<theme>_<screen>`. The themes select 19 of the 27 token sets; the other 8 are never built, and the source lint does not read them.
+The `source/$themes.json` that `init` writes has three groups, `brand`, `app` and `theme`, and a repository may add a fourth, `screen`. `permutateThemes` names each token-set list `<brand>_<app>_<theme>`, or `<brand>_<app>_<theme>_<screen>` with a `screen` group. A token set that no option selects is never built, and the source lint does not read it.
 
 The platforms are in `config/index.js`:
 
@@ -311,4 +311,4 @@ They are part of the output contract and kept on purpose. Don't fix one without 
 
 The build was rewritten in 2026 from Style Dictionary 4 templates that encoded values while printing, in phases committed as `rewrite(phase N): …` (`git log --grep 'rewrite(phase'`). The plan that guided it, with the measurements and the result of every phase, is in the history of `docs/rewrite-plan.md`, deleted after the last phase; the last version is at commit `b9cbab6`.
 
-On 2026-10-30 and 2026-10-31 the repository was split into this builder and the repository of tokens chassis-ui/website-tokens, by the decisions in [decisions.md](decisions.md). `source/`, `dist/` and `Package.swift` left this repository in step four of D6; their history is in website-tokens, and before that here up to the commit of version 0.12.0.
+On 2026-10-30 and 2026-10-31 the repository was split into this builder and the repository of tokens of the Chassis sites, by the decisions in [decisions.md](decisions.md). `source/`, `dist/` and `Package.swift` left this repository in step four of D6; their history is in that repository, and before that here up to the commit of version 0.12.0. On 2026-11-03 the base token sets came back as the token system that `init` writes, in `build/init-templates/source/` (D11).

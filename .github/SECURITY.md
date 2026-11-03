@@ -8,7 +8,7 @@ maintenance branches for older versions.
 The published package is the builder, the `chassis-tokens` command, with Style Dictionary among
 its dependencies. It runs on the machines and in the CI of the teams that build their tokens with
 it, and runs no code in an app. The tokens of the Chassis sites and apps are generated files in
-[chassis-ui/website-tokens](https://github.com/chassis-ui/website-tokens). The documentation site
+a repository of tokens of their own. The documentation site
 runs on contributors' machines and in CI.
 
 ## Reporting a vulnerability

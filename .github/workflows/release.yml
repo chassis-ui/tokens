@@ -3,8 +3,8 @@ name: Release
 # On a push to main, publishes the version in packages/tokens/package.json when npm does not
 # have it yet, then creates its GitHub release from its CHANGELOG entry. The release is the
 # package, its tag and its notes: the tag v<version> is not a Swift package, and the Swift
-# package and the Android libraries of the Chassis tokens are released by
-# chassis-ui/website-tokens. The version and the CHANGELOG are made on develop with Changesets.
+# package and the Android libraries are released by each repository of tokens. The version
+# and the CHANGELOG are made on develop with Changesets.
 # See "Releases" in CONTRIBUTING.md.
 #
 # The checks of ci.yml ran on this commit when it was pushed to develop, and the ruleset of

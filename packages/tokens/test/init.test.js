@@ -53,13 +53,16 @@ const FILES = [
   '.github/workflows/release.yml',
   'source/$themes.json',
   'source/$metadata.json',
-  'source/brand-main.json',
-  'source/app-site.json',
-  'source/theme-light.json',
-  'source/theme-dark.json',
-  'source/screen-large.json',
-  'source/screen-medium.json',
-  'source/screen-small.json'
+  'source/base/app-base.json',
+  'source/base/app-site.json',
+  'source/base/brand-base.json',
+  'source/base/metric-base.json',
+  'source/base/metric-source.json',
+  'source/base/effect-base.json',
+  'source/base/theme-base.json',
+  'source/base/theme-light.json',
+  'source/base/theme-dark.json',
+  'source/brand-main/brand-base.json'
 ]
 
 describe('init', () => {
@@ -86,7 +89,6 @@ describe('init', () => {
       build: {
         brands: DEFAULTS.brands,
         themes: ['light', 'dark'],
-        screens: ['large', 'medium', 'small'],
         apps: DEFAULTS.apps
       }
     })
@@ -107,8 +109,47 @@ describe('init', () => {
     const dir = join(temporary, 'linted')
     init({ dir, brands: ['one', 'two'], apps: { docs: ['web'], demo: ['ios', 'android'] } })
     const source = await loadSource(join(dir, 'source'))
-    expect(Object.keys(source.sets)).toHaveLength(9)
+    expect(Object.keys(source.sets)).toHaveLength(12)
     expect(lintTokens(source)).toEqual([])
+  })
+
+  test('writes the groups brand, app and theme, with a Figma mode per option', () => {
+    const plan = planFiles({ dir: 'x', brands: ['one', 'two'], apps: { docs: ['web'] } })
+    const themes = JSON.parse(plan.get('source/$themes.json'))
+    expect(themes.map(({ group, name }) => `${group}:${name}`)).toEqual([
+      'brand:one',
+      'brand:two',
+      'app:docs',
+      'theme:light',
+      'theme:dark'
+    ])
+    expect(themes[1].selectedTokenSets).toMatchObject({
+      'base/brand-base': 'enabled',
+      'brand-two/brand-base': 'enabled'
+    })
+    const brandBase = JSON.parse(plan.get('source/base/brand-base.json'))
+    expect(Object.keys(brandBase.figma.switch.brand)).toEqual(['mode-1', 'mode-2'])
+    expect(brandBase.figma.switch.brand['mode-2'].$value).toBe('false')
+    expect(JSON.parse(plan.get('source/brand-two/brand-base.json'))).toEqual({
+      figma: { switch: { brand: { 'mode-2': { $type: 'boolean', $value: 'true' } } } }
+    })
+    const dark = JSON.parse(plan.get('source/base/theme-dark.json'))
+    expect(dark.figma.switch.theme).toEqual({ 'mode-2': { $type: 'boolean', $value: 'true' } })
+    expect(dark).toHaveProperty('color')
+  })
+
+  test('the tokens it writes build for every platform', async () => {
+    const dir = join(temporary, 'built')
+    init({ dir, brands: ['one'], apps: { docs: ['web'], demo: ['ios', 'android'] } })
+    const result = spawnSync(process.execPath, [CLI, 'build', '--cwd', dir], { encoding: 'utf8' })
+    expect(result.status, result.stderr).toBe(0)
+    for (const file of [
+      'dist/web/docs/one/main.scss',
+      'dist/ios/demo/one/ChassisTokens.swift',
+      'dist/android/demo/one/res/values/color.xml'
+    ]) {
+      expect(existsSync(join(dir, file)), file).toBe(true)
+    }
   })
 
   test('takes the name, the brands, the apps and the package manager', () => {
@@ -123,8 +164,8 @@ describe('init', () => {
     expect(pkg.name).toBe('@acme/tokens')
     expect(pkg.chassis.build.brands).toEqual(['one', 'two'])
     expect(pkg.chassis.build.apps).toEqual({ docs: ['web'], demo: ['ios', 'android'] })
-    expect(plan.has('source/brand-two.json')).toBe(true)
-    expect(plan.has('source/app-demo.json')).toBe(true)
+    expect(plan.has('source/brand-two/brand-base.json')).toBe(true)
+    expect(plan.has('source/base/app-demo.json')).toBe(true)
     expect(plan.get('README.md')).toContain('# @acme/tokens')
     expect(plan.get('README.md')).toContain('`pnpm verify`')
     expect(plan.get('.github/workflows/ci.yml')).toContain('pnpm/action-setup')
@@ -306,7 +347,7 @@ describe('init', () => {
       expect(result.kept).toEqual(KEPT)
       expect(result.files.filter((file) => file.startsWith('source/'))).toEqual([])
       expect(read(dir, 'source/$themes.json')).toBe('[]')
-      expect(existsSync(join(dir, 'source/brand-main.json'))).toBe(false)
+      expect(existsSync(join(dir, 'source/brand-main/brand-base.json'))).toBe(false)
       expect(existsSync(join(dir, 'package.json'))).toBe(true)
     })
 
@@ -317,7 +358,7 @@ describe('init', () => {
       expect(result.kept).toEqual(KEPT)
       expect(read(dir, 'README.md')).not.toBe('mine')
       expect(read(dir, 'source/base/brand.json')).toBe('{"mine":{}}')
-      expect(existsSync(join(dir, 'source/theme-light.json'))).toBe(false)
+      expect(existsSync(join(dir, 'source/base/theme-light.json'))).toBe(false)
     })
 
     test('a folder with only a dotfile has no token files', () => {
@@ -335,7 +376,7 @@ describe('init', () => {
       })
       expect(result.status).toBe(0)
       expect(result.stdout).toContain('Kept source/ with its 2 files')
-      expect(result.stdout).not.toContain('brand-main.json')
+      expect(result.stdout).not.toContain('brand-main/brand-base.json')
     })
   })
 
@@ -412,7 +453,8 @@ describe('parseApp', () => {
   test.each([
     ['docs', 'An app is <name>:<platform>'],
     ['a:b:c', 'An app is <name>:<platform>'],
-    ['docs:windows', 'Unknown platform windows of the app docs']
+    ['docs:windows', 'Unknown platform windows of the app docs'],
+    ['base:web', 'The app name base is taken by the base token set base/app-base']
   ])('refuses %s', (spec, message) => {
     expect(() => parseApp(spec)).toThrow(message)
   })

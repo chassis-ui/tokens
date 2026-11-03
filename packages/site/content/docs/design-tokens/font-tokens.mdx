@@ -8,7 +8,7 @@ toc: true
 
 ## Introduction
 
-The token sets and the configuration that this page names, and calls committed, are those of [chassis-ui/website-tokens](https://github.com/chassis-ui/website-tokens), the repository of tokens of the Chassis sites and apps.
+The token sets that this page names are the Chassis token system, as `chassis-tokens init` writes it into a repository of tokens. Once written, the token sets belong to the repository, which changes them as it needs.
 
 Font tokens are composite tokens: each holds a whole text style, where a [typography token]([[docsref:/design-tokens/typography-tokens]]) holds one property. A font token has the type `typography`, and its value is an object with a font family, a font weight, a font size, a line height, a letter spacing, and a paragraph spacing. No font token names a text case or a text decoration.
 
@@ -338,7 +338,7 @@ Table fonts share the `small` step. The head has the `strong` weight, the data t
 
 ### Website
 
-Website fonts hold properties of their own, not a reference to a base token. Each takes its font size from the typography token of the same name, which the token set of each screen holds. The font family is `{typography.fontFamily.ui}`, and the line height is a percentage of the font size, so it follows the font size of the screen.
+Website fonts belong to the optional `screen` group, which `init` does not write: a repository that adds the group declares them. They hold properties of their own, not a reference to a base token. Each takes its font size from the typography token of the same name, which the token set of each screen holds. The font family is `{typography.fontFamily.ui}`, and the line height is a percentage of the font size, so it follows the font size of the screen.
 
 <CxTable>
 | Token | Font weight | Font size | Letter spacing |
@@ -352,7 +352,7 @@ Website fonts hold properties of their own, not a reference to a base token. Eac
 | `font.website.module-title` | `{typography.fontWeight.ui.mass}` | `{typography.fontSize.website.module-title}` | `{typography.letterSpacing.ui.mass}` |
 </CxTable>
 
-The website fonts are defined in `source/screen-website/screen-base.json`, and the other font tokens in `source/base/app-base.json`.
+The website fonts are in a token set that every screen enables, and the other font tokens in `source/base/app-base.json`.
 
 ## Usage
 
@@ -380,12 +380,12 @@ A font token prints as one Sass map on the web, and as one constant or resource 
 | Android | `@dimen/font_context_jumbo_font_size` | A `<dimen>` in `sp` |
 </CxTable>
 
-The values in the examples of this section are those of the `chassis` brand in the current version, and they differ in other brands.
+The values in the examples of this section are those of the token sets that `init` writes, and a brand that overrides a token has its own.
 
 The build writes the map of the web to `main.scss`, on one line. The keys are CSS properties: the paragraph spacing is `margin-bottom`, and the text case is `text-transform`. Every map has the keys `text-transform` and `text-decoration`, and a font token that names no text case or text decoration has `none` for it, on every platform.
 
 ```scss
-$cx-font-context-jumbo: ("font-family": var(--font-family-display), "font-weight": var(--font-weight-display-mass), "font-size": 6rem, "line-height": var(--line-height-jumbo), "font-style": normal, "letter-spacing": -0.15625rem, "margin-bottom": 0rem, "text-transform": none, "text-decoration": none) !default;
+$cx-font-context-jumbo: ("font-family": var(--font-family-display), "font-weight": var(--font-weight-display-strong), "font-size": 6rem, "line-height": var(--line-height-jumbo), "font-style": normal, "letter-spacing": 0rem, "margin-bottom": 0rem, "text-transform": none, "text-decoration": none) !default;
 ```
 
 The `web` platform names the custom properties of Chassis CSS for the family, the weight, the font size, and the line height that a font token references, so its maps work with Chassis CSS only:
@@ -398,7 +398,7 @@ The `web` platform names the custom properties of Chassis CSS for the family, th
 `$cx-font-context-h1` shows the custom properties of a role:
 
 ```scss
-$cx-font-context-h1: ("font-family": var(--font-family-display), "font-weight": var(--font-weight-display-mass), "font-size": var(--font-size-h1), "line-height": var(--line-height-h1), "font-style": normal, "letter-spacing": 0rem, "margin-bottom": 0rem, "text-transform": none, "text-decoration": none) !default;
+$cx-font-context-h1: ("font-family": var(--font-family-display), "font-weight": var(--font-weight-display-strong), "font-size": var(--font-size-h1), "line-height": var(--line-height-h1), "font-style": normal, "letter-spacing": 0rem, "margin-bottom": 0rem, "text-transform": none, "text-decoration": none) !default;
 ```
 
 The presets `web-scss`, `web-px`, and `web-vw` print the values; see the [Style Dictionary]([[docsref:/getting-started/style-dictionary]]) page.
@@ -419,27 +419,27 @@ iOS and Android name each constant or resource after the token and the property.
 | Font style | `FontContextJumboFontStyle` | `@string/font_context_jumbo_font_style` |
 </CxTable>
 
-The build writes the sizes of a font token to the number file of each screen, and the other properties to the string file. The main file holds all of them. On iOS, `NumberLarge.swift` has these lines:
+The build writes the sizes of a font token to the number file, one per screen when the repository has screens, and the other properties to the string file. The main file holds all of them. On iOS, `Number.swift` has these lines:
 
 ```swift
     public static let FontContextJumboLineHeight = CGFloat(120)
     public static let FontContextJumboFontSize = CGFloat(96)
-    public static let FontContextJumboLetterSpacing = CGFloat(-2.5)
+    public static let FontContextJumboLetterSpacing = CGFloat(0)
     public static let FontContextJumboParagraphSpacing = CGFloat(0)
 ```
 
-On Android, `number_large.xml` has the same properties:
+On Android, `number.xml` has the same properties:
 
 ```xml
   <dimen name="font_context_jumbo_line_height">120sp</dimen>
   <dimen name="font_context_jumbo_font_size">96sp</dimen>
-  <item name="font_context_jumbo_letter_spacing" type="dimen" format="float">-0.026</item>
+  <item name="font_context_jumbo_letter_spacing" type="dimen" format="float">0</item>
   <dimen name="font_context_jumbo_paragraph_spacing">0sp</dimen>
 ```
 
 The line height and the letter spacing print by rules of their own inside a font token:
 
 - A line height that is a percentage, as in `font.website.*`, prints in `em` on the web. iOS and Android print a size: that percentage of the font size of the same token.
-- The letter spacing is in design pixels, the same at every font size, as in Figma. The web prints it in `rem` and iOS in points. Android prints it in ems of the font size of the same token, which `android:letterSpacing` takes: the `-2.5` of the iOS lines at a font size of `96` is the `-0.026` of the Android lines.
+- The letter spacing is in design pixels, the same at every font size, as in Figma. The web prints it in `rem` and iOS in points. Android prints it in ems of the font size of the same token, which `android:letterSpacing` takes: a letter spacing of `-2.5` in a token with a font size of `96` prints as `-2.5` on iOS and as `-0.026` on Android.
 
 See the [web]([[docsref:/use-in-project/web-applications]]), [iOS]([[docsref:/use-in-project/ios-applications]]), and [Android]([[docsref:/use-in-project/android-applications]]) docs for the files that hold these names.

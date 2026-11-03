@@ -28,7 +28,7 @@ jobs:
   # and release.yml reads them and the two native jobs. Rename a job in all three places.
   #
   # The build and its checks on the fixture of the package, and on the tokens of the
-  # vendor/tokens submodule, chassis-ui/website-tokens, which this checkout pins.
+  # vendor/tokens submodule, the tokens of the Chassis sites, which this checkout pins.
   tokens:
     name: Tokens (Node ${{ matrix.node }})
     runs-on: ubuntu-latest

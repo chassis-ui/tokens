@@ -8,7 +8,7 @@ toc: true
 
 ## Introduction
 
-The token sets and the configuration that this page names, and calls committed, are those of [chassis-ui/website-tokens](https://github.com/chassis-ui/website-tokens), the repository of tokens of the Chassis sites and apps.
+The token sets that this page names are the Chassis token system, as `chassis-tokens init` writes it into a repository of tokens. Once written, the token sets belong to the repository, which changes them as it needs.
 
 Typography tokens hold the single properties of a text style. Each property has a group under `typography.*`: `fontFamily`, `fontWeight`, `fontSize`, `lineHeight`, `letterSpacing`, and `paragraphSpacing`. The [font tokens]([[docsref:/design-tokens/font-tokens]]) combine these properties into text styles. Text case and text decoration have no typography tokens, and no font token names one.
 
@@ -18,14 +18,14 @@ The font families are named by their job, not by their typeface: `ui` for compon
 
 Typography tokens have no levels. The scales of `ui` and `code` hold values of their own. The sizes and line heights of `prose` reference those of `ui` step by step, so a reading font has the sizes of `ui`. Its weights and its letter spacing hold values of their own, because a weight belongs to its typeface. The `context` group holds the text roles, such as `h1`, `lead`, and `title-large`. Each role holds its own font size, line height, and letter spacing, and each role group, such as `heading` or `title`, references a family and a weight. The `font.*` tokens are the next step: they reference the typography tokens property by property.
 
-A brand gives the text its character by overriding the font families and the font weights in its own token set. It moves a role group to another family by overriding the family and the weight of that group, and it retunes a role by overriding its size, line height, or letter spacing. Where the token system has the optional `screen` group, each screen has a token set that holds `typography.fontSize.website.*`. No theme and no app of the configuration of website-tokens overrides a typography token.
+A brand gives the text its character by overriding the font families and the font weights in its own token set. It moves a role group to another family by overriding the family and the weight of that group, and it retunes a role by overriding its size, line height, or letter spacing. Where the token system has the optional `screen` group, each screen has a token set that holds `typography.fontSize.website.*`. No token set of a theme or an app that `init` writes declares a typography token.
 
 <CxTable>
 | Tokens | Token set |
 | --- | --- |
-| `typography.fontFamily.*`, `typography.fontWeight.*` | `source/base/brand-base.json`, overridden by the `brand-base.json` of a brand, such as `source/brand-chassis/brand-base.json` |
+| `typography.fontFamily.*`, `typography.fontWeight.*` | `source/base/brand-base.json`, overridden by the `brand-base.json` of a brand, such as `source/brand-acme/brand-base.json` |
 | `typography.fontSize.*`, `typography.lineHeight.*`, `typography.letterSpacing.*`, `typography.paragraphSpacing.*` | `source/base/brand-base.json`, which the `brand-base.json` of a brand can override too |
-| `typography.fontSize.website.*` | The token set of each screen, such as `source/screen-website/screen-large.json` |
+| `typography.fontSize.website.*` | The token set of each screen, when the repository has the optional `screen` group |
 </CxTable>
 
 ## Font families
@@ -60,7 +60,7 @@ The `context` group holds one family per role group of `font.context.*`. Every r
 | `typography.fontFamily.context.label` | `{typography.fontFamily.ui}` |
 </CxTable>
 
-The committed brands override `typography.fontFamily.ui`, `typography.fontFamily.display`, and `typography.fontFamily.code`, each with the weights of that family. The `chassis` brand points the role group `title` at the display family. The `sinefil` brand also overrides `typography.fontFamily.prose`, points `typography.fontFamily.display` at it, and points the role group `cite` at the `ui` family. `typography.fontFamily.icon` is the same in every brand.
+A brand overrides the families whose typeface it changes, each with the weights of that family, and it can point a role group at another family. `typography.fontFamily.icon` names the icon font, and a brand keeps it as it is unless it ships an icon font of its own.
 
 ## Font weights
 
@@ -143,7 +143,7 @@ Letter spacing tokens hold the space between letters in design pixels, the unit 
 | `typography.letterSpacing.prose.elegant` | `{size.unit.0}` |
 </CxTable>
 
-The `context` group holds one letter spacing per text role, under the name of the role, such as `typography.letterSpacing.context.title-large`. Each references `{size.unit.0}` in `source/base/brand-base.json`. A brand tightens the letters of a role by referencing a negative step of the size scale, as the `chassis` brand does for `jumbo` and `hero`, and `font.website.hero-title` and `font.website.section-title` do with `{size.unit.n1}` and `{size.unit.nd05}`. Figma variables cannot hold a percentage, so `chassis-tokens lint-source` fails on a letter spacing in percent or in `em`.
+The `context` group holds one letter spacing per text role, under the name of the role, such as `typography.letterSpacing.context.title-large`. Each references `{size.unit.0}` in `source/base/brand-base.json`. A brand tightens the letters of a role by referencing a negative step of the size scale, such as `{size.unit.n1}` for `jumbo` and `hero`, as the website fonts of the optional `screen` group do with `{size.unit.n1}` and `{size.unit.nd05}`. Figma variables cannot hold a percentage, so `chassis-tokens lint-source` fails on a letter spacing in percent or in `em`.
 
 ## Paragraph spacing
 
@@ -184,7 +184,7 @@ Set text with a [font token]([[docsref:/design-tokens/font-tokens]]), which hold
 
 Take the font size and the line height from the same step or role. `typography.lineHeight.ui.large` is made for `typography.fontSize.ui.large`, and the web output of a line height is relative to the font size of the same name.
 
-Give a brand its own fonts by overriding `typography.fontFamily.*` and `typography.fontWeight.*` in the token set of the brand. Every font token follows, because the font tokens hold references. Set a family and its weights together: the weights are the style names of that typeface. An override of a family can be a reference too. `source/brand-sinefil/brand-base.json` sets its display text in its reading typeface, and next to it `typography.fontWeight.display.*` with the style names of that typeface:
+Give a brand its own fonts by overriding `typography.fontFamily.*` and `typography.fontWeight.*` in the token set of the brand. Every font token follows, because the font tokens hold references. Set a family and its weights together: the weights are the style names of that typeface. An override of a family can be a reference too. `source/brand-globex/brand-base.json` sets its display text in its reading typeface, and next to it `typography.fontWeight.display.*` with the style names of that typeface:
 
 ```json
 {
@@ -199,7 +199,7 @@ Give a brand its own fonts by overriding `typography.fontFamily.*` and `typograp
 }
 ```
 
-Move a role group to another family with two tokens, its family and its weight. A weight names a style of one family, so a brand that moves a group points its weight at a weight of the same family. `source/brand-chassis/brand-base.json` sets its titles in its display family:
+Move a role group to another family with two tokens, its family and its weight. A weight names a style of one family, so a brand that moves a group points its weight at a weight of the same family. `source/brand-acme/brand-base.json` sets its titles in its display family:
 
 ```json
 {
@@ -259,8 +259,8 @@ The other properties have these formats.
 
 The build prints the two tokens of a font weight under their own names, such as `$cx-typography-font-weight-ui-strong-weight` and `$cx-typography-font-weight-ui-strong-style` on the web.
 
-On the web, the family and the weight of a role group print the custom property of Chassis CSS for the family token they reference: `$cx-typography-font-family-context-title` is `var(--font-family-display)` in the `chassis` brand, which points the group at its display family. Chassis CSS declares the custom property of the role group from it, so a brand changes the family of a group in one place. A role group that holds more than a reference, such as the weight of `blockquote`, prints the value. iOS and Android print the family and the weight that the role group leads to.
+On the web, the family and the weight of a role group print the custom property of Chassis CSS for the family token they reference: `$cx-typography-font-family-context-title` is `var(--font-family-prose)` in the token sets that `init` writes, and `var(--font-family-display)` in a brand that points the group at its display family. Chassis CSS declares the custom property of the role group from it, so a brand changes the family of a group in one place. A role group that holds more than a reference, such as the weight of `blockquote`, prints the value. iOS and Android print the family and the weight that the role group leads to.
 
-The web writes the families and weights to `string.scss`, and the sizes, line heights, and spacings to the number file of each screen; `main.scss` holds all of them. iOS and Android split the tokens the same way between their string and number files.
+The web writes the families and weights to `string.scss`, and the sizes, line heights, and spacings to the number file, one per screen when the repository has screens; `main.scss` holds all of them. iOS and Android split the tokens the same way between their string and number files.
 
 See the [web]([[docsref:/use-in-project/web-applications]]), [iOS]([[docsref:/use-in-project/ios-applications]]), and [Android]([[docsref:/use-in-project/android-applications]]) docs for the files that hold these names.

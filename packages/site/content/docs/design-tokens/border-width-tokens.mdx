@@ -8,9 +8,9 @@ toc: true
 
 ## Introduction
 
-The token sets and the configuration that this page names, and calls committed, are those of [chassis-ui/website-tokens](https://github.com/chassis-ui/website-tokens), the repository of tokens of the Chassis sites and apps.
+The token sets that this page names are the Chassis token system, as `chassis-tokens init` writes it into a repository of tokens. Once written, the token sets belong to the repository, which changes them as it needs.
 
-Border width tokens hold the thickness of the borders of components and of the lines that separate content, as a size in design pixels. In the configuration of website-tokens, the border width tokens are the same in every brand, theme, and app, and on every screen.
+Border width tokens hold the thickness of the borders of components and of the lines that separate content, as a size in design pixels. The border width tokens are in `source/base/app-base.json`, so they are the same in every brand and theme, until the token set of a brand or an app overrides them.
 
 ### Token levels
 
@@ -110,7 +110,7 @@ A border width prints as a custom property of Chassis CSS or a size in `rem` on 
 | Android | `@dimen/border_width_button_main` | A `<dimen>` in `dp` |
 </CxTable>
 
-The `web` platform prints the size of the context tokens, and a custom property for a component token that references a context token. The asset tokens reference a size token, so they print their size. The values in the examples are those of the `chassis` brand in the current version and can differ in other brands. The build writes these lines:
+The `web` platform prints the size of the context tokens, and a custom property for a component token that references a context token. The asset tokens reference a size token, so they print their size. The values in the examples are those of the token sets that `init` writes, and a brand that overrides a token has its own. The build writes these lines:
 
 ```scss
 $cx-border-width-context-medium: 0.0625rem !default;

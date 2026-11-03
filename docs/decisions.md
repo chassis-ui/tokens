@@ -27,12 +27,12 @@ All are decided. "The maintainer" took the decision on a proposal of a session.
   once the consumers of D2 have moved. The build finds its repository with `--cwd`, by default
   the nearest folder upward whose `package.json` has a `chassis` block, as the assets build
   does, and the tests run on fixtures, so `pnpm test` needs no repository of tokens and no
-  submodule. The maintainer, 2026-10-30.
-- **D2. Where do the tokens of the Chassis sites and apps live?** In `chassis-ui/website-tokens`,
+  submodule. The maintainer, 2026-10-30. Amended by D11: `init` writes the token system.
+- **D2. Where do the tokens of the Chassis sites and apps live?** In a repository of their own,
   a repository of tokens made with `chassis-tokens init` and holding `source/`, the
   `chassis.build` block, the committed `dist/` and `Package.swift`, with the history of
-  `source/` and `dist/` filtered from `develop` of this repository, as website-assets was
-  made from the assets repository. It publishes `@chassis-ui/website-tokens` to npm, since
+  `source/` and `dist/` filtered from `develop` of this repository, as the repository of the
+  Chassis site assets was made from the assets repository. It publishes its tokens to npm, since
   `@chassis-ui/css` compiles against the token SCSS and the sites and the sibling packages
   install it; its Swift package is the repository at a tag, and the Android libraries are
   attached to its GitHub release. This repository vendors it as the submodule `vendor/tokens`,
@@ -40,15 +40,15 @@ All are decided. "The maintainer" took the decision on a proposal of a session.
   native compiles on the real files, and the site reads the built output and the source for
   the token reference. A team names and scopes its own package as it likes; the name is not
   part of the build. The maintainer, 2026-10-30.
-- **D3. How is website-tokens versioned?** From 0.1.0, with a fresh changelog, as
-  website-assets: the version in `package.json` is set by hand, the release runs on the tag
+- **D3. How is the repository of D2 versioned?** From 0.1.0, with a fresh changelog, as the
+  repository of the Chassis site assets: the version in `package.json` is set by hand, the release runs on the tag
   `v<version>`, verifies `dist/` against a fresh build, publishes to npm with trusted
   publishing and attaches the Android libraries. The changelog is written by hand in the
   commit of the version, one entry per release, in the Keep a Changelog form: a repository
   of tokens has one package and one kind of change, so Changesets, which earns its place in
   the workspace of this repository, would add a bot and a folder for nothing. The history of
   the token values before 0.1.0 stays in the changelog of this repository, which the README
-  of website-tokens links. `@chassis-ui/tokens` goes on from its current version. The
+  of that repository links. `@chassis-ui/tokens` goes on from its current version. The
   maintainer, 2026-10-30.
 - **D4. What may a command write into a repository of tokens?** Only what Tokens Studio
   reads back, the token set files, `$themes.json` and `$metadata.json`, and the
@@ -65,9 +65,9 @@ All are decided. "The maintainer" took the decision on a proposal of a session.
 - **D6. In which order does the split run?** In five steps, each of which leaves every
   consumer working. First, the package becomes location-independent with `--cwd`, the
   `chassis-tokens` command, `init` and fixture-based preset baselines, in this repository as
-  it is. Second, website-tokens is made and publishes 0.1.0 while this package still ships
+  it is. Second, the repository of D2 is made and publishes 0.1.0 while this package still ships
   `dist/`. Third, the consumers move, `@chassis-ui/css` first and the sites, packages and
-  examples after its release. Fourth, this package drops `dist/`, vendors website-tokens,
+  examples after its release. Fourth, this package drops `dist/`, vendors the repository of D2,
   runs CI on it, and the site is written again for two repositories. Fifth, the management
   features of D4 and D5. The maintainer, 2026-10-30. Note: step four is done, 2026-10-31.
 - **D7. How does a native app take the tokens of one brand without a package?** From a zip per
@@ -102,3 +102,13 @@ All are decided. "The maintainer" took the decision on a proposal of a session.
   `AGENTS.md` and `CLAUDE.md`, since a release follows from a push; they guide, and D9 enforces.
   chassis-ui/assets has the same commands by its own decision, and no check compares the two.
   The maintainer, 2026-11-02.
+- **D11. What token sets does `init` write?** The token sets of the Chassis token system, which
+  this package ships in `build/init-templates/source/base/`, with the groups `brand`, `app` and
+  `theme`, and no `screen` group: screens are an option a repository adds. They were taken once
+  from the repository of tokens of the Chassis sites, which from then on is one repository of
+  tokens among others. `init` writes them once, and they are the repository's: no later version
+  of this package writes over its values. A change to the structure of the system, such as a new
+  type of token, is released here, and a repository takes it by a migration it chooses, which
+  changes the structure and never a value, or keeps the version it has. Amends D1, under which
+  the package shipped no tokens and `init` wrote seven starter sets of names that no Chassis
+  package reads. The maintainer, 2026-11-03.

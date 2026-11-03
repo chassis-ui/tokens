@@ -7,16 +7,18 @@ SwiftUI, Android resources and Jetpack Compose.
 ## Layout
 
 ```
-source/$themes.json            The brand, app, theme and screen options, from Tokens Studio
-source/<set>.json              The token sets, from Tokens Studio
-dist/<platform>/<app>/<brand>/ The output of a build, committed and published
-Package.swift                  The Swift package of the iOS output
-package.json                   The brands, apps, themes and screens, in `chassis.build`
+source/$themes.json             The brand, app and theme options, from Tokens Studio
+source/base/<set>.json          The token sets of every brand, app and theme
+source/brand-<brand>/<set>.json The token sets of one brand
+dist/<platform>/<app>/<brand>/  The output of a build, committed and published
+Package.swift                   The Swift package of the iOS output
+package.json                    The brands, apps and themes, in `chassis.build`
 ```
 
-A designer syncs `source/` from Figma with Tokens Studio. The tokens of the first build are a
-starting point: replace them with your own, and keep `chassis.build` in step with the options
-of `$themes.json`.
+A designer syncs `source/` from Figma with Tokens Studio. The token sets are the token system of
+Chassis as `@chassis-ui/tokens` wrote them, and they are yours: change the values, give a brand its
+own in `source/brand-<brand>/`, and keep `chassis.build` in step with the options of
+`$themes.json`.
 
 ## Commands
 
@@ -37,7 +39,7 @@ __INSTALL__
 | `__RUN__ archive`       | Writes one zip per platform, app and brand of `dist/` to `archives/` |
 
 `node_modules/.bin/chassis-tokens build --help` prints the options of the build: a part of the output with
-`--brand`, `--app`, `--platform`, `--theme` and `--screen`, and a plan with `--dry-run`.
+`--brand`, `--app`, `--platform` and `--theme`, and a plan with `--dry-run`.
 
 After a change to the tokens, run `__RUN__ build` and commit `source/` and `dist/` together.
 

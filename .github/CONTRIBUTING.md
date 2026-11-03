@@ -21,18 +21,19 @@ pnpm vendor
 This repo is a pnpm workspace with two packages:
 
 - [`packages/tokens`](../packages/tokens/) — `@chassis-ui/tokens`, the published package: the
-  Style Dictionary build in `build/` and its tests in `test/`. It ships no tokens.
+  Style Dictionary build in `build/`, the token system that `init` writes in
+  `build/init-templates/source/`, and the tests in `test/`.
 - [`packages/site`](../packages/site/) — `chassis-tokens-site`, the Astro documentation site. It
-  is never published to npm. It takes `@chassis-ui/website-tokens` and `@chassis-ui/css` from npm at the versions in its
+  is never published to npm. It takes the published tokens of the Chassis sites and `@chassis-ui/css` from npm at the versions in its
   `package.json`, not from `vendor/tokens`.
 
-The token files that the build reads are in the `vendor/tokens` submodule, a checkout of
-[chassis-ui/website-tokens](https://github.com/chassis-ui/website-tokens), pinned to a commit of its `main`, on which the
+The token files that the build reads are in the `vendor/tokens` submodule, a checkout of the
+tokens of the Chassis sites (its URL is in `.gitmodules`), pinned to a commit of its `main`, on which the
 `pnpm tokens:*` scripts run the build of this checkout with `--cwd vendor/tokens`.
 
 The root also holds the lint and format configurations, the repository scripts in `build/`, the
 pin of the assets in `vendor/assets.json` (the site needs them; `pnpm dev` and `pnpm site:build`
-unpack the archive of the pinned release of chassis-ui/website-assets into `vendor/assets`, which
+unpack the archive of the pinned release of the Chassis site assets into `vendor/assets`, which
 is not committed, and `pnpm sync-assets` moves the pin to the latest release) and the CI workflows. Run every command from the root.
 
 To work on the tokens only, install the tokens package and the root's lint tools without the
@@ -54,14 +55,15 @@ Commits follow a loose `<type>(<scope>): <description>` convention:
 - **Types in use**: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`, `ci`.
 - **Scopes in use**: a platform (`web`, `ios`, `android`), `tokens` for token files, `site` for
   the documentation site; omitted for changes that span several or none of them.
-- Examples from this repo's history: `fix(tokens): use Light Italic for the sinefil blockquote
-weight`, `fix(android): ...`, `style(site): format the homepage components with Prettier`.
+- Examples from this repo's history: `fix(tokens): use Light Italic for the blockquote weight`, `fix(android): ...`, `style(site): format the homepage components with Prettier`.
 
 Branch names aren't templated; name yours descriptively (for example `fix/android-letter-spacing`).
 
 ## Changing tokens
 
-The tokens of the Chassis sites and apps are in [chassis-ui/website-tokens](https://github.com/chassis-ui/website-tokens), a repository of tokens with its own changelog and releases; its README has the steps. Do not edit `vendor/tokens/` from here: it is a checkout of that repository. A new commit there reaches this one by moving the pointer:
+The token system that `init` writes is in `packages/tokens/build/init-templates/source/`. A change to it reaches the repositories that `init` writes after its release, and never one made earlier; it takes a changeset like a change to the build, and `pnpm tokens:test` builds and lints a repository written with it.
+
+The tokens of the Chassis sites and apps are a repository of tokens of their own, the URL of `vendor/tokens` in `.gitmodules`, with its own changelog and releases; its README has the steps. Do not edit `vendor/tokens/` from here: it is a checkout of that repository. A new commit there reaches this one by moving the pointer:
 
 ```sh
 git -C vendor/tokens fetch origin main
@@ -74,7 +76,7 @@ pnpm tokens:diff --base <the previous commit>
 
 CI runs the checks and the native compiles on a pull request that moves the pointer, and writes the token diff report to its job summary. A pointer move changes no published package, so it takes an empty changeset only when the build changes with it.
 
-A change to the build that changes the output of the default platforms fails `pnpm tokens:verify` on `vendor/tokens` until website-tokens has the new output. Make both changes together: run `pnpm tokens:verify:update`, which also writes `vendor/tokens/dist/`, commit that on a branch of website-tokens, and point `vendor/tokens` at it for the pull request. See [Changing the build](#changing-the-build).
+A change to the build that changes the output of the default platforms fails `pnpm tokens:verify` on `vendor/tokens` until that repository has the new output. Make both changes together: run `pnpm tokens:verify:update`, which also writes `vendor/tokens/dist/`, commit that on a branch of the repository of `vendor/tokens`, and point `vendor/tokens` at it for the pull request. See [Changing the build](#changing-the-build).
 
 ## Changing the build
 
@@ -213,7 +215,7 @@ once, on `develop`; pushing the same commit to `staging` or `main` doesn't run t
    - **Publish** publishes `@chassis-ui/tokens` with npm trusted publishing and provenance (no
      npm token), and creates the GitHub release `v<version>` with the CHANGELOG entry as its body.
      The release is the package, its tag and its notes: the tag is not a Swift package, and the
-     Swift package and the Android libraries are released by chassis-ui/website-tokens, which
+     Swift package and the Android libraries are released by each repository of tokens, which
      takes a new version of the builder from npm.
 
 `develop` and `main` are at the same commit after a release, so nothing is merged back.

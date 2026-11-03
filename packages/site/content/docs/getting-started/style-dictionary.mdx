@@ -12,9 +12,9 @@ Chassis Tokens builds its tokens with [Style Dictionary](https://styledictionary
 
 This page is the reference of the build for a team that builds its own tokens: how to run and configure the build, which platforms and presets it has, which files it writes, and which transforms, filters, and formats it registers. [docs/architecture.md]([[config:repo]]/blob/main/docs/architecture.md) explains why the build works this way and holds the full output contract.
 
-The build is in the package `@chassis-ui/tokens`, whose command is `chassis-tokens`. Paths on this page that start with `source/`, `dist/`, or `Package.swift` are relative to the repository of tokens, and paths that start with `build/` are relative to the package. The examples use the token sets and the build options of [chassis-ui/website-tokens](https://github.com/chassis-ui/website-tokens), the repository of tokens of the Chassis sites and apps, and the page calls them committed.
+The build is in the package `@chassis-ui/tokens`, whose command is `chassis-tokens`. Paths on this page that start with `source/`, `dist/`, or `Package.swift` are relative to the repository of tokens, and paths that start with `build/` are relative to the package. The examples use the token sets that `chassis-tokens init` writes, with the brands `acme` and `globex`, the web app `site`, and the iOS and Android app `mobile`.
 
-The generated code on this page shows the format of each platform. Its values are those of the `chassis` brand in the current version, and differ in other brands.
+The generated code on this page shows the format of each platform. Its values are those of the token sets that `init` writes, and a brand that overrides a token has its own.
 
 ### Build steps
 
@@ -55,8 +55,8 @@ The options select a part of the build, change where the build reads and writes,
 <CxTable>
 | Option | Effect |
 | --- | --- |
-| `--brand <brands...>` | Only these brands, such as `chassis sinefil` |
-| `--app <apps...>` | Only these apps, such as `docs demo` |
+| `--brand <brands...>` | Only these brands, such as `acme globex` |
+| `--app <apps...>` | Only these apps, such as `site mobile` |
 | `--platform <platforms...>` | Only these platforms, such as `web ios android` |
 | `--theme <themes...>` | Only the color files of these themes, such as `light dark` |
 | `--screen <screens...>` | Only the number files of these screens, such as `large medium small` |
@@ -71,9 +71,9 @@ The options select a part of the build, change where the build reads and writes,
 The options from `--brand` to `--screen` are filters. Each takes one or more values separated by spaces, and you can combine them:
 
 ```bash
-npx chassis-tokens build --brand chassis
-npx chassis-tokens build --app docs --platform web
-npx chassis-tokens build --brand sinefil --platform ios android --screen large small
+npx chassis-tokens build --brand acme
+npx chassis-tokens build --app site --platform web
+npx chassis-tokens build --brand globex --platform ios android --theme dark
 ```
 
 `--theme` and `--screen` limit the color and number files only: every build of a brand, an app, and a platform writes the main and string files. The iOS file `Color.swift` needs the color files of both themes, so a build with `--theme light` does not write it.
@@ -82,7 +82,7 @@ The build writes files but deletes none. When you remove a screen, a theme or an
 
 ```bash
 npx chassis-tokens build --clean
-npx chassis-tokens build --brand sinefil --clean
+npx chassis-tokens build --brand globex --clean
 ```
 
 `--config` and `--out` take paths relative to the working directory. The file of `--config` holds the keys of `chassis.build` at its top level. With `web-px.json` listing an app with the `web-px` preset, this command builds it into `dist-next/` and leaves `dist/` as it is:
@@ -91,40 +91,39 @@ npx chassis-tokens build --brand sinefil --clean
 npx chassis-tokens build --config web-px.json --out dist-next
 ```
 
-Set `DEBUG=1` before a command, as in `DEBUG=1 npx chassis-tokens build --brand chassis`, to print the stack trace of an error.
+Set `DEBUG=1` before a command, as in `DEBUG=1 npx chassis-tokens build --brand acme`, to print the stack trace of an error.
 
 ### Dry run
 
 A dry run shows what a set of options or filters selects before you build. It writes nothing.
 
 ```bash
-npx chassis-tokens build --brand chassis --app docs --dry-run
+npx chassis-tokens build --brand acme --app site --dry-run
 ```
 
 The build prints each token-set list with the files it writes:
 
 ```text
-  • chassis_docs_light_large
-      dist/web/docs/chassis/: main.scss, string.scss, color-light.scss, number-large.scss
-  • chassis_docs_dark_large
-      dist/web/docs/chassis/: color-dark.scss
+  • acme_site_light
+      dist/web/site/acme/: main.scss, string.scss, color-light.scss, number.scss
+  • acme_site_dark
+      dist/web/site/acme/: color-dark.scss
 ```
 
-The lists of the other screens follow, each with its number file.
+In a repository with screens, a list carries the screen in its name, such as `acme_site_light_large`, and the lists of the other screens follow, each with its number file.
 
 ## Build options
 
-The token system is built on three core groups, `brand`, `theme`, and `app`, and on an optional fourth group, `screen`. The build options name the options of each group that the build writes, and the platforms of each app. The committed build options, in `chassis.build` of `package.json`:
+The token system is built on three core groups, `brand`, `theme`, and `app`, and on an optional fourth group, `screen`. The build options name the options of each group that the build writes, and the platforms of each app. The build options of the examples, in `chassis.build` of `package.json`, as `init` writes them:
 
 ```json
 "chassis": {
   "build": {
-    "brands": ["chassis", "sinefil"],
+    "brands": ["acme", "globex"],
     "themes": ["light", "dark"],
-    "screens": ["large", "medium", "small"],
     "apps": {
-      "docs": ["web"],
-      "demo": ["ios", "android"]
+      "site": ["web"],
+      "mobile": ["ios", "android"]
     }
   }
 }
@@ -140,13 +139,13 @@ The token system is built on three core groups, `brand`, `theme`, and `app`, and
 | `options` | No | Style Dictionary options by platform name; see [Platform options](#platform-options) |
 </CxTable>
 
-The names in the block are the configuration of website-tokens, not the system. The build writes only what the keys list, so to build a brand, a theme, or an app of your own, add its name to the key of its group and give it token sets in `source/$themes.json`.
+The names in the block are those of one repository, not of the system. The build writes only what the keys list, so to build a brand, a theme, or an app of your own, add its name to the key of its group and give it token sets in `source/$themes.json`.
 
-To build without screens, set `screens` to `[]` or leave the key out. The build then writes one number file with no screen in its name, with the values of the first screen in `source/$themes.json`, or of no screen when it has no `screen` group: `number.scss` on the web, `Number.swift` on iOS, and `number.xml` with `res/values/number.xml` on Android.
+Without `screens`, or with `"screens": []`, the build writes one number file with no screen in its name, with the values of the first screen in `source/$themes.json`, or of no screen when it has no `screen` group: `number.scss` on the web, `Number.swift` on iOS, and `number.xml` with `res/values/number.xml` on Android.
 
 ### Token-set lists
 
-A token-set list is the list of token sets that one run of Style Dictionary reads. The build combines one option of each group of `source/$themes.json` into a list named `<brand>_<app>_<theme>_<screen>`, or `<brand>_<app>_<theme>` when `source/$themes.json` has no `screen` group. `chassis_docs_light_large` is a list of the configuration of website-tokens. Every name in the build options must be an option of its group.
+A token-set list is the list of token sets that one run of Style Dictionary reads. The build combines one option of each group of `source/$themes.json` into a list named `<brand>_<app>_<theme>_<screen>`, or `<brand>_<app>_<theme>` when `source/$themes.json` has no `screen` group. `acme_site_light` is a list of the examples. Every name in the build options must be an option of its group.
 
 The files of a brand and an app that need the same token sets share one list:
 
@@ -178,7 +177,7 @@ The `options` key holds Style Dictionary options by platform name. The build mer
 
 ## Platforms
 
-A platform is a build target that an app selects in `chassis.build.apps`. The committed build options use `web`, `ios`, and `android`, which write the published package; the other platforms are [presets](#presets).
+A platform is a build target that an app selects in `chassis.build.apps`. The build options that `init` writes use `web`, `ios`, and `android`; the other platforms are [presets](#presets).
 
 <CxTable>
 | Platform | Format | Output folder | Output |
@@ -210,7 +209,7 @@ The [formats](#formats) hold the value rules of each platform. The guides for [w
 
 ## Presets
 
-A preset is a platform for a team that owns its tokens and does not use Chassis CSS, UIKit, or Android resources. Select a preset by its name in `chassis.build.apps`. The committed `dist/` holds no preset output; the output of each preset for the `chassis` brand is in `packages/tokens/test/golden/` of [the repository of the builder]([[config:repo]]).
+A preset is a platform for a team that owns its tokens and does not use Chassis CSS, UIKit, or Android resources. Select a preset by its name in `chassis.build.apps`. The output of each preset for the test repository of the builder is in `packages/tokens/test/golden/` of [the repository of the builder]([[config:repo]]).
 
 ### Presets for other CSS frameworks
 
@@ -218,7 +217,7 @@ The `web` platform prints the custom properties of [Chassis CSS](https://github.
 
 ```json
 "apps": {
-  "docs": ["web-px"]
+  "site": ["web-px"]
 }
 ```
 
@@ -231,7 +230,7 @@ Each preset is a file of `build/config/` of the package that calls `webConfig({ 
 The presets `ios-swiftui` and `android-compose` write the tokens for apps that use SwiftUI or Jetpack Compose. Select them next to, or instead of, `ios` and `android`. In `chassis.build` of `package.json`:
 
 ```json
-"apps": { "demo": ["ios-swiftui", "android-compose"] },
+"apps": { "mobile": ["ios-swiftui", "android-compose"] },
 "options": { "android-compose": { "packageName": "com.example.tokens" } }
 ```
 
@@ -239,31 +238,31 @@ The presets `ios-swiftui` and `android-compose` write the tokens for apps that u
 | Preset | Files | Differences |
 | --- | --- | --- |
 | `ios-swiftui` | The Swift files of `ios`, with the same types | `Color` and `Font.Weight` values; no `Color.swift`, no `Icons.xcassets`, no `…Radius` constants |
-| `android-compose` | One Kotlin object per file: `ChassisTokens.kt`, `String.kt`, `ColorLight.kt`, `NumberLarge.kt`, … | Compose values with camelCase names; no `res/` tree, no drawables |
+| `android-compose` | One Kotlin object per file: `ChassisTokens.kt`, `String.kt`, `ColorLight.kt`, `Number.kt`, … | Compose values with camelCase names; no `res/` tree, no drawables |
 </CxTable>
 
 Each file of these presets holds one theme or one screen. For colors that follow the appearance in SwiftUI, build the `ios` platform too and wrap its `ChassisTokensColor` constants in `Color(uiColor:)`. See [cx/swiftui](#cxswiftui) and [cx/compose-object](#cxcompose-object) for the values.
 
 ## Generated files
 
-Every platform writes a main file, a string file, one color file per theme, and one number file per screen.
+Every platform writes a main file, a string file, one color file per theme, and one number file, or one per screen when the build options have screens.
 
 <CxTable>
 | Platform | Files |
 | --- | --- |
-| Web | `main.scss`, `string.scss`, `color-<theme>.scss`, `number-<screen>.scss` |
-| iOS | `ChassisTokens.swift`, `String.swift`, `Color<Theme>.swift`, `Number<Screen>.swift`, `Color.swift`, `Icons.xcassets` |
-| Android | `main.xml`, `string.xml`, `color_<theme>.xml`, `number_<screen>.xml`, and the `res/` tree |
+| Web | `main.scss`, `string.scss`, `color-<theme>.scss`, `number.scss` or `number-<screen>.scss` |
+| iOS | `ChassisTokens.swift`, `String.swift`, `Color<Theme>.swift`, `Number.swift` or `Number<Screen>.swift`, `Color.swift`, `Icons.xcassets` |
+| Android | `main.xml`, `string.xml`, `color_<theme>.xml`, `number.xml` or `number_<screen>.xml`, and the `res/` tree |
 </CxTable>
 
-Color files use the token sets of their theme, and number files the token sets of their screen. The main and string files use the token sets of the first theme and the first screen of the build options.
+Color files use the token sets of their theme, and number files the token sets of their screen. The main and string files use the token sets of the first theme, and of the first screen when the build options have screens.
 
-The main file holds every token except the theme colors, which are `color.primitive.*`, `color.context.*`, and the gradients. Its component colors are the ones of the first theme, and its numbers the ones of the first screen. The string, color, and number files share no names with each other, and together they hold everything in the main file except the base colors.
+The main file holds every token except the theme colors, which are `color.primitive.*`, `color.context.*`, and the gradients. Its component colors are the ones of the first theme, and its numbers the ones of the first screen, if any. The string, color, and number files share no names with each other, and together they hold everything in the main file except the base colors.
 
 On iOS, each file declares a caseless `public enum`, so all files fit in one module: `ChassisTokens` in `ChassisTokens.swift`, and `ChassisTokens<File>` in the others, such as `ChassisTokensColorLight`. When the themes include `light` and `dark`, the build writes `Color.swift` after the other files. Its type `ChassisTokensColor` holds the colors of both themes:
 
 ```swift
-    public static let ColorContextDefaultFgMain = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.922, green: 0.929, blue: 0.933, alpha: 1) : UIColor(red: 0.098, green: 0.106, blue: 0.110, alpha: 1) }
+    public static let ColorContextDefaultFgMain = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.918, green: 0.918, blue: 0.918, alpha: 1) : UIColor(red: 0.090, green: 0.090, blue: 0.090, alpha: 1) }
 ```
 
 `Package.swift` at the root of the repository of tokens declares one Swift library per brand of every app with an iOS platform. Run `npx chassis-tokens swift-package` after you change the brands or apps; with `--check` it writes nothing and fails while the manifest differs from the configuration.
@@ -273,7 +272,7 @@ On Android, the `res/` tree holds the same resources as the flat files, in the f
 <CxTable>
 | Folder | Files |
 | --- | --- |
-| `res/values/` | `string.xml`, `color_base.xml`, `color.xml` of the first theme, `number.xml` of the screen with the qualifier `""` |
+| `res/values/` | `string.xml`, `color_base.xml`, `color.xml` of the first theme, `number.xml`, of the screen with the qualifier `""` when there are screens |
 | `res/values-night/` | `color.xml` of the `dark` theme |
 | `res/values-<qualifier>/` | `number.xml` of each other screen |
 | `res/drawable/` | One vector drawable per icon |
@@ -292,7 +291,7 @@ By default every token prints its resolved value. With `outputReferences`, a tok
 Set the option per platform. In `chassis.build` of `package.json`:
 
 ```json
-"apps": { "docs": ["web-px"], "demo": ["ios", "android"] },
+"apps": { "site": ["web-px"], "mobile": ["ios", "android"] },
 "options": {
   "web-px": { "outputReferences": true },
   "ios": { "outputReferences": true }
@@ -460,7 +459,7 @@ $cx-space-context-medium: 1rem !default;
 $cx-color-accordion-item-fg-color: var(--default-fg-main) !default;
 $cx-typography-line-height-ui-medium: 1.5em !default;
 $cx-border-radius-accordion-main: var(--border-radius-md) !default;
-$cx-font-context-lead: ("font-family": var(--font-family-prose), "font-weight": var(--font-weight-prose-elegant), "font-size": var(--font-size-lead), "line-height": var(--line-height-lead), "font-style": normal, "letter-spacing": 0rem, "margin-bottom": 0rem, "text-transform": none, "text-decoration": none) !default;
+$cx-font-context-lead: ("font-family": var(--font-family-prose), "font-weight": var(--font-weight-prose-normal), "font-size": var(--font-size-lead), "line-height": var(--line-height-lead), "font-style": normal, "letter-spacing": 0rem, "margin-bottom": 0rem, "text-transform": none, "text-decoration": none) !default;
 ```
 
 A token prints `var(--<name>)` when its value is a single reference to a token that Chassis CSS has a custom property for: `color.context.*`, `color.primitive.*`, `space.context.*`, `opacity.context.*`, `opacity.level.*`, `shadow.context.*`, `borderRadius.context.*`, or `borderWidth.context.*`. The name follows the referenced path, with the scale steps shortened as in Chassis CSS: `medium` becomes `md`, and `xlarge` becomes `xl`. Every other token prints its value:
@@ -479,8 +478,8 @@ This format prints SCSS variables for other CSS frameworks, and the presets `web
 
 ```scss
 $cx-space-context-medium: 1rem !default;
-$cx-color-accordion-item-fg-color: #191b1c !default;
-$cx-border-radius-accordion-main: 0.375rem !default;
+$cx-color-accordion-item-fg-color: #171717 !default;
+$cx-border-radius-accordion-main: 0.125rem !default;
 ```
 
 The Sass map of a typography token holds resolved values too, and quotes the list of font families as one string. With `outputReferences`, the format prints SCSS variables; see [References](#references).
@@ -494,7 +493,7 @@ import UIKit
 
 public enum ChassisTokens {
     public static let SpaceContextMedium = CGFloat(16)
-    public static let ColorButtonPrimaryBgIdle = UIColor(red: 0.000, green: 0.580, blue: 0.722, alpha: 1)
+    public static let ColorButtonPrimaryBgIdle = UIColor(red: 0.071, green: 0.451, blue: 0.878, alpha: 1)
     public static let FontContextJumboLineHeight = CGFloat(120)
     public static let FontContextJumboFontSize = CGFloat(96)
     public static let FontContextJumboLetterSpacing = CGFloat(0)
@@ -517,7 +516,7 @@ This format prints the Swift files with SwiftUI values, and the `ios-swiftui` pr
 import SwiftUI
 
 public enum ChassisTokensColorLight {
-    public static let ColorContextDefaultFgMain = Color(red: 0.098, green: 0.106, blue: 0.110, opacity: 1)
+    public static let ColorContextDefaultFgMain = Color(red: 0.090, green: 0.090, blue: 0.090, opacity: 1)
 }
 ```
 
@@ -529,10 +528,10 @@ This format prints a `<resources>` file with one element per token, and the `and
 <resources>
   <dimen name="space_context_medium">16dp</dimen>
   <item name="opacity_level_10" type="dimen" format="float">0.1</item>
-  <color name="color_button_primary_bg_idle">#ff0094b8</color>
+  <color name="color_button_primary_bg_idle">#ff1273e0</color>
   <dimen name="font_context_jumbo_line_height">120sp</dimen>
   <dimen name="font_context_jumbo_font_size">96sp</dimen>
-  <item name="font_context_jumbo_letter_spacing" type="dimen" format="float">-0.026</item>
+  <item name="font_context_jumbo_letter_spacing" type="dimen" format="float">0</item>
 </resources>
 ```
 
@@ -552,12 +551,12 @@ Font sizes, line heights, and paragraph spacing are in `sp`, and other sizes in 
 
 ### cx/compose-object
 
-This format prints one Kotlin `object` per file with a getter per token, and the `android-compose` preset uses it. The values are the ones of `cx/android-resources` as Compose types. The preset writes in `NumberLarge.kt`:
+This format prints one Kotlin `object` per file with a getter per token, and the `android-compose` preset uses it. The values are the ones of `cx/android-resources` as Compose types. The preset writes in `Number.kt`:
 
 ```kotlin
 package chassis.tokens
 
-object ChassisTokensNumberLarge {
+object ChassisTokensNumber {
     val spaceContextMedium get() = 16.dp
     val opacityLevel40 get() = 0.4f
     val fontContextJumboLetterSpacing get() = 0.em
@@ -577,11 +576,11 @@ The build stops with `Unknown platform: web-rem`. An app of `chassis.build.apps`
 
 ### Unknown filter value
 
-The build stops with `Unknown filter values: --brand chasis (configured: chassis, sinefil)`. A filter of the command names a brand, app, platform, theme, or screen that `chassis.build` does not have. Use one of the configured values. The build also stops with `The filters select no build` when the filters together select nothing, such as `--app docs --platform ios` while the `docs` app has only the `web` platform.
+The build stops with `Unknown filter values: --brand acm (configured: acme, globex)`. A filter of the command names a brand, app, platform, theme, or screen that `chassis.build` does not have. Use one of the configured values. The build also stops with `The filters select no build` when the filters together select nothing, such as `--app site --platform ios` while the `site` app has only the `web` platform.
 
 ### No token sets
 
-The build stops with `No token sets for acme_docs_light_large in source/$themes.json`. A brand, app, theme, or screen of the build options is not an option of its group in `source/$themes.json`, or the build options have no `screens` and `source/$themes.json` has a `screen` group. Check the spelling of the name, or add the option in Tokens Studio.
+The build stops with `No token sets for acme_site_light in source/$themes.json`. A brand, app, theme, or screen of the build options is not an option of its group in `source/$themes.json`, or the build options have no `screens` and `source/$themes.json` has a `screen` group. Check the spelling of the name, or add the option in Tokens Studio.
 
 ### Unused platform options
 

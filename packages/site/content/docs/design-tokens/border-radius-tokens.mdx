@@ -8,9 +8,9 @@ toc: true
 
 ## Introduction
 
-The token sets and the configuration that this page names, and calls committed, are those of [chassis-ui/website-tokens](https://github.com/chassis-ui/website-tokens), the repository of tokens of the Chassis sites and apps.
+The token sets that this page names are the Chassis token system, as `chassis-tokens init` writes it into a repository of tokens. Once written, the token sets belong to the repository, which changes them as it needs.
 
-Border radius tokens hold the corner radius of components and containers, as a size in design pixels. Each brand defines its own radius scale, so the same component has a different corner in each brand. In the configuration of website-tokens, the border radius tokens differ between brands, and not between themes, apps, or screens.
+Border radius tokens hold the corner radius of components and containers, as a size in design pixels. Each brand defines its own radius scale, so the same component has a different corner in each brand. The radii differ between brands when the token set of a brand overrides them, and no token set of a theme declares one.
 
 ### Token levels
 
@@ -176,7 +176,7 @@ Use the token of the lowest level that fits the element.
 - **Round ends**: use `borderRadius.context.full`. The shape of badges and chips is a choice of the brand, so use their component tokens where the shape must follow the brand.
 - **A new component token**: reference a context token, or add a base token to `source/base/brand-base.json` when brands need to shape the component.
 
-To change the corners of a brand, override base tokens in the token set of the brand and leave the context and component tokens as they are. In `source/brand-chassis/brand-base.json`, the `chassis` brand gives the medium badge the `full` step of the scale like this:
+To change the corners of a brand, override base tokens in the token set of the brand and leave the context and component tokens as they are. In `source/brand-globex/brand-base.json`, the `globex` brand gives the medium badge the `full` step of the scale like this:
 
 ```json
 {
@@ -205,12 +205,12 @@ A border radius prints as a custom property of Chassis CSS or a size in `rem` on
 | Android | `@dimen/border_radius_button_medium` | A `<dimen>` in `dp` |
 </CxTable>
 
-The `web` platform prints the size of the base and context tokens, and a custom property for a component token. The values in the examples are those of the `chassis` brand in the current version and differ in other brands. The build writes these lines for the tokens of the medium button:
+The `web` platform prints the size of the base and context tokens, and a custom property for a component token. The values in the examples are those of the token sets that `init` writes, and a brand that overrides a token has its own. The build writes these lines for the tokens of the medium button:
 
 ```scss
-$cx-border-radius-base-context-medium: 0.375rem !default;
-$cx-border-radius-base-button-medium: 0.375rem !default;
-$cx-border-radius-context-medium: 0.375rem !default;
+$cx-border-radius-base-context-medium: 0.125rem !default;
+$cx-border-radius-base-button-medium: 0.125rem !default;
+$cx-border-radius-context-medium: 0.125rem !default;
 $cx-border-radius-button-medium: var(--border-radius-md) !default;
 ```
 

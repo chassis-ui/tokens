@@ -8,7 +8,7 @@ toc: true
 
 ## Introduction
 
-The token sets and the configuration that this page names, and calls committed, are those of [chassis-ui/website-tokens](https://github.com/chassis-ui/website-tokens), the repository of tokens of the Chassis sites and apps.
+The token sets that this page names are the Chassis token system, as `chassis-tokens init` writes it into a repository of tokens. Once written, the token sets belong to the repository, which changes them as it needs.
 
 Shadow tokens hold the shadows of elements: the offset, blur, spread, and color of each layer, and whether the layer falls outside or inside the element. The sizes of a layer reference the dimension scale, and its color references a color token, so the colors of a shadow follow the brand and the theme.
 
@@ -245,7 +245,7 @@ The web prints a shadow token as one CSS `box-shadow` value with sizes in `rem`.
 | Android | `@dimen/shadow_card_main_1_blur` | A `<dimen>` in `dp` |
 </CxTable>
 
-The web row is the whole shadow of `shadow.card.main`; the iOS and Android rows are the blur of its first layer. The values in the examples of this section are those of the `chassis` brand in the current version and differ in other brands.
+The web row is the whole shadow of `shadow.card.main`; the iOS and Android rows are the blur of its first layer. The values in the examples of this section are those of the token sets that `init` writes, and a brand that overrides a token has its own.
 
 On the web, the build writes each layer as x, y, blur, spread, and color, adds `inset` to an inner shadow, and separates the layers with a comma:
 

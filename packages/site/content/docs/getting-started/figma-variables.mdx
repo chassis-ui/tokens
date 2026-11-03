@@ -34,13 +34,13 @@ The token system is built on three core groups, `brand`, `theme`, and `app`, and
 
 The `website` groups of `size.*`, `space.*`, `typography.fontSize.*`, and `font.*` belong to the `screen` Collection, not to `app` or `brand`. Every Collection also holds the [visibility switches](#visibility-switches) of its group, `figma.switch.<group>.*`.
 
-The Modes depend on the options of your `$themes.json`. In the configuration of website-tokens, for example, the `theme` Collection has the Modes `light` and `dark`, and the `screen` Collection has the Modes `large`, `medium`, and `small`. Every option becomes a Mode, including an option that the build does not write because `chassis.build` of `package.json` does not list it.
+The Modes depend on the options of your `$themes.json`. In a repository that `init` wrote with the brands `acme` and `globex`, for example, the `brand` Collection has the Modes `acme` and `globex`, and the `theme` Collection has the Modes `light` and `dark`. Every option becomes a Mode, including an option that the build does not write because `chassis.build` of `package.json` does not list it.
 
-The groups can change with your project. Without a `screen` group in `$themes.json`, Figma gets no `screen` Collection, and a group that you add becomes a Collection of its own. The build must follow such a change: see the [build options]([[docsref:/getting-started/style-dictionary#build-options]]) of the Style Dictionary guide.
+The groups can change with your project. `init` writes no `screen` group, so Figma gets no `screen` Collection until you add one, and a group that you add becomes a Collection of its own. The build must follow such a change: see the [build options]([[docsref:/getting-started/style-dictionary#build-options]]) of the Style Dictionary guide.
 
 ### Aliases
 
-A Variable whose token references a token of another Collection is an alias of that Variable, so a Mode of one Collection changes the Variables of another. The fill of the primary button runs through the Collections of the three core groups, shown here with the themes of the configuration of website-tokens:
+A Variable whose token references a token of another Collection is an alias of that Variable, so a Mode of one Collection changes the Variables of another. The fill of the primary button runs through the Collections of the three core groups, shown here with the themes `light` and `dark`:
 
 ```text
 color.button.primary.bg-idle                        app
@@ -171,29 +171,29 @@ Because these Variables are [aliases](#aliases), one button follows the Modes of
 
 ### Visibility switches
 
-Switches are Boolean Variables that show or hide a layer according to the Mode. Each switch `figma.switch.<group>.mode-<n>` is `true` in one option of its group and `false` in every other option, because the token set of the option sets its own switch. In the configuration of website-tokens, for example, `figma.switch.theme.mode-1` is `true` in the `light` Mode and `figma.switch.theme.mode-2` in the `dark` Mode.
+Switches are Boolean Variables that show or hide a layer according to the Mode. Each switch `figma.switch.<group>.mode-<n>` is `true` in one option of its group and `false` in every other option, because the token set of the option sets its own switch. In a repository that `init` wrote, for example, `figma.switch.theme.mode-1` is `true` in the `light` Mode and `figma.switch.theme.mode-2` in the `dark` Mode.
 
-A group can hold more switches than it has options, such as `figma.switch.theme.mode-3`; a switch without an option is `false` in every Mode. For an option that you add, set the next switch to `true` in the token set of the option.
+`init` writes one switch per option, `false` in the base set of the group, such as `base/theme-base`. A group can hold more switches than it has options; a switch without an option is `false` in every Mode. For an option that you add, add the next switch to the base set of the group, and set it to `true` in the token set of the option.
 
-Bind a switch to the visibility of a layer, and nest layers to combine two groups. This example uses the brands and the themes of the configuration of website-tokens, where the `chassis` brand sets `figma.switch.brand.mode-2` and the `sinefil` brand sets `figma.switch.brand.mode-3`:
+Bind a switch to the visibility of a layer, and nest layers to combine two groups. This example uses the brands `acme` and `globex` and the themes `light` and `dark`, where the `acme` brand sets `figma.switch.brand.mode-1` and the `globex` brand sets `figma.switch.brand.mode-2`:
 
 ```text
 Header
-├─ Chassis logo (group)   Visibility: figma/switch/brand/mode-2
+├─ Acme logo (group)      Visibility: figma/switch/brand/mode-1
 │  ├─ Light logo          Visibility: figma/switch/theme/mode-1
 │  └─ Dark logo           Visibility: figma/switch/theme/mode-2
-└─ Sinefil logo (group)   Visibility: figma/switch/brand/mode-3
+└─ Globex logo (group)    Visibility: figma/switch/brand/mode-2
    ├─ Light logo          Visibility: figma/switch/theme/mode-1
    └─ Dark logo           Visibility: figma/switch/theme/mode-2
 ```
 
-With the `sinefil` and `dark` Modes, the header shows the dark logo of the Sinefil group only. The build does not write the switches to any platform, because it never writes a token of the type `boolean`.
+With the `globex` and `dark` Modes, the header shows the dark logo of the Globex group only. The build does not write the switches to any platform, because it never writes a token of the type `boolean`.
 
 ### Screen Variables
 
 The Modes of the optional `screen` Collection resize a design of the website without a copy of its frames. `size.website.*`, `space.website.*`, and `typography.fontSize.website.*` differ per screen, so a frame that uses them follows the Mode of the Collection.
 
-The `figma.website.*` tokens hold what the Figma files of the website need per screen: sizes in design pixels, and the names of component variants as text. The build writes no `figma.*` token to any platform; the group exists for Figma only.
+The sets of the screens can also hold tokens for Figma only, such as `figma.website.*`, with what the Figma files of a website need per screen: sizes in design pixels, and the names of component variants as text. The build writes no `figma.*` token to any platform; the group exists for Figma only.
 
 <CxTable>
 | Token | Purpose |
@@ -219,7 +219,7 @@ Figma does not list a Variable when you set a property of a layer. Either the [s
 
 ### Value does not change
 
-A layer keeps its value when you switch a Mode. The layer has a fixed value instead of a Variable, or the Variable has the same value in both Modes: between the `docs` and `demo` Modes of the `app` Collection in the configuration of website-tokens, only `color.page.bg-body` and the switches `figma.switch.app.*` differ. Select the layer, check that the property shows a Variable, and switch the Mode of the Collection that holds the difference.
+A layer keeps its value when you switch a Mode. The layer has a fixed value instead of a Variable, or the Variable has the same value in both Modes: between the `site` and `mobile` Modes of the `app` Collection of a repository that `init` wrote, only the switches `figma.switch.app.*` differ, until the set of an app overrides a token. Select the layer, check that the property shows a Variable, and switch the Mode of the Collection that holds the difference.
 
 ### Library update missing
 

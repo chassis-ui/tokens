@@ -8,9 +8,9 @@ toc: true
 
 ## Introduction
 
-The token sets and the configuration that this page names, and calls committed, are those of [chassis-ui/website-tokens](https://github.com/chassis-ui/website-tokens), the repository of tokens of the Chassis sites and apps.
+The token sets that this page names are the Chassis token system, as `chassis-tokens init` writes it into a repository of tokens. Once written, the token sets belong to the repository, which changes them as it needs.
 
-Color tokens define the colors of text, surfaces, borders, icons, links, shadows, and gradients. A brand sets the base color of each palette, and the shades, the context colors, and the component colors are derived from these base colors. The context and the component colors follow the theme; the committed themes are `light` and `dark`.
+Color tokens define the colors of text, surfaces, borders, icons, links, shadows, and gradients. A brand sets the base color of each palette, and the shades, the context colors, and the component colors are derived from these base colors. The context and the component colors follow the theme; the themes that `init` writes are `light` and `dark`.
 
 The tables list each token with the token it references. A column named `light` or `dark` holds the reference of the token in that theme.
 
@@ -42,7 +42,7 @@ The token sets of these groups are in `source/base/`.
 | `color.context.*` | Context | Colors named by role, for each context | `theme-base.json`, `theme-dark.json` |
 | `color.shadow.*` | Context | Shadow colors of the current theme | `theme-base.json`, `theme-dark.json` |
 | `color.utility.*` | Context | Colors that the build does not write | `theme-base.json`, `theme-dark.json` |
-| `color.<component>.*` | Component | Colors of the parts of a component | `app-base.json`, `app-demo.json` |
+| `color.<component>.*` | Component | Colors of the parts of a component | `app-base.json`, `app-<app>.json` |
 </CxTable>
 
 `theme-base.json` references the light base tokens, and `theme-dark.json` replaces these references with the dark ones. The [transparency colors](#transparency-colors) are defined in `theme-base.json` alone. See the [Tokens Studio]([[docsref:/getting-started/tokens-studio]]) guide for the token sets and the groups that select them.
@@ -62,7 +62,7 @@ A palette is a group of colors that are derived from one base color. The palette
 | `color.base.primitive.light.primary.contrast` | `{color.base.primitive.light.white.base}` | Text and icons on the base color |
 </CxTable>
 
-A `base` token holds a color of its own, and the other tokens of its palette reference it. The token set of a brand, such as `source/brand-chassis/brand-base.json`, overrides the `base` tokens, and it can override a `contrast` token when the base color needs the other contrast color.
+A `base` token holds a color of its own, and the other tokens of its palette reference it. The token set of a brand, such as `source/brand-acme/brand-base.json`, overrides the `base` tokens, and it can override a `contrast` token when the base color needs the other contrast color.
 
 ### Shades
 
@@ -439,13 +439,13 @@ Message colors set the chat surface, the form, and the pairs of `fg` and `bg` to
 
 ### Page
 
-Page colors set the background of the body and of a section. An app can override them in its token set, as `source/base/app-demo.json` does, so the table has a column for each committed app, `docs` and `demo`.
+Page colors set the background of the body and of a section. An app can override them in its token set, `source/base/app-<app>.json`, such as a `mobile` app that sets `color.page.bg-body` to `{color.context.default.bg-even}`.
 
 <CxTable>
-| Token | `docs` | `demo` |
-| --- | --- | --- |
-| `color.page.bg-body` | `{color.context.default.bg-main}` | `{color.context.default.bg-even}` |
-| `color.page.bg-section` | `{color.context.default.bg-main}` | `{color.context.default.bg-main}` |
+| Token | Reference |
+| --- | --- |
+| `color.page.bg-body` | `{color.context.default.bg-main}` |
+| `color.page.bg-section` | `{color.context.default.bg-main}` |
 </CxTable>
 
 ### Pagination
@@ -567,21 +567,21 @@ Colors print as hex or `rgba()` values on the web, as `UIColor` on iOS, and as `
 
 The build writes the primitive colors, the context colors, and the gradients into the color file of each theme, such as `color-light.scss` and `color-dark.scss`. The component and the shadow colors are in these files too, and on the web the shadow tokens with the colors of the theme. The main file has the base colors, and the component and the shadow colors of the first theme.
 
-The values in the examples are those of the `chassis` brand in the current version and differ in other brands.
+The values in the examples are those of the token sets that `init` writes, and a brand that overrides a token has its own.
 
 With the `web` platform, a color that references a context or a primitive color prints the custom property of Chassis CSS instead of its value, so every component color is a `var(--…)` reference. The build writes these lines into `color-light.scss`:
 
 ```scss
-$cx-color-context-default-fg-main: #191b1c !default;
-$cx-color-context-default-fg-subtle: rgba(25, 27, 28, 0.6) !default;
+$cx-color-context-default-fg-main: #171717 !default;
+$cx-color-context-default-fg-subtle: rgba(23, 23, 23, 0.6) !default;
 $cx-color-button-default-fg-idle: var(--default-fg-idle) !default;
 ```
 
 On iOS, the channels have three decimals. The build writes these constants into `ColorLight.swift`:
 
 ```swift
-    public static let ColorContextDefaultFgMain = UIColor(red: 0.098, green: 0.106, blue: 0.110, alpha: 1)
-    public static let ColorContextDefaultFgSubtle = UIColor(red: 0.098, green: 0.106, blue: 0.110, alpha: 0.6)
+    public static let ColorContextDefaultFgMain = UIColor(red: 0.090, green: 0.090, blue: 0.090, alpha: 1)
+    public static let ColorContextDefaultFgSubtle = UIColor(red: 0.090, green: 0.090, blue: 0.090, alpha: 0.6)
 ```
 
 `Color.swift` has the same names with colors that follow the appearance of the device: a constant whose colors differ between the light and the dark theme is a dynamic `UIColor` that holds both.
@@ -589,8 +589,8 @@ On iOS, the channels have three decimals. The build writes these constants into 
 On Android, the alpha value comes first, in the first two digits of the hex number. The build writes these resources into `color_light.xml`:
 
 ```xml
-  <color name="color_context_default_fg_main">#ff191b1c</color>
-  <color name="color_context_default_fg_subtle">#99191b1c</color>
+  <color name="color_context_default_fg_main">#ff171717</color>
+  <color name="color_context_default_fg_subtle">#99171717</color>
 ```
 
 A gradient prints as a `linear-gradient()` value on the web. On iOS and Android the build splits it into an angle and, for each stop, a color and a position: `GradientPrimitivePrimaryL50090Angle`, `GradientPrimitivePrimaryL50090Stop1Color`, and `GradientPrimitivePrimaryL50090Stop1Position` on iOS, `gradient_primitive_primary_l_50_090_angle`, `gradient_primitive_primary_l_50_090_stop_1_color`, and `gradient_primitive_primary_l_50_090_stop_1_position` on Android.

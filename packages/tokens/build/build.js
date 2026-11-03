@@ -53,9 +53,9 @@ Options:
   --version, -v             Show version
 
 Examples:
-  chassis-tokens build --brand chassis --platform web
+  chassis-tokens build --brand acme --platform web
   chassis-tokens build --theme light dark --dry-run
-  chassis-tokens build --brand sinefil --clean
+  chassis-tokens build --brand globex --clean
 `
 
 /**
@@ -303,7 +303,7 @@ function planBuilds(sets, buildOptions, filters = {}) {
  *
  * @param {Object[]} builds - Builds from `planBuilds`.
  * @param {string} [outDir] - Output root directory.
- * @returns {string[]} The paths of the files, e.g. `dist/ios/demo/chassis/Color.swift`.
+ * @returns {string[]} The paths of the files, e.g. `dist/ios/mobile/acme/Color.swift`.
  */
 function planThemeColors(builds, outDir) {
   const themesByPath = new Map()
@@ -327,7 +327,7 @@ function planThemeColors(builds, outDir) {
  *
  * @param {Object[]} builds - Builds from `planBuilds`, with their Style Dictionary `cfg`.
  * @param {Object} [filters] - Filters from `parseArgs`.
- * @returns {string[]} The directories, e.g. `dist/web/docs/chassis/`.
+ * @returns {string[]} The directories, e.g. `dist/web/site/acme/`.
  * @throws {Error} When a theme or screen filter is set: those builds write only some files
  *   of their directories, and the others would be deleted.
  */

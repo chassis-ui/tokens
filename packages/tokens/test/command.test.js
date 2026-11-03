@@ -80,7 +80,7 @@ describe('on a repository of tokens', () => {
 
   test('lint-source checks its source/', () => {
     const { code, stdout } = run(temporary, 'lint-source', '--cwd', repository)
-    expect(stdout).toContain('7 token sets')
+    expect(stdout).toContain('10 token sets')
     expect(code).toBe(0)
   })
 
@@ -93,8 +93,8 @@ describe('on a repository of tokens', () => {
     expect(text).toContain(
       '// Licensed under MIT (https://github.com/acme/tokens/blob/main/LICENSE)'
     )
-    expect(text).not.toContain('Chassis')
-    expect(text).toContain('$cx-color-brand-primary: #2563eb !default;')
+    expect(text.slice(0, text.indexOf('\n\n\n'))).not.toContain('Chassis')
+    expect(text).toContain('$cx-color-base-primitive-light-black-contrast: #ffffff !default;')
     expect(existsSync(join(repository, 'dist/ios/shop/acme/Color.swift'))).toBe(true)
     expect(existsSync(join(repository, 'dist/android/shop/acme/res/values/color.xml'))).toBe(true)
   }, 30_000)
@@ -107,7 +107,8 @@ describe('on a repository of tokens', () => {
 
     const main = join(repository, 'dist/web/shop/acme/main.scss')
     const text = readFileSync(main, 'utf8')
-    writeFileSync(main, text.replace('#2563eb', '#000000'))
+    const token = '$cx-color-base-primitive-light-black-contrast'
+    writeFileSync(main, text.replace(`${token}: #ffffff`, `${token}: #000000`))
     const failed = run(temporary, 'verify', '--cwd', repository)
     writeFileSync(main, text)
     expect(failed.code).toBe(1)

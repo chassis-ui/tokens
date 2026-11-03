@@ -52,7 +52,7 @@ The run takes about 10 seconds, most of it for the golden test, which builds eve
 
 The JSON files in `fixtures/` are snapshots taken from the real build on 2026-09-27, when `source/` and `dist/` were in this repository. Each has a `source` field that says where its data comes from.
 
-`fixtures/repository/` is a repository of tokens, for the preset baselines and the tests of the plan and the lint: a `package.json` with the `chassis.build` of website-tokens, and `source/`, copied from the `source/` that this repository held at commit `4757b18`. It holds the 19 token sets that `$themes.json` selects, and `$themes.json` without its Figma references. It does not follow `vendor/tokens`. Change it only for a test that needs other tokens, and write the baselines again with `pnpm tokens:verify:update:presets`.
+`fixtures/repository/` is a repository of tokens, for the preset baselines and the tests of the plan and the lint: a `package.json` with the `chassis.build` of the tokens of the Chassis sites, and `source/`, copied from the `source/` that this repository held at commit `4757b18`. It holds the 19 token sets that `$themes.json` selects, and `$themes.json` without its Figma references. It does not follow `vendor/tokens`. Change it only for a test that needs other tokens, and write the baselines again with `pnpm tokens:verify:update:presets`.
 
 | Fixture                    | Used by                                                                    | Contents                                                                                                                                                                                                                                                                                                                                     |
 | -------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -138,7 +138,7 @@ A change in `vendor/tokens` changes nothing here. A change in the build that cha
 pnpm tokens:verify:update:presets
 ```
 
-`pnpm tokens:verify:update` also writes `vendor/tokens/dist/`, which needs the submodule and a commit in website-tokens.
+`pnpm tokens:verify:update` also writes `vendor/tokens/dist/`, which needs the submodule and a commit in its repository.
 
 Only the files that differ are written; a file that differs in its header lines only is left as it is. Write one baseline again, or a new one, from `packages/tokens/`:
 

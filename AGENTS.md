@@ -8,17 +8,20 @@ breaks without being told; the docs it links to explain the rest.
 Chassis Tokens is `@chassis-ui/tokens`, the builder of design tokens of the Chassis Design
 System and of any team that adopts it: the `chassis-tokens` command builds a repository of Tokens
 Studio files into SCSS, Swift, SwiftUI, Android resources and Jetpack Compose, with Style
-Dictionary 5. The tokens of the Chassis sites and apps are in a repository of their own,
-`chassis-ui/website-tokens` ([D2](docs/decisions.md)), which this repository vendors as a submodule
-to build and to check. It is a pnpm workspace in the layout of `chassis-ui/react`:
+Dictionary 5. The package also holds the Chassis token system, which `chassis-tokens init` writes
+into a new repository of tokens once ([D11](docs/decisions.md)). The tokens of the Chassis sites
+and apps are a repository of tokens of their own ([D2](docs/decisions.md)), which this repository
+vendors as a submodule to build and to check. It is a pnpm workspace in the layout of
+`chassis-ui/react`:
 
 ```
 package.json     # the commands; the tokens:* scripts run the build on vendor/tokens
-vendor/tokens    # git submodule of chassis-ui/website-tokens: source/, chassis.build, dist/, Package.swift
-vendor/assets    # not committed: the release of chassis-ui/website-assets that vendor/assets.json pins
+vendor/tokens    # git submodule, the tokens of the Chassis sites: source/, chassis.build, dist/, Package.swift
+vendor/assets    # not committed: the release of the Chassis site assets that vendor/assets.json pins
 packages/
   tokens/        # @chassis-ui/tokens, published to npm, with the chassis-tokens command
-    build/       # the Style Dictionary build and the command (JavaScript with JSDoc types)
+    build/       # the Style Dictionary build and the command (JavaScript with JSDoc types);
+                 # init-templates/source/ is the token system that init writes
     test/        # Vitest tests, fixtures, preset baselines (golden/), native checks (native/)
   site/          # chassis-tokens-site, the Astro documentation site (private)
 build/           # repository scripts (version references, release notes)
@@ -35,7 +38,7 @@ A repository of tokens, such as `vendor/tokens`, holds `source/`, a `package.jso
 - `pnpm vendor` checks out the `vendor/tokens` submodule and unpacks into `vendor/assets/` the
   archive of the assets that `vendor/assets.json` pins. Without it `vendor/tokens/` is empty and
   the `tokens:*` scripts that read it fail; `pnpm test` needs no submodule.
-- `pnpm sync-assets` moves `vendor/assets.json` to a release of chassis-ui/website-assets, the
+- `pnpm sync-assets` moves `vendor/assets.json` to a release of the Chassis site assets, the
   latest without `--version`. It writes the names and digests; do not edit them by hand.
 - `pnpm tokens` builds `vendor/tokens/dist/`; `--brand`, `--app`, `--platform`, `--theme` and
   `--screen` build a part of it, and `--dry-run` prints the plan.
@@ -67,8 +70,9 @@ that fail.
   `vendor/tokens/` from here.** The baselines are the reference that `tokens:verify:presets`
   compares a fresh build with, and `vendor/tokens/dist/` that of `tokens:verify`. Change the build,
   write the baselines again with `pnpm tokens:verify:update:presets` and review them with `git
-diff`. A change to the tokens belongs in chassis-ui/website-tokens, and reaches this repository
-  by moving the pointer of the submodule; the steps are in
+diff`. A change to the tokens of the Chassis sites belongs in their repository, the URL of
+  `vendor/tokens` in `.gitmodules`, and reaches this repository by moving the pointer of the
+  submodule; the steps are in
   [CONTRIBUTING.md](.github/CONTRIBUTING.md#changing-tokens). The baselines are built from the copy
   in `test/fixtures/repository/`, which does not follow `vendor/tokens`: a change to the tokens
   leaves them alone.
@@ -79,6 +83,10 @@ diff`. A change to the tokens belongs in chassis-ui/website-tokens, and reaches 
 - **Token names, file names and formats are the public API.** Renaming or removing one breaks
   the apps that use it. While the version is `0.x` this is a minor bump whose changeset says
   that it breaks.
+- **The token system in `build/init-templates/source/` is written once.** `init` writes it into a
+  new repository, and never over the token sets of one. A change to it reaches only the
+  repositories made after the release; a structural change that existing repositories need is a
+  migration they choose, which changes structure and never values.
 - **The presets and `outputReferences` are features for adopters.** `web-scss`, `web-px`,
   `web-vw`, `ios-swiftui` and `android-compose` are built by no app of this repository, and
   only `test/golden/` covers them. Do not remove them as unused.
@@ -109,13 +117,18 @@ diff`. A change to the tokens belongs in chassis-ui/website-tokens, and reaches 
   followed by a sentence.
 - **The guide is the reference, not the existing pages.** Most pages are older than the guide
   and break its rules. Do not copy a convention from a page.
-- Every token name and value in a page must exist in `vendor/tokens/source/` or
-  `vendor/tokens/dist/` as written. Copy generated code from `vendor/tokens/dist/`; do not retype
-  it. Pages speak of the builder and of a repository of tokens, not of this checkout: a command in
-  a page is `npx chassis-tokens <command>`, not a `pnpm tokens:*` script.
+- Every token name and value in a page must exist in the token system,
+  `packages/tokens/build/init-templates/source/`, or in a build of a repository that `init`
+  writes, as written. Copy generated code from such a build; do not retype it. Pages speak of the
+  builder and of a repository of tokens, not of this checkout: a command in a page is
+  `npx chassis-tokens <command>`, not a `pnpm tokens:*` script.
+- **Pages never name the repositories of the Chassis sites.** Their tokens and assets are a
+  repository of tokens like any team's, never a template, an install or an example. Examples use
+  the repository `acme-tokens` (`acme/acme-tokens` on GitHub), the brands `acme` and `globex`, and
+  the apps `site` (web) and `mobile` (iOS and Android).
 - Run `pnpm site:lint`, `pnpm site:build` and `pnpm site:lint:html` after editing
   `packages/site/`.
-- The site compiles `@chassis-ui/css` against the published `@chassis-ui/website-tokens` in its
+- The site compiles `@chassis-ui/css` against the published tokens of the Chassis sites in its
   `package.json`, not against `vendor/tokens`. Move it with a css release that reads the new
   names.
 
@@ -132,8 +145,8 @@ diff`. A change to the tokens belongs in chassis-ui/website-tokens, and reaches 
   starts the release workflow, which publishes `@chassis-ui/tokens` to npm when the version is
   new.
 - Do not edit generated or fetched files: `_site/`, `dist-next/`, `.cache/`, `.build/`,
-  `node_modules/`, `vendor/assets` and `vendor/tokens` (changes belong in
-  `chassis-ui/website-assets` and `chassis-ui/website-tokens`).
+  `node_modules/`, `vendor/assets` and `vendor/tokens` (changes belong in the repositories of
+  the assets and the tokens of the Chassis sites).
 - The version references are written by a script (`pnpm changeset:version`). Do not edit them by
   hand.
 - `@chassis-ui/docs` and the other Chassis packages are separate repositories. Report a bug

@@ -3,10 +3,12 @@
  * @description Writes the baseline of a repository of tokens into a folder: a `package.json`
  *              with the `chassis.build` block, the scripts and a development dependency on
  *              this package, a README, a changelog, the instructions for agents, a CI workflow, a
- *              release workflow and a few Tokens Studio files, so that the first build has tokens to build. The
- *              templates are in `init-templates/` beside this module, and the few values that
- *              differ by repository are filled in: the name, the package manager and its
- *              commands.
+ *              release workflow, and the token sets of the Chassis token system in Tokens Studio
+ *              files, with the groups `brand`, `app` and `theme`. The templates are in
+ *              `init-templates/` beside this module, and the few values that differ by
+ *              repository are filled in: the name, the package manager and its commands, and
+ *              the options of the groups. The token sets are written once: from then on they
+ *              are the repository's, and no later version of the package writes over them.
  *
  *              The command writes outside the output folder, the one that does, so it writes
  *              nothing when a file it would write exists, unless `--force` is given, and
@@ -82,9 +84,11 @@ const OWN_FILES = [...DATA_FILES, 'README.md']
 /** The folder of the token files, which init writes only when it holds none. */
 const SOURCE_DIR = 'source'
 
-/** The themes and the screens of a new repository. */
+/** The themes of a new repository, which the base token sets have. */
 const THEMES = ['light', 'dark']
-const SCREENS = ['large', 'medium', 'small']
+
+/** The app names whose set would be a base set of the group. */
+const RESERVED_APPS = ['base']
 
 /** A brand or app name: lowercase letters, digits and single hyphens, as the build wants. */
 const NAME_RE = /^[a-z0-9]+(-[a-z0-9]+)*$/
@@ -198,10 +202,13 @@ export function parseApp(spec) {
   const [app, list, ...more] = spec.split(':')
   if (!app || !list || more.length > 0) {
     throw new Error(
-      `An app is <name>:<platform>[,<platform>…], such as docs:web or mobile:ios,android: ${spec}`
+      `An app is <name>:<platform>[,<platform>…], such as site:web or mobile:ios,android: ${spec}`
     )
   }
   checkName('app', app)
+  if (RESERVED_APPS.includes(app)) {
+    throw new Error(`The app name ${app} is taken by the base token set base/app-${app}`)
+  }
   const platforms = [...new Set(list.split(',').filter(Boolean))]
   for (const platform of platforms) {
     if (!PLATFORM_NAMES.includes(platform)) {
@@ -226,38 +233,97 @@ function render(text, values) {
 }
 
 /**
- * The Tokens Studio files of a new repository, by path under `source/`: one option per brand,
- * app, theme and screen in `$themes.json`, each enabling one token set.
+ * The Figma mode switches of a group: `figma.switch.<group>.mode-<n>`, one per option, `true`
+ * in the set of the option given and `false` in the base set of the group, where `on` is left out.
+ * @param {string} group
+ * @param {number} count - The number of options of the group.
+ * @param {number} [on] - The index of the option whose set this is.
+ * @returns {Object}
+ */
+function modeSwitch(group, count, on) {
+  const mode = (n) => ({ $type: 'boolean', $value: String(n === on) })
+  const modes =
+    on === undefined
+      ? Object.fromEntries(Array.from({ length: count }, (_, n) => [`mode-${n + 1}`, mode(n)]))
+      : { [`mode-${on + 1}`]: mode(on) }
+  return { figma: { switch: { [group]: modes } } }
+}
+
+/**
+ * The Tokens Studio files of a new repository, by path under `source/`: the base token sets of
+ * the system from `init-templates/source/base/`, with the Figma mode switches of the brands, apps
+ * and themes given, one set per brand and per app for its own values, and `$themes.json` with
+ * the groups `brand`, `app` and `theme`. A repository owns these files once they are written.
  * @param {string[]} brands
  * @param {string[]} apps
  * @returns {Record<string, Object>}
  */
 function starterSource(brands, apps) {
-  const color = (value) => ({ $type: 'color', $value: value })
-  const size = (value) => ({ $type: 'dimension', $value: value })
-  /** @type {Record<string, Object>} */
-  const sets = {}
-  for (const brand of brands)
-    sets[`brand-${brand}`] = { color: { brand: { primary: color('#2563eb') } } }
-  for (const app of apps) sets[`app-${app}`] = { size: { radius: { default: size('4') } } }
-  sets['theme-light'] = { color: { surface: { default: color('#ffffff') } } }
-  sets['theme-dark'] = { color: { surface: { default: color('#111111') } } }
-  sets['screen-large'] = { size: { space: { default: size('24') } } }
-  sets['screen-medium'] = { size: { space: { default: size('20') } } }
-  sets['screen-small'] = { size: { space: { default: size('16') } } }
+  const base = (set) =>
+    JSON.parse(readFileSync(join(TEMPLATES, SOURCE_DIR, 'base', `${set}.json`), 'utf8'))
+  const withSwitch = (tokens, group, count, on) => ({
+    ...modeSwitch(group, count, on),
+    ...tokens
+  })
 
-  const group = (name, options) =>
-    options.map((option) => ({
-      id: `${name}-${option}`,
-      name: option,
-      group: name,
-      selectedTokenSets: { [`${name}-${option}`]: 'enabled' }
-    }))
+  /** @type {Record<string, Object>} */
+  const sets = {
+    'base/app-base': withSwitch(base('app-base'), 'app', apps.length),
+    ...Object.fromEntries(
+      apps.map((app, i) => [`base/app-${app}`, modeSwitch('app', apps.length, i)])
+    ),
+    'base/brand-base': withSwitch(base('brand-base'), 'brand', brands.length),
+    'base/metric-base': base('metric-base'),
+    'base/metric-source': base('metric-source'),
+    'base/effect-base': base('effect-base'),
+    'base/theme-base': withSwitch(base('theme-base'), 'theme', THEMES.length),
+    ...Object.fromEntries(
+      THEMES.map((theme, i) => [
+        `base/theme-${theme}`,
+        withSwitch(base(`theme-${theme}`), 'theme', THEMES.length, i)
+      ])
+    ),
+    ...Object.fromEntries(
+      brands.map((brand, i) => [`brand-${brand}/brand-base`, modeSwitch('brand', brands.length, i)])
+    )
+  }
+
+  // Which sets an option builds, and which it only reads for references
+  const option = (group, name, selected) => ({
+    id: `${group}-${name}`,
+    name,
+    group,
+    selectedTokenSets: selected
+  })
   const themes = [
-    ...group('brand', brands),
-    ...group('app', apps),
-    ...group('theme', THEMES),
-    ...group('screen', SCREENS)
+    ...brands.map((brand) =>
+      option('brand', brand, {
+        'base/metric-source': 'source',
+        'base/metric-base': 'source',
+        'base/brand-base': 'enabled',
+        [`brand-${brand}/brand-base`]: 'enabled'
+      })
+    ),
+    ...apps.map((app) =>
+      option('app', app, {
+        'base/metric-source': 'source',
+        'base/metric-base': 'enabled',
+        'base/brand-base': 'source',
+        'base/theme-base': 'source',
+        'base/app-base': 'enabled',
+        [`base/app-${app}`]: 'enabled'
+      })
+    ),
+    ...THEMES.map((theme) =>
+      option('theme', theme, {
+        'base/metric-source': 'source',
+        'base/metric-base': 'source',
+        'base/effect-base': 'enabled',
+        'base/brand-base': 'source',
+        'base/theme-base': 'enabled',
+        [`base/theme-${theme}`]: 'enabled'
+      })
+    )
   ]
 
   return {
@@ -316,7 +382,7 @@ export function planFiles(options = {}) {
     files: ['dist', 'CHANGELOG.md'],
     exports: { './dist/*': './dist/*', './package.json': './package.json' },
     publishConfig: { access: 'public' },
-    chassis: { build: { brands, themes: THEMES, screens: SCREENS, apps } },
+    chassis: { build: { brands, themes: THEMES, apps } },
     scripts: {
       build: 'chassis-tokens build',
       lint: 'chassis-tokens lint-source',
@@ -446,15 +512,16 @@ const HELP = `Usage: chassis-tokens init [dir] [options]
 
 Writes the baseline of a repository of tokens into dir, the working directory by default:
 package.json with the chassis.build block and the scripts, .gitignore, .nvmrc, README.md,
-CHANGELOG.md, AGENTS.md, CLAUDE.md, a CI and a release workflow, and Tokens Studio files in
-source/ for the first build. Writes nothing when a file exists. A source/ that holds files is
+CHANGELOG.md, AGENTS.md, CLAUDE.md, a CI and a release workflow, and the token sets of the
+Chassis token system in source/, with the groups brand, app and theme. Writes nothing when a
+file exists. A source/ that holds files is
 never written to, with or without --force: it is kept, and chassis.build has to follow its
 $themes.json. package.json and CHANGELOG.md are never written over either.
 
 Options:
   --name <name>          The package name, default the name of the folder
   --brand <name…>        The brands, default main
-  --app <name:platforms> An app and its platforms, such as docs:web or mobile:ios,android,
+  --app <name:platforms> An app and its platforms, such as site:web or mobile:ios,android,
                          one or more times; default site:web. Platforms: ${PLATFORM_NAMES.join(', ')}
   --pm <npm|pnpm>        The package manager the README and the workflows name, default npm
   --repository <repo>    The repository, owner/name or an address; default the origin remote
