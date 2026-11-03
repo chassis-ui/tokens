@@ -1,0 +1,224 @@
+---
+title: Motion Tokens
+description: Motion tokens hold the durations and easing curves of animations and transitions, as a scale of steps and as values for each component.
+toc: true
+---
+
+<Callout type="warning" name="work-in-progress" />
+
+## Introduction
+
+The token sets that this page names are the Chassis token system, as `chassis-tokens init` writes it into a repository of tokens. Once written, the token sets belong to the repository, which changes them as it needs.
+
+Motion tokens hold the timing of animations and transitions. `motion.timing.*` tokens hold durations, in milliseconds in the source, and `motion.easing.*` tokens hold easing curves, as the four control points of a cubic Bézier curve. The base tokens are in `source/base/brand-base.json`, which the token set of a brand overrides, and the context and component tokens in `source/base/app-base.json`.
+
+### Token levels
+
+Motion tokens have a base, a context, and a component level. Base tokens (`motion.base.timing.*` and `motion.base.easing.*`) hold the durations and easings that a brand sets. Context tokens (`motion.timing.context.*` and `motion.easing.context.*`) and component tokens (`motion.timing.<component>.*` and `motion.easing.<component>.*`) reference the base token of the same name, one to one:
+
+```text
+motion.timing.carousel.transition
+  → {motion.base.timing.carousel.transition}
+    → {motion.base.timing.context.medium}
+```
+
+A brand changes the motion of every app by overriding `motion.base.*` in its token set, `source/brand-<brand>/brand-base.json`, and takes the rest from `source/base/brand-base.json`. Apps use the context and component tokens, which follow the brand.
+
+## Base tokens
+
+Base tokens hold the scale of durations, the easing curves, and the choice of each component among them. A brand overrides any of them.
+
+### Duration steps
+
+`motion.base.timing.context.*` is the scale of durations, from `2xsmall` to `3xlarge`: `2xsmall`, `xsmall`, `small`, `medium`, `large`, `xlarge`, `2xlarge`, and `3xlarge`. Each step is longer than the one before. The steps hold durations of their own and reference no other token.
+
+### Easing curves
+
+`motion.base.easing.context.*` holds the easing curves of the brand: `default`, `linear`, `ease-in`, `ease-out`, and `ease-in-and-out`. Each holds its control points and references no other token. `default` is the curve that the components reference.
+
+### Component choices
+
+The base tokens of a component reference a step of the scale or an easing curve, so a brand can move one component to another step without changing the scale. `motion.base.timing.carousel.duration` is the exception: it holds a duration of its own, which is not a step of the scale.
+
+<CxTable>
+| Token | Reference |
+| --- | --- |
+| `motion.base.timing.carousel.duration` | None, a duration of its own |
+| `motion.base.timing.carousel.transition` | `{motion.base.timing.context.medium}` |
+| `motion.base.timing.dropdown.transition` | `{motion.base.timing.context.xsmall}` |
+| `motion.base.timing.page.transition` | `{motion.base.timing.context.medium}` |
+| `motion.base.timing.skeleton.transition` | `{motion.base.timing.context.3xlarge}` |
+| `motion.base.timing.spinner.transition` | `{motion.base.timing.context.xlarge}` |
+| `motion.base.easing.carousel.transition` | `{motion.base.easing.context.default}` |
+| `motion.base.easing.page.transition` | `{motion.base.easing.context.default}` |
+| `motion.base.easing.dropdown.transition` | `{motion.base.easing.context.default}` |
+| `motion.base.easing.spinner.transition` | `{motion.base.easing.context.default}` |
+| `motion.base.easing.skeleton.transition` | `{motion.base.easing.context.default}` |
+</CxTable>
+
+## Context tokens
+
+Context tokens name the steps of the duration scale and the easing curves for apps. Each references the base token of the same name. Reach for them in an animation that has no component token.
+
+### Durations
+
+`motion.timing.context.*` holds the steps of the duration scale, from `2xsmall` to `3xlarge`.
+
+<CxTable>
+| Token | Reference |
+| --- | --- |
+| `motion.timing.context.2xsmall` | `{motion.base.timing.context.2xsmall}` |
+| `motion.timing.context.xsmall` | `{motion.base.timing.context.xsmall}` |
+| `motion.timing.context.small` | `{motion.base.timing.context.small}` |
+| `motion.timing.context.medium` | `{motion.base.timing.context.medium}` |
+| `motion.timing.context.large` | `{motion.base.timing.context.large}` |
+| `motion.timing.context.xlarge` | `{motion.base.timing.context.xlarge}` |
+| `motion.timing.context.2xlarge` | `{motion.base.timing.context.2xlarge}` |
+| `motion.timing.context.3xlarge` | `{motion.base.timing.context.3xlarge}` |
+</CxTable>
+
+### Easings
+
+`motion.easing.context.*` holds the easing curves of the brand.
+
+<CxTable>
+| Token | Reference |
+| --- | --- |
+| `motion.easing.context.default` | `{motion.base.easing.context.default}` |
+| `motion.easing.context.linear` | `{motion.base.easing.context.linear}` |
+| `motion.easing.context.ease-in` | `{motion.base.easing.context.ease-in}` |
+| `motion.easing.context.ease-out` | `{motion.base.easing.context.ease-out}` |
+| `motion.easing.context.ease-in-and-out` | `{motion.base.easing.context.ease-in-and-out}` |
+</CxTable>
+
+## Component tokens
+
+Component tokens hold the duration and the easing of the animation of a component. Each references the base token of the same name, and the brand chooses the step or the curve behind it ([Component choices](#component-choices)). A `transition` token times the change from one state to the next.
+
+### Carousel
+
+Carousel tokens time the slides of a carousel. `duration` is the time that a slide shows, and `transition` the change to the next slide.
+
+<CxTable>
+| Token | Reference |
+| --- | --- |
+| `motion.timing.carousel.duration` | `{motion.base.timing.carousel.duration}` |
+| `motion.timing.carousel.transition` | `{motion.base.timing.carousel.transition}` |
+| `motion.easing.carousel.transition` | `{motion.base.easing.carousel.transition}` |
+</CxTable>
+
+### Dropdown
+
+Dropdown tokens time the opening and the closing of a dropdown menu.
+
+<CxTable>
+| Token | Reference |
+| --- | --- |
+| `motion.timing.dropdown.transition` | `{motion.base.timing.dropdown.transition}` |
+| `motion.easing.dropdown.transition` | `{motion.base.easing.dropdown.transition}` |
+</CxTable>
+
+### Page
+
+Page tokens time the transition from one page or screen of an app to the next.
+
+<CxTable>
+| Token | Reference |
+| --- | --- |
+| `motion.timing.page.transition` | `{motion.base.timing.page.transition}` |
+| `motion.easing.page.transition` | `{motion.base.easing.page.transition}` |
+</CxTable>
+
+### Skeleton
+
+Skeleton tokens time the animation of a skeleton placeholder, which shows while content loads.
+
+<CxTable>
+| Token | Reference |
+| --- | --- |
+| `motion.timing.skeleton.transition` | `{motion.base.timing.skeleton.transition}` |
+| `motion.easing.skeleton.transition` | `{motion.base.easing.skeleton.transition}` |
+</CxTable>
+
+### Spinner
+
+Spinner tokens time the animation of a spinner.
+
+<CxTable>
+| Token | Reference |
+| --- | --- |
+| `motion.timing.spinner.transition` | `{motion.base.timing.spinner.transition}` |
+| `motion.easing.spinner.transition` | `{motion.base.easing.spinner.transition}` |
+</CxTable>
+
+## Usage
+
+An animation takes a duration and an easing, so it uses a `motion.timing.*` token and a `motion.easing.*` token of the same level. The level to use depends on what is animated.
+
+- **The animation of a component with motion tokens**: use its component tokens, such as `motion.timing.dropdown.transition` with `motion.easing.dropdown.transition`.
+- **Any other animation**: use a context duration with a context easing, such as `motion.timing.context.small` with `motion.easing.context.default`.
+- **The motion of one component in a brand**: override its `motion.base.timing.<component>.*` or `motion.base.easing.<component>.*` token in the token set of the brand, with a reference to another step or curve.
+- **The motion of every component of a brand**: override the steps of `motion.base.timing.context.*` and the curves of `motion.base.easing.context.*` in the token set of the brand.
+
+Don't use the `motion.base.*` tokens in an app. The build writes them, but they are the values of the brand, and the context and component tokens are the names that apps share.
+
+## Accessibility
+
+The token system has no option for reduced motion, and no theme or screen changes a motion token. An app that follows the reduced-motion setting of the platform shortens or skips the animation in its own code. This matters most for the animations that run without a user action: the slides of a carousel, which `motion.timing.carousel.duration` advances, and the animations of a skeleton and a spinner, which `motion.timing.skeleton.transition` and `motion.timing.spinner.transition` time.
+
+## Platform output
+
+A duration prints in milliseconds on the web and on Android, and in seconds on iOS. An easing prints as one value on the web and on iOS, and as one resource per control point on Android.
+
+<CxTable>
+| Platform | Name | Format |
+| --- | --- | --- |
+| Web | `$cx-motion-timing-context-medium` | A duration in `ms` |
+| iOS | `MotionTimingContextMedium` | A `TimeInterval` in seconds |
+| Android | `@integer/motion_timing_context_medium` | An `<integer>` in milliseconds |
+</CxTable>
+
+The easing of the second table is `motion.easing.context.ease-in`. On Android, the build writes its four control points as parts, `_x_1`, `_y_1`, `_x_2`, and `_y_2`, the arguments of `PathInterpolator`; the table names the first.
+
+<CxTable>
+| Platform | Name | Format |
+| --- | --- | --- |
+| Web | `$cx-motion-easing-context-ease-in` | A `cubic-bezier()` value |
+| iOS | `MotionEasingContextEaseIn` | A tuple of the control points as `Double`, `x1`, `y1`, `x2`, and `y2` |
+| Android | `@dimen/motion_easing_context_ease_in_x_1` | An `<item>` of the type `dimen` with the format `float` |
+</CxTable>
+
+The values in the examples of this section are those of the token sets that `init` writes, and a brand that overrides a token has its own. On the web, the build writes a duration with `ms` and an easing as `cubic-bezier()`, never as a custom property of Chassis CSS:
+
+```scss
+$cx-motion-timing-context-medium: 250ms !default;
+$cx-motion-easing-context-ease-in: cubic-bezier(0.42, 0, 1, 1) !default;
+```
+
+On iOS, a duration is a `TimeInterval` in seconds, which the animations of UIKit and SwiftUI take. An easing is a tuple of the control points, which `CAMediaTimingFunction(controlPoints:)` and `Animation.timingCurve` take, and not a `CAMediaTimingFunction`: that type is not `Sendable`, so Swift 6 rejects a `static let` of one. The `ios-swiftui` preset writes the same lines.
+
+```swift
+    public static let MotionTimingContextMedium = TimeInterval(0.25)
+    public static let MotionEasingContextEaseIn = (x1: 0.42, y1: 0.0, x2: 1.0, y2: 1.0)
+```
+
+On Android, a duration is an `<integer>` resource and each control point of an easing a float item:
+
+```xml
+  <integer name="motion_timing_context_medium">250</integer>
+  <item name="motion_easing_context_ease_in_x_1" type="dimen" format="float">0.42</item>
+  <item name="motion_easing_context_ease_in_y_1" type="dimen" format="float">0</item>
+  <item name="motion_easing_context_ease_in_x_2" type="dimen" format="float">1</item>
+  <item name="motion_easing_context_ease_in_y_2" type="dimen" format="float">1</item>
+```
+
+The `android-compose` preset writes a duration as an `Int` in milliseconds and an easing as a `CubicBezierEasing`, which needs `androidx.compose.animation:animation-core`:
+
+```kotlin
+    val motionTimingContextMedium get() = 250
+    val motionEasingContextEaseIn get() = CubicBezierEasing(0.42f, 0f, 1f, 1f)
+```
+
+The build writes `motion.base.*` on every platform too, as it writes `dimension.base.*`, with the same values as the context and component tokens that reference it. `$cx-motion-base-timing-context-medium` holds the duration that `$cx-motion-timing-context-medium` references. The motion tokens go to the main file of each platform, `main.scss`, `ChassisTokens.swift`, and `main.xml`, and to its number files. A value of an easing that is not four numbers, or that has an `x` outside `0` to `1`, fails the build on every platform.
+
+See the [web]([[docsref:/use-in-project/web-applications]]), [iOS]([[docsref:/use-in-project/ios-applications]]), and [Android]([[docsref:/use-in-project/android-applications]]) docs for the files that hold these names.
