@@ -135,6 +135,12 @@ describe('on a repository of tokens', () => {
     expect(existsSync(join(start, 'out/web/shop/acme/main.scss'))).toBe(true)
   }, 30_000)
 
+  test('swift-package --check names the manifest to write when there is none', () => {
+    const { code, stderr } = run(repository, 'swift-package', '--check')
+    expect(code).toBe(1)
+    expect(stderr).toContain('Package.swift does not exist: run chassis-tokens swift-package')
+  })
+
   test('swift-package writes Package.swift at its root, on dist/', () => {
     const { code, stdout } = run(temporary, 'swift-package', '--cwd', repository)
     expect(code, stdout).toBe(0)
@@ -152,10 +158,17 @@ describe('on a repository of tokens', () => {
     expect(stdout).toContain('cx-gone')
   })
 
-  test('diff reads the output of a git ref', () => {
+  test('diff reads the output of a git ref, and says when there is none', () => {
     const git = (...args) =>
       spawnSync('git', ['-c', 'user.name=t', '-c', 'user.email=t@t', ...args], { cwd: repository })
-    git('init', '-b', 'main')
+    const noRepository = run(repository, 'diff')
+    expect(noRepository.code).toBe(1)
+    expect(noRepository.stderr).toContain('is not in a git repository: --base <dir>')
+    git('init', '-b', 'develop')
+    const noMain = run(repository, 'diff')
+    expect(noMain.code).toBe(1)
+    expect(noMain.stderr).toContain('No main to compare with')
+    git('branch', '-m', 'main')
     git('add', '.')
     git('commit', '-m', 'first')
     const { code, stdout, stderr } = run(repository, 'diff')

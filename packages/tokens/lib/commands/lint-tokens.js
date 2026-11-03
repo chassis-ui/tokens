@@ -432,7 +432,8 @@ export function formatError({ rule, set, token, message }) {
 const HELP = `Usage: chassis-tokens lint-source [options]
 
 Checks the token files in source/: equal names across themes and screens, usable names, known
-font weights, typed tokens, no name with two types.
+font weights, typed tokens, no name with two types, letter spacing in pixels, and the weights
+of a font family set with it.
 
 Options:
   --cwd <dir>  The repository of tokens (default: the nearest folder upward whose package.json

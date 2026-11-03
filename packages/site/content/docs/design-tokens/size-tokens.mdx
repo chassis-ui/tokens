@@ -12,7 +12,7 @@ The token sets that this page names are the Chassis token system, as `chassis-to
 
 Size tokens hold the dimensions of an element: the height of a button, the size of an icon, the width of a modal window. The whitespace inside and between elements belongs to the [space tokens]([[docsref:/design-tokens/space-tokens]]), whose page has the same sections as this one.
 
-A size is a number of design pixels, and the build converts it to the unit of each platform, as [Platform output](#platform-output) shows. In the token sets that `init` writes, no brand, theme, or app overrides a size token. The tokens of `size.website.*` belong to the optional fourth group, `screen`, and differ per screen.
+A size is a number of design pixels, and the build converts it to the unit of each platform, as [Platform output](#platform-output) shows. In the token sets that `init` writes, no brand, theme, or app overrides a size token. A repository that adds the optional `screen` group can give a component token a value per screen; `init` writes no such group.
 
 ### Token levels
 
@@ -35,7 +35,6 @@ Context and component tokens both reference `size.unit.*`. No component token re
 | Base | `size.unit.*` | `dimension.base.*` | `base/metric-base.json` |
 | Context | `size.context.*`, `size.icon.glyph.*`, `size.asset.*` | `size.unit.*` | `base/app-base.json` |
 | Component | `size.<component>.*` | `size.unit.*` | `base/app-base.json` |
-| Component | `size.website.*` | `size.unit.*` | `screen-website/screen-<screen>.json` |
 </CxTable>
 
 ## Base tokens
@@ -55,6 +54,12 @@ A step that is not a positive whole number has a prefix:
 ### Size units
 
 `size.unit.*` has a token for every step of the dimension scale, under the name of the step: `size.unit.16` references `{dimension.base.16}`, and `size.unit.n4` references `{dimension.base.n4}`. The context and component tokens of this page reference these tokens.
+
+### Grid tokens
+
+`grid.*` is a group of its own, next to `size.*`, in `base/app-base.json`. It holds the measures of the layout grid, named `grid.<part>.<step>` with the steps `xsmall`, `small`, `medium`, `large`, `xlarge`, and `2xlarge`. The tokens hold a value of their own, reference no step of the scale, and are the same on every screen.
+
+`grid.breakpoint.*` holds the breakpoints, `grid.container.*` the width of the container at each breakpoint, `grid.gutter.*` the gutters, and `grid.margin.*` the margins of the page, each a size in design pixels. `grid.columns.*` holds the number of columns at each breakpoint, a number without a unit. The container of a step is narrower than the breakpoint of that step. The page gaps `space.page.large-gap`, `space.page.medium-gap`, and `space.page.small-gap` of the [space tokens]([[docsref:/design-tokens/space-tokens]]) reference `grid.gutter.medium`.
 
 ## Context tokens
 
@@ -288,27 +293,6 @@ Segment sizes hold the segment and its icon for each segment size.
 | `size.segment.small-icon` | `{size.unit.16}` |
 </CxTable>
 
-### Website
-
-Website sizes hold the thumb and the icon of a section, a feature, and a module of a website. They belong to the optional `screen` group, which `init` does not write: a repository that adds the group gives each screen a token set with the same names, and each name a step of `size.unit.*` per screen.
-
-<CxTable>
-| Token | Purpose |
-| --- | --- |
-| `size.website.section-thumb` | The thumb of a section |
-| `size.website.section-icon` | The icon of a section |
-| `size.website.feature-thumb` | The thumb of a feature |
-| `size.website.feature-icon` | The icon of a feature |
-| `size.website.module-thumb` | The thumb of a module |
-| `size.website.module-icon` | The icon of a module |
-</CxTable>
-
-## Grid tokens
-
-`grid.*` is a group of its own, next to `size.*`, in `base/app-base.json`. It holds the measures of the layout grid, named `grid.<part>.<step>` with the steps `xsmall`, `small`, `medium`, `large`, `xlarge`, and `2xlarge`. The tokens hold a value of their own, reference no step of the scale, and are the same on every screen.
-
-`grid.breakpoint.*` holds the breakpoints, `grid.container.*` the width of the container at each breakpoint, `grid.gutter.*` the gutters, and `grid.margin.*` the margins of the page, each a size in design pixels. `grid.columns.*` holds the number of columns at each breakpoint, a number without a unit. The container of a step is narrower than the breakpoint of that step. The page gaps `space.page.large-gap`, `space.page.medium-gap`, and `space.page.small-gap` of the [space tokens]([[docsref:/design-tokens/space-tokens]]) reference `grid.gutter.medium`.
-
 ## Usage
 
 Size tokens apply to the width and the height of an element. The level to use depends on how specific the element is.
@@ -356,6 +340,6 @@ With the `outputReferences` option, a token names the token that it references, 
     public static let SizeContext2xsmall = SizeUnit16
 ```
 
-In a repository with screens, the main file of each platform holds `size.website.*` of the first configured screen, and the number file of a screen, such as `number-small.scss`, holds them for that screen.
+In a repository with screens, the main file of each platform holds the sizes of the first configured screen, and the number file of a screen, such as `number-small.scss`, holds the sizes of that screen.
 
 See the [web]([[docsref:/use-in-project/web-applications]]), [iOS]([[docsref:/use-in-project/ios-applications]]), and [Android]([[docsref:/use-in-project/android-applications]]) docs for the files that hold these names.

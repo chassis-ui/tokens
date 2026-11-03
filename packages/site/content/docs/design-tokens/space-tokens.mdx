@@ -12,7 +12,7 @@ The token sets that this page names are the Chassis token system, as `chassis-to
 
 Space tokens hold the whitespace inside and between elements: the padding of a button, the gap between an icon and its label, the padding of a page. The dimensions of the elements belong to the [size tokens]([[docsref:/design-tokens/size-tokens]]), whose page has the same sections as this one.
 
-A space is a number of design pixels, and the build converts it to the unit of each platform, as [Platform output](#platform-output) shows. In the token sets that `init` writes, no brand, theme, or app overrides a space token. The tokens of `space.website.*` belong to the optional fourth group, `screen`, and differ per screen.
+A space is a number of design pixels, and the build converts it to the unit of each platform, as [Platform output](#platform-output) shows. In the token sets that `init` writes, no brand, theme, or app overrides a space token. A repository that adds the optional `screen` group can give a component token a value per screen; `init` writes no such group.
 
 ### Token levels
 
@@ -35,7 +35,6 @@ The two upper levels reference different scales. Component tokens reference `spa
 | Base | `space.unit.*` | `dimension.base.*` | `base/metric-base.json` |
 | Context | `space.context.*` | `size.unit.*` | `base/app-base.json` |
 | Component | `space.<component>.*` | `space.unit.*` | `base/app-base.json` |
-| Component | `space.website.*` | `space.unit.*` | `screen-website/screen-<screen>.json` |
 </CxTable>
 
 ## Base tokens
@@ -336,26 +335,6 @@ Segment spacing holds the padding of the bar, `bar-padding`, and the padding and
 | `space.segment.small-gap` | `{space.unit.8}` |
 </CxTable>
 
-### Website
-
-Website spacing holds the padding and the gaps of a section, a feature, and a module of a website, and the gaps of the content. It belongs to the optional `screen` group, which `init` does not write: a repository that adds the group gives each screen a token set with the same names, and each name a step of `space.unit.*` per screen.
-
-<CxTable>
-| Token | Purpose |
-| --- | --- |
-| `space.website.section-padding-y` | The vertical padding of a section |
-| `space.website.section-padding-x` | The horizontal padding of a section |
-| `space.website.section-gap` | The gap between the parts of a section |
-| `space.website.content-header-gap` | The gap inside the header of the content |
-| `space.website.content-features-gap` | The gap between the features of the content |
-| `space.website.feature-padding-y` | The vertical padding of a feature |
-| `space.website.feature-padding-x` | The horizontal padding of a feature |
-| `space.website.feature-gap` | The gap inside a feature |
-| `space.website.module-padding-y` | The vertical padding of a module |
-| `space.website.module-padding-x` | The horizontal padding of a module |
-| `space.website.module-gap` | The gap inside a module |
-</CxTable>
-
 ## Usage
 
 Space tokens apply to the padding of an element and to the gaps between elements. The level to use depends on how specific the element is.
@@ -395,6 +374,6 @@ $cx-space-context-medium: 1rem !default;
 $cx-space-button-large-padding-x: 1rem !default;
 ```
 
-In a repository with screens, the main file of each platform holds `space.website.*` of the first configured screen, and the number file of a screen, such as `number-small.scss`, holds them for that screen.
+In a repository with screens, the main file of each platform holds the spacing of the first configured screen, and the number file of a screen, such as `number-small.scss`, holds the spacing of that screen.
 
 See the [web]([[docsref:/use-in-project/web-applications]]), [iOS]([[docsref:/use-in-project/ios-applications]]), and [Android]([[docsref:/use-in-project/android-applications]]) docs for the files that hold these names.

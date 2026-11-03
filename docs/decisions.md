@@ -97,7 +97,8 @@ All are decided. "The maintainer" took the decision on a proposal of a session.
   wrote only a link, as these repositories push to `main` and it lists pull requests. The release
   of this package has the title `v<version>`, as chassis-ui/assets. The maintainer, 2026-11-02.
 - **D10. How does a repository made earlier take what `init` writes now?** With `init --check`,
-  which reports what differs, and `init --only <file…>`, which writes those files. `package.json`
+  which reports what differs, and `init --only <file…>`, which writes those files, with `--force` over
+  ones that exist. `package.json`
   and `CHANGELOG.md` are never written over, as the token files were not. `init` also writes
   `AGENTS.md` and `CLAUDE.md`, since a release follows from a push; they guide, and D9 enforces.
   chassis-ui/assets has the same commands by its own decision, and no check compares the two.

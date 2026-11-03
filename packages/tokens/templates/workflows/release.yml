@@ -4,8 +4,9 @@ name: Release
 # checks the committed dist/ against a fresh build, publishes the package to npm and creates the
 # tag and its GitHub release, whose body is the entry of the version in CHANGELOG.md, with the
 # Android library of every app and brand attached: <name>-android-<app>-<brand>-<version>.aar, and
-# one zip per platform, app and brand: <name>-<platform>-<app>-<brand>-<version>.zip. A push that does not change the version
-# releases nothing. Swift Package Manager resolves the tag as the version of the Swift package.
+# one zip per platform, app and brand: <name>-<platform>-<app>-<brand>-<version>.zip. A push that
+# does not change the version releases nothing. Swift Package Manager resolves the tag as the
+# version of the Swift package.
 # Written by `chassis-tokens init`.
 #
 # npm trusted publishing: the package trusts this workflow file of this repository, so no npm

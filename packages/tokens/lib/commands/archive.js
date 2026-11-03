@@ -269,8 +269,8 @@ Writes one archive per platform, app and brand of the output, for a release:
 dist/<platform>/<app>/<brand>/ at its top level. Exits 1 when the output has no job.
 
 Options:
-  --to <dir>           Folder to write the archives to, default ${ARCHIVES_DIR}. The archives of
-                       the prefix already in it are removed first
+  --to <dir>           Folder to write the archives to, relative to the repository, default
+                       ${ARCHIVES_DIR}. The archives of the prefix already in it are removed first
   --prefix <name>      Start of the names, default the name of package.json without its scope
   --release <version>  Version in the names, default the version of the repository
   --cwd <dir>          Repository of tokens, default the nearest folder upward with a chassis block

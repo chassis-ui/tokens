@@ -26,13 +26,12 @@ The token system is built on three core groups, `brand`, `theme`, and `app`, and
 <CxTable>
 | Collection | Variables | Styles |
 | --- | --- | --- |
-| `brand` | `color.base.*`, `borderRadius.base.*`, `typography.fontFamily.*`, `typography.fontWeight.*`, `typography.fontSize.*`, `typography.lineHeight.*`, `typography.letterSpacing.*`, `typography.paragraphSpacing.*` | None |
+| `brand` | `color.base.*`, `borderRadius.base.*`, `opacity.base.context.*`, `motion.base.*`, `typography.fontFamily.*`, `typography.fontWeight.*`, `typography.fontSize.*`, `typography.lineHeight.*`, `typography.letterSpacing.*`, `typography.paragraphSpacing.*` | None |
 | `theme` | `color.primitive.*`, `color.context.*`, `color.shadow.*`, `color.utility.*` | `shadow.elevation.*`, `shadow.glow.*`, `bg-blur.*`, `gradient.primitive.*` |
-| `app` | Component colors such as `color.button.*`, `size.*`, `space.*`, `borderRadius.context.*` and the component radii, `borderWidth.*`, `opacity.*`, `grid.*` | `font.*`, `shadow.context.*` and the component shadows such as `shadow.button.*` |
-| `screen` | `size.website.*`, `space.website.*`, `typography.fontSize.website.*`, `figma.website.*` | `font.website.*` |
+| `app` | Component colors such as `color.button.*`, `size.*`, `space.*`, `borderRadius.context.*` and the component radii, `borderWidth.*`, `opacity.*`, `grid.*`, `motion.timing.*`, `motion.easing.*` | `font.*`, `shadow.context.*` and the component shadows such as `shadow.button.*` |
 </CxTable>
 
-The `website` groups of `size.*`, `space.*`, `typography.fontSize.*`, and `font.*` belong to the `screen` Collection, not to `app` or `brand`. Every Collection also holds the [visibility switches](#visibility-switches) of its group, `figma.switch.<group>.*`.
+A repository that adds the optional `screen` group gets a `screen` Collection for the tokens that differ per screen. Every Collection also holds the [visibility switches](#visibility-switches) of its group, `figma.switch.<group>.*`.
 
 The Modes depend on the options of your `$themes.json`. In a repository that `init` wrote with the brands `acme` and `globex`, for example, the `brand` Collection has the Modes `acme` and `globex`, and the `theme` Collection has the Modes `light` and `dark`. Every option becomes a Mode, including an option that the build does not write because `chassis.build` of `package.json` does not list it.
 
@@ -99,7 +98,7 @@ The first export creates the Collections, the Modes, the Variables, and the styl
 4. Choose the export options and click **Confirm**.
 5. Select the options of the groups to export. Each selected option becomes a Mode.
 6. Click **Export to Figma** and wait until the plugin finishes.
-7. Open the Variables panel of Figma and check that it lists one Collection per group, `brand`, `theme`, `app`, and `screen`, each with the Modes you selected.
+7. Open the Variables panel of Figma and check that it lists one Collection per group, `brand`, `theme`, and `app`, and `screen` when the repository has it, each with the Modes you selected.
 8. Publish the library if other files use it.
 
 ### Update the values
@@ -188,22 +187,6 @@ Header
 ```
 
 With the `globex` and `dark` Modes, the header shows the dark logo of the Globex group only. The build does not write the switches to any platform, because it never writes a token of the type `boolean`.
-
-### Screen Variables
-
-The Modes of the optional `screen` Collection resize a design of the website without a copy of its frames. `size.website.*`, `space.website.*`, and `typography.fontSize.website.*` differ per screen, so a frame that uses them follows the Mode of the Collection.
-
-The sets of the screens can also hold tokens for Figma only, such as `figma.website.*`, with what the Figma files of a website need per screen: sizes in design pixels, and the names of component variants as text. The build writes no `figma.*` token to any platform; the group exists for Figma only.
-
-<CxTable>
-| Token | Purpose |
-| --- | --- |
-| `figma.website.size.page-w` | Width of the page |
-| `figma.website.size.slide-min-w` | Minimum width of a slide |
-| `figma.website.size.card-min-w` | Minimum width of a card |
-| `figma.website.variant.nav` | Name of the variant that the navigation shows |
-| `figma.website.variant.section` | Name of the variant that a section shows |
-</CxTable>
 
 ## Troubleshooting
 

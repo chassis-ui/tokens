@@ -1,7 +1,7 @@
 name: CI
 
-# On a push and on a pull request: the changelog, the source lint, a fresh build against the committed dist/
-# and the Swift package, with the commands of @chassis-ui/tokens. Written by
+# On a push and on a pull request: the changelog, the source lint, a fresh build against the
+# committed dist/ and the Swift package, with the commands of @chassis-ui/tokens. Written by
 # `chassis-tokens init`.
 on:
   push:

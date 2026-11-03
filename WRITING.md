@@ -127,7 +127,7 @@ The project has one word for each concept. Using a synonym makes the reader wond
 | base, context, component tokens | The three token levels (see [§10](#10-standard-section-order))                                                           | semantic, alias, global tokens                                      |
 | the build                       | The Style Dictionary build in `packages/tokens/lib/build/`                                                               | the pipeline, the generator, the script                             |
 
-**Three core groups and an optional one.** The token system is built on three groups: `brand`, `theme`, and `app`. `screen` is an optional fourth group. Chassis Tokens is meant to be owned and customized, so an adopter can remove the `screen` group or add a group of their own. Write about the groups in this way: name the three core groups first, call `screen` optional, and don't present the committed options (`chassis`, `light`, `docs`, `large`) as the only ones.
+**Three core groups and an optional one.** The token system is built on three groups: `brand`, `theme`, and `app`. `screen` is an optional fourth group. Chassis Tokens is meant to be owned and customized, so an adopter can remove the `screen` group or add a group of their own. Write about the groups in this way: name the three core groups first, call `screen` optional, and don't present the options of the examples (`acme`, `light`, `site`) as the only ones.
 
 Figma has its own terms: a **Variable**, a **Collection**, a **Mode**. Use them capitalized, and only for Figma; a Figma Mode that holds the dark theme is still "the dark theme" outside Figma.
 
@@ -155,7 +155,7 @@ Token reference docs use dot paths; platform docs use the names of their platfor
 
 **Placeholders** go in angle brackets, lowercase: `` `dist/<platform>/<app>/<brand>/` ``, `` `space.<component>.*` ``. Don't use square brackets or braces for placeholders; braces are token references.
 
-**Other references:** file paths relative to the repository root (`` `packages/tokens/package.json` ``), or to the installed package when the reader has only that (`` `node_modules/@chassis-ui/tokens/dist/web/` ``); commands in full (`` `pnpm tokens --platform ios` ``); configuration keys as a path (`` `chassis.build.apps` ``); units in code (`` `rem` ``, `` `dp` ``). Interface labels of Figma, Tokens Studio, and Xcode are bold, not code: **File → Add Package Dependencies…**.
+**Other references:** file paths relative to the repository root (`` `packages/tokens/package.json` ``), or to the installed package when the reader has only that (`` `node_modules/acme-tokens/dist/web/` ``); commands in full (`` `npx chassis-tokens build --platform ios` ``); configuration keys as a path (`` `chassis.build.apps` ``); units in code (`` `rem` ``, `` `dp` ``). Interface labels of Figma, Tokens Studio, and Xcode are bold, not code: **File → Add Package Dependencies…**.
 
 ---
 
@@ -165,10 +165,12 @@ Token reference docs use dot paths; platform docs use the names of their platfor
 
 Chassis Tokens is a multi-brand, multi-platform system that its adopters own and customize. The names of the tokens and the references between them are its structure. The values are not: a color, a font family, a radius, or a contrast ratio belongs to one brand, changes with the next release, and is different in the fork of an adopter. Document the structure, and keep the values out.
 
-**Names must exist.** Every token name, reference, file name, command, and option in a doc must exist in `source/`, `packages/tokens/dist/`, or the build as written. Don't write a token from memory, don't extend a scale by analogy, and don't invent an example token — a reader will search for it. Before adding a name, find it:
+**Names must exist.** Every token name, reference, file name, command, and option in a doc must exist in the token system, `packages/tokens/templates/source/`, or in a build of a repository that `init` writes, as written. Don't write a token from memory, don't extend a scale by analogy, and don't invent an example token — a reader will search for it. Before adding a name, find it:
 
 ```bash
-grep -rn "space-context-medium" packages/tokens/dist/web/docs/chassis/
+npx chassis-tokens init acme-tokens --brand acme --app site:web mobile:ios,android
+npx chassis-tokens build --cwd acme-tokens
+grep -rn "space-context-medium" acme-tokens/dist/web/site/acme/
 ```
 
 **Values stay out of prose and tables.** Don't write the value of a token: no hex or `rgba()` colors, no font family or weight names, no sizes in pixels, no opacity numbers, no contrast ratios. Describe a token by what it references and what it is for.
@@ -181,14 +183,14 @@ What a doc may say about values:
 
 - **The kind of value and its unit:** "a size in design pixels", "a number from `0` to `1`", "a list of font families".
 - **A value that the name states:** the naming pattern of a scale ("the name of a `size.unit.*` token is its size in design pixels; `d15` is one and a half, `n4` is minus four"). Explain the pattern once; don't list the values.
-- **Which tokens differ**, by name, between brands, themes, or screens: "a brand overrides `borderRadius.base.context.*`", "`size.website.*` differs per screen". Not what they differ to.
+- **Which tokens differ**, by name, between brands, themes, or screens: "a brand overrides `borderRadius.base.context.*`", "a token set of a screen overrides `size.<component>.*`". Not what they differ to.
 - **Relations between values:** "each step of the scale is larger than the one before", "a shade is the base color mixed with white or black by the share of a `modify.*` token".
 
 **Generated code is the exception, and it is copied, not retyped.** A code block that shows the format of a platform holds lines of `dist/` or of the preset baselines exactly as they are. Such a block shows a format, not a value, so:
 
 - Keep it to the few lines that show the format, and shorten it by leaving lines out, never by editing a line.
 - Prefer a token whose value does not belong to a brand: a size over a color, a color over a font family. Don't pick a font family token when the format can be described in prose.
-- Say once per page, before the first such block, that the values in the examples are those of the `chassis` brand in the current version and can differ in other brands.
+- Say once per page, before the first such block, that the values in the examples are those of the token system as `init` writes it, the `acme` brand of the examples, and can differ in a repository that changed them.
 
 **Accessibility depends on the brand.** Don't state contrast ratios or claim a conformance level. Say which roles are meant to be used together (`fg-main` on `bg-main`), and tell the reader to measure the pairs of their brand and theme.
 
@@ -196,9 +198,9 @@ What a doc may say about values:
 
 A doc that states a number makes a promise the next release can break. Don't count tokens, token sets, files, or builds ("eleven palettes", "eight files", "16 builds"); name the things or their pattern instead.
 
-**Versions.** Write "Node.js 22 or later", not "the latest Node.js". For the version of Chassis Tokens, use the `[[config:current_version]]` token ([§17](#17-cross-references)) instead of a number typed by hand.
+**Versions.** Write "Node.js 22 or later", not "the latest Node.js". For the version of Chassis Tokens, use the `[[config:currentVersion]]` token ([§17](#17-cross-references)) instead of a number typed by hand.
 
-**Configuration.** The brands, themes, screens, and apps in `chassis.build` of the root `package.json` are the committed configuration, not the system. Name them as such ("the configured iOS app is `demo`"), and use them in examples, not in definitions, so an adopter with another configuration can follow.
+**Configuration.** The brands, themes, screens, and apps in `chassis.build` of the `package.json` of a repository of tokens are its configuration, not the system. The examples use the one of the quick start, the brands `acme` and `globex` and the apps `site` and `mobile`; name them as examples ("the app `mobile` of the example"), not in definitions, so an adopter with another configuration can follow.
 
 **Roadmap.** A planned feature is named as planned, in the `## Roadmap` section of `getting-started/introduction.mdx` and nowhere else. No doc describes a planned feature as if the build had it. Planned today: seasonal and high-contrast themes, and output in other formats such as JavaScript and JSON.
 
@@ -390,7 +392,7 @@ Quote the message as the tool prints it, so a search for the error finds the pag
 
 **Within the same doc.** Use plain `#anchor` links — IDs are auto-generated from heading text by slugifying (`### Screen sizes` becomes `#screen-sizes`). Don't create two headings with the same slug in a doc, and re-verify anchors after renaming a heading — internal links to the old slug silently break. Migrating a heading to sentence case doesn't change its slug.
 
-**Configuration values.** `[[config:<key>]]` prints a value of `packages/site/config.yml`, in prose, links, and code blocks: `[[config:current_version]]`, `[[config:repo]]`.
+**Configuration values.** `[[config:<key>]]` prints a value of `packages/site/config.yml`, in prose, links, and code blocks: `[[config:currentVersion]]`, `[[config:repo]]`.
 
 **Other Chassis docs.** Use a standard Markdown link. Chassis CSS owns the custom properties that the `web` platform prints; link [its repository](https://github.com/chassis-ui/css) rather than describing them here, until a page of its docs is agreed on as the target.
 
@@ -425,7 +427,7 @@ A doc shows two kinds of code, and the reader must be able to tell them apart. I
 
 - **Generated code** is an excerpt of `dist/`, copied as it is ([§7](#7-names-are-facts-values-are-examples)). It can be partial: show the lines under discussion.
 - **Usage code** is standalone: a reader copying it into a project with the tokens installed should see it compile. Start with the imports (`import ChassisTokensDemoChassis`, `@use`), and use real token names.
-- **Configuration** shows the key inside its parent, and the intro sentence names the file: "In `chassis.build` of the root `package.json`:".
+- **Configuration** shows the key inside its parent, and the intro sentence names the file: "In `chassis.build` of `package.json`:".
 
 When an option changes the output, show the configuration block, then the output block, in that order. Commands run from the repository root unless the sentence before them says otherwise. Prefer working code over comment-only placeholders.
 
@@ -456,7 +458,7 @@ Before opening a PR with a doc change, verify:
 - [ ] Token names use the form of their context, and placeholders use angle brackets ([§6](#6-token-names-and-code-references-in-prose)).
 - [ ] Every token name and reference exists in `source/` or `dist/` as written ([§7](#7-names-are-facts-values-are-examples)).
 - [ ] No token values in prose or tables: no colors, font names, pixel sizes, opacity numbers, or contrast ratios ([§7](#7-names-are-facts-values-are-examples)).
-- [ ] A page with generated code says once that the values are those of the `chassis` brand ([§7](#7-names-are-facts-values-are-examples)).
+- [ ] A page with generated code says once that the values are those of the token system as `init` writes it ([§7](#7-names-are-facts-values-are-examples)).
 - [ ] The groups are three core groups and an optional `screen` group ([§5](#5-vocabulary)).
 - [ ] No counts, no version typed by hand, and no planned feature outside the roadmap ([§8](#8-counts-versions-and-configuration)).
 - [ ] Frontmatter `description` is under 160 characters and describes the page ([§9](#9-frontmatter)).
@@ -518,7 +520,7 @@ Replaced at build time in prose, link targets, code blocks, and frontmatter.
 | Token                 | Replaced with                                                | Example                                                  |
 | --------------------- | ------------------------------------------------------------ | -------------------------------------------------------- |
 | `[[docsref:/<path>]]` | The URL of a doc of this site, with an optional `#anchor`    | `[[docsref:/design-tokens/space-tokens#context-tokens]]` |
-| `[[config:<key>]]`    | A value of `packages/site/config.yml`; nested keys with dots | `[[config:current_version]]`                             |
+| `[[config:<key>]]`    | A value of `packages/site/config.yml`; nested keys with dots | `[[config:currentVersion]]`                              |
 
 ### Other components
 

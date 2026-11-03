@@ -233,6 +233,44 @@ function render(text, values) {
 }
 
 /**
+ * Pads the columns of every Markdown table to the width of their widest cell, as Prettier
+ * does: a placeholder is replaced by text of another length, so a table of a template is
+ * aligned for one package manager only until it is rendered.
+ * @param {string} markdown
+ * @returns {string}
+ */
+export function alignTables(markdown) {
+  const lines = markdown.split('\n')
+  const isRow = (line) => /^\s*\|.*\|\s*$/.test(line)
+  for (let start = 0; start < lines.length; start++) {
+    if (!isRow(lines[start])) continue
+    let end = start
+    while (end + 1 < lines.length && isRow(lines[end + 1])) end++
+    const rows = lines.slice(start, end + 1).map((line) =>
+      line
+        .trim()
+        .slice(1, -1)
+        .split('|')
+        .map((cell) => cell.trim())
+    )
+    const widths = rows[0].map((_, column) =>
+      Math.max(
+        ...rows.map((row) => (/^:?-+:?$/.test(row[column] ?? '') ? 3 : (row[column] ?? '').length))
+      )
+    )
+    for (let n = 0; n < rows.length; n++) {
+      const cells = widths.map((width, column) => {
+        const cell = rows[n][column] ?? ''
+        return /^:?-+:?$/.test(cell) ? '-'.repeat(width) : cell.padEnd(width)
+      })
+      lines[start + n] = `| ${cells.join(' | ')} |`
+    }
+    start = end
+  }
+  return lines.join('\n')
+}
+
+/**
  * The Figma mode switches of a group: `figma.switch.<group>.mode-<n>`, one per option, `true`
  * in the set of the option given and `false` in the base set of the group, where `on` is left out.
  * @param {string} group
@@ -368,7 +406,10 @@ export function planFiles(options = {}) {
     PM: pm,
     PNPM_SETUP: commands.setup
   }
-  const template = (file) => render(readFileSync(join(TEMPLATES, file), 'utf8'), values)
+  const template = (file) => {
+    const text = render(readFileSync(join(TEMPLATES, file), 'utf8'), values)
+    return file.endsWith('.md') ? alignTables(text) : text
+  }
   const json = (value) => `${JSON.stringify(value, null, 2)}\n`
 
   const packageJson = {
@@ -450,12 +491,10 @@ function planFor(options, dir) {
 export function init(options = {}) {
   const dir = resolve(options.dir || '.')
   const plan = planFor(options, dir)
-  const kept = existingSource(dir)
-  if (kept.length > 0) {
-    for (const file of plan.keys()) {
-      if (file.startsWith(`${SOURCE_DIR}/`)) plan.delete(file)
-    }
-  }
+  const planned = [...plan.keys()].filter((file) => file.startsWith(`${SOURCE_DIR}/`))
+  // Only when token files were to be written: `--only` of other files leaves source/ out
+  const kept = planned.length > 0 ? existingSource(dir) : []
+  for (const file of kept.length > 0 ? planned : []) plan.delete(file)
   const packageJson = plan.has('package.json') ? JSON.parse(plan.get('package.json')) : undefined
   const keptData = options.force
     ? DATA_FILES.filter((file) => plan.has(file) && existsSync(join(dir, file)))
@@ -528,9 +567,11 @@ Options:
                          of the folder, or left out
   --license <license>    The license, default MIT
   --author <author>      The author; default user.name of git, or left out
-  --only <file…>         Write these files only, for a repository made earlier
+  --only <file…>         Write these files only, for a repository made earlier; one that
+                         exists needs --force
   --check                Report where the repository differs from what this version writes,
-                         and exit 1 when it does. Writes nothing
+                         and exit 1 when it does. Writes nothing. Reads the package manager
+                         from the lockfile: before the first install, give --pm
   --force                Write over the files that exist, but never a token file, package.json
                          or CHANGELOG.md
   --dry-run              Print the files, write nothing
@@ -666,9 +707,14 @@ export function cli(argv = process.argv.slice(2)) {
       return
     }
     const run = PACKAGE_MANAGERS[options.pm || DEFAULTS.pm]
+    const ios = Object.values(packageJson?.chassis?.build?.apps ?? {}).some((platforms) =>
+      platforms.some((platform) => platform.startsWith('ios'))
+    )
     console.log(`\n✅ ${files.length} files in ${shown}\n\nNext:`)
     if (shown !== '.') console.log(`  cd ${shown}`)
     console.log(`  git init\n  ${run.install}\n  ${run.run} build`)
+    if (ios)
+      console.log(`  ${run.run} swift-package (the manifest of the Swift package, from dist/)`)
     console.log(`  git add . (with ${run.lockfile}, which the workflows install from)`)
   } catch (error) {
     console.error(`❌ ${error.message}`)

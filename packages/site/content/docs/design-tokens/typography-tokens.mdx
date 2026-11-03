@@ -18,14 +18,13 @@ The font families are named by their job, not by their typeface: `ui` for compon
 
 Typography tokens have no levels. The scales of `ui` and `code` hold values of their own. The sizes and line heights of `prose` reference those of `ui` step by step, so a reading font has the sizes of `ui`. Its weights and its letter spacing hold values of their own, because a weight belongs to its typeface. The `context` group holds the text roles, such as `h1`, `lead`, and `title-large`. Each role holds its own font size, line height, and letter spacing, and each role group, such as `heading` or `title`, references a family and a weight. The `font.*` tokens are the next step: they reference the typography tokens property by property.
 
-A brand gives the text its character by overriding the font families and the font weights in its own token set. It moves a role group to another family by overriding the family and the weight of that group, and it retunes a role by overriding its size, line height, or letter spacing. Where the token system has the optional `screen` group, each screen has a token set that holds `typography.fontSize.website.*`. No token set of a theme or an app that `init` writes declares a typography token.
+A brand gives the text its character by overriding the font families and the font weights in its own token set. It moves a role group to another family by overriding the family and the weight of that group, and it retunes a role by overriding its size, line height, or letter spacing. A repository that adds the optional `screen` group gives each screen a token set, for the font sizes that differ per screen. No token set of a theme or an app that `init` writes declares a typography token.
 
 <CxTable>
 | Tokens | Token set |
 | --- | --- |
 | `typography.fontFamily.*`, `typography.fontWeight.*` | `source/base/brand-base.json`, overridden by the `brand-base.json` of a brand, such as `source/brand-acme/brand-base.json` |
 | `typography.fontSize.*`, `typography.lineHeight.*`, `typography.letterSpacing.*`, `typography.paragraphSpacing.*` | `source/base/brand-base.json`, which the `brand-base.json` of a brand can override too |
-| `typography.fontSize.website.*` | The token set of each screen, when the repository has the optional `screen` group |
 </CxTable>
 
 ## Font families
@@ -35,7 +34,7 @@ A font family token holds a list of font families: the font of the brand first, 
 <CxTable>
 | Token | Purpose |
 | --- | --- |
-| `typography.fontFamily.ui` | The family of components: `font.ui.*`, `font.website.*`, and every component font |
+| `typography.fontFamily.ui` | The family of components: `font.ui.*` and every component font |
 | `typography.fontFamily.prose` | The family of reading content, such as the body of an article: `font.prose.*` |
 | `typography.fontFamily.display` | The family of display text, for the role groups that a brand points at it |
 | `typography.fontFamily.code` | The family of code: `font.code.*` |
@@ -100,30 +99,15 @@ A font size token holds a size in design pixels. The tokens follow the pattern `
 | `typography.fontSize.prose.*` | The steps of `ui`, each referencing the step of `ui` with the same name |
 | `typography.fontSize.code.*` | `large`, `medium`, `small` |
 | `typography.fontSize.context.*` | The name of a text role, such as `h1` or `title-large` |
-| `typography.fontSize.website.*` | The part of a website section, such as `hero-title` |
 </CxTable>
 
 Each step of a scale is larger than the step after it in the list, from `5xlarge` down to `2xsmall`. The size of each role is in [Text roles](#text-roles).
-
-`typography.fontSize.website.*` are the only typography tokens that differ per screen. The token set of each screen holds all of them, so a screen can reference another step of the `ui` scale. `typography.fontSize.website.hero-title` and `typography.fontSize.website.section-title` hold a size of their own on every screen. The others hold a reference.
-
-<CxTable>
-| Token | `large` | `medium` | `small` |
-| --- | --- | --- | --- |
-| `typography.fontSize.website.hero-body` | `{typography.fontSize.ui.xlarge}` | `{typography.fontSize.ui.large}` | `{typography.fontSize.ui.large}` |
-| `typography.fontSize.website.section-body` | `{typography.fontSize.ui.xlarge}` | `{typography.fontSize.ui.large}` | `{typography.fontSize.ui.medium}` |
-| `typography.fontSize.website.feature-title` | `{typography.fontSize.ui.xlarge}` | `{typography.fontSize.ui.large}` | `{typography.fontSize.ui.large}` |
-| `typography.fontSize.website.feature-body` | `{typography.fontSize.ui.large}` | `{typography.fontSize.ui.medium}` | `{typography.fontSize.ui.medium}` |
-| `typography.fontSize.website.module-title` | `{typography.fontSize.ui.large}` | `{typography.fontSize.ui.medium}` | `{typography.fontSize.ui.medium}` |
-</CxTable>
 
 ## Line heights
 
 A line height token holds the line height of the font size with the same name, in design pixels: `typography.lineHeight.ui.medium` belongs to `typography.fontSize.ui.medium`, and `typography.lineHeight.context.h1` to `typography.fontSize.context.h1`. The groups `ui`, `prose`, and `code` have a line height for each of their font sizes, and the line heights of `prose` reference those of `ui`. The `context` group has one for each role. Every line height is larger than its font size.
 
 A line height belongs to its role, not to its family: a heading is set tighter than the body of an article in the same family, so the roles hold line heights of their own. They are in design pixels and not in ratios of the font size, because a line height in whole pixels keeps the lines of a text on the pixel grid in Figma, and a ratio puts them between pixels.
-
-The website has no line height tokens. `font.website.*` holds its line heights as a percentage of the font size, so they follow the font size of the screen.
 
 ## Letter spacing
 
@@ -143,7 +127,7 @@ Letter spacing tokens hold the space between letters in design pixels, the unit 
 | `typography.letterSpacing.prose.elegant` | `{size.unit.0}` |
 </CxTable>
 
-The `context` group holds one letter spacing per text role, under the name of the role, such as `typography.letterSpacing.context.title-large`. Each references `{size.unit.0}` in `source/base/brand-base.json`. A brand tightens the letters of a role by referencing a negative step of the size scale, such as `{size.unit.n1}` for `jumbo` and `hero`, as the website fonts of the optional `screen` group do with `{size.unit.n1}` and `{size.unit.nd05}`. Figma variables cannot hold a percentage, so `chassis-tokens lint-source` fails on a letter spacing in percent or in `em`.
+The `context` group holds one letter spacing per text role, under the name of the role, such as `typography.letterSpacing.context.title-large`. Each references `{size.unit.0}` in `source/base/brand-base.json`. A brand tightens the letters of a role by referencing a negative step of the size scale, such as `{size.unit.n1}` for `jumbo` and `hero`. Figma variables cannot hold a percentage, so `chassis-tokens lint-source` fails on a letter spacing in percent or in `em`.
 
 ## Paragraph spacing
 
@@ -184,7 +168,7 @@ Set text with a [font token]([[docsref:/design-tokens/font-tokens]]), which hold
 
 Take the font size and the line height from the same step or role. `typography.lineHeight.ui.large` is made for `typography.fontSize.ui.large`, and the web output of a line height is relative to the font size of the same name.
 
-Give a brand its own fonts by overriding `typography.fontFamily.*` and `typography.fontWeight.*` in the token set of the brand. Every font token follows, because the font tokens hold references. Set a family and its weights together: the weights are the style names of that typeface. An override of a family can be a reference too. `source/brand-globex/brand-base.json` sets its display text in its reading typeface, and next to it `typography.fontWeight.display.*` with the style names of that typeface:
+Give a brand its own fonts by overriding `typography.fontFamily.*` and `typography.fontWeight.*` in the token set of the brand. Every font token follows, because the font tokens hold references. Set a family and its weights together: the weights are the style names of that typeface. An override of a family can be a reference too. A brand that sets its display text in its reading typeface would hold in `source/brand-globex/brand-base.json` the family, and next to it `typography.fontWeight.display.*` with the style names of that typeface:
 
 ```json
 {
@@ -199,7 +183,7 @@ Give a brand its own fonts by overriding `typography.fontFamily.*` and `typograp
 }
 ```
 
-Move a role group to another family with two tokens, its family and its weight. A weight names a style of one family, so a brand that moves a group points its weight at a weight of the same family. `source/brand-acme/brand-base.json` sets its titles in its display family:
+Move a role group to another family with two tokens, its family and its weight. A weight names a style of one family, so a brand that moves a group points its weight at a weight of the same family. A brand that sets its titles in its display family would hold in `source/brand-acme/brand-base.json`:
 
 ```json
 {

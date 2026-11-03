@@ -152,10 +152,13 @@ async function main(args) {
   const file = join(root, MANIFEST)
 
   if (values.check) {
-    const committed = existsSync(file) ? await readFile(file, 'utf-8') : ''
+    if (!existsSync(file)) {
+      throw new Error(`${MANIFEST} does not exist: run chassis-tokens swift-package and commit it`)
+    }
+    const committed = await readFile(file, 'utf-8')
     if (committed !== manifest) {
       throw new Error(
-        `${MANIFEST} differs from the build configuration: run pnpm tokens:swift-package`
+        `${MANIFEST} differs from the build configuration: run chassis-tokens swift-package`
       )
     }
     console.log(`✅ ${MANIFEST} matches the build configuration: ${libraries.length} libraries`)

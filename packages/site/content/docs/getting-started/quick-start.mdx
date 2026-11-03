@@ -32,7 +32,7 @@ git init
 npm install
 ```
 
-The folder now holds a `package.json` with the `chassis.build` block and the scripts, a README, a changelog, the instructions for AI coding agents in `AGENTS.md`, the workflows of CI and of a release, and the token sets of the Chassis token system in `source/`. `@chassis-ui/tokens` is a development dependency, and every command runs from the root of the repository. Commit the lockfile of the install with the rest: the workflows install from it.
+The folder now holds a `package.json` with the `chassis.build` block and the scripts, `.gitignore` and `.nvmrc`, a README, a changelog, the instructions for AI coding agents in `AGENTS.md` and `CLAUDE.md`, the workflows of CI and of a release, and the token sets of the Chassis token system in `source/`. `@chassis-ui/tokens` is a development dependency, and every command runs from the root of the repository. Commit the lockfile of the install with the rest: the workflows install from it.
 
 Check the setup with a dry run, which prints the builds and the files of each and writes nothing:
 
@@ -88,7 +88,7 @@ The build writes only what `chassis.build` lists. The block that `init` wrote, i
 | `options` | Optional: Style Dictionary options by platform name |
 </CxTable>
 
-A brand, a theme or an app is an option of its group in `source/$themes.json` and a name in `chassis.build`, so keep the two in step. Without `screens` the build writes one number file for every screen size; a repository that needs values per screen adds a `screen` group, as the [Style Dictionary guide]([[docsref:/getting-started/style-dictionary]]) describes.
+A brand, a theme or an app is an option of its group in `source/$themes.json` and a name in `chassis.build`, so keep the two in step. Without `screens` the build writes one number file, with no screen in its name; a repository that needs values per screen adds a `screen` group, as the [Style Dictionary guide]([[docsref:/getting-started/style-dictionary]]) describes.
 
 A platform is `web`, `ios`, `android` or a preset: `web-scss`, `web-px` and `web-vw` for a CSS framework other than Chassis CSS, `ios-swiftui` and `android-compose` for SwiftUI and Jetpack Compose. The [Style Dictionary guide]([[docsref:/getting-started/style-dictionary]]) describes every key, platform and preset.
 
@@ -106,13 +106,13 @@ The build writes the files of every app and brand to `dist/<platform>/<app>/<bra
 npx chassis-tokens build --brand acme --platform web
 ```
 
-After a change to the brands or apps of `chassis.build`, write the manifest of the Swift package again, which has one library for every app and brand with an iOS platform:
+When an app has an iOS platform, write the manifest of the Swift package after the first build, and again after a change to the brands or apps of `chassis.build`. It has one library for every app and brand with an iOS platform, and CI checks that it follows the configuration, so commit it with `dist/`:
 
 ```bash
 npx chassis-tokens swift-package
 ```
 
-Review what the change does to the token names and values, compared with the `main` branch, and commit `dist/` with your change. A first build has no `main` to compare with:
+Review what a change does to the token names and values, compared with the `main` branch, and commit `dist/` with your change. Before the repository has a `main` branch, the command says so, and `--base` names a branch, tag, commit or folder to compare with instead:
 
 ```bash
 npx chassis-tokens diff

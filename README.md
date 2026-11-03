@@ -44,7 +44,7 @@ The repository is a [pnpm workspace](https://pnpm.io/workspaces) with two packag
 | `packages/tokens/` | `@chassis-ui/tokens` (published) | `lib/` (the `chassis-tokens` command, the Style Dictionary build and the commands on a repository), `templates/` (what `init` writes, the token system in `templates/source/base/`), `test/`, `CHANGELOG.md` |
 | `packages/site/`   | `chassis-tokens-site` (private)  | The documentation site and its dependencies                                                                                                                                                                  |
 
-The root holds the `vendor/tokens` submodule, a checkout of the tokens of the Chassis sites with `source/`, `chassis.build`, `dist/` and `Package.swift`, on which the root scripts run the build of this checkout; the pin of the assets of the site in `vendor/assets.json`, a release of the assets of the Chassis sites that `pnpm vendor` unpacks into `vendor/assets`, which is not committed; the workspace configuration, the lint and format configurations with their dependencies, the CI workflows, the Changesets configuration in `.changeset/`, the repository scripts in `build/` (`sync-version-refs.js`, `release-notes.js`) and the site output in `_site/`. In the sections below, `lib/`, `templates/` and `test/` are relative to `packages/tokens/`, and `source/` and `dist/` to the repository of tokens, `vendor/tokens` in this checkout.
+The root holds the `vendor/tokens` submodule, a checkout of the tokens of the Chassis sites with `source/`, `chassis.build`, `dist/` and `Package.swift`, on which the root scripts run the build of this checkout; the pin of the assets of the site in `vendor/assets.json`, a release of the assets of the Chassis sites that `pnpm vendor` unpacks into `vendor/assets`, which is not committed; the workspace configuration, the lint and format configurations with their dependencies, the CI workflows, the Changesets configuration in `.changeset/`, the repository script in `build/` (`sync-version-refs.js`) and the site output in `_site/`. In the sections below, `lib/`, `templates/` and `test/` are relative to `packages/tokens/`, and `source/` and `dist/` to the repository of tokens, `vendor/tokens` in this checkout.
 
 ## The command
 
@@ -65,7 +65,7 @@ Each command takes `--help`. The native compile checks and the build of the Andr
 
 Every command but `init` works on one repository: `--cwd <dir>`, by default the nearest folder upward from the working directory whose `package.json` has a `chassis` block. In a repository of tokens `source/`, `dist/` and `Package.swift` are at its root. `chassis.dist` in that `package.json` moves the output folder. The version in the file headers is that of the nearest `package.json` with a version, from the output folder upward; the other header lines come from that repository's `package.json` as well: the title from `chassis.title` or `name`, the copyright from `chassis.copyright` or `author`, and the license and its link from `license` and `repository`.
 
-`chassis-tokens init` writes a `package.json` with the `chassis.build` block and scripts that call the command, a README, a changelog, `AGENTS.md` and `CLAUDE.md`, a CI workflow, a release workflow, and the token sets of the Chassis token system with the groups `brand`, `app` and `theme`. The token sets are written once and are the repository's from then on: no later version writes over them. The release workflow runs on a push to `main` whose version has no tag `v<version>`: it checks `dist/` against a fresh build, publishes to npm with trusted publishing, and creates the tag and its GitHub release with the archives and the Android libraries attached, built with the Gradle project that comes with the package. `--brand`, `--app`, `--name`, `--pm`, `--repository`, `--license` (MIT by default) and `--author` fill it in, the last ones by default from the `origin` remote and `user.name` of git, and a field with no value is left out. `--dry-run` prints the files, and it writes nothing when a file exists unless `--force` is given. It never writes into a `source/` that holds files, with or without `--force`: it keeps them, writes no token sets and says so. The workflows install from the lockfile and run the package scripts, so commit the lockfile of the first install:
+`chassis-tokens init` writes a `package.json` with the `chassis.build` block and scripts that call the command, `.gitignore` and `.nvmrc`, a README, a changelog, `AGENTS.md` and `CLAUDE.md`, a CI workflow, a release workflow, and the token sets of the Chassis token system with the groups `brand`, `app` and `theme`. The token sets are written once and are the repository's from then on: no later version writes over them. The release workflow runs on a push to `main` whose version has no tag `v<version>`: it checks `dist/` against a fresh build, publishes to npm with trusted publishing, and creates the tag and its GitHub release with the archives and the Android libraries attached, built with the Gradle project that comes with the package. `--brand`, `--app`, `--name`, `--pm`, `--repository`, `--license` (MIT by default) and `--author` fill it in, the last ones by default from the `origin` remote and `user.name` of git, and a field with no value is left out. `--dry-run` prints the files, and it writes nothing when a file exists unless `--force` is given; `package.json` and `CHANGELOG.md` are never written over, and neither is a `source/` that holds files, with or without `--force`: it keeps them, writes no token sets and says so. For a repository made earlier, `--check` reports what differs from this version's files and exits 1, and `--only <file…>` writes those files, with `--force` over ones that exist. The workflows install from the lockfile and run the package scripts, so commit the lockfile of the first install; when an app has an iOS platform, `chassis-tokens swift-package` writes `Package.swift` after the first build:
 
 ```sh
 npx @chassis-ui/tokens init acme-tokens --brand acme --app site:web mobile:ios,android
@@ -148,6 +148,7 @@ It reads the token sets that `source/$themes.json` selects and fails, naming the
 - a token has no `$type`, or a value is not a token (such as `value` and `type` without `$`)
 - two sets of one token-set list declare the same name with different types
 - a letter spacing is in percent or in `em`, which Figma variables cannot hold: write it in pixels
+- a token set that sets a font family does not set the weights of that family, or the weight of a font token belongs to another family than the one it takes its family from
 
 ### Verify the Output
 
@@ -157,7 +158,7 @@ Check that the committed `dist/` matches a fresh build of `source/`:
 pnpm tokens:verify
 ```
 
-The check builds into `dist-next/` and compares every file with `dist/`, ignoring the timestamp and version lines of the file headers. It fails when a token name appears twice in one file, and when a reference names nothing the output declares: an Android `@type/name` without a `<type name="name">` in the same file, or a SCSS `$name` that no SCSS file of the directory declares. It never writes to `dist/`.
+The check builds into `dist-next/` and compares every file with `dist/`, ignoring the timestamp and version lines of the file headers. It fails when a token name appears twice in one file, and when a reference names nothing the output declares: an Android `@type/name` without a `<type name="name">` in the same file, a Swift constant whose value names a constant that no `static let` of the same file declares, or a SCSS `$name` that no SCSS file of the directory declares. It never writes to `dist/`.
 
 ```sh
 # Build and check one platform only
@@ -218,7 +219,7 @@ pnpm tokens:typecheck
 
 ### Build Architecture
 
-The build uses [Style Dictionary](https://styledictionary.com) 5.5 and [`@tokens-studio/sd-transforms`](https://github.com/tokens-studio/sd-transforms) 2.0 (type alignment, math, color modifiers and theme permutations). A build runs in three steps:
+The build uses [Style Dictionary](https://styledictionary.com) 5.7 and [`@tokens-studio/sd-transforms`](https://github.com/tokens-studio/sd-transforms) 2.0 (type alignment, math, color modifiers and theme permutations). A build runs in three steps:
 
 1. **Preprocess**: `preprocessor.js` aligns types, splits every font weight into weight and style, and numbers the tokens in source order.
 2. **Transform**: Style Dictionary transforms only what is safe before references are resolved: names, math, color modifiers, `rem` sizes and CSS shadows.
@@ -391,6 +392,7 @@ Every pull request and every push to `develop` runs `.github/workflows/ci.yml`:
 - **Dependency Review**: on a pull request, fails when it adds a dependency with a known vulnerability of moderate severity or above
 - **Token Diff**: on a pull request that moves the `vendor/tokens` pointer, the [token diff report](#token-diff-report) between the two commits, in the job summary
 - **Changeset**: a pull request that changes `packages/tokens/lib/` or `packages/tokens/templates/` must add a changeset (`pnpm changeset`)
+- **Native Changes**: decides whether the two native jobs run, from the paths the push or pull request changes
 - **Native iOS** (macOS, Xcode): every Swift file of `vendor/tokens/dist/` and of the preset baselines type-checked against the iOS simulator SDK, the asset catalogs compiled with `actool`, and a sample built that depends on the libraries of the `Package.swift` of `vendor/tokens` and reads their tokens
 - **Native Android**: the resources of `vendor/tokens/dist/` and of the preset baselines compiled and linked against the Android SDK, the Compose objects compiled against Jetpack Compose, and a sample app built that depends on the Android libraries and reads their resources, with the Gradle project in `test/native/android/`
 

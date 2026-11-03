@@ -11,7 +11,7 @@ source/$themes.json             The brand, app and theme options, from Tokens St
 source/base/<set>.json          The token sets of every brand, app and theme
 source/brand-<brand>/<set>.json The token sets of one brand
 dist/<platform>/<app>/<brand>/  The output of a build, committed and published
-Package.swift                   The Swift package of the iOS output
+Package.swift                   The Swift package of the iOS output, when an app has iOS
 package.json                    The brands, apps and themes, in `chassis.build`
 ```
 
@@ -22,31 +22,37 @@ own in `source/brand-<brand>/`, and keep `chassis.build` in step with the option
 
 ## Commands
 
-Once, with Node.js 22 or later:
+Once, with Node.js 22.12 or later:
 
 ```shell
 __INSTALL__
 ```
 
-| Command                 | What it does                                                         |
-| ----------------------- | -------------------------------------------------------------------- |
-| `__RUN__ build`         | Builds every brand, app and platform into `dist/`                    |
-| `__RUN__ lint`          | Checks the token files in `source/`                                  |
-| `__RUN__ verify`        | Checks that a fresh build equals the committed `dist/`               |
-| `__RUN__ diff`          | Reports the tokens added, removed and changed against the `main` branch |
-| `__RUN__ swift-package` | Writes `Package.swift` from `chassis.build`, when an app has iOS     |
-| `__RUN__ swift-package:check` | Checks that `Package.swift` follows `chassis.build`            |
-| `__RUN__ archive`       | Writes one zip per platform, app and brand of `dist/` to `archives/` |
+| Command                       | What it does                                                            |
+| ----------------------------- | ----------------------------------------------------------------------- |
+| `__RUN__ build`               | Builds every brand, app and platform into `dist/`                       |
+| `__RUN__ lint`                | Checks the token files in `source/`                                     |
+| `__RUN__ verify`              | Checks that a fresh build equals the committed `dist/`                  |
+| `__RUN__ diff`                | Reports the tokens added, removed and changed against the `main` branch |
+| `__RUN__ swift-package`       | Writes `Package.swift` from `chassis.build`, when an app has iOS        |
+| `__RUN__ swift-package:check` | Checks that `Package.swift` follows `chassis.build`                     |
+| `__RUN__ archive`             | Writes one zip per platform, app and brand of `dist/` to `archives/`    |
+| `__RUN__ release-notes`       | Prints the changelog entry of the version, and fails without one        |
 
-`node_modules/.bin/chassis-tokens build --help` prints the options of the build: a part of the output with
-`--brand`, `--app`, `--platform` and `--theme`, and a plan with `--dry-run`.
+`node_modules/.bin/chassis-tokens build --help` prints the options of the build: a part of the
+output with `--brand`, `--app`, `--platform` and `--theme`, and a plan with `--dry-run`.
 
-After a change to the tokens, run `__RUN__ build` and commit `source/` and `dist/` together.
+After a change to the tokens, run `__RUN__ build` and commit `source/` and `dist/` together. When
+an app has an iOS platform, `__RUN__ swift-package` writes `Package.swift` from the first build,
+and again after a change to the brands or apps of `chassis.build`; commit it with `dist/`, as CI
+checks it. `__RUN__ diff` compares `dist/` with the `main` branch; before the repository has one,
+`--base <ref|dir>` names a branch, tag, commit or folder to compare with.
 
 ## Releases
 
 A release is a push to `main` with a new version in `package.json`, without a tag of its own, as
-the workflow makes the tag. The first push releases the version that `init` wrote. For a later one:
+the workflow makes the tag. The first push tries to release the version that `init` wrote, and
+publishes it once the package trusts the workflow (see below). For a later version:
 
 1. Set the version in `package.json`, and add its entry to `CHANGELOG.md`.
 2. `__RUN__ build`, which writes the version into the headers of `dist/`. `verify` ignores those
@@ -54,12 +60,14 @@ the workflow makes the tag. The first push releases the version that `init` wrot
 3. `__RUN__ verify`.
 4. Commit all of it, then `git push origin main`.
 
-The release workflow stops when `CHANGELOG.md` has no entry for the version. It checks `dist/` against a fresh build, publishes the package to npm with
-trusted publishing, and creates the tag `v<version>` and its GitHub release, whose body is the entry of the version, with one Android
+The release workflow stops when `CHANGELOG.md` has no entry for the version. It checks `dist/`
+against a fresh build, publishes the package to npm with trusted publishing, and creates the tag
+`v<version>` and its GitHub release, whose body is the entry of the version, with one Android
 library per app and brand, `<name>-android-<app>-<brand>-<version>.aar`, and one zip per platform,
-app and brand, `<name>-<platform>-<app>-<brand>-<version>.zip`. `<name>` is the name of `package.json` without its scope. The Swift package is the repository
-at the tag. A push whose version has a tag releases nothing, and a release that fails makes no
-tag, so the next push tries again.
+app and brand, `<name>-<platform>-<app>-<brand>-<version>.zip`. `<name>` is the name of
+`package.json` without its scope. The Swift package is the repository at the tag. A push whose
+version has a tag releases nothing, and a release that fails makes no tag, so the next push tries
+again.
 
 Before the first push to `main`, check that `repository` in `package.json` names this repository,
 which npm compares with the provenance of the release and the file headers link to, add a
@@ -67,7 +75,9 @@ which npm compares with the provenance of the release and the file headers link 
 as the trusted publisher of the package on npmjs.com.
 
 `chassis-tokens init --check` reports where this repository differs from what the current
-`chassis-tokens init` writes, and `chassis-tokens init --only <file…>` writes those files.
+`chassis-tokens init` writes; before the first install it needs `--pm <npm|pnpm>`, as it reads the
+package manager from the lockfile. `chassis-tokens init --only <file…>` writes those files, with
+`--force` over ones that exist.
 
 ## Documentation
 

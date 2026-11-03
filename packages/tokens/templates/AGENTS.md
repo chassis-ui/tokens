@@ -14,14 +14,16 @@ and the apps.
 
 Once, with Node.js 22.12 or later: `__INSTALL__`.
 
-| Command                 | What it does                                        |
-| ----------------------- | --------------------------------------------------- |
-| `__RUN__ lint`          | Checks the token files in `source/`                 |
-| `__RUN__ build`         | Builds the tokens into `dist/`                      |
-| `__RUN__ verify`        | Fails when `dist/` differs from a fresh build       |
-| `__RUN__ diff`          | Reports the tokens added, removed and changed       |
-| `__RUN__ swift-package` | Writes `Package.swift` from `chassis.build`         |
-| `__RUN__ release-notes` | Prints the changelog entry of the version, or fails |
+| Command                       | What it does                                        |
+| ----------------------------- | --------------------------------------------------- |
+| `__RUN__ build`               | Builds the tokens into `dist/`                      |
+| `__RUN__ lint`                | Checks the token files in `source/`                 |
+| `__RUN__ verify`              | Fails when `dist/` differs from a fresh build       |
+| `__RUN__ diff`                | Reports the tokens added, removed and changed       |
+| `__RUN__ swift-package`       | Writes `Package.swift` from `chassis.build`         |
+| `__RUN__ swift-package:check` | Fails when `Package.swift` differs from it          |
+| `__RUN__ archive`             | Writes one zip per platform, app and brand          |
+| `__RUN__ release-notes`       | Prints the changelog entry of the version, or fails |
 
 ## Rules
 

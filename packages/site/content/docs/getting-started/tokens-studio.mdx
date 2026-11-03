@@ -19,7 +19,7 @@ The plugin needs access to Figma and to the repository, and the build needs Node
 - The Tokens Studio plugin from the [Figma Community](https://www.figma.com/community/plugin/843461159747178978/Tokens-Studio-for-Figma), with a Pro license. Chassis Tokens stores its token sets in several files and selects them with the themes of Tokens Studio, and both features belong to the [Pro plan](https://tokens.studio/pricing).
 - A Figma account with edit access to the file in which you run the plugin.
 - Your repository of tokens on GitHub, as `npx @chassis-ui/tokens init` writes it, and a personal access token of GitHub that can read it. To push changes from the plugin, the token needs write access.
-- Node.js 22 or later, with `@chassis-ui/tokens` installed in the repository, to lint and build the tokens after a change.
+- Node.js 22.12 or later, with `@chassis-ui/tokens` installed in the repository, to lint and build the tokens after a change.
 
 ## Connect the repository
 
@@ -45,13 +45,13 @@ A token set is one JSON file of `source/`. Its name is its path without the exte
 | --- | --- |
 | `base/metric-source` | `dimension.base.*`, the scale that the sizes reference, and `modify.*`, the shares of the color modifiers |
 | `base/metric-base` | `size.unit.*`, `space.unit.*`, `opacity.level.*`, `opacity.context.*` |
-| `base/brand-base` | `color.base.*`, `typography.fontFamily.*`, `typography.fontWeight.*`, `typography.fontSize.*`, `typography.lineHeight.*`, `typography.letterSpacing.*`, `typography.paragraphSpacing.*`, `borderRadius.base.*` |
+| `base/brand-base` | `color.base.*`, `opacity.base.context.*`, `motion.base.*`, `typography.fontFamily.*`, `typography.fontWeight.*`, `typography.fontSize.*`, `typography.lineHeight.*`, `typography.letterSpacing.*`, `typography.paragraphSpacing.*`, `borderRadius.base.*` |
 | `brand-<brand>/brand-base` | The tokens of `base/brand-base` that the brand changes; at first, only the switch of the brand |
 | `base/theme-base` | `color.primitive.*`, `color.context.*`, `color.shadow.*`, `color.utility.*`, `gradient.primitive.*` |
 | `base/theme-light` | No token except the switch of the `light` theme |
 | `base/theme-dark` | The colors of `base/theme-base`, with the references of the dark theme |
 | `base/effect-base` | `shadow.elevation.*`, `shadow.glow.*`, `bg-blur.*` |
-| `base/app-base` | `font.*`, `grid.*`, `icon.*`, the component colors, the context and component tokens of `size`, `space`, `borderRadius`, `borderWidth`, and `shadow` |
+| `base/app-base` | `font.*`, `grid.*`, `icon.*`, `motion.timing.*`, `motion.easing.*`, the component colors, the context and component tokens of `size`, `space`, `borderRadius`, `borderWidth`, and `shadow` |
 | `base/app-<app>` | The tokens of `base/app-base` that the app changes; at first, only the switch of the app |
 </CxTable>
 
@@ -162,7 +162,7 @@ The set of an app overrides the component tokens that the app changes. `init` wr
 
 ### Screen group
 
-The options of the optional `screen` group select the tokens whose value depends on the screen size, such as the padding of the sections of a website. `init` writes no `screen` group. A repository that adds one gives each option the sets that the others read, a set that every screen enables, and the set of the screen, such as:
+The options of the optional `screen` group select the tokens whose value depends on the screen size, such as the padding of the sections of a website. `init` writes no `screen` group. A repository that adds one gives each option the sets that the others read, a set that every screen enables, and the set of the screen, with names of its own, such as:
 
 <CxTable>
 | Token set | Status |
@@ -177,7 +177,7 @@ The options of the optional `screen` group select the tokens whose value depends
 | `screen/screen-<screen>` | `enabled` |
 </CxTable>
 
-`screen/screen-base` holds composite tokens, such as `font.website.*`, and the set of each screen holds the tokens that they reference, such as `typography.fontSize.website.*`, next to tokens such as `space.website.*` and `size.website.*`. The options of the group must declare the same names: `npx chassis-tokens lint-source` fails when the set of one screen lacks a token of the others.
+The set that every screen enables holds the tokens whose value is the same on every screen, such as a font that references a font size, and the set of each screen holds the tokens that differ, such as that font size. The options of the group must declare the same names: `npx chassis-tokens lint-source` fails when the set of one screen lacks a token of the others.
 
 ### Change the groups
 
@@ -209,7 +209,7 @@ The brand sets hold the base tokens of color, typography, and border radius. Des
 | `color.base.shadow.<theme>.*` | The shadow colors, which reference the transparent steps of the palette |
 </CxTable>
 
-Every step of a palette color follows from its `base` token. The steps `05` to `40` lighten the base color and the steps `60` to `95` darken it, with a color modifier of Tokens Studio whose share is a token of `modify.*`. The step `50` is the base color, and the steps `t-5005` to `t-5095` give it an opacity of `opacity.level.*`. The colors `black` and `white` have the steps with an opacity only, `t-05` to `t-95`. The step `40` of `primary` in `base/brand-base`:
+Every step of a palette color follows from its `base` token. The steps `05` to `40` lighten the base color and the steps `60` to `95` darken it, with a color modifier of Tokens Studio whose share is a token of `modify.*`. The step `50` is the base color. The transparent steps of a palette, `t-5005` to `t-5095`, are `color.primitive.*` tokens of `base/theme-base`, not base colors. The step `40` of `primary` in `base/brand-base`:
 
 ```json
 {
@@ -229,7 +229,7 @@ Every step of a palette color follows from its `base` token. The steps `05` to `
 }
 ```
 
-A brand set declares the `base` tokens of the light palette, such as `color.base.primitive.light.primary.base`, each with a color of the brand. The dark palette references the light one: `color.base.primitive.dark.primary.base` is `{color.base.primitive.light.primary.base}`.
+`base/brand-base` declares the `base` tokens of the light palette, such as `color.base.primitive.light.primary.base`, and a brand set declares the ones it changes, each with a color of the brand; as `init` writes it, a brand set holds only the switch of the brand. The dark palette references the light one: `color.base.primitive.dark.primary.base` is `{color.base.primitive.light.primary.base}`.
 
 Colors with an opacity are in the brand sets too. Figma cannot change the opacity of a Variable that is an alias, so `color.base.context.light.primary.fg-subtle` holds the complete color, and `color.context.primary.fg-subtle` only references it. See the [color modifier docs](https://docs.tokens.studio/manage-tokens/token-types/color/modified) of Tokens Studio and the [color tokens]([[docsref:/design-tokens/color-tokens]]) reference.
 

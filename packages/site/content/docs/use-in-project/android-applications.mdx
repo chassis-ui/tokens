@@ -335,7 +335,7 @@ The build then writes properties in camelCase, here to `ChassisTokens.kt`:
     val fontContextLeadFontSize get() = 22.sp
 ```
 
-A font weight is a `FontWeight`, and the letter spacing of a typography token is a number with `.em`. Add the folder to the Kotlin sources of the app module and use the values as they are, such as `Modifier.padding(ChassisTokens.spaceContextMedium)`. The objects have the names of the iOS types, such as `ChassisTokensColorLight`, `ChassisTokensColorDark` and `ChassisTokensNumberSmall`, with one theme or one screen each; pick one with `isSystemInDarkTheme()` or by the size of the window. The preset writes no icons. The [Style Dictionary guide]([[docsref:/getting-started/style-dictionary#swiftui-and-compose-presets]]) describes the preset.
+A font weight is a `FontWeight`, and the letter spacing of a typography token is a number with `.em`. Add the folder to the Kotlin sources of the app module and use the values as they are, such as `Modifier.padding(ChassisTokens.spaceContextMedium)`. The objects have the names of the iOS types, such as `ChassisTokensColorLight`, `ChassisTokensColorDark` and `ChassisTokensNumberSmall`, with one theme or one screen each; pick one with `isSystemInDarkTheme()` or by the size of the window. The preset writes no icons. The [Style Dictionary guide]([[docsref:/getting-started/style-dictionary#mobile-presets]]) describes the preset.
 
 ### Screen folders
 
@@ -372,7 +372,7 @@ The value of every resource is the same with and without the option. A resource 
 
 ## Continuous integration
 
-With the Android library in `app/libs/`, a workflow needs no step for the tokens. With a repository of tokens as a submodule, check out the submodules; `dist/` is committed, so the files are there. To build the tokens in the workflow, set up Node.js 22 or later, and build before the app:
+With the Android library in `app/libs/`, a workflow needs no step for the tokens. With a repository of tokens as a submodule, check out the submodules; `dist/` is committed, so the files are there. To build the tokens in the workflow, set up Node.js 22.12 or later, and build before the app:
 
 ```yaml
 name: Build

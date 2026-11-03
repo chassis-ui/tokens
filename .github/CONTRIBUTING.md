@@ -152,7 +152,7 @@ pnpm site:lint:html
   the site build and the HTML validation of its output), Changeset, Audit (`pnpm check:pnpm`,
   which is `pnpm audit --prod` and fails on a moderate advisory in what the package installs; the
   audit of the tooling is reported and doesn't fail), Token Diff and Dependency Review on a pull
-  request, and Native iOS and Native Android when the change moves the `vendor/tokens` pointer or
+  request, and Native iOS and Native Android, gated by the Native Changes job, when the change moves the `vendor/tokens` pointer or
   touches the build or the native checks, and on every manual run. The commands above run the same checks
   locally. `pnpm test:ci` runs all of them in one command except Changeset, Token Diff,
   Dependency Review and the two native jobs; `tokens:test` fails when `ci.yml` runs a script
@@ -222,8 +222,9 @@ once, on `develop`; pushing the same commit to `staging` or `main` doesn't run t
 `develop` and `main` are at the same commit after a release, so nothing is merged back.
 
 A version without a CHANGELOG entry is not published. A prerelease goes to the npm dist-tag of
-its first identifier, so `0.7.0-next.0` goes to `next`, and its GitHub release is marked as a
-prerelease; every other version goes to `latest`.
+its first identifier, so `0.7.0-next.0` goes to `next`, and to `next` as well when that
+identifier is a number, as npm takes a numeric tag for a version; its GitHub release is marked as
+a prerelease. Every other version goes to `latest`.
 
 The workflow can also be run by hand, on `main` only: a run on another branch stops in its
 first job. Two names are tied to settings outside the repository, so change them together:

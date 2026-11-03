@@ -65,7 +65,7 @@ Style Dictionary takes `source` only at the top level of its configuration, so e
 | light + medium | medium numbers                            |
 | light + small  | small numbers                             |
 
-Each instance lists its sets in the order `permutateThemes` returns them from `source/$themes.json`, so later sets override earlier ones as in Tokens Studio. Style Dictionary logs these overrides as token collisions in every build (20 to 34 for a light list, 714 to 728 for a dark one); they are expected.
+Each instance lists its sets in the order `permutateThemes` returns them from `source/$themes.json`, so later sets override earlier ones as in Tokens Studio. Style Dictionary logs these overrides as token collisions in every build, a few dozen for a light list and several hundred for a dark one; they are expected.
 
 ### Tokens are printed in source order
 
@@ -89,7 +89,7 @@ An adopter selects a preset by its platform name in `chassis.build.apps`, and se
 "options": { "ios": { "outputReferences": true } }
 ```
 
-The presets reuse the platform configurations: `web-px`, `web-vw` and `web-scss` call `webConfig()` of `config/web.js` with another unit and format, and `ios-swiftui` calls `swiftConfig()` of `config/ios.js` with another format. No preset has a template of its own.
+The presets reuse the platform configurations: `web-px`, `web-vw` and `web-scss` call `webConfig()` of `config/web.js` with another unit and format, and `ios-swiftui` calls `swiftConfig()` of `config/ios.js` with another format. `android-compose` has a configuration and a template of its own, `config/android-compose.js` and `templates/compose-object.template.js`, as Kotlin shares nothing with the resource XML.
 
 Which tokens print a reference instead of a value is decided by pure functions too: `reference-policy.js` holds the rules the two web formats share, `css-var-policy.js` and `scss-var-policy.js` the names each prints, and `reference(token, target)` in each mobile encoder the rule of its platform. The templates pass the token lookups in.
 
@@ -109,7 +109,7 @@ The package builds no tokens of its own, so its reference output is committed in
 
 ## Configuration
 
-`chassis.build` in the `package.json` of the repository, here as `init` writes it for the example of the quick start:
+`chassis.build` in the `package.json` of the repository, here as `init` writes it for the example of the quick start, `--brand acme globex --app site:web mobile:ios,android`:
 
 | Key       | Current value                             | Meaning                                                                        |
 | --------- | ----------------------------------------- | ------------------------------------------------------------------------------ |
@@ -152,7 +152,7 @@ Every output folder is `dist/<platform>/<app>/<brand>/`. With the current config
 
 The iOS files declare `ChassisTokens` (in `ChassisTokens.swift`) and `ChassisTokens<File>` in the others (`ChassisTokensString`, `ChassisTokensColorLight`, `ChassisTokensNumberLarge`, `ChassisTokensColor`), each a caseless `public enum`, so all of them can be in one module. The SwiftUI and Compose files have the same names and types (`.kt` for Compose), without `Color.swift` and icons.
 
-The root of a repository of tokens also has `Package.swift`, written by `chassis-tokens swift-package` from `chassis.build`: one Swift library per brand of every app with an iOS platform, `ChassisTokens<App><Brand>` (and `…SwiftUI` for `ios-swiftui`), on the output folder, with the icon catalog as a resource. The release of a repository of tokens attaches an Android library per `res/` tree, `chassis-tokens-<app>-<brand>-<version>.aar`, built by the `library` module of `test/native/android/` of this package.
+The root of a repository of tokens also has `Package.swift`, written by `chassis-tokens swift-package` from `chassis.build`: one Swift library per brand of every app with an iOS platform, `ChassisTokens<App><Brand>` (and `…SwiftUI` for `ios-swiftui`), on the output folder, with the icon catalog as a resource. The release of a repository of tokens attaches an Android library per `res/` tree, `<name>-android-<app>-<brand>-<version>.aar` (`<name>` as for the zips below), built by the `library` module of `test/native/android/` of this package.
 
 The release also attaches one zip per platform, app and brand, written by `chassis-tokens archive`: `<name>-<platform>-<app>-<brand>-<version>.zip`, with the content of `dist/<platform>/<app>/<brand>/` at its top level and `<name>` the name of `package.json` without its scope. Each zip has the digest GitHub records for a release file, so a project that takes one brand can check it and needs no package manager (D7).
 
@@ -170,7 +170,7 @@ The type groups are in `utils.js`. Tokens typed `boolean` or `other` are never e
 
 Only the web keeps a shadow token whole, so only the web color files hold shadows. The mobile platforms expand a shadow into its parts; the color part of each layer is a color, in the main file and the color files, and the other parts are sizes and strings.
 
-So the main file holds every token except the theme colors, with the values of the first theme (its component colors) and the first screen. The string, color and number files share no names with each other, and together they hold everything in main except the base colors.
+So the main file holds every token except the theme colors, with the values of the first theme (its component colors) and the first screen. The string, color and number files share no names with each other, and together they hold everything in main except the base colors and, on the web, the typography maps, which the web keeps whole and files under no other type. The `color.utility.*` tokens are emitted by no file on any platform: they are not base colors, and both `cx/allTokens` and `cx/themeTokens` leave `utility` out.
 
 ### Web
 
@@ -274,18 +274,18 @@ An icon is an `asset` token whose value is an SVG document. It stays a string to
 
 ## Checks
 
-| Command                      | Checks                                                                                                                                                                                                   |
-| ---------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `pnpm tokens:lint:source`    | `vendor/tokens/source/`: equal names across themes and screens, usable names, known font weights, typed tokens, no name with two types (`lib/commands/lint-tokens.js`)                                   |
-| `pnpm tokens:lint`           | ESLint on `lib/` and `test/`                                                                                                                                                                             |
-| `pnpm tokens:typecheck`      | TypeScript `checkJs` on `lib/`                                                                                                                                                                           |
-| `pnpm tokens:test`           | Vitest, on real tokens in fixtures and the `default` baseline; with the submodule, also the golden check of `vendor/tokens/dist/` and that its `Package.swift` matches `chassis.build`                   |
-| `pnpm tokens:verify`         | A fresh build of `vendor/tokens` equals its `dist/`; no name twice in one file; every reference names something the output declares                                                                      |
-| `pnpm tokens:verify:presets` | Each baseline, built from `test/fixtures/repository/`, equals its baseline in `test/golden/`                                                                                                             |
-| `pnpm tokens:verify:update`  | Not a check: writes the files of `vendor/tokens/dist/` and of the baselines that differ from a fresh build                                                                                               |
-| `pnpm tokens:diff`           | Not a check: the names added, removed, renamed and changed in each `vendor/tokens/dist/` file against another ref; CI writes it to the pull request's summary between the two commits of a moved pointer |
-| `pnpm tokens:native:ios`     | The Swift files against the iOS simulator SDK, the asset catalogs with `actool`, and a sample that uses the Swift package (needs Xcode)                                                                  |
-| `pnpm tokens:native:android` | The Android resources against `android.jar`, the Compose objects against Compose, and a sample app that uses the Android libraries (needs a JDK and the Android SDK)                                     |
+| Command                      | Checks                                                                                                                                                                                                                                |
+| ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `pnpm tokens:lint:source`    | `vendor/tokens/source/`: equal names across themes and screens, usable names, known font weights, typed tokens, no name with two types, letter spacing in pixels, the weights of a family set with it (`lib/commands/lint-tokens.js`) |
+| `pnpm tokens:lint`           | ESLint on `lib/` and `test/`                                                                                                                                                                                                          |
+| `pnpm tokens:typecheck`      | TypeScript `checkJs` on `lib/`                                                                                                                                                                                                        |
+| `pnpm tokens:test`           | Vitest, on real tokens in fixtures and the `default` baseline; with the submodule, also the golden check of `vendor/tokens/dist/` and that its `Package.swift` matches `chassis.build`                                                |
+| `pnpm tokens:verify`         | A fresh build of `vendor/tokens` equals its `dist/`; no name twice in one file; every reference names something the output declares                                                                                                   |
+| `pnpm tokens:verify:presets` | Each baseline, built from `test/fixtures/repository/`, equals its baseline in `test/golden/`                                                                                                                                          |
+| `pnpm tokens:verify:update`  | Not a check: writes the files of `vendor/tokens/dist/` and of the baselines that differ from a fresh build                                                                                                                            |
+| `pnpm tokens:diff`           | Not a check: the names added, removed, renamed and changed in each `vendor/tokens/dist/` file against another ref; CI writes it to the pull request's summary between the two commits of a moved pointer                              |
+| `pnpm tokens:native:ios`     | The Swift files against the iOS simulator SDK, the asset catalogs with `actool`, and a sample that uses the Swift package (needs Xcode)                                                                                               |
+| `pnpm tokens:native:android` | The Android resources against `android.jar`, the Compose objects against Compose, and a sample app that uses the Android libraries (needs a JDK and the Android SDK)                                                                  |
 
 [`test/README.md`](../packages/tokens/test/README.md) describes the tests, fixtures, baselines and native checks. CI runs all of these on pull requests; the native jobs only when the pointer of `vendor/tokens`, the build or the baselines change.
 
@@ -294,7 +294,7 @@ An icon is an `asset` token whose value is an SVG document. It stays a string to
 They are part of the output contract and kept on purpose. Don't fix one without a changeset that says what breaks.
 
 - **The main file repeats the other files.** `ChassisTokens.swift` and `main.xml` hold every token except the theme colors, with the component colors of the light theme and the numbers of the large screen. `main.xml` cannot share a resource folder with the flat string, color or number files: aapt2 fails with `has a conflicting value`.
-- **The flat files stay for one release.** `ColorLight.swift` and `ColorDark.swift` next to `Color.swift`, and the flat Android files next to `res/`, are kept since 0.6.0 so that apps can move over.
+- **The flat files stay.** `ColorLight.swift` and `ColorDark.swift` next to `Color.swift`, and the flat Android files next to `res/`, were kept in 0.6.0 so that apps could move over, and are part of the contract since: an app that reads one theme or one file still uses them. Removing them is a breaking change with a changeset.
 - **Letter spacing is in pixels.** Figma reads a number variable bound to letter spacing as pixels and cannot hold a percentage, so Tokens Studio exports no variable for one; `pnpm tokens:lint:source` fails on a letter spacing in percent or in `em`. A pixel value is the same at every font size, so a brand that sets one on a token shared by several font sizes tightens the small sizes more. The build still prints a percentage on every platform.
 - **Letter spacing has different units per platform, for the same pixels.** The web prints the size unit, iOS points, Android and Compose ems of the font size, which `android:letterSpacing` takes. The letter spacing scale keeps its pixel number on iOS and Android, because it has no font size.
 - **Icons are in the string files too.** The SVG text of each icon is a string constant or resource next to its asset; on Android it is escaped.

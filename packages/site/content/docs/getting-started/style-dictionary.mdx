@@ -32,7 +32,7 @@ Platform values such as `UIColor(…)`, ARGB hex colors, and sizes in `dp` are e
 
 The build runs in a repository of tokens, with `@chassis-ui/tokens` installed in it. It needs:
 
-- Node.js 22 or later
+- Node.js 22.12 or later
 - Token sets in `source/`, with the `$themes.json` that Tokens Studio writes; see [Tokens Studio]([[docsref:/getting-started/tokens-studio]])
 - A `package.json` with the `chassis.build` block; see [Build options](#build-options)
 
@@ -211,7 +211,7 @@ The [formats](#formats) hold the value rules of each platform. The guides for [w
 
 A preset is a platform for a team that owns its tokens and does not use Chassis CSS, UIKit, or Android resources. Select a preset by its name in `chassis.build.apps`. The output of each preset for the test repository of the builder is in `packages/tokens/test/golden/` of [the repository of the builder]([[config:repo]]).
 
-### Presets for other CSS frameworks
+### CSS framework presets
 
 The `web` platform prints the custom properties of [Chassis CSS](https://github.com/chassis-ui/css), such as `var(--default-fg-main)`, so its SCSS works only with Chassis CSS. The presets `web-scss`, `web-px`, and `web-vw` print resolved values in the unit of their name. In `chassis.build` of `package.json`:
 
@@ -225,7 +225,7 @@ The build then writes every value resolved, with sizes in pixels; [cx/scss-varia
 
 Each preset is a file of `lib/build/config/` of the package that calls `webConfig({ unit, format })` of `web.js`.
 
-### SwiftUI and Compose presets
+### Mobile presets
 
 The presets `ios-swiftui` and `android-compose` write the tokens for apps that use SwiftUI or Jetpack Compose. Select them next to, or instead of, `ios` and `android`. In `chassis.build` of `package.json`:
 
@@ -257,7 +257,7 @@ Every platform writes a main file, a string file, one color file per theme, and 
 
 Color files use the token sets of their theme, and number files the token sets of their screen. The main and string files use the token sets of the first theme, and of the first screen when the build options have screens.
 
-The main file holds every token except the theme colors, which are `color.primitive.*`, `color.context.*`, and the gradients. Its component colors are the ones of the first theme, and its numbers the ones of the first screen, if any. The string, color, and number files share no names with each other, and together they hold everything in the main file except the base colors.
+The main file holds every token except the theme colors, which are `color.primitive.*`, `color.context.*`, and the gradients. Its component colors are the ones of the first theme, and its numbers the ones of the first screen, if any. The string, color, and number files share no names with each other, and together they hold everything in the main file except the base colors and, on the web, the typography maps.
 
 On iOS, each file declares a caseless `public enum`, so all files fit in one module: `ChassisTokens` in `ChassisTokens.swift`, and `ChassisTokens<File>` in the others, such as `ChassisTokensColorLight`. When the themes include `light` and `dark`, the build writes `Color.swift` after the other files. Its type `ChassisTokensColor` holds the colors of both themes:
 
@@ -357,6 +357,7 @@ The lint fails, and names the token set and the token, when:
 - a token has no `$type`, or a value is not a token
 - two token sets of one token-set list declare the same name with different types
 - a letter spacing is in percent or in `em`, which Figma variables cannot hold
+- a token set sets a font family without the weights of that family, or the weight of a font token belongs to another family than the one it takes its family from
 
 ### Verify the output
 
@@ -448,7 +449,7 @@ Gradients are typed `color`, so `gradient.primitive.*` is in the color files and
 
 ## Formats
 
-A format prints one kind of file. Every format starts a file with a header that holds the build time, the title and the version of the repository of tokens, its copyright, and its license, and prints the tokens in source order.
+A format prints one kind of file. Every format starts a file with a header that holds the build time, the title and the version of the repository of tokens, its copyright, and its license, and prints the tokens in source order. Two more formats, `cx/ios-icons` and `cx/android-icons`, write the icon catalog and the drawables from the SVG icon tokens; they print no token.
 
 ### cx/scss-chassis-css
 
@@ -592,7 +593,7 @@ The build stops with `no Android resource qualifier for the screens large; set t
 
 ### Broken reference
 
-A build fails with `Some token references (1) could not be found.` A token references a token that is not in the token sets of the list, because of a misspelled path or a token set that the option of `source/$themes.json` does not select. To list the references, add `verbosity: 'verbose'` to `log` in `packages/tokens/lib/build/config/index.js` and build again.
+A build fails with `Some token references (1) could not be found.` A token references a token that is not in the token sets of the list, because of a misspelled path or a token set that the option of `source/$themes.json` does not select. To list the references, add `verbosity: 'verbose'` to `log` in `lib/build/config/index.js` and build again.
 
 ### Undeclared SCSS variable
 

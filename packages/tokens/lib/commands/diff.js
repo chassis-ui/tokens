@@ -324,10 +324,24 @@ async function isDirectory(path) {
  * @returns {Promise<string>} The directory; the caller removes it
  */
 async function extractRef(ref, { root, dist }) {
-  const { stdout: top } = await execFileAsync('git', ['rev-parse', '--show-toplevel'], {
-    cwd: root
-  })
-  const cwd = top.trim()
+  let cwd
+  try {
+    const { stdout: top } = await execFileAsync('git', ['rev-parse', '--show-toplevel'], {
+      cwd: root
+    })
+    cwd = top.trim()
+  } catch {
+    throw new Error(
+      `${root} is not in a git repository: --base <dir> compares with a folder instead of ${ref}`
+    )
+  }
+  try {
+    await execFileAsync('git', ['rev-parse', '--verify', '--quiet', `${ref}^{commit}`], { cwd })
+  } catch {
+    throw new Error(
+      `No ${ref} to compare with in ${cwd}: --base <ref|dir> names another branch, tag, commit or folder`
+    )
+  }
   // By the real path, which is what git prints
   const current = relative(cwd, join(realpathSync(root), relative(root, dist)))
   const paths = [...new Set([current, OLD_DIST_PATH])]

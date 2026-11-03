@@ -176,7 +176,7 @@ Use the token of the lowest level that fits the element.
 - **Round ends**: use `borderRadius.context.full`. The shape of badges and chips is a choice of the brand, so use their component tokens where the shape must follow the brand.
 - **A new component token**: reference a context token, or add a base token to `source/base/brand-base.json` when brands need to shape the component.
 
-To change the corners of a brand, override base tokens in the token set of the brand and leave the context and component tokens as they are. In `source/brand-globex/brand-base.json`, the `globex` brand gives the medium badge the `full` step of the scale like this:
+To change the corners of a brand, override base tokens in the token set of the brand and leave the context and component tokens as they are. A brand that gives the medium badge the `full` step of the scale would hold in `source/brand-globex/brand-base.json`:
 
 ```json
 {

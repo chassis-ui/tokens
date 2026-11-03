@@ -12,6 +12,7 @@ import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { afterAll, beforeAll, describe, expect, test, vi } from 'vitest'
 import {
+  alignTables,
   checkBaseline,
   DEFAULTS,
   gitDefaults,
@@ -254,6 +255,27 @@ describe('init', () => {
     expect(() => init({ dir, only: ['nope.md'] })).toThrow('init does not write nope.md')
   })
 
+  test('--only of a file that is no token set leaves source/ out of the report', () => {
+    const dir = join(temporary, 'only-with-source')
+    init({ dir })
+    expect(init({ dir, only: ['AGENTS.md'], force: true })).toMatchObject({
+      files: ['AGENTS.md'],
+      kept: []
+    })
+  })
+
+  test('the tables of the Markdown files are aligned for the package manager', () => {
+    for (const pm of /** @type {const} */ (['npm', 'pnpm'])) {
+      const dir = join(temporary, `tables-${pm}`)
+      init({ dir, pm })
+      for (const file of ['README.md', 'AGENTS.md']) {
+        const text = read(dir, file)
+        expect(alignTables(text)).toBe(text)
+        expect(text).toContain(`| \`${pm === 'npm' ? 'npm run' : 'pnpm'} build\``)
+      }
+    }
+  })
+
   test('--check reports what is missing or differs, and lets a README be its own', () => {
     const dir = join(temporary, 'checked')
     init({ dir })
@@ -442,6 +464,24 @@ describe('init', () => {
     [{ pm: 'yarn' }, 'Unknown package manager yarn']
   ])('refuses %o', (options, message) => {
     expect(() => planFiles({ dir: 'x', ...options })).toThrow(message)
+  })
+})
+
+describe('alignTables', () => {
+  test('pads every column to its widest cell, the delimiter row included', () => {
+    const table =
+      '| A | B |\n| --- | --- |\n| `pnpm build` | x |\n| `pnpm swift-package:check` | yy |\n'
+    expect(alignTables(`${table}\ntext | not a row\n`)).toBe(
+      [
+        '| A                          | B   |',
+        '| -------------------------- | --- |',
+        '| `pnpm build`               | x   |',
+        '| `pnpm swift-package:check` | yy  |',
+        '',
+        'text | not a row',
+        ''
+      ].join('\n')
+    )
   })
 })
 

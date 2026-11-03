@@ -342,7 +342,7 @@ The build then writes SwiftUI values, here to `ChassisTokens.swift`:
     public static let TypographyFontWeightUiStrongWeight = Font.Weight.semibold
 ```
 
-The preset writes no `Color.swift` and no icon catalog, and its colors have one theme each. `Package.swift` names the libraries of the preset `ChassisTokens<App><Brand>SwiftUI`. For colors that follow the appearance, use `ChassisTokensColor` of the `ios` platform, as in [SwiftUI](#swiftui). The [Style Dictionary guide]([[docsref:/getting-started/style-dictionary#swiftui-and-compose-presets]]) describes the preset.
+The preset writes no `Color.swift` and no icon catalog, and its colors have one theme each. `Package.swift` names the libraries of the preset `ChassisTokens<App><Brand>SwiftUI`. For colors that follow the appearance, use `ChassisTokensColor` of the `ios` platform, as in [SwiftUI](#swiftui). The [Style Dictionary guide]([[docsref:/getting-started/style-dictionary#mobile-presets]]) describes the preset.
 
 ### outputReferences
 
@@ -365,7 +365,7 @@ The value of every constant is the same with and without the option. A constant 
 
 ## Continuous integration
 
-With the Swift package, Xcode resolves the tokens, and a workflow needs no step for them. With a repository of tokens as a submodule, check out the submodules; `dist/` is committed, so the files are there. To build the tokens in the workflow, set up Node.js 22 or later, and build before the app:
+With the Swift package, Xcode resolves the tokens, and a workflow needs no step for them. With a repository of tokens as a submodule, check out the submodules; `dist/` is committed, so the files are there. To build the tokens in the workflow, set up Node.js 22.12 or later, and build before the app:
 
 ```yaml
 name: Build

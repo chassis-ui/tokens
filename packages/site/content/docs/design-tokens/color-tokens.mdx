@@ -12,7 +12,7 @@ The token sets that this page names are the Chassis token system, as `chassis-to
 
 Color tokens define the colors of text, surfaces, borders, icons, links, shadows, and gradients. A brand sets the base color of each palette, and the shades, the context colors, and the component colors are derived from these base colors. The context and the component colors follow the theme; the themes that `init` writes are `light` and `dark`.
 
-The tables list each token with the token it references. A column named `light` or `dark` holds the reference of the token in that theme.
+The tables list each token with the token it references. A column named `<theme>` holds the reference of the token in that theme, `light` or `dark`.
 
 ### Token levels
 
@@ -439,7 +439,7 @@ Message colors set the chat surface, the form, and the pairs of `fg` and `bg` to
 
 ### Page
 
-Page colors set the background of the body and of a section. An app can override them in its token set, `source/base/app-<app>.json`, such as a `mobile` app that sets `color.page.bg-body` to `{color.context.default.bg-even}`.
+Page colors set the background of the body and of a section. An app can override them in its token set, `source/base/app-<app>.json`, such as a `mobile` app that would set `color.page.bg-body` to `{color.context.default.bg-even}`; as `init` writes it, the set of an app holds only its switch.
 
 <CxTable>
 | Token | Reference |

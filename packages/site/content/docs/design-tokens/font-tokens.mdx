@@ -38,7 +38,7 @@ Each property references a typography token, as `font.ui.medium.strong` shows in
 
 The build adds one more property, the font style, which it takes from the font weight: `normal`, or the style that the weight names, such as `italic`.
 
-Font tokens hold references, so their values follow the typography tokens. A brand changes the text styles by overriding the font families and the font weights, or the typography tokens of one text role or role group, and no font token has to change. Where the token system has the optional `screen` group, `font.website.*` differs per screen, because its font sizes do.
+Font tokens hold references, so their values follow the typography tokens. A brand changes the text styles by overriding the font families and the font weights, or the typography tokens of one text role or role group, and no font token has to change. A repository that adds the optional `screen` group can give a font token a font size per screen.
 
 ### Token levels
 
@@ -336,24 +336,6 @@ Table fonts share the `small` step. The head has the `strong` weight, the data t
 | `font.table.head-text` | `{font.ui.small.strong}` |
 </CxTable>
 
-### Website
-
-Website fonts belong to the optional `screen` group, which `init` does not write: a repository that adds the group declares them. They hold properties of their own, not a reference to a base token. Each takes its font size from the typography token of the same name, which the token set of each screen holds. The font family is `{typography.fontFamily.ui}`, and the line height is a percentage of the font size, so it follows the font size of the screen.
-
-<CxTable>
-| Token | Font weight | Font size | Letter spacing |
-| --- | --- | --- | --- |
-| `font.website.hero-title` | `{typography.fontWeight.ui.mass}` | `{typography.fontSize.website.hero-title}` | `{size.unit.n1}` |
-| `font.website.hero-body` | `{typography.fontWeight.ui.normal}` | `{typography.fontSize.website.hero-body}` | `{typography.letterSpacing.ui.normal}` |
-| `font.website.section-title` | `{typography.fontWeight.ui.mass}` | `{typography.fontSize.website.section-title}` | `{size.unit.nd05}` |
-| `font.website.section-body` | `{typography.fontWeight.ui.normal}` | `{typography.fontSize.website.section-body}` | `{typography.letterSpacing.ui.normal}` |
-| `font.website.feature-title` | `{typography.fontWeight.ui.mass}` | `{typography.fontSize.website.feature-title}` | `{typography.letterSpacing.ui.mass}` |
-| `font.website.feature-body` | `{typography.fontWeight.ui.normal}` | `{typography.fontSize.website.feature-body}` | `{typography.letterSpacing.ui.normal}` |
-| `font.website.module-title` | `{typography.fontWeight.ui.mass}` | `{typography.fontSize.website.module-title}` | `{typography.letterSpacing.ui.mass}` |
-</CxTable>
-
-The website fonts are in a token set that every screen enables, and the other font tokens in `source/base/app-base.json`.
-
 ## Usage
 
 Choose the level that names the text:
@@ -439,7 +421,7 @@ On Android, `number.xml` has the same properties:
 
 The line height and the letter spacing print by rules of their own inside a font token:
 
-- A line height that is a percentage, as in `font.website.*`, prints in `em` on the web. iOS and Android print a size: that percentage of the font size of the same token.
-- The letter spacing is in design pixels, the same at every font size, as in Figma. The web prints it in `rem` and iOS in points. Android prints it in ems of the font size of the same token, which `android:letterSpacing` takes: a letter spacing of `-2.5` in a token with a font size of `96` prints as `-2.5` on iOS and as `-0.026` on Android.
+- A line height that is a percentage prints in `em` on the web. iOS and Android print a size: that percentage of the font size of the same token.
+- The letter spacing is in design pixels, the same at every font size, as in Figma. The web prints it in `rem` and iOS in points. Android prints it in ems of the font size of the same token, which `android:letterSpacing` takes: the design pixels divided by the font size.
 
 See the [web]([[docsref:/use-in-project/web-applications]]), [iOS]([[docsref:/use-in-project/ios-applications]]), and [Android]([[docsref:/use-in-project/android-applications]]) docs for the files that hold these names.
