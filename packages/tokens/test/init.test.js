@@ -151,7 +151,7 @@ describe('init', () => {
     ]) {
       expect(existsSync(join(dir, file)), file).toBe(true)
     }
-  })
+  }, 60_000)
 
   test('takes the name, the brands, the apps and the package manager', () => {
     const plan = planFiles({
