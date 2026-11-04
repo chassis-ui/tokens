@@ -412,7 +412,7 @@ This project is part of the Chassis Design System's multi-repository architectur
 | [chassis-ui/css](https://github.com/chassis-ui/css)         | CSS framework and component library                          |
 | [chassis-ui/react](https://github.com/chassis-ui/react)     | React component library                                      |
 | **chassis-ui/tokens**                                       | **Design token generation and management (this repository)** |
-| [chassis-ui/icons](https://github.com/chassis-ui/icons)     | Icon library and build toolkit                               |
+| [chassis-ui/icons](https://github.com/chassis-ui/icons)     | Icon set builder (the `chassis-icons` command)               |
 | [chassis-ui/assets](https://github.com/chassis-ui/assets)   | Multi-platform asset management                              |
 | [chassis-ui/figma](https://github.com/chassis-ui/figma)     | Figma component documentation                                |
 
