@@ -172,6 +172,8 @@ Only the web keeps a shadow token whole, so only the web color files hold shadow
 
 So the main file holds every token except the theme colors, with the values of the first theme (its component colors) and the first screen. The string, color and number files share no names with each other, and together they hold everything in main except the base colors and, on the web, the typography maps, which the web keeps whole and files under no other type. The `color.utility.*` tokens are emitted by no file on any platform: they are not base colors, and both `cx/allTokens` and `cx/themeTokens` leave `utility` out.
 
+A repository of tokens may add a color group of its own next to the primitive and context colors, such as spot colors: single colors for particular elements, outside the scales and the roles, which projects use in their own styles. It follows the chain of the primitive colors: the brand sets `color.base.spot.<theme>.*`, a hex or a color modifier of a base color of the same theme, the theme sets select them as `color.spot.*`, and component colors such as `color.page.bg-body` reference those. The filters need no change for it: `color.spot.*` goes into the main file and the color files, and `color.base.spot.*` into the main file and the base colors. Chassis CSS declares no custom property for it, and the shared rules name no variable of it, so a web token that references one prints the value; with `outputReferences`, iOS and Android name it by the [safe reference rule](#a-reference-is-printed-only-when-it-is-safe). `spot-colors.test.js` builds such a chain.
+
 ### Web
 
 SCSS with the prefix `cx`: the header line `$prefix: cx- !default;`, then one `$cx-<name>: <value> !default;` per token between `// scss-docs-start design-tokens` and `// scss-docs-end design-tokens`.
@@ -189,7 +191,7 @@ SCSS with the prefix `cx`: the header line `$prefix: cx- !default;`, then one `$
 
 #### `var(--…)` references of the Chassis CSS format
 
-The `web` platform prints the custom properties that Chassis CSS generates, so its SCSS works only with Chassis CSS. A token prints `var(--name)` when its original value is a single reference and `path[0]` is `color`, `space`, `opacity`, `shadow`, `borderRadius` or `borderWidth`, except `borderRadius` and `borderWidth` tokens whose `path[1]` is `context` or `base`, and shadow tokens whose `path[2]` is `idle`, `hover`, `press`, `disabled`, `focus` or `highlight`, which print their value.
+The `web` platform prints the custom properties that Chassis CSS generates, so its SCSS works only with Chassis CSS. A token prints `var(--name)` when its original value is a single reference that applies no Tokens Studio color modifier (a lighten, darken, mix or alpha holds a color of its own) and `path[0]` is `color`, `space`, `opacity`, `shadow`, `borderRadius` or `borderWidth`, except `borderRadius` and `borderWidth` tokens whose `path[1]` is `context` or `base`, and shadow tokens whose `path[2]` is `idle`, `hover`, `press`, `disabled`, `focus` or `highlight`, which print their value.
 
 | Referenced path                                                     | Custom property                                                                                         |
 | ------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
@@ -210,7 +212,7 @@ The short scale names are `4xs`, `3xs`, `2xs`, `xs`, `sm`, `md`, `lg`, `xl` and 
 
 #### SCSS variables of the presets
 
-`web-scss`, `web-px` and `web-vw` print resolved values. Their typography maps quote the font family list as one string (`"font-family": "Inter, system-ui, …"`). With `outputReferences`, single references in the groups `color`, `space`, `opacity`, `borderRadius` and `borderWidth` print the variable of the token that the shared rules above name (`$cx-color-context-default-fg-main`), and typography maps hold variables. A variable may be declared by another file of the build, so an app loads a color file before `main.scss`, whose color tokens reference variables of `color-<theme>.scss`; the other files use only variables they declare themselves. The build fails when no file declares a variable.
+`web-scss`, `web-px` and `web-vw` print resolved values. Their typography maps quote the font family list as one string (`"font-family": "Inter, system-ui, …"`). With `outputReferences`, single references without a color modifier in the groups `color`, `space`, `opacity`, `borderRadius` and `borderWidth` print the variable of the token that the shared rules above name (`$cx-color-context-default-fg-main`), and typography maps hold variables. A variable may be declared by another file of the build, so an app loads a color file before `main.scss`, whose color tokens reference variables of `color-<theme>.scss`; the other files use only variables they declare themselves. The build fails when no file declares a variable.
 
 ### iOS
 

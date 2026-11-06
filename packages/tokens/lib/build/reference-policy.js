@@ -95,8 +95,20 @@ export function startsWith(path, start) {
 }
 
 /**
+ * Checks whether a token applies a Tokens Studio color modifier (lighten, darken, mix,
+ * alpha) to its value. Such a token holds a color of its own, though its value is a
+ * single reference.
+ *
+ * @param {Object} token - A resolved token with `original`.
+ * @returns {boolean}
+ */
+export function hasModifier(token) {
+  return Boolean(token.original?.$extensions?.['studio.tokens']?.modify)
+}
+
+/**
  * Checks whether a token prints a reference instead of its value, before looking at what
- * it references.
+ * it references. A token that modifies the color it references prints its value.
  *
  * @param {Object} token - A resolved token with `path` and `original`.
  * @param {string[]} groups - Token groups (`path[0]`) whose single-reference tokens
@@ -107,6 +119,7 @@ export function printsReference(token, groups) {
   const { path } = token
   return (
     isReference(token.original?.$value) &&
+    !hasModifier(token) &&
     groups.includes(path[0]) &&
     !literalTokens.some(
       ({ group, segment, names }) => path[0] === group && names.includes(path[segment])

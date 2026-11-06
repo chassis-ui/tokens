@@ -14,6 +14,7 @@ import {
   aliasPath,
   followAliases,
   followedGroups,
+  hasModifier,
   isReference,
   printsReference,
   referencePath,
@@ -88,6 +89,18 @@ describe('printsReference', () => {
   test('uses the groups it is given', () => {
     expect(printsReference(color, cssVarGroups)).toBe(true)
     expect(printsReference(color, ['space'])).toBe(false)
+  })
+
+  test('a color that modifies the color it references prints its value', () => {
+    const modify = { type: 'mix', value: '0.5', color: '#ffffff', space: 'srgb' }
+    const mixed = {
+      ...color,
+      original: { ...color.original, $extensions: { 'studio.tokens': { modify } } }
+    }
+    expect(hasModifier(color)).toBe(false)
+    expect(hasModifier(mixed)).toBe(true)
+    expect(printsReference(mixed, cssVarGroups)).toBe(false)
+    expect(printsReference(mixed, scssVarGroups)).toBe(false)
   })
 })
 
