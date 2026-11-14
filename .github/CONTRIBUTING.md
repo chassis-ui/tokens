@@ -135,6 +135,9 @@ voice, section order, headings, token names and code blocks. Run the site locall
 pnpm dev
 ```
 
+`pnpm dev` runs `pnpm vendor` first. Once `vendor/` is unpacked, `pnpm astro:dev`,
+`pnpm astro:build` and `pnpm astro:preview` run Astro alone, without it.
+
 Before opening a pull request:
 
 ```sh

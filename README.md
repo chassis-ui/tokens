@@ -375,11 +375,13 @@ The documentation site in `packages/site/` is built with [Astro](https://astro.b
 # Check out vendor/tokens, unpack the assets of the site and run it at http://localhost:4322/tokens/
 pnpm dev
 
-# Check out vendor/tokens, unpack the assets and build the site into _site/
+# Check out vendor/tokens, unpack the assets, build the site into _site/ and index it for search
 pnpm build
 
-# Build the site only
-pnpm site:build
+# Run, build or preview the site with Astro alone, on the vendor/ of the last `pnpm vendor`
+pnpm astro:dev
+pnpm astro:build
+pnpm astro:preview
 ```
 
 ## Continuous Integration and Releases

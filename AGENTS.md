@@ -48,7 +48,9 @@ A repository of tokens, such as `vendor/tokens`, holds `source/`, a `package.jso
   of this checkout with `--cwd vendor/tokens`. The command works on one repository of tokens:
   `--cwd <dir>`, by default the nearest folder upward whose `package.json` has a `chassis` block.
   The root of this workspace has none.
-- `pnpm dev` runs the site at `http://localhost:4322/tokens/`.
+- `pnpm dev` runs the site at `http://localhost:4322/tokens/`. `pnpm astro:dev`,
+  `pnpm astro:build` and `pnpm astro:preview` run Astro alone, without `pnpm vendor`, on what the
+  last `pnpm vendor` unpacked.
 - `pnpm test:ci` runs every check of `.github/workflows/ci.yml` except the changeset check,
   the token diff, the dependency review and the native compiles, in one run, the site build
   included. `pnpm test` runs only the token tests.
