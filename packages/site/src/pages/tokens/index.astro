@@ -1,29 +1,236 @@
 ---
+/**
+ * The home page of Chassis Tokens, composed of the home page sections of `@chassis-ui/docs`.
+ * The copy is that of the Figma design "Tokens · Home". A door is one page of the docs with its
+ * real title, and the groups of the doors follow `data/sidebar.yml`.
+ */
+
 import BaseLayout from '@chassis-ui/docs/layouts/BaseLayout.astro'
-import HeroSection from '@components/homepage/HeroSection.astro'
-import IntroSection from '@components/homepage/IntroSection.astro'
-import FeaturesSection from '@components/homepage/FeaturesSection.astro'
-import HowSection from '@components/homepage/HowSection.astro'
-import TechSection from '@components/homepage/TechSection.astro'
-import DocsSection from '@components/homepage/DocsSection.astro'
-import HomeIcons from '/static/icons/cx-sprite.svg?raw'
+import Cards from '@chassis-ui/docs/sections/Cards.astro'
+import Doors from '@chassis-ui/docs/sections/Doors.astro'
+import Facts from '@chassis-ui/docs/sections/Facts.astro'
+import Hero from '@chassis-ui/docs/sections/Hero.astro'
+import Rows from '@chassis-ui/docs/sections/Rows.astro'
+import Section from '@chassis-ui/docs/sections/Section.astro'
+import Steps from '@chassis-ui/docs/sections/Steps.astro'
+import Icon from '@chassis-ui/docs/shortcodes/Icon.astro'
+import { getConfig, getDocsPath } from '@chassis-ui/docs/site'
+
+const { description, repo, currentVersion } = getConfig()
+const changelog = `${repo}/blob/main/packages/tokens/CHANGELOG.md`
+
+const benefits = [
+  {
+    label: 'Brands',
+    title: 'Add a brand without copying the tokens.',
+    points: [
+      'A brand overrides only what differs from the base. Everything else is inherited.',
+      'Light and dark are modes of the same tokens, not a second set.',
+      'Every brand keeps the same token names, in Figma and in code.'
+    ]
+  },
+  {
+    label: 'Platforms',
+    title: 'Get code that each platform reads natively.',
+    points: [
+      'SCSS and CSS custom properties for the web.',
+      'Swift for iOS, installed with Swift Package Manager.',
+      'XML resources for Android, installed with Gradle.'
+    ]
+  },
+  {
+    label: 'Workflow',
+    title: 'Review a design change like a code change.',
+    points: [
+      'Every token change is a diff in a pull request, with its history in Git.',
+      'The build runs in CI. Nothing is exported or copied by hand.',
+      'Your own transforms and validators plug into the build.'
+    ]
+  }
+]
+
+const steps = [
+  {
+    name: 'Figma to code',
+    stations: [
+      {
+        label: '01 · Define',
+        title: 'Edit the tokens in Figma.',
+        body: 'Tokens are Figma variables. Tokens Studio saves each change to the repository.'
+      },
+      {
+        label: '02 · Build',
+        title: 'Build every platform.',
+        body: 'One command turns the tokens into SCSS, CSS, Swift and XML with Style Dictionary.'
+      },
+      {
+        label: '03 · Install',
+        title: 'Use them in your codebase.',
+        body: 'Web, iOS and Android projects install the output as a versioned dependency.'
+      }
+    ]
+  }
+]
+
+const related = [
+  {
+    name: 'Chassis Figma',
+    icon: 'cx-figma',
+    href: 'https://chassis-ui.com/figma/',
+    body: 'The component library, bound to these tokens as Figma variables. Switch a mode and every screen follows.'
+  },
+  {
+    name: 'Chassis CSS',
+    icon: 'cx-brackets-curly',
+    href: 'https://chassis-ui.com/css/',
+    body: 'Custom properties and classes built from these tokens, named as they are in Figma.'
+  },
+  {
+    name: 'Chassis React',
+    icon: 'cx-react',
+    href: 'https://chassis-ui.com/react/',
+    body: 'Accessible React components styled by Chassis CSS, so they take your tokens with it.'
+  }
+]
+
+const facts = [
+  { name: 'Tokens Studio', detail: 'Token management in Figma' },
+  { name: 'Style Dictionary', detail: 'Token transformation' },
+  { name: 'Figma Variables', detail: 'Design integration' },
+  { name: 'DTCG Format', detail: 'The W3C token standard' }
+]
+
+const doors = [
+  {
+    label: 'Getting started',
+    doors: [
+      {
+        name: 'Introduction',
+        href: getDocsPath('/getting-started/introduction/'),
+        body: 'What Chassis Tokens builds, and from what.'
+      },
+      {
+        name: 'Quick Start',
+        href: getDocsPath('/getting-started/quick-start/'),
+        body: 'Make a token repository, change it and build it.'
+      },
+      {
+        name: 'Tokens Studio',
+        href: getDocsPath('/getting-started/tokens-studio/'),
+        body: 'Connect the plugin to the repository and add a brand.'
+      }
+    ]
+  },
+  {
+    label: 'Use in project',
+    doors: [
+      {
+        name: 'Web Applications',
+        href: getDocsPath('/use-in-project/web-applications/'),
+        body: 'SCSS variables, with themes and screen sizes.'
+      },
+      {
+        name: 'iOS Applications',
+        href: getDocsPath('/use-in-project/ios-applications/'),
+        body: 'Swift constants that follow light and dark.'
+      },
+      {
+        name: 'Android Applications',
+        href: getDocsPath('/use-in-project/android-applications/'),
+        body: 'XML resources for themes and screen sizes.'
+      }
+    ]
+  },
+  {
+    label: 'Design tokens',
+    doors: [
+      {
+        name: 'Color Tokens',
+        href: getDocsPath('/design-tokens/color-tokens/'),
+        body: 'Palettes, context colors and component colors.'
+      },
+      {
+        name: 'Typography Tokens',
+        href: getDocsPath('/design-tokens/typography-tokens/'),
+        body: 'Font families, sizes and line heights by role.'
+      },
+      {
+        name: 'Space Tokens',
+        href: getDocsPath('/design-tokens/space-tokens/'),
+        body: 'Padding and gaps, from the base scale up.'
+      }
+    ]
+  }
+]
 ---
 
-<BaseLayout title="Chassis Tokens - Enterprise Design Token System">
-  <!-- Hero Section -->
-  <HeroSection />
-  <hr class="hr container" />
-  <!-- Core Features (3 cards) -->
-  <IntroSection />
-  <!-- Additional Features (6 cards) -->
-  <FeaturesSection />
-  <!-- How It Works (3 steps) -->
-  <HowSection />
-  <!-- Technical Stack -->
-  <TechSection />
-  <!-- Documentation Section -->
-  <DocsSection />
-  <div class="d-none">
-    <Fragment set:html={HomeIcons} />
-  </div>
+<BaseLayout title="Chassis Tokens" description={description} navbarContext="alternate">
+  <Hero
+    kicker="Chassis Tokens"
+    lead="Chassis Tokens keeps the colour, type, spacing and motion decisions of every brand and app in one repository, and builds them into code for the web, iOS and Android."
+    command="npx @chassis-ui/tokens init acme-tokens"
+    illustration="images/illustrations/hero-tokens.svg"
+    illustrationLabel="A colour scale, a type scale and a set of sizes, each on a panel"
+  >
+    <Fragment slot="title">
+      <span class="d-block">Design tokens, defined once.</span>{' '}
+      <mark class="d-block">
+        <span class="lg:d-block">Every brand, theme and</span>{' '}
+        <span class="lg:d-block">platform built from them.</span>
+      </mark>
+    </Fragment>
+    <Fragment slot="actions">
+      <a class="button primary lg" href={getDocsPath('/getting-started/introduction/')}>
+        <Icon name="book-open-outline" />
+        Getting Started
+      </a>
+      <a class="button alternate lg" href={repo}>
+        <Icon name="github-brand" />
+        View on GitHub
+      </a>
+    </Fragment>
+    <Fragment slot="meta">
+      Currently v{currentVersion}
+      <span aria-hidden="true">&nbsp;/&nbsp;</span>
+      <a href={changelog}>Changes</a>
+    </Fragment>
+  </Hero>
+
+  <Section
+    id="what"
+    eyebrow="What you get"
+    title={['One structure for every brand.', 'Native code for every platform.']}
+    lead="A brand, a theme and an app are layers of the same tokens. Each platform gets them in the format it already reads."
+  >
+    <Rows rows={benefits} />
+  </Section>
+
+  <Section
+    id="how"
+    eyebrow="How it works"
+    title={['From a Figma variable', 'to production code.']}
+    lead="A token change reaches every codebase in three steps. Nothing is retyped or translated by hand on the way."
+  >
+    <Steps stages={steps} />
+  </Section>
+
+  <Section
+    id="works-with"
+    eyebrow="Works with"
+    title={['Tokens come first.', 'The other packages read them.']}
+    lead="Use the tokens alone, or add the packages that are built on them. Each one follows the same names and the same brands."
+  >
+    <Cards cards={related} />
+  </Section>
+
+  <Facts label="Built on" facts={facts} />
+
+  <Section
+    id="docs"
+    eyebrow="Get started"
+    title={['Start with the guide', 'that matches your task.']}
+    lead="Set up a token repository, read what the tokens are, or install the output in the project you already have."
+  >
+    <Doors groups={doors} />
+  </Section>
 </BaseLayout>
