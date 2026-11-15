@@ -33,7 +33,7 @@ const benefits = [
     label: 'Platforms',
     title: 'Get code that each platform reads natively.',
     points: [
-      'SCSS and CSS custom properties for the web.',
+      'SCSS variables for the web, for Chassis CSS or any other framework.',
       'Swift for iOS, installed with Swift Package Manager.',
       'XML resources for Android, installed with Gradle.'
     ]
@@ -61,7 +61,7 @@ const steps = [
       {
         label: '02 · Build',
         title: 'Build every platform.',
-        body: 'One command turns the tokens into SCSS, CSS, Swift and XML with Style Dictionary.'
+        body: 'One command turns the tokens into SCSS, Swift and XML with Style Dictionary.'
       },
       {
         label: '03 · Install',
@@ -97,7 +97,7 @@ const facts = [
   { name: 'Tokens Studio', detail: 'Token management in Figma' },
   { name: 'Style Dictionary', detail: 'Token transformation' },
   { name: 'Figma Variables', detail: 'Design integration' },
-  { name: 'DTCG Format', detail: 'The W3C token standard' }
+  { name: 'DTCG Tokens', detail: 'The W3C community group format' }
 ]
 
 const doors = [
@@ -167,10 +167,10 @@ const doors = [
 <BaseLayout title="Chassis Tokens" description={description} navbarContext="alternate">
   <Hero
     kicker="Chassis Tokens"
-    lead="Chassis Tokens keeps the colour, type, spacing and motion decisions of every brand and app in one repository, and builds them into code for the web, iOS and Android."
+    lead="Chassis Tokens keeps the color, type, spacing and motion decisions of every brand and app in one repository, and builds them into code for the web, iOS and Android."
     command="npx @chassis-ui/tokens init acme-tokens"
     illustration="images/illustrations/hero-tokens.svg"
-    illustrationLabel="A colour scale, a type scale and a set of sizes, each on a panel"
+    illustrationLabel="A color scale, a type scale and a set of sizes, each on a panel"
   >
     <Fragment slot="title">
       <span class="d-block">Design tokens, defined once.</span>{' '}
@@ -182,7 +182,7 @@ const doors = [
     <Fragment slot="actions">
       <a class="button primary lg" href={getDocsPath('/getting-started/introduction/')}>
         <Icon name="book-open-outline" />
-        Getting Started
+        Get started
       </a>
       <a class="button alternate lg" href={repo}>
         <Icon name="github-brand" />
