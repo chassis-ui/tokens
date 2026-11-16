@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.16.1
+
+### Patch Changes
+
+- A color that applies a Tokens Studio color modifier (lighten, darken, mix or alpha) to a primitive or context color prints its own color on the web. The Chassis CSS format printed the custom property of the color it references, and the SCSS presets with `outputReferences` its variable, so the modifier was lost. No token of the token system that `init` writes does this, so nothing in its output changes. A repository can now add a color group of its own, such as spot colors for particular elements, whose colors mix primitives in the theme sets.
+- The token system that `init` writes has a size and line-height scale for the display family, `typography.fontSize.display` and `typography.lineHeight.display` from `6xlarge` to `2xsmall`, following the ui scale as prose does, and its composites `font.display.<size>.<weight>` with the letter spacing `typography.letterSpacing.display`. The ui, prose and display scales gain a `6xlarge` step (52 and 64), and the code scale `xlarge` (22 and 32) and `xsmall` (12 and 18), with their composites. A repository made before this release keeps its token sets.
+
 ## 0.16.0
 
 ### Minor Changes
