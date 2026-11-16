@@ -60,14 +60,13 @@ Base tokens are named `font.<family>.<size>.<weight>`. Each combines the family,
 <CxTable>
 | Token | Sizes | Weights |
 | --- | --- | --- |
-| `font.ui.<size>.<weight>` | `5xlarge`, `4xlarge`, `3xlarge`, `2xlarge`, `xlarge`, `large`, `medium`, `small`, `xsmall`, `2xsmall` | `normal`, `strong`, `mass`, `elegant` |
-| `font.prose.<size>.<weight>` | `5xlarge`, `4xlarge`, `3xlarge`, `2xlarge`, `xlarge`, `large`, `medium`, `small`, `xsmall`, `2xsmall` | `normal`, `strong`, `mass`, `elegant` |
-| `font.code.<size>.<weight>` | `large`, `medium`, `small` | `normal`, `strong` |
+| `font.ui.<size>.<weight>` | `6xlarge`, `5xlarge`, `4xlarge`, `3xlarge`, `2xlarge`, `xlarge`, `large`, `medium`, `small`, `xsmall`, `2xsmall` | `normal`, `strong`, `mass`, `elegant` |
+| `font.prose.<size>.<weight>` | `6xlarge`, `5xlarge`, `4xlarge`, `3xlarge`, `2xlarge`, `xlarge`, `large`, `medium`, `small`, `xsmall`, `2xsmall` | `normal`, `strong`, `mass`, `elegant` |
+| `font.display.<size>.<weight>` | `6xlarge`, `5xlarge`, `4xlarge`, `3xlarge`, `2xlarge`, `xlarge`, `large`, `medium`, `small`, `xsmall`, `2xsmall` | `normal`, `strong`, `mass`, `elegant` |
+| `font.code.<size>.<weight>` | `xlarge`, `large`, `medium`, `small`, `xsmall` | `normal`, `strong` |
 </CxTable>
 
-A base token of the `ui` or `prose` family takes its letter spacing from its weight, such as `{typography.letterSpacing.prose.mass}`, and `font.code.*` references `{typography.letterSpacing.base.zero}`. Every base token references `{typography.paragraphSpacing.base.zero}`.
-
-The `display` family has no base tokens, because it has no scale. Text is set in it through a [context token](#context-tokens) whose role group a brand points at the display family.
+A base token of the `ui`, `prose`, or `display` family takes its letter spacing from its weight, such as `{typography.letterSpacing.prose.mass}`, and `font.code.*` references `{typography.letterSpacing.base.zero}`. Every base token references `{typography.paragraphSpacing.base.zero}`.
 
 ## Context tokens
 
@@ -342,9 +341,9 @@ Choose the level that names the text:
 
 - Use a component token for the part of a component that it names, such as `font.button.medium` for the label of a medium button.
 - Use a context token for content with a role: `font.context.h2` for a heading, `font.context.body.medium` for running text, `font.context.label.small` for the label of a control.
-- Use a base token where no context or component token fits: `font.ui.*` in an interface, `font.prose.*` in reading content.
+- Use a base token where no context or component token fits: `font.ui.*` in an interface, `font.prose.*` in reading content, `font.display.*` for display text that has no role.
 
-The display family has no base tokens, so a context token is the way to set a text in it. Point the family and the weight of the role group of that token at the display family in the token set of the brand, as [Usage]([[docsref:/design-tokens/typography-tokens#usage]]) of the typography tokens shows. A font token takes its weight from the family it takes its family from, which `chassis-tokens lint-source` checks.
+To set the text of a role in the display family, point the family and the weight of its role group at the display family in the token set of the brand, as [Usage]([[docsref:/design-tokens/typography-tokens#usage]]) of the typography tokens shows. A font token takes its weight from the family it takes its family from, which `chassis-tokens lint-source` checks.
 
 Give a new component token a reference to a base token of the `ui` family, as the existing component tokens have. The token then follows the typography scales and the fonts of each brand.
 

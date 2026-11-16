@@ -12,7 +12,7 @@ The token sets that this page names are the Chassis token system, as `chassis-to
 
 Typography tokens hold the single properties of a text style. Each property has a group under `typography.*`: `fontFamily`, `fontWeight`, `fontSize`, `lineHeight`, `letterSpacing`, and `paragraphSpacing`. The [font tokens]([[docsref:/design-tokens/font-tokens]]) combine these properties into text styles. Text case and text decoration have no typography tokens, and no font token names one.
 
-The font families are named by their job, not by their typeface: `ui` for components, `prose` for reading content, `display` for display text, `code` for code, and `icon` for the icon font. A brand chooses the typeface of each job. `ui` and `prose` have a full scale of sizes, line heights, weights, and letter spacing, and `code` has a short one. `display` has weights only: text reaches it through a [text role](#text-roles), not through a scale.
+The font families are named by their job, not by their typeface: `ui` for components, `prose` for reading content, `display` for display text, `code` for code, and `icon` for the icon font. A brand chooses the typeface of each job. `ui`, `prose`, and `display` have a full scale of sizes, line heights, weights, and letter spacing, and `code` has a short one. A [text role](#text-roles) can set its text in any of these families.
 
 ### Token levels
 
@@ -36,7 +36,7 @@ A font family token holds a list of font families: the font of the brand first, 
 | --- | --- |
 | `typography.fontFamily.ui` | The family of components: `font.ui.*` and every component font |
 | `typography.fontFamily.prose` | The family of reading content, such as the body of an article: `font.prose.*` |
-| `typography.fontFamily.display` | The family of display text, for the role groups that a brand points at it |
+| `typography.fontFamily.display` | The family of display text, for its scale and for the role groups that a brand points at it |
 | `typography.fontFamily.code` | The family of code: `font.code.*` |
 | `typography.fontFamily.icon` | The family of the icon font |
 </CxTable>
@@ -90,28 +90,29 @@ The `context` group holds one weight per role group, which every role of the gro
 
 ## Font sizes
 
-A font size token holds a size in design pixels. The tokens follow the pattern `typography.fontSize.<group>.<step>`. The scales of `ui` and `code` hold sizes of their own, the scale of `prose` references them, and the `context` group holds one size per text role.
+A font size token holds a size in design pixels. The tokens follow the pattern `typography.fontSize.<group>.<step>`. The scales of `ui` and `code` hold sizes of their own, the scales of `prose` and `display` reference the scale of `ui`, and the `context` group holds one size per text role.
 
 <CxTable>
 | Tokens | Steps |
 | --- | --- |
-| `typography.fontSize.ui.*` | `5xlarge`, `4xlarge`, `3xlarge`, `2xlarge`, `xlarge`, `large`, `medium`, `small`, `xsmall`, `2xsmall` |
+| `typography.fontSize.ui.*` | `6xlarge`, `5xlarge`, `4xlarge`, `3xlarge`, `2xlarge`, `xlarge`, `large`, `medium`, `small`, `xsmall`, `2xsmall` |
 | `typography.fontSize.prose.*` | The steps of `ui`, each referencing the step of `ui` with the same name |
-| `typography.fontSize.code.*` | `large`, `medium`, `small` |
+| `typography.fontSize.display.*` | The steps of `ui`, each referencing the step of `ui` with the same name |
+| `typography.fontSize.code.*` | `xlarge`, `large`, `medium`, `small`, `xsmall` |
 | `typography.fontSize.context.*` | The name of a text role, such as `h1` or `title-large` |
 </CxTable>
 
-Each step of a scale is larger than the step after it in the list, from `5xlarge` down to `2xsmall`. The size of each role is in [Text roles](#text-roles).
+Each step of a scale is larger than the step after it in the list, from `6xlarge` down to `2xsmall`. The size of each role is in [Text roles](#text-roles).
 
 ## Line heights
 
-A line height token holds the line height of the font size with the same name, in design pixels: `typography.lineHeight.ui.medium` belongs to `typography.fontSize.ui.medium`, and `typography.lineHeight.context.h1` to `typography.fontSize.context.h1`. The groups `ui`, `prose`, and `code` have a line height for each of their font sizes, and the line heights of `prose` reference those of `ui`. The `context` group has one for each role. Every line height is larger than its font size.
+A line height token holds the line height of the font size with the same name, in design pixels: `typography.lineHeight.ui.medium` belongs to `typography.fontSize.ui.medium`, and `typography.lineHeight.context.h1` to `typography.fontSize.context.h1`. The groups `ui`, `prose`, `display`, and `code` have a line height for each of their font sizes, and the line heights of `prose` and `display` reference those of `ui`. The `context` group has one for each role. Every line height is larger than its font size.
 
 A line height belongs to its role, not to its family: a heading is set tighter than the body of an article in the same family, so the roles hold line heights of their own. They are in design pixels and not in ratios of the font size, because a line height in whole pixels keeps the lines of a text on the pixel grid in Figma, and a ratio puts them between pixels.
 
 ## Letter spacing
 
-Letter spacing tokens hold the space between letters in design pixels, the unit that a Figma variable holds. A pixel value is the same at every font size, so the letter spacing belongs to a size, as the line height does. The families `ui` and `prose` have one letter spacing per weight, `typography.letterSpacing.<family>.<weight>`, and a base token of each size references the letter spacing of its weight: `font.ui.medium.strong` references `{typography.letterSpacing.ui.strong}`. `font.code.*` references `typography.letterSpacing.base.zero`. The families `display` and `code` have no letter spacing of their own.
+Letter spacing tokens hold the space between letters in design pixels, the unit that a Figma variable holds. A pixel value is the same at every font size, so the letter spacing belongs to a size, as the line height does. The families `ui`, `prose`, and `display` have one letter spacing per weight, `typography.letterSpacing.<family>.<weight>`, and a base token of each size references the letter spacing of its weight: `font.ui.medium.strong` references `{typography.letterSpacing.ui.strong}`. `font.code.*` references `typography.letterSpacing.base.zero`. The family `code` has no letter spacing of its own.
 
 <CxTable>
 | Token | Reference |
@@ -125,6 +126,10 @@ Letter spacing tokens hold the space between letters in design pixels, the unit 
 | `typography.letterSpacing.prose.strong` | `{size.unit.0}` |
 | `typography.letterSpacing.prose.mass` | `{size.unit.0}` |
 | `typography.letterSpacing.prose.elegant` | `{size.unit.0}` |
+| `typography.letterSpacing.display.normal` | `{size.unit.0}` |
+| `typography.letterSpacing.display.strong` | `{size.unit.0}` |
+| `typography.letterSpacing.display.mass` | `{size.unit.0}` |
+| `typography.letterSpacing.display.elegant` | `{size.unit.0}` |
 </CxTable>
 
 The `context` group holds one letter spacing per text role, under the name of the role, such as `typography.letterSpacing.context.title-large`. Each references `{size.unit.0}` in `source/base/brand-base.json`. A brand tightens the letters of a role by referencing a negative step of the size scale, such as `{size.unit.n1}` for `jumbo` and `hero`. Figma variables cannot hold a percentage, so `chassis-tokens lint-source` fails on a letter spacing in percent or in `em`.

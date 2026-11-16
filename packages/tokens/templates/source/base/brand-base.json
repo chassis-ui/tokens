@@ -5792,6 +5792,10 @@
     },
     "fontSize": {
       "ui": {
+        "6xlarge": {
+          "$type": "fontSizes",
+          "$value": "52"
+        },
         "5xlarge": {
           "$type": "fontSizes",
           "$value": "44"
@@ -5834,6 +5838,56 @@
         }
       },
       "prose": {
+        "6xlarge": {
+          "$type": "fontSizes",
+          "$value": "{typography.fontSize.ui.6xlarge}"
+        },
+        "5xlarge": {
+          "$type": "fontSizes",
+          "$value": "{typography.fontSize.ui.5xlarge}"
+        },
+        "4xlarge": {
+          "$type": "fontSizes",
+          "$value": "{typography.fontSize.ui.4xlarge}"
+        },
+        "3xlarge": {
+          "$type": "fontSizes",
+          "$value": "{typography.fontSize.ui.3xlarge}"
+        },
+        "2xlarge": {
+          "$type": "fontSizes",
+          "$value": "{typography.fontSize.ui.2xlarge}"
+        },
+        "xlarge": {
+          "$type": "fontSizes",
+          "$value": "{typography.fontSize.ui.xlarge}"
+        },
+        "large": {
+          "$type": "fontSizes",
+          "$value": "{typography.fontSize.ui.large}"
+        },
+        "medium": {
+          "$type": "fontSizes",
+          "$value": "{typography.fontSize.ui.medium}"
+        },
+        "small": {
+          "$type": "fontSizes",
+          "$value": "{typography.fontSize.ui.small}"
+        },
+        "xsmall": {
+          "$type": "fontSizes",
+          "$value": "{typography.fontSize.ui.xsmall}"
+        },
+        "2xsmall": {
+          "$type": "fontSizes",
+          "$value": "{typography.fontSize.ui.2xsmall}"
+        }
+      },
+      "display": {
+        "6xlarge": {
+          "$type": "fontSizes",
+          "$value": "{typography.fontSize.ui.6xlarge}"
+        },
         "5xlarge": {
           "$type": "fontSizes",
           "$value": "{typography.fontSize.ui.5xlarge}"
@@ -5958,6 +6012,10 @@
         }
       },
       "code": {
+        "xlarge": {
+          "$type": "fontSizes",
+          "$value": "22"
+        },
         "large": {
           "$type": "fontSizes",
           "$value": "19"
@@ -5969,11 +6027,19 @@
         "small": {
           "$type": "fontSizes",
           "$value": "14"
+        },
+        "xsmall": {
+          "$type": "fontSizes",
+          "$value": "12"
         }
       }
     },
     "lineHeight": {
       "ui": {
+        "6xlarge": {
+          "$type": "lineHeights",
+          "$value": "64"
+        },
         "5xlarge": {
           "$type": "lineHeights",
           "$value": "56"
@@ -6016,6 +6082,56 @@
         }
       },
       "prose": {
+        "6xlarge": {
+          "$type": "lineHeights",
+          "$value": "{typography.lineHeight.ui.6xlarge}"
+        },
+        "5xlarge": {
+          "$type": "lineHeights",
+          "$value": "{typography.lineHeight.ui.5xlarge}"
+        },
+        "4xlarge": {
+          "$type": "lineHeights",
+          "$value": "{typography.lineHeight.ui.4xlarge}"
+        },
+        "3xlarge": {
+          "$type": "lineHeights",
+          "$value": "{typography.lineHeight.ui.3xlarge}"
+        },
+        "2xlarge": {
+          "$type": "lineHeights",
+          "$value": "{typography.lineHeight.ui.2xlarge}"
+        },
+        "xlarge": {
+          "$type": "lineHeights",
+          "$value": "{typography.lineHeight.ui.xlarge}"
+        },
+        "large": {
+          "$type": "lineHeights",
+          "$value": "{typography.lineHeight.ui.large}"
+        },
+        "medium": {
+          "$type": "lineHeights",
+          "$value": "{typography.lineHeight.ui.medium}"
+        },
+        "small": {
+          "$type": "lineHeights",
+          "$value": "{typography.lineHeight.ui.small}"
+        },
+        "xsmall": {
+          "$type": "lineHeights",
+          "$value": "{typography.lineHeight.ui.xsmall}"
+        },
+        "2xsmall": {
+          "$type": "lineHeights",
+          "$value": "{typography.lineHeight.ui.2xsmall}"
+        }
+      },
+      "display": {
+        "6xlarge": {
+          "$type": "lineHeights",
+          "$value": "{typography.lineHeight.ui.6xlarge}"
+        },
         "5xlarge": {
           "$type": "lineHeights",
           "$value": "{typography.lineHeight.ui.5xlarge}"
@@ -6140,6 +6256,10 @@
         }
       },
       "code": {
+        "xlarge": {
+          "$type": "lineHeights",
+          "$value": "32"
+        },
         "large": {
           "$type": "lineHeights",
           "$value": "28"
@@ -6151,6 +6271,10 @@
         "small": {
           "$type": "lineHeights",
           "$value": "20"
+        },
+        "xsmall": {
+          "$type": "lineHeights",
+          "$value": "18"
         }
       }
     },
@@ -6180,6 +6304,24 @@
         }
       },
       "prose": {
+        "normal": {
+          "$type": "letterSpacing",
+          "$value": "{size.unit.0}"
+        },
+        "strong": {
+          "$type": "letterSpacing",
+          "$value": "{size.unit.0}"
+        },
+        "mass": {
+          "$type": "letterSpacing",
+          "$value": "{size.unit.0}"
+        },
+        "elegant": {
+          "$type": "letterSpacing",
+          "$value": "{size.unit.0}"
+        }
+      },
+      "display": {
         "normal": {
           "$type": "letterSpacing",
           "$value": "{size.unit.0}"
