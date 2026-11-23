@@ -82,17 +82,17 @@ importers:
         specifier: ^3.7.4
         version: 3.7.4
       '@chassis-ui/css':
-        specifier: ^0.15.0
-        version: 0.15.0(@floating-ui/dom@1.8.0)(postcss-prefix-custom-properties@0.1.0(postcss@8.5.32))(vanilla-calendar-pro@3.4.0)
+        specifier: ^0.16.0
+        version: 0.16.0(@floating-ui/dom@1.8.0)(postcss-prefix-custom-properties@0.1.0(postcss@8.5.32))(vanilla-calendar-pro@3.4.0)
       '@chassis-ui/docs':
         specifier: ^0.15.0
-        version: 0.15.0(@astrojs/markdown-remark@7.3.6)(@chassis-ui/css@0.15.0(@floating-ui/dom@1.8.0)(postcss-prefix-custom-properties@0.1.0(postcss@8.5.32))(vanilla-calendar-pro@3.4.0))(@pagefind/component-ui@1.6.0)(@shikijs/transformers@4.6.0)(astro@7.4.8(@astrojs/markdown-remark@7.3.6)(@types/node@24.19.1)(esbuild@0.28.2)(sass@1.108.1)(yaml@2.9.1))(autoprefixer@10.6.2(postcss@8.5.32))(html-validate@11.21.0(@vitest/expect@4.1.11)(vitest@5.1.0(@types/node@24.19.1)(vite@8.3.7(@types/node@24.19.1)(esbuild@0.28.2)(sass@1.108.1)(yaml@2.9.1))))(htmlparser2@12.0.0)(postcss-prefix-custom-properties@0.1.0(postcss@8.5.32))(postcss@8.5.32)(rehype-autolink-headings@7.1.0)(sass@1.108.1)(shiki@4.6.0)
+        version: 0.15.0(@astrojs/markdown-remark@7.3.6)(@chassis-ui/css@0.16.0(@floating-ui/dom@1.8.0)(postcss-prefix-custom-properties@0.1.0(postcss@8.5.32))(vanilla-calendar-pro@3.4.0))(@pagefind/component-ui@1.6.0)(@shikijs/transformers@4.6.0)(astro@7.4.8(@astrojs/markdown-remark@7.3.6)(@types/node@24.19.1)(esbuild@0.28.2)(sass@1.108.1)(yaml@2.9.1))(autoprefixer@10.6.2(postcss@8.5.32))(html-validate@11.21.0(@vitest/expect@4.1.11)(vitest@5.1.0(@types/node@24.19.1)(vite@8.3.7(@types/node@24.19.1)(esbuild@0.28.2)(sass@1.108.1)(yaml@2.9.1))))(htmlparser2@12.0.0)(postcss-prefix-custom-properties@0.1.0(postcss@8.5.32))(postcss@8.5.32)(rehype-autolink-headings@7.1.0)(sass@1.108.1)(shiki@4.6.0)
       '@chassis-ui/website-icons':
-        specifier: ^0.1.0
-        version: 0.1.0
+        specifier: ^0.2.0
+        version: 0.2.0
       '@chassis-ui/website-tokens':
-        specifier: ^0.4.0
-        version: 0.4.0
+        specifier: ^0.5.0
+        version: 0.5.0
       '@floating-ui/dom':
         specifier: ^1.8.0
         version: 1.8.0
@@ -450,8 +450,8 @@ packages:
     resolution: {integrity: sha512-q/ThtP9gcnEP6xlv7LrY26C2mHqdGBti/MmOVngt/M/oIGYkssmQGxPK9WzBNt2juVcH/vml2WQ+ra8LXYOTaA==}
     engines: {node: ^22.11 || ^24 || >=26}
 
-  '@chassis-ui/css@0.15.0':
-    resolution: {integrity: sha512-oHeHgmKQnsUeVhvq8rPcf73PAdMt5zzAPx2Uvpb1771+bUrlZB+m3zB7aD56OJmkDk+dopE5ilWKMOmm8/uOdA==}
+  '@chassis-ui/css@0.16.0':
+    resolution: {integrity: sha512-gnvotD8BGNpzEKn8R72gbA+RNa0sELN61PXXOJZagmVTY2+wydJkJnCGpD6W2PNLW/wB2ZKHtwI5Pkcgr+SXWA==}
     engines: {node: '>=22'}
     peerDependencies:
       '@floating-ui/dom': ^1.7.6
@@ -495,12 +495,12 @@ packages:
       vnu-jar:
         optional: true
 
-  '@chassis-ui/website-icons@0.1.0':
-    resolution: {integrity: sha512-TPVgmtqYr17pq1mJ0SFDS7EcGklCeJ+D31zSNnYgH+/m6D085mo1EGhUs95dcGcgRy13vzDWsHoNEVstIwzX9g==}
+  '@chassis-ui/website-icons@0.2.0':
+    resolution: {integrity: sha512-43F2ZCnergMTN1EzIITE8l1cTxPhLB9+c/BX+aD7xADsrGz1ldG4anO/z2/vp2vlkiYCt+LlPDLVmeR6CURGYQ==}
     engines: {node: '>=22.12.0'}
 
-  '@chassis-ui/website-tokens@0.4.0':
-    resolution: {integrity: sha512-0anV2dCmNFKGFVdqwfeAVy6Ruib725qetQn1dS9jvnd/PHLBVEwBYqbilX0PzgROSR6hDrQIMhQoj3ybwHlvcQ==}
+  '@chassis-ui/website-tokens@0.5.0':
+    resolution: {integrity: sha512-nAvPx4HGUdgGpBWujtgehhqoW/4+BkvFBwO2xaqn1K9xB+FYqsevaQN88CyKGN89I47eTdZVpe7yxLyzdIZLcA==}
     engines: {node: '>=22.12.0'}
 
   '@clack/core@1.5.1':
@@ -5139,17 +5139,17 @@ snapshots:
       '@changesets/types': 7.0.0
       human-id: 4.2.1
 
-  '@chassis-ui/css@0.15.0(@floating-ui/dom@1.8.0)(postcss-prefix-custom-properties@0.1.0(postcss@8.5.32))(vanilla-calendar-pro@3.4.0)':
+  '@chassis-ui/css@0.16.0(@floating-ui/dom@1.8.0)(postcss-prefix-custom-properties@0.1.0(postcss@8.5.32))(vanilla-calendar-pro@3.4.0)':
     dependencies:
       '@floating-ui/dom': 1.8.0
       vanilla-calendar-pro: 3.4.0
     optionalDependencies:
       postcss-prefix-custom-properties: 0.1.0(postcss@8.5.32)
 
-  '@chassis-ui/docs@0.15.0(@astrojs/markdown-remark@7.3.6)(@chassis-ui/css@0.15.0(@floating-ui/dom@1.8.0)(postcss-prefix-custom-properties@0.1.0(postcss@8.5.32))(vanilla-calendar-pro@3.4.0))(@pagefind/component-ui@1.6.0)(@shikijs/transformers@4.6.0)(astro@7.4.8(@astrojs/markdown-remark@7.3.6)(@types/node@24.19.1)(esbuild@0.28.2)(sass@1.108.1)(yaml@2.9.1))(autoprefixer@10.6.2(postcss@8.5.32))(html-validate@11.21.0(@vitest/expect@4.1.11)(vitest@5.1.0(@types/node@24.19.1)(vite@8.3.7(@types/node@24.19.1)(esbuild@0.28.2)(sass@1.108.1)(yaml@2.9.1))))(htmlparser2@12.0.0)(postcss-prefix-custom-properties@0.1.0(postcss@8.5.32))(postcss@8.5.32)(rehype-autolink-headings@7.1.0)(sass@1.108.1)(shiki@4.6.0)':
+  '@chassis-ui/docs@0.15.0(@astrojs/markdown-remark@7.3.6)(@chassis-ui/css@0.16.0(@floating-ui/dom@1.8.0)(postcss-prefix-custom-properties@0.1.0(postcss@8.5.32))(vanilla-calendar-pro@3.4.0))(@pagefind/component-ui@1.6.0)(@shikijs/transformers@4.6.0)(astro@7.4.8(@astrojs/markdown-remark@7.3.6)(@types/node@24.19.1)(esbuild@0.28.2)(sass@1.108.1)(yaml@2.9.1))(autoprefixer@10.6.2(postcss@8.5.32))(html-validate@11.21.0(@vitest/expect@4.1.11)(vitest@5.1.0(@types/node@24.19.1)(vite@8.3.7(@types/node@24.19.1)(esbuild@0.28.2)(sass@1.108.1)(yaml@2.9.1))))(htmlparser2@12.0.0)(postcss-prefix-custom-properties@0.1.0(postcss@8.5.32))(postcss@8.5.32)(rehype-autolink-headings@7.1.0)(sass@1.108.1)(shiki@4.6.0)':
     dependencies:
       '@astrojs/markdown-remark': 7.3.6
-      '@chassis-ui/css': 0.15.0(@floating-ui/dom@1.8.0)(postcss-prefix-custom-properties@0.1.0(postcss@8.5.32))(vanilla-calendar-pro@3.4.0)
+      '@chassis-ui/css': 0.16.0(@floating-ui/dom@1.8.0)(postcss-prefix-custom-properties@0.1.0(postcss@8.5.32))(vanilla-calendar-pro@3.4.0)
       '@pagefind/component-ui': 1.6.0
       '@shikijs/transformers': 4.6.0
       '@types/hast': 3.0.5
@@ -5180,9 +5180,9 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@chassis-ui/website-icons@0.1.0': {}
+  '@chassis-ui/website-icons@0.2.0': {}
 
-  '@chassis-ui/website-tokens@0.4.0': {}
+  '@chassis-ui/website-tokens@0.5.0': {}
 
   '@clack/core@1.5.1':
     dependencies:
